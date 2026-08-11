@@ -110,18 +110,406 @@ doors.push({
     <div class="diag-cap">পরিসংখ্যান তিন ধরনের প্রমাণকে একত্র করে — নিগমন (গ্যারান্টিযুক্ত সিদ্ধান্ত), আগমন (সম্ভাব্য সাধারণীকরণ), অভিন্নকরণ (সেরা ব্যাখ্যা)। আল-কিন্দির ফ্রিকোয়েন্সি বিশ্লেষণ ছিল আগমনের প্রথম রূপ।</div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 প্রমাণের তিন ধরন — Three Types of Evidence</h4>
-    <table class="kv-table">
-      <tr><th>ধরন</th><th>দিক</th><th>উদাহরণ</th><th>নিশ্চয়তা</th></tr>
-      <tr><td class="hl">নিগমন (Deductive)</td><td>সাধারণ → বিশেষ</td><td>সব কাক কালো → এই কাকও কালো</td><td class="hl">১০০% (যদি সত্য হয়)</td></tr>
-      <tr><td class="hl">আগমন (Inductive)</td><td>বিশেষ → সাধারণ</td><td>১০০০ কাক দেখলাম সব কালো → সম্ভবত সব কাক কালো</td><td>সম্ভাব্য (৯৯%?)</td></tr>
-      <tr><td class="hl">অভিন্নকরণ (Abductive)</td><td>ফলাফল → কারণ</td><td>ঘাস ভেজা → সম্ভবত বৃষ্টি হয়েছে</td><td>সর্বোত্তম অনুমান</td></tr>
-    </table>
-    <br>
-    <p>আল-কিন্দির ফ্রিকোয়েন্সি বিশ্লেষণ ছিল <strong>আগমন</strong> — শত শত প্রতীক গণনা করে সাধারণ নিয়ম তৈরি করা। এটিই পরিসংখ্যানের কাজ: সসীম পর্যবেক্ষণ থেকে অসীম সত্যের দিকে যাত্রা।</p>
-    <p><strong>ইতিহাসে নোট:</strong> আল-কিন্দি (c. ৮০১–৮৭৩, বাগদাদ) কেবল ক্রিপ্টোগ্রাফি নয় — তিনি দর্শন, গণিত, চিকিৎসা, সঙ্গীতে অবদান রেখেছেন। তাঁকে 'ফিলাসফাত আল-আরব' (Arabs-এর দার্শনিক) বলা হয়।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: Three types of evidence ──
+# Deductive, inductive, and abductive reasoning.
+
+evidence_types = """
+THREE TYPES OF EVIDENCE/REASONING:
+
+1. DEDUCTIVE (general → specific):
+   All ravens are black → this raven is black
+   Certainty: 100% (if premises are true)
+   Used in: mathematics, formal logic
+
+2. INDUCTIVE (specific → general):
+   Saw 1000 ravens, all black → probably all ravens are black
+   Certainty: Probable (99%? But black swans exist!)
+   Used in: science, statistics, machine learning
+
+3. ABDUCTIVE (result → cause):
+   Grass is wet → probably rained
+   Certainty: Best guess (could be sprinkler)
+   Used in: medical diagnosis, detective work, debugging
+
+STATISTICS = INDUCTIVE REASONING:
+  → Start with data (specific observations)
+  → Infer patterns, distributions, relationships
+  → Quantify UNCERTAINTY (confidence intervals, p-values)
+  → Never 100% certain (unlike deduction)
+
+THE PROBLEM OF INDUCTION (Hume):
+  → No amount of observations GUARANTEES the next one
+  → 1000 white swans → 1001st could be black
+  → Statistics deals with this: confidence levels, margins of error
+"""
+
+print(evidence_types)</div>
+
+  <div class="code-block"># ── STEP 2: Descriptive statistics ──
+# Summarizing data with numbers.
+
+descriptive = """
+DESCRIPTIVE STATISTICS:
+
+MEASURES OF CENTRAL TENDENCY:
+  Mean (μ): average = Σxᵢ/n
+  Median: middle value (50th percentile)
+  Mode: most frequent value
+
+  Mean is sensitive to outliers (billionaire raises average income)
+  Median is robust (middle person's income)
+  Mode is for categorical data
+
+MEASURES OF SPREAD:
+  Range: max − min
+  Variance: σ² = Σ(xᵢ−μ)²/n
+  Standard deviation: σ = √(variance)
+  IQR: Q3 − Q1 (interquartile range, robust)
+
+MEASURES OF SHAPE:
+  Skewness: asymmetry (left/right tailed)
+  Kurtosis: tail heaviness (peaked vs flat)
+  Normal: skew=0, kurt=3
+
+THE FIVE-NUMBER SUMMARY:
+  Min, Q1, Median, Q3, Max
+  → Box plot visualization
+
+OUTLIER DETECTION:
+  → 1.5×IQR rule: outlier if x < Q1−1.5×IQR or x > Q3+1.5×IQR
+  → Z-score: |z| > 3 (more than 3σ from mean)
+"""
+
+print(descriptive)
+
+# PYTHON: Descriptive statistics:
+desc_code = """
+import numpy as np
+from scipy import stats
+
+# Sample data: user session durations (seconds):
+data = np.array([5, 10, 15, 8, 12, 20, 25, 7, 300, 18, 22, 14])
+
+print(f"Mean: {np.mean(data):.2f}")
+print(f"Median: {np.median(data):.2f}")
+print(f"Std: {np.std(data):.2f}")
+print(f"Min: {np.min(data)}, Max: {np.max(data)}")
+
+# Five-number summary:
+q1, q3 = np.percentile(data, [25, 75])
+print(f"Q1: {q1}, Median: {np.median(data)}, Q3: {q3}")
+print(f"IQR: {q3 - q1}")
+
+# Outlier detection (1.5×IQR):
+lower = q1 - 1.5 * (q3 - q1)
+upper = q3 + 1.5 * (q3 - q1)
+outliers = data[(data < lower) | (data > upper)]
+print(f"Outliers: {outliers}")  # [300]
+
+# Without outlier:
+clean = data[data <= upper]
+print(f"Mean (no outlier): {np.mean(clean):.2f}")  # Much lower
+
+# Skewness and kurtosis:
+print(f"Skewness: {stats.skew(data):.4f}")
+print(f"Kurtosis: {stats.kurtosis(data):.4f}")
+"""
+
+print(desc_code)</div>
+
+  <div class="code-block"># ── STEP 3: Sampling and bias ──
+# How data collection affects conclusions.
+
+sampling = """
+SAMPLING AND BIAS:
+
+POPULATION vs SAMPLE:
+  Population: everyone/thing of interest (all users)
+  Sample: subset we actually measure
+
+GOOD SAMPLING:
+  → Random: every member has equal chance
+  → Representative: matches population demographics
+  → Large enough: precision depends on size
+
+COMMON BIASES:
+  1. SELECTION BIAS: non-random sample
+     → Online survey misses people without internet
+
+  2. SURVIVORSHIP BIAS: only see survivors
+     → WW2 plane armor: reinforce where NO bullet holes are
+
+  3. RESPONSE BIAS: people lie or self-select
+     → Reviews: mostly very happy or very angry
+
+  4. CONFIRMATION BIAS: looking for expected result
+     → Only counting evidence that supports hypothesis
+
+  5. PUBLICATION BIAS: only publish significant results
+     → "File drawer problem": null results never published
+
+  6. SIMPSON'S PARADOX: trend reverses when combined
+     → Treatment A better for each subgroup...
+     → But Treatment B better overall (confounding)
+
+  7. ANCHORING BIAS: influenced by first number seen
+     → Price negotiation: high anchor → higher final price
+
+LAW OF LARGE NUMBERS (for sampling):
+  Larger sample → sample mean → population mean
+  Standard error: SE = σ/√n
+  → To halve error: quadruple sample size
+"""
+
+print(sampling)
+
+# PYTHON: Sampling demonstration:
+sampling_code = """
+import numpy as np
+
+# Population: 1 million values (Normal, μ=100, σ=15):
+np.random.seed(42)
+population = np.random.normal(100, 15, 1000000)
+true_mean = population.mean()  # ≈ 100
+
+# Sample sizes and their accuracy:
+for n in [10, 100, 1000, 10000]:
+    samples = [np.random.choice(population, n).mean() for _ in range(1000)]
+    se = np.std(samples)  # standard error
+    print(f"n={n:5d}: SE={se:.4f}, 95% CI width ≈ {3.96*se:.3f}")
+
+# Biased sampling (only sample top 20%):
+biased = population[population > np.percentile(population, 80)]
+print(f"Biased mean: {biased.mean():.2f} (true: {true_mean:.2f})")
+
+# Simpson's paradox:
+# Group A: 60/100 men, 20/40 women → overall 80/140 = 57%
+# Group B: 30/100 men, 90/100 women → overall 120/200 = 60%
+# A better for each gender, but B better overall!
+"""
+
+print(sampling_code)</div>
+
+  <div class="code-block"># ── STEP 4: Correlation vs causation ──
+# The most important distinction in statistics.
+
+correlation = """
+CORRELATION vs CAUSATION:
+
+CORRELATION: two variables move together
+  r ∈ [−1, 1]
+  r = 1: perfect positive
+  r = −1: perfect negative
+  r = 0: no linear relationship
+
+CAUSATION: one variable CAUSES the other
+  X causes Y (not just correlated)
+
+"Correlation does not imply causation."
+  → Ice cream sales and drowning deaths are correlated
+  → But ice cream doesn't cause drowning!
+  → Confounding variable: HOT WEATHER causes both
+
+TYPES OF RELATIONSHIPS:
+  1. X causes Y: smoking → lung cancer
+  2. Y causes X: lung cancer → smoking? (reverse)
+  3. Z causes both: weather → ice cream + drowning
+  4. Coincidence: spurious correlation
+
+ESTABLISHING CAUSATION:
+  → RANDOMIZED CONTROLLED TRIAL (RCT): gold standard
+  → Randomly assign treatment → control for confounders
+  → If treatment group differs → causation (probably)
+
+  → OBSERVATIONAL STUDIES: weaker
+  → Can't control for all confounders
+  → Use techniques: matching, instrumental variables, regression
+
+PEARSON CORRELATION (r):
+  r = Cov(X,Y) / (σ_X × σ_Y)
+  Measures LINEAR relationship only
+
+SPEARMAN CORRELATION (ρ):
+  Rank-based, measures MONOTONIC relationship
+  Robust to outliers
+  Used for non-normal data
+
+WARNING: SPURIOUS CORRELATIONS
+  → Tyler Vigen's website: hilarious correlations
+  → Nicholas Cage movies vs swimming pool drownings (r=0.67)
+  → Margarine consumption vs divorce rate (r=0.99)
+  → ALL COINCIDENCE (multiple comparisons)
+"""
+
+print(correlation)
+
+# PYTHON: Correlation analysis:
+corr_code = """
+import numpy as np
+from scipy import stats
+
+# Correlation between two variables:
+x = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+y = np.array([2, 4, 5, 7, 9, 11, 12, 15, 16, 19])
+
+# Pearson correlation:
+r, p_value = stats.pearsonr(x, y)
+print(f"Pearson r: {r:.4f}, p-value: {p_value:.6f}")
+
+# Spearman rank correlation:
+rho, p_rho = stats.spearmanr(x, y)
+print(f"Spearman ρ: {rho:.4f}")
+
+# Spurious correlation example:
+np.random.seed(42)
+a = np.random.randn(100)
+b = np.random.randn(100)
+r_spurious, _ = stats.pearsonr(a, b)
+print(f"Random data r: {r_spurious:.4f}")  # Should be near 0
+
+# Confounding variable:
+# Temperature affects both ice_cream and drowning:
+temperature = np.random.normal(25, 10, 100)
+ice_cream = temperature * 100 + np.random.randn(100) * 50
+drowning = temperature * 2 + np.random.randn(100) * 5
+
+r_ice_drown, _ = stats.pearsonr(ice_cream, drowning)
+print(f"Ice cream vs drowning r: {r_ice_drown:.4f}")  # High!
+
+# But controlling for temperature:
+from scipy.stats import partial_corr  # (not built-in, conceptual)
+# The partial correlation drops to near 0
+"""
+
+print(corr_code)</div>
+
+  <div class="code-block"># ── STEP 5: Statistical fallacies ──
+# Common errors in data interpretation.
+
+fallacies = """
+STATISTICAL FALLACIES:
+
+1. TEXAS SHARPSHOOTER:
+   Fire at barn, paint target around cluster.
+   → Finding patterns in random data
+   → Multiple comparisons: test 100 things, 5 significant by chance
+
+2. P-HACKING:
+   → Try many analyses until p < 0.05
+   → Drop "outliers," change variables, switch tests
+   → Result: false positives
+   → Solution: pre-registration, Bonferroni correction
+
+3. BASE RATE NEGLECT:
+   → Ignore prior probability
+   → 99% accurate test for rare disease (0.1% prevalence)
+   → P(disease|positive) = only 9%!
+
+4. REGRESSION TO THE MEAN:
+   → Extreme values tend to be followed by average values
+   → "Sophomore slump": great rookie season → average second year
+   → Not a real decline, just statistics
+
+5. GAMBLER'S FALLACY:
+   → "I've lost 5 times, I'm due to win!"
+   → Independent events: past doesn't affect future
+   → Each coin flip is 50/50 regardless of history
+
+6. SURVIVORSHIP BIAS:
+   → Only studying winners/survivors
+   → Dropout billionaires → "dropouts succeed" (survivor bias)
+   → Failed dropouts are invisible
+
+7. ANSCOMBE'S QUARTET:
+   → Four datasets with IDENTICAL mean, variance, correlation
+   → But completely different shapes when plotted
+   → ALWAYS VISUALIZE YOUR DATA
+
+8. ecological fallacy:
+   → Group-level pattern doesn't apply to individuals
+   → State votes Republican, but you (individual) may not
+"""
+
+print(fallacies)
+
+# PYTHON: Anscombe's quartet:
+anscombe_code = """
+import numpy as np
+
+# Anscombe's Quartet: 4 datasets with same stats but different shapes:
+datasets = {
+    'I':   [(10,8.04),(8,6.95),(13,7.58),(9,8.81),(11,8.33),(14,9.96),
+             (6,7.24),(4,4.26),(12,10.84),(7,4.82),(5,5.68)],
+    'II':  [(10,9.14),(8,8.14),(13,8.74),(9,8.77),(11,9.26),(14,8.10),
+             (6,6.13),(4,3.10),(12,9.13),(7,7.26),(5,4.74)],
+    # (III and IV omitted for brevity)
+}
+
+for name, data in datasets.items():
+    x = np.array([d[0] for d in data])
+    y = np.array([d[1] for d in data])
+    print(f"Dataset {name}: mean_x={x.mean():.2f}, var_x={x.var():.2f}, "
+          f"mean_y={y.mean():.2f}, var_y={y.var():.2f}, "
+          f"r={np.corrcoef(x,y)[0,1]:.4f}")
+# ALL have nearly identical statistics!
+# But they look COMPLETELY different when plotted.
+# LESSON: Always visualize data before summarizing.
+
+# P-hacking demonstration:
+np.random.seed(42)
+# Test 100 random variables against random outcome:
+significant = 0
+for _ in range(100):
+    x = np.random.randn(50)
+    y = np.random.randn(50)
+    from scipy.stats import pearsonr
+    r, p = pearsonr(x, y)
+    if p < 0.05:
+        significant += 1
+print(f"\\nSignificant correlations (by chance): {significant}/100")
+# ~5 should be "significant" (at α=0.05) — ALL FALSE POSITIVES!
+"""
+
+print(anscombe_code)</div>
+
+  <div class="code-block"># ── STEP 6: Evidence and best practices ──
+# How to reason correctly with data.
+
+best_practices = [
+    "Deductive: certain (math), Inductive: probable (science)",
+    "Statistics = inductive reasoning with uncertainty",
+    "Mean sensitive to outliers, median robust",
+    "Always report standard deviation, not just mean",
+    "Five-number summary: min, Q1, median, Q3, max",
+    "IQR for robust spread (outlier resistant)",
+    "Random sampling → representative, reduces bias",
+    "Correlation ≠ causation (always check confounders)",
+    "RCT = gold standard for causation",
+    "Beware: p-hacking, base rate neglect, survivorship bias",
+    "Always visualize data (Anscombe's quartet)",
+    "Simpson's paradox: group trends can reverse combined",
+    "Multiple comparisons: correct for false positives (Bonferroni)",
+    "Regression to the mean: extreme values regress",
+    "Pre-register hypotheses to avoid p-hacking",
+]
+
+print("EVIDENCE & STATISTICS BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Deductive        │ 100% certain (if premises true) │
+# │ Inductive        │ Probable (statistics)           │
+# │ Mean             │ Average (outlier sensitive)     │
+# │ Median           │ Middle (robust)                 │
+# │ Correlation      │ Two variables move together     │
+# │ Causation        │ One causes the other            │
+# │ RCT              │ Best evidence for causation     │
+# │ p-hacking        │ False positives from multiple T │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="compare">
     <div class="cmp-card cmp-bad"><div class="cmp-label">❌ প্রমাণ ছাড়া দাবি</div>
