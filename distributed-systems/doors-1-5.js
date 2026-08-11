@@ -1467,19 +1467,345 @@ doors.push({
     <div class="diag-cap">Paxos: Proposer প্রস্তাব করে, Acceptors ভোট দেয়, quorum (সংখ্যাগরিষ্ঠ) চাই। Raft: Leader সব সিদ্ধান্ত নেয়, Followers অনুসরণ করে। দুটোই consensus অর্জন করে।</div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 Consensus অ্যালগরিদম তুলনা</h4>
-    <table class="kv-table">
-      <tr><th>বৈশিষ্ট্য</th><th>Paxos</th><th>Raft</th></tr>
-      <tr><td class="hl">বছর</td><td>১৯৮৯/১৯৯৮</td><td>২০১৪</td></tr>
-      <tr><td class="hl">জটিলতা</td><td>উচ্চ — বোঝা কঠিন</td><td>কম — ডিজাইনের লক্ষ্যই সহজ করা</td></tr>
-      <tr><td class="hl">ভূমিকা</td><td>Proposer, Acceptor, Learner</td><td>Leader, Follower, Candidate</td></tr>
-      <tr><td class="hl">Leader election</td><td>নেই (Multi-Paxos-এ যোগ করা হয়েছে)</td><td>মূল অংশ — heartbeat দিয়ে</td></tr>
-      <tr><td class="hl">ব্যবহার</td><td>Google Chubby, Spanner</td><td>etcd (Kubernetes), Consul</td></tr>
-    </table>
-    <br>
-    <p><strong>বাস্তব ব্যবহার:</strong> Kubernetes-এর মূল ডেটা স্টোর etcd Raft ব্যবহার করে। Google-এর Chubby ও Spanner Paxos ব্যবহার করে। ZooKeeper একটি Paxos ভ্যারিয়েন্ট (ZAB)।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: What is distributed consensus? ──
+# Getting independent nodes to AGREE on a single value.
+
+consensus = """
+DISTRIBUTED CONSENSUS:
+
+PROBLEM: Multiple nodes need to agree on ONE decision.
+  → "Who is the leader?"
+  → "What is the value of X?"
+  → "Should we commit this transaction?"
+
+CHALLENGES:
+  → Nodes can crash (fail-stop)
+  → Messages can be lost (network issues)
+  → Messages can be delayed (unpredictable)
+  → Byzantine failures (nodes lie/misbehave) — harder variant
+
+REQUIREMENTS FOR CONSENSUS:
+  1. AGREEMENT: No two nodes decide different values
+  2. VALIDITY: The decided value was proposed by some node
+  3. TERMINATION: All correct nodes eventually decide
+  4. INTEGRITY: A node decides at most once
+
+THE FLP IMPOSSIBILITY (1985):
+  → In ASYNC systems with even ONE faulty process,
+    deterministic consensus is IMPOSSIBLE
+  → Practical solution: add randomness or timing assumptions
+  → Paxos/Raft work around FLP with leader election + timeouts
+
+QUORUM:
+  → Majority (N/2 + 1) must agree
+  → 5 nodes: quorum = 3 (can tolerate 2 failures)
+  → 3 nodes: quorum = 2 (can tolerate 1 failure)
+"""
+
+print(consensus)
+
+# QUORUM CALCULATION:
+quorum = """
+QUORUM = floor(N/2) + 1
+FAULT TOLERANCE = N - QUORUM
+
+3 nodes: quorum=2, tolerates 1 failure
+5 nodes: quorum=3, tolerates 2 failures
+7 nodes: quorum=4, tolerates 3 failures
+
+ODD number preferred (even numbers waste a node):
+  4 nodes: quorum=3, tolerates 1 failure (same as 3!)
+  5 nodes: quorum=3, tolerates 2 failures (better!)
+"""
+print(quorum)</div>
+
+  <div class="code-block"># ── STEP 2: Paxos — the original consensus algorithm ──
+# Lamport's 1998 algorithm (based on 1989 technical report).
+
+paxos = """
+PAXOS (Lamport, 1998):
+
+THREE ROLES:
+  Proposer: proposes a value
+  Acceptor: votes on proposals
+  Learner: learns the decided value
+
+TWO PHASES:
+
+PHASE 1 — PREPARE/PROMISE:
+  Proposer → Acceptor: "Prepare(n)" (n = proposal number)
+  Acceptor → Proposer: "Promise(n)" (promise not to accept lower n)
+
+  If Acceptor already promised higher n → reject
+
+PHASE 2 — ACCEPT/ACCEPTED:
+  Proposer → Acceptor: "Accept(n, value)"
+  Acceptor → Proposer: "Accepted(n)"
+
+  If MAJORITY of Acceptors accept → value is CHOSEN
+
+KEY PROPERTY:
+  Once a value is chosen, it can NEVER be changed.
+  → Safety: different nodes never disagree
+  → Liveness: eventually a value is chosen (with stable leader)
+
+PAXOS PROBLEMS:
+  → Extremely hard to understand
+  → No leader (Multi-Paxos adds one)
+  → Complex to implement correctly
+  → "The Part-Time Parliament" paper confused everyone
+
+USAGE:
+  Google Chubby, Spanner (Google's global database)
+  ZooKeeper (uses ZAB, a Paxos variant)
+"""
+
+print(paxos)</div>
+
+  <div class="code-block"># ── STEP 3: Raft — the understandable consensus ──
+# Ongaro & Ousterhout, 2014. Designed for UNDERSTANDABILITY.
+
+raft = """
+RAFT (2014):
+
+DESIGN GOAL: Same guarantees as Paxos, but UNDERSTANDABLE.
+
+THREE ROLES:
+  Leader: handles ALL client requests (one leader at a time)
+  Follower: passive, accepts requests from leader
+  Candidate: requests votes to become leader
+
+LEADER ELECTION:
+  1. Followers have a random election timeout (150-300ms)
+  2. If no heartbeat from leader before timeout → become Candidate
+  3. Candidate requests votes from all nodes
+  4. If majority votes → become Leader
+  5. Leader sends heartbeats to maintain authority
+
+LOG REPLICATION:
+  1. Client sends command to Leader
+  2. Leader appends to its log
+  3. Leader sends AppendEntries to Followers
+  4. Followers append, reply ACK
+  5. When MAJORITY ACK → Leader commits
+  6. Leader sends commit notification to Followers
+  7. Result returned to client
+
+SAFETY GUARANTEE:
+  → If a log entry is committed, it's NEVER lost
+  → Leader completeness: committed entries exist on all future leaders
+
+WHY RAFT IS EASIER THAN PAXOS:
+  → Problem decomposition: leader election + log replication + safety
+  → Strong leader: all writes go through leader (simpler)
+  → State machine: clear state transitions
+  → "In Search of an Understandable Consensus Algorithm" (paper title)
+
+USAGE:
+  etcd (Kubernetes core store)
+  Consul (HashiCorp service mesh)
+  CockroachDB (distributed SQL)
+  Redis Cluster (simplified Raft for cluster metadata)
+"""
+
+print(raft)
+
+# RAFT STATE TRANSITIONS:
+state_transitions = """
+RAFT STATE TRANSITIONS:
+
+  Follower → (timeout, no heartbeat) → Candidate
+  Candidate → (wins majority) → Leader
+  Candidate → (loses election) → Follower
+  Candidate → (timeout, new election) → Candidate
+  Leader → (discovers higher term) → Follower
+
+TERM (logical clock):
+  → Each election increments the term
+  → Higher term = newer authority
+  → Stale leaders step down when they see higher term
+"""
+print(state_transitions)</div>
+
+  <div class="code-block"># ── STEP 4: Paxos vs Raft comparison ──
+# Side-by-side comparison of the two consensus giants.
+
+comparison = {
+    "Year": {"Paxos": "1989/1998", "Raft": "2014"},
+    "Complexity": {"Paxos": "Very high", "Raft": "Moderate (by design)"},
+    "Understandability": {"Paxos": "Infamously hard", "Raft": "Clear and teachable"},
+    "Roles": {
+        "Paxos": "Proposer, Acceptor, Learner",
+        "Raft": "Leader, Follower, Candidate"
+    },
+    "Leader": {
+        "Paxos": "Not in basic Paxos (Multi-Paxos adds it)",
+        "Raft": "Core part of the algorithm"
+    },
+    "Log Structure": {
+        "Paxos": "Separate consensus per log entry",
+        "Raft": "Replicated log (entries in order)"
+    },
+    "Membership Change": {
+        "Paxos": "Complex, not well specified",
+        "Raft": "Joint consensus (clean approach)"
+    },
+    "Production Use": {
+        "Paxos": "Google Chubby, Spanner, ZooKeeper (ZAB)",
+        "Raft": "etcd (Kubernetes), Consul, CockroachDB"
+    },
+    "Turing Award": {
+        "Paxos": "Lamport won Turing Award 2013",
+        "Raft": "Ongaro PhD thesis at Berkeley"
+    },
+}
+
+print("PAXOS vs RAFT:")
+for feature, values in comparison.items():
+    print(f"\\n  {feature}:")
+    for algo, value in values.items():
+        print(f"    {algo}: {value}")
+
+# WHEN TO USE WHICH:
+when = """
+WHEN TO USE PAXOS:
+  → Need maximum theoretical rigor
+  → Existing Paxos infrastructure (Google)
+  → Byzantine fault tolerance needed (BFT-Paxos variants)
+
+WHEN TO USE RAFT:
+  → Most modern systems (default choice)
+  → Need understandability for team
+  → Kubernetes ecosystem (etcd uses Raft)
+  → Building a new distributed system
+
+DEFAULT: CHOOSE RAFT
+  → Easier to implement, debug, and understand
+  → Production-proven (etcd runs Kubernetes)
+  → Excellent documentation and community
+"""
+print(when)</div>
+
+  <div class="code-block"># ── STEP 5: Byzantine Fault Tolerance (BFT) ──
+# When nodes can LIE (not just crash).
+
+bft = """
+BYZANTINE FAULT TOLERANCE:
+
+CRASH FAULT (Raft/Paxos handle this):
+  → Node stops responding (crashes)
+  → Node doesn't lie or misbehave
+  → Tolerated by quorum (majority)
+
+BYZANTINE FAULT (BFT needed):
+  → Node can LIE, send wrong data, act maliciously
+  → Named after "Byzantine Generals Problem" (Lamport, 1982)
+  → Scenario: generals surround a city, must agree to attack or retreat
+    But traitors among them send conflicting messages!
+
+BYZANTINE GENERALS PROBLEM:
+  → N generals, some traitors
+  → Loyal generals must agree on same plan
+  → Requires 3f+1 generals to tolerate f traitors
+  → Quorum: 2f+1 out of 3f+1 must agree
+
+PRACTICAL BFT (pBFT):
+  → Castro & Liskov, 1999
+  → Works in 3 phases: pre-prepare, prepare, commit
+  → Used in: Hyperledger Fabric, some blockchain systems
+
+BLOCKCHAIN BFT:
+  → Bitcoin (PoW): probabilistic consensus (Nakamoto consensus)
+  → Ethereum (PoS): Casper FFG (finality gadget)
+  → Tendermint: instant finality BFT
+
+WHEN YOU NEED BFT:
+  → Untrusted environments (blockchain)
+  → Multiple organizations sharing infrastructure
+  → Adversarial settings (some nodes malicious)
+
+WHEN YOU DON'T NEED BFT:
+  → Single organization (Google, your company)
+  → All nodes controlled by same operator
+  → Crash fault tolerance (Raft/Paxos) is enough
+  → BFT is 3x slower (needs more messages)
+"""
+
+print(bft)</div>
+
+  <div class="code-block"># ── STEP 6: Consensus in practice (etcd, Kubernetes) ──
+# Real-world consensus systems you'll encounter.
+
+practice = """
+REAL-WORLD CONSENSUS SYSTEMS:
+
+etcd (Raft-based):
+  → Key-value store used by Kubernetes
+  → Stores cluster state, configuration, secrets
+  → All Kubernetes API server reads/writes go through etcd
+  → Typically 3 or 5 nodes for quorum
+
+ZooKeeper (ZAB = Paxos variant):
+  → Coordination service for distributed apps
+  → Used by: Kafka, Hadoop, HBase
+  → ZAB (ZooKeeper Atomic Broadcast) = simplified Paxos
+  → Strong consistency, hierarchical namespace
+
+Consul (Raft-based):
+  → Service discovery + health checking
+  → HashiCorp ecosystem (Vault, Nomad, Terraform)
+  → Key-value store with Raft consensus
+
+CockroachDB (Raft-based):
+  → Distributed SQL database
+  → Each "range" of data has its own Raft group
+  → PostgreSQL-compatible, globally distributed
+
+Spanner (Paxos-based):
+  → Google's global database
+  → Uses Paxos for each shard
+  → TrueTime (GPS + atomic clocks) for external consistency
+  → Powers Google AdWords, Gmail, Play
+
+PYTHON: Using etcd for distributed coordination:
+  import etcd3
+
+  client = etcd3.client(host='localhost', port=2379)
+
+  # Distributed lock (uses Raft consensus internally):
+  lock = client.lock('my-lock', ttl=60)
+  lock.acquire()
+  try:
+      # Critical section — only one process at a time:
+      do_work()
+  finally:
+      lock.release()
+
+  # Distributed configuration:
+  client.put('/config/db_host', 'db.example.com')
+  value, _ = client.get('/config/db_host')
+  print(value)  # b'db.example.com'
+
+  # Watch for changes:
+    for event in client.watch('/config/'):
+        print(f"Config changed: {event}")
+"""
+
+print(practice)
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Algorithm        │ Key Property                    │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Paxos            │ Original, hard to understand    │
+# │ Raft             │ Understandable, modern default  │
+# │ pBFT             │ Handles Byzantine (lying) nodes │
+# │ Quorum           │ Majority (N/2 + 1)              │
+# │ Leader election  │ Raft: heartbeat timeout         │
+# │ Log replication  │ Leader → followers (Raft)       │
+# │ etcd             │ Kubernetes's Raft store         │
+# │ ZooKeeper        │ Kafka's ZAB coordinator         │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Builder's Codex) Door ৭-এ Consensus সংক্ষেপে শিখেছিলে — Paxos, Raft, leader election। এই দরজায় সেই একই ধারণার গভীরে গেলে। Book ৩৪ (Scale of Evidence) Door ৪-এ hypothesis testing — quorum হলো 'majority vote' যেমন p-value হলো 'evidence threshold'।</div></div>
 
@@ -1593,18 +1919,340 @@ doors.push({
     <div class="diag-cap">2PC: Phase ১ (prepare) সব নোড জিজ্ঞেস করে। সব রাজি হলে Phase ২ (commit)। একজন না বললে abort। সমস্যা: Coordinator crash → blocking।</div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 ডিস্ট্রিবিউটেড ট্রানজেকশন পদ্ধতি</h4>
-    <table class="kv-table">
-      <tr><th>পদ্ধতি</th><th>বছর</th><th>সুবিধা</th><th>অসুবিধা</th></tr>
-      <tr><td class="hl">2PC</td><td>১৯৭৮</td><td>সহজ, atomic</td><td>Coordinator crash → block</td></tr>
-      <tr><td class="hl">3PC</td><td>১৯৮১</td><td>Non-blocking (তাত্ত্বিকভাবে)</td><td>জটিল, বাস্তবে কম ব্যবহৃত</td></tr>
-      <tr><td class="hl">Saga</td><td>১৯৮৭</td><td>No blocking, compensate</td><td>Eventual consistency</td></tr>
-    </table>
-    <br>
-    <p><strong>Saga pattern:</strong> একটা বড় ট্রানজেকশনকে ছোট ছোট ধাপে ভাগ করো। প্রতিটা ধাপের একটা compensating action থাকে — যদি ভুল হয়, আগের ধাপ undo করো। উদাহরণ: বুকিং সিস্টেম — ফ্লাইট বুক → হোটেল বুক → গাড়ি বুক। গাড়ি বুক ব্যর্থ হলে → হোটেল ক্যানসেল → ফ্লাইট ক্যানসেল।</p>
-    <p><strong>গ্রে-এর উত্তরাধিকার:</strong> জিম গ্রে (১৯৪৪-২০০৭, সমুদ্রে হারিয়ে যান) ডেটাবেস ট্রানজেকশনের জনক। ACID প্রোপার্টিজ, 2PC, locking protocols — সব তাঁর অবদান। Turing Award ১৯৯৮।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: The distributed transaction problem ──
+# How to update multiple services atomically (all or nothing).
+
+dt_problem = """
+DISTRIBUTED TRANSACTION PROBLEM:
+
+Transfer $100 from Bank A to Bank B:
+  → Deduct $100 from Bank A's database
+  → Add $100 to Bank B's database
+
+What if Bank A succeeds but Bank B's network fails?
+  → Money deducted but never added → MONEY LOST!
+
+SOLUTION: Distributed transactions ensure ATOMICITY:
+  → Both succeed → commit both
+  → Either fails → rollback both
+  → "All or nothing"
+
+THREE APPROACHES:
+  1. Two-Phase Commit (2PC) — blocking, strong consistency
+  2. Three-Phase Commit (3PC) — non-blocking (theoretical)
+  3. Saga Pattern — compensating transactions, eventual consistency
+"""
+
+print(dt_problem)</div>
+
+  <div class="code-block"># ── STEP 2: Two-Phase Commit (2PC) ──
+# Jim Gray's 1978 solution. Coordinator-based.
+
+two_pc = """
+TWO-PHASE COMMIT (2PC):
+
+ROLES:
+  Coordinator: manages the transaction
+  Participants: the databases/services involved
+
+PHASE 1 — PREPARE:
+  Coordinator → all Participants: "Can you commit?"
+  Each Participant: "YES" (prepared) or "NO" (abort)
+
+  If ALL say YES → proceed to Phase 2
+  If ANY says NO → ABORT
+
+PHASE 2 — COMMIT/ABORT:
+  If all prepared:
+    Coordinator → all: "COMMIT"
+    Each Participant commits, replies "ACK"
+
+  If any refused:
+    Coordinator → all: "ABORT"
+    Each Participant rolls back
+
+THE BLOCKING PROBLEM:
+  If Coordinator crashes after Phase 1 but before Phase 2:
+  → Participants are stuck in "prepared" state
+  → Can't commit (might have been aborted)
+  → Can't abort (might have been committed)
+  → Wait indefinitely for Coordinator to recover
+
+  This is why 2PC is rarely used in microservices.
+"""
+
+print(two_pc)
+
+# PYTHON: 2PC simulation:
+two_pc_code = """
+class Coordinator:
+    def commit_transaction(self, participants, transaction):
+        # Phase 1: PREPARE
+        prepared = []
+        for p in participants:
+            try:
+                response = p.prepare(transaction)
+                if response == 'YES':
+                    prepared.append(p)
+                else:
+                    # Any NO → abort all:
+                    self.abort(participants)
+                    return 'ABORTED'
+            except:
+                self.abort(participants)
+                return 'ABORTED'
+
+        # Phase 2: COMMIT (all prepared)
+        for p in prepared:
+            p.commit(transaction)
+
+        return 'COMMITTED'
+
+    def abort(self, participants):
+        for p in participants:
+            p.rollback()
+
+# Problem: if Coordinator crashes between Phase 1 and 2:
+# Participants stay in 'prepared' state → blocked forever.
+"""
+
+print(two_pc_code)</div>
+
+  <div class="code-block"># ── STEP 3: Saga Pattern (modern microservices) ──
+# Break large transactions into smaller compensable steps.
+
+saga = """
+SAGA PATTERN (Garcia-Molina & Salem, 1987):
+
+Instead of one big atomic transaction:
+  → Break into SEQUENCE of smaller transactions
+  → Each step has a COMPENSATING action (undo)
+  → If any step fails, run compensating actions in reverse
+
+EXAMPLE: Travel Booking
+  T1: Book Flight → C1: Cancel Flight
+  T2: Book Hotel  → C2: Cancel Hotel
+  T3: Book Car    → C3: Cancel Car
+
+  If T3 (Car) fails:
+  → Run C2 (Cancel Hotel)
+  → Run C1 (Cancel Flight)
+  → User gets refund
+
+TWO SAGA COORDINATION STYLES:
+
+1. CHOREOGRAPHY (event-driven, decentralized):
+   Each service emits events. Other services react.
+   Flight Service → "FlightBooked" event → Hotel Service listens → books hotel
+   If hotel fails → "HotelBookingFailed" → Flight Service cancels
+
+   Pros: no central coordinator, loose coupling
+   Cons: harder to track, circular dependencies
+
+2. ORCHESTRATION (central coordinator):
+   Orchestrator calls each service in sequence.
+   Orchestrator → Book Flight → Book Hotel → Book Car
+   If car fails → Orchestrator → Cancel Hotel → Cancel Flight
+
+   Pros: clear flow, easy debugging
+   Cons: orchestrator is single point of failure
+"""
+
+print(saga)
+
+# PYTHON: Saga with orchestration:
+saga_code = """
+class TravelBookingSaga:
+    def execute(self, booking_request):
+        steps = [
+            (self.book_flight, self.cancel_flight),
+            (self.book_hotel, self.cancel_hotel),
+            (self.book_car, self.cancel_car),
+        ]
+
+        completed = []
+        for action, compensate in steps:
+            try:
+                result = action(booking_request)
+                completed.append((compensate, result))
+            except Exception as e:
+                # FAILURE → compensate in reverse order:
+                for comp, res in reversed(completed):
+                    try:
+                        comp(res)
+                    except:
+                        log_error("Compensation failed!")
+                return {"status": "failed", "error": str(e)}
+
+        return {"status": "success"}
+
+    def book_flight(self, req):
+        response = flight_service.book(req.flight_id)
+        if response.status != 200:
+            raise Exception("Flight booking failed")
+        return response.reservation_id
+
+    def cancel_flight(self, reservation_id):
+        flight_service.cancel(reservation_id)
+"""
+
+print(saga_code)</div>
+
+  <div class="code-block"># ── STEP 4: 2PC vs 3PC vs Saga comparison ──
+# Choose the right distributed transaction approach.
+
+comparison = {
+    "2PC (Two-Phase Commit)": {
+        "consistency": "Strong (ACID)",
+        "blocking": "Yes (coordinator crash → stuck)",
+        "complexity": "Moderate",
+        "latency": "High (2 round trips)",
+        "use_case": "Single-database, within one DC",
+        "example": "PostgreSQL prepared transactions",
+    },
+    "3PC (Three-Phase Commit)": {
+        "consistency": "Strong (ACID)",
+        "blocking": "No (theoretical, needs sync network)",
+        "complexity": "Very high",
+        "latency": "Very high (3 round trips)",
+        "use_case": "Rarely used in practice",
+        "example": "Almost none (theoretical interest)",
+    },
+    "Saga (Compensating)": {
+        "consistency": "Eventual (BASE)",
+        "blocking": "No (non-blocking)",
+        "complexity": "Moderate (per-service logic)",
+        "latency": "Low (async, per-step)",
+        "use_case": "Microservices, cross-service",
+        "example": "Amazon checkout, Uber ride",
+    },
+}
+
+print("DISTRIBUTED TRANSACTION COMPARISON:")
+for method, info in comparison.items():
+    print(f"\\n  {method}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# WHEN TO USE WHICH:
+when = """
+2PC:
+  → Within a single database (PostgreSQL distributed)
+  → When strong consistency is critical
+  → When blocking is acceptable (same DC)
+  → NOT for microservices
+
+SAGA:
+  → Microservices (different databases per service)
+  → When eventual consistency is acceptable
+  → When you need fault tolerance (non-blocking)
+  → Modern cloud-native apps (default choice)
+
+3PC:
+  → Almost never (theoretical improvement over 2PC)
+  → Requires synchronous network assumption (unrealistic)
+"""
+print(when)</div>
+
+  <div class="code-block"># ── STEP 5: Outbox Pattern and Event-Driven Sagas ──
+# Reliable event publishing for distributed transactions.
+
+outbox = """
+OUTBOX PATTERN:
+
+PROBLEM: Microservice updates database AND publishes event.
+  → If DB update succeeds but event publish fails → inconsistent!
+  → If event published but DB update fails → inconsistent!
+
+SOLUTION: Outbox Pattern
+  1. Write to business table AND outbox table in SAME transaction
+  2. Background worker reads outbox table, publishes events
+  3. After publishing, mark as "sent"
+
+  DB Transaction {
+    INSERT INTO orders (id, ...) VALUES (...);
+    INSERT INTO outbox (event_type, payload) VALUES ('order_created', ...);
+  }
+
+  → Atomic: both inserts succeed or both fail
+  → No lost events!
+
+PYTHON (Django + Celery outbox):
+  # models.py:
+  class Order(models.Model):
+      user = models.ForeignKey(User)
+      total = models.DecimalField(...)
+      # ... order fields
+
+  class OutboxEvent(models.Model):
+      event_type = models.CharField(max_length=100)
+      payload = models.JSONField()
+      created_at = models.DateTimeField(auto_now_add=True)
+      sent = models.BooleanField(default=False)
+
+  # views.py:
+  @transaction.atomic
+  def create_order(request):
+      order = Order.objects.create(**order_data)
+
+      # Write to outbox in SAME transaction:
+      OutboxEvent.objects.create(
+          event_type='order_created',
+          payload={'order_id': order.id, 'total': str(order.total)}
+      )
+
+      return Response({'status': 'created'})
+
+  # tasks.py (Celery worker):
+  @shared_task
+  def process_outbox():
+      events = OutboxEvent.objects.filter(sent=False)
+      for event in events:
+          publish_to_kafka(event.event_type, event.payload)
+          event.sent = True
+          event.save()
+"""
+
+print(outbox)</div>
+
+  <div class="code-block"># ── STEP 6: Best practices for distributed transactions ──
+# Production-ready patterns for reliable distributed operations.
+
+best_practices = [
+    "Prefer Saga over 2PC for microservices",
+    "Use choreography for simple flows, orchestration for complex",
+    "Design compensating actions for EVERY step",
+    "Make operations IDEMPOTENT (safe to retry)",
+    "Use Outbox Pattern for reliable event publishing",
+    "Log every step (for debugging and audit)",
+    "Handle compensation failures (dead letter queue)",
+    "Set timeouts on each step (don't block forever)",
+    "Use circuit breakers (don't cascade failures)",
+    "Consider eventual consistency (don't force ACID everywhere)",
+    "Test failure scenarios (what if step 3 fails?)",
+    "Monitor in-flight sagas (how many are stuck?)",
+    "Use event sourcing for full audit trail",
+    "Consider TCC (Try-Confirm-Cancel) as alternative to Saga",
+    "Document the saga flow for the team",
+]
+
+print("DISTRIBUTED TRANSACTION BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Method           │ Best For                        │
+# ├──────────────────┼──────────────────────────────────┤
+# │ 2PC              │ Single DB, strong consistency   │
+# │ Saga             │ Microservices, eventual consist │
+# │ Outbox           │ Reliable event publishing       │
+# │ Choreography     │ Decentralized event-driven     │
+# │ Orchestration    │ Central, easy to debug          │
+# │ Idempotency      │ Safe retries                    │
+# │ Compensation     │ Undo failed steps              │
+# │ Circuit breaker  │ Prevent cascading failures     │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Builder's Codex) Door ৫-এ Transactions, ACID & Isolation Levels শিখেছিলে — এই দরজা সেই একই ধারণার বিতরণ সংস্করণ। Book ৩৪ (Scale of Evidence) Door ৮-এ Causal Inference — ট্রানজেকশন commit/abort হলো কার্যকারণ চেইন: প্রতিটা ধাপ আগের ধাপের উপর নির্ভর করে।</div></div>
 
