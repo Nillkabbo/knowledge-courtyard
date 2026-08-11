@@ -2145,25 +2145,476 @@ doors.push({
     <div class="diag-cap">১০০টা নমুনা নিলে, ৯৫টা CI সত্যিকারের মান ধারণ করবে (সবুজ)। মাত্র ৫টা মিস করবে (লাল)। এটাই ৯৫% CI-এর অর্থ।</div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 বিশ্বাস্যতা-ব্যবধান — CI Formula & Meaning</h4>
-    <table class="kv-table">
-      <tr><th>ধারণা</th><th>সংকেত</th><th>অর্থ</th></tr>
-      <tr><td class="hl">CI সূত্র</td><td>x̄ ± z · (σ/√n)</td><td>গডেট ± z-স্কোর * প্রমাণ-ত্রুটি</td></tr>
-      <tr><td class="hl">৯৫% CI-তে z</td><td>১.৯৬</td><td>Fisher-এর ০.০৫ সীমার সাথে সংযুক্ত</td></tr>
-      <tr><td class="hl">৯৯% CI-তে z</td><td>২.৫৮</td><td>আরও চওড়া — বেশি নিশ্চিত</td></tr>
-      <tr><td class="hl">নমুনা আকার (n)</td><td>যত বড় → সীমা তত সরু</td><td>n বাড়লে CI সরু হয়</td></tr>
-      <tr><td class="hl">প্রমাণ-ব্যবধান (σ)</td><td>যত বেশি → সীমা তত চওড়া</td><td>ডেটা ছড়ানো থাকলে CI চওড়া</td></tr>
-    </table>
-    <br>
-    <p><strong>বাস্তব উদাহরণ:</strong> একটা জরিপে ১০০০ জনকে জিজ্ঞেস করা হলো, ৫২% 'হ্যাঁ' বলল।</p>
-    <p>• প্রমাণ-ত্রুটি = √(০.৫২ * ০.৪৮ / ১০০০) ~= ০.০১৬</p>
-    <p>• ৯৫% CI = ৫২% ± ১.৯৬ * ১.৬% = ৫২% ± ৩.১%</p>
-    <p>• অর্থাৎ সত্যিকারের হার ৪৮.৯% থেকে ৫৫.১%-এর মধ্যে</p>
-    <p>• এই সীমা ৫০%-এর উপরে — তাই 'সংখ্যাগরিষ্ঠ' বলা যায়</p>
-    <br>
-    <p><strong>নেইম্যানের দার্শনিক অবদান:</strong> ফিশার বলতেন 'একটা সংখ্যা' (point estimate)। নেইম্যান বললেন 'একটা সীমা' (interval estimate)। সীমা বলে — আমরা কতটা অনিশ্চিত, কতটা নিশ্চিত। এটাই আধুনিক বিজ্ঞানে গডেট প্রকাশের প্রমিত রূপ।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: Confidence intervals deep dive ──
+# Understanding the boundary of belief.
+
+ci_deep = """
+CONFIDENCE INTERVALS — DEEP DIVE:
+
+CI = x̄ ± z × (σ/√n)
+
+  x̄ = sample mean (point estimate)
+  z = z-score (1.96 for 95%, 2.58 for 99%)
+  σ/√n = standard error (precision of estimate)
+
+INTERPRETATION:
+  95% CI: "If we repeated this sampling 100 times,
+  about 95 of the CIs would contain the true parameter."
+
+  The PARAMETER is fixed. The INTERVAL varies (different samples → different CIs).
+
+FACTORS AFFECTING CI WIDTH:
+  → Larger n → NARROWER CI (more data = more precision)
+  → Larger σ → WIDER CI (more variability = less precision)
+  → Higher confidence (99% vs 95%) → WIDER CI
+
+SAMPLE SIZE FOR DESIRED PRECISION:
+  Want CI width = w?
+  n = (2zσ/w)²
+  Example: σ=10, want w=2 (±1), 95%:
+  n = (2×1.96×10/2)² ≈ 384
+
+DIFFERENT CONFIDENCE LEVELS:
+  90% CI: z = 1.645 (narrower, less confident)
+  95% CI: z = 1.96 (standard)
+  99% CI: z = 2.576 (wider, more confident)
+  99.9% CI: z = 3.29 (very wide)
+
+TRADE-OFF: PRECISION vs CONFIDENCE
+  → Higher confidence = wider interval = less precise
+  → Lower confidence = narrower interval = more precise but risky
+  → 95% is the conventional compromise
+"""
+
+print(ci_deep)
+
+# PYTHON: CI calculations:
+ci_calc = """
+import numpy as np
+from scipy import stats
+
+# Sample data:
+np.random.seed(42)
+data = np.random.normal(100, 15, 50)
+x_bar = data.mean()
+s = data.std(ddof=1)
+n = len(data)
+
+# 95% CI (using t-distribution since σ unknown):
+se = s / np.sqrt(n)
+t_crit = stats.t.ppf(0.975, df=n-1)  # t-score for 95%
+ci_low = x_bar - t_crit * se
+ci_high = x_bar + t_crit * se
+print(f"95% CI (t): [{ci_low:.2f}, {ci_high:.2f}]")
+
+# 99% CI (wider):
+t_crit_99 = stats.t.ppf(0.995, df=n-1)
+ci_99 = (x_bar - t_crit_99 * se, x_bar + t_crit_99 * se)
+print(f"99% CI (t): [{ci_99[0]:.2f}, {ci_99[1]:.2f}]")
+
+# Sample size needed for ±1 unit margin of error:
+moe_target = 1.0
+z = 1.96
+sigma = 15  # estimated
+n_needed = (z * sigma / moe_target)**2
+print(f"\\nSample needed for ±1 MOE: {int(n_needed)}")  # ~864
+
+# Bootstrap confidence interval (no distribution assumption):
+bootstrap_means = [np.random.choice(data, n, replace=True).mean() for _ in range(10000)]
+ci_boot = np.percentile(bootstrap_means, [2.5, 97.5])
+print(f"Bootstrap 95% CI: [{ci_boot[0]:.2f}, {ci_boot[1]:.2f}]")
+"""
+
+print(ci_calc)</div>
+
+  <div class="code-block"># ── STEP 2: Linear regression fundamentals ──
+# Modeling relationships between variables.
+
+regression = """
+LINEAR REGRESSION:
+
+Model: y = β₀ + β₁x + ε
+  y = dependent variable
+  x = independent variable
+  β₀ = intercept
+  β₁ = slope (effect of x on y)
+  ε = error (Normal, mean 0)
+
+LEAST SQUARES:
+  Minimize Σ(yᵢ − ŷᵢ)² (sum of squared residuals)
+  → Find β₀, β₁ that best fit the data
+
+R-SQUARED (R²):
+  Fraction of variance in y explained by x.
+  R² ∈ [0, 1]
+  R² = 0: model explains nothing
+  R² = 1: model explains everything (perfect fit)
+
+ASSUMPTIONS (LINE):
+  L - Linearity (relationship is linear)
+  I - Independence (residuals uncorrelated)
+  N - Normality (residuals normally distributed)
+  E - Equal variance (homoscedasticity)
+
+VIOLATIONS:
+  Non-linear → polynomial, log transformation
+  Correlated residuals → time series models
+  Non-normal residuals → bootstrap, GLM
+  Heteroscedasticity → weighted least squares
+
+MULTIPLE REGRESSION:
+  y = β₀ + β₁x₁ + β₂x₂ + ... + βₚxₚ + ε
+  → Multiple predictors
+  → Each βᵢ = effect of xᵢ controlling for others
+
+LOGISTIC REGRESSION (classification):
+  P(y=1) = sigmoid(β₀ + β₁x)
+  → Binary outcomes (yes/no)
+  → Sigmoid squashes linear output to [0,1]
+"""
+
+print(regression)
+
+# PYTHON: Linear regression:
+lr_code = """
+import numpy as np
+from scipy import stats
+
+# Data: study hours vs exam score:
+hours = np.array([2, 3, 4, 5, 6, 7, 8, 9, 10])
+scores = np.array([55, 60, 65, 70, 75, 80, 85, 90, 95])
+
+# Linear regression:
+slope, intercept, r_value, p_value, std_err = stats.linregress(hours, scores)
+print(f"Slope (β₁): {slope:.4f}")
+print(f"Intercept (β₀): {intercept:.4f}")
+print(f"R²: {r_value**2:.4f}")
+print(f"p-value: {p_value:.6f}")
+print(f"Std error: {std_err:.4f}")
+
+# Prediction:
+def predict(hours_studied):
+    return intercept + slope * hours_studied
+
+print(f"\\nPredict score for 7.5 hours: {predict(7.5):.1f}")
+
+# Confidence interval for slope:
+df = len(hours) - 2
+t_crit = stats.t.ppf(0.975, df)
+ci_slope = (slope - t_crit * std_err, slope + t_crit * std_err)
+print(f"95% CI for slope: [{ci_slope[0]:.4f}, {ci_slope[1]:.4f}]")
+
+# Using sklearn for multiple regression:
+# from sklearn.linear_model import LinearRegression
+# model = LinearRegression()
+# model.fit(X, y)  # X can have multiple columns
+"""
+
+print(lr_code)</div>
+
+  <div class="code-block"># ── STEP 3: Multiple regression and feature selection ──
+# Building predictive models with multiple variables.
+
+multiple_reg = """
+MULTIPLE REGRESSION:
+
+y = β₀ + β₁x₁ + β₂x₂ + ... + βₚxₚ + ε
+
+Each βᵢ measures the effect of xᵢ CONTROLLING for all other variables.
+
+EXAMPLE: House price prediction
+  price = β₀ + β₁(sqft) + β₂(bedrooms) + β₃(bathrooms) + β₄(age) + ε
+
+  β₁ = price increase per square foot (holding bedrooms etc. constant)
+  β₂ = price increase per bedroom (holding sqft etc. constant)
+
+FEATURE SELECTION:
+  → Forward: start empty, add best feature one by one
+  → Backward: start with all, remove worst one by one
+  → LASSO: L1 penalty → drives some coefficients to 0 (sparse)
+  → Ridge: L2 penalty → shrinks coefficients toward 0
+  → Elastic Net: combination of L1 + L2
+
+OVERFITTING:
+  Too many features → model fits noise, not signal
+  → Training R² high but test R² low
+  → Solution: regularization (LASSO, Ridge), cross-validation
+
+MULTICOLLINEARITY:
+  When predictors are highly correlated with each other.
+  → Coefficients become unstable
+  → Solution: remove correlated features, use regularization
+
+CROSS-VALIDATION:
+  Split data: train / validation / test
+  K-fold: split into K parts, train on K-1, test on 1, rotate
+  → Estimates generalization error
+  → Prevents overfitting
+
+PYTHON (sklearn):
+  from sklearn.linear_model import LinearRegression, Lasso, Ridge
+  from sklearn.model_selection import cross_val_score
+
+  model = Ridge(alpha=1.0)
+  scores = cross_val_score(model, X, y, cv=5)
+"""
+
+print(multiple_reg)</div>
+
+  <div class="code-block"># ── STEP 4: Bayesian statistics ──
+# Updating beliefs with data.
+
+bayesian = """
+BAYESIAN STATISTICS:
+
+FREQUENTIST (Fisher, Neyman):
+  → Parameters are FIXED (unknown constants)
+  → Use p-values, confidence intervals
+  → "If I repeated this..."
+
+BAYESIAN (Bayes, Laplace):
+  → Parameters have DISTRIBUTIONS (uncertain)
+  → Use priors, posteriors, credible intervals
+  → "Given what I've seen..."
+
+BAYES' THEOREM:
+  P(θ|data) = P(data|θ) × P(θ) / P(data)
+  posterior ∝ likelihood × prior
+
+  Prior P(θ): belief before seeing data
+  Likelihood P(data|θ): how well θ explains data
+  Posterior P(θ|data): updated belief after data
+
+CONJUGATE PRIORS:
+  Prior + Likelihood → same family posterior
+  Beta prior + Binomial likelihood → Beta posterior
+  Normal prior + Normal likelihood → Normal posterior
+
+EXAMPLE: A/B testing (Bayesian)
+  Prior: conversion rate ~ Beta(1, 1) (uniform)
+  Data: 60 conversions in 1000 visitors
+  Posterior: Beta(61, 941)
+  → P(B > A) = integrate posterior
+
+CREDIBLE INTERVAL (Bayesian CI):
+  "95% credible interval: 95% probability the parameter is in [a, b]"
+  → This is what people THINK confidence intervals mean!
+
+ADVANTAGES OF BAYESIAN:
+  → Incorporates prior knowledge
+  → Natural interpretation (probability of hypothesis)
+  → Works with small samples
+  → Handles complex models (MCMC)
+
+DISADVANTAGES:
+  → Requires specifying a prior (subjective)
+  → Computationally expensive (MCMC)
+  → Can be sensitive to prior choice
+
+PYTHON:
+  import pymc3 as pm  # Bayesian library
+
+  with pm.Model():
+      mu = pm.Normal('mu', mu=0, sigma=10)  # prior
+      obs = pm.Normal('obs', mu=mu, sigma=1, observed=data)
+      trace = pm.sample(2000)  # MCMC
+"""
+
+print(bayesian)
+
+# PYTHON: Bayesian A/B test:
+bayes_ab = """
+import numpy as np
+from scipy.stats import beta
+
+# Bayesian A/B test:
+# Variant A: 120 conversions / 1000 visitors
+# Variant B: 150 conversions / 1000 visitors
+
+# Prior: Beta(1, 1) = uniform
+# Posterior: Beta(1+conversions, 1+failures)
+
+prior_a = 1
+prior_b = 1
+
+conv_A, total_A = 120, 1000
+conv_B, total_B = 150, 1000
+
+# Posteriors:
+post_A = beta(prior_a + conv_A, prior_b + total_A - conv_A)
+post_B = beta(prior_a + conv_B, prior_b + total_B - conv_B)
+
+# P(B > A)?
+n_samples = 100000
+samples_A = post_A.rvs(n_samples)
+samples_B = post_B.rvs(n_samples)
+p_B_better = np.mean(samples_B > samples_A)
+print(f"P(B > A) = {p_B_better:.4f}")
+
+# Expected lift:
+lift = (samples_B - samples_A) / samples_A
+print(f"Expected lift: {np.mean(lift)*100:.2f}%")
+print(f"95% credible interval for lift: "
+      f"[{np.percentile(lift, 2.5)*100:.2f}%, "
+      f"{np.percentile(lift, 97.5)*100:.2f}%]")
+
+# Conversion rate posteriors:
+print(f"\\nVariant A: mean={post_A.mean():.4f}, "
+      f"95% CI=[{post_A.ppf(0.025):.4f}, {post_A.ppf(0.975):.4f}]")
+print(f"Variant B: mean={post_B.mean():.4f}, "
+      f"95% CI=[{post_B.ppf(0.025):.4f}, {post_B.ppf(0.975):.4f}]")
+"""
+
+print(bayes_ab)</div>
+
+  <div class="code-block"># ── STEP 5: Experimental design ──
+# How to collect data that answers your question.
+
+design = """
+EXPERIMENTAL DESIGN:
+
+"Statistics begins BEFORE data collection."
+Good design → valid conclusions
+Bad design → garbage in, garbage out
+
+PRINCIPLES:
+  1. RANDOMIZATION:
+     Randomly assign subjects to treatment/control
+     → Eliminates systematic bias
+     → Confounders balance out
+
+  2. REPLICATION:
+     Enough subjects to detect effects
+     → Power analysis: how many do you need?
+     → More replication → more precision
+
+  3. BLOCKING:
+     Group similar subjects together
+     → Reduces variability
+     → Example: block by age, gender, location
+
+  4. CONTROL:
+     Compare treatment to a control group
+     → Placebo in medical trials
+     → "Before" in before/after studies
+
+TYPES OF DESIGNS:
+
+1. COMPLETELY RANDOMIZED:
+   Randomly assign all subjects
+   Simple but doesn't account for variability
+
+2. RANDOMIZED BLOCK:
+   Group into blocks, randomize within each
+   More precise than CRD
+
+3. FACTORIAL (2^k):
+   Test multiple factors simultaneously
+   Example: 2 diets × 2 exercise = 4 groups
+   → Finds interactions between factors
+
+4. CROSSOVER:
+   Each subject gets BOTH treatments (in sequence)
+   → Controls for individual differences
+   → Must "wash out" between treatments
+
+5. MATCHED PAIRS:
+   Match subjects on key variables, then randomize
+   → Twin studies, before/after
+
+6. OBSERVATIONAL:
+   No randomization (just observe)
+   → Can show correlation, NOT causation
+   → Useful when experiments are unethical/impossible
+
+POWER ANALYSIS (sample size calculation):
+  How many subjects to detect an effect?
+  Depends on:
+  → Effect size (bigger effect → easier to detect)
+  → α (significance level)
+  → Power (1 − β, desired detection probability)
+  → Variability (σ)
+
+  Rule: to detect small effects → need LARGE samples
+"""
+
+print(design)
+
+# PYTHON: Power analysis:
+power_code = """
+import numpy as np
+from scipy import stats
+
+def power_analysis(effect_size, alpha=0.05, power=0.8):
+    \"\"\"Find sample size needed for given effect size.\"\"\"
+    # Approximate formula for two-sample t-test:
+    z_alpha = stats.norm.ppf(1 - alpha/2)
+    z_beta = stats.norm.ppf(power)
+    n = 2 * ((z_alpha + z_beta) / effect_size)**2
+    return int(np.ceil(n))
+
+# Sample sizes for different effect sizes:
+for effect_name, d in [('small (0.2)', 0.2), ('medium (0.5)', 0.5),
+                        ('large (0.8)', 0.8)]:
+    n = power_analysis(d)
+    print(f"Effect {effect_name}: need n={n} per group")
+
+# Verify with simulation:
+def simulate_power(n, true_effect, n_simulations=10000):
+    rejections = 0
+    for _ in range(n_simulations):
+        group1 = np.random.normal(0, 1, n)
+        group2 = np.random.normal(true_effect, 1, n)
+        _, p = stats.ttest_ind(group1, group2)
+        if p < 0.05:
+            rejections += 1
+    return rejections / n_simulations
+
+print(f"\\nSimulated power (n=100, effect=0.5): "
+      f"{simulate_power(100, 0.5):.4f}")  # Should be ~0.94
+"""
+
+print(power_code)</div>
+
+  <div class="code-block"># ── STEP 6: Statistics best practices ──
+# Avoid common pitfalls, report honestly.
+
+best_practices = [
+    "Design experiment BEFORE collecting data",
+    "Randomize to eliminate confounders",
+    "Power analysis: ensure enough subjects",
+    "Report effect size AND confidence interval (not just p)",
+    "Check regression assumptions (LINE)",
+    "Use cross-validation to prevent overfitting",
+    "Multiple comparisons: correct with Bonferroni/FDR",
+    "Pre-register hypotheses (prevent p-hacking)",
+    "Bayesian: incorporate prior knowledge",
+    "Credible interval: probability parameter is in range",
+    "Confidence interval: 95% of intervals contain true value",
+    "Correlation ≠ causation (need RCT for causation)",
+    "Always visualize data before modeling",
+    "Replication is the gold standard for truth",
+    "Be transparent about all analyses performed",
+]
+
+print("STATISTICS BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ CI               │ x̄ ± z × SE                    │
+# │ Regression R²    │ Fraction of variance explained  │
+# │ Logistic         │ P(y=1) = sigmoid(linear)        │
+# │ LASSO            │ L1 penalty → sparse features    │
+# │ Ridge            │ L2 penalty → shrink coefficients│
+# │ Bayesian         │ posterior ∝ likelihood × prior  │
+# │ Power            │ 1 − β (detect true effect)     │
+# │ Randomization    │ Eliminates confounders          │
+# │ Cross-validation │ Estimate generalization         │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৩৩ (যুক্তির তাঁত) Door ৪-এ Bayesian Updating শিখেছিলে — confidence interval হলো ফ্রিকোয়েন্টিস্ট (frequentist) দর্শনের সমাধান, Bayesian credible interval-এর চচেত। দুটো আলাদা দর্শন কিন্তু একই লক্ষ্য — অনিশ্চয়তা মাপা।</div></div>
 
