@@ -514,26 +514,421 @@ doors.push({
 <div class="dialogue"><strong>রাবিন:</strong> (হাসেন) মানুষ পারে না। কিন্তু গাণিতিক যন্ত্র পারে। আমি এবং ডানা স্কট ১৯৫৯ সালে প্রমাণ করেছি — এই অনির্ধারিত যন্ত্রটি (NFA) ঠিক এতটাই শক্তিশালী যতটা নির্ধারিত যন্ত্রটি (DFA)। কোনো বাড়তি ক্ষমতা নেই — কিন্তু এটা প্যাটার্ন বর্ণনা করা অসংখ্য গুণ সহজ করে দেয়।</div>
 <div class="dialogue en"><strong>Rabin:</strong> (laughs) A human can't. But a mathematical machine can. Dana Scott and I proved in 1959 — this nondeterministic machine (NFA) is exactly as powerful as the deterministic one (DFA). No extra power — but it makes describing patterns infinitely easier.</div>
 
-<div class="code-block">
-<strong>NFA আনুষ্ঠানিক সংজ্ঞা:</strong>
+<div class="code-block"># ── STEP 1: NFA and nondeterminism ──
+# Why nondeterminism makes design easier.
 
-NFA-ও ৫-টুপল (Q, Σ, δ, q₀, F) — কিন্তু একটি পার্থক্য:
-• δ: Q * Σε → P(Q)  [P(Q) = Q-এর power set]
+nfa_deep = """
+NFA (NONDETERMINISTIC FINITE AUTOMATON):
 
-অর্থাৎ একটি অবস্থান থেকে একটি ইনপুটে একাধিক অবস্থানে যাওয়া যায়।
-এছাড়া ε (epsilon) রূপান্তর থাকতে পারে — কোনো ইনপুট ছাড়াই অবস্থান পরিবর্তন।
+FORMAL DEFINITION:
+  NFA = (Q, Σ, δ, q₀, F)
+  δ: Q × Σ_ε → P(Q)
+    where Σ_ε = Σ ∪ {ε} and P(Q) = power set of Q
 
-<strong>Subset Construction (NFA → DFA):</strong>
-NFA-এর states = {q₀, q₁, q₂}
-DFA-এর প্রতিটি state = NFA-এর states-এর একটি subset
-যেমন DFA state {q₀,q₁} মানে "NFA এই মুহূর্তে q₀ বা q₁-এ থাকতে পারে"
-সর্বোচ্চ DFA states = 2ⁿ (যেখানে n = NFA states)
+KEY DIFFERENCE FROM DFA:
+  DFA: δ(q, a) = exactly ONE state
+  NFA: δ(q, a) = SET of states (zero, one, or many)
 
-<strong>উদাহরণ — "তৃতীয় শেষ অক্ষর a" চেক করা:</strong>
-NFA: ৪টি states, সহজে বর্ণনা করা যায়।
-DFA: ৮টি states লাগবে (২³ = ৮)।
-NFA দিয়ে ভাবা সহজ — DFA দিয়ে বাস্তবায়ন দ্রুত।
-</div>
+  → NFA can "branch" into multiple paths
+  → ε-transitions: change state WITHOUT consuming input
+
+ACCEPTANCE:
+  NFA accepts if ANY path reaches an accept state
+  → Not random! Existential ("is there a path?")
+
+WHY USE NFAs?
+  → Easier to design (think of all possibilities)
+  → More compact representation
+  → "3rd-to-last character is a":
+    NFA: 4 states, DFA: 8 states
+  → "100th-to-last character is a":
+    NFA: 101 states, DFA: 2^101 states (impossible!)
+
+EQUIVALENCE (Rabin & Scott, 1959):
+  NFA ≡ DFA (same expressive power)
+  → Every NFA can be converted to equivalent DFA
+  → SUBSET CONSTRUCTION:
+    DFA state = subset of NFA states
+    DFA transition: union of NFA transitions
+
+  Worst case: n-state NFA → 2^n-state DFA
+  (exponential blowup)
+
+PYTHON (NFA simulation):
+  def nfa_accept(states, string, transitions, accept_states):
+      \"\"\"Simulate NFA by tracking SET of possible states.\"\"\"
+      if not string:
+          return bool(states & accept_states)
+
+      symbol = string[0]
+      next_states = set()
+      for state in states:
+          for s in transitions.get((state, symbol), set()):
+              next_states.add(s)
+      return nfa_accept(next_states, string[1:], transitions, accept_states)
+
+  # NFA for 'contains ab':
+  transitions = {
+      ('q0', 'a'): {'q0', 'q1'},  # stay or move
+      ('q0', 'b'): {'q0'},
+      ('q1', 'b'): {'q2'},        # found 'ab'!
+      ('q2', 'a'): {'q2'},
+      ('q2', 'b'): {'q2'},
+  }
+  accept = {'q2'}
+  result = nfa_accept({'q0'}, 'xxabyy', transitions, accept)
+  print(f"Contains 'ab': {result}")  # True
+"""
+
+print(nfa_deep)</div>
+
+<div class="code-block"># ── STEP 2: Regular expression to NFA conversion ──
+# Thompson's construction.
+
+thompson = """
+THOMPSON'S CONSTRUCTION (1968):
+
+Convert regular expression → NFA → DFA
+
+ALGORITHM:
+  1. Build NFA for each regex operation:
+     → Literal: simple 2-state NFA
+     → Concatenation: chain NFAs
+     → Union: branch to both
+     → Star: loop back
+
+  2. Convert NFA → DFA (subset construction)
+
+  3. Minimize DFA (Hopcroft's algorithm)
+
+THIS IS HOW REGEX ENGINES WORK:
+  → Python re module (regular expressions)
+  → grep, awk, sed
+  → Lexical analyzers (lex, flex)
+  → All use this pipeline internally
+
+REGEX → NFA EXAMPLES:
+
+  'a' → q0 --a--> q1 (accept)
+
+  'ab' → q0 --a--> q1 --b--> q2 (accept)
+
+  'a|b' → q0 branches to:
+    --a--> q1 (accept)
+    --b--> q2 (accept)
+
+  'a*' → q0 loops:
+    q0 --a--> q0 (accept) with epsilon transitions
+
+DFA MINIMIZATION:
+  → Merge equivalent states
+  → Myhill-Nerode theorem: minimal DFA is unique
+  → Hopcroft's algorithm: O(n log n)
+
+PYTHON (regex → DFA pipeline, conceptual):
+  import re
+
+  # Python regex internally builds NFA/DFA:
+  pattern = re.compile(r'(a|b)*ab')
+
+  # This DFA is used for matching:
+  result = pattern.match('aabab')
+  print(bool(result))  # True
+"""
+
+print(thompson)</div>
+
+<div class="code-block"># ── STEP 3: Context-free grammars deep dive ──
+# The grammar of programming languages.
+
+cfg_deep = """
+CONTEXT-FREE GRAMMARS (CFG):
+
+FORMAL DEFINITION:
+  CFG = (V, Σ, R, S)
+  V = variables (non-terminals)
+  Σ = terminals (actual symbols)
+  R = production rules: A → α (A is variable, α is string of V ∪ Σ)
+  S = start variable
+
+AMBIGUITY:
+  A grammar is AMBIGUOUS if a string has multiple parse trees.
+  → Bad for programming languages (which interpretation?)
+  → Solution: remove ambiguity (not always possible)
+
+  Example ambiguous: S → S+S | S*S | a
+  "a+a*a" has two parse trees:
+    → (a+a)*a  (wrong!)
+    → a+(a*a)  (correct, precedence)
+
+RESOLVING AMBIGUITY:
+  → Enforce precedence (multiplication before addition)
+  → Enforce associativity (left-to-right)
+  → Rewrite grammar with levels:
+
+  expr → term + expr | term      (left-associative +)
+  term → factor * term | factor  (left-associative *)
+  factor → ( expr ) | a          (base case)
+
+CHOMSKY NORMAL FORM (CNF):
+  Every rule is: A → BC or A → a
+  → Required for CYK algorithm (O(n³) parsing)
+  → Every CFG can be converted to CNF
+
+PARSING ALGORITHMS:
+  1. TOP-DOWN (recursive descent):
+     → Start from S, expand to match input
+     → Predictive (LL parsers)
+     → Simple but may backtrack
+
+  2. BOTTOM-UP (shift-reduce):
+     → Start from input, reduce to S
+     → LR parsers (LALR, SLR)
+     → More powerful, used by Yacc/Bison
+
+  3. CYK (Cocke-Younger-Kasami):
+     → Dynamic programming
+     → O(n³) for any CFG in CNF
+
+  4. EARLEY:
+     → Works for any CFG
+     → O(n³) worst case, O(n) for unambiguous
+
+PYTHON (recursive descent parser):
+  def parse_expr(tokens):
+      \"\"\"expr → term ('+' term)*\"\"\"
+      result = parse_term(tokens)
+      while tokens and tokens[0] == '+':
+          tokens.pop(0)  # consume '+'
+          right = parse_term(tokens)
+          result += right  # evaluate
+      return result
+
+  def parse_term(tokens):
+      \"\"\"term → factor ('*' factor)*\"\"\"
+      result = parse_factor(tokens)
+      while tokens and tokens[0] == '*':
+          tokens.pop(0)
+          right = parse_factor(tokens)
+          result *= right
+      return result
+
+  def parse_factor(tokens):
+      \"\"\"factor → number | '(' expr ')'\"\"\"
+      if tokens[0] == '(':
+          tokens.pop(0)
+          val = parse_expr(tokens)
+          tokens.pop(0)  # consume ')'
+          return val
+      return int(tokens.pop(0))
+
+  tokens = list('2*3+4*5')
+  print(parse_expr(tokens))  # 26
+"""
+
+print(cfg_deep)</div>
+
+<div class="code-block"># ── STEP 4: Decidability and computability ──
+# What can and cannot be computed.
+
+decidability = """
+DECIDABILITY:
+
+DECIDABLE PROBLEM:
+  A Turing Machine that always halts and answers YES or NO.
+  → "Is this number prime?" → decidable
+  → "Is this string in this regular language?" → decidable
+
+UNDECIDABLE PROBLEM:
+  NO Turing Machine can always decide correctly.
+  → Halting Problem: undecidable
+  → "Does this program output 'hello'?" → undecidable
+
+DECIDABLE FOR REGULAR/CFG:
+  → Regular: membership, emptiness, equivalence — ALL decidable
+  → CFG: membership (CYK), emptiness — decidable
+  → CFG equivalence — UNDECIDABLE!
+
+  → More power = harder to analyze
+
+COUNTABILITY:
+  → Countably many TMs (finite descriptions)
+  → Uncountably many languages (power set of strings)
+  → ∴ MOST languages are undecidable (diagonalization)
+
+RECURSIVELY ENUMERABLE (RE):
+  → TM may run forever on NO instances
+  → "Accepts" strings in language, may not halt on strings not in language
+  → All decidable problems are RE
+
+  RE \ DEC = semi-decidable (accept yes, loop on no)
+  co-RE = complement is RE
+  RE ∩ co-RE = decidable
+
+REDUCTIONS:
+  To prove problem B is undecidable:
+  → Show A ≤ B (A reduces to B)
+  → If A is undecidable and A ≤ B, then B is undecidable
+  → "If I could solve B, I could solve A"
+
+EXAMPLES:
+  ATM (Acceptance TM) = {<M,w> : M accepts w} → undecidable
+  HALT = {<M,w> : M halts on w} → undecidable
+  EQ_TM = {<M1,M2> : L(M1) = L(M2)} → undecidable
+  EMPTY_TM = {<M> : L(M) = ∅} → undecidable
+
+PYTHON (countability argument):
+  # There are countably many Python programs:
+  programs = ['def f(): pass', 'def f(): return 1', ...]
+  # Each is a finite string → countable
+
+  # But uncountably many functions from N to {0,1}:
+  # (By Cantor's diagonal argument)
+  # ∴ Most functions cannot be computed by any program!
+"""
+
+print(decidability)</div>
+
+<div class="code-block"># ── STEP 5: Complexity classes intro ──
+# P, NP, and beyond.
+
+complexity = """
+COMPLEXITY CLASSES:
+
+TIME COMPLEXITY:
+  How long does a TM take as function of input size n?
+
+  TIME(f(n)) = problems solvable in O(f(n)) time
+
+  Common classes:
+  → P: polynomial time (n^k for some k)
+  → EXP: exponential time (2^(n^k))
+  → P ⊂ EXP (strictly, by Time Hierarchy Theorem)
+
+P (Polynomial):
+  Solvable in polynomial time.
+  Examples: sorting, shortest path, matrix multiplication, primality testing
+  → Considered "efficiently solvable"
+
+NP (Nondeterministic Polynomial):
+  Solution VERIFIABLE in polynomial time.
+  → Equivalent: solvable by nondeterministic TM in poly time
+  Examples: SAT, TSP (decision), graph coloring, subset sum
+
+  Verifier: given a "certificate", check it in poly time
+  → SAT: given assignment, verify it satisfies all clauses
+  → TSP: given tour, verify it's valid and ≤ k
+
+NP-COMPLETE:
+  Hardest problems in NP.
+  → If you solve any NP-complete in poly time → P = NP
+  → SAT, 3-SAT, TSP, clique, vertex cover, Hamilton path
+  → Cook-Levin Theorem (1971): SAT is NP-complete
+
+NP-HARD:
+  At least as hard as NP-complete (may not be in NP).
+  → Optimization version of TSP
+  → Halting problem (not even computable)
+
+P vs NP:
+  The most important open problem in CS ($1M prize).
+  → P ⊆ NP (trivially)
+  → Is P = NP? Most believe NO.
+  → If P = NP: everything verifiable is solvable → revolution
+
+REDUCTIONS (polynomial-time):
+  To show problem B is NP-complete:
+  1. Show B ∈ NP (verifier exists)
+  2. Show A ≤p B for some known NP-complete A
+  → "If I could solve B in poly time, I could solve A too"
+
+PYTHON (SAT solver):
+  # 3-SAT: given clauses, find satisfying assignment
+  def solve_3sat(clauses, n_vars):
+      \"\"\"Brute force (exponential).\"\"\"
+      for assignment in range(2**n_vars):
+          vars = [(assignment >> i) & 1 for i in range(n_vars)]
+          if all(satisfies_clause(c, vars) for c in clauses):
+              return vars
+      return None  # unsatisfiable
+
+  # This is O(2^n) — exponential
+  # If P=NP, there would be a polynomial algorithm!
+"""
+
+print(complexity)</div>
+
+<div class="code-block"># ── STEP 6: Theory to practice ──
+# How theory connects to real programming.
+
+connections = """
+THEORY → PRACTICE CONNECTIONS:
+
+1. REGEX IN PROGRAMMING:
+   → Every import re (Python regex) uses automata theory
+   → Regex → NFA → DFA pipeline
+   → Why some patterns are slow: catastrophic backtracking
+   → Solution: DFA-based engines (re2)
+
+2. PARSERS IN COMPILERS:
+   → CFG theory → Yacc, Bison, ANTLR
+   → LR parsing for programming languages
+   → PEG parsers (Packrat) for modern languages
+
+3. P vs NP IN PRACTICE:
+   → If your problem is NP-complete, don't expect polynomial algorithm
+   → Use heuristics: greedy, local search, approximation
+   → SAT solvers (Z3, MiniSAT) solve huge instances in practice
+   → Most real instances are easier than worst case
+
+4. HALTING PROBLEM IN PRACTICE:
+   → Can't build perfect static analysis
+   → But can approximate: type checkers, linters
+   → Sound (never wrong) vs complete (catches all)
+   → Can't have both for undecidable properties
+
+5. COMPUTABILITY IN AI:
+   → Universal approximation theorem (neural networks)
+   → Turing complete: RNN, transformer (can simulate TM)
+   → But undecidable properties remain undecidable
+
+6. COMPLEXITY IN CRYPTOGRAPHY:
+   → Security relies on P ≠ NP assumption
+   → Factoring believed hard (basis of RSA)
+   → Quantum computers: Shor's algorithm breaks RSA
+
+KOLMOGOROV COMPLEXITY:
+  K(x) = length of shortest program that outputs x
+  → Measures "intrinsic information content"
+  → UNCOMPUTABLE (can't find shortest program)
+  → But useful conceptually
+
+APPROXIMATION:
+  For NP-hard optimization:
+  → Approximation ratio α: solution within α of optimal
+  → TSP: 1.5× (Christofides)
+  → Vertex cover: 2×
+  → Some problems have no approximation (unless P=NP)
+
+"Computer science is no more about computers
+ than astronomy is about telescopes."
+ — Edsger Dijkstra
+"""
+
+print(connections)
+
+# FINAL SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Complexity Class │ Problems                        │
+# ├──────────────────┼──────────────────────────────────┤
+# │ P                │ Sorting, shortest path, primality│
+# │ NP               │ SAT, TSP (verify)               │
+# │ NP-complete      │ SAT, 3-SAT, clique, coloring    │
+# │ NP-hard          │ TSP (optimize), Halting        │
+# │ PSPACE           │ Games, QBF                     │
+# │ EXPTIME          │ Some games, exhaustive search   │
+# │ Undecidable      │ Halting, equivalence            │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> অনির্ধারিততা (nondeterminism) মানে "এলোমেলো" নয়। NFA দৈবচক্রে (random) পথ বেছে নেয় না — সে সব পথ একসাথে অনুসরণ করে। যদি একটি পথও accept করে, সম্পূর্ণ NFA accept করে। এটা সম্ভাবনার প্রশ্ন নয় — সম্ভাবনার প্রশ্ন নয়, অস্তিত্বের প্রশ্ন।</div></div>
 
