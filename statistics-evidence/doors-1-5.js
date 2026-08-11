@@ -618,20 +618,405 @@ doors.push({
     <div class="stat-card"><div class="sc-num">৮,০০,০০০</div><div class="sc-label">তৎকালীন লন্ডনের জনসংখ্যা (গ্র্যান্টের অনুমান)</div></div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 বর্ণনামূলক পরিসংখ্যান — Descriptive Statistics</h4>
-    <table class="kv-table">
-      <tr><th>ধারণা</th><th>সংজ্ঞা</th><th>উদাহরণ (গ্র্যান্টের ডেটা)</th></tr>
-      <tr><td class="hl">গড় (Mean)</td><td>সব মানের যোগফল ÷ সংখ্যা</td><td>১০০ জনের বয়সের যোগফল ৪০০০ → গড় ৪০ বছর</td></tr>
-      <tr><td class="hl">মধ্যমা (Median)</td><td>সাজানো তালিকার মাঝের মান</td><td>বয়স সাজালে ৫০তম ব্যক্তির বয়স</td></tr>
-      <tr><td class="hl">বহুলক (Mode)</td><td>সবচেয়ে বেশি বার আসা মান</td><td>সবচেয়ে সাধারণ মৃত্যুর কারণ: 'consumption'</td></tr>
-      <tr><td class="hl">ভ্যারিয়েন্স (σ²)</td><td>গড় থেকে ছড়ানোর পরিমাণ</td><td>বয়সের পরিসর যত বেশি, ভ্যারিয়েন্স তত বেশি</td></tr>
-      <tr><td class="hl">পরিসর (Range)</td><td>সর্বোচ্চ − সর্বনিম্ন</td><td>০ থেকে ১০০ বছর → পরিসর ১০০</td></tr>
-    </table>
-    <br>
-    <p><strong>গ্র্যান্টের উত্তরাধিকার:</strong> একজন সাধারণ দোকানদার প্রথমবার দেখালেন — সংখ্যা দিয়ে সমাজ বোঝা যায়। তাঁর জীবন-সারণি আধুনিক বীমা, জনস্বাস্থ্য নীতি, এবং জনমিতির ভিত্তি।</p>
-    <p><strong>গ্র্যান্টের উপলব্ধি:</strong> গডেট (mean) একা বিভ্রান্তিকর হতে পারে। যদি ৯ জনের আয় ০ এবং ১ জনের ১০০০ — গড় আয় ১০০, কিন্তু বাস্তবে ৯ জন দরিদ্র। মধ্যমা (median) এখানে বেশি সত্যি — ০। এটাই Book ৩৩ Door ৪-এর Bayesian base rate-এর সাথে সংযোগ: সংখ্যা বোঝার আগে বণ্টন (distribution) বুঝতে হবে।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: Visualizing data ──
+# Pictures reveal what numbers hide.
+
+visualization = """
+DATA VISUALIZATION:
+
+"Let the data speak." But raw numbers often hide patterns.
+Visualization makes patterns VISIBLE.
+
+TYPES OF CHARTS:
+  → Histogram: distribution of one variable (bars)
+  → Box plot: five-number summary (min, Q1, median, Q3, max)
+  → Scatter plot: relationship between two variables
+  → Line chart: trends over time
+  → Bar chart: categorical comparison
+  → Heatmap: 2D matrix values (correlation matrices)
+
+ANSOOMBE'S QUARTET (why visualize?):
+  4 datasets, SAME statistics (mean, variance, correlation)
+  But COMPLETELY different shapes when plotted:
+  → I: linear
+  → II: curved (parabola)
+  → III: linear but one outlier dominates
+  → IV: all x same except one outlier
+
+  LESSON: ALWAYS PLOT YOUR DATA FIRST.
+
+GOOD VISUALIZATION PRINCIPLES:
+  → Start axes at 0 (or justify otherwise)
+  → Don't use 3D charts (they distort)
+  → Use appropriate chart type for data
+  → Label axes clearly
+  → No dual y-axes (misleading)
+  → Color for accessibility (colorblind-friendly)
+
+PYTHON (matplotlib/seaborn):
+  import matplotlib.pyplot as plt
+  import seaborn as sns
+
+  # Histogram:
+  plt.hist(data, bins=30)
+  plt.xlabel('Value')
+  plt.ylabel('Frequency')
+
+  # Scatter:
+  plt.scatter(x, y, alpha=0.5)
+
+  # Box plot:
+  plt.boxplot([group1, group2, group3])
+"""
+
+print(visualization)</div>
+
+  <div class="code-block"># ── STEP 2: Data distributions in practice ──
+# Identifying distribution from data.
+
+distributions = """
+IDENTIFYING DISTRIBUTIONS:
+
+How to tell what distribution your data follows:
+
+1. HISTOGRAM SHAPE:
+   → Bell-shaped: Normal
+   → Right-skewed: Lognormal, Exponential, Gamma
+   → Left-skewed: reversed (bounded above)
+   → Uniform: flat
+   → Bimodal: two peaks (mixture)
+
+2. Q-Q PLOT (quantile-quantile):
+   → Plot data quantiles vs theoretical distribution
+   → Straight line = good fit
+   → Curved = poor fit
+
+3. GOODNESS-OF-FIT TESTS:
+   → Kolmogorov-Smirnov (KS): compare to theoretical
+   → Shapiro-Wilk: test for normality
+   → Chi-squared: categorical goodness-of-fit
+
+4. SUMMARY STATISTICS:
+   → Mean ≈ Median → symmetric (Normal?)
+   → Mean >> Median → right-skewed
+   → Variance >> Mean → overdispersed (NegBin, not Poisson)
+
+COMMON REAL-WORLD DISTRIBUTIONS:
+  Heights: Normal
+  Income: Lognormal (right-skewed)
+  Word frequencies: Power law (Zipf)
+  City sizes: Power law (Pareto)
+  Wait times: Exponential
+  Web traffic: Poisson
+  Stock returns: approximately Normal (fat tails)
+"""
+
+print(distributions)
+
+# PYTHON: Distribution fitting:
+dist_fit = """
+import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+
+# Generate test data:
+np.random.seed(42)
+
+# 1. Normal data:
+normal_data = np.random.normal(100, 15, 1000)
+
+# Check normality:
+stat, p = stats.shapiro(normal_data)
+print(f"Shapiro-Wilk: stat={stat:.4f}, p={p:.4f}")
+# p > 0.05 → consistent with normal
+
+# Q-Q plot:
+# stats.probplot(normal_data, plot=plt)
+# If points on line → normal
+
+# 2. Skewed data (income):
+income = np.random.lognormal(10, 1, 1000)  # lognormal
+print(f"Income: mean={income.mean():.0f}, median={np.median(income):.0f}")
+# Mean >> Median → right-skewed
+
+# 3. Fit distribution:
+# Try fitting exponential to wait times:
+wait_times = np.random.exponential(10, 1000)
+loc, scale = stats.expon.fit(wait_times)
+print(f"Fitted exponential: scale={scale:.2f}")
+
+# Goodness of fit (KS test):
+D, p = stats.kstest(wait_times, 'expon', args=(loc, scale))
+print(f"KS test: D={D:.4f}, p={p:.4f}")
+# p > 0.05 → good fit
+"""
+
+print(dist_fit)</div>
+
+  <div class="code-block"># ── STEP 3: Exploratory Data Analysis (EDA) ──
+# The essential first step in any data project.
+
+eda = """
+EXPLORATORY DATA ANALYSIS (EDA):
+
+Before building models, UNDERSTAND your data.
+
+THE EDA CHECKLIST:
+  1. Structure: rows, columns, types
+  2. Quality: missing values, duplicates, outliers
+  3. Distributions: histogram for each variable
+  4. Relationships: scatter plots, correlation matrix
+  5. Grouping: group-by categorical variables
+  6. Time: trends, seasonality (if time series)
+  7. Anomalies: anything unusual
+
+PYTHON (pandas):
+  import pandas as pd
+
+  df = pd.read_csv('data.csv')
+
+  # Structure:
+  print(df.shape)       # (rows, columns)
+  print(df.dtypes)      # column types
+  print(df.head())      # first 5 rows
+
+  # Summary statistics:
+  print(df.describe())  # count, mean, std, min, Q1, median, Q3, max
+
+  # Missing values:
+  print(df.isnull().sum())
+
+  # Correlation matrix:
+  print(df.corr())
+
+  # Group by:
+  print(df.groupby('category')['value'].mean())
+
+KEY QUESTIONS:
+  → How many observations? How many variables?
+  → What's the distribution of each variable?
+  → Are there outliers? Missing data?
+  → What relationships exist between variables?
+  → Is there a time component?
+  → What's the granularity (per user, per day)?
+
+EDA PREVENTS:
+  → Garbage in, garbage out (GIGO)
+  → Wrong model assumptions
+  → Missing important patterns
+  → Outlier-driven false conclusions
+"""
+
+print(eda)
+
+# PYTHON: Full EDA:
+eda_code = """
+import pandas as pd
+import numpy as np
+
+# Synthetic dataset:
+np.random.seed(42)
+df = pd.DataFrame({
+    'age': np.random.normal(40, 12, 1000).clip(18, 80),
+    'income': np.random.lognormal(10.5, 0.8, 1000),
+    'gender': np.random.choice(['M', 'F'], 1000),
+    'department': np.random.choice(['Eng', 'Sales', 'HR', 'Ops'], 1000),
+})
+
+# 1. Structure:
+print(f"Shape: {df.shape}")
+print(f"\\nTypes:\\n{df.dtypes}")
+print(f"\\nFirst rows:\\n{df.head()}")
+
+# 2. Summary statistics:
+print(f"\\nNumeric summary:\\n{df.describe()}")
+
+# 3. Missing values:
+print(f"\\nMissing:\\n{df.isnull().sum()}")
+
+# 4. Group statistics:
+print(f"\\nIncome by department:\\n{df.groupby('department')['income'].mean()}")
+
+# 5. Correlation:
+print(f"\\nCorrelation:\\n{df[['age', 'income']].corr()}")
+
+# 6. Detect outliers (income):
+q1, q3 = df['income'].quantile([0.25, 0.75])
+iqr = q3 - q1
+outliers = df[(df['income'] < q1 - 1.5*iqr) | (df['income'] > q3 + 1.5*iqr)]
+print(f"\\nIncome outliers: {len(outliers)} ({len(outliers)/len(df)*100:.1f}%)")
+"""
+
+print(eda_code)</div>
+
+  <div class="code-block"># ── STEP 4: Data cleaning ──
+# Most of data science is cleaning.
+
+cleaning = """
+DATA CLEANING:
+
+"80% of data science is cleaning data."
+  → Real-world data is MESSY
+  → Missing values, wrong types, duplicates, outliers
+
+COMMON CLEANING TASKS:
+
+1. MISSING VALUES:
+   → Drop rows/columns (if few)
+   → Impute (mean, median, mode, ML-based)
+   → Flag as missing (indicator variable)
+
+2. OUTLIERS:
+   → Investigate (error or genuine extreme?)
+   → Cap/winsorize (replace with percentile)
+   → Transform (log for skewed)
+   → Remove (if clearly errors)
+
+3. TYPE CONVERSION:
+   → Strings to numbers (parse)
+   → Dates to datetime
+   → Categories to categorical dtype
+
+4. DUPLICATES:
+   → Identify and remove exact duplicates
+   → Near-duplicates (fuzzy matching)
+
+5. ENCODING:
+   → One-hot for nominal categories
+   → Ordinal encoding for ordered categories
+   → Target encoding (mean by category)
+
+6. SCALING:
+   → StandardScaler: (x − mean) / std
+   → MinMaxScaler: (x − min) / (max − min)
+   → RobustScaler: (x − median) / IQR (outlier resistant)
+
+PYTHON:
+  df.dropna()                    # drop missing
+  df.fillna(df.mean())           # impute with mean
+  df.drop_duplicates()           # remove duplicates
+  pd.get_dummies(df['cat'])      # one-hot encoding
+"""
+
+print(cleaning)</div>
+
+  <div class="code-block"># ── STEP 5: Summary statistics deep dive ──
+# Beyond mean and std — robust statistics.
+
+robust = """
+ROBUST STATISTICS:
+
+Standard statistics (mean, std) are SENSITIVE to outliers.
+Robust statistics are RESISTANT to outliers.
+
+ROBUST MEASURES:
+  → Median instead of mean
+  → IQR instead of standard deviation
+  → Trimmed mean (drop top/bottom k%)
+  → Winsorized mean (cap at percentile)
+  → MAD (Median Absolute Deviation)
+
+TRIMMED MEAN:
+  Drop top and bottom α% before computing mean.
+  → 10% trimmed mean: drop top 10% and bottom 10%
+  → Used in Olympic scoring (drop highest/lowest judges)
+
+MAD (Median Absolute Deviation):
+  MAD = median(|xᵢ − median(x)|)
+  → Robust alternative to standard deviation
+  → σ ≈ 1.4826 × MAD (for normal data)
+
+WINSORIZING:
+  Replace values beyond percentile with the percentile value.
+  → 95th winsorize: cap at 95th percentile
+  → Keeps the data size but removes extreme influence
+
+WHEN TO USE ROBUST:
+  → Data has outliers
+  → Distribution is heavy-tailed
+  → You don't want extreme values to dominate
+  → Median income is more representative than mean
+
+PYTHON:
+  from scipy.stats import trim_mean
+
+  data = [1, 2, 3, 4, 5, 100]  # 100 is outlier
+  print(f"Mean: {np.mean(data):.2f}")        # 19.17 (inflated)
+  print(f"Median: {np.median(data):.2f}")    # 3.5 (robust)
+  print(f"Trimmed: {trim_mean(data, 0.1):.2f}")  # ~3.5 (robust)
+"""
+
+print(robust)
+
+# PYTHON: Robust statistics:
+robust_code = """
+import numpy as np
+from scipy.stats import trim_mean
+
+# Data with outlier:
+data = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 100])
+
+# Standard statistics (outlier-sensitive):
+print(f"Mean: {np.mean(data):.2f}")       # 14.5 (inflated by 100)
+print(f"Std: {np.std(data):.2f}")         # 29.6 (inflated)
+
+# Robust statistics:
+print(f"Median: {np.median(data):.2f}")   # 5.5 (robust)
+print(f"IQR: {np.percentile(data, 75) - np.percentile(data, 25):.2f}")
+
+# Trimmed mean (remove top/bottom 10%):
+print(f"Trimmed mean (10%): {trim_mean(data, 0.1):.2f}")  # ~6.0
+
+# MAD:
+median = np.median(data)
+mad = np.median(np.abs(data - median))
+print(f"MAD: {mad:.2f}")
+print(f"Estimated σ: {1.4826 * mad:.2f}")  # robust std estimate
+
+# Comparison: without outlier:
+clean = data[data < 50]
+print(f"\\nWithout outlier:")
+print(f"  Mean: {np.mean(clean):.2f}")    # 5.0
+print(f"  Std: {np.std(clean):.2f}")      # 2.58
+"""
+
+print(robust_code)</div>
+
+  <div class="code-block"># ── STEP 6: Descriptive stats best practices ──
+# Summarize data correctly.
+
+best_practices = [
+    "Always visualize data before summarizing",
+    "Report mean AND median (outlier detection)",
+    "Use IQR/MAD for robust spread",
+    "Five-number summary: min, Q1, median, Q3, max",
+    "Histogram reveals distribution shape",
+    "Q-Q plot checks for normality",
+    "Box plot shows outliers visually",
+    "Scatter plot for relationships",
+    "Correlation matrix for multi-variable overview",
+    "Check for missing values and duplicates",
+    "Clean data before analysis (GIGO)",
+    "Scale features for ML (Standard/MinMax)",
+    "Trimmed mean for outlier-resistant average",
+    "Robust stats when data is heavy-tailed",
+    "EDA is mandatory before modeling",
+]
+
+print("DESCRIPTIVE STATS BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Statistic        │ Robust Alternative              │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Mean             │ Median, trimmed mean            │
+# │ Std deviation    │ IQR, MAD                        │
+# │ Range            │ IQR                             │
+# │ Variance         │ MAD²                            │
+# │ Pearson r        │ Spearman ρ                     │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৩০ (Architect's Compass) Door ৫-এ তুমি Probability & Bayes' Theorem শিখেছিলে। গ্র্যান্টের কাজ হলো সেই Bayes-এর পূর্বশর্ত — বণ্টন না বুঝলে Bayes কাজ করে না। এছাড়া Book ৩১ (Classic ML) Door ৯ Model Evaluation-এ গড় বনাম মধ্যমার গুরুত্ব আবার দেখবে।</div></div>
 
