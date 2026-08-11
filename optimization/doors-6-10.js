@@ -24,24 +24,314 @@ doors.push({
 <strong>SGD:</strong> ∇f ~= ∇fᵢ — একটি নমুনা দিয়ে হিসাব। শব্দযুক্ত কিন্তু দ্রুত।<br>
 <strong>Mini-batch SGD:</strong> ∇f ~= (1/B) Σ ∇fᵢ — B=৩২-২৫৬ নমুনা। ভারসাম্য — সঠিকতা ও গতির মিলন।</div></div>
 
-<div class="code-block">— SGD বনাম GD: হিসাব খরচ —
+<div class="code-block"># ── STEP 1: SGD theory and convergence ──
+# Why stochastic optimization works.
 
-  ডেটা: N = 1,000,000 চিত্র  (ImageNet)
-  মডেল: ResNet-50 (n = 25,000,000 weights)
+sgd_theory = """
+SGD CONVERGENCE THEORY:
 
-  GD (পুরো ডেটা):
-    প্রতি ধাপে: 1M * forward+backward = কয়েক মিনিট
-    100 epoch * 1 step = কয়েক দিন? না — অসম্ভব
+ROBBINS-MONRO CONDITIONS (1951):
+  For SGD to converge, learning rates must satisfy:
+  1. Σ η_t = ∞ (enough total steps)
+  2. Σ η_t² < ∞ (noise dies out)
 
-  SGD (mini-batch B=256):
-    প্রতি ধাপে: 256 * forward+backward = ~50ms
-    প্রতি epoch: 1M/256 ~= 4000 steps
-    100 epoch = 400K steps ~= ৫ ঘণ্টা  ← বাস্তবায়নযোগ্য!
+  → η_t = 1/t satisfies both → converges
+  → η_t = constant satisfies neither → oscillates
 
-  — Robbins-Monro শর্ত: —
-    Σ η_t = ∞     (পর্যাপ্ত মোট পদক্ষেপ)
-    Σ η_t² < ∞   (শব্দ শেষ পর্যন্ত মারা যায়)
-    → উদাহরণ: η_t = 1/t  (decaying learning rate)</div>
+SGD CONVERGENCE RATES:
+  Convex: E[f(x_k)] − f* ≤ O(1/√k) (slower than batch GD)
+  Strongly convex: E[f(x_k)] − f* ≤ O(1/k) (still slower)
+  Non-convex: converges to stationary point: E[||∇f||²] ≤ O(1/√k)
+
+  → SGD is slower per-iteration but uses FAR fewer samples
+  → Net effect: SGD reaches good solution faster (wall clock)
+
+VARIANCE REDUCTION:
+  Pure SGD noise prevents exact convergence.
+  → SAG, SAGA, SVRG: reduce variance using gradient memory
+  → Enables O(1/k) convergence (like batch GD) at SGD cost
+
+POLYAK-RUPPERT AVERAGING:
+  → Average iterates: x̄_k = (1/k) Σ xᵢ
+  → Reduces variance of final estimate
+  → Better generalization
+
+PYTHON:
+  # SGD with Polyak averaging:
+  x = x0
+  x_avg = x0
+  for t in range(1, n_iters+1):
+      grad = stochastic_grad(x)
+      x = x - lr(t) * grad
+      x_avg = ((t-1) * x_avg + x) / t  # running average
+  return x_avg
+"""
+
+print(sgd_theory)</div>
+
+<div class="code-block"># ── STEP 2: Distributed optimization ──
+# Training across multiple GPUs/machines.
+
+distributed = """
+DISTRIBUTED OPTIMIZATION:
+
+DATA PARALLELISM:
+  → Split data across workers
+  → Each worker computes gradient on its shard
+  → Aggregate (all-reduce) to get full gradient
+  → Scale: near-linear speedup with workers
+
+MODEL PARALLELISM:
+  → Split model across workers
+  → Different layers on different GPUs
+  → Needed for very large models (>GPU memory)
+
+PIPELINE PARALLELISM:
+  → Split model into stages
+  → Micro-batch pipeline through stages
+  → Reduces idle time vs model parallel
+
+SYNCHRONIZATION:
+  Synchronous SGD (All-Reduce):
+    → Wait for ALL workers before updating
+    → Exact gradient, but slowest worker limits speed
+
+  Asynchronous SGD (Hogwild!):
+    → Workers update independently (no waiting)
+    → Faster but stale gradients → convergence issues
+
+  Local SGD:
+    → Workers train independently for K steps
+    → Then average → reduces communication
+
+COMMUNICATION OVERHEAD:
+  → Gradients must be transferred between workers
+  → Network bandwidth often bottleneck
+  → Gradient compression (8-bit, 4-bit)
+  → Gradient sparsification (send only large values)
+
+LARGE BATCH TRAINING:
+  → Use very large batches (8K-64K) with distributed training
+  → LARS, LAMB optimizers for large-batch stability
+  → Linear scaling rule: lr = lr_base × batch_size / baseline_batch
+
+PYTHON (PyTorch DDP):
+  import torch.distributed as dist
+  from torch.nn.parallel import DistributedDataParallel as DDP
+
+  model = DDP(model, device_ids=[local_rank])
+  # Each process handles different data shard
+  # Gradients synchronized automatically after backward()
+"""
+
+print(distributed)</div>
+
+<div class="code-block"># ── STEP 3: Non-convex optimization ──
+# Training neural networks.
+
+nonconvex = """
+NON-CONVEX OPTIMIZATION (DEEP LEARNING):
+
+Neural network loss landscapes are highly non-convex.
+  → Trillions of parameters → astronomical number of local minima
+  → Saddle points even more common
+  → Yet GD/Adam works remarkably well!
+
+WHY DOES IT WORK?
+  1. OVERPARAMETERIZATION:
+     → More parameters than data points
+     → Many global minima (interpolation)
+     → GD finds one of them
+
+  2. LOTTERY TICKET HYPOTHESIS:
+     → Random init contains a good subnetwork
+     → GD "finds" this subnetwork
+
+  3. NEURAL TANGENT KERNEL:
+     → In infinite-width limit, NN training = kernel regression
+     → Convex problem in kernel space!
+
+  4. IMPLICIT REGULARIZATION:
+     → GD finds "simple" solutions (low norm)
+     → Explains generalization despite overfitting capacity
+
+LOSS LANDSCAPE GEOMETRY:
+  → Low-dimensional: most eigenvalues of Hessian ≈ 0
+  → "Flat" minima generalize better than "sharp" ones
+  → Connected minima: can travel between good minima without leaving low-loss region
+
+TECHNIQUES:
+  1. DROPOUT: random masking → implicit ensemble
+  2. BATCH NORM: smooth landscape → higher lr possible
+  3. RESIDUAL CONNECTIONS: skip connections → smoother landscape
+  4. DATA AUGMENTATION: virtual larger dataset → better generalization
+  5. MIXUP/CUTMIX: interpolate samples → regularization
+  6. LABEL SMOOTHING: soft targets → calibration
+
+DOUBLE DESCENT:
+  Classical: U-curve (bias-variance tradeoff)
+  Modern: overparameterized regime → test error drops AGAIN
+  → Interpolation threshold is MOST dangerous (worst generalization)
+  → Beyond it: more parameters = better (up to a point)
+"""
+
+print(nonconvex)</div>
+
+<div class="code-block"># ── STEP 4: Combinatorial and discrete optimization ──
+# When variables are discrete.
+
+combinatorial = """
+COMBINATORIAL OPTIMIZATION:
+
+When decision variables are DISCRETE (not continuous):
+  → Can't use gradients
+  → Search space is exponentially large
+  → Most problems NP-hard
+
+EXAMPLES:
+  → Traveling Salesman (TSP): find shortest tour
+  → Knapsack: maximize value subject to weight
+  → Scheduling: assign tasks to time slots
+  → Graph coloring: color without conflicts
+  → Set cover: cover universe with fewest sets
+
+EXACT METHODS:
+  1. BRUTE FORCE: try all possibilities O(n!)
+     → Only feasible for tiny problems
+
+  2. BRANCH AND BOUND:
+     → Tree search with pruning
+     → Prune branches that can't beat current best
+     → Can solve moderate TSP (100s of cities)
+
+  3. DYNAMIC PROGRAMMING:
+     → Break into overlapping subproblems
+     → TSP: Held-Karp O(n² × 2ⁿ) (better than n!)
+
+  4. INTEGER PROGRAMMING:
+     → Linear program with integer constraints
+     → Solvers: Gurobi, CPLEX, CBC
+     → Many practical problems fit this framework
+
+APPROXIMATION ALGORITHMS:
+  → Guarantee solution within factor α of optimal
+  → TSP: Christofides algorithm (1.5× optimal)
+  → Vertex cover: 2× optimal
+  → Knapsack: FPTAS (1+ε optimal in poly time)
+
+METAHEURISTICS:
+  → No guarantees but work well in practice
+  → Simulated annealing, genetic algorithms, tabu search
+  → Ant colony optimization, particle swarm
+
+PYTHON:
+  from scipy.optimize import linprog, milp, linear_sum_assignment
+  import networkx as nx
+
+  # Linear programming:
+  result = linprog(c, A_ub=A, b_ub=b, bounds=bounds)
+
+  # Integer programming (scipy 1.9+):
+  result = milp(c, constraints=constraints, integrality=integrality)
+
+  # Assignment problem (Hungarian algorithm):
+  row_ind, col_ind = linear_sum_assignment(cost_matrix)
+"""
+
+print(combinatorial)</div>
+
+<div class="code-block"># ── STEP 5: Bayesian and black-box optimization ──
+# When gradients aren't available.
+
+bayesian_opt = """
+BAYESIAN OPTIMIZATION:
+
+For EXPENSIVE BLACK-BOX functions (no gradient, slow evaluation):
+  → Hyperparameter tuning (each evaluation trains a full model)
+  → Drug discovery (each experiment is costly)
+  → Material science (each synthesis takes time)
+
+SURROGATE MODEL:
+  → Fit a CHEAP model to expensive evaluations
+  → Gaussian Process (GP) is standard choice
+  → GP gives prediction + UNCERTAINTY
+
+ACQUISITION FUNCTION:
+  Decide where to evaluate next:
+  1. EXPECTED IMPROVEMENT (EI):
+     → Maximize expected improvement over current best
+     → Balances exploration (uncertain regions) and exploitation (good regions)
+
+  2. UPPER CONFIDENT BOUND (UCB):
+     → Maximize mean + κ × std
+     → κ controls exploration vs exploitation
+
+  3. PROBABILITY OF IMPROVEMENT (PI):
+     → Maximize probability of beating current best
+
+ALGORITHM:
+  1. Evaluate f at initial points
+  2. Fit GP surrogate to observations
+  3. Optimize acquisition function → next point
+  4. Evaluate f at new point
+  5. Update GP, repeat
+
+PYTHON (Optuna, scikit-optimize):
+  import optuna
+
+  def objective(trial):
+      lr = trial.suggest_float('lr', 1e-5, 1e-1, log=True)
+      n_layers = trial.suggest_int('n_layers', 1, 5)
+      dropout = trial.suggest_float('dropout', 0, 0.5)
+      model = build_model(lr, n_layers, dropout)
+      val_loss = train_and_evaluate(model)
+      return val_loss
+
+  study = optuna.create_study(direction='minimize',
+                               sampler=optuna.samplers.TPESampler())
+  study.optimize(objective, n_trials=100)
+  print(study.best_params)
+"""
+
+print(bayesian_opt)</div>
+
+<div class="code-block"># ── STEP 6: Optimization best practices ──
+# The complete practitioner's guide.
+
+best_practices = [
+    "Always normalize/standardize input features",
+    "Adam as default optimizer (lr=0.001)",
+    "Learning rate is THE most important hyperparameter",
+    "Use cosine annealing or OneCycleLR for scheduling",
+    "Mini-batch size: 32-256 (larger for GPU efficiency)",
+    "Warmup for transformers (prevent early instability)",
+    "Gradient clipping for RNNs (max_norm=1.0)",
+    "Weight decay for regularization (AdamW)",
+    "Early stopping: monitor validation loss",
+    "For convex problems: use CVXPY (declarative)",
+    "For hyperparameters: use Bayesian optimization (Optuna)",
+    "For combinatorial: use integer programming (Gurobi)",
+    "Monitor loss curves, gradient norms, learning rate",
+    "Mixed precision training (fp16) for 2x speedup",
+    "Distributed training: data parallel for multi-GPU",
+]
+
+print("OPTIMIZATION BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# FINAL SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Problem Type     │ Recommended Approach            │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Smooth convex    │ GD, Newton, L-BFGS              │
+# │ Non-convex (DL)  │ Adam, SGD+momentum              │
+# │ Large-scale      │ Mini-batch SGD, distributed     │
+# │ Constrained      │ CVXPY, interior point           │
+# │ Combinatorial    │ Integer programming, heuristics │
+# │ Black-box        │ Bayesian optimization           │
+# │ Hyperparameters  │ Optuna, Hyperopt                │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>SGD-এর শব্দ = আশীর্বাদ ও অভিশাপ:</strong><br>
 <strong>আশীর্বাদ:</strong> শব্দ local minima থেকে বের করে নিয়ে যায় — "noise helps escape!"<br>
@@ -109,31 +399,398 @@ doors.push({
 <strong>RMSProp (Hinton 2012):</strong> AdaGrad-এর উন্নতি — exponential decay (পুরোনো গ্রেডিয়েন্ট ভুলে যাও)।<br>
 <strong>Adam (Kingma & Ba 2014):</strong> Momentum + RMSProp। প্রথম moment (mean) + দ্বিতীয় moment (uncentered variance)।</div></div>
 
-<div class="code-block">— Adam আপডেট নিয়ম (সরলীকৃত) —
+<div class="code-block"># ── STEP 1: Adam optimizer in detail ──
+# The most popular deep learning optimizer.
 
-  m_t = β₁·m_{t-1} + (1-β₁)·g_t      ← ১ম moment (বেগ)
-  v_t = β₂·v_{t-1} + (1-β₂)·g_t²     ← ২য় moment (বর্গ)
+adam_detail = """
+ADAM OPTIMIZER DETAILED:
 
-  m̂ = m_t / (1-β₁ᵗ)                  ← bias correction
-  v̂ = v_t / (1-β₂ᵗ)                  ← bias correction
+UPDATE RULES:
+  m_t = β₁·m_{t-1} + (1−β₁)·g_t       # first moment (momentum)
+  v_t = β₂·v_{t-1} + (1−β₂)·g_t²      # second moment (squared gradient)
+  m̂ = m_t / (1−β₁^t)                  # bias correction
+  v̂ = v_t / (1−β₂^t)
+  x = x − η · m̂ / (√v̂ + ε)           # update!
 
-  x = x - η · m̂ / (√v̂ + ε)           ← update!
+WHY BIAS CORRECTION?
+  → m and v start at 0 → biased toward 0 early
+  → Correction: divide by (1−β^t) to unbias
+  → Effect: larger effective lr early (helps convergence)
 
-  — সাধারণ হাইপারপ্যারামিটার: —
-    η = 0.001     (learning rate)
-    β₁ = 0.9      (momentum decay)
-    β₂ = 0.999    (variance decay)
-    ε  = 1e-8     (division by zero রোধ)
+HYPERPARAMETERS:
+  η (lr): 0.001 (default, THE most important)
+  β₁: 0.9 (momentum decay)
+  β₂: 0.999 (variance decay)
+  ε: 1e-8 (numerical stability)
 
-— PyTorch-এ: —
+WHY ADAM WORKS:
+  → Per-parameter learning rate (adapts to each weight)
+  → Rarely-updated parameters get larger steps
+  → Frequently-updated parameters get smaller steps
+  → Momentum dampens oscillations
 
+ADAMW (Loshchilov & Hutter, 2017):
+  → Decouples weight decay from gradient update
+  → Adam's L2 regularization was WRONG
+  → AdamW: x = x − η · (m̂/(√v̂+ε) + λ·x)
+  → Better generalization
+  → Standard for ALL transformers (GPT, BERT, LLaMA)
+
+WHICH OPTIMIZER FOR WHAT?
+  Transformers: AdamW (95% of papers)
+  CNN (ResNet): SGD+momentum (better generalization)
+  GANs: Adam (both generator + discriminator)
+  RNNs: Adam (handles vanishing gradients)
+  Classical ML: L-BFGS, Newton-CG
+
+PYTHON (PyTorch):
+  import torch
+
+  # Standard Adam:
   optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-  # এটাই default — কারণ এটা কাজ করে!
 
-— পরিসংখ্যান: —
-   Transformer প্রশিক্ষণ: 95% AdamW ব্যবহার করে
-  CNN: Adam বা SGD+momentum
-  GAN: Adam (দুটি Adam — generator + discriminator)</div>
+  # AdamW (recommended):
+  optimizer = torch.optim.AdamW(model.parameters(), lr=0.001,
+                                 weight_decay=0.01)
+
+  # With gradient clipping:
+  torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+"""
+
+print(adam_detail)</div>
+
+<div class="code-block"># ── STEP 2: Advanced optimizers ──
+# Beyond Adam: latest developments.
+
+advanced_opt = """
+ADVANCED OPTIMIZERS:
+
+1. NADAM (Dozat, 2016):
+   → Adam + Nesterov momentum
+   → "Look ahead" before computing gradient
+   → Slightly better than Adam in practice
+
+2. AMSGRAD (Reddi et al., 2018):
+   → Fixes Adam's non-convergence on some problems
+   → Uses max of past v_t (not exponential average)
+   → Rarely needed in practice but theoretically sound
+
+3. RANGER (RAdam + Lookahead):
+   → RAdam: rectified Adam (handles variance in early training)
+   → Lookahead: average two optimization paths
+   → Popular in Kaggle competitions
+
+4. LION (EvoLved Sign Momentum, Google 2023):
+   → Discovered via neural architecture search
+   → Uses SIGN of momentum (not magnitude)
+   → Simpler than Adam, competitive performance
+   → More memory efficient
+
+5. SHAMPOO (Second-order):
+   → Pre-conditioned gradient method
+   → Block-diagonal Hessian approximation
+   → Better conditioning → faster convergence
+   → Used for very large models
+
+6. SOAP (Shampoo-inspired):
+   → Latest (2024)
+   → Combines Adam + Shampoo ideas
+   → Claims faster convergence than AdamW
+
+ADAPTIVE VS NON-ADAPTIVE:
+  Adaptive (Adam, AdaGrad):
+    ✅ Less hyperparameter tuning
+    ✅ Works "out of the box"
+    ❌ May overfit (less implicit regularization)
+    ❌ Worse generalization sometimes
+
+  Non-adaptive (SGD):
+    ✅ Better generalization (implicit regularization)
+    ✅ Find flatter minima
+    ❌ Requires careful lr tuning
+    ❌ Slower initial progress
+
+PYTHON (latest optimizers):
+  # LION:
+  from lion_pytorch import Lion
+  optimizer = Lion(model.parameters(), lr=1e-4, weight_decay=1e-2)
+
+  # Sophia (second-order clipped):
+  # Uses diagonal Hessian for curvature info
+"""
+
+print(advanced_opt)</div>
+
+<div class="code-block"># ── STEP 3: Hyperparameter optimization ──
+# Tuning model hyperparameters.
+
+hyperopt = """
+HYPERPARAMETER OPTIMIZATION:
+
+Hyperparameters: settings NOT learned from data
+  → Learning rate, batch size, number of layers
+  → Dropout rate, weight decay, optimizer choice
+
+APPROACHES:
+
+1. GRID SEARCH:
+   → Try ALL combinations
+   → Exhaustive but exponentially expensive
+   → Curse of dimensionality
+   → Example: 3 lr × 3 wd × 3 layers = 27 runs
+
+2. RANDOM SEARCH (Bergstra & Bengio, 2012):
+   → Sample randomly from ranges
+   → BETTER than grid in high dimensions
+   → Some hyperparameters don't matter → don't waste time on them
+   → Simple and effective
+
+3. BAYESIAN OPTIMIZATION:
+   → Build surrogate model (GP) of objective
+   → Smart selection of next point
+   → More efficient than random for expensive evaluations
+   → Tools: Optuna, Hyperopt, scikit-optimize, Weights & Biases Sweeps
+
+4. SUCCESSIVE HALVING (Hyperband):
+   → Start many configs, train briefly
+   → Kill underperformers early
+   → Allocate more resources to promising configs
+   → Very efficient
+
+5. POPULATION-BASED TRAINING (PBT):
+   → Evolutionary approach
+   → Train many models in parallel
+   → Copy weights from good models, mutate hyperparameters
+  → Used by DeepMind for AlphaStar, etc.
+
+PYTHON (Optuna):
+  import optuna
+
+  def objective(trial):
+      lr = trial.suggest_float('lr', 1e-5, 1e-1, log=True)
+      n_layers = trial.suggest_int('n_layers', 1, 5)
+      dropout = trial.suggest_float('dropout', 0, 0.5)
+      hidden = trial.suggest_int('hidden', 32, 512, log=True)
+
+      model = build_model(lr, n_layers, dropout, hidden)
+      val_loss = train_and_evaluate(model)
+      return val_loss
+
+  study = optuna.create_study(direction='minimize')
+  study.optimize(objective, n_trials=100, timeout=3600)
+  print(f"Best params: {study.best_params}")
+  print(f"Best val loss: {study.best_value:.4f}")
+
+BEST PRACTICES:
+  → Log-scale for learning rates: suggest_float('lr', 1e-5, 1, log=True)
+  → Use pruning: trial.should_prune() for early termination
+  → Parallelize: study.optimize(..., n_jobs=4)
+  → Visualize: optuna.visualization for parameter importance
+"""
+
+print(hyperopt)</div>
+
+<div class="code-block"># ── STEP 4: Production training pipeline ──
+# Complete PyTorch training loop.
+
+production = """
+PRODUCTION TRAINING PIPELINE:
+
+THE COMPLETE PYTORCH LOOP:
+
+  import torch
+  from torch.utils.data import DataLoader
+  from torch.cuda.amp import GradScaler, autocast
+
+  # Setup:
+  model = MyModel().to(device)
+  optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3, weight_decay=0.01)
+  scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=100)
+  scaler = GradScaler()  # for mixed precision
+  loss_fn = torch.nn.CrossEntropyLoss()
+
+  # Training loop:
+  best_val_loss = float('inf')
+  for epoch in range(100):
+      # TRAIN:
+      model.train()
+      for batch in train_loader:
+          x, y = batch
+          x, y = x.to(device), y.to(device)
+
+          optimizer.zero_grad()
+
+          # Mixed precision (2x speedup):
+          with autocast():
+              pred = model(x)
+              loss = loss_fn(pred, y)
+
+          scaler.scale(loss).backward()
+
+          # Gradient clipping:
+          scaler.unscale_(optimizer)
+          torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+
+          scaler.step(optimizer)
+          scaler.update()
+
+      scheduler.step()
+
+      # VALIDATE:
+      model.eval()
+      val_loss = 0
+      correct = 0
+      with torch.no_grad():
+          for x, y in val_loader:
+              x, y = x.to(device), y.to(device)
+              pred = model(x)
+              val_loss += loss_fn(pred, y).item()
+              correct += (pred.argmax(1) == y).sum().item()
+
+      val_loss /= len(val_loader)
+      accuracy = correct / len(val_dataset)
+
+      # EARLY STOPPING:
+      if val_loss < best_val_loss:
+          best_val_loss = val_loss
+          torch.save(model.state_dict(), 'best_model.pt')
+      else:
+          patience -= 1
+          if patience == 0:
+              print("Early stopping!")
+              break
+
+      print(f"Epoch {epoch}: train_loss={loss:.4f}, "
+            f"val_loss={val_loss:.4f}, val_acc={accuracy:.4f}")
+
+KEY FEATURES:
+  ✅ Mixed precision (fp16) — 2x speedup
+  ✅ Gradient clipping — prevent explosion
+  ✅ Learning rate scheduling — cosine annealing
+  ✅ Early stopping — prevent overfitting
+  ✅ Model checkpointing — save best model
+  ✅ Train/val separation — monitor generalization
+"""
+
+print(production)</div>
+
+<div class="code-block"># ── STEP 5: Optimization in your projects ──
+# LedgerPilot and Ipractus.
+
+your_projects = """
+OPTIMIZATION IN YOUR PROJECTS:
+
+LedgerPilot (Django + MySQL + Vue):
+  → Budget optimization: linear programming (maximize savings)
+  → Expense prediction: gradient descent (regression)
+  → Anomaly detection: optimization-based clustering
+  → Search ranking: learning-to-rank optimization
+  → Resource allocation: knapsack (server budget)
+
+Ipractus (Django + PostgreSQL + React + LiveKit):
+  → Appointment scheduling: assignment problem (Hungarian)
+  → Capacity planning: queueing optimization
+  → Video bitrate: adaptive optimization
+  → ML model serving: latency vs throughput tradeoff
+  → Resource scaling: cost optimization
+
+PRACTICAL EXAMPLES:
+
+  1. BUDGET OPTIMIZATION (LedgerPilot):
+     Maximize savings = income − essential − discretionary
+     Subject to: essential ≥ minimum, discretionary ≤ budget
+
+     import cvxpy as cp
+     essential = cp.Variable()
+     discretionary = cp.Variable()
+     savings = income - essential - discretionary
+     objective = cp.Maximize(savings)
+     constraints = [essential >= min_essential,
+                    discretionary >= 0,
+                    discretionary <= max_discretionary]
+     prob = cp.Problem(objective, constraints)
+     prob.solve()
+
+  2. APPOINTMENT SCHEDULING (Ipractus):
+     # Hungarian algorithm for optimal assignment
+     from scipy.optimize import linear_sum_assignment
+     cost = compute_cost_matrix(doctors, time_slots)
+     row_ind, col_ind = linear_sum_assignment(cost)
+     for doc, slot in zip(row_ind, col_ind):
+         assign(doctors[doc], time_slots[slot])
+
+  3. ML MODEL TRAINING (both):
+     # Standard PyTorch training with AdamW
+     optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3)
+     # ... training loop with early stopping, lr scheduling
+"""
+
+print(your_projects)</div>
+
+<div class="code-block"># ── STEP 6: Optimization journey and next steps ──
+# Your complete path forward.
+
+journey = """
+YOUR OPTIMIZATION JOURNEY:
+
+You started seeing optimization as "finding the minimum."
+You finish seeing the MATHEMATICS OF BETTER DECISIONS:
+
+WHAT YOU'VE MASTERED:
+  ✅ Convex vs non-convex optimization
+  ✅ Gradient descent and all variants (SGD, Adam, etc.)
+  ✅ Newton's method and quasi-Newton (BFGS)
+  ✅ Convergence analysis and rates
+  ✅ Constrained optimization (KKT, duality)
+  ✅ SVM as a complete optimization example
+  ✅ Combinatorial and discrete optimization
+  ✅ Bayesian optimization for hyperparameters
+  ✅ Distributed training across GPUs
+  ✅ Non-convex deep learning theory
+  ✅ Production training pipelines
+
+THE OPTIMIZER'S MINDSET:
+  1. "Is this convex?" (determines difficulty)
+  2. "What's the right algorithm?" (GD vs Adam vs BFGS)
+  3. "What learning rate?" (THE key hyperparameter)
+  4. "How do I know it converged?" (diagnostics)
+  5. "Can I parallelize?" (distributed training)
+
+"Optimization is not just about finding the best solution.
+ It's about understanding WHY some solutions are better."
+ — Stephen Boyd (Stanford, Convex Optimization)
+
+WHAT TO STUDY NEXT:
+  → Convex Optimization (Boyd & Vandenberghe) — the bible
+  → Numerical Optimization (Nocedal & Wright)
+  → Deep Learning optimization (Goodfellow et al.)
+  → Reinforcement Learning (optimization + decisions)
+  → Meta-learning (learning to optimize)
+
+Every ML model, every engineering decision, every business strategy
+is ultimately an optimization problem.
+Master optimization → master decision-making.
+
+Welcome to optimization mastery.
+"""
+
+print(journey)
+
+# FINAL SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Door             │ Key Concept                     │
+# ├──────────────────┼──────────────────────────────────┤
+# │ 1 Fundamentals   │ Objective, constraints, convexity│
+# │ 2 Convex Theory  │ Jensen, smoothness, conditioning │
+# │ 3 GD Variants    │ SGD, momentum, scheduling        │
+# │ 4 Newton/Adam    │ Second-order, adaptive methods   │
+# │ 5 Constrained    │ KKT, duality, SVM                │
+# │ 6 SGD Theory     │ Robbins-Monro, variance reduction│
+# │ 7 Distributed    │ Data/model/pipeline parallel     │
+# │ 8 Non-convex     │ Overparameterization, flat minima│
+# │ 9 Combinatorial  │ TSP, knapsack, integer program   │
+# │ 10 Production    │ Full training pipeline            │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout tip"><span class="co-icon">💡</span><div><strong>AdamW (Loshchilov & Hutter 2017):</strong> Adam-এ weight decay সঠিকভাবে যোগ করা হয়নি ছিল। AdamW সেটি সংশোধন করে। বর্তমানে Transformers (GPT, BERT, LLaMA) সবাই AdamW ব্যবহার করে — কারণ regularization সঠিক।</div></div>
 
