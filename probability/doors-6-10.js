@@ -1545,39 +1545,455 @@ doors.push({
 <div class="dialogue"><strong>নৃত্য-পরিচালক আয়েশা:</strong> Monte Carlo সহজ — এলোমেলো নমুনা নাও, গড় করো। কিন্তু জটিল distribution থেকে নমুনা কীভাবে? MCMC — Markov Chain Monte Carlo। Metropolis-Hastings: একটি পদক্ষেপ প্রস্তাব করো। ভালো হলে গ্রহণ করো, খারাপ হলে সম্ভাবনার উপর গ্রহণ। দীর্ঘে এই chain সেই distribution থেকে নমুনা দেয়। Gibbs: এক সময় এক variable পদক্ষেপ। Bayesian inference-এ এটা অপরিহার্য!</div>
 <div class="dialogue en"><strong>Dance Director Ayesha:</strong> Monte Carlo is simple — take random samples, average. But how to sample from complex distributions? MCMC — Markov Chain Monte Carlo. Metropolis-Hastings: propose a step. If good, accept; if bad, accept probabilistically. Long run, this chain samples from that distribution. Gibbs: one variable at a time. Essential in Bayesian inference!</div>
 
-<div class="code-block"># — Python: Monte Carlo π ও MCMC —
+<div class="code-block"># ── STEP 1: Monte Carlo methods ──
+# Estimate values using random sampling.
 
-  import numpy as np
+monte_carlo = """
+MONTE CARLO METHODS:
 
-  # Monte Carlo: π হিসাও
-  n = 1000000
-  x = np.random.uniform(-1, 1, n)
-  y = np.random.uniform(-1, 1, n)
-  inside = np.sum(x**2 + y**2 <= 1)
-  pi_estimate = 4 * inside / n
-  print(f"π ~= {pi_estimate:.4f}")  # ~3.1416
+Use RANDOM SAMPLING to estimate numerical results.
+  → When exact computation is impossible or too slow
+  → Named after Monte Carlo casino ( randomness)
 
-  # Metropolis-Hastings MCMC:
-  # Target: Normal(0, 1)
-  target = lambda x: np.exp(-x**2 / 2) / np.sqrt(2*np.pi)
+EXAMPLES:
+  → Estimate π by throwing darts at a circle
+  → Compute integrals numerically
+  → Simulate physical systems
+  → Estimate financial risk
+  → Evaluate complex probabilities
 
-  samples = []
-  x_current = 0.0  # start
-  for _ in range(100000):
-      x_proposed = x_current + np.random.normal(0, 1)
-      ratio = target(x_proposed) / target(x_current)
-      if np.random.random() < ratio:
-          x_current = x_proposed  # accept
-      samples.append(x_current)
+WHY IT WORKS (Law of Large Numbers):
+  As n → ∞: sample average → expected value
+  → More samples → more accurate estimate
+  → Error decreases as 1/√n
 
-  print(f"Sample mean: {np.mean(samples):.3f}")  # ~0.0
-  print(f"Sample std:  {np.std(samples):.3f}")    # ~1.0
-  # এটা Normal(0,1) থেকে নমুনা! ✅
+ERROR BOUND (Monte Carlo):
+  Error ~ σ/√n (standard error)
+  → To halve error: quadruple samples
+  → To reduce error by 10: need 100× samples
+  → Convergence is SLOW but STEADY
 
-  # Monte Carlo integration:
-  # ∫₀¹ x² dx ~= mean of x² for random x in [0,1]
-  result = np.mean(np.random.uniform(0, 1, 100000)**2)
-  print(f"∫₀¹ x² dx ~= {result:.4f}")  # ~0.3333</div>
+WHEN TO USE MONTE CARLO:
+  → High-dimensional integrals (curse of dimensionality)
+  → Complex probability distributions
+  → Physical simulations (particle systems)
+  → Financial modeling (option pricing)
+  → Optimization (simulated annealing)
+"""
+
+print(monte_carlo)
+
+# PYTHON: Monte Carlo π estimation:
+mc_pi = """
+import numpy as np
+
+# Estimate π: throw darts at unit square, count fraction in circle:
+def estimate_pi(n=1000000):
+    x = np.random.uniform(-1, 1, n)
+    y = np.random.uniform(-1, 1, n)
+    inside = np.sum(x**2 + y**2 <= 1)
+    return 4 * inside / n
+
+for n in [100, 1000, 10000, 100000, 1000000]:
+    pi_est = estimate_pi(n)
+    error = abs(pi_est - np.pi)
+    print(f"n={n:8d}: π≈{pi_est:.6f}, error={error:.6f}")
+# Error ~ 1/√n
+
+# Error scaling verification:
+import math
+for n in [100, 1000, 10000, 100000]:
+    errors = [abs(estimate_pi(n) - math.pi) for _ in range(100)]
+    avg_error = np.mean(errors)
+    theoretical = 1 / math.sqrt(n)
+    print(f"n={n:6d}: avg error={avg_error:.5f}, 1/√n={theoretical:.5f}")
+"""
+
+print(mc_pi)</div>
+
+<div class="code-block"># ── STEP 2: Monte Carlo integration ──
+# Compute integrals using random sampling.
+
+mc_integration = """
+MONTE CARLO INTEGRATION:
+
+∫ f(x) dx ≈ (1/n) Σ f(xᵢ)
+  where xᵢ are random samples from the domain
+
+WHY THIS WORKS:
+  E[f(X)] = ∫ f(x) × p(x) dx (definition of expectation)
+  For uniform p(x) = 1/(b−a) on [a,b]:
+  E[f(X)] = (1/(b−a)) ∫ f(x) dx
+  ∫ f(x) dx ≈ (b−a) × (1/n) Σ f(xᵢ)
+
+EXAMPLES:
+  ∫₀¹ x² dx ≈ mean of x² for uniform x in [0,1]
+  Actual: 1/3 ≈ 0.3333
+  MC with 10000 samples: ≈ 0.3328
+
+HIGH-DIMENSIONAL INTEGRALS:
+  Numerical methods (trapezoidal, Simpson) suffer from curse of dimensionality.
+  → d=10: grid of 10^10 points (infeasible)
+  → Monte Carlo: error independent of dimension!
+  → This is why MC is used in physics, finance, ML
+
+IMPORTANCE SAMPLING:
+  Sample from a distribution that emphasizes important regions.
+  ∫ f(x)dx = ∫ f(x)/q(x) × q(x)dx ≈ Σ f(xᵢ)/q(xᵢ)
+
+  → Reduces variance (faster convergence)
+  → Critical in rare event simulation
+
+VARIANCE REDUCTION TECHNIQUES:
+  → Importance sampling (sample important regions more)
+  → Stratified sampling (partition domain, sample each)
+  → Control variates (use known related quantity)
+  → Antithetic variates (use negative correlation)
+"""
+
+print(mc_integration)
+
+# PYTHON: MC integration:
+mc_int = """
+import numpy as np
+
+# ∫₀¹ x² dx (actual = 1/3):
+n = 1000000
+samples = np.random.uniform(0, 1, n)
+result = np.mean(samples**2)
+print(f"∫₀¹ x² dx ≈ {result:.6f} (actual: {1/3:.6f})")
+
+# ∫₀^π sin(x) dx (actual = 2):
+samples = np.random.uniform(0, np.pi, n)
+result = np.mean(np.sin(samples)) * np.pi  # scale by (b−a)
+print(f"∫₀^π sin(x) dx ≈ {result:.6f} (actual: 2.0)")
+
+# High-dimensional: ∫∫∫∫ f(x1,x2,x3,x4) dx (4D)
+# Numerical grid: 10^4 = 10000 points per dim → 10^16 total (impossible)
+# MC: error independent of dimension!
+def f_4d(x):
+    return np.exp(-np.sum(x**2))  # Gaussian in 4D
+
+samples_4d = np.random.uniform(-1, 1, (n, 4))
+result_4d = np.mean([f_4d(x) for x in samples_4d]) * 2**4
+print(f"4D integral ≈ {result_4d:.6f}")
+
+# Importance sampling (rare event):
+# Estimate P(X > 4) for standard normal (actual ≈ 0.0000317)
+# Naive MC: most samples are < 4, very few hits → high variance
+# Importance: sample from Normal(4, 1) instead
+from scipy.stats import norm
+n_importance = 10000
+samples = np.random.normal(4, 1, n_importance)
+weights = norm.pdf(samples, 0, 1) / norm.pdf(samples, 4, 1)
+p_estimate = np.mean(weights * (samples > 4))
+print(f"P(X>4) importance sampling: {p_estimate:.8f}")
+print(f"P(X>4) actual:              {1-norm.cdf(4):.8f}")
+"""
+
+print(mc_int)</div>
+
+<div class="code-block"># ── STEP 3: Monte Carlo in machine learning ──
+# Random sampling in AI/ML.
+
+mc_ml = """
+MONTE CARLO IN ML:
+
+1. STOCHASTIC GRADIENT DESCENT (SGD):
+   → Sample mini-batch (random subset) instead of full dataset
+   → E[mini-batch gradient] = true gradient
+   → Faster convergence on large datasets
+
+2. DROPOUT:
+   → Randomly drop neurons during training
+   → MC approximation of model averaging
+   → "Monte Carlo dropout" for uncertainty estimation
+
+3. BAYESIAN INFERENCE:
+   → Posterior P(θ|data) often intractable
+   → MCMC samples approximate posterior
+   → Variational inference (alternative)
+
+4. REINFORCEMENT LEARNING:
+   → Monte Carlo policy evaluation
+   → Estimate value by averaging episode returns
+   → No model needed (model-free)
+
+5. GENERATIVE MODELS:
+   → VAE: sample latent variable
+   → Diffusion: reverse noise process
+   → GAN: random noise → realistic samples
+
+6. ENSEMBLE METHODS:
+   → Random Forest: many trees with random subsets
+   → Bagging: bootstrap aggregating
+   → Monte Carlo over model space
+
+7. HYPERPARAMETER OPTIMIZATION:
+   → Random search (better than grid in high dims)
+   → Bayesian optimization (model-based search)
+
+8. UNCERTAINTY QUANTIFICATION:
+   → MC Dropout: run k times with dropout, measure variance
+   → Deep ensembles: train k models, measure disagreement
+"""
+
+print(mc_ml)
+
+# PYTHON: Monte Carlo Dropout:
+mc_dropout = """
+import numpy as np
+# MC Dropout: run inference k times, measure uncertainty
+
+class MCDropout:
+    \"\"\"Simulate MC Dropout for uncertainty estimation.\"\"\"
+    def __init__(self, model_fn, dropout_rate=0.3):
+        self.model_fn = model_fn  # prediction function
+        self.p = dropout_rate
+
+    def predict_with_uncertainty(self, x, n_forward=100):
+        predictions = []
+        for _ in range(n_forward):
+            # Apply random dropout:
+            mask = np.random.binomial(1, 1-self.p, size=x.shape)
+            x_dropped = x * mask / (1 - self.p)  # scale
+            pred = self.model_fn(x_dropped)
+            predictions.append(pred)
+
+        predictions = np.array(predictions)
+        mean_pred = np.mean(predictions, axis=0)
+        uncertainty = np.std(predictions, axis=0)
+        return mean_pred, uncertainty
+
+# Example: simple linear "model":
+def model(x):
+    return 2 * x + 1
+
+x_test = np.array([1.0, 2.0, 3.0])
+mc = MCDropout(model, dropout_rate=0.3)
+mean, unc = mc.predict_with_uncertainty(x_test, n_forward=1000)
+print(f"Predictions: {mean}")
+print(f"Uncertainty: {unc}")
+# Higher dropout → more uncertainty
+"""
+
+print(mc_dropout)</div>
+
+<div class="code-block"># ── STEP 4: Simulated annealing ──
+# Monte Carlo optimization.
+
+annealing = """
+SIMULATED ANNEALING:
+
+A Monte Carlo optimization technique inspired by metallurgy.
+  → "Annealing": slow cooling of metal to reach minimum energy state
+
+ALGORITHM:
+  1. Start at random state S, temperature T (high)
+  2. Propose move to S'
+  3. Compute ΔE = E(S') − E(S)
+  4. If ΔE < 0 (better): ACCEPT
+     If ΔE > 0 (worse): ACCEPT with probability exp(−ΔE/T)
+  5. Decrease T (cooling schedule)
+  6. Repeat
+
+KEY INSIGHT:
+  High T: accept bad moves (exploration)
+  Low T: mostly accept good moves (exploitation)
+
+  → Escapes local minima early (high T)
+  → Converges to global minimum (low T)
+
+COOLING SCHEDULE:
+  T(t) = T₀ × α^t (geometric, α ≈ 0.99)
+  or T(t) = T₀ / log(t)
+
+APPLICATIONS:
+  → Traveling salesman (TSP)
+  → VLSI circuit layout
+  → Neural network training (escape local minima)
+  → Function optimization (non-convex)
+  → Scheduling problems
+
+COMPARISON TO GRADIENT DESCENT:
+  GD: always goes downhill (gets stuck in local minima)
+  SA: sometimes goes uphill (escapes local minima)
+  → SA is SLOWER but finds BETTER optima for rugged landscapes
+"""
+
+print(annealing)
+
+# PYTHON: Simulated annealing:
+sa_code = """
+import numpy as np
+import math
+
+def simulated_annealing(cost_fn, x0, T0=100, alpha=0.99, n_iter=10000):
+    \"\"\"Minimize cost_fn starting at x0.\"\"\"
+    x = x0
+    cost = cost_fn(x)
+    best_x, best_cost = x, cost
+    T = T0
+
+    for i in range(n_iter):
+        # Propose move:
+        x_new = x + np.random.normal(0, T/10)
+        cost_new = cost_fn(x_new)
+
+        # Accept?
+        delta = cost_new - cost
+        if delta < 0 or np.random.random() < math.exp(-delta / T):
+            x = x_new
+            cost = cost_new
+            if cost < best_cost:
+                best_x, best_cost = x, cost
+
+        # Cool:
+        T *= alpha
+
+    return best_x, best_cost
+
+# Test: find minimum of a function with multiple local minima:
+def bumpy(x):
+    \"\"\"Function with many local minima.\"\"\"
+    return np.sin(x) + 0.1 * x**2
+
+# Run SA from different starts:
+for start in [-5, 0, 5]:
+    best_x, best_cost = simulated_annealing(bumpy, start)
+    print(f"Start={start:3d}: best x={best_x:.4f}, cost={best_cost:.4f}")
+# SA finds global minimum despite many local minima
+"""
+
+print(sa_code)</div>
+
+<div class="code-block"># ── STEP 5: Monte Carlo in finance and physics ──
+# Real-world applications.
+
+mc_apps = """
+MONTE CARLO IN FINANCE:
+
+1. OPTION PRICING (Black-Scholes-MC):
+   → Simulate stock price paths (geometric Brownian motion)
+   → Compute option payoff for each path
+   → Average and discount to present value
+
+   S(t) = S₀ × exp((r − σ²/2)t + σ√t × Z)
+   where Z ~ Normal(0,1)
+
+2. RISK MANAGEMENT (VaR):
+   → Simulate portfolio returns under various scenarios
+   → Value at Risk = 5th percentile of loss distribution
+   → Expected Shortfall = average loss beyond VaR
+
+3. PORTFOLIO OPTIMIZATION:
+   → Simulate future asset returns
+   → Optimize allocation for risk/return tradeoff
+
+MONTE CARLO IN PHYSICS:
+
+1. PARTICLE TRANSPORT:
+   → Simulate radiation passing through matter
+   → Each particle: random scatter, absorption
+   → Used in nuclear reactor design, medical physics
+
+2. STATISTICAL MECHANICS:
+   → Ising model (magnetism)
+   → Simulate molecular dynamics
+
+3. INTEGRAL EQUATIONS:
+   → Neutron transport, photon scattering
+
+4. FLUID DYNAMICS:
+   → Direct Simulation Monte Carlo (DSMC)
+   → Rarefied gas flows
+
+NUMERICAL ADVANTAGE:
+  For d-dimensional integral:
+  → Quadrature (grid): error ~ N^(−2/d) (worsens with dimension)
+  → Monte Carlo: error ~ N^(−1/2) (independent of dimension!)
+
+  d=1: quadrature better
+  d=10: Monte Carlo much better
+  d=100: only Monte Carlo is feasible
+"""
+
+print(mc_apps)
+
+# PYTHON: Option pricing (Black-Scholes-MC):
+option_code = """
+import numpy as np
+
+def monte_carlo_option_price(S0, K, T, r, sigma, n_simulations=100000):
+    \"\"\"Price European call option via Monte Carlo.\"\"\"
+    # Simulate stock price at maturity:
+    Z = np.random.standard_normal(n_simulations)
+    ST = S0 * np.exp((r - 0.5*sigma**2)*T + sigma*np.sqrt(T)*Z)
+
+    # Payoff = max(ST - K, 0):
+    payoffs = np.maximum(ST - K, 0)
+
+    # Discount to present value:
+    option_price = np.exp(-r*T) * np.mean(payoffs)
+
+    # Standard error (confidence):
+    std_error = np.exp(-r*T) * np.std(payoffs) / np.sqrt(n_simulations)
+
+    return option_price, std_error
+
+# Price a call option:
+# S0=100 (current stock), K=100 (strike), T=1 (1 year),
+# r=0.05 (risk-free rate), sigma=0.2 (volatility)
+price, se = monte_carlo_option_price(100, 100, 1, 0.05, 0.2)
+print(f"Option price: {price:.4f} +/- {1.96*se:.4f} (95% CI)")
+
+# Value at Risk (VaR):
+np.random.seed(42)
+portfolio_returns = np.random.normal(0.001, 0.02, 100000)  # daily returns
+var_5 = np.percentile(portfolio_returns, 5)  # 5th percentile
+print(f"\\n5% VaR: {var_5*100:.2f}% (daily)")
+print(f"95% chance: loss no more than {abs(var_5)*100:.2f}%")
+"""
+
+print(option_code)</div>
+
+<div class="code-block"># ── STEP 6: Monte Carlo best practices ──
+# Apply MC methods effectively.
+
+best_practices = [
+    "MC: estimate via random sampling (LLN guarantees convergence)",
+    "Error ~ σ/√n (halve error → quadruple samples)",
+    "MC error INDEPENDENT of dimension (huge advantage)",
+    "MC integration: ∫f(x)dx ≈ (b−a) × mean(f(samples))",
+    "Importance sampling reduces variance for rare events",
+    "MCMC (Metropolis): sample from complex distributions",
+    "Gibbs sampling: sample each variable conditional on rest",
+    "Simulated annealing: optimization with temperature",
+    "SGD: Monte Carlo gradient estimation (mini-batches)",
+    "MC Dropout: uncertainty estimation in neural nets",
+    "Reinforcement learning: MC policy evaluation",
+    "Finance: option pricing, VaR, portfolio simulation",
+    "Physics: particle transport, Ising model",
+    "Variance reduction: stratified, control variates",
+    "Convergence check: run multiple chains, compare",
+]
+
+print("MONTE CARLO BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Method           │ Use Case                        │
+# ├──────────────────┼──────────────────────────────────┤
+# │ MC integration   │ High-dimensional integrals      │
+# │ MCMC             │ Bayesian posterior sampling     │
+# │ Simulated anneal │ Non-convex optimization         │
+# │ Importance samp  │ Rare event probability          │
+# │ MC Dropout       │ Neural net uncertainty          │
+# │ SGD              │ Large-scale ML training         │
+# │ Option pricing   │ Financial derivatives           │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout info"><span class="co-icon">💃</span><div><strong>Sampling methods:</strong><br>
 <strong>Monte Carlo (Ulam 1946):</strong> random sampling → estimate<br>
@@ -1664,37 +2080,353 @@ doors.push({
 <strong>Door ৮ — যাকারিয়া (Markov):</strong> state chain, stationary<br>
 <strong>Door ৯ — আয়েশা (Sampling):</strong> Monte Carlo, MCMC</div></div>
 
-<div class="code-block">— Full Pipeline: সম্ভাবনা বাস্তবে —
+<div class="code-block"># ── STEP 1: The 10 doors summary ──
+# Everything you've learned in probability.
 
-  # ১. Bayes: spam filter
-  P_spam = 0.3  # prior
-  # "free money" in email → P(spam|words) update
+doors = {
+    "Door 1": "Probability Fundamentals + Bayes Theorem",
+    "Door 2": "Expectation, Variance, LLN, CLT",
+    "Door 3": "Distributions (Normal, Binomial, Poisson, Exponential)",
+    "Door 4": "Memoryless, Queueing, Reliability",
+    "Door 5": "Concentration Inequalities, Black Swans",
+    "Door 6": "Combinatorial Probability, Monty Hall, Gambling",
+    "Door 7": "Poisson Deep Dive (servers, insurance, regression)",
+    "Door 8": "Markov Chains, PageRank, HMM, MCMC",
+    "Door 9": "Monte Carlo Methods (integration, SA, finance)",
+    "Door 10": "Complete Pipeline — all doors in one system",
+}
 
-  # ২. Normal: human height
-  # μ=175cm, σ=7 → P(>190) = 1 - Φ(2.14) ~= 1.6%
+print("THE 10 DOORS OF PROBABILITY:")
+for door, topic in doors.items():
+    print(f"  {door}: {topic}")
 
-  # ৩. Poisson: server requests
-  # λ=100/sec → P(>150) = very rare
+# THE UNIFYING INSIGHT:
+insight = """
+WHAT IS PROBABILITY?
 
-  # ৪. Markov: user behavior
-  # browsing → cart → checkout → purchase
-  # transition matrix → conversion rate
+The mathematics of UNCERTAINTY.
+  → Quantifies what we DON'T know
+  → Updates beliefs with evidence (Bayes)
+  → Predicts long-run averages (LLN)
+  → Models randomness in nature and computation
 
-  # ৫. Monte Carlo: portfolio risk
-  # 10000 scenarios → P(loss > $1M) = 2%
+"Probability is the mathematics of uncertainty.
+ Statistics is the science of learning from data.
+ Together, they are the foundation of all data science."
 
-  # ৬. Exponential: server failure
-  # MTBF = 10000 hours → P(fail in 1st year)?
+WHY IT'S THE FOUNDATION OF ML:
+  → ML = learning from data under uncertainty
+  → Models = probability distributions
+  → Training = maximum likelihood (find best distribution)
+  → Prediction = conditional probability P(y|x)
+  → Evaluation = expected loss, risk minimization
+"""
 
-  # ML-এ সব সংযুক্ত:
-  # Naive Bayes = Door 1
-  # Gaussian = Door 3
-  # Dropout = Door 9 (sampling)
-  # MCMC = Bayesian inference
-  # Hidden Markov = Door 8
+print(insight)</div>
 
-  — সম্ভাবনা = uncertainty মাপার ভাষা —
-  — ML, finance, physics, biology — সব এর উপর —</div>
+<div class="code-block"># ── STEP 2: Full probability pipeline ──
+# How probability connects all of data science.
+
+pipeline = """
+THE COMPLETE PROBABILITY PIPELINE:
+
+DATA COLLECTION:
+  → Sample from population (sampling bias matters!)
+  → Random sampling → representative
+  → Non-response, selection bias → skewed
+
+EXPLORATORY ANALYSIS:
+  → Fit distributions (Normal? Poisson? Power law?)
+  → Estimate parameters (μ, σ, λ)
+  → Check assumptions (mean = variance for Poisson?)
+
+MODELING:
+  → Choose model based on distribution
+  → Linear regression (Normal errors)
+  → Logistic regression (Bernoulli outcomes)
+  → Poisson regression (count data)
+
+INFERENCE:
+  → Hypothesis testing (is effect real?)
+  → Confidence intervals (uncertainty in estimates)
+  → Bayesian updating (prior + data → posterior)
+
+PREDICTION:
+  → Point estimate (most likely outcome)
+  → Prediction interval (uncertainty range)
+  → Expected value (decision making)
+
+VALIDATION:
+  → Train/test split (generalization)
+  → Cross-validation (robust estimates)
+  → Backtesting (time series)
+
+PRODUCTION:
+  → Monitor for distribution shift
+  → Retrain when model degrades
+  → A/B testing for improvement
+"""
+
+print(pipeline)
+
+# PYTHON: Full pipeline example:
+pipeline_code = """
+import numpy as np
+from scipy import stats
+
+# 1. DATA: User session durations (seconds)
+np.random.seed(42)
+# Reality: Exponential(λ=0.1), mean=10 sec
+data = np.random.exponential(10, 1000)
+
+# 2. EXPLORE: Fit distribution
+print(f"Mean: {data.mean():.2f}, Std: {data.std():.2f}")
+print(f"Median: {np.median(data):.2f}")
+# Mean ≈ Std → Exponential is a good fit!
+
+# 3. ESTIMATE: MLE for λ
+lam_mle = 1 / data.mean()
+print(f"λ estimate: {lam_mle:.4f} (true: 0.1)")
+
+# 4. CONFIDENCE INTERVAL for λ:
+# For exponential: CI for λ uses chi-squared
+n = len(data)
+ci_low = stats.chi2.ppf(0.025, 2*n) / (2 * data.sum())
+ci_high = stats.chi2.ppf(0.975, 2*n) / (2 * data.sum())
+print(f"95% CI for λ: [{ci_low:.4f}, {ci_high:.4f}]")
+
+# 5. PREDICTION: P(session > 30 sec)?
+p_long = np.exp(-lam_mle * 30)
+print(f"P(session > 30s): {p_long:.4f}")
+
+# 6. HYPOTHESIS TEST: Has λ changed?
+# New data (possibly different rate):
+new_data = np.random.exponential(8, 500)  # λ=0.125
+new_lam = 1 / new_data.mean()
+print(f"New λ: {new_lam:.4f}")
+# Compare distributions (KS test):
+ks_stat, p_value = stats.ks_2samp(data, new_data)
+print(f"KS test p-value: {p_value:.4f}")
+# p < 0.05 → distributions differ significantly
+"""
+
+print(pipeline_code)</div>
+
+<div class="code-block"># ── STEP 3: Probability in your apps ──
+# LedgerPilot and Ipractus.
+
+your_apps = """
+PROBABILITY IN YOUR APPS:
+
+LedgerPilot (Django + MySQL + Vue):
+  → Fraud detection: Bayes theorem (Door 1)
+    P(fraud | unusual pattern) = update with signals
+  → Spending prediction: Normal distribution (Door 3)
+    Monthly expenses ~ Normal(μ, σ)
+  → Server load: Poisson process (Door 7)
+    Requests/sec → capacity planning
+  → Cache hit rate: Markov chain (Door 8)
+    User session → page transitions
+  → Backup reliability: Exponential (Door 4)
+    MTBF → P(server failure)
+
+Ipractus (Django + PostgreSQL + React + LiveKit):
+  → Appointment no-shows: Binomial (Door 3)
+    P(no-show) → overbooking strategy
+  → Call duration: Exponential (Door 4)
+    Telehealth session length
+  → Video quality: Adaptive bitrate (probability of bandwidth)
+  → Patient risk scores: Logistic regression (Door 1)
+    P(complication | symptoms)
+
+PYTHON: Fraud detection for LedgerPilot:
+  P_fraud = 0.001  # base rate
+  signals = {
+      'unusual_location': 5.0,   # likelihood ratio
+      'large_amount': 3.0,
+      'odd_time': 2.0,
+      'new_device': 4.0,
+  }
+
+  # Sequential Bayesian updating:
+  posterior = P_fraud
+  for signal, lr in signals.items():
+      if has_signal(signal):
+          posterior = (lr * posterior) / (
+              lr * posterior + 1 * (1 - posterior))
+  # If posterior > 0.5 → flag as likely fraud
+"""
+
+print(your_apps)</div>
+
+<div class="code-block"># ── STEP 4: Probability for ML and AI ──
+# How probability underlies all machine learning.
+
+ml_prob = """
+PROBABILITY IN ML/AI:
+
+1. NAIVE BAYES CLASSIFIER:
+   P(class | features) ∝ P(class) × Π P(feature | class)
+   → Spam filtering, sentiment analysis
+   → Assumes features independent (naive)
+
+2. GAUSSIAN MIXTURE MODELS:
+   P(x) = Σ wᵢ × Normal(x | μᵢ, σᵢ)
+   → Clustering (soft assignment)
+   → Density estimation
+
+3. LOGISTIC REGRESSION:
+   P(y=1 | x) = sigmoid(w·x + b)
+   → Binary classification
+   → Bernoulli distribution for output
+
+4. BAYESIAN NEURAL NETWORKS:
+   P(weights | data) instead of point estimates
+   → Uncertainty in predictions
+   → MCMC or variational inference
+
+5. REINFORCEMENT LEARNING:
+   P(action) → policy
+   P(reward | state, action) → model
+   → Markov Decision Processes
+
+6. NATURAL LANGUAGE PROCESSING:
+   P(word | context) → language models
+   → n-grams, neural LMs, transformers
+   → P(sentence) = Π P(word | previous)
+
+7. GENERATIVE MODELS:
+   VAE: P(x) = ∫ P(x|z)P(z)dz
+   GAN: min-max game on distributions
+   Diffusion: reverse Markov chain
+
+8. INFORMATION THEORY:
+   Entropy: H(X) = −Σ P(x) log P(x)
+   KL divergence: D(P||Q) = Σ P(x) log(P(x)/Q(x))
+   → Foundation of compression and ML loss functions
+
+EVERY ML MODEL IS A PROBABILITY MODEL.
+  → Supervised: P(y|x)
+  → Unsupervised: P(x)
+  → Reinforcement: P(reward|action)
+"""
+
+print(ml_prob)</div>
+
+<div class="code-block"># ── STEP 5: Advanced topics and research ──
+# Where to go next.
+
+advanced = """
+ADVANCED PROBABILITY TOPICS:
+
+1. MEASURE THEORY:
+   → Rigorous foundation for probability
+   → Probability spaces (Ω, F, P)
+   → Lebesgue integration
+   → Graduate-level probability
+
+2. STOCHASTIC PROCESSES:
+   → Brownian motion (Wiener process)
+   → Martingales (fair games)
+   → Stochastic differential equations (SDEs)
+   → Financial modeling (Black-Scholes)
+
+3. LARGE DEVIATION THEORY:
+   → Precise asymptotics for rare events
+   → Cramer's theorem, Sanov's theorem
+   → Beyond Chebyshev/Chernoff
+
+4. RANDOM MATRIX THEORY:
+   → Eigenvalue distributions of random matrices
+   → Applications in physics, ML, statistics
+
+5. CONCENTRATION OF MEASURE:
+   → High-dimensional geometry
+   → "In high dimensions, everything is near the boundary"
+   → JL lemma, random projections
+
+6. PROBABILISTIC METHODS:
+   → Prove existence via randomness
+   → Erdős: "probabilistic proof"
+   → Random graphs, Ramsey theory
+
+7. CAUSAL INFERENCE:
+   → Beyond correlation → causation
+   → Do-calculus (Judea Pearl)
+   → Counterfactuals
+
+8. BAYESIAN NONPARAMETRICS:
+   → Infinite-dimensional models
+   → Dirichlet processes, Gaussian processes
+   → "Let the data decide the complexity"
+
+BOOKS:
+  → "Probability and Statistics" (DeGroot)
+  → "Pattern Recognition and ML" (Bishop)
+  → "Information Theory" (Cover & Thomas)
+  → "Reinforcement Learning" (Sutton & Barto)
+"""
+
+print(advanced)</div>
+
+<div class="code-block"># ── STEP 6: The journey and what's next ──
+# Your path forward in probability.
+
+journey = """
+YOUR JOURNEY IN PROBABILITY:
+
+You started seeing probability as "chance."
+You finish seeing the MATHEMATICS OF UNCERTAINTY:
+
+WHAT YOU CAN NOW DO:
+  ✅ Calculate probabilities for any event
+  ✅ Update beliefs with Bayes theorem
+  ✅ Choose the right distribution for data
+  ✅ Analyze algorithms probabilistically
+  ✅ Design queueing systems and servers
+  ✅ Understand Markov chains and PageRank
+  ✅ Apply Monte Carlo methods
+  ✅ Build probabilistic ML models
+  ✅ Quantify risk and reliability
+  ✅ Reason about rare events and Black Swans
+
+WHAT TO STUDY NEXT:
+  → Statistics (Door 34): inference, hypothesis testing
+  → Machine Learning: models = probability distributions
+  → Information theory: entropy, compression, KL divergence
+  → Bayesian methods: prior, posterior, MCMC
+  → Stochastic processes: Brownian motion, martingales
+  → Causal inference: beyond correlation
+
+"Probability theory is nothing but
+ common sense reduced to calculation."
+ — Pierre-Simon Laplace (1812)
+
+These concepts underlie ALL of data science,
+machine learning, and modern AI.
+From Bayes (1763) to MCMC to diffusion models,
+probability is the language of uncertainty.
+
+Welcome to probability mastery.
+"""
+
+print(journey)
+
+# FINAL SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Door             │ Key Concept                     │
+# ├──────────────────┼──────────────────────────────────┤
+# │ 1 Fundamentals   │ Bayes theorem, conditional P    │
+# │ 2 EV/Variance    │ E[X], Var(X), LLN, CLT          │
+# │ 3 Distributions  │ Normal, Binomial, Poisson, Exp  │
+# │ 4 Memoryless     │ Exponential, M/M/1, reliability │
+# │ 5 Concentration  │ Markov, Chebyshev, Chernoff     │
+# │ 6 Combinatorial  │ Monty Hall, gambling, paradoxes │
+# │ 7 Poisson        │ Server capacity, regression     │
+# │ 8 Markov         │ PageRank, HMM, MCMC             │
+# │ 9 Monte Carlo    │ π, integration, annealing       │
++# │ 10 Complete      │ Full pipeline, ML applications  │
++# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">৯</div><div class="sc-label">শিক্ষক</div></div>
