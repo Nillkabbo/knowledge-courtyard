@@ -1055,31 +1055,388 @@ doors.push({
 <div class="dialogue"><strong>রঙ-কারিগর লাবিব:</strong> তামির (Door ৭) তোমাকে গ্রাফ দিয়েছেন। এখন সেই গ্রাফে রঙ করো। কেন? কম্পাইলারে ভেবে দেখো — তোমার ১৬টি CPU রেজিস্টার, কিন্তু ১০০টি ভেরিয়েবল। কোন ভেরিয়েবল কোন রেজিস্টারে? একই সময়ে ব্যবহৃত হলে আলাদা রেজিস্টার দরকার। এটাই graph coloring! প্রতিটি ভেরিয়েবল নোড, একসাথে ব্যবহৃত হলে এজ। রঙের সংখ্যা = রেজিস্টার সংখ্যা। Chaitin ১৯৮১-এ এটা দেখিয়েছিলেন।</div>
 <div class="dialogue en"><strong>Color Artisan Labib:</strong> Tamir (Door 7) gave you graphs. Now color them. Why? Think of compilers — 16 CPU registers, 100 variables. Which goes where? Simultaneous use needs separate registers. This IS graph coloring! Variables = nodes, conflict = edges. Number of colors = registers. Chaitin 1981.</div>
 
-<div class="code-block"># — Python: Graph Coloring —
+<div class="code-block"># ── STEP 1: Graph coloring basics ──
+# Assign colors so no two adjacent vertices share a color.
 
-  import networkx as nx
+coloring_basics = """
+GRAPH COLORING:
 
-  # ভেরিয়েবল কনফ্লিক্ট গ্রাফ (যেগুলো একসাথে live)
-  G = nx.Graph()
-  G.add_edges_from([
-      ("a", "b"), ("a", "c"),  # a ও b, a ও c একসাথে live
-      ("b", "c"), ("b", "d"),
-      ("c", "d"),
-  ])
+A COLORING assigns colors to vertices so that:
+  → No two ADJACENT vertices have the SAME color.
 
-  # Greedy coloring (সবচেয়ে কম রঙ)
-  coloring = nx.coloring.greedy_color(G, strategy="largest_first")
-  print(coloring)
-  # {'c': 0, 'b': 1, 'a': 2, 'd': 0}
-  # ৩টি রঙ লাগলো (= ৩টি রেজিস্টার)
+CHROMATIC NUMBER χ(G):
+  The MINIMUM number of colors needed to color graph G.
 
-  # Chromatic number:
-  print(max(coloring.values()) + 1)  # 3
+EXAMPLES:
+  K₁ (single vertex): χ = 1
+  K₂ (single edge): χ = 2
+  K₃ (triangle): χ = 3 (all three connected)
+  K₄ (tetrahedron): χ = 4
+  K_n (complete graph): χ = n
+  Bipartite graph: χ = 2
+  Tree: χ = 2 (bipartite)
+  Cycle (even length): χ = 2
+  Cycle (odd length): χ = 3
+  Planar graph: χ ≤ 4 (Four Color Theorem!)
 
-  # Four Color Theorem: যেকোনো planar graph ≤ ৪
-  planar = nx.random_geometric_graph(20, 0.3)
-  coloring = nx.coloring.greedy_color(planar)
-  print(max(coloring.values()) + 1)  # ≤ 4 (সাধারণত)</div>
+WHY IT MATTERS:
+  → Map coloring (countries/regions)
+  → Register allocation in compilers
+  → Scheduling (time slots, exam periods)
+  → Frequency assignment (cell towers)
+"""
+
+print(coloring_basics)
+
+# PYTHON: Graph coloring:
+color_code = """
+import networkx as nx
+
+# Greedy graph coloring:
+G = nx.Graph()
+G.add_edges_from([('a','b'), ('a','c'), ('b','c'), ('b','d'), ('c','d')])
+
+# Greedy coloring (not always optimal, but fast):
+coloring = nx.coloring.greedy_color(G, strategy='largest_first')
+print(coloring)  # {'c': 0, 'b': 1, 'a': 2, 'd': 0}
+
+# Chromatic number (approximate):
+chromatic = max(coloring.values()) + 1
+print(f"Colors used: {chromatic}")  # 3
+
+# Verify: no adjacent vertices share a color:
+for u, v in G.edges():
+    assert coloring[u] != coloring[v], f"Conflict: {u} and {v} same color!"
+print("Valid coloring ✅")
+"""
+
+print(color_code)</div>
+
+<div class="code-block"># ── STEP 2: The Four Color Theorem ──
+# Every map can be colored with just 4 colors.
+
+four_color = """
+THE FOUR COLOR THEOREOREM:
+
+STATEMENT:
+  Any planar graph (any map) can be colored with AT MOST 4 colors
+  so that no two adjacent regions share a color.
+
+HISTORY:
+  1852: Francis Guthrie conjectured (while coloring map of England)
+  1879: Kempe published "proof" (WRONG — flaw found 1890)
+  1976: Appel & Haken proved it — FIRST major computer-assisted proof!
+  → They used 1,936 reducible configurations checked by computer
+  → 1,200+ hours of computation on 1970s mainframe
+  → Controversial: "is a computer proof a real proof?"
+
+WHY IT'S REMARKABLE:
+  → Seems obvious but took 124 years to prove
+  → 4 colors suffice for ANY map (countries, states, regions)
+  → Planar graphs: χ ≤ 4 always
+
+PLANAR GRAPHS:
+  A graph is PLANAR if it can be drawn with no crossing edges.
+  → Maps: each region = vertex, shared border = edge
+  → K₄ is planar (χ=4)
+  → K₅ is NOT planar (can't draw without crossing)
+
+KURATOWSKI'S THEOREM:
+  A graph is non-planar iff it contains K₅ or K₃,₃ as a subdivision.
+  → K₅ (complete on 5 vertices): non-planar
+  → K₃,₃ (complete bipartite 3×3): non-planar
+
+PROOF BY COMPUTER:
+  → Appel & Haken: reduced to 1,936 cases
+  → Each case verified by computer
+  → First proof that HUMAN could not check alone
+  → Sparked debate: what counts as mathematical proof?
+"""
+
+print(four_color)
+
+# PYTHON: Verify on sample maps:
+verify_code = """
+import networkx as nx
+
+# Test: random planar graphs can be colored with ≤4:
+for _ in range(100):
+    # Random geometric graph (approximately planar):
+    G = nx.random_geometric_graph(30, 0.3)
+    coloring = nx.coloring.greedy_color(G, strategy='DSATUR')
+    colors_used = max(coloring.values()) + 1
+    assert colors_used <= 4, f"Four Color Theorem violated: {colors_used}"
+
+print("Four Color Theorem verified on 100 random planar graphs ✅")
+
+# Adjacency list coloring (from scratch):
+def greedy_color(graph):
+    color = {}  # vertex → color
+    for v in graph:
+        # Find smallest color not used by neighbors:
+        used = {color[n] for n in graph[v] if n in color}
+        c = 0
+        while c in used:
+            c += 1
+        color[v] = c
+    return color
+
+# Example:
+graph = {'A': ['B', 'C'], 'B': ['A', 'C', 'D'], 'C': ['A', 'B', 'D'], 'D': ['B', 'C']}
+print(greedy_color(graph))
+# {'A': 0, 'B': 1, 'C': 2, 'D': 0} — 3 colors
+"""
+
+print(verify_code)</div>
+
+<div class="code-block"># ── STEP 3: Graph coloring in compilers ──
+# Register allocation via graph coloring.
+
+compiler_coloring = """
+REGISTER ALLOCATION (Chaitin's Algorithm):
+
+PROBLEM: A CPU has limited registers (e.g., 16).
+Variables that are LIVE at the same time can't share a register.
+
+GRAPH COLORING APPROACH:
+  1. Build INTERFERENCE GRAPH:
+     → Vertices = variables
+     → Edge between variables that are LIVE simultaneously
+
+  2. Color the graph:
+     → Each color = one register
+     → Variables with different colors use different registers
+     → Goal: use ≤ number of available registers
+
+  3. If graph can't be colored with available registers:
+     → SPILL some variables to memory (RAM)
+     → Slower but correct
+
+EXAMPLE:
+  Variables: a, b, c, d
+  Live ranges: a conflicts with b, c; b conflicts with c, d; c conflicts with d
+
+  Interference graph:
+    a — b
+    | \\ |
+    c — d
+
+  Coloring: a=reg0, b=reg1, c=reg2, d=reg0
+  → 3 registers used
+
+WHY GRAPH COLORING?
+  → Models the constraint perfectly
+  → Minimizes register usage (fewer spills = faster code)
+  → NP-complete (so use heuristics/greedy)
+
+THIS IS WHY COMPILERS ARE SMART:
+  → gcc, LLVM, clang all use graph coloring for registers
+  → Your Python code → bytecode → interpreter → ...
+  → Your C code → assembly → register allocation → machine code
+"""
+
+print(compiler_coloring)</div>
+
+<div class="code-block"># ── STEP 4: Graph coloring in scheduling ──
+# Real-world applications beyond maps.
+
+scheduling = """
+GRAPH COLORING APPLICATIONS:
+
+1. EXAM SCHEDULING:
+   → Vertices = exams, Edges = conflicts (students in both)
+   → Colors = time slots
+   → Goal: minimize number of time slots with no conflicts
+
+   Example: 5 exams, some students take multiple
+   → Build conflict graph
+   → Color it → optimal schedule
+
+2. JOB SCHEDULING:
+   → Vertices = tasks, Edges = can't run simultaneously
+   → Colors = processors/time slots
+   → Goal: minimize total time
+
+3. FREQUENCY ASSIGNMENT:
+   → Vertices = cell towers, Edges = overlapping coverage
+   → Colors = frequencies
+   → Adjacent towers get different frequencies (no interference)
+
+4. MAP COLORING:
+   → Vertices = countries/states, Edges = shared border
+   → Colors = colors
+   → Four Color Theorem: 4 always suffice
+
+5. SUDOKU:
+   → 81 cells = vertices
+   → Edges between cells in same row/column/box
+   → 9 colors = digits 1-9
+   → Valid Sudoku = proper 9-coloring
+
+6. BIPARTITE MATCHING:
+   → Two groups that need matching (jobs to workers)
+   → Bipartite graphs have χ = 2
+   → Matching algorithms (Hopcroft-Karp)
+"""
+
+print(scheduling)
+
+# PYTHON: Sudoku as graph coloring:
+sudoku_code = """
+import networkx as nx
+
+def build_sudoku_graph():
+    \"\"\"Build graph for Sudoku (81 vertices, edges = conflicts).\"\"\"
+    G = nx.Graph()
+    # Add 81 vertices (cells):
+    for r in range(9):
+        for c in range(9):
+            G.add_node((r, c))
+
+    # Add edges (conflicts):
+    for r in range(9):
+        for c in range(9):
+            # Same row:
+            for c2 in range(9):
+                if c2 != c:
+                    G.add_edge((r, c), (r, c2))
+            # Same column:
+            for r2 in range(9):
+                if r2 != r:
+                    G.add_edge((r, c), (r2, c))
+            # Same 3×3 box:
+            br, bc = (r // 3) * 3, (c // 3) * 3
+            for dr in range(3):
+                for dc in range(3):
+                    nr, nc = br + dr, bc + dc
+                    if (nr, nc) != (r, c):
+                        G.add_edge((r, c), (nr, nc))
+    return G
+
+# Sudoku = 9-coloring problem
+# (each color = digit 1-9, adjacent cells must differ)
+print("Sudoku is a 9-coloring problem on 81 vertices")
+"""
+
+print(sudoku_code)</div>
+
+<div class="code-block"># ── STEP 5: Coloring algorithms and complexity ──
+# Graph coloring is NP-complete — finding optimal is HARD.
+
+complexity = """
+GRAPH COLORING COMPLEXITY:
+
+DECISION PROBLEM: "Can graph G be colored with k colors?"
+  → NP-complete for k ≥ 3
+
+  k=1: trivial (only if no edges)
+  k=2: easy (bipartite check — BFS)
+  k=3: NP-complete!
+  k=n: trivial (n colors, one per vertex)
+
+ALGORITHMS:
+
+1. GREEDY COLORING (fast, not optimal):
+   → Process vertices in order
+   → Assign smallest available color
+   → Time: O(V + E)
+   → Uses at most Δ+1 colors (Δ = max degree)
+   → Not always optimal (may use more than χ)
+
+2. DSATUR (degree of saturation):
+   → Order by saturation (number of differently colored neighbors)
+   → Better than simple greedy
+   → Still heuristic
+
+3. BACKTRACKING (exact, exponential):
+   → Try colorings, backtrack on conflict
+   → Time: O(k^V) — exponential!
+   → Only for small graphs
+
+4. WELSH-POWELL:
+   → Order by degree (highest first)
+   → Assign colors greedily
+   → Uses at most Δ+1 colors
+
+5. INTEGER LINEAR PROGRAMMING:
+   → Formulate as ILP, use solver
+   → Optimal but slow for large graphs
+
+THEOREM (Brooks):
+  χ(G) ≤ Δ for any connected graph except K_n and odd cycles.
+  → So greedy's Δ+1 is at most 1 over optimal.
+"""
+
+print(complexity)
+
+# PYTHON: Greedy vs optimal coloring:
+compare_code = """
+import networkx as nx
+
+# Greedy coloring (heuristic):
+def greedy_color_count(G):
+    coloring = nx.coloring.greedy_color(G, strategy='largest_first')
+    return max(coloring.values()) + 1
+
+# Test on known graphs:
+# Triangle (K₃): χ = 3:
+K3 = nx.complete_graph(3)
+print(f"K₃ greedy: {greedy_color_count(K3)}")  # 3 (optimal)
+
+# Bipartite: χ = 2:
+B = nx.complete_bipartite_graph(3, 3)
+print(f"K₃,₃ greedy: {greedy_color_count(B)}")  # 2 (optimal)
+
+# Petersen graph: χ = 3:
+P = nx.petersen_graph()
+print(f"Petersen greedy: {greedy_color_count(P)}")  # 3 (optimal)
+
+# Random graph:
+import random
+for n in [10, 20, 50]:
+    G = nx.gnp_random_graph(n, 0.3)
+    print(f"Random({n}): greedy={greedy_color_count(G)}")
+"""
+
+print(compare_code)</div>
+
+<div class="code-block"># ── STEP 6: Coloring best practices ──
+# Apply coloring effectively.
+
+best_practices = [
+    "Graph coloring: adjacent vertices get different colors",
+    "Chromatic number χ(G) = minimum colors needed",
+    "Four Color Theorem: planar graphs need ≤ 4 colors",
+    "K_n (complete graph) needs exactly n colors",
+    "Bipartite graphs need exactly 2 colors",
+    "Greedy coloring uses ≤ Δ+1 colors (Δ = max degree)",
+    "Finding optimal coloring is NP-complete (k≥3)",
+    "Register allocation: variables live together = adjacent",
+    "Exam scheduling: conflicts = edges, slots = colors",
+    "Sudoku = 9-coloring problem on 81 vertices",
+    "Greedy is fast but not always optimal",
+    "DSATUR strategy better than simple greedy",
+    "Welsh-Powell: order by degree, then greedy",
+    "Brooks' theorem: χ ≤ Δ (except K_n, odd cycles)",
+    "Appel & Haken: first computer-assisted proof (1976)",
+]
+
+print("GRAPH COLORING BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Graph            │ Chromatic Number                │
+# ├──────────────────┼──────────────────────────────────┤
+# │ K_n (complete)  │ n                               │
+# │ Bipartite        │ 2                               │
+# │ Tree             │ 2                               │
+# │ Odd cycle        │ 3                               │
+# │ Even cycle       │ 2                               │
+# │ Planar           │ ≤ 4 (Four Color Theorem)       │
+# │ Petersen         │ 3                               │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="verse">وَفِي خَلْقِكُمْ وَمَا يَبُثُّ مِن دَابَّةٍ آيَاتٌ لِّقَوْمٍ يُوقِنُونَ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং তোমাদের সৃষ্টিতে এবং যেসব জীব তিনি ছড়িয়েছেন তাতে নিদর্শন রয়েছে।" — কুরআন ৪৫:৪</div>
