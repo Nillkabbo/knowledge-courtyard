@@ -1966,36 +1966,368 @@ doors.push({
 <div class="dialogue"><strong>ঝুঁকি-প্রহরী ওমর:</strong> Markov inequality: P(X≥a) ≤ E[X]/a। সবচেয়ে সহজ — শুধু E[X] লাগে। Chebyshev: P(|X-μ|≥kσ) ≤ ১/k²। কিছুটা শক্ত — Var লাগে। k=৩ হলে সর্বোচ্চ ১/৯ ~= ১১%। কিন্তু normal-এ ৩σ = ০.৩%। Chebyshev conservative! Chernoff: সবচেয়ে শক্ত — exponential decay। Hoeffding: sample mean কতটা নির্ভরযোগ্য। এগুলো tail risk মাপে।</div>
 <div class="dialogue en"><strong>Risk Guardian Umar:</strong> Markov inequality: P(X≥a) ≤ E[X]/a. Simplest — only needs E[X]. Chebyshev: P(|X-μ|≥kσ) ≤ 1/k². A bit stronger — needs Var. k=3 gives max 1/9 ~= 11%. But for normal 3σ = 0.3%. Chebyshev is conservative! Chernoff: strongest — exponential decay. Hoeffding: how reliable is sample mean. These measure tail risk.</div>
 
-<div class="code-block"># — Python: Concentration Inequalities —
+<div class="code-block"># ── STEP 1: Why concentration inequalities matter ──
+# Bound the probability of extreme events.
 
-  import numpy as np
+intro = """
+CONCENTRATION INEQUALITIES:
 
-  # Markov: P(X>=a) <= E[X]/a
-  EX = 10  # average loss $10
-  a = 50   # threshold
-  markov_bound = EX / a
-  print(f"Markov: P(X>=50) <= {markov_bound:.2f}")  # 0.20
+"Concentration" = how tightly a random variable clusters around its mean.
 
-  # Chebyshev: P(|X-mu|>=k*sigma) <= 1/k^2
-  for k in [2, 3, 4]:
-      cheb = 1 / k**2
-      print(f"Chebyshev k={k}: <= {cheb:.4f}")
-  # k=2: 0.25, k=3: 0.111, k=4: 0.0625
+These inequalities BOUND the probability of large deviations.
 
-  # Chernoff (coin flips):
-  # P(>= 60 heads in 100 flips) when p=0.5
-  from scipy.stats import binom
-  exact = 1 - binom.cdf(59, 100, 0.5)
-  print(f"Exact P(X>=60): {exact:.4f}")  # ~0.028
-  # Chernoff: <= exp(-0.1^2 * 50 / 3) ~= 0.044
+HIERARCHY (from weakest to strongest):
+  1. Markov's Inequality (weakest, needs only mean)
+  2. Chebyshev's Inequality (needs mean + variance)
+  3. Chernoff/Hoeffding Bounds (strongest, needs independence)
 
-  # Black Swan simulation:
-  # 99% of days: +1. 1% of days: -200.
-  returns = np.where(
-      np.random.random(10000) < 0.99, 1, -200
-  )
-  cumulative = np.cumsum(returns)
-  # বেশিরভাগ দিন লাভ, কিন্তু rare crash সব মুছে দেয়!</div>
+WHY WE NEED BOUNDS:
+  → Algorithms: probability of bad performance
+  → Statistics: confidence in estimates
+  → Machine learning: generalization bounds
+  → Finance: risk management
+  → Systems: SLA guarantees
+"""
+
+print(intro)</div>
+
+<div class="code-block"># ── STEP 2: Markov's inequality ──
+# The simplest, most general bound.
+
+markov = """
+MARKOV'S INEQUALITY:
+
+For any non-negative random variable X with E[X] = μ:
+  P(X ≥ a) ≤ μ / a
+
+EXAMPLES:
+  → E[losses] = $10 → P(loss > $50) ≤ 10/50 = 20%
+  → E[response time] = 100ms → P(time > 500ms) ≤ 100/500 = 20%
+  → E[requests] = 1000/sec → P(requests > 3000) ≤ 1000/3000 = 33%
+
+STRENGTHS:
+  → Very general (works for ANY non-negative distribution)
+  → Only needs the mean
+  → Simple to compute
+
+WEAKNESSES:
+  → Very loose bound (actual probability often much smaller)
+  → Only works for non-negative variables
+  → Doesn't use variance or shape info
+
+WHY IT'S USEFUL DESPITE BEING LOOSE:
+  → When you ONLY know the mean (nothing else)
+  → Foundation for proving other inequalities
+  → Sometimes it's the best you can do with limited information
+"""
+
+print(markov)
+
+# PYTHON: Markov's inequality:
+markov_code = """
+import numpy as np
+
+# Server response times (exponential, mean=100ms):
+np.random.seed(42)
+times = np.random.exponential(100, 100000)
+mu = np.mean(times)
+
+# Actual P(time > 500ms):
+actual = np.mean(times > 500)
+# Markov bound:
+bound = mu / 500
+
+print(f"E[X] = {mu:.2f}ms")
+print(f"P(X > 500ms): actual={actual:.4f}, Markov bound={bound:.4f}")
+# actual ≈ 0.0067, bound = 0.20 (Markov is loose!)
+
+# For different thresholds:
+for a in [200, 300, 500, 1000]:
+    actual = np.mean(times > a)
+    bound = mu / a
+    print(f"P(X>{a:4d}ms): actual={actual:.4f}, bound={bound:.4f}")
+"""
+
+print(markov_code)</div>
+
+<div class="code-block"># ── STEP 3: Chebyshev's inequality ──
+# Uses variance for tighter bounds.
+
+chebyshev = """
+CHEBYSHEV'S INEQUALITY:
+
+For any random variable X with mean μ and variance σ²:
+  P(|X − μ| ≥ kσ) ≤ 1/k²
+
+  Equivalently: P(|X − μ| ≥ a) ≤ σ²/a²
+
+EXAMPLES:
+  → σ = 5 → P(|X−μ| ≥ 10) ≤ 5²/10² = 25%
+  → σ = 5 → P(|X−μ| ≥ 15) ≤ 25/225 = 11%
+  → σ = 5 → P(|X−μ| ≥ 25) ≤ 25/625 = 4%
+
+INTERPRETATION:
+  "At most 1/k² of the data is more than k standard deviations away."
+
+  k=2: at most 25% outside μ±2σ (actual: ~5% for normal)
+  k=3: at most 11% outside μ±3σ (actual: ~0.3% for normal)
+
+CHEBYSHEV VS 68-95-99.7 RULE:
+  68-95-99.7 only works for NORMAL distributions.
+  Chebyshev works for ALL distributions (with finite variance).
+  → Chebyshev is universal but loose.
+
+APPLICATION TO SAMPLE MEAN:
+  P(|sample_mean − E[X]| ≥ ε) ≤ Var(X) / (nε²)
+  → To halve the error, quadruple the sample size!
+  → This is the proof of the Weak Law of Large Numbers.
+"""
+
+print(chebyshev)
+
+# PYTHON: Chebyshev verification:
+cheb_code = """
+import numpy as np
+
+# Normal distribution (mean=10, std=2):
+np.random.seed(42)
+data = np.random.normal(10, 2, 100000)
+mu, sigma = 10, 2
+
+for k in [1, 2, 3, 4, 5]:
+    actual = np.mean(np.abs(data - mu) >= k * sigma)
+    bound = 1 / k**2
+    print(f"k={k}: P(|X-μ|≥{k}σ): actual={actual:.4f}, Chebyshev={bound:.4f}")
+
+# k=1: actual=0.3173, bound=1.0 (useless!)
+# k=2: actual=0.0455, bound=0.25
+# k=3: actual=0.0027, bound=0.111
+# k=4: actual=0.0001, bound=0.0625
+# k=5: actual=0.0000, bound=0.04
+
+# For a NON-NORMAL distribution (uniform[0,1]):
+uniform_data = np.random.uniform(0, 1, 100000)
+mu_u, sigma_u = 0.5, np.sqrt(1/12)
+
+print("\\nUniform[0,1]:")
+for k in [1, 2]:
+    actual = np.mean(np.abs(uniform_data - mu_u) >= k * sigma_u)
+    bound = 1 / k**2
+    print(f"k={k}: actual={actual:.4f}, Chebyshev={bound:.4f}")
+"""
+
+print(cheb_code)</div>
+
+<div class="code-block"># ── STEP 4: Chernoff and Hoeffding bounds ──
+# Exponential bounds — much tighter.
+
+chernoff = """
+CHERNOFF BOUND:
+
+For sum of independent Bernoulli trials X = X₁ + ... + Xₙ:
+  P(X ≥ (1+δ)μ) ≤ exp(−δ²μ/3) for δ ∈ (0,1)
+
+  where μ = E[X] = np
+
+EXAMPLE: 100 coin flips (p=0.5), μ = 50
+  P(X ≥ 60)? δ = 60/50 − 1 = 0.2
+  Chernoff: exp(−0.04 × 50 / 3) = exp(−0.667) ≈ 0.51 (loose bound)
+
+  Better version: exp(−δ²μ/(2+δ)) ≈ exp(−0.77) ≈ 0.46
+
+HOEFFDING'S INEQUALITY:
+
+For bounded independent variables X_i ∈ [a_i, b_i]:
+  P(|sample_mean − E[X]| ≥ ε) ≤ 2 × exp(−2n²ε² / Σ(b_i−a_i)²)
+
+  For Bernoulli: P(|sample_mean − p| ≥ ε) ≤ 2 × exp(−2nε²)
+
+  This is VERY tight for sample means!
+
+WHY CHERNOFF/HOEFFDING ARE BETTER:
+  Chebyshev: P(bad) ≤ 1/k² (polynomial decay)
+  Chernoff:  P(bad) ≤ e^(−ck) (exponential decay!)
+
+  Exponential is MUCH faster than polynomial.
+  → Chernoff gives practical, useful bounds.
+
+APPLICATIONS:
+  → Machine learning generalization (PAC learning)
+  → Randomized algorithms (high probability correctness)
+  → Streaming algorithms (frequency moments)
+  → Statistical learning theory
+"""
+
+print(chernoff)
+
+# PYTHON: Comparing bounds:
+bounds_code = """
+import numpy as np
+from scipy.stats import binom
+
+# 1000 coin flips, p=0.5
+n, p = 1000, 0.5
+mu = n * p  # 500
+
+# What's P(X >= 550)?
+actual = 1 - binom.cdf(549, n, p)
+
+# Chebyshev bound:
+var = n * p * (1-p)  # 250
+cheb_bound = var / 50**2  # σ²/a² where a=50
+
+# Chernoff bound:
+delta = 550/mu - 1  # 0.1
+chernoff_bound = np.exp(-delta**2 * mu / 3)
+
+# Hoeffding bound:
+hoeffding_bound = 2 * np.exp(-2 * n * (0.05)**2)  # ε=0.05
+
+print(f"P(X >= 550):")
+print(f"  Actual:        {actual:.6f}")
+print(f"  Chebyshev:     {cheb_bound:.6f} (loose)")
+print(f"  Chernoff:      {chernoff_bound:.6f}")
+print(f"  Hoeffding:     {hoeffding_bound:.6f}")
+print(f"  Markov:        {mu/550:.6f} (very loose)")
+
+# Sample size for confidence (Hoeffding):
+# Want P(|sample_mean - p| >= 0.01) <= 0.05
+# Hoeffding: 2*exp(-2n*0.01^2) <= 0.05
+# exp(-0.0002n) <= 0.025
+# n >= ln(40)/0.0002 ≈ 18,442
+import math
+n_needed = math.log(40) / (2 * 0.01**2)
+print(f"\\nSample size for ±1% margin, 95% confidence: {int(n_needed)}")
+"""
+
+print(bounds_code)</div>
+
+<div class="code-block"># ── STEP 5: Black Swans and fat tails ──
+# When concentration inequalities fail.
+
+black_swan = """
+BLACK SWANS AND FAT TAILS:
+
+CONCENTRATION INEQUALITIES ASSUME:
+  → Finite variance (Chebyshev)
+  → Independence (Chernoff, Hoeffding)
+  → Bounded variables (Hoeffding)
+
+REAL WORLD VIOLATES THESE:
+  → Financial crises (correlated, not independent)
+  → Pandemics (extreme events, not normal)
+  → Earthquakes (power law, infinite variance?)
+  → Tech monopolies (winner-take-all dynamics)
+
+FAT-TAILED DISTRIBUTIONS:
+  → Power law: P(X) ~ 1/x^α (heavy tail)
+  → Much higher probability of extreme events
+  → Variance may be INFINITE
+  → Mean may not exist!
+
+  Examples: wealth (Pareto), city sizes, word frequencies,
+  earthquake magnitudes, stock market crashes.
+
+NORMAL VS POWER LAW:
+  Normal:  P(X > 4σ) ≈ 0.003% (3 in 100,000)
+  Power:   P(X > 4σ) could be 5-10%!
+
+BLACK SWAN (Nassim Taleb, 2007):
+  → Rare
+  → Extremely impactful
+  → Predicted only in hindsight
+  → Examples: 9/11, 2008 crash, COVID-19
+
+LESSON:
+  Concentration inequalities are MATHEMATICAL bounds.
+  Real-world risk is often HIGHER than mathematical bounds suggest.
+  → Always consider model risk (is my distribution correct?)
+  → Plan for the unexpected (stress testing)
+  → Don't trust normal distribution for financial risk!
+"""
+
+print(black_swan)
+
+# PYTHON: Black Swan simulation:
+swan_code = """
+import numpy as np
+
+# Strategy A: steady small gains (normal-like)
+# Strategy B: small gains, rare huge losses (fat-tailed)
+
+np.random.seed(42)
+n_days = 252  # 1 year of trading
+
+# Strategy A: +1 daily with σ=1 (normal):
+returns_A = np.random.normal(0.01, 0.02, n_days)
+
+# Strategy B: usually +0.01, but 1% chance of -0.50 crash:
+returns_B = np.where(
+    np.random.random(n_days) < 0.99,
+    np.random.normal(0.012, 0.01, n_days),  # slightly better
+    -0.50  # crash
+)
+
+# Compare:
+print(f"Strategy A: total return = {np.sum(returns_A)*100:.1f}%")
+print(f"Strategy B: total return = {np.sum(returns_B)*100:.1f}%")
+print(f"A max daily loss: {np.min(returns_A)*100:.1f}%")
+print(f"B max daily loss: {np.min(returns_B)*100:.1f}%")
+
+# Strategy B looks better on AVERAGE (higher mean)
+# But has CATASTROPHIC tail risk
+# → A few bad days wipe out months of gains
+
+# Run many simulations to see distribution of outcomes:
+outcomes_A = [np.sum(np.random.normal(0.01, 0.02, n_days)) for _ in range(1000)]
+outcomes_B = [np.sum(np.where(
+    np.random.random(n_days) < 0.99,
+    np.random.normal(0.012, 0.01, n_days), -0.50
+)) for _ in range(1000)]
+
+print(f"\\nStrategy A: worst outcome = {min(outcomes_A)*100:.1f}%")
+print(f"Strategy B: worst outcome = {min(outcomes_B)*100:.1f}%")
+# B has catastrophic worst cases (Black Swan!)
+"""
+
+print(swan_code)</div>
+
+<div class="code-block"># ── STEP 6: Concentration inequalities best practices ──
+# Apply bounds effectively.
+
+best_practices = [
+    "Markov: P(X>=a) <= E[X]/a (weakest, only needs mean)",
+    "Chebyshev: P(|X-μ|>=kσ) <= 1/k² (needs variance)",
+    "Chernoff: exponential bound (needs independence)",
+    "Hoeffding: tightest for sample means (bounded vars)",
+    "Exponential bounds >> polynomial bounds (Chernoff > Chebyshev)",
+    "Chebyshev proves Law of Large Numbers",
+    "Hoeffding determines sample sizes for polls",
+    "ML generalization uses Hoeffding/Chernoff",
+    "Concentration fails for correlated variables",
+    "Power laws have infinite variance (bounds break)",
+    "Black Swans: real risk exceeds mathematical bounds",
+    "Financial risk: normal distribution underestimates tails",
+    "Always stress-test beyond mathematical models",
+    "Sample size: quadruple for half error (Chebyshev)",
+    "PAC learning: probably approximately correct (Hoeffding)",
+]
+
+print("CONCENTRATION INEQUALITIES BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Inequality       │ Bound                           │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Markov           │ P(X≥a) ≤ μ/a                   │
+# │ Chebyshev        │ P(|X-μ|≥kσ) ≤ 1/k²            │
+# │ Chernoff         │ P(X≥(1+δ)μ) ≤ e^(-δ²μ/3)     │
+# │ Hoeffding        │ P(|mean-E|≥ε) ≤ 2e^(-2nε²)   │
+# │ Normal 3σ       │ P(|X-μ|≥3σ) ≈ 0.3%            │
+# │ Power law        │ P(X) ~ 1/x^α (fat tail)       │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Black Swan (Taleb 2007):</strong> বিরল, বিধ্বংসী, পরে বোঝা যায়। Normal distribution এই tail ধরে না! Financial crisis, pandemic, disaster — fat tail distribution। ৩σ তে বলে ০.৩% — কিন্তু বাস্তবে বেশি ঘটে। Power law: P(X) ~ 1/x^α। লম্বা tail — বিরল কিন্তু উপেক্ষা করা যায় না।</div></div>
 
