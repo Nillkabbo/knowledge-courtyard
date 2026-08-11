@@ -525,35 +525,348 @@ doors.push({
 <div class="dialogue"><strong>সূক্ষ্ম-গণক হামজা:</strong> Poisson-এর সৌন্দর্য: শুধু একটি প্যারামিটার — λ (rate)। E[X] = λ, Var(X) = λ — গড় ও variance এক! ওয়েবসাইটে প্রতি সেকেন্ডে গড়ে ১০ ভিজিটর? P(X=৫) = ১০^৫·e^(-১০)/৫! ~= ০.০৩৮। P(X=২০)? খুব কম। কিন্তু সম্ভব! বিরল কিন্তু অসম্ভব নয়। Poisson process: প্রতিটি event independent, exponential inter-arrival time।</div>
 <div class="dialogue en"><strong>Subtle Counter Hamza:</strong> Poisson's beauty: one parameter — λ (rate). E[X] = λ, Var(X) = λ — mean and variance equal! Website with average 10 visitors/sec? P(X=5) = 10^5·e^(-10)/5! ~= 0.038. P(X=20)? Very small. But possible! Rare but not impossible. Poisson process: each event independent, exponential inter-arrival.</div>
 
-<div class="code-block"># — Python: Poisson Distribution —
+<div class="code-block"># ── STEP 1: Poisson distribution deep dive ──
+# Modeling rare events over time/space.
 
-  from scipy.stats import poisson
-  import numpy as np
+poisson_deep = """
+POISSON DISTRIBUTION — DEEP DIVE:
 
-  # কল সেন্টার: λ=3 per minute
-  lam = 3
+X ~ Poisson(λ): number of events in fixed interval.
+  PMF: P(X=k) = (λ^k × e^(−λ)) / k!
+  Mean = λ, Variance = λ (identical!)
 
-  # P(exactly 0 calls)?
-  print(f"P(X=0) = {poisson.pmf(0, lam):.4f}")  # 0.0498
-  # P(exactly 3 calls)?
-  print(f"P(X=3) = {poisson.pmf(3, lam):.4f}")  # 0.2240
-  # P(exactly 6 calls)?
-  print(f"P(X=6) = {poisson.pmf(6, lam):.4f}")  # 0.0502
+KEY PROPERTY: Mean = Variance = λ
+  → If your data has mean >> variance, it's NOT Poisson
+  → If mean << variance, it's "overdispersed" (negative binomial)
 
-  # P(2 or fewer)?
-  print(f"P(X<=2) = {poisson.cdf(2, lam):.4f}")  # 0.423
+POISSON AS LIMIT OF BINOMIAL:
+  Binomial(n, p) → Poisson(λ=np) as n→∞, p→0, np=λ
+  → Rare events, many trials → Poisson
 
-  # P(more than 5)?
-  print(f"P(X>5) = {1-poisson.cdf(5, lam):.4f}")  # 0.084
+  Example: 1000 people each with 0.001 chance of disease
+  → Binomial(1000, 0.001) ≈ Poisson(1)
+  → Expected 1 case, P(0 cases) = e^(−1) = 0.368
 
-  # নিজে যাচাই করো:
-  samples = np.random.poisson(lam, 100000)
-  print(f"Sample mean: {samples.mean():.3f}")   # ~3.0
-  print(f"Sample var:  {samples.var():.3f}")    # ~3.0 (E=Var=λ!)
+POISSON PROCESS (continuous time):
+  Events at constant rate λ:
+  → N(t) = number of events in time t ~ Poisson(λt)
+  → Inter-arrival times ~ Exponential(λ)
+  → Time until k-th event ~ Gamma(k, λ)
+"""
 
-  # Poisson → Normal যখন λ বড়:
-  # λ=100 হলে Poisson(100) ~= Normal(100, 10)
-  # এটাই Central Limit Theorem-এর প্রভাব!</div>
+print(poisson_deep)
+
+# PYTHON: Poisson in practice:
+poisson_practice = """
+from scipy.stats import poisson
+import numpy as np
+
+# Call center: average 3 calls/minute
+lam = 3
+
+# Probability of different call counts:
+for k in range(8):
+    print(f"P({k} calls) = {poisson.pmf(k, lam):.4f}")
+
+# P(no calls in next minute)?
+print(f"P(0 calls) = {poisson.pmf(0, lam):.4f}")  # e^-3 = 0.0498
+
+# P(more than 5)?
+print(f"P(>5 calls) = {1-poisson.cdf(5, lam):.4f}")  # 0.0839
+
+# Verify mean = variance:
+samples = np.random.poisson(5, 1000000)
+print(f"λ=5: mean={samples.mean():.3f}, var={samples.var():.3f}")  # Both ~5
+"""
+
+print(poisson_practice)</div>
+
+<div class="code-block"># ── STEP 2: Poisson in real systems ──
+# Capacity planning, queueing, reliability.
+
+poisson_real = """
+POISSON IN REAL SYSTEMS:
+
+1. WEB SERVER CAPACITY PLANNING:
+   λ = average requests/second
+   → How many servers needed to handle peak?
+   → P(X > capacity) gives probability of overload
+
+   Example: λ=100 req/sec, server handles 150
+   P(>150 req in a second) = 1 - Poisson.cdf(150, 100)
+   ≈ very small → safe
+
+2. CALL CENTER STAFFING:
+   λ = calls per hour
+   → How many agents needed?
+   → Target: P(queue > N) < threshold
+
+3. QUALITY CONTROL:
+   λ = defects per unit
+   → P(0 defects) = e^(−λ) (probability of perfect unit)
+
+4. INSURANCE:
+   λ = claims per year
+   → Premium = λ × average claim × (1 + profit margin)
+
+5. BIOLOGY:
+   λ = mutations per generation
+   → Modeling genetic drift
+
+6. TRAFFIC:
+   λ = cars per minute
+   → Traffic light timing, road capacity
+
+SUPERPOSITION (combine independent Poissons):
+  If X₁ ~ Poisson(λ₁) and X₂ ~ Poisson(λ₂), independently:
+  X₁ + X₂ ~ Poisson(λ₁ + λ₂)
+
+  Example: Two stores get 10 and 15 customers/hour
+  → Combined: Poisson(25) customers/hour
+
+THINNING (split Poisson):
+  Each event is Type A with probability p:
+  → Type A events: Poisson(λp)
+  → Type B events: Poisson(λ(1−p))
+
+  Example: 100 visitors/hour, 30% buy
+  → Buyers: Poisson(30), Non-buyers: Poisson(70)
+"""
+
+print(poisson_real)
+
+# PYTHON: Server capacity planning:
+capacity_code = """
+from scipy.stats import poisson
+import numpy as np
+
+# Server handles 150 req/sec, average load 100:
+lam = 100
+capacity = 150
+
+# P(overload in any given second):
+p_overload = 1 - poisson.cdf(capacity, lam)
+print(f"P(>150 req/sec): {p_overload:.6f}")  # Very small
+
+# P(overload at least once in 24 hours = 86400 seconds):
+p_any_overload = 1 - (1 - p_overload) ** 86400
+print(f"P(overload in 24h): {p_any_overload:.6f}")
+
+# Find capacity for 99.99% uptime (4 nines):
+# Want P(overload per second) < 0.0001 / 86400 ≈ 1.16e-9
+target = 0.0001 / 86400
+for cap in range(130, 200):
+    p = 1 - poisson.cdf(cap, lam)
+    if p < target:
+        print(f"Need capacity {cap} req/sec for 99.99% uptime")
+        break
+
+# Quality control: defects per widget
+defect_rate = 0.5  # average 0.5 defects per widget
+print(f"P(perfect widget) = {poisson.pmf(0, defect_rate):.4f}")  # e^-0.5 = 0.607
+print(f"P(1 defect) = {poisson.pmf(1, defect_rate):.4f}")  # 0.303
+print(f"P(>=2 defects) = {1-poisson.cdf(1, defect_rate):.4f}")  # 0.090
+"""
+
+print(capacity_code)</div>
+
+<div class="code-block"># ── STEP 3: Poisson regression (statistics) ──
+# Modeling count data in ML/statistics.
+
+poisson_reg = """
+POISSON REGRESSION:
+
+Used when the DEPENDENT VARIABLE is a COUNT (non-negative integer).
+  → Number of visits to a website
+  → Number of accidents per driver
+  → Number of purchases per customer
+
+MODEL:
+  log(E[Y | X]) = β₀ + β₁X₁ + ... + βₚXₚ
+  E[Y | X] = exp(β₀ + β₁X₁ + ... + βₚXₚ)
+
+  → Y | X ~ Poisson(exp(linear predictor))
+  → log link ensures λ > 0
+
+EXAMPLE:
+  Predicting daily customer count:
+  λ = exp(2.0 + 0.5 × weekend − 0.1 × price)
+
+  Weekend: λ = exp(2.5) = 12.2 customers
+  Weekday: λ = exp(2.0) = 7.4 customers
+
+PYTHON (statsmodels):
+  import statsmodels.api as sm
+
+  model = sm.GLM(y, X, family=sm.families.Poisson()).fit()
+  print(model.summary())
+  predictions = model.predict(X_new)
+
+OVERDISPERSION:
+  If Var(Y) >> E[Y], Poisson is wrong.
+  → Use Negative Binomial regression instead.
+  → Common in real data (clustering, unobserved heterogeneity)
+
+ZERO-INFLATED POISSON:
+  When there are excess zeros (more than Poisson predicts):
+  → Mixture model: some always-zero, some Poisson
+  → Example: fish caught (many catch nothing)
+"""
+
+print(poisson_reg)</div>
+
+<div class="code-block"># ── STEP 4: Non-homogeneous Poisson process ──
+# When the rate varies over time.
+
+nonhom = """
+NON-HOMOGENEOUS POISSON PROCESS (NHPP):
+
+Rate λ(t) changes with time:
+  → Rush hour: high λ
+  → Nighttime: low λ
+  → Seasonal patterns
+
+INSTANTANEOUS RATE:
+  λ(t) = intensity function
+
+EXPECTED EVENTS IN [0, T]:
+  E[N(T)] = ∫₀ᵀ λ(t) dt
+
+EXAMPLE: Website traffic
+  λ(t) = 100 + 50 × sin(2πt/24)  # daily cycle
+  → Peak at noon, trough at midnight
+
+SIMULATION (thinning method):
+  1. Find maximum rate λ_max
+  2. Generate homogeneous Poisson(λ_max)
+  3. Accept each event with probability λ(t)/λ_max
+
+APPLICATIONS:
+  → Traffic modeling (time-varying flow)
+  → Call center staffing (hourly patterns)
+  → Crime prediction (time-of-day effects)
+  → Retail (seasonal demand)
+"""
+
+print(nonhom)
+
+# PYTHON: Non-homogeneous Poisson:
+nhpp_code = """
+import numpy as np
+
+# Website traffic: peaks at hour 14, low at night
+def rate(t):
+    \"\"\"Average requests per minute at hour t.\"\"\"
+    return 50 + 40 * np.sin(2 * np.pi * (t - 8) / 24)
+
+# Generate traffic for 24 hours:
+hours = np.linspace(0, 24, 100)
+rates = [rate(h) for h in hours]
+print(f"Peak rate (hour 14): {rate(14):.1f}/min")   # ~90
+print(f"Low rate (hour 2): {rate(2):.1f}/min")      # ~10
+
+# Thinning simulation for one hour:
+def simulate_hour(hour, duration_minutes=60):
+    lam_max = rate(hour) * 1.2  # upper bound
+    events = []
+    t = 0
+    while t < duration_minutes:
+        t += np.random.exponential(1/lam_max)
+        if t < duration_minutes:
+            # Accept with probability λ(t)/λ_max:
+            if np.random.random() < rate(hour) / lam_max:
+                events.append(t)
+    return len(events)
+
+# Traffic at different hours:
+for h in [2, 8, 14, 20]:
+    avg_events = np.mean([simulate_hour(h) for _ in range(1000)])
+    expected = rate(h) * 60
+    print(f"Hour {h}: simulated={avg_events:.1f}, expected={expected:.1f}")
+"""
+
+print(nhpp_code)</div>
+
+<div class="code-block"># ── STEP 5: Compound Poisson and insurance ──
+# When events have random sizes.
+
+compound = """
+COMPOUND POISSON PROCESS:
+
+Events arrive as Poisson(λ), but each event has a RANDOM SIZE.
+
+S(t) = Σᵢ Xᵢ  for i = 1 to N(t)
+  where N(t) ~ Poisson(λt) and Xᵢ are i.i.d. claim sizes
+
+INSURANCE APPLICATION:
+  → Claims arrive at rate λ per year
+  → Each claim size is random (e.g., Lognormal)
+  → Total payout S = sum of all claims
+
+  E[S] = E[N] × E[X] = λt × E[claim size]
+  Var(S) = E[N] × Var(X) + Var(N) × E[X]²
+         = λt × (Var(X) + E[X]²)
+
+RUIN PROBABILITY:
+  P(insurance company goes bankrupt)
+  → Depends on initial capital, premium rate, claim distribution
+  → Classical risk theory
+
+PREMIUM CALCULATION:
+  Premium > E[S] (expected payout) + expenses + profit
+  → "Expected value principle": Premium = (1+θ) × E[S]
+  → "Variance principle": Premium = E[S] + α × Var(S)
+
+EXAMPLE:
+  λ = 100 claims/year
+  Average claim: $5,000, Std: $10,000
+  E[S] = 100 × 5000 = $500,000
+  Var(S) = 100 × (10000² + 5000²) = 12.5 billion
+
+  Premium (expected value, θ=0.2): $600,000
+  → $100,000 profit expected per year
+  → But variance is huge — bad years are catastrophic!
+"""
+
+print(compound)</div>
+
+<div class="code-block"># ── STEP 6: Poisson best practices ──
+# Apply Poisson modeling effectively.
+
+best_practices = [
+    "Poisson(λ): count of events in interval, mean=variance=λ",
+    "PMF: P(X=k) = λ^k × e^(−λ) / k!",
+    "Binomial → Poisson when n large, p small, np=λ",
+    "Poisson process: events at rate λ, exponential inter-arrival",
+    "Superposition: Poisson(λ₁) + Poisson(λ₂) = Poisson(λ₁+λ₂)",
+    "Thinning: split into Poisson(λp) and Poisson(λ(1−p))",
+    "If Var >> Mean: use Negative Binomial (overdispersion)",
+    "Poisson regression for count data (log link)",
+    "Server capacity: P(overload) = 1 − CDF(capacity)",
+    "Quality: P(zero defects) = e^(−λ)",
+    "NHPP for time-varying rates (traffic, calls)",
+    "Compound Poisson for insurance/finance (random sizes)",
+    "Poisson → Normal when λ large (CLT)",
+    "Zero-inflated Poisson for excess zeros",
+    "Always check mean ≈ variance assumption",
+]
+
+print("POISSON DISTRIBUTION BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Application      │ Use Case                        │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Server capacity  │ P(overload) = 1−CDF            │
+# │ Call center      │ Staffing for target wait time   │
+# │ Quality control  │ P(zero defects) = e^(−λ)       │
+# │ Insurance        │ Compound Poisson for claims     │
+# │ Web traffic      │ NHPP for time-varying rates     │
+# │ Count data       │ Poisson regression (log link)   │
+# │ Overdispersion   │ Negative Binomial instead       │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout info"><span class="co-icon">🔢</span><div><strong>Poisson properties:</strong><br>
 <strong>P(X=k) = λ^k·e^(-λ)/k!:</strong> probability of k events<br>
