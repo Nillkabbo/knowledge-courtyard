@@ -882,18 +882,267 @@ doors.push({
     <div class="diag-cap">Byzantine Generals: সৎ সংখ্যাগরিষ্ঠ দরকার (3f+1)। Bitcoin: proof-of-work দিয়ে প্রতারক হতে ব্যয়বহুল করে তোলে — শক্তি ছাড়া সম্ভব নয়।</div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 Byzantine Fault Tolerance — পদ্ধতি</h4>
-    <table class="kv-table">
-      <tr><th>পদ্ধতি</th><th>বছর</th><th>কীভাবে</th></tr>
-      <tr><td class="hl">Byzantine Generals</td><td>১৯৮২</td><td>3f+1 নোড, সব দিয়ে যোগাযোগ</td></tr>
-      <tr><td class="hl">pBFT</td><td>১৯৯৯</td><td>প্র্যাকটিক্যাল — কম নোডে কাজ করে</td></tr>
-      <tr><td class="hl">Proof-of-Work (Bitcoin)</td><td>২০০৮</td><td>গণিত সমাধান → শক্তি খরচ → প্রতারণা ব্যয়বহুল</td></tr>
-      <tr><td class="hl">Proof-of-Stake (Ethereum)</td><td>২০২২</td><td>টোকেন জামানত → প্রতারণা = টোকেন হারানো</td></tr>
-    </table>
-    <br>
-    <p><strong>Nakamoto-এর ব্রেকথ্রু:</strong> আগের BFT পদ্ধতিগুলো কয়েক ডজন নোডে কাজ করত। Bitcoin হাজার হাজার অজানা নোডে কাজ করে — কারণ proof-of-work প্রতারকের জন্য ব্যয়বহুল কিন্তু সৎ-এর জন্য পুরস্কৃত। Genesis block (৩ জানুয়ারি ২০০৯)-এ লেখা: <em>"The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"</em> — সেদিনের লন্ডন টাইমস-এর শিরোনাম।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: Byzantine Generals Problem ──
+# When nodes can LIE — not just crash.
+
+byzantine = """
+BYZANTINE GENERALS PROBLEM (Lamport, Shostak, Pease, 1982):
+
+SCENARIO:
+  N generals besiege a city. Must agree: ATTACK or RETREAT.
+  They communicate by messengers.
+  But some generals are TRAITORS — they send different messages to different people.
+
+CAN THE LOYAL GENERALS REACH AGREEMENT?
+
+LAMPORT'S THEOREM:
+  With 3f+1 generals, f traitors can be tolerated.
+  → 4 generals, 1 traitor: SOLVABLE
+  → 3 generals, 1 traitor: IMPOSSIBLE
+
+  In general: need > 2/3 honest nodes (≥ 67% honest)
+
+WHY 3f+1?
+  → f nodes might be Byzantine (traitors)
+  → f nodes might be slow/unresponsive
+  → Need f+1 honest, responsive nodes to outvote traitors
+  → Total: f (traitor) + f (slow) + f+1 (honest) = 3f+1
+
+REAL-WORLD EXAMPLE:
+  4 servers: A, B, C, D
+  D is compromised (Byzantine).
+  A says: "Value = 5"
+  B says: "Value = 5"
+  C says: "Value = 5"
+  D says to A: "Value = 7", to B: "Value = 9", to C: "Value = 3" (lying!)
+
+  Majority (A, B, C) agree: 5. D's lies are outvoted.
+"""
+
+print(byzantine)</div>
+
+  <div class="code-block"># ── STEP 2: Practical BFT (pBFT) ──
+# Castro & Liskov, 1999. Made BFT practical.
+
+pbft = """
+PRACTICAL BFT (pBFT, 1999):
+
+pBFT works in 3 phases (all-to-all communication):
+
+1. PRE-PREPARE:
+   Primary (leader) sends proposal to all replicas
+   "I propose value = X"
+
+2. PREPARE:
+   Each replica broadcasts to all others:
+   "I received proposal X from primary"
+   → Wait until 2f+1 prepare messages
+
+3. COMMIT:
+   Each replica broadcasts:
+   "I'm ready to commit X"
+   → Wait until 2f+1 commit messages
+   → Execute and reply to client
+
+PROPERTIES:
+  → Tolerates f Byzantine nodes with 3f+1 total
+  → Safety: no two correct nodes disagree
+  → Liveness: eventually progresses (with timely messages)
+  → Primary can be replaced if Byzantine (view change)
+
+pBFT vs RAFT/PAXOS:
+  Raft/Paxos: tolerate f crash failures with 2f+1 nodes
+  pBFT: tolerate f Byzantine failures with 3f+1 nodes
+  → pBFT needs MORE nodes (33% more) and MORE messages (O(n^2))
+
+USAGE:
+  → Hyperledger Fabric (enterprise blockchain)
+  → Tendermint (Cosmos blockchain)
+  → Some permissioned blockchain systems
+
+LIMITATION:
+  → O(n^2) message complexity
+  → Doesn't scale to thousands of nodes (only dozens)
+  → Bitcoin (Nakamoto consensus) solved this for thousands of nodes
+"""
+
+print(pbft)</div>
+
+  <div class="code-block"># ── STEP 3: Bitcoin — Nakamoto consensus ──
+# Satoshi's breakthrough: BFT for thousands of anonymous nodes.
+
+bitcoin = """
+BITCOIN (Nakamoto, 2008):
+
+PROBLEM: pBFT doesn't scale beyond ~100 nodes.
+  Bitcoin needs thousands of ANONYMOUS nodes (no identity verification).
+  Traditional BFT assumes you KNOW who the nodes are.
+
+NAKAMOTO'S SOLUTION: PROOF-OF-WORK (PoW)
+
+  Instead of "majority of nodes", use "majority of COMPUTING POWER"
+
+  1. To add a block: solve a cryptographic puzzle (hashing)
+  2. Solving takes enormous computing power (electricity cost)
+  3. First solver adds block + gets reward (mining)
+  4. Longest chain wins (the chain with most work)
+
+WHY THIS IS BYZANTINE-RESISTANT:
+  → To lie (rewrite history), attacker needs MORE computing power
+    than all honest miners combined (51% attack)
+  → Lying is EXPENSIVE (wasted electricity, no reward)
+  → Telling the truth is PROFITABLE (mining reward)
+  → Economic incentive aligns with honesty
+
+KEY DIFFERENCE FROM pBFT:
+  pBFT: deterministic finality (once committed, never changes)
+  Bitcoin: probabilistic finality (after 6 confirmations, ~immutable)
+
+BITCOIN CONSENSUS:
+  → Block time: ~10 minutes
+  → Confirmation: 6 blocks (~1 hour) for high confidence
+  → Throughput: ~7 transactions/second (low!)
+  → Energy: enormous (comparable to a small country)
+
+GENESIS BLOCK (Jan 3, 2009):
+  "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"
+  → Embedded in the first Bitcoin block (timestamp proof)
+"""
+
+print(bitcoin)</div>
+
+  <div class="code-block"># ── STEP 4: Proof-of-Stake (Ethereum's solution) ──
+# Ethereum moved from PoW to PoS in 2022 (99.95% less energy).
+
+pos = """
+PROOF-OF-STAKE (PoS):
+
+PROBLEM WITH PoW: Energy consumption is enormous.
+  Bitcoin uses as much electricity as Argentina.
+  Not sustainable for global scale.
+
+PoS SOLUTION: Instead of computing power, use FINANCIAL STAKE.
+
+  1. Validators lock up (stake) cryptocurrency as collateral
+  2. Validator is randomly selected to propose a block
+  3. Other validators attest to its validity
+  4. If validator lies → loses their stake (SLASHING)
+
+ECONOMICS:
+  Honest: earn staking rewards (~5% annual)
+  Dishonest: stake is SLASHED (lose money)
+  → Incentive aligns with honesty (like PoW, but no energy waste)
+
+ETHEREUM PoS (The Merge, September 2022):
+  → Switched from PoW to PoS
+  → Energy consumption: -99.95%
+  → 32 ETH minimum stake to be a validator
+  → Slashing for dishonest behavior
+
+OTHER CONSENSUS MECHANISMS:
+  Proof-of-Authority (PoA): trusted validators (enterprise blockchain)
+  Delegated PoS (DPoS): vote for delegates (EOS, Tron)
+  Proof-of-History (PoH): Solana's timestamping optimization
+
+COMPARISON:
+                    PoW (Bitcoin)    PoS (Ethereum)
+  Energy:           Enormous         Minimal
+  Security:         Computing power   Financial stake
+  Scalability:      Low (~7 TPS)     Higher (~15-100 TPS)
+  Decentralization: High (anyone)    Medium (32 ETH minimum)
+  Finality:         Probabilistic     Eventually deterministic
+"""
+
+print(pos)</div>
+
+  <div class="code-block"># ── STEP 5: CFT vs BFT — crash vs Byzantine ──
+# When do you need which?
+
+cft_vs_bft = {
+    "CFT (Crash Fault Tolerance)": {
+        "assumption": "Nodes only FAIL (crash), never lie",
+        "min_nodes": "2f+1 to tolerate f failures",
+        "algorithms": "Paxos, Raft, ZAB",
+        "message_complexity": "O(n) — efficient",
+        "scalability": "Thousands of nodes",
+        "use_case": "Data centers, Kubernetes, cloud (trusted environment)",
+        "examples": "etcd, ZooKeeper, Consul, CockroachDB",
+    },
+    "BFT (Byzantine Fault Tolerance)": {
+        "assumption": "Nodes can LIE or act maliciously",
+        "min_nodes": "3f+1 to tolerate f Byzantine faults",
+        "algorithms": "pBFT, Nakamoto consensus (PoW), PoS",
+        "message_complexity": "O(n^2) for pBFT, O(n) for PoW/PoS",
+        "scalability": "pBFT: ~100 nodes; PoW/PoS: thousands",
+        "use_case": "Blockchain, untrusted environments",
+        "examples": "Bitcoin, Ethereum, Hyperledger Fabric",
+    },
+}
+
+print("CFT vs BFT:")
+for ft_type, info in cft_vs_bft.items():
+    print(f"\\n  {ft_type}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# DECISION GUIDE:
+decision = """
+WHEN YOU NEED CFT (Raft/Paxos):
+  → You control all nodes (data center, cloud)
+  → Nodes can fail but won't lie
+  → Need high performance and scalability
+  → 99% of enterprise distributed systems
+
+WHEN YOU NEED BFT:
+  → Nodes are anonymous or untrusted
+  → Participants might be malicious
+  → Blockchain / cryptocurrency
+  → Multi-organization system with no central authority
+  → Financial systems where fraud is possible
+
+MOST ENTERPRISE SYSTEMS → CFT (Raft)
+BLOCKCHAIN / CRYPTO → BFT (PoW / PoS)
+"""
+print(decision)</div>
+
+  <div class="code-block"># ── STEP 6: BFT in practice and best practices ──
+# Production considerations for Byzantine systems.
+
+best_practices = [
+    "Use CFT (Raft) for trusted enterprise systems (default)",
+    "Use BFT only when nodes are untrusted or anonymous",
+    "pBFT: good for permissioned blockchain (Hyperledger)",
+    "PoW: proven for public blockchain (Bitcoin), but high energy",
+    "PoS: modern choice for public blockchain (Ethereum)",
+    "Minimum nodes: 3f+1 for BFT, 2f+1 for CFT",
+    "Monitor for Byzantine behavior (unexpected responses)",
+    "Implement slashing/f penalties for dishonest nodes",
+    "Use cryptographic signatures to authenticate messages",
+    "Test with faulty/malicious nodes (chaos engineering)",
+    "Consider economic incentives (PoW reward, PoS slashing)",
+    "Document threat model (what attacks are you defending against?)",
+    "Use threshold signatures for collective signing",
+    "Regularly rotate keys (prevent long-term compromise)",
+    "Audit consensus implementation (bugs → catastrophic)",
+]
+
+print("BFT BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Algorithm        │ Fault Type                      │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Paxos/Raft       │ Crash faults (CFT)              │
+# │ pBFT             │ Byzantine faults (BFT)          │
+# │ Bitcoin (PoW)    │ Byzantine (public, anonymous)   │
+# │ Ethereum (PoS)   │ Byzantine (stake-based)         │
+# │ 3f+1 nodes       │ BFT minimum (tolerate f)        │
+# │ 2f+1 nodes       │ CFT minimum (tolerate f)        │
+# │ CFT              │ Enterprise (trusted)            │
+# │ BFT              │ Blockchain (untrusted)          │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Design) Door ৭-এ Consensus (Paxos/Raft) শিখেছিলে — সেগুলো crash fault tolerant (CFT), Byzantine fault tolerant (BFT) নয়। এই দরজায় আরও শক্ত সমস্যা — নোড crash না করে ইচ্ছাকৃতভাবে মিথ্যা বলে।</div></div>
 
@@ -949,21 +1198,331 @@ doors.push({
 
   <div class="callout info"><span class="co-icon">📜</span><div><strong>ঐতিহাসিক তথ্য:</strong> মার্টিন ক্লেপম্যান — কেমব্রিজ বিশ্ববিদ্যালয়ের কম্পিউটার সায়েন্স অ্যাসোসিয়েট প্রফেসর। <em>Designing Data-Intensive Applications</em> (মার্চ ২০১৭, O'Reilly Media)। গবেষণা: local-first collaboration software (CRDT), distributed systems security। বিখ্যাত টক: <em>"Turning the Database Inside-Out"</em> (মার্চ ২০১৫)। <strong>নোট:</strong> ক্লেপম্যানের কোনো ইংরেজি উইকিপিডিয়া পেজ নেই — তাঁর হোমপেজ martin.kleppmann.com থেকে তথ্য যাচাই করা হয়েছে।</p></div>
 
-  <div class="code-block">
-    <h4>🔬 Kleppmann-এর একীভূত দর্শন — Turn the Database Inside-Out</h4>
-    <table class="kv-table">
-      <tr><th>ডেটাবেস ধারণা</th><th>ডিস্ট্রিবিউটেড সিস্টেমে রূপ</th></tr>
-      <tr><td class="hl">Write-Ahead Log (WAL)</td><td>Event log / Kafka topic</td></tr>
-      <tr><td class="hl">Materialized View</td><td>Cache / read replica</td></tr>
-      <tr><td class="hl">Index</td><td>Search engine (Elasticsearch)</td></tr>
-      <tr><td class="hl">Trigger</td><td>Stream processor (Flink/Spark)</td></tr>
-      <tr><td class="hl">Transaction</td><td>Exactly-once processing</td></tr>
-      <tr><td class="hl">Replication</td><td>Multi-region deployment</td></tr>
-    </table>
-    <br>
-    <p><strong>Event Sourcing:</strong> বর্তমান অবস্থা সংরক্ষণ নয় — প্রতিটা পরিবর্তন একটা ইভেন্ট হিসেবে লেখা হয়। উদাহরণ: ব্যাংক অ্যাকাউন্ট — ব্যালেন্স ৫০০ নয়, বরং: (+১০০০, -২০০, -৩০০) = ৫০০। ব্যালেন্স পুনরায় গণনা করা যায়। কোনো পরিবর্তন মুছে ফেলা হয় না — অডিট ট্রেইল স্বয়ংক্রিয়।</p>
-    <p><strong>CQRS (Command Query Responsibility Segregation):</strong> লেখা ও পড়া আলাদা মডেল। Command (write) একটা সিস্টেমে, Query (read) অন্যটাতে। উদাহরণ: লেখা → event log, পড়া → materialized view।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: Turn the database inside-out (Kleppmann) ──
+# Martin Kleppmann's unified philosophy of distributed systems.
+
+philosophy = """
+TURN THE DATABASE INSIDE-OUT (Kleppmann):
+
+INSIGHT: Distributed systems and databases share the SAME concepts.
+
+DATABASE CONCEPT → DISTRIBUTED SYSTEM EQUIVALENT:
+  Write-Ahead Log (WAL) → Event log / Kafka topic
+  Materialized View    → Cache / read replica
+  Index                → Elasticsearch / search engine
+  Trigger              → Stream processor (Flink/Spark)
+  Transaction          → Exactly-once processing
+  Replication          → Multi-region deployment
+  Snapshot isolation   → MVCC in distributed stores
+
+THE UNIFYING IDEA:
+  Everything is an EVENT LOG.
+  → Database: WAL (append-only log of changes)
+  → Kafka: distributed event log
+  → Git: commit log (events = commits)
+  → Blockchain: transaction log (blocks)
+
+"Internally, a database is a distributed system.
+A distributed system is a database turned inside-out."
+  — Martin Kleppmann, "Designing Data-Intensive Applications"
+"""
+
+print(philosophy)</div>
+
+  <div class="code-block"># ── STEP 2: Event sourcing ──
+# Store events, not current state. Reconstruct state from events.
+
+event_sourcing = """
+EVENT SOURCING:
+
+TRADITIONAL (state-based):
+  Account balance = $500
+  → Overwrite old value with new value
+  → History lost
+
+EVENT SOURCING (event-based):
+  Events: [Deposited $1000, Withdrew $200, Withdrew $300]
+  Current state: $1000 - $200 - $300 = $500
+  → Replay events to get current state
+  → Complete audit trail (never lose history)
+  → Can replay from any point in time (time travel!)
+
+BENEFITS:
+  → Full audit trail (every change recorded)
+  → Time travel (reconstruct state at any past time)
+  → Debugging (see exactly what happened and when)
+  → New views (build new read models from historical events)
+  → Eventual consistency (events propagate naturally)
+
+DRAWBACKS:
+  → Complexity (managing event log)
+  → Storage (events accumulate forever)
+  → Need snapshots (don't replay 10 years of events)
+  → Eventual consistency (not immediate)
+
+PYTHON: Event sourcing in Django:
+  class Event(models.Model):
+      aggregate_id = models.UUIDField()  # e.g., account_id
+      event_type = models.CharField(max_length=100)  # 'deposit', 'withdrawal'
+      data = models.JSONField()
+      timestamp = models.DateTimeField(auto_now_add=True)
+
+  class Account:
+      def __init__(self, account_id):
+          self.account_id = account_id
+          self.balance = 0
+          self.apply_events()
+
+      def apply_events(self):
+          events = Event.objects.filter(aggregate_id=self.account_id).order_by('timestamp')
+          for event in events:
+              if event.event_type == 'deposit':
+                  self.balance += event.data['amount']
+              elif event.event_type == 'withdrawal':
+                  self.balance -= event.data['amount']
+
+      def deposit(self, amount):
+          Event.objects.create(
+              aggregate_id=self.account_id,
+              event_type='deposit',
+              data={'amount': amount}
+          )
+          self.balance += amount
+"""
+
+print(event_sourcing)</div>
+
+  <div class="code-block"># ── STEP 3: CQRS (Command Query Responsibility Segregation) ──
+# Separate write model from read model.
+
+cqrS = """
+CQRS:
+
+TRADITIONAL (CRUD):
+  Same model for reads and writes (database table)
+
+CQRS:
+  Write model (Command): append-only event log
+  Read model (Query): optimized materialized views
+
+WHY?
+  Reads and writes have DIFFERENT optimization needs:
+  → Writes: need consistency, validation, business rules
+  → Reads: need speed, denormalization, multiple views
+
+EXAMPLE:
+  Write: Event log (append deposit/withdrawal events)
+  Read 1: Current balance (materialized view, fast lookup)
+  Read 2: Transaction history (sorted by date)
+  Read 3: Monthly summary (aggregated view)
+
+  Each read model is optimized for its query pattern.
+  All derived from the SAME event log.
+
+CQRS + EVENT SOURCING = powerful combination:
+  → Events are the single source of truth
+  → Multiple read models (cache, search, analytics)
+  → If a read model breaks → rebuild from events
+  → Scale reads and writes independently
+"""
+
+print(cqrs)
+
+# WHEN TO USE CQRS:
+when_cqrs = """
+WHEN TO USE CQRS:
+  → Read-heavy systems with complex query patterns
+  → Need different views of the same data
+  → Read and write scale differently
+  → Need audit trail (with event sourcing)
+
+WHEN NOT TO USE CQRS:
+  → Simple CRUD apps (adds unnecessary complexity)
+  → Small teams (harder to maintain)
+  → When eventual consistency isn't acceptable for reads
+
+WARNING: CQRS adds complexity.
+Only use when the BENEFITS outweigh the COMPLEXITY.
+For simple CRUD: just use a regular database.
+"""
+print(when_cqrs)</div>
+
+  <div class="code-block"># ── STEP 4: CRDTs (Conflict-free Replicated Data Types) ──
+# Data structures that merge WITHOUT conflicts.
+
+crdts = """
+CRDTs (Conflict-free Replicated Data Types):
+
+PROBLEM: Multiple users edit simultaneously (offline).
+  → User A: "Hello World"
+  → User B: "Hello CRDT"
+  → Merge: How? Conflict!
+
+TRADITIONAL: conflict resolution (last-write-wins, manual merge)
+CRDT: mathematical guarantee — ALWAYS mergeable, no conflicts.
+
+HOW CRDTs WORK:
+  Each operation is COMMUTATIVE and ASSOCIATIVE.
+  → Order doesn't matter
+  → A op B = B op A (commutative)
+  → (A op B) op C = A op (B op C) (associative)
+
+  → No matter what order operations arrive, result is the SAME.
+
+CRDT TYPES:
+  G-Counter (Grow-only counter): each node increments own counter
+  PN-Counter: G-Counter + decrement (two G-Counters)
+  LWW-Register: Last-write-wins with timestamp
+  OR-Set: Add/remove set (add wins on conflict)
+  RGA (Replicated Growable Array): collaborative text editing
+  LWW-Map: key-value store with last-write-wins per key
+
+REAL-WORLD CRDTs:
+  → Yjs (collaborative editing library)
+  → Automerge (JSON CRDT)
+  → Redis CRDT (active-active geo-replication)
+  → Figma (uses CRDT for real-time collaboration)
+  → Apple Notes (offline sync with CRDT)
+"""
+
+print(crdts)</div>
+
+  <div class="code-block"># ── STEP 5: Gossip protocol ──
+# Epidemic information spreading in distributed systems.
+
+gossip = """
+GOSSIP PROTOCOL (epidemic protocol):
+
+HOW IT WORKS:
+  Every T seconds, each node:
+  1. Pick a RANDOM peer
+  2. Exchange state information
+  3. Update own state with new info
+
+  Like a RUMOR spreading through a crowd:
+  → Person tells random person → tells another → spreads exponentially
+  → After O(log N) rounds, EVERYONE knows
+
+PROPERTIES:
+  → Eventually consistent (all nodes converge)
+  → Fault tolerant (node failure doesn't stop gossip)
+  → Scalable (O(log N) time to spread, O(1) per round)
+  → No central coordinator (fully decentralized)
+
+USED BY:
+  → Cassandra: cluster membership, metadata
+  → Consul: service discovery, health checking
+  → Bitcoin: transaction and block propagation
+  → Riak: ring state, bucket properties
+
+GOSSIP vs CONSENSUS:
+  Gossip: eventual consistency (no guarantee on timing)
+  Consensus: strong consistency (Raft/Paxos)
+
+  Gossip is for: metadata, membership, low-priority state
+  Consensus is for: data writes, leader election, critical state
+
+PYTHON: Simple gossip:
+  import random
+
+  class GossipNode:
+      def __init__(self, node_id, peers):
+          self.node_id = node_id
+          self.peers = peers  # list of other nodes
+          self.state = {}  # {key: value}
+
+      def gossip_round(self):
+          # Pick random peer:
+          peer = random.choice(self.peers)
+          # Exchange state:
+          for key, value in peer.state.items():
+              if key not in self.state or self.state[key] < value:
+                  self.state[key] = value
+          # Peer gets our state too:
+          for key, value in self.state.items():
+              if key not in peer.state or peer.state[key] < value:
+                  peer.state[key] = value
+
+  # After O(log N) rounds, all nodes have the same state.
+"""
+
+print(gossip)</div>
+
+  <div class="code-block"># ── STEP 6: The complete distributed systems landscape ──
+# Everything you've learned, unified.
+
+landscape = """
+THE DISTRIBUTED SYSTEMS LANDSCAPE:
+
+FOUNDATION:
+  → Lamport clocks (ordering events)
+  → Happens-before (causality)
+  → Vector clocks (concurrency detection)
+
+COORDINATION:
+  → Mutex/Semaphore (mutual exclusion)
+  → Consensus (Paxos/Raft) — agree on one value
+  → Leader election (who's in charge?)
+
+TRADE-OFFS:
+  → CAP theorem (C vs A during partition)
+  → PACELC (Latency vs C normally)
+  → Consistency models (strong, eventual, causal)
+
+DATA DISTRIBUTION:
+  → Consistent hashing (ring-based)
+  → Replication (primary-backup, P2P)
+  → Partitioning/sharding (horizontal split)
+
+FAULT TOLERANCE:
+  → Crash Fault Tolerance (Raft/Paxos, 2f+1)
+  → Byzantine Fault Tolerance (pBFT, PoW, PoS, 3f+1)
+  → Anti-entropy (read repair, hinted handoff, Merkle trees)
+
+DATA PROCESSING:
+  → MapReduce (batch processing)
+  → Spark (in-memory, 10-100x faster)
+  → Streaming (Kafka, Flink)
+
+TRANSACTIONS:
+  → 2PC (blocking, strong consistency)
+  → Saga (compensating, eventual consistency)
+  → Outbox Pattern (reliable event publishing)
+
+ADVANCED PATTERNS:
+  → Event Sourcing (store events, not state)
+  → CQRS (separate read/write models)
+  → CRDTs (conflict-free merge)
+  → Gossip (epidemic information spreading)
+
+REAL-WORLD SYSTEMS:
+  → etcd/ZooKeeper (coordination)
+  → Cassandra/DynamoDB (AP databases)
+  → MongoDB/Spanner (CP databases)
+  → Kafka (event streaming)
+  → Bitcoin/Ethereum (blockchain BFT)
+  → Kubernetes (container orchestration)
+
+BOOKS TO READ:
+  → "Designing Data-Intensive Applications" (Kleppmann) — THE bible
+  → "Distributed Systems" (Tanenbaum)
+  → "Database Internals" (Petrov)
+"""
+
+print(landscape)
+
+# FINAL SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Event log        │ Single source of truth          │
+# │ Event sourcing   │ Store events, derive state      │
+# │ CQRS             │ Separate read/write models      │
+# │ CRDTs            │ Merge without conflicts         │
+# │ Gossip           │ Epidemic info spreading         │
+# │ Kleppmann        │ DB = distributed system inside  │
+# │ DDIA             │ The distributed systems bible   │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Design) পুরো বই — Kleppmann-এর দর্শন হলো সেই বইয়ের তাত্ত্বিক ভিত্তি। Door ১৩ (Message Queues), Door ১৬ (Databases) — সব একই দর্শনের অংশ। Book ১৪ (LLMOps) — LLM সিস্টেমেও event sourcing প্রাসঙ্গিক।</div></div>
 
@@ -1081,35 +1640,297 @@ doors.push({
     <div class="diag-cap">একটা রিকোয়েস্ট: ব্যবহারকারী → লোড ব্যালেন্সার (D৭) → সার্ভিস (D২) → ক্যাশ (D৩) → ডেটাবেস Raft (D৪) → কিউ (D৫/৬)। প্রতিটা স্তরে একটা দরজার জ্ঞান কাজ করে।</div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 বিতরণ সিস্টেম চেকলিস্ট — The Architect's Checklist</h4>
-    <table class="kv-table">
-      <tr><th>সিদ্ধান্ত</th><th>প্রশ্ন</th><th>দরজা</th></tr>
-      <tr><td class="hl">সময়</td><td>কোন ইভেন্ট আগে?</td><td>১ — Lamport Clock</td></tr>
-      <tr><td class="hl">কনকারেন্সি</td><td>একাধিক রাইটার?</td><td>২ — Semaphore/Mutex</td></tr>
-      <tr><td class="hl">CAP পছন্দ</td><td>CP না AP?</td><td>৩ — CAP Theorem</td></tr>
-      <tr><td class="hl">Consensus</td><td>নোডগুলো একমত?</td><td>৪ — Paxos/Raft</td></tr>
-      <tr><td class="hl">Atomicity</td><td>সব না কিছু?</td><td>৫ — 2PC/Saga</td></tr>
-      <tr><td class="hl">ডেটা প্রসেসিং</td><td>বিশাল ডেটা?</td><td>৬ — MapReduce/Spark</td></tr>
-      <tr><td class="hl">স্টোরেজ</td><td>কীভাবে বণ্টন?</td><td>৭ — Consistent Hashing</td></tr>
-      <tr><td class="hl">হুমকি</td><td>বিশ্বাসঘাতক?</td><td>৮ — BFT/Blockchain</td></tr>
-      <tr><td class="hl">দর্শন</td><td>ইভেন্ট না state?</td><td>৯ — Kleppmann</td></tr>
-    </table>
-    <br>
-    <p><strong>সময়রেখা — ৫৫ বছরের যাত্রা:</strong></p>
-    <p>• <strong>১৯৬৫:</strong> Dijkstra — semaphore</p>
-    <p>• <strong>১৯৭৮:</strong> Lamport — logical clocks</p>
-    <p>• <strong>১৯৮২:</strong> Lamport — Byzantine Generals</p>
-    <p>• <strong>১৯৮৭:</strong> Garcia-Molina — Saga</p>
-    <p>• <strong>১৯৯৭:</strong> Karger — consistent hashing</p>
-    <p>• <strong>১৯৯৮:</strong> Lamport — Paxos</p>
-    <p>• <strong>২০০০:</strong> Brewer — CAP theorem</p>
-    <p>• <strong>২০০৪:</strong> Dean & Ghemawat — MapReduce</p>
-    <p>• <strong>২০০৭:</strong> DeCandia et al. — Dynamo</p>
-    <p>• <strong>২০০৮:</strong> Nakamoto — Bitcoin</p>
-    <p>• <strong>২০১৪:</strong> Ongaro — Raft</p>
-    <p>• <strong>২০১৭:</strong> Kleppmann — DDIA</p>
-  </div>
+  <div class="code-block"># ── STEP 1: The architect's checklist ──
+# Every distributed system decision, mapped to the right concept.
+
+checklist = """
+THE ARCHITECT'S CHECKLIST:
+
+  DECISION          QUESTION              SOLUTION
+  ─────────         ──────────────        ──────────
+  Ordering          Which event first?    Door 1: Lamport Clocks
+  Concurrency       Multiple writers?     Door 2: Mutex/Semaphore
+  CAP choice        CP or AP?             Door 3: CAP Theorem
+  Agreement         Nodes must agree?     Door 4: Paxos/Raft
+  Atomicity         All or nothing?       Door 5: 2PC/Saga
+  Big Data          Huge data?            Door 6: MapReduce/Spark
+  Data placement    How to distribute?    Door 7: Consistent Hashing
+  Trust             Nodes can lie?        Door 8: BFT/Blockchain
+  Philosophy        Event vs state?       Door 9: Kleppmann/DDIA
+  Complete          Put it all together?  Door 10: This checklist
+
+USE THIS WHEN DESIGNING ANY DISTRIBUTED SYSTEM:
+  1. Do I need ordering? → Lamport/vector clocks
+  2. Shared state? → Mutex/semaphore/locks
+  3. CAP choice? → CP (banking) or AP (social)
+  4. Need consensus? → Raft (default), Paxos (Google)
+  5. Cross-service transactions? → Saga pattern
+  6. Petabyte data? → Spark (not MapReduce)
+  7. How to shard? → Consistent hashing
+  8. Untrusted nodes? → BFT (PoW/PoS)
+  9. Audit trail? → Event sourcing
+  10. Read DDIA → the bible of distributed systems
+"""
+
+print(checklist)</div>
+
+  <div class="code-block"># ── STEP 2: 55-year timeline of distributed systems ──
+# The pioneers and their breakthroughs.
+
+timeline = """
+55-YEAR JOURNEY (1965-2020):
+
+1965: Dijkstra — Semaphore (mutual exclusion)
+1978: Lamport — Logical clocks (event ordering)
+1982: Lamport — Byzantine Generals (fault tolerance)
+1987: Garcia-Molina & Salem — Saga (distributed transactions)
+1997: Karger et al. — Consistent Hashing
+1998: Lamport — Paxos (consensus)
+1999: Castro & Liskov — pBFT (practical Byzantine)
+2000: Brewer — CAP Theorem (conjecture)
+2002: Gilbert & Lynch — CAP proved formally
+2003: Google — GFS (distributed file system)
+2004: Dean & Ghemawat — MapReduce (parallel processing)
+2006: Google — Bigtable (distributed table)
+2007: DeCandia et al. — Dynamo (AP key-value)
+2008: Nakamoto — Bitcoin (blockchain consensus)
+2009: Apache — Cassandra (Dynamo-inspired)
+2012: Zaharia et al. — Spark (in-memory processing)
+2013: Lamport — Turing Award
+2014: Ongaro & Ousterhout — Raft (understandable consensus)
+2014: Kubernetes — container orchestration (uses Raft via etcd)
+2017: Kleppmann — DDIA (the bible)
+2022: Ethereum — The Merge (PoW → PoS)
+
+EACH PAPER BUILT ON THE PREVIOUS:
+  1965 (semaphore) → 1978 (clocks) → 1998 (Paxos) → ...
+  → Standing on the shoulders of giants.
+"""
+
+print(timeline)</div>
+
+  <div class="code-block"># ── STEP 3: System design interview questions ──
+# How to answer distributed systems interview questions.
+
+interview = """
+COMMON INTERVIEW QUESTIONS (with door references):
+
+Q: "Design a URL shortener (like bit.ly)"
+  → Consistent hashing for URL→short code mapping (Door 7)
+  → AP system (availability > consistency for redirects) (Door 3)
+  → Cache layer (Redis) for hot URLs
+  → Eventual consistency OK (stale redirect is fine)
+
+Q: "Design Twitter's timeline"
+  → Fan-out on write vs fan-out on read (trade-off)
+  → AP system (eventual consistency for tweets) (Door 3)
+  → Redis for timeline cache
+  → Kafka for tweet event streaming
+
+Q: "Design a distributed counter (likes/views)"
+  → CRDTs (G-Counter for conflict-free counting) (Door 9)
+  → Eventually consistent (likes may lag) (Door 3)
+  → Write to multiple replicas, read-repair for convergence (Door 7)
+
+Q: "How would you design distributed training for a 70B model?"
+  → Data parallelism (each GPU processes different batch)
+  → Model parallelism (split model layers across GPUs)
+  → AllReduce for gradient synchronization (Ring AllReduce)
+  → Consistent hashing for data distribution (Door 7)
+  → Checkpointing for fault tolerance (event sourcing, Door 9)
+
+Q: "Design Instagram's photo storage"
+  → Content-addressable storage (hash of image = filename)
+  → S3/GCS for blob storage (distributed file system)
+  → CDN for fast delivery (Door 7 of Computer Networks book)
+  → AP system (availability > consistency) (Door 3)
+
+Q: "How does Google Spanner achieve global ACID?"
+  → Paxos per shard (Door 4)
+  → TrueTime (GPS + atomic clocks, Door 1)
+  → 2PC across shards (Door 5)
+  → CP system (strong consistency, Door 3)
+"""
+
+print(interview)</div>
+
+  <div class="code-block"># ── STEP 4: Your production architecture ──
+# Putting it all together for your apps (LedgerPilot, Ipractus).
+
+your_architecture = """
+YOUR PRODUCTION ARCHITECTURE:
+
+LedgerPilot (Django + MySQL + Vue):
+  Single server: no distributed consensus needed yet
+  But as you scale:
+  → MySQL replication (primary-backup, Door 7)
+  → Redis cache (AP, eventual consistency, Door 3)
+  → Celery workers (async task processing, producer-consumer Door 2)
+  → Docker containers (isolation, Door 9 of OS book)
+  → Nginx load balancer (multiple Django workers, Door 4 of Networks book)
+
+  WHEN TO ADD DISTRIBUTED SYSTEMS:
+  → 2+ servers: need session sharing (Redis)
+  → 100+ users: need load balancing (Nginx/HAProxy)
+  → 10K+ users: need database sharding (Door 7)
+  → 100K+ users: need multi-region (CAP choices, Door 3)
+  → Microservices: need Saga pattern (Door 5)
+
+Ipractus (Django + PostgreSQL + React + Expo + LiveKit):
+  → LiveKit uses WebRTC for video (Door 8 of Networks book)
+  → WebSockets for real-time (Door 8 of Networks book)
+  → Multiple DO servers: need load balancing
+  → Eventually: distributed state for call sessions
+
+PYTHON: Distributed lock for Ipractus (prevent double-booking):
+  import redis
+
+  r = redis.Redis()
+
+  def book_appointment(doctor_id, time_slot):
+      lock_key = f"appointment:{doctor_id}:{time_slot}"
+      lock = r.lock(lock_key, timeout=30)
+
+      if lock.acquire(blocking=False):
+          try:
+              # Check if slot is available:
+              if is_slot_available(doctor_id, time_slot):
+                  create_appointment(doctor_id, time_slot)
+                  return {"status": "booked"}
+              else:
+                  return {"status": "taken"}
+          finally:
+              lock.release()
+      else:
+          return {"status": "busy", "message": "Try again"}
+"""
+
+print(your_architecture)</div>
+
+  <div class="code-block"># ── STEP 5: Distributed systems reading list ──
+# Books, papers, and resources to go deeper.
+
+reading_list = """
+ESSENTIAL BOOKS:
+
+1. "Designing Data-Intensive Applications" (Kleppmann, 2017)
+   → THE bible of distributed systems
+   → Covers: replication, partitioning, transactions, consistency
+   → Read this FIRST. It's the single best resource.
+
+2. "Distributed Systems" (Tanenbaum & Van Steen)
+   → Academic textbook, comprehensive
+   → Good for theory and algorithms
+
+3. "Database Internals" (Petrov, 2019)
+   → Deep dive into database storage and transaction systems
+   → B-trees, LSM trees, WAL, MVCC
+
+ESSENTIAL PAPERS:
+
+1. "MapReduce: Simplified Data Processing" (Dean & Ghemawat, 2004)
+2. "Dynamo: Amazon's Highly Available Key-value Store" (DeCandia et al., 2007)
+3. "Bigtable: A Distributed Storage System" (Chang et al., 2006)
+4. "The Google File System" (Ghemawat et al., 2003)
+5. "Paxos Made Simple" (Lamport, 2001)
+6. "In Search of an Understandable Consensus Algorithm" (Raft, 2014)
+7. "The Byzantine Generals Problem" (Lamport et al., 1982)
+8. "Bitcoin: A Peer-to-Peer Electronic Cash System" (Nakamoto, 2008)
+9. "Spanner: Google's Globally-Distributed Database" (2012)
+10. "Kafka: a Distributed Messaging System" (2011)
+
+ONLINE COURSES:
+  → MIT 6.824: Distributed Systems (free, with labs)
+  → UC Berkeley CS162: Operating Systems and Networking
+
+VIDEOS:
+  → Martin Kleppmann: "Turning the Database Inside-Out" (2015)
+  → Diego Ongaro: Raft talk (consensus made understandable)
+  → Aphyr: Jepsen talks (distributed systems testing)
+"""
+
+print(reading_list)</div>
+
+  <div class="code-block"># ── STEP 6: The 10 doors summary and journey ──
+# Everything you've learned about distributed systems.
+
+doors = {
+    "Door 1": "Lamport Clocks — logical time, happens-before",
+    "Door 2": "Race Conditions — semaphores, mutexes, deadlocks",
+    "Door 3": "CAP Theorem — consistency vs availability trade-off",
+    "Door 4": "Consensus — Paxos, Raft, leader election",
+    "Door 5": "Distributed Transactions — 2PC, Saga, Outbox",
+    "Door 6": "MapReduce/Spark — big data parallel processing",
+    "Door 7": "Dynamo/Consistent Hashing — AP systems, replication",
+    "Door 8": "Byzantine Faults — BFT, Bitcoin, blockchain",
+    "Door 9": "Kleppmann/DDIA — event sourcing, CQRS, CRDTs",
+    "Door 10": "Complete Architecture — the architect's checklist",
+}
+
+print("THE 10 DOORS OF DISTRIBUTED SYSTEMS:")
+for door, topic in doors.items():
+    print(f"  {door}: {topic}")
+
+# YOUR JOURNEY:
+journey = """
+You started knowing distributed systems as "multiple servers."
+You finish as a DISTRIBUTED SYSTEMS ARCHITECT who can:
+
+WHAT YOU CAN NOW DO:
+  ✅ Design systems that survive partial failures
+  ✅ Choose between CP and AP based on business needs
+  ✅ Implement consensus (Raft) for agreement
+  ✅ Handle distributed transactions (Saga pattern)
+  ✅ Process petabyte-scale data (Spark)
+  ✅ Distribute data across nodes (consistent hashing)
+  ✅ Understand blockchain consensus (PoW/PoS)
+  ✅ Apply event sourcing and CQRS
+  ✅ Debug distributed system failures
+  ✅ Ace system design interviews
+
+"Distributed systems are HARD.
+But understanding the FUNDAMENTALS — clocks, consensus, CAP,
+replication, consistency — gives you power to build ANYTHING.
+
+Every great engineer understands distributed systems.
+Now you do too."
+
+Read DDIA. Build something amazing.
+Welcome to Distributed Systems mastery.
+"""
+
+print(journey)
+
+# CONGRATULATIONS!
+# You've completed the Distributed Systems book.
+# From Dijkstra's semaphore (1965) to Ethereum's PoS (2022) —
+# 55 years of distributed systems wisdom, in 10 doors.
+
+# These concepts power:
+#   Google Search (GFS, MapReduce, Bigtable)
+#   Amazon (Dynamo, DynamoDB)
+#   Bitcoin (Nakamoto consensus)
+#   Kubernetes (Raft via etcd)
+#   Every modern web application
+
+# The fundamentals DON'T change.
+# Master them, and you can adapt to any new technology.
+
+# FINAL SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Lamport clock    │ Causal ordering (not wall time) │
+# │ Mutex            │ One at a time (shared resource) │
+# │ CAP              │ Choose 2 of 3 (P mandatory)     │
+# │ Raft             │ Understandable consensus        │
+# │ Saga             │ Compensating transactions       │
+# │ Spark            │ In-memory big data (10-100x)    │
+# │ Consistent hash  │ Ring-based data distribution    │
+# │ BFT              │ Tolerate lying nodes (3f+1)     │
+# │ Event sourcing   │ Store events, derive state      │
+# │ DDIA             │ The distributed systems bible   │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স — পুরো লাইব্রেরির সংযোগ:</strong> এই বই হলো <strong>infrastructure layer</strong> — Book ৪ (System Design) এর গভীরে যাওয়া। Book ৪ single-machine design শেখায়, এই বই multi-machine design শেখায়। Book ৩৪ (Statistics) বলে কীভাবে প্রমাণ করবে সিস্টেম কাজ করে — এই বই বলে কীভাবে সিস্টেম বানাবে যা কাজ করবে। PhD interview: "How would you design distributed training for a 70B model?" — এখন উত্তর দিতে পারবে।</div></div>
 
