@@ -468,33 +468,499 @@ doors.push({
 <div class="dialogue"><strong>জাল-নির্মাতা তামির:</strong> সাবির (Door ৬) তোমাকে গোনা শিখিয়েছেন। কিন্তু বস্তু শুধু বাক্সে থাকে না — তারা সংযুক্ত হয়! তোমার LedgerPilot-এ — ইউজার → অ্যাকাউন্ট → লেনদেন → ক্যাটেগরি। এটি একটি গ্রাফ! প্রতিটি টেবিল নোড, প্রতিটি foreign key এজ। BFS দিয়ে খুঁজো — এই ইউজারের সব লেনদেন কী? DFS দিয়ে গভীরে যাও — এই লেনদেন কোন ক্যাটেগরিতে?</div>
 <div class="dialogue en"><strong>Web Builder Tamir:</strong> Sabir (Door 6) taught you counting. But objects don't just sit in boxes — they connect! Your LedgerPilot: User → Account → Transaction → Category. This is a graph! Every table a node, every foreign key an edge. BFS: find all transactions for a user. DFS: go deep — which category does this transaction belong to?</div>
 
-<div class="code-block"># — Python: Graph অপারেশন (networkx) —
+<div class="code-block"># ── STEP 1: Graph theory fundamentals ──
+# Graphs model relationships — the most versatile data structure.
 
-  import networkx as nx
+graph_basics = """
+GRAPH THEORY:
 
-  G = nx.DiGraph()
-  # LedgerPilot-এর গ্রাফ
-  G.add_edge("User", "Account")         # foreign key
-  G.add_edge("Account", "Transaction")
-  G.add_edge("Transaction", "Category")
-  G.add_edge("Category", "Budget")
+A GRAPH G = (V, E) consists of:
+  V = set of VERTICES (nodes)
+  E = set of EDGES (connections between vertices)
 
-  # Topological sort (DAG তে ক্রম)
-  print(list(nx.topological_sort(G)))
-  # [User, Account, Transaction, Category, Budget]
+EXAMPLE:
+  G = ({A, B, C, D}, {(A,B), (B,C), (C,D), (A,D)})
+  → 4 vertices, 4 edges
 
-  # Cycle detect
-  print(nx.is_directed_acyclic_graph(G))  # True — DAG ✅
+TYPES OF GRAPHS:
+  UNDIRECTED: edges have no direction (A—B = B—A)
+  DIRECTED (digraph): edges have direction (A→B ≠ B→A)
+  WEIGHTED: edges have weights/costs (distance, time)
+  UNWEIGHTED: all edges equal
+  SIMPLE: no self-loops, no multi-edges
+  MULTI: multiple edges between same pair
+  CYCLIC: contains cycles
+  ACYCLIC: no cycles (DAG = Directed Acyclic Graph)
 
-  # BFS: User থেকে কী কী পৌঁছানো যায়?
-  print(list(nx.bfs_tree(G, "User")))
-  # [User, Account, Transaction, Category, Budget]
+GRAPH TERMINOLOGY:
+  Degree: number of edges at a vertex
+  Path: sequence of vertices connected by edges
+  Cycle: path that starts and ends at same vertex
+  Connected: path exists between any two vertices
+  Component: maximal connected subgraph
+  Complete graph (K_n): every vertex connected to every other
 
-  # Euler-এর সমস্যা: Königsberg
-  K = nx.MultiGraph()
-  K.add_edges_from([("A","B"),("A","B"),("A","C"),
-                    ("A","C"),("A","D"),("B","D"),("C","D")])
-  print(nx.has_eulerian_path(K))  # False — Euler সঠিক ছিলেন!</div>
+SPECIAL GRAPHS:
+  TREE: connected, acyclic (n vertices, n−1 edges)
+  BIPARTITE: vertices split into 2 groups, edges only between groups
+  COMPLETE (K_n): every pair connected (|E| = n(n-1)/2)
+  GRID: vertices on a 2D grid
+"""
+
+print(graph_basics)
+
+# PYTHON: Graph basics with networkx:
+graph_code = """
+import networkx as nx
+
+# Create a graph:
+G = nx.Graph()
+G.add_edges_from([('A','B'), ('B','C'), ('C','D'), ('A','D')])
+
+print(f"Vertices: {list(G.nodes())}")     # [A, B, C, D]
+print(f"Edges: {list(G.edges())}")         # [(A,B), (A,D), (B,C), (C,D)]
+print(f"Degree of A: {G.degree('A')}")     # 2
+print(f"Is connected: {nx.is_connected(G)}")  # True
+
+# Directed graph:
+DG = nx.DiGraph()
+DG.add_edge('User', 'Account')
+DG.add_edge('Account', 'Transaction')
+print(f"Is DAG: {nx.is_directed_acyclic_graph(DG)}")  # True
+"""
+
+print(graph_code)</div>
+
+<div class="code-block"># ── STEP 2: Graph representations ──
+# How to store graphs in memory.
+
+representations = """
+GRAPH REPRESENTATIONS:
+
+1. ADJACENCY MATRIX:
+   n×n matrix where M[i][j] = 1 if edge (i,j) exists, else 0.
+   → Space: O(n²)
+   → Check edge: O(1)
+   → Iterate neighbors: O(n)
+   → Good for: dense graphs
+
+   Example: A-B, B-C, C-D, A-D
+       A  B  C  D
+   A [  0  1  0  1 ]
+   B [  1  0  1  0 ]
+   C [  0  1  0  1 ]
+   D [  1  0  1  0 ]
+
+2. ADJACENCY LIST:
+   Array of lists: adj[i] = list of neighbors of vertex i.
+   → Space: O(V + E)
+   → Check edge: O(degree)
+   → Iterate neighbors: O(degree)
+   → Good for: sparse graphs (most real graphs)
+
+   Example:
+   A: [B, D]
+   B: [A, C]
+   C: [B, D]
+   D: [A, C]
+
+3. EDGE LIST:
+   List of (u, v) pairs.
+   → Space: O(E)
+   → Check edge: O(E)
+   → Good for: algorithms that process edges (Kruskal's)
+
+WHEN TO USE WHICH:
+  Dense graph (E ≈ V²): adjacency matrix
+  Sparse graph (E ≈ V): adjacency list (usually better)
+  Edge-processing algorithms: edge list
+"""
+
+print(representations)
+
+# PYTHON: All three representations:
+repr_code = """
+# 1. Adjacency matrix:
+def adj_matrix(vertices, edges):
+    n = len(vertices)
+    idx = {v: i for i, v in enumerate(vertices)}
+    M = [[0]*n for _ in range(n)]
+    for u, v in edges:
+        M[idx[u]][idx[v]] = 1
+        M[idx[v]][idx[u]] = 1  # undirected
+    return M
+
+# 2. Adjacency list:
+def adj_list(vertices, edges):
+    adj = {v: [] for v in vertices}
+    for u, v in edges:
+        adj[u].append(v)
+        adj[v].append(u)  # undirected
+    return adj
+
+# 3. Edge list:
+def edge_list(edges):
+    return list(edges)
+
+# Example:
+V = ['A', 'B', 'C', 'D']
+E = [('A','B'), ('B','C'), ('C','D'), ('A','D')]
+
+print("Matrix:", adj_matrix(V, E))
+print("List:", adj_list(V, E))
+print("Edges:", edge_list(E))
+"""
+
+print(repr_code)</div>
+
+<div class="code-block"># ── STEP 3: Graph traversal (BFS and DFS) ──
+# Visit all vertices systematically.
+
+traversal = """
+GRAPH TRAVERSAL:
+
+1. BREADTH-FIRST SEARCH (BFS):
+   → Visit all neighbors at current depth before going deeper
+   → Uses a QUEUE (FIFO)
+   → Finds SHORTEST PATH in unweighted graphs
+   → Time: O(V + E)
+
+   BFS from A:
+   Visit A → enqueue A
+   Visit B, D (neighbors of A) → enqueue
+   Visit C (neighbor of B) → enqueue
+   Order: A, B, D, C
+
+2. DEPTH-FIRST SEARCH (DFS):
+   → Go as deep as possible, then backtrack
+   → Uses a STACK (LIFO) or recursion
+   → Good for: cycle detection, topological sort, connectivity
+   → Time: O(V + E)
+
+   DFS from A:
+   Visit A → go to B → go to C → go to D → backtrack
+   Order: A, B, C, D
+
+WHEN TO USE WHICH:
+  BFS: shortest path, level-order, closest neighbors
+  DFS: cycle detection, topological sort, maze solving, connectivity
+
+PYTHON (networkx):
+  nx.bfs_edges(G, source)  # breadth-first
+  nx.dfs_edges(G, source)  # depth-first
+"""
+
+print(traversal)
+
+# PYTHON: BFS and DFS:
+traversal_code = """
+from collections import deque
+
+# BFS (iterative, using queue):
+def bfs(graph, start):
+    visited = set()
+    queue = deque([start])
+    order = []
+
+    while queue:
+        vertex = queue.popleft()
+        if vertex not in visited:
+            visited.add(vertex)
+            order.append(vertex)
+            for neighbor in graph[vertex]:
+                if neighbor not in visited:
+                    queue.append(neighbor)
+    return order
+
+# DFS (recursive):
+def dfs(graph, vertex, visited=None, order=None):
+    if visited is None:
+        visited = set()
+        order = []
+    visited.add(vertex)
+    order.append(vertex)
+    for neighbor in graph[vertex]:
+        if neighbor not in visited:
+            dfs(graph, neighbor, visited, order)
+    return order
+
+# Example graph:
+graph = {
+    'A': ['B', 'D'],
+    'B': ['A', 'C'],
+    'C': ['B', 'D'],
+    'D': ['A', 'C'],
+}
+
+print("BFS from A:", bfs(graph, 'A'))  # ['A', 'B', 'D', 'C']
+print("DFS from A:", dfs(graph, 'A'))  # ['A', 'B', 'C', 'D']
+
+# BFS finds shortest path (unweighted):
+def shortest_path(graph, start, end):
+    queue = deque([(start, [start])])
+    visited = {start}
+    while queue:
+        vertex, path = queue.popleft()
+        for neighbor in graph[vertex]:
+            if neighbor == end:
+                return path + [neighbor]
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append((neighbor, path + [neighbor]))
+    return None  # no path
+
+print("Shortest A→C:", shortest_path(graph, 'A', 'C'))  # ['A', 'B', 'C']
+"""
+
+print(traversal_code)</div>
+
+<div class="code-block"># ── STEP 4: Shortest path algorithms ──
+# Find the shortest route between vertices.
+
+shortest = """
+SHORTEST PATH ALGORITHMS:
+
+1. BFS (unweighted graphs):
+   → O(V + E)
+   → Finds shortest path when all edges have equal weight
+
+2. DIJKSTRA'S ALGORITHM (non-negative weights):
+   → O((V + E) log V) with priority queue
+   → Finds shortest path from source to ALL vertices
+   → Greedy: always pick nearest unvisited vertex
+   → CANNOT handle negative weights
+
+3. BELLMAN-FORD (handles negative weights):
+   → O(V × E)
+   → Can detect negative-weight cycles
+   → Slower than Dijkstra but more general
+
+4. FLOYD-WARSHALL (all pairs shortest path):
+   → O(V³)
+   → Finds shortest path between ALL pairs
+   → Uses dynamic programming
+
+5. A* SEARCH (heuristic):
+   → O(E) typical (with good heuristic)
+   → Uses heuristic to guide search toward goal
+   → Used in GPS navigation, game AI
+
+REAL-WORLD APPLICATIONS:
+  → GPS Navigation (Google Maps): Dijkstra/A*
+  → Network routing (OSPF): Dijkstra
+  → Social networks (degrees of separation): BFS
+  → Currency arbitrage: Bellman-Ford (negative cycles)
+"""
+
+print(shortest)
+
+# PYTHON: Dijkstra's algorithm:
+dijkstra_code = """
+import heapq
+
+def dijkstra(graph, start):
+    \"\"\"Shortest paths from start to all vertices (non-negative weights).\"\"\"
+    dist = {v: float('inf') for v in graph}
+    dist[start] = 0
+    pq = [(0, start)]  # (distance, vertex)
+    visited = set()
+
+    while pq:
+        d, u = heapq.heappop(pq)
+        if u in visited:
+            continue
+        visited.add(u)
+
+        for v, weight in graph[u]:
+            new_dist = d + weight
+            if new_dist < dist[v]:
+                dist[v] = new_dist
+                heapq.heappush(pq, (new_dist, v))
+
+    return dist
+
+# Example: weighted graph (adjacency list with weights):
+graph = {
+    'A': [('B', 4), ('C', 2)],
+    'B': [('A', 4), ('D', 3)],
+    'C': [('A', 2), ('D', 5), ('B', 1)],
+    'D': [('B', 3), ('C', 5)],
+}
+
+print(dijkstra(graph, 'A'))
+# {'A': 0, 'C': 2, 'B': 3, 'D': 6}
+# Shortest: A→C→B→D = 2+1+3 = 6
+"""
+
+print(dijkstra_code)</div>
+
+<div class="code-block"># ── STEP 5: Important graph problems ──
+# Classic problems you'll encounter.
+
+problems = """
+CLASSIC GRAPH PROBLEMS:
+
+1. SHORTEST PATH:
+   → Dijkstra (non-negative), Bellman-Ford (negative)
+   → GPS navigation, network routing
+
+2. MINIMUM SPANNING TREE (MST):
+   → Connect all vertices with minimum total edge weight
+   → Algorithms: Kruskal's, Prim's
+   → Applications: network design, clustering
+
+3. TOPOLOGICAL SORT (DAG only):
+   → Order vertices so edges go left to right
+   → Applications: task scheduling, dependency resolution
+   → Build systems (Make, npm), course prerequisites
+
+4. CYCLE DETECTION:
+   → Does the graph have a cycle?
+   → DFS-based: O(V+E)
+   → Deadlock detection, dependency cycles
+
+5. CONNECTIVITY:
+   → Is the graph connected? How many components?
+   → Union-Find data structure
+   → Network reliability
+
+6. MAX FLOW / MIN CUT:
+   → Maximum flow from source to sink
+   → Ford-Fulkerson algorithm
+   → Applications: bipartite matching, network capacity
+
+7. GRAPH COLORING:
+   → Color vertices so no adjacent vertices share color
+   → Chromatic number: minimum colors needed
+   → Applications: register allocation, scheduling
+
+8. TRAVELING SALESMAN (TSP):
+   → Shortest tour visiting all vertices
+   → NP-hard: no polynomial solution known
+   → Heuristics: nearest neighbor, simulated annealing
+
+9. EULERIAN PATH/CIRCUIT:
+   → Path that uses every edge exactly once
+   → Exists iff exactly 0 or 2 vertices have odd degree
+   → Königsberg bridges problem (Euler, 1736)
+
+10. HAMILTONIAN PATH/CYCLE:
+    → Path that visits every vertex exactly once
+    → NP-complete (much harder than Eulerian)
+"""
+
+print(problems)
+
+# PYTHON: Topological sort + cycle detection:
+topo_code = """
+from collections import deque
+
+def topological_sort(graph, n):
+    \"\"\"Kahn's algorithm for topological sort (DAG only).\"\"\"
+    # Calculate in-degrees:
+    in_degree = {v: 0 for v in range(n)}
+    for u in graph:
+        for v in graph[u]:
+            in_degree[v] += 1
+
+    # Start with vertices having 0 in-degree:
+    queue = deque([v for v in range(n) if in_degree[v] == 0])
+    result = []
+
+    while queue:
+        u = queue.popleft()
+        result.append(u)
+        for v in graph[u]:
+            in_degree[v] -= 1
+            if in_degree[v] == 0:
+                queue.append(v)
+
+    if len(result) != n:
+        return None  # cycle detected!
+    return result
+
+# Example: course prerequisites
+# 0→1, 0→2, 1→3, 2→3 (take 0 before 1, etc.)
+graph = {0: [1, 2], 1: [3], 2: [3], 3: []}
+print("Topological order:", topological_sort(graph, 4))
+# [0, 1, 2, 3] or [0, 2, 1, 3]
+"""
+
+print(topo_code)</div>
+
+<div class="code-block"># ── STEP 6: Graphs in real systems ──
+# Graphs are everywhere in computing.
+
+real_world = """
+GRAPHS IN REAL SYSTEMS:
+
+1. SOCIAL NETWORKS:
+   → Vertices: people, Edges: friendships
+   → Algorithms: friend suggestions, communities, influence
+   → Facebook: billions of vertices, trillions of edges
+
+2. WEB GRAPH:
+   → Vertices: web pages, Edges: hyperlinks
+   → Google PageRank: rank pages by link structure
+   → Billions of vertices
+
+3. KNOWLEDGE GRAPHS:
+   → Vertices: entities (people, places, concepts)
+   → Edges: relationships (born_in, works_for)
+   → Google Knowledge Graph, Wikipedia
+
+4. COMPUTER NETWORKS:
+   → Vertices: computers/routers, Edges: connections
+   → Routing: shortest path (Dijkstra)
+   → Network topology analysis
+
+5. DATABASES (foreign keys):
+   → Vertices: tables, Edges: foreign keys
+   → Join optimization, dependency analysis
+   → Django models form a graph
+
+6. COMPILERS:
+   → AST: abstract syntax tree (graph)
+   → Control flow graph, data flow graph
+   → Optimization passes operate on graphs
+
+7. ML / NEURAL NETWORKS:
+   → Neural network = weighted graph
+   → Neurons = vertices, connections = edges
+   → Backpropagation = graph traversal
+
+8. DEPENDENCY MANAGEMENT:
+   → npm/pip packages form a DAG
+   → Topological sort for install order
+   → Cycle detection for circular dependencies
+
+9. MAPS / GPS:
+   → Vertices: intersections, Edges: roads
+   → Shortest path: Dijkstra/A*
+   → Google Maps, Uber routing
+
+10. RECOMMENDATION SYSTEMS:
+    → Bipartite graph: users ↔ items
+    → Collaborative filtering
+    → Netflix, Amazon recommendations
+"""
+
+print(real_world)
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Algorithm        │ Use Case                        │
+# ├──────────────────┼──────────────────────────────────┤
+# │ BFS              │ Shortest path (unweighted)      │
+# │ DFS              │ Cycle detection, connectivity   │
+# │ Dijkstra         │ Shortest path (weighted)        │
+# │ Bellman-Ford     │ Negative weights                │
+# │ Floyd-Warshall   │ All pairs shortest path         │
+# │ Kruskal/Prim     │ Minimum spanning tree           │
+# │ Topological sort │ DAG ordering (dependencies)    │
+# │ Union-Find       │ Connectivity, components        │
+# │ A*               │ GPS, game AI (heuristic)       │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout info"><span class="co-icon">🕸️</span><div><strong>গ্রাফের প্রকার:</strong><br>
 <strong>Directed (তীরযুক্ত):</strong> এজের দিক আছে — A → B মানে A থেকে B<br>
