@@ -883,116 +883,386 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Stale Context:</strong> Context had data from 3 days ago — model answered with outdated info. Fix: timestamp all context.</div></div>
 
 
-<div class="code-block">Chunking Strategies — How to Cut:
+<div class="code-block"># ── STEP 1: Why chunking matters ──
+# Chunking = splitting documents into smaller pieces for better retrieval.
 
-CHUNK SIZE — সোনালী অনুপাত:
+why_chunk = """
+WHY CHUNK?
 
-  খুব ছোট (১০০-২০০ tokens):
-    ❌ context হারায় — একটা বাক্য টুকরো
-    ❌ অর্থ অসম্পূর্ণ  
-    ✅ খুব নির্দিষ্ট প্রশ্নে ভালো
-  
-  মাঝারি (৫১২-১০২৪ tokens):
-    ✅ সাধারণ সেরা — context ও precision ভারসাম্য
-    ✅ একটা অনুচ্ছেদ বা কয়েকটা
-    ✅ বেশিরভাগ RAG-এ ব্যবহৃত
-  
-  বড় (২০৪৮-৪০৯৬ tokens):
-    ✅ জটিল যুক্তি, multi-paragraph context
-    ❌ noise বেশি, relevance কম
-  
-  খুব বড় (৮১৯২+):
-    ❌ একটা chapter — খুব বেশি noise
-    ❌ retrieval precision কমে
+Problem: You have a 100-page document. A user asks a specific question.
+  → Can't put 100 pages in context (too expensive, attention dilution)
+  → Need to find the RELEVANT section only
 
-OVERLAP — টুকরো ওভারল্যাপ:
+Solution: Split into smaller chunks, embed each, retrieve the best.
 
-  কেন overlap দরকার?
-  → কাটার জায়গায় তথ্য হারাতে পারে
-  → আগের টুকরোর শেষ = পরের টুকরোর শুরু
-  → continuity বজায় থাকে
+  Document → Chunks → Embed each → Store in vector DB
+  Query → Embed → Find best matching chunks → Send to LLM
 
-  সোনালী অনুপাত: ১০-২০% overlap
-    ৫১২ token chunk + ১০২ overlap (২০%)
-    → টুকরোর boundary-তে context হারায় না
+GOOD CHUNKING = better retrieval = better RAG accuracy
+BAD CHUNKING = lost context = wrong answers
 
-CHUNKING METHODS:
+The chunk is the atomic unit of RAG.
+Get chunking right, and everything else improves.
+"""
 
-১. FIXED-SIZE CHUNKING (সবচেয়ে সহজ)
-   N tokens পরপর কাটো।
-   ✅ সহজ, দ্রুত, deterministic
-   ❌ বাক্য/অনুচ্ছেদ মাঝখানে কাটে
-   → সাধারণ ব্যবহারে যথেষ্ট
+print(why_chunk)
 
-২. SENTENCE-BOUNDARY CHUNKING
-   বাক্যের শেষে কাটো (। ? !)
-   ✅ অর্থ সংরক্ষিত
-   ❌ বাক্যের দৈর্ঘ্য ভিন্ন — chunk size অসম
-   → আইনি, চিকিৎসা docs
+# CHUNK SIZE TRADE-OFF:
+size_tradeoff = """
+CHUNK SIZE TRADE-OFF:
 
-৩. PARAGRAPH-BOUNDARY CHUNKING  
-   অনুচ্ছেদে কাটো
-   ✅ সম্পূর্ণ ধারণা এক chunk-এ
-   ❌ অনুচ্ছেদ বড় হলে সমস্যা
-   → technical docs, papers
+Too small (100-200 tokens):
+  ❌ Context lost (a sentence fragment)
+  ❌ Meaning incomplete
+  ✅ Very precise for specific questions
 
-৪. SEMANTIC CHUNKING (advanced)
-   অর্থ পরিবর্তনে কাটো
-   → embedding similarity দেখো
-   → similarity drop = নতুন chunk
-   ✅ সবচেয়ে নির্ভুল
-   ❌ ধীর, জটিল
-   → গবেষণা, precision-critical
+Medium (512-1024 tokens):
+  ✅ Best balance (context + precision)
+  ✅ A paragraph or two
+  ✅ Used by most RAG systems (default)
 
-৫. DOCUMENT STRUCTURE CHUNKING
-   markdown headers, HTML tags অনুযায়ী
-   H1/H2/H3 = natural boundaries
-   → docs, wikis, technical specs
+Large (2048-4096 tokens):
+  ✅ Complex reasoning, multi-paragraph context
+  ❌ More noise, lower relevance per chunk
 
-৬. LATE CHUNKING (Jina, সেপ্টেম্বর ২০২৪) — উল্টো পদ্ধতি
-   সাধারণ নিয়ম: প্রথমে chunk করো, পরে embed।
-   Late Chunking: প্রথমে পুরো doc embed করো, পরে chunk।
+Too large (8192+):
+  ❌ A whole chapter — too much noise
+  ❌ Retrieval precision drops significantly
 
-   কেন? সাধারণ chunk-এ "it", "he", "the company"
-   একা থাকে — কোন company? embedding দুর্বল।
-   Late Chunking-এ পুরো doc-এর context প্রতিটা
-   chunk-এ থাকে — pronoun resolution স্বয়ংক্রিয়।
+SWEET SPOT: 512 tokens with 10-20% overlap (most use cases)
+"""
 
-   Before: Doc → split → embed each chunk alone
-   Late:   Doc → embed whole (long-ctx model)
-              → extract per-chunk token embeddings
-              → প্রতিটা chunk তার neighbors মনে রাখে
+print(size_tradeoff)</div>
 
-   ✅ context-aware embeddings, বিশেষ করে long docs
-   ❌ long-context embedding model দরকার (Jina v2 8K)
-   → Gunther et al. (Jina AI, ২০২৪)
+<div class="code-block"># ── STEP 2: Chunking methods ──
+# Different strategies for splitting documents.
 
-৭. CONTEXTUAL RETRIEVAL (Anthropic, সেপ্টেম্বর ২০২৪)
-   প্রতিটা chunk-এর আগে short context prefix যোগ করো।
-   → LLM পুরো doc পড়ে প্রতিটা chunk-এর জন্য
-     50-100 token summary বানায়।
+methods = {
+    "1. FIXED-SIZE CHUNKING (simplest)": {
+        "how": "Cut every N tokens",
+        "pros": "Simple, fast, deterministic",
+        "cons": "May cut mid-sentence/mid-paragraph",
+        "best_for": "General use, quick prototyping",
+    },
+    "2. SENTENCE-BOUNDARY CHUNKING": {
+        "how": "Cut at sentence endings (. ! ?)",
+        "pros": "Preserves meaning",
+        "cons": "Uneven chunk sizes (sentences vary)",
+        "best_for": "Legal, medical documents",
+    },
+    "3. PARAGRAPH-BOUNDARY CHUNKING": {
+        "how": "Cut at paragraph breaks",
+        "pros": "Complete ideas in each chunk",
+        "cons": "Paragraphs can be very large",
+        "best_for": "Technical docs, papers, articles",
+    },
+    "4. SEMANTIC CHUNKING (advanced)": {
+        "how": "Cut when meaning changes (embedding similarity drops)",
+        "pros": "Most accurate boundaries",
+        "cons": "Slow, complex, requires embeddings",
+        "best_for": "Research, precision-critical",
+    },
+    "5. DOCUMENT STRUCTURE CHUNKING": {
+        "how": "Cut at markdown headers (H1/H2/H3), HTML tags",
+        "pros": "Natural document boundaries",
+        "cons": "Requires structured documents",
+        "best_for": "Documentation, wikis, technical specs",
+    },
+}
 
-   Stored: [LLM prefix] + [original chunk]
-   → "Q3 revenue grew 15%" একা নয় —
-     "From Acme Corp's 2024 Q3 report..." সহ
-   → retrieval failure 67% কমে (Anthropic-এর পরীক্ষায়)
-   → prompt caching দিয়ে ~$1/M tokens — সস্তা
+print("CHUNKING METHODS:")
+for method, info in methods.items():
+    print(f"\n  {method}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
 
-   Late Chunking vs Contextual Retrieval:
-     Late Chunking: embedding model-এ বদল (server-side)
-     Contextual Retrieval: chunk text-এ prefix যোগ
-     → দুটো একসাথে কাজ করতে পারে!
+# OVERLAP (why and how):
+overlap = """
+OVERLAP — preventing information loss at boundaries:
 
-METADATA — প্রতিটা chunk-ে ট্যাগ:
-  {
-    text: "...",
-    source: "doc.pdf",
-    page: 42,
-    section: "3.2",  
-    chunk_id: "doc_042_03",
-    tokens: 487
-  }
-  → citation, filtering, debugging</div>
+PROBLEM: A fact might span two chunks:
+  Chunk 1: "...the revenue was"
+  Chunk 2: "$1.5 million in Q3..."
+  → Neither chunk has the complete fact!
+
+SOLUTION: Overlap chunks by 10-20%:
+  Chunk 1: "...the revenue was $1.5 million in Q3..."
+  Chunk 2: "$1.5 million in Q3, up from Q2..."
+  → The fact appears in BOTH chunks
+
+GOLDEN RATIO:
+  512 token chunk + 102 token overlap (20%)
+  → Boundary context preserved
+  → Slightly more storage (acceptable)
+"""
+
+print(overlap)</div>
+
+<div class="code-block"># ── STEP 3: Implementing chunking in Python ──
+# Practical code for each chunking method.
+
+python_chunking = """
+# METHOD 1: Fixed-size chunking with LangChain:
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=512,
+    chunk_overlap=102,  # 20% overlap
+    separators=["\\n\\n", "\\n", ". ", " ", ""]
+)
+
+chunks = splitter.split_text(long_document)
+# Returns list of ~512-char chunks with 102-char overlap
+
+
+# METHOD 2: Sentence-boundary chunking:
+import nltk
+from langchain.text_splitter import NLTKTextSplitter
+
+splitter = NLTKTextSplitter(chunk_size=512, chunk_overlap=100)
+chunks = splitter.split_text(document)
+
+
+# METHOD 3: Markdown-aware chunking:
+from langchain.text_splitter import MarkdownHeaderTextSplitter
+
+splitter = MarkdownHeaderTextSplitter(
+    headers_to_split_on=[
+        ("#", "Header 1"),
+        ("##", "Header 2"),
+        ("###", "Header 3"),
+    ]
+)
+chunks = splitter.split_text(markdown_doc)
+# Each chunk retains its header context
+
+
+# METHOD 4: Semantic chunking (advanced):
+from langchain_experimental.text_splitter import SemanticChunker
+from langchain_openai import OpenAIEmbeddings
+
+splitter = SemanticChunker(
+    OpenAIEmbeddings(),
+    breakpoint_threshold_type="percentile",  # cut at similarity drop
+    breakpoint_threshold_amount=95,
+)
+chunks = splitter.split_text(document)
+# Cuts when embedding similarity between sentences drops significantly
+"""
+
+print(python_chunking)</div>
+
+<div class="code-block"># ── STEP 4: Late Chunking (Jina, 2024) ──
+# A revolutionary approach: embed first, then chunk.
+
+late_chunking = """
+LATE CHUNKING (Jina AI, September 2024):
+
+TRADITIONAL: Chunk first, embed each chunk alone
+  Document → split into chunks → embed each chunk independently
+  Problem: "it", "he", "the company" lose their reference
+  → "it grew 15%" → which company? embedding is weak
+
+LATE CHUNKING: Embed whole doc first, then extract per-chunk embeddings
+  Document → embed entire doc (long-context model)
+           → extract token-level embeddings
+           → pool tokens into chunks
+  → Each chunk retains CONTEXT from the whole document
+  → Pronouns resolved automatically ("it" = the company mentioned earlier)
+
+BEFORE (Traditional):
+  Doc → [chunk1: "Revenue grew. It was $1.5M."]
+  → embed("Revenue grew. It was $1.5M.") → weak embedding ("it" ambiguous)
+
+LATE CHUNKING:
+  Doc → embed ENTIRE document with long-context model (8K tokens)
+  → extract token embeddings for chunk1
+  → chunk1 embedding includes context from rest of doc
+  → "it" is properly understood as "the company's revenue"
+
+BENEFITS:
+  ✅ Context-aware embeddings (pronouns resolved)
+  ✅ Better retrieval accuracy (especially for long docs)
+  ✅ Each chunk "remembers" its neighbors
+
+LIMITATIONS:
+  ❌ Requires long-context embedding model (Jina v2 8K)
+  ❌ More compute (embed whole doc first)
+  ❌ Newer technique, less tooling support
+
+PAPER: Gunther et al., Jina AI (2024)
+"""
+
+print(late_chunking)</div>
+
+<div class="code-block"># ── STEP 5: Contextual Retrieval (Anthropic, 2024) ──
+# Add context prefix to each chunk before embedding.
+
+contextual = """
+CONTEXTUAL RETRIEVAL (Anthropic, September 2024):
+
+PROBLEM: A chunk alone lacks context.
+  Chunk: "Revenue grew 15% in Q3."
+  → Which company? Which year? Which currency?
+  → Embedding is weak because context is missing.
+
+SOLUTION: Add a short context prefix to each chunk.
+
+PROCESS:
+  1. LLM reads the ENTIRE document
+  2. For each chunk, LLM generates a 50-100 token summary
+  3. Store: [LLM summary prefix] + [original chunk]
+
+BEFORE:
+  Chunk: "Revenue grew 15% in Q3."
+  → Weak embedding (ambiguous reference)
+
+AFTER (Contextual Retrieval):
+  Chunk: "From Acme Corp's 2024 Q3 Financial Report: Revenue grew 15% in Q3."
+  → Strong embedding (clear context)
+
+RESULTS (Anthropic's testing):
+  → 67% reduction in retrieval failures!
+  → Massive accuracy improvement for RAG
+
+COST:
+  → Uses LLM to generate prefixes (expensive?)
+  → BUT: with prompt caching, ~$1/M tokens (cheap!)
+  → Cache the document, generate many prefixes in one call
+
+LATE CHUNKING vs CONTEXTUAL RETRIEVAL:
+  Late Chunking: changes the EMBEDDING MODEL (server-side)
+  Contextual Retrieval: adds prefix to CHUNK TEXT
+  → They can work TOGETHER for maximum accuracy
+"""
+
+print(contextual)
+
+# PYTHON: Implementing Contextual Retrieval:
+contextual_code = """
+import anthropic
+
+client = anthropic.Anthropic()
+
+def add_context_prefix(document, chunks):
+    \"\"\"Add context prefix to each chunk using LLM.\"\"\"
+
+    prompt = f\"\"\"<document>
+{document}
+</document>
+
+Here is the chunk we want to situate within the whole document:
+<chunk>
+{chunks[0]}
+</chunk>
+
+Please give a short succinct context to situate this chunk
+within the overall document for the purposes of improving
+search retrieval of the chunk. Answer only with the succinct
+context and nothing else.\"\"\"
+
+    response = client.messages.create(
+        model="claude-3-5-sonnet-20241022",
+        max_tokens=200,
+        messages=[{"role": "user", "content": prompt}],
+        extra_headers={"anthropic-beta": "prompt-caching-2024-07-31"}
+    )
+
+    context = response.content[0].text
+
+    # Store: [context prefix] + [original chunk]
+    return f"{context}\\n\\n{chunks[0]}"
+
+# For each chunk, generate and prepend context:
+enriched_chunks = [add_context_prefix(doc, [c]) for c in chunks]
+
+# Now embed the enriched chunks (much better retrieval!)
+"""
+
+print(contextual_code)</div>
+
+<div class="code-block"># ── STEP 6: Chunking best practices and metadata ──
+# Maximize retrieval quality with proper chunking.
+
+# METADATA (tag every chunk):
+metadata = """
+METADATA — essential for each chunk:
+
+{
+    "text": "Revenue grew 15% in Q3...",
+    "source": "annual_report_2024.pdf",
+    "page": 42,
+    "section": "3.2 Financial Results",
+    "chunk_id": "ar2024_p42_c03",
+    "tokens": 487,
+    "created_at": "2024-12-01",
+    "author": "Finance Team",
+    "tags": ["revenue", "Q3", "financial"],
+    "language": "en"
+}
+
+WHY METADATA MATTERS:
+  → Citation: "Source: annual_report.pdf, page 42"
+  → Filtering: "Only search Q3 2024 documents"
+  → Debugging: "Which chunk was retrieved?"
+  → Versioning: "Get latest version of this section"
+  → Access control: "Only show authorized docs"
+"""
+
+print(metadata)
+
+# BEST PRACTICES:
+best_practices = [
+    "Default: 512 tokens with 20% overlap (most use cases)",
+    "Use RecursiveCharacterTextSplitter (LangChain default)",
+    "Try contextual retrieval for 67% fewer failures",
+    "Add metadata to EVERY chunk (source, page, section)",
+    "Test chunk size empirically (try 256, 512, 1024)",
+    "Preserve document structure (headers, tables, lists)",
+    "Handle special formats (code blocks, tables separately)",
+    "Use overlap to prevent boundary information loss",
+    "Consider parent-child chunking for context",
+    "Experiment with semantic chunking for precision tasks",
+    "Don't chunk tables or code mid-cell/mid-function",
+    "Log chunk statistics (avg size, count, overlap)",
+    "Re-chunk when documents are updated",
+    "Use late chunking for long documents with pronouns",
+    "Compress chunks before embedding if budget constrained",
+]
+
+print("CHUNKING BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# CHUNKING DECISION MATRIX:
+decision = """
+WHEN TO USE WHICH METHOD:
+
+General RAG → Fixed-size 512 tokens + 20% overlap
+Legal/Medical → Sentence-boundary (preserve meaning)
+Technical docs → Markdown-header-based (structure-aware)
+Research papers → Semantic chunking (meaning-based)
+Long documents → Late chunking or contextual retrieval
+Code → Function/class-based (don't cut mid-function)
+Tables → Keep as single chunks (don't split rows)
+Conversations → Turn-based (each message = chunk)
+"""
+
+print(decision)
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Chunk size       │ 512 tokens (sweet spot)         │
+# │ Overlap          │ 20% (prevent boundary loss)    │
+# │ Fixed-size       │ Simplest, good default         │
+# │ Semantic         │ Best accuracy, most complex    │
+# │ Late chunking    │ Context-aware embeddings       │
+# │ Contextual retr. │ LLM prefix, 67% fewer failures │
+# │ Metadata         │ Essential for citation/filter  │
+# │ Parent-child     │ Small retrieve, big context    │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
