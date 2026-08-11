@@ -450,80 +450,382 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Lost in the Middle:</strong> Key info in middle of 50K tokens — model missed it. Fix: critical info at START and END.</div></div>
 
 
-<div class="code-block">Lost in the Middle — The U-Curve:
+<div class="code-block"># ── STEP 1: The "Lost in the Middle" problem ──
+# LLMs remember the start and end of context, but forget the middle.
 
+research = """
 RESEARCH: Liu et al. (2023) "Lost in the Middle"
+
+EXPERIMENT:
   → Multi-document QA task
-  → Fact placed at different positions
-  → Accuracy measured
+  → Same fact placed at different positions in context
+  → Accuracy measured at each position
 
 RESULT (U-shaped curve):
 
-  Position     #  Accuracy
-  ─────────────# ──────────
-  ১ম (শুরু)    #  ৭২%
-  ২য়          #  ৬৮%  
-  ৩য়          #  ৬২%
-  ...          #  ...
-  মাঝখানে      #  ৪৮% ← সবচেয়ে খারাপ!
-  ...          #  ...
-  ৩য় শেষ      #  ৬৫%
-  শেষ          #  ৭৩%
+Position        Accuracy
+──────────      ────────
+1st (start)     72%
+2nd             68%
+3rd             62%
+...             ...
+Middle          48% ← WORST!
+...             ...
+3rd from end    65%
+Last            73%
 
-  → ২৫% accuracy drop শুরু থেকে মাঝখানে!
-  → Position পরিবর্তন = ফল পরিবর্তন
+→ 25% accuracy drop from start to middle!
+→ Position matters as much as content.
+"""
 
-WHY IT HAPPENS:
+print(research)
 
-১. PRIMACY EFFECT
-  শুরুর tokens পুরো sequence প্রভাবিত করে
-  → attention প্রথম থেকে শেষ পর্যন্ত বিস্তৃত
-  
-২. RECENCY EFFECT  
-  শেষের tokens সবচেয়ে কাছে — output এ সরাসরি
-  → last few tokens = strongest influence
-  
-৩. ATTENTION DILUTION
-  মাঝখানের tokens — অনেক প্রতিবেশী
-  → attention "diluted" across many tokens
-  → কোনো একটা বিশেষ token কম মনোযোগ পায়
+# PYTHON: Demonstrating position effect:
+position_effect = """
+# Test: place the answer at different positions in context
+import openai
 
-POSITIONING STRATEGY:
+def test_position(question, answer, filler_docs):
+    \"\"\"Test if LLM finds answer based on its position.\"\"\"
+    results = {}
 
-  # ─────────────────────────────────────# 
-  #  TOP (primacy zone)                  # 
-  #  → System prompt                     # 
-  #  → Most important instructions       # 
-  #  → Critical constraints              # 
-  # ─────────────────────────────────────# 
-  #  MIDDLE (danger zone)                # 
-  #  → Less critical context             # 
-  #  → Background info                   # 
-  #  → Supporting docs (lower priority)  # 
-  # ─────────────────────────────────────# 
-  #  BOTTOM (recency zone)               # 
-  #  → User's actual question            # 
-  #  → Key retrieved documents           # 
-  #  → Final instruction/reminder        # 
-  # ─────────────────────────────────────# 
+    for position in ['start', 'middle', 'end']:
+        if position == 'start':
+            context = [answer] + filler_docs
+        elif position == 'middle':
+            mid = len(filler_docs) // 2
+            context = filler_docs[:mid] + [answer] + filler_docs[mid:]
+        else:
+            context = filler_docs + [answer]
 
-PRACTICAL EXAMPLE:
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": "Answer from context."},
+                {"role": "user", "content": "\\n".join(context) + "\\n\\nQ: " + question}
+            ]
+        )
+        correct = check_answer(response.choices[0].message.content)
+        results[position] = correct
 
-  ❌ BAD ORDERING:
-  [System: "Answer from docs"]
-  [RAG doc 1: গুরুত্বপূর্ণ] ← মাঝখানে, হারায়
-  [RAG doc 2: কম গুরুত্বপূর্ণ]
-  [RAG doc 3: গুরুত্বপূর্ণ] ← মাঝখানে, হারায়
+    return results
+# Expected: start ~72%, middle ~48%, end ~73%
+"""
+
+print(position_effect)</div>
+
+<div class="code-block"># ── STEP 2: Why does "lost in the middle" happen? ──
+# Three psychological/attention phenomena explain the U-curve.
+
+reasons = {
+    "1. PRIMACY EFFECT (start is strong)": {
+        "what": "First tokens influence the ENTIRE sequence",
+        "why": "Attention spreads from first tokens to everything after",
+        "impact": "Early context shapes the model's 'understanding' of the whole prompt",
+        "use": "Put system prompt and rules at the START",
+    },
+    "2. RECENCY EFFECT (end is strong)": {
+        "what": "Last tokens have the most direct influence on output",
+        "why": "Output is generated right after the last token",
+        "impact": "The last few sentences before the question are most remembered",
+        "use": "Put the most important docs and the question at the END",
+    },
+    "3. ATTENTION DILUTION (middle is weak)": {
+        "what": "Middle tokens compete with many neighbors for attention",
+        "why": "Each token attends to ALL others (O(n^2) attention)",
+        "impact": "With 100K tokens, middle tokens get a tiny fraction of attention",
+        "use": "Don't put critical info in the middle of long context",
+    },
+}
+
+print("WHY 'LOST IN THE MIDDLE' HAPPENS:")
+for reason, info in reasons.items():
+    print(f"\n  {reason}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# VISUALIZING THE ATTENTION PATTERN:
+attention_viz = """
+ATTENTION PATTERN across context positions:
+
+Position:     Start ←—————→ Middle ←—————→ End
+Attention:    █████████        ██░░░░        █████████
+              (high)           (low)         (high)
+
+At 1K tokens:  ████████████████████████████████████  (uniform)
+At 10K tokens: ████████░░░░░░░░░░░░░░░░████████     (slight dip)
+At 100K tokens:███████░░░░░░░░░░░░░░░░░░░░████████  (deep dip)
+
+More tokens = more dilution in the middle.
+This is why short, focused context often beats long context.
+"""
+print(attention_viz)</div>
+
+<div class="code-block"># ── STEP 3: Positioning strategy for optimal context ──
+# Structure your context to exploit the U-curve.
+
+strategy = """
+OPTIMAL CONTEXT STRUCTURE:
+
+┌─────────────────────────────────────────────┐
+│ TOP (primacy zone — 72% accuracy)          │
+│ → System prompt (role, rules)              │
+│ → Most important instructions              │
+│ → Critical constraints                     │
+├─────────────────────────────────────────────┤
+│ MIDDLE (danger zone — 48% accuracy)        │
+│ → Less critical background context         │
+│ → Supporting docs (lower priority)         │
+│ → Nice-to-have info                        │
+├─────────────────────────────────────────────┤
+│ BOTTOM (recency zone — 73% accuracy)       │
+│ → MOST important retrieved documents       │
+│ → User's actual question                   │
+│ → Final instruction/reminder               │
+└─────────────────────────────────────────────┘
+
+RANK YOUR RETRIEVED DOCS:
+  After re-ranking, put the TOP docs at the BOTTOM of context.
+  Put lower-ranked docs in the MIDDLE (it's OK if they're partially missed).
+"""
+
+print(strategy)
+
+# PRACTICAL EXAMPLE:
+example = """
+BAD ORDERING (important docs in middle — LOST):
+  [System: "Answer from the documents below"]
+  [RAG doc 1: CRITICAL answer]  ← middle, will be lost!
+  [RAG doc 2: less important]
+  [RAG doc 3: CRITICAL answer]  ← middle, will be lost!
   [User: "What is X?"]
 
-  ✅ GOOD ORDERING:
-  [System: "Answer from docs"]
-  [RAG doc 2: কম গুরুত্বপূর্ণ] ← মাঝে, OK
-  [RAG doc 1: গুরুত্বপূর্ণ] ← শেষে, মনে থাকে
-  [RAG doc 3: গুরুত্বপূর্ণ] ← শেষে, মনে থাকে
+GOOD ORDERING (important docs at end — REMEMBERED):
+  [System: "Answer from the documents below"]
+  [RAG doc 2: less important]   ← middle, OK to partially miss
+  [RAG doc 1: CRITICAL answer]  ← end, will be remembered!
+  [RAG doc 3: CRITICAL answer]  ← end, will be remembered!
   [User: "What is X?"]
-  [Final: "Base your answer ONLY on 
-           the above docs"]</div>
+  [Final: "Base your answer ONLY on the above documents"]
+
+KEY INSIGHT: The ORDER of your retrieved documents matters.
+Don't just append them randomly — sort by importance.
+Most important LAST.
+"""
+print(example)</div>
+
+<div class="code-block"># ── STEP 4: Reordering retrieved documents ──
+# Implement the positioning strategy in your RAG pipeline.
+
+python_reorder = """
+# PYTHON: Reorder retrieved documents for optimal positioning
+
+def reorder_documents(retrieved_docs, user_query):
+    \"\"\"Reorder docs: least important in middle, most important at end.\"\"\"
+
+    # Assume docs are already scored by similarity (highest first)
+    # Strategy: interleave so the best docs are at the END
+
+    n = len(retrieved_docs)
+
+    # Split into two halves:
+    top_half = retrieved_docs[:n//2]      # Higher relevance
+    bottom_half = retrieved_docs[n//2:]   # Lower relevance
+
+    # Reverse top half so best doc is LAST:
+    top_half_reversed = list(reversed(top_half))
+
+    # Order: [lower relevance (middle)] + [higher relevance reversed (end)]
+    reordered = bottom_half + top_half_reversed
+
+    return reordered
+
+# Example:
+docs = [
+    {"content": "Doc 1 (sim=0.95)", "score": 0.95},
+    {"content": "Doc 2 (sim=0.92)", "score": 0.92},
+    {"content": "Doc 3 (sim=0.89)", "score": 0.89},
+    {"content": "Doc 4 (sim=0.86)", "score": 0.86},
+    {"content": "Doc 5 (sim=0.83)", "score": 0.83},
+    {"content": "Doc 6 (sim=0.80)", "score": 0.80},
+]
+
+reordered = reorder_documents(docs, "What is X?")
+
+# Result order: [4, 5, 6, 3, 2, 1]
+# Least important in middle, most important (Doc 1) at the very END
+# This puts the highest-relevance doc in the recency zone
+
+print("Reordered for optimal U-curve placement:")
+for i, doc in enumerate(reordered):
+    zone = "MIDDLE" if i < len(reordered)//2 else "END"
+    print(f"  Position {i+1} ({zone}): {doc['content']}")
+"""
+
+print(python_reorder)</div>
+
+<div class="code-block"># ── STEP 5: Mitigating lost-in-the-middle ──
+# Techniques to reduce the accuracy drop in long context.
+
+mitigations = {
+    "1. Keep context SHORT": {
+        "how": "Retrieve fewer, more relevant docs (top-3 instead of top-10)",
+        "impact": "Less dilution, higher accuracy per document",
+    },
+    "2. Reorder documents": {
+        "how": "Put best docs at START and END, worst in MIDDLE",
+        "impact": "Exploits primacy + recency effects",
+    },
+    "3. Repeat critical info": {
+        "how": "Mention key facts at both start AND end of context",
+        "impact": "Ensures the fact is in a high-attention zone",
+    },
+    "4. Use re-ranking": {
+        "how": "Cross-encoder re-ranks by actual relevance",
+        "impact": "Only the truly most relevant docs are kept",
+    },
+    "5. Chunk strategically": {
+        "how": "Smaller chunks = each one more likely to be fully attended to",
+        "impact": "Reduces the 'middle' for each individual chunk",
+    },
+    "6. Use multiple passes": {
+        "how": "Ask the LLM to extract key facts first, then answer",
+        "impact": "First pass focuses attention, second pass uses extraction",
+    },
+    "7. Structured context (XML tags)": {
+        "how": "Wrap docs in <doc1>, <doc2> tags for clear boundaries",
+        "impact": "Helps model distinguish and locate information",
+    },
+}
+
+print("MITIGATING LOST-IN-THE-MIDDLE:")
+for mitigation, info in mitigations.items():
+    print(f"\n  {mitigation}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# XML-STRUCTURED CONTEXT:
+xml_context = """
+STRUCTURED CONTEXT WITH XML TAGS:
+
+<system>
+You are a RAG assistant. Answer from the documents below.
+If the answer is not in the documents, say "I don't know."
+</system>
+
+<documents>
+<doc id="1" relevance="high">
+The refund policy allows returns within 30 days.
+</doc>
+<doc id="2" relevance="medium">
+Shipping takes 5-7 business days.
+</doc>
+<doc id="3" relevance="high">
+Digital products are non-refundable after download.
+</doc>
+</documents>
+
+<instructions>
+Answer the question using ONLY the documents above.
+Cite the document ID in your answer.
+</instructions>
+
+<question>
+What is the refund policy?
+</question>
+
+XML tags help the model:
+  → Clearly identify document boundaries
+  → Know which section is which
+  → Extract information more reliably
+  → Reduces "blending" of different documents
+"""
+print(xml_context)</div>
+
+<div class="code-block"># ── STEP 6: Measuring and testing position effects ──
+# Test your own system for lost-in-the-middle.
+
+testing_code = """
+# PYTHON: Test position sensitivity in your RAG system
+
+import openai
+
+client = openai.OpenAI()
+
+def measure_position_effect(documents, question, answer):
+    \"\"\"Measure how position affects answer retrieval.\"\"\"
+    results = {}
+
+    for position_name, position in [
+        ("start", 0),
+        ("middle", len(documents) // 2),
+        ("end", len(documents) - 1)
+    ]:
+        # Place the answer doc at the specified position:
+        docs = documents.copy()
+        answer_doc = docs.pop(0)  # remove from start
+        docs.insert(position, answer_doc)  # insert at target position
+
+        context = "\\n\\n".join([d["content"] for d in docs])
+
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": "Answer from context only."},
+                {"role": "user", "content": context + "\\n\\nQ: " + question}
+            ],
+            temperature=0
+        )
+
+        is_correct = answer.lower() in response.choices[0].message.content.lower()
+        results[position_name] = is_correct
+
+    return results
+
+# Run the test:
+results = measure_position_effect(
+    documents=load_test_docs(),  # 20 docs, answer in doc[0]
+    question="What is the company's refund policy?",
+    answer="30 days"
+)
+
+print("POSITION EFFECT RESULTS:")
+for position, correct in results.items():
+    status = "✅ FOUND" if correct else "❌ LOST"
+    print(f"  {position:8}: {status}")
+
+# If middle = False but start/end = True:
+# → Your system has "lost in the middle" problem
+# → Implement reordering strategy
+"""
+
+print(testing_code)
+
+# KEY TAKEAWAYS:
+takeaways = """
+KEY TAKEAWAYS:
+
+1. The U-curve is REAL — position affects accuracy by 25%+
+2. Start (primacy) and end (recency) get the most attention
+3. Middle context is the "danger zone" — info gets lost
+4. REORDER your retrieved docs: best at end, worst in middle
+5. Keep context SHORT and FOCUSED (less dilution)
+6. Use XML tags to structure context (helps model parse)
+7. Test your system for position sensitivity
+8. "Less is more" — fewer high-quality docs beat many mediocre ones
+"""
+
+print(takeaways)
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Zone             │ Best Content                     │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Start (primacy)  │ System prompt, rules, role      │
+# │ Middle (danger)  │ Less critical, background docs  │
+# │ End (recency)    │ Most relevant docs + question   │
+# │ Mitigation       │ Reorder, short context, XML     │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
