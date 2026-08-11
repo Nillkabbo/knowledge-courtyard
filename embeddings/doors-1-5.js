@@ -26,41 +26,416 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Embedding Dimension Mismatch:</strong> Stored 768-dim, queried with 384-dim — crash. Fix: lock embedding dimension, version models.</div></div>
 
 
-<div class="code-block">What Are Embeddings — Language as Geometry:
+<div class="code-block"># ── STEP 1: What are embeddings? ──
+# Language as geometry.
+
+emb_intro = """
+WHAT ARE EMBEDDINGS?
 
 THE FUNDAMENTAL IDEA:
-  
-  শব্দ → সংখ্যার তালিকা (vector)
-  → সংখ্যার তালিকার অবস্থান = অর্থ
-  
-  "king"  → [০.২, -০.৫, ০.৮, ..., ০.১] (৭৬৮ numbers)
-  "queen" → [০.৩, -০.৪, ০.৭, ..., ০.২] (৭৬৮ numbers)
-  "apple" → [-০.৯, ০.৩, -০.১, ..., ০.৮] (৭৬৮ numbers)
-  
-  → king ও queen VECTORS very similar
-  → king ও apple very different
+  Words/sentences → list of numbers (vector)
+  → Position in vector space = meaning
+
+  "king"  → [0.2, -0.5, 0.8, ..., 0.1]  (768 numbers)
+  "queen" → [0.3, -0.4, 0.7, ..., 0.2]  (768 numbers)
+  "apple" → [-0.9, 0.3, -0.1, ..., 0.8] (768 numbers)
+
+  → king and queen vectors are very SIMILAR
+  → king and apple are very DIFFERENT
   → similarity = geometric distance!
 
 WHAT THE DIMENSIONS MEAN:
-  
-  Each dimension captures some "concept"
-  (though not interpretable individually):
-  
-  Dim ১: maybe "royalty" (king/queen high, apple low)
-  Dim ২: maybe "gender" (king high, queen low)
-  Dim ৩: maybe "living being" (king/queen/apple mixed)
-  ...
-  Dim ৭৬৮: maybe some abstract feature
-  
-  → NO single dimension is interpretable alone
-  → BUT together they capture meaning!
-  → "geometry of meaning" — অর্থের জ্যামিতি
+  Each dimension captures some "concept" (not individually interpretable):
+  → Together they capture MEANING
+  → "geometry of meaning"
 
 THE KING - MAN + WOMAN = QUEEN MIRACLE:
+  king - man + woman ≈ queen
+  Paris - France + Italy ≈ Rome
+  doctor - man + woman ≈ nurse (bias alert!)
+  → Vector arithmetic captures semantic relationships!
 
-  king vector:    [০.২, -০.৫, ০.৮, ...]
-  man vector:     [০.১, -০.৫, ০.৬, ...]  
-  woman vector:   [০.১,  ০.৫, ০.৬, ...]
+WHY EMBEDDINGS WORK (Distributional Hypothesis):
+  "You shall know a word by the company it keeps" (Firth, 1957)
+  → Words in similar contexts have similar meanings
+  → Model learns: similar context = similar embedding
+
+SIMILARITY METRICS:
+  1. COSINE SIMILARITY (most common):
+     cos(theta) = (A dot B) / (|A| * |B|)
+     → 1.0 = identical, 0.0 = unrelated, -1.0 = opposite
+     → Scale-independent, best for semantics
+
+  2. DOT PRODUCT (fast):
+     A dot B = sum(ai * bi)
+     → Same as cosine if vectors are normalized
+
+  3. EUCLIDEAN DISTANCE:
+     d = sqrt(sum((ai - bi)^2))
+     → Sensitive to magnitude
+
+PYTHON (embeddings with OpenAI):
+  from openai import OpenAI
+  import numpy as np
+
+  client = OpenAI()
+
+  def embed(text):
+      response = client.embeddings.create(
+          model="text-embedding-3-small",
+          input=text
+      )
+      return response.data[0].embedding
+
+  king = embed("king")
+  queen = embed("queen")
+  apple = embed("apple")
+
+  def cosine_sim(a, b):
+      return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+  print(f"king-queen: {cosine_sim(king, queen):.4f}")  # ~0.85
+  print(f"king-apple: {cosine_sim(king, apple):.4f}")  # ~0.35
+
+  # Vector arithmetic:
+  result = np.array(king) - np.array(embed("man")) + np.array(embed("woman"))
+  print(f"king-man+woman vs queen: {cosine_sim(result, queen):.4f}")  # ~0.85
+"""
+
+print(emb_intro)</div>
+
+<div class="code-block"># ── STEP 2: Embedding model landscape ──
+# Choosing the right embedding model.
+
+models = """
+EMBEDDING MODEL LANDSCAPE (2024-2025):
+
+COMMERCIAL:
+  OpenAI text-embedding-3-small: 1536 dim, cheap, good
+  OpenAI text-embedding-3-large: 3072 dim (variable!), best quality
+  Cohere embed-v3: 1024 dim, multilingual
+  Google text-gecko: 768 dim, efficient
+  Voyage AI: up to 2000 dim, top MTEB scores
+
+OPEN SOURCE:
+  BGE-large (BAAI): 1024 dim, top MTEB
+  E5-large (Microsoft): 1024 dim, strong all-around
+  GTE-large (Alibaba): 1024 dim, multilingual
+  nomic-embed: 768 dim, reproducible
+  sentence-transformers (SBERT): 384-768 dim, easy to use
+  Jina embeddings v3: 1024 dim, long context
+
+MTEB BENCHMARK (Massive Text Embedding Benchmark):
+  → 56 tasks across 8 categories
+  → Ranking: evaluates retrieval, classification, clustering, etc.
+  → Check: huggingface.co/spaces/mteb/leaderboard
+
+DIMENSIONS TRADE-OFF:
+  More dimensions → more capacity → better quality
+  But: more storage, slower search
+
+  384 dim: fast, smaller (miniLM)
+  768 dim: sweet spot (BERT, nomic)
+  1024 dim: good quality (BGE, E5, Cohere)
+  1536+ dim: high quality (OpenAI)
+  3072 dim: best quality (OpenAI 3-large)
+
+PYTHON (sentence-transformers, free and local):
+  from sentence_transformers import SentenceTransformer
+  import numpy as np
+
+  # Load model (downloads once, then cached):
+  model = SentenceTransformer('BAAI/bge-large-en-v1.5')
+
+  # Embed sentences:
+  sentences = [
+      "The cat sits on the mat",
+      "A feline rests on a rug",
+      "Machine learning is fascinating",
+  ]
+
+  embeddings = model.encode(sentences)
+
+  # Similarity:
+  sim_01 = model.similarity(embeddings[0], embeddings[1])  # high
+  sim_02 = model.similarity(embeddings[0], embeddings[2])  # low
+  print(f"Cat/mat vs feline/rug: {sim_01:.4f}")  # ~0.75
+  print(f"Cat/mat vs ML: {sim_02:.4f}")          # ~0.20
+
+  # Compare multiple at once:
+  similarities = model.similarity(embeddings, embeddings)
+  print(similarities)  # 3x3 similarity matrix
+"""
+
+print(models)</div>
+
+<div class="code-block"># ── STEP 3: Semantic search ──
+# Finding documents by meaning, not keywords.
+
+semantic_search = """
+SEMANTIC SEARCH:
+
+Traditional search: keyword matching (BM25, TF-IDF)
+  → "bank account" won't find "financial repository"
+  → Exact match required
+
+Semantic search: find by MEANING
+  → "bank account" finds "financial repository" (similar meaning)
+  → Handles synonyms, paraphrasing, related concepts
+
+HOW IT WORKS:
+  1. Embed all documents → store in vector database
+  2. Embed query → find nearest documents by similarity
+  3. Return most semantically similar results
+
+PYTHON (simple semantic search):
+  from sentence_transformers import SentenceTransformer
+  import numpy as np
+
+  model = SentenceTransformer('all-MiniLM-L6-v2')
+
+  # Document collection:
+  documents = [
+      "Python is a popular programming language",
+      "Machine learning models learn from data",
+      "The weather in Dhaka is humid",
+      "Django is a Python web framework",
+      "Neural networks are inspired by the brain",
+  ]
+
+  # Embed all documents:
+  doc_embeddings = model.encode(documents)
+
+  # Search:
+  query = "what is deep learning?"
+  query_embedding = model.encode(query)
+
+  # Calculate similarities:
+  similarities = model.similarity(query_embedding, doc_embeddings)[0]
+
+  # Rank:
+  ranked = sorted(enumerate(similarities), key=lambda x: x[1], reverse=True)
+  for idx, score in ranked[:3]:
+      print(f"Score: {score:.4f} | {documents[idx]}")
+  # Top: "Neural networks..." or "Machine learning..."
+
+VECTOR DATABASES (for production):
+  Pinecone: managed, scalable, serverless
+  Weaviate: open-source, hybrid search
+  Qdrant: Rust-based, fast, open-source
+  Chroma: lightweight, Python-native, easy
+  Milvus: distributed, large-scale
+  pgvector: PostgreSQL extension (use existing DB!)
+
+PYTHON (Chroma vector DB):
+  import chromadb
+
+  client = chromadb.PersistentClient(path="./vector_db")
+  collection = client.create_collection("documents")
+
+  # Add documents:
+  collection.add(
+      documents=documents,
+      ids=[f"doc_{i}" for i in range(len(documents))],
+      metadatas=[{"source": "web"} for _ in documents]
+  )
+
+  # Query:
+  results = collection.query(
+      query_texts=["what is deep learning?"],
+      n_results=3
+  )
+  for doc, dist in zip(results['documents'][0], results['distances'][0]):
+      print(f"Distance: {dist:.4f} | {doc}")
+"""
+
+print(semantic_search)</div>
+
+<div class="code-block"># ── STEP 4: Vector arithmetic and analogies ──
+# Math with meaning.
+
+analogies = """
+VECTOR ARITHMETIC — MATH WITH MEANING:
+
+Embeddings capture relationships:
+  king - man + woman ≈ queen
+  Paris - France + Italy ≈ Rome
+  walking - walk + swim ≈ swimming
+
+These work because embeddings encode DIRECTIONS:
+  → "gender" direction: man ↔ woman, king ↔ queen
+  → "capital" direction: France ↔ Paris
+  → "tense" direction: walk ↔ walking
+
+ANALOGY SOLVING:
+  A : B :: C : D
+  → vec(D) ≈ vec(B) - vec(A) + vec(C)
+
+  Example: "man is to king as woman is to ?"
+  → king - man + woman → find nearest word → "queen"
+
+PYTHON (analogy solver):
+  from sentence_transformers import SentenceTransformer
+  import numpy as np
+
+  model = SentenceTransformer('all-MiniLM-L6-v2')
+
+  def analogy(word_a, word_b, word_c, candidates):
+      \"\"\"Solve A:B :: C:D\"\"\"
+      # D = B - A + C
+      a = model.encode(word_a)
+      b = model.encode(word_b)
+      c = model.encode(word_c)
+      target = b - a + c
+
+      # Find nearest candidate:
+      cand_embs = model.encode(candidates)
+      similarities = model.similarity(target, cand_embs)[0]
+
+      best_idx = similarities.argmax()
+      return candidates[best_idx], similarities[best_idx].item()
+
+  result, score = analogy(
+      "man", "king", "woman",
+      ["queen", "princess", "apple", "throne"]
+  )
+  print(f"man:king :: woman:{result} (score: {score:.4f})")
+  # man:king :: woman:queen (score: 0.85)
+
+BIAS IN EMBEDDINGS:
+  doctor - man + woman ≈ nurse (gender bias!)
+  programmer - man + woman ≈ homemaker (worse bias!)
+
+  → Embeddings reflect training data biases
+  → Must debias for fair applications
+  → Methods: hard debiasing, equalize gender direction
+
+CLUSTERING WITH EMBEDDINGS:
+  from sklearn.cluster import KMeans
+
+  embeddings = model.encode(documents)
+  kmeans = KMeans(n_clusters=3)
+  labels = kmeans.fit_predict(embeddings)
+  # Group similar documents together
+"""
+
+print(analogies)</div>
+
+<div class="code-block"># ── STEP 5: Embedding fine-tuning ──
+# Domain specialization.
+
+fine_tune = """
+EMBEDDING FINE-TUNING:
+
+Pre-trained embeddings are general-purpose.
+For specific domains (medical, legal, financial), fine-tune.
+
+METHODS:
+
+1. CONTRASTIVE LEARNING:
+   → Positive pairs: similar meaning (query, relevant doc)
+   → Negative pairs: different meaning (query, irrelevant doc)
+   → Train: pull positives together, push negatives apart
+   → Loss: InfoNCE / MultipleNegativesRankingLoss
+
+2. TRIPLET LOSS:
+   → (anchor, positive, negative)
+   → Make anchor closer to positive than negative
+   → Margin: minimum distance difference
+
+3. SUPERVISED:
+   → Label data as relevant/not-relevant
+   → Train classifier on top of embeddings
+   → Or fine-tune embeddings directly
+
+PYTHON (sentence-transformers fine-tuning):
+  from sentence_transformers import (
+      SentenceTransformer, InputExample, losses
+  )
+  from torch.utils.data import DataLoader
+
+  # Load pre-trained model:
+  model = SentenceTransformer('all-MiniLM-L6-v2')
+
+  # Training data (positive pairs):
+  train_examples = [
+      InputExample(texts=["heart attack", "myocardial infarction"]),
+      InputExample(texts=["diabetes", "high blood sugar condition"]),
+      InputExample(texts=["cancer treatment", "oncology therapy"]),
+      # ... more domain-specific pairs
+  ]
+
+  # DataLoader:
+  train_dataloader = DataLoader(train_examples, batch_size=16, shuffle=True)
+
+  # Contrastive loss (pulls similar texts together):
+  train_loss = losses.MultipleNegativesRankingLoss(model)
+
+  # Fine-tune:
+  model.fit(
+      train_objectives=[(train_dataloader, train_loss)],
+      epochs=3,
+      warmup_steps=100,
+      show_progress_bar=True
+  )
+
+  # Save fine-tuned model:
+  model.save("./domain_embedder")
+
+  # Now domain-specific similarity is much better:
+  # "heart attack" ↔ "myocardial infarction" → high similarity
+
+DATA SOURCES FOR FINE-TUNING:
+  → Expert-curated synonym pairs
+  → Click data (what users clicked after searching)
+  → Question-answer pairs
+  → Paraphrase datasets
+  → Synthetic data from LLMs
+
+WHEN TO FINE-TUNE EMBEDDINGS:
+  → Domain vocabulary differs from general English
+  → Off-the-shelf embeddings perform poorly
+  → You have labeled data (pairs or triplets)
+  → Need specialized similarity (e.g., code similarity)
+"""
+
+print(fine_tune)</div>
+
+<div class="code-block"># ── STEP 6: Embeddings best practices ──
+# Production deployment guide.
+
+best_practices = [
+    "Choose model by MTEB score + cost tradeoff",
+    "Normalize vectors before similarity (use cosine)",
+    "768-1024 dimensions is the sweet spot",
+    "Use pgvector if you already have PostgreSQL",
+    "Chroma for prototyping, Pinecone/Qdrant for production",
+    "Batch embedding calls (cheaper, faster)",
+    "Cache embeddings (don't re-embed unchanged docs)",
+    "Fine-tune for domain-specific vocabulary",
+    "Use contrastive learning for custom similarity",
+    "HNSW index for fast approximate search",
+    "Hybrid search: combine semantic + keyword (BM25)",
+    "Evaluate with domain-specific test set",
+    "Monitor for embedding drift over time",
+    "Consider Matryoshka embeddings for dimension flexibility",
+    "Test for bias (gender, race, cultural)",
+]
+
+print("EMBEDDINGS BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Model            │ Dim  │ Cost                     │
+# ├──────────────────┼──────┼──────────────────────────┤
+# │ MiniLM-L6        │ 384  │ Free, local, fast        │
+# │ BGE-large        │ 1024 │ Free, local, strong      │
+# │ OpenAI 3-small   │ 1536 │ Cheap, API               │
+# │ OpenAI 3-large   │ 3072 │ Best quality, API        │
+# │ Cohere v3        │ 1024 │ Multilingual, API        │
+# └──────────────────┴──────┴──────────────────────────┘</div>
   
   king - man =    [০.১,  ০.০, ০.২, ...]
                  (the "royalty" direction)

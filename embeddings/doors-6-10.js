@@ -24,27 +24,445 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Deduplication:</strong> Near-identical docs all retrieved — wasted context. Fix: deduplicate with similarity threshold.</div></div>
 
 
-<div class="code-block">Dimensionality — The Size-Quality Tradeoff:
+<div class="code-block"># ── STEP 1: Dimensionality and storage ──
+# The size-quality tradeoff.
+
+dimensions = """
+DIMENSIONALITY — THE SIZE-QUALITY TRADEOFF:
 
 DIMENSION COMPARISON:
+  Dims   | Quality (MTEB) | Storage/1M docs | Search Speed
+  384    | ~60%           | 1.5 GB          | fastest
+  768    | ~63%           | 3 GB            | fast
+  1024   | ~64%           | 4 GB            | medium
+  1536   | ~65%           | 6 GB            | slower
+  3072   | ~65%           | 12 GB           | slowest
 
-  # ──────────# ──────────# ────────────# ──────────# 
-  #  Dims     #  Quality  #  Storage/M  #  Search   # 
-  #           #  (MTEB)   #  docs       #  Speed    # 
-  # ──────────# ──────────# ────────────# ──────────# 
-  #  ৩৮৪      #  ~৬০%     #  ১.৫ GB     #  fastest  # 
-  #  ৭৬৮      #  ~৬৩%     #  ৩ GB       #  fast     # 
-  #  ১০২৪     #  ~৬৪%     #  ৪ GB       #  medium   # 
-  #  ১৫৩৬     #  ~৬৫%     #  ৬ GB       #  slower   # 
-  #  ৩০৭২     #  ~৬৫%     #  ১২ GB      #  slowest  # 
-  # ──────────# ──────────# ────────────# ──────────# 
-
-  Key insight:
-    ৭৬৮ → ৩০৭২: quality +২% but storage ৪x!
-    ৩৮৪ → ৭৬৮: quality +৩%, storage ২x — worth it
-    ৭৬৮-১০২৪: sweet spot for most applications
+  Key insight: 768 to 3072 = quality +2% but storage 4x!
+  → 768-1024 is the sweet spot for most applications
 
 DIMENSIONALITY REDUCTION:
+
+1. PCA (Principal Component Analysis):
+   → Linear transformation, find most important directions
+   → 3072 → 256 dim with ~95% information retained
+
+2. MATRYOSHKA REPRESENTATIONS (OpenAI, 2024):
+   → Train embedding so FIRST N dims are useful!
+   → 3072 dim model → truncate to 256, 512, 1024
+   → Each truncation level is independently useful!
+   → OpenAI text-embedding-3: dimensions parameter
+
+3. PRODUCT QUANTIZATION (PQ):
+   → Compress vectors for storage (48x compression!)
+   → Split 768 dim into 64 sub-vectors, each to 1 byte
+   → Slight accuracy loss (~3-5%)
+
+VISUALIZATION (768 dim → 2D/3D):
+  t-SNE: local clusters preserved (good for topics)
+  UMAP: local + global preserved (better overall structure)
+  PCA: linear, fast, simple (misses non-linear)
+
+WHY NOT MAX DIMENSIONS?
+  Storage: 1M docs × 3072 dim × 4 bytes = 12 GB
+  Search: 3072 dim cosine ~2ms, 768 dim ~0.5ms (4x faster!)
+  → Diminishing returns above 1024 dim
+
+PYTHON (Matryoshka / variable dimensions):
+  from openai import OpenAI
+  client = OpenAI()
+
+  # Same model, different dimensions:
+  for dims in [256, 512, 1024, 3072]:
+      emb = client.embeddings.create(
+          model="text-embedding-3-large",
+          input="hello world",
+          dimensions=dims
+      )
+      print(f"{dims} dim: {len(emb.data[0].embedding)} values")
+"""
+
+print(dimensions)</div>
+
+<div class="code-block"># ── STEP 2: Vector indexing ──
+# Fast similarity search at scale.
+
+indexing = """
+VECTOR INDEXING — FAST SIMILARITY SEARCH:
+
+BRUTE FORCE: compare query to every document → O(n)
+  → Works for < 100K documents
+  → Too slow for millions
+
+APPROXIMATE NEAREST NEIGHBOR (ANN):
+  → Trade slight accuracy for massive speedup
+  → Sub-linear search time
+
+ALGORITHMS:
+
+1. HNSW (Hierarchical Navigable Small World):
+   → Graph-based: build layers of neighbor links
+   → Start at top (sparse), descend to bottom (dense)
+   → O(log n) search, excellent recall
+   → Used by: Chroma, Weaviate, Pinecone, pgvector
+   → Best general-purpose choice
+
+2. IVF (Inverted File Index):
+   → Cluster vectors into buckets
+   → Only search nearest buckets
+   → Faster build, good recall
+   → Used by: FAISS
+
+3. PQ (Product Quantization):
+   → Compress vectors (48x smaller)
+   → Approximate distances on compressed
+   → Used for: billion-scale search
+   → Often combined with IVF (IVF-PQ)
+
+4. LSH (Locality-Sensitive Hashing):
+   → Similar vectors → same hash bucket
+   → Very fast, lower recall
+   → Good for: deduplication, near-duplicate detection
+
+INDEX SELECTION:
+  < 100K docs: brute force (exact, simple)
+  100K-10M docs: HNSW (best quality/speed)
+  10M-100M docs: IVF-HNSW (balance)
+  100M+ docs: IVF-PQ (compressed, scalable)
+
+PYTHON (FAISS indexing):
+  import faiss
+  import numpy as np
+
+  # Generate embeddings:
+  embeddings = np.random.rand(1000000, 768).astype('float32')
+
+  # Brute force (exact):
+  index = faiss.IndexFlatIP(768)  # inner product (cosine if normalized)
+  index.add(embeddings)
+
+  # HNSW (fast approximate):
+  index = faiss.IndexHNSWFlat(768, 32)  # 32 neighbors
+  index.add(embeddings)
+
+  # IVF + PQ (compressed, scalable):
+  quantizer = faiss.IndexFlatIP(768)
+  index = faiss.IndexIVFPQ(quantizer, 768, 4096, 64, 8)
+  index.train(embeddings)
+  index.add(embeddings)
+
+  # Search:
+  query = np.random.rand(1, 768).astype('float32')
+  distances, indices = index.search(query, 10)  # top 10
+"""
+
+print(indexing)</div>
+
+<div class="code-block"># ── STEP 3: Embedding evaluation ──
+# Measuring embedding quality.
+
+evaluation = """
+EMBEDDING EVALUATION:
+
+MTEB (Massive Text Embedding Benchmark):
+  → 56 tasks across 8 categories:
+    - Retrieval (search, QA)
+    - Classification (sentiment, topic)
+    - Clustering (grouping similar texts)
+    - STS (Semantic Textual Similarity)
+    - Reranking (re-ordering search results)
+    - Summarization
+    - Bitext mining (translation alignment)
+    - Pair classification
+  → Check leaderboard: huggingface.co/spaces/mteb/leaderboard
+
+CUSTOM EVALUATION:
+  → Domain-specific test set
+  → Define: query → relevant documents
+  → Measure: Recall@K, MRR, NDCG
+
+PYTHON (evaluate retrieval):
+  def evaluate_retrieval(embeddings_model, test_data, k=10):
+      \"\"\"Evaluate embedding quality for retrieval.\"\"\"
+      total_recall = 0
+      total_mrr = 0
+
+      for query, relevant_docs in test_data:
+          # Embed query and all docs:
+          query_emb = model.encode(query)
+          doc_embs = model.encode(all_docs)
+
+          # Find top K:
+          scores = model.similarity(query_emb, doc_embs)[0]
+          top_k = scores.argsort(descending=True)[:k]
+
+          # Recall@K: how many relevant docs in top K?
+          hits = sum(1 for idx in top_k if all_docs[idx] in relevant_docs)
+          recall = hits / len(relevant_docs)
+          total_recall += recall
+
+          # MRR: reciprocal rank of first relevant doc
+          for rank, idx in enumerate(top_k, 1):
+              if all_docs[idx] in relevant_docs:
+                  total_mrr += 1 / rank
+                  break
+
+      n = len(test_data)
+      return {
+          "recall_at_k": total_recall / n,
+          "mrr": total_mrr / n
+      }
+
+BIAS TESTING:
+  → Check for gender/race/cultural bias
+  → WEAT (Word Embedding Association Test)
+  → Example: "doctor" closer to "man" than "woman"?
+
+COST-PERFORMANCE:
+  → Not just quality, but cost matters
+  → OpenAI: $0.13 per 1M tokens
+  → Self-hosted: GPU cost per hour
+  → Evaluate: quality per dollar
+"""
+
+print(evaluation)</div>
+
+<div class="code-block"># ── STEP 4: Embedding applications ──
+# Beyond RAG — the full spectrum.
+
+applications = """
+EMBEDDING APPLICATIONS:
+
+1. SEMANTIC SEARCH (RAG foundation):
+   → Query → find similar documents
+   → Powering: ChatGPT browse, Google Search AI
+
+2. CLUSTERING:
+   → Group similar documents
+   → Topic discovery, trend analysis
+   → K-Means, DBSCAN, HDBSCAN on embeddings
+
+3. CLASSIFICATION:
+   → Zero-shot: embed + nearest class description
+   → Few-shot: train classifier on embeddings
+   → Faster than fine-tuning full models
+
+4. DEDUPLICATION:
+   → Find near-duplicate documents
+   → Content dedup, plagiarism detection
+   → Embed → compare → dedup
+
+5. RECOMMENDATION:
+   → Item embeddings (products, movies, articles)
+   → "Users who liked X also liked Y"
+   → Collaborative filtering alternative
+
+6. ANOMALY DETECTION:
+   → Normal data clusters together
+   → Anomalies are far from all clusters
+   → Fraud, spam, outlier detection
+
+7. DATA LINEAGE:
+   → Track how data transforms
+   → Embed before/after → measure change
+   → Pipeline monitoring
+
+8. VISUALIZATION:
+   → UMAP/t-SNE → 2D plot of corpus
+   → Discover hidden structure
+   → Exploratory data analysis
+
+PYTHON (clustering with embeddings):
+  from sklearn.cluster import KMeans
+  from sentence_transformers import SentenceTransformer
+
+  model = SentenceTransformer('all-MiniLM-L6-v2')
+
+  # Embed documents:
+  docs = ["AI article", "finance report", "recipe", ...]
+  embeddings = model.encode(docs)
+
+  # Cluster:
+  kmeans = KMeans(n_clusters=5, random_state=42)
+  labels = kmeans.fit_predict(embeddings)
+
+  # Group by cluster:
+  clusters = {}
+  for doc, label in zip(docs, labels):
+      clusters.setdefault(label, []).append(doc)
+
+  for label, docs_in_cluster in clusters.items():
+      print(f"Cluster {label}: {len(docs_in_cluster)} docs")
+      for doc in docs_in_cluster[:3]:
+          print(f"  - {doc}")
+
+PYTHON (zero-shot classification):
+  from sentence_transformers import SentenceTransformer
+
+  model = SentenceTransformer('all-MiniLM-L6-v2')
+
+  classes = ["sports", "politics", "technology", "entertainment"]
+  class_embeddings = model.encode(classes)
+
+  text = "The new iPhone has amazing AI capabilities"
+  text_embedding = model.encode(text)
+
+  similarities = model.similarity(text_embedding, class_embeddings)[0]
+  best = similarities.argmax()
+  print(f"Category: {classes[best]} (score: {similarities[best]:.4f})")
+  # Category: technology
+"""
+
+print(applications)</div>
+
+<div class="code-block"># ── STEP 5: Embedding challenges ──
+# Know your limits.
+
+challenges = """
+EMBEDDING CHALLENGES:
+
+1. OUT-OF-DOMAIN VOCABULARY:
+   → Medical/legal/code terms may not embed well
+   → Solution: fine-tune on domain data
+
+2. BIAS:
+   → Reflects training data biases (gender, race)
+   → Solution: debiasing techniques, diverse data
+
+3. DIMENSIONALITY CURSE:
+   → In high dimensions, everything seems similar
+   → Solution: use ANN, reduce dimensions
+
+4. DRIFT:
+   → Meanings change over time
+   → "COVID" meant different things in 2019 vs 2020
+   → Solution: periodic re-embedding
+
+5. MULTILINGUAL:
+   → Cross-lingual embeddings may not be perfect
+   → Solution: use multilingual models (LaBSE, multilingual-E5)
+
+6. LONG DOCUMENTS:
+   → Embedding models have token limits (512 typically)
+   → Solution: chunk → embed → aggregate
+
+7. COST AT SCALE:
+   → Embedding millions of docs costs money
+   → Solution: batch, cache, use open-source models
+
+8. EVALUATION DIFFICULTY:
+   → Hard to define "good" embeddings
+   → Solution: use task-specific metrics (recall, MRR)
+
+PRODUCTION PITFALLS:
+  → DON'T mix embedding models (different spaces!)
+  → DO normalize vectors (use cosine similarity)
+  → DO version your embedding model
+  → DO re-embed when changing models
+  → DON'T store unnormalized vectors (precision issues)
+  → DO use float16 for storage (half the space)
+"""
+
+print(challenges)</div>
+
+<div class="code-block"># ── STEP 6: Complete embedding architecture ──
+# Production system design.
+
+architecture = """
+COMPLETE EMBEDDING ARCHITECTURE:
+
+INGESTION PIPELINE:
+  Document → Chunk → Embed → Store in Vector DB
+
+  1. DOCUMENT PROCESSING:
+     → PDF/docx/HTML → text extraction
+     → Clean, normalize
+     → Chunk into ~256-512 token pieces
+
+  2. EMBEDDING:
+     → Batch embed chunks (API or local model)
+     → Store: vector + metadata + original text
+
+  3. INDEXING:
+     → HNSW for fast search
+     → Metadata filter index (tags, dates)
+
+QUERY PIPELINE:
+  Query → Embed → Search → Rerank → Return
+
+  1. QUERY EMBEDDING:
+     → Same model as ingestion!
+     → Optional: query expansion, rewriting
+
+  2. VECTOR SEARCH:
+     → Find top-K (K=20-100) similar chunks
+     → Apply metadata filters
+
+  3. RERANKING (optional):
+     → Cross-encoder reranks top candidates
+     → More accurate but slower
+
+  4. RETURN:
+     → Top results with scores
+     → Feed to LLM for answer generation (RAG)
+
+PYTHON (full RAG pipeline):
+  from sentence_transformers import SentenceTransformer, CrossEncoder
+  import chromadb
+
+  # Models:
+  embedder = SentenceTransformer('BAAI/bge-large-en-v1.5')
+  reranker = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
+
+  # Vector store:
+  db = chromadb.PersistentClient(path="./vector_db")
+  collection = db.get_or_create_collection("docs")
+
+  def ingest(text, metadata):
+      chunks = chunk_text(text, size=512)
+      embeddings = embedder.encode(chunks)
+      collection.add(
+          documents=chunks,
+          embeddings=embeddings.tolist(),
+          ids=[f"chunk_{i}" for i in range(len(chunks))],
+          metadatas=[metadata] * len(chunks)
+      )
+
+  def search(query, top_k=20):
+      query_emb = embedder.encode(query)
+      results = collection.query(
+          query_embeddings=[query_emb.tolist()],
+          n_results=top_k
+      )
+
+      # Rerank with cross-encoder:
+      pairs = [(query, doc) for doc in results['documents'][0]]
+      scores = reranker.predict(pairs)
+      ranked = sorted(zip(results['documents'][0], scores),
+                      key=lambda x: x[1], reverse=True)
+      return ranked[:5]  # top 5 after reranking
+
+DEPLOYMENT:
+  → Embedding model: local (GPU) or API
+  → Vector DB: managed (Pinecone) or self-hosted (Qdrant)
+  → Monitoring: query latency, recall metrics
+  → Updates: re-embed when docs change
+"""
+
+print(architecture)
+
+# FINAL SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Component        │ Recommended                    │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Embedding model  │ BGE-large (open) or OpenAI 3   │
+# │ Vector DB        │ Chroma (dev) / Qdrant (prod)   │
+# │ Index            │ HNSW (best general-purpose)    │
+# │ Dimensions       │ 768-1024 (sweet spot)          │
+# │ Reranker         │ Cross-encoder (ms-marco)       │
+# │ Chunking         │ 256-512 tokens                 │
+# │ Evaluation       │ Recall@K + MRR                 │
+# └──────────────────┴──────────────────────────────────┘</div>DIMENSIONALITY REDUCTION:
 
 ১. PRINCIPAL COMPONENT ANALYSIS (PCA)
   → linear transformation
