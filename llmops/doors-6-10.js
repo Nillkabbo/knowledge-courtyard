@@ -25,21 +25,435 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Monitoring Blindspot:</strong> No latency monitoring — model degraded slowly over weeks. Fix: track p50/p95/p99, set alerts.</div></div>
 
 
-<div class="code-block">Latency Optimization — Every Millisecond Counts:
+<div class="code-block"># ── STEP 1: Latency optimization ──
+# Every millisecond counts.
+
+latency = """
+LATENCY OPTIMIZATION FOR LLMS:
 
 LLM LATENCY ANATOMY:
+  Total = TTFT + (output_tokens * TPOT)
 
-  Total latency = TTFT + (output_tokens * TPOT)
-  
   TTFT (Time To First Token):
-    → prompt processing + first token generation
-    → typical: ২০০-১০০০ms
-    → this is what user "feels" as "thinking time"
-  
+    → prompt processing + first token
+    → typical: 200-1000ms
+    → this is what user feels as "thinking time"
+
   TPOT (Time Per Output Token):
-    → time to generate each subsequent token
-    → typical: ২০-১০০ms/token
-    → ৫০০ tokens * ৪০ms = ২০s (long!)
+    → time per subsequent token
+    → typical: 20-100ms/token
+    → 500 tokens * 40ms = 20s (long!)
+
+OPTIMIZATION STRATEGIES:
+
+1. STREAMING (biggest perceived win):
+   → Send each token as generated
+   → User sees response start immediately
+   → Perceived latency = TTFT (not total)
+   → SSE (Server-Sent Events)
+
+   Without streaming: user waits 2s → sees all
+   With streaming: user sees first token at 200ms
+
+2. PREFIX CACHING:
+   → Cache system prompt KV → reuse for all requests
+   → TTFT drops 50-80%
+   → vLLM: --enable-prefix-caching
+
+3. SPECULATIVE DECODING (2-3x faster):
+   → Small "draft" model generates N tokens fast
+   → Big model verifies all N in one pass
+   → If correct: accept all (2-3x speedup)
+   → If wrong: reject and use big model's token
+
+4. SHORTER PROMPTS:
+   → Less input = faster prefill = lower TTFT
+   → Remove unnecessary context, compress system prompt
+
+5. QUANTIZATION:
+   → fp16 → int4: 2-3x faster inference
+   → AWQ, GPTQ: minimal quality loss
+
+6. CONTINUOUS BATCHING:
+   → New requests join running batch dynamically
+   → GPU utilization maxed → 3-5x throughput
+
+7. GEOGRAPHIC PROXIMITY:
+   → Server near users (US→US, Asia→Asia)
+   → Network RTT: 200ms (far) vs 20ms (near)
+
+LATENCY BUDGET (per request):
+  Network:        < 100ms
+  Input guardrail: < 50ms
+  Query processing: < 100ms
+  RAG retrieval:  < 100ms
+  LLM TTFT:       < 500ms
+  LLM streaming:  ~continuous
+  Output guardrail: < 50ms
+  Total perceived: < 1s
+
+PYTHON (streaming with vLLM):
+  from openai import OpenAI
+  client = OpenAI(base_url="http://localhost:8000/v1")
+
+  stream = client.chat.completions.create(
+      model="llama-2-7b",
+      messages=[{"role": "user", "content": "Tell me a story"}],
+      stream=True  # streaming!
+  )
+
+  for chunk in stream:
+      token = chunk.choices[0].delta.content
+      if token:
+          print(token, end="", flush=True)
+  # User sees first token at ~200ms instead of waiting 5s
+
+BENCHMARKING:
+  → Always measure before AND after optimization
+  → Tools: vLLM benchmark_serving.py, locust
+  → Track: p50, p95, p99 (p99 = worst user experience)
+"""
+
+print(latency)</div>
+
+<div class="code-block"># ── STEP 2: Versioning and model registry ──
+# Everything tracked.
+
+versioning = """
+VERSIONING FOR LLMS:
+
+WHAT TO VERSION:
+  → Model weights (every training run)
+  → Training data (what was the model trained on?)
+  → Prompts (system prompt changes affect behavior)
+  → Configs (temperature, max_tokens, etc.)
+  → Code (serving code, preprocessing)
+  → Evaluation results (how did each version score?)
+
+MODEL REGISTRY:
+  Central repository for all model versions.
+  → MLflow Model Registry
+  → Weights & Biases
+  → HuggingFace Hub
+
+VERSIONING SCHEME:
+  semantic: major.minor.patch
+  → major: significant change (new base model)
+  → minor: improvement (new training data)
+  → patch: hotfix (bug fix, prompt update)
+
+PYTHON (MLflow model registry):
+  import mlflow
+
+  # Register a new version:
+  mlflow.register_model(
+      "runs:/abc123/model",
+      "my-llm",
+      tags={
+          "version": "2.1.0",
+          "base_model": "llama-2-7b",
+          "training_data": "dataset_v3",
+          "eval_score": "0.85"
+      }
+  )
+
+  # List versions:
+  client = mlflow.tracking.MlflowClient()
+  versions = client.search_model_versions("name='my-llm'")
+  for v in versions:
+      print(f"v{v.version}: {v.tags}")
+
+  # Promote to production:
+  client.transition_model_version_stage(
+      name="my-llm",
+      version=5,
+      stage="Production"
+  )
+
+DATA VERSIONING (DVC):
+  # Track dataset changes:
+  # dvc add training_data.json
+  # dvc push  # upload to remote storage
+  # git commit -m "Update training data v3"
+
+  # Reproduce any past experiment:
+  # dvc checkout  # restore data from specific commit
+  # python train.py  # reproduce exact training
+
+PROMPT VERSIONING:
+  → Prompts are CODE (version them!)
+  → Store in git alongside code
+  → Test prompt changes in eval harness before deploy
+  → A/B test prompts in production
+"""
+
+print(versioning)</div>
+
+<div class="code-block"># ── STEP 3: A/B testing for LLMs ──
+# Data-driven model decisions.
+
+abtesting = """
+A/B TESTING FOR LLMS:
+
+Don't guess which model/prompt is better — TEST.
+
+WHAT TO A/B TEST:
+  → Model versions (7B vs 13B vs fine-tuned)
+  → Prompts (different system prompts)
+  → Parameters (temperature, top_p)
+  → Retrieval strategies (chunk size, reranking)
+  → Guardrail configurations
+
+HOW IT WORKS:
+  1. Split traffic: 50% model A, 50% model B
+  2. Collect metrics: quality, latency, cost, satisfaction
+  3. Statistical test: is the difference significant?
+  4. Deploy winner
+
+METRICS:
+  → Implicit: response time, follow-up rate, thumbs up/down
+  → Explicit: user ratings, surveys
+  → Proxy: LLM-as-judge, task completion rate
+
+PYTHON (A/B test framework):
+  import random
+
+  def ab_test_route(user_id, variants):
+      \"\"\"Route user to variant based on user_id hash.\"\"\"
+      hash_val = hash(user_id) % 100
+      if hash_val < 50:
+          return variants['A']
+      return variants['B']
+
+  variants = {
+      'A': {'model': 'llama-2-7b', 'prompt': 'v1'},
+      'B': {'model': 'llama-2-13b', 'prompt': 'v2'},
+  }
+
+  config = ab_test_route(user.id, variants)
+  response = generate(user_input, **config)
+
+  # Log for analysis:
+  log_ab_test(user.id, config, response, user_feedback)
+
+STATISTICAL SIGNIFICANCE:
+  → Need enough samples (typically 1000+ per variant)
+  → Use t-test or Mann-Whitney for continuous metrics
+  → Use chi-squared for binary metrics (satisfied/not)
+  → Set significance level (alpha = 0.05)
+
+COMMON MISTAKES:
+  → Stopping too early (peeking problem)
+  → Not accounting for novelty effect
+  → Confounding variables (time of day, user segment)
+  → Not segmenting (A better overall, B better for power users)
+
+TOOLS:
+  → Statsig: feature flags + A/B testing
+  → LaunchDarkly: feature management
+  → GrowthBook: open-source A/B testing
+  → LangSmith: LLM-specific A/B testing
+"""
+
+print(abtesting)</div>
+
+<div class="code-block"># ── STEP 4: Incident response ──
+# When things break.
+
+incidents = """
+INCIDENT RESPONSE FOR LLMS:
+
+COMMON LLM INCIDENTS:
+  → Model degradation (quality drops suddenly)
+  → Hallucination spike (model starts making things up)
+  → Latency spike (response times increase 5x)
+  → Cost spike (unexpected API bill)
+  → Safety failure (model outputs harmful content)
+  → Outage (model server down)
+  → Data leak (PII or system prompt leaked)
+
+INCIDENT SEVERITY:
+  Sev1 (Critical): Complete outage, safety failure → page on-call
+  Sev2 (High): Major degradation → fix within hours
+  Sev3 (Medium): Minor degradation → fix within days
+  Sev4 (Low): Cosmetic issue → fix in next sprint
+
+RESPONSE PLAYBOOK:
+  1. DETECT: monitoring alert or user report
+  2. TRIAGE: assess severity, assign responder
+  3. INVESTIGATE: check logs, metrics, recent changes
+  4. MITIGATE: rollback, disable feature, switch to fallback
+  5. RESOLVE: fix root cause
+  6. POST-MORTEM: document, improve prevention
+
+ROLLBACK STRATEGY:
+  → Model rollback: revert to previous model version
+  → Code rollback: revert code deployment
+  → Feature flag: disable problematic feature
+  → Fallback mode: switch to rule-based or cached responses
+
+PYTHON (auto-rollback):
+  def monitor_and_rollback():
+      metrics = get_current_metrics()
+
+      # Check for degradation:
+      if metrics['error_rate'] > 0.05:  # >5% errors
+          rollback_model()
+          alert("Auto-rollback: error rate too high")
+
+      if metrics['latency_p99'] > 5.0:  # >5s p99
+          rollback_model()
+          alert("Auto-rollback: latency too high")
+
+      if metrics['cost_per_hour'] > budget * 1.5:
+          switch_to_cheaper_model()
+          alert("Cost spike detected, switched to fallback")
+
+ON-CALL CHECKLIST:
+  → Know the rollback procedure
+  → Have contact list (model team, infra team, security)
+  → Access to monitoring dashboards
+  → Test incident response in game days
+  → Document runbooks for common incidents
+
+POST-MORTEM TEMPLATE:
+  1. Summary: what happened, impact
+  2. Timeline: detection → mitigation → resolution
+  3. Root cause: why did it happen?
+  4. Action items: how to prevent recurrence
+  5. Lessons learned: what worked, what didn't
+"""
+
+print(incidents)</div>
+
+<div class="code-block"># ── STEP 5: Complete LLMOps architecture ──
+# Full production system.
+
+architecture = """
+COMPLETE PRODUCTION LLMOPS ARCHITECTURE:
+
+DEVELOPMENT:
+  Data → Training/Fine-tuning → Evaluation → Model Registry
+
+  Tools: HuggingFace, PEFT, TRL, MLflow, W&B
+
+DEPLOYMENT:
+  Model Registry → Container → Staging → Canary → Production
+
+  Tools: Docker, Kubernetes, vLLM, ArgoCD
+
+SERVING:
+  User → WAF → Load Balancer → vLLM Server → GPU
+
+  Components:
+  → Input guardrails (safety check)
+  → Semantic cache (reduce cost)
+  → Model router (simple→small, complex→large)
+  → vLLM serving (continuous batching, PagedAttention)
+  → Output guardrails (PII, toxicity filter)
+  → Streaming (SSE for low perceived latency)
+
+MONITORING:
+  → Prometheus: latency, throughput, GPU utilization
+  → LangSmith: LLM traces, prompt analytics
+  → Cost tracking: per-request, per-user
+  → Quality: hallucination rate, user satisfaction
+
+CI/CD PIPELINE:
+  Code/Data Change → Build → Test → Evaluate → Deploy
+
+  GitHub Actions:
+    → Lint + unit tests
+    → Run evaluation benchmarks
+    → Check for regression (vs previous model)
+    → Safety scan (jailbreak, bias)
+    → Deploy to staging
+    → Shadow traffic test
+    → Canary deployment (5% → 25% → 100%)
+    → Auto-rollback if metrics degrade
+
+INCIDENT RESPONSE:
+  Monitoring → Alert → On-call → Investigate → Mitigate → Resolve
+
+  Tools: PagerDuty, Slack, runbooks
+
+COST OPTIMIZATION:
+  → Semantic cache (30-50% hit rate)
+  → Model routing (small model for simple queries)
+  → Quantization (INT8/INT4)
+  → Batch processing for async workloads
+  → Auto-scaling (scale to zero when idle)
+
+KEY PRINCIPLES:
+  1. AUTOMATE EVERYTHING: manual ops = errors
+  2. MONITOR EVERYTHING: you can't fix what you can't see
+  3. TEST BEFORE DEPLOY: evaluation gates
+  4. CANARY DEPLOYMENTS: gradual rollout
+  5. PLAN FOR FAILURE: rollback, fallback, incidents
+  6. COST AWARENESS: every token costs money
+"""
+
+print(architecture)</div>
+
+<div class="code-block"># ── STEP 6: LLMOps journey and next steps ──
+# Your path to production LLM mastery.
+
+journey = """
+YOUR LLMOPS JOURNEY:
+
+You started seeing deployment as "running a script."
+You finish seeing a COMPLETE PRODUCTION SYSTEM:
+
+WHAT YOU'VE MASTERED:
+  ✅ Model serving (vLLM, TGI, SGLang, Triton)
+  ✅ Deployment patterns (Docker, K8s, serverless, edge)
+  ✅ CI/CD for LLMs (evaluation gates, canary)
+  ✅ Monitoring (performance, quality, cost, safety)
+  ✅ Cost optimization (caching, routing, quantization)
+  ✅ Latency optimization (streaming, prefix caching)
+  ✅ Versioning (model registry, data versioning)
+  ✅ A/B testing (statistical comparison of variants)
+  ✅ Incident response (detection, rollback, post-mortem)
+  ✅ Complete architecture (full production stack)
+
+THE ML ENGINEER'S MINDSET:
+  1. "How do I serve this efficiently?" (vLLM, batching)
+  2. "How do I know it's working?" (monitoring, eval)
+  3. "How do I deploy safely?" (canary, rollback)
+  4. "How do I optimize cost?" (caching, routing, quant)
+  5. "What happens when it breaks?" (incident response)
+
+"Production ML is 10% modeling,
+ 20% data, and 70% operations."
+ — Industry consensus
+
+WHAT TO STUDY NEXT:
+  → Read: "Machine Learning Engineering" (Huyen)
+  → Practice: Deploy a model to production
+  → Learn: Kubernetes for ML (Kubeflow, KServe)
+  → Explore: Feature stores (Feast, Tecton)
+  → Study: Distributed training (DeepSpeed, FSDP)
+  → Follow: Papers on efficient inference
+
+Welcome to LLMOps mastery.
+"""
+
+print(journey)
+
+# FINAL SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Phase            │ Tool/Practice                  │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Serving          │ vLLM (PagedAttention)           │
+# │ Deployment       │ Docker + Kubernetes             │
+# │ CI/CD            │ GitHub Actions + MLflow         │
+# │ Monitoring       │ Prometheus + LangSmith          │
+# │ Cost optimization│ Semantic cache + routing        │
+# │ Latency          │ Streaming + prefix caching      │
+# │ Versioning       │ MLflow Model Registry + DVC     │
+# │ A/B testing      │ Statsig / LangSmith             │
+# │ Incident response│ PagerDuty + runbooks            │
+# └──────────────────┴──────────────────────────────────┘</div>
   
   Perceived latency (with streaming):
     → user sees TTFT as "response starting"

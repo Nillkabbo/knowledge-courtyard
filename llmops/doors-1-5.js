@@ -26,46 +26,464 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Rate Limiting:</strong> API had no rate limit — one user sent 10K requests, crashed the GPU. Fix: rate limiting + queue.</div></div>
 
 
-<div class="code-block">Model Serving — From Notebook to Production:
+<div class="code-block"># ── STEP 1: Model serving — from notebook to production ──
+# Serving engines for LLM inference.
+
+serving = """
+MODEL SERVING — FROM NOTEBOOK TO PRODUCTION:
 
 THE NOTEBOOK PROBLEM:
-  # Notebook: works for demo
   model = AutoModelForCausalLM.from_pretrained(...)
   output = model.generate(input)
-  # → ১ query at a time
-  # → ৫-১০s per query
-  # → ১ user = ok. ১০০ users = crash!
-  
-  Production needs:
-    → Multiple concurrent requests
-    → Low latency (< ১s perceived)
-    → High throughput (requests/sec)
-    → GPU efficiency (memory, compute)
-    → Auto-scaling (traffic spikes)
+  → 1 query at a time, 5-10s per query
+  → 1 user = ok. 100 users = crash!
+
+PRODUCTION NEEDS:
+  → Multiple concurrent requests
+  → Low latency (< 1s perceived)
+  → High throughput (requests/sec)
+  → GPU efficiency (memory, compute)
+  → Auto-scaling (traffic spikes)
 
 SERVING ENGINES (2024-2025):
 
-# ──────────────# ──────────────────────────────────# 
-#  vLLM         #  Most popular open-source server  # 
-#               #  Key: PagedAttention              # 
-#               #  → manages KV cache like OS pages # 
-#               #  → near-zero memory waste          # 
-#               #  Continuous batching               # 
-#               #  → new requests join running batch # 
-#               #  Tensor parallelism (multi-GPU)    # 
-#               #  OpenAI-compatible API             # 
-#               #  Throughput: ২-৪x vs naive         # 
-# ──────────────# ──────────────────────────────────# 
-#  TGI          #  HuggingFace's serving engine     # 
-#  (Text Gen    #  Continuous batching               # 
-#   Inference)  #  Flash Attention ২                # 
-#               #  Safetensors fast loading          # 
-#               #  Docker-based deployment           # 
-#               #  Great HF ecosystem integration    # 
-# ──────────────# ──────────────────────────────────# 
-#  Triton       #  NVIDIA's inference server        # 
-#               #  Multi-model serving               # 
-#               #  TensorRT for max GPU speed        # 
+1. VLLM (most popular open-source):
+   → PagedAttention: manages KV cache like OS pages
+   → Near-zero memory waste → 2-3x more requests fit
+   → Continuous batching: new requests join running batch
+   → Tensor parallelism (multi-GPU)
+   → OpenAI-compatible API
+   → Throughput: 2-4x vs naive
+
+2. TGI (HuggingFace Text Generation Inference):
+   → Continuous batching
+   → Flash Attention 2
+   → Safetensors fast loading
+   → Docker-based deployment
+   → Great HF ecosystem integration
+
+3. TRITON (NVIDIA):
+   → Multi-model serving
+   → TensorRT for max GPU speed
+   → Dynamic batching
+   → Enterprise-grade
+
+4. SGLANG (newest 2024):
+   → RadixAttention (prefix caching)
+   → Shared prefix → cache reuse → 5-10x faster
+   → Structured output optimization
+
+5. OLLAMA (simplest, local):
+   → GGUF format, CPU/Mac
+   → Great for dev/prototyping
+   → Not for high-QPS production
+
+KEY INNOVATIONS:
+
+1. PAGEDATTENTION (vLLM):
+   → KV cache paged like OS virtual memory
+   → Near-zero waste → more concurrent requests
+
+2. CONTINUOUS BATCHING:
+   → New requests join running batch immediately
+   → GPU never idle → 3-5x throughput
+
+3. PREFIX CACHING (SGLang, vLLM):
+   → Cache system prompt KV → reuse for all requests
+   → 90%+ reduction in prefill computation
+
+4. TENSOR PARALLELISM:
+   → Split model across multiple GPUs
+   → 70B model: needs ~140GB → 2 x A100 (80GB each)
+
+PYTHON (vLLM serving):
+  # Start server:
+  # python -m vllm.entrypoints.openai.api_server \\
+  #     --model meta-llama/Llama-2-7b-chat-hf \\
+  #     --tensor-parallel-size 2
+
+  # Client (OpenAI-compatible):
+  from openai import OpenAI
+  client = OpenAI(base_url="http://localhost:8000/v1", api_key="dummy")
+
+  response = client.chat.completions.create(
+      model="meta-llama/Llama-2-7b-chat-hf",
+      messages=[{"role": "user", "content": "Hello!"}],
+      max_tokens=100
+  )
+  print(response.choices[0].message.content)
+"""
+
+print(serving)</div>
+
+<div class="code-block"># ── STEP 2: Deployment patterns ──
+# From containers to clusters.
+
+deployment = """
+DEPLOYMENT PATTERNS:
+
+1. SINGLE GPU (dev/small scale):
+   → One GPU, one model instance
+   → Good for: < 10 QPS
+   → Docker container with vLLM/Ollama
+
+2. MULTI-GPU (medium scale):
+   → Tensor parallelism across GPUs
+   → Good for: 10-100 QPS
+   → Single machine with 2-8 GPUs
+
+3. CLUSTER (large scale):
+   → Multiple machines, each running model replicas
+   → Load balancer distributes requests
+   → Good for: 100+ QPS
+   → Kubernetes for orchestration
+
+4. SERVERLESS (event-driven):
+   → Scale to zero when idle
+   → Pay per request
+   → Good for: spiky traffic
+   → Modal, Banana.dev, Replicate
+
+5. EDGE (on-device):
+   → Model runs on user's device
+   → No server needed
+   → Good for: privacy, offline
+   → llama.cpp, GGUF, mobile GPUs
+
+CONTAINER DEPLOYMENT (Docker):
+  FROM nvidia/cuda:12.1.0-runtime-ubuntu22.04
+
+  RUN pip install vllm
+  COPY model /app/model
+
+  CMD ["python", "-m", "vllm.entrypoints.openai.api_server", \\
+       "--model", "/app/model", "--port", "8000"]
+
+KUBERNETES DEPLOYMENT:
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: llm-server
+  spec:
+    replicas: 3
+    selector:
+      matchLabels:
+        app: llm-server
+    template:
+      spec:
+        containers:
+        - name: vllm
+          image: my-registry/vllm:latest
+          resources:
+            limits:
+              nvidia.com/gpu: 2
+        ---
+        # HPA: auto-scale based on GPU utilization
+        apiVersion: autoscaling/v2
+        kind: HorizontalPodAutoscaler
+        spec:
+          minReplicas: 2
+          maxReplicas: 10
+          metrics:
+          - type: Resource
+            resource:
+              name: nvidia.com/gpu
+              target:
+                type: Utilization
+                averageUtilization: 70
+
+LOAD BALANCING:
+  → Round-robin: simple, even distribution
+  → Least-connections: route to least busy replica
+  → Latency-based: route to fastest responder
+  → Session affinity: same user → same replica (for KV cache reuse)
+"""
+
+print(deployment)</div>
+
+<div class="code-block"># ── STEP 3: CI/CD for LLMs ──
+# Automated model deployment pipeline.
+
+cicd = """
+CI/CD FOR LLMS:
+
+Traditional CI/CD: code → build → test → deploy
+LLM CI/CD: data → model → evaluate → deploy
+
+PIPELINE STAGES:
+
+1. DATA VALIDATION:
+   → Check data quality, schema, distribution
+   → Detect anomalies, biases
+   → Version data (DVC)
+
+2. MODEL TRAINING/FINE-TUNING:
+   → Trigger on data update or code change
+   → Train on GPU cluster
+   → Log metrics (loss, accuracy, eval scores)
+
+3. EVALUATION:
+   → Run on benchmark suite (MMLU, HumanEval, custom)
+   → Compare vs previous model (regression test)
+   → Safety evaluation (toxicity, bias, jailbreak resistance)
+   → Performance benchmark (latency, throughput)
+
+4. STAGING:
+   → Deploy to staging environment
+   → Shadow traffic (serve without showing to users)
+   → Compare live performance
+
+5. PRODUCTION:
+   → Canary deployment (5% traffic → 25% → 100%)
+   → Monitor closely for 24-48 hours
+   → Auto-rollback if metrics degrade
+
+6. MONITORING:
+   → Continuous evaluation in production
+   → Drift detection
+   → Alert on anomalies
+
+GITHUB ACTIONS (LLM CI/CD):
+  name: LLM Deploy Pipeline
+
+  on:
+    push:
+      paths: ['models/**', 'data/**']
+
+  jobs:
+    evaluate:
+      runs-on: gpu-runner
+      steps:
+        - uses: actions/checkout@v4
+        - name: Run evaluation
+          run: |
+            python evaluate.py --model latest --benchmarks mmlu,humaneval
+        - name: Check regression
+          run: |
+            python check_regression.py --threshold 0.02
+        - name: Deploy if pass
+          if: success()
+          run: |
+            python deploy.py --strategy canary --percentage 5
+
+MLFLOW (experiment tracking):
+  import mlflow
+
+  mlflow.set_experiment("my_llm_experiment")
+
+  with mlflow.start_run():
+      mlflow.log_param("model", "llama-2-7b")
+      mlflow.log_param("learning_rate", 2e-4)
+      mlflow.log_metric("eval_accuracy", 0.85)
+      mlflow.log_metric("latency_p99", 0.8)
+
+      # Register model:
+      mlflow.register_model(
+          "runs:/run_id/model",
+          "production-llm"
+      )
+
+WEIGHTS & BIASES (alternative):
+  import wandb
+  wandb.init(project="llm-training")
+  wandb.log({"loss": 0.5, "eval_acc": 0.85})
+"""
+
+print(cicd)</div>
+
+<div class="code-block"># ── STEP 4: Monitoring and observability ──
+# Eyes on everything.
+
+monitoring = """
+MONITORING & OBSERVABILITY FOR LLMS:
+
+WHAT TO MONITOR:
+
+1. PERFORMANCE METRICS:
+   → Latency (p50, p95, p99): time per request
+   → Throughput: requests per second
+   → GPU utilization: memory, compute
+   → Queue depth: requests waiting
+
+2. QUALITY METRICS:
+   → Response quality (human ratings or LLM-judge)
+   → Hallucination rate
+   → User satisfaction (thumbs up/down)
+   → Task completion rate
+
+3. COST METRICS:
+   → Cost per request
+   → GPU-hours per day
+   → Token usage (input/output)
+
+4. SAFETY METRICS:
+   → Blocked requests (guardrail triggers)
+   → Toxic output rate
+   → Jailbreak attempts detected
+   → PII leak incidents
+
+5. DRIFT METRICS:
+   → Input distribution change (new topics, languages)
+   → Output distribution change
+   → Performance degradation over time
+
+TOOLS:
+  → Prometheus + Grafana: infrastructure metrics
+  → Datadog/New Relic: APM + custom metrics
+  → LangSmith: LLM-specific observability
+  → Weights & Biases: ML experiment tracking
+  → Arize AI: ML monitoring platform
+
+PYTHON (LangSmith tracing):
+  import os
+  os.environ["LANGCHAIN_TRACING_V2"] = "true"
+  os.environ["LANGCHAIN_API_KEY"] = "..."
+
+  # Every LLM call is automatically traced:
+  from langchain_openai import ChatOpenAI
+  llm = ChatOpenAI(model="gpt-4")
+
+  # LangSmith dashboard shows:
+  # → Every prompt and response
+  # → Latency breakdown
+  # → Token usage
+  # → Error traces
+  # → Chain execution flow
+
+PROMETHEUS METRICS:
+  from prometheus_client import Counter, Histogram
+
+  llm_requests = Counter('llm_requests_total', 'Total LLM requests')
+  llm_latency = Histogram('llm_latency_seconds', 'LLM response time')
+  llm_tokens = Counter('llm_tokens_total', 'Tokens used', ['type'])
+
+  @app.post("/generate")
+  async def generate(request):
+      with llm_latency.time():
+          llm_requests.inc()
+          result = model.generate(request.prompt)
+          llm_tokens.labels(type='input').inc(request.input_tokens)
+          llm_tokens.labels(type='output').inc(result.output_tokens)
+          return result
+"""
+
+print(monitoring)</div>
+
+<div class="code-block"># ── STEP 5: Cost optimization ──
+# Every token counts.
+
+cost = """
+COST OPTIMIZATION FOR LLMS:
+
+COST DRIVERS:
+  → GPU rental: $1-12/hour per GPU
+  → API costs: $0.01-0.06 per 1K tokens (GPT-4)
+  → Storage: model weights, embeddings, logs
+  → Network: data transfer between regions
+
+OPTIMIZATION STRATEGIES:
+
+1. MODEL SELECTION:
+  → Use smallest model that meets quality bar
+  → Fine-tune small model to match large model
+  → 7B fine-tuned often beats GPT-3.5 on specific tasks
+
+2. CACHING:
+  → Semantic cache: cache similar queries
+  → Embed query → find similar cached response
+  → 30-50% cache hit rate in production
+
+3. BATCH PROCESSING:
+  → Batch API (OpenAI): 50% discount for async
+  → Process non-real-time requests in bulk
+
+4. QUANTIZATION:
+  → FP16 → INT8: 2x faster, half memory
+  → INT8 → INT4: 4x faster (slight quality loss)
+  → GGUF for CPU deployment
+
+5. SPECULATIVE DECODING:
+  → Small model generates draft
+  → Large model verifies
+  → 2-3x speedup, same quality
+
+6. ROUTING:
+  → Simple queries → small/cheap model
+  → Complex queries → large/expensive model
+  → Router: classify query complexity first
+
+7. PROMPT OPTIMIZATION:
+  → Shorter prompts = fewer input tokens = cheaper
+  → Remove unnecessary context
+  → Compress system prompts
+
+PYTHON (semantic cache):
+  import chromadb
+  from sentence_transformers import SentenceTransformer
+
+  embedder = SentenceTransformer('all-MiniLM-L6-v2')
+  cache = chromadb.Client().create_collection("llm_cache")
+
+  def cached_llm(query, threshold=0.95):
+      # Check cache:
+      query_emb = embedder.encode(query)
+      results = cache.query(query_embeddings=[query_emb], n_results=1)
+
+      if results['distances'][0] and results['distances'][0][0] < (1 - threshold):
+          return results['documents'][0][0]  # cache hit!
+
+      # Cache miss: call LLM
+      response = llm.generate(query)
+      cache.add(documents=[response], embeddings=[query_emb.tolist()])
+      return response
+
+COST MONITORING:
+  → Track cost per user/session
+  → Set budget alerts
+  → Monthly cost breakdown by model/feature
+  → ROI: revenue per LLM call
+"""
+
+print(cost)</div>
+
+<div class="code-block"># ── STEP 6: LLMOps best practices ──
+# Production checklist.
+
+best_practices = [
+    "Use vLLM for high-throughput serving (2-4x vs naive)",
+    "Containerize with Docker, orchestrate with Kubernetes",
+    "CI/CD: auto-evaluate before deployment",
+    "Canary deployment: 5% → 25% → 100%",
+    "Monitor: latency, quality, cost, safety, drift",
+    "Semantic cache: 30-50% hit rate saves cost",
+    "Quantization: INT8/INT4 for faster inference",
+    "Route simple→small model, complex→large model",
+    "Log everything: prompts, responses, tool calls, errors",
+    "Auto-scale based on GPU utilization and queue depth",
+    "Set up alerts: latency p99, error rate, cost",
+    "A/B test model versions before full rollout",
+    "Track cost per user for monetization decisions",
+    "Shadow traffic: test new model on live queries",
+    "Plan for GPU scarcity: have fallback models ready",
+]
+
+print("LLMOPS BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Component        │ Recommended                    │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Serving engine   │ vLLM (best general-purpose)    │
+# │ Containerization │ Docker + Kubernetes            │
+# │ CI/CD            │ GitHub Actions + MLflow        │
+# │ Monitoring       │ Prometheus + LangSmith         │
+# │ Caching          │ Chroma (semantic cache)        │
+# │ Model registry   │ MLflow / W&B                   │
+# │ Experiment track │ W&B / MLflow                   │
+# │ Auto-scaling     │ K8s HPA (GPU utilization)      │
+# └──────────────────┴──────────────────────────────────┘</div>
 #               #  Dynamic batching                  # 
 #               #  Enterprise-grade                  # 
 # ──────────────# ──────────────────────────────────# 
