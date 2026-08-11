@@ -959,39 +959,500 @@ doors.push({
 <div class="dialogue"><strong>আগমন-ঘড়িকারী যাকারিয়া:</strong> একটি simple chain — Sunny → Rainy। P(Sunny|Sunny) = ০.৮, P(Rainy|Sunny) = ০.২। P(Rainy|Rainy) = ০.৬, P(Sunny|Rainy) = ০.৪। আজ sunny — কালকে ৮০% sunny। কিন্তু এক সপ্তাহ পর? সব ভুলে গেছে — শুধু transition matrix থাকে। দীর্ঘে stationary distribution — ৬৭% sunny, ৩৩% rainy। Google PageRank এটাই — web page একটি state, link একটি transition। সবচেয়ে visited page = highest stationary।</div>
 <div class="dialogue en"><strong>Arrival Clock Keeper Zakariya:</strong> A simple chain — Sunny → Rainy. P(Sunny|Sunny)=0.8, P(Rainy|Sunny)=0.2. P(Rainy|Rainy)=0.6, P(Sunny|Rainy)=0.4. Today sunny — tomorrow 80% sunny. But after a week? Everything forgotten — only the transition matrix remains. Long run — stationary distribution — 67% sunny, 33% rainy. Google PageRank is this — web page is a state, link is a transition. Most visited page = highest stationary.</div>
 
-<div class="code-block"># — Python: Markov Chain —
+<div class="code-block"># ── STEP 1: Markov chains fundamentals ──
+# Stochastic processes with no memory beyond current state.
 
-  import numpy as np
+markov_basics = """
+MARKOV CHAINS:
 
-  # Transition matrix:
-  #        Sunny  Rainy
-  # Sunny [ 0.8    0.2 ]
-  # Rainy [ 0.4    0.6 ]
-  T = np.array([[0.8, 0.2],
-                [0.4, 0.6]])
+A sequence of random variables X₀, X₁, X₂, ... where:
+  P(Xₙ₊₁ | X₀, X₁, ..., Xₙ) = P(Xₙ₊₁ | Xₙ)
 
-  # আজ Sunny: [1, 0]
-  state = np.array([1.0, 0.0])
+  "The future depends only on the PRESENT, not the past."
 
-  # কালকে:
-  tomorrow = state @ T
-  print(f"Tomorrow: {tomorrow}")  # [0.8, 0.2]
+MARKOV PROPERTY (memoryless):
+  → Given current state, history doesn't matter
+  → Simplifies analysis enormously
 
-  # এক সপ্তাহ পর (7 steps):
-  for _ in range(7):
-      state = state @ T
-  print(f"After 7 days: {state}")  # approaching [0.67, 0.33]
+TRANSITION MATRIX (T):
+  T[i][j] = P(next state = j | current state = i)
+  → Rows sum to 1 (probabilities)
 
-  # Stationary distribution (100 steps):
-  for _ in range(100):
-      state = state @ T
-  print(f"Stationary: {state}")  # [0.667, 0.333]
-  # ২/৩ Sunny, ১/৩ Rainy — চিরকাল!
+EXAMPLE: Weather model
+       Sunny  Rainy
+Sunny [ 0.8    0.2 ]
+Rainy [ 0.4    0.6 ]
 
-  # Eigenvalue approach:
-  eigenvalues, eigenvectors = np.linalg.eig(T.T)
-  stationary = eigenvectors[:, 0] / eigenvectors[:, 0].sum()
-  print(f"Eigen: {stationary.real}")  # [0.667, 0.333]</div>
+  → If sunny today: 80% sunny tomorrow, 20% rainy
+  → If rainy today: 40% sunny tomorrow, 60% rainy
+
+N-STEP TRANSITION:
+  T^n gives probabilities after n steps
+  T² = T × T (matrix multiplication)
+
+STATIONARY DISTRIBUTION (π):
+  Long-run probability of being in each state.
+  π × T = π (π is unchanged by transition)
+  → Found by eigenvector of T (eigenvalue = 1)
+
+  Weather example: π = [0.667, 0.333]
+  → 67% sunny days, 33% rainy days (long-run average)
+"""
+
+print(markov_basics)
+
+# PYTHON: Markov chain:
+mc_code = """
+import numpy as np
+
+# Weather transition matrix:
+T = np.array([[0.8, 0.2],
+              [0.4, 0.6]])
+
+# Start sunny:
+state = np.array([1.0, 0.0])
+
+# Evolve over days:
+for day in range(10):
+    state = state @ T
+    print(f"Day {day+1}: Sunny={state[0]:.4f}, Rainy={state[1]:.4f}")
+# Converges to [0.6667, 0.3333]
+
+# Stationary distribution via eigenvalues:
+eigenvalues, eigenvectors = np.linalg.eig(T.T)
+stationary_idx = np.argmin(np.abs(eigenvalues - 1))
+pi = eigenvectors[:, stationary_idx].real
+pi = pi / pi.sum()  # normalize
+print(f"Stationary: {pi}")  # [0.667, 0.333]
+
+# Simulate a random path:
+def simulate_markov(T, start, n_steps):
+    states = [start]
+    current = start
+    for _ in range(n_steps):
+        current = np.random.choice(len(T), p=T[current])
+        states.append(current)
+    return states
+
+path = simulate_markov(T, 0, 1000)
+print(f"Fraction sunny: {path.count(0)/len(path):.3f}")  # ~0.667
+"""
+
+print(mc_code)</div>
+
+<div class="code-block"># ── STEP 2: Types of Markov chains ──
+# Different chain structures.
+
+types = """
+TYPES OF MARKOV CHAINS:
+
+1. ERGODIC (irreducible + aperiodic):
+   → Can reach any state from any other
+   → No fixed periodicity
+   → Has a UNIQUE stationary distribution
+   → Converges to π regardless of start
+
+2. ABSORBING:
+   → Some states, once entered, never left (absorbing states)
+   → Example: Gambler's ruin (bankrupt = absorbing)
+   → Questions: P(absorption), expected time to absorption
+
+3. PERIODIC:
+   → Returns to state only at multiples of d > 1
+   → No convergence to stationary distribution
+   → Example: deterministic cycle (0→1→2→0)
+
+4. RANDOM WALK:
+   → State changes by +1 or −1 each step
+   → On integers: 1D random walk
+   → Symmetric: returns to origin infinitely often (2D)
+   → Transient in 3D+ (may never return)
+
+ABSORBING MARKOV CHAIN EXAMPLE:
+  Gambler starts with $10, bets $1 each round.
+  Win $1 with prob p, lose $1 with prob (1−p).
+  Absorbing states: $0 (ruin) or $N (goal).
+
+  P(ruin) = [1 − (p/q)^10] / [1 − (p/q)^N]
+  where q = 1−p
+
+  Fair game (p=0.5): P(ruin) = 1 − 10/N
+  → With N=20: P(ruin) = 50%
+  → With N=100: P(ruin) = 90%
+"""
+
+print(types)
+
+# PYTHON: Absorbing Markov chain (gambler's ruin):
+gr_code = """
+import numpy as np
+
+def gamblers_ruin(start, goal, p_win, n_simulations=100000):
+    \"\"\"Simulate gambler's ruin.\"\"\"
+    wins = 0
+    for _ in range(n_simulations):
+        money = start
+        while 0 < money < goal:
+            if np.random.random() < p_win:
+                money += 1
+            else:
+                money -= 1
+        if money == goal:
+            wins += 1
+    return wins / n_simulations
+
+# Fair game, start $10, goal $20:
+print(f"P(goal $20 from $10, fair): {gamblers_ruin(10, 20, 0.5):.4f}")  # ~0.5
+
+# Fair game, start $10, goal $100:
+print(f"P(goal $100 from $10, fair): {gamblers_ruin(10, 100, 0.5):.4f}")  # ~0.1
+
+# Unfair game (p=0.45):
+print(f"P(goal $20 from $10, p=0.45): {gamblers_ruin(10, 20, 0.45):.4f}")  # ~0.13
+
+# Theoretical P(ruin) for unfair game:
+from fractions import Fraction
+p, q = 0.45, 0.55
+N = 20
+p_ruin = (1 - (p/q)**10) / (1 - (p/q)**N)
+print(f"Theoretical P(ruin): {p_ruin:.4f}")
+print(f"Theoretical P(goal): {1-p_ruin:.4f}")
+"""
+
+print(gr_code)</div>
+
+<div class="code-block"># ── STEP 3: PageRank as Markov chain ──
+# Google's famous algorithm.
+
+pagerank = """
+PAGERANK (Google, 1998):
+
+Models web surfing as a MARKOV CHAIN.
+  → States: web pages
+  → Transitions: clicking links
+
+SIMPLE MODEL (random surfer):
+  From page P, click a random outgoing link.
+  → T[i][j] = 1/out_degree(i) if page i links to page j
+
+PAGERANK = stationary distribution of this chain.
+  → Pages with high PageRank are visited often.
+
+PROBLEMS WITH SIMPLE MODEL:
+  → Dead ends (no outgoing links): sink
+  → Spider traps (only internal links): stuck
+  → Disconnected components
+
+SOLUTION: Random teleportation
+  With probability (1−d): follow a link (d ≈ 0.85)
+  With probability d: jump to a RANDOM page (teleport)
+
+  T' = d × T + (1−d) × (1/N) × ones
+
+  This makes the chain ERGODIC:
+  → Unique stationary distribution exists
+  → PageRank converges
+
+PAGERANK FORMULA:
+  PR(p) = (1−d)/N + d × Σ PR(q)/L(q)
+  where sum is over pages q that link to p, L(q) = out-links of q
+
+  Iterate until convergence (power iteration).
+
+COMPUTATION:
+  → N = billions of web pages
+  → Matrix is sparse (most pages link to few others)
+  → Iterative computation: O(N × iterations)
+  → Google's original innovation: compute at web scale
+"""
+
+print(pagerank)
+
+# PYTHON: Simple PageRank:
+pr_code = """
+import numpy as np
+
+def pagerank(adj_matrix, d=0.85, max_iter=100, tol=1e-6):
+    \"\"\"Compute PageRank from adjacency matrix.\"\"\"
+    n = len(adj_matrix)
+
+    # Normalize: transition probabilities
+    T = np.zeros((n, n))
+    for i in range(n):
+        out = adj_matrix[i].sum()
+        if out > 0:
+            T[i] = adj_matrix[i] / out
+        else:
+            T[i] = 1/n  # dangling node → random
+
+    # Add teleportation:
+    T = d * T + (1-d) * np.ones((n, n)) / n
+
+    # Power iteration:
+    pr = np.ones(n) / n  # start uniform
+    for _ in range(max_iter):
+        new_pr = pr @ T
+        if np.linalg.norm(new_pr - pr, 1) < tol:
+            break
+        pr = new_pr
+
+    return pr
+
+# Example: 4 pages
+# A → B, C
+# B → C
+# C → A
+# D → C
+adj = np.array([
+    [0, 1, 1, 0],  # A links to B, C
+    [0, 0, 1, 0],  # B links to C
+    [1, 0, 0, 0],  # C links to A
+    [0, 0, 1, 0],  # D links to C
+])
+
+pr = pagerank(adj)
+pages = ['A', 'B', 'C', 'D']
+for page, score in sorted(zip(pages, pr), key=lambda x: -x[1]):
+    print(f"Page {page}: PageRank = {score:.4f}")
+"""
+
+print(pr_code)</div>
+
+<div class="code-block"># ── STEP 4: Hidden Markov Models (HMM) ──
+# Markov chains with hidden states.
+
+hmm = """
+HIDDEN MARKOV MODELS:
+
+States are HIDDEN (not directly observable).
+  → Observe OUTPUTS that depend on hidden state
+  → Infer hidden states from observations
+
+EXAMPLE: Weather prediction
+  Hidden states: Sunny, Rainy (you don't know)
+  Observations: Walk, Shop, Clean (you see what friend does)
+
+  → If sunny: friend likely walks (0.6), shops (0.3), cleans (0.1)
+  → If rainy: friend likely shops (0.3), cleans (0.4), walks (0.3)
+
+  You see: Walk, Shop, Clean → What was the weather?
+
+HMM COMPONENTS:
+  1. Transition matrix: P(next hidden | current hidden)
+  2. Emission matrix: P(observation | hidden state)
+  3. Initial distribution: P(first hidden state)
+
+THREE CLASSIC PROBLEMS:
+  1. EVALUATION: P(observations | model)?
+     → Forward algorithm: O(N²T)
+
+  2. DECODING: Most likely hidden states given observations?
+     → Viterbi algorithm: O(N²T)
+
+  3. LEARNING: Estimate model parameters from data?
+     → Baum-Welch (EM algorithm): iterative
+
+APPLICATIONS:
+  → Speech recognition (hidden = phoneme, obs = audio)
+  → Bioinformatics (hidden = gene, obs = DNA sequence)
+  → Part-of-speech tagging (hidden = POS, obs = words)
+  → Activity recognition (hidden = activity, obs = sensors)
+"""
+
+print(hmm)
+
+# PYTHON: Viterbi algorithm (simple):
+viterbi_code = """
+import numpy as np
+
+def viterbi(obs, states, start_p, trans_p, emit_p):
+    \"\"\"Find most likely sequence of hidden states.\"\"\"
+    V = [{}]  # V[t][state] = max probability
+    path = {}
+
+    # Initialize:
+    for s in states:
+        V[0][s] = start_p[s] * emit_p[s][obs[0]]
+        path[s] = [s]
+
+    # Forward:
+    for t in range(1, len(obs)):
+        V.append({})
+        new_path = {}
+
+        for s in states:
+            (prob, state) = max(
+                (V[t-1][s0] * trans_p[s0][s] * emit_p[s][obs[t]], s0)
+                for s0 in states
+            )
+            V[t][s] = prob
+            new_path[s] = path[state] + [s]
+
+        path = new_path
+
+    # Find best final state:
+    (prob, state) = max((V[-1][s], s) for s in states)
+    return prob, path[state]
+
+# Example: Weather (Sunny/Rainy), Observations (Walk/Shop/Clean)
+states = ('Sunny', 'Rainy')
+observations = ('walk', 'shop', 'clean')
+obs = ('walk', 'shop', 'clean')
+
+start_p = {'Sunny': 0.6, 'Rainy': 0.4}
+trans_p = {
+    'Sunny': {'Sunny': 0.7, 'Rainy': 0.3},
+    'Rainy': {'Sunny': 0.4, 'Rainy': 0.6},
+}
+emit_p = {
+    'Sunny': {'walk': 0.6, 'shop': 0.3, 'clean': 0.1},
+    'Rainy': {'walk': 0.1, 'shop': 0.4, 'clean': 0.5},
+}
+
+prob, path = viterbi(obs, states, start_p, trans_p, emit_p)
+print(f"Most likely weather: {path} (prob={prob:.6f})")
+# ['Sunny', 'Rainy', 'Rainy'] or similar
+"""
+
+print(viterbi_code)</div>
+
+<div class="code-block"># ── STEP 5: Markov Chain Monte Carlo (MCMC) ──
+# Using Markov chains to sample from complex distributions.
+
+mcmc = """
+MARKOV CHAIN MONTE CARLO (MCMC):
+
+PROBLEM: Sample from a complex distribution P(X) when:
+  → P(X) is known up to a normalizing constant
+  → Direct sampling is impossible
+  → Dimension is high
+
+SOLUTION: Build a Markov chain whose stationary distribution IS P(X).
+  → Run the chain long enough
+  → Samples approximate P(X)
+
+METROPOLIS-HASTINGS ALGORITHM:
+  1. Start at random X₀
+  2. Propose X' ~ Q(X' | Xₙ) (e.g., Gaussian step)
+  3. Compute acceptance ratio: α = P(X')Q(Xₙ|X') / P(Xₙ)Q(X'|Xₙ)
+  4. Accept X' with probability min(1, α), else stay at Xₙ
+  5. Repeat
+
+  After "burn-in" period, samples ≈ P(X).
+
+GIBBS SAMPLING:
+  Special case for multivariate distributions.
+  → Sample each variable CONDITIONAL on others
+  → Easier when conditionals are simple
+
+APPLICATIONS:
+  → Bayesian inference (posterior sampling)
+  → Statistical physics (Ising model)
+  → Machine learning (Bayesian neural networks)
+  → Computational biology (protein folding)
+
+WHY IT WORKS:
+  → Markov chain converges to stationary distribution
+  → If stationary = target P(X), samples approximate P(X)
+  → "Detailed balance" ensures correct distribution
+
+BURN-IN AND AUTOCORRELATION:
+  → Early samples are biased (dependent on start)
+  → Discard "burn-in" (first N samples)
+  → Consecutive samples are correlated (not independent)
+  → Thin the chain (take every k-th sample)
+"""
+
+print(mcmc)
+
+# PYTHON: Metropolis-Hastings:
+mh_code = """
+import numpy as np
+
+def metropolis_hastings(target_pdf, n_samples=10000, proposal_std=1.0):
+    \"\"\"Sample from target_pdf using Metropolis-Hastings.\"\"\"
+    samples = []
+    x = 0.0  # start
+    accepted = 0
+
+    for _ in range(n_samples):
+        # Propose new value:
+        x_new = x + np.random.normal(0, proposal_std)
+
+        # Acceptance ratio:
+        ratio = target_pdf(x_new) / target_pdf(x)
+        if np.random.random() < min(1, ratio):
+            x = x_new
+            accepted += 1
+
+        samples.append(x)
+
+    print(f"Acceptance rate: {accepted/n_samples:.3f}")
+    return np.array(samples)
+
+# Target: standard normal distribution
+def normal_pdf(x):
+    return np.exp(-x**2 / 2) / np.sqrt(2 * np.pi)
+
+# Generate samples:
+samples = metropolis_hastings(normal_pdf, n_samples=20000)
+
+# Discard burn-in (first 5000):
+samples = samples[5000:]
+
+print(f"Sample mean: {np.mean(samples):.4f}")   # ~0.0
+print(f"Sample std:  {np.std(samples):.4f}")    # ~1.0
+
+# Works for ANY distribution, even unnormalized:
+def weird_pdf(x):
+    \"\"\"Unnormalized target: bimodal.\"\"\"
+    return np.exp(-(x-2)**2/2) + np.exp(-(x+2)**2/2)
+
+bimodal_samples = metropolis_hastings(weird_pdf, n_samples=20000, proposal_std=3.0)
+bimodal_samples = bimodal_samples[5000:]
+print(f"Bimodal mean: {np.mean(bimodal_samples):.4f}")  # ~0.0
+print(f"Bimodal std:  {np.std(bimodal_samples):.4f}")   # ~2.3
+"""
+
+print(mh_code)</div>
+
+<div class="code-block"># ── STEP 6: Markov chain best practices ──
+# Apply Markov models effectively.
+
+best_practices = [
+    "Markov property: future depends only on present",
+    "Transition matrix: T[i][j] = P(j|i), rows sum to 1",
+    "Stationary distribution: π × T = π (eigenvector)",
+    "Ergodic chains converge to unique stationary",
+    "Absorbing chains: eventual absorption is certain",
+    "Gambler's ruin: negative expectation → bankruptcy",
+    "PageRank: random walk on web graph + teleportation",
+    "HMM: hidden states, observable emissions",
+    "Viterbi: find most likely hidden state sequence",
+    "Forward: compute probability of observations",
+    "Baum-Welch: learn HMM parameters (EM)",
+    "MCMC: sample from complex distributions",
+    "Metropolis-Hastings: accept/reject proposals",
+    "Gibbs sampling: sample each variable conditional on rest",
+    "Burn-in: discard early MCMC samples",
+]
+
+print("MARKOV CHAIN BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Model            │ Application                     │
+# ├──────────────────┼──────────────────────────────────┤
+# │ DTMC             │ Weather, queueing, games        │
+# │ CTMC             │ Server load, population         │
+# │ Absorbing        │ Gambler's ruin, game theory     │
+# │ PageRank         │ Web page ranking                │
+# │ HMM              │ Speech, bioinformatics, NLP     │
+# │ MCMC             │ Bayesian inference, sampling    │
+# │ Random walk      │ Diffusion, stock prices         │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout info"><span class="co-icon">⏰</span><div><strong>Stochastic processes:</strong><br>
 <strong>Markov Chain (1906):</strong> next state depends only on current<br>
