@@ -30,27 +30,401 @@ doors.push({
 <p class="scene-setting">ক্লিনি একটা খাতা খোলে। তাতে গোল গোল চিহ্ন — তাদের মধ্যে তীর চিহ্ন। তিনি বলেন — এই চিত্রটাই Deterministic Finite Automaton বা DFA। প্রতিটি বৃত্ত একটি অবস্থান (state)। প্রতিটি তীর একটি রূপান্তর (transition)। একটি অবস্থান থেকে একটি নির্দিষ্ট ইনপুটে ঠিক একটি তীর বের হয় — এই কারণে deterministic। কোনো দ্বিধা নেই।</p>
 <p class="scene-setting en">Kleene opens a notebook. Circles with arrows between them. He says — this diagram is a Deterministic Finite Automaton, a DFA. Each circle is a state. Each arrow is a transition. From each state, for each input symbol, exactly one arrow leaves — hence deterministic. No ambiguity.</p>
 
-<div class="code-block">
-<strong>DFA আনুষ্ঠানিক সংজ্ঞা (Formal Definition):</strong>
+<div class="code-block"># ── STEP 1: Finite automata fundamentals ──
+# The simplest model of computation.
 
-একটি DFA হলো ৫-টুপল (5-tuple): (Q, Σ, δ, q₀, F)
+automata = """
+FINITE AUTOMATA (FA):
 
-• Q = সসীম অবস্থানের সেট (finite set of states)
-• Σ = ইনপুট বর্ণমালা (input alphabet)
-• δ: Q * Σ → Q = রূপান্তর ফাংশন (transition function)
-• q₀ ∈ Q = প্রারম্ভিক অবস্থান (start state)
-• F ⊆ Q = গ্রহণযোগ্য অবস্থান (accept states)
+A DETERMINISTIC FINITE AUTOMATON (DFA) is a 5-tuple: (Q, Σ, δ, q₀, F)
 
-উদাহরণ: "ab দিয়ে শেষ হয়" — এই ভাষাটির DFA:
-States: {q₀, q₁, q₂}
-q₀ = প্রারম্ভিক (শুরু বা শেষ অক্ষর a)
-q₁ = শেষ অক্ষর a দেখেছি
-q₂ = শেষ অক্ষর b দেখেছি (ACCEPT)
-δ(q₀,a)=q₁, δ(q₀,b)=q₀
-δ(q₁,a)=q₁, δ(q₁,b)=q₂
-δ(q₂,a)=q₁, δ(q₂,b)=q₀
-F = {q₂}
-</div>
+  Q  = finite set of states
+  Σ  = input alphabet (finite set of symbols)
+  δ  = transition function: Q × Σ → Q
+  q₀ = start state (q₀ ∈ Q)
+  F  = accept states (F ⊆ Q)
+
+HOW IT WORKS:
+  1. Start in q₀
+  2. Read input one symbol at a time
+  3. Follow transition function δ
+  4. After all input: if in accept state → ACCEPT, else REJECT
+
+EXAMPLE: Strings ending in "ab"
+  States: {q0, q1, q2}
+  Alphabet: {a, b}
+  Transitions:
+    δ(q0, a) = q1    (just saw 'a')
+    δ(q0, b) = q0    (reset)
+    δ(q1, a) = q1    (saw 'a' again)
+    δ(q1, b) = q2    (saw 'ab' → accept!)
+    δ(q2, a) = q1
+    δ(q2, b) = q0
+  Start: q0
+  Accept: {q2}
+
+DFA vs NFA:
+  DFA: exactly ONE transition per (state, symbol)
+  NFA: ZERO or MORE transitions (nondeterministic)
+  → Both are equivalent in power (Rabin & Scott, 1959)
+  → NFA → DFA conversion: subset construction (may be 2^n blowup)
+
+WHAT DFA CAN DO:
+  → Pattern matching (regex = DFA equivalent!)
+  → Lexical analysis (tokenizers)
+  → Protocol validation
+  → Text search (Boyer-Moore, KMP)
+
+WHAT DFA CANNOT DO:
+  → Count (can't match a^n b^n)
+  → Remember arbitrary history
+  → Nest structures (balanced parentheses)
+"""
+
+print(automata)
+
+# PYTHON: DFA implementation:
+dfa_code = """
+class DFA:
+    def __init__(self, states, alphabet, transitions, start, accept):
+        self.states = states
+        self.alphabet = alphabet
+        self.transitions = transitions  # dict: (state, symbol) -> state
+        self.start = start
+        self.accept = accept
+
+    def run(self, input_string):
+        state = self.start
+        for symbol in input_string:
+            if symbol not in self.alphabet:
+                return False  # invalid symbol
+            state = self.transitions.get((state, symbol), None)
+            if state is None:
+                return False  # no transition → reject
+        return state in self.accept
+
+# DFA for strings ending in 'ab':
+dfa = DFA(
+    states={'q0', 'q1', 'q2'},
+    alphabet={'a', 'b'},
+    transitions={
+        ('q0', 'a'): 'q1', ('q0', 'b'): 'q0',
+        ('q1', 'a'): 'q1', ('q1', 'b'): 'q2',
+        ('q2', 'a'): 'q1', ('q2', 'b'): 'q0',
+    },
+    start='q0',
+    accept={'q2'}
+)
+
+tests = ['ab', 'aab', 'bab', 'aa', 'bb', 'abab', 'aabb']
+for s in tests:
+    result = dfa.run(s)
+    print(f"'{s}': {'ACCEPT' if result else 'REJECT'}")
+# ab: ACCEPT, aab: ACCEPT, bab: ACCEPT
+# aa: REJECT, bb: REJECT
+"""
+
+print(dfa_code)</div>
+
+<div class="code-block"># ── STEP 2: Regular expressions and languages ──
+# The connection between regex and automata.
+
+regex = """
+REGULAR EXPRESSIONS AND REGULAR LANGUAGES:
+
+Kleene's Theorem (1956):
+  A language is regular if and only if it can be described by:
+  1. A DFA (or NFA)
+  2. A regular expression
+  3. A regular grammar
+
+  ALL THREE ARE EQUIVALENT!
+
+REGULAR EXPRESSION OPERATIONS:
+  a       match literal 'a'
+  ε       empty string (epsilon)
+  ∅       empty language (no strings)
+  R₁R₂    concatenation (R₁ then R₂)
+  R₁|R₂   union (R₁ or R₂)
+  R*      Kleene star (zero or more repetitions)
+  R+      one or more (RR*)
+  R?      zero or one (R|ε)
+
+EXAMPLES:
+  a*           → "", "a", "aa", "aaa", ...
+  (a|b)*       → all strings of a's and b's
+  a(a|b)*b     → starts with a, ends with b
+  (ab)+        → "ab", "abab", "ababab", ...
+  a*ba*        → exactly one b
+
+REGULAR LANGUAGES ARE CLOSED UNDER:
+  → Union, intersection, complement
+  → Concatenation
+  → Kleene star
+  → Reversal
+
+PUMPING LEMMA:
+  If L is regular, then any sufficiently long string w ∈ L can be "pumped":
+  w = xyz where:
+  → |xy| ≤ p (p = pumping length)
+  → |y| > 0
+  → xy^iz ∈ L for all i ≥ 0
+
+  USE: Prove a language is NOT regular (by contradiction).
+
+PYTHON (re module):
+  import re
+
+  # All these are regular expressions:
+  pattern = r'^a(b|c)*d$'  # starts with a, ends with d, b/c in middle
+  re.match(pattern, 'abcd')  # Match object
+
+  # Regex → DFA internally (lexers do this)
+"""
+
+print(regex)</div>
+
+<div class="code-block"># ── STEP 3: Pushdown automata and context-free languages ──
+# Adding memory (stack) to automata.
+
+pda = """
+PUSHDOWN AUTOMATA (PDA):
+
+Add a STACK to a finite automaton → now it can COUNT.
+
+WHY DFA ISN'T ENOUGH:
+  Language: {aⁿbⁿ | n ≥ 0} (equal a's then b's)
+  → Need to COUNT how many a's to match b's
+  → DFA has no memory → CANNOT recognize this
+  → PDA pushes a's on stack, pops for each b
+
+PDA = DFA + Stack
+  → Push symbols onto stack
+  → Pop symbols from stack
+  → Transition depends on: current state, input, top of stack
+
+CONTEXT-FREE GRAMMARS (CFG):
+  Chomsky (1956): CFG ≡ PDA (equivalent power)
+
+  A CFG is (V, Σ, R, S):
+  V = variables (non-terminals)
+  Σ = terminals (actual symbols)
+  R = rules: A → α (variable produces string)
+  S = start variable
+
+EXAMPLE: Balanced parentheses
+  S → (S)S | ε
+
+  Derivation of "(())":
+  S → (S)S → ((S)S)S → (()S)S → (())S → (())
+
+CHOMSKY HIERARCHY (1956):
+  Type 3: Regular (DFA/NFA/Regex) — weakest
+  Type 2: Context-Free (PDA/CFG) — can count
+  Type 1: Context-Sensitive (LBA) — can count + context
+  Type 0: Recursively Enumerable (Turing Machine) — anything computable
+
+  Each level is STRICTLY MORE POWERFUL than the one below.
+
+APPLICATIONS:
+  → Parsers (programming languages are context-free)
+  → HTML/XML structure
+  → JSON parsing
+  → Expression evaluation (arithmetic)
+  → Natural language syntax (approximate)
+
+PYTHON:
+  # Simple CFG parser (balanced parens):
+  def parse_balanced(s, pos=0):
+      \"\"\"Parse S → (S)S | ε\"\"\"
+      if pos >= len(s) or s[pos] != '(':
+          return pos  # ε (empty)
+
+      pos += 1  # consume '('
+      pos = parse_balanced(s, pos)  # parse inner S
+
+      if pos >= len(s) or s[pos] != ')':
+          return -1  # error: unbalanced
+      pos += 1  # consume ')'
+
+      pos = parse_balanced(s, pos)  # parse trailing S
+      return pos
+
+  result = parse_balanced('(())()')
+  print(f"Valid: {result == len('(())()')}")  # True
+"""
+
+print(pda)</div>
+
+<div class="code-block"># ── STEP 4: Turing machines ──
+# The universal model of computation.
+
+turing = """
+TURING MACHINES (TM):
+
+Alan Turing (1936): defined what "computable" means.
+
+A TM has:
+  → Infinite tape (memory)
+  → Read/write head
+  → Finite control (states)
+  → Transition function
+
+TM = (Q, Σ, Γ, δ, q₀, q_accept, q_reject)
+  Q = states
+  Σ = input alphabet
+  Γ = tape alphabet (Σ + blank symbol)
+  δ = transition: Q × Γ → Q × Γ × {L, R}
+    (read symbol, write symbol, move left/right)
+  q₀ = start state
+  q_accept, q_reject = halting states
+
+CHURCH-TURING THESIS:
+  "Anything that is computable can be computed by a Turing machine."
+  → This is a THESIS (not proven, but universally believed)
+  → All known computation models are equivalent to TM
+  → If a TM can't do it, NOTHING can (in this universe)
+
+WHAT TURING MACHINES CAN DO:
+  → Everything a computer can do
+  → Compute any computable function
+  → Simulate any other TM (universal TM)
+
+WHAT THEY CAN'T DO (uncomputable):
+  → Halting Problem (can't decide if a program halts)
+  → Decide validity of first-order logic
+  → Compute certain real numbers
+
+VARIANTS (all equivalent):
+  → Single tape, multi-tape
+  → Deterministic, non-deterministic
+  → Two-stack PDA
+
+PYTHON (simple TM simulator):
+  def turing_machine(tape, rules, start, accept, reject):
+      tape = list(tape) + ['_'] * 100  # infinite tape (padded)
+      head = 0
+      state = start
+
+      while state not in (accept, reject):
+          symbol = tape[head]
+          key = (state, symbol)
+
+          if key not in rules:
+              return False  # no rule → reject
+
+          new_state, write_symbol, direction = rules[key]
+          tape[head] = write_symbol
+          state = new_state
+
+          if direction == 'R':
+              head += 1
+          elif direction == 'L':
+              head = max(0, head - 1)
+
+      return state == accept
+
+  # TM for 0^n1^n (binary strings with equal 0s then 1s):
+  rules = {
+      ('q0', '0'): ('q1', 'X', 'R'),   # mark first 0
+      ('q1', '0'): ('q1', '0', 'R'),   # skip 0s
+      ('q1', '1'): ('q2', 'Y', 'L'),   # mark 1, go back
+      ('q1', '_'): ('q0', '_', 'L'),   # reached end
+      ('q2', '0'): ('q2', '0', 'L'),   # go to start
+      ('q2', 'X'): ('q0', 'X', 'R'),   # found marked 0
+  }
+"""
+
+print(turing)</div>
+
+<div class="code-block"># ── STEP 5: The Halting Problem ──
+# The most famous uncomputable problem.
+
+halting = """
+THE HALTING PROBLEM (Turing, 1936):
+
+QUESTION: Given a program P and input x, does P halt on x?
+
+TURING'S PROOF (by contradiction):
+  Suppose HALT(P, x) exists — returns True if P(x) halts, False otherwise.
+
+  Define PARADOX(P):
+      if HALT(P, P):
+          loop forever   # if P halts, PARADOX loops
+      else:
+          return          # if P doesn't halt, PARADOX halts
+
+  Now call PARADOX(PARADOX):
+  → If HALT(PARADOX, PARADOX) = True → PARADOX loops → CONTRADICTION
+  → If HALT(PARADOX, PARADOX) = False → PARADOX halts → CONTRADICTION
+
+  ∴ HALT cannot exist. THE HALTING PROBLEM IS UNCOMPUTABLE.
+
+IMPLICATIONS:
+  → There are problems NO computer can solve
+  → No perfect antivirus (can't decide if code is malicious)
+  → No perfect compiler optimizer (can't decide equivalence)
+  → No automatic bug finder (can't decide if program is correct)
+
+RICE'S THEOREM (1953):
+  Any non-trivial property of the language recognized by a TM
+  is undecidable.
+
+  → Almost everything interesting about programs is undecidable!
+
+OTHER UNCOMPUTABLE PROBLEMS:
+  → Post Correspondence Problem
+  → Hilbert's 10th Problem (Diophantine equations)
+  → Busy Beaver Problem
+  → Kolmogorov complexity (optimal compression)
+
+PYTHON (conceptual):
+  def paradox(program):
+      if halts(program, program):  # hypothetical halts() function
+          while True: pass         # infinite loop
+      else:
+          return
+
+  # paradox(paradox) → contradiction
+  # ∴ halts() cannot exist
+"""
+
+print(halting)</div>
+
+<div class="code-block"># ── STEP 6: Computation best practices ──
+# Theory connections to practice.
+
+best_practices = [
+    "DFA/NFA ≡ Regular Expressions (Kleene's theorem)",
+    "DFA: no memory, can't count (use for pattern matching)",
+    "PDA/CFG: stack memory, can count (use for parsing)",
+    "Turing Machine: infinite tape, can compute anything",
+    "Church-Turing Thesis: TM = computable",
+    "Halting Problem is UNCOMPUTABLE (fundamental limit)",
+    "Rice's Theorem: most program properties undecidable",
+    "Chomsky Hierarchy: Regular ⊂ CFG ⊂ CSG ⊂ RE",
+    "Regex internally uses DFA/NFA (automata theory in practice)",
+    "Compilers use CFG for syntax, TM theory for semantics",
+    "Every language either decidably in/out or undecidable",
+    "P ≠ NP is unproven but believed (most important open problem)",
+    "Kolmogorov complexity: shortest program → uncomputable",
+    "Universal TM can simulate any other TM (basis of computers)",
+    "Theory of computation → limits of what code can do",
+]
+
+print("COMPUTATION THEORY BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Model            │ Power                           │
+# ├──────────────────┼──────────────────────────────────┤
+# │ DFA/NFA          │ Regular languages (regex)       │
+# │ PDA/CFG          │ Context-free (aⁿbⁿ)            │
+# │ LBA              │ Context-sensitive               │
+# │ Turing Machine   │ Recursively enumerable (all)    │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="dialogue"><strong>তুমি:</strong> কিন্তু এই যন্ত্র কি {aⁿbⁿ | n ≥ 0} চিনতে পারে? অর্থাৎ সমান সংখ্যক a এবং b?</div>
 <div class="dialogue en"><strong>You:</strong> But can this machine recognize {aⁿbⁿ | n ≥ 0}? Equal numbers of a and b?</div>
