@@ -919,74 +919,450 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Context Compression:</strong> Full conversation history sent every time — cost explosion. Fix: summarize past turns.</div></div>
 
 
-<div class="code-block">Conversation Memory — ৫ ধরন:
+<div class="code-block"># ── STEP 1: Five types of conversation memory ──
+# Different memory strategies for different conversation lengths.
 
-১. BUFFER MEMORY (সব রাখো)
-  পুরো কথোপকথন context-এ রাখো
-  
-  ✅ সব তথ্য আছে — কিছু হারায় না
-  ❌ দীর্ঘ কথোপকথনে window পূর্ণ
-  ❌ প্রতি কলে বেশি tokens
-  
-  Use: ছোট কথোপকথন (< ১০ turns)
+memory_types = {
+    "1. BUFFER MEMORY (keep everything)": {
+        "what": "Store ALL conversation messages in context",
+        "pros": "All information preserved, nothing lost",
+        "cons": "Context fills up quickly, expensive",
+        "best_for": "Short conversations (< 10 turns)",
+    },
+    "2. WINDOW MEMORY (last N turns)": {
+        "what": "Keep only the last N turns, drop older ones",
+        "pros": "Small context, fast, simple",
+        "cons": "Old context lost (user asks 'what did we discuss earlier?' → fail)",
+        "best_for": "General chatbot, recent context matters most",
+    },
+    "3. SUMMARY MEMORY (summarize old)": {
+        "what": "Summarize old turns, keep recent ones full",
+        "pros": "Long conversations manageable, core info preserved",
+        "cons": "Specific details lost in summary, LLM cost for summarization",
+        "best_for": "Long sessions, advisory chat, customer support",
+    },
+    "4. ENTITY MEMORY (track facts)": {
+        "what": "Extract and track key entities (names, projects, facts)",
+        "pros": "Specific facts always available, tiny context footprint",
+        "cons": "Less general context, only tracks what it's told to",
+        "best_for": "Personal assistant, CRM, task management",
+    },
+    "5. VECTOR MEMORY (semantic recall)": {
+        "what": "Embed all past messages, retrieve relevant ones per query",
+        "pros": "Unlimited memory, recalls relevant past context",
+        "cons": "Complex implementation, retrieval may miss things",
+        "best_for": "Long-term assistant, knowledge worker, persistent sessions",
+    },
+}
 
-২. WINDOW MEMORY (শেষ N turns)
-  শুধু সাম্প্রতিক N turns রাখো
-  
-  ✅ context ছোট, দ্রুত
-  ❌ পুরোনো context হারায়
-  
-  Use: সাধারণ chatbot, সাম্প্রতিক context গুরুত্বপূর্ণ
+print("FIVE TYPES OF CONVERSATION MEMORY:")
+for mem_type, info in memory_types.items():
+    print(f"\n  {mem_type}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
 
-৩. SUMMARY MEMORY (সারাংশ)
-  পুরোনো কথা → সারাংশ → সাম্প্রতিক পূর্ণ
-  
-  ✅ দীর্ঘ কথোপকথন manageable
-  ✅ মূল তথ্য সংরক্ষিত
-  ❌ নির্দিষ্ট বিস্তারিত হারায়
-  ❌ প্রতিকয় turn-এ summary LLM কল খরচ
-  
-  Use: দীর্ঘ সেশন, advisory chat
+<div class="code-block"># ── STEP 2: Buffer and window memory ──
+# The simplest memory strategies.
 
-৪. ENTITY MEMORY (নাম, সত্তা)
-  গুরুত্বপূর্ণ entities আলাদাভাবে ট্র্যাক
-  
-  {user_name: "Rakib", 
-   project: "LedgerPilot", 
-   stack: ["Python", "Django"]}
-  
-  ✅ নির্দিষ্ট তথ্য নিখুঁত
-  ✅ ছোট context footprint
-  ❌ সাধারণ context কম
-  
-  Use: personal assistant, CRM
+buffer_window = """
+BUFFER MEMORY (keep everything):
 
-৫. VECTOR MEMORY (semantic store)
-  পুরোনো কথোপকথন → embeddings → vector DB
-  নতুন প্রশ্ন → retrieve relevant past
-  
-  ✅ অসীম স্মৃতি
-  ✅ প্রাসঙ্গিক পুরোনো কথা মনে করে
-  ❌ জটিল implementation
-  ❌ retrieve সবসময় সঠিক নয়
-  
-  Use: long-term assistant, knowledge worker
+  Context = ALL messages from the conversation
 
-COMBINED MEMORY (Production):
-  Entity + Window + Summary
-  
-  "User: Rakib, Project: LedgerPilot"
-  [Summary of turns 1-20]
-  [Full turns 21-25]
-  
-  → ছোট, সম্পূর্ণ, context-aware
+  Turn 1: [User: "Hi"] + [AI: "Hello!"]
+  Turn 2: [Turn 1] + [User: "What is RAG?"] + [AI: "RAG is..."]
+  Turn 3: [Turn 1-2] + [User: "How?"] + [AI: "By..."]
 
-FRAMEWORKS:
-  LangChain: ConversationBufferMemory, 
-    ConversationSummaryMemory, 
-    ConversationEntityMemory
-  LlamaIndex: ChatMemoryBuffer
-  Custom: নিজের মেমরি ক্লাস লেখো</div>
+  → Every turn, context grows
+  → Eventually exceeds window
+  → Good for short conversations only
+
+WINDOW MEMORY (keep last N):
+
+  Context = last N turns only
+
+  Turn 1: [User: "Hi"] + [AI: "Hello!"]
+  Turn 2: [Turn 1] + [new messages]
+  ...
+  Turn 6: [Turn 2-5] + [new messages]  ← Turn 1 dropped!
+  Turn 7: [Turn 3-6] + [new messages]  ← Turn 2 dropped!
+
+  → Context size is CONSTANT (last 5 turns)
+  → Old messages disappear
+  → Simple, fast, predictable
+"""
+
+print(buffer_window)
+
+# PYTHON: Window memory:
+window_code = """
+class WindowMemory:
+    def __init__(self, window_size=10):
+        self.window_size = window_size
+        self.messages = []
+
+    def add(self, role, content):
+        self.messages.append({"role": role, "content": content})
+
+    def get_context(self):
+        # Return only last N messages:
+        return self.messages[-self.window_size:]
+
+# Usage:
+memory = WindowMemory(window_size=10)  # Keep last 10 messages
+
+memory.add("user", "What is Python?")
+memory.add("assistant", "Python is a programming language...")
+memory.add("user", "How do I install it?")
+
+context = memory.get_context()  # Last 10 messages
+"""
+
+print(window_code)</div>
+
+<div class="code-block"># ── STEP 3: Summary and entity memory ──
+# Smarter strategies for long conversations.
+
+summary_entity = """
+SUMMARY MEMORY (compress old):
+
+  Context = [Summary of old turns] + [Recent turns full]
+
+  Turn 1-5:   Full messages
+  Turn 6:     Summary(turns 1-5) + turns 6-10 full
+  Turn 11:    Summary(summary + turns 6-10) + turns 11-15 full
+
+  → Long conversations stay manageable
+  → Core context preserved (but details may be lost)
+
+ENTITY MEMORY (track facts):
+
+  Extract and store KEY FACTS from conversation:
+
+  entities = {
+      "user_name": "Rakib",
+      "project": "LedgerPilot",
+      "stack": ["Python", "Django", "Vue"],
+      "preferences": ["concise answers", "Bengali translation"],
+      "current_task": "fixing production bug",
+  }
+
+  → Entity store is SEPARATE from conversation context
+  → Injected into system prompt: "User: Rakib, Project: LedgerPilot..."
+  → Tiny context footprint, high precision for tracked facts
+  → LLM extracts entities automatically
+"""
+
+print(summary_entity)
+
+# PYTHON: Entity memory:
+entity_code = """
+class EntityMemory:
+    def __init__(self):
+        self.entities = {}  # {key: value}
+
+    def extract_entities(self, message):
+        \"\"\"Use LLM to extract entities from conversation.\"\"\"
+        prompt = f\"\"\"Extract key facts from this message as JSON.
+        Examples: user_name, project, company, preferences, tasks.
+        Message: {message}
+        JSON:\"\"\"
+
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0
+        )
+        new_entities = json.loads(response.choices[0].message.content)
+
+        # Update entity store:
+        for key, value in new_entities.items():
+            if key in self.entities:
+                # Merge (if list) or update (if scalar):
+                if isinstance(self.entities[key], list):
+                    if isinstance(value, list):
+                        self.entities[key].extend(value)
+                    else:
+                        self.entities[key].append(value)
+                else:
+                    self.entities[key] = value
+            else:
+                self.entities[key] = value
+
+    def get_system_prompt(self):
+        return f"Known context: {json.dumps(self.entities, indent=2)}"
+
+# Usage:
+memory = EntityMemory()
+memory.extract_entities("I'm Rakib, working on LedgerPilot with Django")
+print(memory.entities)
+# {'user_name': 'Rakib', 'project': 'LedgerPilot', 'stack': ['Django']}
+"""
+
+print(entity_code)</div>
+
+<div class="code-block"># ── STEP 4: Vector memory (semantic recall) ──
+# Store ALL past messages in a vector DB, retrieve relevant ones.
+
+vector_memory = """
+VECTOR MEMORY (semantic recall):
+
+PROBLEM: Window/summary memory loses old context.
+  → User asks "What did we discuss about databases last week?"
+  → Window memory: already dropped → "I don't remember"
+  → Summary memory: summarized → vague, no details
+
+SOLUTION: Vector memory
+  → Store EVERY message as an embedding in vector DB
+  → When user asks a new question:
+    1. Embed the question
+    2. Search past messages for RELEVANT ones
+    3. Inject those past messages into context
+
+EXAMPLE:
+  Past turn 5: "We discussed PostgreSQL indexes for LedgerPilot"
+  (stored in vector DB)
+
+  Current turn 50: "What database did we pick?"
+  → Vector search finds turn 5 (relevant!)
+  → Inject into context: "Previously: We discussed PostgreSQL indexes..."
+  → AI remembers!
+
+BENEFITS:
+  ✅ Unlimited memory (store millions of messages)
+  ✅ Semantic recall (finds relevant past, not just recent)
+  ✅ Best for long-term assistants
+
+DRAWBACKS:
+  ❌ Complex (vector DB + retrieval pipeline)
+  ❌ Retrieval may miss relevant messages
+  ❌ Additional latency (vector search per turn)
+"""
+
+print(vector_memory)
+
+# PYTHON: Vector memory:
+vector_code = """
+# Store all conversation turns in vector DB:
+class VectorMemory:
+    def __init__(self):
+        self.messages = []  # All past messages
+        self.embeddings = []  # Corresponding embeddings
+
+    def add(self, role, content):
+        emb = embed(content)
+        self.messages.append({"role": role, "content": content})
+        self.embeddings.append(emb)
+
+    def retrieve_relevant(self, query, top_k=3):
+        \"\"\"Find past messages relevant to current query.\"\"\"
+        query_emb = embed(query)
+        scores = [cosine_sim(query_emb, emb) for emb in self.embeddings]
+        top_indices = sorted(range(len(scores)),
+                            key=lambda i: scores[i], reverse=True)[:top_k]
+        return [self.messages[i] for i in top_indices]
+
+    def get_context(self, current_query, max_messages=10):
+        # Get recent messages:
+        recent = self.messages[-5:]
+
+        # Get SEMANTICALLY relevant past messages:
+        relevant = self.retrieve_relevant(current_query, top_k=3)
+
+        # Combine (deduplicate):
+        context = list(set(id(m) for m in recent + relevant))
+
+        return context
+
+# Usage (long-term assistant with unlimited memory):
+memory = VectorMemory()
+
+# Turn 1 (weeks ago):
+memory.add("user", "I chose PostgreSQL for LedgerPilot")
+
+# Turn 500 (today):
+memory.add("user", "What database are we using?")
+# Vector memory retrieves turn 1 → "PostgreSQL" → AI remembers!
+"""
+
+print(vector_code)</div>
+
+<div class="code-block"># ── STEP 5: Combined memory (production) ──
+# Use multiple memory types together for best results.
+
+combined = """
+COMBINED MEMORY (production standard):
+
+  Entity Memory + Window Memory + Summary Memory
+
+  SYSTEM PROMPT:
+    "User: Rakib
+     Project: LedgerPilot
+     Stack: Django, PostgreSQL, Vue
+     Current task: fixing production bug"
+
+  CONVERSATION:
+    [Summary: Turns 1-20 discussed architecture,
+     chose PostgreSQL, set up Docker deployment.]
+    [Full turns 21-25]
+    [Current question: Turn 26]
+
+  → Tiny context (~2K tokens)
+  → Key facts (entities) always available
+  → Recent context (window) full
+  → Old context (summary) preserved
+  → Best of all memory types!
+
+LANGCHAIN COMBINED MEMORY:
+  from langchain.memory import (
+      ConversationBufferWindowMemory,
+      ConversationSummaryMemory,
+      CombinedMemory,
+      ConversationEntityMemory
+  )
+
+  # Combine multiple memory types:
+  memory = CombinedMemory(
+      memories=[
+          ConversationEntityMemory(llm=llm),        # track facts
+          ConversationBufferWindowMemory(k=5),       # last 5 turns
+          ConversationSummaryMemory(llm=llm),        # summary of old
+      ]
+  )
+"""
+
+print(combined)
+
+# WHEN TO USE WHICH MEMORY:
+when_to_use = """
+DECISION GUIDE:
+
+Short conversation (< 10 turns):
+  → Buffer memory (simplest, keeps everything)
+
+Medium conversation (10-50 turns):
+  → Window memory (last 10 turns)
+  → OR Summary memory (compress old)
+
+Long conversation (50+ turns):
+  → Summary + Window (recommended)
+  → OR Combined (entity + summary + window)
+
+Long-term assistant (persistent sessions):
+  → Vector memory (semantic recall)
+  → OR Combined + Vector (everything)
+
+Customer support (user returns later):
+  → Entity memory (track user details)
+  → + Vector memory (recall past conversations)
+"""
+
+print(when_to_use)</div>
+
+<div class="code-block"># ── STEP 6: Memory in production (Django) ──
+# Implementing conversation memory in a Django chatbot.
+
+django_memory = """
+DJANGO CONVERSATION MEMORY:
+
+# models.py:
+class Conversation(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    summary = models.TextField(default="")  # Running summary
+
+class Message(models.Model):
+    conversation = models.ForeignKey(Conversation, on_delete=models.CASCADE)
+    role = models.CharField(max_length=20)  # 'user' or 'assistant'
+    content = models.TextField()
+    embedding = VectorField(dimensions=1536, null=True)  # For vector memory
+    created_at = models.DateTimeField(auto_now_add=True)
+
+# views.py:
+def chat(request):
+    conversation = get_or_create_conversation(request.user)
+
+    # Build context using COMBINED memory:
+    context = build_context(conversation, request.POST["message"])
+
+    # Call LLM:
+    response = openai.chat.completions.create(
+        model="gpt-4o",
+        messages=context
+    )
+
+    # Save message:
+    Message.objects.create(
+        conversation=conversation,
+        role="user",
+        content=request.POST["message"]
+    )
+    Message.objects.create(
+        conversation=conversation,
+        role="assistant",
+        content=response.choices[0].message.content
+    )
+
+    return JsonResponse({"response": response.choices[0].message.content})
+
+def build_context(conversation, current_message):
+    \"\"\"Build context: summary + recent + relevant past + current.\"\"\"
+    context = [{"role": "system", "content": "You are a helpful assistant."}]
+
+    # 1. Summary of old conversation:
+    if conversation.summary:
+        context.append({
+            "role": "system",
+            "content": f"Previous conversation: {conversation.summary}"
+        })
+
+    # 2. Recent messages (last 10):
+    recent = conversation.messages.order_by('-created_at')[:10]
+    for msg in reversed(recent):
+        context.append({"role": msg.role, "content": msg.content})
+
+    # 3. Current message:
+    context.append({"role": "user", "content": current_message})
+
+    return context
+"""
+
+print(django_memory)
+
+# BEST PRACTICES:
+best_practices = [
+    "Use COMBINED memory for production (entity + summary + window)",
+    "Keep last 5-10 turns FULL, summarize older ones",
+    "Extract and track key entities (user name, project, preferences)",
+    "Use vector memory for long-term persistent assistants",
+    "Store conversation in database (Django Message model)",
+    "Compress when context exceeds budget (rolling summary)",
+    "Use GPT-4o-mini for summarization (cheap, good enough)",
+    "Cache entity extraction (don't re-extract same entities)",
+    "Provide 'new conversation' button to reset memory",
+    "Log memory size per turn (monitor token usage)",
+    "Handle context window overflow gracefully (compress, don't truncate)",
+    "Test long conversations (50+ turns) for memory degradation",
+    "Use prompt caching for repeated system prompts",
+    "Monitor summary quality (does it lose important info?)",
+    "Consider user-controlled memory ('remember this' / 'forget that')",
+]
+
+print("MEMORY BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Memory Type      │ Best For                        │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Buffer           │ Short conversations (<10 turns) │
+# │ Window           │ Medium, recent-focused          │
+# │ Summary          │ Long conversations (50+ turns)  │
+# │ Entity           │ Track facts (name, project)     │
+# │ Vector           │ Long-term semantic recall       │
+# │ Combined         │ Production (all of the above)   │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
