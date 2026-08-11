@@ -88,24 +88,313 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: De Morgan's Law — truth table প্রমাণ করে ¬(P∧Q) ≡ ¬P∨¬Q। Django QuerySet-এ তুমি অজান্তেই এটা ব্যবহার করছ।</div>
 
-<div class="code-block"># — Python: De Morgan-এর নিয়ম যাচাই —
+<div class="code-block"># ── STEP 1: Propositional logic — the algebra of truth ──
+# Logic is the foundation of all computer science.
 
-  P, Q = True, False
-  left  = not (P and Q)      # ¬(P ∧ Q)
-  right = (not P) or (not Q) # ¬P ∨ ¬Q
-  print(left == right)       # True — De Morgan প্রমাণিত!
+logic_basics = """
+PROPOSITIONAL LOGIC:
 
-  # সব ৪ সম্ভাবনায় যাচাই (exhaustive truth table)
-  for P in (True, False):
-      for Q in (True, False):
-          dm = (not (P and Q)) == ((not P) or (not Q))
-          print(f"P={P!s:5} Q={Q!s:5} → {dm}")
-  # সব row → True ✅
+A PROPOSITION is a statement that is either TRUE or FALSE.
+  "It is raining" → True or False
+  "2 + 2 = 4" → True
+  "x > 5" → depends on x (but still True or False for any given x)
 
-  # Django QuerySet-এ De Morgan:
-  # exclude(is_staff=True, is_active=True)       ← NOT(A AND B)
-  # filter(Q(is_staff=False) | Q(is_active=False)) ← NOT A OR NOT B
-  # দুটো QuerySet একই ইউজার রিটার্ন করে!</div>
+LOGICAL OPERATORS:
+  AND (∧): True only if BOTH are True
+  OR (∨):  True if AT LEAST ONE is True
+  NOT (¬): Inverts (True → False, False → True)
+  IMPLIES (→): False only when True → False
+  XOR (⊕): True when EXACTLY ONE is True (exclusive or)
+  IFF (↔): True when BOTH have the SAME value
+
+TRUTH TABLES:
+  P    Q    P∧Q   P∨Q   ¬P    P→Q   P⊕Q
+  T    T     T     T     F     T     F
+  T    F     F     T     F     F     T
+  F    T     F     T     T     T     T
+  F    F     F     F     T     T     F
+"""
+
+print(logic_basics)
+
+# PYTHON: Truth tables:
+truth_code = """
+# Verify all logical operations:
+for P in (True, False):
+    for Q in (True, False):
+        print(f"P={P!s:5} Q={Q!s:5} | AND={P and Q!s:5} OR={P or Q!s:5} "
+              f"NOT P={not P!s:5} IMPLIES={ (not P) or Q!s:5}")
+
+# Python operators map to logic:
+# and  = ∧ (logical AND)
+# or   = ∨ (logical OR)
+# not  = ¬ (logical NOT)
+# Python has no built-in XOR for bool, but:
+# (P != Q)  = XOR (⊕)
+# (P == Q)  = IFF (↔)
+"""
+
+print(truth_code)</div>
+
+<div class="code-block"># ── STEP 2: De Morgan's laws ──
+# The most important transformation in logic.
+
+de_morgan = """
+DE MORGAN'S LAWS (Augustus De Morgan, 1847):
+
+LAW 1: NOT(A AND B) = NOT A OR NOT B
+  ¬(P ∧ Q) = ¬P ∨ ¬Q
+
+  Example: "Not (raining AND cold)"
+  = "Not raining OR not cold"
+
+LAW 2: NOT(A OR B) = NOT A AND NOT B
+  ¬(P ∨ Q) = ¬P ∧ ¬Q
+
+  Example: "Not (raining OR snowing)"
+  = "Not raining AND not snowing"
+
+WHY THIS MATTERS IN PROGRAMMING:
+  → Boolean simplification (fewer conditions)
+  → Circuit optimization (fewer gates)
+  → Database queries (Django ORM)
+
+DJANGO ORM EXAMPLE:
+  # De Morgan in QuerySet:
+  # exclude(is_staff=True, is_active=True)
+  # = NOT(is_staff AND is_active)
+  # = filter(is_staff=False) | filter(is_active=False)
+
+  # These two are EQUIVALENT:
+  User.objects.exclude(is_staff=True, is_active=True)
+  User.objects.filter(Q(is_staff=False) | Q(is_active=False))
+"""
+
+print(de_morgan)
+
+# PYTHON: Verify De Morgan's laws:
+verify_code = """
+# Verify De Morgan for ALL truth values:
+print("De Morgan's Law 1: NOT(A AND B) = NOT A OR NOT B")
+for P in (True, False):
+    for Q in (True, False):
+        left = not (P and Q)        # NOT(A AND B)
+        right = (not P) or (not Q)  # NOT A OR NOT B
+        assert left == right, f"FAILED for P={P}, Q={Q}"
+print("All cases passed! ✅")
+
+print("\\nDe Morgan's Law 2: NOT(A OR B) = NOT A AND NOT B")
+for P in (True, False):
+    for Q in (True, False):
+        left = not (P or Q)         # NOT(A OR B)
+        right = (not P) and (not Q) # NOT A AND NOT B
+        assert left == right, f"FAILED for P={P}, Q={Q}"
+print("All cases passed! ✅")
+"""
+
+print(verify_code)</div>
+
+<div class="code-block"># ── STEP 3: Implication and vacuous truth ──
+# The most counterintuitive part of logic.
+
+implication = """
+IMPLICATION (P → Q):
+  "If P then Q"
+  FALSE only when P is True and Q is False
+  TRUE in all other cases
+
+TRUTH TABLE:
+  P    Q    P→Q
+  T    T     T   (True premise, True conclusion → valid)
+  T    F     F   (True premise, False conclusion → INVALID!)
+  F    T     T   (False premise → vacuously true)
+  F    F     T   (False premise → vacuously true)
+
+VACUOUS TRUTH:
+  When P is False, P→Q is ALWAYS True.
+  "If the sun rises in the west, then I am king" → TRUE!
+  (Because the sun does NOT rise in the west, premise is false → vacuously true)
+
+  This seems wrong intuitively, but it's logically correct.
+  If the premise never holds, the implication can never be violated.
+
+CONTRAPOSITIVE:
+  P → Q is equivalent to ¬Q → ¬P (contrapositive)
+
+  Original: "If it rains, the ground gets wet"
+  Contrapositive: "If the ground is NOT wet, it did NOT rain"
+  → Same meaning, different form
+
+PYTHON:
+  # P → Q in Python:
+  implies = (not P) or Q
+  # Or equivalently:
+  implies = not (P and not Q)  # NOT(P AND NOT Q)
+"""
+
+print(implication)</div>
+
+<div class="code-block"># ── STEP 4: Logical equivalences ──
+# Transform expressions using proven laws.
+
+equivalences = {
+    "De Morgan's Laws": {
+        "Law 1": "¬(P ∧ Q) = ¬P ∨ ¬Q",
+        "Law 2": "¬(P ∨ Q) = ¬P ∧ ¬Q",
+    },
+    "Double Negation": "¬(¬P) = P",
+    "Contrapositive": "P → Q = ¬Q → ¬P",
+    "Distributive": {
+        "AND over OR": "P ∧ (Q ∨ R) = (P ∧ Q) ∨ (P ∧ R)",
+        "OR over AND": "P ∨ (Q ∧ R) = (P ∨ Q) ∧ (P ∨ R)",
+    },
+    "Associative": {
+        "AND": "(P ∧ Q) ∧ R = P ∧ (Q ∧ R)",
+        "OR": "(P ∨ Q) ∨ R = P ∨ (Q ∨ R)",
+    },
+    "Commutative": {
+        "AND": "P ∧ Q = Q ∧ P",
+        "OR": "P ∨ Q = Q ∨ P",
+    },
+    "Identity": {
+        "AND": "P ∧ True = P",
+        "OR": "P ∨ False = P",
+    },
+    "Domination": {
+        "AND": "P ∧ False = False",
+        "OR": "P ∨ True = True",
+    },
+    "Idempotent": {
+        "AND": "P ∧ P = P",
+        "OR": "P ∨ P = P",
+    },
+    "Absorption": {
+        "Law 1": "P ∧ (P ∨ Q) = P",
+        "Law 2": "P ∨ (P ∧ Q) = P",
+    },
+}
+
+print("LOGICAL EQUIVALENCES:")
+for name, rules in equivalences.items():
+    print(f"\\n  {name}:")
+    if isinstance(rules, dict):
+        for key, value in rules.items():
+            print(f"    {key}: {value}")
+    else:
+        print(f"    {rules}")</div>
+
+<div class="code-block"># ── STEP 5: Logic in circuits and programming ──
+# Logic gates are the physical implementation of propositional logic.
+
+applications = """
+LOGIC IN CIRCUITS:
+  Every logic operation = a physical gate (transistor circuit):
+  AND gate: outputs 1 only if both inputs are 1
+  OR gate:  outputs 1 if either input is 1
+  NOT gate: outputs the opposite (inverter)
+  XOR gate: outputs 1 if inputs differ
+  NAND gate: NOT AND (universal — can build ANY circuit from NANDs)
+
+  Every CPU is billions of logic gates.
+  Every algorithm ultimately = logic gates switching.
+
+LOGIC IN PROGRAMMING:
+  if (x > 0 and y > 0):     # AND
+  if (x == 0 or y == 0):    # OR
+  if not is_valid:           # NOT
+  if (a and not b) or c:    # Complex
+
+LOGIC IN DATABASES (SQL/Django):
+  WHERE age > 18 AND status = 'active'
+  filter(age__gt=18, status='active')        # AND
+  filter(Q(age__gt=18) | Q(status='vip'))    # OR
+  exclude(is_deleted=True)                    # NOT
+
+LOGIC IN ML/AI:
+  Decision trees: each split is a logical condition
+  Rule-based systems: if (condition1 AND condition2) then action
+  Boolean retrieval: search with AND/OR/NOT operators
+"""
+
+print(applications)
+
+# PYTHON: Logic gate simulation:
+gates_code = """
+# Simulate logic gates:
+def AND(a, b): return a and b
+def OR(a, b):  return a or b
+def NOT(a):    return not a
+def XOR(a, b): return a != b
+def NAND(a, b): return not (a and b)
+def NOR(a, b): return not (a or b)
+
+# Build a half-adder (adds two bits):
+def half_adder(a, b):
+    sum_bit = XOR(a, b)   # Sum
+    carry = AND(a, b)     # Carry
+    return sum_bit, carry
+
+# Full adder (adds three bits — for multi-bit addition):
+def full_adder(a, b, carry_in):
+    sum1, carry1 = half_adder(a, b)
+    sum2, carry2 = half_adder(sum1, carry_in)
+    carry_out = OR(carry1, carry2)
+    return sum2, carry_out
+
+# 4-bit adder (adds two 4-bit numbers):
+def four_bit_adder(a_bits, b_bits):
+    result = []
+    carry = False
+    for i in range(3, -1, -1):  # LSB to MSB
+        s, carry = full_adder(a_bits[i], b_bits[i], carry)
+        result.insert(0, s)
+    return result, carry
+
+# Example: 1010 (10) + 0011 (3) = 1101 (13)
+print(four_bit_adder([1,0,1,0], [0,0,1,1]))
+# ([True, True, False, True], False) → 1101 = 13 ✅
+"""
+
+print(gates_code)</div>
+
+<div class="code-block"># ── STEP 6: Logic best practices and pitfalls ──
+# Avoid common logical mistakes in programming.
+
+best_practices = [
+    "Use De Morgan's to simplify complex negations",
+    "Prefer positive conditions (avoid double negatives)",
+    "Remember: P → Q is only false when P=T and Q=F",
+    "Vacuous truth: False → anything is True",
+    "Contrapositive: P → Q = ¬Q → ¬P (useful for proofs)",
+    "Short-circuit evaluation: Python stops at first False (AND)",
+    "Distribute NOT carefully: ¬(A AND B) = ¬A OR ¬B",
+    "XOR for toggles: a != b (exclusive or)",
+    "Truth tables verify any logical expression",
+    "Database queries map directly to logical operators",
+    "Every CPU operation = logic gates switching",
+    "NAND is universal (can build any logic from NANDs alone)",
+    "Test edge cases: P=False (vacuous truth)",
+    "Use parentheses to clarify precedence in complex conditions",
+    "Refactor: if not (a and b) → if not a or not b (De Morgan)",
+]
+
+print("LOGIC BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Operator         │ Python                          │
+# ├──────────────────┼──────────────────────────────────┤
+# │ AND (∧)         │ and                             │
+# │ OR (∨)          │ or                              │
+# │ NOT (¬)         │ not                             │
+# │ IMPLIES (→)    │ (not P) or Q                    │
+# │ XOR (⊕)        │ P != Q                          │
+# │ IFF (↔)        │ P == Q                          │
+# │ De Morgan 1     │ not(A and B) = not A or not B   │
+# │ De Morgan 2     │ not(A or B) = not A and not B   │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Implication-এর ফাঁদ:</strong> P → Q (যদি P তবে Q) শুধু তখনই মিথ্যা যখন P সত্য কিন্তু Q মিথ্যা। P মিথ্যা হলে — Q যাই হোক — P → Q সত্য! একে "vacuous truth" বলে। "যদি সূর্য পশ্চিমে ওঠে, তবে আমি রাজা" — সত্য! কারণ সূর্য পশ্চিমে ওঠে না।</div></div>
 
