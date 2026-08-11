@@ -27,27 +27,373 @@ doors.push({
 ৫ জনের হাতে ৩টি আপেল → কেউ ২টি পেয়েছে<br>
 MD5 hash (১২৮-bit) → ২¹²৮+১টি input হলে collision অনিবার্য</div></div>
 
-<div class="code-block"># — Python: পিজিওনহোল যাচাই —
+<div class="code-block"># ── STEP 1: The Pigeonhole Principle ──
+# If you have more pigeons than holes, at least two pigeons share a hole.
 
-  import random, hashlib
+pigeonhole = """
+THE PIGEONHOLE PRINCIPLE (Dirichlet's Principle):
 
-  # ১০০০০ এলোমেলো সংখ্যা, ৩২-bit hash
-  seen = {}
-  for i in range(100000):
-      h = hash(str(i)) & 0xFFFFFFFF  # 32-bit
-      if h in seen:
-          print(f"Collision! '{seen[h]}' ও '{i}' → {h}")
-          break
-      seen[h] = i
-  # ~৭৭০০০-এ collision — ২^১৬ ~= ৬৫৫৩৬ তে শুরু
-  # এটাই birthday threshold: √(2^32) ~= 65536
+SIMPLE FORM:
+  If n items are put into m containers and n > m,
+  then at least one container has 2+ items.
 
-  # Dirichlet-এর নীতি সহজে:
-  def must_collide(n_objects, n_boxes):
-      return n_objects > n_boxes  # সর্বদা True যদি n+1
+  Example: 367 people, 366 possible birthdays (including Feb 29)
+  → At least 2 people share a birthday. Guaranteed.
 
-  print(must_collide(367, 366))   # True — জন্মদিন মিলবে
-  print(must_collide(2**128 + 1, 2**128))  # True — hash collision</div>
+GENERALIZED FORM:
+  If n items in m containers:
+  → At least one container has ⌈n/m⌉ items (ceiling)
+
+  Example: 100 people, 12 months
+  → At least ⌈100/12⌉ = 9 people born in the same month
+
+WHY IT WORKS:
+  Each container can hold at most ⌈n/m⌉ − 1 items without exceeding.
+  Total: m × (⌈n/m⌉ − 1) < n
+  → Contradiction! At least one must have ⌈n/m⌉.
+
+THE PRINCIPLE IS "OBVIOUS" BUT POWERFUL:
+  → Proves existence without finding the example
+  → Non-constructive proof technique
+  → Used in number theory, combinatorics, CS
+"""
+
+print(pigeonhole)
+
+# PYTHON: Pigeonhole verification:
+ph_code = """
+# Pigeonhole: n items > m containers → collision guaranteed
+def must_collide(n_objects, n_boxes):
+    return n_objects > n_boxes
+
+print(must_collide(367, 366))   # True — birthday collision
+print(must_collide(13, 12))     # True — 13 people, 12 months
+print(must_collide(5, 10))      # False — enough boxes
+
+# Minimum in a container:
+import math
+def min_in_some_container(n, m):
+    return math.ceil(n / m)
+
+print(min_in_some_container(100, 12))  # 9 (at least 9 share a month)
+print(min_in_some_container(1000, 10)) # 100
+"""
+
+print(ph_code)</div>
+
+<div class="code-block"># ── STEP 2: Classic applications ──
+# Surprising results from a simple principle.
+
+applications = """
+CLASSIC PIGEONHOLE APPLICATIONS:
+
+1. BIRTHDAY PROBLEM:
+   367 people → at least 2 share a birthday (366 possible days)
+
+2. HAIR COUNT:
+   Human head has at most ~150,000 hairs.
+   Dhaka has 20+ million people.
+   → At least 2 people in Dhaka have EXACT same number of hairs!
+   (Without finding them — non-constructive proof)
+
+3. SUM OF SUBSET:
+   Given n+1 integers from {1, 2, ..., 2n}:
+   → At least one pair sums to 2n+1
+   → Pairs: (1,2n), (2,2n-1), ..., (n,n+1) → n pairs
+   → n+1 numbers, n pairs → pigeonhole → two in same pair
+
+4. DIVISIBLE SUBSEQUENCE:
+   From any n integers, there's a consecutive subsequence
+   whose sum is divisible by n.
+   (Uses n remainders as pigeonholes)
+
+5. MANHATTAN DISTANCE:
+   5 points with integer coordinates on a grid:
+   → At least one pair has midpoint with integer coordinates
+   (4 parity combinations: (odd,odd), (odd,even), (even,odd), (even,even))
+
+6. RAMSEY THEORY:
+   In any party of 6 people:
+   → At least 3 mutual friends OR 3 mutual strangers
+   (Ramsey number R(3,3) = 6)
+"""
+
+print(applications)
+
+# PYTHON: Subset sum divisible by n:
+subset_code = """
+# PROVE: any n+1 numbers from {1,...,2n} has a pair summing to 2n+1
+import random
+
+def has_complementary_pair(nums, target=2*len(nums)+1):
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return (nums[i], nums[j])
+    return None
+
+# Test many random sets:
+n = 10  # choose 11 numbers from {1,...,20}
+for _ in range(1000):
+    nums = random.sample(range(1, 2*n+1), n+1)
+    pair = has_complementary_pair(nums, 2*n+1)
+    assert pair is not None, f"FAILED: {nums}"
+print("Pigeonhole verified: always find complementary pair ✅")
+
+# Hair count example:
+max_hairs = 150000
+population = 20_000_000  # Dhaka
+print(f"At least {population // max_hairs} people in Dhaka share exact hair count")
+# At least 133 people share exact hair count!
+"""
+
+print(subset_code)</div>
+
+<div class="code-block"># ── STEP 3: Hash collisions (CS application) ──
+# The pigeonhole principle in action.
+
+hash_collisions = """
+HASH COLLISIONS (Pigeonhole in CS):
+
+A hash function maps ARBITRARY input to FIXED-SIZE output.
+  → Input space: infinite
+  → Output space: 2^bits (finite)
+  → Pigeonhole: collisions MUST exist!
+
+COLLISION GUARANTEES:
+  32-bit hash: 2^32 = 4.3 billion outputs
+    → After ~65,536 inputs (2^16), 50% chance of collision
+    → Birthday paradox: √(2^32) ≈ 65,536
+
+  64-bit hash: 2^64 outputs
+    → After ~4.3 billion inputs, 50% collision chance
+
+  128-bit hash (MD5): 2^128 outputs
+    → After ~2^64 inputs, 50% collision (impractical)
+    → MD5 BROKEN: collisions found in seconds (structural weakness)
+
+  256-bit hash (SHA-256): 2^256 outputs
+    → Astronomically safe
+    → Used in Bitcoin, TLS, digital signatures
+
+THE BIRTHDAY BOUND:
+  For n-bit hash: collision after ~2^(n/2) hashes
+  → 32-bit: 2^16 ≈ 65K
+  → 64-bit: 2^32 ≈ 4.3B
+  → 128-bit: 2^64 ≈ 1.8×10^19 (practically unbreakable)
+"""
+
+print(hash_collisions)
+
+# PYTHON: Hash collision simulation:
+hash_code = """
+import hashlib
+
+# Find collision in truncated hash (8-bit for demo):
+def find_collision_8bit():
+    seen = {}  # hash → input
+    for i in range(1000):
+        h = hashlib.md5(str(i).encode()).digest()[0]  # first byte (0-255)
+        if h in seen:
+            return seen[h], i, h  # collision found!
+        seen[h] = i
+    return None
+
+result = find_collision_8bit()
+print(f"8-bit collision: inputs {result[0]} and {result[1]} both hash to {result[2]:08b}")
+# Collision found in ~16 inputs (birthday: √256 = 16)
+
+# Python's built-in hash():
+# Find hash collision for integers:
+seen = {}
+for i in range(100000):
+    h = hash(i) & 0xFFFFFFFF  # 32-bit
+    if h in seen:
+        print(f"Collision: {seen[h]} and {i} both hash to {h}")
+        break
+    seen[h] = i
+"""
+
+print(hash_code)</div>
+
+<div class="code-block"># ── STEP 4: Ramsey theory ──
+# Order emerges from chaos when n is large enough.
+
+ramsey = """
+RAMSEY THEORY:
+
+"Complete disorder is impossible." — Ramsey
+
+In any large enough structure, patterns are UNAVOIDABLE.
+
+RAMSEY NUMBERS R(s, t):
+  The minimum n such that any graph of n vertices contains:
+  → a clique of size s, OR
+  → an independent set of size t
+
+CLASSIC: R(3, 3) = 6
+  In any party of 6 people:
+  → At least 3 mutual friends (all know each other), OR
+  → At least 3 mutual strangers (none know each other)
+
+  Proof: Pick any person P. P knows or doesn't know each of the other 5.
+  → By pigeonhole: P knows ≥3 OR doesn't know ≥3.
+  → If P knows 3: any two of those know each other → clique of 3 friends.
+    Otherwise: those 3 are mutual strangers.
+
+KNOWN RAMSEY NUMBERS:
+  R(3,3) = 6
+  R(4,4) = 18
+  R(5,5) = between 43 and 48 (exact value UNKNOWN!)
+  R(6,6) = between 102 and 165 (UNKNOWN!)
+
+  "Imagine an alien force demands R(5,5) or they'll destroy Earth.
+   We could find it in a year. If they demand R(6,6), prepare for war."
+   — Paul Erdős
+
+APPLICATIONS:
+  → Network design (guaranteed substructures)
+  → Combinatorics (pattern emergence)
+  → Logic (unavoidable regularity)
+"""
+
+print(ramsey)
+
+# PYTHON: Ramsey R(3,3) = 6 verification:
+ramsey_code = """
+import itertools
+import random
+
+def has_clique_or_independent_set(graph, n, k=3):
+    \"\"\"Check if graph has clique or independent set of size k.\"\"\"
+    nodes = list(range(n))
+    for subset in itertools.combinations(nodes, k):
+        # Check if clique (all connected):
+        is_clique = all(graph[a][b] for a, b in itertools.combinations(subset, 2))
+        if is_clique:
+            return ("clique", subset)
+        # Check if independent set (none connected):
+        is_indep = all(not graph[a][b] for a, b in itertools.combinations(subset, 2))
+        if is_indep:
+            return ("independent", subset)
+    return None
+
+# Test: every 6-person party has 3 mutual friends or strangers
+n = 6
+for trial in range(10000):
+    # Random graph: edge = friendship
+    graph = [[False]*n for _ in range(n)]
+    for i in range(n):
+        for j in range(i+1, n):
+            graph[i][j] = graph[j][i] = random.random() < 0.5
+
+    result = has_clique_or_independent_set(graph, n)
+    assert result is not None, "R(3,3) violated!"
+
+print("R(3,3)=6 verified: always has 3-clique or 3-independent set ✅")
+"""
+
+print(ramsey_code)</div>
+
+<div class="code-block"># ── STEP 5: Pigeonhole in algorithms ──
+# The principle behind many correctness proofs.
+
+algo_pigeonhole = """
+PIGEONHOLE IN ALGORITHMS:
+
+1. HASH TABLES:
+  → Fixed-size table, variable input → collisions guaranteed
+  → Load factor: n/m (items/slots)
+  → Need collision resolution (chaining, open addressing)
+
+2. BLOOM FILTERS:
+  → Probabilistic data structure
+  → Multiple hash functions into bit array
+  → False positives possible (pigeonhole), no false negatives
+
+3. COUNTING SORT (O(n+k)):
+  → Works because keys are in limited range {0, ..., k}
+  → Uses pigeonhole: each key has a "slot"
+  → Faster than comparison sort when k = O(n)
+
+4. CYCLE DETECTION:
+  → Floyd's algorithm: in a sequence of n+1 values from {0,...,n}
+  → Pigeonhole → at least one repeat → cycle exists
+
+5. LOSSLESS COMPRESSION:
+  → Can't compress ALL files (pigeonhole: 2^n files of size n,
+    but only 2^0 + 2^1 + ... + 2^(n-1) < 2^n shorter files)
+  → Some files MUST get larger or stay same size
+
+6. PROBABILISTIC METHOD:
+  → "If objects > containers, collision exists"
+  → Used to prove existence in randomized algorithms
+
+7. PERFECT HASHING:
+  → Two-level hashing: first level distributes, second level avoids collisions
+  → O(1) lookup guaranteed (no collisions in second level)
+"""
+
+print(algo_pigeonhole)
+
+# PYTHON: Floyd's cycle detection:
+floyd_code = """
+# Floyd's Tortoise and Hare (cycle detection):
+# If a linked list has n nodes, any path of n+1 steps must revisit a node.
+
+def has_cycle(head):
+    \"\"\"Detect cycle using Floyd's algorithm (O(1) space).\"\"\"
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next        # moves 1 step
+        fast = fast.next.next   # moves 2 steps
+        if slow == fast:        # they meet → cycle!
+            return True
+    return False
+
+# Pigeonhole argument:
+# After n+1 steps, at least one node visited twice → cycle.
+# Floyd's finds it in O(n) time, O(1) space.
+"""
+
+print(floyd_code)</div>
+
+<div class="code-block"># ── STEP 6: Pigeonhole best practices ──
+# Apply the principle effectively.
+
+best_practices = [
+    "If n items > m containers → collision is guaranteed",
+    "Generalized: at least ⌈n/m⌉ items in some container",
+    "Birthday bound: √(2^n) hashes for 50% collision",
+    "Hash collisions are UNAVOIDABLE (finite output space)",
+    "Use SHA-256 for security (2^128 collision resistance)",
+    "Ramsey theory: patterns emerge in large structures",
+    "Counting sort works because keys have limited range",
+    "Cycle detection: n+1 steps in n states → cycle",
+    "Lossless compression can't work for all files",
+    "Non-constructive: proves existence without finding",
+    "Perfect hashing: two-level to eliminate collisions",
+    "Population > attribute range → duplicates exist",
+    "Erdős: R(5,5) solvable, R(6,6) very hard",
+    "Bloom filters: false positives OK, false negatives not",
+    "Pigeonhole is about COUNTING, not constructing",
+]
+
+print("PIGEONHOLE BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Principle        │ Result                          │
+# ├──────────────────┼──────────────────────────────────┤
+# │ n > m            │ At least 2 share a container    │
+# │ ⌈n/m⌉            │ Min items in some container     │
+# │ 2^16 hashes      │ 50% collision (32-bit)          │
+# │ 2^32 hashes      │ 50% collision (64-bit)          │
+# │ R(3,3) = 6       │ 3 friends or 3 strangers        │
+# │ R(4,4) = 18      │ 4 friends or 4 strangers        │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="verse">وَكُلَّ شَيْءٍ أَحْصَيْنَاهُ فِي إِمَامٍ مُّبِينٍ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং প্রতিটি কিছু আমরা একটি স্পষ্ট অভিলেখে গণনা করেছি।" — কুরআন ৩৬:১২</div>
