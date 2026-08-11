@@ -1661,31 +1661,381 @@ doors.push({
 <div class="dialogue"><strong>ব্যবস্থাপক নাদিয়া:</strong> রিয়াদ (Door ৪) তোমাকে সেট দিয়েছেন। এখন দেখো — সেট থেকে কতভাবে বাছাই করা যায়। জন্মদিনের প্যারাডক্স শুনেছ? ২৩ জন মানুষ এক ঘরে — ৫০% সম্ভাবনা দুজনের জন্মদিন মিলবে! মনে হয় অসম্ভব? C(২৩,২) = ২৫৩ জোড়া — প্রতিটি জোড়ায় ১/৩৬৫ সম্ভাবনা। ২৫৩ জোড়ায় অন্তত একটি মিলবে — ৫০%+। এটাই inclusion-exclusion — সম্ভাবনা যোগ করা।</div>
 <div class="dialogue en"><strong>Arranger Nadia:</strong> Riyad (Door 4) gave you sets. Now see — how many ways to choose from a set. Birthday paradox: 23 people in a room — 50% chance two share a birthday! Seems impossible? C(23,2) = 253 pairs — each pair has 1/365 chance. 253 pairs — at least one match likely. This is inclusion-exclusion.</div>
 
-<div class="code-block"># — Python: কম্বিনেটরিক্স —
+<div class="code-block"># ── STEP 1: Counting principles ──
+# The foundation of combinatorics: counting possibilities.
 
-  from math import comb, perm, factorial
+counting = """
+COUNTING PRINCIPLES:
 
-  # Permutation: ক্রম গুরুত্বপূর্ণ
-  print(perm(5, 3))   # 60 — ৫টি থেকে ৩টি সাজানো
-  print(perm(5, 5))   # 120 — ৫! = সব পারমুটেশন
+1. RULE OF SUM (OR):
+   If task A has m ways, task B has n ways (mutually exclusive):
+   Total = m + n
 
-  # Combination: ক্রম গুরুত্বহীন
-  print(comb(5, 3))   # 10 — ৫টি থেকে ৩টি বাছাই
-  print(comb(10, 0))  # 1 — শূন্য সেট বাছাই
+   Example: 3 red balls OR 5 blue balls → 3 + 5 = 8 choices
 
-  # জন্মদিন প্যারাডক্স যাচাই:
-  def birthday_prob(n):
-      p_no_match = 1.0
-      for i in range(n):
-          p_no_match *= (365 - i) / 365
-      return 1 - p_no_match
+2. RULE OF PRODUCT (AND):
+   If task A has m ways, task B has n ways (independent):
+   Total = m × n
 
-  print(birthday_prob(23))  # 0.507 — ৫০.৭%!
-  print(birthday_prob(50))  # 0.970 — ৯৭%!
-  print(birthday_prob(70))  # 0.999 — ৯৯.৯%!
+   Example: 3 shirts AND 4 pants → 3 × 4 = 12 outfits
 
-  # hash collision: ৬৪-bit hash, কত কী-তে ৫০% collision?
-  # C(n,2) / 2^64 ~= 0.5 → n ~= 2^32 ~= ৪ বিলিয়ন</div>
+3. INCLUSION-EXCLUSION:
+   |A ∪ B| = |A| + |B| − |A ∩ B|
+
+   Example: 30 take math, 25 take physics, 10 take both
+   Total students = 30 + 25 − 10 = 45
+
+4. PIGEONHOLE PRINCIPLE:
+   If n items in m containers, n > m → at least one container has 2+ items
+
+   Example: 367 people → at least 2 share a birthday (366 possible days)
+"""
+
+print(counting)
+
+# PYTHON: Counting:
+count_code = """
+# Rule of product — password combinations:
+charset = 62  # a-z, A-Z, 0-9
+for length in [4, 6, 8, 12, 16]:
+    combos = charset ** length
+    print(f"{length}-char password: {combos:.2e} combinations")
+
+# 4-char:  1.48e+07  (14 million — crackable instantly)
+# 8-char:  2.18e+14  (218 trillion — hours)
+# 12-char: 3.23e+21  (3 sextillion — years)
+# 16-char: 4.77e+28  (uncrackable)
+
+# Inclusion-exclusion:
+math_students = 30
+physics_students = 25
+both = 10
+total = math_students + physics_students - both
+print(f"Total: {total}")  # 45
+"""
+
+print(count_code)</div>
+
+<div class="code-block"># ── STEP 2: Permutations and combinations ──
+# The two fundamental ways to count arrangements.
+
+perm_comb = """
+PERMUTATIONS (order matters):
+
+P(n, k) = n! / (n-k)!
+  "How many ways to arrange k items from n items (in order)?"
+
+  Example: P(5, 3) = 5! / 2! = 60
+  → Arrange 3 people from 5 in a row: 60 ways
+
+  P(n, n) = n! (arrange all n items)
+  → P(5, 5) = 5! = 120
+
+COMBINATIONS (order doesn't matter):
+
+C(n, k) = n! / (k! × (n-k)!)
+  "How many ways to CHOOSE k items from n (order irrelevant)?"
+
+  Example: C(5, 3) = 5! / (3! × 2!) = 10
+  → Choose 3 people from 5 for a team: 10 ways
+
+  C(n, k) = C(n, n-k)  (choosing k to include = choosing n-k to exclude)
+  C(n, 0) = 1  (one way to choose nothing)
+  C(n, 1) = n  (n ways to choose one)
+
+WHEN TO USE WHICH:
+  Permutation: ORDER matters (arranging seats, ranking, passwords)
+  Combination: ORDER doesn't matter (teams, subsets, hands of cards)
+
+EXAMPLE:
+  "Password from letters ABCDEF" → PERMUTATION (order matters)
+  "Lottery numbers" → COMBINATION (order doesn't matter)
+  "Race podium" → PERMUTATION (1st, 2nd, 3rd are different)
+  "Committee members" → COMBINATION (all equal)
+"""
+
+print(perm_comb)
+
+# PYTHON: Permutations and combinations:
+pc_code = """
+from math import comb, perm, factorial
+
+# Permutations:
+print(perm(5, 3))   # 60 — arrange 3 from 5
+print(perm(5, 5))   # 120 — 5! = all permutations
+print(factorial(5)) # 120
+
+# Combinations:
+print(comb(5, 3))   # 10 — choose 3 from 5
+print(comb(10, 0))  # 1 — choose nothing
+print(comb(52, 5))  # 2598960 — poker hands
+
+# Python itertools for actual generation:
+from itertools import permutations, combinations
+
+# All permutations of [1,2,3]:
+for p in permutations([1, 2, 3]):
+    print(p)
+# (1,2,3), (1,3,2), (2,1,3), (2,3,1), (3,1,2), (3,2,1) → 6 = 3!
+
+# All combinations of 2 from [1,2,3,4]:
+for c in combinations([1, 2, 3, 4], 2):
+    print(c)
+# (1,2), (1,3), (1,4), (2,3), (2,4), (3,4) → 6 = C(4,2)
+"""
+
+print(pc_code)</div>
+
+<div class="code-block"># ── STEP 3: The Birthday Paradox ──
+# A surprising application of combinations.
+
+birthday = """
+THE BIRTHDAY PARADOX:
+
+QUESTION: In a room of n people, what's the probability
+that at least 2 share a birthday?
+
+INTUITION: You'd think you need ~180 people (half of 365).
+
+REALITY: With just 23 people, there's a 50.7% chance!
+With 50 people: 97% chance.
+With 70 people: 99.9% chance!
+
+WHY? It's not about matching YOUR birthday.
+It's about ANY two people matching — and there are C(n,2) pairs.
+
+C(23, 2) = 253 pairs. Each pair has 1/365 chance of matching.
+253 pairs × 1/365 ≈ 69% (rough estimate, actual is 50.7%)
+
+CALCULATION:
+  P(no match) = (365/365) × (364/365) × (363/365) × ... × ((365-n+1)/365)
+  P(match) = 1 − P(no match)
+
+  n=23: P(match) = 1 − (365! / (365^23 × 342!)) ≈ 0.507
+
+APPLICATIONS:
+  → Hash collisions (birthday attack on cryptography)
+  → Birthday attack: 64-bit hash → ~2^32 keys for 50% collision
+  → DNA matching, fingerprint collisions
+  → "How many people until shared characteristic?"
+"""
+
+print(birthday)
+
+# PYTHON: Birthday paradox:
+birthday_code = """
+def birthday_prob(n):
+    \"\"\"Probability of at least one shared birthday among n people.\"\"\"
+    p_no_match = 1.0
+    for i in range(n):
+        p_no_match *= (365 - i) / 365
+    return 1 - p_no_match
+
+for n in [10, 20, 23, 30, 50, 70, 100]:
+    print(f"n={n:3d}: {birthday_prob(n)*100:.1f}% chance of shared birthday")
+
+# Output:
+# n= 10: 11.7%
+# n= 20: 41.1%
+# n= 23: 50.7%  ← only 23 people for 50%!
+# n= 30: 70.6%
+# n= 50: 97.0%
+# n= 70: 99.9%
+# n=100: 99.99997%
+
+# Monte Carlo simulation (verify):
+import random
+
+def simulate_birthday(n, trials=10000):
+    matches = 0
+    for _ in range(trials):
+        birthdays = [random.randint(1, 365) for _ in range(n)]
+        if len(birthdays) != len(set(birthdays)):
+            matches += 1
+    return matches / trials
+
+print(f"Simulation (n=23): {simulate_birthday(23)*100:.1f}%")
+# Should be close to 50.7%
+"""
+
+print(birthday_code)</div>
+
+<div class="code-block"># ── STEP 4: Binomial theorem and Pascal's triangle ──
+# (a+b)^n expansion and binomial coefficients.
+
+binomial = """
+BINOMIAL THEOREM:
+
+(a + b)^n = Σ C(n,k) × a^(n-k) × b^k  for k = 0 to n
+
+EXAMPLES:
+  (a + b)^0 = 1
+  (a + b)^1 = a + b
+  (a + b)^2 = a² + 2ab + b²            coefficients: 1, 2, 1
+  (a + b)^3 = a³ + 3a²b + 3ab² + b³   coefficients: 1, 3, 3, 1
+  (a + b)^4 = a⁴ + 4a³b + 6a²b² + 4ab³ + b⁴  coefficients: 1, 4, 6, 4, 1
+
+PASCAL'S TRIANGLE:
+         1
+        1 1
+       1 2 1
+      1 3 3 1
+     1 4 6 4 1
+   1 5 10 10 5 1
+  1 6 15 20 15 6 1
+
+  → Each number = sum of two above
+  → Row n contains C(n, 0), C(n, 1), ..., C(n, n)
+  → C(n, k) = C(n-1, k-1) + C(n-1, k)
+
+PROPERTIES:
+  C(n, k) = C(n, n-k)  (symmetry)
+  C(n, 0) = C(n, n) = 1  (edges)
+  Σ C(n, k) for k=0..n = 2^n  (sum of row = power of 2)
+
+APPLICATIONS:
+  → Binomial distribution (probability of k successes in n trials)
+  → Binomial heap (data structure)
+  → Expansion of algebraic expressions
+  → Counting subsets
+"""
+
+print(binomial)
+
+# PYTHON: Pascal's triangle:
+pascal_code = """
+# Generate Pascal's triangle:
+def pascals_triangle(n):
+    triangle = []
+    for i in range(n):
+        row = [1] * (i + 1)
+        for j in range(1, i):
+            row[j] = triangle[i-1][j-1] + triangle[i-1][j]
+        triangle.append(row)
+    return triangle
+
+# Print first 8 rows:
+tri = pascals_triangle(8)
+for i, row in enumerate(tri):
+    print(f"n={i}: {row}")
+
+# Verify: C(n, k) matches triangle:
+from math import comb
+for n in range(8):
+    for k in range(n + 1):
+        assert tri[n][k] == comb(n, k)
+print("Pascal's triangle matches C(n,k) ✅")
+
+# Binomial expansion: (x + 1)^5
+# Coefficients are row 5 of Pascal's triangle: [1, 5, 10, 10, 5, 1]
+# x^5 + 5x^4 + 10x^3 + 10x^2 + 5x + 1
+"""
+
+print(pascal_code)</div>
+
+<div class="code-block"># ── STEP 5: Combinatorics in algorithms ──
+# Where counting appears in computer science.
+
+algo_apps = """
+COMBINATORICS IN CS:
+
+1. ALGORITHM COMPLEXITY:
+   → Permutations: n! (factorial — very expensive)
+   → Combinations: C(n,k) = "n choose k"
+   → Subsets: 2^n (power set)
+   → These determine algorithm complexity classes
+
+2. GENERATING ALL PERMUTATIONS:
+   → Traveling salesman: try all orderings (n! routes)
+   → Brute-force: O(n!) — only works for small n
+   → n=10: 3,628,800 permutations (feasible)
+   → n=20: 2.4×10^18 permutations (infeasible)
+
+3. GENERATING ALL COMBINATIONS:
+   → Knapsack: try all subsets
+   → C(n, k) determines search space
+
+4. HASH TABLES:
+   → Birthday paradox → collision probability
+   → 64-bit hash: ~2^32 items for 50% collision
+   → SHA-256: astronomically safe
+
+5. CRYPTOGRAPHY:
+   → Key space = number of possible keys
+   → AES-128: 2^128 ≈ 3.4×10^38 keys (uncrackable)
+   → Password strength: C(charset, length) = charset^length
+
+6. PROBABILITY:
+   → P(event) = favorable outcomes / total outcomes
+   → Poker hands: C(52,5) = 2,598,960 possible hands
+   → Royal flush: 4 hands → P = 4/2598960 ≈ 0.00015%
+
+7. COMPRESSORS/ENCODING:
+   → Huffman coding uses frequency (counting)
+   → Information: bits needed = log2(combinations)
+"""
+
+print(algo_apps)
+
+# PYTHON: Combinatorial complexity:
+complexity_code = """
+from math import comb, factorial
+
+# Compare growth rates:
+for n in [5, 10, 15, 20]:
+    subsets = 2 ** n
+    perms = factorial(n)
+    comb_half = comb(n, n // 2)
+    print(f"n={n:2d}: 2^n={subsets:>15,}  n!={perms:>18,}  C(n,n/2)={comb_half:>15,}")
+
+# n= 5: 2^n=             32  n!=               120  C(n,n/2)=             10
+# n=10: 2^n=          1,024  n!=         3,628,800  C(n,n/2)=            252
+# n=15: 2^n=         32,768  n!= 1,307,674,368,000  C(n,n/2)=          6,435
+# n=20: 2^n=      1,048,576  n!= 2.43×10^18         C(n,n/2)=         184,756
+
+# LESSON: n! grows MUCH faster than 2^n
+# → Permutation-based algorithms are only feasible for small n
+# → This is why NP-hard problems (TSP) need heuristics
+"""
+
+print(complexity_code)</div>
+
+<div class="code-block"># ── STEP 6: Combinatorics best practices ──
+# Apply counting effectively.
+
+best_practices = [
+    "Permutation: ORDER matters (arrangements, rankings)",
+    "Combination: ORDER doesn't matter (teams, subsets)",
+    "P(n,k) = n!/(n-k)! for permutations",
+    "C(n,k) = n!/(k!(n-k)!) for combinations",
+    "Power set has 2^n elements (subsets)",
+    "Birthday paradox: 23 people → 50% shared birthday",
+    "Inclusion-exclusion: |A∪B| = |A|+|B|−|A∩B|",
+    "Pigeonhole: n items, m containers, n>m → collision",
+    "n! grows faster than 2^n (factorial explosion)",
+    "Password strength: charset^length",
+    "AES-128: 2^128 keys (uncrackable)",
+    "Use itertools for actual permutations/combinations",
+    "Monte Carlo: simulate when exact calculation is hard",
+    "Pascal's triangle: C(n,k) = C(n-1,k-1) + C(n-1,k)",
+    "Binomial theorem: (a+b)^n = Σ C(n,k) a^(n-k) b^k",
+]
+
+print("COMBINATORICS BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Formula          │ Meaning                         │
+# ├──────────────────┼──────────────────────────────────┤
+# │ n!               │ All arrangements of n           │
+# │ P(n,k) = n!/(n-k)!│ Ordered k from n              │
+# │ C(n,k) = n!/k!(n-k)!│ Unordered k from n         │
+# │ 2^n              │ All subsets of n items          │
+# │ C(n,2)/365       │ Birthday match probability      │
+# │ Σ C(n,k) = 2^n   │ Sum of Pascal row               │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout info"><span class="co-icon">📐</span><div><strong>Pascal-এর ত্রিভুজ:</strong> প্রতিটি সংখ্যা উপরের দুটির যোগফল। C(n,k) এর মান সরাসরি পড়ো। ১ ৩ ৩ ১ = C(৩,০), C(৩,১), C(৩,২), C(৩,৩)। এটাই (a+b)ⁿ এর সহগ — binomial theorem!</div></div>
 
