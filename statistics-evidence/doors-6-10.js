@@ -564,21 +564,345 @@ doors.push({
     <div class="diag-cap">ব্যবহারকারীদের এলোমেলো দুই ভাগে ভাগ করো। Control পুরোনো, Treatment নতুন। পার্থক্য গুরুত্বপূর্ণ হলে (p < ০.০৫) — নতুন চালু করো।</div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 A/B Testing — Key Concepts</h4>
-    <table class="kv-table">
-      <tr><th>ধারণা</th><th>সংজ্ঞা</th><th>টিপস</th></tr>
-      <tr><td class="hl">Control (A)</td><td>বর্তমান সংস্করণ</td><td>সবসময় রাখো — baseline</td></tr>
-      <tr><td class="hl">Treatment (B)</td><td>নতুন সংস্করণ</td><td>একটা পরিবর্তন করো, একাধিক নয়</td></tr>
-      <tr><td class="hl">Effect Size</td><td>পার্থক্যের পরিমাণ</td><td>+০.১% ও গুরুত্বপূর্ণ হতে পারে বড় স্কেলে</td></tr>
-      <tr><td class="hl">Sample Size</td><td>কত ব্যবহারকারী</td><td>power analysis দিয়ে নির্ধারণ করো</td></tr>
-      <tr><td class="hl">Peeking</td><td>মাঝপথে ফলাফল দেখা</td><td>❌ এটা p-value নষ্ট করে — আগে থেকে সময় নির্ধারণ করো</td></tr>
-      <tr><td class="hl">Multiple Testing</td><td>একাধিক মেট্রিক দেখা</td><td>Bonferroni correction প্রয়োজন</td></tr>
-    </table>
-    <br>
-    <p><strong>Bing-এর গল্পের পাঠ:</strong> Kohavi & Thomke (২০১৭), <em>"The Surprising Power of Online Experiments"</em>, Harvard Business Review-এ বর্ণিত। Bing-এর সেই বিজ্ঞাপন শিরোনাম পরিবর্তন → ১২% রাজস্ব বৃদ্ধি → $100M+/year। এই গল্প প্রমাণ করে — অনুমান করবে না, পরীক্ষা করবে।</p>
-    <p><strong>ইতিহাস:</strong> Google-এর প্রথম A/B test ২০০০ সালে — সার্চ রেজাল্টে কয়টা ফলাফল দেখাবে তা নিয়ে। Amazon-এ Weblab (Kohavi-এর অধীনে) ১৯৯০-এর দশকের শেষে। ক্লড হপকিন্স ১৯২৩ সালে বিজ্ঞাপনে কুপন দিয়ে একই নীতি ব্যবহার করেছিলেন — <em>Scientific Advertising</em>।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: A/B testing metrics and analysis ──
+# Measuring success in online experiments.
+
+ab_metrics = """
+A/B TEST METRICS & ANALYSIS:
+
+PRIMARY METRIC (OEC - Overall Evaluation Criterion):
+  → The ONE metric that determines success
+  → Should be measurable in short-term but reflect long-term value
+  → Examples: revenue per user, retention rate, engagement
+
+GUARDRAIL METRICS:
+  → Metrics that should NOT degrade
+  → Examples: page load time, error rate, latency
+  → Even if primary metric improves, guardrail regression kills the experiment
+
+SECONDARY METRICS:
+  → Provide context and diagnostics
+  → Examples: click rate, time on page, bounce rate
+  → Not decision criteria but help understand WHY
+
+STATISTICAL ANALYSIS:
+  1. TWO-PROPORTION Z-TEST (conversion rates):
+     z = (p̂_B − p̂_A) / SE
+     SE = √(p̄(1−p̄)(1/n_A + 1/n_B))
+
+  2. TWO-SAMPLE t-TEST (continuous metrics):
+     t = (x̄_B − x̄_A) / √(s²_A/n_A + s²_B/n_B)
+
+  3. MANN-WHITNEY U (non-normal, e.g., revenue):
+     Rank-based, robust to outliers
+
+  4. BOOTSTRAP (any metric):
+     Resample to get confidence intervals
+     Good for complex metrics (percentiles, ratios)
+
+EFFECT SIZE INTERPRETATION:
+  Relative lift = (metric_B − metric_A) / metric_A
+  Absolute lift = metric_B − metric_A
+
+  Example: conversion 5.0% → 5.3%
+  Absolute: +0.3 percentage points
+  Relative: +6% (0.3/5.0)
+
+  "Statistically significant" ≠ "practically significant"
+  → +0.01% might be significant with millions of users but not worth shipping
+"""
+
+print(ab_metrics)</div>
+
+  <div class="code-block"># ── STEP 2: A/B testing pitfalls ──
+# Common mistakes and how to avoid them.
+
+pitfalls = """
+A/B TESTING PITFALLS:
+
+1. PEEKING (optional stopping):
+   → Checking p-value repeatedly during experiment
+   → Each check inflates false positive rate
+   → p < 0.05 checked 20 times → actual α ≈ 0.15
+   → FIX: Pre-determine sample size, use sequential testing (SPRT)
+
+2. MULTIPLE COMPARISONS:
+   → Testing 20 metrics → 1 likely false positive (at α=0.05)
+   → FIX: Bonferroni (α/m), False Discovery Rate, hierarchical testing
+
+3. SIMPSON'S PARADOX:
+   → Treatment better overall, but worse for each subgroup
+   → Example: Desktop shows +2%, Mobile shows +2%
+   → But overall −1% (different mix of users)
+   → FIX: Always segment analysis
+
+4. NOVELTY EFFECT:
+   → Users react to CHANGE itself (not the improvement)
+   → Effect fades after 1-2 weeks
+   → FIX: Run long enough (at least 1-2 weeks)
+
+5. LEARNING EFFECT:
+   → Users take time to learn new interface
+   → Initially worse, then better
+   → FIX: Run long enough to see steady state
+
+6. INTERFERENCE (network effects):
+   → Users in different groups interact
+   → Example: social network, ride-sharing (driver supply)
+   → FIX: Cluster randomization (geo-based, time-based)
+
+7. SELECTION BIAS:
+   → Only analyze users who SAW the experiment
+   → Excludes users with slow connections, ad blockers
+   → FIX: Intent-to-treat analysis (all assigned users)
+
+8. SAMPLE RATIO MISMATCH (SRM):
+   → 50/50 split but actually 51/49
+   → Indicates a bug in assignment or tracking
+   → FIX: Always check SRM FIRST (chi-squared goodness of fit)
+
+KOHAVI'S LAWS:
+  → "Only 1/3 of ideas are positive"
+  → "1/3 are negative, 1/3 are neutral"
+  → "The biggest sin is NOT running experiments"
+"""
+
+print(pitfalls)</div>
+
+  <div class="code-block"># ── STEP 3: Multi-armed bandits ──
+# Adaptive experimentation.
+
+bandits = """
+MULTI-ARMED BANDITS:
+
+Traditional A/B test: fixed allocation (50/50) for fixed duration.
+  → Wastes traffic on the loser for the entire experiment
+
+BANDIT: adaptively allocate traffic to the better-performing arm.
+  → Sends more traffic to the winner as evidence accumulates
+  → Reduces "regret" (opportunity cost of showing inferior version)
+
+NAMED AFTER SLOT MACHINES ("one-armed bandits"):
+  → Multiple machines (arms), each with unknown payout
+  → Explore (try each) vs Exploit (play the best so far)
+
+ALGORITHMS:
+
+1. EPSILON-GREEDY:
+   → With probability ε: explore (random arm)
+   → With probability 1−ε: exploit (best arm so far)
+   → Simple, ε usually 0.1
+
+2. UPPER CONFIDENCE BOUND (UCB):
+   → Pick arm with highest upper confidence bound
+   → "Optimism in the face of uncertainty"
+   → Balances exploration and exploitation automatically
+
+3. THOMPSON SAMPLING (Bayesian):
+   → Maintain posterior distribution for each arm
+   → Sample from each posterior, pick highest sample
+   → Natural exploration-exploitation balance
+   → Converges faster than epsilon-greedy
+
+WHEN TO USE BANDITS:
+  → Short-lived content (news, ads)
+  → Continuous optimization (recommendations)
+  → When you can't afford to wait for A/B test to complete
+
+WHEN NOT TO USE:
+  → Need rigorous statistical proof
+  → Learning effect/novelty effect (bandit may kill too early)
+  → Need to understand WHY (A/B test provides cleaner data)
+
+PYTHON:
+  # Thompson sampling for conversion rate optimization:
+  from scipy.stats import beta
+
+  # For each variant, maintain Beta(α, β) posterior
+  # α = 1 + conversions, β = 1 + failures
+  variants = {
+      'A': {'alpha': 1, 'beta': 1},
+      'B': {'alpha': 1, 'beta': 1},
+      'C': {'alpha': 1, 'beta': 1},
+  }
+
+  for _ in range(experiment_duration):
+      # Sample from each posterior:
+      samples = {v: beta(alpha, beta).rvs() for v, params in variants.items()}
+      # Pick variant with highest sample:
+      winner = max(samples, key=samples.get)
+      # Show winner, observe result, update:
+      if user_converts:
+          variants[winner]['alpha'] += 1
+      else:
+          variants[winner]['beta'] += 1
+"""
+
+print(bandits)</div>
+
+  <div class="code-block"># ── STEP 4: Causal inference ──
+# Moving beyond correlation to causation.
+
+causal = """
+CAUSAL INFERENCE:
+
+"Correlation does not imply causation."
+But sometimes we NEED to know causation.
+
+THE FUNDAMENTAL PROBLEM OF CAUSAL INFERENCE:
+  We can only observe ONE outcome per person:
+  → Either treated OR not treated (never both)
+  → The "counterfactual" (what would have happened) is unobserved
+
+POTENTIAL OUTCOMES FRAMEWORK (Neyman-Rubin):
+  Y₁ᵢ = outcome if person i is treated
+  Y₀ᵢ = outcome if person i is NOT treated
+  Treatment effect for person i: Y₁ᵢ − Y₀ᵢ
+  Average Treatment Effect (ATE): E[Y₁ − Y₀]
+
+  Problem: we only observe Y₁ OR Y₀, never both.
+
+METHODS TO ESTIMATE CAUSAL EFFECTS:
+
+1. RANDOMIZED CONTROLLED TRIAL (RCT):
+   → Randomization makes treated/control groups identical
+   → ATE = mean(treated) − mean(control)
+   → Gold standard but often expensive/impossible
+
+2. DIFFERENCE-IN-DIFFERENCES (DiD):
+   → Before/after for treatment AND control
+   → Assumes parallel trends (without treatment)
+   → Effect = (Δ treatment) − (Δ control)
+
+3. INSTRUMENTAL VARIABLES (IV):
+   → Find instrument Z that affects treatment but not outcome
+   → Two-stage: regress treatment on Z, then outcome on predicted treatment
+   → Example: military draft lottery → education → earnings
+
+4. REGRESSION DISCONTINUITY (RDD):
+   → Treatment assigned by threshold (GPA > 3.5 → scholarship)
+   → Compare people just above/below threshold
+   → Local average treatment effect (LATE)
+
+5. PROPENSITY SCORE MATCHING:
+   → Match on observed covariates
+   → Estimate propensity: P(treatment | covariates)
+   → Match treated/untreated with same propensity
+   → Can't control for UNOBSERVED confounders
+
+6. DO-CALCULUS (Judea Pearl):
+   → Graphical models (DAGs) for causal relationships
+   → backdoor criterion, front-door criterion
+   → Identifies when causal effects can be estimated
+
+PYTHON:
+  # DoWhy library (Microsoft):
+  from dowhy import CausalModel
+
+  model = CausalModel(data, treatment, outcome, graph)
+  identified = model.identify_effect()
+  estimate = model.estimate_effect(identified)
+"""
+
+print(causal)</div>
+
+  <div class="code-block"># ── STEP 5: Meta-analysis ──
+# Combining evidence from multiple studies.
+
+meta = """
+META-ANALYSIS:
+
+Systematic review + quantitative synthesis of multiple studies.
+  → "Standing on the shoulders of giants"
+  → More powerful than any single study
+
+THE PROCESS:
+  1. SYSTEMATIC REVIEW:
+     → Search ALL relevant studies (published + unpublished)
+     → Pre-defined inclusion/exclusion criteria
+     → Avoid cherry-picking
+
+  2. EFFECT SIZE EXTRACTION:
+     → Convert each study's result to common metric
+     → Cohen's d, odds ratio, relative risk, correlation
+     → Standardize for comparison
+
+  3. POOLING (fixed vs random effects):
+     Fixed effects: assume all studies share ONE true effect
+     Random effects: assume true effect varies across studies
+     → Weight each study by inverse variance
+
+  4. HETEROGENEITY ASSESSMENT:
+     → Q-statistic, I² (proportion of variance from heterogeneity)
+     → High I² → studies disagree → explore why
+
+  5. PUBLICATION BIAS:
+     → Funnel plot: effect size vs sample size
+     → Asymmetric → publication bias (missing small studies)
+     → Trim-and-fill: estimate missing studies
+
+  6. META-REGRESSION:
+     → Regress effect size on study characteristics
+     → Example: does effect vary by age, setting, year?
+
+FOREST PLOT:
+  → Visual summary of all studies
+  → Each row = one study
+  → Point estimate + confidence interval
+  → Diamond at bottom = pooled estimate
+
+FAMOUS META-ANALYSES:
+  → Cochrane Collaboration (medicine)
+  → What Works Clearinghouse (education)
+  → Campbell Collaboration (social policy)
+
+WHEN META-ANALYSIS MISLEADS:
+  → "Garbage in, garbage out": bad studies → bad meta-analysis
+  → Publication bias (file drawer problem)
+  → Heterogeneity (mixing apples and oranges)
+  → Need quality assessment of included studies
+"""
+
+print(meta)</div>
+
+  <div class="code-block"># ── STEP 6: Experimentation best practices ──
+# Run experiments that produce trustworthy conclusions.
+
+best_practices = [
+    "Define OEC (primary metric) before experiment",
+    "Calculate sample size via power analysis",
+    "Check SRM (sample ratio mismatch) FIRST",
+    "Don't peek (use sequential testing if needed)",
+    "Correct for multiple comparisons (Bonferroni/FDR)",
+    "Segment analysis (Simpson's paradox check)",
+    "Run long enough for novelty/learning effects",
+    "Report effect size AND confidence interval",
+    "Guardrail metrics: don't degrade latency/errors",
+    "Bandits for short-lived content optimization",
+    "RCT for causation, observational for hypothesis",
+    "DiD/IV/RDD when RCT impossible",
+    "DoWhy for causal model identification",
+    "Meta-analysis: follow PRISMA guidelines",
+    "Pre-register to prevent p-hacking and HARKing",
+]
+
+print("EXPERIMENTATION BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Method           │ Use Case                        │
+# ├──────────────────┼──────────────────────────────────┤
+# │ A/B test         │ Two versions, online             │
+# │ Bandit           │ Adaptive, short-lived            │
+# │ RCT              │ Gold standard causation          │
+# │ DiD              │ Policy, before/after             │
+# │ IV               │ Unobserved confounders           │
+# │ RDD              │ Threshold assignment             │
+# │ Meta-analysis    │ Combine multiple studies         │
+# │ Do-calculus      │ Causal graph identification      │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Builder's Codex / System Design) Door ১১-এ Observability & Monitoring শিখেছিলে। A/B test হলো observability-এর সক্রিয় রূপ — শুধু দেখা নয়, পরীক্ষা করা। Book ১৪ (LLMOps) Door ৫-এ Cost Optimization — A/B test দিয়ে দেখা যায় কোন মডেল বেশি লাভজনক।</div></div>
 
