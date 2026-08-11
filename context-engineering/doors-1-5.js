@@ -1828,67 +1828,405 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Context Priority:</strong> All context treated equally — trivial info crowded out critical. Fix: implement context ranking.</div></div>
 
 
-<div class="code-block">Reranking — Two-Stage Retrieval:
+<div class="code-block"># ── STEP 1: Why reranking is needed ──
+# Bi-encoders are fast but imprecise. Cross-encoders are precise but slow.
 
-WHY RERANKING IS NEEDED:
+why_rerank = """
+THE RETRIEVAL PRECISION PROBLEM:
 
-  Bi-Encoder (retrieval stage):
-    Query → embedding
-    Doc → embedding
-    Score = cosine(query_emb, doc_emb)
-    
-    ✅ দ্রুত — pre-computed doc embeddings
-    ✅ million docs-এ সার্চ সেকেন্ডে
-    ❌ অনুমানমূলক — query ও doc আলাদা encoded
-    
-  Cross-Encoder (reranking stage):
-    [Query, Doc] → together → score
-    
-    ✅ নির্ভুল — query ও doc একসাথে processed
-    ✅ attention query-এর প্রতিটি শব্দ → 
-       doc-এর প্রতিটি শব্দের সাথে
-    ❌ ধীর — প্রতিটি query-doc pair আলাদা 
-       forward pass
-  
-  সমাধান: দুটো স্তরে ব্যবহার
+Bi-Encoder (used in vector search):
+  Query → embedding (separate)
+  Doc → embedding (separate)
+  Score = cosine_similarity(query_emb, doc_emb)
 
-TWO-STAGE PIPELINE:
+  ✅ FAST: pre-compute doc embeddings, search millions in ms
+  ❌ IMPRECISE: query and doc encoded SEPARATELY
+  → No cross-attention between query words and doc words
+  → Can miss subtle relevance
 
-  Stage 1: RETRIEVAL (bi-encoder)
-    বিশাল corpus → top-20 দ্রুত
-    → বিস্তৃত কভারেজ, কম precision
-    
-         ↓
-    
-  Stage 2: RERANKING (cross-encoder)  
-    top-20 → প্রতিটি query-doc pair score
-    → top-5 সূক্ষ্ম
-    → উচ্চ precision
-    
-    → সঠিক chunk #১৫ থেকে #১ এ!
+Cross-Encoder (reranking):
+  [Query, Doc] → processed TOGETHER → score
 
-RERANKER MODELS:
-  Cohere Rerank 3 → API, সেরা quality
-  BGE-Reranker-v2 → open, strong
-  Jina Reranker → fast, good
-  Cross-encoder MS-MARCO → MiniLM, free
+  ✅ PRECISE: query and doc processed together
+  → Full attention: every query word attends to every doc word
+  → Catches subtle relevance bi-encoders miss
+  ❌ SLOW: each query-doc pair needs a separate forward pass
+  → Can't pre-compute (query changes every time)
+  → Too slow for searching millions of docs
 
-EMPIRICAL IMPACT:
-  Retrieval only (top-5):        ৬৫% accuracy
-  Retrieval + Reranking (top-5): ৮৫%+ accuracy
-  → ২০%+ improvement শুধু reranking থেকে!
+SOLUTION: Use BOTH in a two-stage pipeline!
+"""
 
-LATENCY:
-  Retrieval: ~৫০ms (100M docs)
-  Reranking: ~১০০ms (20 pairs)
-  Total: ~১৫০ms
-  → acceptable for production
+print(why_rerank)
 
-WHEN TO RERANK:
-  ✅ সবসময় যদি precision গুরুত্বপূর্ণ
-  ✅ বিশেষ করে ফ্যাক্ট-বেসড QA
-  ✅ আইনি, চিকিৎসা, financial RAG
-  ❌ সম্ভব না যদি latency অত্যন্ত গুরুত্বপূর্ণ</div>
+# BI-ENCODER vs CROSS-ENCODER:
+comparison = {
+    "Bi-Encoder (Retrieval)": {
+        "speed": "Very fast (pre-computed embeddings)",
+        "precision": "Moderate (separate encoding)",
+        "scale": "Millions of docs in milliseconds",
+        "use": "Stage 1: broad retrieval (top-20 from millions)",
+    },
+    "Cross-Encoder (Reranking)": {
+        "speed": "Slow (per-pair forward pass)",
+        "precision": "Very high (joint encoding)",
+        "scale": "Only feasible for 20-50 pairs",
+        "use": "Stage 2: fine reranking (top-20 → top-5)",
+    },
+}
+
+print("BI-ENCODER vs CROSS-ENCODER:")
+for encoder, info in comparison.items():
+    print(f"\n  {encoder}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 2: Two-stage pipeline ──
+# The standard production approach: retrieve broad, then rerank precise.
+
+pipeline = """
+TWO-STAGE RETRIEVAL PIPELINE:
+
+Stage 1: RETRIEVAL (bi-encoder)
+  Query → embed → search ALL documents → top-20 (fast, broad)
+  → Gets the rough candidates
+  → May include some irrelevant docs (OK, stage 2 fixes this)
+  → Latency: ~50ms for millions of docs
+
+       ↓
+
+Stage 2: RERANKING (cross-encoder)
+  For each of the 20 candidates:
+    [Query, Doc_i] → cross-encoder → relevance_score_i
+
+  Sort by cross-encoder score → top-5 (precise)
+  → The CORRECT chunk (was #15 after retrieval) moves to #1!
+  → Latency: ~100ms for 20 pairs
+
+       ↓
+
+  Final: top-5 precisely ranked → send to LLM
+
+TOTAL LATENCY: ~150ms (acceptable for production)
+ACCURACY IMPROVEMENT: +20% or more
+"""
+
+print(pipeline)
+
+# VISUAL: HOW RERANKING CHANGES RANKINGS:
+rerank_visual = """
+BEFORE RERANKING (bi-encoder top-5):
+  #1: Doc A (sim=0.89)  ← WRONG (semantically similar but not answer)
+  #2: Doc B (sim=0.87)  ← WRONG
+  #3: Doc C (sim=0.85)  ← WRONG
+  #4: Doc D (sim=0.84)  ← CORRECT ANSWER (but ranked #4!)
+  #5: Doc E (sim=0.83)  ← WRONG
+
+AFTER RERANKING (cross-encoder re-scores):
+  #1: Doc D (cross-score=0.95)  ← CORRECT! Moved from #4 to #1!
+  #2: Doc A (cross-score=0.72)
+  #3: Doc B (cross-score=0.68)
+  #4: Doc E (cross-score=0.65)
+  #5: Doc C (cross-score=0.61)
+
+→ Cross-encoder correctly identifies Doc D as MOST relevant
+→ Bi-encoder had it at #4 (good enough to be in top-20)
+→ Reranking promotes it to #1
+→ LLM now sees the correct answer FIRST (recency zone!)
+"""
+print(rerank_visual)</div>
+
+<div class="code-block"># ── STEP 3: Reranker models ──
+# Choose the right cross-encoder for your use case.
+
+rerankers = {
+    "Cohere Rerank 3": {
+        "type": "API (managed)",
+        "quality": "Best (state-of-the-art)",
+        "cost": "$2 per 1K searches",
+        "pros": "No setup, best quality, multilingual",
+        "cons": "API dependency, cost at scale",
+        "best_for": "Production RAG, best quality needed",
+    },
+    "BGE-Reranker-v2": {
+        "type": "Open source (self-hosted)",
+        "quality": "Very good",
+        "cost": "Free (compute cost only)",
+        "pros": "Free, strong performance, local",
+        "cons": "Needs GPU for speed",
+        "best_for": "Self-hosted, cost-conscious",
+    },
+    "Jina Reranker v2": {
+        "type": "API or open source",
+        "quality": "Good",
+        "cost": "Free tier, then paid",
+        "pros": "Fast, good quality, easy API",
+        "cons": "Less accurate than Cohere/BGE",
+        "best_for": "Speed-critical applications",
+    },
+    "cross-encoder/ms-marco-MiniLM": {
+        "type": "Open source (HuggingFace)",
+        "quality": "Decent",
+        "cost": "Free",
+        "pros": "Free, small model, CPU-friendly",
+        "cons": "Less accurate than newer models",
+        "best_for": "Prototyping, low-resource",
+    },
+}
+
+print("RERANKER MODELS:")
+for model, info in rerankers.items():
+    print(f"\n  {model}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# EMPIRICAL IMPACT:
+impact = """
+ACCURACY IMPACT OF RERANKING:
+
+Retrieval only (bi-encoder top-5):     65% accuracy
+Retrieval + Reranking (top-5):         85%+ accuracy
+→ 20%+ improvement just from reranking!
+
+LATENCY IMPACT:
+  Retrieval (100M docs):    ~50ms
+  Reranking (20 pairs):     ~100ms
+  Total:                    ~150ms
+  → Acceptable for production (users tolerate <500ms)
+
+WHEN RERANKING IS WORTH IT:
+  ✅ Always (if precision matters)
+  ✅ Especially fact-based QA
+  ✅ Legal, medical, financial RAG
+  ✅ When accuracy is critical
+  ❌ Skip only if latency budget is extremely tight (<100ms)
+"""
+print(impact)</div>
+
+<div class="code-block"># ── STEP 4: Implementing reranking in Python ──
+# Code for each major reranker.
+
+reranking_code = """
+# METHOD 1: Cohere Rerank (API, best quality):
+import cohere
+
+co = cohere.Client()
+
+def rerank_cohere(query, documents, top_n=5):
+    results = co.rerank(
+        model="rerank-english-v3.0",
+        query=query,
+        documents=[doc.content for doc in documents],
+        top_n=top_n,
+    )
+    return [documents[r.index] for r in results.results]
+
+
+# METHOD 2: BGE-Reranker (open source, self-hosted):
+from FlagEmbedding import FlagReranker
+
+reranker = FlagReranker('BAAI/bge-reranker-v2-m3', use_fp16=True)
+
+def rerank_bge(query, documents, top_n=5):
+    pairs = [[query, doc.content] for doc in documents]
+    scores = reranker.compute_score(pairs)
+    # Sort by score descending:
+    ranked = sorted(zip(documents, scores), key=lambda x: x[1], reverse=True)
+    return [doc for doc, score in ranked[:top_n]]
+
+
+# METHOD 3: HuggingFace cross-encoder:
+from sentence_transformers import CrossEncoder
+
+model = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
+
+def rerank_hf(query, documents, top_n=5):
+    pairs = [[query, doc.content] for doc in documents]
+    scores = model.predict(pairs)
+    ranked = sorted(zip(documents, scores), key=lambda x: x[1], reverse=True)
+    return [doc for doc, score in ranked[:top_n]]
+
+
+# FULL TWO-STAGE PIPELINE:
+def retrieve_and_rerank(query, top_k_retrieve=20, top_k_final=5):
+    # Stage 1: Bi-encoder retrieval (fast, broad):
+    query_emb = embed(query)
+    candidates = vector_search(query_emb, top_k=top_k_retrieve)
+
+    # Stage 2: Cross-encoder reranking (precise):
+    reranked = rerank_cohere(query, candidates, top_n=top_k_final)
+
+    return reranked
+"""
+
+print(reranking_code)</div>
+
+<div class="code-block"># ── STEP 5: Advanced reranking techniques ──
+# Beyond simple cross-encoder reranking.
+
+advanced = """
+ADVANCED RERANKING TECHNIQUES:
+
+1. LLM-BASED RERANKING:
+   Use an LLM to score relevance:
+   Prompt: "Rate 1-10 how relevant this document is to the query."
+   → Very accurate (LLM understands nuance)
+   → Very slow and expensive (LLM call per document)
+   → Use only for high-value, low-volume cases
+
+2. MULTI-FIELD RERANKING:
+   Score based on multiple signals:
+   final_score = w1 * semantic_score
+               + w2 * keyword_score
+               + w3 * recency_score
+               + w4 * authority_score
+   → Combines multiple relevance signals
+   → Weights need tuning
+
+3. LISTWISE RERANKING (RankGPT):
+   Instead of scoring each doc independently,
+   show ALL top-20 to LLM and ask: "Rank these by relevance."
+   → LLM sees relative differences (better than independent scoring)
+   → More expensive (larger context) but more accurate
+
+4. ITERATIVE RERANKING:
+   Rerank → if confidence low → retrieve more → rerank again
+   → Self-correcting retrieval
+   → Higher accuracy, higher latency
+
+5. ENSEMBLE RERANKING:
+   Use multiple rerankers, combine scores:
+   final = avg(cohere_score, bge_score, jina_score)
+   → Reduces individual model biases
+   → More robust rankings
+"""
+
+print(advanced)
+
+# LLM-BASED RERANKING CODE:
+llm_rerank = """
+# LLM-based reranking (most accurate, most expensive):
+def llm_rerank(query, documents, top_n=5):
+    scored = []
+    for doc in documents:
+        prompt = f\"\"\"Rate the relevance of this document to the query.
+
+Query: {query}
+Document: {doc.content[:500]}
+
+Relevance score (0-10, where 10 is perfectly relevant):
+Answer with just the number.\"\"\"
+
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",  # cheap model for scoring
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0
+        )
+        score = float(response.choices[0].message.content.strip())
+        scored.append((doc, score))
+
+    ranked = sorted(scored, key=lambda x: x[1], reverse=True)
+    return [doc for doc, score in ranked[:top_n]]
+
+# LISTWISE RERANKING (RankGPT approach):
+def listwise_rerank(query, documents, top_n=5):
+    doc_list = "\\n".join([f"[{i}] {d.content[:200]}" for i, d in enumerate(documents)])
+    prompt = f\"\"\"Rank these documents by relevance to the query.
+Return only the ranking as comma-separated indices (most relevant first).
+
+Query: {query}
+
+Documents:
+{doc_list}
+
+Ranking:\"\"\"
+
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0
+    )
+    ranking = parse_ranking(response.choices[0].message.content)
+    return [documents[i] for i in ranking[:top_n]]
+"""
+
+print(llm_rerank)</div>
+
+<div class="code-block"># ── STEP 6: Reranking best practices ──
+# Maximize the benefit of reranking in production.
+
+best_practices = [
+    "ALWAYS rerank in production RAG (20%+ accuracy boost)",
+    "Retrieve top-20, rerank to top-5 (sweet spot)",
+    "Use BGE-Reranker (free) or Cohere (best quality)",
+    "Cache reranking results for repeated queries",
+    "Monitor reranking latency (target: <200ms total)",
+    "Use cheaper cross-encoder for speed, expensive for precision",
+    "Consider LLM-based reranking for high-value queries",
+    "Combine multiple rerankers (ensemble) for robustness",
+    "Rerank AFTER hybrid search (dense + sparse → rerank → top-5)",
+    "Test reranking impact with RAGAS (measure precision improvement)",
+    "Log reranking score changes (which docs got promoted/demoted?)",
+    "Use listwise reranking for complex multi-document queries",
+    "Skip reranking for simple queries (save latency when possible)",
+    "Batch reranking calls to reduce API overhead",
+    "Set minimum relevance threshold (drop docs below 0.5 score)",
+]
+
+print("RERANKING BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# COMPLETE PRODUCTION RETRIEVAL PIPELINE:
+pipeline_summary = """
+COMPLETE PRODUCTION RETRIEVAL PIPELINE:
+
+1. Query Transformation
+   → Rewrite/expand query
+   → Generate HyDE hypothetical document
+
+2. Hybrid Retrieval
+   → Dense search: top-50 (semantic)
+   → Sparse search: top-50 (keyword)
+   → RRF fusion: merge → top-20
+
+3. Reranking
+   → Cross-encoder scores each of top-20
+   → Final top-5 by precision
+
+4. Context Assembly
+   → Reorder top-5 (U-curve: best at end)
+   → Add metadata, citations
+
+5. Send to LLM
+   → System prompt + context + question
+   → LLM generates answer from top-5 precisely ranked docs
+
+ACCURACY:
+  Naive (no rerank):       ~65%
+  Hybrid + Rerank:         ~85%
+  + Query transform:       ~88%
+  + Contextual retrieval:  ~92%
+
+Each stage adds 5-10% accuracy.
+Together: production-grade RAG.
+"""
+
+print(pipeline_summary)
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Bi-encoder       │ Fast retrieval (separate embed) │
+# │ Cross-encoder    │ Precise scoring (joint encode)  │
+# │ Two-stage        │ Retrieve broad, rerank precise  │
+# │ Reranker models  │ Cohere, BGE, Jina, MiniLM       │
+# │ Accuracy boost   │ +20% from reranking alone       │
+# │ Latency          │ ~150ms total (acceptable)       │
+# │ LLM reranking    │ Most accurate, most expensive   │
+# │ Always rerank    │ Production RAG standard         │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
