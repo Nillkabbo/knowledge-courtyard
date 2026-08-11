@@ -25,35 +25,365 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — LoRA Rank Too Low:</strong> r=4 couldn't capture complex patterns — underfitting. Fix: experiment with r=8, 16, 32.</div></div>
 
 
-<div class="code-block">Fine-tuning Evaluation — Measure Everything:
+<div class="code-block"># ── STEP 1: Fine-tuning evaluation ──
+# Measure everything before deploying.
+
+evaluation = """
+FINE-TUNING EVALUATION — MEASURE EVERYTHING:
 
 FOUR EVALUATION TYPES:
 
-১. TASK-SPECIFIC METRICS
-  তোমার নির্দিষ্ট কাজে কতটা ভালো?
-  
-  Classification: F1, precision, recall
-  Generation: BLEU, ROUGE, BERTScore  
-  Code: pass@k, functional correctness
-  QA: exact match, F1
-  Summarization: ROUGE, human rating
-  
-  Before: base model score
-  After: fine-tuned score
-  → Delta = improvement (hopefully positive!)
+1. TASK-SPECIFIC METRICS:
+   → Classification: F1, precision, recall
+   → Generation: BLEU, ROUGE, BERTScore
+   → Code: pass@k, functional correctness
+   → QA: exact match, F1
+   → Compare: base model score vs fine-tuned score
+   → Delta = improvement (hopefully positive!)
 
-২. GENERAL CAPABILITY REGRESSION
-  Fine-tuning এক জায়গায় ভালো, কিন্তু 
-  অন্য জায়গায় খারাপ?
-  
-  → "Catastrophic forgetting" — base knowledge হারায়
-  → MMLU, HellaSwag, GSM8K benchmarks
-  → Compare base vs fine-tuned on general tasks
-  → Regression > ৫% = সমস্যা!
+2. GENERAL CAPABILITY REGRESSION:
+   → Catastrophic forgetting check
+   → Run MMLU, HellaSwag, GSM8K benchmarks
+   → Compare base vs fine-tuned on general tasks
+   → Regression > 5% = problem!
 
-৩. LLM-AS-JUDGE
-  একটা বড় LLM (GPT-4) দিয়ে তুমার 
-  fine-tuned model-এর output বিচার করো।
+3. LLM-AS-JUDGE:
+   → Use GPT-4/Claude to rate your model's output
+   → Rate on: accuracy, helpfulness, clarity
+   → Cheap, fast, scalable
+   → Biased (may prefer certain style)
+
+4. HUMAN EVALUATION:
+   → Most reliable, most expensive
+   → Side-by-side: base vs fine-tuned (blind)
+   → 50-100 examples, 2-3 evaluators
+
+EVALUATION PIPELINE:
+  1. Create eval set (holdout 10%): 100-500 examples
+  2. Run base model → baseline scores
+  3. Run fine-tuned model → new scores
+  4. Compare: task metric up? general stable?
+  5. Decision: deploy or iterate
+
+PYTHON (evaluation script):
+  from datasets import load_dataset
+  from transformers import pipeline
+
+  # Load eval set:
+  eval_data = load_dataset("my_domain_eval", split="test")
+
+  # Base model:
+  base_pipe = pipeline("text-generation", model="base_model")
+  base_scores = evaluate(base_pipe, eval_data)
+
+  # Fine-tuned model:
+  ft_pipe = pipeline("text-generation", model="./fine_tuned")
+  ft_scores = evaluate(ft_pipe, eval_data)
+
+  print(f"Base:  {base_scores['f1']:.4f}")
+  print(f"FT:    {ft_scores['f1']:.4f}")
+  print(f"Delta: {ft_scores['f1'] - base_scores['f1']:+.4f}")
+"""
+
+print(evaluation)</div>
+
+<div class="code-block"># ── STEP 2: Catastrophic forgetting ──
+# The dark side of fine-tuning.
+
+forgetting = """
+CATASTROPHIC FORGETTING:
+
+When fine-tuning on domain data, the model may LOSE general capabilities.
+  → Trains heavily on medical data → forgets how to code
+  → Learns your format → forgets general conversation
+
+CAUSES:
+  → Full fine-tuning: ALL weights change (high risk)
+  → Too many epochs: model overfits to domain
+  → Narrow dataset: only one type of example
+  → High learning rate: drastic changes
+
+PREVENTION:
+
+1. USE LoRA/QLoRA:
+   → Original weights FROZEN (frozen base model)
+   → Only adapters change → general knowledge preserved
+   → LoRA: catastrophic forgetting is rare
+
+2. MIX IN GENERAL DATA:
+   → Include 10-20% general data in training set
+   → Keeps model "grounded" in general tasks
+   → "Data replay" technique
+
+3. REGULARIZATION:
+   → KL divergence penalty: stay close to base model
+   → Elastic weight consolidation (EWC)
+   → Lower learning rate (1e-5 instead of 1e-4)
+
+4. FEWER EPOCHS:
+   → 2-3 epochs usually sufficient
+   → Monitor validation loss for overfitting
+   → Early stopping
+
+5. EVALUATE ON GENERAL BENCHMARKS:
+   → Always check MMLU, HellaSwag before deploying
+   → If regression > 5%: reduce epochs, mix data
+
+PYTHON (mixing datasets):
+  from datasets import concatenate_datasets
+
+  domain_data = load_dataset("my_domain")["train"]
+  general_data = load_dataset("OpenAssistant/oasst1")["train"]
+
+  # Mix 80% domain + 20% general:
+  domain_sample = domain_data.shuffle().select(range(8000))
+  general_sample = general_data.shuffle().select(range(2000))
+  mixed = concatenate_datasets([domain_sample, general_sample])
+  mixed = mixed.shuffle(seed=42)
+"""
+
+print(forgetting)</div>
+
+<div class="code-block"># ── STEP 3: Deployment of fine-tuned models ──
+# From training to production.
+
+deployment = """
+DEPLOYMENT — FROM DISK TO PRODUCTION:
+
+After fine-tuning, deploy the model for inference.
+
+STEP 1: MERGE LORA (if used):
+  → Merge adapter weights into base model
+  → Eliminates inference overhead
+  → Single model file for serving
+
+STEP 2: QUANTIZE (optional):
+  → Reduce model size for faster inference
+  → GGUF format for llama.cpp
+  → AWQ/GPTQ for GPU serving
+  → 4-bit: 4x smaller, minimal quality loss
+
+STEP 3: CHOOSE SERVING FRAMEWORK:
+  → vLLM: highest throughput (PagedAttention)
+  → TGI (Text Generation Inference): HuggingFace
+  → llama.cpp: CPU/edge deployment
+  → Ollama: easy local deployment
+  → TGI/vLLM for production
+
+STEP 4: API WRAPPER:
+  → REST API (FastAPI/Flask)
+  → Streaming responses (SSE)
+  → Batch processing endpoint
+
+STEP 5: INFRASTRUCTURE:
+  → GPU instance (A10G, A100)
+  → Load balancer for multiple replicas
+  → Autoscaling based on queue depth
+  → Health checks and monitoring
+
+PYTHON (vLLM serving):
+  # Start vLLM server:
+  # python -m vllm.entrypoints.api_server --model ./merged_model
+
+  # Client:
+  import requests
+
+  response = requests.post("http://localhost:8000/generate", json={
+      "prompt": "Explain machine learning",
+      "max_tokens": 200,
+      "temperature": 0.7
+  })
+  print(response.json()["text"])
+
+PYTHON (FastAPI wrapper):
+  from fastapi import FastAPI
+  from pydantic import BaseModel
+
+  app = FastAPI()
+
+  class GenerateRequest(BaseModel):
+      prompt: str
+      max_tokens: int = 200
+
+  @app.post("/generate")
+  async def generate(req: GenerateRequest):
+      result = model.generate(req.prompt, max_tokens=req.max_tokens)
+      return {"text": result}
+"""
+
+print(deployment)</div>
+
+<div class="code-block"># ── STEP 4: Cost-benefit analysis ──
+# Is fine-tuning worth it?
+
+cost_benefit = """
+COST-BENEFIT ANALYSIS:
+
+COSTS:
+  → Data preparation: 40-100 hours ($2K-5K)
+  → GPU training: 2-20 hours ($10-500)
+  → Evaluation: 5-20 hours ($500-2K)
+  → Deployment infrastructure: ongoing ($200-2000/month)
+  → Maintenance: retraining, monitoring ($500-2K/month)
+
+BENEFITS:
+  → Reduced API costs (no GPT-4 calls)
+  → Lower latency (smaller model)
+  → Better domain performance
+  → Data privacy (no external API)
+  → Customization (exact format/behavior)
+
+BREAK-EVEN CALCULATION:
+  Monthly API cost: $5000 (GPT-4)
+  Fine-tuned model cost: $1000/month (GPU + infra)
+  Savings: $4000/month
+  Initial investment: $5000 (data + training)
+  → Break-even: ~1.5 months
+
+WHEN FINE-TUNING WINS:
+  → High volume (> 100K requests/month)
+  → Specific domain (medical, legal, technical)
+  → Latency-sensitive (real-time applications)
+  → Data privacy required (healthcare, finance)
+  → Custom format needed (structured output)
+
+WHEN API IS BETTER:
+  → Low volume (< 10K requests/month)
+  → General purpose (no domain specialization)
+  → Rapid prototyping
+  → Don't have ML expertise
+  → Need best possible quality (GPT-4/Claude)
+
+PYTHON (cost calculator):
+  def fine_tune_vs_api(monthly_calls, avg_tokens, api_cost_per_1k=0.03):
+      # API cost:
+      api_monthly = monthly_calls * avg_tokens / 1000 * api_cost_per_1k
+
+      # Fine-tuned cost (7B model on A10G):
+      gpu_monthly = 1000  # $1000/month for GPU
+      initial = 5000      # one-time data + training
+
+      months_to_break_even = initial / max(api_monthly - gpu_monthly, 1)
+
+      print("API monthly: $" + str(round(api_monthly)))
+      print("Fine-tuned monthly: $" + str(round(gpu_monthly)))
+      print(f"Break-even: {months_to_break_even:.1f} months")
+
+  fine_tune_vs_api(monthly_calls=500000, avg_tokens=500)
+  # API monthly: $7,500
+  # Fine-tuned monthly: $1,000
+  # Break-even: 0.8 months → worth it!
+"""
+
+print(cost_benefit)</div>
+
+<div class="code-block"># ── STEP 5: Fine-tuning in your projects ──
+# Practical applications.
+
+projects = """
+FINE-TUNING IN YOUR PROJECTS:
+
+LedgerPilot (Django + MySQL + Vue):
+  → Fine-tune for accounting terminology
+  → Custom: categorize transactions
+  → Domain: tax law Q&A
+  → Format: always output structured JSON
+
+Ipractus (Django + PostgreSQL + React + LiveKit):
+  → Fine-tune for medical/telehealth
+  → Custom: patient summary from notes
+  → Domain: medical terminology
+  → Format: generate SOAP notes
+
+PRACTICAL EXAMPLE (LedgerPilot transaction categorizer):
+
+  # Step 1: Prepare data (from existing labeled transactions):
+  data = []
+  for txn in Transaction.objects.filter(category__isnull=False):
+      data.append({
+          "instruction": "Categorize this transaction",
+          "input": f"Merchant: {txn.merchant}, Amount: {txn.amount}",
+          "output": txn.category.name
+      })
+
+  # Step 2: Fine-tune with LoRA:
+  # (use Unsloth or HuggingFace PEFT)
+  model = FastLanguageModel.from_pretrained("unsloth/llama-2-7b")
+  model = FastLanguageModel.get_peft_model(model, r=16)
+
+  trainer = SFTTrainer(model=model, train_dataset=data, ...)
+  trainer.train()
+
+  # Step 3: Deploy as Django API endpoint:
+  @api_view(["POST"])
+  def categorize_transaction(request):
+      merchant = request.data["merchant"]
+      amount = request.data["amount"]
+      prompt = f"Categorize: {merchant}, {amount}"
+      category = model.generate(prompt)
+      return Response({"category": category})
+"""
+
+print(projects)</div>
+
+<div class="code-block"># ── STEP 6: Complete fine-tuning journey ──
+# Your path to mastery.
+
+journey = """
+YOUR FINE-TUNING JOURNEY:
+
+You started seeing fine-tuning as "retraining AI."
+You finish seeing PRECISION ADAPTATION:
+
+WHAT YOU'VE MASTERED:
+  ✅ When to fine-tune (vs RAG, vs prompting)
+  ✅ Dataset curation (quality > quantity)
+  ✅ LoRA/QLoRA (efficient, accessible)
+  ✅ SFT, DPO, RLHF (training methods)
+  ✅ Evaluation (task + general + human)
+  ✅ Catastrophic forgetting (prevention)
+  ✅ Deployment (vLLM, serving, quantization)
+  ✅ Cost-benefit analysis
+  ✅ Advanced methods (DoRA, rsLoRA, PiSSA)
+  ✅ Production pipeline
+
+THE FINE-TUNER'S MINDSET:
+  1. "Is fine-tuning the right tool?" (vs RAG/prompting)
+  2. "Is my data good enough?" (quality > quantity)
+  3. "Can I use LoRA?" (efficient, accessible)
+  4. "How do I evaluate?" (task + general metrics)
+  5. "Is it worth the cost?" (ROI calculation)
+
+"The best fine-tuned model is one
+ where you can't tell it was fine-tuned.
+ It just works... perfectly."
+ — Fine-tuning philosophy
+
+WHAT TO STUDY NEXT:
+  → Unsloth (fastest LoRA training)
+  → Axolotl (easy fine-tuning scripts)
+  → LLaMA-Factory (web UI)
+  → PEFT documentation (HuggingFace)
+  → TRL (SFTTrainer, DPOTrainer)
+  → Model merging (model stock, ties)
+
+Welcome to fine-tuning mastery.
+"""
+
+print(journey)
+
+# FINAL SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Step             │ Tool/Method                    │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Decision         │ RAG vs Prompting vs Fine-tune   │
+# │ Data             │ Quality > quantity, diverse     │
+# │ Method           │ LoRA/QLoRA (efficient)          │
+# │ Training         │ SFT → DPO (alignment)           │
+# │ Evaluation       │ Task + general + human          │
+# │ Deployment       │ vLLM, quantization, API         │
+# │ Maintenance      │ Monitor drift, retrain          │
+# └──────────────────┴──────────────────────────────────┘</div>
   
   Prompt: "Rate this response (1-5) on:
    - Accuracy
