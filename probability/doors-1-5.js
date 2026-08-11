@@ -523,34 +523,393 @@ doors.push({
 <div class="dialogue"><strong>গড়-নির্ণয়কারী ফাতিমা:</strong> E[X] = Σ x·P(x)। প্রতিটি ফলাফল তার সম্ভাবনা দিয়ে গুণ, সব যোগ। Var(X) = E[(X-E[X])²] — গড় থেকে কতটা দূরে। সবচেয়ে সুন্দর ধারণা — linearity! E[X+Y] = E[X]+E[Y] — X ও Y independent হওয়ার দরকার নেই! দুটি পাশা মারলে গড় যোগফল = ৩.৫+৩.৫ = ৭। সবসময়। এটাই গাণিতিক জাদু।</div>
 <div class="dialogue en"><strong>Average Determiner Fatima:</strong> E[X] = Σ x·P(x). Multiply each outcome by its probability, sum all. Var(X) = E[(X-E[X])²] — how far from mean. The most beautiful concept — linearity! E[X+Y] = E[X]+E[Y] — X and Y need not be independent! Two dice rolled, average sum = 3.5+3.5 = 7. Always. This is mathematical magic.</div>
 
-<div class="code-block"># — Python: Expectation ও Variance —
+<div class="code-block"># ── STEP 1: Expectation (the mean) ──
+# The weighted average of all outcomes.
 
-  import numpy as np
+expectation = """
+EXPECTATION E[X]:
 
-  # একটি fair die:
-  outcomes = [1, 2, 3, 4, 5, 6]
-  probs = [1/6] * 6
+The expected value is the long-run average.
+  E[X] = Σ x × P(X=x)   (discrete)
+  E[X] = ∫ x × f(x) dx  (continuous)
 
-  # E[X] = Σ x · P(x)
-  EX = sum(x * p for x, p in zip(outcomes, probs))
-  print(f"E[X] = {EX}")  # 3.5
+EXAMPLES:
+  Fair dice: E[X] = (1+2+3+4+5+6)/6 = 3.5
+  Roulette (bet $1 on red): E[X] = -$0.053 (house always wins!)
+  Insurance premium: E[X] = premium − expected payout
 
-  # Var(X) = E[X²] - E[X]²
-  EX2 = sum(x**2 * p for x, p in zip(outcomes, probs))
-  VarX = EX2 - EX**2
-  print(f"Var(X) = {VarX:.4f}")  # ~2.917
+KEY PROPERTIES (LINEARITY):
+  E[aX + b] = a·E[X] + b       (scaling)
+  E[X + Y] = E[X] + E[Y]       (always true, no independence needed)
+  E[XY] = E[X]·E[Y]            (only if X, Y independent)
 
-  # Law of Large Numbers যাচাই:
-  rolls = np.random.randint(1, 7, size=100000)
-  cumulative_mean = np.cumsum(rolls) / np.arange(1, len(rolls)+1)
-  print(f"১০০০ রোলে গড়: {cumulative_mean[999]:.3f}")   # ~3.5
-  print(f"১০০০০০ রোলে গড়: {cumulative_mean[-1]:.3f}")  # ~3.500
+WHY EXPECTATION MATTERS:
+  → Casinos profit: E[gambler's return] < 0
+  → Insurance: E[profit] = premium − expected payout > 0
+  → Investing: compare E[return] vs risk
+  → Algorithms: expected running time = average case
+"""
 
-  # Linearity: দুটি পাশা
-  two_dice = np.random.randint(1, 7, 100000) + \\
-             np.random.randint(1, 7, 100000)
-  print(f"দুটি পাশার যোগফল গড়: {two_dice.mean():.3f}")  # ~7.0
-  # E[X+Y] = E[X] + E[Y] = 3.5 + 3.5 = 7.0 ✅</div>
+print(expectation)
+
+# PYTHON: Expectation:
+ex_code = """
+# Fair dice:
+outcomes = [1, 2, 3, 4, 5, 6]
+probs = [1/6] * 6
+
+E_X = sum(x * p for x, p in zip(outcomes, probs))
+print(f"E[X] = {E_X}")  # 3.5
+
+# Biased dice (P(6) = 0.3, rest = 0.14):
+probs_biased = [0.14, 0.14, 0.14, 0.14, 0.14, 0.30]
+E_biased = sum(x * p for x, p in zip(outcomes, probs_biased))
+print(f"E[biased] = {E_biased}")  # 3.8
+
+# Roulette (American): 38 slots, bet $1 on red (18/38 win $1):
+p_win = 18/38
+p_lose = 20/38
+E_roulette = p_win * 1 + p_lose * (-1)
+print(f"E[roulette bet] = {E_roulette:.4f}")  # -0.0526
+
+# Over 100 bets at $1 each:
+print(f"Expected loss after 100 bets: " + str(round(100 * E_roulette, 2)))  # -$5.26
+"""
+
+print(ex_code)</div>
+
+<div class="code-block"># ── STEP 2: Variance and standard deviation ──
+# How spread out the values are.
+
+variance = """
+VARIANCE Var(X):
+
+Var(X) = E[(X − μ)²] where μ = E[X]
+       = E[X²] − (E[X])²
+
+Standard Deviation: σ = √Var(X)
+
+INTERPRETATION:
+  Low variance → values cluster near mean (predictable)
+  High variance → values spread widely (risky)
+
+EXAMPLES:
+  Dice: Var = 35/12 ≈ 2.92, σ ≈ 1.71
+  Stock A (σ=10%): stable
+  Stock B (σ=50%): volatile (risky)
+
+PROPERTIES:
+  Var(aX + b) = a² × Var(X)         (scaling)
+  Var(X + Y) = Var(X) + Var(Y)      (if independent)
+  Var(X + Y) = Var(X) + Var(Y) + 2Cov(X,Y)  (general)
+
+COVARIANCE:
+  Cov(X, Y) = E[(X − μ_X)(Y − μ_Y)]
+  → Measures how X and Y move together
+  → Positive: increase together
+  → Negative: move opposite
+  → Zero: uncorrelated (but not necessarily independent)
+
+CORRELATION:
+  ρ(X,Y) = Cov(X,Y) / (σ_X × σ_Y)
+  → Normalized covariance, always between -1 and 1
+  → ρ = 1: perfect positive linear
+  → ρ = -1: perfect negative
+  → ρ = 0: no linear correlation
+"""
+
+print(variance)
+
+# PYTHON: Variance:
+var_code = """
+import numpy as np
+
+# Fair dice:
+dice = np.arange(1, 7)
+E_X = np.mean(dice)
+Var_X = np.var(dice)
+print(f"Fair dice: E[X]={E_X}, Var={Var_X:.4f}, σ={np.std(dice):.4f}")
+# E[X]=3.5, Var=2.9167, σ=1.7078
+
+# Compare two investments:
+returns_A = np.array([5, 6, 5, 6, 5, 6]) / 100  # stable
+returns_B = np.array([-20, 30, -10, 40, 5, 25]) / 100  # volatile
+
+print(f"Stock A: E[r]={returns_A.mean():.4f}, σ={returns_A.std():.4f}")
+print(f"Stock B: E[r]={returns_B.mean():.4f}, σ={returns_B.std():.4f}")
+# Same mean, but B is much riskier (higher σ)
+
+# Covariance and correlation:
+np.random.seed(42)
+X = np.random.randn(1000)
+Y = 2 * X + np.random.randn(1000) * 0.5  # Y depends on X
+print(f"Cov(X,Y) = {np.cov(X, Y)[0,1]:.4f}")      # positive
+print(f"Corr(X,Y) = {np.corrcoef(X, Y)[0,1]:.4f}")  # ≈ 0.97
+"""
+
+print(var_code)</div>
+
+<div class="code-block"># ── STEP 3: Law of Large Numbers ──
+# Why casinos always win.
+
+lln = """
+LAW OF LARGE NUMBERS (LLN):
+
+As sample size n → ∞:
+  Sample mean → Expected value E[X]
+
+  (1/n) Σ X_i → E[X]  as n → ∞
+
+EXAMPLE:
+  Dice: each roll is random (1-6), but average → 3.5
+  Coin flips: each is random, but fraction of heads → 0.5
+  Casino: individual gamblers vary, but house profit → house edge
+
+WHY CASINOS PROFIT:
+  Each game has negative expectation for the player.
+  Roulette: E[return] = -$0.053 per $1 bet
+  Short term: individual gamblers may win big
+  Long term: house ALWAYS profits (LLN guarantees it)
+
+  → Casinos don't need to cheat — math guarantees profit
+  → Same principle: insurance companies, lottery, sports betting
+
+TWO FORMS OF LLN:
+
+1. WEAK LLN (convergence in probability):
+   For any ε > 0: P(|sample_mean − E[X]| > ε) → 0
+
+2. STRONG LLN (almost sure convergence):
+   P(sample_mean → E[X]) = 1
+
+PRACTICAL IMPLICATIONS:
+  → More data → more accurate estimates
+  → Sample size matters (survey 1000, not 10)
+  → Variance affects convergence rate (Chebyshev)
+"""
+
+print(lln)
+
+# PYTHON: LLN demonstration:
+lln_code = """
+import numpy as np
+
+# Dice rolls: watch mean converge to 3.5
+np.random.seed(42)
+rolls = np.random.randint(1, 7, size=100000)
+cumulative_mean = np.cumsum(rolls) / np.arange(1, len(rolls) + 1)
+
+for n in [10, 100, 1000, 10000, 100000]:
+    print(f"n={n:6d}: mean={cumulative_mean[n-1]:.4f}")
+
+# n=    10: mean=3.5000 (or could be 4.2, 2.8, etc.)
+# n=   100: mean=3.4700
+# n=  1000: mean=3.4980
+# n= 10000: mean=3.4998
+# n=100000: mean=3.4997 → converges to 3.5!
+
+# Casino simulation (house edge = 5.26%):
+n_bets = 10000
+bet_size = 1
+results = np.random.choice([1, -1], size=n_bets, p=[18/38, 20/38])
+cumulative_profit = np.cumsum(results) * bet_size
+
+print(f"After {n_bets} bets:")
+print(f"  Expected: {n_bets * (-0.0526):.2f}")
+print(f"  Actual:   {cumulative_profit[-1]:.2f}")
+"""
+
+print(lln_code)</div>
+
+<div class="code-block"># ── STEP 4: Central Limit Theorem ──
+# Why the normal distribution is everywhere.
+
+clt = """
+CENTRAL LIMIT THEOREM (CLT):
+
+The sum (or average) of many independent random variables
+is approximately NORMAL, regardless of the original distribution.
+
+Formally: (X₁ + X₂ + ... + Xₙ) / n → Normal(μ, σ²/n) as n → ∞
+  where μ = E[X], σ² = Var(X)
+
+WHY THIS IS REMARKABLE:
+  → Original variables can be ANY distribution
+  → Their average is STILL approximately normal
+  → This is why heights, test scores, errors are normal
+
+EXAMPLES:
+  → Sum of 100 dice rolls ≈ normal (even though dice is uniform)
+  → Average of survey responses ≈ normal
+  → Measurement errors ≈ normal (sum of many small effects)
+
+PRACTICAL IMPLICATIONS:
+  1. Confidence intervals use normal (even for non-normal data)
+  2. Hypothesis testing uses normal (t-test, z-test)
+  3. Statistical process control uses normal
+  4. ML model errors often normal (CLT)
+
+THE NORMAL DISTRIBUTION:
+  PDF: f(x) = (1/σ√2π) × exp(−(x−μ)²/(2σ²))
+  Mean = μ, Variance = σ²
+
+  68% of data within 1σ of mean
+  95% within 2σ
+  99.7% within 3σ (the "three sigma rule")
+
+STANDARD NORMAL (Z):
+  Z = (X − μ) / σ  → Normal(0, 1)
+  → Any normal can be standardized
+  → Z-table gives probabilities
+"""
+
+print(clt)
+
+# PYTHON: CLT demonstration:
+clt_code = """
+import numpy as np
+np.random.seed(42)
+
+# CLT: sum of UNIFORM random variables → normal
+# Individual uniform is flat, but sum becomes bell-shaped:
+
+for n in [1, 2, 5, 30]:
+    # Sum of n uniform[0,1] variables, repeated 10000 times:
+    sums = np.random.uniform(0, 1, (10000, n)).sum(axis=1)
+    print(f"n={n:2d}: mean={sums.mean():.3f}, std={sums.std():.3f}")
+    # n=1: flat (uniform)
+    # n=2: triangular
+    # n=5: starting to look normal
+    # n=30: clearly normal (bell curve)
+
+# Even DISCRETE (dice) sums → normal:
+sums = np.random.randint(1, 7, (10000, 50)).sum(axis=1)
+print(f"Sum of 50 dice: mean={sums.mean():.2f}, std={sums.std():.2f}")
+# mean ≈ 175 (50 × 3.5), std ≈ 12
+
+# 68-95-99.7 rule:
+samples = np.random.normal(0, 1, 1000000)
+for k in [1, 2, 3]:
+    within = np.mean(np.abs(samples) < k) * 100
+    print(f"Within {k}σ: {within:.1f}%")
+# Within 1σ: 68.3%
+# Within 2σ: 95.4%
+# Within 3σ: 99.7%
+"""
+
+print(clt_code)</div>
+
+<div class="code-block"># ── STEP 5: Concentration inequalities ──
+# How to bound the probability of large deviations.
+
+concentration = """
+CONCENTRATION INEQUALITIES:
+
+These bound how far a random variable can deviate from its mean.
+
+1. MARKOV'S INEQUALITY (weakest, most general):
+   For X ≥ 0: P(X ≥ a) ≤ E[X] / a
+
+   Example: E[wait time] = 10 min → P(wait > 30) ≤ 10/30 = 33%
+
+2. CHEBYSHEV'S INEQUALITY (uses variance):
+   P(|X − μ| ≥ k) ≤ Var(X) / k²
+
+   Example: Var = 4 → P(|X − μ| ≥ 4) ≤ 4/16 = 25%
+
+   → Twice as far from mean needs 4× variance
+
+3. CHERNOFF BOUND (strongest, uses moment generating function):
+   P(X ≥ (1+δ)μ) ≤ exp(−μδ²/3) for δ ∈ (0,1)
+
+   → Exponential decay! Much stronger than Chebyshev.
+
+APPLICATIONS:
+  → Tail bounds for algorithms (probability of bad case)
+  → Statistical sampling (margin of error)
+  → Machine learning (generalization bounds)
+  → Concentration of measure (high-dimensional geometry)
+
+CHEBYSHEV AND SAMPLE MEAN:
+  P(|sample_mean − E[X]| ≥ ε) ≤ Var(X) / (nε²)
+  → Doubling sample size halves the bound
+  → This is the basis for LLN proof
+"""
+
+print(concentration)
+
+# PYTHON: Concentration inequalities:
+ci_code = """
+import numpy as np
+
+# Chebyshev's inequality verification:
+np.random.seed(42)
+n_trials = 100000
+mu, sigma = 10, 2
+samples = np.random.normal(mu, sigma, n_trials)
+
+for k in [1, 2, 3, 4]:
+    # Actual fraction beyond k std:
+    actual = np.mean(np.abs(samples - mu) >= k * sigma)
+    # Chebyshev bound:
+    bound = sigma**2 / (k * sigma)**2  # = 1/k²
+    print(f"k={k}: actual={actual:.4f}, Chebyshev bound={bound:.4f}")
+
+# k=1: actual=0.3173, bound=1.0000 (bound is loose)
+# k=2: actual=0.0455, bound=0.2500
+# k=3: actual=0.0027, bound=0.1111
+# k=4: actual=0.0001, bound=0.0625
+# → Chebyshev is valid but loose (actual much smaller for normal)
+
+# Chernoff bound for coin flips:
+n = 100
+p = 0.5
+# P(more than 60 heads out of 100)?
+actual = np.mean(np.random.binomial(n, p, 100000) >= 60)
+# Chernoff: exp(-n * delta^2 / 3) where delta = 0.2
+chernoff = np.exp(-n * 0.2**2 / 3)
+print(f"P(≥60 heads): actual={actual:.4f}, Chernoff={chernoff:.4f}")
+"""
+
+print(ci_code)</div>
+
+<div class="code-block"># ── STEP 6: Best practices for expectation and variance ──
+# Apply these concepts effectively.
+
+best_practices = [
+    "E[X] = weighted average (mean)",
+    "Var(X) = spread (E[X²] − E[X]²)",
+    "σ = standard deviation = √Var",
+    "Linearity: E[aX + bY] = aE[X] + bE[Y]",
+    "Var(aX + b) = a²Var(X)",
+    "Independence: E[XY] = E[X]·E[Y]",
+    "LLN: sample mean → true mean as n grows",
+    "CLT: averages → normal (any distribution)",
+    "Casinos profit: LLN guarantees house edge",
+    "68-95-99.7 rule for normal distribution",
+    "Chebyshev: P(|X−μ|≥kσ) ≤ 1/k²",
+    "Chernoff: exponential tail bounds",
+    "Covariance: how variables move together",
+    "Correlation: normalized covariance (−1 to 1)",
+    "Risk = high variance (stocks, gambling)",
+]
+
+print("EXPECTATION & VARIANCE BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Formula                         │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Expectation      │ E[X] = Σ x·P(x)                │
+# │ Variance         │ Var = E[X²] − E[X]²            │
+# │ Linearity        │ E[aX+bY] = aE[X]+bE[Y]        │
+# │ LLN              │ (1/n)ΣXi → E[X]               │
+# │ CLT              │ Sum → Normal                   │
+# │ Chebyshev        │ P(|X-μ|≥k) ≤ σ²/k²            │
+# │ 68-95-99.7       │ Within 1σ, 2σ, 3σ              │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout info"><span class="co-icon">📊</span><div><strong>গুরুত্বপূর্ণ সূত্র:</strong><br>
 <strong>E[X] = Σ x·P(x):</strong> গড় ফলাফল<br>
