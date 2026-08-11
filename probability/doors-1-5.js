@@ -1003,34 +1003,400 @@ doors.push({
 <div class="dialogue"><strong>বক্ররেখা-যাজক ইউসুফ:</strong> Normal distribution: f(x) = (১/√(২πσ²))·e^(-(x-μ)²/(২σ²))। ভয় পেও না — শুধু মনে রাখো ঘণ্টা। μ = কেন্দ্র, σ = প্রসারণ। ৬৮-৯৫-৯৯.৭ নিয়ম: μ±σ এর মধ্যে ৬৮% ডেটা। μ±২σ = ৯৫%। μ±৩σ = ৯৯.৭%। মানুষের গড় উচ্চতা ৫'৭" (μ), σ = ৩"। তাহলে ৬৮% মানুষ ৫'৪" থেকে ৫'১০" এর মধ্যে। ৯৯.৭% ৪'১০" থেকে ৬'৪" এর মধ্যে।</div>
 <div class="dialogue en"><strong>Curve Priest Yusuf:</strong> Normal distribution: the bell curve formula. Don't worry — just remember the bell. μ = center, σ = spread. 68-95-99.7 rule: 68% data within μ±σ. μ±2σ = 95%. μ±3σ = 99.7%. Human average height 5'7" (μ), σ = 3". Then 68% of people between 5'4" and 5'10". 99.7% between 4'10" and 6'4".</div>
 
-<div class="code-block"># — Python: Normal Distribution —
+<div class="code-block"># ── STEP 1: The Normal distribution (bell curve) ──
+# The most important distribution in all of statistics.
 
-  import numpy as np
-  import scipy.stats as stats
+normal_basics = """
+THE NORMAL DISTRIBUTION:
 
-  mu, sigma = 175, 7   # উচ্চতা: গড় 175cm, σ=7
-  height = np.random.normal(mu, sigma, 100000)
+Also called Gaussian distribution or "bell curve."
+  PDF: f(x) = (1/(σ√(2π))) × exp(−(x−μ)²/(2σ²))
 
-  # 68-95-99.7 যাচাই:
-  within_1sigma = np.mean(np.abs(height - mu) <= sigma)
-  within_2sigma = np.mean(np.abs(height - mu) <= 2*sigma)
-  within_3sigma = np.mean(np.abs(height - mu) <= 3*sigma)
-  print(f"μ±σ: {within_1sigma:.3f}")   # ~0.68 ✅
-  print(f"μ±2σ: {within_2sigma:.3f}")  # ~0.95 ✅
-  print(f"μ±3σ: {within_3sigma:.3f}")  # ~0.997 ✅
+PARAMETERS:
+  μ (mu): mean (center of the bell)
+  σ (sigma): standard deviation (width of the bell)
 
-  # Z-score: কত σ দূরে?
-  z = (190 - mu) / sigma   # (190-175)/7 = 2.14
-  print(f"190cm-এর z-score: {z:.2f}")  # 2.14σ
-  print(f"P(height > 190): {1 - stats.norm.cdf(z):.4f}")  # ~1.6%
+KEY PROPERTY: 68-95-99.7 RULE
+  68% of data within 1σ of mean
+  95% within 2σ
+  99.7% within 3σ
 
-  # Central Limit Theorem যাচাই:
-  # uniform distribution থেকে নমুনা গড় → normal!
-  sample_means = [
-      np.random.uniform(0, 1, 100).mean()
-      for _ in range(10000)
-  ]
-  # এটা uniform ছিল, কিন্তু গড় normal হয়ে গেছে!</div>
+WHY IT'S EVERYWHERE (CLT):
+  Sum/average of independent random variables → normal
+  → Heights, weights, test scores, measurement errors
+  → Stock returns (approximately)
+  → IQ scores
+
+STANDARD NORMAL (Z-distribution):
+  Standardize: Z = (X − μ) / σ
+  → Z is Normal(0, 1)
+  → Z-table gives cumulative probabilities
+  → Any normal can be converted to Z and back
+
+Z-SCORES:
+  Z = (x − μ) / σ
+  → How many σ away from mean
+  → Z > 2 → top 2.3% (unusual)
+  → Z > 3 → top 0.13% (very unusual)
+  → Z-score standardizes comparisons across distributions
+"""
+
+print(normal_basics)
+
+# PYTHON: Normal distribution:
+normal_code = """
+import numpy as np
+from scipy import stats
+
+# Human height: mean=175cm, std=7cm
+mu, sigma = 175, 7
+
+# Generate samples:
+heights = np.random.normal(mu, sigma, 100000)
+
+# 68-95-99.7 rule verification:
+p1 = np.mean(np.abs(heights - mu) <= 1 * sigma)
+p2 = np.mean(np.abs(heights - mu) <= 2 * sigma)
+p3 = np.mean(np.abs(heights - mu) <= 3 * sigma)
+print(f"Within 1σ: {p1:.3f}")  # ~0.68
+print(f"Within 2σ: {p2:.3f}")  # ~0.95
+print(f"Within 3σ: {p3:.3f}")  # ~0.997
+
+# Z-score: how unusual is 190cm?
+z = (190 - mu) / sigma  # 2.14
+print(f"190cm Z-score: {z:.2f}")
+print(f"P(height > 190cm): {1 - stats.norm.cdf(z):.4f}")  # ~1.6%
+
+# P(between 168 and 182)?
+p = stats.norm.cdf(182, mu, sigma) - stats.norm.cdf(168, mu, sigma)
+print(f"P(168 < height < 182): {p:.4f}")  # ~0.68
+"""
+
+print(normal_code)</div>
+
+<div class="code-block"># ── STEP 2: The Binomial distribution ──
+# Number of successes in n independent trials.
+
+binomial = """
+THE BINOMIAL DISTRIBUTION:
+
+X ~ Binomial(n, p): number of successes in n trials,
+each with probability p of success.
+
+PMF: P(X=k) = C(n,k) × p^k × (1−p)^(n−k)
+
+Mean: E[X] = np
+Variance: Var(X) = np(1−p)
+
+EXAMPLES:
+  → 3 heads in 10 coin flips: Binomial(10, 0.5)
+  → 7 defective items in batch of 100: Binomial(100, 0.07)
+  → 45 successful free throws in 50 shots: Binomial(50, 0.9)
+
+RELATIONSHIP TO NORMAL (De Moivre-Laplace):
+  When n is large, Binomial(n,p) ≈ Normal(np, np(1−p))
+  → This was the FIRST version of the Central Limit Theorem!
+  → Rule of thumb: valid when np ≥ 5 and n(1−p) ≥ 5
+
+BERNOULLI:
+  Binomial(1, p) is called Bernoulli(p)
+  → Single trial (success/failure)
+  → Building block of Binomial
+"""
+
+print(binomial)
+
+# PYTHON: Binomial:
+binom_code = """
+from scipy import stats
+import numpy as np
+
+# P(exactly 3 heads in 10 flips):
+print(stats.binom.pmf(3, n=10, p=0.5))  # ~0.117
+
+# P(at most 3 heads):
+print(stats.binom.cdf(3, n=10, p=0.5))  # ~0.172
+
+# Mean and variance:
+n, p = 100, 0.3
+print(f"E[X] = {n*p}")          # 30
+print(f"Var(X) = {n*p*(1-p)}")  # 21
+
+# Binomial → Normal approximation:
+# Binomial(100, 0.3) ≈ Normal(30, sqrt(21))
+binom_samples = np.random.binomial(100, 0.3, 10000)
+print(f"Binomial: mean={binom_samples.mean():.2f}, std={binom_samples.std():.2f}")
+print(f"Expected: mean=30.00, std={np.sqrt(21):.2f}")  # 4.58
+
+# A/B testing: 100 visitors, 12 conversions (12% rate)
+# Is this significantly different from expected 10%?
+from scipy.stats import binom_test
+# P(≥12 conversions | p=0.10, n=100)?
+p_value = 1 - stats.binom.cdf(11, 100, 0.10)
+print(f"P(≥12 conversions if true rate is 10%): {p_value:.4f}")
+"""
+
+print(binom_code)</div>
+
+<div class="code-block"># ── STEP 3: The Poisson distribution ──
+# Number of events in a time interval.
+
+poisson = """
+THE POISSON DISTRIBUTION:
+
+X ~ Poisson(λ): number of events in a fixed time/space interval.
+  λ = average rate of events per interval
+
+PMF: P(X=k) = (λ^k × e^(−λ)) / k!
+
+Mean: E[X] = λ
+Variance: Var(X) = λ  (mean = variance!)
+
+EXAMPLES:
+  → Customers arriving per hour (λ = 10/hour)
+  → Typos per page (λ = 2/page)
+  → Earthquakes per year (λ = 5/year)
+  → Server requests per second (λ = 100/sec)
+
+POISSON PROCESS:
+  Events happen at constant average rate, independently.
+  → Inter-arrival times are Exponential(λ)
+  → Number of arrivals in time t: Poisson(λt)
+
+POISSON VS BINOMIAL:
+  Binomial(n, p) → Poisson(λ=np) when n→∞, p→0, np=λ
+  → Rare events with many trials → Poisson
+
+APPLICATIONS:
+  → Queueing theory (arrival rate)
+  → Insurance (claims per year)
+  → Quality control (defects per unit)
+  → Web servers (requests per second)
+"""
+
+print(poisson)
+
+# PYTHON: Poisson:
+poisson_code = """
+from scipy import stats
+import numpy as np
+
+# Call center: average 5 calls per minute
+lam = 5
+
+# P(exactly 3 calls in a minute):
+print(stats.poisson.pmf(3, mu=lam))  # ~0.140
+
+# P(no calls in a minute):
+print(stats.poisson.pmf(0, mu=lam))  # ~0.0067 (e^-5)
+
+# P(more than 10 calls):
+print(1 - stats.poisson.cdf(10, mu=lam))  # ~0.014
+
+# Mean = variance = λ:
+samples = np.random.poisson(lam, 100000)
+print(f"Mean: {samples.mean():.2f}")   # ~5
+print(f"Variance: {samples.var():.2f}")  # ~5
+
+# Simulate website traffic (requests per second):
+for rate in [10, 50, 100, 1000]:
+    reqs = np.random.poisson(rate, 10000)
+    print(f"λ={rate:4d}/sec: mean={reqs.mean():.1f}, max={reqs.max()}")
+    # max gives insight into capacity planning
+"""
+
+print(poisson_code)</div>
+
+<div class="code-block"># ── STEP 4: The Exponential distribution ──
+# Time between events in a Poisson process.
+
+exponential = """
+THE EXPONENTIAL DISTRIBUTION:
+
+X ~ Exponential(λ): time between consecutive events.
+  λ = rate parameter (events per unit time)
+
+PDF: f(x) = λ × e^(−λx) for x ≥ 0
+
+Mean: E[X] = 1/λ
+Variance: Var(X) = 1/λ²
+
+MEMORYLESS PROPERTY (unique to exponential!):
+  P(X > s + t | X > s) = P(X > t)
+  → The remaining wait time doesn't depend on how long you've waited!
+  → "A light bulb that has lasted 1000 hours has the same
+     remaining lifetime as a new one."
+
+  This seems counterintuitive but mathematically true for exponential.
+
+EXAMPLES:
+  → Time between customer arrivals (λ = 10/hour → E[wait] = 6 min)
+  → Time until radioactive decay
+  → Time between server requests
+  → Lifespan of electronic components (approximate)
+
+RELATIONSHIP TO POISSON:
+  If events follow Poisson(λ) per unit time:
+  → Number of events in time t: Poisson(λt)
+  → Time between events: Exponential(λ)
+  → Time until k-th event: Gamma(k, λ)
+
+EXAMPLE:
+  Customers arrive at rate λ=10/hour
+  → Number per hour: Poisson(10)
+  → Time between customers: Exponential(10), E[wait] = 0.1 hours = 6 min
+  → Time until 5th customer: Gamma(5, 10), E[wait] = 0.5 hours = 30 min
+"""
+
+print(exponential)
+
+# PYTHON: Exponential:
+exp_code = """
+import numpy as np
+from scipy import stats
+
+# Server requests: average 1 per second (λ=1)
+lam = 1.0
+
+# E[wait] = 1/λ = 1 second
+mean_wait = 1 / lam
+
+# P(wait > 2 seconds)?
+print(f"P(wait > 2s): {1 - stats.expon.cdf(2, scale=1/lam):.4f}")  # e^-2 ≈ 0.135
+
+# P(wait between 0.5 and 1.5)?
+p = stats.expon.cdf(1.5, scale=1/lam) - stats.expon.cdf(0.5, scale=1/lam)
+print(f"P(0.5 < wait < 1.5): {p:.4f}")  # ~0.383
+
+# Memoryless property verification:
+samples = np.random.exponential(1/lam, 100000)
+# Among those that waited > 1s, how many waited > 3s total?
+waited_1 = samples[samples > 1]
+print(f"P(wait > 3 | wait > 1): {np.mean(waited_1 > 3):.4f}")
+print(f"P(wait > 2)          : {np.mean(samples > 2):.4f}")
+# These should be approximately equal (memoryless!)
+"""
+
+print(exp_code)</div>
+
+<div class="code-block"># ── STEP 5: Other important distributions ──
+# A catalog of useful probability distributions.
+
+others = """
+OTHER DISTRIBUTIONS:
+
+1. GEOMETRIC(p): trials until first success
+   P(X=k) = (1−p)^(k−1) × p
+   E[X] = 1/p
+   Example: coin flips until first heads
+
+2. NEGATIVE BINOMIAL: trials until r-th success
+   Generalization of Geometric
+
+3. GAMMA(α, β): sum of α exponentials
+   Used in Bayesian statistics (conjugate prior)
+
+4. BETA(α, β): distribution on [0,1]
+   Perfect for probabilities
+   Conjugate prior for Binomial
+
+5. UNIFORM(a, b): all values equally likely
+   E[X] = (a+b)/2, Var = (b−a)²/12
+
+6. CHI-SQUARED (χ²): sum of squared standard normals
+   Used in hypothesis testing (goodness of fit)
+
+7. STUDENT'S t: like normal but heavier tails
+   Used when sample size is small
+   → t-test, confidence intervals
+
+8. F-DISTRIBUTION: ratio of chi-squareds
+   Used in ANOVA (comparing variances)
+
+9. MULTINOMIAL: generalization of Binomial
+   Multiple categories (not just success/failure)
+
+10. LOGNORMAL: exp(normal)
+    → Stock prices, income distribution
+    → Heavy right tail
+
+WHEN TO USE WHICH:
+  Counting events in time → Poisson
+  Time between events → Exponential
+  Successes in trials → Binomial
+  Natural phenomena → Normal
+  Probabilities → Beta
+  Ratios/variances → F or Chi-squared
+"""
+
+print(others)
+
+# PYTHON: Distribution comparison:
+compare_code = """
+import numpy as np
+from scipy import stats
+
+# Compare distributions:
+dists = {
+    'Normal(0,1)': np.random.normal(0, 1, 100000),
+    'Uniform(-2,2)': np.random.uniform(-2, 2, 100000),
+    'Exponential(1)': np.random.exponential(1, 100000),
+    'Poisson(5)': np.random.poisson(5, 100000),
+}
+
+for name, data in dists.items():
+    print(f"{name:20s}: mean={data.mean():7.3f}, std={data.std():7.3f}, "
+          f"min={data.min():7.3f}, max={data.max():7.3f}")
+
+# Beta distribution (for probabilities):
+# Beta(2,2): symmetric around 0.5
+beta_samples = np.random.beta(2, 2, 100000)
+print(f"Beta(2,2): mean={beta_samples.mean():.3f}")  # ~0.5
+
+# Beta(8,2): skewed toward 1
+beta_skewed = np.random.beta(8, 2, 100000)
+print(f"Beta(8,2): mean={beta_skewed.mean():.3f}")  # ~0.8
+"""
+
+print(compare_code)</div>
+
+<div class="code-block"># ── STEP 6: Distributions in practice ──
+# Choosing and applying the right distribution.
+
+best_practices = [
+    "Normal: natural phenomena (heights, errors, CLT)",
+    "Binomial: successes in n trials",
+    "Poisson: events in time/space (rate λ)",
+    "Exponential: time between Poisson events",
+    "Geometric: trials until first success",
+    "Beta: modeling probabilities (Bayesian)",
+    "Uniform: all outcomes equally likely",
+    "68-95-99.7 rule: within 1σ, 2σ, 3σ of mean",
+    "Z-score: (x−μ)/σ standardizes comparisons",
+    "Binomial → Normal when np ≥ 5 and n(1−p) ≥ 5",
+    "Binomial → Poisson when n→∞, p→0, np=λ",
+    "Exponential is memoryless (unique property)",
+    "Chi-squared for goodness-of-fit tests",
+    "t-distribution for small samples",
+    "Lognormal for positive skewed data (income)",
+]
+
+print("DISTRIBUTIONS BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Distribution     │ Mean / Variance                 │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Normal(μ,σ)     │ μ / σ²                          │
+# │ Binomial(n,p)   │ np / np(1−p)                   │
+# │ Poisson(λ)      │ λ / λ                           │
+# │ Exponential(λ)  │ 1/λ / 1/λ²                     │
+# │ Uniform(a,b)    │ (a+b)/2 / (b−a)²/12           │
+# │ Geometric(p)    │ 1/p / (1−p)/p²                 │
+# │ Beta(α,β)      │ α/(α+β) / αβ/((α+β)²(α+β+1))│
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout info"><span class="co-icon">🔔</span><div><strong>Normal Distribution বৈশিষ্ট্য:</strong><br>
 <strong>Shape:</strong> ঘণ্টা — কেন্দ্রে বেশি, প্রান্তে কম<br>
