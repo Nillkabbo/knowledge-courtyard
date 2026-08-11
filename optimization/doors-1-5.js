@@ -26,21 +26,338 @@ doors.push({
 <strong>২. চলক (Decision Variables x):</strong> কী বদলানো যায়? রাস্তা, মূল্য, ওজন, weights।<br>
 <strong>৩. শর্ত (Constraints):</strong> কোন সীমানার মধ্যে? বাজেট ≤ ১০০$, সময় ≤ ২৪ ঘণ্টা।</div></div>
 
-<div class="code-block">— অপটিমাইজেশন সমস্যার গাণিতিক রূপ —
+<div class="code-block"># ── STEP 1: What is optimization? ──
+# Finding the best solution from a set of possibilities.
 
-  minimize   f(x)         ← উদ্দেশ্য: f কমাও
-  subject to g(x) ≤ 0     ← শর্ত: g-এর মধ্যে থাকো
-             h(x) = 0     ← সমীকরণ শর্ত
-             x ∈ ℝⁿ       ← চলক n-মাত্রিক
+optimization_intro = """
+OPTIMIZATION — FINDING THE BEST:
 
-— উদাহরণ (ML-এ): —
+Every ML algorithm, every engineering decision, every business strategy
+is ultimately an optimization problem.
 
-  minimize   L(w, b) = Σ(yᵢ - ŷᵢ)²    ← loss (MSE)
-  subject to ||w||² ≤ C               ← regularization
-             w, b ∈ ℝ                  ← weights
+THE MATHEMATICAL FORM:
+  minimize   f(x)         ← objective: minimize f
+  subject to g(x) ≤ 0     ← inequality constraint
+             h(x) = 0     ← equality constraint
+             x ∈ ℝⁿ       ← n-dimensional variable
 
-— "minimize" ও "maximize" একই জিনিস —
-  maximize f(x) = minimize -f(x)      ← চিহ্ন উল্টে দাও</div>
+VOCABULARY:
+  Objective function f(x): what we want to minimize (or maximize)
+  Decision variable x: what we control
+  Constraints: rules the solution must follow
+  Feasible region: set of x that satisfies all constraints
+  Optimal solution x*: the best feasible x
+
+MAXIMIZATION = MINIMIZATION:
+  maximize f(x) = minimize −f(x)
+  → Just flip the sign
+
+EXAMPLES:
+  → ML training: minimize loss function
+  → Portfolio: maximize return subject to risk limit
+  → Logistics: minimize cost subject to delivery constraints
+  → Engineering: minimize weight subject to strength
+  → Business: maximize profit subject to budget
+
+WHY OPTIMIZATION IS UBIQUITOUS:
+  → "What's the best way to do X?" = optimization
+  → Every decision is an optimization (explicit or implicit)
+  → Computers excel at this (fast, systematic search)
+"""
+
+print(optimization_intro)</div>
+
+<div class="code-block"># ── STEP 2: Convex vs non-convex ──
+# The most important distinction in optimization.
+
+convexity = """
+CONVEX VS NON-CONVEX:
+
+CONVEX FUNCTION:
+  → Bowl-shaped (like a valley)
+  → Has ONE global minimum (no local minima to get stuck in)
+  → Line between any two points stays above the curve
+  → Easy to optimize: gradient descent always finds global minimum
+
+NON-CONVEX FUNCTION:
+  → Has multiple local minima (valleys and hills)
+  → Can get stuck in local minimum
+  → Neural networks are non-convex
+  → Harder: need techniques to escape local minima
+
+WHY CONVEXITY MATTERS:
+  Convex: guaranteed to find global optimum → "easy"
+  Non-convex: may find only local optimum → "hard"
+
+  → Linear regression, SVM, logistic regression: CONVEX
+  → Neural networks, deep learning: NON-CONVEX
+  → This is why deep learning training is tricky
+
+CONVEXITY TEST:
+  f is convex if: f(θx + (1−θ)y) ≤ θf(x) + (1−θ)f(y) for all θ ∈ [0,1]
+
+  Intuitively: the line segment between any two points on the graph
+  lies above the graph itself.
+
+EXAMPLES OF CONVEX FUNCTIONS:
+  f(x) = x² (parabola → bowl)
+  f(x) = |x| (absolute value → V shape)
+  f(x) = eˣ (exponential → smooth growth)
+  f(x) = −log(x) (logarithm → smooth decrease)
+
+EXAMPLES OF NON-CONVEX FUNCTIONS:
+  f(x) = x⁴ − 2x² (double well → two minima)
+  Neural network loss landscape
+  Traveling salesman problem
+"""
+
+print(convexity)</div>
+
+<div class="code-block"># ── STEP 3: Gradient descent ──
+# The core algorithm of machine learning.
+
+gradient_descent = """
+GRADIENT DESCENT:
+
+The most important optimization algorithm.
+  → Used to train almost every ML model
+  → Neural networks, linear regression, logistic regression
+
+THE INTUITION:
+  Imagine you're on a hillside in fog. You can't see, but you can feel
+  the slope under your feet. To get to the bottom:
+  → Feel which direction goes down steepest
+  → Take a step in that direction
+  → Repeat until you reach the bottom (flat = minimum)
+
+THE MATH:
+  x_{n+1} = x_n − η × ∇f(x_n)
+
+  ∇f = gradient (direction of steepest ascent)
+  η = learning rate (step size)
+  −∇f = direction of steepest descent
+
+LEARNING RATE (η):
+  → Too large: overshoot minimum, diverge
+  → Too small: very slow convergence
+  → Just right: smooth descent to minimum
+  → Typical: 0.001 to 0.1 (needs tuning)
+
+CONVERGENCE:
+  → Convex function: guaranteed to reach global minimum
+  → Non-convex: reaches SOME local minimum (not necessarily global)
+  → Condition: learning rate must be small enough
+
+VARIANTS:
+  → Batch GD: use ALL data each step (slow but stable)
+  → SGD (Stochastic): use ONE sample each step (fast, noisy)
+  → Mini-batch: use a BATCH (best of both worlds, standard in DL)
+
+PYTHON (pure):
+  def gradient_descent(f, grad_f, x0, lr=0.01, n_iters=1000):
+      x = x0
+      for _ in range(n_iters):
+          x = x - lr * grad_f(x)
+      return x
+
+  # Minimize f(x) = x²:
+  f = lambda x: x**2
+  grad = lambda x: 2*x
+  x_opt = gradient_descent(f, grad, x0=10.0)
+  print(x_opt)  # ≈ 0.0 (global minimum)
+"""
+
+print(gradient_descent)
+
+# PYTHON: Gradient descent visualization:
+gd_code = """
+import numpy as np
+
+def gradient_descent(grad_f, x0, lr=0.1, n_iters=50, tol=1e-6):
+    \"\"\"Minimize f by following negative gradient.\"\"\"
+    x = x0
+    path = [x]
+    for i in range(n_iters):
+        grad = grad_f(x)
+        x_new = x - lr * grad
+        if abs(x_new - x) < tol:
+            break
+        x = x_new
+        path.append(x)
+    return x, path
+
+# Minimize f(x) = x² + 2x + 1 = (x+1)² (minimum at x=-1):
+f_grad = lambda x: 2*x + 2
+x_opt, path = gradient_descent(f_grad, x0=5.0, lr=0.1)
+print(f"Optimal x: {x_opt:.6f}")  # ≈ -1.0
+print(f"Iterations: {len(path)}")
+
+# Track convergence:
+for i, x in enumerate(path[:10]):
+    print(f"  Iter {i}: x={x:.6f}, f(x)={(x+1)**2:.8f}")
+
+# Multi-dimensional: f(x,y) = x² + y² (minimum at origin):
+grad_2d = lambda x: np.array([2*x[0], 2*x[1]])
+x0 = np.array([3.0, 4.0])
+x_opt, path = gradient_descent(grad_2d, x0=x0, lr=0.1)
+print(f"\\n2D optimal: {x_opt}")  # ≈ [0, 0]
+"""
+
+print(gd_code)</div>
+
+<div class="code-block"># ── STEP 4: Newton's method and second-order ──
+# Using curvature for faster convergence.
+
+newton = """
+NEWTON'S METHOD (Second-Order):
+
+Gradient descent uses FIRST derivative (slope).
+Newton's method uses SECOND derivative (curvature).
+
+UPDATE RULE:
+  x_{n+1} = x_n − H⁻¹ ∇f(x_n)
+
+  H = Hessian matrix (second derivatives)
+  H⁻¹ = inverse Hessian (accounts for curvature)
+
+WHY IT'S FASTER:
+  → Gradient descent: linear convergence
+  → Newton's method: quadratic convergence (much faster near minimum)
+  → Uses curvature to take "smarter" steps
+
+TRADEOFFS:
+  Gradient Descent:
+    ✅ Cheap per iteration: O(n) compute
+    ❌ Slow convergence: O(1/k)
+    ✅ Scales to billions of parameters
+
+  Newton's Method:
+    ✅ Fast convergence: O(1/k²) (quadratic)
+    ❌ Expensive per iteration: O(n³) (Hessian inverse)
+    ❌ Doesn't scale (n³ for n parameters)
+    ❌ Hessian may be singular
+
+QUASI-NEWTON METHODS (best of both):
+  → Approximate Hessian instead of computing exactly
+  → BFGS, L-BFGS (limited memory)
+  → Used in scipy.optimize, classical optimization
+
+WHEN TO USE:
+  → Small problems (< 1000 vars): Newton/BFGS
+  → Large problems (> 1000 vars): Gradient descent
+  → Deep learning (> 1M params): SGD/Adam (no Hessian)
+
+PYTHON:
+  from scipy.optimize import minimize
+
+  # Newton's method (if Hessian available):
+  result = minimize(f, x0, jac=grad_f, hess=hess_f, method='Newton-CG')
+
+  # BFGS (quasi-Newton, no Hessian needed):
+  result = minimize(f, x0, jac=grad_f, method='BFGS')
+
+  # L-BFGS-B (bounded, limited memory):
+  result = minimize(f, x0, jac=grad_f, method='L-BFGS-B', bounds=bounds)
+"""
+
+print(newton)</div>
+
+<div class="code-block"># ── STEP 5: Optimization in ML ──
+# How optimization powers machine learning.
+
+opt_in_ml = """
+OPTIMIZATION IN MACHINE LEARNING:
+
+Training an ML model IS optimization:
+  → Find parameters θ that minimize loss L(θ)
+
+LOSS FUNCTIONS:
+  MSE (regression): L = mean((y − ŷ)²)
+  Cross-entropy (classification): L = −Σ y log(ŷ)
+  Hinge loss (SVM): L = max(0, 1 − y·ŷ)
+  Huber loss (robust regression): combination of MSE + MAE
+
+REGULARIZATION (constrained optimization):
+  → L1 (LASSO): minimize L + λΣ|θᵢ| (sparse)
+  → L2 (Ridge): minimize L + λΣθᵢ² (shrinkage)
+  → Elastic Net: L1 + L2 combined
+
+GRADIENT COMPUTATION:
+  Manual: compute derivatives by hand (tedious)
+  Symbolic: SymPy, Mathematica
+  Automatic differentiation: PyTorch, TensorFlow, JAX
+  → Reverse-mode auto-diff: compute ALL gradients in ONE pass
+  → This is what makes deep learning tractable
+
+OPTIMIZATION CHALLENGES IN DL:
+  1. SADDLE POINTS: flat regions (gradient ≈ 0 but not minimum)
+  2. VANISHING GRADIENTS: gradients shrink in deep networks
+  3. EXPLODING GRADIENTS: gradients grow uncontrollably
+  4. PLATEAUS: large flat regions with tiny gradients
+  5. ILL-CONDITIONING: Hessian has very different eigenvalues
+
+SOLUTIONS:
+  → Momentum: accumulate gradients (escape saddle points)
+  → Adaptive learning rates: Adam, RMSprop
+  → Batch normalization: stabilize training
+  → Gradient clipping: prevent explosions
+  → Learning rate scheduling: decrease over time
+
+PYTHON (PyTorch):
+  import torch
+
+  model = torch.nn.Linear(10, 1)
+  optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+  loss_fn = torch.nn.MSELoss()
+
+  for epoch in range(100):
+      optimizer.zero_grad()        # clear gradients
+      y_pred = model(X)            # forward pass
+      loss = loss_fn(y_pred, y)    # compute loss
+      loss.backward()              # backprop (auto-diff!)
+      optimizer.step()             # update parameters
+"""
+
+print(opt_in_ml)</div>
+
+<div class="code-block"># ── STEP 6: Optimization best practices ──
+# Practical advice for optimization.
+
+best_practices = [
+    "Start with simple gradient descent before fancy methods",
+    "Always plot the loss curve to check convergence",
+    "Learning rate is THE most important hyperparameter",
+    "Normalize/standardize input features (helps conditioning)",
+    "Use adaptive methods (Adam) as default in deep learning",
+    "Try multiple random restarts for non-convex problems",
+    "Use learning rate scheduling (decrease over time)",
+    "Monitor gradient norms (vanishing/exploding)",
+    "Use gradient clipping for RNNs",
+    "Batch normalization for deep networks",
+    "Early stopping: monitor validation loss",
+    "For convex problems: use BFGS/L-BFGS",
+    "For combinatorial: use specialized solvers (Gurobi, CPLEX)",
+    "Always check optimality conditions (gradient ≈ 0)",
+    "Profile: is the bottleneck forward pass or backward pass?",
+]
+
+print("OPTIMIZATION BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Method           │ Best For                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Gradient Descent │ Convex, large-scale             │
+# │ SGD              │ Neural networks, online         │
+# │ Adam             │ Deep learning (default)         │
+# │ Newton           │ Small, smooth problems          │
+# │ BFGS             │ Medium problems, no Hessian     │
+# │ L-BFGS-B         │ Large with bounds               │
+# │ CVXPY            │ Convex optimization             │
+# │ Gurobi/CPLEX     │ Linear/integer programming      │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="diagram">
 <div class="diag-title">অপটিমাইজেশনের ল্যান্ডস্কেপ — পাহাড় ও উপত্যকা</div>
