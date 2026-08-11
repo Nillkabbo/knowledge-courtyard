@@ -1029,17 +1029,311 @@ doors.push({
     <div class="diag-cap">CAP ত্রিভুজ: C (সব নোডে একই ডেটা), A (সব রিকোয়েস্টে উত্তর), P (বিভাজন সহনশীলতা)। বিতরণ সিস্টেমে P বাদ দেওয়া যায় না — তাই CP বা AP বেছে নিতে হয়।</div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 CAP সিস্টেম উদাহরণ</h4>
-    <table class="kv-table">
-      <tr><th>পছন্দ</th><th>অর্থ</th><th>উদাহরণ সিস্টেম</th></tr>
-      <tr><td class="hl">CP</td><td>Consistency + Partition — ডেটা সবসময় সামঞ্জস্য, কিন্তু কিছু রিকোয়েস্ট ব্লক</td><td>HBase, MongoDB, Redis Cluster</td></tr>
-      <tr><td class="hl">AP</td><td>Availability + Partition — সব রিকোয়েস্টে উত্তর, কিন্তু কিছু সময় পুরোনো ডেটা</td><td>DynamoDB, Cassandra, CouchDB</td></tr>
-      <tr><td class="hl">CA (single-site)</td><td>নন-ডিস্ট্রিবিউটেড — partition সম্ভব নয়</td><td>MySQL, PostgreSQL (single node)</td></tr>
-    </table>
-    <br>
-    <p><strong>ব্রুয়ারের ২০১২ সংশোধন:</strong> partition বিরল ঘটনা। সাধারণ সময়ে (no partition) সিস্টেম C এবং A দুটোই দিতে পারে। সমস্যা শুধু partition চলাকালীন — তখন সিস্টেমকে সিদ্ধান্ত নিতে হয়। তাই CAP চিরস্থায়ী নয় — এটা একটা সীমার কাঠামো।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: CAP Theorem — the fundamental trade-off ──
+# Brewer's conjecture (2000), proved by Gilbert & Lynch (2002).
+
+cap_theorem = """
+CAP THEOREM:
+
+In any distributed system, you can have AT MOST TWO of:
+
+C - Consistency: All nodes see the same data simultaneously
+A - Availability: Every request gets a response (no errors)
+P - Partition Tolerance: System works despite network failures
+
+THE HARD TRUTH:
+  → Network partitions (P) are UNAVOIDABLE in distributed systems
+  → You MUST choose between C and A when a partition occurs
+  → P is not optional — networks WILL fail
+
+WHEN PARTITION HAPPENS:
+  Choose C: Block requests until consistency is restored
+    → Users get errors/timeouts
+    → Data is always correct
+
+  Choose A: Serve requests with potentially stale data
+    → Users get responses (fast)
+    → Data might be inconsistent temporarily
+"""
+
+print(cap_theorem)
+
+# THE THREE COMBINATIONS:
+combinations = {
+    "CP (Consistency + Partition Tolerance)": {
+        "meaning": "Always consistent, may be unavailable during partition",
+        "systems": "HBase, MongoDB, Redis Cluster, etcd, ZooKeeper",
+        "behavior": "Blocks writes/reads during network split",
+        "use_case": "Banking, financial transactions, configuration",
+    },
+    "AP (Availability + Partition Tolerance)": {
+        "meaning": "Always available, may be temporarily inconsistent",
+        "systems": "DynamoDB, Cassandra, CouchDB, Riak",
+        "behavior": "Serves stale data during partition, resolves later",
+        "use_case": "Social media, shopping cart, content feeds",
+    },
+    "CA (Consistency + Availability)": {
+        "meaning": "Consistent and available, but no partition tolerance",
+        "systems": "PostgreSQL (single node), MySQL (single node)",
+        "behavior": "Works perfectly on single machine, no network",
+        "use_case": "Traditional single-server databases",
+    },
+}
+
+print("CAP COMBINATIONS:")
+for combo, info in combinations.items():
+    print(f"\\n  {combo}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+  <div class="code-block"># ── STEP 2: Real-world CAP examples ──
+# How popular databases make the CAP trade-off.
+
+examples = """
+REAL-WORLD CAP EXAMPLES:
+
+CP SYSTEMS (consistency first):
+  MongoDB: Replica set with primary. If primary fails and partition
+    occurs, system blocks until new primary is elected.
+    → May return errors during election (seconds)
+    → Data is ALWAYS consistent
+
+  etcd/ZooKeeper: Configuration stores. Always consistent.
+    → Used for distributed locking, service discovery
+    → Block during partition rather than risk inconsistency
+
+AP SYSTEMS (availability first):
+  Cassandra: Tunable consistency. Default = available with eventual consistency.
+    → Writes always succeed (even during partition)
+    → Reads might return stale data (resolved via read-repair)
+
+  DynamoDB: Always available. Uses vector clocks for conflict resolution.
+    → Never returns errors due to partition
+    → Conflicts resolved with last-write-wins or application logic
+
+CHOOSING YOUR SYSTEM:
+  Banking/Payments → CP (correctness > availability)
+    "I'd rather my transaction fail than lose money"
+
+  Social Media → AP (availability > correctness)
+    "I'd rather see old posts than get an error"
+
+  E-commerce → Mixed (cart = AP, checkout = CP)
+    "Cart can be eventually consistent, payment must be consistent"
+"""
+
+print(examples)</div>
+
+  <div class="code-block"># ── STEP 3: PACELC — beyond CAP ──
+# PACELC extends CAP to include normal operation trade-offs.
+
+pacelc = """
+PACELC THEOREM (Abadi, 2010):
+
+CAP only addresses what happens DURING a partition (P).
+But what about when there's NO partition?
+
+PACELC: If Partition (P): choose Availability or Consistency
+        Else (E): choose Latency or Consistency
+
+PRONOUNCED: "Pack-elk"
+
+MEANING:
+  During Partition: A vs C (same as CAP)
+  During normal operation (Else): Latency vs Consistency
+
+WHY THIS MATTERS:
+  Even without partitions, there's a trade-off:
+  → Strong consistency = more coordination = higher latency
+  → Low latency = less coordination = weaker consistency
+
+PACELC CLASSIFICATION:
+  PA/EL: DynamoDB, Cassandra (AP + low latency, eventual consistency)
+  PC/EC: MongoDB, HBase (CP + strong consistency, higher latency)
+  PA/EC: MongoDB (tunable: can be PA during partition, EC normally)
+  PC/EL: PNUTS (Yahoo's system)
+
+EXAMPLE:
+  Cassandra (PA/EL):
+    Partition → Available (A), may be stale
+    Normal → Low latency (L), eventual consistency
+
+  MongoDB (PC/EC):
+    Partition → Consistent (C), may block
+    Normal → Strong consistency (C), higher latency
+"""
+
+print(pacelc)</div>
+
+  <div class="code-block"># ── STEP 4: Eventual vs strong consistency ──
+# The two main consistency models in distributed systems.
+
+consistency_models = {
+    "STRONG CONSISTENCY": {
+        "what": "All reads see the latest write, immediately",
+        "guarantee": "After write completes, ALL subsequent reads see it",
+        "latency": "Higher (needs coordination across replicas)",
+        "availability": "May block during network issues",
+        "use_case": "Banking, financial transactions, inventory",
+        "systems": "MongoDB (primary), etcd, Spanner",
+    },
+    "EVENTUAL CONSISTENCY": {
+        "what": "Reads may see stale data, but eventually all converge",
+        "guarantee": "Given enough time without new writes, all replicas converge",
+        "latency": "Lower (no waiting for all replicas)",
+        "availability": "Always available (even during partitions)",
+        "use_case": "Social media, content feeds, caches",
+        "systems": "Cassandra, DynamoDB, Riak",
+    },
+    "CAUSAL CONSISTENCY": {
+        "what": "Causally related operations are seen in order",
+        "guarantee": "If A causes B, all nodes see A before B",
+        "latency": "Medium (between strong and eventual)",
+        "availability": "High (no global coordination)",
+        "use_case": "Comments, collaborative editing",
+        "systems": "COPS, Bayou, some CRDT systems",
+    },
+    "READ-YOUR-WRITES": {
+        "what": "You always see your own writes",
+        "guarantee": "After you write X, your subsequent reads always see X",
+        "latency": "Low (session-level tracking)",
+        "availability": "High",
+        "use_case": "User profile updates, settings",
+        "systems": "Most modern systems (session sticky)",
+    },
+}
+
+print("CONSISTENCY MODELS:")
+for model, info in consistency_models.items():
+    print(f"\\n  {model}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+  <div class="code-block"># ── STEP 5: Tunable consistency in Cassandra ──
+# Cassandra lets you choose consistency level per query.
+
+tunable = """
+CASSANDRA TUNABLE CONSISTENCY:
+
+You choose consistency level PER QUERY:
+
+  ONE: Wait for 1 replica to respond (fast, may be stale)
+  QUORUM: Wait for majority (51%+) to respond (balanced)
+  ALL: Wait for ALL replicas (strongest, slowest)
+  LOCAL_QUORUM: Majority in local datacenter (fast, DC-aware)
+  EACH_QUORUM: Majority in EACH datacenter (multi-DC strong)
+
+PYTHON (cassandra-driver):
+  from cassandra.cluster import Cluster
+  from cassandra import ConsistencyLevel
+
+  cluster = Cluster(['node1', 'node2', 'node3'])
+  session = cluster.connect()
+
+  # Write with QUORUM consistency:
+  session.execute(
+      "INSERT INTO users (id, name) VALUES (?, ?)",
+      (user_id, name),
+      consistency=ConsistencyLevel.QUORUM
+  )
+
+  # Read with ONE (fast, may be stale):
+  result = session.execute(
+      "SELECT * FROM users WHERE id = ?",
+      (user_id,),
+      consistency=ConsistencyLevel.ONE
+  )
+
+DECIDING CONSISTENCY LEVEL:
+  Write financial data → ALL (must be durable)
+  Write user profile → QUORUM (balance)
+  Write analytics event → ONE (speed > accuracy)
+  Read critical data → QUORUM
+  Read cache-like data → ONE (fast)
+
+FORMULA:
+  QUORUM = floor(N/2) + 1
+  For 3 replicas: QUORUM = 2
+  For 5 replicas: QUORUM = 3
+
+  R + W > N guarantees strong consistency
+  (Read replicas + Write replicas > Total replicas)
+"""
+
+print(tunable)</div>
+
+  <div class="code-block"># ── STEP 6: Brewer's clarification and practical CAP ──
+# Brewer himself clarified CAP in 2012: it's not as simple as "pick two."
+
+clarification = """
+BREWER'S CLARIFICATION (2012):
+
+"CAP forbids only a tiny part of the design space:
+ perfectly consistent communications during a partition."
+
+KEY INSIGHTS:
+1. Partitions are RARE (not the normal state)
+2. During normal operation (no partition): you CAN have C and A
+3. Only DURING a partition must you choose
+4. The choice is not permanent — systems can switch strategies
+
+MODERN VIEW (PACELC):
+  Normal operation: trade Latency vs Consistency
+  Partition: trade Availability vs Consistency
+  → Both are continuous trade-offs, not binary choices
+
+PRACTICAL CAP DECISION TREE:
+  1. Is this system distributed? → P is mandatory
+  2. During partition: what's more important?
+     → C (correctness) → CP system (banking, config)
+     → A (responsiveness) → AP system (social, content)
+  3. During normal operation: what's the latency budget?
+     → Low latency → eventual consistency
+     → Can afford latency → strong consistency
+  4. Can you mix?
+     → Yes! Different operations can have different consistency
+     → Payment: strong consistency
+     → Feed: eventual consistency
+"""
+
+print(clarification)
+
+# CAP DECISION CHECKLIST:
+checklist = [
+    "Identify your system type: CP or AP",
+    "Banking/financial → CP (correctness over availability)",
+    "Social/content → AP (availability over correctness)",
+    "Consider mixed: different operations, different consistency",
+    "Use tunable consistency if available (Cassandra)",
+    "Understand PACELC: normal operation has Latency vs C trade-off",
+    "Partitions are rare: optimize for normal operation",
+    "Plan for partition: what happens when network splits?",
+    "Monitor consistency lag (how stale is stale?)",
+    "Test partition recovery (does data converge correctly?)",
+    "Document your CAP choices for the team",
+    "Consider multi-datacenter: LOCAL_QUORUM vs EACH_QUORUM",
+    "Think about user experience: stale data vs error",
+    "Use CRDTs for conflict-free eventual consistency",
+    "Consider read-repair for eventual consistency convergence",
+]
+
+print("CAP PRACTICAL CHECKLIST:")
+for item in checklist:
+    print(f"  ☐ {item}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ CAP theorem      │ Choose 2 of 3 (C, A, P)         │
+# │ P is mandatory   │ Network WILL partition          │
+# │ CP systems       │ MongoDB, etcd (consistency)     │
+# │ AP systems       │ Cassandra, DynamoDB (avail)     │
+# │ Strong vs Eventual│ Immediate vs eventually same   │
+# │ PACELC           │ Extends CAP (normal op: L vs C) │
+# │ Tunable          │ Per-query consistency (Cassandra)│
+# │ Quorum           │ Majority (N/2 + 1)              │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Builder's Codex / System Design) Door ১৬-এ Databases & Replication শিখেছিলে — CAP সেখানে সংক্ষেপে ছিল। এই দরজায় গভীরে গেলে। Door ৭-এ Consensus শিখেছিলে — CP সিস্টেমে consensus (Paxos/Raft) দরকার।</div></div>
 
