@@ -466,25 +466,405 @@ f উতলা যদি — যেকোনো দুটি বিন্দু 
 <div class="diag-cap">Convex: জ্যা বক্ররেখার উপরে — একটি ন্যূনতম · Non-convex: জ্যা নিচে যায় — একাধিক ন্যূনতম</div>
 </div>
 
-<div class="code-block">— উতলা ফাংশনের উদাহরণ —
+<div class="code-block"># ── STEP 1: Convex functions in depth ──
+# The mathematical foundation of easy optimization.
 
-  f(x) = x²              ← উতলা (parabola — সবচেয়ে সহজ)
-  f(x) = eˣ              ← উতলা (exponential)
-  f(x) = |x|             ← উতলা (absolute value)
-  f(x) = -log(x)         ← উতলা (negative log — x > 0)
-  f(x) = x⁴ - 3x²        ← অ-উতলা! (দুটি ন্যূনতম)
+convex_deep = """
+CONVEX FUNCTIONS — DEEP DIVE:
 
-— Jensen-এর অসমতা (1906): —
+DEFINITION:
+  f is convex if for all x, y and θ ∈ [0,1]:
+  f(θx + (1−θ)y) ≤ θf(x) + (1−θ)f(y)
 
-  উতলা f-এর জন্য:
-  f(λ₁x₁ + λ₂x₂ + ...) ≤ λ₁f(x₁) + λ₂f(x₂) + ...
+  "The line segment between any two points lies ABOVE the graph."
 
-  অর্থাৎ: f(গড়) ≤ গড় f
+  Equivalently: f(mean) ≤ mean(f)
+  → This is why variance is always non-negative!
 
-— বাস্তব উদাহরণ: —
-  f(গড় উচ্চতা) ≤ গড় f(উচ্চতা)
-  অর্থাৎ: গড় উচ্চতার বর্গ ≤ উচ্চতার বর্গের গড়
-  (এটাই variance-এর সংজ্ঞা!)</div>
+JENSEN'S INEQUALITY (1906):
+  For convex f: E[f(X)] ≥ f(E[X])
+  → Expected value of function ≥ function of expected value
+  → This is the FOUNDATION of many ML bounds
+
+  Example: E[X²] ≥ (E[X])²
+  → E[X²] − (E[X])² = Var(X) ≥ 0
+
+PROPERTIES OF CONVEX FUNCTIONS:
+  → Sum of convex functions is convex
+  → If f, g convex: max(f, g) is convex
+  → If f convex and g affine: f(g(x)) is convex
+  → Composition rules enable automatic convexity checking
+
+STRONG CONVEXITY:
+  f is μ-strongly convex if: f(x) − (μ/2)||x||² is convex
+  → "More than convex" → faster convergence
+  → Guarantees: GD converges at rate O(1/k) for strongly convex
+
+SMOOTHNESS:
+  f is L-smooth if gradient is Lipschitz: ||∇f(x) − ∇f(y)|| ≤ L||x−y||
+  → "Gradient doesn't change too fast"
+  → Enables convergence guarantees
+
+CONVEX OPTIMIZATION THEORY:
+  For μ-strongly convex, L-smooth f:
+  Condition number κ = L/μ
+  → Small κ → well-conditioned → fast convergence
+  → Large κ → ill-conditioned → slow convergence
+  → Preconditioning improves κ
+
+PYTHON (CVXPY — declarative convex optimization):
+  import cvxpy as cp
+
+  x = cp.Variable(10)           # decision variable
+  objective = cp.Minimize(cp.sum_squares(A @ x - b))
+  constraints = [x >= 0, x <= 1]
+  problem = cp.Problem(objective, constraints)
+  problem.solve()               # solves via interior point
+  print(x.value)                # optimal solution
+"""
+
+print(convex_deep)</div>
+
+<div class="code-block"># ── STEP 2: Convergence analysis ──
+# How fast does gradient descent converge?
+
+convergence = """
+CONVERGENCE RATES:
+
+For gradient descent on different function classes:
+
+1. CONVEX (general):
+   f(x_k) − f* ≤ O(1/k)
+   → Sublinear: error decreases as 1/k
+   → To halve error: double iterations
+
+2. STRONGLY CONVEX (μ > 0):
+   f(x_k) − f* ≤ (1 − μ/L)^k × (initial error)
+   → LINEAR convergence: exponential decrease
+   → Each iteration reduces error by constant factor
+
+3. SMOOTH + STRONGLY CONVEX:
+   Best case: guaranteed fast convergence
+   → Newton's method: quadratic O(1/k²)
+   → GD: linear O(c^k) where c < 1
+
+LEARNING RATE SELECTION:
+  For L-smooth f:
+  → Fixed: η = 1/L (safe but slow)
+  → Exact line search: optimal step (expensive)
+  → Backtracking: adaptively shrink step (Armijo rule)
+
+CONVERGENCE DIAGNOSTICS:
+  → Loss curve: should decrease monotonically (convex)
+  → If oscillating: learning rate too large
+  → If plateau: may be near minimum or stuck
+  → Gradient norm: should approach 0
+
+MOMENTUM:
+  Accumulate gradient history for faster convergence.
+  v_{k+1} = βv_k + ∇f(x_k)
+  x_{k+1} = x_k − η × v_{k+1}
+
+  → Accelerates in consistent gradient directions
+  → Dampens oscillations in changing directions
+  → Heavy ball method (Polyak, 1964)
+
+  Nesterov momentum: "look ahead" before computing gradient
+  → Optimal for convex smooth functions: O(1/k²)
+
+PYTHON (momentum):
+  def gd_momentum(grad_f, x0, lr=0.01, beta=0.9, n_iters=1000):
+      x = x0
+      v = 0
+      for _ in range(n_iters):
+          v = beta * v + grad_f(x)
+          x = x - lr * v
+      return x
+"""
+
+print(convergence)</div>
+
+<div class="code-block"># ── STEP 3: Stochastic Gradient Descent (SGD) ──
+# Scaling gradient descent to massive datasets.
+
+sgd = """
+STOCHASTIC GRADIENT DESCENT (SGD):
+
+PROBLEM with Batch GD:
+  ∇f(x) = average over ALL n samples
+  → Each step costs O(n) for n samples
+  → Too expensive for large datasets (millions of samples)
+
+SGD SOLUTION (Robbins & Monro, 1951):
+  Each step: use ONE random sample (or mini-batch)
+  → Cost per step: O(1) or O(batch_size)
+  → Noisy gradient, but unbiased estimate
+
+SGD UPDATE:
+  x_{k+1} = x_k − η × ∇f_{i_k}(x_k)
+  where i_k is a random sample index
+
+MINI-BATCH SGD (standard in DL):
+  Use batch of B samples (typically 32-512)
+  → Less noisy than pure SGD
+  → Parallelizable on GPU
+  → Sweet spot: B=32 to B=256
+
+WHY SGD WORKS:
+  E[∇f_{i_k}] = ∇f (unbiased)
+  → On average, SGD moves in the right direction
+  → Variance decreases with batch size
+  → Converges to neighborhood of minimum (not exact)
+
+LEARNING RATE SCHEDULE:
+  → Constant: η stays fixed (eventually oscillates)
+  → Step decay: decrease by factor every N epochs
+  → Exponential: η_k = η₀ × γ^k
+  → Cosine: smooth decrease (popular in DL)
+  → 1/t: η_k = η₀ / (1 + kt) (SGD theory)
+
+SGD VARIANTS:
+  1. SGD with momentum: dampen noise
+  2. Nesterov accelerated gradient: look ahead
+  3. AdaGrad: per-parameter learning rate (accumulate squared gradients)
+  4. RMSprop: exponential moving average of squared gradients
+  5. Adam: momentum + RMSprop (most popular)
+
+PYTHON (SGD):
+  import numpy as np
+
+  def sgd(grad_fn, X, y, w0, lr=0.01, n_epochs=10, batch_size=32):
+      w = w0
+      n = len(y)
+      for epoch in range(n_epochs):
+          indices = np.random.permutation(n)
+          for i in range(0, n, batch_size):
+              batch_idx = indices[i:i+batch_size]
+              X_batch = X[batch_idx]
+              y_batch = y[batch_idx]
+              grad = grad_fn(w, X_batch, y_batch)
+              w = w - lr * grad
+      return w
+"""
+
+print(sgd)</div>
+
+<div class="code-block"># ── STEP 4: Adam and adaptive methods ──
+# The modern optimizer for deep learning.
+
+adaptive = """
+ADAPTIVE OPTIMIZATION METHODS:
+
+ADAM (Adaptive Moment Estimation, Kingma & Ba, 2014):
+  Combines momentum + RMSprop.
+  → Maintains running averages of gradients AND squared gradients
+  → Per-parameter adaptive learning rates
+  → Default choice for most deep learning
+
+ADAM UPDATE RULE:
+  m_t = β₁m_{t−1} + (1−β₁)g_t        # first moment (momentum)
+  v_t = β₂v_{t−1} + (1−β₂)g_t²       # second moment (RMSprop)
+  m_hat = m_t / (1−β₁^t)              # bias correction
+  v_hat = v_t / (1−β₂^t)
+  x_{t+1} = x_t − η × m_hat / (√v_hat + ε)
+
+DEFAULTS: β₁=0.9, β₂=0.999, ε=1e-8, η=0.001
+
+WHY ADAM WORKS WELL:
+  → Rarely updated parameters get larger effective learning rate
+  → Frequently updated parameters get smaller learning rate
+  → Automatically adapts to parameter geometry
+  → Bias correction handles cold start
+
+COMPARISON OF OPTIMIZERS:
+  ┌──────────────┬─────────────────┬───────────────────┐
+  │ Optimizer    │ Memory          │ Best For          │
+  ├──────────────┼─────────────────┼───────────────────┤
+  │ SGD          │ 1× params       │ Convex, fine-tune │
+  │ SGD+momentum │ 2× params       │ CV (ResNet)       │
+  │ AdaGrad      │ 2× params       │ Sparse data       │
+  │ RMSprop      │ 2× params       │ Non-stationary    │
+  │ Adam         │ 2× params       │ General default   │
+  │ AdamW        │ 2× params       │ + weight decay    │
+  └──────────────┴─────────────────┴───────────────────┘
+
+ADAMW (Loshchilov & Hutter, 2017):
+  Adam with correct weight decay decoupling
+  → Better generalization than Adam
+  → Standard for transformers (BERT, GPT)
+
+WHEN NOT TO USE ADAM:
+  → SGD+momentum often generalizes better for CV (ResNet)
+  → Adam may overfit (less implicit regularization)
+  → For best accuracy: SGD with careful tuning
+
+LEARNING RATE FINDER (Smith, 2015):
+  → Start with tiny lr, exponentially increase
+  → Plot loss vs lr
+  → Pick lr where loss decreases fastest
+"""
+
+print(adaptive)
+
+# PYTHON: Optimizer comparison:
+opt_code = """
+import numpy as np
+
+# Compare optimizers on a simple problem:
+# Minimize f(x,y) = x² + 10y² (ill-conditioned: κ=10)
+
+def f(x): return x[0]**2 + 10*x[1]**2
+def grad(x): return np.array([2*x[0], 20*x[1]])
+
+# SGD:
+def sgd(x0, lr=0.01, n_iters=500):
+    x = x0.copy()
+    path = [x.copy()]
+    for _ in range(n_iters):
+        x = x - lr * grad(x)
+        path.append(x.copy())
+    return np.array(path)
+
+# SGD with momentum:
+def sgd_momentum(x0, lr=0.01, beta=0.9, n_iters=500):
+    x = x0.copy()
+    v = np.zeros_like(x)
+    path = [x.copy()]
+    for _ in range(n_iters):
+        v = beta * v + grad(x)
+        x = x - lr * v
+        path.append(x.copy())
+    return np.array(path)
+
+# Adam:
+def adam(x0, lr=0.01, beta1=0.9, beta2=0.999, eps=1e-8, n_iters=500):
+    x = x0.copy()
+    m = np.zeros_like(x)
+    v = np.zeros_like(x)
+    path = [x.copy()]
+    for t in range(1, n_iters+1):
+        g = grad(x)
+        m = beta1 * m + (1-beta1) * g
+        v = beta2 * v + (1-beta2) * g**2
+        m_hat = m / (1 - beta1**t)
+        v_hat = v / (1 - beta2**t)
+        x = x - lr * m_hat / (np.sqrt(v_hat) + eps)
+        path.append(x.copy())
+    return np.array(path)
+
+x0 = np.array([5.0, 5.0])
+path_sgd = sgd(x0, lr=0.01)
+path_mom = sgd_momentum(x0, lr=0.01)
+path_adam = adam(x0, lr=0.1)
+
+# Compare final loss:
+print(f"SGD final: {f(path_sgd[-1]):.8f}")
+print(f"Momentum final: {f(path_mom[-1]):.8f}")
+print(f"Adam final: {f(path_adam[-1]):.8f}")
+"""
+
+print(opt_code)</div>
+
+<div class="code-block"># ── STEP 5: Constrained optimization ──
+# Optimization with restrictions.
+
+constrained = """
+CONSTRAINED OPTIMIZATION:
+
+  minimize   f(x)
+  subject to gᵢ(x) ≤ 0    (inequality constraints)
+             hⱼ(x) = 0    (equality constraints)
+
+METHODS:
+
+1. PROJECTED GRADIENT DESCENT:
+   → Take gradient step, then PROJECT onto feasible set
+   → Projection: closest point in feasible set
+   → Simple but projection can be expensive
+
+2. PENALTY METHODS:
+   → Add penalty for constraint violation:
+     minimize f(x) + μ × Σ max(0, gᵢ(x))²
+   → Increase μ gradually
+   → Approximate constrained solution
+
+3. BARRIER METHODS:
+   → Add barrier that prevents leaving feasible set:
+     minimize f(x) − (1/μ) × Σ log(−gᵢ(x))
+   → Start inside feasible region, never leave
+   → μ → 0 as iterations progress
+
+4. LAGRANGIAN METHODS:
+   → Convert to unconstrained via Lagrange multipliers:
+     L(x, λ) = f(x) + Σλᵢgᵢ(x) + Σμⱼhⱼ(x)
+   → KKT conditions: necessary for optimality
+
+KKT CONDITIONS (Karush-Kuhn-Tucker):
+  At optimum x*:
+  1. Stationarity: ∇f + Σλᵢ∇gᵢ + Σμⱼ∇hⱼ = 0
+  2. Primal feasibility: gᵢ(x*) ≤ 0, hⱼ(x*) = 0
+  3. Dual feasibility: λᵢ ≥ 0
+  4. Complementary slackness: λᵢgᵢ(x*) = 0
+
+  → Generalization of Lagrange multipliers to inequalities
+  → Necessary for constrained optimality
+
+DUALITY:
+  Primal: minimize f(x) s.t. constraints
+  Dual: maximize g(λ) s.t. λ ≥ 0
+  → Weak duality: dual ≤ primal (always)
+  → Strong duality: dual = primal (convex + Slater's condition)
+  → Solving dual can be easier than primal
+
+SVM AS CONSTRAINED OPTIMIZATION:
+  minimize (1/2)||w||²     ← maximize margin
+  subject to yᵢ(w·xᵢ + b) ≥ 1   ← classify correctly
+
+  → Solved via dual (kernel trick emerges naturally)
+  → Support vectors = points where constraint is active
+"""
+
+print(constrained)</div>
+
+<div class="code-block"># ── STEP 6: Practical optimization checklist ──
+# A practitioner's guide.
+
+best_practices = [
+    "Normalize input features (mean=0, std=1)",
+    "Use Adam as default optimizer (lr=0.001)",
+    "Try SGD+momentum for CV tasks (often better generalization)",
+    "Learning rate is THE most important hyperparameter",
+    "Use learning rate finder to get initial lr",
+    "Cosine annealing or step decay for lr scheduling",
+    "Mini-batch size: 32-256 (powers of 2 for GPU)",
+    "Gradient clipping for RNNs (max_norm=1.0)",
+    "Weight decay/regularization for generalization",
+    "Warmup for transformers (linear ramp-up)",
+    "Mixed precision training for speed (fp16)",
+    "Monitor training + validation loss curves",
+    "Early stopping: save best validation checkpoint",
+    "For convex problems: use CVXPY (declarative)",
+    "For production: use JIT-compiled optimizers (JAX/Torch compile)",
+]
+
+print("PRACTICAL OPTIMIZATION CHECKLIST:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Technique        │ When to Use                    │
+# ├──────────────────┼──────────────────────────────────┤
+# │ GD (batch)       │ Small datasets, convex          │
+# │ SGD              │ Large datasets, online          │
+# │ Momentum         │ Speed up SGD                    │
+# │ Adam             │ Default for most DL             │
+# │ AdamW            │ Transformers, regularization    │
+# │ L-BFGS           │ Classical, medium-scale         │
+# │ Newton           │ Small, smooth problems          │
+# │ CVXPY            │ Declarative convex              │
+# │ Penalty/barrier  │ Constrained optimization        │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>কেন উতলা সহজ?</strong> উতলা সমস্যায় প্রতিটি লোকাল ন্যূনতমই গ্লোবাল ন্যূনতম। গ্রেডিয়েন্ট ডিসেন্ট গ্যারান্টিযুক্ত গ্লোবালে পৌঁছায়। অ-উতলায় লোকালে আটকে যেতে পারে। ML-এ: linear regression = উতলা (MSE loss), neural network = অ-উতলা (সব সমস্যার উৎস)।</div></div>
 
@@ -571,28 +951,367 @@ doors.push({
 <div class="diag-cap">প্রতিটি ধাপে গ্রেডিয়েন্ট দিকে যাও · η খুব বড় হলে minimum পার হয়ে যাওয়া যায়</div>
 </div>
 
-<div class="code-block">— গ্রেডিয়েন্ট ডিসেন্ট Python-এ —
+<div class="code-block"># ── STEP 1: Gradient descent variants ──
+# Different ways to compute gradients at scale.
 
-  # f(x) = x² এর ন্যূনতম খুঁজি
-  x = 10.0           # শুরুর অবস্থান
-  eta = 0.1          # learning rate
-  for i in range(100):
-      grad = 2 * x   # df/dx = 2x
-      x = x - eta * grad   # update rule!
-      print(f"step {i}: x={x:.4f}, f={x**2:.4f}")
+gd_variants = """
+GRADIENT DESCENT VARIANTS:
 
-  # Output:
-  # step 0: x=8.0000,  f=64.00
-  # step 1: x=6.4000,  f=40.96
-  # step 2: x=5.1200,  f=26.21
-  # ...
-  # step 50: x=0.0001, f=0.00  ← converged!
+1. BATCH GRADIENT DESCENT:
+   → Use ENTIRE dataset for each step
+   → gradient = (1/n) Σ ∇fᵢ(x)
+   → Stable but expensive: O(n) per step
+   → Best for small datasets
 
-— লার্নিং রেটের প্রভাব —
-  η = 0.01  → ১০০০ ধাপ লাগে (ধীর কিন্তু নিরাপদ)
-  η = 0.1   → ~৫০ ধাপ (ভারসাম্য)
-  η = 1.0   → oscillation! (খুব বড় — লাফায়)
-  η = 2.0   → divergence! (∞-এ যায়)</div>
+2. STOCHASTIC GRADIENT DESCENT (SGD):
+   → Use ONE random sample per step
+   → gradient = ∇f_{random_i}(x)
+   → Noisy but fast: O(1) per step
+   → Best for large datasets
+
+3. MINI-BATCH GRADIENT DESCENT:
+   → Use batch of B samples per step
+   → gradient = (1/B) Σ_{i in batch} ∇fᵢ(x)
+   → Balance: B=32 to 256
+   → STANDARD for deep learning
+
+WHY MINI-BATCH IS BEST:
+  → GPU parallelism (batch processed simultaneously)
+  → Less noise than pure SGD (faster convergence)
+  → More frequent updates than batch GD
+  → Memory efficient (batch fits in GPU)
+
+EPOCHS vs ITERATIONS:
+  Epoch = one pass through entire dataset
+  Iteration = one gradient update
+  Iterations per epoch = n / batch_size
+
+  Example: 60,000 samples, batch=100
+  → 600 iterations per epoch
+  → 10 epochs = 6,000 updates
+
+LEARNING RATE EFFECTS:
+  η = 0.01: slow but safe (1000+ steps)
+  η = 0.1: balanced (~50 steps for x²)
+  η = 1.0: oscillation (overshoots minimum)
+  η = 2.0: divergence (∞!)
+
+  → Always start small and tune up
+"""
+
+print(gd_variants)</div>
+
+<div class="code-block"># ── STEP 2: Learning rate scheduling ──
+# Decaying the learning rate over time.
+
+lr_schedule = """
+LEARNING RATE SCHEDULING:
+
+The learning rate should DECREASE over time:
+  → Early: large steps (cover ground fast)
+  → Late: small steps (fine-tune near minimum)
+
+COMMON SCHEDULES:
+
+1. STEP DECAY:
+   lr = lr₀ × γ^(floor(epoch / step_size))
+   → Decrease by factor γ every N epochs
+   → Example: halve every 10 epochs
+
+2. EXPONENTIAL DECAY:
+   lr = lr₀ × γ^epoch
+   → Continuous exponential decrease
+   → γ = 0.95 common
+
+3. COSINE ANNEALING:
+   lr = lr_min + (lr₀ − lr_min) × (1 + cos(πt/T)) / 2
+   → Smooth S-shaped curve
+   → Popular for modern training
+   → Can "warm restart" (SGDR)
+
+4. WARMUP + DECAY:
+   → Linearly increase lr for first N steps (warmup)
+   → Then decay (cosine, linear, etc.)
+   → Critical for transformers (prevent early instability)
+
+5. 1/T DECAY:
+   lr = lr₀ / (1 + kt)
+   → Theoretically motivated for SGD
+   → Ensures convergence
+
+6. CYCLICAL LEARNING RATES (Smith, 2017):
+   → Oscillate between lr_min and lr_max
+   → Helps escape saddle points
+   → Can find optimal lr range
+
+PYTHON:
+  # PyTorch schedulers:
+  from torch.optim.lr_scheduler import (
+      StepLR, ExponentialLR, CosineAnnealingLR,
+      ReduceLROnPlateau, OneCycleLR
+  )
+
+  scheduler = CosineAnnealingLR(optimizer, T_max=100)
+  for epoch in range(100):
+      train(...)
+      scheduler.step()
+
+  # ReduceLROnPlateau (adaptive):
+  scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=5)
+  scheduler.step(val_loss)  # reduce lr if val_loss plateaus
+"""
+
+print(lr_schedule)</div>
+
+<div class="code-block"># ── STEP 3: Escaping local minima ──
+# Techniques for non-convex optimization.
+
+escaping = """
+ESCAPING LOCAL MINIMA:
+
+Non-convex functions (like neural networks) have many local minima.
+Most are "good enough" but some are bad.
+
+1. MOMENTUM:
+   → Accumulate gradient history
+   → Builds up velocity in consistent directions
+   → Can "roll through" shallow local minima
+   → Heavy ball analogy
+
+2. RANDOM RESTARTS:
+   → Try multiple random starting points
+   → Keep the best solution
+   → Common for small non-convex problems
+
+3. SIMULATED ANNEALING:
+   → Add noise that decreases over time
+   → Early: jump out of local minima (exploration)
+   → Late: settle into minimum (exploitation)
+
+4. STOCHASTICITY OF SGD:
+   → Mini-batch noise helps escape saddle points
+   → In high dimensions, saddle points >>> local minima
+   → "Most local minima are equivalent in deep learning"
+
+5. BATCH NORMALIZATION:
+   → Stabilizes optimization landscape
+   → Reduces internal covariate shift
+   → Enables higher learning rates
+
+6. SKIP CONNECTIONS (ResNet):
+   → "Smooth" the loss landscape
+   → Provide gradient shortcuts
+   → Enable training of very deep networks
+
+THE "LOTTERY TICKET" HYPOTHESIS:
+  → Within a large network, there's a small "winning" subnetwork
+  → If you could find it directly, training would be easy
+  → Pruning after training finds these tickets
+
+SADDLE POINTS vs LOCAL MINIMA:
+  In HIGH dimensions (many parameters):
+  → Saddle points are MUCH more common than local minima
+  → Saddle points have directions of both ascent and descent
+  → Momentum and SGD noise help escape them
+  → "The loss landscape of deep networks is mostly saddle points"
+
+PYTHON:
+  import numpy as np
+
+  # Multi-start optimization:
+  def multi_start(f, grad_f, n_restarts=10):
+      best_x, best_f = None, float('inf')
+      for _ in range(n_restarts):
+          x0 = np.random.randn(10) * 10  # random start
+          x_opt = gradient_descent(grad_f, x0)
+          f_opt = f(x_opt)
+          if f_opt < best_f:
+              best_x, best_f = x_opt, f_opt
+      return best_x
+"""
+
+print(escaping)</div>
+
+<div class="code-block"># ── STEP 4: Newton's method vs Gradient Descent ──
+# When to use each approach.
+
+newton_vs_gd = """
+NEWTON VS GRADIENT DESCENT:
+
+GRADIENT DESCENT:
+  Uses: first derivative (slope)
+  Update: x − η∇f
+  Cost per step: O(n) for n parameters
+  Convergence: O(1/k) (convex), O(c^k) (strongly convex)
+  Memory: O(n)
+  Scales to: billions of parameters
+
+NEWTON'S METHOD:
+  Uses: first + second derivative (slope + curvature)
+  Update: x − H⁻¹∇f
+  Cost per step: O(n³) (Hessian inverse)
+  Convergence: O(c^(2k)) (quadratic, near minimum)
+  Memory: O(n²) (store Hessian)
+  Scales to: ~1000 parameters
+
+WHY NOT ALWAYS USE NEWTON?
+  → Hessian computation: O(n²) entries
+  → Hessian inversion: O(n³) time
+  → For n=1,000,000 (neural net): impossible
+  → Hessian may be singular or indefinite
+
+QUASI-NEWTON (BFGS):
+  → Approximate Hessian from gradient history
+  → Cost: O(n²) per iteration (still expensive)
+  → L-BFGS: O(n) memory (limited history)
+  → Used in classical optimization, not deep learning
+
+NATURAL GRADIENT:
+  → Use Fisher information matrix instead of Hessian
+  → More geometrically meaningful
+  → Used in variational inference, some RL
+
+TRUST REGION vs LINE SEARCH:
+  Line search: find best step size along gradient direction
+  Trust region: limit step size based on local model quality
+  → Both are used in scipy.optimize
+
+WHEN TO USE EACH:
+  ┌──────────────────────┬────────────────────────────┐
+  │ Problem              │ Best Method               │
+  ├──────────────────────┼────────────────────────────┤
+  │ Deep learning        │ Adam, SGD+momentum         │
+  │ Linear regression    │ GD or closed-form          │
+  │ Small convex         │ Newton, BFGS              │
+  │ Logistic regression  │ L-BFGS, Newton-CG         │
+  │ Constrained convex   │ Interior point, CVXPY     │
+  │ General non-convex   │ L-BFGS-B, basinhopping    │
+  └──────────────────────┴────────────────────────────┘
+"""
+
+print(newton_vs_gd)</div>
+
+<div class="code-block"># ── STEP 5: SVM as optimization ──
+# Support Vector Machines: a complete optimization example.
+
+svm = """
+SVM (SUPPORT VECTOR MACHINE):
+
+A beautiful example of constrained optimization.
+
+HARD MARGIN SVM (linearly separable):
+  minimize   (1/2)||w||²        ← maximize margin
+  subject to yᵢ(w·xᵢ + b) ≥ 1   ← all points correctly classified
+
+  → Convex quadratic program
+  → Solved via Lagrangian dual
+
+SOFT MARGIN SVM (with violations):
+  minimize   (1/2)||w||² + C Σξᵢ   ← margin + penalty
+  subject to yᵢ(w·xᵢ + b) ≥ 1 − ξᵢ
+             ξᵢ ≥ 0
+
+  → C controls margin vs violations tradeoff
+  → Large C: strict (low bias, high variance)
+  → Small C: permissive (high bias, low variance)
+
+DUAL FORMULATION:
+  maximize   Σαᵢ − (1/2)ΣΣαᵢαⱼyᵢyⱼxᵢ·xⱼ
+  subject to 0 ≤ αᵢ ≤ C
+             Σαᵢyᵢ = 0
+
+  → Only support vectors (αᵢ > 0) matter
+  → Enables kernel trick: xᵢ·xⱼ → K(xᵢ, xⱼ)
+
+KERNEL TRICK:
+  → Map data to higher dimensions implicitly
+  → K(x, y) = φ(x)·φ(y) without computing φ explicitly
+  → Linear, Polynomial, RBF (Gaussian) kernels
+
+PYTHON (sklearn):
+  from sklearn.svm import SVC
+
+  # Linear SVM:
+  svm = SVC(kernel='linear', C=1.0)
+  svm.fit(X_train, y_train)
+
+  # RBF kernel:
+  svm_rbf = SVC(kernel='rbf', C=1.0, gamma='scale')
+  svm_rbf.fit(X_train, y_train)
+
+  # Access support vectors:
+  support_vectors = svm.support_vectors_
+
+OPTIMIZATION INSIGHT:
+  → SVM = convex QP (quadratic program) → global optimum guaranteed
+  → This is why SVM is "easy" to train (unlike neural nets)
+  → But scales poorly: O(n²) or O(n³) for n samples
+  → Neural networks replaced SVM for large-scale problems
+"""
+
+print(svm)</div>
+
+<div class="code-block"># ── STEP 6: Optimization algorithms summary ──
+# Complete reference of optimization methods.
+
+summary = """
+OPTIMIZATION ALGORITHM SUMMARY:
+
+FIRST-ORDER (use gradient):
+  → Gradient Descent: O(n), O(1/k) convergence
+  → SGD: O(1) per step, scales to big data
+  → Momentum: accelerates in consistent directions
+  → Nesterov: look-ahead, optimal O(1/k²)
+  → AdaGrad: per-param lr (good for sparse)
+  → RMSprop: exponential moving average of squared grad
+  → Adam: momentum + RMSprop (DEFAULT)
+  → AdamW: Adam + decoupled weight decay
+
+SECOND-ORDER (use Hessian):
+  → Newton: O(n³), quadratic convergence
+  → BFGS: quasi-Newton, O(n²) memory
+  → L-BFGS: limited memory, O(n)
+  → Natural gradient: Fisher information matrix
+
+CONSTRAINED:
+  → Projected gradient: project onto feasible set
+  → Penalty methods: add penalty for violation
+  → Barrier methods: log barrier inside feasible set
+  → Interior point: follow central path
+  → Augmented Lagrangian: combine penalty + Lagrangian
+
+METAHEURISTICS (non-convex, combinatorial):
+  → Simulated annealing: temperature-based exploration
+  → Genetic algorithms: population-based evolution
+  → Particle swarm: swarm intelligence
+  → Bayesian optimization: surrogate model
+
+CHOOSE BASED ON:
+  → Problem size (n parameters)
+  → Convex or non-convex
+  → Smooth or non-smooth
+  → Constrained or unconstrained
+  → Differentiable or black-box
+
+"Essentially, all models are approximations.
+ Some are useful, some are optimized."
+"""
+
+print(summary)
+
+# FINAL COMPARISON TABLE:
+# ┌──────────────┬────────┬──────────┬──────────────┬─────────────┐
+# │ Method       │ Memory │ Per-step │ Convergence  │ Best For    │
+# ├──────────────┼────────┼──────────┼──────────────┼─────────────┤
+# │ GD           │ O(n)   │ O(n)     │ O(1/k)       │ Small convex│
+# │ SGD          │ O(n)   │ O(1)     │ noisy        │ Big data    │
+# │ Adam         │ O(2n)  │ O(n)     │ adaptive     │ Deep learn  │
+# │ Newton       │ O(n²)  │ O(n³)    │ O(c^2k)      │ Small smooth│
+# │ BFGS         │ O(n²)  │ O(n²)    │ superlinear  │ Medium      │
+# │ L-BFGS       │ O(n)   │ O(n)     │ superlinear  │ Large convex│
+# │ CVXPY        │ varies │ varies   │ global opt   │ Convex spec │
+# │ Sim. anneal  │ O(n)   │ O(n)     │ global opt   │ Non-convex  │
+# └──────────────┴────────┴──────────┴──────────────┴─────────────┘</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Learning Rate বিপদ:</strong> খুব বড় η — minimum পার হয়ে oscillation বা divergence। খুব ছোট η — অনন্তকাল ধরে চলে। সেরা η — ফাংশনের বক্রতা (curvature) অনুসারে। কিন্তু বক্রতা কীভাবে মাপবে? সেই উত্তর আসবে পরের দরজায় — Newton-এর দ্বিতীয় ডেরিভেটিভ।</div></div>
 
