@@ -542,19 +542,386 @@ doors.push({
     <div class="diag-cap">বাম: race condition — দুজন একসাথে লিখলে ফাইল নষ্ট। ডান: semaphore — একজন লেখে, অন্যজন অপেক্ষা করে। P (wait) রিসোর্স নেয়, V (signal) ছেড়ে দেয়।</div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 Semaphore — অপারেশন</h4>
-    <table class="kv-table">
-      <tr><th>অপারেশন</th><th>ডাচ নাম</th><th>কাজ</th></tr>
-      <tr><td class="hl">P / wait</td><td>proberen (পরীক্ষা)</td><td>S কমাও। যদি S < ০, ব্লক হও</td></tr>
-      <tr><td class="hl">V / signal</td><td>verhogen (বৃদ্ধি)</td><td>S বাড়াও। যদি S ≤ ০, একজনকে জাগাও</td></tr>
-      <tr><td class="hl">মিউটেক্স (Mutex)</td><td>—</td><td>Binary semaphore — S শুধু ০ বা ১</td></tr>
-      <tr><td class="hl">Counting semaphore</td><td>—</td><td>S যেকোনো সংখ্যা — N রিসোর্স</td></tr>
-    </table>
-    <br>
-    <p><strong>বিতরণ সিস্টেমে গুরুত্ব:</strong> একটা মেশিনে mutual exclusion সহজ — একই মেমরি। কিন্তু হাজার মেশিনে? সেখানে কে লক ধরবে? এটাই consensus সমস্যা — Door ৪-এ Paxos দেখবে।</p>
-    <p><strong>ডাইকস্ট্রার উত্তরাধিকার:</strong> Semaphore (১৯৬৫), shortest-path algorithm, structured programming প্রচার, "Go To Considered Harmful" (১৯৬৮)। Turing Award ১৯৭২। তিনি প্রোগ্রামিংকে গণিতের মতো কঠোর শাখা হিসেবে দেখতেন।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: Race conditions and mutual exclusion ──
+# When multiple processes access shared data simultaneously → chaos.
+
+race_condition = """
+RACE CONDITION:
+
+Two threads read/update the same variable:
+  Thread 1: reads balance (100)
+  Thread 2: reads balance (100)
+  Thread 1: balance = 100 + 50 = 150  → writes 150
+  Thread 2: balance = 100 - 30 = 70   → writes 70  ← WRONG!
+
+  Expected: 100 + 50 - 30 = 120
+  Actual: 70 (Thread 2's write overwrote Thread 1)
+
+MUTUAL EXCLUSION (Mutex):
+  → Only ONE thread can access the resource at a time
+  → Thread 1 locks → does work → unlocks
+  → Thread 2 waits until lock released
+  → No interleaving, no data corruption
+
+SEMAPHORE (Dijkstra, 1965):
+  A counter that controls access:
+  → P (wait/proberen): decrement counter, block if < 0
+  → V (signal/verhogen): increment counter, wake one if <= 0
+"""
+
+print(race_condition)
+
+# PYTHON: Race condition and mutex:
+race_code = """
+import threading
+
+balance = 100
+
+# WITHOUT LOCK (race condition):
+def deposit_without_lock(amount):
+    global balance
+    temp = balance          # read
+    temp += amount          # modify
+    balance = temp          # write ← another thread might overwrite!
+
+# WITH LOCK (safe):
+lock = threading.Lock()
+
+def deposit_with_lock(amount):
+    global balance
+    with lock:              # acquire lock
+        temp = balance
+        temp += amount
+        balance = temp      # safe — no other thread can interleave
+                        # lock released automatically (context manager)
+
+# Test with 1000 threads each depositing $1:
+threads = []
+for _ in range(1000):
+    t = threading.Thread(target=deposit_with_lock, args=(1,))
+    threads.append(t)
+    t.start()
+
+for t in threads:
+    t.join()
+
+print(f"Final balance: {balance}")  # Should be 1100 with lock
+                                      # Might be 1047 without lock (race!)
+"""
+
+print(race_code)</div>
+
+  <div class="code-block"># ── STEP 2: Semaphores vs Mutexes ──
+# Different synchronization primitives for different needs.
+
+comparison = {
+    "Mutex (Binary Semaphore)": {
+        "what": "Lock that only ONE thread can hold",
+        "values": "0 (locked) or 1 (unlocked)",
+        "use_case": "Mutual exclusion (one at a time)",
+        "example": "Bank account update, file write",
+    },
+    "Counting Semaphore": {
+        "what": "Counter allowing N concurrent access",
+        "values": "0 to N (any positive integer)",
+        "use_case": "Resource pool (N connections, N printers)",
+        "example": "Connection pool (max 10 DB connections)",
+    },
+    "RWLock (Read-Write Lock)": {
+        "what": "Multiple readers OR one writer",
+        "values": "Shared (read) or exclusive (write)",
+        "use_case": "Read-heavy data (cache, config)",
+        "example": "Cache reads (parallel) vs cache update (exclusive)",
+    },
+    "Condition Variable": {
+        "what": "Wait until a condition becomes true",
+        "values": "Signal/broadcast to wake waiters",
+        "use_case": "Producer-consumer pattern",
+        "example": "Task queue (wait for tasks)",
+    },
+}
+
+print("SYNCHRONIZATION PRIMITIVES:")
+for prim, info in comparison.items():
+    print(f"\\n  {prim}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# SEMAPHORE OPERATIONS:
+sem_ops = """
+SEMAPHORE OPERATIONS (Dutch names by Dijkstra):
+
+P (proberen = "to test"):
+  S = S - 1
+  if S < 0: block (wait in queue)
+
+V (verhogen = "to increase"):
+  S = S + 1
+  if S <= 0: wake one waiting process
+
+BINARY SEMAPHORE (Mutex):
+  S starts at 1
+  P: S=0 (locked)
+  V: S=1 (unlocked)
+  → Only ONE process in critical section
+
+COUNTING SEMAPHORE:
+  S starts at N (e.g., 10 for connection pool)
+  P: S-- (take a slot)
+  V: S++ (release a slot)
+  → Up to N concurrent processes
+"""
+print(sem_ops)</div>
+
+  <div class="code-block"># ── STEP 3: Deadlock and how to prevent it ──
+# When processes wait forever for each other's locks.
+
+deadlock = """
+DEADLOCK:
+
+Thread 1: holds Lock A, waits for Lock B
+Thread 2: holds Lock B, waits for Lock A
+→ Both wait forever. Deadlock!
+
+FOUR CONDITIONS FOR DEADLOCK (Coffman):
+1. Mutual Exclusion: resources are non-shareable
+2. Hold and Wait: holding one resource, waiting for another
+3. No Preemption: can't forcefully take resources
+4. Circular Wait: A waits B, B waits C, C waits A
+
+PREVENTION STRATEGIES:
+1. Lock Ordering: ALWAYS acquire locks in the SAME order
+   → Lock A before Lock B (never B before A)
+   → Eliminates circular wait
+
+2. Lock Timeout: if can't get lock in N seconds, release all and retry
+   → Eliminates hold-and-wait
+
+3. Deadlock Detection: periodically check for cycles, kill one process
+   → Used by databases (PostgreSQL, MySQL)
+
+4. Two-Phase Locking: acquire ALL locks first, then do work, then release ALL
+   → Eliminates hold-and-wait
+"""
+
+print(deadlock)
+
+# PYTHON: Deadlock prevention:
+deadlock_code = """
+import threading
+import time
+
+# BAD: Different lock order → potential deadlock:
+def transfer_bad(from_account, to_account, amount):
+    from_account.lock.acquire()  # Lock A
+    time.sleep(0.01)  # Simulate work
+    to_account.lock.acquire()    # Lock B ← might deadlock!
+    # ... transfer ...
+    to_account.lock.release()
+    from_account.lock.release()
+
+# GOOD: Consistent lock ordering → no deadlock:
+def transfer_good(account_a, account_b, amount):
+    # Always lock lower-ID account first:
+    first = account_a if account_a.id < account_b.id else account_b
+    second = account_b if account_a.id < account_b.id else account_a
+
+    first.lock.acquire()
+    second.lock.acquire()
+    # ... transfer ...
+    second.lock.release()
+    first.lock.release()
+
+# This eliminates circular wait: all threads acquire locks in same order.
+"""
+
+print(deadlock_code)</div>
+
+  <div class="code-block"># ── STEP 4: Distributed mutual exclusion ──
+# Locking across multiple machines is much harder.
+
+distributed_lock = """
+DISTRIBUTED MUTUAL EXCLUSION:
+
+Single machine: mutex/semaphore works (shared memory).
+Multiple machines: no shared memory → need distributed locking.
+
+THREE APPROACHES:
+
+1. CENTRALIZED (simplest):
+   → One "lock server" manages all locks
+   → Pros: simple, correct
+   → Cons: single point of failure, bottleneck
+
+2. TOKEN PASSING (ring):
+   → Machines form a logical ring
+   → Token circulates; only token holder can access resource
+   → Pros: fair, no central server
+   → Cons: token loss, node failure
+
+3. RAFT/PAXOS CONSENSUS:
+   → Quorum of nodes agrees on who holds the lock
+   → Pros: fault-tolerant, no single point of failure
+   → Cons: complex, latency overhead
+   → Used by: etcd, ZooKeeper, Consul, Redis Redlock
+"""
+
+print(distributed_lock)
+
+# REDIS DISTRIBUTED LOCK (Redlock):
+redis_lock = """
+REDIS REDLOCK ALGORITHM:
+
+import redis
+import time
+import uuid
+
+def acquire_lock(redis_client, lock_name, timeout=10):
+    identifier = str(uuid.uuid4())
+    end = time.time() + timeout
+
+    while time.time() < end:
+        # SET NX = only if not exists, PX = expire after ms:
+        if redis_client.set(lock_name, identifier, nx=True, px=timeout*1000):
+            return identifier  # Got the lock!
+        time.sleep(0.001)  # Brief wait before retry
+
+    return None  # Timeout, couldn't get lock
+
+def release_lock(redis_client, lock_name, identifier):
+    # Only release if we still own it (check + delete atomically):
+    script = '''
+    if redis.call("get", KEYS[1]) == ARGV[1] then
+        return redis.call("del", KEYS[1])
+    else
+        return 0
+    end
+    '''
+    return redis_client.eval(script, 1, lock_name, identifier)
+
+# Usage:
+lock_id = acquire_lock(redis_client, "user:42:update")
+if lock_id:
+    try:
+        # Critical section (only one process at a time):
+        update_user(42)
+    finally:
+        release_lock(redis_client, "user:42:update", lock_id)
+"""
+
+print(redis_lock)</div>
+
+  <div class="code-block"># ── STEP 5: Common concurrency patterns ──
+# Reusable patterns for concurrent programming.
+
+patterns = {
+    "Producer-Consumer": {
+        "how": "Producers add to queue, consumers take from queue",
+        "sync": "Semaphore or condition variable for empty/full",
+        "use": "Task queues, message processing, log writers",
+    },
+    "Readers-Writers": {
+        "how": "Multiple readers OK, only one writer at a time",
+        "sync": "RWLock (shared for reads, exclusive for writes)",
+        "use": "Caches, configuration, databases",
+    },
+    "Dining Philosophers": {
+        "how": "N philosophers need 2 forks to eat, N forks on table",
+        "sync": "Lock ordering or resource hierarchy",
+        "use": "Classic deadlock example (educational)",
+    },
+    "Barrier": {
+        "how": "N threads wait at barrier, all proceed when N arrive",
+        "sync": "CountDownLatch or CyclicBarrier",
+        "use": "Parallel computation phases (MapReduce)",
+    },
+    "Future/Promise": {
+        "how": "Start async work, get result later",
+        "sync": "async/await or threading.Future",
+        "use": "API calls, file I/O, parallel tasks",
+    },
+    "Thread Pool": {
+        "how": "Fixed pool of workers processing tasks from queue",
+        "sync": "Queue + semaphore",
+        "use": "Web servers, background jobs",
+    },
+}
+
+print("CONCURRENCY PATTERNS:")
+for pattern, info in patterns.items():
+    print(f"\\n  {pattern}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# PRODUCER-CONSUMER (Python):
+producer_consumer = """
+import threading
+import queue
+import time
+
+# Thread-safe queue:
+task_queue = queue.Queue(maxsize=10)
+
+# Producer:
+def producer():
+    for i in range(20):
+        task_queue.put(i)  # Blocks if queue full
+        print(f"Produced: {i}")
+
+# Consumer:
+def consumer():
+    while True:
+        item = task_queue.get()  # Blocks if queue empty
+        print(f"Consumed: {item}")
+        task_queue.task_done()
+
+# Start:
+for _ in range(3):
+    threading.Thread(target=consumer, daemon=True).start()
+producer()
+task_queue.join()  # Wait for all tasks done
+"""
+
+print(producer_consumer)</div>
+
+  <div class="code-block"># ── STEP 6: Best practices for concurrent systems ──
+# Avoid the most common concurrency pitfalls.
+
+best_practices = [
+    "Always use locks for shared mutable state",
+    "Prefer immutable data (no locks needed if data doesn't change)",
+    "Use consistent lock ordering to prevent deadlock",
+    "Keep critical sections SHORT (minimize lock hold time)",
+    "Never hold a lock while doing I/O (network, file, database)",
+    "Use thread-safe data structures (Queue, ConcurrentHashMap)",
+    "Prefer message passing (channels) over shared memory",
+    "Use timeout on locks (detect deadlock early)",
+    "Test with many threads (race conditions are non-deterministic)",
+    "Use static analysis tools (ThreadSanitizer, Helgrind)",
+    "In distributed systems: use consensus (Raft/Paxos) for locks",
+    "Consider lock-free data structures (CAS, atomic operations)",
+    "Document lock ordering conventions for the team",
+    "Use connection pools (semaphore for limited connections)",
+    "Monitor for deadlocks in production (alert if detected)",
+]
+
+print("CONCURRENCY BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Race condition   │ Concurrent access → corruption  │
+# │ Mutex            │ One thread at a time            │
+# │ Semaphore        │ N threads at a time             │
+# │ Deadlock         │ Circular wait → both stuck      │
+# │ Lock ordering    │ Always acquire in same order    │
+# │ Distributed lock │ Redis Redlock / etcd / Raft     │
+# │ Producer-Consumer│ Queue + semaphore pattern       │
+# │ RWLock           │ Many readers, one writer        │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ২ (Bazaar of Algorithms) Door ১৪-এ Graphs (BFS/DFS) শিখেছিলে — ডাইকস্ট্রা shortest-path algorithm সেই গ্রাফ থিওরির অংশ। Book ৪ (System Design) Door ৫-এ Transactions & ACID শিখেছিলে — ট্রানজেকশনের 'I' (Isolation) হলো mutual exclusion-এর ডেটাবেস রূপ।</div></div>
 
