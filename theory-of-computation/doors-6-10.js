@@ -19,30 +19,388 @@ doors.push({
 <div class="dialogue"><strong>কার্ট গোডেল:</strong> (চশমার পিছনে গভীর চোখ) তুমি ভাবো — গণিত সম্পূর্ণ। Hilbert তো বলেছিলেন — প্রতিটি সত্য গাণিতিক বাক্য প্রমাণ করা যাবে। আমি ১৯৩১ সালে দেখালাম — না। যেকোনো সামঞ্জস্যপূর্ণ যুক্তিব্যবস্থা যা পাটিগণিত বর্ণনা করতে পারে, সেখানে এমন সত্য আছে যা প্রমাণ করা যায় না। সত্য আছে — কিন্তু প্রমাণ নেই।</div>
 <div class="dialogue en"><strong>Kurt Gödel:</strong> (deep eyes behind glasses) You think — mathematics is complete. Hilbert said — every true mathematical statement can be proved. I showed in 1931 — no. Any consistent formal system that can describe arithmetic contains true statements that cannot be proved. Truth exists — but proof does not.</div>
 
-<div class="code-block">
-<strong>Gödel-এর প্রথম অসম্পূর্ণতা উপপাদ্য (১৯৩১):</strong>
+<div class="code-block"># ── STEP 1: Gödel's incompleteness theorems ──
+# The limits of formal mathematics.
 
-যেকোনো সামঞ্জস্যপূর্ণ (consistent), কার্যকরভাবে উৎপাদনযোগ্য (effectively axiomatizable),
-এবং পর্যাপ্ত শক্তিশালী (sufficiently powerful — অর্থাৎ পাটিগণিত এনকোড করতে পারে)
-যুক্তিব্যবস্থায় (formal system F):
+godel = """
+GÖDEL'S INCOMPLETENESS THEOREMS (1931):
 
-∃ G ∈ F যাতে:
-• G সত্য (F-এর মডেলে সত্য)
-• G F-তে প্রমাণযোগ্য নয় (¬G-ও F-তে প্রমাণযোগ্য নয়)
+FIRST THEOREM:
+  In any consistent, effectively axiomatizable formal system F
+  that is sufficiently powerful (encodes arithmetic):
 
-<strong>মূল কৌশল — Gödel Numbering:</strong>
-প্রতিটি গাণিতিক বাক্যকে একটি অনন্য সংখ্যা দাও (Gödel number)।
-তাহলে বাক্য সংখ্যার মতো আচরণ করতে পারে।
-এবং বাক্য নিজের সম্পর্কে কথা বলতে পারে — self-reference।
+  There exists a statement G such that:
+  → G is TRUE (in the standard model)
+  → G is NOT provable in F
+  → ¬G (negation) is also NOT provable in F
 
-Gödel একটি বাক্য G বানান যা বলে: "G প্রমাণযোগ্য নয়।"
-এটা Epimenides paradox-এর গাণিতিক রূপ — "আমি মিথ্যা বলছি।"
-কিন্তু Gödel এটাকে কঠোর গণিতে রূপ দেন।
+  → F is INCOMPLETE: contains true but unprovable statements
 
-<strong>দ্বিতীয় অসম্পূর্ণতা উপপাদ্য:</strong>
-F-এর সামঞ্জস্য (consistency) নিজেই F-এর ভেতরে প্রমাণ করা যায় না।
-অর্থাৎ — একটি সিস্টেম নিজেকে নির্ভরযোগ্য বলতে পারে না।
-</div>
+SECOND THEOREM:
+  F cannot prove its own consistency.
+
+  → No system can certify itself as consistent
+  → Mathematics cannot be fully "mechanized"
+
+GÖDEL NUMBERING:
+  Assign unique number to each mathematical statement.
+  → Statements become numbers → arithmetic can talk about statements
+  → Self-reference: "This statement is not provable"
+
+  G = "Statement with Gödel number g is not provable"
+  → g = Gödel number of G itself
+  → If G provable → G false → system inconsistent
+  → If G not provable → G true → system incomplete
+
+IMPACT ON COMPUTER SCIENCE:
+  → Inspired Turing's Halting Problem
+  → Limits of formal verification
+  → No "complete" proof system for math
+  → Hilbert's program (mechanize all math) is IMPOSSIBLE
+
+CONNECTION TO HALTING PROBLEM:
+  Gödel: math is incomplete (true but unprovable)
+  Turing: computation is undecidable (no algorithm for halting)
+  → Both are self-reference paradoxes made rigorous
+"""
+
+print(godel)</div>
+
+<div class="code-block"># ── STEP 2: P vs NP deep dive ──
+# The most important open problem.
+
+p_vs_np = """
+P vs NP — DEEP DIVE:
+
+THE QUESTION:
+  P: problems solvable in polynomial time
+  NP: problems verifiable in polynomial time
+
+  P ⊆ NP (trivially: if you can solve, you can verify)
+  Is P = NP?
+
+WHY IT MATTERS:
+  If P = NP:
+    → All NP problems have efficient algorithms
+    → Cryptography breaks (RSA, AES depend on hard problems)
+    → Optimization becomes easy (TSP, scheduling)
+    → AI becomes much more powerful (learning is NP-hard)
+    → But: nobody believes this
+
+  If P ≠ NP:
+    → Some problems are inherently hard
+    → Can't solve everything efficiently
+    → Cryptography is secure
+    → Must use heuristics/approximation for hard problems
+
+NP-COMPLETENESS:
+  A problem L is NP-complete if:
+  1. L ∈ NP
+  2. Every problem in NP reduces to L in polynomial time
+
+  Cook-Levin Theorem (1971): SAT is NP-complete
+  → First NP-complete problem
+  → All others reduce from it
+
+FAMOUS NP-COMPLETE PROBLEMS:
+  → SAT / 3-SAT (Boolean satisfiability)
+  → Traveling Salesman (decision version)
+  → Graph coloring (k-coloring)
+  → Clique (find complete subgraph)
+  → Vertex cover
+  → Hamiltonian path/cycle
+  → Subset sum / Knapsack (decision)
+  → Sudoku (generalized n×n)
+
+TECHNIQUES FOR NP-HARD PROBLEMS:
+  1. EXACT (slow):
+     → Brute force O(2^n)
+     → Branch and bound (prune)
+     → Dynamic programming (if structure allows)
+
+  2. APPROXIMATION:
+     → Guarantee within factor α of optimal
+     → TSP: Christofides (1.5×)
+     → Vertex cover: greedy (2×)
+
+  3. HEURISTICS:
+     → Greedy (fast, no guarantee)
+     → Local search (hill climbing)
+     → Simulated annealing, genetic algorithms
+
+  4. SAT SOLVERS:
+     → DPLL, CDCL (conflict-driven clause learning)
+     → Z3, MiniSAT, Caffeine
+     → Often fast in practice despite worst case
+
+PYTHON (3-SAT solver):
+  import itertools
+
+  def solve_3sat(clauses, n_vars):
+      \"\"\"Brute force 3-SAT solver.\"\"\"
+      for assignment in itertools.product([False, True], repeat=n_vars):
+          if all(any(assignment[abs(lit)-1] if lit > 0 else
+                     not assignment[abs(lit)-1] for lit in clause)
+                 for clause in clauses):
+              return assignment
+      return None  # unsatisfiable
+
+  # Example: (x1 OR x2) AND (NOT x1 OR x3)
+  clauses = [[1, 2], [-1, 3]]
+  result = solve_3sat(clauses, 3)
+  print(f"Solution: {result}")
+"""
+
+print(p_vs_np)</div>
+
+<div class="code-block"># ── STEP 3: Space complexity ──
+# PSPACE, EXPTIME, and beyond.
+
+space = """
+SPACE COMPLEXITY:
+
+SPACE(f(n)) = problems solvable using O(f(n)) memory
+
+PSPACE:
+  Solvable with polynomial SPACE (but maybe exponential time).
+  → Includes all of P and NP
+  → Examples: games (chess, Go on n×n board), QBF
+
+  P ⊆ NP ⊆ PSPACE (known inclusions)
+  At least one inclusion is strict (unknown which)
+
+EXPTIME:
+  Solvable in exponential TIME.
+  → Strictly contains P (Time Hierarchy Theorem)
+  → Some games are EXPTIME-complete
+
+L (LOGSPACE):
+  Solvable with O(log n) space.
+  → Very limited (read-only input, constant working memory)
+  → L ⊆ NL ⊆ P (known)
+  → Is L = NL? (open, Savitch's theorem: NSPACE(f) ⊆ SPACE(f²))
+
+PSPACE-COMPLETE:
+  Hardest problems in PSPACE.
+  → QBF (quantified Boolean formula): ∀x ∃y ∀z ...
+  → Generalized chess, Go, Hex
+  → If PSPACE = P, all these become tractable
+
+SAVITCH'S THEOREM:
+  NSPACE(f(n)) ⊆ SPACE(f(n)²)
+  → Nondeterminism saves at most square root of space
+  → PSPACE = NPSPACE (nondeterminism doesn't help with space)
+
+LADNER'S THEOREM:
+  If P ≠ NP, then there exist problems in NP that are:
+  → Neither in P
+  → Neither NP-complete
+  → "NP-intermediate" (between P and NP-complete)
+
+  Candidates: factoring, graph isomorphism, discrete log
+"""
+
+print(space)</div>
+
+<div class="code-block"># ── STEP 4: Quantum computation ──
+# Beyond classical Turing machines.
+
+quantum = """
+QUANTUM COMPUTATION:
+
+QUANTUM BITS (QUBITS):
+  Classical bit: 0 or 1
+  Qubit: superposition α|0⟩ + β|1⟩ (α²+β²=1)
+  → Can be in BOTH states simultaneously
+
+QUANTUM PARALLELISM:
+  n qubits can represent 2^n states simultaneously
+  → Quantum computer processes all at once (in superposition)
+  → But measurement collapses to ONE outcome
+
+KEY ALGORITHMS:
+  1. SHOR'S ALGORITHM (1994):
+     Factor integers in polynomial time
+     → Breaks RSA, ECC (current crypto)
+     → O((log n)³) vs classical O(exp(n^(1/3)))
+
+  2. GROVER'S ALGORITHM (1996):
+     Search unsorted database in √n
+     → Quadratic speedup (not exponential)
+     → Speeds up brute force
+
+  3. QUANTUM FOURIER TRANSFORM:
+     Exponential speedup for periodic structure
+     → Core of Shor's algorithm
+
+COMPLEXITY CLASS BQP:
+  Bounded-error Quantum Polynomial time
+  → Problems solvable by quantum computer in poly time
+  → Factoring ∈ BQP (via Shor)
+  → Relationship: P ⊆ BQP ⊆ PSPACE
+  → BQP vs NP: unknown (neither known to contain the other)
+
+QUANTUM SUPREMACY (2019):
+  Google: Sycamore processor outperforms classical on specific task
+  → 200 seconds vs estimated 10,000 years (classical)
+  → But task is not practically useful
+
+POST-QUANTUM CRYPTOGRAPHY:
+  → Lattice-based crypto (NTRU, LWE)
+  → Hash-based signatures
+  → Code-based crypto (McEliece)
+  → NIST standardization ongoing
+
+PYTHON (Qiskit):
+  from qiskit import QuantumCircuit, execute, Aer
+
+  # Bell state (entanglement):
+  qc = QuantumCircuit(2, 2)
+  qc.h(0)      # Hadamard gate (superposition)
+  qc.cx(0, 1)  # CNOT gate (entangle)
+  qc.measure([0,1], [0,1])
+
+  result = execute(qc, Aer.get_backend('qasm_simulator')).result()
+  print(result.get_counts())
+  # {'00': 500, '11': 500} — always correlated!
+"""
+
+print(quantum)</div>
+
+<div class="code-block"># ── STEP 5: Advanced computability ──
+# Kolmogorov complexity and information theory.
+
+advanced_comp = """
+ADVANCED COMPUTABILITY:
+
+KOLMOGOROV COMPLEXITY K(x):
+  Length of shortest program that outputs string x.
+  → Measures "intrinsic information content"
+  → Random strings have K(x) ≈ |x| (incompressible)
+  → Patterned strings have K(x) << |x| (compressible)
+
+  UNCOMPUTABLE: No algorithm can compute K(x) exactly.
+  → If you could, you could solve Halting Problem
+  → Can approximate from above (try programs, see if they output x)
+
+  APPLICATIONS:
+    → Compression (zip, gzip approximate K)
+    → ML: MDL (Minimum Description Length) principle
+    → Randomness testing (is this sequence random?)
+
+CHAITIN'S CONSTANT Ω:
+  Probability that a random program halts.
+  → Uncomputable (would solve Halting)
+  → Algorithmically random (digits are incompressible)
+  → Shows limits of mathematics
+
+BUSY BEAVER PROBLEM:
+  BB(n) = maximum steps a halting n-state TM can take
+  → Grows FASTER than any computable function
+  → BB(5) = 47,176,870 (known)
+  → BB(6) > 10^36,534 (known lower bound)
+
+  → Shows uncomputable functions grow insanely fast
+
+ORACLE MACHINES:
+  TM with an "oracle" that solves a problem for free.
+  → O(Halting): can solve Halting Problem
+  → But creates HIGHER undecidable problems
+  → Arithmetic hierarchy: Σ_n, Π_n (levels of undecidability)
+
+RECURSION THEORY:
+  Study of what is computable relative to what.
+  → Turing reducibility: A ≤_T B (A computable with B oracle)
+  → Turing degrees: equivalence classes
+  → Post's problem: are there degrees between 0 and 0'?
+  → Answer: YES (Friedberg-Muchnik, 1956)
+
+PYTHON (incompressibility demo):
+  import random
+
+  def kolmogorov_estimate(s):
+      \"\"\"Crude approximation: compressed length.\"\"\"
+      import zlib
+      compressed = zlib.compress(s.encode())
+      return len(compressed)
+
+  # Random string (incompressible):
+  random_str = ''.join(random.choice('01') for _ in range(1000))
+  print(f"Random: K≈{kolmogorov_estimate(random_str)}")
+
+  # Patterned string (compressible):
+  pattern_str = '01' * 500
+  print(f"Pattern: K≈{kolmogorov_estimate(pattern_str)}")
+  # Pattern is much shorter when compressed!
+"""
+
+print(advanced_comp)</div>
+
+<div class="code-block"># ── STEP 6: The complete computation journey ──
+# Your path through theory.
+
+journey = """
+YOUR COMPUTATION THEORY JOURNEY:
+
+You started seeing theory as "abstract math."
+You finish seeing the FOUNDATIONS OF ALL COMPUTING:
+
+WHAT YOU'VE MASTERED:
+  ✅ Finite automata (DFA/NFA) and regular languages
+  ✅ Regular expressions (and their equivalence to DFA)
+  ✅ Pushdown automata and context-free grammars
+  ✅ Turing machines and the Church-Turing thesis
+  ✅ The Halting Problem (uncomputability)
+  ✅ Decidability and reductions
+  ✅ Complexity classes: P, NP, NP-complete, PSPACE
+  ✅ P vs NP (the most important open problem)
+  ✅ Approximation algorithms for NP-hard problems
+  ✅ Quantum computation (Shor, Grover)
+  ✅ Kolmogorov complexity and information theory
+  ✅ Gödel's incompleteness theorems
+
+THE COMPUTER SCIENTIST'S MINDSET:
+  1. "Is this computable?" (decidability)
+  2. "How fast?" (complexity)
+  3. "Can we prove it?" (verification)
+  4. "What are the limits?" (impossibility)
+  5. "What model captures this?" (abstraction)
+
+"We can only see a short distance ahead,
+ but we can see plenty there that needs to be done."
+ — Alan Turing (1950)
+
+WHAT TO STUDY NEXT:
+  → Algorithms (Book 2/DSA): complexity in practice
+  → Cryptography (Book 7): complexity = security
+  → Quantum Computing: Nielsen & Chuang
+  → Type Theory / Category Theory: foundations
+  → Computational Complexity: Arora & Barak
+  → "Gödel, Escher, Bach" (Hofstadter): self-reference
+
+Every program you write, every algorithm you design,
+every system you build is constrained by these laws.
+
+Welcome to computational literacy.
+"""
+
+print(journey)
+
+# FINAL SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Door             │ Key Concept                     │
+# ├──────────────────┼──────────────────────────────────┤
+# │ 1 Automata       │ DFA/NFA, regex, Turing machines │
+# │ 2 NFA            │ Nondeterminism, subset construct │
+# │ 3 Regex→NFA      │ Thompson's construction          │
+# │ 4 CFG            │ Parsing, ambiguity, CYK          │
+# │ 5 Decidability   │ P, NP, NP-complete              │
+# │ 6 Gödel          │ Incompleteness theorems         │
+# │ 7 P vs NP        │ SAT, NP-completeness            │
+# │ 8 Space          │ PSPACE, Savitch, L vs NL       │
+# │ 9 Quantum        │ Shor, Grover, BQP              │
+# │ 10 Kolmogorov    │ Complexity, information theory  │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="dialogue"><strong>তুমি:</strong> কিন্তু এটা তো গণনার বাইরে! এটা গণিতের ভিত্তি নাড়িয়ে দিল!</div>
 <div class="dialogue en"><strong>You:</strong> But this is beyond computation! It shook the foundations of mathematics!</div>
