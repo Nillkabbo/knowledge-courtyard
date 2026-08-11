@@ -26,36 +26,466 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Eval on Training Data:</strong> Eval set overlapped with training data — scores inflated 30%. Fix: strictly deduplicate.</div></div>
 
 
-<div class="code-block">Why Evaluate — The Foundation of AI Engineering:
+<div class="code-block"># ── STEP 1: Why evaluate — the foundation of AI engineering ──
+# If you can't measure it, you can't improve it.
+
+why_eval = """
+WHY EVALUATE — THE FOUNDATION OF AI ENGINEERING:
 
 THE EVALUATION CRISIS:
-  "It works on my examples!"
-  → সবাই এটা বলে
-  → কিন্তু কয়টা example? ৫? ১০?
-  → production-এ হাজার ইউজার, লাখ কোয়েরি
-  → তোমার ৫ example = ০.০০১% coverage
-  
-  "Users seem happy!"
-  → কিভাবে জানলে?
-  → অনুমান নয় — feedback form, rating, tracking
-  → silent failures — ইউজার অসন্তুষ্ট, কিন্তু বলে না
-
-  "GPT-4 is better than GPT-3.5"
-  → কিভাবে জানলে? কোন metric?
-  → vibes নয় — benchmark
+  "It works on my examples!" → only 5-10 examples tested
+  "Users seem happy!" → no data, just vibes
+  "GPT-4 is better" → based on what metric?
 
 WHY EVAL MATTERS:
 
-  ১. MODEL SELECTION
-    কোন model বেছে নাও?
-    → GPT-4o vs Claude 3.5 vs Gemini?
-    → তোমার task-এ কোনটা ভালো?
-    → eval ছাড়া? অনুমান
-    
-    Solution: প্রতিটা model-এ eval run করো
-    → highest score = best for your task
+1. MODEL SELECTION:
+   → Which model is best for YOUR task?
+   → Run eval on each → highest score wins
+   → No guessing, data-driven decision
 
-  ২. REGRESSION DETECTION
+2. REGRESSION DETECTION:
+   → New version = better or broken?
+   → Prompt change → did it break something?
+   → Eval every change → score drop = alert
+
+3. CONTINUOUS IMPROVEMENT:
+   → Week 1: 65% accuracy
+   → Week 2: 72% (improving!)
+   → Week 3: 68% (regression!)
+   → Measure every week
+
+4. COST JUSTIFICATION:
+   → GPT-4o ($20/1M) vs open model ($2/1M)
+   → Is 5% better worth 10x cost?
+   → Eval = data-driven ROI
+
+5. TRUST & COMMUNICATION:
+   → Stakeholder: "How good is the system?"
+   → You: "92% accuracy, up from 78% last month"
+   → Confidence from data
+
+THE EVALUATION MINDSET:
+  ❌ Anti-pattern: Build → deploy → hope
+  ✅ Pro-pattern: Build → eval → iterate → deploy
+
+EVAL TYPES:
+  Accuracy:     Is the answer correct?
+  Faithfulness: Is it grounded in facts?
+  Relevance:    Does it address the question?
+  Coherence:    Is it well-written?
+  Fluency:      Is it natural language?
+  Safety:       Is it harmful?
+  Latency:      How fast?
+  Cost:         How expensive?
+
+THE GOLDEN RULE:
+  "If you can't measure it, you can't improve it."
+  → Not "better" but "85.3% vs 78.1% — +7.2%"
+  → Vibes → data → decisions
+
+PYTHON (basic eval framework):
+  def evaluate_model(model, eval_data):
+      results = []
+      for item in eval_data:
+          response = model.generate(item['prompt'])
+          score = score_response(response, item['expected'])
+          results.append(score)
+
+      return {
+          'accuracy': sum(results) / len(results),
+          'total': len(results),
+          'passed': sum(1 for r in results if r >= 0.8)
+      }
+
+  eval_set = [
+      {'prompt': 'What is 2+2?', 'expected': '4'},
+      {'prompt': 'Capital of France?', 'expected': 'Paris'},
+      # ... 100+ items
+  ]
+  print(evaluate_model(my_model, eval_set))
+"""
+
+print(why_eval)</div>
+
+<div class="code-block"># ── STEP 2: LLM evaluation metrics ──
+# The right yardstick for each task.
+
+metrics = """
+LLM EVALUATION METRICS:
+
+1. EXACT MATCH:
+   → Output == expected (character-for-character)
+   → Good for: factual QA, math, coding
+   → Strict, misses paraphrases
+
+2. F1 / BLEU / ROUGE:
+   → Token overlap between output and reference
+   → BLEU: precision-oriented (translation)
+   → ROUGE: recall-oriented (summarization)
+   → F1: balanced (classification)
+
+3. SEMANTIC SIMILARITY:
+   → Embed output + reference → cosine similarity
+   → Captures meaning, not just words
+   → "feline" matches "cat" (high similarity)
+
+4. FAITHFULNESS (RAG-specific):
+   → Is the answer supported by retrieved sources?
+   → Check each claim against source documents
+   → Prevents hallucinations
+
+5. RELEVANCE:
+   → Does the answer address the question?
+   → Check topic match, question coverage
+   → Penalizes off-topic responses
+
+6. CODE EVALUATION:
+   → pass@k: does code pass test cases?
+   → HumanEval: 164 coding problems
+   → MBPP: 974 basic Python problems
+
+7. LLM BENCHMARKS:
+   → MMLU: 57 subjects, multiple choice
+   → GSM8K: grade school math
+   → HumanEval: coding
+   → HellaSwag: common sense reasoning
+   → TruthfulQA: truthfulness
+   → MT-Bench: multi-turn conversation
+
+8. PRODUCTION METRICS:
+   → Latency (TTFT, TPOT)
+   → Cost (per request, per token)
+   → User satisfaction (thumbs up/down)
+   → Task completion rate
+
+PYTHON (comprehensive eval):
+  from sklearn.metrics import f1_score
+  from sentence_transformers import SentenceTransformer
+  import numpy as np
+
+  model = SentenceTransformer('all-MiniLM-L6-v2')
+
+  def evaluate_response(response, reference, task='qa'):
+      scores = {}
+
+      # Exact match:
+      scores['exact_match'] = 1.0 if response.strip() == reference.strip() else 0.0
+
+      # Semantic similarity:
+      emb_resp = model.encode(response)
+      emb_ref = model.encode(reference)
+      scores['semantic_sim'] = float(np.dot(emb_resp, emb_ref) /
+                                     (np.linalg.norm(emb_resp) * np.linalg.norm(emb_ref)))
+
+      # Token overlap (F1):
+      resp_tokens = set(response.lower().split())
+      ref_tokens = set(reference.lower().split())
+      if resp_tokens and ref_tokens:
+          overlap = len(resp_tokens & ref_tokens)
+          precision = overlap / len(resp_tokens)
+          recall = overlap / len(ref_tokens)
+          scores['f1'] = 2 * precision * recall / (precision + recall)
+
+      return scores
+
+  result = evaluate_response(
+      "The capital of France is Paris.",
+      "Paris is the capital of France."
+  )
+  print(result)  # {'exact_match': 0.0, 'semantic_sim': 0.92, 'f1': 0.67}
+"""
+
+print(metrics)</div>
+
+<div class="code-block"># ── STEP 3: LLM-as-judge ──
+# Using AI to evaluate AI.
+
+llm_judge = """
+LLM-AS-JUDGE — AI EVALUATING AI:
+
+Use a strong LLM (GPT-4, Claude) to evaluate outputs of other models.
+Cheap, fast, scalable alternative to human evaluation.
+
+HOW IT WORKS:
+  1. Define evaluation criteria (rubric)
+  2. Give judge LLM: prompt, response, criteria
+  3. Judge outputs: score (1-5) + reasoning
+
+EVALUATION RUBRIC EXAMPLE:
+  "Rate this response (1-5) on:
+   - Accuracy: Is it factually correct?
+   - Helpfulness: Does it address the question?
+   - Clarity: Is it well-written?
+   - Safety: Is it free of harmful content?"
+
+PAIRWISE COMPARISON:
+  → Show judge two responses (A and B)
+  → Ask: "Which is better, A or B?"
+  → More reliable than absolute scoring
+  → Used in: Chatbot Arena, LMSYS
+
+PYTHON (LLM-as-judge):
+  from openai import OpenAI
+  client = OpenAI()
+
+  def llm_judge(prompt, response, criteria):
+      judge_prompt = f\"\"\"
+      You are an expert evaluator. Rate the following response.
+
+      Question: {prompt}
+      Response: {response}
+
+      Criteria: {criteria}
+      Rate from 1 (poor) to 5 (excellent).
+      Output JSON: {{"score": N, "reasoning": "..."}}
+      \"\"\"
+
+      result = client.chat.completions.create(
+          model="gpt-4",
+          messages=[{"role": "user", "content": judge_prompt}],
+          response_format={"type": "json_object"}
+      )
+      return result.choices[0].message.content
+
+  score = llm_judge(
+      prompt="Explain quantum computing",
+      response="Quantum computers use qubits...",
+      criteria="Accuracy, clarity, completeness"
+  )
+  print(score)  # {"score": 4, "reasoning": "..."}
+
+BIAS IN LLM-AS-JUDGE:
+  → Position bias: prefers first/last option
+  → Length bias: prefers longer responses
+  → Self-preference: GPT-4 prefers GPT-4 style
+  → Verbosity bias: more detail = higher score
+
+  Mitigations:
+  → Randomize order (A/B swap)
+  → Use multiple judges (ensemble)
+  → Calibrate against human ratings
+
+TOOLS:
+  → Ragas: RAG-specific evaluation
+  → DeepEval: open-source LLM eval
+  → Promptfoo: prompt testing + evaluation
+  → LangSmith: LLM observability + eval
+  → OpenAI Evals: OpenAI's eval framework
+"""
+
+print(llm_judge)</div>
+
+<div class="code-block"># ── STEP 4: Human evaluation ──
+# The gold standard.
+
+human_eval = """
+HUMAN EVALUATION — THE GOLD STANDARD:
+
+When LLM-as-judge isn't enough, use humans.
+Most reliable, most expensive.
+
+TYPES:
+
+1. LIKERT SCALE:
+   → Rate response 1-5 or 1-7
+   → Quick, quantitative
+   → Example: "Rate helpfulness (1-5)"
+
+2. PAIRWISE (A/B):
+   → Compare two responses side by side
+   → "Which is better: A or B?"
+   → More reliable than absolute scoring
+   → Elo rating system (like chess)
+
+3. RANKING:
+   → Rank multiple responses (1st, 2nd, 3rd)
+   → Good for comparing many options
+
+4. MULTI-DIMENSIONAL:
+   → Rate on multiple criteria
+   → Accuracy, clarity, completeness, safety
+   → More nuanced picture
+
+5. TASK COMPLETION:
+   → Did the response actually solve the problem?
+   → Binary (yes/no) or scale
+   → Most aligned with real-world value
+
+CHATBOT ARENA (LMSYS):
+  → Crowdsourced pairwise comparison
+  → Users vote on which model is better
+  → Elo rating: GPT-4 > Claude > Gemini > open models
+  → Most respected LLM leaderboard
+
+HUMAN EVALUATION PIPELINE:
+  1. Create eval set (100-500 examples)
+  2. Generate responses from all models
+  3. Randomize order (blind evaluation)
+  4. 2-3 evaluators per example
+  5. Inter-annotator agreement check
+  6. Aggregate scores
+
+PYTHON (manage human evaluation):
+  import pandas as pd
+
+  def create_eval_sheet(prompts, responses_a, responses_b):
+      df = pd.DataFrame({
+          'prompt': prompts,
+          'response_a': responses_a,
+          'response_b': responses_b,
+          'winner': '',      # A, B, or Tie
+          'evaluator': '',
+          'notes': ''
+      })
+      df = df.sample(frac=1).reset_index(drop=True)  # randomize
+      return df
+
+  # Export for human evaluators:
+  # df.to_csv('eval_sheet.csv', index=False)
+
+INTER-ANNOTATOR AGREEMENT:
+  → Cohen's Kappa: >0.8 = excellent
+  → If low: refine criteria, train evaluators
+  → Always report agreement in papers
+
+COST:
+  → $0.01-0.10 per evaluation (MTurk)
+  → $0.50-5.00 per evaluation (expert)
+  → 1000 evaluations = $10-$5000
+
+WHEN TO USE HUMANS:
+  → High-stakes decisions (medical, legal)
+  → Subjective quality (creative writing)
+  → Calibrating LLM-as-judge
+  → Final validation before deployment
+"""
+
+print(human_eval)</div>
+
+<div class="code-block"># ── STEP 5: Task-specific evaluation ──
+# Right tool for each task.
+
+task_eval = """
+TASK-SPECIFIC EVALUATION:
+
+1. RAG EVALUATION:
+   → Context Relevance: retrieved docs relevant to query?
+   → Faithfulness: answer grounded in retrieved docs?
+   → Answer Relevance: answer addresses the question?
+   → Tools: Ragas, TruLens
+
+2. CODE GENERATION:
+   → pass@k: percentage of problems solved in k attempts
+   → HumanEval: 164 coding problems with test cases
+   → MBPP: 974 basic Python problems
+   → SWE-bench: real GitHub issues
+
+3. SUMMARIZATION:
+   → ROUGE: n-gram overlap with reference
+   → Faithfulness: no hallucinated information
+   → Coherence: well-structured summary
+   → Human: rate informativeness
+
+4. TRANSLATION:
+   → BLEU: n-gram precision vs reference
+   → COMET: neural-based evaluation
+   → Human: adequacy + fluency
+
+5. MATH:
+   → GSM8K: grade school math word problems
+   → MATH: competition mathematics
+   → Exact match on final answer
+
+6. SAFETY EVALUATION:
+   → Toxicity rate: % of harmful outputs
+   → Bias tests: fairness across demographics
+   → Jailbreak resistance: known attack patterns
+   → Tools: Perspective API, Llama Guard
+
+7. CONVERSATION:
+   → MT-Bench: multi-turn conversation quality
+   → AlpacaEval: instruction following
+   → Human: naturalness, coherence, engagement
+
+PYTHON (RAG evaluation with Ragas):
+  from ragas import evaluate
+  from ragas.metrics import (
+      faithfulness, answer_relevancy,
+      context_precision, context_recall
+  )
+  from datasets import Dataset
+
+  eval_data = Dataset.from_dict({
+      'question': ['What is photosynthesis?'],
+      'answer': ['Photosynthesis is how plants make food...'],
+      'contexts': [['Plants convert sunlight into energy...']],
+      'ground_truth': ['Photosynthesis is the process...']
+  })
+
+  results = evaluate(
+      eval_data,
+      metrics=[faithfulness, answer_relevancy,
+               context_precision, context_recall]
+  )
+  print(results)
+  # {'faithfulness': 0.92, 'answer_relevancy': 0.88, ...}
+
+EVALUATION FRAMEWORK SELECTION:
+  ┌──────────────────┬──────────────────────────────────┐
+  │ Task             │ Metric/Framework              │
+  ├──────────────────┼──────────────────────────────────┤
+  │ RAG              │ Ragas (faithfulness + relevancy)│
+  │ Code             │ HumanEval / pass@k             │
+  │ Summarization    │ ROUGE + faithfulness           │
+  │ Translation      │ BLEU / COMET                   │
+  │ Math             │ GSM8K / exact match            │
+  │ Safety           │ Toxicity rate + jailbreak tests│
+  │ Conversation     │ MT-Bench / Chatbot Arena       │
+  │ Classification   │ F1 / accuracy                  │
+  └──────────────────┴──────────────────────────────────┘
+"""
+
+print(task_eval)</div>
+
+<div class="code-block"># ── STEP 6: Evaluation best practices ──
+# Building a robust eval pipeline.
+
+best_practices = [
+    "Build eval set from day 1 (not after deployment)",
+    "Use 100-500 examples minimum for statistical power",
+    "Include edge cases (not just happy path)",
+    "Diverse: different topics, difficulty, languages",
+    "Holdout set: never train on eval data",
+    "Version your eval set (track changes)",
+    "Automate eval in CI/CD (every PR triggers eval)",
+    "Use multiple metrics (no single metric captures everything)",
+    "Calibrate LLM-as-judge against human ratings",
+    "Monitor production quality continuously",
+    "Regression test: new model must beat old model",
+    "Report confidence intervals (not just point estimates)",
+    "Segment eval by user type, topic, difficulty",
+    "Human eval for high-stakes decisions",
+    "Cost-benefit: include latency and cost in eval",
+]
+
+print("LLM EVALUATION BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Evaluation       │ Best For                      │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Exact match      │ Math, factual QA              │
+# │ Semantic sim     │ Paraphrasing, flexibility     │
+# │ LLM-as-judge     │ Scalable quality assessment   │
+# │ Human eval       │ Gold standard, high-stakes    │
+# │ Ragas            │ RAG-specific (faithfulness)   │
+# │ HumanEval        │ Code generation               │
+# │ MT-Bench         │ Multi-turn conversation       │
+# │ Chatbot Arena    │ Crowdsourced comparison       │
+# └──────────────────┴──────────────────────────────────┘</div>
     নতুন version = ভালো? নাকি পুরোনো ভাঙল?
     → prompt change → কি আগের মতো কাজ করে?
     → model swap → কি quality একই?

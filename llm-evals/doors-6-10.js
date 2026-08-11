@@ -25,36 +25,424 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Prompt Sensitivity in Eval:</strong> Eval used one prompt — production used another. Fix: eval with multiple prompt variants.</div></div>
 
 
-<div class="code-block">Standard Benchmarks — The Measuring Sticks:
+<div class="code-block"># ── STEP 1: Standard benchmarks ──
+# The measuring sticks for LLMs.
 
-MAJOR BENCHMARKS (2024-2025):
+benchmarks = """
+STANDARD BENCHMARKS (2024-2025):
 
-# ──────────────────────────────────────────────# 
-#  MMLU (Massive Multitask Language             # 
-#        Understanding)                          # 
-#  → ৫৭ subjects: math, history, law, medicine # 
-#  → multiple choice questions                  # 
-#  → tests broad knowledge                      # 
-#  → GPT-4o: ~৮৮%, Claude 3.5: ~৮৮%           # 
-#  → standard for "how smart is the model?"     # 
-# ──────────────────────────────────────────────# 
-#  HumanEval (OpenAI)                           # 
-#  → ১৬৪ coding problems                        # 
-#  → function signature + docstring → code      # 
-#  → pass@k metric                              # 
-#  → tests code generation ability              # 
-#  → GPT-4o: ~৯০%, Claude 3.5: ~৯২%           # 
-# ──────────────────────────────────────────────# 
-#  GSM8K (Grade School Math)                    # 
-#  → ৮৫০ grade-school math word problems       # 
-#  → multi-step reasoning                       # 
-#  → tests mathematical reasoning               # 
-#  → GPT-4o: ~৯৫%                              # 
-# ──────────────────────────────────────────────# 
-#  MATH                                         # 
-#  → competition mathematics                    # 
-#  → harder than GSM8K                          # 
-#  → tests advanced math                        # 
+MMLU (Massive Multitask Language Understanding):
+  → 57 subjects: math, history, law, medicine
+  → Multiple choice questions
+  → Tests broad knowledge
+  → GPT-4o: ~88%, Claude 3.5: ~88%
+
+HumanEval (OpenAI):
+  → 164 coding problems
+  → Function signature + docstring → generate code
+  → pass@k metric
+  → GPT-4o: ~90%, Claude 3.5: ~92%
+
+GSM8K (Grade School Math):
+  → 8500 grade-school math word problems
+  → Multi-step reasoning
+  → GPT-4o: ~95%
+
+MATH:
+  → Competition mathematics
+  → Harder than GSM8K
+  → GPT-4o: ~76%
+
+BBH (BIG-Bench Hard):
+  → 23 challenging tasks
+  → Logical deduction, reasoning
+
+HellaSwag:
+  → Sentence completion (commonsense)
+  → "What happens next?"
+  → Tests commonsense reasoning
+
+TruthfulQA:
+  → Tests if model avoids common misconceptions
+
+Chatbot Arena (LMSYS):
+  → Blind A/B human comparison
+  → Elo rating from millions of votes
+  → Hardest to game (no fixed test set)
+
+MMMU (Multimodal):
+  → Text + image reasoning
+  → Tests VLM capability
+
+AgentBench:
+  → Agent evaluation
+  → Tool use, planning, multi-step
+
+SWE-bench:
+  → Real GitHub issues
+  → Can the model fix real bugs?
+  → Hardest coding benchmark (GPT-4o: ~23%)
+
+BENCHMARK PROBLEMS:
+
+1. CONTAMINATION (biggest issue):
+   → Benchmark data leaked into training data
+   → Model "memorized the test" → inflated scores
+   → Detection: canary strings, paraphrase tests
+   → Mitigation: dynamic benchmarks (LiveBench, freshQA)
+
+2. GOODHART'S LAW:
+   "When a measure becomes a target, it ceases to be a good measure"
+   → Models trained to maximize benchmark score
+   → Score goes up but real ability doesn't
+
+3. NARROW SCOPE:
+   → MMLU tests knowledge, not creativity
+   → HumanEval tests coding, not system design
+   → No single benchmark = "overall quality"
+
+4. FAST OBSOLESCENCE:
+   → Benchmarks saturate quickly
+   → MMLU: 43% (GPT-3) → 88% (GPT-4o) in 3 years
+   → Need constantly new benchmarks
+
+HOW TO USE BENCHMARKS:
+  ✅ DO: compare models, track progress, identify strengths/weaknesses
+  ❌ DON'T: optimize solely for benchmarks, trust blindly
+
+LM EVALUATION HARNESS (EleutherAI):
+  # Open-source, 200+ benchmarks, reproducible
+  lm_eval --model hf \\
+    --model_args pretrained=meta-llama/Llama-3.1-8B \\
+    --tasks mmlu,gsm8k,humaneval
+"""
+
+print(benchmarks)</div>
+
+<div class="code-block"># ── STEP 2: Regression detection ──
+# Catch quality drops before users do.
+
+regression = """
+REGRESSION DETECTION — CATCH IT BEFORE USERS DO:
+
+Regression = new model/version performs WORSE than previous.
+Must be caught BEFORE deployment.
+
+REGRESSION TYPES:
+  → Quality regression: accuracy drops
+  → Safety regression: more harmful outputs
+  → Format regression: structured output breaks
+  → Latency regression: slower responses
+  → Cost regression: more expensive per request
+
+CI/CD EVALUATION GATE:
+  → Every model change triggers eval suite
+  → Compare new model vs production model
+  → If new < old by threshold: BLOCK deployment
+  → If new >= old: allow deployment
+
+PYTHON (regression detection):
+  def check_regression(new_model, prod_model, eval_set, threshold=0.02):
+      new_scores = evaluate(new_model, eval_set)
+      prod_scores = evaluate(prod_model, eval_set)
+
+      regressions = []
+      for metric in new_scores:
+          delta = new_scores[metric] - prod_scores[metric]
+          if delta < -threshold:
+              regressions.append({
+                  'metric': metric,
+                  'prod': prod_scores[metric],
+                  'new': new_scores[metric],
+                  'delta': delta
+              })
+
+      if regressions:
+          print("REGRESSION DETECTED!")
+          for r in regressions:
+              print(f"  {r['metric']}: {r['prod']:.3f} → {r['new']:.3f} ({r['delta']:+.3f})")
+          return False  # BLOCK deployment
+      else:
+          print("No regression. Safe to deploy.")
+          return True
+
+SHADOW TESTING:
+  → Deploy new model alongside production
+  → Route same queries to both (shadow)
+  → Compare outputs without showing new model to users
+  → If quality holds: gradually shift traffic
+
+A/B TESTING:
+  → Split traffic: 90% old model, 10% new model
+  → Monitor metrics for 24-48 hours
+  → If new model performs well: increase to 50% → 100%
+  → If regression: rollback immediately
+"""
+
+print(regression)</div>
+
+<div class="code-block"># ── STEP 3: Production evaluation ──
+# Continuous real-world testing.
+
+production_eval = """
+PRODUCTION EVALUATION — CONTINUOUS REAL-WORLD TESTING:
+
+Lab eval ≠ production eval. Real users reveal real issues.
+
+CONTINUOUS EVALUATION:
+  → Sample 1-5% of production traffic
+  → Evaluate automatically (LLM-as-judge)
+  → Track quality over time
+  → Alert on quality drops
+
+ONLINE METRICS:
+  → User satisfaction: thumbs up/down, ratings
+  → Follow-up rate: did user ask again (dissatisfied)?
+  → Task completion: did user achieve their goal?
+  → Copy rate: did user copy the code/answer (useful)?
+  → Regeneration rate: did user click "regenerate"?
+
+DRIFT DETECTION:
+  → Input drift: new topics, languages, query types
+  → Output drift: response style/length changes
+  → Performance drift: quality slowly degrades
+  → Tools: Arize, Fiddler, WhyLabs
+
+PYTHON (production monitoring):
+  import random
+  from datetime import datetime
+
+  def sample_and_evaluate(request, response, sample_rate=0.02):
+      if random.random() < sample_rate:
+          score = llm_judge(request, response, "quality")
+          log_quality_metric({
+              'timestamp': datetime.utcnow(),
+              'score': score,
+              'user_id': request.user_id,
+              'topic': classify_topic(request),
+              'response_time': response.latency
+          })
+
+          if score < 0.5:
+              alert(f"Low quality response detected: {score}")
+
+USER FEEDBACK LOOP:
+  1. Collect: thumbs up/down, corrections, comments
+  2. Analyze: identify patterns in negative feedback
+  3. Improve: add to eval set, retrain/fine-tune
+  4. Re-evaluate: verify improvement
+  5. Deploy: rollout improved model
+
+PRODUCTION DASHBOARD:
+  → Quality score (rolling average)
+  → User satisfaction (thumbs ratio)
+  → Latency p50/p95/p99
+  → Cost per request
+  → Error rate
+  → Safety incidents
+  → Drift indicators
+"""
+
+print(production_eval)</div>
+
+<div class="code-block"># ── STEP 4: Evaluation pitfalls ──
+# Traps to avoid.
+
+pitfalls = """
+EVALUATION PITFALLS:
+
+1. TESTING ON TRAINING DATA:
+   → Eval set overlaps with training data
+   → Scores inflated 20-30%
+   → Fix: strictly deduplicate, use holdout
+
+2. SINGLE METRIC SYNDROME:
+   → "95% accuracy!" → but ignores safety, latency, cost
+   → Fix: use multiple metrics, report trade-offs
+
+3. CHERRY-PICKING:
+   → Report best benchmark, hide weak ones
+   → Fix: report comprehensive eval suite
+
+4. VIBE-BASED EVALUATION:
+   → "It seems good" → no data
+   → Fix: always use quantitative metrics
+
+5. IGNORING EDGE CASES:
+   → Eval only on easy/typical examples
+   → Real users hit edge cases you missed
+   → Fix: include adversarial, rare, boundary cases
+
+6. EVAL SET TOO SMALL:
+   → 10 examples = not statistically significant
+   → Fix: minimum 100-500 examples
+
+7. OUTDATED EVAL SET:
+   → World changes, eval set stays same
+   → Fix: refresh eval set regularly
+
+8. LLM-JUDGE OVER-RELIANCE:
+   → LLM-as-judge has biases
+   → Fix: calibrate with human evaluation
+
+9. NO BASELINE:
+   → "85%!" → but compared to what?
+   → Fix: always compare to baseline (previous model, simple heuristic)
+
+10. NO SEGMENTATION:
+    → Overall score looks good, but specific user groups suffer
+    → Fix: segment by topic, difficulty, user type
+
+AVOID THESE TRAPS:
+  → Use diverse eval set (topics, difficulty, edge cases)
+  → Report multiple metrics transparently
+  → Always compare to baseline
+  → Include human evaluation for high-stakes
+  → Refresh eval set periodically
+  → Test in production (continuous evaluation)
+"""
+
+print(pitfalls)</div>
+
+<div class="code-block"># ── STEP 5: Complete eval architecture ──
+# Full evaluation system.
+
+architecture = """
+COMPLETE LLM EVALUATION ARCHITECTURE:
+
+LAYERS:
+  1. OFFLINE EVALUATION (pre-deployment)
+     → Custom eval set (domain-specific)
+     → Standard benchmarks (MMLU, GSM8K, HumanEval)
+     → Safety eval (toxicity, bias, jailbreak)
+     → Regression test (vs production model)
+
+  2. STAGING EVALUATION (pre-prod)
+     → Shadow traffic test
+     → Canary deployment (5% → 25% → 100%)
+     → A/B test with statistical significance
+
+  3. PRODUCTION EVALUATION (continuous)
+     → Sample traffic for LLM-judge
+     → User feedback collection
+     → Drift detection
+     → Quality monitoring dashboard
+
+  4. INCIDENT DETECTION (reactive)
+     → Quality drop alerts
+     → Safety incident tracking
+     → Auto-rollback on regression
+
+EVAL TOOLING STACK:
+  → Eval framework: DeepEval / Promptfoo / OpenAI Evals
+  → RAG eval: Ragas / TruLens
+  → Benchmarks: LM Evaluation Harness (EleutherAI)
+  → Human eval: Surge AI / Scale AI / MTurk
+  → LLM-judge: GPT-4 / Claude
+  → Monitoring: LangSmith / Arize / Phoenix
+
+PYTHON (complete eval pipeline):
+  class LLMEvalPipeline:
+      def __init__(self, eval_set, benchmarks, safety_tests):
+          self.eval_set = eval_set
+          self.benchmarks = benchmarks
+          self.safety_tests = safety_tests
+
+      def evaluate_model(self, model):
+          results = {}
+
+          # 1. Custom eval set:
+          results['custom'] = self.run_custom_eval(model)
+
+          # 2. Standard benchmarks:
+          results['benchmarks'] = self.run_benchmarks(model)
+
+          # 3. Safety tests:
+          results['safety'] = self.run_safety_tests(model)
+
+          # 4. Compare to baseline:
+          results['regression'] = self.check_regression(model)
+
+          return results
+
+      def deploy_decision(self, results):
+          if results['regression']['blocked']:
+              return "BLOCK: regression detected"
+          if results['safety']['toxicity_rate'] > 0.01:
+              return "BLOCK: safety issue"
+          return "APPROVED for canary deployment"
+
+DEPLOYMENT CHECKLIST:
+  ☐ Eval set created (100+ examples, diverse)
+  ☐ Baseline established (current model scores)
+  ☐ Regression test automated (CI/CD)
+  ☐ Safety evaluation included
+  ☐ LLM-judge calibrated (vs human)
+  ☐ Production monitoring deployed
+  ☐ Alerting configured (quality drop)
+  ☐ A/B test framework ready
+  ☐ Rollback plan documented
+"""
+
+print(architecture)</div>
+
+<div class="code-block"># ── STEP 6: Evaluation journey ──
+# Your path to data-driven AI.
+
+journey = """
+YOUR LLM EVALUATION JOURNEY:
+
+You started seeing evaluation as "checking if it works."
+You finish seeing a COMPLETE MEASUREMENT SYSTEM:
+
+WHAT YOU'VE MASTERED:
+  ✅ Why evaluate (model selection, regression, ROI)
+  ✅ Evaluation metrics (exact match, semantic, F1, ROUGE)
+  ✅ LLM-as-judge (scalable AI evaluation)
+  ✅ Human evaluation (gold standard, Chatbot Arena)
+  ✅ Task-specific eval (RAG, code, summarization)
+  ✅ Standard benchmarks (MMLU, GSM8K, HumanEval)
+  ✅ Regression detection (CI/CD gates)
+  ✅ Production evaluation (continuous monitoring)
+  ✅ Evaluation pitfalls (contamination, cherry-picking)
+  ✅ Complete eval architecture (offline → staging → prod)
+
+THE EVALUATION ENGINEER'S MINDSET:
+  1. "What am I measuring?" (clear metrics)
+  2. "Is my eval set representative?" (diverse, edge cases)
+  3. "Am I comparing to a baseline?" (not absolute scores)
+  4. "Am I testing in production?" (real users)
+  5. "Am I calibrating?" (LLM-judge vs human)
+
+"If you can't measure it, you can't improve it."
+ — Peter Drucker
+
+WHAT TO STUDY NEXT:
+  → Read: "Evaluating LLMs" (papers by EleutherAI, OpenAI)
+  → Practice: Build eval set for your domain
+  → Explore: Ragas, DeepEval, Promptfoo
+  → Follow: LMSYS Chatbot Arena (leaderboard)
+  → Study: Evaluation papers (HELM, BIG-bench)
+
+Welcome to evaluation mastery.
+"""
+
+print(journey)
+
+# FINAL SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Component        │ Tool/Method                   │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Custom eval set  │ 100-500 domain examples       │
+# │ Standard bench   │ MMLU, GSM8K, HumanEval        │
+# │ LLM-as-judge     │ GPT-4 / Claude as evaluator   │
+# │ Human eval       │ Chatbot Arena, expert review  │
+# │ RAG eval         │ Ragas (faithfulness)          │
+# │ Code eval        │ HumanEval, SWE-bench          │
+# │ Safety eval      │ Llama Guard, toxicity rate    │
+# │ Regression       │ CI/CD gate + shadow test      │
+# │ Production       │ Continuous monitoring + drift │
+# └──────────────────┴──────────────────────────────────┘</div>
 #  → GPT-4o: ~৭৬%                              # 
 # ──────────────────────────────────────────────# 
 #  BBH (BIG-Bench Hard)                         # 
