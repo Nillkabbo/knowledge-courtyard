@@ -25,76 +25,427 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Conflicting Sources:</strong> Two documents contradicted each other. Fix: add source authority scoring.</div></div>
 
 
-<div class="code-block">Context Compression — Less Tokens, More Meaning:
+<div class="code-block"># ── STEP 1: Why context compression matters ──
+# Compress context to save tokens, reduce cost, improve accuracy.
 
-৩টি COMPRESSION STRATEGY:
+why_compress = """
+THE CONTEXT GROWTH PROBLEM:
 
-১. CONVERSATION SUMMARIZATION
-  দীর্ঘ কথোপকথনে পুরোনো messages → সারাংশ
-  
-  Before (raw):
-    User: "I'm building a RAG system with 
-          OpenAI and Pinecone"
-    AI: "Great! You'll need embeddings..."
-    User: "What chunk size?"
-    AI: "Start with 512 tokens..."
-    User: "What embedding model?"
-    AI: "text-embedding-3-large..."
-    [৫০০ tokens total]
-  
-  After (compressed):
-    [Summary: User is building RAG with 
-     OpenAI+Pinecone. Discussed chunk size 
-     (512 tokens recommended) and embedding 
-     model (text-embedding-3-large).]
-    [৮০ tokens — ৮৪% reduction!]
-
-২. DOCUMENT COMPRESSION
-  Retrieved docs → শুধু প্রাসঙ্গিক অংশ
-  
-  Before: গোটা ৫০০০-token ডকুমেন্ট
-  After: LLM দিয়ে প্রাসঙ্গিক অংশ বাছো 
-        → ৫০০ tokens
-  → "LongLLMLingua" / "LLMLingua" techniques
-
-৩. SERIAL SUMMARY (Rolling Memory)
-  প্রতি N turns-এ পুরোনো কথা সারাংশ করো:
-  
-  Turn 1-5: পূর্ণ রাখো
-  Turn 6: Turn 1-5 → summary
-  Turn 6-10: পূর্ণ রাখো  
-  Turn 11: summary + Turn 6-10 → new summary
+Every conversation turn adds tokens:
+  Turn 1:  200 tokens
+  Turn 2:  400 tokens (includes turn 1)
+  Turn 3:  600 tokens
   ...
-  → সবসময় সাম্প্রতিক context পূর্ণ, 
-    পুরোনো = compressed
+  Turn 50: 10,000+ tokens
+
+WITHOUT COMPRESSION:
+  → Each turn re-sends ALL previous messages
+  → 50 turns * 10K avg = 500K total tokens
+  → $2.50 per conversation (GPT-4o)
+  → Attention dilution (lost in the middle)
+
+WITH COMPRESSION:
+  → Summarize old messages, keep recent ones
+  → 50 turns * 2K avg = 100K total tokens
+  → $0.50 per conversation
+  → 80% cost reduction + better accuracy!
+"""
+
+print(why_compress)
+
+# THREE COMPRESSION STRATEGIES:
+strategies = {
+    "1. CONVERSATION SUMMARIZATION": {
+        "what": "Summarize old conversation messages",
+        "reduction": "80-90% token reduction for old messages",
+        "best_for": "Long chatbot conversations",
+    },
+    "2. DOCUMENT COMPRESSION": {
+        "what": "Extract only relevant parts from retrieved docs",
+        "reduction": "70-90% reduction (5000→500 tokens)",
+        "best_for": "RAG with long documents",
+    },
+    "3. SERIAL SUMMARY (Rolling Memory)": {
+        "what": "Periodically summarize conversation, keep recent messages",
+        "reduction": "Maintains constant context size regardless of conversation length",
+        "best_for": "Unlimited-length conversations",
+    },
+}
+
+print("COMPRESSION STRATEGIES:")
+for strategy, info in strategies.items():
+    print(f"\n  {strategy}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")</div>
+
+<div class="code-block"># ── STEP 2: Conversation summarization ──
+# Turn long conversation history into compact summaries.
+
+summarization = """
+CONVERSATION SUMMARIZATION:
+
+BEFORE (raw messages, 500 tokens):
+  User: "I'm building a RAG system with OpenAI and Pinecone"
+  AI: "Great! You'll need embeddings..."
+  User: "What chunk size?"
+  AI: "Start with 512 tokens..."
+  User: "What embedding model?"
+  AI: "text-embedding-3-large..."
+  [500 tokens total]
+
+AFTER (summarized, 80 tokens):
+  [Summary: User is building RAG with OpenAI + Pinecone.
+   Discussed chunk size (512 tokens recommended) and
+   embedding model (text-embedding-3-large).]
+  [80 tokens — 84% reduction!]
+
+THE LLM DOES THE SUMMARIZATION:
+  Prompt: "Summarize this conversation in 100 tokens or less,
+   preserving key decisions, facts, and context."
+
+WHEN TO SUMMARIZE:
+  → Every N turns (e.g., every 5 turns)
+  → When context exceeds threshold (e.g., >5K tokens)
+  → When user starts a new topic
+"""
+
+print(summarization)
+
+# PYTHON: Conversation summarization:
+summarize_code = """
+def compress_conversation(messages, max_tokens=2000):
+    \"\"\"Compress old messages into a summary.\"\"\"
+
+    total_tokens = count_tokens(messages)
+
+    if total_tokens <= max_tokens:
+        return messages  # No compression needed
+
+    # Split: keep recent messages, summarize old ones:
+    keep_recent = 6  # Keep last 6 messages (3 turns)
+    old_messages = messages[:-keep_recent]
+    recent_messages = messages[-keep_recent:]
+
+    # Summarize old messages:
+    summary = llm_summarize(old_messages)
+    summary_msg = {"role": "system", "content": f"Previous conversation summary: {summary}"}
+
+    return [summary_msg] + recent_messages
+
+def llm_summarize(messages):
+    \"\"\"Use LLM to create a concise summary.\"\"\"
+    conversation = "\\n".join([f"{m['role']}: {m['content']}" for m in messages])
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",  # cheap model for summarization
+        messages=[{
+            "role": "user",
+            "content": f"Summarize this conversation in 100 tokens or less, "
+                       f"preserving key decisions and context:\\n\\n{conversation}"
+        }],
+        temperature=0,
+        max_tokens=150
+    )
+    return response.choices[0].message.content
+"""
+
+print(summarize_code)</div>
+
+<div class="code-block"># ── STEP 3: Document compression (LLMLingua) ──
+# Compress retrieved documents to only the relevant parts.
+
+doc_compression = """
+DOCUMENT COMPRESSION:
+
+PROBLEM: Retrieved document is 5000 tokens, but only 500 are relevant.
+  → Sending 5000 wastes tokens and causes attention dilution
+  → Need to extract ONLY the relevant part
+
+SOLUTION: LLMLingua / LongLLMLingua techniques
+
+HOW LLMLINGUA WORKS:
+  1. Calculate perplexity (information content) for each token
+  2. Remove LOW-information tokens (filler, redundant)
+  3. Keep HIGH-information tokens (key facts, entities)
+
+BEFORE (5000 tokens):
+  "The company, which was founded in 2010 by John Smith,
+   has grown significantly over the past decade. In 2024,
+   the revenue reached $1.5 million, representing a 15%
+   increase from the previous year. The company is
+   headquartered in New York and has offices in London..."
+
+AFTER (500 tokens, LLMLingua compressed):
+  "Founded 2010 by John Smith. 2024 revenue: $1.5M (+15% YoY).
+   HQ: New York. Offices: London."
+
+  → 90% reduction, same information!
 
 IMPLEMENTATION:
+  from langchain.retrievers import ContextualCompressionRetriever
+  from langchain.retrievers.document_compressors import LLMLingua
 
-  LangChain: ConversationSummaryMemory
-  LlamaIndex: ChatSummaryMemoryBuffer
-  
-  Custom:
-    def compress_context(messages, max_tokens):
-        if token_count(messages) > max_tokens:
-            old = messages[:-5]
-            recent = messages[-5:]
-            summary = llm.summarize(old)
-            return [summary_msg] + recent
-        return messages
+  compressor = LLMLingua(model_name="microsoft/llmlingua-2")
+  compression_retriever = ContextualCompressionRetriever(
+      base_compressor=compressor,
+      base_retriever=vector_retriever
+  )
+  # Returns compressed docs (only relevant parts)
+"""
 
-CONTEXT WINDOW ECONOMICS WITH COMPRESSION:
+print(doc_compression)
 
-  Without compression:
-    50-turn conversation = ১০,০০০+ tokens
-    → প্রতি turn-এ পুরো ১০K পাঠাও
-    → ৫০ turns * ১০K avg = ৫০০K total tokens
-    → $২.৫০ per conversation (GPT-4o)
-  
-  With rolling summary:
-    50-turn conversation = ২,০০০ avg tokens
-    → ৫০ turns * ২K avg = ১০০K total tokens
-    → $০.৫০ per conversation
-    → ৮০% cost reduction!</div>
+# PYTHON: Document compression pipeline:
+compress_docs = """
+# Extract only relevant parts from retrieved documents:
+def compress_documents(query, documents, max_tokens_per_doc=500):
+    \"\"\"Compress each document to only relevant parts.\"\"\"
+    compressed = []
+
+    for doc in documents:
+        if count_tokens(doc.content) <= max_tokens_per_doc:
+            compressed.append(doc)  # Already small enough
+            continue
+
+        # Use LLM to extract relevant parts:
+        prompt = f\"\"\"Extract ONLY the information relevant to this query.
+Keep it concise. Remove irrelevant parts.
+
+Query: {query}
+Document: {doc.content}
+
+Relevant extract:\"\"\"
+
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0,
+            max_tokens=max_tokens_per_doc
+        )
+
+        doc.content = response.choices[0].message.content
+        compressed.append(doc)
+
+    return compressed
+
+# Usage in RAG pipeline:
+docs = retrieve(query, top_k=10)           # Get 10 docs
+docs = compress_documents(query, docs)     # Compress each
+context = assemble_context(docs)           # Build context
+answer = generate(query, context)          # Generate answer
+"""
+
+print(compress_docs)</div>
+
+<div class="code-block"># ── STEP 4: Serial summary (rolling memory) ──
+# Maintain constant context size for unlimited conversations.
+
+rolling_memory = """
+SERIAL SUMMARY (ROLLING MEMORY):
+
+PROBLEM: Conversation grows forever, eventually exceeds context window.
+
+SOLUTION: Periodically summarize old messages, keep recent ones.
+
+PATTERN:
+  Turns 1-5:   Keep FULL messages
+  Turn 6:      Summarize turns 1-5 → summary_v1
+  Turns 6-10:  Keep FULL messages + summary_v1
+  Turn 11:     Summarize (summary_v1 + turns 6-10) → summary_v2
+  Turns 11-15: Keep FULL messages + summary_v2
+  ...
+
+CONTEXT IS ALWAYS:
+  [Latest summary of ALL old turns] + [Last 5 turns full]
+
+BENEFIT:
+  → Context size stays CONSTANT regardless of conversation length
+  → 1000-turn conversation = same context as 10-turn
+  → No context window overflow
+  → Predictable cost per turn
+
+TRADE-OFF:
+  → Old details may be lost in summaries
+  → Summary quality matters (use good LLM)
+  → Slight latency when summarizing (every N turns)
+"""
+
+print(rolling_memory)
+
+# PYTHON: Rolling memory implementation:
+rolling_code = """
+class RollingMemory:
+    def __init__(self, max_recent=6, summarize_every=5):
+        self.summary = ""           # Running summary
+        self.recent_messages = []   # Last N messages (full)
+        self.turn_count = 0
+        self.max_recent = max_recent
+        self.summarize_every = summarize_every
+
+    def add_message(self, role, content):
+        self.recent_messages.append({"role": role, "content": content})
+        self.turn_count += 1
+
+        # Periodically summarize:
+        if len(self.recent_messages) > self.max_recent:
+            self._compress()
+
+    def _compress(self):
+        # Summarize old messages + existing summary:
+        old = self.recent_messages[:-self.max_recent]
+        recent = self.recent_messages[-self.max_recent:]
+
+        if self.summary:
+            combined = self.summary + "\\n" + str(old)
+        else:
+            combined = str(old)
+
+        self.summary = llm_summarize(combined)
+        self.recent_messages = recent
+
+    def get_context(self):
+        context = []
+        if self.summary:
+            context.append({
+                "role": "system",
+                "content": f"Previous conversation: {self.summary}"
+            })
+        context.extend(self.recent_messages)
+        return context
+
+# Usage:
+memory = RollingMemory(max_recent=6, summarize_every=5)
+
+# 1000-turn conversation, context stays ~2K tokens:
+for i in range(1000):
+    memory.add_message("user", f"Question {i}")
+    memory.add_message("assistant", f"Answer {i}")
+
+context = memory.get_context()  # Always ~2K tokens!
+"""
+
+print(rolling_code)</div>
+
+<div class="code-block"># ── STEP 5: LangChain and LlamaIndex memory ──
+# Use built-in memory systems from popular frameworks.
+
+frameworks = """
+LANGCHAIN MEMORY TYPES:
+
+1. ConversationBufferMemory:
+   → Stores ALL messages (no compression)
+   → Simple but grows forever
+   → Good for short conversations
+
+2. ConversationBufferWindowMemory:
+   → Keeps only last N messages
+   → Old messages dropped (not summarized)
+   → Good for medium conversations
+
+3. ConversationSummaryMemory:
+   → Automatically summarizes conversation
+   → Constant size regardless of length
+   → Good for long conversations
+
+4. ConversationSummaryBufferMemory:
+   → HYBRID: buffer recent + summarize old
+   → Best of both worlds
+   → Recommended for production
+
+5. ConversationTokenBufferMemory:
+   → Keeps messages up to token limit
+   → Drops oldest when limit exceeded
+   → Good for token-budget management
+
+LLAMAINDEX MEMORY:
+  → ChatSummaryMemoryBuffer: summary + buffer
+  → Similar to LangChain's summary buffer
+
+IMPLEMENTATION (LangChain):
+  from langchain.memory import ConversationSummaryBufferMemory
+
+  memory = ConversationSummaryBufferMemory(
+      llm=ChatOpenAI(model="gpt-4o-mini", temperature=0),
+      max_token_count=2000,  # Compress when exceeding 2K tokens
+      return_messages=True
+  )
+
+  # In your chain:
+  chain = ConversationChain(
+      llm=ChatOpenAI(model="gpt-4o"),
+      memory=memory
+  )
+
+  # Memory automatically:
+  # → Keeps recent messages (< 2K tokens)
+  # → Summarizes older messages
+  # → Maintains context within budget
+"""
+
+print(frameworks)</div>
+
+<div class="code-block"># ── STEP 6: Compression best practices ──
+# Maximize the benefit of context compression.
+
+best_practices = [
+    "Use rolling summary for unlimited conversations",
+    "Keep last 5-10 messages FULL, summarize older ones",
+    "Use GPT-4o-mini for summarization (cheap, good enough)",
+    "Compress retrieved docs with LLMLingua (70-90% reduction)",
+    "Set token budget and trigger compression when exceeded",
+    "Preserve key decisions and facts in summaries",
+    "Test summary quality (does it lose important info?)",
+    "Use LangChain ConversationSummaryBufferMemory",
+    "Monitor compression ratio (target: 80% reduction)",
+    "Log when summaries are created (for debugging)",
+    "Consider semantic compression (extract only relevant sentences)",
+    "Never compress the CURRENT question (always keep full)",
+    "Use different compression levels (aggressive for old, light for recent)",
+    "Cache summaries (don't re-summarize the same messages)",
+    "Provide 'reset conversation' option for users",
+]
+
+print("COMPRESSION BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# COST COMPARISON:
+cost = """
+COST COMPARISON (50-turn conversation, GPT-4o):
+
+NO COMPRESSION:
+  Turn 1:   200 tokens → $0.0005
+  Turn 10:  2,000 tokens → $0.005
+  Turn 25:  5,000 tokens → $0.013
+  Turn 50:  10,000 tokens → $0.025
+  Total: 500K tokens → $2.50 per conversation
+
+WITH ROLLING SUMMARY:
+  Every turn: ~2,000 tokens (constant)
+  Total: 100K tokens → $0.50 per conversation
+  → 80% COST REDUCTION!
+
+WITH DOC COMPRESSION:
+  Retrieved docs: 10K → 2K tokens (80% less)
+  Per query: saves ~$0.02
+  1000 queries/day: saves $20/day = $600/month
+"""
+
+print(cost)
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Summarization    │ Old messages → summary          │
+# │ Doc compression  │ LLMLingua extracts relevant     │
+# │ Rolling memory   │ Constant context for unlimited  │
+# │ 80% reduction    │ Typical compression ratio       │
+# │ Cost savings     │ 80% per conversation            │
+# │ LangChain        │ ConversationSummaryBufferMemory │
+# │ Quality          │ Use GPT-4o-mini for summaries   │
+# │ Never compress   │ Current question always full    │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
