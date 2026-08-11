@@ -870,26 +870,298 @@ doors.push({
 <div class="dialogue"><strong>প্রমাণ-কারিগর জাইদ:</strong> ইউসুফ (Door ২) তোমাকে ইনডাকশন দিয়েছেন — ধাপে ধাপে। কিন্তু কিছু সত্য ধাপে প্রমাণ করা যায় না। সেগুলোকে উল্টে ধরতে হয়। √২ অমূলদ — এটা সরাসরি বলা কঠিন। কিন্তু ধরে নাও মূলদ। তাহলে p/q = √২, যেখানে p ও q সহমৌলিক। উভয়কে ২ দিয়ে ভাগ যায় না। কিন্তু গাণিতিকভাবে — উভয়কে ২ দিয়ে ভাগ যায়! অন্তর্বিরোধ। সহমৌলিক কিন্তু ভাগ যায়? অসম্ভব! তাই √২ মূলদ হতে পারে না।</div>
 <div class="dialogue en"><strong>Proof Artisan Zaid:</strong> Yusuf (Door 2) gave you induction — step by step. But some truths cannot be proven stepwise. They must be flipped. √2 irrational — hard to say directly. But assume rational: p/q, coprime. Then p²=2q² — p even, q even. Coprime but both even? Impossible! ∴ √2 cannot be rational.</div>
 
-<div class="code-block"># — Python: √২ অমূলদ প্রমাণ যাচাই —
+<div class="code-block"># ── STEP 1: The √2 irrational proof (step by step) ──
+# One of the most beautiful proofs in mathematics.
 
-  # যদি √২ মূলদ হয়, p/q পাওয়া যাবে
-  from math import isqrt
+sqrt2_proof = """
+PROOF: √2 IS IRRATIONAL (by contradiction)
 
-  def find_rational_sqrt2(max_q=1000000):
-      for q in range(1, max_q):
-          p = isqrt(2 * q * q)
-          if p * p == 2 * q * q:
-              return p, q   # পাওয়া গেছে!
-      return None             # পাওয়া যায়নি → অমূলদ
+CLAIM: √2 cannot be written as p/q (ratio of two integers).
 
-  result = find_rational_sqrt2()
-  print(result)  # None — কোনো p/q নেই!
+PROOF:
+  Step 1: Assume the OPPOSITE — √2 IS rational.
+    → √2 = a/b where a, b are integers with no common factor (gcd=1)
 
-  # প্রতিটি ভগ্নাংশ চেক:
-  best = min(range(1,1000), key=lambda q:
-      abs(2*q*q - isqrt(2*q*q)**2))
-  print(f"Best: {isqrt(2*best**2)}/{best} = {isqrt(2*best**2)/best}")
-  # 1414/1000 = 1.414 — কাছে, কিন্তু সমান নয়!</div>
+  Step 2: Square both sides.
+    → 2 = a²/b²
+    → a² = 2b²
+
+  Step 3: a² = 2b² means a² is EVEN.
+    → If a² is even, then a is even (proven separately).
+    → So a = 2k for some integer k.
+
+  Step 4: Substitute a = 2k.
+    → (2k)² = 2b²
+    → 4k² = 2b²
+    → b² = 2k²
+
+  Step 5: b² = 2k² means b² is EVEN.
+    → If b² is even, then b is even.
+    → So b = 2m for some integer m.
+
+  Step 6: Both a AND b are even.
+    → Both divisible by 2.
+    → But we assumed gcd(a,b) = 1 (no common factor)!
+
+  CONTRADICTION! a and b both even means gcd ≥ 2.
+
+  Therefore, √2 CANNOT be rational.
+  √2 is irrational. ∎
+
+This proof is ~2500 years old (Pythagoreans, ~500 BCE).
+The discoverer (Hippasus) was supposedly drowned for revealing it!
+"""
+
+print(sqrt2_proof)</div>
+
+<div class="code-block"># ── STEP 2: Verification and approximation ──
+# Python can't prove irrationality, but can verify the claim computationally.
+
+verification = """
+COMPUTATIONAL VERIFICATION:
+
+We can't prove irrationality by computer (infinite search space).
+But we can verify that no SMALL p/q equals √2.
+
+Also: continued fraction expansion of √2 is INFINITE and NON-REPEATING,
+which is a hallmark of irrational numbers.
+
+√2 ≈ 1.4142135623730950488...
+
+CONTINUED FRACTION:
+  √2 = 1 + 1/(2 + 1/(2 + 1/(2 + ...)))
+  → Infinite non-repeating → irrational
+"""
+
+print(verification)
+
+# PYTHON: Search for rational √2:
+rational_search = """
+from math import isqrt
+
+# Search: does any p/q = √2 for q up to 1,000,000?
+def find_rational_sqrt2(max_q=1000000):
+    for q in range(1, max_q):
+        p = isqrt(2 * q * q)  # nearest integer to √(2q²)
+        if p * p == 2 * q * q:  # exact match?
+            return p, q         # Found! (never happens)
+    return None                 # Not found → irrational
+
+result = find_rational_sqrt2(max_q=100000)
+print(f"Search result: {result}")  # None → no rational √2 found
+
+# Best rational approximations (continued fraction convergents):
+# 1/1, 3/2, 7/5, 17/12, 41/29, 99/70, 239/169, ...
+# These get closer but NEVER equal √2.
+
+convergents = [(1,1), (3,2), (7,5), (17,12), (41,29), (99,70)]
+for p, q in convergents:
+    print(f"  {p}/{q} = {p/q:.10f}")  # approaches √2 but never equals
+# √2 = 1.41421356...
+"""
+
+print(rational_search)</div>
+
+<div class="code-block"># ── STEP 3: Why does this proof work? ──
+# Understanding the key insight.
+
+insight = """
+KEY INSIGHT OF THE PROOF:
+
+The proof hinges on ONE fact:
+  "If a² is even, then a is even"
+
+Why is this true? (Proved by contrapositive in Door 2):
+  Contrapositive: "If a is odd, then a² is odd"
+    a odd → a = 2k+1
+    a² = (2k+1)² = 4k² + 4k + 1 = 2(2k²+2k) + 1 → odd ✓
+
+  So: a² even → a even (contrapositive of above) ✓
+
+CHAIN OF LOGIC:
+  √2 = a/b (assumption)
+  → a² = 2b² (squaring)
+  → a² even → a even (key fact)
+  → a = 2k
+  → 4k² = 2b² → b² = 2k²
+  → b² even → b even (same key fact)
+  → Both even → gcd ≥ 2 → CONTRADICTS gcd = 1
+
+BEAUTY OF THIS PROOF:
+  → Only uses basic arithmetic (no advanced math)
+  → Proof by contradiction is elegant
+  → Result is profound: not everything is rational
+  → Opened the door to irrational numbers, real numbers, infinity
+
+GENERALIZATION:
+  Same technique proves √3, √5, √7, ... are ALL irrational.
+  (Only perfect squares have rational roots: √4 = 2, √9 = 3, etc.)
+"""
+
+print(insight)</div>
+
+<div class="code-block"># ── STEP 4: Other famous irrational numbers ──
+# Beyond √2 — the world of irrationals.
+
+irrationals = {
+    "√2": {
+        "value": "1.41421356...",
+        "proof": "Contradiction (this door)",
+        "discovered": "~500 BCE (Pythagoreans)",
+    },
+    "√3": {
+        "value": "1.73205081...",
+        "proof": "Same technique as √2",
+        "discovered": "Ancient Greece",
+    },
+    "π (pi)": {
+        "value": "3.14159265...",
+        "proof": "Lambert, 1761 (using continued fractions)",
+        "discovered": "Known ancient, proved irrational 1761",
+    },
+    "e (Euler's number)": {
+        "value": "2.71828182...",
+        "proof": "Euler, 1737",
+        "discovered": "Euler, 1737",
+    },
+    "φ (golden ratio)": {
+        "value": "1.61803398...",
+        "proof": "(1+√5)/2, since √5 is irrational",
+        "discovered": "Ancient Greeks",
+    },
+    "ln(2)": {
+        "value": "0.69314718...",
+        "proof": "Euler",
+        "discovered": "18th century",
+    },
+}
+
+print("FAMOUS IRRATIONAL NUMBERS:")
+for num, info in irrationals.items():
+    print(f"\\n  {num}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# MIND-BLOWING FACT:
+mind_blowing = """
+ALMOST ALL numbers are irrational!
+
+Counting:
+  Rational numbers: COUNTABLY infinite (can be listed)
+  Real numbers: UNCOUNTABLY infinite (cannot be listed)
+  → Irrationals: uncountably infinite
+  → Rationals: countably infinite
+
+The probability that a random real number is rational = 0.
+(Almost surely, a random number is irrational.)
+
+Yet we rarely encounter irrationals in daily life
+because we work with rationals (fractions, decimals).
+"""
+print(mind_blowing)</div>
+
+<div class="code-block"># ── STEP 5: Rational vs irrational in computing ──
+# Why this matters for programmers.
+
+computing = """
+RATIONAL VS IRRATIONAL IN CODE:
+
+FLOATING POINT:
+  Computers store numbers as floating point (IEEE 754).
+  → Only rational numbers can be represented exactly.
+  → √2, π, e are APPROXIMATED (not exact).
+
+  0.1 + 0.2 ≠ 0.3 in floating point!
+  >>> 0.1 + 0.2
+  0.30000000000000004
+
+WHY? 0.1 in binary is an infinite repeating fraction:
+  0.1 (decimal) = 0.0001100110011... (binary)
+  → Truncated → precision loss
+
+PYTHON:
+  # Use fractions for exact rational arithmetic:
+  from fractions import Fraction
+
+  a = Fraction(1, 10)  # exactly 1/10
+  b = Fraction(2, 10)  # exactly 2/10
+  print(a + b)          # Fraction(3, 10) — exact!
+
+  # Compare with float:
+  print(0.1 + 0.2 == 0.3)        # False (floating point error)
+  print(Fraction(1,10) + Fraction(2,10) == Fraction(3,10))  # True
+
+USE SYMBOLIC MATH (sympy):
+  import sympy
+
+  sqrt2 = sympy.sqrt(2)
+  print(sqrt2 ** 2)  # 2 (exact, not 1.9999...)
+
+WHY IT MATTERS:
+  → Financial calculations: use Decimal (exact, not float)
+  → Scientific computing: understand precision limits
+  → Cryptography: exact integer arithmetic (no floats)
+  → Graphics: floating point is "good enough" (but not exact)
+"""
+
+print(computing)</div>
+
+<div class="code-block"># ── STEP 6: Proof extensions and best practices ──
+# Generalize the technique and apply it.
+
+extensions = """
+GENERALIZING THE √2 PROOF:
+
+The same technique proves √n is irrational for any non-perfect-square n.
+
+PROOF SKETCH (√3 is irrational):
+  Assume √3 = a/b (reduced)
+  → 3 = a²/b² → a² = 3b²
+  → a² divisible by 3 → a divisible by 3
+  → a = 3k → 9k² = 3b² → b² = 3k²
+  → b² divisible by 3 → b divisible by 3
+  → Both divisible by 3 → contradicts gcd(a,b)=1
+  → √3 is irrational ∎
+
+KEY LEMMA: "If p is prime and p | a², then p | a"
+  → Fundamental theorem of arithmetic (unique factorization)
+  → If prime p divides a², then p divides a
+
+BEST PRACTICES FOR PROOFS:
+  ☐ State the claim clearly
+  ☐ Choose the right technique (direct/contradiction/induction)
+  ☐ Check base cases (for induction)
+  ☐ Look for hidden assumptions
+  ☐ Verify with examples (Python)
+  ☐ Check edge cases
+  ☐ Write clearly (others should understand)
+  ☐ QED marker (∎ or Q.E.D.) at the end
+  ☐ Peer review (have someone check your proof)
+  ☐ Practice — proofs get easier with experience
+
+PROOF TECHNIQUE SELECTION:
+  Direct: when derivation is straightforward
+  Contradiction: for non-existence, irrationality
+  Induction: for natural numbers, recursion
+  Contrapositive: when direct is hard
+  Cases: when there are few possibilities
+"""
+
+print(extensions)
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Number           │ Type                            │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Integers         │ Rational (e.g., 3, -7, 0)      │
+# │ Fractions        │ Rational (e.g., 1/2, 3/4)      │
+# │ √2, √3, √5      │ Irrational                      │
+# │ π, e             │ Irrational (transcendental)     │
+# │ φ (golden ratio) │ Irrational                      │
+# │ Terminating dec. │ Rational (0.25 = 1/4)          │
+# │ Repeating dec.   │ Rational (0.333... = 1/3)      │
+# │ Non-repeating    │ Irrational                      │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout info"><span class="co-icon">📐</span><div><strong>কন্ট্রাপোজিটিভ (Contrapositive):</strong> "P → Q" প্রমাণ করতে কঠিন? প্রমাণ করো "¬Q → ¬P"। এগুলো সমতুল্য! "যদি বৃষ্টি হয়, রাস্তা ভেজা" প্রমাণ করতে কঠিন? প্রমাণ করো: "রাস্তা শুকনো হলে বৃষ্টি হয়নি।" এটাই contrapositive — সমান কিন্তু সহজ।</div></div>
 
