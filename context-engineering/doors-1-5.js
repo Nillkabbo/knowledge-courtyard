@@ -1322,74 +1322,443 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Context Bloat from Tools:</strong> Each tool call added 2K tokens — context grew to 200K. Fix: summarize tool outputs.</div></div>
 
 
-<div class="code-block">Retrieval Methods — Finding the Right Piece:
+<div class="code-block"># ── STEP 1: Three types of search ──
+# Dense (semantic), Sparse (keyword), and Hybrid.
 
-৩ ধরনের Search:
+search_types = {
+    "1. DENSE (Semantic/Vector) SEARCH": {
+        "how": "Query → embedding → cosine similarity → top-k chunks",
+        "strength": "Understands MEANING — 'machine learning' finds 'ML', 'AI'",
+        "weakness": "Misses exact keywords — 'GPT-4' may not find 'GPT-4'",
+        "best_for": "Conceptual queries, synonyms, paraphrasing",
+        "models": "OpenAI ada-002, BGE, E5, Cohere",
+    },
+    "2. SPARSE (Keyword/BM25) SEARCH": {
+        "how": "Query → tokenized → TF-IDF scoring → top-k chunks",
+        "strength": "Finds EXACT keywords — 'GPT-4' finds 'GPT-4'",
+        "weakness": "Doesn't understand meaning — 'ML' misses 'machine learning'",
+        "best_for": "Proper nouns, code, IDs, exact matches",
+        "engines": "Elasticsearch, Lucene, BM25, PostgreSQL full-text",
+    },
+    "3. HYBRID SEARCH (Production Standard)": {
+        "how": "Dense + Sparse → merge scores (RRF) → top-k",
+        "strength": "Catches BOTH meaning AND exact keywords",
+        "weakness": "More complex (two retrieval systems)",
+        "best_for": "Production RAG (85-95% accuracy)",
+        "implementation": "Dense top-50 + Sparse top-50 → RRF fusion → final top-5",
+    },
+}
 
-১. DENSE (Semantic/Vector) SEARCH
-  Query → embedding → cosine similarity 
-  → top-k chunks
-  
-  ✅ অর্থ বোঝে — "machine learning" query 
-     finds "ML", "artificial intelligence"
-  ❌ নির্দিষ্ট keyword মিস করে — 
-     "GPT-4" query doesn't find exact "GPT-4"
-  ❌ proper nouns, IDs, codes-এ দুর্বল
-  
-  Models: OpenAI ada-002, BGE, E5, Cohere
+print("THREE TYPES OF SEARCH:")
+for search_type, info in search_types.items():
+    print(f"\n  {search_type}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
 
-২. SPARSE (Keyword/BM25) SEARCH
-  Query → tokenized → TF-IDF scoring
-  → top-k chunks
-  
-  ✅ নির্দিষ্ট keyword খুঁজে পায় — 
-     "GPT-4" finds exact "GPT-4"
-  ✅ proper nouns, code, IDs-এ শক্তিশালী
-  ❌ অর্থ বোঝে না — "ML" query misses 
-     "machine learning"
-  
-  Engines: Elasticsearch, Lucene, BM25
+# DENSE vs SPARSE EXAMPLE:
+example = """
+QUERY: "Tell me about GPT-4's capabilities"
 
-৩. HYBRID SEARCH (Production Standard)
-  Dense + Sparse → merge scores → top-k
-  
-  ✅ অর্থ ও keyword দুটোই ধরে
-  ✅ ৮৫-৯৫% retrieval accuracy
-  ✅ Production RAG-এ standard
-  
-  Implementation:
-    → Dense top-50 + Sparse top-50
-    → Reciprocal Rank Fusion (RRF) merge
-    → Final top-5
+DENSE SEARCH finds:
+  → "Large language models can generate text, translate, summarize..."
+  (Semantically similar, but NOT specifically about GPT-4)
 
-VECTOR DATABASES:
-  Pinecone     → managed, easy, $$
-  Weaviate     → open-source, hybrid built-in
-  Qdrant       → fast, Rust-based, open
-  Milvus       → scale, enterprise
-  Chroma       → simple, local, prototyping
-  pgvector     → PostgreSQL extension, simple
+SPARSE SEARCH finds:
+  → "GPT-4 was released in March 2023 with 128K context..."
+  (Exact keyword match: "GPT-4")
 
+HYBRID SEARCH finds:
+  → "GPT-4 was released in March 2023..." (keyword match)
+  → "GPT-4 can generate text, translate..." (both keyword + semantic)
+  → BEST of both worlds!
+"""
+print(example)</div>
+
+<div class="code-block"># ── STEP 2: Vector databases comparison ──
+# Where to store and search your embeddings.
+
+vector_dbs = {
+    "pgvector (PostgreSQL)": {
+        "type": "PostgreSQL extension",
+        "pros": "Already using PostgreSQL? No new DB needed",
+        "cons": "Slower than purpose-built for very large datasets",
+        "best_for": "Small-medium datasets (<1M vectors), Django apps",
+        "cost": "Free (open source)",
+    },
+    "Pinecone": {
+        "type": "Fully managed cloud",
+        "pros": "Zero ops, scales automatically, fast",
+        "cons": "Expensive at scale, vendor lock-in",
+        "best_for": "Startups, quick prototyping, no DevOps",
+        "cost": "Free tier → $70+/month",
+    },
+    "Qdrant": {
+        "type": "Open source (Rust)",
+        "pros": "Fast, Rust-based, hybrid search built-in",
+        "cons": "Self-hosted (or cloud paid)",
+        "best_for": "Performance-critical, self-hosted",
+        "cost": "Free (self-hosted) or cloud",
+    },
+    "Weaviate": {
+        "type": "Open source (Go)",
+        "pros": "Hybrid search built-in, GraphQL API",
+        "cons": "More complex setup",
+        "best_for": "Hybrid search out of the box",
+        "cost": "Free (self-hosted) or cloud",
+    },
+    "Milvus": {
+        "type": "Open source (Go/C++)",
+        "pros": "Enterprise scale, billions of vectors",
+        "cons": "Complex setup, resource-heavy",
+        "best_for": "Enterprise, very large scale",
+        "cost": "Free (self-hosted)",
+    },
+    "Chroma": {
+        "type": "Open source (Python)",
+        "pros": "Simplest setup, great for prototyping",
+        "cons": "Not production-ready for large scale",
+        "best_for": "Prototyping, local development, learning",
+        "cost": "Free",
+    },
+}
+
+print("VECTOR DATABASES:")
+for db, info in vector_dbs.items():
+    print(f"\n  {db}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# RECOMMENDATION:
+print("\n\nRECOMMENDATION:")
+print("  Django app → pgvector (you already have PostgreSQL)")
+print("  Startup → Pinecone (managed, no ops)")
+print("  Self-hosted → Qdrant (fast, Rust)")
+print("  Prototyping → Chroma (simplest)")</div>
+
+<div class="code-block"># ── STEP 3: Hybrid search with Reciprocal Rank Fusion ──
+# Merge dense + sparse results for the best of both worlds.
+
+hybrid_search = """
+HYBRID SEARCH PIPELINE:
+
+1. DENSE SEARCH (semantic):
+   Query → embed → vector search → top-50 chunks (ranked by cosine similarity)
+
+2. SPARSE SEARCH (keyword):
+   Query → tokenize → BM25 search → top-50 chunks (ranked by keyword match)
+
+3. RECIPROCAL RANK FUSION (RRF):
+   Merge both rankings using RRF formula:
+   score = sum(1 / (k + rank_i)) for each result list
+
+   RRF gives higher score to items ranked high in BOTH lists.
+   An item ranked #1 in dense AND #1 in sparse gets a very high fused score.
+
+4. FINAL RESULT:
+   Top-5 chunks from fused ranking → send to LLM
+
+WHY RRF (not just averaging scores)?
+  → Dense scores (cosine: 0-1) and sparse scores (BM25: unbounded) are different scales
+  → RRF uses RANK (position) instead of raw score → scale-independent
+  → Simple, effective, no tuning needed
+  → Standard in production RAG systems
+"""
+
+print(hybrid_search)
+
+# PYTHON: Hybrid search implementation:
+hybrid_code = """
+import numpy as np
+
+def reciprocal_rank_fusion(dense_results, sparse_results, k=60):
+    \"\"\"Merge dense and sparse rankings using RRF.\"\"\"
+    rrf_scores = {}
+
+    # Add dense rankings:
+    for rank, doc in enumerate(dense_results, 1):
+        if doc.id not in rrf_scores:
+            rrf_scores[doc.id] = {"doc": doc, "score": 0}
+        rrf_scores[doc.id]["score"] += 1 / (k + rank)
+
+    # Add sparse rankings:
+    for rank, doc in enumerate(sparse_results, 1):
+        if doc.id not in rrf_scores:
+            rrf_scores[doc.id] = {"doc": doc, "score": 0}
+        rrf_scores[doc.id]["score"] += 1 / (k + rank)
+
+    # Sort by fused score:
+    fused = sorted(rrf_scores.values(), key=lambda x: x["score"], reverse=True)
+    return [item["doc"] for item in fused[:5]]  # top-5
+
+# DJANGO/pgvector hybrid search:
+from pgvector.django import CosineDistance
+from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
+
+def hybrid_search(query_text, query_embedding, top_k=5):
+    # Dense search (semantic):
+    dense = Document.objects.annotate(
+        dist=CosineDistance('embedding', query_embedding)
+    ).order_by('dist')[:50]
+
+    # Sparse search (keyword/BM25 via PostgreSQL full-text):
+    search_vector = SearchVector('content')
+    search_query = SearchQuery(query_text)
+    sparse = Document.objects.annotate(
+        rank=SearchRank(search_vector, search_query)
+    ).filter(rank__gt=0).order_by('-rank')[:50]
+
+    # Fuse results:
+    return reciprocal_rank_fusion(list(dense), list(sparse))
+"""
+
+print(hybrid_code)</div>
+
+<div class="code-block"># ── STEP 4: Embedding optimization ──
+# Use the right embedding prefixes for better retrieval.
+
+embedding_opt = """
 EMBEDDING OPTIMIZATION:
 
-  Query Embedding ≠ Document Embedding
-  
-  কিছু model-এ আলাদা query/passage encoder:
-    • BGE: query prefix "Represent this 
-      sentence for searching relevant passages:"
-    • E5: "query:" vs "passage:" prefix
-    • Cohere: separate embed-english-v3 
-      with search_type parameter
+Query embedding ≠ Document embedding!
 
-  → সঠিক prefix ব্যবহার করো — 
-    naive embedding থেকে ১০-২০% উন্নতি
+Some models need DIFFERENT prefixes for queries vs documents:
 
+BGE (BAAI General Embedding):
+  Query: "Represent this sentence for searching relevant passages: [query]"
+  Document: "[document text]" (no prefix)
+
+E5:
+  Query: "query: [query text]"
+  Document: "passage: [document text]"
+
+Cohere:
+  Uses input_type parameter:
+    embed(text, input_type="search_query")     # for queries
+    embed(text, input_type="search_document")   # for documents
+
+OpenAI:
+  No prefix needed (same embedding for both)
+
+WHY THIS MATTERS:
+  → Correct prefix: 10-20% better retrieval accuracy
+  → Wrong/no prefix: model treats query and doc the same way
+  → Asymmetric encoding improves query-document matching
+
+COMMON MISTAKE:
+  Using the same embedding for query and document
+  when the model expects different prefixes.
+  → Always check the model's documentation!
+"""
+
+print(embedding_opt)
+
+# PYTHON: Correct embedding with prefixes:
+embedding_code = """
+# BGE embedding with correct prefixes:
+from FlagEmbedding import FlagModel
+
+model = FlagModel('BAAI/bge-large-en-v1.5')
+
+# For DOCUMENTS (no prefix):
+doc_embeddings = model.encode(documents)
+
+# For QUERIES (add prefix):
+query_embedding = model.encode(
+    ["Represent this sentence for searching relevant passages: " + q
+     for q in queries]
+)
+
+# E5 embedding:
+from sentence_transformers import SentenceTransformer
+model = SentenceTransformer('intfloat/e5-large-v2')
+
+doc_embeddings = model.encode(["passage: " + doc for doc in documents])
+query_embedding = model.encode(["query: " + query])
+
+# COHERE:
+import cohere
+co = cohere.Client()
+
+# Documents (one-time, during indexing):
+doc_embeddings = co.embed(
+    texts=documents, input_type="search_document", model="embed-english-v3"
+).embeddings
+
+# Queries (per request):
+query_embedding = co.embed(
+    texts=[query], input_type="search_query", model="embed-english-v3"
+).embeddings
+"""
+
+print(embedding_code)</div>
+
+<div class="code-block"># ── STEP 5: Multi-vector retrieval ──
+# Store multiple representations of each document for better coverage.
+
+multi_vector = """
 MULTI-VECTOR RETRIEVAL:
-  একটা ডকুমেন্টের একাধিক representation:
-    • Summary embedding (short)
-    • Full text embedding (detailed)  
-    • Section embeddings (granular)
-  → বিভিন্ন query type-এ ভালো কভারেজ</div>
+
+Instead of ONE embedding per document, store MULTIPLE:
+
+1. SUMMARY embedding (short, 1-2 sentences):
+   → Good for high-level questions ("What is this document about?")
+
+2. FULL TEXT embedding (complete chunk):
+   → Good for detailed questions ("What does section 3.2 say?")
+
+3. SECTION embeddings (per-heading):
+   → Good for specific section queries ("What are the financial results?")
+
+4. KEYWORD/HYPOTHETICAL embedding:
+   → Generate hypothetical questions for each chunk
+   → Embed the questions, not the chunk
+   → Query matches questions → retrieves chunk
+
+BENEFIT:
+  Different query types match different representations.
+  A high-level query hits the summary embedding.
+  A specific query hits the section embedding.
+  → Better recall across diverse query types
+
+COST:
+  → More storage (multiple vectors per doc)
+  → More compute (embed multiple times)
+  → More complex retrieval (which vector to search?)
+"""
+
+print(multi_vector)
+
+# PYTHON: Multi-vector retrieval:
+multi_code = """
+# Store multiple embeddings per document:
+class MultiVectorDocument(models.Model):
+    content = models.TextField()
+    summary = models.TextField()
+    section = models.CharField(max_length=200)
+
+    # Multiple embeddings:
+    content_embedding = VectorField(dimensions=1536)
+    summary_embedding = VectorField(dimensions=1536)
+    section_embedding = VectorField(dimensions=1536)
+
+    # Search ALL three and merge:
+    def multi_vector_search(query_embedding, top_k=5):
+        # Search content embeddings:
+        content_results = MultiVectorDocument.objects.annotate(
+            dist=CosineDistance('content_embedding', query_embedding)
+        ).order_by('dist')[:10]
+
+        # Search summary embeddings:
+        summary_results = MultiVectorDocument.objects.annotate(
+            dist=CosineDistance('summary_embedding', query_embedding)
+        ).order_by('dist')[:10]
+
+        # Merge and deduplicate:
+        all_results = list(content_results) + list(summary_results)
+        unique = {doc.id: doc for doc in all_results}  # dedup by ID
+
+        return list(unique.values())[:top_k]
+"""
+
+print(multi_code)</div>
+
+<div class="code-block"># ── STEP 6: Retrieval evaluation and tuning ──
+# Measure and improve retrieval quality.
+
+evaluation = """
+RETRIEVAL EVALUATION METRICS:
+
+1. CONTEXT PRECISION (are retrieved docs relevant?):
+   → What % of retrieved chunks are actually relevant?
+   → Target: >80%
+   → Low → need better embeddings or re-ranking
+
+2. CONTEXT RECALL (did we find ALL relevant docs?):
+   → Did we retrieve ALL chunks needed to answer?
+   → Target: >85%
+   → Low → need more chunks (higher top_k) or better chunking
+
+3. MRR (Mean Reciprocal Rank):
+   → How high is the FIRST relevant result?
+   → 1.0 = relevant result is always #1
+   → 0.5 = relevant result averages #2
+
+4. NDCG (Normalized Discounted Cumulative Gain):
+   → Accounts for both relevance AND ranking position
+   → Higher is better (1.0 = perfect ranking)
+
+TUNING CHECKLIST:
+  → Try different embedding models (BGE vs OpenAI vs Cohere)
+  → Adjust top_k (10? 20? 50?)
+  → Add re-ranking (cross-encoder) after initial retrieval
+  → Tune hybrid search weights (dense vs sparse balance)
+  → Experiment with chunk sizes
+  → Use query transformation (rewrite, expand)
+  → Add metadata filtering (narrow search space)
+  → Test with real user queries (not synthetic)
+"""
+
+print(evaluation)
+
+# PYTHON: Measuring retrieval quality:
+measure_code = """
+def measure_retrieval(query, relevant_doc_ids, retrieved_docs):
+    \"\"\"Measure precision and recall.\"\"\"
+    retrieved_ids = [doc.id for doc in retrieved_docs]
+
+    # Precision: what % of retrieved are relevant?
+    relevant_retrieved = len(set(retrieved_ids) & set(relevant_doc_ids))
+    precision = relevant_retrieved / len(retrieved_ids) if retrieved_ids else 0
+
+    # Recall: what % of relevant docs were retrieved?
+    recall = relevant_retrieved / len(relevant_doc_ids) if relevant_doc_ids else 0
+
+    # MRR: reciprocal rank of first relevant result:
+    mrr = 0
+    for i, doc_id in enumerate(retrieved_ids, 1):
+        if doc_id in relevant_doc_ids:
+            mrr = 1 / i
+            break
+
+    return {
+        "precision": round(precision, 3),
+        "recall": round(recall, 3),
+        "mrr": round(mrr, 3),
+        "retrieved": len(retrieved_ids),
+        "relevant_found": relevant_retrieved,
+    }
+
+# Run across test set:
+total_precision = 0
+total_recall = 0
+for test_case in test_dataset:
+    results = measure_retrieval(
+        test_case["query"],
+        test_case["relevant_ids"],
+        rag_system.retrieve(test_case["query"])
+    )
+    total_precision += results["precision"]
+    total_recall += results["recall"]
+
+print(f"Avg Precision: {total_precision/len(test_dataset):.3f}")
+print(f"Avg Recall: {total_recall/len(test_dataset):.3f}")
+"""
+
+print(measure_code)
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Key Point                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Dense search     │ Semantic (meaning-based)        │
+# │ Sparse search    │ Keyword (exact match)           │
+# │ Hybrid search    │ Dense + Sparse = production std │
+# │ RRF              │ Merge rankings (scale-free)     │
+# │ pgvector         │ PostgreSQL vector search        │
+# │ Embedding prefix │ Query ≠ Document embedding      │
+# │ Multi-vector     │ Multiple representations/doc    │
+# │ Evaluation       │ Precision, Recall, MRR, NDCG    │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
