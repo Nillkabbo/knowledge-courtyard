@@ -26,46 +26,386 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Catastrophic Forgetting:</strong> Fine-tuned on medical data — model forgot general knowledge. Fix: use LoRA, mix in general data.</div></div>
 
 
-<div class="code-block">Three Tools — Three Problems:
+<div class="code-block"># ── STEP 1: When to use fine-tuning vs RAG vs prompting ──
+# The decision tree for adapting LLMs.
 
-# ──────────────────────────────────────────────# 
-#  PROBLEM TYPE 1: নতুন জ্ঞান (New Knowledge)  # 
-#  "আমার কোম্পানির নীতিমালা কী?"               # 
-#  "এই ডকুমেন্ট অনুযায়ী উত্তর দাও"              # 
-#                                               # 
-#  ✅ সমাধান: RAG                               # 
-#  ❌ Fine-tuning কেন নয়: জ্ঞান বদলায়,         # 
-#     মডেলের ওজন নয়। নতুন ডকুমেন্ট এলে আবার   # 
-#     fine-tune? অপ্র্যাক্টিক্যাল।              # 
-#  ❌ Prompting কেন নয়: context window পূর্ণ    # 
-#     হবে বিশাল নীতিমালা দিলে।                  # 
-# ──────────────────────────────────────────────# 
-#  PROBLEM TYPE 2: নতুন শৈলী (New Style/Format)# 
-#  "JSON আউটপুট দাও, সবসময়"                    # 
-#  "শুধু বাংলায় উত্তর দাও"                      # 
-#  "প্রতিটা উত্তরে citation দাও"                # 
-#                                               # 
-#  ✅ সমাধান: Prompting / System Prompt         # 
-#  ✅ বা Few-Shot examples                       # 
-#  ⚠️ Fine-tuning: কাজ করে কিন্তু ব্যয়বহুল      # 
-#     যদি prompting-এ কাজ করে।                  # 
-# ──────────────────────────────────────────────# 
-#  PROBLEM TYPE 3: নতুন দক্ষতা (New Skill)     # 
-#  "মডেল আমার ডোমেইনের প্রশ্নে ভুল করছে"        # 
-#  "নির্দিষ্ট প্যাটার্নে উত্তর দিতে হবে"         # 
-#  "ল্যাটেন্সি কমাতে হবে — ছোট মডেল বড়         # 
-#   মডেলের মতো কাজ করুক"                       # 
-#                                               # 
-#  ✅ সমাধান: Fine-tuning                        # 
-#  → মডেলের ওজন বদলায় → আচরণ বদলায়            # 
-#  → নির্দিষ্ট ডোমেইনে বিশেষজ্ঞ                 # 
-#  → ছোট মডেল বড় মডেলের কাছাকাছি               # 
-# ──────────────────────────────────────────────# 
+decision = """
+THREE TOOLS — THREE PROBLEMS:
+
+PROBLEM TYPE 1: NEW KNOWLEDGE
+  "What are my company policies?"
+  "Answer according to this document"
+  ✅ Solution: RAG (90% of cases)
+  ❌ Fine-tuning: knowledge changes, retraining is impractical
+  ❌ Prompting: context window fills up with large docs
+
+PROBLEM TYPE 2: NEW STYLE/FORMAT
+  "Always output JSON"
+  "Only answer in Bengali"
+  "Add citations to every response"
+  ✅ Solution: Prompting / System Prompt
+  ✅ Or Few-Shot examples
+  ⚠️ Fine-tuning: works but expensive if prompting works
+
+PROBLEM TYPE 3: NEW SKILL
+  "Model makes mistakes in my domain"
+  "Must follow specific response patterns"
+  "Reduce latency — small model like big model"
+  ✅ Solution: Fine-tuning
+  → Changes model weights → changes behavior
+  → Specializes in specific domain
+  → Small model approaches large model quality
 
 DECISION TREE:
+  New information to add?
+  ├── YES → RAG (90% of cases)
+  └── NO → New style/format?
+           ├── YES → Prompting / System prompt
+           └── NO → Need domain expertise or speed?
+                    └── YES → Fine-tuning
 
-  নতুন তথ্য যোগ করতে চাও?
-  # ── YES → RAG (৯০% ক্ষেত্রে)
+THE FINE-TUNING SPECTRUM:
+  1. CONTINUED PRE-TRAINING: train on domain text (expensive)
+  2. SFT (Supervised Fine-Tuning): train on input-output pairs
+  3. RLHF/DPO: train on preferences (alignment)
+  4. LoRA/QLoRA: efficient fine-tuning (only some weights)
+  5. Adapter tuning: add small modules to frozen model
+
+COST COMPARISON:
+  Full fine-tuning (7B): ~$500-2000 (GPU hours)
+  LoRA fine-tuning (7B): ~$10-50 (GPU hours)
+  QLoRA fine-tuning (7B): ~$5-20 (consumer GPU!)
+
+PYTHON (Hugging Face fine-tuning):
+  from transformers import AutoModelForCausalLM, Trainer
+  from peft import LoraConfig, get_peft_model
+
+  model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-2-7b")
+
+  # LoRA: only train 0.1% of parameters!
+  lora_config = LoraConfig(
+      r=8, lora_alpha=32, lora_dropout=0.1,
+      target_modules=["q_proj", "v_proj"]
+  )
+  model = get_peft_model(model, lora_config)
+  # Trainable params: 4M out of 7B (0.06%!)
+"""
+
+print(decision)</div>
+
+<div class="code-block"># ── STEP 2: Dataset curation ──
+# Quality matters more than quantity.
+
+dataset = """
+DATASET CURATION — QUALITY > QUANTITY:
+
+"Garbage in, garbage out" — especially true for fine-tuning.
+
+DATASET TYPES:
+  1. INSTRUCTION-FOLLOWING (SFT):
+     {"instruction": "Summarize this text", "input": "...", "output": "..."}
+     → Model learns to follow instructions
+
+  2. CONVERSATION (chat):
+     {"messages": [{"role": "user", "content": "..."}, {"role": "assistant", "content": "..."}]}
+     → Multi-turn conversations
+
+  3. PREFERENCE (RLHF/DPO):
+     {"prompt": "...", "chosen": "good response", "rejected": "bad response"}
+     → Model learns preferences
+
+QUALITY GUIDELINES:
+  → 1000 high-quality examples > 100,000 mediocre ones
+  → Diverse examples (avoid repetition)
+  → Consistent formatting
+  → No harmful/biased content
+  → Human-reviewed when possible
+
+DATA CLEANING:
+  → Remove duplicates
+  → Fix formatting inconsistencies
+  → Remove low-quality outputs
+  → Balance categories (avoid over-representation)
+  → Tokenize and check lengths
+
+PYTHON (prepare SFT dataset):
+  import json
+  from datasets import Dataset
+
+  # Load your data:
+  data = [
+      {"instruction": "Classify sentiment",
+       "input": "I love this product!",
+       "output": "positive"},
+      {"instruction": "Classify sentiment",
+       "input": "Terrible experience",
+       "output": "negative"},
+      # ... 1000+ examples
+  ]
+
+  dataset = Dataset.from_list(data)
+  print(f"Dataset size: {len(dataset)}")
+
+  # Format for training (chat template):
+  def format_prompt(example):
+      return {
+          "text": f"### Instruction: {example['instruction']}\\n"
+                  f"### Input: {example['input']}\\n"
+                  f"### Response: {example['output']}"
+      }
+
+  dataset = dataset.map(format_prompt)
+
+  # Train/validation split:
+  split = dataset.train_test_split(test_size=0.1)
+  train_data = split["train"]
+  val_data = split["test"]
+
+FAMOUS FINE-TUNING DATASETS:
+  → Alpaca: 52K instruction-following examples
+  → Dolly: 15K human-written examples (Databricks)
+  → OpenAssistant: 161K conversations
+  → LIMA: 1000 carefully curated examples
+  → FLAN: 1,800+ tasks (Google)
+"""
+
+print(dataset)</div>
+
+<div class="code-block"># ── STEP 3: LoRA — Low-Rank Adaptation ──
+# Efficient fine-tuning for everyone.
+
+lora = """
+LORA (LOW-RANK ADAPTATION):
+
+THE PROBLEM:
+  Full fine-tuning: update ALL 7B parameters
+  → Requires enormous GPU memory (7B × 4 bytes = 28GB just for weights)
+  → Plus gradients + optimizer state = 3× more
+  → Total: ~100GB+ for 7B model (multiple A100s)
+
+LORA INSIGHT:
+  Fine-tuning doesn't need full-rank updates.
+  → Decompose weight update: ΔW = A × B (low-rank)
+  → A: d×r, B: r×d (r = rank, typically 8-64)
+  → Only train A and B (much smaller)
+
+PARAMETER COUNT:
+  Full: 7B parameters (all updated)
+  LoRA: only r×(d_in + d_out) per layer ≈ 4M (0.06%!)
+
+HOW IT WORKS:
+  Original: y = Wx (W frozen)
+  LoRA:    y = Wx + BAx (only A, B trained)
+
+  After training: merge W_merged = W + BA (no inference overhead!)
+
+HYPERPARAMETERS:
+  → r (rank): 8, 16, 32, 64 (higher = more capacity)
+  → alpha: scaling factor (typically 2×r)
+  → dropout: 0.05-0.1 (regularization)
+  → target_modules: which layers to apply LoRA
+    (q_proj, v_proj most common; all for max quality)
+
+PYTHON (Hugging Face PEFT):
+  from peft import LoraConfig, get_peft_model, TaskType
+
+  lora_config = LoraConfig(
+      task_type=TaskType.CAUSAL_LM,
+      r=8,                    # rank
+      lora_alpha=32,          # scaling (2×r)
+      lora_dropout=0.1,       # regularization
+      target_modules=["q_proj", "k_proj", "v_proj", "o_proj",
+                      "gate_proj", "up_proj", "down_proj"]
+  )
+
+  model = get_peft_model(model, lora_config)
+  model.print_trainable_parameters()
+  # trainable params: 19,988,480 || all params: 6,751,014,912
+  # || trainable%: 0.296%
+
+  # Train with standard Trainer:
+  trainer = Trainer(model=model, train_dataset=train_data, ...)
+  trainer.train()
+
+  # Save LoRA adapter (tiny! ~50MB vs 13GB for full model):
+  model.save_pretrained("./lora_adapter")
+
+  # Merge and save full model:
+  merged = model.merge_and_unload()
+  merged.save_pretrained("./merged_model")
+"""
+
+print(lora)</div>
+
+<div class="code-block"># ── STEP 4: QLoRA — fine-tuning on consumer GPUs ──
+# Democratizing LLM training.
+
+qlora = """
+QLORA (QUANTIZED LORA):
+
+QLoRA = Quantization + LoRA
+  → Quantize base model to 4-bit (NF4)
+  → Apply LoRA adapters in 16-bit (fp16/bf16)
+  → Fine-tune on consumer GPU (8GB VRAM!)
+
+THE INNOVATION:
+  → NF4 (Normal Float 4-bit): optimal quantization for normally-distributed weights
+  → Double quantization: quantize the quantization constants
+  → Paged optimizers: prevent OOM with NVIDIA unified memory
+
+MEMORY COMPARISON (7B model):
+  Full fine-tuning:  ~100GB (multiple A100s)
+  LoRA:              ~20GB  (one A100)
+  QLoRA:             ~6GB   (RTX 4090 / consumer GPU!)
+
+QUALITY:
+  → QLoRA nearly matches full fine-tuning quality
+  → Paper showed <1% degradation vs LoRA
+  → Made fine-tuning accessible to everyone
+
+PYTHON (QLoRA with bitsandbytes):
+  from transformers import AutoModelForCausalLM, BitsAndBytesConfig
+  import torch
+
+  # 4-bit quantization config:
+  bnb_config = BitsAndBytesConfig(
+      load_in_4bit=True,
+      bnb_4bit_use_double_quant=True,
+      bnb_4bit_quant_type="nf4",
+      bnb_4bit_compute_dtype=torch.bfloat16
+  )
+
+  # Load model in 4-bit:
+  model = AutoModelForCausalLM.from_pretrained(
+      "meta-llama/Llama-2-7b",
+      quantization_config=bnb_config,
+      device_map="auto"
+  )
+
+  # Apply LoRA on top:
+  from peft import LoraConfig, get_peft_model
+  lora_config = LoraConfig(r=16, lora_alpha=32, ...)
+  model = get_peft_model(model, lora_config)
+
+  # Now fine-tune on any GPU with >=6GB VRAM!
+  trainer = Trainer(model=model, ...)
+  trainer.train()
+
+UNSLOTH (2024): 2-5x faster QLoRA
+  → Optimized kernels
+  → 50% less memory
+  → Free Colab can fine-tune!
+  from unsloth import FastLanguageModel
+  model, tokenizer = FastLanguageModel.from_pretrained("unsloth/llama-2-7b")
+"""
+
+print(qlora)</div>
+
+<div class="code-block"># ── STEP 5: Training methods comparison ──
+# SFT, DPO, RLHF — which to choose.
+
+methods = """
+TRAINING METHODS — THREE PATHS:
+
+1. SFT (SUPERVISED FINE-TUNING):
+   → Train on input → output pairs
+   → Simplest, most common
+   → Good for: instruction following, domain adaptation
+   → Loss: standard cross-entropy on output tokens
+
+2. RLHF (REINFORCEMENT LEARNING FROM HUMAN FEEDBACK):
+   → Train reward model on human preferences
+   → Use PPO to optimize model against reward
+   → Good for: alignment, safety, helpfulness
+   → Complex: 3 models (actor, reference, reward, value)
+
+3. DPO (DIRECT PREFERENCE OPTIMIZATION):
+   → Simplify RLHF: no reward model needed
+   → Directly optimize on preference pairs
+   → Mathematically equivalent to RLHF under certain assumptions
+   → Much simpler to implement and train
+
+COMPARISON:
+  ┌──────────┬──────────────┬──────────────┬──────────────┐
+  │ Method   │ Complexity   │ Compute      │ Quality      │
+  ├──────────┼──────────────┼──────────────┼──────────────┤
+  │ SFT      │ Simple       │ Low          │ Good         │
+  │ DPO      │ Medium       │ Medium       │ Better       │
+  │ RLHF     │ Complex      │ High         │ Best (maybe) │
+  └──────────┴──────────────┴──────────────┴──────────────┘
+
+RECOMMENDED PIPELINE:
+  1. SFT: teach the model your task
+  2. DPO: align with preferences (optional)
+  3. Evaluate: benchmarks + human eval
+
+PYTHON (DPO training):
+  from trl import DPOTrainer
+
+  # DPO needs preference pairs:
+  dpo_dataset = [
+      {"prompt": "Write a poem", "chosen": "good poem", "rejected": "bad poem"},
+      # ...
+  ]
+
+  trainer = DPOTrainer(
+      model=model,
+      ref_model=None,  # uses model itself as reference
+      beta=0.1,
+      train_dataset=dpo_dataset,
+      tokenizer=tokenizer,
+  )
+  trainer.train()
+
+PYTHON (SFT training):
+  from trl import SFTTrainer
+
+  trainer = SFTTrainer(
+      model=model,
+      train_dataset=sft_dataset,
+      dataset_text_field="text",
+      max_seq_length=512,
+      tokenizer=tokenizer,
+  )
+  trainer.train()
+"""
+
+print(methods)</div>
+
+<div class="code-block"># ── STEP 6: Fine-tuning best practices ──
+# How to fine-tune effectively.
+
+best_practices = [
+    "Quality > Quantity: 1000 good examples beat 100K mediocre",
+    "Try prompting first (cheapest), then RAG, then fine-tuning",
+    "LoRA/QLoRA: efficient, accessible, nearly as good as full",
+    "Rank 8-32 for LoRA is usually sufficient",
+    "Target all linear layers for maximum quality",
+    "SFT first, then DPO for alignment",
+    "Always hold out validation set",
+    "Monitor for catastrophic forgetting (model loses general ability)",
+    "Use learning rate 1e-4 to 2e-4 for LoRA",
+    "Train 2-5 epochs (watch for overfitting)",
+    "Evaluate on domain benchmarks + general benchmarks",
+    "Merge LoRA weights before deployment (no inference overhead)",
+    "Use chat templates for conversational models",
+    "Data diversity prevents overfitting to patterns",
+    "Document training data for transparency",
+]
+
+print("FINE-TUNING BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Method           │ Memory (7B)                    │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Full FT          │ ~100GB (multi-GPU)             │
+# │ LoRA             │ ~20GB (1 A100)                 │
+# │ QLoRA            │ ~6GB (consumer GPU)            │
+# │ Unsloth QLoRA    │ ~4GB (Colab free!)             │
+# └──────────────────┴──────────────────────────────────┘</div>
   # ── NO ↓
   
   শুধু ফরম্যাট/শৈলী বদলাতে চাও?
