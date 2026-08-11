@@ -68,12 +68,13 @@ doors.push({
 <br>⚠️ Learning rate খুব কম = অনন্তকাল ধরে নামবে
 <br>✅ Adam optimizer = adaptive learning rate (Book ১৩: Fine-tuning)</div></div>
 
-<div class="code-block">— — — Python-এ Gradient Descent — — —
+<div class="code-block"># ── STEP 1: Gradient descent ──
+# How models learn — following the slope downhill.
 
 import numpy as np
 
-# সরল gradient descent: f(x) = x^2 + 2x + 1
-# Minimum at x = -1 (f' = 2x + 2 = 0)
+# SIMPLE GRADIENT DESCENT: f(x) = x^2 + 2x + 1
+# Minimum at x = -1 (f'(x) = 2x + 2 = 0)
 
 x = 5.0           # starting point
 lr = 0.1          # learning rate
@@ -88,9 +89,380 @@ for step in range(50):
 
 print(f"\nFinal x = {x:.6f}")  # ~ -1.0 (minimum!)
 
-# Neural network-এ: gradient of loss w.r.t. all weights
-# w_new = w_old - lr * dL/dw
-# PyTorch/TensorFlow এই gradient automatically বের করে (autograd)</div>
+# IN NEURAL NETWORKS:
+# w_new = w_old - lr * dL/dw  (for every weight)
+# PyTorch/TensorFlow computes gradients automatically (autograd)
+
+# OPTIMIZERS:
+optimizers = """
+1. SGD (Stochastic Gradient Descent):
+   w = w - lr * grad
+   → Simple, but slow convergence
+
+2. SGD + Momentum:
+   velocity = momentum * velocity + grad
+   w = w - lr * velocity
+   → Builds up speed in consistent directions
+
+3. RMSprop:
+   cache = decay * cache + (1-decay) * grad^2
+   w = w - lr * grad / sqrt(cache + epsilon)
+   → Adapts learning rate per parameter
+
+4. ADAM (most popular):
+   → Combines momentum + adaptive learning rate
+   → m = beta1 * m + (1-beta1) * grad
+   → v = beta2 * v + (1-beta2) * grad^2
+   → w = w - lr * m_hat / (sqrt(v_hat) + epsilon)
+   → Default: lr=0.001, beta1=0.9, beta2=0.999
+
+5. ADAMW:
+   → Adam with proper weight decay (regularization)
+   → Standard for training LLMs (GPT, Llama)
+"""
+
+# LEARNING RATE MATTERS:
+# Too high: diverges (x bounces around, never converges)
+# Too low: converges too slowly (need 10000 steps instead of 50)
+# Just right: smooth convergence to minimum
+
+# In practice: use learning rate schedulers
+# → Start high, decay over time (cosine, step, warmup)</div>
+
+<div class="code-block"># ── STEP 2: Chain rule and backpropagation ──
+# How deep networks learn.
+
+import numpy as np
+
+# THE CHAIN RULE (calculus):
+# If y = f(g(x)), then dy/dx = f'(g(x)) * g'(x)
+# This is THE mathematical foundation of deep learning.
+
+# SIMPLE EXAMPLE:
+# y = (x^2 + 1)^3
+# Let u = x^2 + 1, then y = u^3
+# dy/du = 3u^2
+# du/dx = 2x
+# dy/dx = 3u^2 * 2x = 6x(x^2 + 1)^2
+
+# BACKPROPAGATION = chain rule applied to neural networks:
+# Forward: input → layer1 → layer2 → ... → output → loss
+# Backward: loss → output → layer2 → layer1 → input
+# At each layer: multiply gradient by local derivative (chain rule!)
+
+# SIMPLE 2-LAYER NETWORK (from scratch):
+def forward_backward():
+    # Forward pass:
+    x = 2.0
+    w1, b1 = 0.5, 0.1    # layer 1 weights
+    w2, b2 = 0.3, -0.2   # layer 2 weights
+    y_true = 1.0
+
+    # Layer 1: z1 = w1*x + b1, a1 = relu(z1)
+    z1 = w1 * x + b1
+    a1 = max(0, z1)      # ReLU activation
+
+    # Layer 2: z2 = w2*a1 + b2, a2 = z2 (linear output)
+    z2 = w2 * a1 + b2
+    a2 = z2              # identity for output
+
+    # Loss: MSE = (a2 - y_true)^2
+    loss = (a2 - y_true) ** 2
+
+    # Backward pass (compute gradients):
+    dloss_da2 = 2 * (a2 - y_true)     # dL/da2
+    da2_dz2 = 1.0                      # da2/dz2 (identity)
+    dz2_dw2 = a1                       # dz2/dw2
+
+    dloss_dw2 = dloss_da2 * da2_dz2 * dz2_dw2  # chain rule!
+
+    dz2_da1 = w2                       # dz2/da1
+    da1_dz1 = 1.0 if z1 > 0 else 0.0   # relu derivative
+    dz1_dw1 = x                        # dz1/dw1
+
+    dloss_dw1 = dloss_da2 * da2_dz2 * dz2_da1 * da1_dz1 * dz1_dw1
+
+    print(f"Forward: loss = {loss:.4f}")
+    print(f"dL/dw2 = {dloss_dw2:.4f}")
+    print(f"dL/dw1 = {dloss_dw1:.4f}")
+
+    # Update weights (gradient descent):
+    lr = 0.01
+    w1_new = 0.5 - lr * dloss_dw1
+    w2_new = 0.3 - lr * dloss_dw2
+
+forward_backward()
+
+# PYTORCH does this automatically:
+# loss.backward()  # computes ALL gradients via chain rule
+# optimizer.step() # updates weights using gradients</div>
+
+<div class="code-block"># ── STEP 3: Loss functions and regularization ──
+# How to measure and prevent overfitting.
+
+import numpy as np
+
+# LOSS FUNCTIONS:
+
+# 1. MSE (Mean Squared Error) — regression:
+def mse(y_true, y_pred):
+    return np.mean((y_true - y_pred) ** 2)
+
+# 2. Cross-Entropy — classification:
+def cross_entropy(y_true, y_pred):
+    return -np.sum(y_true * np.log(y_pred + 1e-10))
+
+# 3. Binary Cross-Entropy — binary classification:
+def bce(y_true, y_pred):
+    return -np.mean(y_true * np.log(y_pred + 1e-10) +
+                    (1 - y_true) * np.log(1 - y_pred + 1e-10))
+
+# 4. Huber Loss — robust regression (less sensitive to outliers):
+def huber(y_true, y_pred, delta=1.0):
+    error = y_true - y_pred
+    return np.mean(np.where(
+        np.abs(error) <= delta,
+        0.5 * error ** 2,
+        delta * (np.abs(error) - 0.5 * delta)
+    ))
+
+# REGULARIZATION (prevent overfitting):
+
+# 1. L1 REGULARIZATION (LASSO):
+# Loss = original_loss + lambda * sum(|w|)
+# → Pushes some weights to exactly zero (feature selection)
+
+# 2. L2 REGULARIZATION (Ridge/Weight Decay):
+# Loss = original_loss + lambda * sum(w^2)
+# → Shrinks all weights toward zero (prevents large weights)
+
+# 3. DROPOUT:
+# → Randomly set some neurons to 0 during training
+# → Forces network to not rely on any single neuron
+# → rate=0.1 means 10% of neurons dropped
+
+# 4. EARLY STOPPING:
+# → Monitor validation loss
+# → Stop training when val loss starts increasing
+# → Prevents overfitting to training data
+
+# REGULARIZATION IN CODE:
+def regularized_loss(y_true, y_pred, weights, lambda_l2=0.01):
+    mse_loss = np.mean((y_true - y_pred) ** 2)
+    l2_penalty = lambda_l2 * np.sum(weights ** 2)
+    return mse_loss + l2_penalty
+
+# GRADIENT WITH REGULARIZATION:
+# dL/dw = dL_original/dw + 2 * lambda * w
+# → Weight update: w = w - lr * (grad + 2*lambda*w)
+# → This is why L2 is called "weight decay" — weights shrink each step
+
+# OVERFITTING CHECK:
+# Train acc: 99%, Val acc: 85% → OVERFITTING (add regularization)
+# Train acc: 80%, Val acc: 79% → UNDERFITTING (need bigger model/more data)
+# Train acc: 92%, Val acc: 91% → GOOD FIT</div>
+
+<div class="code-block"># ── STEP 4: Information theory ──
+# Entropy, KL divergence, and cross-entropy.
+
+import numpy as np
+
+# ENTROPY (measure of uncertainty):
+# H(X) = -sum(p(x) * log2(p(x)))
+# → High entropy = high uncertainty (uniform distribution)
+# → Low entropy = low uncertainty (peaked distribution)
+
+def entropy(probs):
+    probs = np.array(probs)
+    probs = probs[probs > 0]  # remove zeros (log(0) = -inf)
+    return -np.sum(probs * np.log2(probs))
+
+print(f"Fair coin: {entropy([0.5, 0.5]):.4f} bits")        # 1.0
+print(f"Biased coin: {entropy([0.9, 0.1]):.4f} bits")       # 0.469
+print(f"Certain: {entropy([1.0, 0.0]):.4f} bits")           # 0.0
+
+# KL DIVERGENCE (how different two distributions are):
+# KL(P || Q) = sum(p(x) * log(p(x) / q(x)))
+# → 0 if distributions are identical
+# → Used in: VAEs, knowledge distillation, variational inference
+
+def kl_divergence(p, q):
+    p = np.array(p)
+    q = np.array(q)
+    mask = p > 0
+    return np.sum(p[mask] * np.log(p[mask] / q[mask]))
+
+print(f"KL(P||Q): {kl_divergence([0.5, 0.5], [0.5, 0.5]):.4f}")  # 0.0
+print(f"KL(P||Q): {kl_divergence([0.9, 0.1], [0.5, 0.5]):.4f}")  # 0.369
+
+# CROSS-ENTROPY (the most common loss function in ML):
+# H(P, Q) = H(P) + KL(P || Q)
+# = -sum(p(x) * log(q(x)))
+# When P is the true label (one-hot): CE = -log(q[true_class])
+# → This is exactly what softmax + cross-entropy loss does!
+
+# MUTUAL INFORMATION:
+# I(X; Y) = H(X) - H(X | Y) = H(Y) - H(Y | X)
+# → How much knowing X reduces uncertainty about Y
+# → Used in: feature selection, representation learning
+
+# WHY INFORMATION THEORY MATTERS FOR ML:
+# 1. Cross-entropy = standard classification loss
+# 2. KL divergence = VAE loss, knowledge distillation
+# 3. Entropy = decision tree splitting criterion
+# 4. Mutual information = feature selection, disentanglement
+# 5. Compression theory = understanding model capacity</div>
+
+<div class="code-block"># ── STEP 5: Full pipeline — math to transformer ──
+# How all the math connects to build a transformer.
+
+import numpy as np
+
+# THE TRANSFORMER (from math perspective):
+
+# 1. EMBEDDINGS (vector space):
+#    Token → learned vector (e.g., 768-dim)
+#    Math: lookup table E[token_id] → vector
+
+# 2. POSITIONAL ENCODING (trigonometry):
+def positional_encoding(seq_len, d_model):
+    pe = np.zeros((seq_len, d_model))
+    for pos in range(seq_len):
+        for i in range(0, d_model, 2):
+            pe[pos, i] = np.sin(pos / (10000 ** (i / d_model)))
+            if i + 1 < d_model:
+                pe[pos, i+1] = np.cos(pos / (10000 ** (i / d_model)))
+    return pe
+
+# 3. SELF-ATTENTION (dot product + softmax):
+def attention(Q, K, V):
+    # Q, K, V: query, key, value matrices
+    scores = Q @ K.T / np.sqrt(K.shape[1])  # scaled dot product
+    weights = np.exp(scores) / np.sum(np.exp(scores), axis=-1, keepdims=True)
+    return weights @ V
+
+# Example:
+d = 64
+Q = np.random.randn(4, d)    # 4 tokens, 64-dim
+K = np.random.randn(4, d)
+V = np.random.randn(4, d)
+output = attention(Q, K, V)
+print(f"Attention output shape: {output.shape}")  # (4, 64)
+
+# 4. FEED-FORWARD LAYER (matrix multiply + activation):
+def feed_forward(x, W1, b1, W2, b2):
+    h = np.maximum(0, x @ W1 + b1)    # ReLU
+    return h @ W2 + b2                 # linear
+
+# 5. LAYER NORM (statistics):
+def layer_norm(x, epsilon=1e-6):
+    mean = np.mean(x, axis=-1, keepdims=True)
+    std = np.std(x, axis=-1, keepdims=True)
+    return (x - mean) / (std + epsilon)
+
+# 6. SOFTMAX (probability):
+def softmax(x):
+    exp_x = np.exp(x - np.max(x, axis=-1, keepdims=True))
+    return exp_x / np.sum(exp_x, axis=-1, keepdims=True)
+
+# 7. CROSS-ENTROPY LOSS (information theory):
+def cross_entropy_loss(logits, target):
+    probs = softmax(logits)
+    return -np.log(probs[target] + 1e-10)
+
+# 8. BACKPROPAGATION (chain rule):
+# loss.backward() in PyTorch computes all gradients
+
+# THE FULL PICTURE:
+# Input tokens → Embeddings → + Positional Encoding
+# → Self-Attention (dot product) → Feed-Forward (matrix mult)
+# → Layer Norm (statistics) → ... (repeat N layers)
+# → Softmax (probability) → Output probabilities
+# → Cross-Entropy Loss (information theory)
+# → Backpropagation (chain rule) → Gradient Descent (calculus)
+
+print("Every transformer operation uses basic math!")
+print("Linear algebra + Calculus + Probability + Statistics")</div>
+
+<div class="code-block"># ── STEP 6: Math for ML — the complete map ──
+# What you need to know and why.
+
+math_map = """
+THE MATH YOU NEED FOR MACHINE LEARNING:
+
+LINEAR ALGEBRA (vectors, matrices):
+  → Vectors: data representation (every data point is a vector)
+  → Matrices: weight matrices, transformations
+  → Dot product: attention, cosine similarity
+  → Matrix multiply: every neural network layer
+  → Eigenvalues: PCA, SVD, dimensionality reduction
+  → Essential for: understanding how neural networks work
+
+CALCULUS (derivatives, gradients):
+  → Derivatives: rate of change
+  → Gradients: multi-variable derivatives (direction of steepest ascent)
+  → Chain rule: backpropagation (how deep networks learn)
+  → Partial derivatives: gradient of loss w.r.t. each weight
+  → Essential for: understanding how models learn (optimization)
+
+PROBABILITY (distributions, uncertainty):
+  → Distributions: normal, uniform, categorical
+  → Bayes' theorem: P(cause|effect) from P(effect|cause)
+  → Softmax: turn logits into probabilities
+  → Sampling: stochastic methods, MCMC
+  → Essential for: classification, generative models
+
+STATISTICS (estimation, testing):
+  → Mean/variance: normalization (batch norm, layer norm)
+  → Hypothesis testing: A/B testing, model comparison
+  → Confidence intervals: uncertainty quantification
+  → Correlation: feature selection
+  → Essential for: evaluation, model selection
+
+OPTIMIZATION (finding the best):
+  → Gradient descent: minimize loss
+  → Convex vs non-convex: difficulty of optimization
+  → Learning rate: step size for optimization
+  → SGD, Adam: optimization algorithms
+  → Essential for: training models
+
+INFORMATION THEORY (quantifying information):
+  → Entropy: measure of uncertainty
+  → Cross-entropy: standard classification loss
+  → KL divergence: difference between distributions
+  → Mutual information: dependence between variables
+  → Essential for: loss functions, generative models
+
+WHAT TO STUDY:
+  → 3Blue1Brown "Essence of Linear Algebra" (YouTube)
+  → 3Blue1Brown "Essence of Calculus" (YouTube)
+  → "Mathematics for Machine Learning" (book, free PDF)
+  → Khan Academy (calculus, statistics)
+  → "Deep Learning" (Goodfellow) Chapter 2-4
+
+Remember: You don't need to DERIVE everything.
+You need to UNDERSTAND the intuition.
+The frameworks (PyTorch, TensorFlow) handle the math.
+But understanding helps you debug, optimize, and innovate.
+"""
+
+print(math_map)
+
+# FINAL SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Math Concept     │ ML Application                 │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Vector operations│ Data representation            │
+# │ Matrix multiply  │ Neural network layers          │
+# │ Eigenvalues      │ PCA, dimensionality reduction  │
+# │ Gradient descent │ How models learn               │
+# │ Chain rule       │ Backpropagation                │
+# │ Cross-entropy    │ Classification loss            │
+# │ KL divergence    │ VAEs, distillation             │
+# │ Softmax          │ Probability output             │
+# │ Layer norm       │ Training stability             │
+# │ Self-attention   │ Transformer architecture       │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> Gradient descent সবসময় global minimum খুঁজে পায় না। কখনো local minimum-এ আটকে যায়। কখনো saddle point-এ থমকে যায়। এই সমস্যা সমাধানের জন্য — momentum (SGD+momentum), adaptive learning rate (Adam, RMSprop), এবং stochastic mini-batches ব্যবহার করা হয়। Book ১৩ (Fine-tuning)-এ এগুলো বিস্তারিত আছে।</div></div>
 

@@ -85,29 +85,276 @@ doors.push({
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> ভেক্টরের মাত্রিকতা (dimensionality) বাস্তবে কল্পনা করা কঠিন। আমরা ২D বা ৩D কল্পনা করতে পারি। কিন্তু ML-এ ভেক্টর সাধারণত ৭৬৮ (BERT) বা ১২,২৮৮ (GPT-3) মাত্রিক। তুমি এগুলো কল্পনা করতে পারবে না — কিন্তু গণিত একই। ডট গুণন, যোগ, দূরত্ব — সব নিয়ম ২D-তে যা, ৭৬৮D-তেও তা-ই।</div></div>
 
-<div class="code-block">— — — Python-এ ভেক্টর অপারেশন — — —
+<div class="code-block"># ── STEP 1: Vectors — the atoms of machine learning ──
+# Every data point is a vector.
 
 import numpy as np
 
-# ভেক্টর তৈরি
-v1 = np.array([3, 2])
-v2 = np.array([1, 4])
+# CREATING VECTORS:
+v1 = np.array([3, 2])    # 2D vector
+v2 = np.array([1, 4])    # another 2D vector
 
-# যোগ
-print(v1 + v2)           # [4, 6]
+# VECTOR ADDITION:
+print(v1 + v2)            # [4, 6]
 
-# স্কেলার গুণ
-print(3 * v1)            # [9, 6]
+# SCALAR MULTIPLICATION:
+print(3 * v1)             # [9, 6]
 
-# ডট গুণন — attention-এ ব্যবহৃত
-print(np.dot(v1, v2))    # 3*1 + 2*4 = 11
+# DOT PRODUCT (the most important operation in ML):
+# Used in: attention mechanism, cosine similarity, neural network layers
+print(np.dot(v1, v2))     # 3*1 + 2*4 = 11
 
-# দূরত্ব (Euclidean) — embedding similarity-তে ব্যবহৃত
-print(np.linalg.norm(v1 - v2))  # sqrt((3-1)^2 + (2-4)^2)
+# EUCLIDEAN DISTANCE (embedding similarity):
+print(np.linalg.norm(v1 - v2))  # sqrt((3-1)^2 + (2-4)^2) = 2.83
 
-# মাত্রিকতা (dimensionality)
-word_embedding = np.random.rand(768)  # BERT-এর embedding
-print(word_embedding.shape)  # (768,) — ৭৬৮টা দিক</div>
+# NORM (magnitude/length):
+print(np.linalg.norm(v1))       # sqrt(9+4) = 3.61
+
+# HIGH-DIMENSIONAL VECTORS (real ML):
+word_embedding = np.random.rand(768)  # BERT embedding
+print(word_embedding.shape)     # (768,) — 768 dimensions
+
+# EVERYTHING IN ML IS VECTORS:
+# Image 224x224 pixels → 150,528-dim vector (224*224*3)
+# Text "hello" → 768-dim embedding vector
+# User features → 100-dim feature vector</div>
+
+<div class="code-block"># ── STEP 2: Matrices — transforming vectors ──
+# Neural networks = chains of matrix multiplications.
+
+import numpy as np
+
+# CREATING MATRICES:
+A = np.array([[1, 2], [3, 4]])    # 2x2 matrix
+B = np.array([[5, 6], [7, 8]])    # another 2x2
+
+# MATRIX MULTIPLICATION (core of neural networks):
+# Every neural network layer: output = activation(W * input + b)
+print(A @ B)    # or np.matmul(A, B)
+# [[1*5+2*7, 1*6+2*8], [3*5+4*7, 3*6+4*8]] = [[19, 22], [43, 50]]
+
+# MATRIX-VECTOR MULTIPLICATION (a single neuron layer):
+W = np.random.randn(768, 256)     # weight matrix (768 inputs → 256 outputs)
+x = np.random.randn(768)          # input vector
+y = W.T @ x                       # output vector (256 dims)
+print(y.shape)                    # (256,)
+
+# TRANSPOSE (flip rows and columns):
+print(A.T)    # [[1, 3], [2, 4]]
+
+# IDENTITY MATRIX:
+I = np.eye(3)
+print(I)
+# [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+
+# INVERSE (solve Ax = b → x = A^(-1) * b):
+A_inv = np.linalg.inv(A)
+print(A @ A_inv)    # identity matrix (approximately)
+
+# IN NEURAL NETWORKS:
+# Layer 1: h1 = relu(W1 @ x + b1)    # W1 shape: (hidden_dim, input_dim)
+# Layer 2: h2 = relu(W2 @ h1 + b2)    # W2 shape: (hidden_dim, hidden_dim)
+# Layer 3: out = softmax(W3 @ h2 + b3) # W3 shape: (output_dim, hidden_dim)
+# → Each layer = matrix multiply + activation</div>
+
+<div class="code-block"># ── STEP 3: Eigenvalues and eigenvectors ──
+# Finding the "natural axes" of a transformation.
+
+import numpy as np
+
+# EIGENVALUES/EIGENVECTORS:
+# Av = λv  (A transforms v, but only scales it by λ)
+
+A = np.array([[4, -2], [1, 1]])
+eigenvalues, eigenvectors = np.linalg.eig(A)
+
+print("Eigenvalues:", eigenvalues)       # [3, 2]
+print("Eigenvectors:\n", eigenvectors)
+
+# WHY THIS MATTERS IN ML:
+
+# 1. PCA (Principal Component Analysis):
+#    → Eigenvectors of covariance matrix = principal components
+#    → Largest eigenvalue = most important direction
+#    → Dimensionality reduction: keep top-k eigenvectors
+
+# 2. SVD (Singular Value Decomposition):
+#    → A = U Σ V^T
+#    → Used in: recommender systems, LSA (latent semantic analysis)
+#    → Data compression: keep top-k singular values
+
+# SVD in Python:
+U, S, Vt = np.linalg.svd(A)
+print("Singular values:", S)    # [4.97, 0.80]
+
+# 3. SPECTRAL CLUSTERING:
+#    → Eigenvectors of graph Laplacian → cluster assignment
+#    → Used in image segmentation, community detection
+
+# 4. PAGE RANK:
+#    → Principal eigenvector of transition matrix
+#    → The "importance" ranking of web pages
+
+# COVARIANCE MATRIX (key for PCA):
+data = np.random.randn(100, 3)    # 100 samples, 3 features
+cov_matrix = np.cov(data.T)       # 3x3 covariance matrix
+eigenvalues, eigenvectors = np.linalg.eig(cov_matrix)
+
+# Sort by eigenvalue (most important first):
+idx = eigenvalues.argsort()[::-1]
+principal_components = eigenvectors[:, idx]
+print("Top principal component:", principal_components[:, 0])</div>
+
+<div class="code-block"># ── STEP 4: Probability and Bayes in ML ──
+# Quantifying uncertainty.
+
+import numpy as np
+from scipy import stats
+
+# PROBABILITY DISTRIBUTIONS:
+
+# Normal distribution (most common in ML):
+# Weights initialized from N(0, 0.02^2)
+weights = np.random.normal(loc=0, scale=0.02, size=1000)
+
+# Uniform distribution (random sampling):
+samples = np.random.uniform(low=0, high=1, size=100)
+
+# Categorical (classification targets):
+classes = np.random.choice(['cat', 'dog', 'bird'], size=100, p=[0.5, 0.3, 0.2])
+
+# SOFTMAX (turns logits into probabilities):
+def softmax(logits):
+    exp_logits = np.exp(logits - np.max(logits))  # numerical stability
+    return exp_logits / np.sum(exp_logits)
+
+logits = np.array([2.0, 1.0, 0.5])
+probs = softmax(logits)
+print("Probabilities:", probs)        # [0.64, 0.24, 0.14]
+print("Sum:", probs.sum())            # 1.0
+
+# BAYES' THEOREM IN ML:
+# P(class | features) = P(features | class) * P(class) / P(features)
+# → Naive Bayes classifier uses this
+
+def naive_bayes classify(features, priors, likelihoods):
+    posteriors = {}
+    for cls in priors:
+        # P(class | features) ∝ P(features | class) * P(class)
+        posterior = priors[cls]
+        for f in features:
+            posterior *= likelihoods[cls].get(f, 0.001)
+        posteriors[cls] = posterior
+
+    # Normalize:
+    total = sum(posteriors.values())
+    return {cls: p/total for cls, p in posteriors.items()}
+
+# CROSS-ENTROPY LOSS (classification):
+# L = -sum(y_true * log(y_pred))
+# → Penalizes confident wrong predictions heavily
+def cross_entropy(y_true, y_pred):
+    return -np.sum(y_true * np.log(y_pred + 1e-10))
+
+y_true = np.array([1, 0, 0])
+y_pred_good = np.array([0.9, 0.05, 0.05])
+y_pred_bad = np.array([0.3, 0.4, 0.3])
+print(f"Good prediction loss: {cross_entropy(y_true, y_pred_good):.4f}")   # 0.105
+print(f"Bad prediction loss: {cross_entropy(y_true, y_pred_bad):.4f}")     # 1.204</div>
+
+<div class="code-block"># ── STEP 5: Statistics for ML ──
+# Mean, variance, correlation, and hypothesis testing.
+
+import numpy as np
+from scipy import stats
+
+# DESCRIPTIVE STATISTICS:
+data = np.random.normal(50, 10, 1000)
+
+print("Mean:", np.mean(data))          # ~50
+print("Median:", np.median(data))      # ~50
+print("Std:", np.std(data))            # ~10
+print("Variance:", np.var(data))       # ~100
+
+# CORRELATION (feature selection):
+x = np.random.randn(100)
+y = 2 * x + np.random.randn(100) * 0.5  # strongly correlated
+
+corr, p_value = stats.pearsonr(x, y)
+print(f"Correlation: {corr:.4f}")       # ~0.97
+print(f"P-value: {p_value:.4e}")       # very small
+
+# GRADIENT DESCENT (optimization core):
+# f(x) = x^2 → minimum at x=0
+def gradient_descent(start, learning_rate, iterations):
+    x = start
+    for i in range(iterations):
+        grad = 2 * x          # derivative of x^2
+        x = x - learning_rate * grad
+    return x
+
+result = gradient_descent(start=10, learning_rate=0.1, iterations=100)
+print(f"Minimum found: {result:.6f}")  # ~0.0
+
+# BIAS-VARIANCE TRADEOFF:
+# Total Error = Bias^2 + Variance + Irreducible Error
+# High bias = underfitting (model too simple)
+# High variance = overfitting (model too complex)
+# Goal: find the sweet spot
+
+# TRAIN/VAL/TEST SPLIT:
+from sklearn.model_selection import train_test_split
+
+X = np.random.randn(1000, 10)
+y = np.random.randint(0, 2, 1000)
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.2)
+# Train: 64%, Val: 16%, Test: 20%
+
+# CONFUSION MATRIX (classification evaluation):
+from sklearn.metrics import confusion_matrix, classification_report
+
+y_true = [0, 0, 1, 1, 0, 1]
+y_pred = [0, 1, 1, 1, 0, 0]
+print(confusion_matrix(y_true, y_pred))
+print(classification_report(y_true, y_pred))</div>
+
+<div class="code-block"># ── STEP 6: Math → ML connections ──
+# How math concepts map to ML techniques.
+
+connections = {
+    "Vectors": "Data representation (every data point is a vector)",
+    "Dot product": "Attention mechanism, cosine similarity, neural layers",
+    "Matrices": "Weight matrices in neural networks, transformations",
+    "Matrix multiply": "Every neural network forward pass",
+    "Eigenvalues": "PCA, SVD, spectral clustering, PageRank",
+    "Gradient": "Gradient descent (how models learn)",
+    "Derivative": "Backpropagation (chain rule through layers)",
+    "Probability": "Softmax, cross-entropy, Bayesian methods",
+    "Statistics": "Mean/variance (normalization), hypothesis testing",
+    "Optimization": "SGD, Adam (minimize loss function)",
+    "Linear algebra": "Dimensionality reduction (PCA, t-SNE, UMAP)",
+    "Calculus": "Optimization, learning rate, convergence",
+    "Information theory": "Entropy, KL divergence, cross-entropy loss",
+    "Graph theory": "Computational graphs, message passing networks",
+}
+
+print("MATH → ML CONNECTIONS:")
+for math_concept, ml_application in connections.items():
+    print(f"  {math_concept:20s} → {ml_application}")
+
+# THE MATH YOU NEED FOR ML:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Math Area        │ ML Application                 │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Linear Algebra   │ Vectors, matrices, projections │
+# │ Calculus         │ Gradients, optimization        │
+# │ Probability      │ Distributions, Bayes, sampling │
+# │ Statistics       │ Evaluation, A/B testing        │
+# │ Optimization     │ SGD, Adam, convergence         │
+# │ Information Thy  │ Entropy, KL, cross-entropy     │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="verse">الْحَمْدُ لِلَّهِ الَّذِي خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ وَجَعَلَ الظُّلُمَاتِ وَالنُّورَ
 <div style="font-size:.88rem;color:var(--ink-dim);margin-top:.4rem">"প্রশংসা সেই সত্তার যিনি নভোমণ্ডল ও ভূমণ্ডল সৃষ্টি করেছেন এবং অন্ধকার ও আলো স্থাপন করেছেন।" — কুরআন ৬:১</div>
