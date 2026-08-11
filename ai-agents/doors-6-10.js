@@ -65,35 +65,395 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Multi-Agent অর্কেস্ট্রেশন — Manager পরিকল্পনা করে, বিশেষজ্ঞ agents (Researcher, Coder, Reviewer) কাজ করে। শূরা — সম্মিলিত প্রজ্ঞা।</div>
 
-<div class="code-block">Multi-Agent Orchestration — Teams of Agents:
+<div class="code-block"># ── STEP 1: Multi-agent orchestration ──
+# Teams of agents working together.
+
+multi_agent = """
+MULTI-AGENT ORCHESTRATION:
 
 ARCHITECTURES:
 
-১. SEQUENTIAL (Pipeline)
-  Agent A → Agent B → Agent C
-  
-  Researcher → Writer → Editor
-  
-  "Find facts about X" → "Write article" → "Edit"
-  
-  ✅ সহজ, predictable
-  ❌ কোনো agent ব্যর্থ হলে সব থেমে যায়
+1. SEQUENTIAL (Pipeline):
+   Agent A → Agent B → Agent C
+   Researcher → Writer → Editor
+   ✅ Simple, predictable
+   ❌ One agent fails → everything stops
 
-২. PARALLEL (Fan-out/Fan-in)
-  Agent A ─# 
-  Agent B ─# → Synthesizer
-  Agent C ─# 
-  
-  "Analyze from 3 perspectives" → combine
-  
-  ✅ দ্রুত (parallel)
-  ❌ coordination জটিল
+2. PARALLEL (Fan-out/Fan-in):
+   Agent A, B, C run simultaneously → Synthesizer combines
+   ✅ Fast (parallel execution)
+   ❌ Coordination is complex
 
-৩. HIERARCHICAL (Manager-Worker)
-  Manager Agent
-    # ── Worker A
-    # ── Worker B  
-    # ── Worker C
+3. HIERARCHICAL (Manager-Worker):
+   Manager delegates to workers, aggregates results
+   ✅ Scalable, natural division of labor
+   ❌ Manager is bottleneck
+
+4. DEBATE (Adversarial):
+   Agents argue different positions → converge on truth
+   ✅ Reduces bias, finds edge cases
+   ❌ Slow, may not converge
+
+5. SWARM:
+   Many simple agents, emergent behavior
+   ✅ Robust, self-organizing
+   ❌ Unpredictable, hard to debug
+
+PYTHON (CrewAI multi-agent):
+  from crewai import Agent, Task, Crew
+
+  researcher = Agent(
+      role="Researcher",
+      goal="Find accurate information",
+      backstory="Expert at web research",
+      tools=[search_tool],
+      llm="gpt-4"
+  )
+
+  writer = Agent(
+      role="Writer",
+      goal="Write engaging content",
+      backstory="Professional technical writer",
+      llm="gpt-4"
+  )
+
+  editor = Agent(
+      role="Editor",
+      goal="Ensure quality and accuracy",
+      backstory="Senior editor with 20 years experience",
+      llm="gpt-4"
+  )
+
+  research_task = Task(description="Research AI agents", agent=researcher)
+  write_task = Task(description="Write article based on research", agent=writer)
+  edit_task = Task(description="Edit and polish article", agent=editor)
+
+  crew = Crew(agents=[researcher, writer, editor],
+              tasks=[research_task, write_task, edit_task],
+              process=Process.sequential)
+
+  result = crew.kickoff()
+"""
+
+print(multi_agent)</div>
+
+<div class="code-block"># ── STEP 2: Human-in-the-loop ──
+# Trust but verify — keeping humans involved.
+
+hitl = """
+HUMAN-IN-THE-LOOP (HITL):
+
+Agents can make mistakes. For risky actions, require human approval.
+
+WHEN TO REQUIRE APPROVAL:
+  → Sending emails/messages (irreversible)
+  → Making purchases (financial impact)
+  → Deleting files (destructive)
+  → Executing code on production (risky)
+  → Modifying databases (data impact)
+  → Any action with real-world consequences
+
+APPROVAL PATTERNS:
+
+1. ALWAYS APPROVE (low risk):
+   → Web search, read-only operations
+   → No human needed
+
+2. APPROVE ONCE (medium risk):
+   → First time: ask permission
+   → Subsequent: allow automatically
+   → "Can I search the web?" → Yes → remember
+
+3. ALWAYS CONFIRM (high risk):
+   → Every occurrence requires approval
+   → "I'm about to send an email to X. Approve?"
+
+4. BATCH APPROVAL:
+   → Agent plans multiple actions
+   → Human reviews all at once
+   → Approve/modify/reject each
+
+PYTHON (human approval in agent loop):
+  def agent_with_approval(query, tools, risky_actions):
+      plan = agent.plan(query)
+      for action in plan:
+          if action.name in risky_actions:
+              print(f"Action: {action.name}({action.args})")
+              approval = input("Approve? (y/n): ")
+              if approval.lower() != 'y':
+                  continue  # skip this action
+          result = execute(action)
+      return result
+
+  risky = {"send_email", "delete_file", "execute_sql"}
+  agent_with_approval("Send report to team", tools, risky)
+
+LANGGRAPH (state machine with human checkpoints):
+  from langgraph.graph import StateGraph
+
+  def human_approval(state):
+      # Pause execution, wait for human
+      return {"approved": wait_for_human(state["plan"])}
+
+  graph = StateGraph()
+  graph.add_node("plan", plan_node)
+  graph.add_node("approve", human_approval)
+  graph.add_node("execute", execute_node)
+  graph.add_edge("plan", "approve")
+  graph.add_edge("approve", "execute")
+"""
+
+print(hitl)</div>
+
+<div class="code-block"># ── STEP 3: Agent frameworks landscape ──
+# 2024-2025 tools for building agents.
+
+frameworks = """
+AGENT FRAMEWORKS (2024-2025):
+
+1. LANGCHAIN:
+   → Most popular, general-purpose
+   → ReAct agents, tools, memory
+   → LangGraph: stateful multi-step workflows
+   → LangSmith: observability/debugging
+
+2. LLAMAINDEX:
+   → RAG-focused agents
+   → Query engines, chat engines
+   → Data agents (connect to data sources)
+
+3. CREWAI:
+   → Multi-agent collaboration
+   → Role-based agents (researcher, writer, etc.)
+   → Easy to define crews and tasks
+
+4. AUTOGEN (Microsoft):
+   → Multi-agent conversations
+   → Agents talk to each other
+   → Code execution agents
+
+5. OPENAI ASSISTANTS API:
+   → Managed by OpenAI
+   → Built-in tools (code, retrieval, function calling)
+   → Threads (conversation management)
+   → Production-ready, scalable
+
+6. LANGGRAPH:
+   → Stateful, cyclic agent workflows
+   → Graph-based execution
+   → Human-in-the-loop checkpoints
+   → Best for complex production agents
+
+7. SMOLAGENTS (HuggingFace):
+   → Minimal, lightweight
+   → Code-based agents (generate Python instead of JSON)
+   → Less overhead than LangChain
+
+PYTHON (OpenAI Assistants):
+  from openai import OpenAI
+  client = OpenAI()
+
+  assistant = client.beta.assistants.create(
+      name="Research Assistant",
+      instructions="You are a helpful research assistant.",
+      tools=[{"type": "code_interpreter"}, {"type": "retrieval"}],
+      model="gpt-4"
+  )
+
+  thread = client.beta.threads.create()
+  client.beta.threads.messages.create(
+      thread_id=thread.id,
+      role="user",
+      content="Analyze this data..."
+  )
+
+  run = client.beta.threads.runs.create(
+      thread_id=thread.id,
+      assistant_id=assistant.id
+  )
+  # Poll for completion, get response
+"""
+
+print(frameworks)</div>
+
+<div class="code-block"># ── STEP 4: Agent failure modes ──
+# What goes wrong and how to fix it.
+
+failures = """
+AGENT FAILURE MODES:
+
+1. INFINITE LOOPS:
+   → Agent keeps trying the same failed action
+   → Fix: max iterations, loop detection, break on repeated errors
+
+2. HALLUCINATING TOOL OUTPUTS:
+   → LLM invents fake results instead of calling tools
+   → Fix: strict prompt, verify tool was actually called
+
+3. WRONG TOOL SELECTION:
+   → Agent uses search when it should use calculator
+   → Fix: better tool descriptions, fewer tools, examples
+
+4. CASCADING ERRORS:
+   → One wrong step → all subsequent steps wrong
+   → Fix: error recovery, re-planning, verification steps
+
+5. COST EXPLOSION:
+   → Too many LLM calls, especially with expensive models
+   → Fix: caching, cheaper models for simple steps, budget limits
+
+6. CONTEXT WINDOW OVERFLOW:
+   → Long conversations exceed context limit
+   → Fix: summarize, compress, selective memory
+
+7. SECURITY: PROMPT INJECTION:
+   → Malicious input tricks agent into harmful actions
+   → Fix: input sanitization, output filtering, tool permissions
+
+8. NON-DETERMINISM:
+   → Same input → different outputs each run
+   → Fix: temperature=0, caching, structured outputs
+
+DEBUGGING AGENTS:
+  → Log EVERY thought, action, observation
+  → Replay failed runs with modified prompts
+  → Use LangSmith or similar for tracing
+  → Unit test individual tools
+  → Integration test full agent loops
+
+EVALUATION:
+  → Define success criteria upfront
+  → Test on diverse scenarios (not just happy path)
+  → Measure: task completion rate, steps taken, cost
+  → Human evaluation for subjective tasks
+  → Regression testing (don't break what works)
+"""
+
+print(failures)</div>
+
+<div class="code-block"># ── STEP 5: Production agent architecture ──
+# Complete system design.
+
+production = """
+COMPLETE PRODUCTION AGENT ARCHITECTURE:
+
+LAYERS:
+  1. USER INTERFACE: chat UI, voice, API
+  2. ORCHESTRATION: agent loop, planning, tool routing
+  3. TOOLS: search, code, database, APIs
+  4. MEMORY: short-term + long-term + vector store
+  5. LLM LAYER: model routing, fallback, caching
+  6. OBSERVABILITY: logging, tracing, metrics
+  7. SAFETY: guardrails, rate limits, approval flows
+
+COMPONENTS:
+  → API Gateway (rate limiting, auth)
+  → Agent Orchestrator (LangGraph/LangChain)
+  → Tool Registry (pluggable tools)
+  → Memory Service (Redis + vector DB)
+  → LLM Router (model selection, caching)
+  → Audit Log (every action recorded)
+  → Monitoring (latency, cost, errors)
+  → Human Approval Queue (for risky actions)
+
+PYTHON (production architecture sketch):
+  # FastAPI + LangGraph + Redis + Chroma
+  from fastapi import FastAPI
+  from langgraph.graph import StateGraph
+  import redis, chromadb
+
+  app = FastAPI()
+  cache = redis.Redis()
+  memory = chromadb.PersistentClient()
+
+  @app.post("/chat")
+  async def chat(request):
+      # Check cache:
+      cached = cache.get(request.message)
+      if cached:
+          return {"response": cached}
+
+      # Run agent:
+      result = await agent_workflow(request.message)
+
+      # Cache result:
+      cache.setex(request.message, 3600, result)
+
+      # Log for audit:
+      audit_log.record(request, result)
+
+      return {"response": result}
+
+DEPLOYMENT:
+  → Container (Docker) with GPU support
+  → Horizontal scaling (multiple workers)
+  → Queue-based (Celery/RQ) for long tasks
+  → WebSocket for streaming responses
+  → Health checks + auto-restart
+  → Cost monitoring + alerts
+"""
+
+print(production)</div>
+
+<div class="code-block"># ── STEP 6: The complete agent journey ──
+# Your path through AI agents.
+
+journey = """
+YOUR AI AGENT JOURNEY:
+
+You started seeing agents as "smart chatbots."
+You finish seeing AUTONOMOUS WORKERS:
+
+WHAT YOU'VE MASTERED:
+  ✅ Agent anatomy (brain, tools, memory, loop)
+  ✅ Tool use (function calling, JSON schemas)
+  ✅ ReAct framework (thought/action/observation)
+  ✅ Planning strategies (plan-execute, ToT, reflexion)
+  ✅ Memory systems (short, long, episodic, semantic)
+  ✅ Multi-agent orchestration (sequential, parallel, debate)
+  ✅ Human-in-the-loop (approval patterns)
+  ✅ Frameworks (LangChain, CrewAI, AutoGen, OpenAI)
+  ✅ Failure modes (infinite loops, injection, cascading)
+  ✅ Production architecture (scalable, observable, safe)
+
+THE AGENT DESIGNER'S MINDSET:
+  1. "What tools does this agent need?"
+  2. "When should it ask for help?" (human-in-the-loop)
+  3. "How do I prevent infinite loops?"
+  4. "How do I evaluate success?"
+  5. "What's the cost per task?" (LLM calls are expensive)
+
+"The best agent is one that does exactly
+ what you'd do, but doesn't stop to ask
+ permission for every little thing."
+ — Agent design philosophy
+
+WHAT TO STUDY NEXT:
+  → Build a real agent (start with LangChain)
+  → Read Anthropic's "Building Effective Agents"
+  → Explore OpenAI Assistants API
+  → Try CrewAI for multi-agent systems
+  → Study LangGraph for complex workflows
+  → Deploy to production (vLLM + FastAPI)
+
+Welcome to agent mastery.
+"""
+
+print(journey)
+
+# FINAL SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Implementation                  │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Brain            │ LLM (GPT-4, Claude, Llama)      │
+# │ Tools            │ Function calling (JSON schema)  │
+# │ Memory           │ Buffer + vector store + summary │
+# │ Loop             │ ReAct (think-act-observe)       │
+# │ Planning         │ Plan-and-execute / ToT          │
+# │ Multi-agent      │ CrewAI / AutoGen                │
+# │ Human-in-loop    │ Approval checkpoints            │
+# │ Production       │ FastAPI + LangGraph + Redis     │
+# └──────────────────┴──────────────────────────────────┘</div>
   
   "Build web app"
     → Manager: plan + assign
