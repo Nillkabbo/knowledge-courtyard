@@ -21,17 +21,47 @@ doors.push({
 <div class="dialogue"><strong>শব্দ-ভাঙন-কারিগর দাউদ:</strong> আমি প্রতিটি অক্ষর পড়ি। একটি Deterministic Finite Automaton — DFA — আমার মস্তিষ্ক। x দেখলাম → identifier শুরু। = দেখলাম → assign operator। ৩ দেখলাম → number। প্রতিটি token-এর একটি type ও value আছে: {type: ID, value: "x"}। এই token-গুলো পরের দরজার কাছে যাবে — parser-এর কাছে। আমি শুধু শব্দ চিনি — বাক্য বুঝি না।</div>
 <div class="dialogue en"><strong>Word-Breaking Artisan Dawud:</strong> I read each character. A Deterministic Finite Automaton — DFA — is my brain. x → identifier starts. = → assign operator. 3 → number. Each token has a type and value: {type: ID, value: "x"}. These tokens go to the next door — the parser. I only recognize words — I don't understand sentences.</div>
 
-<div class="code-block"># — Python: সহজ Lexer —
+<div class="code-block"># ── STEP 1: Lexical analysis (lexer) ──
+# Converting source code text into tokens.
 
+lexer_intro = """
+LEXICAL ANALYSIS (LEXING/SCANNING):
+
+The FIRST phase of a compiler.
+  Input:  source code (raw text/characters)
+  Output: stream of TOKENS
+
+WHAT IS A TOKEN?
+  A token is a meaningful unit: keyword, identifier, number, operator, string.
+
+  Examples:
+    "x = 42 + y" → [ID(x), ASSIGN(=), NUMBER(42), PLUS(+), ID(y)]
+
+TOKEN TYPES:
+  → Keywords: if, else, while, for, def, class
+  → Identifiers: variable/function names
+  → Literals: numbers (42, 3.14), strings ("hello")
+  → Operators: +, -, *, /, ==, !=
+  → Delimiters: (, ), {, }, [, ], ;
+  → Whitespace: usually skipped
+  → Comments: usually skipped
+
+IMPLEMENTATION:
+  → Use REGULAR EXPRESSIONS (DFA internally!)
+  → Each token type = one regex
+  → Longest match wins (e.g., "==" not two "=")
+  → Tools: lex/flex (C), ANTLR (Java), re (Python)
+
+PYTHON (simple lexer):
   import re
 
   TOKEN_SPEC = [
-      ('NUMBER',   r'\\d+'),          # ০-৯
-      ('ASSIGN',   r'='),             # =
-      ('PLUS',     r'\\+'),           # +
-      ('MINUS',    r'-'),             # -
-      ('ID',       r'[a-zA-Z_]\\w*'), # variable name
-      ('WS',       r'\\s+'),          # whitespace (skip)
+      ('NUMBER',   r'\\d+'),
+      ('ASSIGN',   r'='),
+      ('PLUS',     r'\\+'),
+      ('MINUS',    r'-'),
+      ('ID',       r'[a-zA-Z_]\\w*'),
+      ('WS',       r'\\s+'),
   ]
 
   def lexer(code):
@@ -39,16 +69,337 @@ doors.push({
       for mo in re.finditer('|'.join(f'(?P<{n}>{p})' for n,p in TOKEN_SPEC), code):
           kind = mo.lastgroup
           value = mo.group()
-          if kind != 'WS':  # whitespace বাদ
+          if kind != 'WS':  # skip whitespace
               tokens.append((kind, value))
       return tokens
 
   print(lexer("x = 3 + 4"))
-  # [('ID', 'x'), ('ASSIGN', '='), ('NUMBER', '3'),
-  #  ('PLUS', '+'), ('NUMBER', '4')]
+  # [('ID', 'x'), ('ASSIGN', '='), ('NUMBER', '3'), ('PLUS', '+'), ('NUMBER', '4')]
+"""
 
-  — অক্ষর stream → token stream —
-  — এটাই lexer-এর কাজ —</div>
+print(lexer_intro)</div>
+
+<div class="code-block"># ── STEP 2: Parsing ──
+# Building a tree structure from tokens.
+
+parsing = """
+PARSING (SYNTAX ANALYSIS):
+
+The SECOND phase of a compiler.
+  Input:  token stream (from lexer)
+  Output: ABSTRACT SYNTAX TREE (AST)
+
+WHAT IS AN AST?
+  A tree representing the STRUCTURE of the code.
+  → Leaves: tokens (numbers, identifiers)
+  → Internal nodes: operations (+, =, if, while)
+
+  Example: "x = 3 + 4"
+    Assign
+    ├── ID: x
+    └── Add
+        ├── Num: 3
+        └── Num: 4
+
+GRAMMAR (CFG):
+  Rules define valid syntax.
+  → assign → ID = expr
+  → expr → expr + term | expr - term | term
+  → term → NUMBER | ID | ( expr )
+
+TOP-DOWN vs BOTTOM-UP:
+  Top-Down (LL):
+    → Start from start symbol, expand to match input
+    → Recursive descent (common in hand-written parsers)
+    → Predictive (peek ahead)
+    → Used by: ANTLR, many hand-written parsers
+
+  Bottom-Up (LR):
+    → Start from input, reduce to start symbol
+    → Shift-reduce: push tokens, reduce when rule matches
+    → More powerful (handles left recursion)
+    → Used by: Yacc/Bison (LALR)
+
+PYTHON (recursive descent parser):
+  def parse_assign(tokens):
+      # assign → ID = expr
+      name = tokens.pop(0)  # expect ID
+      assert tokens.pop(0)[0] == 'ASSIGN'  # expect =
+      expr = parse_expr(tokens)
+      return ('Assign', name[1], expr)
+
+  def parse_expr(tokens):
+      # expr → term ('+' term)*
+      result = parse_term(tokens)
+      while tokens and tokens[0][0] == 'PLUS':
+          tokens.pop(0)  # consume +
+          right = parse_term(tokens)
+          result = ('Add', result, right)
+      return result
+
+  def parse_term(tokens):
+      tok = tokens.pop(0)
+      if tok[0] == 'NUMBER':
+          return ('Num', int(tok[1]))
+      elif tok[0] == 'ID':
+          return ('Var', tok[1])
+
+  tokens = lexer("x = 3 + 4")
+  ast = parse_assign(tokens)
+  print(ast)
+  # ('Assign', 'x', ('Add', ('Num', 3), ('Num', 4)))
+"""
+
+print(parsing)</div>
+
+<div class="code-block"># ── STEP 3: Semantic analysis ──
+# Checking meaning (types, scope, declarations).
+
+semantic = """
+SEMANTIC ANALYSIS:
+
+After parsing, the AST is syntactically valid.
+But does it MAKE SENSE?
+
+CHECKS:
+  1. TYPE CHECKING:
+     → int + string → ERROR (type mismatch)
+     → calling non-function → ERROR
+
+  2. SCOPE RESOLUTION:
+     → Is this variable declared?
+     → Is it in scope?
+     → Python: LEGB rule (Local, Enclosing, Global, Built-in)
+
+  3. VARIABLE BINDING:
+     → Link each use to its declaration
+     → Detect undefined variables
+
+  4. FUNCTION SIGNATURES:
+     → Correct number of arguments?
+     → Return type matches?
+
+SYMBOL TABLE:
+  Maps names to their declarations.
+  → name → type, scope, location
+  → Stack of scopes (enter/exit blocks)
+
+  Example:
+    {x: int, y: float}  # current scope
+
+TYPE INFERENCE:
+  Some languages infer types automatically (Haskell, ML, Rust).
+  → Hindley-Milner algorithm
+  → No annotations needed
+
+PYTHON (semantic analysis example):
+  def check_types(ast, symbol_table):
+      op = ast[0]
+      if op == 'Num':
+          return 'int'
+      elif op == 'Var':
+          return symbol_table.get(ast[1], 'undefined')
+      elif op == 'Add':
+          left = check_types(ast[1], symbol_table)
+          right = check_types(ast[2], symbol_table)
+          if left == 'int' and right == 'int':
+              return 'int'
+          else:
+              raise TypeError(f"Cannot add {left} and {right}")
+      elif op == 'Assign':
+          var_type = check_types(ast[2], symbol_table)
+          symbol_table[ast[1]] = var_type
+          return None
+
+  symbol_table = {}
+  check_types(('Assign', 'x', ('Add', ('Num', 3), ('Num', 4))), symbol_table)
+  print(symbol_table)  # {'x': 'int'}
+"""
+
+print(semantic)</div>
+
+<div class="code-block"># ── STEP 4: Intermediate representation (IR) ──
+# Machine-independent code.
+
+ir = """
+INTERMEDIATE REPRESENTATION (IR):
+
+After semantic analysis, translate AST to IR.
+  → IR is like assembly but machine-independent
+  → Enables optimizations before targeting specific CPU
+
+COMMON IR FORMATS:
+  1. THREE-ADDRESS CODE (TAC):
+     t1 = 3 + 4
+     x = t1
+     → At most 3 operands per instruction
+     → Used by LLVM, many compilers
+
+  2. STACK MACHINE (bytecode):
+     PUSH 3
+     PUSH 4
+     ADD
+     STORE x
+     → Used by: Python (CPython bytecode), Java (JVM), WebAssembly
+
+  3. SSA (STATIC SINGLE ASSIGNMENT):
+     Each variable assigned exactly ONCE.
+     → Enables powerful optimizations
+     → Used by: LLVM, GCC (internal), modern compilers
+
+SSA (STATIC SINGLE ASSIGNMENT):
+  Before (non-SSA):
+    x = 1
+    y = 2
+    x = y + 3  ← x assigned TWICE
+
+  After (SSA):
+    x1 = 1
+    y1 = 2
+    x2 = y1 + 3  ← unique name
+
+  Φ (PHI) FUNCTIONS:
+    Handle merging at branches:
+    if cond:
+        x1 = 1
+    else:
+        x2 = 2
+    x3 = φ(x1, x2)  ← picks based on branch taken
+
+WHY SSA?
+  → Each value defined once → easier to optimize
+  → Data flow analysis is straightforward
+  → Dead code elimination trivial
+  → Constant propagation easy
+
+PYTHON (CPython bytecode):
+  import dis
+
+  def f(x):
+      return x + 1
+
+  dis.dis(f)
+  # Shows bytecode instructions:
+  # LOAD_FAST  0 (x)
+  # LOAD_CONST 1 (1)
+  # BINARY_ADD
+  # RETURN_VALUE
+"""
+
+print(ir)</div>
+
+<div class="code-block"># ── STEP 5: Compiler optimizations ──
+# Making code faster.
+
+optimizations = """
+COMPILER OPTIMIZATIONS:
+
+Make the program faster WITHOUT changing behavior.
+
+1. CONSTANT FOLDING:
+   x = 3 + 4  →  x = 7
+   → Compute constants at compile time
+
+2. CONSTANT PROPAGATION:
+   x = 5
+   y = x + 2  →  y = 7
+
+3. DEAD CODE ELIMINATION:
+   x = 1
+   x = 2  ← x=1 is dead (never used)
+   → Remove "x = 1"
+
+4. COMMON SUBEXPRESSION ELIMINATION:
+   a = b * c
+   d = b * c  ← same computation
+   → d = a (reuse result)
+
+5. LOOP OPTIMIZATIONS:
+   → LOOP UNROLLING: reduce loop overhead
+     for i in range(4): ...
+     → unrolled: 4 copies of body
+   → LOOP INVARIANT CODE MOTION:
+     Move invariant computation OUT of loop
+   → STRENGTH REDUCTION:
+     x * 2 → x << 1 (shift instead of multiply)
+
+6. INLINING:
+   Replace function call with function body
+   → Eliminates call overhead
+   → Enables further optimization
+   → But: increases code size
+
+7. TAIL CALL OPTIMIZATION:
+   Convert tail recursion to iteration
+   → Prevents stack overflow
+   → Required for functional languages
+
+8. AUTO-VECTORIZATION:
+   Convert scalar operations to SIMD
+   → for i in range(n): a[i] += b[i]
+   → Vector add (4 elements at once)
+
+PYTHON (Python dis for optimization demonstration):
+  # Python doesn't optimize as aggressively as C
+  # But JIT compilers (PyPy, Numba) do:
+
+  # Constant folding (Python does this):
+  import dis
+  dis.dis(compile('x = 3 + 4', '<string>', 'exec'))
+  # Shows: LOAD_CONST 7 (already folded!)
+
+  # But NOT constant propagation:
+  dis.dis(compile('x = 5; y = x + 2', '<string>', 'exec'))
+  # Still loads x, adds 2 at runtime
+
+LLVM OPTIMIZATION PASSES:
+  → -O0: no optimization (fast compilation)
+  → -O1: basic optimizations
+  → -O2: standard optimizations (most projects)
+  → -O3: aggressive (may increase code size)
+  → -Os: optimize for size
+  → -Ofast: fastest (may break IEEE 754)
+"""
+
+print(optimizations)</div>
+
+<div class="code-block"># ── STEP 6: Compilation best practices ──
+# Building and optimizing compilers.
+
+best_practices = [
+    "Lexer: regex per token type, longest match wins",
+    "Parser: recursive descent (LL) or shift-reduce (LR)",
+    "AST: tree representing program structure",
+    "Semantic: type check, scope resolve, symbol table",
+    "IR: machine-independent (TAC, SSA, bytecode)",
+    "SSA: single assignment enables powerful optimization",
+    "Optimization: constant fold, dead code, loop unroll",
+    "Inlining eliminates call overhead (but increases size)",
+    "LLVM: modular, reusable optimization passes",
+    "JIT: compile at runtime for profiling-guided optimization",
+    "GC: mark-sweep, copying, generational",
+    "Register allocation: graph coloring (Chaitin)",
+    "PEP 8 for Python, clang-format for C/C++",
+    "Profile before optimizing (Amdahl's law)",
+    "Read 'Dragon Book' (Aho et al.) for compiler theory",
+]
+
+print("COMPILATION BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Phase            │ Input → Output                  │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Lexer            │ Source text → Tokens            │
+# │ Parser           │ Tokens → AST                    │
+# │ Semantic         │ AST → Checked AST               │
+# │ IR Generation    │ AST → IR (TAC/SSA)              │
+# │ Optimization     │ IR → Optimized IR               │
+# │ Code Generation  │ IR → Target assembly            │
+# │ Linking          │ Object files → Executable       │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout info"><span class="co-icon">📐</span><div><strong>Token প্রকার:</strong><br>
 <strong>ID</strong> — identifier (variable/function name)<br>
@@ -133,39 +484,395 @@ doors.push({
 <div class="dialogue"><strong>গাছ-নির্মাতা বেলাল:</strong> আমি token পাই, গাছ বানাই। পদ্ধতি: recursive descent। প্রতিটি grammar rule একটি ফাংশন। expr() → term() + term()। term() → factor() * factor()। factor() → NUMBER বা ID বা (expr)। এই নিয়মে গাছ স্বয়ংক্রিয়ভাবে তৈরি। Add নিচে — কারণ যোগ আগে হয়। Assign উপরে — কারণ assign শেষে।</div>
 <div class="dialogue en"><strong>Tree Builder Bilal:</strong> I receive tokens, build a tree. Method: recursive descent. Each grammar rule is a function. expr() → term() + term(). term() → factor() * factor(). factor() → NUMBER or ID or (expr). The tree forms automatically following these rules. Add at bottom — because addition happens first. Assign at top — because assignment is last.</div>
 
-<div class="code-block"># — Python: Recursive Descent Parser —
+<div class="code-block"># ── STEP 1: Recursive descent parser (detailed) ──
+# Hand-written top-down parser.
 
+rd_parser = """
+RECURSIVE DESCENT PARSER:
+
+Each grammar rule → one function.
+  expr()   handles expr rule
+  term()   handles term rule
+  factor() handles factor rule
+
+GRAMMAR:
+  expr   → term (('+' | '-') term)*
+  term   → factor (('*' | '/') factor)*
+  factor → NUMBER | ID | '(' expr ')'
+
+PRECEDENCE:
+  → Multiplication binds tighter (deeper in tree)
+  → Addition is higher (evaluated later)
+  → Parentheses override everything
+
+PYTHON (complete working parser):
   import ast as py_ast
 
-  # Python-এর নিজস্ব AST দেখো:
+  # Python built-in AST (use ast module):
   code = "x = 3 + 4"
   tree = py_ast.parse(code)
   print(py_ast.dump(tree))
-  # Module(body=[
-  #   Assign(targets=[Name('x')], value=BinOp(
-  #     left=Num(3), op=Add(), right=Num(4)
-  #   ))
-  # ])
-  #    Assign (root)
-  #     /    \\
-  #   x     Add
-  #        /   \\
-  #       3     4
+  # Module(body=[Assign(targets=[Name('x')],
+  #   value=BinOp(left=Num(3), op=Add(), right=Num(4)))])
 
-  # সহজ recursive descent:
-  def parse_expr(tokens):
-      left = parse_term(tokens)       # প্রথম term
-      while peek(tokens) == 'PLUS':
-          consume(tokens)             '+' খাও
-          right = parse_term(tokens)  # দ্বিতীয় term
-          left = ('Add', left, right) # গাছের node
-      return left
+  # Hand-written recursive descent:
+  class Parser:
+      def __init__(self, tokens):
+          self.tokens = tokens
+          self.pos = 0
 
-  # Grammar:
-  # expr   → term (('+' | '-') term)*
-  # term   → factor (('*' | '/') factor)*
-  # factor → NUMBER | ID | '(' expr ')'
-  — precedence গাছের গভীরতায় লুকানো —</div>
+      def peek(self):
+          return self.tokens[self.pos] if self.pos < len(self.tokens) else None
+
+      def consume(self, expected=None):
+          tok = self.tokens[self.pos]
+          if expected and tok[0] != expected:
+              raise SyntaxError(f"Expected {expected}, got {tok[0]}")
+          self.pos += 1
+          return tok
+
+      def parse_expr(self):
+          left = self.parse_term()
+          while self.peek() and self.peek()[0] in ('PLUS', 'MINUS'):
+              op = self.consume()[0]
+              right = self.parse_term()
+              left = (op, left, right)
+          return left
+
+      def parse_term(self):
+          left = self.parse_factor()
+          while self.peek() and self.peek()[0] in ('MUL', 'DIV'):
+              op = self.consume()[0]
+              right = self.parse_factor()
+              left = (op, left, right)
+          return left
+
+      def parse_factor(self):
+          tok = self.peek()
+          if tok[0] == 'NUMBER':
+              return self.consume()
+          elif tok[0] == 'ID':
+              return self.consume()
+          elif tok[0] == 'LPAREN':
+              self.consume()
+              expr = self.parse_expr()
+              self.consume('RPAREN')
+              return expr
+
+  parser = Parser(lexer("x = 3 * (4 + 5)"))
+  result = parser.parse_expr()
+  print(result)
+"""
+
+print(rd_parser)</div>
+
+<div class="code-block"># ── STEP 2: Parser generators and tools ──
+# Automated parser construction.
+
+parser_tools = """
+PARSER GENERATORS:
+
+Don't write parsers by hand — generate them!
+
+1. YACC/BISON (C):
+  → LALR(1) parser
+  → Input: grammar specification
+  → Output: C code
+  → Used by: GCC (early), PostgreSQL, SQLite
+
+2. ANTLR (Java/C++/Python):
+  → LL(*) parser (top-down)
+  → Generates lexer + parser
+  → Good error messages
+  → Used by: Hive, Presto, Spark SQL
+
+3. LARK (Python):
+  → Modern parser generator
+  → Supports Earley, LALR, contextual lexer
+  → Readable grammar syntax
+  → Python-native
+
+4. TREE-SITTER (Rust/C):
+  → Incremental parsing
+  → Used by: GitHub, Neovim, Atom
+  → Error recovery (parses broken code)
+
+5. PEG PARSERS (Parsimonious, PyPEG):
+  → PEG = Parsing Expression Grammar
+  → No separate lexer (scannerless)
+  → Always unambiguous (ordered choice)
+
+PYTHON (Lark example):
+  from lark import Lark
+
+  grammar = \"\"\"
+      start: expr
+      expr: term (('+' | '-') term)*
+      term: factor (('*' | '/') factor)*
+      factor: NUMBER -> number
+            | '-' factor
+            | '(' expr ')'
+      NUMBER: /\\d+/
+      %import common.WS
+      %ignore WS
+  \"\"\"
+
+  parser = Lark(grammar, start='expr')
+  tree = parser.parse('3 + 4 * 2')
+  print(tree.pretty())
+  # expr
+  #   term
+  #     number  3
+  #   +
+  #   term
+  #     number  4
+  #     *
+  #     number  2
+
+ERROR HANDLING:
+  → Panic mode: skip tokens until synchronization point
+  → Error production: common mistakes → helpful messages
+  → Recovery: insert/delete tokens to continue
+"""
+
+print(parser_tools)</div>
+
+<div class="code-block"># ── STEP 3: Type systems and checking ──
+# How compilers verify correctness.
+
+type_systems = """
+TYPE SYSTEMS:
+
+STATIC TYPING:
+  → Types checked at COMPILE TIME
+  → C, C++, Java, Rust, Go, TypeScript
+  → Early error detection
+  → Better performance (no runtime checks)
+
+DYNAMIC TYPING:
+  → Types checked at RUNTIME
+  → Python, Ruby, JavaScript, Lisp
+  → More flexible
+  → Slower (runtime type checking)
+
+GRADUAL TYPING:
+  → Mix of static and dynamic
+  → Python type hints, TypeScript
+  → Best of both worlds
+
+TYPE INFERENCE (Hindley-Milner):
+  → Compiler figures out types
+  → No annotations needed
+  → Used by: Haskell, ML, OCaml, Rust (partial)
+
+  Example (Haskell):
+    f x = x + 1
+    → Compiler infers: f :: Num a => a -> a
+
+POLYMORPHISM:
+  → PARAMETRIC: works for any type (generics)
+    List<T> works for List<int>, List<String>
+  → AD-HOC: different behavior per type (overloading)
+    toString() works for int, String, Object
+  → SUBTYPE: inheritance (OOP)
+    Dog extends Animal
+
+TYPE SAFETY:
+  → "Well-typed programs don't go wrong" (Milner)
+  → Type-safe languages prevent: buffer overflow, use-after-free
+  → Rust: ownership/borrowing (memory safety without GC)
+
+PYTHON (type hints):
+  def greet(name: str) -> str:
+      return f"Hello, {name}"
+
+  from typing import List, Optional
+
+  def process(items: List[int]) -> Optional[int]:
+      if items:
+          return items[0]
+      return None
+
+  # mypy checks type hints:
+  # $ mypy my_code.py
+"""
+
+print(type_systems)</div>
+
+<div class="code-block"># ── STEP 4: SSA and advanced optimizations ──
+# Static Single Assignment form.
+
+ssa_opt = """
+SSA-BASED OPTIMIZATIONS:
+
+SSA makes many optimizations trivial:
+
+1. CONSTANT PROPAGATION:
+   x1 = 5
+   y1 = x1 + 2  → y1 = 7 (x1 known to be 5)
+
+2. COPY PROPAGATION:
+   x1 = y1
+   z1 = x1 + 1  → z1 = y1 + 1 (use original)
+
+3. DEAD CODE ELIMINATION:
+   If x1 never used → remove "x1 = ..."
+   → In SSA, just check if x1 appears anywhere
+
+4. COMMON SUBEXPRESSION ELIMINATION:
+   a1 = b1 * c1
+   d1 = b1 * c1  → d1 = a1 (same expression)
+   → SSA makes detection easy (same operands)
+
+5. LOOP OPTIMIZATIONS:
+   → LOOP INVARIANT CODE MOTION:
+     If computation doesn't change in loop → move out
+   → INDUCTION VARIABLE SIMPLIFICATION:
+     Replace loop counter math with increments
+   → LOOP UNROLLING:
+     Replicate body to reduce overhead
+
+6. GLOBAL VALUE NUMBERING:
+   Assign unique "value number" to each computation
+   → Same value number = same result
+   → Eliminate redundant computations
+
+7. PARTIAL REDUNDANCY ELIMINATION:
+   Remove computations that are partially redundant
+   → "The most powerful optimization" (Morel-Renvoise)
+
+PYTHON (CPython optimization limitations):
+  # CPython does SOME optimization:
+  import dis
+  dis.dis(compile('x = 2 + 3', '<str>', 'exec'))
+  # Already computed: LOAD_CONST 5
+
+  # But does NOT do:
+  # → Inlining (function calls not inlined)
+  # → Loop unrolling
+  # → Auto-vectorization
+
+  # PyPy/Numba DO these optimizations (JIT compiled)
+
+LLVM OPTIMIZATION PIPELINE:
+  → Clang (C/C++/ObjC) → LLVM IR → optimize → assembly
+  → LLVM IR is SSA-based
+  → 100+ optimization passes
+  → Each pass transforms IR
+  → Link-Time Optimization (LTO) optimizes across files
+"""
+
+print(ssa_opt)</div>
+
+<div class="code-block"># ── STEP 5: Register allocation and code gen ──
+# The final phase: machine code.
+
+codegen = """
+REGISTER ALLOCATION:
+
+After optimization, map virtual registers to physical registers.
+
+PROBLEM:
+  → IR has unlimited "virtual" registers
+  → CPU has limited physical registers (16-32)
+  → Must decide which values stay in registers vs memory
+
+GRAPH COLORING (Chaitin's algorithm):
+  1. Build INTERFERENCE GRAPH:
+     → Node = variable
+     → Edge = variables alive at same time (can't share register)
+  2. Color the graph with k colors (k = # registers)
+  3. NP-complete (but heuristics work well)
+
+  → Nodes with same color → same register
+  → Can't color → SPILL to memory
+
+LINEAR SCAN (simpler):
+  → Sort variables by live range
+  → Greedy assignment
+  → Used by: LLVM (fast compile), JIT compilers
+
+CODE GENERATION:
+  → Map IR operations to machine instructions
+  → Handle calling conventions
+  → Manage stack frames
+  → Generate relocations (for linking)
+
+INSTRUCTION SELECTION:
+  → Multiple ways to implement same operation
+  → x86: LEA for addition, MOV for copy
+  → Pattern matching on IR → best instruction
+
+PEEPHOLE OPTIMIZATION:
+  → Local pattern replacement
+  → MOV r1, r2; MOV r2, r1 → remove second (redundant)
+  → ADD r, 0 → remove (no-op)
+
+LINKING:
+  → Combine object files (.o)
+  → Resolve symbols (function calls across files)
+  → Relocate addresses
+  → Static linking: code copied into executable
+  → Dynamic linking: resolved at runtime (.so, .dll)
+
+PYTHON (comparing compilation levels):
+  # C compilation:
+  # gcc -O0 code.c → no optimization
+  # gcc -O2 code.c → standard optimization
+  # gcc -O3 code.c → aggressive optimization
+  # gcc -S code.c → see assembly output
+
+  # Python bytecode (interpreted, not compiled to native):
+  import dis
+  def add(a, b):
+      return a + b
+  dis.dis(add)
+  # LOAD_FAST, LOAD_FAST, BINARY_ADD, RETURN_VALUE
+
+  # Cython (compiles Python to C):
+  # cython --embed module.pyx → C code → gcc → native
+"""
+
+print(codegen)</div>
+
+<div class="code-block"># ── STEP 6: Compiler engineering best practices ──
+# Building production-quality compilers.
+
+best_practices = [
+    "Lexer: use regex, longest match, skip whitespace",
+    "Parser: recursive descent or use generator (Lark/Yacc)",
+    "AST: immutable, well-typed data structure",
+    "Visitor pattern: traverse/transform AST",
+    "Symbol table: stack-based scoping",
+    "Type checking: early errors > runtime crashes",
+    "SSA: enables most modern optimizations",
+    "Optimization passes: modular, composable",
+    "Profile-guided: optimize hot paths",
+    "Register allocation: graph coloring or linear scan",
+    "Test extensively: fuzzing, property-based tests",
+    "Error messages: helpful, specific, suggest fixes",
+    "LLVM: reuse, don't reinvent (Clang, Rust, Swift)",
+    "JIT: PyPy, V8, HotSpot for runtime optimization",
+    "Read: Dragon Book (Aho), Crafting Interpreters (Nystrom)",
+]
+
+print("COMPILER ENGINEERING BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Tool             │ Used For                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ flex/lex         │ Lexer generation               │
+# │ bison/yacc       │ LALR parser generation          │
+# │ ANTLR            │ LL parser, multi-language       │
+# │ Lark (Python)    │ Earley/LALR, easy syntax       │
+# │ Tree-sitter      │ Incremental, IDE integration   │
+# │ LLVM             │ IR, optimization, code gen      │
+# │ GCC              │ Full compiler (C/C++/Fortran)   │
+# │ dis (Python)     │ Bytecode inspection            │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="verse">وَشَجَرَةً تَخْرُجُ مِن طُورِ سَيْنَاءَ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং একটি গাছ যা বের হয় সিনাই পাহাড় থেকে।" — কুরআন ২৩:২০</div>
