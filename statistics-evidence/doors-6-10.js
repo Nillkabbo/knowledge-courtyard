@@ -1009,20 +1009,369 @@ doors.push({
     <div class="diag-cap">গরম (confounder) বরফের বিক্রিও বাড়ায় এবং সাঁতারও বাড়ায়। বরফ ও ডোবার মধ্যে সম্পর্ক আছে (নীল ভাঙা রেখা), কিন্তু কার্যকারণ নেই। do(ice cream) = drowning কে প্রভাবিত করে না।</div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 কার্যকারণ তত্ত্ব — Causal Inference Concepts</h4>
-    <table class="kv-table">
-      <tr><th>ধারণা</th><th>সংজ্ঞা</th><th>উদাহরণ</th></tr>
-      <tr><td class="hl">Confounder</td><td>তৃতীয় চলক যা উভয়কে প্রভাবিত করে</td><td>গরম → বরফ + ডোবা</td></tr>
-      <tr><td class="hl">P(Y|X)</td><td>পর্যবেক্ষণ — X দেখলে Y</td><td>বরফ কিনলে ডোবার সম্ভাবনা বেশি</td></tr>
-      <tr><td class="hl">P(Y|do(X))</td><td>হস্তক্ষেপ — X বাধ্য করলে Y</td><td>বরফ খাওয়ালে ডোবার সম্ভাবনা স্বাভাবিক</td></tr>
-      <tr><td class="hl">Back-door path</td><td>পরোক্ষ পথ যা confounder তৈরি করে</td><td>বরফ ← গরম → ডোবা</td></tr>
-      <tr><td class="hl">Front-door path</td><td>সরাসরি পথ কারণ থেকে ফলে</td><td>সার → উদ্ভিদ বৃদ্ধি → ফলন</td></tr>
-      <tr><td class="hl">DAG</td><td>কার্যকারণের গ্রাফিকাল উপস্থাপন</td><td>তীর দিয়ে কারণ-ফল দেখায়</td></tr>
-    </table>
-    <br>
-    <p><strong>পার্লের ব্রেকথ্রু:</strong> দশকের পর দশক পরিসংখ্যানবিদরা বলতেন 'correlation ≠ causation' এবং সেখানেই থেমে গেছেন। পার্ল বললেন — থামো না। একটা গাণিতিক ভাষা তৈরি করো যা কার্যকারণ বোঝে। do-calculus হলো সেই ভাষা — এটা বলে কোন confounder নিয়ন্ত্রণ করতে হবে, কোনটা ছাড়তে হবে।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: Causal inference with DAGs ──
+# Judea Pearl's graphical causal models.
+
+causal_dags = """
+CAUSAL INFERENCE WITH DAGS:
+
+DIRECTED ACYCLIC GRAPHS (DAGs):
+  Nodes = variables
+  Arrows = direct causal influence
+  No cycles (no variable causes itself)
+
+DO-CALCULUS (Pearl):
+  P(Y | X) ≠ P(Y | do(X))
+
+  P(Y|X): observational ("seeing X")
+  P(Y|do(X)): interventional ("making X happen")
+
+  Example: Ice cream sales (X) correlated with drowning (Y)
+  P(drowning | see ice cream sales) ≠ P(drowning | do(ice cream))
+  → Forcing ice cream doesn't change drowning
+
+BACK-DOOR CRITERION:
+  To estimate causal effect of X on Y:
+  → Block all "back-door paths" (non-causal associations)
+  → Condition on sufficient set of variables
+
+  X ← Z → Y  (Z is a confounder)
+  → Condition on Z to block this path
+
+FRONT-DOOR CRITERION:
+  When back-door variables are unobserved:
+  → Find a mediator M between X and Y
+  → X → M → Y
+  → Estimate through the mediator
+
+INSTRUMENTAL VARIABLES:
+  Z → X → Y, Z has no direct path to Y
+  → Z "instruments" the relationship
+  → Two-stage least squares (2SLS)
+
+PYTHON (DoWhy):
+  from dowhy import CausalModel
+
+  model = CausalModel(
+      data=df,
+      treatment='education',
+      outcome='income',
+      graph='digraph { education -> income; ability -> education; ability -> income }'
+  )
+  identified = model.identify_effect()
+  estimate = model.estimate_effect(identified, method_name='backdoor.propensity_score_matching')
+  refute = model.refute_estimate(identified, estimate)
+"""
+
+print(causal_dags)</div>
+
+  <div class="code-block"># ── STEP 2: Statistical learning theory ──
+# The mathematics of why ML works.
+
+learning_theory = """
+STATISTICAL LEARNING THEORY:
+
+WHY DOES ML WORK? When can we trust predictions?
+
+BIAS-VARIANCE DECOMPOSITION:
+  Total Error = Bias² + Variance + Irreducible Error
+
+  Bias: how wrong the model is on average (underfitting)
+  Variance: how much predictions vary across datasets (overfitting)
+
+  High bias → underfitting (model too simple)
+  High variance → overfitting (model too complex)
+  → THE fundamental tradeoff
+
+BAYES ERROR RATE:
+  Irreducible error = noise in the problem
+  → No model can do better than Bayes error
+  → Bayes optimal classifier: P(y|x) based
+
+VC DIMENSION:
+  Capacity/complexity of a model class
+  → Higher VC = more flexible = can overfit more
+  → Linear separator: VC = d+1 (d = dimensions)
+  → Neural network: VC ~ number of parameters
+
+GENERALIZATION BOUND (PAC learning):
+  With probability (1−δ):
+  |true_error − training_error| ≤ O(√(VC/n))
+
+  → More data (n) → tighter bound
+  → More complex model (VC) → looser bound
+
+DOUBLE DESCENT:
+  Classical: bias-variance U-curve (sweet spot)
+  Modern: with very high complexity, test error drops AGAIN
+  → "Interpolating" regime (zero training error)
+  → Explains why deep learning works with huge models
+
+REGULARIZATION:
+  Add penalty to prevent overfitting:
+  → L1 (LASSO): λ × Σ|βᵢ| (sparse)
+  → L2 (Ridge): λ × Σβᵢ² (shrinkage)
+  → Early stopping (training time)
+  → Dropout (neural networks)
+  → Data augmentation
+
+CROSS-VALIDATION:
+  Estimate generalization by splitting data:
+  → K-fold: split into K parts, train on K-1, test on 1
+  → Leave-one-out (LOOCV): K = n
+  → Stratified: maintain class proportions
+"""
+
+print(learning_theory)</div>
+
+  <div class="code-block"># ── STEP 3: Model evaluation metrics ──
+# Measuring ML model performance.
+
+evaluation = """
+MODEL EVALUATION METRICS:
+
+CLASSIFICATION:
+  Confusion Matrix:
+    TP (true positive), FP (false positive)
+    TN (true negative), FN (false negative)
+
+  Accuracy = (TP + TN) / (TP + FP + TN + FN)
+  → Misleading with imbalanced data
+
+  Precision = TP / (TP + FP) → "of predicted positives, how many correct?"
+  Recall = TP / (TP + FN) → "of actual positives, how many found?"
+  F1 = 2 × (precision × recall) / (precision + recall) → harmonic mean
+
+  ROC Curve: TPR vs FPR at different thresholds
+  AUC = area under ROC (0.5 = random, 1.0 = perfect)
+
+  Precision-Recall Curve: better for imbalanced data
+
+REGRESSION:
+  MSE = mean((y − ŷ)²) → penalizes large errors
+  RMSE = √MSE → same units as target
+  MAE = mean(|y − ŷ|) → robust to outliers
+  R² = 1 − SS_res/SS_tot → fraction of variance explained
+  MAPE = mean(|y − ŷ| / |y|) → percentage error
+
+LOGLOSS (cross-entropy):
+  −Σ(y log(ŷ) + (1−y) log(1−ŷ))
+  → Standard for classification
+  → Penalizes confident wrong predictions heavily
+
+BUSINESS METRICS:
+  → Revenue per prediction
+  → Cost of false positive vs false negative
+  → Customer satisfaction
+  → Churn rate
+
+EVALUATION PROTOCOL:
+  1. Train/validation/test split (never touch test until end)
+  2. Cross-validation for model selection
+  3. Final evaluation on held-out test set
+  4. Report confidence intervals (not just point estimates)
+
+LEAKAGE:
+  → Test data leaking into training (shuffle BEFORE split)
+  → Temporal leakage (using future data)
+  → Duplicate records across splits
+"""
+
+print(evaluation)
+
+# PYTHON: Model evaluation:
+eval_code = """
+import numpy as np
+from sklearn.metrics import (accuracy_score, precision_score, recall_score,
+                              f1_score, roc_auc_score, confusion_matrix,
+                              mean_squared_error, r2_score)
+
+# Classification metrics:
+y_true = [1, 0, 1, 1, 0, 1, 0, 0, 1, 0]
+y_pred = [1, 0, 1, 0, 0, 1, 1, 0, 1, 0]
+
+print(f"Accuracy: {accuracy_score(y_true, y_pred):.4f}")
+print(f"Precision: {precision_score(y_true, y_pred):.4f}")
+print(f"Recall: {recall_score(y_true, y_pred):.4f}")
+print(f"F1: {f1_score(y_true, y_pred):.4f}")
+
+# Confusion matrix:
+cm = confusion_matrix(y_true, y_pred)
+print(f"Confusion Matrix:\\n{cm}")
+
+# Regression metrics:
+y_true_reg = [3.0, -0.5, 2.0, 7.0, 4.2]
+y_pred_reg = [2.5, 0.0, 2.1, 7.8, 5.3]
+
+print(f"\\nMSE: {mean_squared_error(y_true_reg, y_pred_reg):.4f}")
+print(f"R²: {r2_score(y_true_reg, y_pred_reg):.4f}")
+
+# ROC AUC (need probabilities):
+y_scores = [0.9, 0.1, 0.8, 0.4, 0.2, 0.85, 0.6, 0.1, 0.95, 0.3]
+print(f"AUC-ROC: {roc_auc_score(y_true, y_scores):.4f}")
+"""
+
+print(eval_code)</div>
+
+  <div class="code-block"># ── STEP 4: Statistics in machine learning ──
+# How statistical concepts power ML.
+
+stats_ml = """
+STATISTICS IN MACHINE LEARNING:
+
+1. LINEAR/LOGISTIC REGRESSION:
+  → Direct from statistics
+  → MLE estimation, hypothesis tests for coefficients
+  → R², adjusted R²
+
+2. BIAS-VARIANCE TRADEOFF:
+  → Model selection: underfitting vs overfitting
+  → Regularization: L1/L2 penalty
+  → Cross-validation: estimate generalization
+
+3. NAIVE BAYES:
+  → Bayes theorem applied to classification
+  → P(class | features) ∝ P(class) × P(features | class)
+  → "Naive" = assumes feature independence
+
+4. GAUSSIAN MIXTURE MODELS (GMM):
+  → Clustering with probabilistic assignment
+  → EM algorithm for fitting
+  → P(x) = Σ wᵢ × Normal(x | μᵢ, σᵢ)
+
+5. HYPOTHESIS TESTING:
+  → Feature selection (is this feature significant?)
+  → Model comparison (is model A better than B?)
+  → A/B testing for ML deployment
+
+6. RESAMPLING METHODS:
+  → Bootstrap: estimate uncertainty
+  → Cross-validation: estimate generalization
+  → Permutation tests: non-parametric hypothesis tests
+
+7. BAYESIAN ML:
+  → Posterior over parameters (not point estimate)
+  → Bayesian neural networks (uncertainty)
+  → Gaussian processes (regression with uncertainty)
+
+8. INFORMATION THEORY:
+  → Entropy: H(X) = −Σ P(x) log P(x)
+  → Cross-entropy loss (classification)
+  → KL divergence: measure distribution difference
+  → Mutual information: feature selection
+
+PYTHON:
+  from sklearn.model_selection import cross_val_score
+  from sklearn.linear_model import LogisticRegression
+
+  model = LogisticRegression(C=1.0)  # C = 1/λ (regularization)
+  scores = cross_val_score(model, X, y, cv=5, scoring='f1')
+  print(f"F1: {scores.mean():.4f} ± {scores.std():.4f}")
+"""
+
+print(stats_ml)</div>
+
+  <div class="code-block"># ── STEP 5: Big data statistics ──
+# Statistics at scale.
+
+big_data = """
+STATISTICS FOR BIG DATA:
+
+CHALLENGES:
+  → Traditional stats assumes data fits in memory
+  → Big data: TB/PB scale, streaming, distributed
+  → p >> n problem (more features than samples)
+
+DISTRIBUTED COMPUTING:
+  → MapReduce / Spark: process in parallel
+  → Online algorithms: update statistics incrementally
+  → Sketching: approximate answers (HyperLogLog, Bloom filters)
+
+ONLINE STATISTICS (streaming):
+  → Welford's algorithm: running mean/variance
+  → One pass through data, constant memory
+
+  Running mean: x̄ₙ = x̄ₙ₋₁ + (xₙ − x̄ₙ₋₁)/n
+  Running variance: M₂ₙ = M₂ₙ₋₁ + (xₙ − x̄ₙ₋₁)(xₙ − x̄ₙ)
+
+SAMPLING AT SCALE:
+  → Random sampling: reservoir sampling (stream)
+  → Stratified sampling: maintain proportions
+  → Weighted sampling: importance sampling
+
+APPROXIMATE QUERY PROCESSING:
+  → Don't scan entire dataset
+  → Sample + estimate + confidence interval
+  → "Quick answers" with error bars
+
+HIGH-DIMENSIONAL DATA (p >> n):
+  → Curse of dimensionality: distances become meaningless
+  → Overfitting risk increases dramatically
+  → Regularization essential (LASSO, Ridge)
+  → Dimensionality reduction (PCA, t-SNE, UMAP)
+
+MULTIPLE TESTING CRISIS:
+  → With 1000 features, 50 will be "significant" at α=0.05
+  → Bonferroni: α/m (too conservative)
+  → False Discovery Rate (FDR): control expected proportion of false discoveries
+
+PYTHON (big data):
+  import dask.dataframe as dd  # distributed pandas
+
+  df = dd.read_csv('huge_file_*.csv')
+  mean = df['value'].mean().compute()  # distributed computation
+
+  # Online statistics:
+  n, mean, M2 = 0, 0.0, 0.0
+  for x in data_stream:
+      n += 1
+      delta = x - mean
+      mean += delta / n
+      delta2 = x - mean
+      M2 += delta * delta2
+  variance = M2 / (n - 1)
+"""
+
+print(big_data)</div>
+
+  <div class="code-block"># ── STEP 6: ML statistics best practices ──
+# Apply statistics correctly in ML.
+
+best_practices = [
+    "Bias-variance: balance underfitting and overfitting",
+    "Cross-validation: always estimate generalization",
+    "Regularization: prevent overfitting (L1/L2)",
+    "Train/validation/test: never touch test until end",
+    "Stratified sampling for imbalanced data",
+    "Precision/Recall/F1: better than accuracy for imbalance",
+    "ROC-AUC for threshold-independent evaluation",
+    "Bootstrap for confidence intervals",
+    "Multiple comparisons: FDR correction (not just Bonferroni)",
+    "Online algorithms for streaming data (Welford)",
+    "Reservoir sampling for stream sampling",
+    "PCA/dimensionality reduction for high-dim data",
+    "Bayesian methods for uncertainty quantification",
+    "Cross-entropy loss for classification",
+    "Report mean ± std across multiple runs",
+]
+
+print("ML STATISTICS BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Application                     │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Bias-Variance    │ Model selection                 │
+# │ Regularization   │ Prevent overfitting             │
+# │ Cross-validation │ Estimate generalization         │
+# │ ROC-AUC          │ Classification evaluation       │
+# │ Bootstrap        │ Confidence intervals            │
+# │ Welford          │ Online/streaming statistics     │
+# │ FDR              │ Multiple testing correction     │
+# │ DoWhy            │ Causal inference                │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৩৩ (যুক্তির তাঁত) Door ৯-এ Second-Order Thinking শিখেছিলে — প্রতিটা কারণের ফল আছে, সেই ফলেরও ফল আছে। Pearl-এর DAG হলো সেই চিন্তার গাণিতিক রূপ। Book ৩১ (Classic ML) Door ৪ Decision Trees — সেখানে প্রতিটা শাখা একটা কার্যকারণ সম্পর্ক।</div></div>
 
