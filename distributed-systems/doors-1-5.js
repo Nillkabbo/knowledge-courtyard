@@ -97,18 +97,337 @@ doors.push({
     <div class="diag-cap">Lamport clock প্রতিটা ঘটনাকে একটা লজিক্যাল টাইমস্ট্যাম্প দেয়। মেসেজ পেলে: নতুন টাইমস্ট্যাম্প = max(নিজের, প্রেরকের) + ১। এটা ঘড়ির সময় নয় — কার্যকারণের ক্রম।</div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 Lamport Clock — অ্যালগরিদম</h4>
-    <table class="kv-table">
-      <tr><th>ঘটনা</th><th>কী করে</th><th>টাইমস্ট্যাম্প</th></tr>
-      <tr><td class="hl">লোকাল ইভেন্ট</td><td>নিজের কাউন্টার +১</td><td>গডেটের চেয়ে বড়</td></tr>
-      <tr><td class="hl">মেসেজ পাঠানো</td><td>কাউন্টার +১, মেসেজে টাইমস্ট্যাম্প যুক্ত</td><td>গডেটের চেয়ে বড়</td></tr>
-      <tr><td class="hl">মেসেজ গ্রহণ</td><td>max(নিজের, প্রেরকের) + ১</td><td>উভয়ের চেয়ে বড়</td></tr>
-    </table>
-    <br>
-    <p><strong>গুরুত্বপূর্ণ বৈশিষ্ট্য:</strong> যদি A → B (happens-before), তাহলে timestamp(A) < timestamp(B)। কিন্তু বিপরীত সত্য নয় — timestamp(A) < timestamp(B) মানে A আগে ঘটেছে তা নয়। তারা concurrent হতে পারে।</p>
-    <p><strong>ল্যাম্পোর্টের উত্তরাধিকার:</strong> এই গবেষণাপত্র (১৯৭৮) বিতরণ সিস্টেমের ভিত্তি স্থাপন করে। Lamport পরে Paxos (১৯৯৮) এবং LaTeX তৈরি করেন — দুটোই আজও ব্যবহৃত। ২০১৩ সালে Turing Award পান।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: Why distributed systems need logical clocks ──
+# In distributed systems, physical clocks (wall time) are unreliable.
+
+clock_problem = """
+THE CLOCK PROBLEM:
+
+On a single machine: system clock works fine.
+  → Event A at 10:00:01
+  → Event B at 10:00:02
+  → A definitely happened before B
+
+In distributed systems: each machine has its OWN clock.
+  → Machine 1 clock: 10:00:01
+  → Machine 2 clock: 10:00:03 (clock skew!)
+  → Machine 2's event might "happen before" Machine 1's
+    even though it actually occurred later
+
+WHY CLOCKS DISAGREE:
+  → Crystal oscillator drift (~1 sec per day)
+  → NTP synchronization is approximate (±10ms)
+  → Network delay makes synchronization harder
+  → Daylight saving, timezone changes
+
+SOLUTION: LOGICAL CLOCKS
+  → Don't measure WHEN things happen
+  → Measure WHAT ORDER things happen (causality)
+  → Lamport Clock (1978): order events by causality
+"""
+
+print(clock_problem)</div>
+
+  <div class="code-block"># ── STEP 2: Lamport Clock algorithm ──
+# Leslie Lamport's solution: count events, not seconds.
+
+lamport = """
+LAMPORT CLOCK ALGORITHM:
+
+Each process maintains a counter (starting at 0).
+
+THREE RULES:
+
+1. LOCAL EVENT (process does something):
+   counter = counter + 1
+   timestamp = counter
+
+2. SEND MESSAGE:
+   counter = counter + 1
+   attach counter value to the message
+
+3. RECEIVE MESSAGE:
+   counter = max(counter, message_counter) + 1
+   timestamp = counter
+
+KEY PROPERTY:
+  If A happens-before B, then timestamp(A) < timestamp(B)
+  → Causality is preserved
+  → We can ORDER events without physical clocks
+
+IMPORTANT LIMITATION:
+  timestamp(A) < timestamp(B) does NOT mean A caused B
+  → They might be concurrent (no causal relationship)
+  → Vector clocks solve this (next door)
+"""
+
+print(lamport)
+
+# PYTHON: Lamport Clock implementation:
+lamport_code = """
+class LamportClock:
+    def __init__(self):
+        self.counter = 0
+
+    def local_event(self):
+        self.counter += 1
+        return self.counter
+
+    def send_event(self):
+        self.counter += 1
+        return self.counter  # attached to message
+
+    def receive_event(self, received_timestamp):
+        self.counter = max(self.counter, received_timestamp) + 1
+        return self.counter
+
+# Example: two processes communicating:
+clock_a = LamportClock()
+clock_b = LamportClock()
+
+t1 = clock_a.local_event()        # A does something → t=1
+t2 = clock_a.send_event()         # A sends to B → t=2
+t3 = clock_b.receive_event(t2)    # B receives → max(0,2)+1 = 3
+t4 = clock_b.local_event()        # B does something → t=4
+
+print(f"A local: {t1}, A send: {t2}, B recv: {t3}, B local: {t4}")
+# A local: 1, A send: 2, B recv: 3, B local: 4
+# Causality preserved: 1 < 2 < 3 < 4
+"""
+
+print(lamport_code)</div>
+
+  <div class="code-block"># ── STEP 3: Happens-before relationship ──
+# The foundation of distributed system ordering.
+
+happens_before = """
+HAPPENS-BEFORE RELATION (→):
+
+A → B means "A happened before B" (A caused or influenced B).
+
+THREE RULES:
+1. Same process: if A comes before B in the same process, A → B
+2. Message: if A sends a message that B receives, A → B
+3. Transitivity: if A → B and B → C, then A → C
+
+CONCURRENT EVENTS (||):
+  If neither A → B nor B → A, they are CONCURRENT.
+  → A || B (happened independently, no causal link)
+  → Order doesn't matter
+
+EXAMPLE:
+  Process 1: A → B → C
+  Process 2: X → Y
+
+  If B sends message received at Y:
+    A → B → Y (transitivity)
+    X → Y (same process)
+    But A || X (concurrent, no causal link)
+
+REAL-WORLD ANALOGY:
+  A: "I sent the email"
+  B: "You read the email"
+  A → B (clear causality)
+
+  A: "I ate breakfast"
+  B: "My friend in Tokyo ate lunch"
+  A || B (concurrent, no causal link)
+"""
+
+print(happens_before)</div>
+
+  <div class="code-block"># ── STEP 4: Vector clocks (for detecting concurrency) ──
+# Vector clocks solve Lamport's limitation.
+
+vector_clocks = """
+VECTOR CLOCKS (Mattern, Fidge, 1988):
+
+LAMPORT LIMITATION:
+  timestamp(A) < timestamp(B) doesn't mean A → B
+  → They might be concurrent
+  → Can't distinguish causality from coincidence
+
+VECTOR CLOCK SOLUTION:
+  Each process maintains a VECTOR of counters (one per process)
+
+  V = [c1, c2, c3, ...] where ci = process i's event count
+
+RULES:
+1. Local event: V[my_id] += 1
+2. Send message: attach entire vector V
+3. Receive message(m_vector): V[i] = max(V[i], m_vector[i]) for all i; V[my_id] += 1
+
+COMPARING VECTORS:
+  V1 < V2 iff V1[i] <= V2[i] for all i AND V1 != V2
+  → V1 < V2 means V1 happened-before V2 (TRUE causality!)
+  → V1 || V2 means concurrent (neither caused the other)
+
+EXAMPLE:
+  P1: [1,0] → [2,0] → [2,1] → [2,2]
+  P2: [0,1] → [1,1] → [2,2]
+
+  [2,2] > [1,1] → P1's [2,2] happened after P2's [1,1]
+  [2,0] || [0,1] → concurrent events
+
+VECTOR CLOCKS DETECT CONCURRENCY.
+LAMPORT CLOCKS ONLY ORDER (can't detect concurrency).
+"""
+
+print(vector_clocks)
+
+# PYTHON: Vector Clock:
+vector_code = """
+class VectorClock:
+    def __init__(self, num_processes, my_id):
+        self.clock = [0] * num_processes
+        self.my_id = my_id
+
+    def local_event(self):
+        self.clock[self.my_id] += 1
+        return list(self.clock)
+
+    def send_event(self):
+        self.clock[self.my_id] += 1
+        return list(self.clock)  # send entire vector
+
+    def receive_event(self, received_vector):
+        for i in range(len(self.clock)):
+            self.clock[i] = max(self.clock[i], received_vector[i])
+        self.clock[self.my_id] += 1
+        return list(self.clock)
+
+    @staticmethod
+    def compare(v1, v2):
+        if all(a <= b for a, b in zip(v1, v2)) and v1 != v2:
+            return "v1 happened-before v2"
+        elif all(b <= a for a, b in zip(v1, v2)) and v1 != v2:
+            return "v2 happened-before v1"
+        else:
+            return "concurrent"
+
+# Usage:
+p1 = VectorClock(num_processes=2, my_id=0)
+p2 = VectorClock(num_processes=2, my_id=1)
+
+t1 = p1.local_event()  # [1, 0]
+t2 = p2.local_event()  # [0, 1]
+print(VectorClock.compare(t1, t2))  # "concurrent"
+"""
+
+print(vector_code)</div>
+
+  <div class="code-block"># ── STEP 5: Real-world applications of logical clocks ──
+# Where these concepts are used in production systems.
+
+applications = {
+    "Distributed Databases": {
+        "systems": "Cassandra, DynamoDB, Riak, CockroachDB",
+        "use": "Order writes across replicas, detect conflicts",
+        "clock_type": "Vector clocks / hybrid logical clocks",
+    },
+    "Version Control (Git)": {
+        "systems": "Git, Mercurial",
+        "use": "Track commit order, detect merge conflicts",
+        "clock_type": "DAG (directed acyclic graph) of commits",
+    },
+    "Collaborative Editing": {
+        "systems": "Google Docs, Figma, Etherpad",
+        "use": "Order edits from multiple users simultaneously",
+        "clock_type": "Operational Transform / CRDTs",
+    },
+    "Distributed Tracing": {
+        "systems": "Jaeger, Zipkin, OpenTelemetry",
+        "use": "Trace request flow across microservices",
+        "clock_type": "Span timestamps (adjusted for clock skew)",
+    },
+    "Event Sourcing": {
+        "systems": "Kafka, EventStoreDB",
+        "use": "Order events in an event log",
+        "clock_type": "Sequence numbers / vector clocks",
+    },
+    "Conflict-Free Replicated Data Types (CRDTs)": {
+        "systems": "Redis CRDT, Automerge, Yjs",
+        "use": "Merge concurrent edits without conflicts",
+        "clock_type": "Vector clocks / version vectors",
+    },
+}
+
+print("APPLICATIONS OF LOGICAL CLOCKS:")
+for app, info in applications.items():
+    print(f"\\n  {app}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# CASSANDRA EXAMPLE (real-world):
+cassandra = """
+CASSANDRA'S USE OF TIMESTAMPS:
+
+Cassandra uses timestamps for conflict resolution:
+  → Each write includes a timestamp
+  → When replicas differ: last-write-wins (LWW)
+  → Problem: clock skew → wrong winner
+
+SOLUTION: Hybrid Logical Clocks (HLC)
+  → Combines physical time + logical counter
+  → Physical time for human readability
+  → Logical counter for causality
+  → Used in CockroachDB, YugabyteDB, Spanner
+"""
+print(cassandra)</div>
+
+  <div class="code-block"># ── STEP 6: Clock synchronization (NTP and beyond) ──
+# How machines try to keep physical clocks in sync.
+
+clock_sync = """
+CLOCK SYNCHRONIZATION:
+
+NTP (Network Time Protocol):
+  → Syncs machine clock to time servers
+  → Accuracy: ±10ms over internet, ±1ms on LAN
+  → Runs continuously (adjusts for drift)
+  → Hierarchical: stratum 0 (atomic clock) → stratum 1 → stratum 2 → ...
+
+PROBLEMS WITH NTP:
+  → Still has ±10ms error
+  → Clock can go BACKWARD (dangerous!)
+  → Leap seconds cause jumps
+  → VM migration: clock jumps
+
+GOOGLE'S SOLUTION: TrueTime (Spanner)
+  → GPS + atomic clocks in data centers
+  → Returns a RANGE: [earliest, latest] (not exact time)
+  → Wait for uncertainty to pass before committing
+  → Cost: expensive infrastructure
+  → Accuracy: ±7ms (much better than NTP)
+
+HYBRID LOGICAL CLOCKS (HLC):
+  → Combines NTP + Lamport clock
+  → Physical component (for readability)
+  → Logical component (for causality)
+  → Used in CockroachDB, YugabyteDB
+  → Best of both worlds
+
+WHEN TO USE WHICH:
+  → NTP: good enough for most apps (timestamps, logs)
+  → TrueTime: Google-level data consistency
+  → HLC: distributed databases without GPS
+  → Lamport: when you only need causality (not wall time)
+  → Vector: when you need to detect concurrency
+"""
+
+print(clock_sync)
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Clock Type       │ Best For                        │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Physical (NTP)   │ Timestamps, logs (±10ms)       │
+# │ Lamport          │ Causal ordering (simple)        │
+# │ Vector           │ Detecting concurrency           │
+# │ HLC              │ Distributed databases           │
+# │ TrueTime         │ Global consistency (Google)     │
+# │ happens-before   │ Foundation of all ordering      │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Builder's Codex / System Design) Door ৭-এ Consensus শিখেছিলে — Paxos, Raft। সেই Paxos-এর জনক এই ল্যাম্পোর্ট। Book ৩৪ (Scale of Evidence) Door ৮-এ Causal Inference শিখেছিলে — Lamport clock হলো সেই কার্যকারণের (cause → effect) গাণিতিক রূপ।</div></div>
 
