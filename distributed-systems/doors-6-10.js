@@ -100,18 +100,295 @@ doors.push({
     <div class="diag-cap">Map: প্রতিটা মেশিন নিজের অংশে key-value তৈরি করে। Shuffle: একই key এক জায়গায়। Reduce: যোগ করে। ভাগ করে জয়।</div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 Google-এর বিগ থ্রি — Big Data ভিত্তি</h4>
-    <table class="kv-table">
-      <tr><th>সিস্টেম</th><th>বছর</th><th>কাজ</th></tr>
-      <tr><td class="hl">GFS</td><td>২০০৩ (SOSP)</td><td>বিশাল ফাইল হাজার মেশিনে ছড়ানো</td></tr>
-      <tr><td class="hl">MapReduce</td><td>২০০৪ (OSDI)</td><td>বিশাল ডেটা সমান্তরালে প্রক্রিয়া</td></tr>
-      <tr><td class="hl">Bigtable</td><td>২০০৬ (OSDI)</td><td>বিশাল টেবিল — কোটি কোটি সারি</td></tr>
-      <tr><td class="hl">Spark</td><td>২০১২ (NSDI)</td><td>In-memory — ডিস্ক I/O এড়িয়ে ১০-১০০x দ্রুত</td></tr>
-    </table>
-    <br>
-    <p><strong>Dean & Ghemawat-এর উত্তরাধিকার:</strong> GFS ও MapReduce প্রকাশের পর আমাজন, ইয়াহু, ফেসবুক সবাই নিজেদের সংস্করণ বানায় — Hadoop (Yahoo), DynamoDB (Amazon), Cassandra (Facebook)। Google-এর গবেষণাপত্রগুলো বিগ ডেটা শিল্পের ভিত্তি।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: MapReduce — divide and conquer for big data ──
+# Google's 2004 paper. Process petabytes across thousands of machines.
+
+mapreduce = """
+MAPREDUCE (Dean & Ghemawat, 2004):
+
+INSPIRATION: functional programming map() and reduce()
+  map(function, list) → transformed_list
+  reduce(function, list) → single_value
+
+MAPREDUCE FOR BIG DATA:
+  Input: huge dataset (terabytes)
+  Split: into chunks across thousands of machines
+  Map: each machine processes its chunk independently
+  Shuffle: group by key
+  Reduce: aggregate results
+
+EXAMPLE: Count word frequencies in 1TB of text:
+
+  MAP phase (parallel, per machine):
+    Input: "the cat sat on the mat"
+    Output: (the, 1), (cat, 1), (sat, 1), (on, 1), (the, 1), (mat, 1)
+
+  SHUFFLE (group by key):
+    (the, [1, 1]), (cat, [1]), (sat, [1]), (on, [1]), (mat, [1])
+
+  REDUCE phase (parallel, per key):
+    (the, 2), (cat, 1), (sat, 1), (on, 1), (mat, 1)
+
+  Output: word counts for entire 1TB dataset
+
+WHY IT WORKS:
+  → Map runs in PARALLEL (each machine independently)
+  → Reduce runs in PARALLEL (each key independently)
+  → 1TB / 1000 machines = 1GB per machine = fast!
+  → Fault tolerant: if machine fails, re-run its chunk
+"""
+
+print(mapreduce)</div>
+
+  <div class="code-block"># ── STEP 2: MapReduce in Python ──
+# Hadoop Streaming and modern alternatives.
+
+mr_python = """
+PYTHON MAPREDUCE (Hadoop Streaming):
+
+# mapper.py:
+import sys
+
+for line in sys.stdin:
+    for word in line.strip().split():
+        print(f"{word}\\t1")
+
+# reducer.py:
+import sys
+from collections import Counter
+
+counts = Counter()
+
+for line in sys.stdin:
+    word, count = line.strip().split("\\t")
+    counts[word] += int(count)
+
+for word, count in counts.items():
+    print(f"{word}\\t{count}")
+
+# Run on Hadoop:
+$ hadoop jar hadoop-streaming.jar \\
+    -mapper mapper.py \\
+    -reducer reducer.py \\
+    -input /data/input.txt \\
+    -output /data/wordcount/
+
+PYTHON MRJOB (easier API):
+  from mrjob.job import MRJob
+
+  class MRWordCount(MRJob):
+      def mapper(self, _, line):
+          for word in line.split():
+              yield word, 1
+
+      def reducer(self, word, counts):
+          yield word, sum(counts)
+
+  if __name__ == '__main__':
+      MRWordCount.run()
+
+  # Run: python wordcount.py -r hadoop --hadoop-streaming-jar ... input.txt
+"""
+
+print(mr_python)</div>
+
+  <div class="code-block"># ── STEP 3: Apache Spark — the modern replacement ──
+# In-memory processing, 10-100x faster than MapReduce.
+
+spark = """
+APACHE SPARK (2012):
+
+WHY SPARK BEATS MAPREDUCE:
+  MapReduce: writes intermediate data to DISK between stages
+  Spark: keeps data in MEMORY between stages (RDD/DataFrame)
+
+  → Spark is 10-100x faster than MapReduce
+  → Same fault tolerance (lineage-based recovery)
+  → Richer API (not just map/reduce)
+  → Supports SQL, streaming, ML, graph processing
+
+SPARK ARCHITECTURE:
+  Driver: coordinates the job
+  Executors: worker processes on cluster nodes
+  RDD/DataFrame: distributed data structure (in-memory)
+
+PYSPARK EXAMPLE:
+  from pyspark.sql import SparkSession
+
+  spark = SparkSession.builder.appName("WordCount").getOrCreate()
+
+  # Read 1TB text file:
+  text = spark.read.text("hdfs:///data/input.txt")
+
+  # Word count (SQL-like):
+  from pyspark.sql.functions import explode, split, lower, col
+
+  word_counts = (text
+      .select(explode(split(lower(col("value")), " ")).alias("word"))
+      .groupBy("word")
+      .count()
+      .orderBy("count", ascending=False)
+  )
+
+  word_counts.show(10)  # Top 10 most frequent words
+
+SPARK vs MAPREDUCE:
+  MapReduce: disk-based, 2 phases (map + reduce), batch only
+  Spark: memory-based, multi-stage DAG, batch + streaming + ML
+  → Use Spark for ALL new big data projects.
+"""
+
+print(spark)
+
+# SPARK PERFORMANCE COMPARISON:
+perf = """
+PERFORMANCE (Logistic Regression on 1TB data):
+
+MapReduce (Hadoop):  ~110 seconds per iteration
+Spark:                ~4 seconds per iteration (27x faster!)
+
+WHY?
+  MapReduce reads from disk EVERY iteration
+  Spark keeps data in memory between iterations
+
+  For iterative algorithms (ML, graph):
+    MapReduce: disk I/O bottleneck
+    Spark: in-memory = 10-100x faster
+"""
+print(perf)</div>
+
+  <div class="code-block"># ── STEP 4: Google's Big Three papers ──
+# The foundation of modern big data infrastructure.
+
+big_three = """
+GOOGLE'S BIG THREE (2003-2006):
+
+These three papers BEGAN the Big Data revolution.
+Every major data system traces back to them.
+
+1. GFS — Google File System (Ghemawat, Gobioff, Leung, 2003):
+   → Distributed file system for huge files
+   → Files split into 64MB chunks across thousands of machines
+   → Replication: each chunk on 3 machines (fault tolerance)
+   → Open source equivalent: HDFS (Hadoop Distributed File System)
+
+2. MapReduce (Dean & Ghemawat, 2004):
+   → Parallel processing framework
+   → Map (process each chunk) + Reduce (aggregate)
+   → Open source equivalent: Hadoop MapReduce, Apache Spark
+
+3. Bigtable (Chang et al., 2006):
+   → Distributed, sparse, sorted map
+   → Billions of rows, millions of columns
+   → Column families, versioned cells
+   → Open source equivalents: HBase, Cassandra, DynamoDB
+
+LEGACY:
+  GFS → HDFS → S3, GCS, Azure Blob
+  MapReduce → Hadoop → Spark, Flink, Beam
+  Bigtable → HBase → Cassandra, DynamoDB, MongoDB
+
+Dean & Ghemawat later built Spanner (global DB), Borg (→ Kubernetes),
+and many more. Google's research papers shaped the ENTIRE industry.
+"""
+
+print(big_three)</div>
+
+  <div class="code-block"># ── STEP 5: When to use big data tools ──
+# Practical decision guide for data processing.
+
+when_to_use = {
+    "Single Machine (pandas, Python)": {
+        "data_size": "< 10GB",
+        "tools": "pandas, NumPy, scikit-learn",
+        "use_case": "Most data science, small datasets",
+        "cost": "Free (your laptop/server)",
+    },
+    "Dask / Polars": {
+        "data_size": "10GB - 100GB",
+        "tools": "Dask, Polars, Vaex",
+        "use_case": "Medium data that doesn't fit in RAM",
+        "cost": "Single machine (more RAM)",
+    },
+    "Apache Spark": {
+        "data_size": "100GB - Petabytes",
+        "tools": "PySpark, Spark SQL, MLlib",
+        "use_case": "Big data, ETL, ML at scale",
+        "cost": "Cluster (3+ machines, cloud)",
+    },
+    "Cloud Big Data (managed)": {
+        "data_size": "Any size",
+        "tools": "AWS EMR, GCP Dataproc, Databricks",
+        "use_case": "Managed Spark/Hadoop (no ops)",
+        "cost": "Pay per use (cloud)",
+    },
+    "Streaming (real-time)": {
+        "data_size": "Continuous flow",
+        "tools": "Kafka, Flink, Spark Streaming",
+        "use_case": "Real-time analytics, IoT, alerts",
+        "cost": "Cluster + message queue",
+    },
+}
+
+print("WHEN TO USE BIG DATA TOOLS:")
+for tier, info in when_to_use.items():
+    print(f"\\n  {tier}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# BIG DATA MYTH:
+myth = """
+BIG DATA MYTH:
+
+"You need Spark/Hadoop for all data processing."
+FALSE! Most data fits on a single machine.
+
+Rule of thumb:
+  < 10GB → pandas (single machine is FINE)
+  10-100GB → Dask/Polars (single machine with optimization)
+  > 100GB → Spark (distributed cluster needed)
+
+Don't add Spark complexity unless your data REQUIRES it.
+Premature distributed computing is a common anti-pattern.
+"""
+print(myth)</div>
+
+  <div class="code-block"># ── STEP 6: MapReduce/Spark best practices ──
+# Production patterns for big data processing.
+
+best_practices = [
+    "Use Spark over MapReduce for new projects (10-100x faster)",
+    "Keep data in memory (cache/persist intermediate results)",
+    "Avoid data skew (some partitions much larger than others)",
+    "Use DataFrame/SQL API (optimized by Catalyst optimizer)",
+    "Partition wisely (right number, right key)",
+    "Broadcast small tables (avoid shuffle in joins)",
+    "Use columnar formats (Parquet, ORC) for storage",
+    "Compress data (Snappy for speed, Gzip for size)",
+    "Monitor: data skew, shuffle size, GC time",
+    "Use Spark UI to identify bottlenecks",
+    "Set appropriate executor memory and cores",
+    "Use predicate pushdown (filter early)",
+    "Avoid collect() on large datasets (brings to driver)",
+    "Checkpoint long lineages (prevent stack overflow)",
+    "Test on small sample, then scale to full data",
+]
+
+print("BIG DATA BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Tool             │ Best For                        │
+# ├──────────────────┼──────────────────────────────────┤
+# │ pandas           │ <10GB (most data science)       │
+# │ Dask/Polars      │ 10-100GB (single machine)      │
+# │ Spark            │ >100GB (distributed)            │
+# │ MapReduce        │ Legacy Hadoop (don't start new) │
+# │ Kafka            │ Streaming data pipelines        │
+# │ Parquet          │ Columnar storage (fast reads)   │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Builder's Codex) Door ১৩-এ Message Queues & Async Processing শিখেছিলে — MapReduce হলো সেই async processing-এর বিশাল রূপ। Book ৩৪ (Scale of Evidence) Door ২-এ Descriptive Statistics — MapReduce দিয়ে কোটি ডেটার গডেট বের করা যায়।</div></div>
 
