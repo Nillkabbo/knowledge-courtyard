@@ -19,35 +19,417 @@ doors.push({
 <div class="dialogue"><strong>রঙ-কারিগর ইউসুফ:</strong> আমি Chaitin-এর অ্যালগরিতম ব্যবহার করি (১৯৮১)। প্রথমে interference graph বানাই — দুটি variable একসাথে live? এজ আছে। তারপর graph coloring — adjacent নোড আলাদা রঙ। রঙের সংখ্যা = রেজিস্টার সংখ্যা। যদি ১৬ রঙে না হয় — spill! কিছু variable memory-তে পাঠাও। এটাই register allocation — সবচেয়ে কঠিণ NP-complete সমস্যা।</div>
 <div class="dialogue en"><strong>Color Artisan Yusuf:</strong> I use Chaitin's algorithm (1981). First build interference graph — two variables live together? Edge exists. Then graph coloring — adjacent nodes different colors. Number of colors = number of registers. If 16 colors not enough — spill! Send some variables to memory. This is register allocation — the hardest NP-complete problem.</div>
 
-<div class="code-block">— Register Allocation (Python simulation) —
+<div class="code-block"># ── STEP 1: Register allocation in detail ──
+# Graph coloring for register assignment.
 
+reg_alloc = """
+REGISTER ALLOCATION — DETAILED:
+
+THE PROBLEM:
+  → IR has unlimited virtual registers (v1, v2, v3, ...)
+  → CPU has limited physical registers (rax, rbx, ..., r15 = 16 on x86-64)
+  → Map virtual → physical optimally
+
+LIVENESS ANALYSIS:
+  A variable is LIVE if its value will be used later.
+  → Compute live ranges: from definition to last use
+  → Two variables can share a register if they DON'T overlap
+
+INTERFERENCE GRAPH:
+  → Node = variable
+  → Edge = two variables live at same point (interfere)
+  → Interfering variables CANNOT share a register
+
+GRAPH COLORING (Chaitin, 1981):
+  Color the graph so no two adjacent nodes share a color.
+  → k colors = k registers
+  → NP-complete in general
+  → Greedy heuristic: order by degree, assign lowest available color
+
+  Simplify: if node has < k neighbors → remove it (safe)
+  Spill: if all nodes have >= k neighbors → spill one to memory
+
+LINEAR SCAN (Poletto & Sarkar, 1999):
+  → Faster than graph coloring
+  → Sort variables by start of live range
+  → Greedy: assign free register, or spill oldest
+  → Used by: LLVM (fast mode), JIT compilers
+
+PYTHON (graph coloring simulation):
   import networkx as nx
 
-  # Interference graph: যে variable-গুলো একসাথে live
   G = nx.Graph()
   G.add_edges_from([
-      ("a", "b"), ("a", "c"),  # a ও b, a ও c একসাথে live
-      ("b", "c"), ("b", "d"),
-      ("c", "d"), ("c", "e"),
-      ("d", "e"),
+      ('a', 'b'), ('a', 'c'),
+      ('b', 'c'), ('b', 'd'),
+      ('c', 'd'), ('c', 'e'),
+      ('d', 'e'),
   ])
 
-  # Graph coloring (greedy):
-  coloring = nx.coloring.greedy_color(G, strategy="largest_first")
+  coloring = nx.coloring.greedy_color(G, strategy='largest_first')
   print(coloring)
   # {'c': 0, 'b': 1, 'a': 2, 'd': 0, 'e': 1}
-  # ৩টি রঙ লাগলো → ৩টি রেজিস্টার যথেষ্ট!
 
   num_registers = max(coloring.values()) + 1
-  print(f"রেজিস্টার দরকার: {num_registers}")  # 3
+  print(f"Registers needed: {num_registers}")  # 3
 
-  # Spilling: যদি রেজিস্টার কম হয়
-  if num_registers > 16:  # x86-64 এ ১৬টি
-      # কিছু variable memory-তে পাঠাও
+  # Spill if too few registers:
+  if num_registers > 16:
       spill = max(coloring, key=lambda v: coloring[v])
       print(f"Spill to memory: {spill}")
+"""
 
-  — এটাই Book ৪৮ Door ৮ (Graph Coloring)-এর প্রয়োগ! —</div>
+print(reg_alloc)</div>
+
+<div class="code-block"># ── STEP 2: JIT compilation ──
+# Just-In-Time compilation at runtime.
+
+jit = """
+JIT COMPILATION (JUST-IN-TIME):
+
+Compile code AT RUNTIME instead of ahead-of-time.
+
+HOW IT WORKS:
+  1. Start in interpreter (slow but immediate)
+  2. PROFILE: identify hot code (executed frequently)
+  3. COMPILE hot code to native (optimized)
+  4. Cache compiled version for future calls
+
+ADVANTAGES:
+  → Fast startup (interpret first)
+  → Optimized for ACTUAL usage patterns
+  → Profile-guided optimization (real data)
+  → Can deoptimize (fall back to interpreter)
+
+DISADVANTAGES:
+  → Warmup time (need to reach hot code)
+  → Memory overhead (compiled code + interpreter)
+  → Complexity (deoptimization, invalidation)
+
+FAMOUS JIT COMPILERS:
+  → V8 (JavaScript): Chrome, Node.js
+  → HotSpot (Java): Oracle JDK, OpenJDK
+  → PyPy (Python): 4x faster than CPython
+  → Numba (Python): JIT for numerical computing
+  → LuaJIT: fast Lua
+  → .NET CLR (C#): Microsoft
+
+SPECULATIVE OPTIMIZATION:
+  JIT assumes likely behavior, optimizes for it.
+  → If assumption fails → DEOPTIMIZE (fall back)
+  → Example: assume type is int → optimize for int
+  → If string appears → deoptimize, recompile
+
+PYTHON (PyPy vs CPython):
+  # CPython: interprets bytecode
+  # PyPy: JIT compiles hot loops
+
+  # PyPy speedup on loops:
+  def sum_n(n):
+      total = 0
+      for i in range(n):
+          total += i
+      return total
+
+  # CPython: ~5 seconds for n=10^9
+  # PyPy: ~1 second for n=10^9 (5x faster after JIT warmup)
+
+NUMBA (JIT for Python):
+  from numba import jit
+  import numpy as np
+
+  @jit(nopython=True)  # compile to native code
+  def matrix_multiply(a, b):
+      return np.dot(a, b)
+
+  # First call: compiles (slower)
+  # Subsequent calls: native speed (100x faster than pure Python)
+"""
+
+print(jit)</div>
+
+<div class="code-block"># ── STEP 3: Memory management and garbage collection ──
+# How languages manage memory.
+
+memory = """
+MEMORY MANAGEMENT:
+
+MANUAL (C, C++):
+  → malloc/free, new/delete
+  → Programmer controls everything
+  → Fast but error-prone: memory leaks, use-after-free, double-free
+  → Tools: Valgrind, AddressSanitizer
+
+AUTOMATIC (GC):
+  → Runtime manages memory
+  → No explicit free
+  → Safer but: pauses, overhead, non-deterministic
+
+GARBAGE COLLECTION ALGORITHMS:
+
+1. MARK AND SWEEP:
+   → Phase 1 (Mark): traverse from roots, mark all reachable objects
+   → Phase 2 (Sweep): free all unmarked objects
+   → Simple but: pauses entire program
+   → Used by: CPython (reference counting + cycle detector)
+
+2. COPYING:
+   → Divide heap into two semispaces
+   → Copy live objects from from-space to to-space
+   → Free entire from-space
+   → Compact (no fragmentation)
+   → Used by: young generation in generational GC
+
+3. GENERATIONAL:
+   → Hypothesis: most objects die young
+   → Young gen: frequent, fast collection (copying)
+   → Old gen: infrequent, thorough collection (mark-sweep/compact)
+   → Used by: Java (G1, ZGC), .NET, V8
+
+4. REFERENCE COUNTING:
+   → Each object has a count of references
+   → Increment on assign, decrement on unassign
+   → When count = 0: free immediately
+   → Problem: circular references (need cycle detector)
+   → Used by: CPython, Swift (ARC), Rust (ownership)
+
+PYTHON (reference counting + cycle GC):
+  import sys
+  import gc
+
+  x = [1, 2, 3]
+  print(sys.getrefcount(x))  # 2 (x + the argument)
+
+  y = x  # refcount = 3
+  print(sys.getrefcount(y))
+
+  del x  # refcount = 2
+  del y  # refcount = 0 → immediately freed
+
+  # Circular reference (needs cycle detector):
+  a = []
+  b = []
+  a.append(b)
+  b.append(a)
+  del a, b  # refcounts = 1 each (circular)
+  gc.collect()  # cycle detector frees them
+
+RUST (ownership, no GC):
+  → Compiler tracks ownership at compile time
+  → No runtime overhead
+  → Memory freed when owner goes out of scope
+  → Borrowing rules prevent use-after-free
+"""
+
+print(memory)</div>
+
+<div class="code-block"># ── STEP 4: Programming language paradigms ──
+# Different ways to think about programming.
+
+paradigms = """
+PROGRAMMING LANGUAGE PARADIGMS:
+
+1. IMPERATIVE:
+   → Step-by-step instructions
+   → State changes (variables, loops)
+   → C, Pascal, assembly
+
+2. OBJECT-ORIENTED (OOP):
+   → Objects = data + behavior
+   → Encapsulation, inheritance, polymorphism
+   → Java, C++, Python, C#
+
+3. FUNCTIONAL:
+   → Pure functions (no side effects)
+   → Immutable data
+   → First-class functions, higher-order functions
+   → Haskell, Lisp, Clojure, F#, OCaml
+
+4. LOGIC:
+   → Declare facts and rules
+   → System derives conclusions
+   → Prolog, Datalog
+
+5. CONCURRENT:
+   → Multiple computations simultaneously
+   → CSP (Go), actors (Erlang), STM (Clojure)
+   → Async/await (JavaScript, Python, Rust)
+
+MULTI-PARADIGM:
+  → Modern languages combine paradigms
+  → Python: OOP + functional + imperative
+  → Rust: functional + imperative + ownership
+  → JavaScript: OOP + functional + event-driven
+
+FUNCTIONAL PROGRAMMING CONCEPTS:
+  → IMMUTABILITY: data doesn't change (create new)
+  → PURE FUNCTIONS: same input → same output, no side effects
+  → HIGHER-ORDER FUNCTIONS: functions as arguments/returns
+    map(f, list), filter(pred, list), reduce(op, list)
+  → LAZY EVALUATION: compute only when needed
+    Haskell: infinite lists, only evaluate what's used
+  → MONADS: chain computations with effects
+    Maybe, Either, IO in Haskell
+
+PYTHON (functional style):
+  # Imperative:
+  result = []
+  for x in numbers:
+      result.append(x * 2)
+
+  # Functional:
+  result = list(map(lambda x: x * 2, numbers))
+  # Or comprehension:
+  result = [x * 2 for x in numbers]
+
+  # Higher-order:
+  def compose(f, g):
+      return lambda x: f(g(x))
+
+  inc = lambda x: x + 1
+  double = lambda x: x * 2
+  inc_then_double = compose(double, inc)
+  print(inc_then_double(5))  # (5+1)*2 = 12
+"""
+
+print(paradigms)</div>
+
+<div class="code-block"># ── STEP 5: Advanced PLT topics ──
+# Type theory, metaprogramming, macros.
+
+advanced_plt = """
+ADVANCED PLT TOPICS:
+
+1. DEPENDENT TYPES:
+   → Types that depend on VALUES
+   → Vector(n): length-n vector (n is a value)
+   → Can express: "this function never returns -1"
+   → Languages: Idris, Agda, Coq, Lean
+   → Proof-carrying code
+
+2. METAPROGRAMMING:
+   → Code that writes code
+   → C macros (#define)
+   → Lisp macros (code = data)
+   → Template metaprogramming (C++)
+   → Python decorators, metaclasses
+
+3. MACROS (Hygienic):
+   → Transform code at compile time
+   → Rust: procedural macros (derive)
+   → Lisp/Scheme: macroexpand
+   → Racket: powerful macro system
+
+4. EFFECT SYSTEMS:
+   → Track side effects in type system
+   → Koka: 'effect' in type signature
+   → Rust: Result/Option for error handling
+
+5. ALGEBRAIC EFFECTS:
+   → Generalization of exceptions + state + IO
+   → Composable, no boilerplate
+   → Languages: Koka, Unison, experimental
+
+6. LINEAR TYPES:
+   → Each value used exactly ONCE
+   → Rust: ownership = affine type system (0 or 1 use)
+   → Resource management without GC
+
+PYTHON (metaprogramming):
+  # Decorator (function that modifies function):
+  def timing(func):
+      import time
+      def wrapper(*args, **kwargs):
+          start = time.time()
+          result = func(*args, **kwargs)
+          print(f"{func.__name__}: {time.time()-start:.4f}s")
+          return result
+      return wrapper
+
+  @timing
+  def slow_function():
+      import time
+      time.sleep(1)
+
+  slow_function()  # slow_function: 1.0012s
+
+  # Metaclass (class that creates classes):
+  class Singleton(type):
+      _instances = {}
+      def __call__(cls, *args, **kwargs):
+          if cls not in cls._instances:
+              cls._instances[cls] = super().__call__(*args, **kwargs)
+          return cls._instances[cls]
+
+  class Database(metaclass=Singleton):
+      pass
+"""
+
+print(advanced_plt)</div>
+
+<div class="code-block"># ── STEP 6: The complete compilation journey ──
+# Your path through compilers and PLT.
+
+journey = """
+YOUR COMPILER/PLT JOURNEY:
+
+You started seeing compilers as "magic boxes."
+You finish seeing them as SYSTEMATIC PIPELINES:
+
+WHAT YOU'VE MASTERED:
+  ✅ Lexing (regex → DFA → tokens)
+  ✅ Parsing (recursive descent, LR, parser generators)
+  ✅ AST construction and traversal
+  ✅ Semantic analysis (types, scope, symbol tables)
+  ✅ IR generation (TAC, SSA, bytecode)
+  ✅ Optimization (constant folding, dead code, loops)
+  ✅ Register allocation (graph coloring, linear scan)
+  ✅ Code generation (assembly, machine code)
+  ✅ JIT compilation (profiling, deoptimization)
+  ✅ Garbage collection (mark-sweep, copying, generational)
+  ✅ Type systems (static, dynamic, inference, dependent)
+  ✅ Programming paradigms (OOP, functional, logic)
+
+THE COMPILER WRITER'S MINDSET:
+  1. "What phase catches this error?" (separation of concerns)
+  2. "Can I optimize this?" (profile first!)
+  3. "Is this representation machine-independent?" (IR)
+  4. "What's the right tool?" (LLVM vs hand-written)
+  5. "How do I give good error messages?" (UX matters)
+
+"The best thing about UNIX is its many standards."
+ — Tanenbaum (ironic, but true for compilers too)
+
+WHAT TO STUDY NEXT:
+  → Crafting Interpreters (Robert Nystrom) — build one!
+  → Compilers: Principles (Dragon Book, Aho et al.)
+  → Engineering a Compiler (Cooper & Torczon)
+  → Types and Programming Languages (Pierce)
+  → LLVM tutorial (kaleidoscope)
+  → Read source: CPython, Rust compiler, LLVM
+
+Every program you write passes through a compiler.
+Understanding compilers → understanding computation.
+
+Welcome to compiler literacy.
+"""
+
+print(journey)
+
+# FINAL SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Phase            │ Tool/Algorithm                  │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Lexing           │ Regex, DFA, flex/lex            │
+# │ Parsing          │ Recursive descent, LALR, ANTLR  │
+# │ Semantic         │ Symbol table, type checker      │
+# │ IR               │ SSA, TAC, bytecode              │
+# │ Optimization     │ Constant fold, loop unroll      │
+# │ Register alloc   │ Graph coloring, linear scan     │
+# │ Code gen         │ Instruction selection, peephole │
+# │ JIT              │ Profiling, deoptimization       │
+# │ GC               │ Mark-sweep, copying, generational│
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="verse">وَفِي خَلْقِكُمْ وَمَا يَبُثُّ مِن دَابَّةٍ آيَاتٌ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"এবং তোমাদের সৃষ্টিতে নিদর্শন রয়েছে।" — কুরআন ৪৫:৪</div>
