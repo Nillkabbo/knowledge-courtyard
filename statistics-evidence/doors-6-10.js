@@ -94,18 +94,379 @@ doors.push({
     <div class="diag-cap">এলোমেলোকরণ পক্ষপাত দূর করে, পুনরাবৃত্তি নির্ভুলতা বাড়ায়, ব্লকিং পার্থক্য স্পষ্ট করে। তিনটি মিলে একটা ন্যায্য পরীক্ষা তৈরি করে।</div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 পরীক্ষা-নকশা — Types of Experimental Design</h4>
-    <table class="kv-table">
-      <tr><th>নকশা</th><th>বর্ণনা</th><th>উদাহরণ</th></tr>
-      <tr><td class="hl">সম্পূর্ণ এলোমেলো (CRD)</td><td>সব একক এলোমেলো বরাদ্দ</td><td>১০০টা আলুর জমি, প্রতিটিতে এলোমেলো সার</td></tr>
-      <tr><td class="hl">ব্লক নকশা (RCBD)</td><td>মিলযুক্ত একক ব্লকে, ভেতরে এলোমেলো</td><td>মাটির ধরন অনুযায়ী ব্লক, ভেতরে সার এলোমেলো</td></tr>
-      <tr><td class="hl">ল্যাটিন বর্গ (Latin Square)</td><td>দুই দিক থেকে ব্লকিং</td><td>সারি এবং কলাম অনুযায়ী নিয়ন্ত্রণ</td></tr>
-      <tr><td class="hl">ফ্যাক্টোরিয়াল</td><td>একসাথে একাধিক কারণ পরীক্ষা</td><td>সার * পানি * বীজ — সব সমন্বয়</td></tr>
-    </table>
-    <br>
-    <p><strong>ফিশারের মৌলিক অবদান:</strong> তিনি প্রথমবার দেখালেন — পরীক্ষা-নকশা গণিতের একটা শাখা। শুধু ডেটা সংগ্রহ নয় — কীভাবে সংগ্রহ করবে সেটাই সত্যের চাবিকাঠি। তাঁর ANOVA (Analysis of Variance) পদ্ধতি একাধিক গোষ্ঠীর পার্থক্য যাচাই করে।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: Experimental design types ──
+# Choosing the right design for your experiment.
+
+design_types = """
+TYPES OF EXPERIMENTAL DESIGN:
+
+1. COMPLETELY RANDOMIZED DESIGN (CRD):
+   → Randomly assign subjects to treatments
+   → Simplest design
+   → Good when subjects are homogeneous
+   → Example: 100 plants, randomly assign 4 fertilizers
+
+2. RANDOMIZED COMPLETE BLOCK (RCBD):
+   → Group similar subjects into blocks
+   → Randomize WITHIN each block
+   → Reduces variability from known sources
+   → Example: block by soil type, randomize fertilizer within
+
+3. LATIN SQUARE:
+   → Control for TWO sources of variability
+   → Each treatment appears once per row and column
+   → Example: 4 treatments, 4x4 grid, control for position
+
+4. FACTORIAL DESIGN (2^k):
+   → Test multiple factors simultaneously
+   → 2 levels × k factors = 2^k groups
+   → Finds INTERACTIONS between factors
+   → Example: 2 diets × 2 exercise = 4 groups
+
+5. SPLIT-PLOT:
+   → Some factors hard to change (whole plot)
+   → Others easy (split plot)
+   → Example: irrigation (hard) × fertilizer (easy)
+
+6. CROSSOVER:
+   → Each subject receives ALL treatments (in sequence)
+   → Controls for individual differences
+   → Need "washout" period between treatments
+   → Example: drug A for 2 weeks, washout, drug B for 2 weeks
+
+FISHER'S THREE PRINCIPLES:
+  1. RANDOMIZATION: eliminates systematic bias
+  2. REPLICATION: more subjects → more precision
+  3. BLOCKING: reduce variability from known sources
+
+ANOVA (Analysis of Variance):
+  Compares 3+ group means.
+  F = between-group variance / within-group variance
+  Large F → groups differ significantly
+"""
+
+print(design_types)</div>
+
+  <div class="code-block"># ── STEP 2: ANOVA in practice ──
+# Comparing multiple groups.
+
+anova = """
+ANOVA (ANALYSIS OF VARIANCE):
+
+Tests if 3+ group means are significantly different.
+  H₀: all means equal (μ₁ = μ₂ = ... = μₖ)
+  H₁: at least one mean differs
+
+F-STATISTIC:
+  F = MSB / MSW
+  MSB = between-group variance (how different groups are)
+  MSW = within-group variance (natural variability)
+
+  Large F → groups differ more than expected by chance
+
+ONE-WAY ANOVA:
+  One factor (e.g., 3 teaching methods)
+  H₀: method 1 = method 2 = method 3
+
+TWO-WAY ANOVA:
+  Two factors (e.g., diet × exercise)
+  Tests main effects AND interaction
+
+POST-HOC TESTS (after significant ANOVA):
+  ANOVA tells you "at least one differs"
+  Post-hoc tells you WHICH pairs differ:
+  → Tukey HSD (honest significant difference)
+  → Bonferroni correction
+  → Scheffé test
+
+ASSUMPTIONS:
+  → Normality (residuals)
+  → Homogeneity of variance (equal σ² across groups)
+  → Independence
+
+KRUSKAL-WALLIS (non-parametric ANOVA):
+  When assumptions violated (non-normal data)
+  Based on ranks instead of means
+
+PYTHON:
+  from scipy import stats
+
+  # One-way ANOVA:
+  F, p = stats.f_oneway(group1, group2, group3)
+
+  # Two-way ANOVA:
+  import statsmodels.api as sm
+  from statsmodels.formula.api import ols
+
+  model = ols('score ~ C(diet) + C(exercise) + C(diet):C(exercise)', data).fit()
+  anova_table = sm.stats.anova_lm(model, typ=2)
+"""
+
+print(anova)
+
+# PYTHON: ANOVA:
+anova_code = """
+import numpy as np
+from scipy import stats
+
+# Three teaching methods, test scores:
+method_A = [75, 78, 82, 79, 76, 80, 77, 81]
+method_B = [85, 88, 84, 87, 86, 89, 83, 85]
+method_C = [70, 73, 71, 74, 72, 75, 69, 73]
+
+# One-way ANOVA:
+F_stat, p_value = stats.f_oneway(method_A, method_B, method_C)
+print(f"F-statistic: {F_stat:.4f}")
+print(f"p-value: {p_value:.8f}")
+# p < 0.05 → at least one method differs
+
+# Post-hoc: Tukey HSD (which pairs differ?):
+from scipy.stats import tukey_hsd  # scipy 1.8+
+result = stats.tukey_hsd(method_A, method_B, method_C)
+print(result)
+# Shows pairwise comparisons with significance
+
+# Effect size (eta-squared):
+grand_mean = np.mean(method_A + method_B + method_C)
+ss_between = sum(len(g) * (np.mean(g) - grand_mean)**2 for g in [method_A, method_B, method_C])
+ss_total = sum((x - grand_mean)**2 for x in method_A + method_B + method_C)
+eta_squared = ss_between / ss_total
+print(f"η² (effect size): {eta_squared:.4f}")
+"""
+
+print(anova_code)</div>
+
+  <div class="code-block"># ── STEP 3: Sample size and power ──
+# How many subjects do you need?
+
+power = """
+SAMPLE SIZE AND POWER:
+
+POWER (1 − β):
+  Probability of detecting a TRUE effect.
+  → High power = unlikely to miss a real effect
+  → Standard target: 80% power
+
+FACTORS AFFECTING SAMPLE SIZE:
+  1. Effect size (larger effect → easier to detect → fewer needed)
+  2. Significance level α (stricter → more needed)
+  3. Power desired (higher → more needed)
+  4. Variability σ (higher → more needed)
+
+RULES OF THUMB:
+  → Small effect (d=0.2): ~400 per group
+  → Medium effect (d=0.5): ~64 per group
+  → Large effect (d=0.8): ~26 per group
+
+COHEN'S d (effect size for t-test):
+  d = (μ₁ − μ₂) / σ_pooled
+  d = 0.2: small (barely noticeable)
+  d = 0.5: medium (visible to observer)
+  d = 0.8: large (obvious)
+
+WHY POWER MATTERS:
+  → Underpowered study: can't detect real effects
+  → Overpowered study: detects trivially small effects
+  → Publish "null results" (failed to detect → inconclusive)
+  → Publication bias: only significant results published
+
+A/B TEST SAMPLE SIZE:
+  For conversion rate difference:
+  n = 16 × σ² / δ²
+  where δ = minimum detectable effect
+
+  Example: baseline 5%, want to detect 0.5% absolute change:
+  n = 16 × 0.05 × 0.95 / 0.005² ≈ 30,400 per group
+"""
+
+print(power)
+
+# PYTHON: Power analysis:
+power_code = """
+import numpy as np
+from scipy import stats
+
+# Sample size for two-sample t-test:
+def sample_size_ttest(effect_size, alpha=0.05, power=0.80):
+    z_alpha = stats.norm.ppf(1 - alpha/2)
+    z_beta = stats.norm.ppf(power)
+    n = 2 * ((z_alpha + z_beta) / effect_size) ** 2
+    return int(np.ceil(n))
+
+print("Sample sizes needed (per group):")
+for name, d in [('Small (0.2)', 0.2), ('Medium (0.5)', 0.5), ('Large (0.8)', 0.8)]:
+    n = sample_size_ttest(d)
+    print(f"  {name}: {n}")
+
+# A/B test sample size:
+def ab_sample_size(baseline, mde, alpha=0.05, power=0.80):
+    \"\"\"Minimum detectable effect for conversion rate.\"\"\"
+    z_alpha = stats.norm.ppf(1 - alpha/2)
+    z_beta = stats.norm.ppf(power)
+    p1, p2 = baseline, baseline + mde
+    p_avg = (p1 + p2) / 2
+    n = ((z_alpha * np.sqrt(2*p_avg*(1-p_avg)) +
+          z_beta * np.sqrt(p1*(1-p1) + p2*(1-p2))) / mde) ** 2
+    return int(np.ceil(n))
+
+# Detect 0.5% absolute change from 5% baseline:
+n = ab_sample_size(0.05, 0.005)
+print(f"\\nA/B test (5% → 5.5%, detect 0.5%): {n:,} per group")
+
+# Power curve: power vs sample size:
+for n in [50, 100, 200, 500, 1000]:
+    d = 0.3  # medium effect
+    ncp = d * np.sqrt(n/2)  # non-centrality parameter
+    power = 1 - stats.norm.cdf(stats.norm.ppf(0.975) - ncp)
+    print(f"n={n:4d}: power={power:.3f} (effect d=0.3)")
+"""
+
+print(power_code)</div>
+
+  <div class="code-block"># ── STEP 4: Online A/B testing ──
+# Modern experimentation at tech companies.
+
+online_ab = """
+ONLINE A/B TESTING (TECH INDUSTRY):
+
+THE PROCESS:
+  1. Define hypothesis and success metric
+  2. Calculate required sample size
+  3. Randomly assign users (50/50 or asymmetric)
+  4. Run experiment for sufficient duration
+  5. Analyze results (statistical + practical significance)
+  6. Decide: ship, iterate, or kill
+
+KEY CONCEPTS:
+  → CONTROL: current version (A)
+  → TREATMENT: new version (B)
+  → RANDOMIZATION UNIT: user, session, device
+  → NOVELTY EFFECT: temporary boost from change
+  → LEARNING EFFECT: long-term behavioral change
+
+COMMON METRICS:
+  → Conversion rate (clicks, signups, purchases)
+  → Revenue per user
+  → Engagement (time on site, page views)
+  → Retention (return rate)
+  → Load time, error rate
+
+TRAPS TO AVOID:
+  1. PEEKING: checking p-value repeatedly → inflates false positives
+     → Fix: fixed-horizon testing or sequential analysis
+
+  2. MULTIPLE COMPARISONS: testing many metrics
+     → Fix: Bonferroni correction or hierarchical testing
+
+  3. SIMPSON'S PARADOX: aggregate hides segment effects
+     → Fix: always segment by device, geography, user type
+
+  4. INTERFERENCE: users in different groups affect each other
+     → Fix: cluster randomization (geo-based)
+
+  5. SHORT-RUN VS LONG-RUN: immediate effect differs from long-term
+     → Fix: run long enough to see steady state
+
+KOHAVI'S BING STORY:
+  → Small UI change → 12% revenue increase ($100M+/year)
+  → Nobody predicted this impact
+  → "Only 1/3 of ideas work. Test everything."
+  → Trustworthy Online Controlled Experiments (Kohavi et al., 2020)
+"""
+
+print(online_ab)</div>
+
+  <div class="code-block"># ── STEP 5: Quasi-experiments and natural experiments ──
+# When you can't randomize.
+
+quasi = """
+QUASI-EXPERIMENTS:
+
+When randomization isn't possible (ethical, practical, or financial):
+
+1. DIFFERENCE-IN-DIFFERENCES (DiD):
+   Compare treatment and control BEFORE and AFTER.
+   Effect = (After_A − Before_A) − (After_B − Before_B)
+
+   Example: minimum wage increase in NJ vs PA
+   → Compare employment before/after in both states
+   → Difference = effect of minimum wage
+
+2. REGRESSION DISCONTINUITY:
+   Treatment assigned by a THRESHOLD.
+   → Compare people just above and just below threshold
+   → Example: scholarships for GPA > 3.5
+
+3. INSTRUMENTAL VARIABLES (IV):
+   Find a variable that affects treatment but not outcome directly.
+   → Example: distance to hospital affects treatment but not health directly
+   → Two-stage least squares (2SLS)
+
+4. PROPENSITY SCORE MATCHING:
+   Match treated and untreated on observable characteristics.
+   → Creates "pseudo-randomized" groups
+   → Not as good as RCT (can't control unobservables)
+
+5. NATURAL EXPERIMENTS:
+   Events that create quasi-random assignment.
+   → Vietnam draft lottery (random birthday → service)
+   → Oregon Medicaid lottery (random selection)
+   → Berlin Wall division
+
+LIMITATIONS:
+  → Still observational (not true randomization)
+  → Can't control for unobserved confounders
+  → Results may not generalize
+  → Weaker causal claims than RCT
+
+PYTHON:
+  # Difference-in-Differences:
+  import statsmodels.api as sm
+
+  # DiD model: y = β₀ + β₁(treated) + β₂(after) + β₃(treated×after) + ε
+  # β₃ = treatment effect
+"""
+
+print(quasi)</div>
+
+  <div class="code-block"># ── STEP 6: Experimental design best practices ──
+# Design experiments that produce valid conclusions.
+
+best_practices = [
+    "Randomize to eliminate confounders",
+    "Replicate: enough subjects for power",
+    "Block: group similar subjects to reduce variance",
+    "Control: compare to baseline/placebo",
+    "Pre-register hypothesis (prevent p-hacking)",
+    "Power analysis: ensure adequate sample size",
+    "Blind/double-blind: prevent observer bias",
+    "ANOVA for 3+ groups, t-test for 2 groups",
+    "Post-hoc tests (Tukey) after significant ANOVA",
+    "A/B testing: don't peek, use fixed horizon",
+    "Segment analysis (watch for Simpson's paradox)",
+    "Run long enough for novelty/learning effects",
+    "Quasi-experiments when RCT impossible",
+    "DiD, IV, RDD for observational causal inference",
+    "Report effect size AND confidence interval",
+]
+
+print("EXPERIMENTAL DESIGN BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Design           │ Use Case                        │
+# ├──────────────────┼──────────────────────────────────┤
+# │ CRD              │ Simple, homogeneous subjects    │
+# │ RCBD             │ Block known variability         │
+# │ Factorial        │ Multiple factors + interactions │
+# │ Crossover        │ Same subjects, multiple drugs   │
+# │ A/B test         │ Online, two versions            │
+# │ DiD              │ Policy evaluation               │
+# │ RDD              │ Threshold-based assignment      │
+# │ IV               │ Unobserved confounders          │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Builder's Codex / System Design) Door ৮-এ Idempotency শিখেছিলে — একই ইনপুটে একই আউটপুট। Fisher-এর replication হলো সেই একই নীতি — একই পরিস্থিতিতে একই ফল পাওয়ার নিশ্চয়তা। Book ৩১ (Classic ML) Door ৯ Cross-Validation — সেখানেও পুনরাবৃত্তি দিয়ে নির্ভরযোগ্যতা যাচাই করা হয়।</div></div>
 
