@@ -1658,21 +1658,385 @@ doors.push({
     </div>
   </div>
 
-  <div class="code-block">
-    <h4>🔬 অনুকল্প পরীক্ষা — Hypothesis Testing Steps</h4>
-    <table class="kv-table">
-      <tr><th>ধাপ</th><th>কাজ</th><th>উদাহরণ</th></tr>
-      <tr><td class="hl">১. শূন্য অনুকল্প (H₀)</td><td>কোনো পার্থক্য নেই</td><td>সার দিলেও না দিলেও ফলন সমান</td></tr>
-      <tr><td class="hl">২. বিকল্প অনুকল্প (H₁)</td><td>পার্থক্য আছে</td><td>সার দিলে ফলন বেশি</td></tr>
-      <tr><td class="hl">৩. সীমা (α)</td><td>গুরুত্বপূর্ণ স্তর</td><td>α = ০.০৫ (Fisher, ১৯২৫)</td></tr>
-      <tr><td class="hl">৪. পরীক্ষা পরিসংখ্যান</td><td>ডেটা থেকে গণনা</td><td>t-test, chi-square, F-test</td></tr>
-      <tr><td class="hl">৫. p-value</td><td>H₀ সত্যি হলে সম্ভাবনা</td><td>p = ০.০৩</td></tr>
-      <tr><td class="hl">৬. সিদ্ধান্ত</td><td>p < α → H₀ প্রত্যাখ্যান</td><td>০.০৩ < ০.০৫ → পার্থক্য গুরুত্বপূর্ণ</td></tr>
-    </table>
-    <br>
-    <p><strong>লেডি টিস্টিং টি (Lady Tasting Tea):</strong> ফিশারের সবচেয়ে বিখ্যাত উদাহরণ — তাঁর ১৯৩৫ বই <em>The Design of Experiments</em>-এ বর্ণিত। মুরিয়েল ব্রিস্টল (Muriel Bristol) দাবি করেছিলেন তিনি বলতে পারেন কাপে আগে দুধ ঢালা হয়েছে নাকি চা। ফিশার তাঁকে ৮ কাপ দিলেন — ৪টায় আগে দুধ, ৪টায় আগে চা। ব্রিস্টল সব সঠিক চিনে নিলেন। ফিশার গণনা করলেন — শূন্য অনুকল্প (অনুমান ক্ষমতা নেই) সত্যি হলে এটা ঘটার সম্ভাবনা মাত্র ১/৭০ ~= ১.৪%। p < ০.০৫ — তাই শূন্য প্রত্যাখ্যান। ব্রিস্টল সত্যিই পারেন।</p>
-    <p><strong>টাইমলাইন নোট:</strong> ঘটনাটি ~late 1920s-এ Rothamsted-এ ঘটেছিল, কিন্তু প্রকাশিত হয় ১৯৩৫ সালে।</p>
-  </div>
+  <div class="code-block"># ── STEP 1: Hypothesis testing framework ──
+# Fisher's framework for making decisions under uncertainty.
+
+hypothesis = """
+HYPOTHESIS TESTING (Fisher, 1925):
+
+THE FRAMEWORK:
+  1. State NULL HYPOTHESIS (H₀): "no effect/no difference"
+  2. State ALTERNATIVE (H₁): "there IS an effect"
+  3. Choose significance level α (usually 0.05)
+  4. Compute TEST STATISTIC from data
+  5. Calculate P-VALUE: P(data | H₀ true)
+  6. Decision: if p < α → reject H₀
+
+P-VALUE:
+  "If H₀ were true, how surprising is this data?"
+  p = 0.03 → "3% chance of seeing this data if no effect"
+  → Low p → evidence AGAINST H₀
+
+TYPE I AND TYPE II ERRORS:
+  Type I (α): reject H₀ when it's TRUE (false positive)
+  Type II (β): fail to reject H₀ when it's FALSE (false negative)
+  Power = 1 − β = probability of correctly rejecting false H₀
+
+THE LADY TASTING TEA (Fisher, 1935):
+  Muriel Bristol claimed she could tell if milk was added
+  before or after tea.
+  Fisher: 8 cups (4 milk-first, 4 tea-first).
+  Bristol: identified ALL correctly.
+  P(all correct by chance) = 1/70 = 1.4%
+  p < 0.05 → she really could tell!
+
+  THIS WAS THE BIRTH OF MODERN STATISTICS.
+"""
+
+print(hypothesis)
+
+# PYTHON: Hypothesis testing:
+ht_code = """
+import numpy as np
+from scipy import stats
+
+# Two-sample t-test: does fertilizer increase yield?
+control = [20, 22, 19, 21, 23, 18, 24, 20]
+treatment = [25, 27, 24, 26, 28, 23, 29, 25]
+
+# H₀: no difference (control mean = treatment mean)
+# H₁: treatment > control
+
+t_stat, p_value = stats.ttest_ind(treatment, control)
+print(f"t-statistic: {t_stat:.4f}")
+print(f"p-value: {p_value:.6f}")
+# p < 0.05 → reject H₀ → fertilizer works!
+
+# Effect size (Cohen's d):
+pooled_std = np.sqrt(
+    ((len(control)-1)*np.var(control, ddof=1) +
+     (len(treatment)-1)*np.var(treatment, ddof=1)) /
+    (len(control) + len(treatment) - 2)
+)
+cohens_d = (np.mean(treatment) - np.mean(control)) / pooled_std
+print(f"Cohen's d: {cohens_d:.4f}")  # Effect size
+
+# Power analysis (how many samples needed?):
+from statsmodels.stats.power import ttest_power
+power = ttest_power(cohens_d, nobs=8, alpha=0.05, alternative='larger')
+print(f"Power: {power:.4f}")
+"""
+
+print(ht_code)</div>
+
+  <div class="code-block"># ── STEP 2: Types of hypothesis tests ──
+# Choosing the right test.
+
+tests = """
+COMMON HYPOTHESIS TESTS:
+
+1. ONE-SAMPLE t-TEST:
+   Compare sample mean to known value.
+   H₀: μ = μ₀
+   "Is average height 170cm?"
+   t = (x̄ − μ₀) / (s/√n)
+
+2. TWO-SAMPLE t-TEST:
+   Compare two group means.
+   H₀: μ₁ = μ₂
+   "Does fertilizer increase yield?"
+
+3. PAIRED t-TEST:
+   Compare same subjects before/after.
+   "Did blood pressure drop after medication?"
+
+4. CHI-SQUARED TEST:
+   Test independence of categorical variables.
+   H₀: variables are independent
+   "Is gender independent of voting preference?"
+
+5. ANOVA (Analysis of Variance):
+   Compare 3+ group means.
+   H₀: all group means equal
+   "Do 3 teaching methods produce different scores?"
+
+6. MANN-WHITNEY U (non-parametric):
+   Compare two groups (non-normal data).
+   Doesn't assume normality.
+
+7. KOLMOGOROV-SMIRNOV:
+   Test if data follows a specific distribution.
+   "Is this data normally distributed?"
+
+8. FISHER'S EXACT TEST:
+   For small sample sizes (categorical).
+   More accurate than chi-squared when n < 20.
+
+CHOOSING A TEST:
+  → Comparing means? → t-test (2 groups), ANOVA (3+ groups)
+  → Comparing proportions? → z-test, chi-squared
+  → Non-normal data? → Mann-Whitney, Wilcoxon
+  → Testing distribution? → KS, Shapiro-Wilk
+  → Small samples? → Fisher's exact
+"""
+
+print(tests)</div>
+
+  <div class="code-block"># ── STEP 3: p-value controversies ──
+# The ongoing debate about p-values.
+
+controversy = """
+P-VALUE CONTROVERSIES:
+
+WHAT P-VALUE IS:
+  P(data | H₀) — probability of data given null hypothesis
+
+WHAT P-VALUE IS NOT:
+  NOT P(H₀ | data) — probability null is true
+  NOT effect size — just statistical significance
+  NOT practical significance — small effect can be "significant"
+
+COMMON MISINTERPRETATIONS:
+  ❌ "p=0.05 means 5% chance H₀ is true"
+  ✅ "p=0.05 means 5% chance of this data if H₀ is true"
+
+  ❌ "p<0.05 proves the effect is real"
+  ✅ "p<0.05 is evidence against H₀ (not proof)"
+
+THE REPLICATION CRISIS:
+  → Many published findings fail to replicate
+  → Psychology, medicine, economics affected
+  → Causes: p-hacking, publication bias, small samples
+
+P-HACKING:
+  → Try many analyses until p<0.05
+  → Drop "outliers," change variables, switch tests
+  → Solution: pre-registration, transparency
+
+MULTIPLE COMPARISONS:
+  → Test 20 hypotheses → expect 1 false positive (at α=0.05)
+  → Bonferroni correction: α/m (m = number of tests)
+  → False Discovery Rate (FDR): control expected proportion of false discoveries
+
+ALTERNATIVES TO P-VALUES:
+  → Effect sizes (how big is the effect?)
+  → Confidence intervals (range of plausible values)
+  → Bayesian methods (posterior probabilities)
+  → Meta-analysis (combine multiple studies)
+"""
+
+print(controversy)</div>
+
+  <div class="code-block"># ── STEP 4: Confidence intervals ──
+# Quantifying uncertainty in estimates.
+
+ci = """
+CONFIDENCE INTERVALS (Neyman, 1937):
+
+CI = estimate ± margin of error
+  → Range of plausible values for the parameter
+
+95% CONFIDENCE INTERVAL:
+  "If we repeated sampling 100 times, 95 of the CIs
+   would contain the true parameter."
+
+  CI = x̄ ± 1.96 × SE
+  SE = σ/√n (standard error)
+
+EXAMPLE: Political poll
+  520/1000 favor candidate (p̂=0.52)
+  SE = √(0.52×0.48/1000) = 0.0158
+  95% CI: 0.52 ± 0.031 = [0.489, 0.551]
+
+  → "Candidate has between 48.9% and 55.1% support (95% confidence)"
+
+MARGIN OF ERROR:
+  MOE = z × SE
+  For 95%: MOE = 1.96 × √(p(1-p)/n)
+  → Poll with n=1000: MOE ≈ ±3%
+
+  Larger n → smaller MOE → more precise
+
+WHAT CI DOESN'T MEAN:
+  ❌ "95% probability the true value is in [a,b]"
+  ✅ "95% of similarly constructed intervals contain the true value"
+
+  (The parameter is fixed — it's either in the CI or not)
+
+PRACTICAL USE:
+  → Report effect size AND confidence interval (not just p-value)
+  → If CI includes 0 → effect not statistically significant
+  → Narrow CI → precise estimate
+  → Wide CI → need more data
+"""
+
+print(ci)
+
+# PYTHON: Confidence intervals:
+ci_code = """
+import numpy as np
+from scipy import stats
+
+# 95% CI for a mean:
+data = np.random.normal(50, 10, 100)
+x_bar = np.mean(data)
+se = np.std(data, ddof=1) / np.sqrt(len(data))
+ci_low = x_bar - 1.96 * se
+ci_high = x_bar + 1.96 * se
+print(f"Mean: {x_bar:.4f}")
+print(f"95% CI: [{ci_low:.4f}, {ci_high:.4f}]")
+
+# 95% CI for a proportion (poll):
+n, favor = 1000, 520
+p_hat = favor / n
+se_prop = np.sqrt(p_hat * (1-p_hat) / n)
+ci_low_prop = p_hat - 1.96 * se_prop
+ci_high_prop = p_hat + 1.96 * se_prop
+print(f"\\nPoll: {favor}/{n} favor")
+print(f"Proportion: {p_hat:.4f}")
+print(f"95% CI: [{ci_low_prop:.4f}, {ci_high_prop:.4f}]")
+
+# Using scipy:
+ci = stats.norm.interval(0.95, loc=p_hat, scale=se_prop)
+print(f"scipy CI: [{ci[0]:.4f}, {ci[1]:.4f}]")
+
+# Sample size for desired margin of error:
+# MOE = z × √(p(1-p)/n) → n = z²p(1-p)/MOE²
+z = 1.96
+p = 0.5  # worst case (maximizes n)
+moe_target = 0.03  # ±3%
+n_needed = z**2 * p * (1-p) / moe_target**2
+print(f"\\nSample needed for ±3% MOE: {int(n_needed)}")  # ~1068
+"""
+
+print(ci_code)</div>
+
+  <div class="code-block"># ── STEP 5: A/B testing in practice ──
+# The commercial application of hypothesis testing.
+
+ab_testing = """
+A/B TESTING:
+
+Compare two versions (A=control, B=variant) to see which is better.
+  → Core of modern data-driven decision making
+  → Used by: Google, Netflix, Amazon, Facebook
+
+THE PROCESS:
+  1. Define metric (conversion rate, click rate, revenue)
+  2. Randomly assign users to A or B
+  3. Collect data for sufficient time
+  4. Run hypothesis test:
+     H₀: conversion_A = conversion_B
+     H₁: conversion_A ≠ conversion_B
+  5. If p < 0.05 AND effect is practically significant → deploy winner
+
+SAMPLE SIZE CALCULATION:
+  Need enough samples to detect the effect.
+  Depends on: baseline rate, minimum detectable effect, α, power
+
+  Rule of thumb: detect 1% change needs ~100K users per group
+
+COMMON MISTAKES:
+  → Stopping early (peeking): inflate false positive rate
+  → Multiple metrics: correct for multiple comparisons
+  → Simpson's paradox: segment before aggregating
+  → Novelty effect: temporary boost from change itself
+  → Survivorship bias: only analyze completers
+
+PYTHON (statsmodels):
+  from statsmodels.stats.proportion import proportions_ztest
+
+  clicks = [150, 180]  # A, B
+  visitors = [10000, 10000]
+  z, p = proportions_ztest(clicks, visitors)
+"""
+
+print(ab_testing)
+
+# PYTHON: A/B test:
+ab_code = """
+import numpy as np
+from scipy import stats
+
+# Simulate A/B test:
+np.random.seed(42)
+n_A, n_B = 10000, 10000
+conv_rate_A = 0.05  # 5% baseline
+conv_rate_B = 0.06  # 6% with new design
+
+# Generate conversions (Bernoulli):
+conversions_A = np.random.binomial(1, conv_rate_A, n_A)
+conversions_B = np.random.binomial(1, conv_rate_B, n_B)
+
+# Conversion rates:
+rate_A = conversions_A.mean()
+rate_B = conversions_B.mean()
+print(f"Conversion A: {rate_A:.4f} ({conversions_A.sum()}/{n_A})")
+print(f"Conversion B: {rate_B:.4f} ({conversions_B.sum()}/{n_B})")
+
+# Two-proportion z-test:
+pooled_rate = (conversions_A.sum() + conversions_B.sum()) / (n_A + n_B)
+se = np.sqrt(pooled_rate * (1 - pooled_rate) * (1/n_A + 1/n_B))
+z_stat = (rate_B - rate_A) / se
+p_value = 2 * (1 - stats.norm.cdf(abs(z_stat)))
+
+print(f"\\nz-statistic: {z_stat:.4f}")
+print(f"p-value: {p_value:.4f}")
+if p_value < 0.05:
+    print("Significant! Deploy version B")
+else:
+    print("Not significant. Keep version A")
+
+# Lift:
+lift = (rate_B - rate_A) / rate_A
+print(f"Lift: {lift*100:.1f}%")
+
+# Confidence interval for the difference:
+ci_low = (rate_B - rate_A) - 1.96 * se
+ci_high = (rate_B - rate_A) + 1.96 * se
+print(f"95% CI for difference: [{ci_low:.4f}, {ci_high:.4f}]")
+"""
+
+print(ab_code)</div>
+
+  <div class="code-block"># ── STEP 6: Hypothesis testing best practices ──
+# Test correctly and interpret honestly.
+
+best_practices = [
+    "H₀: no effect, H₁: there is an effect",
+    "p < α → reject H₀ (evidence against null)",
+    "p-value ≠ probability H₀ is true",
+    "Type I error: false positive (reject true H₀)",
+    "Type II error: false negative (keep false H₀)",
+    "Power = 1 − β (probability of detecting real effect)",
+    "Always report effect size, not just p-value",
+    "Confidence intervals show precision of estimate",
+    "A/B testing: randomize, collect enough data, then test",
+    "Multiple comparisons: use Bonferroni or FDR correction",
+    "Pre-register hypotheses to prevent p-hacking",
+    "Check assumptions (normality, equal variance)",
+    "Non-parametric tests for non-normal data",
+    "Practical significance ≠ statistical significance",
+    "Replication is the ultimate test",
+]
+
+print("HYPOTHESIS TESTING BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Test             │ Use Case                        │
+# ├──────────────────┼──────────────────────────────────┤
+# │ One-sample t     │ Compare to known value          │
+# │ Two-sample t     │ Compare two groups              │
+# │ Paired t         │ Before/after same subjects      │
+# │ Chi-squared      │ Categorical independence        │
+# │ ANOVA            │ 3+ group comparison             │
+# │ Mann-Whitney     │ Non-parametric 2-group          │
+# │ KS test          │ Distribution fit                │
+# │ Fisher exact     │ Small sample categorical        │
+# └──────────────────┴──────────────────────────────────┘</div>
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ১৬ (The Measure / LLM Evals) Door ২-এ তুমি Evaluation Metrics শিখেছিলে। LLM evaluation-এও একই নীতি — কোনো মডেল ভালো করছে কি না, সেটা p-value দিয়ে যাচাই করা যায়। Book ৩৩ (যুক্তির তাঁত) Door ৩-এ Fallacies শিখেছিলে — p-value ভুল ব্যাখ্যা করাও একটা fallacy।</div></div>
 
