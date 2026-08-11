@@ -1509,32 +1509,400 @@ doors.push({
 <div class="dialogue"><strong>সংখ্যা-জ্ঞানী আরমান:</strong> লাবিব (Door ৮) তোমাকে রঙ শিখিয়েছেন। এখন সংখ্যার গভীরে যাও। মৌলিক সংখ্যা — ২, ৩, ৫, ৭, ১১, ১৩... কোনো প্যাটার্ন নেই। কিন্তু এরাই সবকিছুর ভিত্তি। ৬০ = ২² * ৩ * ৫। প্রতিটি সংখ্যা মৌলিকে ভাঙা যায় — Fundamental Theorem of Arithmetic। আর Fermat-এর সূত্র: ৭ মৌলিক হলে, ২⁶ = ৬৪, ৬৪ mod ৭ = ১। এই সহজ সত্যই তোমার RSA এনক্রিপশন চালায়!</div>
 <div class="dialogue en"><strong>Number Knower Arman:</strong> Labib (Door 8) taught you coloring. Now go deeper into numbers. Primes — 2, 3, 5, 7, 11, 13... No pattern. But they are the foundation. 60 = 2² * 3 * 5. Every number breaks into primes — Fundamental Theorem. And Fermat: if 7 is prime, 2⁶ = 64, 64 mod 7 = 1. This simple truth powers your RSA encryption!</div>
 
-<div class="code-block"># — Python: Number Theory —
+<div class="code-block"># ── STEP 1: Prime numbers and factorization ──
+# Primes are the atoms of number theory.
 
-  from math import gcd
-  from sympy import isprime, factorint, nextprime
+primes = """
+PRIME NUMBERS:
 
-  # মৌলিক সংখ্যা যাচাই
-  print(isprime(17))      # True
-  print(isprime(15))      # False — ৩*৫
+A PRIME is a natural number > 1 with exactly 2 divisors: 1 and itself.
+  2, 3, 5, 7, 11, 13, 17, 19, 23, 29, ...
 
-  # উৎপাদকে বিভক্ত
-  print(factorint(360))   # {2: 3, 3: 2, 5: 1} → ২³*৩²*৫
+COMPOSITE numbers have more than 2 divisors.
+  4 = 2×2, 6 = 2×3, 8 = 2×4, 9 = 3×3, ...
 
-  # GCD (Euclidean algorithm)
-  print(gcd(48, 18))      # 6
+1 is NEITHER prime nor composite (special case).
 
-  # Modular arithmetic:
-  print(pow(2, 6, 7))     # 1 — Fermat! (৭ মৌলিক)
-  print(pow(3, 10, 11))   # 1 — Fermat! (১১ মৌলিক)
+FUNDAMENTAL THEOREM OF ARITHMETIC:
+  Every integer n > 1 can be UNIQUELY expressed as a product of primes.
 
-  # RSA-এর ভিত্তি:
-  # p, q মৌলিক → n = p*q
-  # φ(n) = (p-1)(q-1)
-  # e নির্বাচন → d = e^(-1) mod φ(n)
-  # encrypt: c = m^e mod n
-  # decrypt: m = c^d mod n
-  # এটাই Book ৪৬ (Cryptography) Door ১!</div>
+  60 = 2² × 3 × 5
+  84 = 2² × 3 × 7
+  97 = 97 (itself — prime)
+
+  Uniqueness means there's only ONE way (up to ordering).
+
+EUCLID'S PROOF: INFINITELY MANY PRIMES (~300 BCE):
+  Assume finitely many: p₁, p₂, ..., pₙ
+  Let N = p₁ × p₂ × ... × pₙ + 1
+  N is not divisible by any pᵢ (remainder 1).
+  → N has a prime factor not in the list, OR N itself is prime.
+  → Contradiction! There must be infinitely many primes.
+
+SIEVE OF ERATOSTHENES (find all primes ≤ n):
+  → Cross out multiples of each prime starting from 2
+  → Time: O(n log log n)
+
+LARGEST KNOWN PRIME (2024): 2^82,589,933 − 1
+  → 24,862,048 digits!
+  → Found by GIMPS (Great Internet Mersenne Prime Search)
+"""
+
+print(primes)
+
+# PYTHON: Prime operations:
+prime_code = """
+from sympy import isprime, factorint, nextprime, primerange
+
+# Check if prime:
+print(isprime(17))      # True
+print(isprime(15))      # False (3×5)
+print(isprime(2**31 - 1))  # True (Mersenne prime)
+
+# Factor into primes:
+print(factorint(360))   # {2: 3, 3: 2, 5: 1} → 2³×3²×5
+
+# List primes in range:
+print(list(primerange(2, 30)))
+# [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+
+# Sieve of Eratosthenes (from scratch):
+def sieve(n):
+    is_prime = [True] * (n + 1)
+    is_prime[0] = is_prime[1] = False
+    for i in range(2, int(n**0.5) + 1):
+        if is_prime[i]:
+            for j in range(i*i, n + 1, i):
+                is_prime[j] = False
+    return [i for i in range(n + 1) if is_prime[i]]
+
+print(sieve(50))
+# [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+"""
+
+print(prime_code)</div>
+
+<div class="code-block"># ── STEP 2: GCD and Euclidean algorithm ──
+# The oldest algorithm still in use (~300 BCE).
+
+gcd_algo = """
+GREATEST COMMON DIVISOR (GCD):
+
+gcd(a, b) = largest integer that divides both a and b.
+  gcd(12, 8) = 4
+  gcd(15, 25) = 5
+  gcd(7, 13) = 1 (coprime)
+
+EUCLIDEAN ALGORITHM (~300 BCE):
+  gcd(a, b) = gcd(b, a mod b)
+  Base case: gcd(a, 0) = a
+
+  Example: gcd(48, 18)
+  gcd(48, 18) = gcd(18, 48 mod 18) = gcd(18, 12)
+  gcd(18, 12) = gcd(12, 18 mod 12) = gcd(12, 6)
+  gcd(12, 6) = gcd(6, 12 mod 6) = gcd(6, 0) = 6
+
+  Time: O(log(min(a, b))) — extremely fast!
+
+EXTENDED EUCLIDEAN ALGORITHM:
+  Finds x, y such that: a×x + b×y = gcd(a, b)
+  → Used to find modular inverse (for RSA cryptography)
+
+APPLICATIONS:
+  → Simplifying fractions: 12/8 = (12/gcd)/8/gcd = 3/2
+  → LCM: lcm(a,b) = a×b / gcd(a,b)
+  → RSA cryptography: modular inverse
+  → Hashing: choosing table sizes
+"""
+
+print(gcd_algo)
+
+# PYTHON: GCD and Extended Euclidean:
+gcd_code = """
+from math import gcd
+
+# Python's built-in:
+print(gcd(48, 18))  # 6
+print(gcd(15, 25))  # 5
+print(gcd(7, 13))   # 1
+
+# Euclidean algorithm (from scratch):
+def euclidean_gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+print(euclidean_gcd(48, 18))  # 6
+
+# Extended Euclidean (finds x, y where ax + by = gcd(a,b)):
+def extended_gcd(a, b):
+    if b == 0:
+        return a, 1, 0
+    g, x1, y1 = extended_gcd(b, a % b)
+    return g, y1, x1 - (a // b) * y1
+
+g, x, y = extended_gcd(48, 18)
+print(f"gcd={g}, x={x}, y={y}")  # gcd=6, x=1, y=-2
+print(f"Verify: 48*{x} + 18*{y} = {48*x + 18*y}")  # = 6 ✓
+
+# LCM:
+def lcm(a, b):
+    return a * b // gcd(a, b)
+
+print(lcm(12, 8))  # 24
+"""
+
+print(gcd_code)</div>
+
+<div class="code-block"># ── STEP 3: Modular arithmetic ──
+# The math of remainders — foundation of cryptography.
+
+modular = """
+MODULAR ARITHMETIC:
+
+a mod n = remainder when a is divided by n.
+  7 mod 3 = 1 (7 = 2×3 + 1)
+  10 mod 4 = 2
+  15 mod 5 = 0
+
+CONGRUENCE:
+  a ≡ b (mod n) means a and b have the same remainder when divided by n.
+  17 ≡ 5 (mod 4) — both have remainder 1
+
+PROPERTIES:
+  (a + b) mod n = [(a mod n) + (b mod n)] mod n
+  (a × b) mod n = [(a mod n) × (b mod n)] mod n
+  (a^k) mod n = [(a mod n)^k] mod n
+
+  → We can reduce at each step (prevents overflow!)
+
+FERMAT'S LITTLE THEOREM (1640):
+  If p is prime and gcd(a, p) = 1:
+    a^(p-1) ≡ 1 (mod p)
+
+  Example: p = 7, a = 2
+    2^6 = 64 = 9×7 + 1 → 2^6 ≡ 1 (mod 7) ✓
+
+  APPLICATION: Fast modular exponentiation
+  → Compute a^k mod n WITHOUT huge intermediate values
+  → Essential for RSA (d^k mod n where d, k are huge)
+
+EULER'S THEOREM (generalization):
+  If gcd(a, n) = 1:
+    a^φ(n) ≡ 1 (mod n)
+  where φ(n) = Euler's totient (count of numbers ≤ n coprime to n)
+
+  φ(p) = p-1 (for prime p)
+  φ(p×q) = (p-1)(q-1) (for distinct primes p, q)
+
+  This is the FOUNDATION of RSA!
+"""
+
+print(modular)
+
+# PYTHON: Modular arithmetic:
+mod_code = """
+# Python's pow() with 3 args = modular exponentiation:
+print(pow(2, 6, 7))     # 1 (Fermat: 2^6 mod 7 = 1)
+print(pow(3, 10, 11))   # 1 (Fermat: 3^10 mod 11 = 1)
+
+# Fast modular exponentiation (from scratch):
+def mod_pow(base, exp, mod):
+    result = 1
+    base = base % mod
+    while exp > 0:
+        if exp % 2 == 1:
+            result = (result * base) % mod
+        exp = exp // 2
+        base = (base * base) % mod
+    return result
+
+print(mod_pow(2, 6, 7))   # 1
+print(mod_pow(2, 100, 7)) # 2 (2^100 mod 7 = 2)
+
+# Euler's totient:
+def euler_totient(n):
+    result = n
+    p = 2
+    temp = n
+    while p * p <= temp:
+        if temp % p == 0:
+            while temp % p == 0:
+                temp //= p
+            result -= result // p
+        p += 1
+    if temp > 1:
+        result -= result // temp
+    return result
+
+print(euler_totient(7))   # 6 (prime)
+print(euler_totient(12))  # 4 (1,5,7,11 coprime to 12)
+"""
+
+print(mod_code)</div>
+
+<div class="code-block"># ── STEP 4: RSA cryptography ──
+# Number theory's most famous application.
+
+rsa = """
+RSA CRYPTOGRAPHY (Rivest, Shamir, Adleman, 1977):
+
+RSA uses: large primes + modular arithmetic.
+
+KEY GENERATION:
+  1. Choose two large primes p, q (e.g., 1024-bit each)
+  2. n = p × q (public modulus, ~2048 bits)
+  3. φ(n) = (p-1)(q-1) (Euler's totient)
+  4. Choose e: 1 < e < φ(n), gcd(e, φ(n)) = 1
+     (e is public exponent, commonly 65537)
+  5. Compute d = e^(-1) mod φ(n) (private key)
+     (using Extended Euclidean algorithm)
+
+PUBLIC KEY: (n, e) — anyone can encrypt
+PRIVATE KEY: (n, d) — only you can decrypt
+
+ENCRYPTION: c = m^e mod n
+DECRYPTION: m = c^d mod n
+
+WHY IT WORKS:
+  c^d = (m^e)^d = m^(ed) = m^(1 + k×φ(n)) ≡ m (mod n)
+  (Euler's theorem: m^φ(n) ≡ 1 mod n)
+
+SECURITY:
+  → Factoring n = p × q is HARD for large n
+  → No known polynomial-time algorithm
+  → 2048-bit RSA: astronomically secure
+  → Quantum computers (Shor's algorithm) could break it (future risk)
+
+THIS IS WHY PRIMES MATTER:
+  → Without primes, no RSA
+  → Without RSA, no HTTPS, no online banking, no secure internet
+  → Euclid's 2300-year-old primes protect your credit card today!
+"""
+
+print(rsa)
+
+# PYTHON: Mini RSA implementation:
+rsa_code = """
+from math import gcd
+from sympy import nextprime, mod_inverse
+
+# Mini RSA (educational — real RSA uses much bigger numbers):
+
+# 1. Key generation:
+p = nextprime(10**6)   # ~1 million
+q = nextprime(p + 1)
+n = p * q
+phi = (p - 1) * (q - 1)
+e = 65537  # standard public exponent
+d = mod_inverse(e, phi)  # private key
+
+print(f"Public key: (n={n}, e={e})")
+print(f"Private key: (n={n}, d={d})")
+
+# 2. Encrypt a message:
+message = 42  # must be < n
+cipher = pow(message, e, n)
+print(f"Encrypted: {cipher}")
+
+# 3. Decrypt:
+decrypted = pow(cipher, d, n)
+print(f"Decrypted: {decrypted}")  # 42 ✓
+
+# 4. Verify the math:
+# c^d = m^(ed) mod n = m (mod n) by Euler's theorem
+assert decrypted == message, "RSA failed!"
+print("RSA verified ✅")
+"""
+
+print(rsa_code)</div>
+
+<div class="code-block"># ── STEP 5: Number theory applications ──
+# Beyond RSA — where number theory appears.
+
+applications = """
+NUMBER THEORY APPLICATIONS:
+
+1. CRYPTOGRAPHY:
+   → RSA (public key encryption)
+   → Diffie-Hellman (key exchange)
+   → Elliptic Curve Cryptography (ECC)
+   → Digital signatures
+
+2. HASHING:
+   → Prime modulus reduces collisions
+   → Universal hashing: h(x) = (ax + b) mod p
+   → Hash tables, bloom filters
+
+3. RANDOM NUMBER GENERATION:
+   → Linear congruential: X_(n+1) = (aX_n + c) mod m
+   → Mersenne Twister (MT19937)
+
+4. ERROR CORRECTING CODES:
+   → Reed-Solomon (used in CDs, QR codes)
+   → Based on finite fields (Galois fields)
+
+5. COMPUTING:
+   → GCD for fraction simplification
+   → Modular arithmetic for hash functions
+   → Prime testing for key generation
+
+6. ALGORITHMS:
+   → Chinese Remainder Theorem (parallel computation)
+   → Miller-Rabin (probabilistic prime test)
+   → Pollard's rho (integer factorization)
+
+7. DIGITAL SECURITY:
+   → Passwords (hash with salt)
+   → TLS/SSL (HTTPS)
+   → Bitcoin (SHA-256, elliptic curves)
+
+8. RECREATIONAL:
+   → Magic squares, number puzzles
+   → Prime gaps, twin primes
+   → Goldbach's conjecture (every even > 2 = sum of two primes)
+"""
+
+print(applications)</div>
+
+<div class="code-block"># ── STEP 6: Number theory best practices ──
+# Apply number theory effectively.
+
+best_practices = [
+    "Primes are the atoms of integers (Fundamental Theorem)",
+    "Euclid proved: infinitely many primes (~300 BCE)",
+    "Euclidean algorithm: gcd in O(log n)",
+    "Extended Euclidean: finds modular inverse",
+    "Fermat's Little Theorem: a^(p-1) ≡ 1 (mod p)",
+    "Euler's totient φ(n) generalizes Fermat",
+    "RSA: factoring large semiprimes is hard",
+    "Use 2048+ bit RSA for security",
+    "pow(a, b, m) for efficient modular exponentiation",
+    "Sieve of Eratosthenes: find primes in O(n log log n)",
+    "Miller-Rabin: probabilistic prime testing",
+    "Coprime: gcd(a,b) = 1",
+    "LCM(a,b) = a*b / gcd(a,b)",
+    "Chinese Remainder Theorem: solve simultaneous congruences",
+    "Goldbach conjecture: still unproven (every even > 2)",
+]
+
+print("NUMBER THEORY BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Concept          │ Application                     │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Primes           │ Building blocks of integers     │
+# │ GCD (Euclid)    │ Fraction simplification         │
+# │ Modular arith    │ Cryptography, hashing           │
+# │ Fermat's theorem │ RSA foundation                  │
+# │ Euler's totient  │ RSA key generation              │
+# │ Factorization    │ RSA security (hard to factor)   │
+# │ Sieve            │ Find all primes ≤ n             │
+# │ Miller-Rabin     │ Probabilistic prime test        │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout info"><span class="co-icon">🔢</span><div><strong>Fundamental Theorem of Arithmetic:</strong> প্রতিটি সংখ্যা > ১ কে মৌলিক উৎপাদকে অদ্বিতীয়ভাবে বিভক্ত করা যায়। ২৪ = ২³ * ৩। একমাত্র একটি উপায়। এটাই সংখ্যার ডিএনএ।<br><br>
 <strong>Fermat's Little Theorem (১৬৪০):</strong> p মৌলিক হলে, a^(p-১) ≡ ১ (mod p)। এটা RSA-এর গাণিতিক ভিত্তি। বিশাল সংখ্যার মৌলিক যাচাইও এটা দিয়ে।</div></div>
@@ -1621,25 +1989,305 @@ doors.push({
 <strong>Door ৮ — লাবিব (Coloring):</strong> রেজিস্টার বরাদ্দ, scheduling<br>
 <strong>Door ৯ — আরমান (Numbers):</strong> RSA, এনক্রিপশন, মৌলিক</div></div>
 
-<div class="code-block">— একটি Django অ্যাপে সব ডিসক্রিট গণিত —
+<div class="code-block"># ── STEP 1: The 10 doors summary ──
+# Everything you've learned in discrete mathematics.
 
-  # Door ১ (Logic): if/else ও De Morgan
-  if not (user.is_staff and user.is_active):
-      # ≡ user.is_staff == False OR user.is_active == False
+doors = {
+    "Door 1": "Propositional Logic — AND, OR, NOT, De Morgan",
+    "Door 2": "Proof Techniques — induction, contradiction, contrapositive",
+    "Door 3": "√2 Irrationality — proof by contradiction",
+    "Door 4": "Sets & Relations — operations, cardinality, Cantor",
+    "Door 5": "Combinatorics — permutations, combinations, birthday paradox",
+    "Door 6": "Pigeonhole Principle — collisions, Ramsey theory",
+    "Door 7": "Graph Theory — BFS, DFS, shortest path",
+    "Door 8": "Graph Coloring — Four Color Theorem, register allocation",
+    "Door 9": "Number Theory — primes, GCD, modular arithmetic, RSA",
+    "Door 10": "Complete Integration — all doors in one Django app",
+}
 
-  # Door ৪ (Sets): QuerySet = সেট অপারেশন
-  active_users = User.objects.filter(is_active=True)
-  staff = User.objects.filter(is_staff=True)
-  both = active_users & staff  # intersection
+print("THE 10 DOORS OF DISCRETE MATHEMATICS:")
+for door, topic in doors.items():
+    print(f"  {door}: {topic}")
 
-  # Door ৫ (Combinatorics): password শক্তি
-  # ৮-অক্ষর password, ৬২ অক্ষর → ৬২⁸ ~= ২১৮ ট্রিলিয়ন
+# THE UNIFYING INSIGHT:
+insight = """
+WHAT IS DISCRETE MATHEMATICS?
 
-  # Door ৭ (Graph): foreign key = গ্রাফ এজ
-  # User → Account → Transaction → Category
+The mathematics of COUNTABLE things:
+  → Integers (not continuous like real numbers)
+  → Logic (True/False, not gradients)
+  → Graphs (discrete vertices/edges)
+  → Sets (distinct elements)
+  → Algorithms (step-by-step, not continuous)
 
-  # Door ৯ (Number Theory): RSA সার্টিফিকেট
-  # HTTPS সংযোগে p*q মৌলিক গুণফল</div>
+WHY IT'S THE FOUNDATION OF CS:
+  → Computers are DISCRETE (bits: 0/1)
+  → Every algorithm = discrete math in action
+  → Data structures = graphs, sets, trees
+  → Cryptography = number theory
+  → Databases = set theory
+  → Logic gates = propositional logic
+
+"Continuous math (calculus) describes physics.
+ Discrete math describes COMPUTATION."
+"""
+
+print(insight)</div>
+
+<div class="code-block"># ── STEP 2: Django app — all doors in one codebase ──
+# How discrete math appears in a real Django application.
+
+django_code = """
+# Door 1 (Logic): if/else uses De Morgan's laws
+if not (user.is_staff and user.is_active):
+    # ≡ user.is_staff == False OR user.is_active == False
+    return redirect('login')
+
+# Door 2 (Proofs): unit tests verify correctness
+# Induction: if it works for n=1 and n→n+1, works for all n
+# We test boundary conditions (base cases):
+
+# Door 4 (Sets): QuerySet = set operations
+from django.db.models import Q
+
+active_users = User.objects.filter(is_active=True)
+staff_users = User.objects.filter(is_staff=True)
+
+# Set operations:
+both = active_users & staff_users              # intersection (∩)
+either = active_users | staff_users            # union (∪)
+not_staff_active = active_users.difference(staff_users)  # difference (−)
+
+# Door 5 (Combinatorics): password strength
+# 8-char password, 62 chars (a-z, A-Z, 0-9)
+# Combinations: 62^8 ≈ 218 trillion
+import math
+strength = 62 ** 8
+print(f"Password space: {strength:.2e}")  # 2.18e+14
+
+# Door 6 (Pigeonhole): UUID collision
+# UUID4: 2^122 possible values
+# After 2^61 IDs, ~50% collision (birthday paradox)
+# Practically: no collision in any reasonable system
+
+# Door 7 (Graphs): foreign keys form a DAG
+# User → Account → Transaction → Category
+# This is a graph! Can detect cycles, topological sort.
+
+# Door 8 (Coloring): exam scheduling
+# Build conflict graph of students vs exams
+# Color → time slot assignment
+
+# Door 9 (Number Theory): HTTPS/TLS
+# Your Django site uses RSA certificates
+# p × q = n (public key)
+# Without primes, no HTTPS, no secure login
+"""
+
+print(django_code)</div>
+
+<div class="code-block"># ── STEP 3: Discrete math in data structures ──
+# Every data structure is discrete math.
+
+data_structures = """
+DATA STRUCTURES = DISCRETE MATH:
+
+1. ARRAYS:
+  → Indexed collection (index = integer = discrete)
+  → Access: O(1) via arithmetic (discrete)
+
+2. HASH TABLES:
+  → Hash function: maps key to bucket
+  → Pigeonhole: collisions must exist
+  → Number theory: good hash = uniform distribution
+
+3. TREES:
+  → Special graph (connected, acyclic)
+  → Binary tree: each node has ≤2 children
+  → Induction: tree properties proven by induction
+
+4. GRAPHS:
+  → General relationship structure
+  → BFS/DFS traversal (Door 7)
+
+5. HEAPS:
+  → Complete binary tree
+  → Priority queue implementation
+  → Ordering property (partial order)
+
+6. SETS (Python set):
+  → Direct implementation of set theory (Door 4)
+  → O(1) membership, union, intersection
+
+7. BLOOM FILTERS:
+  → Probabilistic set membership
+  → Multiple hash functions
+  → Pigeonhole: false positives possible
+
+8. UNION-FIND (Disjoint Set):
+  → Tracks connected components
+  → Used in Kruskal's MST algorithm
+  → Near O(1) operations (amortized)
+"""
+
+print(data_structures)</div>
+
+<div class="code-block"># ── STEP 4: Discrete math in algorithms ──
+# Every algorithm relies on discrete math.
+
+algorithms = """
+ALGORITHMS = DISCRETE MATH:
+
+SORTING:
+  → Comparison sort: O(n log n) lower bound (decision tree argument)
+  → Counting sort: O(n+k) uses pigeonhole (limited range)
+  → Stable/unstable: set properties
+
+SEARCHING:
+  → Binary search: halves search space (log₂n)
+  → Hash lookup: O(1) average (good hash function)
+
+DYNAMIC PROGRAMMING:
+  → Optimal substructure (recursion + memoization)
+  → Overlapping subproblems (avoid recomputation)
+  → Mathematical induction in action
+
+GREEDY:
+  → Make locally optimal choice at each step
+  → Prove optimal via contradiction or exchange argument
+
+DIVIDE AND CONQUER:
+  → Break into subproblems (discrete partitioning)
+  → Combine solutions
+  → Master theorem: T(n) = aT(n/b) + f(n)
+
+GRAPH ALGORITHMS:
+  → Shortest path (Dijkstra, BFS)
+  → MST (Kruskal, Prim)
+  → Topological sort (DAG)
+  → All from graph theory (Door 7)
+
+CRYPTOGRAPHIC ALGORITHMS:
+  → RSA (number theory, Door 9)
+  → AES (finite fields, Galois theory)
+  → SHA (hash functions, compression)
+
+COMPLEXITY CLASSES:
+  → P: polynomial time
+  → NP: nondeterministic polynomial
+  → NP-complete: hardest in NP (graph coloring, TSP)
+  → P vs NP: the million dollar question!
+"""
+
+print(algorithms)</div>
+
+<div class="code-block"># ── STEP 5: Famous problems and conjectures ──
+# Open problems that drive mathematical research.
+
+famous = """
+FAMOUS PROBLEMS IN DISCRETE MATH:
+
+1. P vs NP (Millennium Prize, $1M):
+   Is P = NP? Can we solve NP problems in polynomial time?
+   → Most believe P ≠ NP
+   → If P = NP: cryptography breaks, optimization becomes easy
+   → Unresolved since 1971
+
+2. GOLDBACH'S CONJECTURE (1742):
+   Every even integer > 2 is the sum of two primes.
+   4 = 2+2, 6 = 3+3, 8 = 3+5, 10 = 3+7 = 5+5, ...
+   Verified up to 4×10^18, but NOT PROVEN.
+
+3. TWIN PRIME CONJECTURE:
+   Are there infinitely many twin primes (p, p+2)?
+   (3,5), (5,7), (11,13), (17,19), ...
+   Bounded gap proven (Zhang, 2013): infinitely many gaps ≤ 246.
+
+4. COLLATZ CONJECTURE (1937):
+   Start with n. If odd: 3n+1. If even: n/2. Repeat.
+   Do you always reach 1?
+   Verified for n up to 2^68, but UNPROVEN.
+   "Mathematics is not yet ripe for such problems." — Erdős
+
+5. RAMSEY NUMBERS:
+   R(5,5) = ? (between 43 and 48)
+   R(6,6) = ? (between 102 and 165)
+   These seem simple but are extraordinarily hard.
+
+6. FOUR COLOR THEOREM (SOLVED 1976):
+   Every map colorable with 4 colors.
+   First computer-assisted proof (controversial).
+
+7. RIEMANN HYPOTHESIS (Millennium Prize):
+   About the distribution of primes.
+   The most important open problem in mathematics.
+   (Connects number theory to complex analysis)
+"""
+
+print(famous)</div>
+
+<div class="code-block"># ── STEP 6: The journey and what's next ──
+# Your path forward in discrete mathematics.
+
+journey = """
+YOUR JOURNEY IN DISCRETE MATHEMATICS:
+
+You started seeing math as abstract symbols.
+You finish seeing DISCRETE STRUCTURES everywhere:
+
+WHAT YOU CAN NOW DO:
+  ✅ Write logically correct code (propositional logic)
+  ✅ Prove algorithm correctness (induction, invariants)
+  ✅ Analyze combinatorial complexity (counting)
+  ✅ Model relationships (graphs)
+  ✅ Optimize resource allocation (graph coloring)
+  ✅ Understand cryptography (number theory)
+  ✅ Design data structures (sets, graphs, trees)
+  ✅ Recognize NP-complete problems (complexity)
+
+WHAT TO STUDY NEXT:
+  → Algorithms (CLRS textbook)
+  → Complexity theory (P vs NP)
+  → Cryptography (applied number theory)
+  → Formal methods (verifying software correctness)
+  → Combinatorics (advanced counting)
+  → Graph theory (networks, social graphs)
+  → Category theory (abstract structures)
+
+BOOKS TO READ:
+  → "Discrete Mathematics and Its Applications" (Rosen)
+  → "Concrete Mathematics" (Knuth, Graham, Patashnik)
+  → "Introduction to Algorithms" (CLRS)
+  → "Gödel, Escher, Bach" (Hofstadter)
+
+"Discrete mathematics is not about numbers.
+It's about STRUCTURE, LOGIC, and RELATIONSHIPS.
+Master it, and you can reason about ANY computational problem."
+
+These concepts are 2500 years in the making.
+From Aristotle's logic (350 BCE) to RSA (1977),
+you now carry the mathematical foundations of computing.
+
+Welcome to discrete mathematics mastery.
+"""
+
+print(journey)
+
+# FINAL SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Door             │ Key Concept                     │
+# ├──────────────────┼──────────────────────────────────┤
+# │ 1 Logic          │ De Morgan, truth tables         │
+# │ 2 Proofs         │ Induction, contradiction        │
+# │ 3 √2             │ Irrationality by contradiction  │
+# │ 4 Sets           │ Operations, cardinality         │
+# │ 5 Combinatorics  │ Permutations, combinations      │
+# │ 6 Pigeonhole     │ Collisions, Ramsey              │
+# │ 7 Graphs         │ BFS, DFS, shortest path         │
+# │ 8 Coloring       │ Four Color, register allocation │
+# │ 9 Number Theory  │ Primes, GCD, RSA                │
+# │ 10 Complete      │ Integration in real systems     │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">৯</div><div class="sc-label">শিক্ষক</div></div>
