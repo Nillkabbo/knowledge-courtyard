@@ -19,36 +19,421 @@ doors.push({
 <div class="dialogue"><strong>ক্যাসিনো-গণক সাফওয়ান:</strong> তিনটি নিয়ম মনে রাখো। ১. P(event) = favorable/total। ২. Inclusion-exclusion: P(A OR B) = P(A)+P(B)-P(A AND B)। ৩. Conditional: P(A|B) = P(A∩B)/P(B) — B ঘটেছে জেনে A। Independent হলে P(A∩B) = P(A)·P(B)। পাশা independent — একটি পাশা অন্যটিকে প্রভাবিত করে না। কিন্তু তাস নয় — একটি তাস বাদ গেলে পরেরটির সম্ভাবনা বদলায়!</div>
 <div class="dialogue en"><strong>Casino Counter Safwan:</strong> Remember three rules. 1. P(event) = favorable/total. 2. Inclusion-exclusion: P(A OR B) = P(A)+P(B)-P(A AND B). 3. Conditional: P(A|B) = P(A∩B)/P(B). Independent means P(A∩B) = P(A)·P(B). Dice are independent — one die doesn't affect another. But cards are not — one card removed changes the next probability!</div>
 
-<div class="code-block"># — Python: Combinatorial Probability —
+<div class="code-block"># ── STEP 1: Combinatorial probability — counting outcomes ──
+# P(E) = favorable outcomes / total outcomes.
 
-  from itertools import product
-  from fractions import Fraction
+comb_prob = """
+COMBINATORIAL PROBABILITY:
 
-  # দুটি পাশা — সব 36 outcomes:
-  outcomes = list(product(range(1, 7), repeat=2))
-  print(f"Total: {len(outcomes)}")  # 36
+For a FINITE sample space where all outcomes are equally likely:
+  P(E) = |favorable| / |total|
 
-  # P(sum = 7)?
-  favorable = [(a, b) for a, b in outcomes if a + b == 7]
-  print(f"P(sum=7) = {Fraction(len(favorable), 36)}")  # 1/6
+TWO DICE EXAMPLE:
+  Sample space: 6 × 6 = 36 outcomes
+  P(sum = 7) = |{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)}| / 36 = 6/36 = 1/6
+  P(sum >= 10) = |{(4,6),(5,5),(5,6),(6,4),(6,5),(6,6)}| / 36 = 6/36 = 1/6
+  P(doubles) = |{(1,1),(2,2),...,(6,6)}| / 36 = 6/36 = 1/6
 
-  # P(sum >= 10)?
-  high = [(a, b) for a, b in outcomes if a + b >= 10]
-  print(f"P(sum>=10) = {Fraction(len(high), 36)}")  # 1/6
+KEY TOOLS:
+  → Permutations (order matters): P(n,k) = n!/(n-k)!
+  → Combinations (order irrelevant): C(n,k) = n!/(k!(n-k)!)
+  → Inclusion-exclusion: P(A∪B) = P(A)+P(B)−P(A∩B)
 
-  # Inclusion-exclusion:
-  # P(A: sum>=10 OR B: doubles)
-  A = {(a,b) for a,b in outcomes if a+b >= 10}
-  B = {(a,b) for a,b in outcomes if a == b}
-  union = len(A | B) / 36
-  formula = (len(A) + len(B) - len(A & B)) / 36
-  print(f"P(A∪B) = {union:.4f} = {formula:.4f}")  # match!
+EXAMPLE: Poker hands
+  Total 5-card hands: C(52,5) = 2,598,960
+  Royal flush: 4 hands → P = 4/2598960 ≈ 0.000154%
+  Full house: 3,744 hands → P = 3744/2598960 ≈ 0.144%
 
-  # Conditional: P(A | first die = 3)
-  given_3 = [(a, b) for a, b in outcomes if a == 3]
-  A_given = [(a, b) for a, b in given_3 if a + b >= 7]
-  print(f"P(sum>=7 | first=3) = {len(A_given)}/{len(given_3)}")
-  # = 3/6 = 1/2</div>
+EXAMPLE: Lottery (6/49)
+  P(jackpot) = 1/C(49,6) = 1/13,983,816 ≈ 0.0000000716
+"""
+
+print(comb_prob)
+
+# PYTHON: Combinatorial probability:
+cp_code = """
+from itertools import product, combinations
+from fractions import Fraction
+from math import comb
+
+# Two dice:
+outcomes = list(product(range(1, 7), repeat=2))
+print(f"Total outcomes: {len(outcomes)}")  # 36
+
+# P(sum = 7):
+sum7 = [r for r in outcomes if r[0] + r[1] == 7]
+print(f"P(sum=7) = {Fraction(len(sum7), 36)}")  # 1/6
+
+# P(sum >= 10):
+high = [r for r in outcomes if r[0] + r[1] >= 10]
+print(f"P(sum>=10) = {Fraction(len(high), 36)}")  # 1/6
+
+# Inclusion-exclusion:
+A = {r for r in outcomes if sum(r) >= 10}
+B = {r for r in outcomes if r[0] == r[1]}  # doubles
+union = Fraction(len(A | B), 36)
+formula = Fraction(len(A) + len(B) - len(A & B), 36)
+print(f"P(A∪B) = {union} = {formula}")  # match!
+
+# Poker probabilities:
+total_hands = comb(52, 5)
+print(f"Total 5-card hands: {total_hands:,}")
+print(f"P(royal flush) = 4/{total_hands} = {4/total_hands:.8f}")
+
+# Lottery 6/49:
+print(f"P(jackpot 6/49) = 1/{comb(49,6):,}")
+"""
+
+print(cp_code)</div>
+
+<div class="code-block"># ── STEP 2: The Monty Hall problem ──
+# A famous counterintuitive probability puzzle.
+
+monty_hall = """
+THE MONTY HALL PROBLEM:
+
+A game show. 3 doors. Behind one: a car. Behind two: goats.
+
+1. You pick Door 1.
+2. Host (Monty) opens Door 3, revealing a goat.
+   (Monty ALWAYS reveals a goat — he knows where the car is.)
+3. Should you SWITCH to Door 2?
+
+ANSWER: YES! Switching wins 2/3 of the time.
+
+WHY? (Most people think it's 50/50 after one goat is revealed.)
+
+INITIAL STATE:
+  P(car behind Door 1) = 1/3
+  P(car behind Door 2 or 3) = 2/3
+
+AFTER MONTY OPENS DOOR 3 (revealing goat):
+  P(car behind Door 1) = 1/3  (unchanged!)
+  P(car behind Door 2) = 2/3  (concentrated!)
+
+  Monty's action gives INFORMATION: if car was behind 2 or 3,
+  he MUST reveal the goat door. So probability shifts to Door 2.
+
+SWITCHING WINS 2/3 OF THE TIME.
+
+KEY INSIGHT: Monty's knowledge changes the probabilities.
+  → He NEVER opens the car door
+  → His choice is NOT random (conditional on your choice)
+
+PYTHON VERIFICATION:
+  Simulate 100,000 games. Switching wins ~66.7%.
+
+GENERALIZATION (n doors):
+  With n doors, Monty opens n-2 goat doors.
+  P(win by switching) = (n-1) / (n × (n-2))
+  → More doors: switching is even better!
+"""
+
+print(monty_hall)
+
+# PYTHON: Monty Hall simulation:
+mh_code = """
+import random
+
+def play_monty_hall(switch=True, n_simulations=100000):
+    wins = 0
+    for _ in range(n_simulations):
+        # Randomly place car behind door 0, 1, or 2:
+        car = random.randint(0, 2)
+        # Player picks a random door:
+        player_choice = random.randint(0, 2)
+        # Monty opens a goat door (not car, not player's choice):
+        goats = [d for d in range(3) if d != car and d != player_choice]
+        monty_opens = random.choice(goats)
+        # If switching, pick the remaining door:
+        if switch:
+            remaining = [d for d in range(3)
+                        if d != player_choice and d != monty_opens]
+            player_choice = remaining[0]
+        # Win?
+        if player_choice == car:
+            wins += 1
+    return wins / n_simulations
+
+print(f"Switching wins:   {play_monty_hall(switch=True):.4f}")  # ~0.6667
+print(f"Not switching:    {play_monty_hall(switch=False):.4f}")  # ~0.3333
+"""
+
+print(mh_code)</div>
+
+<div class="code-block"># ── STEP 3: Conditional probability chains ──
+# Multi-step probability calculations.
+
+chains = """
+CONDITIONAL PROBABILITY CHAINS:
+
+LAW OF TOTAL PROBABILITY:
+  P(A) = Σ P(A|Bᵢ) × P(Bᵢ)
+  where B₁, B₂, ..., Bₙ partition the sample space.
+
+EXAMPLE: Disease testing
+  1% of population has disease.
+  Test is 95% sensitive (true positive), 90% specific (true negative).
+
+  P(positive) = P(pos|disease)×P(disease) + P(pos|no disease)×P(no disease)
+             = 0.95×0.01 + 0.10×0.99
+             = 0.0095 + 0.099 = 0.1085
+
+  P(disease|positive) = 0.0095 / 0.1085 = 8.8%
+
+CHAIN RULE (general):
+  P(A₁ ∩ A₂ ∩ ... ∩ Aₙ) = P(A₁) × P(A₂|A₁) × P(A₃|A₁∩A₂) × ...
+
+EXAMPLE: Drawing without replacement
+  Urn with 3 red, 2 blue balls. Draw 3 without replacement.
+  P(all red) = (3/5) × (2/4) × (1/3) = 6/60 = 1/10
+
+BAYESIAN NETWORKS:
+  Multi-variable conditional probabilities.
+  P(disease|symptom1, symptom2) = ...
+  → Medical diagnosis systems
+  → Spam filtering
+  → Machine learning
+"""
+
+print(chains)
+
+# PYTHON: Conditional probability:
+chain_code = """
+from fractions import Fraction
+
+# Law of total probability:
+P_disease = Fraction(1, 100)
+P_no_disease = Fraction(99, 100)
+P_pos_given_disease = Fraction(95, 100)
+P_pos_given_no = Fraction(10, 100)  # false positive rate
+
+P_positive = (P_pos_given_disease * P_disease +
+              P_pos_given_no * P_no_disease)
+print(f"P(positive) = {P_positive} = {float(P_positive):.4f}")
+
+P_disease_given_pos = (P_pos_given_disease * P_disease) / P_positive
+print(f"P(disease|positive) = {P_disease_given_pos} = {float(P_disease_given_pos):.4f}")
+
+# Drawing without replacement (3 red, 2 blue, draw 3):
+# P(all red) = (3/5)(2/4)(1/3)
+p = Fraction(3,5) * Fraction(2,4) * Fraction(1,3)
+print(f"P(all 3 red) = {p}")  # 1/10
+
+# P(exactly 2 red in 3 draws):
+# Ways: RRB, RBR, BRR
+p_RRB = Fraction(3,5) * Fraction(2,4) * Fraction(2,3)
+p_RBR = Fraction(3,5) * Fraction(2,4) * Fraction(2,3)
+p_BRR = Fraction(2,5) * Fraction(3,4) * Fraction(2,3)
+print(f"P(exactly 2 red) = {p_RRB + p_RBR + p_BRR}")  # 6/10 = 3/5
+"""
+
+print(chain_code)</div>
+
+<div class="code-block"># ── STEP 4: Probability in gambling ──
+# Why the house always wins.
+
+gambling = """
+PROBABILITY IN GAMBLING:
+
+HOUSE EDGE = expected casino profit per bet.
+  Roulette (American): 5.26% (38 slots: 0, 00, 1-36)
+  Blackjack (basic strategy): 0.5-2%
+  Slots: 2-15%
+  Craps (pass line): 1.41%
+
+ROULETTE EXAMPLE:
+  Bet $1 on red (18/38 win $1, 20/38 lose $1):
+  E[return] = (18/38)(1) + (20/38)(−1) = −2/38 = −0.0526
+  → House edge: 5.26%
+  → Over 100 bets: expect to lose $5.26
+
+  Bet $1 on single number (1/38 win $35, 37/38 lose $1):
+  E[return] = (1/38)(35) + (37/38)(−1) = (35−37)/38 = −0.0526
+  → Same house edge! All roulette bets have same edge.
+
+GAMBLER'S RUIN:
+  With finite wealth and negative expectation:
+  P(eventual bankruptcy) = 1
+  → You WILL go broke if you play long enough.
+
+LOTTERY:
+  Powerball: P(jackpot) ≈ 1/292,201,338
+  Ticket price: $2
+  Expected value < $1 (always negative, even with big jackpots)
+
+  → "Lottery: a tax on people who don't understand probability."
+
+KELLY CRITERION (optimal betting):
+  f = (bp − q) / b
+  where b = odds, p = win probability, q = 1−p
+  → Bet fraction f of bankroll for maximum long-term growth
+  → Used by professional gamblers and investors
+"""
+
+print(gambling)
+
+# PYTHON: Gambling simulation:
+gamble_code = """
+import numpy as np
+
+# Roulette simulation (red bet):
+np.random.seed(42)
+n_bets = 10000
+results = np.random.choice([1, -1], size=n_bets, p=[18/38, 20/38])
+
+# Track bankroll over time:
+bankroll = np.cumsum(results) * 1  # $1 per bet
+print(f"After {n_bets} bets:")
+print(f"  Expected: {n_bets * (-2/38):.2f}")
+print(f"  Actual:   {bankroll[-1]}")
+
+# Probability of being ahead after N bets:
+for n in [10, 100, 1000]:
+    ahead_count = 0
+    for _ in range(10000):
+        results = np.random.choice([1, -1], size=n, p=[18/38, 20/38])
+        if results.sum() > 0:
+            ahead_count += 1
+    print(f"P(ahead after {n} bets): {ahead_count/10000:.4f}")
+# P(ahead after 10 bets): ~0.37
+# P(ahead after 100 bets): ~0.20
+# P(ahead after 1000 bets): ~0.01 (almost never!)
+# → Longer you play, more likely to lose
+
+# Kelly criterion:
+p = 0.55  # win probability (slightly better than fair)
+b = 1     # even money
+q = 1 - p
+kelly = (b * p - q) / b
+print(f"Kelly fraction: {kelly:.4f}")  # 0.10 (bet 10% of bankroll)
+"""
+
+print(gamble_code)</div>
+
+<div class="code-block"># ── STEP 5: Probability paradoxes ──
+# Counterintuitive results that challenge intuition.
+
+paradoxes = """
+PROBABILITY PARADOXES:
+
+1. BIRTHDAY PARADOX:
+   23 people → 50.7% chance of shared birthday.
+   (Seems like you'd need ~180.)
+
+2. MONTY HALL:
+   Switching doors wins 2/3 of the time.
+   (Seems like 50/50.)
+
+3. TWO-CHILD PROBLEM:
+   "A family has two children. At least one is a boy.
+    What's P(both boys)?"
+   Answer: 1/3 (not 1/2!)
+   → Sample space: {BB, BG, GB, GG}, exclude GG → {BB, BG, GB}
+   → P(BB) = 1/3
+
+4. SIMPSON'S PARADOX:
+   A trend in groups REVERSES when combined.
+   → Drug A better for men, better for women...
+   → But Drug B better overall!
+   (Due to confounding variable.)
+
+5. ST. PETERSBURG PARADOX:
+   Coin flip game: double payout each heads, stop at tails.
+   E[payout] = infinity!
+   But no rational person pays huge amount to play.
+   → Resolved by utility theory (diminishing marginal utility)
+
+6. SLEEPING BEAUTY:
+   Probability problems about self-locating beliefs.
+   (Still debated by philosophers!)
+
+7. THREE PRISONERS (like Monty Hall):
+   Three prisoners, one to be pardoned.
+   Prisoner A asks guard who will be executed.
+   Guard says B. Should A update his survival probability?
+   Answer: YES, A's probability goes from 1/3 to 1/3 (stays same!)
+   but C's goes to 2/3.
+"""
+
+print(paradoxes)
+
+# PYTHON: Verify paradoxes:
+paradox_code = """
+import numpy as np
+
+# Birthday paradox:
+def birthday_prob(n):
+    p_no = 1.0
+    for i in range(n):
+        p_no *= (365 - i) / 365
+    return 1 - p_no
+
+print("Birthday paradox:")
+print(f"  n=23: {birthday_prob(23)*100:.1f}%")  # 50.7%
+print(f"  n=50: {birthday_prob(50)*100:.1f}%")  # 97.0%
+
+# Two-child problem simulation:
+import random
+counters = {'BB': 0, 'BG': 0, 'GB': 0, 'GG': 0}
+for _ in range(1000000):
+    child1 = random.choice(['B', 'G'])
+    child2 = random.choice(['B', 'G'])
+    family = child1 + child2
+    if 'B' in family:  # at least one boy
+        counters[family] += 1
+total_at_least_one_boy = sum(counters.values())
+print(f"P(both boys | at least one boy) = {counters['BB']/total_at_least_one_boy:.4f}")
+# Should be ~1/3 = 0.3333
+
+# Simpson's paradox example:
+# Drug A: Men 60/100, Women 20/50 → Overall 80/150 = 53.3%
+# Drug B: Men 90/200, Women 5/10  → Overall 95/210 = 45.2%
+# A better for each group, but B better overall!
+print("Simpson's paradox:")
+print(f"  Drug A overall: {80/150:.3f}")  # 0.533
+print(f"  Drug B overall: {95/210:.3f}")  # 0.452
+"""
+
+print(paradox_code)</div>
+
+<div class="code-block"># ── STEP 6: Combinatorial probability best practices ──
+# Apply counting-based probability.
+
+best_practices = [
+    "P(E) = favorable outcomes / total outcomes (uniform)",
+    "Use permutations when ORDER matters",
+    "Use combinations when ORDER doesn't matter",
+    "Inclusion-exclusion: P(A∪B) = P(A)+P(B)−P(A∩B)",
+    "Law of total probability: P(A) = ΣP(A|Bᵢ)P(Bᵢ)",
+    "Chain rule: P(A∩B∩C) = P(A)P(B|A)P(C|A∩B)",
+    "Monty Hall: always SWITCH (wins 2/3)",
+    "Birthday paradox: 23 people → 50% shared birthday",
+    "House edge: casinos always profit (LLN)",
+    "Gambler's ruin: negative expectation → bankruptcy",
+    "Kelly criterion: optimal bet sizing",
+    "Drawing without replacement changes probabilities",
+    "Poker: C(52,5) = 2,598,960 possible hands",
+    "Simpson's paradox: group trends can reverse combined",
+    "Counterintuitive results need careful analysis",
+]
+
+print("COMBINATORIAL PROBABILITY BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Problem          │ Answer                          │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Monty Hall       │ Switch: wins 2/3                │
+# │ Birthday (23)    │ 50.7% shared                    │
+# │ Two-child        │ P(BB|≥1 boy) = 1/3             │
+# │ Roulette edge    │ 5.26% house advantage           │
+# │ Lottery 6/49     │ 1/13,983,816                    │
+# │ Poker royal flush│ 1/649,740                       │
+# │ Simpson paradox  │ Trends can reverse combined     │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout info"><span class="co-icon">🎰</span><div><strong>সম্ভাবনার নিয়ম:</strong><br>
 <strong>P(E) = favorable/total:</strong> সসীম sample space<br>
