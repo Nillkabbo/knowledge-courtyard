@@ -513,62 +513,341 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Token Budget Exceeded:</strong> Context was 130K, model supported 128K — silent truncation. Fix: count tokens before sending.</div></div>
 
 
-<div class="code-block">Long Context vs RAG — The Decision Matrix:
+<div class="code-block"># ── STEP 1: Long Context vs RAG — the fundamental decision ──
+# Should you stuff everything in context, or retrieve only what's needed?
 
-              LONG CONTEXT         RAG
-              (stuff everything)   (retrieve needed)
-─────────────# ─────────────────────# ──────────────────
-SIMPLICITY   #  ✅ সরল — কোনো       #  ❌ জটিল — pipeline
-             #     pipeline নেই     #     লাগে (embed, 
-             #                      #     search, rerank)
-─────────────# ─────────────────────# ──────────────────
-COST         #  ❌ ব্যয়বহুল —       #  ✅ সস্তা — শুধু 
-             #     প্রতি কলে পুরো   #     relevant chunks
-             #     context খরচ      #     (৫-১০K tokens)
-─────────────# ─────────────────────# ──────────────────
-LATENCY      #  ❌ ধীর — ১M tokens  #  ✅ দ্রুত — ছোট 
-             #     process করতে     #     context = দ্রুত
-             #     সময় লাগে         #     response
-─────────────# ─────────────────────# ──────────────────
-ACCURACY     #  ⚠️ মিশ্র — attention #  ✅ সূক্ষ্ম — 
-             #     dilution. মাঝে   #     শুধু relevant
-             #     তথ্য হারায়       #     info, focus তীক্ষ্ণ
-─────────────# ─────────────────────# ──────────────────
-CITATION     #  ❌ কঠিন — কোথা থেকে #  ✅ সহজ — প্রতিটা 
-             #     এলো বলা কঠির     #     chunk-এ source
-─────────────# ─────────────────────# ──────────────────
-UPDATES      #  ❌ প্রতি update-এ   #  ✅ সহজ — নতুন 
-             #     পুরো context      #     doc → embed → 
-             #     পুনরায় পাঠাও     #     add to DB
-─────────────# ─────────────────────# ──────────────────
-SCALE        #  ❌ সীমিত — ১M-২M   #  ✅ অসীম — vector
-             #     tokens পর্যন্ত    #     DB billion docs
-─────────────# ─────────────────────# ──────────────────
-MULTI-HOP    #  ✅ ভালো — সব এক    #  ⚠️ কঠিন — একাধিক
-             #     জায়গায়, সংযোগ  #     retrieval round
-             #     করা সহজ           #     লাগতে পারে
+comparison = {
+    "SIMPLICITY": {
+        "Long Context": "Simple — no pipeline needed, just send everything",
+        "RAG": "Complex — pipeline (embed, search, rerank)",
+        "Winner": "Long Context",
+    },
+    "COST": {
+        "Long Context": "Expensive — pay for entire context every call",
+        "RAG": "Cheap — only pay for relevant chunks (5-10K tokens)",
+        "Winner": "RAG",
+    },
+    "LATENCY": {
+        "Long Context": "Slow — processing 1M tokens takes time",
+        "RAG": "Fast — small context = fast response",
+        "Winner": "RAG",
+    },
+    "ACCURACY": {
+        "Long Context": "Mixed — attention dilution, middle info lost",
+        "RAG": "Focused — only relevant info, sharp attention",
+        "Winner": "RAG (with reranking)",
+    },
+    "CITATION": {
+        "Long Context": "Hard — where did each fact come from?",
+        "RAG": "Easy — each chunk has source metadata",
+        "Winner": "RAG",
+    },
+    "UPDATES": {
+        "Long Context": "Hard — re-send entire context on each update",
+        "RAG": "Easy — new doc → embed → add to DB",
+        "Winner": "RAG",
+    },
+    "SCALE": {
+        "Long Context": "Limited — 1-2M tokens max",
+        "RAG": "Unlimited — vector DB handles billions",
+        "Winner": "RAG",
+    },
+    "MULTI-HOP": {
+        "Long Context": "Good — everything in one place, easy to connect",
+        "RAG": "Harder — may need multiple retrieval rounds",
+        "Winner": "Long Context",
+    },
+}
 
+print("LONG CONTEXT vs RAG:")
+for criterion, values in comparison.items():
+    print(f"\n  {criterion}:")
+    for approach, value in values.items():
+        if approach != "Winner":
+            print(f"    {approach}: {value}")
+    print(f"    → Winner: {values['Winner']}")</div>
+
+<div class="code-block"># ── STEP 2: Decision rules — when to use which ──
+# Clear guidelines for choosing the right approach.
+
+decision_rules = """
 DECISION RULES:
 
 USE LONG CONTEXT WHEN:
-  • ডকুমেন্ট < ৫০K tokens (এক paper, এক contract)
-  • Multi-hop reasoning দরকার (এক জায়গা থেকে 
-    অন্য জায়গায় সংযোগ)
-  • Simplicity গুরুত্বপূর্ণ (prototyping, demo)
-  • ডকুমেন্ট কম বদলায়
-  
-USE RAG WHEN:
-  • ডকুমেন্ট > ৫০K tokens (knowledge base, wiki)
-  • ডকুমেন্ট বাড়ে (নতুন docs যোগ হয়)
-  • Citation দরকার (আইনি, চিকিৎসা)
-  • Cost গুরুত্বপূর্ণ (প্রতি কলে পুরো context নয়)
-  • Multiple users, multiple queries
+  → Document < 50K tokens (one paper, one contract)
+  → Multi-hop reasoning needed (connecting facts across doc)
+  → Simplicity is important (prototyping, demo)
+  → Document rarely changes
+  → Few queries per document
 
-HYBRID (best of both):
-  RAG for initial retrieval (top-20 chunks)
-  → Long context model-কে দাও
-  → Model cross-references, synthesizes
-  → সবচেয়ে ভালো ফল — সূক্ষ্ম + comprehensive</div>
+USE RAG WHEN:
+  → Document > 50K tokens (knowledge base, wiki)
+  → Documents grow (new docs added regularly)
+  → Citation needed (legal, medical)
+  → Cost matters (don't pay for full context each call)
+  → Multiple users, multiple queries
+  → Need to scale to millions of documents
+
+USE HYBRID (best of both):
+  → RAG for initial retrieval (top-20 chunks)
+  → Long context model processes all 20 together
+  → Model cross-references, synthesizes across chunks
+  → Best result — focused + comprehensive
+
+RULE OF THUMB:
+  < 50K tokens → Long context (simpler)
+  50K-500K → Test both (depends on use case)
+  > 500K → RAG (long context too expensive/diluted)
+"""
+
+print(decision_rules)
+
+# COST ANALYSIS:
+cost_analysis = """
+COST ANALYSIS (per query):
+
+LONG CONTEXT (250K tokens, Claude 3.5):
+  Input: 250K * $3/M = $0.75 per query
+  1,000 queries/day = $750/day = $22,500/month
+
+RAG (10K tokens retrieved):
+  Input: 10K * $3/M = $0.03 per query
+  1,000 queries/day = $30/day = $900/month
+  → 96% COST REDUCTION!
+
+HYBRID (20K retrieved + long context):
+  Input: 20K * $3/M = $0.06 per query
+  1,000 queries/day = $60/day = $1,800/month
+  → 92% cost reduction, better accuracy than pure RAG
+"""
+print(cost_analysis)</div>
+
+<div class="code-block"># ── STEP 3: Hybrid approach (RAG + Long Context) ──
+# The best of both worlds: retrieve focused, synthesize broadly.
+
+hybrid = """
+HYBRID APPROACH (production standard):
+
+1. RAG RETRIEVAL (Stage 1):
+   Query → embed → vector search → top-20 chunks
+   → Focused, relevant, cheap
+
+2. LONG CONTEXT SYNTHESIS (Stage 2):
+   Send all 20 chunks to a long-context model (Claude 200K)
+   → Model sees ALL 20 chunks TOGETHER
+   → Can cross-reference, find connections
+   → Multi-hop reasoning across chunks
+   → Comprehensive synthesis
+
+BENEFITS:
+  ✅ Focused retrieval (only relevant chunks, cheap)
+  ✅ Cross-chunk reasoning (long context synthesis)
+  ✅ Citations (each chunk has metadata)
+  ✅ Cost-effective (20K tokens, not 250K)
+  ✅ Best accuracy (focused + comprehensive)
+
+WHEN TO USE HYBRID:
+  → Complex questions requiring multi-document synthesis
+  → "Compare X from doc A with Y from doc B"
+  → When you need both precision AND breadth
+  → Production RAG with high accuracy requirements
+"""
+
+print(hybrid)
+
+# PYTHON: Hybrid implementation:
+hybrid_code = """
+# HYBRID: RAG retrieval + Long context synthesis
+import anthropic
+
+client = anthropic.Anthropic()
+
+def hybrid_rag_long_context(query, top_k=20):
+    # Stage 1: RAG retrieval (focused, cheap):
+    chunks = retrieve_and_rerank(query, top_k=top_k)
+
+    # Stage 2: Send all chunks to long-context model:
+    context = "\\n\\n".join([
+        f"[Doc {i+1}] (Source: {c.metadata['source']}, "
+        f"Page: {c.metadata.get('page', '?')})\\n{c.content}"
+        for i, c in enumerate(chunks)
+    ])
+
+    response = client.messages.create(
+        model="claude-3-5-sonnet-20241022",
+        max_tokens=2000,
+        system="Answer from the documents below. "
+               "Cross-reference information across documents. "
+               "Cite [Doc N] for each claim.",
+        messages=[{
+            "role": "user",
+            "content": f"Documents:\\n{context}\\n\\nQuestion: {query}"
+        }]
+    )
+
+    return response.content[0].text
+
+# Result: focused retrieval + comprehensive long-context synthesis
+# Best of both worlds!
+"""
+
+print(hybrid_code)</div>
+
+<div class="code-block"># ── STEP 4: Long context models comparison (2024-2025) ──
+# Which models handle long context best?
+
+models = {
+    "Gemini 1.5 Pro": {
+        "max_context": "1,000,000 tokens (~750K words)",
+        "cost": "$1.25/M in, $5/M out",
+        "strength": "Largest context window available",
+        "weakness": "Quality degrades at very long context",
+        "best_for": "Processing entire books, large codebases",
+    },
+    "Claude 3.5 Sonnet": {
+        "max_context": "200,000 tokens (~150K words)",
+        "cost": "$3/M in, $15/M out",
+        "strength": "Best quality on long context, strong reasoning",
+        "weakness": "Smaller window than Gemini, more expensive",
+        "best_for": "Complex analysis, code understanding, RAG",
+    },
+    "GPT-4o": {
+        "max_context": "128,000 tokens (~96K words)",
+        "cost": "$2.50/M in, $10/M out",
+        "strength": "Fast, versatile, good all-rounder",
+        "weakness": "Smallest context of the three",
+        "best_for": "General use, balanced cost/quality",
+    },
+    "Llama 3.1 405B": {
+        "max_context": "128,000 tokens",
+        "cost": "Self-hosted (free model, compute cost)",
+        "strength": "Open source, can self-host",
+        "weakness": "Requires significant compute",
+        "best_for": "Privacy-sensitive, self-hosted",
+    },
+}
+
+print("LONG CONTEXT MODELS:")
+for model, info in models.items():
+    print(f"\n  {model}")
+    for key, value in info.items():
+        print(f"    {key}: {value}")
+
+# BENCHMARK: Long context accuracy:
+benchmark = """
+NEEDLE IN A HAYSTACK BENCHMARK:
+  → Hide a specific fact in a long document
+  → Ask the model to find it
+  → Measure accuracy at different context lengths
+
+RESULTS (2024):
+  Claude 3.5 (200K):  99% accuracy at any position
+  GPT-4o (128K):      97% accuracy (slight degradation at 128K)
+  Gemini 1.5 (1M):    95% accuracy (degradation beyond 500K)
+
+INSIGHT:
+  Even the best models degrade with very long context.
+  RAG (focused context) often BEATS long context for accuracy.
+  "Just because you CAN use 1M tokens doesn't mean you SHOULD."
+"""
+print(benchmark)</div>
+
+<div class="code-block"># ── STEP 5: When long context FAILS ──
+# Know the limitations before choosing long context over RAG.
+
+failures = """
+WHEN LONG CONTEXT FAILS:
+
+1. ATTENTION DILUTION:
+   → 100K+ tokens → middle info gets lost
+   → Even with "needle in haystack" tests passing,
+     complex reasoning suffers
+
+2. COST EXPLOSION:
+   → 250K tokens per call * 1000 calls/day = $750/day
+   → Unsustainable for high-volume applications
+
+3. NO CITATIONS:
+   → Model reads everything, but can't say WHERE each fact came from
+   → Legal/medical need exact citations → RAG required
+
+4. UPDATE PROBLEM:
+   → Document changes → must re-send ENTIRE document
+   → RAG: just update the changed chunk
+
+5. SCALE LIMIT:
+   → Even Gemini 1.5 (1M tokens) can't handle a full library
+   → RAG: unlimited documents
+
+6. LATENCY:
+   → Processing 200K tokens = 5-10 seconds
+   → RAG with 10K tokens = 1-2 seconds
+
+7. RATE LIMITS:
+   → API rate limits are TOKEN-based
+   → Long context = fewer requests per minute allowed
+
+REAL EXAMPLE:
+  Company has 10,000 documents (50M tokens total)
+  → Long context: IMPOSSIBLE (50M > 1M max)
+  → RAG: Easy (retrieve 5 relevant docs, send 10K tokens)
+"""
+
+print(failures)</div>
+
+<div class="code-block"># ── STEP 6: Decision framework and summary ──
+# Make the right choice every time.
+
+framework = """
+DECISION FRAMEWORK:
+
+Step 1: How much content do you have?
+  < 50K tokens → Long context (simple, good accuracy)
+  50K-500K → Test both, lean toward RAG
+  > 500K → RAG (must use)
+
+Step 2: How often do queries repeat the same context?
+  Same doc, many questions → Long context + prompt caching
+  Different docs each time → RAG
+
+Step 3: Do you need citations?
+  Yes (legal, medical, compliance) → RAG
+  No (casual Q&A, brainstorming) → Long context OK
+
+Step 4: What's your budget?
+  High (enterprise, low volume) → Long context OK
+  Low (startup, high volume) → RAG
+
+Step 5: Do you need multi-hop reasoning?
+  Yes (complex analysis) → Hybrid (RAG retrieve + long context synthesize)
+  No (simple Q&A) → Pure RAG
+
+DEFAULT CHOICE FOR PRODUCTION:
+  → Start with RAG (cheaper, scalable, citable)
+  → Add long-context synthesis for complex queries (hybrid)
+  → Use pure long context only for small documents (< 50K)
+"""
+
+print(framework)
+
+# SUMMARY TABLE:
+# ┌──────────────────┬─────────────────┬──────────────────────────┐
+# │ Criterion        │ Long Context    │ RAG                      │
+# ├──────────────────┼─────────────────┼──────────────────────────┤
+# │ Simplicity       │ ✅ Simpler      │ ❌ More complex          │
+# │ Cost             │ ❌ Expensive    │ ✅ Cheap                 │
+# │ Latency          │ ❌ Slow         │ ✅ Fast                  │
+# │ Accuracy         │ ⚠️ Dilution     │ ✅ Focused               │
+# │ Citation         │ ❌ Hard         │ ✅ Easy                  │
+# │ Scale            │ ❌ Limited      │ ✅ Unlimited             │
+# │ Multi-hop        │ ✅ Good         │ ⚠️ Needs multiple rounds │
+# │ Best approach    │ < 50K tokens    │ > 50K tokens             │
+# │ Hybrid           │ RAG + Long Context = best of both         │
+# └──────────────────┴─────────────────┴──────────────────────────┘
+
+# FINAL ADVICE:
+# "Don't use a 1M context window as a replacement for RAG.
+# Use RAG to find the needle, then long context to understand it."
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">⚠️ ভুল পছন্দ</div>১০,০০০ ডকুমেন্ট (৫০M tokens) — সব Gemini ১M-এ দাও। অসম্ভব। বা ৫০ ডকুমেন্ট (২৫০K tokens) — প্রতি কলে $১.২৫। অবাস্তব। বা একটা ছোট ডকুমেন্ট (৫K) — জটিল RAG pipeline বানাও। অতিরিক্ত।</div>
