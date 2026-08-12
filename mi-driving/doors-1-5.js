@@ -1693,56 +1693,163 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — DUI Checkpoint:</strong> 2 beers, thought fine — BAC 0.09. License suspended 6 months. Fix: one drink = wait one hour.</div></div>
 
 
-<div class="code-block">MICHIGAN SPEED LIMITS — সম্পূর্ণ তালিকা
-# — — — — — — — — — — — — — — — — — — — — — —
+<div class="code-block"># ── STEP 7: Michigan speed limits — complete list ──
+# Know the default speed for every road type.
 
-🚗 MICHIGAN SPEED LIMITS (default যদি সাইন না থাকে):
+# MICHIGAN SPEED LIMITS (default when no sign posted):
 
-  🏘️ Residential / Business District: 25 mph
-  🚸 School Zone: সাইনে লেখা গতি — সাধারণত
-     school hours-এ বা "WHEN CHILDREN ARE
-     PRESENT" / flashing light জ্বললে কার্যকর
-  🛣️ County/Local Road: 55 mph
-  🛤️ Freeway/Expressway: 70 mph (সাধারণ)
-     কিছু rural freeway-তে 75 mph (সাইন দেখো)
-     urban এলাকায় 55-65 mph হতে পারে
-  🚚 Trucks: 65 mph (freeway-তে)
+speed_limits = {
+    "Residential / Business District": {"mph": 25, "note": "City streets, neighborhoods"},
+    "School Zone": {"mph": 25, "note": "When children present / flashing light active"},
+    "County / Local Road": {"mph": 55, "note": "Rural roads, country highways"},
+    "Freeway / Expressway (rural)": {"mph": 70, "note": "Most highways outside cities"},
+    "Freeway (some rural)": {"mph": 75, "note": "Upper Peninsula, sign posted"},
+    "Freeway (urban)": {"mph": 55-65, "note": "Metro Detroit, Grand Rapids"},
+    "Trucks (freeway)": {"mph": 65, "note": "Vehicles over 10,000 lbs"},
+    "Construction Zone": {"mph": "as posted", "note": "Fines DOUBLE in work zones"},
+}
 
-  ⚠️ সবসময় posted সাইন অনুসরণ করো
-  ⚠️ সাইনের গতি সর্বোচ্চ — কখনো minimum নয়
+print("MICHIGAN SPEED LIMITS:")
+for road_type, info in speed_limits.items():
+    print(f"  {road_type}: {info['mph']} mph — {info['note']}")
 
-# — — — — — — — — — — — — — — — — — — — — — —
-⚠️ BASIC SPEED LAW (সবচেয়ে গুরুত্বপূর্ণ)
-# — — — — — — — — — — — — — — — — — — — — — —
+# BASIC SPEED LAW (most important!):
+# "Drive at a careful and prudent speed for conditions"
+# → Speed limit is MAXIMUM in PERFECT conditions
+# → In bad weather, legal speed may be WELL below limit
 
-  "Drive at a careful and prudent speed 
-   for conditions"
+# PYTHON (safe speed calculator):
+def safe_speed(posted_limit, weather="clear", road_type="dry", traffic="light"):
+    """Calculate safe driving speed based on conditions."""
+    speed = posted_limit
 
-  অর্থাৎ: weather, traffic, road condition 
-  অনুযায়ী গতি ঠিক করো
+    # Weather adjustments:
+    weather_reduction = {
+        "clear": 0,
+        "rain": 0.15,        # reduce 15%
+        "snow": 0.35,        # reduce 35%
+        "ice": 0.50,         # reduce 50%!
+        "fog": 0.30,         # reduce 30%
+        "heavy_rain": 0.25,  # reduce 25%
+    }
 
-  ❄️ Snow/Ice: speed limit এর অনেক কম
-  🌧️ Rain: speed limit এর কিছু কম
-  🌫️ Fog: খুব ধীরে
-  🚦 Traffic: traffic অনুযায়ী
-  🔨 Construction: সাইন অনুযায়ী (double fine!)
+    # Road condition adjustments:
+    road_reduction = {
+        "dry": 0,
+        "wet": 0.10,
+        "snow_covered": 0.30,
+        "icy": 0.50,
+        "gravel": 0.15,
+    }
 
-  → Speed limit 55 হলেও snow-এ 30 mph 
-    আইনি হতে পারে
+    w_factor = weather_reduction.get(weather, 0)
+    r_factor = road_reduction.get(road_type, 0)
+    total_reduction = max(w_factor, r_factor)  # take the worse condition
 
-# — — — — — — — — — — — — — — — — — — — — — —
-🚨 TOO FAST / TOO SLOW — উভয়ই বেআইনি
-# — — — — — — — — — — — — — — — — — — — — — —
+    safe = int(posted_limit * (1 - total_reduction))
 
-  ❌ খুব দ্রুত: accident risk, ticket, points
-  ❌ খুব ধীরে: traffic block, rear-end risk
-     → minimum speed highway-এ আছে
-     → খুব ধীরে চালালেও ticket
+    print(f"  Posted: {posted_limit} mph | Weather: {weather} | Road: {road_type}")
+    print(f"  → Safe speed: {safe} mph (reduce {total_reduction*100:.0f}%)")
 
-  💡 নিয়ম: traffic flow-এর সাথে চালাও
-     কিন্তু speed limit পার করো না</div>
+    if safe < posted_limit * 0.6:
+        print(f"  ⚠️ DANGEROUS conditions — consider not driving!")
 
-<div class="code-block">PARKING RULES — কোথায় পার্ক করবে, কোথায় নয়
+    return safe
+
+print("\nSAFE SPEED CALCULATOR:")
+safe_speed(70, "snow", "snow_covered")
+safe_speed(55, "rain", "wet")
+safe_speed(25, "clear", "dry")
+safe_speed(70, "ice", "icy")
+
+# TOO FAST vs TOO SLOW — both illegal:
+# → Too fast: accident risk, ticket, points
+# → Too slow: traffic hazard, rear-end risk, ALSO ticketable
+# → Rule: drive with traffic flow, but never exceed speed limit
+# → Highway minimum speed: usually 45-55 mph (posted)</div>
+
+<div class="code-block"># ── STEP 8: Parking rules — where and how ──
+# Legal vs illegal parking in Michigan.
+
+# PARKING RULES:
+
+parking_rules = {
+    "ILLEGAL PARKING (never park here)": [
+        "Within 15 feet of a fire hydrant",
+        "Within 20 feet of a crosswalk at an intersection",
+        "Within 30 feet of a STOP sign, YIELD sign, or traffic signal",
+        "Within 50 feet of a railroad crossing",
+        "In front of a public or private driveway",
+        "On the travel lane of any road (except emergency)",
+        "In a space reserved for disabled persons (without placard)",
+        "On a sidewalk or bike lane",
+        "Within 500 feet of a fire or accident (emergency scene)",
+        "On a bridge or in a tunnel",
+    ],
+    "LEGAL PARKING (generally OK)": [
+        "Designated parking spaces (lined, marked)",
+        "Street parking where not prohibited by sign",
+        "Private property with owner's permission",
+        "Parking lots (follow posted rules)",
+        "Parallel parking on city streets (curb side only)",
+    ],
+    "PARALLEL PARKING STEPS": [
+        "1. Signal and stop alongside the car in front of your space",
+        "2. Check mirrors and blind spots",
+        "3. Reverse slowly, turning wheel toward curb",
+        "4. When front bumper clears the car ahead, turn wheel away from curb",
+        "5. Straighten wheels, center car in space",
+        "6. Park within 12 inches of curb",
+        "7. Car must be within the painted lines",
+    ],
+    "HILL PARKING (prevent rolling)": {
+        "Uphill with curb": "Turn wheels AWAY from curb (roll back into curb)",
+        "Uphill no curb": "Turn wheels to the RIGHT (roll off road)",
+        "Downhill": "Turn wheels TOWARD curb (roll forward into curb)",
+        "Always": "Set parking brake + put in Park (or gear for manual)",
+    },
+    "DISABLED PARKING (handicap placard)": [
+        "Only park in blue spaces if you have a valid placard/plate",
+        "Fine for illegal use: $50-500",
+        "Placard must be displayed on rearview mirror",
+        "Only the placard holder can use it (not family members)",
+    ],
+    "WINTER PARKING (Michigan special)": [
+        "Many cities have overnight winter parking bans (Nov-Apr)",
+        "Check local ordinances — street parking may be prohibited 2AM-6AM",
+        "Snow emergencies: no parking on designated snow routes",
+        "Violators may be towed + fined",
+    ],
+}
+
+for category, rules in parking_rules.items():
+    print(f"\n{category}:")
+    if isinstance(rules, list):
+        for rule in rules:
+            print(f"  → {rule}")
+    elif isinstance(rules, dict):
+        for situation, action in rules.items():
+            print(f"  {situation}: {action}")
+
+# PYTHON (parking fine calculator):
+def parking_fine(violation_type):
+    """Calculate Michigan parking fines."""
+    fines = {
+        "fire_hydrant": 100,
+        "disabled_space": 250,
+        "blocking_driveway": 75,
+        "too_close_intersection": 75,
+        "expired_meter": 25,
+        "snow_emergency": 150,
+        "no_parking_zone": 50,
+        "sidewalk": 75,
+    }
+    base_fine = fines.get(violation_type, 50)
+    return base_fine
+
+print("\nPARKING FINE EXAMPLES:")
+for violation in ["fire_hydrant", "disabled_space", "expired_meter", "snow_emergency"]:
+    print(f"  {violation}: ${parking_fine(violation)}")</div>
 # — — — — — — — — — — — — — — — — — — — — — —
 💺 SEATBELT LAW (সিটবেল্ট আইন)
 # — — — — — — — — — — — — — — — — — — — — — —
