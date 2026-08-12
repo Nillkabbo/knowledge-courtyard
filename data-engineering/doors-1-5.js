@@ -21,30 +21,418 @@ doors.push({
 <div class="dialogue"><strong>দুই-জগত-স্থপতি আব্বাস:</strong> OLTP ও OLAP দুটো ভিন্ন জগত। OLTP-তে তুমি একটি row খুঁজো — WHERE id=42। দ্রুত। Row-based storage — পুরো row একসাথে। কিন্তু SUM(amount) করতে চাইলে প্রতিটি row পড়তে হবে — ধীর! OLAP-তে columnar storage — শুধু amount column পড়ো, বাকি সব স্কিপ। দ্রুত aggregation! এটাই পার্থক্য — row ও columnar।</div>
 <div class="dialogue en"><strong>Two-World Architect Abbas:</strong> OLTP and OLAP are different worlds. In OLTP, you find one row — WHERE id=42. Fast. Row-based storage — entire row together. But SUM(amount) means reading every row — slow! In OLAP, columnar storage — read only the amount column, skip everything else. Fast aggregation! This is the difference — row vs columnar.</div>
 
-<div class="code-block">— OLTP vs OLAP দেখো —
+<div class="code-block"># ── STEP 1: OLTP vs OLAP — Two database worlds ──
+# Understanding the fundamental data engineering split.
 
-  -- OLTP (MySQL / PostgreSQL): Single row
-  SELECT * FROM transactions WHERE id = 42;
-  -- ⚡ Fast — B-tree index lookup
+# OLTP (MySQL / PostgreSQL): Single-row operations
+#   SELECT * FROM transactions WHERE id = 42;
+#   -- Fast: B-tree index lookup
+#
+#   UPDATE accounts SET balance = balance - 500 WHERE id = 'acc_123';
+#   -- Fast: single row update
 
-  UPDATE accounts SET balance = balance - 500
-  WHERE id = 'acc_123';
-  -- ⚡ Fast — single row update
+# OLAP (Snowflake / BigQuery): Bulk aggregations
+#   SELECT category, SUM(amount), COUNT(*)
+#   FROM transactions
+#   WHERE date >= '2026-01-01'
+#   GROUP BY category
+#   ORDER BY sum DESC;
+#   -- Row-based: must read every row (slow)
+#   -- Columnar: only read amount + category columns (fast!)
 
-  -- OLAP (Snowflake / BigQuery): Aggregation
-  SELECT category, SUM(amount), COUNT(*)
-  FROM transactions
-  WHERE date >= '2026-01-01'
-  GROUP BY category
-  ORDER BY sum DESC;
-  -- 🐢 Row-based: প্রতিটি row পড়তে হবে
-  -- ⚡ Columnar: শুধু amount + category column
+# COLUMNAR STORAGE (Parquet):
+#   Row 1: id=1, name=Hasan, amount=5000
+#   Row 2: id=2, name=Rakib, amount=3200
+#   Columnar: [1,2], [Hasan,Rakib], [5000,3200]
+#   SUM(amount) = only read [5000,3200] — skip rest!
 
-  -- Columnar storage (Parquet):
-  -- Row 1: id=1, name=Hasan, amount=5000
-  -- Row 2: id=2, name=Rakib, amount=3200
-  -- Columnar: [1,2], [Hasan,Rakib], [5000,3200]
-  -- SUM(amount) = শুধু [5000,3200] পড়ো — বাকি skip!</div>
+# ROW vs COLUMNAR:
+#   Row-based (OLTP): each row stored together. UPDATE fast. SUM slow.
+#   Columnar (OLAP): each column separate. SUM fast. UPDATE slow.
+#   Normalization: OLTP = 3NF. OLAP = Star/Snowflake (denormalized).
+#   ETL: OLTP → Extract → Transform → Load → OLAP
+
+# ── DATA WAREHOUSE ARCHITECTURE ──
+
+# STAR SCHEMA (classic OLAP):
+#   Fact table: transactions (billions of rows)
+#     - transaction_id, date_id, product_id, store_id, amount, quantity
+#   Dimension tables (surrounding the "star"):
+#     - dim_date: date_id, year, month, day, weekday
+#     - dim_product: product_id, name, category, brand
+#     - dim_store: store_id, name, city, country
+
+# Query example:
+star_schema_sql = """
+-- Total sales by category for 2025:
+SELECT
+    p.category,
+    SUM(f.amount) AS total_sales,
+    COUNT(*) AS num_transactions
+FROM fact_transactions f
+JOIN dim_date d ON f.date_id = d.date_id
+JOIN dim_product p ON f.product_id = p.product_id
+WHERE d.year = 2025
+GROUP BY p.category
+ORDER BY total_sales DESC;
+"""
+print(star_schema_sql)
+
+# DATA WAREHOUSE vs DATA LAKE:
+#   Data Warehouse: structured, schema-on-write, SQL (Snowflake, BigQuery)
+#   Data Lake: raw/unstructured, schema-on-read (S3, HDFS)
+#   Data Lakehouse: both (Delta Lake, Iceberg, Hudi)</div>
+
+<div class="code-block"># ── STEP 2: Parquet vs CSV — columnar file formats ──
+# Why Parquet is 10-100x faster for analytics.
+
+import_time = """
+FILE FORMAT COMPARISON:
+
+Format    | Read Speed | Size    | Use Case
+CSV       | 1x (slow)  | 1x      | Human-readable, interchange
+JSON      | 0.8x       | 1.5x    | APIs, nested data
+Parquet   | 10-50x     | 0.2x    | Analytics, columnar
+ORC       | 10-50x     | 0.2x    | Hive, analytics
+Arrow     | 50-100x    | 0.5x    | In-memory, IPC
+
+WHY PARQUET IS FAST:
+  → Columnar: SUM(amount) reads ONLY amount column
+  → Compression: similar values together = better compression
+  → Predicate pushdown: skip irrelevant row groups
+  → Encoding: dictionary, run-length, delta encoding
+
+PYTHON (compare CSV vs Parquet):
+  import pandas as pd
+  import time
+
+  # Generate 1M rows:
+  df = pd.DataFrame({
+      'id': range(1_000_000),
+      'category': ['A', 'B', 'C', 'D'] * 250_000,
+      'amount': [x * 1.5 for x in range(1_000_000)],
+  })
+
+  # Save as CSV and Parquet:
+  df.to_csv('data.csv', index=False)        # ~35 MB
+  df.to_parquet('data.parquet')              # ~8 MB (4x smaller!)
+
+  # Read + aggregate comparison:
+  start = time.time()
+  csv_df = pd.read_csv('data.csv')
+  csv_sum = csv_df['amount'].sum()
+  csv_time = time.time() - start  # ~1.2 seconds
+
+  start = time.time()
+  pq_df = pd.read_parquet('data.parquet', columns=['amount'])  # only 1 column!
+  pq_sum = pq_df['amount'].sum()
+  pq_time = time.time() - start  # ~0.05 seconds (24x faster!)
+
+  print(f"CSV:   {csv_time:.3f}s")
+  print(f"Parquet: {pq_time:.3f}s")
+  print(f"Speedup: {csv_time / pq_time:.1f}x")
+"""
+
+print(import_time)
+
+# BEST PRACTICES:
+# → CSV: for data exchange, human-readable, small files
+# → Parquet: for analytics, big data, repeated queries
+# → Arrow: for in-memory processing, zero-copy
+# → Never query CSV in production analytics (too slow!)</div>
+
+<div class="code-block"># ── STEP 3: Spark / PySpark — distributed data processing ──
+# Processing terabytes of data across a cluster.
+
+# APACHE SPARK:
+# → Distributed data processing engine
+# → In-memory (10-100x faster than Hadoop MapReduce)
+# → Lazy evaluation: builds execution plan, optimizes later
+# → Supports: SQL, DataFrame, MLlib, Structured Streaming
+
+# PYSPARK DATAFRAME (like pandas but distributed):
+
+pyspark_example = """
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col, sum, avg, count, when
+
+# Create Spark session:
+spark = SparkSession.builder \\
+    .appName("SalesAnalytics") \\
+    .config("spark.sql.adaptive.enabled", "true") \\
+    .getOrCreate()
+
+# Read Parquet (lazy - doesn't load yet):
+sales = spark.read.parquet("s3://data/sales/")
+
+# Transformations (lazy - builds plan, doesn't execute):
+result = (sales
+    .filter(col("year") == 2025)                     # filter rows
+    .groupBy("category", "region")                   # group
+    .agg(
+        sum("amount").alias("total_sales"),
+        count("*").alias("num_orders"),
+        avg("amount").alias("avg_order_value")
+    )
+    .filter(col("total_sales") > 10000)              # having
+    .orderBy(col("total_sales").desc())              # sort
+)
+
+# Action (triggers execution!):
+result.show(20)                # NOW it runs
+result.write.mode("overwrite").parquet("s3://output/top_categories/")
+
+# LAZY EVALUATION explained:
+# → filter, groupBy, agg = transformations (lazy)
+# → show, write, count, collect = actions (eager)
+# → Spark optimizes the ENTIRE plan before executing
+# → Pushes filters down to data source (predicate pushdown)
+"""
+
+print(pyspark_example)
+
+# SPARK ARCHITECTURE:
+# Driver: orchestrates, builds execution plan
+# Executors: worker nodes, process partitions in parallel
+# Partitions: data split across executors
+# Shuffle: data movement between stages (expensive!)
+
+# WHEN TO USE SPARK:
+# → Data > 100GB (pandas can't fit in memory)
+# → Distributed processing needed (cluster)
+# → ETL pipelines at scale
+# → Don't use for < 1GB (pandas/polars is faster for small data)</div>
+
+<div class="code-block"># ── STEP 4: Shuffle and data skew ──
+# The biggest performance killer in Spark.
+
+shuffle = """
+SHUFFLE & DATA SKEW:
+
+SHUFFLE = moving data between partitions across the network.
+→ Expensive! Network I/O is slow.
+→ Caused by: groupBy, join, distinct, repartition
+
+DATA SKEW = one partition much larger than others.
+→ One executor takes 10x longer than others
+→ "Straggler" executor blocks the whole job
+→ Common with: groupBy on skewed keys (e.g., "null", "other")
+
+HOW TO DETECT SKEW:
+  → Check Spark UI: one task takes much longer than others
+  → Look at partition sizes: one is 100x bigger
+
+SOLUTIONS:
+
+1. SALTING (break up skewed keys):
+   → Add random suffix to skewed key
+   → Group by (key, salt) → aggregate → re-aggregate
+
+   # Before (skewed):
+   df.groupBy("category").sum("amount")  # "other" has 90% of rows
+
+   # After (salted):
+   from pyspark.sql.functions import concat, rand, floor, lit
+   df_salted = df.withColumn(
+       "salted_key",
+       concat(col("category"), lit("_"), floor(rand() * 10))
+   )
+   # First aggregation by salted key:
+   partial = df_salted.groupBy("salted_key").sum("amount")
+   # Extract original key and re-aggregate:
+   final = partial.withColumn("category", split(col("salted_key"), "_")[0]) \\
+       .groupBy("category").sum("sum(amount)")
+
+2. BROADCAST JOIN (avoid shuffle for small tables):
+   → Small table (< 10MB) sent to all executors
+   → No shuffle needed!
+   → spark.conf.set("spark.sql.autoBroadcastJoinThreshold", 10485760)
+
+   from pyspark.sql.functions import broadcast
+   big_df.join(broadcast(small_df), "id")  # small_df broadcast, no shuffle
+
+3. REPARTITION (balance data):
+   → df.repartition(200, "category") → even distribution
+   → Use BEFORE join/groupBy to balance
+
+4. ADAPTIVE QUERY EXECUTION (AQE):
+   → Spark 3.0+: automatically handles skew
+   → spark.sql.adaptive.enabled = true
+   → spark.sql.adaptive.skewJoin.enabled = true
+"""
+
+print(shuffle)</div>
+
+<div class="code-block"># ── STEP 5: ETL/ELT pipelines ──
+# Moving and transforming data.
+
+etl = """
+ETL vs ELT:
+
+ETL (Extract → Transform → Load):
+  → Transform BEFORE loading to warehouse
+  → Good for: complex transformations, on-prem
+  → Tools: Informatica, Talend, custom Python
+
+ELT (Extract → Load → Transform):
+  → Load raw data FIRST, then transform in warehouse
+  → Good for: cloud warehouses (Snowflake, BigQuery)
+  → Tools: dbt, Snowflake, BigQuery
+  → Modern standard (cloud-native)
+
+MODERN DATA STACK:
+  Ingestion: Fivetran, Airbyte, Debezium (CDC)
+  Storage: Snowflake, BigQuery, Databricks, S3
+  Transformation: dbt, Spark, SQL
+  Orchestration: Airflow, Dagster, Prefect
+  BI/Analytics: Looker, Tableau, Metabase
+
+PYTHON (Airflow pipeline):
+  from airflow import DAG
+  from airflow.operators.python import PythonOperator
+  from datetime import datetime
+
+  def extract():
+      # Pull from source (API, database):
+      data = requests.get("https://api.example.com/data").json()
+      save_to_s3(data, "raw/data.json")
+      return "raw/data.json"
+
+  def transform(**context):
+      raw_path = context['ti'].xcom_pull(task_ids='extract')
+      data = read_from_s3(raw_path)
+      # Clean, validate, enrich:
+      clean = validate_and_clean(data)
+      save_to_s3(clean, "processed/clean.parquet")
+
+  def load(**context):
+      processed = read_from_s3("processed/clean.parquet")
+      # Load to warehouse:
+      snowflake.execute("COPY INTO warehouse.table FROM @s3/processed/")
+
+  dag = DAG('etl_pipeline',
+      schedule_interval='@daily',
+      start_date=datetime(2025, 1, 1))
+
+  extract_task = PythonOperator(task_id='extract', python_callable=extract, dag=dag)
+  transform_task = PythonOperator(task_id='transform', python_callable=transform, dag=dag)
+  load_task = PythonOperator(task_id='load', python_callable=load, dag=dag)
+
+  extract_task >> transform_task >> load_task
+
+dbt (SQL transformation):
+  -- models/stg_transactions.sql
+  SELECT
+      transaction_id,
+      CAST(amount AS DECIMAL(10,2)) AS amount,
+      PARSE_DATE('%Y-%m-%d', date_str) AS date,
+      LOWER(status) AS status
+  FROM raw.transactions
+  WHERE status = 'completed'
+"""
+
+print(etl)</div>
+
+<div class="code-block"># ── STEP 6: Streaming data pipelines ──
+# Real-time data processing.
+
+streaming = """
+STREAMING DATA PIPELINES:
+
+BATCH (traditional):
+  → Process all data at once (daily/nightly)
+  → Latency: hours to days
+  → Tools: Spark, Airflow, SQL
+
+STREAMING (modern):
+  → Process data as it arrives (milliseconds)
+  → Latency: milliseconds to seconds
+  → Tools: Kafka, Flink, Spark Streaming
+
+APACHE KAFKA (distributed event streaming):
+  → Pub/sub message queue
+  → Topics: categorized streams of events
+  → Producers: write events to topics
+  → Consumers: read events from topics
+  → Partitions: parallel processing
+  → Retention: events stored for N days
+
+PYTHON (Kafka producer):
+  from kafka import KafkaProducer
+  import json
+
+  producer = KafkaProducer(
+      bootstrap_servers=['localhost:9092'],
+      value_serializer=lambda v: json.dumps(v).encode('utf-8')
+  )
+
+  # Send events:
+  for order in order_stream:
+      producer.send('orders', order)
+      # order = {"order_id": 123, "amount": 99.99, "customer": "Hasan"}
+
+  producer.flush()
+
+PYTHON (Kafka consumer):
+  from kafka import KafkaConsumer
+  import json
+
+  consumer = KafkaConsumer(
+      'orders',
+      bootstrap_servers=['localhost:9092'],
+      value_deserializer=lambda x: json.loads(x.decode('utf-8')),
+      group_id='order-processor',
+      auto_offset_reset='latest'
+  )
+
+  for message in consumer:
+      order = message.value
+      process_order(order)  # real-time processing!
+
+CDC (Change Data Capture):
+  → Capture database changes in real-time
+  → Debezium: reads MySQL/PostgreSQL binlog
+  → Streams changes to Kafka → downstream systems
+  → Pattern: every INSERT/UPDATE/DELETE → event stream
+
+STRUCTURED STREAMING (Spark):
+  # Read streaming data:
+  stream = spark \\
+      .readStream \\
+      .format("kafka") \\
+      .option("kafka.bootstrap.servers", "localhost:9092") \\
+      .option("subscribe", "orders") \\
+      .load()
+
+  # Process in real-time:
+  result = stream \\
+      .selectExpr("CAST(value AS STRING) as json") \\
+      .select(from_json("json", schema).alias("data")) \\
+      .select("data.*") \\
+      .groupBy(window("timestamp", "5 minutes"), "category") \\
+      .agg(sum("amount").alias("total"))
+
+  # Write to dashboard:
+  result.writeStream \\
+      .outputMode("complete") \\
+      .format("console") \\
+      .start()
+"""
+
+print(streaming)
+
+# DATA ENGINEERING TOOL SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Category         │ Tool                          │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Ingestion        │ Fivetran, Airbyte, Debezium   │
+# │ Storage          │ Snowflake, BigQuery, S3       │
+# │ Processing       │ Spark, dbt, Flink             │
+# │ Streaming        │ Kafka, Kinesis, Pulsar        │
+# │ Orchestration    │ Airflow, Dagster, Prefect     │
+# │ BI/Analytics     │ Looker, Tableau, Metabase     │
+# │ Data Quality     │ Great Expectations, Soda      │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="callout info"><span class="co-icon">📐</span><div><strong>Row vs Columnar:</strong><br>
 <strong>Row-based (OLTP):</strong> প্রতিটি row একসাথে সংরক্ষিত। UPDATE দ্রুত। SUM ধীর।<br>
