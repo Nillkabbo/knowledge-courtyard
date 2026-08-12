@@ -132,26 +132,417 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Transistor → Logic Gates → Adder → ALU → CPU। NAND gate = ৪টা transistor, আর NAND দিয়েই সব gate বানানো যায়।</div>
 
-<div class="code-block">
+<div class="code-block"># ── STEP 1: Logic gates and binary arithmetic ──
+# How transistors become computation.
 
-<table style="width:100%;border-collapse:collapse;margin-top:.5rem">
-<tr style="border-bottom:2px solid var(--accent)">
-<th style="text-align:left;padding:.3rem">A</th><th style="text-align:left;padding:.3rem">B</th>
-<th style="text-align:left;padding:.3rem">AND</th><th style="text-align:left;padding:.3rem">OR</th>
-<th style="text-align:left;padding:.3rem">XOR</th><th style="text-align:left;padding:.3rem">NAND</th>
-</tr>
-<tr><td style="padding:.2rem">0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
-<tr><td style="padding:.2rem">0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td></tr>
-<tr><td style="padding:.2rem">1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td></tr>
-<tr><td style="padding:.2rem">1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
-</table>
+# BOOLEAN LOGIC GATES:
+# A  B  | AND  OR  XOR  NAND
+# 0  0  |  0   0   0    1
+# 0  1  |  0   1   1    1
+# 1  0  |  0   1   1    1
+# 1  1  |  1   1   0    0
 
-<br><strong>NAND = Universal Gate:</strong><br>
-NOT A = A NAND A<br>
-A AND B = NOT(A NAND B) = (A NAND B) NAND (A NAND B)<br>
-A OR B = (A NAND A) NAND (B NAND B)<br>
-<strong>শুধু NAND দিয়েই সব gate বানানো যায়!</strong>
-</div>
+# NAND = UNIVERSAL GATE:
+# NOT A = A NAND A
+# A AND B = (A NAND B) NAND (A NAND B)
+# A OR B = (A NAND A) NAND (B NAND B)
+# → All gates can be built from just NAND!
+
+# BINARY ADDITION (Half Adder):
+#   Sum = A XOR B
+#   Carry = A AND B
+#   → 0+0=0, 0+1=1, 1+0=1, 1+1=0 (carry 1)
+
+# FULL ADDER (with carry input):
+#   Two Half Adders + OR gate = Full Adder
+#   Chain 32 Full Adders = 32-bit adder = ALU foundation
+
+# PYTHON (simulate logic gates):
+def AND(a, b): return a & b
+def OR(a, b): return a | b
+def XOR(a, b): return a ^ b
+def NAND(a, b): return 1 - (a & b)
+
+def half_adder(a, b):
+    """Returns (sum, carry)"""
+    return XOR(a, b), AND(a, b)
+
+def full_adder(a, b, carry_in):
+    """3-input adder: a + b + carry_in"""
+    sum1, carry1 = half_adder(a, b)
+    sum2, carry2 = half_adder(sum1, carry_in)
+    carry_out = OR(carry1, carry2)
+    return sum2, carry_out
+
+def ripple_carry_adder(a_bits, b_bits):
+    """32-bit adder: chain of full adders"""
+    result = []
+    carry = 0
+    for a, b in zip(a_bits, b_bits):
+        s, carry = full_adder(a, b, carry)
+        result.append(s)
+    result.append(carry)  # final carry
+    return result
+
+# 5 + 3 in binary (101 + 011 = 1000):
+a = [1, 0, 1, 0, 0]  # 5 (LSB first)
+b = [1, 1, 0, 0, 0]  # 3
+print(ripple_carry_adder(a, b))  # [0, 0, 0, 1, 0] = 8
+
+# EVERYTHING IS TRANSISTORS:
+# Transistor → NAND gate → Full Adder → ALU → CPU
+# Transistor → Flip-flop → Register → Cache → Memory
+# It's all switches, all the way down.</div>
+
+<div class="code-block"># ── STEP 2: CPU architecture and instruction cycle ──
+# How a CPU executes programs.
+
+cpu = """
+CPU ARCHITECTURE:
+
+THE INSTRUCTION CYCLE (Fetch-Decode-Execute):
+
+1. FETCH:
+   → PC (Program Counter) holds address of next instruction
+   → Fetch instruction from memory (L1/L2/L3 cache or RAM)
+   → PC incremented to next instruction
+
+2. DECODE:
+   → Instruction format: OPCODE + OPERANDS
+   → Example: ADD R1, R2, R3 (R1 = R2 + R3)
+   → Control unit determines what operation + which registers
+
+3. EXECUTE:
+   → ALU performs the operation (add, subtract, compare)
+   → Or: load/store from memory
+   → Or: branch/jump to different address
+   → Result written to register or memory
+
+4. WRITEBACK:
+   → Result stored in destination register
+   → Status flags updated (zero, negative, overflow)
+
+PIPELINING (modern CPUs):
+  → Overlap instruction stages
+  → While instruction 1 executes, instruction 2 decodes, 3 fetches
+  → 5-stage pipeline: 5x throughput (ideally)
+  → Hazard: when instructions depend on each other
+
+INSTRUCTION SET ARCHITECTURE (ISA):
+  x86/x64 (Intel/AMD): CISC, variable length, complex
+  ARM (Apple, mobile): RISC, fixed length, simple, efficient
+  RISC-V: open standard, modular, educational
+
+REGISTER TYPES:
+  General purpose: R0-R15 (data manipulation)
+  PC (Program Counter): address of next instruction
+  SP (Stack Pointer): top of stack
+  FLAGS: status (zero, carry, overflow, sign)
+
+PYTHON (simulate CPU):
+  registers = [0] * 16  # R0-R15
+  pc = 0
+  memory = [0] * 1000
+  flags = {"zero": False, "carry": False}
+
+  def fetch():
+      global pc
+      instruction = memory[pc]
+      pc += 1
+      return instruction
+
+  def decode(instr):
+      opcode = (instr >> 12) & 0xF    # top 4 bits
+      reg1 = (instr >> 8) & 0xF       # next 4 bits
+      reg2 = (instr >> 4) & 0xF       # next 4 bits
+      reg3 = instr & 0xF              # bottom 4 bits
+      return opcode, reg1, reg2, reg3
+
+  def execute(opcode, r1, r2, r3):
+      if opcode == 0x1:   # ADD
+          registers[r1] = registers[r2] + registers[r3]
+      elif opcode == 0x2:  # LOAD
+          registers[r1] = memory[registers[r2]]
+      elif opcode == 0x3:  # STORE
+          memory[registers[r2]] = registers[r1]
+      elif opcode == 0x4:  # JUMP
+          global pc
+          pc = registers[r1]
+
+  # Main loop:
+  while True:
+      instr = fetch()
+      opcode, r1, r2, r3 = decode(instr)
+      execute(opcode, r1, r2, r3)
+"""
+
+print(cpu)</div>
+
+<div class="code-block"># ── STEP 3: Memory hierarchy and caching ──
+# Why memory speed matters more than CPU speed.
+
+memory_hierarchy = """
+MEMORY HIERARCHY (fastest to slowest):
+
+Layer        | Size       | Latency    | Cost/GB
+Register     | ~1 KB      | <1 ns      | $$$$
+L1 Cache     | 32-64 KB   | ~1 ns      | $$$
+L2 Cache     | 256-512 KB | ~4 ns      | $$
+L3 Cache     | 8-32 MB    | ~12 ns     | $
+RAM (DRAM)   | 8-64 GB    | ~100 ns    | 0.5$
+SSD          | 256 GB-TB  | ~100 us    | 0.1$
+HDD          | 1-8 TB     | ~10 ms     | 0.05$
+Network      | unlimited  | ~50 ms     | variable
+
+KEY PRINCIPLE: each layer is ~10x slower than the one above.
+CPU is 1000x faster than RAM → cache is essential!
+
+CACHE ORGANIZATION:
+  L1: per-core, split (L1-data + L1-instruction), 32KB each
+  L2: per-core, unified, 256KB-512KB
+  L3: shared across cores, 8-32MB
+
+CACHE LINE (block): 64 bytes
+  → Data loaded in 64-byte chunks (not individual bytes)
+  → Spatial locality: if you access address X, likely access X+1 soon
+  → Temporal locality: if you access X, likely access X again soon
+
+CACHE HITS AND MISSES:
+  Hit: data found in cache (fast!)
+  Miss: data not in cache → fetch from lower layer (slow!)
+
+  Hit rate: 95%+ for well-optimized programs
+  Miss types:
+    Compulsory: first access (unavoidable)
+    Capacity: cache too small for working set
+    Conflict: multiple addresses map to same cache set
+    Coherence: another core modified the data
+
+PYTHON (cache simulation):
+  import random
+
+  class Cache:
+      def __init__(self, size=1024, line_size=64):
+          self.size = size
+          self.line_size = line_size
+          self.data = {}  # simulate cache sets
+
+      def access(self, address):
+          line = address // self.line_size
+          if line in self.data:
+              return "HIT"   # ~1 ns
+          else:
+              self.data[line] = True
+              if len(self.data) > self.size // self.line_size:
+                  # Evict (LRU approximation):
+                  oldest = next(iter(self.data))
+                  del self.data[oldest]
+              return "MISS"  # ~100 ns
+
+  cache = Cache(size=4096)  # 4KB L1 cache
+  hits = misses = 0
+
+  # Sequential access (good spatial locality):
+  for addr in range(0, 10000, 8):  # stride through array
+      if cache.access(addr) == "HIT":
+          hits += 1
+      else:
+          misses += 1
+
+  print(f"Hit rate: {hits/(hits+misses)*100:.1f}%")
+
+CACHE-FRIENDLY PROGRAMMING:
+  → Access data sequentially (not random)
+  → Keep working set small (fits in cache)
+  → Use arrays instead of linked lists
+  → Loop over rows then columns (not column then row)
+  → Align data to cache line boundaries
+"""
+
+print(memory_hierarchy)</div>
+
+<div class="code-block"># ── STEP 4: Pipelining and parallelism ──
+# Making CPUs faster through instruction-level parallelism.
+
+pipelining = """
+PIPELINING AND PARALLELISM:
+
+PIPELINING (ILP - Instruction-Level Parallelism):
+  → Overlap instruction stages like an assembly line
+  → Stage 1: Fetch | Stage 2: Decode | Stage 3: Execute
+  → While instr 1 executes, instr 2 decodes, instr 3 fetches
+  → 5-stage pipeline → ideally 5 instructions complete in 5+4=9 cycles
+  → vs non-pipelined: 5×3=15 cycles
+
+SUPERSCALAR:
+  → Multiple execution units (multiple ALUs)
+  → Execute 2-4 instructions per cycle
+  → Intel/AMD: up to 6 instructions/cycle
+  → Requires: instruction independence (no dependencies)
+
+OUT-OF-ORDER EXECUTION:
+  → CPU reorders instructions dynamically
+  → If instr 3 doesn't depend on instr 2, execute while instr 2 waits
+  → Hardware reservation stations track dependencies
+  → Result: higher utilization, fewer stalls
+
+BRANCH PREDICTION:
+  → When CPU hits if/else, which branch to take?
+  → Modern CPUs: 95%+ accuracy
+  → Speculative execution: guess and execute ahead
+  → If wrong: flush pipeline and restart (penalty ~20 cycles)
+  → Branch predictor: history-based pattern matching
+
+PIPELINE HAZARDS:
+  Data hazard: instr 2 needs result of instr 1 (stall)
+  Control hazard: branch → don't know next instruction
+  Structural hazard: two instructions need same hardware
+
+MULTI-CORE PARALLELISM:
+  → Multiple CPU cores on same chip
+  → Share L3 cache, memory bus
+  → Each core runs independent thread
+  → Challenge: coordination (locks, atomics)
+
+PYTHON (simulate pipeline):
+  import time
+
+  # Non-pipelined (sequential):
+  def sequential(instructions):
+      total_cycles = 0
+      for instr in instructions:
+          total_cycles += 3  # fetch + decode + execute
+      return total_cycles
+
+  # Pipelined (overlapped):
+  def pipelined(instructions):
+      n = len(instructions)
+      stages = 3  # fetch, decode, execute
+      return n + stages - 1  # pipeline fill + drain
+
+  n_instr = 100
+  seq = sequential(range(n_instr))    # 300 cycles
+  pipe = pipelined(range(n_instr))    # 102 cycles
+
+  print(f"Sequential: {seq} cycles")
+  print(f"Pipelined:  {pipe} cycles")
+  print(f"Speedup:    {seq/pipe:.1f}x")
+"""
+
+print(pipelining)</div>
+
+<div class="code-block"># ── STEP 5: GPU architecture vs CPU ──
+# Why GPUs are faster for AI/ML.
+
+gpu = """
+GPU vs CPU ARCHITECTURE:
+
+CPU: Low Latency, High Complexity
+  → 4-64 powerful cores
+  → Complex: out-of-order, branch prediction, deep cache
+  → Optimized for: sequential tasks, single-thread performance
+  → Great at: branching (if/else), complex logic, OS tasks
+
+GPU: High Throughput, Simple Cores
+  → 1000s of simple cores (streaming processors)
+  → Simple: in-order, minimal cache, no branch prediction
+  → Optimized for: parallel tasks, massive throughput
+  → Great at: matrix multiplication (ML, graphics)
+
+WHY GPUs DOMINATE ML:
+  → Neural networks = lots of matrix multiplication
+  → Each matrix element can be computed independently
+  → GPU parallelism: 1000s of multiply-adds simultaneously
+  → Example: 4096×4096 matrix multiply
+    CPU (32 cores): ~100ms
+    GPU (5000 cores): ~5ms (20x faster!)
+
+GPU MEMORY HIERARCHY:
+  Registers: per-thread, fastest
+  Shared Memory: per-block (~100KB), programmer-managed
+  L1/L2 Cache: automatic
+  Global Memory (VRAM): all threads, high bandwidth (HBM)
+
+CUDA (NVIDIA GPU programming):
+  → Write kernels: functions that run on GPU
+  → Grid → Blocks → Threads hierarchy
+  → Each thread processes one data element
+
+PYTHON (GPU via CUDA/PyTorch):
+  import torch
+
+  # CPU matrix multiply:
+  a_cpu = torch.randn(4096, 4096)
+  b_cpu = torch.randn(4096, 4096)
+
+  # GPU matrix multiply:
+  a_gpu = a_cpu.cuda()
+  b_gpu = b_cpu.cuda()
+
+  # CPU: sequential, slow for large matrices
+  result_cpu = a_cpu @ b_cpu  # ~100ms
+
+  # GPU: massively parallel, fast!
+  result_gpu = a_gpu @ b_gpu  # ~5ms (20x faster!)
+
+  # GPU shines when:
+  # 1. Data is large (fits parallel cores)
+  # 2. Operations are independent (no branching)
+  # 3. Compute-bound (not memory-bound)
+
+GPU PROGRAMMING MODELS:
+  CUDA: NVIDIA only, lowest level, maximum control
+  OpenCL: cross-vendor, lower-level
+  HIP: AMD's CUDA equivalent
+  PyTorch/TensorFlow: high-level, automatic GPU dispatch
+  Triton: Python-like GPU kernels (used in vLLM, Flash Attention)
+
+TPU (Google Tensor Processing Unit):
+  → Custom chip for ML
+  → Systolic arrays: optimized for matrix multiply
+  → Used in Google Cloud for training large models
+"""
+
+print(gpu)</div>
+
+<div class="code-block"># ── STEP 6: Computer architecture best practices ──
+# Writing code that respects hardware.
+
+best_practices = [
+    "Understand cache hierarchy (L1 fastest, RAM slow)",
+    "Access memory sequentially (spatial locality)",
+    "Keep working set small (fits in cache)",
+    "Prefer arrays over linked lists (cache-friendly)",
+    "Loop order matters: row-major for 2D arrays",
+    "Batch operations (amortize overhead)",
+    "Use SIMD when possible (vector instructions)",
+    "Avoid false sharing in multi-threading",
+    "Profile before optimizing (don't guess)",
+    "Understand memory vs compute bound",
+    "Use GPU for parallelizable math (ML, graphics)",
+    "Align data to cache lines (64 bytes)",
+    "Branch prediction: avoid unpredictable branches in hot loops",
+    "Memory bandwidth: sometimes the bottleneck, not CPU",
+    "Instruction-level parallelism: keep dependencies low",
+]
+
+print("COMPUTER ARCHITECTURE BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# LATENCY COMPARISON (memorize these numbers!):
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Operation        │ Latency                        │
+# ├──────────────────┼──────────────────────────────────┤
+# │ L1 cache         │ 0.5 ns (half nanosecond)       │
+# │ L2 cache         │ 7 ns                           │
+# │ L3 cache         │ 40 ns                          │
+# │ RAM access       │ 100 ns                         │
+# │ SSD read         │ 150,000 ns (150 us)            │
+# │ HDD read         │ 10,000,000 ns (10 ms)          │
+# │ Network (same DC)│ 500,000 ns (500 us)            │
+# │ Network (global) │ 150,000,000 ns (150 ms)        │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="dialogue"><strong>তুমি:</strong> কিন্তু AND আর OR দিয়ে যোগ করা যায় কীভাবে?</div>
 <div class="dialogue en"><strong>You:</strong> But how do AND and OR perform addition?</div>
