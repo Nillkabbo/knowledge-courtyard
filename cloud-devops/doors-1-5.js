@@ -82,38 +82,498 @@ doors.push({
 <div class="dialogue"><strong>ডকার ইঞ্জিনিয়ার:</strong> ২০১৩ সাল। Solomon Hykes একটা demo দিলেন — "একটা process চালাও, সে নিজেকে সম্পূর্ণ একা ভাববে। নিজের PID, নিজের network, নিজের filesystem। কিন্তু আসলে সে শুধু একটা Linux process — kernel features দিয়ে restricted।" এর নাম দিলাম Docker। আর container-এর ভেতরের প্রক্রিয়া? সে জানেই না যে সে restricted।</div>
 <div class="dialogue en"><strong>Docker Engineer:</strong> 2013. Solomon Hykes demoed — "run a process, it thinks it's completely alone. Its own PID, its own network, its own filesystem. But really it's just a Linux process — restricted via kernel features." We called it Docker. And the process inside the container? It doesn't even know it's restricted.</div>
 
-<div class="code-block">
-<strong>Container = ৩টি Kernel Feature এর সমন্বয়:</strong>
+<div class="code-block"># ── STEP 1: Docker containers from scratch ──
+# Understanding container internals.
 
-<strong>১. Namespaces (দৃশ্যমানতা সীমিত করে — কী দেখতে পায়):</strong>
-<table style="width:100%;border-collapse:collapse;margin-top:.5rem">
-<tr style="border-bottom:2px solid var(--accent)">
-<th style="text-align:left;padding:.3rem">Namespace</th><th style="text-align:left;padding:.3rem">যা isolate করে</th>
-</tr>
-<tr><td style="padding:.2rem"><strong>PID</strong></td><td>Process IDs — container-এর PID 1, host-এর process দেখা যায় না</td></tr>
-<tr><td style="padding:.2rem"><strong>NET</strong></td><td>নিজস্ব network interface, IP, routing table, iptables</td></tr>
-<tr><td style="padding:.2rem"><strong>MNT</strong></td><td>নিজস্ব filesystem mount points</td></tr>
-<tr><td style="padding:.2rem"><strong>UTS</strong></td><td>নিজস্ব hostname আর domain name</td></tr>
-<tr><td style="padding:.2rem"><strong>IPC</strong></td><td>Inter-process communication (shared memory, semaphores)</td></tr>
-<tr><td style="padding:.2rem"><strong>USER</strong></td><td>UID/GID mapping — container-এ root = host-এ unprivileged</td></tr>
-</table>
+# Container = 3 Linux kernel features combined:
 
-<strong>২. Cgroups (রিসোর্স সীমিত করে — কতটুকু ব্যবহার করতে পারে):</strong>
-<pre style="background:var(--bg);padding:.5rem;border-radius:.3rem">
-CPU: cpus: '0.50'    → সর্বোচ্চ অর্ধেক core
-Memory: 512M          → OOM হলে container killed
-I/O: 100mbps          → disk read/write throttle
-</pre>
+# 1. NAMESPACES (isolate what a process can SEE):
+#    PID: own process tree (container PID 1, can't see host processes)
+#    NET: own network interface, IP, routing table
+#    MNT: own filesystem mount points
+#    UTS: own hostname
+#    IPC: own inter-process communication
+#    USER: UID/GID mapping (root in container != root on host)
 
-<strong>৩. OverlayFS (স্তরযুক্ত ফাইল সিস্টেম):</strong>
-<pre style="background:var(--bg);padding:.5rem;border-radius:.3rem">
-[Read-only layers]  Base image (Ubuntu) + Dependencies (Python)
-       ↓
-[Writable layer]    Container-এর পরিবর্তন (copy-on-write)
-       ↓
-100 container একই image = প্রায় শূন্য extra disk!
-</pre>
-</div>
+# 2. CGROUPS (limit what a process can USE):
+#    CPU: cpus: '0.50' → max half a core
+#    Memory: 512M → OOM kills container if exceeded
+#    I/O: 100mbps → disk read/write throttle
+
+# 3. OVERLAYFS (layered filesystem):
+#    [Read-only] Base image (Ubuntu) + Dependencies (Python)
+#       ↓
+#    [Writable] Container changes (copy-on-write)
+#       ↓
+#    100 containers same image = near-zero extra disk!
+
+# VM vs CONTAINER:
+# VM = full OS simulation, separate kernel, 512MB+ overhead, 20-60s boot
+# Container = shares host kernel, no second kernel, 100ms boot
+
+# ── BASIC DOCKER WORKFLOW ──
+
+# Dockerfile (build recipe):
+#   FROM python:3.12-slim
+#   WORKDIR /app
+#   COPY requirements.txt .
+#   RUN pip install --no-cache-dir -r requirements.txt
+#   COPY . .
+#   EXPOSE 8000
+#   CMD ["gunicorn", "--bind", "0.0.0.0:8000", "myapp.wsgi"]
+
+# Build image:
+#   docker build -t myapp:latest .
+
+# Run container:
+#   docker run -d --name web -p 8000:8000 myapp:latest
+
+# Multi-stage build (smaller image):
+#   # Stage 1: Build
+#   FROM node:20 AS builder
+#   WORKDIR /app
+#   COPY package*.json ./
+#   RUN npm ci
+#   COPY . .
+#   RUN npm run build
+#
+#   # Stage 2: Serve (tiny image!)
+#   FROM nginx:alpine
+#   COPY --from=builder /app/dist /usr/share/nginx/html
+#   # Final image: ~25MB instead of ~1GB
+
+# Docker Compose (multi-container):
+#   version: '3.8'
+#   services:
+#     web:
+#       build: .
+#       ports: ["8000:8000"]
+#       depends_on: [db, redis]
+#     db:
+#       image: postgres:16
+#       environment:
+#         POSTGRES_PASSWORD: secret
+#       volumes: ["pgdata:/var/lib/postgresql/data"]
+#     redis:
+#       image: redis:7-alpine
+#   volumes:
+#     pgdata:</div>
+
+<div class="code-block"># ── STEP 2: Docker networking and volumes ──
+# Connecting containers and persisting data.
+
+# NETWORK TYPES:
+# bridge: default, isolated network (containers talk to each other)
+# host: container uses host network directly (no isolation)
+# none: no networking
+# overlay: multi-host (Docker Swarm / K8s)
+
+# Create custom network:
+#   docker network create mynet
+#   docker run -d --network mynet --name api myapp
+#   docker run -d --network mynet --name worker myapp
+# → API and worker can resolve each other by name!
+
+# VOLUME TYPES:
+# named volume: managed by Docker (docker volume create pgdata)
+# bind mount: map host directory (-v /host/path:/container/path)
+# tmpfs: in-memory (fast, ephemeral)
+
+# Volumes persist data beyond container lifecycle:
+#   docker run -v pgdata:/var/lib/postgresql/data postgres
+#   → Delete container, data survives in volume
+
+# ── DOCKER SECURITY ──
+# 1. Non-root user:
+#    RUN adduser --disabled-password appuser
+#    USER appuser
+#
+# 2. Read-only filesystem:
+#    docker run --read-only myapp
+#
+# 3. Resource limits:
+#    docker run --memory=512m --cpus=0.5 myapp
+#
+# 4. No privileged mode:
+#    NEVER use --privileged (gives full host access)
+#
+# 5. Scan for vulnerabilities:
+#    docker scout cves myapp:latest
+
+# ── DOCKER BEST PRACTICES ──
+best_practices = [
+    "Use .dockerignore (exclude node_modules, .git, __pycache__)",
+    "Order matters: copy requirements first, then code (cache layers)",
+    "Use slim/alpine base images (smaller attack surface)",
+    "Multi-stage builds: build artifacts in stage 1, copy to tiny stage 2",
+    "Run as non-root user",
+    "Set resource limits (memory, CPU)",
+    "Use HEALTHCHECK instruction",
+    "Pin versions (python:3.12.1-slim, not python:latest)",
+    "Keep images small (faster pull, less storage, fewer vulnerabilities)",
+    "Scan images regularly (Trivy, Snyk, Docker Scout)",
+]
+for bp in best_practices:
+    print(f"  - {bp}")</div>
+
+<div class="code-block"># ── STEP 3: Kubernetes fundamentals ──
+# Orchestrating containers at scale.
+
+# KUBERNETES = container orchestration
+# Manages: deployment, scaling, healing, load balancing
+
+# CORE CONCEPTS:
+# Pod: smallest unit (1+ containers sharing network/storage)
+# Deployment: manages replicas of pods (declarative)
+# Service: stable network endpoint for pods
+# ConfigMap: configuration data (non-secret)
+# Secret: sensitive data (passwords, API keys)
+# Ingress: HTTP/HTTPS routing (external → services)
+# Namespace: logical grouping (dev, staging, prod)
+
+# ── KUBERNETES MANIFEST (YAML) ──
+
+# Deployment (3 replicas of web app):
+apiVersion = "apps/v1"
+deployment = """
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: myapp:latest
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 3
+"""
+
+# Service (stable IP for pods):
+service = """
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  selector:
+    app: web
+  ports:
+  - port: 80
+    targetPort: 8000
+  type: ClusterIP
+"""
+
+# ── KUBERNETES COMMANDS ──
+commands = """
+kubectl apply -f deployment.yaml    # deploy
+kubectl get pods                    # list pods
+kubectl get svc                     # list services
+kubectl describe pod <name>         # detailed info
+kubectl logs <pod-name>             # view logs
+kubectl exec -it <pod> -- bash      # shell into pod
+kubectl scale deployment web --replicas=5  # scale
+kubectl rollout undo deployment web # rollback
+kubectl delete -f deployment.yaml   # remove
+"""
+print(commands)</div>
+
+<div class="code-block"># ── STEP 4: CI/CD pipelines ──
+# Automated build, test, and deploy.
+
+# CI/CD PIPELINE STAGES:
+# 1. Source: push to Git → trigger pipeline
+# 2. Build: compile, create Docker image
+# 3. Test: unit tests, integration tests, security scans
+# 4. Package: push image to registry
+# 5. Deploy: staging → production (canary/blue-green)
+
+# ── GITHUB ACTIONS (CI/CD) ──
+
+github_actions = """
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - run: pytest --cov
+      - run: flake8 .
+      - run: bandit -r .  # security scan
+
+  build-and-push:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: <github-actor>
+          password: <github-token>
+      - uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: ghcr.io/<repo>:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to production
+        run: |
+          echo "<kubeconfig-base64>" > kubeconfig
+          kubectl --kubeconfig kubeconfig set image \
+            deployment/web web=ghcr.io/<repo>:latest
+          kubectl --kubeconfig kubeconfig rollout status \
+            deployment/web
+"""
+
+print(github_actions)
+
+# ── DEPLOYMENT STRATEGIES ──
+strategies = """
+1. ROLLING UPDATE (default K8s):
+   → Replace pods one at a time
+   → Zero downtime, gradual
+   → Can be slow for large deployments
+
+2. BLUE-GREEN:
+   → Blue (old) and Green (new) both running
+   → Switch traffic instantly
+   → Instant rollback (switch back)
+   → Needs 2x resources during switch
+
+3. CANARY:
+   → Release to 5% → 25% → 50% → 100%
+   → Monitor metrics at each stage
+   → Auto-rollback if errors spike
+   → Safest for production
+
+4. FEATURE FLAGS:
+   → Deploy code, enable feature later
+   → Decouple deploy from release
+   → A/B test features
+   → Instant rollback (toggle flag)
+"""
+print(strategies)</div>
+
+<div class="code-block"># ── STEP 5: Infrastructure as Code (IaC) ──
+# Defining infrastructure declaratively.
+
+# TERRAFORM (most popular IaC):
+
+terraform = """
+# main.tf — define cloud resources
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+# VPC (Virtual Private Cloud):
+resource "aws_vpc" "main" {
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_hostnames = true
+  tags = { Name = "myapp-vpc" }
+}
+
+# Subnet:
+resource "aws_subnet" "public" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.1.0/24"
+  map_public_ip_on_launch = true
+  tags = { Name = "public" }
+}
+
+# EC2 instance:
+resource "aws_instance" "web" {
+  ami           = "ami-0c101f26f147fa7fd"
+  instance_type = "t3.medium"
+  subnet_id     = aws_subnet.public.id
+  user_data     = file("setup.sh")
+  tags = { Name = "web-server" }
+}
+
+# RDS database:
+resource "aws_db_instance" "main" {
+  engine         = "postgres"
+  engine_version = "16.2"
+  instance_class = "db.t3.medium"
+  db_name        = "myapp"
+  username       = "admin"
+  password       = var.db_password
+  allocated_storage = 20
+}
+"""
+
+# Terraform commands:
+#   terraform init      # initialize providers
+#   terraform plan      # preview changes
+#   terraform apply     # create/update resources
+#   terraform destroy   # tear everything down
+
+# ANSIBLE (configuration management):
+
+ansible = """
+# playbook.yml — configure servers
+
+- name: Setup web server
+  hosts: webservers
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Copy config
+      template:
+        src: nginx.conf.j2
+        dest: /etc/nginx/nginx.conf
+      notify: restart nginx
+
+    - name: Ensure nginx running
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
+"""
+
+print("Infrastructure as Code:")
+print("  Terraform: provision cloud resources (AWS, GCP, Azure)")
+print("  Ansible: configure servers (install packages, manage config)")
+print("  Helm: package K8s applications")
+print("  Pulumi: IaC with real programming languages (Python, TS)")</div>
+
+<div class="code-block"># ── STEP 6: Monitoring, logging, and alerting ──
+# Observability for production systems.
+
+# THREE PILLARS OF OBSERVABILITY:
+
+# 1. METRICS (numbers over time):
+#    CPU usage, memory, request rate, error rate, latency
+#    Tools: Prometheus (collect), Grafana (visualize)
+
+# 2. LOGS (text events):
+#    Application logs, access logs, error logs
+#    Tools: ELK Stack (Elasticsearch, Logstash, Kibana)
+#           Loki + Grafana (lighter alternative)
+
+# 3. TRACES (request journey):
+#    Request → API gateway → auth → service A → DB → response
+#    Tools: Jaeger, OpenTelemetry, Datadog APM
+
+# ── PROMETHEUS + GRAFANA ──
+
+prometheus_config = """
+# prometheus.yml
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'myapp'
+    static_configs:
+      - targets: ['localhost:8000']
+    metrics_path: /metrics
+"""
+
+# Application exposes metrics:
+#   from prometheus_client import Counter, Histogram, generate_latest
+#
+#   requests = Counter('myapp_requests_total', 'Total requests')
+#   latency = Histogram('myapp_request_duration_seconds', 'Request duration')
+#
+#   @app.route('/metrics')
+#   def metrics():
+#       return generate_latest()
+
+# ── STRUCTURED LOGGING ──
+
+import json
+from datetime import datetime
+
+def log_event(level, message, **kwargs):
+    \"\"\"Structured JSON logging for production.\"\"\"
+    log_entry = {
+        "timestamp": datetime.utcnow().isoformat(),
+        "level": level,
+        "message": message,
+        **kwargs
+    }
+    print(json.dumps(log_entry))
+    # Output: {"timestamp": "2025-01-15T10:30:00Z", "level": "ERROR",
+    #          "message": "Database connection failed", "service": "api",
+    #          "user_id": 12345, "duration_ms": 5000}
+
+log_event("INFO", "User logged in", user_id=12345, method="oauth")
+log_event("ERROR", "Payment failed", order_id="ord_abc", amount=99.99)
+
+# ── ALERTING ──
+alerting = """
+ALERT RULES (Prometheus):
+  - High error rate: error_rate > 5% for 5 minutes → PAGE
+  - High latency: p99_latency > 2s for 5 minutes → PAGE
+  - Disk space: disk_free < 10% for 10 minutes → WARN
+  - Pod crashes: pod_restart_count > 3 in 1 hour → PAGE
+  - SSL cert expiring: cert_expiry < 14 days → WARN
+
+TOOLS:
+  Prometheus: metrics collection
+  Grafana: dashboards + alerting
+  PagerDuty: on-call escalation
+  Slack: non-critical alerts
+  ELK/Loki: log aggregation and search
+  Jaeger: distributed tracing
+"""
+print(alerting)</div>
 
 <div class="dialogue"><strong>তুমি:</strong> কিন্তু VM-ও তো isolate করে। পার্থক্য কী?</div>
 <div class="dialogue en"><strong>You:</strong> But VMs also isolate. What's the difference?</div>
