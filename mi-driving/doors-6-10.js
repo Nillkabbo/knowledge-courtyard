@@ -21,36 +21,151 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Winter Black Ice:</strong> Hit black ice on US-23 — spun into oncoming traffic. Fix: assume invisible ice below 32F.</div></div>
 
 
-<div class="code-block">SAFE DRIVING TECHNIQUES — COMPLETE
-# — — — — — — — — — — — — — — — — — — — — — —
+<div class="code-block"># ── STEP 1: Safe driving techniques — SEE system ──
+# Defensive driving mastery.
 
-🧠 DEFENSIVE DRIVING — SEE SYSTEM
-# — — — — — — — — — — — — — — — — — — — — — —
+# THE SEE SYSTEM (Smith System, used by professional drivers):
+# S - SEARCH: Scan 20-30 seconds ahead, check mirrors every 5-8 sec
+# E - EVALUATE: Predict what could happen (that car might change lanes)
+# E - EXECUTE: Take action early (slow down, create space, plan escape)
 
-  প্রতি মুহূর্তে তিনটা কাজ:
-  1️⃣ SEARCH — চোখ ঘোরাও: সামনে ২০-৩০ সেকেন্ড
-     দূর পর্যন্ত, mirror প্রতি ৫-৮ সেকেন্ডে,
-     intersection-এ বাম-ডান-বাম
-  2️⃣ EVALUATE — কী ঘটতে পারে ভাবো: ওই গাড়ি
-     কি লেন বদলাবে? বাচ্চাটা কি রাস্তায় নামবে?
-  3️⃣ EXECUTE — আগে থেকে ব্যবস্থা নাও: গতি
-     কমাও, জায়গা রাখো, escape route ভাবো
+# PYTHON (defensive driving system):
+def see_system(speed_mph, traffic="moderate", weather="clear"):
+    """Apply the SEE defensive driving system."""
+    # 1. SEARCH — what to look for:
+    search_targets = [
+        "20-30 seconds ahead (upcoming hazards)",
+        "Mirrors every 5-8 seconds",
+        "Intersections: left-right-left before entering",
+        "Blind spots before lane changes",
+        "Road surface (potholes, debris, ice)",
+    ]
 
-  💡 Defensive driver = যে ধরে নেয় অন্যরা ভুল
-     করবে, এবং তার জন্য প্রস্তুত থাকে
+    # 2. EVALUATE — potential hazards:
+    hazards = [
+        "Car drifting in lane (distracted driver?)",
+        "Child near road (might run into street)",
+        "Ball rolling into road (child following?)",
+        "Tailgating truck (brake early, increase space)",
+        "Blind curve (oncoming car in your lane?)",
+    ]
 
-# — — — — — — — — — — — — — — — — — — — — — —
-🛡️ SPACE CUSHION — গাড়ির চারপাশে ৬টা zone
-# — — — — — — — — — — — — — — — — — — — — — —
+    # 3. EXECUTE — actions to take:
+    # Following distance adjusts for conditions:
+    base_seconds = 3
+    if weather in ("rain", "snow"): base_seconds += 1
+    if weather == "ice": base_seconds += 3
+    if traffic == "heavy": base_seconds += 1
+    if speed_mph > 55: base_seconds += 1
 
-  তোমার গাড়ির চারদিকে ৬টা জায়গা:
-  সামনে | পেছনে | বাম-সামনে | ডান-সামনে |
-  বাম-পেছনে | ডান-পেছনে
+    # Following distance in feet (at speed):
+    feet_per_second = speed_mph * 1.467
+    safe_distance = int(feet_per_second * base_seconds)
 
-  লক্ষ্য: যত বেশি zone খালি রাখা যায়:
-  ✦ সামনে: following distance (৩+ সেকেন্ড)
-  ✦ পাশে: অন্য গাড়ির ঠিক পাশে "ভেসে" থেকো না —
-    একটু আগে বা পিছে থাকো (blind spot-এও পড়বে না)
+    return {
+        "search": search_targets,
+        "evaluate": hazards[:3],  # top 3
+        "execute": f"Maintain {base_seconds}s following distance ({safe_distance} ft)",
+        "speed_adjust": f"Reduce speed if any hazard identified",
+    }
+
+result = see_system(55, "moderate", "rain")
+print("SEE DEFENSIVE DRIVING SYSTEM:")
+print("\n1. SEARCH:")
+for s in result["search"]:
+    print(f"  → {s}")
+print("\n2. EVALUATE (top hazards):")
+for h in result["evaluate"]:
+    print(f"  ⚠️ {h}")
+print(f"\n3. EXECUTE:")
+print(f"  → {result['execute']}")
+print(f"  → {result['speed_adjust']}")
+
+# SPACE CUSHION (6 zones around your car):
+zones = [
+    "FRONT: 3+ second following distance",
+    "REAR: If tailgated, increase front distance",
+    "LEFT-FRONT: Watch blind spot before lane change",
+    "RIGHT-FRONT: Watch for merging traffic",
+    "LEFT-REAR: Check mirror before moving left",
+    "RIGHT-REAR: Check mirror before moving right",
+]
+print("\nSPACE CUSHION (keep zones clear):")
+for zone in zones:
+    print(f"  🛡️ {zone}")
+
+# DEFENSIVE DRIVING RULE: Assume others will make mistakes
+# and be prepared to react. Better to yield than crash.</div>
+
+<div class="code-block"># ── STEP 2: Lane change technique and following distance ──
+# How to change lanes and maintain safe distance.
+
+# LANE CHANGE PROCEDURE (SMOG):
+# S - SIGNAL (turn signal, early)
+# M - MIRROR (check rear-view and side mirror)
+# O - OVER SHOULDER (check blind spot)
+# G - GO (smoothly, don't jerk the wheel)
+
+lane_change_steps = [
+    "1. CHECK traffic ahead (is it safe to change?)",
+    "2. SIGNAL (turn signal, at least 100 feet before change)",
+    "3. CHECK mirrors (is car in adjacent lane?)",
+    "4. CHECK blind spot (quick over-shoulder glance)",
+    "5. CHANGE LANES (smooth, gradual move)",
+    "6. CANCEL signal (most cars auto-cancel)",
+    "7. ADJUST speed to match new lane flow",
+]
+
+print("LANE CHANGE PROCEDURE (SMOG):")
+for step in lane_change_steps:
+    print(f"  {step}")
+
+# FOLLOWING DISTANCE (3-second rule):
+# → Pick a fixed object ahead (sign, pole, shadow)
+# → When car ahead passes it, count: "one-thousand-one, one-thousand-two, one-thousand-three"
+# → If you reach the object before 3: TOO CLOSE
+
+# PYTHON (following distance calculator):
+def following_distance(speed_mph, conditions="clear"):
+    """Calculate safe following distance for conditions."""
+    base_seconds = 3.0
+
+    adjustments = {
+        "clear": 0,
+        "rain": 1.0,
+        "wet_road": 1.0,
+        "snow": 2.0,
+        "ice": 4.0,
+        "fog": 3.0,
+        "night": 1.0,
+        "heavy_traffic": 1.0,
+        "tailgated": 2.0,
+        "large_vehicle_ahead": 2.0,
+    }
+
+    extra = adjustments.get(conditions, 0)
+    total_seconds = base_seconds + extra
+    feet_per_second = speed_mph * 1.467
+    distance_feet = int(total_seconds * feet_per_second)
+    car_lengths = int(distance_feet / 15)  # average car = 15 feet
+
+    print(f"  Speed: {speed_mph} mph | Condition: {conditions}")
+    print(f"  Following distance: {total_seconds:.0f} seconds")
+    print(f"  = {distance_feet} feet ({car_lengths} car lengths)")
+
+    return distance_feet
+
+print("\nFOLLOWING DISTANCE CALCULATOR:")
+following_distance(55, "clear")
+following_distance(70, "rain")
+following_distance(45, "ice")
+following_distance(25, "snow")
+following_distance(70, "tailgated")
+
+# 2-SECOND RULE (minimum, good conditions only):
+# 3-SECOND RULE (standard, any conditions)
+# 4+ SECOND RULE (bad weather, night, tailgated)
+# NEVER tailgate — it's the #1 cause of rear-end crashes</div>
   ✦ পেছনে: tailgater থাকলে সামনের gap বাড়াও
   ✦ সবসময় একটা ESCAPE ROUTE ভাবো —
     "এখনই সামনের গাড়ি থামলে আমি কোথায় যাব?"
@@ -1116,36 +1231,98 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Drowsy Driving:</strong> Fell asleep after 12-hour shift — crossed center line. Fix: pull over if you can't remember last mile.</div></div>
 
 
-<div class="code-block">MICHIGAN OWI LAWS — COMPLETE
-# — — — — — — — — — — — — — — — — — — — — — —
+<div class="code-block"># ── STEP 3: Michigan OWI (Operating While Intoxicated) laws ──
+# The complete guide to drunk/drugged driving penalties.
 
-🍺 OPERATING WHILE INTOXICATED (OWI)
-# — — — — — — — — — — — — — — — — — — — — — —
+# MICHIGAN OWI LAWS — BAC LIMITS:
+bac_limits = {
+    "21+ years": {"legal_limit": 0.08, "offense": "OWI (Operating While Intoxicated)"},
+    "21+ (High BAC)": {"legal_limit": 0.17, "offense": "Super Drunk (enhanced penalties)"},
+    "Under 21": {"legal_limit": 0.02, "offense": "Zero Tolerance (any alcohol)"},
+    "Commercial (CDL)": {"legal_limit": 0.04, "offense": "OWI (lower threshold)"},
+    "Any drugs": {"legal_limit": 0.00, "offense": "OWI (marijuana, prescription, illegal)"},
+}
 
-  BAC Limits:
-  # ────────────────────────────────────────# 
-  #   21+ বছর: 0.08+ = OWI                 # 
-  #   0.17+ = "SUPER DRUNK" (High BAC)     # 
-  #   Under 21: 0.02+ = Zero Tolerance     # 
-  #   Commercial (CDL): 0.04+              # 
-  #   Any drug: যেকোনো পরিমাণ = OWI        # 
-  # ────────────────────────────────────────# 
+print("MICHIGAN OWI BAC LIMITS:")
+for category, info in bac_limits.items():
+    print(f"  {category}: {info['legal_limit']}+ = {info['offense']}")
 
-  ⚡ "SUPER DRUNK" LAW (BAC 0.17+) — enhanced
-     first offense:
-  ✦ Up to 180 days jail (93-এর বদলে)
-  ✦ $200-$700 fine
-  ✦ 45 দিন সম্পূর্ণ suspension (কোনো driving নয়)
-    + এরপর ৩২০ দিন শুধু ignition interlock
-    device লাগানো গাড়িতে restricted driving
-  ✦ Up to 360 hours community service
-  ✦ Mandatory alcohol treatment (1 year)
+# OWI PENALTIES (Michigan):
+penalties = {
+    "FIRST OFFENSE (BAC 0.08-0.16)": [
+        "Up to 93 days in jail",
+        "$100-$500 fine",
+        "Up to 360 days license suspension",
+        "6 points on license",
+        "Mandatory $500-$1,000 driver responsibility fee (2 years)",
+        "Possible ignition interlock device",
+    ],
+    "SUPER DRUNK (BAC 0.17+)": [
+        "Up to 180 days in jail",
+        "$200-$700 fine",
+        "45 days NO driving (hard suspension)",
+        "Then 320 days restricted (interlock required)",
+        "Up to 360 hours community service",
+        "Mandatory alcohol treatment (1 year)",
+    ],
+    "SECOND OFFENSE (within 7 years)": [
+        "5 days-1 year in jail",
+        "$200-$1,000 fine",
+        "Minimum 1 year license suspension",
+        "Mandatory alcohol treatment",
+        "Vehicle immobilization (90-180 days)",
+    ],
+    "THIRD OFFENSE (FELONY)": [
+        "1-5 years in prison",
+        "$500-$5,000 fine",
+        "Minimum 5 year license revocation",
+        "Felony record (permanent)",
+        "Vehicle forfeiture possible",
+    ],
+}
 
-  শাস্তি — FIRST OFFENSE:
-  ✦ Up to 93 days in jail
-  ✦ $100-$500 fine
-  ✦ Up to 360 days license suspension
-  ✦ 6 points on license
+print("\nOWI PENALTIES:")
+for offense, details in penalties.items():
+    print(f"\n  {offense}:")
+    for d in details:
+        print(f"    → {d}")
+
+# PYTHON (BAC estimator — educational only, NOT a guide!):
+def estimate_bac(drinks, body_weight_lbs, hours, gender="male"):
+    """Rough BAC estimate (Widmark formula). NEVER use to decide if OK to drive!"""
+    r = 0.73 if gender == "male" else 0.66  # body water ratio
+    # Standard drink = 0.6 oz alcohol
+    alcohol_oz = drinks * 0.6
+    bac = (alcohol_oz * 5.14 / (body_weight_lbs * r)) - (0.015 * hours)
+
+    if bac < 0:
+        bac = 0
+
+    # Legal assessment:
+    if bac >= 0.17:
+        status = "SUPER DRUNK — felony risk"
+    elif bac >= 0.08:
+        status = "OWI — ILLEGAL to drive"
+    elif bac >= 0.02 and body_weight_lbs < 200:
+        status = "Under 21: ZERO TOLERANCE violation"
+    else:
+        status = "Possibly legal, but DON'T risk it"
+
+    print(f"  {drinks} drinks, {body_weight_lbs} lbs, {hours}h elapsed")
+    print(f"  Estimated BAC: {bac:.3f} → {status}")
+    print(f"  ⚠️ NEVER use this to decide if you can drive!")
+    return bac
+
+print("\nBAC ESTIMATOR (educational only — DO NOT use to drive!):")
+estimate_bac(3, 160, 2, "male")
+estimate_bac(2, 120, 1, "female")
+
+# THE GOLDEN RULE:
+# "If you drink, DON'T drive. Period."
+# → One drink per hour is NOT safe for everyone
+# → Coffee, cold showers, food do NOT sober you up
+# → Only TIME reduces BAC (about 0.015/hour)
+# → Uber/Lyft/taxi/friend = always cheaper than a DUI</div>
   ✦ Community service
   ✦ Mandatory alcohol treatment program
 
