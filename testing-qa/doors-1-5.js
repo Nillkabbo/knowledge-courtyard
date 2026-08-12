@@ -24,29 +24,470 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Test That Tested Nothing:</strong> Test had assert True at the end — always passed, caught zero bugs. Fix: every assert must check MEANINGFUL state.</div></div>
 
 
-<div class="code-block">— pytest: তিন ধরনের টেস্ট —
+<div class="code-block"># ── STEP 1: Three types of tests ──
+# Unit, integration, and end-to-end testing.
 
-  # Unit Test (একটি ফাংশন)
-  def test_calculate_tax():
-      assert calculate_tax(100) == 12.50
-      assert calculate_tax(0) == 0
-  # চলে: 0.02s — দ্রুত!
+# UNIT TEST (test one function):
+def test_calculate_tax():
+    assert calculate_tax(100) == 12.50
+    assert calculate_tax(0) == 0
+    assert calculate_tax(-50) == 0  # edge case
+# Runs: 0.02s — fast!
 
-  # Integration Test (API → DB)
-  def test_transfer_api(db):
-      response = client.post('/api/transfer/', {
-          'from': 'acc1', 'to': 'acc2', 'amount': 500
-      })
-      assert response.status_code == 201
-      assert Account.objects.get(id='acc1').balance == 500
-  # চলে: 1.8s
+# INTEGRATION TEST (API → DB):
+def test_transfer_api(db):
+    response = client.post('/api/transfer/', {
+        'from': 'acc1', 'to': 'acc2', 'amount': 500
+    })
+    assert response.status_code == 201
+    assert Account.objects.get(id='acc1').balance == 500
+# Runs: 1.8s — slower, but tests real DB
 
-  # E2E Test (Playwright — ব্রাউজার)
-  # npx playwright test e2e/transfer.spec.ts
-  # ✓ chromium transfer.spec.ts (3.2s)
+# E2E TEST (browser automation):
+# npx playwright test e2e/transfer.spec.ts
+# ✓ chromium transfer.spec.ts (3.2s)
+# Tests FULL user flow: login → navigate → transfer → verify
 
-  — গতি:     Unit (0.02s) < Integration (1.8s) < E2E (4.1s) —
-  — নির্ভরযোগ্যতা: Unit < Integration < E2E —</div>
+# Speed:      Unit (0.02s) < Integration (1.8s) < E2E (4.1s)
+# Reliability: Unit > Integration > E2E (E2E is flaky)
+# Coverage:   Unit < Integration < E2E
+
+# ── TEST PYRAMID ──
+#      /  E2E  \        ← few (5-10%)
+#     /  Integ  \       ← some (20-30%)
+#    /   Unit    \      ← many (60-70%)
+#   /______________\</div>
+
+<div class="code-block"># ── STEP 2: Testing trophy (modern approach) ──
+# Focus on integration tests, not just unit tests.
+
+# TESTING TROPHY (Guillermo Rauch, 2019):
+#
+#        /  E2E  \          ← few (expensive, flaky)
+#       / Integration \     ← MOST (best ROI!)
+#      /   Unit   \         ← some (fast, limited)
+#     / Static \            ← many (linting, types)
+
+# WHY INTEGRATION TESTS ARE KING:
+# → Unit tests: fast but don't test real integration
+# → E2E tests: comprehensive but slow and flaky
+# → Integration tests: best balance of speed + coverage
+
+# STATIC ANALYSIS (free wins):
+#   ruff check .           # linting
+#   mypy .                 # type checking
+#   bandit -r .            # security scan
+#   → Catches bugs without running code!
+
+# PYTHON (integration test with pytest + Django):
+import pytest
+from django.test import Client
+
+@pytest.mark.django_db
+def test_user_registration_full_flow():
+    """Integration test: register → verify email → login."""
+    client = Client()
+
+    # Step 1: Register
+    response = client.post('/api/register/', {
+        'email': 'test@example.com',
+        'password': 'SecurePass123!'
+    })
+    assert response.status_code == 201
+
+    # Step 2: Verify email (simulate token)
+    user = User.objects.get(email='test@example.com')
+    token = create_verification_token(user)
+    response = client.post('/api/verify/', {'token': token})
+    assert response.status_code == 200
+
+    # Step 3: Login
+    response = client.post('/api/login/', {
+        'email': 'test@example.com',
+        'password': 'SecurePass123!'
+    })
+    assert response.status_code == 200
+    assert 'access_token' in response.json()
+
+# FIXTURES (reusable test data):
+@pytest.fixture
+def authenticated_client(user):
+    client = Client()
+    client.force_login(user)
+    return client
+
+@pytest.fixture
+def sample_order(user):
+    return Order.objects.create(
+        user=user,
+        total=99.99,
+        status='pending'
+    )
+
+def test_order_checkout(authenticated_client, sample_order):
+    response = authenticated_client.post(
+        f'/api/orders/{sample_order.id}/checkout/'
+    )
+    assert response.status_code == 200
+    sample_order.refresh_from_db()
+    assert sample_order.status == 'paid'</div>
+
+<div class="code-block"># ── STEP 3: TDD — Red-Green-Refactor ──
+# Test-driven development cycle.
+
+# TDD CYCLE:
+# 1. RED: Write a failing test (describes desired behavior)
+# 2. GREEN: Write minimum code to make test pass
+# 3. REFACTOR: Improve code quality while tests stay green
+
+# ── EXAMPLE: Building a Stack class ──
+
+# Step 1: RED — write test first
+def test_stack_push_and_pop():
+    stack = Stack()
+    stack.push(1)
+    stack.push(2)
+    assert stack.pop() == 2      # LIFO
+    assert stack.pop() == 1
+    assert stack.is_empty()
+
+# This fails: Stack doesn't exist yet!
+
+# Step 2: GREEN — minimum implementation
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        return self.items.pop()
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+# Now test passes! But is it complete?
+
+# Step 3: RED again — test edge cases
+def test_stack_pop_empty():
+    stack = Stack()
+    with pytest.raises(IndexError, match="empty stack"):
+        stack.pop()
+
+# Step 2 again: GREEN — handle empty
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        if self.is_empty():
+            raise IndexError("Cannot pop from empty stack")
+        return self.items.pop()
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def peek(self):
+        if self.is_empty():
+            raise IndexError("Cannot peek empty stack")
+        return self.items[-1]
+
+    def size(self):
+        return len(self.items)
+
+# Step 3: REFACTOR — code is clean, tests pass
+# → All done with confidence!
+
+# TDD BENEFITS:
+# → Tests always exist (no "I'll write tests later")
+# → Better design (testable code = better code)
+# → Confidence in refactoring
+# → Documentation: tests show how code should work
+# → Fewer bugs: caught at write-time, not production
+
+# TDD DISADVANTAGES:
+# → Slower initial development
+# → Temptation to skip when rushed
+# → Tests may lock in bad design (need refactoring)</div>
+
+<div class="code-block"># ── STEP 4: Mutation testing and code coverage ──
+# Measuring test quality, not just quantity.
+
+# CODE COVERAGE:
+# Measures % of code lines executed by tests.
+# → 80%+ is good, but 100% ≠ bug-free
+# → Install: pip install pytest-cov
+# → Run: pytest --cov=myapp --cov-report=html
+
+# Coverage report shows:
+# → Lines covered (green) vs uncovered (red)
+# → Branch coverage (if/else both taken?)
+# → Missing coverage in detail
+
+# MUTATION TESTING (tests your tests!):
+# → Make small changes (mutations) to your code
+# → Run tests: do they catch the mutation?
+# → If tests pass with mutation = your tests are weak!
+
+# Install mutmut:
+#   pip install mutmut
+
+# Run mutation testing:
+#   mutmut run
+#   mutmut results
+
+# Mutation types:
+# → Change + to -
+# → Change > to >=
+# → Change True to False
+# → Remove function call
+# → Change return value
+
+# Example:
+# Original: def add(a, b): return a + b
+# Mutation: def add(a, b): return a - b
+# Test: assert add(2, 3) == 5
+# → Test CATCHES mutation (2-3 = -1 ≠ 5) ✓
+# → Your test is good!
+
+# Example of WEAK tests:
+# Original: def calculate_tax(amount): return amount * 0.125
+# Mutation: def calculate_tax(amount): return amount * 0.12
+# Weak test: assert calculate_tax(100) > 0  ← passes with mutation!
+# Good test: assert calculate_tax(100) == 12.5  ← catches mutation!
+
+# PROPERTY-BASED TESTING (Hypothesis):
+# Generate random inputs → test invariants
+from hypothesis import given, strategies as st
+
+@given(st.integers(), st.integers())
+def test_addition_commutative(a, b):
+    """a + b should equal b + a (always!)"""
+    assert add(a, b) == add(b, a)
+
+@given(st.lists(st.integers()))
+def test_sort_idempotent(lst):
+    """Sorting twice = sorting once"""
+    assert sorted(sorted(lst)) == sorted(lst)
+
+@given(st.integers(min_value=0, max_value=10000))
+def test_tax_non_negative(amount):
+    """Tax should never be negative"""
+    assert calculate_tax(amount) >= 0
+
+# Hypothesis generates 100+ random inputs automatically!
+# Finds edge cases you'd never think of.</div>
+
+<div class="code-block"># ── STEP 5: Test doubles (mocks, stubs, fakes) ──
+# Isolating code under test.
+
+# TEST DOUBLE TYPES:
+
+# 1. DUMMY: passed but never used
+def test_create_user():
+    # dummy_logger is required by signature but not used
+    service = UserService(db=mock_db, logger=dummy_logger)
+
+# 2. STUB: returns canned responses
+class StubPaymentGateway:
+    def charge(self, amount):
+        return {"status": "success", "id": "ch_test_123"}
+
+# 3. SPY: records calls for verification
+class EmailSpy:
+    def __init__(self):
+        self.sent = []
+
+    def send(self, to, subject, body):
+        self.sent.append({"to": to, "subject": subject})
+
+    def assert_sent_to(self, email):
+        assert any(m["to"] == email for m in self.sent)
+
+# 4. MOCK: pre-programmed expectations (strict)
+from unittest.mock import Mock, patch, call
+
+# 5. FAKE: simplified but working implementation
+class FakeDatabase:
+    """In-memory DB for testing (no real DB needed)"""
+    def __init__(self):
+        self.data = {}
+
+    def save(self, key, value):
+        self.data[key] = value
+
+    def get(self, key):
+        return self.data.get(key)
+
+# PYTHON MOCKING EXAMPLES:
+
+# Mock external API:
+@patch('myapp.services.requests.get')
+def test_fetch_weather(mock_get):
+    # Arrange: mock returns canned data
+    mock_get.return_value.json.return_value = {
+        "temp": 32, "city": "Dhaka"
+    }
+    mock_get.return_value.status_code = 200
+
+    # Act:
+    weather = fetch_weather("Dhaka")
+
+    # Assert:
+    assert weather["temp"] == 32
+    mock_get.assert_called_once_with("https://api.weather.com/Dhaka")
+
+# Mock database:
+def test_user_service_with_mock():
+    mock_repo = Mock()
+    mock_repo.find_by_email.return_value = None  # user doesn't exist
+
+    service = UserService(repo=mock_repo)
+    result = service.register("test@example.com", "pass123")
+
+    assert result.success
+    mock_repo.save.assert_called_once()  # verify save was called
+
+# Mock time:
+@patch('myapp.utils.datetime')
+def test_expiry(mock_datetime):
+    mock_datetime.utcnow.return_value = datetime(2025, 6, 15)
+    assert is_expired(expires_on=datetime(2025, 6, 14))  # True
+
+# BEST PRACTICES:
+# → Mock at boundaries (external APIs, DB, file system)
+# → Don't mock what you don't own (mock the wrapper, not the lib)
+# → Verify interactions (assert_called, assert_called_once)
+# → Reset mocks between tests (pytest fixtures do this)</div>
+
+<div class="code-block"># ── STEP 6: E2E testing and testing best practices ──
+# Browser automation and production testing.
+
+# ── PLAYWRIGHT (browser E2E testing) ──
+
+# Install:
+#   pip install playwright
+#   playwright install  # download browser binaries
+
+# Example test (test_login.py):
+"""
+from playwright.sync_api import sync_playwright
+
+def test_login_flow(page):
+    # Navigate to login page:
+    page.goto("http://localhost:3000/login")
+
+    # Fill form:
+    page.fill('[data-testid=email]', "test@example.com")
+    page.fill('[data-testid=password]', "SecurePass123!")
+
+    # Click login:
+    page.click('[data-testid=login-button]')
+
+    # Verify redirect to dashboard:
+    page.wait_for_url("**/dashboard")
+    assert page.title() == "Dashboard"
+
+    # Verify user name displayed:
+    expect(page.locator('[data-testid=user-name]')).to_have_text("Test User")
+"""
+
+# PLAYWRIGHT BEST PRACTICES:
+# → Use data-testid attributes (not CSS classes/XPath)
+# → Wait for state, not sleep: page.wait_for_selector(...)
+# → Use page fixtures for browser lifecycle
+# → Run in parallel for speed
+# → Record videos/screenshots on failure for debugging
+
+# ── API TESTING ──
+
+def test_api_endpoints(client):
+    # GET:
+    response = client.get('/api/users/')
+    assert response.status_code == 200
+    assert len(response.json()) > 0
+
+    # POST (create):
+    response = client.post('/api/users/', json={
+        'name': 'Rakib',
+        'email': 'rakib@example.com'
+    })
+    assert response.status_code == 201
+    user_id = response.json()['id']
+
+    # GET (verify):
+    response = client.get(f'/api/users/{user_id}/')
+    assert response.json()['name'] == 'Rakib'
+
+    # PUT (update):
+    response = client.put(f'/api/users/{user_id}/', json={
+        'name': 'Rakib Hasan'
+    })
+    assert response.status_code == 200
+
+    # DELETE:
+    response = client.delete(f'/api/users/{user_id}/')
+    assert response.status_code == 204
+
+# ── PERFORMANCE TESTING ──
+
+# Locust (load testing):
+"""
+from locust import HttpUser, task, between
+
+class WebsiteUser(HttpUser):
+    wait_time = between(1, 5)
+
+    @task
+    def view_homepage(self):
+        self.client.get("/")
+
+    @task(3)  # weight: 3x more frequent
+    def view_products(self):
+        self.client.get("/api/products/")
+
+# Run: locust -f locustfile.py
+# Open: http://localhost:8089
+# Simulate 100 users → measure response time, errors
+"""
+
+# ── TESTING BEST PRACTICES ──
+best_practices = [
+    "Test behavior, not implementation",
+    "Arrange-Act-Assert (AAA) pattern in every test",
+    "One assertion concept per test (or few related)",
+    "Test names describe the scenario: test_login_with_valid_credentials",
+    "Keep tests independent (no shared mutable state)",
+    "Run tests on every commit (CI/CD)",
+    "Fail fast: if test setup fails, skip remaining tests",
+    "Flaky tests = bugs (fix them, don't ignore)",
+    "Test edge cases: empty, null, boundary values",
+    "Snapshot tests for UI (Jest, Playwright)",
+    "Golden master tests for complex algorithms",
+    "Contract tests for API integrations",
+    "Chaos testing: inject failures in staging",
+]
+for bp in best_practices:
+    print(f"  - {bp}")
+
+# TESTING TOOL SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Type             │ Tool                          │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Unit             │ pytest                        │
+# │ Integration      │ pytest + Django TestClient    │
+# │ E2E              │ Playwright, Cypress           │
+# │ Load             │ Locust, k6                    │
+# │ Coverage         │ pytest-cov                    │
+# │ Mutation         │ mutmut, cosmic-ray            │
+# │ Property-based   │ Hypothesis                    │
+# │ Mocking          │ unittest.mock, pytest-mock    │
+# │ Visual regression│ Percy, Chromatic             │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="verse">كُلَّ يَوْمٍ هُوَ فِي شَأْنٍ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"প্রতিদিন তিনি কোনো না কোনো কাজে আছেন।" — কুরআন ৫৫:২৯</div>
