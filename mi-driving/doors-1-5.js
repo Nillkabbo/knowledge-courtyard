@@ -25,36 +25,95 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Speeding in School Zone:</strong> Driver did 35mph in a 25mph school zone — $200 ticket + 3 points. Fix: always slow down near schools.</div></div>
 
 
-<div class="code-block">MICHIGAN GRADUATED DRIVER LICENSING (GDL) — ৩ ধাপ:
+<div class="code-block"># ── STEP 1: Michigan Graduated Driver Licensing (GDL) ──
+# The 3-step path to a full driver license.
 
-# — — — — — — — — — — — — — — — — — — — — — —
-ধাপ ১: SEGMENT 1 DRIVER EDUCATION (বয়স ১৪ বছর ৮ মাস+)
-# — — — — — — — — — — — — — — — — — — — — — —
+gdl_steps = """
+MICHIGAN GRADUATED DRIVER LICENSING (GDL) — 3 STEPS:
 
-পূর্বশর্ত:
-  ✦ বয়স কমপক্ষে ১৪ বছর ৮ মাস
-  ✦ Parent/guardian consent
-  ✦ Physical exam + vision test
+═══════════════════════════════════════════
+STEP 1: SEGMENT 1 DRIVER EDUCATION (Age 14y 8m+)
+═══════════════════════════════════════════
+Prerequisites:
+  → Minimum age: 14 years 8 months
+  → Parent/guardian consent
+  → Physical exam + vision test
 
-Segment 1 Course (মাস্টার করতে হবে):
-  📚 ২৪ ঘণ্টা classroom instruction
-  🚗 ৬ ঘণ্টা behind-the-wheel driving
-  👀 ৪ ঘণ্টা observation (অন্যকে চালাতে দেখা)
+Segment 1 Course (must complete all):
+  → 24 hours classroom instruction
+  → 6 hours behind-the-wheel driving
+  → 4 hours observation (watching others drive)
 
-  → শেষে একটা written test পাশ করতে হবে
-  → শেষে Segment 1 Certificate পাবে
+  → Pass a written test at end
+  → Receive Segment 1 Certificate
 
-# — — — — — — — — — — — — — — — — — — — — — —
-ধাপ ২: LEARNER LICENSE (বয়স ১৪ বছর ৯ মাস+)
-# — — — — — — — — — — — — — — — — — — — — — —
+═══════════════════════════════════════════
+STEP 2: LEARNER LICENSE (Age 14y 9m+)
+═══════════════════════════════════════════
+After Segment 1, go to SOS office:
+  → Submit Segment 1 Certificate
+  → Pass vision test
+  → Pass Knowledge Test (written) ← THE PERMIT EXAM!
+  → Pay fee
 
-Segment 1 শেষে SOS office-এ গিয়ে:
-  ✦ Segment 1 Certificate জমা দাও
-  ✦ Vision test দাও
-  ✦ Knowledge test (written) দাও ← এটাই পারমিট পরীক্ষা!
-  ✦ ফি দাও ($)
+  → If pass: receive Level 1 Learner License
 
-  → পাশ করলে Level 1 Learner License পাবে
+  Level 1 Restrictions:
+  → Drive ONLY with licensed adult (21+, 2+ years experience)
+  → No driving alone
+  → Must hold for minimum 3 months
+
+═══════════════════════════════════════════
+STEP 3: PROVISIONAL LICENSE (Age 16+)
+═══════════════════════════════════════════
+After holding Level 1 for 3+ months:
+  → Complete Segment 2 Driver Education
+  → Pass driving skills test (road test)
+  → Log 50 hours supervised driving (10 at night)
+
+  Level 2 Restrictions:
+  → No driving midnight-5AM (with exceptions)
+  → No more than 1 passenger under 21 (unless family)
+
+═══════════════════════════════════════════
+FULL LICENSE (Age 17+)
+═══════════════════════════════════════════
+  → Hold Level 2 for 6+ months
+  → Clean driving record
+  → Level 3 = full driving privileges
+"""
+
+print(gdl_steps)
+
+# PYTHON (GDL eligibility checker):
+def check_gdl_eligibility(age_years, age_months, segment1_done,
+                          supervised_hours, level1_held_months):
+    """Check what license level you qualify for."""
+    total_months = age_years * 12 + age_months
+
+    if total_months < 176:  # 14y 8m = 176 months
+        return "Too young. Wait until 14 years 8 months for Segment 1."
+
+    if not segment1_done:
+        return "Eligible for Segment 1 Driver Education."
+
+    if total_months < 177:
+        return "Complete Segment 1 first, then apply for Level 1."
+
+    if level1_held_months < 3:
+        return f"Level 1 Learner. Hold for {3 - level1_held_months} more months."
+
+    if supervised_hours < 50:
+        return f"Need {50 - supervised_hours} more supervised hours."
+
+    if total_months < 192:  # 16 years
+        return "Eligible for Segment 2 + driving skills test → Level 2."
+
+    return "May qualify for Level 2/3. Check with SOS."
+
+# Check eligibility:
+print(check_gdl_eligibility(16, 2, True, 52, 4))
+# → "Eligible for Segment 2 + driving skills test → Level 2."</div>
 
 LEARNER LICENSE RESTRICTIONS:
   ⚠️ শুধুমাত্র licensed adult (২১+ বছর) 
