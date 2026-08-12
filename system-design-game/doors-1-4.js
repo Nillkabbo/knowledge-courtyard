@@ -45,26 +45,508 @@ doors.push({
   <div class="diag-cap">শুরুতে vertical সহজ। কিন্তু যখন সত্যিকারের scale দরকার — horizontal।</div>
 </div>
 
-<div class="code-block">Scaling — The Two Roads:
+<div class="code-block"># ── STEP 1: Scaling — vertical vs horizontal ──
+# The fundamental decision in system design.
 
-১. VERTICAL SCALING (Scale Up)
-   এক সার্ভারকে শক্তিশালী করো:
-     4 CPU → 16 CPU → 64 CPU
-     16GB RAM → 128GB → 1TB
-   → সহজ: কোড বদলানো লাগে না
-   → দ্রুত: একই মেশিন
-   ❌ সীমা: সবচেয়ে বড় মেশিনও একদিন ছোট হয়
-   ❌ SPOF: একটাই মেশিন, ভাঙলে সব থামে
-   ❌ দাম: top-tier মেশিন অসামান্য ব্যয়বহুল
+# 1. VERTICAL SCALING (Scale Up):
+#    Make ONE server more powerful: 4 CPU → 16 CPU → 64 CPU
+#    ✅ Easy: no code changes needed
+#    ✅ Fast: same machine
+#    ❌ Limit: even the biggest machine runs out
+#    ❌ SPOF: single point of failure
+#    ❌ Cost: top-tier machines are exponentially expensive
 
-২. HORIZONTAL SCALING (Scale Out)
-   অনেক সার্ভার যোগ করো:
-     1 server → 10 → 100 → 1000
-   → নমনীয়: যত খুশি তত যোগ
-   → সস্তা: commodity hardware
-   → fault-tolerant: একটা ভাঙলে বাকিরা থাকে
-   ❌ কঠিন: stateless করতে হয়, load balancer লাগে
-   ❌ সাজাতে হয়: ডেটা কোথায়, সেশন কোথায়
+# 2. HORIZONTAL SCALING (Scale Out):
+#    Add MORE servers: 1 → 10 → 100 → 1000
+#    ✅ Flexible: add as many as needed
+#    ✅ Cheap: commodity hardware
+#    ✅ Fault-tolerant: one dies, others continue
+#    ❌ Complex: must be stateless, needs load balancer
+#    ❌ Data management: where is the data? where are sessions?
+
+# STATEFUL vs STATELESS — THE KEY QUESTION:
+
+# STATEFUL: server remembers (login, cart, page state)
+#   → Can't send to any server (wrong server = no context)
+#   → Horizontal scaling is HARD
+
+# STATELESS: server remembers NOTHING (all info in request or DB)
+#   → Any server can handle any request
+#   → Horizontal scaling is EASY
+
+# RULE: make it stateless → scale horizontally
+#       keep state OUTSIDE: database, cache, client (JWT)
+
+# WHEN TO SCALE (signals):
+# → CPU average > 70%
+# → Memory > 80%
+# → Disk I/O at limit
+# → Latency increasing
+# → Queue building up
+# → Scale BEFORE users notice
+
+# THE SCALING CUBE (3 axes):
+# X-axis: clone (horizontal) — N identical servers behind load balancer
+# Y-axis: split by function (microservices) — separate services
+# Z-axis: split by data (sharding) — partition data across servers
+
+# PYTHON (capacity planning):
+def capacity_plan(current_rps, target_rps, rps_per_server):
+    """Calculate how many servers needed."""
+    servers_needed = target_rps / rps_per_server
+    current_servers = current_rps / rps_per_server
+    new_servers = servers_needed - current_servers
+
+    return {
+        "current_servers": current_servers,
+        "needed_servers": servers_needed,
+        "add_servers": new_servers,
+        "headroom": rps_per_server * servers_needed - target_rps,
+    }
+
+plan = capacity_plan(current_rps=1000, target_rps=10000, rps_per_server=500)
+print(f"Servers now: {plan['current_servers']}")
+print(f"Servers needed: {plan['needed_servers']}")
+print(f"Add: {plan['add_servers']} servers")
+print(f"Headroom: {plan['headroom']} RPS spare")</div>
+
+<div class="code-block"># ── STEP 2: Load balancing algorithms ──
+# Distributing traffic across multiple servers.
+
+# LOAD BALANCING ALGORITHMS:
+
+algorithms = {
+    "Round Robin": {
+        "how": "Send to server 1, then 2, then 3, repeat",
+        "pros": "Simple, fair distribution",
+        "cons": "Doesn't consider server load",
+        "use": "Uniform servers, simple setups",
+    },
+    "Least Connections": {
+        "how": "Send to server with fewest active connections",
+        "pros": "Balances actual load",
+        "cons": "Slightly more overhead to track",
+        "use": "Variable request times",
+    },
+    "IP Hash": {
+        "how": "Hash client IP → always same server (sticky)",
+        "pros": "Session affinity (stateful apps)",
+        "cons": "Adding/removing servers redistributes all",
+        "use": "When you NEED sticky sessions",
+    },
+    "Weighted Round Robin": {
+        "how": "More powerful servers get more requests",
+        "pros": "Heterogeneous server farms",
+        "cons": "Must configure weights manually",
+        "use": "Mixed server sizes (old + new)",
+    },
+    "Least Response Time": {
+        "how": "Send to fastest-responding server",
+        "pros": "Best user experience",
+        "cons": "Measures latency, not actual load",
+        "use": "Latency-sensitive applications",
+    },
+    "Random": {
+        "how": "Pick a random server",
+        "pros": "Zero overhead",
+        "cons": "Can be uneven",
+        "use": "Very large clusters (random ≈ uniform)",
+    },
+}
+
+for algo, details in algorithms.items():
+    print(f"\n{algo}:")
+    for key, value in details.items():
+        print(f"  {key}: {value}")
+
+# HEALTH CHECKS:
+# → Load balancer pings each server periodically
+# → If server doesn't respond → removed from rotation
+# → If server recovers → added back
+# → Types: HTTP health check, TCP check, custom script
+
+# L4 vs L7 LOAD BALANCING:
+# Layer 4 (transport): routes by IP/port (fast, dumb)
+#   → Nginx stream, AWS NLB, HAProxy in TCP mode
+# Layer 7 (application): routes by URL, headers, cookies (smart)
+#   → Nginx http, AWS ALB, HAProxy in HTTP mode
+#   → Can do path-based routing: /api → backend, /static → CDN
+
+# PYTHON (simple load balancer simulation):
+import random
+
+class LoadBalancer:
+    def __init__(self, servers):
+        self.servers = {s: 0 for s in servers}  # server → connection count
+        self.healthy = set(servers)
+
+    def request(self, algorithm="least_connections"):
+        if not self.healthy:
+            return "ERROR: No healthy servers"
+
+        if algorithm == "round_robin":
+            server = self._round_robin()
+        elif algorithm == "least_connections":
+            server = min(self.healthy, key=lambda s: self.servers[s])
+        elif algorithm == "random":
+            server = random.choice(list(self.healthy))
+
+        self.servers[server] += 1
+        return f"→ Routed to {server} (conns: {self.servers[server]})"
+
+    def _round_robin(self):
+        return min(self.healthy, key=lambda s: self.servers[s])
+
+    def health_check(self, server, is_healthy):
+        if is_healthy:
+            self.healthy.add(server)
+        else:
+            self.healthy.discard(server)
+
+lb = LoadBalancer(["srv-1", "srv-2", "srv-3"])
+for _ in range(10):
+    print(lb.request("least_connections"))
+lb.health_check("srv-2", False)  # srv-2 goes down
+print("srv-2 removed. Next requests:")
+for _ in range(5):
+    print(lb.request("least_connections"))</div>
+
+<div class="code-block"># ── STEP 3: Caching strategies ──
+# The #1 performance optimization in system design.
+
+# CACHE STRATEGIES:
+
+strategies = {
+    "CACHE-ASIDE (Lazy Loading)": {
+        "how": "App checks cache → miss → read DB → fill cache",
+        "pros": "Only requested data is cached (memory efficient)",
+        "cons": "Cache miss = slow (DB read)",
+        "use": "Most common pattern (Redis + Django/Flask)",
+    },
+    "WRITE-THROUGH": {
+        "how": "Write to cache AND database simultaneously",
+        "pros": "Cache always consistent with DB",
+        "cons": "Write latency (two writes)",
+        "use": "Write-heavy apps needing consistency",
+    },
+    "WRITE-BEHIND (Write-Back)": {
+        "how": "Write to cache → async write to DB later",
+        "pros": "Fast writes (cache only)",
+        "cons": "Data loss risk if cache crashes before DB write",
+        "use": "Logging, analytics (tolerant of small data loss)",
+    },
+    "CACHE-EVICTION POLICIES": {
+        "LRU (Least Recently Used)": "Evict oldest unused entry",
+        "LFU (Least Frequently Used)": "Evict least-accessed entry",
+        "FIFO (First In First Out)": "Evict oldest entry",
+        "TTL (Time To Live)": "Auto-expire after N seconds",
+    },
+}
+
+for strategy, details in strategies.items():
+    print(f"\n{strategy}:")
+    if isinstance(details, dict):
+        for key, value in details.items():
+            print(f"  {key}: {value}")
+    else:
+        print(f"  {details}")
+
+# CACHE HIERARCHY:
+# Browser cache → CDN → API gateway cache → Application cache (Redis) → Database
+# Each layer is faster than the one below it
+
+# CDN (Content Delivery Network):
+# → Edge servers worldwide cache static content (images, JS, CSS)
+# → User in Asia → Asian edge server (not US origin)
+# → Reduces latency from 200ms to 20ms
+# → Providers: Cloudflare, CloudFront, Fastly
+
+# PYTHON (cache-aside pattern with Redis):
+import redis
+import json
+
+r = redis.Redis(host='localhost', port=6379, db=0)
+
+def get_user_cached(user_id):
+    """Cache-aside pattern: check cache → miss → DB → fill cache."""
+    cache_key = f"user:{user_id}"
+
+    # 1. Check cache:
+    cached = r.get(cache_key)
+    if cached:
+        return json.loads(cached)  # Cache HIT!
+
+    # 2. Cache MISS → read from database:
+    user = User.objects.get(id=user_id)
+
+    # 3. Fill cache (with TTL):
+    r.setex(cache_key, 3600, json.dumps(user.to_dict()))  # 1 hour TTL
+
+    return user.to_dict()
+
+# CACHE STAMPEDE PREVENTION:
+# When cache expires → 1000 requests hit DB simultaneously
+# Solution: lock + early refresh, or probabilistic early expiration
+
+# WHEN TO CACHE:
+# ✅ Read-heavy data that changes infrequently
+# ✅ Expensive computations (ML inference results)
+# ✅ Database query results
+# ❌ Data that changes constantly (cache invalidation nightmare)
+# ❌ Data that must be real-time (stock prices, messages)</div>
+
+<div class="code-block"># ── STEP 4: Microservices — when and how ──
+# Decomposing the monolith.
+
+# MONOLITH vs MICROSERVICES:
+
+comparison = """
+MONOLITH:
+  → All code in one deployment
+  → One database
+  → Simple to develop, test, deploy
+  → Scaling: clone the whole thing
+  ✅ Good for: small teams, early stage, simple domains
+  ❌ Bad for: large teams, complex domains, independent scaling
+
+MICROSERVICES:
+  → Each service: own codebase, own database, own deployment
+  → Communicate via APIs (REST, gRPC) or events (Kafka)
+  → Scale independently
+  ✅ Good for: large teams, complex domains, independent scaling
+  ❌ Bad for: small teams (overhead kills productivity)
+
+WHEN TO MOVE TO MICROSERVICES:
+  → Team > 8 people (communication overhead in monolith)
+  → Different parts need different scaling
+  → Deployment conflicts (team A blocks team B)
+  → Clear domain boundaries exist
+
+WHEN NOT TO:
+  → Small team (< 5 people)
+  → Early stage startup (move fast, fix later)
+  → No clear service boundaries
+  → "Distributed monolith" = worst of both worlds
+"""
+
+print(comparison)
+
+# MICROSERVICE COMMUNICATION PATTERNS:
+
+patterns = """
+1. SYNCHRONOUS (REST/gRPC):
+   → Service A calls Service B and waits for response
+   → Simple but creates coupling
+   → If B is down, A fails (cascade)
+   → Use for: user-facing requests needing immediate response
+
+2. ASYNCHRONOUS (Message Queue):
+   → Service A publishes event → Service B consumes later
+   → Decoupled: B can be down, A continues
+   → Eventual consistency
+   → Use for: notifications, background jobs, analytics
+
+3. SERVICE MESH:
+   → Sidecar proxy handles: routing, retries, circuit breaking
+   → Istio, Linkerd
+   → Use for: large microservice deployments (50+ services)
+
+4. API GATEWAY:
+   → Single entry point for all clients
+   → Handles: auth, rate limiting, routing, aggregation
+   → Kong, AWS API Gateway, Nginx
+   → Clients call gateway, gateway routes to services
+"""
+
+print(patterns)
+
+# DATABASE PER SERVICE:
+# → Each microservice owns its data (no shared database)
+# → Communicate via API, not database joins
+# → If service A needs service B's data → call B's API
+# → This is HARD (no more JOINs across services)
+# → Solution: event-driven sync (B publishes, A caches what it needs)
+
+# PYTHON (service communication):
+import requests
+
+class OrderService:
+    """Order microservice - communicates with other services via API."""
+
+    def create_order(self, user_id, items):
+        # Call User Service:
+        user = requests.get(f"http://user-service/api/users/{user_id}").json()
+
+        # Call Inventory Service:
+        for item in items:
+            inv = requests.post(
+                "http://inventory-service/api/reserve",
+                json={"product_id": item["id"], "qty": item["qty"]}
+            )
+            if inv.status_code != 200:
+                return {"error": "Item out of stock"}
+
+        # Call Payment Service:
+        payment = requests.post(
+            "http://payment-service/api/charge",
+            json={"user_id": user_id, "amount": self._total(items)}
+        )
+
+        return {"order_id": "ord_123", "status": "confirmed"}</div>
+
+<div class="code-block"># ── STEP 5: Database scaling — sharding and replication ──
+# Handling data at massive scale.
+
+# DATABASE SCALING STRATEGIES:
+
+scaling = """
+1. READ REPLICAS:
+   → Primary DB: writes only
+   → Replica DBs: reads only (1 → N copies)
+   → Writes go to primary, replicated to replicas
+   → Good for: read-heavy apps (most apps)
+   → Challenge: replication lag (replica slightly behind primary)
+
+2. SHARDING (Horizontal Partitioning):
+   → Split data across multiple databases
+   → Each shard holds a subset of data
+   → Shard by: user_id, geography, date range, hash
+   → Good for: write-heavy, massive data
+   → Challenge: cross-shard queries, resharding
+
+   SHARDING STRATEGIES:
+   → Range-based: users 1-1000 on shard A, 1001-2000 on shard B
+   → Hash-based: hash(user_id) % N_shards → even distribution
+   → Geographic: US users on US shard, EU users on EU shard
+   → Directory: lookup table maps keys to shards
+
+3. VERTICAL PARTITIONING:
+   → Split tables across databases by function
+   → User data → User DB, Orders → Order DB
+   → Similar to microservices (database per service)
+
+4. FEDERATION (Functional Split):
+   → Different databases for different features
+   → Sessions in Redis, logs in Elasticsearch, transactions in PostgreSQL
+   → Each database optimized for its use case
+"""
+
+print(scaling)
+
+# PYTHON (sharding example):
+class ShardRouter:
+    """Route queries to correct database shard."""
+
+    def __init__(self, num_shards=4):
+        self.shards = [f"postgres://shard-{i}" for i in range(num_shards)]
+        self.num_shards = num_shards
+
+    def get_shard(self, user_id):
+        """Hash-based sharding: consistent distribution."""
+        return hash(user_id) % self.num_shards
+
+    def query(self, user_id, sql):
+        shard_idx = self.get_shard(user_id)
+        shard_url = self.shards[shard_idx]
+        return execute_on_shard(shard_url, sql)
+
+# SHARDING CHALLENGE: cross-shard queries
+# → "Get all orders from last month" → must query ALL shards
+# → Solution: map-reduce (query all, merge results)
+# → Or: denormalize into a reporting database
+
+# WHEN TO SHARD:
+# → Data > 1TB (single DB struggles)
+# → Writes > single DB capacity
+# → Don't shard prematurely (start with read replicas!)
+
+# ── DATA CONSISTENCY MODELS ──
+consistency = {
+    "Strong": "Always read latest write. Slow but correct (banks).",
+    "Eventual": "Reads may be stale, but converge. Fast (social media).",
+    "Causal": "Preserves cause-effect order. Medium.",
+    "Read-your-writes": "You always see your own writes. Session consistency.",
+}
+for model, desc in consistency.items():
+    print(f"  {model}: {desc}")</div>
+
+<div class="code-block"># ── STEP 6: System design best practices and interview framework ──
+# The complete system designer's toolkit.
+
+best_practices = [
+    "Start simple (monolith), extract services when needed",
+    "Make services stateless (enables horizontal scaling)",
+    "Cache aggressively (cache-aside + TTL + LRU eviction)",
+    "Use CDN for static content (global edge caching)",
+    "Load balance at L7 (smart routing by URL/headers)",
+    "Shard only when read replicas aren't enough",
+    "Design for failure (circuit breakers, graceful degradation)",
+    "Async for background work (message queues, event-driven)",
+    "Monitor everything (latency, throughput, error rate)",
+    "Capacity plan before traffic spikes (not during)",
+    "Document trade-offs (ADR: Architecture Decision Records)",
+    "Use managed services (don't build your own message queue)",
+    "Idempotent APIs (safe to retry without side effects)",
+    "Version your APIs (v1, v2 — don't break clients)",
+    "Database per service (no shared databases in microservices)",
+]
+
+print("SYSTEM DESIGN BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SYSTEM DESIGN INTERVIEW FRAMEWORK (45 min):
+interview = """
+1. CLARIFY REQUIREMENTS (5 min):
+   → Functional: what does the system DO?
+   → Non-functional: scale, latency, availability
+   → "Design Twitter" → how many users? real-time? search? DMs?
+
+2. ESTIMATE SCALE (3 min):
+   → Users: 100M DAU
+   → QPS: 10K reads, 100 writes
+   → Storage: 500M tweets/day × 200 bytes = 100 GB/day
+   → Bandwidth: 10 GB/s
+
+3. HIGH-LEVEL DESIGN (10 min):
+   → Client → CDN → Load Balancer → API Gateway → Services → DB
+   → Draw boxes and arrows
+   → Identify: cache, queue, database, search
+
+4. DEEP DIVE (15 min):
+   → Database schema (SQL vs NoSQL)
+   → API design (REST endpoints)
+   → Caching (Redis: timelines, user profiles)
+   → Scaling (sharding by user_id, read replicas)
+   → Async processing (Kafka for tweet fanout)
+
+5. BOTTLENECKS (10 min):
+   → Celebrity problem (millions of followers → fanout storm)
+   → Solution: push to cache for normal users, pull for celebrities
+   → Single point of failure → add redundancy
+   → Hot partitions → consistent hashing + rebalancing
+
+6. WRAP UP (2 min):
+   → Summarize the design
+   → Mention trade-offs made
+   → Suggest future improvements
+"""
+
+print(interview)
+
+# SYSTEM DESIGN COMPONENTS CHEAT SHEET:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Component        │ When to Use                  │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Load Balancer    │ Multiple servers             │
+# │ CDN              │ Global static content        │
+# │ Cache (Redis)    │ Read-heavy, low-latency      │
+# │ Message Queue    │ Async processing, decoupling │
+# │ Search (ES)      │ Full-text search             │
+# │ Sharding         │ Massive data/writes          │
+# │ Microservices    │ Large team, complex domain   │
+# │ API Gateway      │ Auth, rate limit, routing    │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 STATEFUL vs STATELESS — এটাই আসল প্রশ্ন:
 
