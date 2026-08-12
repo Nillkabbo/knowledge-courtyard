@@ -93,20 +93,331 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: পাঁচটি মানসিক মডেল — প্রতিটি আলাদা সমস্যার জন্য। একসাথে একটি চিন্তার তাঁত।</div>
 
-<div class="code-block">— Build Your Latticework —
-  tools = []
-  tools.push(opportunity_cost)    // economics
-  tools.push(reactivity)          // psychology
-  tools.push(entropy)             // physics
-  tools.push(feedback_loops)      // systems
-  tools.push(first_principles)    // philosophy
+<div class="code-block"># ── STEP 1: Mental models — your cognitive latticework ──
+# Building a toolkit for thinking.
 
-  problem arrives
-    → ask: which model fits this?
-    → pull model, apply
-    → ask: what am I NOT seeing?
-  one tool = hammer-man
-  many tools, wisely used = hikmah</div>
+# Charlie Munger: "You must know the big ideas in the big disciplines
+# and use them routinely — all of them, not just a few."
+
+MENTAL_MODELS = {
+    # Economics:
+    "Opportunity Cost": "What you give up by choosing X over Y",
+    "Comparative Advantage": "Do what you're relatively best at",
+    "Economies of Scale": "Cost per unit decreases with volume",
+
+    # Psychology:
+    "Confirmation Bias": "Seeking info that confirms what you already believe",
+    "Loss Aversion": "Losses hurt 2x more than equivalent gains feel good",
+    "Anchoring": "First number seen influences all subsequent estimates",
+    "Dunning-Kruger": "Beginners overestimate, experts underestimate ability",
+
+    # Physics/Systems:
+    "Entropy": "Systems naturally move toward disorder",
+    "Feedback Loops": "Positive amplifies, negative stabilizes",
+    "Critical Mass": "Point where change becomes self-sustaining",
+    "Inertia": "Objects in motion stay in motion (momentum)",
+
+    # Philosophy:
+    "First Principles": "Break down to fundamental truths, build up",
+    "Occam's Razor": "Simplest explanation is usually correct",
+    "Hanlon's Razor": "Don't attribute to malice what stupidity explains",
+    "Inversion": "What would guarantee failure? Avoid that.",
+
+    # Biology:
+    "Evolution": "Adaptation through variation + selection",
+    "Red Queen Effect": "Must keep improving just to stay in place",
+}
+
+# HOW TO APPLY MENTAL MODELS:
+# 1. Problem arrives
+# 2. Ask: "Which model fits this problem?"
+# 3. Pull model, apply it
+# 4. Ask: "What am I NOT seeing?" (use a different model)
+# 5. Synthesize insights from multiple models
+
+# WARNING: One tool = hammer-man syndrome
+# "To a man with only a hammer, everything looks like a nail"
+# → Use MULTIPLE models for each problem
+# → Wisdom (hikmah) = knowing WHICH model to use WHEN
+
+for model, description in MENTAL_MODELS.items():
+    print(f"  {model}: {description}")</div>
+
+<div class="code-block"># ── STEP 2: Validating arguments ──
+# The structure of logical reasoning.
+
+# THREE TYPES OF REASONING:
+
+# 1. DEDUCTION (general → specific, guaranteed):
+#    All humans are mortal. Socrates is human. → Socrates is mortal.
+#    If premises are true, conclusion MUST be true.
+
+# 2. INDUCTION (specific → general, probable):
+#    Every swan I've seen is white. → All swans are white.
+#    (WRONG: black swans exist! Induction = probable, not certain)
+
+# 3. ABDUCTION (best explanation):
+#    Grass is wet. Best explanation: it rained.
+#    (Could also be: sprinkler, hose, dew. Pick most likely.)
+
+# ARGUMENT STRUCTURE:
+# Premise 1 + Premise 2 → Conclusion
+# Two checks:
+#   VALIDITY: Does the conclusion follow from the premises? (structure)
+#   SOUNDNESS: Are the premises actually true? (content)
+
+# VALID ARGUMENT (correct structure):
+#   P1: All birds have feathers
+#   P2: A robin is a bird
+#   C: Therefore, a robin has feathers ✓
+
+# INVALID ARGUMENT (broken structure):
+#   P1: All birds have feathers
+#   P2: A cat has feathers  ← FALSE premise
+#   C: Therefore, a cat is a bird ✗ (unsound, even if structure is valid)
+
+# PYTHON (argument validator):
+def evaluate_argument(premises, conclusion, premise_truth):
+    """Check validity and soundness of a logical argument."""
+    # Validity: does the structure hold?
+    # (This is simplified — real logic is more complex)
+    valid = all(premise_truth)  # all premises true = potentially sound
+
+    if valid:
+        return "VALID and SOUND (conclusion is true)"
+    elif not all(premise_truth):
+        return "VALID but UNSOUND (premise is false)"
+    else:
+        return "INVALID (structure is broken)"
+
+# COMMON LOGICAL FALLACIES:
+fallacies = [
+    "Ad Hominem: attacking the person, not the argument",
+    "Straw Man: misrepresenting opponent's argument, then attacking",
+    "False Dichotomy: presenting only two options when more exist",
+    "Slippery Slope: A will lead to Z without evidence of causation",
+    "Circular Reasoning: conclusion is assumed in the premise",
+    "Appeal to Authority: X is true because expert Y says so",
+    "Post Hoc: B happened after A, therefore A caused B",
+    "Hasty Generalization: drawing broad conclusions from small sample",
+    "Red Herring: diverting attention to irrelevant topic",
+    "No True Scotsman: changing definition to exclude counterexamples",
+]
+for f in fallacies:
+    print(f"  ⚠️ {f}")</div>
+
+<div class="code-block"># ── STEP 3: Fallacy checklist + Bayesian thinking ──
+# Updating beliefs with evidence.
+
+# BAYESIAN UPDATING:
+# Prior belief + New evidence = Updated belief
+#
+# P(H|E) = P(E|H) × P(H) / P(E)
+#
+# P(H|E): probability hypothesis is true given evidence
+# P(E|H): probability of evidence if hypothesis is true
+# P(H):   prior probability of hypothesis
+# P(E):   probability of evidence (all causes)
+
+# PYTHON (Bayesian update):
+def bayesian_update(prior, likelihood, evidence_prob):
+    """Update belief given new evidence."""
+    posterior = (likelihood * prior) / evidence_prob
+    return posterior
+
+# Example: Medical test
+# Prior: P(disease) = 0.01 (1% of population has disease)
+# Likelihood: P(positive test | disease) = 0.95 (95% sensitive)
+# False positive: P(positive test | no disease) = 0.05 (5% false positive rate)
+
+prior = 0.01                    # P(disease)
+true_positive = 0.95            # P(+ | disease)
+false_positive = 0.05           # P(+ | no disease)
+
+# P(positive test) = all ways to get positive:
+p_positive = (true_positive * prior) + (false_positive * (1 - prior))
+
+# P(disease | positive test):
+posterior = bayesian_update(prior, true_positive, p_positive)
+print(f"P(disease | positive test) = {posterior:.4f}")
+# = 0.161 (only 16% chance you actually have the disease!)
+# Counterintuitive? → Base rate fallacy
+
+# BAYESIAN LIFE LESSONS:
+# → Start with prior (what you already know)
+# → Update with evidence (don't ignore new info)
+# → Extraordinary claims need extraordinary evidence
+# → Don't update too fast (1 piece of evidence ≠ paradigm shift)
+# → Don't update too slow (ignore contradictory evidence = bias)
+
+# COGNITIVE BIASES TO AVOID:
+biases = [
+    "Anchoring: first number biases all estimates",
+    "Availability: vivid examples feel more probable",
+    "Representativeness: judge by stereotype, not base rate",
+    "Sunk Cost: continuing because of past investment",
+    "Survivorship: studying winners, ignoring failures",
+    "Confirmation: seeking evidence that agrees with you",
+    "Dunning-Kruger: incompetence masks awareness of incompetence",
+    "Planning Fallacy: underestimate time/cost (always!)",
+    "Halo Effect: one good trait colors all judgment",
+    "Framing: same info, different presentation = different choice",
+]
+for b in biases:
+    print(f"  🧠 {b}")</div>
+
+<div class="code-block"># ── STEP 4: First principles and inversion ──
+# Two powerful thinking tools.
+
+# FIRST PRINCIPLES THINKING (Elon Musk's approach):
+# 1. Identify the problem
+# 2. Break down into fundamental truths
+# 3. Build up from first principles (not by analogy)
+
+# EXAMPLE: SpaceX
+# Analogy: "Rockets are expensive ($65M per launch)"
+# First Principles:
+#   What is a rocket made of? Aluminum, titanium, copper, carbon fiber
+#   What's the raw material cost? ~2% of rocket price ($130K)
+#   Why so expensive? → Manufacturing process, single-use
+#   Solution: Reusable rockets → 100x cost reduction
+
+# PYTHON (first principles decomposition):
+def first_principles(problem):
+    """Decompose problem to fundamental truths."""
+    questions = [
+        "What are the fundamental components?",
+        "What MUST be true?",
+        "What is just convention/assumption?",
+        "If starting from scratch, how would I do this?",
+        "What would have to be true for this to fail?",
+    ]
+    return questions
+
+problem = "Software interviews are biased toward algorithm memorization"
+for q in first_principles(problem):
+    print(f"  ? {q}")
+
+# INVERSION (Charlie Munger's favorite):
+# "Tell me where I'll die, so I won't go there" — avoid stupidity
+# Instead of "How do I succeed?" → "How do I guarantee failure?"
+# Then avoid those things.
+
+# PYTHON (inversion thinking):
+def inversion(goal):
+    """Instead of seeking success, identify guaranteed failure."""
+    return {
+        "Goal": goal,
+        "Instead ask": f"How would I guarantee FAILURE at: {goal}?",
+        "Then": "Avoid everything on that list",
+        "Insight": "Avoiding stupidity is easier than seeking brilliance",
+    }
+
+result = inversion("Become a great software engineer")
+print(f"\nGoal: {result['Goal']}")
+print(f"Invert: {result['Instead ask']}")
+print("Guaranteed failure list:")
+failures = [
+    "Never practice coding",
+    "Don't learn data structures",
+    "Never read other people's code",
+    "Avoid code reviews",
+    "Never build real projects",
+    "Don't learn from mistakes",
+    "Refuse to collaborate",
+]
+for f in failures:
+    print(f"  ❌ {f} → DON'T DO THIS!")</div>
+
+<div class="code-block"># ── STEP 5: Decision-making frameworks ──
+# Making better choices under uncertainty.
+
+# DECISION FRAMEWORKS:
+
+# 1. EXPECTED VALUE:
+# EV = Σ (probability × payoff)
+# Choose option with highest EV
+
+def expected_value(scenarios):
+    """Calculate expected value of a decision."""
+    return sum(p * v for p, v in scenarios)
+
+# Should you take a job offer?
+job_scenarios = [
+    (0.7, 120_000),   # 70% chance: succeeds, salary $120K
+    (0.2, 90_000),    # 20% chance: mediocre, $90K
+    (0.1, 0),         # 10% chance: fails, back to job search
+]
+ev_job = expected_value(job_scenarios)
+print(f"Expected value of new job: {ev_job:.0f}")
+
+# 2. WRAP (Writing to Reason):
+# W: What's the decision?
+# R: Reality (what are the facts?)
+# A: Alternatives (what are ALL options?)
+# P: Preferences (what do you value?)
+
+# 3. PRE-MORTEM (before deciding):
+# "It's 1 year from now. This decision was a DISASTER. What went wrong?"
+# → Identify failure modes BEFORE they happen
+
+# 4. 10-10-10 RULE (Suzy Welch):
+# How will I feel about this in:
+#   10 minutes? (emotional reaction)
+#   10 months? (medium-term consequence)
+#   10 years? (long-term impact)
+
+# 5. OPPORTUNITY COST:
+# Choosing X means NOT choosing Y
+# The cost of X = value of best alternative NOT chosen
+
+# 6. REVERSIBILITY (Jeff Bezos):
+# Type 1: Reversible decisions → move fast, iterate
+# Type 2: Irreversible decisions → think carefully, deliberately
+# Most decisions are Type 1 (reversible). Don't overthink them.
+
+# DECISION JOURNAL (track your decisions to improve):
+decision_journal = {
+    "date": "2025-01-15",
+    "decision": "Accept job at LedgerPilot",
+    "reasoning": "Great team, technical growth, decent salary",
+    "expected_outcome": "Learn Django deeply, build fintech skills",
+    "alternatives": ["Stay at current job", "Join startup", "Freelance"],
+    "emotional_state": "Cautiously optimistic",
+    "review_date": "2025-07-15",  # check back in 6 months
+}
+print("Decision journal entry created. Review on:", decision_journal["review_date"])</div>
+
+<div class="code-block"># ── STEP 6: Clear thinking best practices ──
+# Habits for better thinking.
+
+best_practices = [
+    "Read widely (beyond your field — cross-pollinate ideas)",
+    "Write to think (writing clarifies muddy thoughts)",
+    "Seek disconfirming evidence (not just confirmation)",
+    "Talk to people who disagree with you",
+    "Sleep on big decisions (incubation effect)",
+    "Use checklists (pilots do, surgeons do — so should you)",
+    "Track your predictions (calibrate your confidence)",
+    "Study failures (yours and others')",
+    "Practice 'steel-manning' (state opponent's argument better than they can)",
+    "Distinguish facts from interpretations",
+    "Ask 'What would change my mind?' (if nothing, you're dogmatic)",
+    "Avoid decision fatigue (automate small decisions)",
+    "Embrace uncertainty (pretending certainty = lying)",
+    "Think in probabilities, not certainties (60%, not 'definitely')",
+    "Reflect daily (what did I learn? what was I wrong about?)",
+]
+
+print("CLEAR THINKING BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# THE ULTIMATE QUESTION:
+# When facing any decision, ask:
+# "Am I thinking clearly, or am I being driven by emotion/bias/fear?"
+# Then pause. Breathe. Apply the frameworks.
+# Clear thinking = freedom from your own mind's traps.</div>
 
 <div class="secret-box">🪡 একটা হাতিয়ার নয়, একটা তাঁত বানাও। মডেল হলো মানচিত্র — ভুল কিন্তু কাজে লাগে। যে জানে কোনটা কখন টানতে হবে, তার কাছে হিকমাহ। আজ থেকে একটা প্রশ্ন করো: <em>"এটা কি আমার একমাত্র হাতিয়ার দিয়ে সমাধান করার চেষ্টা করছি?"</em></div>`
 });
