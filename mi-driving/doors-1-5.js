@@ -1747,41 +1747,55 @@ print(f"  N+S+E+W same time: {four_way_stop(True, True, True, True)}")
 <div class="scn-explain">বাস্তব রাস্তায় সবাই নিয়ম মানে না — কেউ ভুলে যায়, কেউ তাড়াহুড়ো করে। Right-of-way "নেওয়ার" জিনিস নয়, "দেওয়ার" জিনিস। Crash হলে "কিন্তু আমার অগ্রাধিকার ছিল" বলে লাভ নেই। Defensive driving-এর মূলমন্ত্র: predictable হও, সন্দেহ হলে yield করো।</div>
 </div>
 
-<div class="code-block">EXAM PATTERN QUESTIONS — Right-of-Way:
+<div class="code-block"># ── STEP 13: Exam pattern questions — right-of-way ──
+# Practice for right-of-way scenarios on the permit test.
 
-❓ 4-way stop-এ একই সময়ে ২টা গাড়ি থামলে 
-   কে আগে যাবে?
-✅ ডান দিকের গাড়ি প্রথম যায়।
+# PYTHON (interactive practice — right-of-way):
 
-❓ কোনো সাইন ছাড়া intersection-এ কাকে 
-   অগ্রাধিকার দেবে?
-✅ ডান দিক থেকে আসা গাড়িকে।
+right_of_way_qa = [
+    {"q": "4-way stop, 2 cars stop same time — who goes first?",
+     "a": "Car on the RIGHT goes first",
+     "options": ["Car on the left", "Car on the right", "Faster car", "Larger car"]},
+    {"q": "Uncontrolled intersection (no signs) — yield to?",
+     "a": "Traffic coming from your RIGHT",
+     "options": ["Traffic from left", "Traffic from right", "Faster traffic", "No one"]},
+    {"q": "Left turn at green light (no arrow) — yield to?",
+     "a": "All oncoming (opposite-direction) traffic",
+     "options": ["No one", "Oncoming traffic", "Right-turning cars", "Pedestrians only"]},
+    {"q": "Entering a roundabout — yield to?",
+     "a": "Traffic already INSIDE the roundabout",
+     "options": ["Exiting traffic", "Traffic inside roundabout", "Pedestrians only", "No one"]},
+    {"q": "School bus with red flashing lights + stop arm?",
+     "a": "STOP from both directions (on undivided road)",
+     "options": ["Pass slowly", "Stop both directions", "Only same-direction stops", "Honk and pass"]},
+    {"q": "Ambulance approaching with sirens?",
+     "a": "Pull to the RIGHT and stop",
+     "options": ["Pull left", "Pull right and stop", "Keep driving", "Speed up"]},
+    {"q": "Pedestrian standing at crosswalk?",
+     "a": "Always stop — pedestrians have right-of-way",
+     "options": ["Wave them across", "Always stop", "Honk", "Drive around"]},
+    {"q": "Green light, turning left (no arrow) — who goes first?",
+     "a": "Yield to oncoming traffic going straight",
+     "options": ["You go first", "Yield to oncoming", "Both go together", "Wait for yellow"]},
+    {"q": "Funeral procession approaching?",
+     "a": "Yield — do not cut through the procession",
+     "options": ["Cut through", "Yield and wait", "Honk", "Pass on right"]},
+    {"q": "U-turn is ALWAYS prohibited at?",
+     "a": "Where NO U-TURN sign posted, curves, hill crests, intersections with no U-turn sign",
+     "options": ["Everywhere", "Posted areas, curves, hills", "Only highways", "Only at night"]},
+]
 
-❓ বাম মোড় নিলে কাকে yield করবে?
-✅ Oncoming (বিপরীত দিকের) traffic কে।
+score = 0
+for i, qa in enumerate(right_of_way_qa, 1):
+    print(f"\nQ{i}: {qa['q']}")
+    for j, opt in enumerate(qa['options'], 1):
+        marker = " <-" if opt == qa['a'] else ""
+        print(f"  {j}) {opt}{marker}")
+    print(f"  Answer: {qa['a']}")
+    score += 1
 
-❓ Roundabout-এ কাকে yield করবে?
-✅ ভেতরে already থাকা গাড়িকে।
-
-❓ স্কুল বাস লাল আলো + STOP arm দেখালে 
-   কী করবে?
-✅ উভয় দিক থেকে সম্পূর্ণ থামো।
-
-❓ জরুরি গাড়ি (ambulance) সাইরেন নিয়ে 
-   আসলে কী করবে?
-✅ ডানে সরে যাও, থামো।
-
-❓ ক্রসওয়াকে পেডেস্ট্রিয়ান দাঁড়িয়ে থাকলে?
-✅ থামো। পেডেস্ট্রিয়ান সবসময় অগ্রাধিকার।
-
-❓ সবুজ তীর (arrow) ছাড়া solid green আলোতে 
-   বাম মোড় নিলে?
-✅ Oncoming traffic কে yield করো।
-
-❓ Funeral procession দেখলে কী করবে?
-✅ Yield করো — অগ্রাধিকার দাও।
-
-❓ U-turn কোথায় সম্পূর্ণ নিষেধ?
+print(f"\n{'='*40}")
+print(f"Right-of-Way section: {score}/{len(right_of_way_qa)}")</div>
 ✅ Business district-এ। অন্যত্র নিরাপদ হলে করা যায়।
 
 ❓ "Michigan Left" কী?
@@ -2145,41 +2159,61 @@ for violation in ["fire_hydrant", "disabled_space", "expired_meter", "snow_emerg
 <div class="scn-explain">Speed limit সর্বোচ্চ — কিন্তু condition-এর জন্য আইনি নয়। বরফে ২৫-৩০ mph বা তার কম নিরাপদ হতে পারে। Police "too fast for conditions" টিকিট দিতে পারে।</div>
 </div>
 
-<div class="code-block">EXAM PATTERN QUESTIONS — Speed & Parking:
+<div class="code-block"># ── STEP 14: Exam pattern questions — speed & parking ──
+# Practice for speed limits and parking rules.
 
-❓ Michigan-এ residential area speed limit কত?
-✅ ২৫ mph।
+# PYTHON (interactive practice — speed & parking):
 
-❓ School zone-এ speed limit কত?
-✅ ২৫ mph (সাইন থাকলে)।
+speed_parking_qa = [
+    {"q": "Residential/business district speed limit?",
+     "a": "25 mph",
+     "options": ["15 mph", "25 mph", "35 mph", "55 mph"]},
+    {"q": "School zone speed limit (when active)?",
+     "a": "25 mph (when children present / flashing light)",
+     "options": ["15 mph", "25 mph", "30 mph", "As posted, usually 25"]},
+    {"q": "Freeway/expressway default speed (rural)?",
+     "a": "70 mph (75 in some rural, 55-65 urban)",
+     "options": ["55 mph", "65 mph", "70 mph", "75 mph"]},
+    {"q": "Basic Speed Law means?",
+     "a": "Drive at a safe speed for conditions (weather, traffic, road)",
+     "options": ["Drive at speed limit always", "Safe speed for conditions", "Never below 55", "Match fastest car"]},
+    {"q": "Construction zone speeding fine?",
+     "a": "DOUBLE the normal fine",
+     "options": ["Same as normal", "Double fine", "Triple fine", "Warning only"]},
+    {"q": "Minimum distance from fire hydrant to park?",
+     "a": "15 feet",
+     "options": ["5 feet", "10 feet", "15 feet", "25 feet"]},
+    {"q": "Minimum distance from crosswalk to park?",
+     "a": "20 feet",
+     "options": ["10 feet", "15 feet", "20 feet", "30 feet"]},
+    {"q": "Minimum distance from STOP sign to park?",
+     "a": "30 feet",
+     "options": ["15 feet", "20 feet", "30 feet", "50 feet"]},
+    {"q": "Minimum distance from railroad track to park?",
+     "a": "50 feet",
+     "options": ["25 feet", "50 feet", "75 feet", "100 feet"]},
+    {"q": "Downhill parking — which way to turn wheels?",
+     "a": "TOWARD the curb (right)",
+     "options": ["Away from curb", "Toward curb", "Straight", "Doesn't matter"]},
+    {"q": "Uphill parking WITH curb — which way to turn wheels?",
+     "a": "AWAY from curb (left) — car rolls back into curb",
+     "options": ["Toward curb", "Away from curb", "Straight", "Right only"]},
+    {"q": "Disabled parking without placard fine?",
+     "a": "$50-500",
+     "options": ["$25", "$50-500", "$1000", "Warning only"]},
+]
 
-❓ Freeway/expressway-এ default speed limit?
-✅ ৭০ mph (কিছু rural freeway-তে ৭৫,
-   urban-এ ৫৫-৬৫ — সবসময় posted সাইন দেখো)।
+score = 0
+for i, qa in enumerate(speed_parking_qa, 1):
+    print(f"\nQ{i}: {qa['q']}")
+    for j, opt in enumerate(qa['options'], 1):
+        marker = " <-" if opt == qa['a'] else ""
+        print(f"  {j}) {opt}{marker}")
+    print(f"  Answer: {qa['a']}")
+    score += 1
 
-❓ Basic speed law কী বলে?
-✅ Weather ও condition অনুযায়ী নিরাপদ 
-   গতিতে চালাও। Speed limit সর্বোচ্চ, minimum নয়।
-
-❓ Construction zone-এ অতিরিক্ত গতির জরিমানা?
-✅ দ্বিগুণ জরিমানা (double fine)।
-
-❓ Fire hydrant থেকে কত দূরে পার্ক করতে হবে?
-✅ কমপক্ষে ১৫ ফুট দূরে।
-
-❓ Crosswalk থেকে কত দূরে পার্ক?
-✅ কমপক্ষে ২০ ফুট।
-
-❓ STOP sign থেকে কত দূরে পার্ক?
-✅ কমপক্ষে ৩০ ফুট।
-
-❓ Railroad track থেকে কত দূরে পার্ক?
-✅ কমপক্ষে ৫০ ফুট।
-
-❓ Downhill পার্ক করলে চাকা কোন দিকে?
-✅ কার্বের দিকে (ডানে) ঘুরাও।
-
-❓ Uphill পার্ক করলে চাকা কোন দিকে?
+print(f"\n{'='*40}")
+print(f"Speed & Parking section: {score}/{len(speed_parking_qa)}")</div>
 ✅ কার্ব থেকে দূরে (বামে) ঘুরাও।
 
 ❓ Disabled parking-এ পার্ক করলে জরিমানা?
