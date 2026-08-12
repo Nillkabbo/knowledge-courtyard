@@ -27,45 +27,499 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — MCP Server Crash:</strong> MCP server crashed mid-tool-call — client hung indefinitely. Fix: always set timeouts on tool execution.</div></div>
 
 
-<div class="code-block">Function Calling — Inside the Machine:
+<div class="code-block"># ── STEP 1: Function calling — inside the machine ──
+# How LLMs call functions.
 
-HOW FUNCTION CALLING WORKS (step by step):
+function_calling = """
+FUNCTION CALLING — INSIDE THE MACHINE:
 
-  # ────────────────────────────────────────# 
-  #  Step ১: YOU DEFINE TOOLS               # 
-  #  tools = [{                             # 
-  #    name: "get_weather",                 # 
-  #    description: "Get current weather",  # 
-  #    parameters: {                        # 
-  #      city: {type: "string"},            # 
-  #      unit: {type: "string",             # 
-  #             enum: ["C","F"]}            # 
-  #    }                                    # 
-  #  }]                                     # 
-  # ────────────────────────────────────────# 
-  #  Step ২: LLM RECEIVES                   # 
-  #  → system prompt + tools + user message # 
-  #  → ALL in the context window            # 
-  #  → LLM sees: "available tools: ..."     # 
-  # ────────────────────────────────────────# 
-  #  Step ৩: LLM DECIDES                    # 
-  #  → analyzes user intent                 # 
-  #  → matches to tool description          # 
-  #  → outputs: {                           # 
-  #      "tool": "get_weather",             # 
-  #      "arguments": {"city":"Dhaka"}      # 
-  #    }                                    # 
-  #  → NOT regular text — structured call!  # 
-  # ────────────────────────────────────────# 
-  #  Step ৪: YOU EXECUTE                    # 
-  #  → your code runs get_weather("Dhaka")  # 
-  #  → returns: "32C, humid, rain"          # 
-  # ────────────────────────────────────────# 
-  #  Step ৫: LLM FORMULATES RESPONSE        # 
-  #  → receives tool result                # 
-  #  → generates natural language:          # 
-  #    "It is 32C in Dhaka with rain."      # 
-  # ────────────────────────────────────────# 
+HOW IT WORKS (step by step):
+
+1. YOU DEFINE TOOLS (JSON schema):
+   tools = [{
+     name: "get_weather",
+     description: "Get current weather for a city",
+     parameters: {
+       city: {type: "string"},
+       unit: {type: "string", enum: ["C", "F"]}
+     }
+   }]
+
+2. LLM RECEIVES:
+   → system prompt + tools + user message (all in context)
+   → LLM sees: "available tools: get_weather, search, ..."
+
+3. LLM DECIDES:
+   → Analyzes user intent
+   → Matches to tool description
+   → Outputs structured call:
+     {"tool": "get_weather", "arguments": {"city": "Dhaka"}}
+   → NOT regular text — structured JSON!
+
+4. YOU EXECUTE:
+   → Your code runs get_weather("Dhaka")
+   → Returns: "32C, humid, rain"
+
+5. LLM FORMULATES RESPONSE:
+   → Receives tool result
+   → Generates: "It is 32C in Dhaka with rain expected."
+
+PROVIDER IMPLEMENTATIONS:
+  OpenAI: "tools" parameter, parallel calling, strict mode
+  Claude: "tool_use" content block, very reliable for complex chains
+  Gemini: "function_calling" parameter, multimodal integration
+  Open models: Llama 3.1 and Mistral have built-in tool use
+
+PARALLEL FUNCTION CALLING:
+  User: "Weather in NYC and LA?"
+  LLM outputs TWO calls: get_weather("NYC"), get_weather("LA")
+  → Both execute in parallel → faster
+
+STRICT MODE (OpenAI):
+  → Guarantees valid JSON arguments
+  → No hallucinated parameters
+  → Schema enforcement at generation time
+
+TOKEN COST:
+  → Each tool: ~100-300 tokens of context
+  → 10 tools = ~2K tokens per request
+  → Keep descriptions concise, remove unused tools
+
+PYTHON (OpenAI function calling):
+  from openai import OpenAI
+  client = OpenAI()
+
+  tools = [{
+      "type": "function",
+      "function": {
+          "name": "get_weather",
+          "description": "Get weather for a city",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "city": {"type": "string"}
+              },
+              "required": ["city"]
+          }
+      }
+  }]
+
+  response = client.chat.completions.create(
+      model="gpt-4",
+      messages=[{"role": "user", "content": "Weather in Dhaka?"}],
+      tools=tools,
+      tool_choice="auto"
+  )
+
+  call = response.choices[0].message.tool_calls[0]
+  args = json.loads(call.function.arguments)
+  weather = get_weather(args["city"])
+  # Feed result back to LLM...
+"""
+
+print(function_calling)</div>
+
+<div class="code-block"># ── STEP 2: Tool design principles ──
+# Building tools LLMs love to use.
+
+tool_design = """
+TOOL DESIGN — BUILDING TOOLS LLMS LOVE:
+
+A good tool is one the LLM uses correctly without confusion.
+
+DESIGN PRINCIPLES:
+
+1. CRYSTAL-CLEAR DESCRIPTIONS:
+   → LLM reads description to decide when to use
+   → Bad: "Searches things"
+   → Good: "Search the web for current information. Use when the
+     question requires up-to-date facts, recent events, or real-time data."
+
+2. SIMPLE PARAMETERS:
+   → Few parameters (3-5 max)
+   → Clear names: "city" not "location_param_1"
+   → Use enums for constrained values
+   → Avoid deeply nested objects
+
+3. GOOD ERROR MESSAGES:
+   → LLM needs to recover from errors
+   → Bad: "Error 500"
+   → Good: "City not found. Try the full city name or include country.
+     Examples: 'Dhaka, Bangladesh' or 'Springfield, IL'"
+
+4. ONE TOOL = ONE TASK:
+   → Don't make "do_everything" tool
+   → Separate: search_web, search_images, search_news
+   → LLM picks the right one based on description
+
+5. IDEMPOTENT WHEN POSSIBLE:
+   → Same call → same result (safe to retry)
+   → GET requests: idempotent
+   → POST/PUT: may not be idempotent (add idempotency keys)
+
+6. RATE LIMITING:
+   → Limit calls per user/session
+   → Prevent runaway agents
+   → Cost control
+
+TOOL SCHEMA EXAMPLES:
+
+  # GOOD: simple, clear
+  {
+    "name": "calculate",
+    "description": "Evaluate a mathematical expression. Use for precise calculations.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "expression": {"type": "string", "description": "e.g., '2+2', 'sin(3.14)'"}
+      },
+      "required": ["expression"]
+    }
+  }
+
+  # BAD: complex, confusing
+  {
+    "name": "process_data",
+    "description": "Process stuff",  # too vague!
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "data": {"type": "object", "properties": {...}},  # nested!
+        "mode": {"type": "string"},  # no enum!
+        "flag1": {"type": "boolean"},  # unclear purpose
+        "flag2": {"type": "boolean"}   # too many params
+      }
+    }
+  }
+
+COMMON TOOL CATEGORIES:
+  → Information: web_search, read_file, get_weather
+  → Computation: calculate, run_code, query_database
+  → Communication: send_email, send_sms, post_message
+  → File operations: read, write, list, delete
+  → External APIs: any REST API wrapper
+
+SECURITY:
+  → Validate ALL arguments (type, range, format)
+  → Sanitize inputs (prevent injection)
+  → Permission check (can user do this?)
+  → Audit log (who called what when)
+  → Sandbox (isolate side effects)
+"""
+
+print(tool_design)</div>
+
+<div class="code-block"># ── STEP 3: MCP (Model Context Protocol) ──
+# The universal standard for LLM tools.
+
+mcp = """
+MCP — MODEL CONTEXT PROTOCOL:
+
+Anthropic's open standard for connecting LLMs to external tools and data.
+"USB-C for AI" — one protocol, many tools, any LLM.
+
+THE PROBLEM MCP SOLVES:
+  → Before MCP: every LLM had different tool APIs
+    OpenAI tools ≠ Claude tools ≠ Gemini tools
+  → Custom integration for each model
+  → Tools locked to one provider
+
+MCP SOLUTION:
+  → Standard protocol (JSON-RPC over stdio/SSE)
+  → MCP Server: exposes tools/resources (anyone can build)
+  → MCP Client: any LLM app (Claude, Cursor, etc.)
+  → Write tool once → works with any MCP-compatible client
+
+ARCHITECTURE:
+  LLM App (MCP Client) ←→ MCP Protocol ←→ MCP Server ←→ Tools/Data
+
+  Example:
+    Claude Desktop (client) → GitHub MCP Server → GitHub API
+    Claude Desktop (client) → Database MCP Server → PostgreSQL
+    Claude Desktop (client) → File MCP Server → local files
+
+MCP SERVER TYPES:
+
+1. TOOL SERVERS:
+   → Expose callable functions
+   → e.g., "search_code", "create_issue", "run_query"
+
+2. RESOURCE SERVERS:
+   → Expose data/context
+   → e.g., "project_files", "database_schema"
+
+3. PROMPT SERVERS:
+   → Expose pre-built prompts
+   → e.g., "code_review_prompt", "debug_prompt"
+
+PYTHON (MCP server):
+  from mcp import Server, Tool
+  import mcp.types as types
+
+  server = Server("my-tools")
+
+  @server.list_tools()
+  async def list_tools():
+      return [
+          Tool(
+              name="calculate",
+              description="Evaluate a math expression",
+              inputSchema={
+                  "type": "object",
+                  "properties": {
+                      "expression": {"type": "string"}
+                  },
+                  "required": ["expression"]
+              }
+          )
+      ]
+
+  @server.call_tool()
+  async def call_tool(name, arguments):
+      if name == "calculate":
+          result = eval(arguments["expression"])
+          return [types.TextContent(type="text", text=str(result))]
+
+  # Run server:
+  import mcp.server.stdio
+  async with mcp.server.stdio.stdio_server() as (read, write):
+      await server.run(read, write)
+
+EXISTING MCP SERVERS:
+  → GitHub: repo management, issues, PRs
+  → PostgreSQL: database queries
+  → Filesystem: read/write files
+  → Brave Search: web search
+  → Google Drive: document access
+  → Slack: messaging
+  → Puppeteer: browser automation
+
+WHY MCP MATTERS:
+  → Tool ecosystem: write once, use everywhere
+  → Community: shared tool marketplace
+  → Composability: combine multiple MCP servers
+  → Future-proof: new LLMs just implement MCP client
+"""
+
+print(mcp)</div>
+
+<div class="code-block"># ── STEP 4: Tool use patterns ──
+# Sequential, parallel, conditional.
+
+patterns = """
+TOOL USE PATTERNS:
+
+1. SEQUENTIAL (Pipeline):
+   Tool A → result → Tool B → result → answer
+   → Each tool depends on previous result
+   → e.g., search → scrape → summarize
+
+2. PARALLEL (Fan-out):
+   Tool A ─┐
+   Tool B ─┤→ combine → answer
+   Tool C ─┘
+   → Independent calls, execute simultaneously
+   → e.g., "Compare prices from 3 stores"
+
+3. CONDITIONAL:
+   if tool_A result is X:
+       call tool_B
+   else:
+       call tool_C
+   → LLM decides based on intermediate results
+
+4. ITERATIVE (loop):
+   while not done:
+       decide next tool
+       call tool
+       observe result
+   → ReAct pattern, agentic loop
+
+5. FALLBACK:
+   try tool_A
+   if error: try tool_B
+   if error: try tool_C
+   → Graceful degradation
+
+PYTHON (sequential pattern):
+  def sequential_agent(query):
+      # Step 1: search
+      results = web_search(query)
+      # Step 2: scrape top result
+      content = scrape_page(results[0]['url'])
+      # Step 3: summarize
+      summary = llm.summarize(content)
+      return summary
+
+PYTHON (parallel pattern with asyncio):
+  import asyncio
+
+  async def parallel_agent(query):
+      # Launch all tools at once:
+      results = await asyncio.gather(
+          get_weather("Dhaka"),
+          get_weather("London"),
+          get_weather("Tokyo")
+      )
+      # Combine:
+      return f"Weather: Dhaka={results[0]}, London={results[1]}, Tokyo={results[2]}"
+
+PYTHON (iterative ReAct):
+  def react_agent(query, tools, max_steps=10):
+      messages = [{"role": "user", "content": query}]
+      for step in range(max_steps):
+          response = llm.generate(messages, tools=tools)
+          if response.has_tool_calls:
+              for call in response.tool_calls:
+                  result = execute_tool(call)
+                  messages.append(tool_result(result))
+          else:
+              return response.text  # final answer
+      return "Max steps reached"
+"""
+
+print(patterns)</div>
+
+<div class="code-block"># ── STEP 5: Tool error handling and safety ──
+# Building robust tool-using agents.
+
+safety = """
+TOOL ERROR HANDLING & SAFETY:
+
+ERROR TYPES:
+
+1. TOOL NOT FOUND:
+   → LLM calls non-existent tool
+   → Fix: return clear error, list available tools
+
+2. INVALID ARGUMENTS:
+   → Wrong type, missing required field, out of range
+   → Fix: validate with JSON schema, return helpful error
+   → "Expected 'city' as string, got number 12345"
+
+3. TOOL EXECUTION FAILURE:
+   → API down, network error, timeout
+   → Fix: retry with backoff, fallback, or report error to LLM
+
+4. UNEXPECTED OUTPUT:
+   → Tool returns very long output, binary, or error page
+   → Fix: truncate, filter, format for LLM consumption
+
+5. INFINITE LOOPS:
+   → Agent keeps calling same tool with same args
+   → Fix: max iterations, dedup detection, break condition
+
+ERROR MESSAGE BEST PRACTICES:
+  # BAD (LLM can't recover):
+  {"error": "500"}
+
+  # GOOD (LLM can adjust):
+  {"error": "Rate limit exceeded. Wait 60 seconds and retry,
+   or reduce the scope of your query."}
+
+  # BAD:
+  {"error": "not found"}
+
+  # GOOD:
+  {"error": "User 'john_doe' not found.
+   Did you mean: 'john.doe', 'johndoe', 'jdoe'?"}
+
+SAFETY MEASURES:
+
+1. INPUT VALIDATION:
+   → JSON schema validation (types, required fields)
+   → Range checks (page > 0, limit <= 100)
+   → Format checks (email, URL, date)
+
+2. OUTPUT SANITIZATION:
+   → Truncate long outputs (10K chars max)
+   → Strip PII from results
+   → Format: JSON, not raw HTML
+
+3. PERMISSION CHECKS:
+   → Can this user use this tool?
+   → Can they access this resource?
+   → Rate limit: N calls per minute
+
+4. SANDBOXING:
+   → Code execution: Docker container, no network
+   → File access: restricted directories
+   → Database: read-only or parameterized queries
+
+5. HUMAN-IN-THE-LOOP:
+   → Require approval for destructive actions
+   → delete_file, send_email, make_payment
+   → Show preview: "About to send email to X. Approve?"
+
+PYTHON (safe tool execution):
+  def safe_execute(tool_name, args, user):
+      # 1. Validate arguments:
+      if not validate_schema(tool_name, args):
+          return {"error": "Invalid arguments: " + get_validation_error()}
+
+      # 2. Check permissions:
+      if not user.can_use(tool_name):
+          return {"error": "Permission denied for " + tool_name}
+
+      # 3. Rate limit:
+      if rate_limited(user, tool_name):
+          return {"error": "Rate limit. Try again in 60 seconds."}
+
+      # 4. Check if risky (needs approval):
+      if tool_name in RISKY_TOOLS:
+          approval = request_human_approval(tool_name, args)
+          if not approval:
+              return {"error": "Action not approved by user."}
+
+      # 5. Execute with timeout:
+      try:
+          result = execute_with_timeout(tool_name, args, timeout=30)
+          return sanitize_output(result)
+      except TimeoutError:
+          return {"error": "Tool execution timed out after 30 seconds."}
+      except Exception as e:
+          return {"error": str(e) + ". Please try different arguments."}
+"""
+
+print(safety)</div>
+
+<div class="code-block"># ── STEP 6: Tools and MCP best practices ──
+# Production tool systems.
+
+best_practices = [
+    "Write tool descriptions for an LLM audience (clear, specific)",
+    "Keep parameters simple (3-5 max, clear names, use enums)",
+    "Validate ALL arguments before execution",
+    "Return helpful error messages the LLM can act on",
+    "Limit tool count (5-10 max, too many = confusion)",
+    "Sanitize and truncate tool outputs for LLM consumption",
+    "Set max iterations on agent loops (prevent infinite loops)",
+    "Require human approval for destructive/irreversible actions",
+    "Log every tool call for debugging and audit",
+    "Use MCP protocol for interoperability across LLM providers",
+    "Cache tool results when possible (avoid redundant calls)",
+    "Handle timeouts gracefully (30s default for most tools)",
+    "Rate limit per user/session (prevent abuse)",
+    "Test with adversarial inputs (injection attempts)",
+    "Provide fallback tools when primary fails",
+]
+
+print("TOOLS & MCP BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Component        │ Recommendation                │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Tool definition  │ JSON schema, clear description│
+# │ Execution        │ Safe, validated, sandboxed    │
+# │ Error handling   │ Helpful messages, retries     │
+# │ Protocol         │ MCP for interoperability      │
+# │ Safety           │ Human-in-loop for risky       │
+# │ Performance      │ Parallel calls, caching       │
+# │ Monitoring       │ Log every call                │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 PROVIDER IMPLEMENTATIONS:
 

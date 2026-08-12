@@ -26,26 +26,429 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — No Authentication:</strong> MCP server accepted connections from anyone — malicious tool injection. Fix: authenticate all connections.</div></div>
 
 
-<div class="code-block">Tool Ecosystem — The Marketplace:
+<div class="code-block"># ── STEP 1: Tool ecosystem — the marketplace ──
+# Existing tool platforms and integrations.
 
-TOOL PLATFORMS (২০২৪-২০২৫):
+ecosystem = """
+TOOL ECOSYSTEM — THE MARKETPLACE:
 
-# ──────────────# ──────────────────────────────────# 
-#  Platform     #  What It Provides                  # 
-# ──────────────# ──────────────────────────────────# 
-#  LangChain    #  ৫০০+ tool integrations             # 
-#  Tools        #  search, email, DB, API, code      # 
-#               #  Python + JS                       # 
-# ──────────────# ──────────────────────────────────# 
-#  LlamaIndex   #  ২০০+ tools                        # 
-#  Tools        #  RAG-focused, data loaders         # 
-#               #  query engines                     # 
-# ──────────────# ──────────────────────────────────# 
-#  Composio     #  ১০,০০০+ actions                    # 
-#               #  GitHub, Gmail, Slack, Notion      # 
-#               #  Jira, Linear, Salesforce          # 
-#               #  one SDK, all apps                 # 
-# ──────────────# ──────────────────────────────────# 
+TOOL PLATFORMS (2024-2025):
+
+LangChain Tools:
+  → 500+ tool integrations
+  → Search, email, DB, API, code execution
+  → Python + JS
+
+LlamaIndex Tools:
+  → 200+ tools, RAG-focused
+  → Data loaders, query engines
+
+Composio:
+  → 10,000+ actions
+  → GitHub, Gmail, Slack, Notion, Jira, Linear, Salesforce
+  → One SDK, all apps, auth handled
+
+Toolhouse:
+  → Managed tool execution
+  → Authentication handled, sandboxed
+
+MCP Servers:
+  → Official + community servers
+  → Filesystem, GitHub, PostgreSQL, Slack, browser, memory
+  → Any client, any tool
+
+OpenAI Built-in:
+  → Code interpreter, web search, DALL-E, file search
+
+Anthropic Tools:
+  → Computer use (beta), bash, text editor
+  → Mouse/keyboard control, native tool use
+
+PYTHON (Composio — most comprehensive):
+  from composio import ComposioToolSet
+
+  toolset = ComposioToolSet()
+  tools = toolset.get_tools(
+      apps=[App.GITHUB, App.GMAIL, App.SLACK]
+  )
+  # 3 apps = dozens of actions, auth handled
+
+PYTHON (LangChain tools):
+  from langchain.tools import Tool
+  from langchain.agents import load_tools
+
+  # Pre-built tools:
+  tools = load_tools(
+      ["wikipedia", "llm-math", "python_repl"],
+      llm=llm
+  )
+
+  # Custom tool:
+  @tool
+  def search_my_db(query: str) -> str:
+      \"\"\"Search internal database\"\"\"
+      return db.search(query)
+
+BUILD vs BUY vs REUSE:
+  Build (custom): unique requirement → full control, high dev cost
+  Buy (managed): common need (email, search, DB) → low cost, no maintenance
+  Reuse (open-source): standard tool exists → free, community tested
+
+STRATEGY:
+  → 80% reuse existing tools
+  → 15% buy managed services
+  → 5% build custom
+  → NEVER rebuild what exists!
+"""
+
+print(ecosystem)</div>
+
+<div class="code-block"># ── STEP 2: Tool testing — every scenario matters ──
+# Comprehensive testing for tool-using agents.
+
+testing = """
+TOOL TESTING — EVERY SCENARIO MATTERS:
+
+LEVELS OF TESTING:
+
+1. UNIT TESTS (individual tools):
+   → Test each tool in isolation
+   → Valid inputs → correct output
+   → Invalid inputs → graceful error
+   → Edge cases (empty, boundary, max size)
+
+2. INTEGRATION TESTS (tool + LLM):
+   → LLM correctly identifies when to use tool
+   → LLM generates correct arguments
+   → Tool result properly fed back to LLM
+   → LLM uses result in final answer
+
+3. END-TO-END TESTS (full agent):
+   → Multi-step tool chains
+   → Complex queries requiring multiple tools
+   → Error recovery scenarios
+
+4. ADVERSARIAL TESTS:
+   → Injection attempts in arguments
+   → Misleading tool outputs
+   → Conflicting tool results
+
+PYTHON (tool unit test):
+  import pytest
+
+  class TestWeatherTool:
+      def test_valid_city(self):
+          result = get_weather("Dhaka")
+          assert "temperature" in result
+          assert isinstance(result["temperature"], (int, float))
+
+      def test_invalid_city(self):
+          result = get_weather("NonExistentCity123")
+          assert "error" in result
+          assert "not found" in result["error"].lower()
+
+      def test_empty_input(self):
+          result = get_weather("")
+          assert "error" in result
+
+      def test_special_characters(self):
+          result = get_weather("Dhaka'; DROP TABLE--")
+          assert "error" in result  # injection blocked
+
+PYTHON (integration test with LLM):
+  def test_llm_uses_weather_tool():
+      response = llm.generate(
+          "What's the weather in Dhaka?",
+          tools=[weather_tool]
+      )
+      # LLM should call get_weather:
+      assert response.has_tool_calls
+      assert response.tool_calls[0].name == "get_weather"
+      args = json.loads(response.tool_calls[0].arguments)
+      assert "Dhaka" in args["city"]
+
+TEST COVERAGE:
+  → Happy path (normal usage)
+  → Error paths (tool fails, invalid args)
+  → Edge cases (empty, boundary, max/min)
+  → Security (injection, unauthorized access)
+  → Performance (latency, large outputs)
+  → Multi-tool (which tool does LLM choose?)
+"""
+
+print(testing)</div>
+
+<div class="code-block"># ── STEP 3: Computer use — AI controlling computers ──
+# The frontier of tool use.
+
+computer_use = """
+COMPUTER USE — AI CONTROLLING COMPUTERS:
+
+Anthropic's Computer Use (2024): Claude can control a computer.
+→ Take screenshots → interpret → click/type → observe → repeat
+
+CAPABILITIES:
+  → Screenshot: see what's on screen
+  → Mouse: click, double-click, drag, scroll
+  → Keyboard: type text, hotkeys, shortcuts
+  → Bash: run terminal commands
+  → File editor: read/write files
+
+HOW IT WORKS:
+  1. LLM receives screenshot (as image)
+  2. Identifies elements (buttons, text fields, menus)
+  3. Decides action: "click at (x=340, y=215)"
+  4. System executes action
+  5. New screenshot → observe result
+  6. Repeat until task complete
+
+USE CASES:
+  → Automate repetitive UI tasks (form filling, data entry)
+  → Test web applications (like a human tester)
+  → Navigate complex websites (no API available)
+  → Use desktop apps (Excel, Photoshop, any GUI)
+  → Accessibility (help users navigate interfaces)
+
+PYTHON (Anthropic computer use):
+  import anthropic
+
+  client = anthropic.Anthropic()
+  response = client.messages.create(
+      model="claude-3-5-sonnet-20241022",
+      max_tokens=1024,
+      tools=[
+          {"type": "computer_20241022",
+           "name": "computer",
+           "display_width_px": 1024,
+           "display_height_px": 768}
+      ],
+      messages=[{"role": "user",
+                 "content": "Open Firefox and go to weather.com"}]
+  )
+  # Claude returns actions: click, type, screenshot
+  # You execute and send screenshots back
+
+SAFETY CONSIDERATIONS:
+  → Sandbox: run in VM/container (not your real desktop!)
+  → Permissions: limit what apps/files it can access
+  → Human approval: for destructive actions
+  → Audit log: record every action
+  → Kill switch: stop immediately if wrong
+
+OPENAI ALTERNATIVES:
+  → Operator (2025): browsing agent
+  → Canvas: collaborative editing
+  → Code execution: sandboxed Python
+
+CHALLENGES:
+  → UI changes break automation (brittle)
+  → Slow (screenshot → analyze → act → repeat)
+  → Can't "see" hidden elements (dropdowns, menus)
+  → May click wrong things (misinterpretation)
+"""
+
+print(computer_use)</div>
+
+<div class="code-block"># ── STEP 4: Tool failure modes ──
+# What goes wrong and how to fix it.
+
+failures = """
+TOOL FAILURE MODES — WHAT GOES WRONG:
+
+1. WRONG TOOL SELECTION:
+   LLM uses search when it should use calculator.
+   Fix: better descriptions, fewer tools, examples in prompt
+
+2. HALLUCINATED TOOL CALLS:
+   LLM invents a tool that doesn't exist.
+   Fix: strict tool list, validate against known tools
+
+3. WRONG ARGUMENTS:
+   LLM passes wrong type, missing required field.
+   Fix: JSON schema validation, clear parameter descriptions
+
+4. IGNORING TOOL RESULTS:
+   LLM calls tool but doesn't use the result.
+   Fix: prompt engineering, "use the tool result in your answer"
+
+5. INFINITE LOOPS:
+   Agent calls same tool repeatedly with same args.
+   Fix: max iterations, dedup detection
+
+6. COST EXPLOSION:
+   Too many tool calls, expensive LLM calls.
+   Fix: budget limits, caching, cheaper models for routing
+
+7. OVER_TOOLING:
+   LLM calls tools for everything, even when not needed.
+   Fix: "Only use tools when necessary" in system prompt
+
+8. CHAIN ERRORS:
+   Wrong first step → all subsequent steps wrong.
+   Fix: verification steps, error recovery, re-planning
+
+DEBUGGING TOOLS:
+  → LangSmith: trace every tool call, argument, result
+  → Langfuse: open-source observability
+  → Custom logging: log every step
+
+DEBUG CHECKLIST:
+  → What did the LLM see? (messages, tools)
+  → What did it decide? (tool call)
+  → What arguments? (correct format?)
+  → What did the tool return? (expected output?)
+  → How did LLM use the result? (in final answer?)
+"""
+
+print(failures)</div>
+
+<div class="code-block"># ── STEP 5: Complete tool & MCP architecture ──
+# Full production system.
+
+architecture = """
+COMPLETE TOOL & MCP ARCHITECTURE:
+
+COMPONENTS:
+  → LLM Provider (OpenAI, Claude, local model)
+  → Tool Registry (available tools + schemas)
+  → Execution Engine (safe, sandboxed execution)
+  → MCP Layer (protocol translation)
+  → Monitoring (logging, metrics, audit)
+  → Safety Layer (validation, approval, rate limit)
+
+PRODUCTION ARCHITECTURE:
+
+  User Query
+      ↓
+  [LLM Router] → choose model
+      ↓
+  [Tool Selector] → LLM sees available tools
+      ↓
+  [Tool Call] → LLM outputs structured call
+      ↓
+  [Validation] → schema check, permission check
+      ↓
+  [Rate Limit] → per-user, per-tool limits
+      ↓
+  [Execution] → sandboxed, timeout-protected
+      ↓
+  [Output Processing] → sanitize, truncate
+      ↓
+  [Result → LLM] → formulate response
+      ↓
+  [Audit Log] → record everything
+
+PYTHON (production tool system):
+  class ToolSystem:
+      def __init__(self):
+          self.tools = {}       # tool registry
+          self.rate_limiter = RateLimiter()
+          self.audit_log = AuditLog()
+          self.sandbox = Sandbox()
+
+      def register_tool(self, name, func, schema):
+          self.tools[name] = {"func": func, "schema": schema}
+
+      async def execute(self, tool_name, args, user):
+          # 1. Validate:
+          if tool_name not in self.tools:
+              return {"error": f"Unknown tool: {tool_name}"}
+
+          # 2. Rate limit:
+          if not self.rate_limiter.check(user, tool_name):
+              return {"error": "Rate limit exceeded"}
+
+          # 3. Permission:
+          if not user.can_use(tool_name):
+              return {"error": "Permission denied"}
+
+          # 4. Execute in sandbox with timeout:
+          result = await self.sandbox.run(
+              self.tools[tool_name]["func"],
+              args, timeout=30
+          )
+
+          # 5. Sanitize output:
+          safe_result = self.sanitize(result)
+
+          # 6. Log:
+          self.audit_log.record(user, tool_name, args, safe_result)
+
+          return safe_result
+
+DEPLOYMENT CHECKLIST:
+  ☐ Tools registered with clear descriptions
+  ☐ Input validation on all tools
+  ☐ Rate limiting per user/tool
+  ☐ Sandbox for code execution
+  ☐ Timeout on all tool calls
+  ☐ Output sanitization
+  ☐ Audit logging
+  ☐ Human approval for risky tools
+  ☐ Error recovery (retry, fallback)
+  ☐ Monitoring dashboard
+"""
+
+print(architecture)</div>
+
+<div class="code-block"># ── STEP 6: Tools & MCP journey ──
+# Your path to tool mastery.
+
+journey = """
+YOUR TOOLS & MCP JOURNEY:
+
+You started seeing tools as "API calls."
+You finish seeing a COMPLETE TOOL ECOSYSTEM:
+
+WHAT YOU'VE MASTERED:
+  ✅ Function calling (OpenAI, Claude, Gemini)
+  ✅ Tool design (clear descriptions, simple params)
+  ✅ MCP protocol (universal standard)
+  ✅ Tool use patterns (sequential, parallel, iterative)
+  ✅ Error handling (helpful messages, recovery)
+  ✅ Tool ecosystem (LangChain, Composio, MCP servers)
+  ✅ Tool testing (unit, integration, adversarial)
+  ✅ Computer use (AI controlling computers)
+  ✅ Failure modes (wrong tool, loops, cost)
+  ✅ Production architecture (safe, monitored, audited)
+
+THE TOOL ENGINEER'S MINDSET:
+  1. "Does a tool already exist?" (reuse first!)
+  2. "Is my tool description clear enough for an LLM?"
+  3. "What happens when it fails?" (graceful degradation)
+  4. "Is it safe?" (sandbox, validate, approve)
+  5. "Can I observe what happened?" (logging, audit)
+
+"Tools are how AI touches the real world.
+ Good tools make good agents.
+ Great tools make great agents."
+ — Tool design philosophy
+
+WHAT TO STUDY NEXT:
+  → Build a custom MCP server for your app
+  → Explore Composio (10,000+ actions)
+  → Try Anthropic Computer Use
+  → Study LangGraph for complex tool workflows
+  → Read MCP specification (modelcontextprotocol.io)
+  → Contribute to open-source MCP servers
+
+Welcome to tools & MCP mastery.
+"""
+
+print(journey)
+
+# FINAL SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Component        │ Recommendation                │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Protocol         │ MCP (universal standard)      │
+# │ Tool platforms   │ Composio, LangChain, MCP      │
+# │ Design           │ Clear desc, simple params     │
+# │ Safety           │ Validate, sandbox, approve    │
+# │ Testing          │ Unit + integration + adversarial│
+# │ Monitoring       │ Audit log every call          │
+# │ Computer use     │ Anthropic Claude (beta)       │
+# └──────────────────┴──────────────────────────────────┘</div>
 #  Toolhouse    #  managed tool execution             # 
 #               #  authentication handled             # 
 #               #  sandboxed execution                # 
