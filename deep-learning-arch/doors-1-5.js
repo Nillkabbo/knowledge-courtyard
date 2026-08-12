@@ -77,33 +77,319 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Perceptron — ইনপুট * ওজন → যোগফল → activation → আউটপুট।</div>
 
-<div class="code-block"># — Python: Perceptron from Scratch —
+<div class="code-block"># ── STEP 1: Perceptron from scratch ──
+# The building block of all neural networks.
 
-  import numpy as np
+import numpy as np
 
-  # Perceptron: y = sigmoid(w·x + b)
-  def sigmoid(z):
-      return 1 / (1 + np.exp(-z))
+# PERCEPTRON: y = activation(w · x + b)
+def sigmoid(z):
+    """Squashes values to (0, 1) range."""
+    return 1 / (1 + np.exp(-z))
 
-  # ইনপুট ও ওজন:
-  x = np.array([0.5, 0.3, 0.8])  # ৩টি features
-  w = np.array([0.5, -0.3, 0.8]) # ওজন
-  b = 0.1                         # bias
+def relu(z):
+    """Most popular activation. max(0, z)."""
+    return max(0, z)
 
-  z = np.dot(w, x) + b   # Σ wx + b
-  y_hat = sigmoid(z)      # activation
-  print(f"z = {z:.4f}")        # 0.85
-  print(f"y_hat = {y_hat:.4f}")  # 0.70
+# Single neuron:
+x = np.array([0.5, 0.3, 0.8])    # 3 input features
+w = np.array([0.5, -0.3, 0.8])   # learned weights
+b = 0.1                           # bias
 
-  # PyTorch equivalent:
-  import torch.nn as nn
-  neuron = nn.Linear(3, 1)  # 3 inputs → 1 output
-  # PyTorch automatically manages weights!
+z = np.dot(w, x) + b             # weighted sum + bias
+y_hat = sigmoid(z)               # activation
+print(f"z = {z:.4f}")            # 0.85
+print(f"y_hat = {y_hat:.4f}")    # 0.70
 
-  # XOR problem (Minsky 1969):
-  # Single perceptron CANNOT solve XOR!
-  # (0,0)→0, (1,1)→0, (0,1)→1, (1,0)→1
-  # Linear boundary can't separate — need MLP</div>
+# PYTORCH EQUIVALENT (automatic weight management):
+import torch.nn as nn
+neuron = nn.Linear(3, 1)  # 3 inputs → 1 output
+# PyTorch automatically manages weights and gradients!
+
+# THE XOR PROBLEM (Minsky & Papert, 1969):
+# Single perceptron CANNOT solve XOR!
+# XOR: (0,0)→0, (1,1)→0, (0,1)→1, (1,0)→1
+# Linear boundary cannot separate XOR → need Multi-Layer Perceptron
+
+# EVERY NEURAL NETWORK IS JUST LAYERS OF THESE:
+# input → [linear + activation] → [linear + activation] → output
+# That's it. The magic is in the LEARNING (backpropagation).</div>
+
+<div class="code-block"># ── STEP 2: Multi-Layer Perceptron (MLP) in PyTorch ──
+# Stacking neurons into layers.
+
+import torch
+import torch.nn as nn
+
+class MLP(nn.Module):
+    """Multi-Layer Perceptron for classification."""
+    def __init__(self, input_dim, hidden_dim, output_dim):
+        super().__init__()
+        self.layer1 = nn.Linear(input_dim, hidden_dim)
+        self.activation = nn.ReLU()
+        self.layer2 = nn.Linear(hidden_dim, hidden_dim)
+        self.layer3 = nn.Linear(hidden_dim, output_dim)
+        self.softmax = nn.Softmax(dim=-1)
+
+    def forward(self, x):
+        h1 = self.activation(self.layer1(x))   # hidden layer 1
+        h2 = self.activation(self.layer2(h1))   # hidden layer 2
+        out = self.softmax(self.layer3(h2))     # output probabilities
+        return out
+
+# Create model:
+model = MLP(input_dim=784, hidden_dim=128, output_dim=10)
+# 784 inputs (28x28 MNIST image), 128 hidden, 10 outputs (digits 0-9)
+
+# TRAINING LOOP:
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+criterion = nn.CrossEntropyLoss()
+
+for epoch in range(10):
+    for batch_x, batch_y in dataloader:
+        # Forward pass:
+        predictions = model(batch_x)
+
+        # Compute loss:
+        loss = criterion(predictions, batch_y)
+
+        # Backward pass (backpropagation!):
+        optimizer.zero_grad()
+        loss.backward()       # compute ALL gradients
+        optimizer.step()      # update weights
+
+    print(f"Epoch {epoch}: loss = {loss.item():.4f}")
+
+# KEY CONCEPTS:
+# → Forward pass: input → layers → prediction
+# → Loss: how wrong is the prediction?
+# → Backward pass: chain rule through all layers
+# → Optimizer step: adjust weights to reduce loss
+# → Repeat for many epochs</div>
+
+<div class="code-block"># ── STEP 3: Convolutional Neural Networks (CNN) ──
+# The architecture that revolutionized computer vision.
+
+import torch.nn as nn
+
+class SimpleCNN(nn.Module):
+    """CNN for image classification (LeNet-style)."""
+    def __init__(self, num_classes=10):
+        super().__init__()
+
+        # Feature extraction (convolution + pooling):
+        self.conv1 = nn.Conv2d(3, 32, kernel_size=3, padding=1)   # 3→32 channels
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, padding=1)  # 32→64 channels
+        self.pool = nn.MaxPool2d(2, 2)  # halve spatial dimensions
+        self.relu = nn.ReLU()
+
+        # Classification (fully connected):
+        self.fc1 = nn.Linear(64 * 8 * 8, 256)
+        self.fc2 = nn.Linear(256, num_classes)
+
+    def forward(self, x):
+        # Conv blocks:
+        x = self.pool(self.relu(self.conv1(x)))   # 32x32 → 16x16
+        x = self.pool(self.relu(self.conv2(x)))   # 16x16 → 8x8
+
+        # Flatten:
+        x = x.view(x.size(0), -1)  # batch x (64*8*8)
+
+        # Classification:
+        x = self.relu(self.fc1(x))
+        x = self.fc2(x)
+        return x
+
+# WHY CNNs WORK FOR IMAGES:
+# → Convolution: detect local patterns (edges, textures)
+# → Parameter sharing: same filter applied everywhere
+# → Translation invariance: pattern detected regardless of position
+# → Hierarchical: early layers = edges, later layers = objects
+# → Pooling: reduce spatial size, increase receptive field
+
+# FAMOUS CNN ARCHITECTURES:
+# LeNet (1998): first successful CNN (digit recognition)
+# AlexNet (2012): ImageNet breakthrough (ReLU, GPU, dropout)
+# VGG (2014): deep, uniform architecture (16-19 layers)
+# ResNet (2015): residual connections (50-152 layers, solved vanishing gradient)
+# EfficientNet (2019): compound scaling (depth + width + resolution)
+# ConvNeXt (2022): modernized CNN rivaling Vision Transformers</div>
+
+<div class="code-block"># ── STEP 4: Recurrent Neural Networks (RNN/LSTM) ──
+# Processing sequential data (text, time series, audio).
+
+import torch.nn as nn
+
+class SimpleLSTM(nn.Module):
+    """LSTM for sequence classification."""
+    def __init__(self, input_dim, hidden_dim, num_layers, num_classes):
+        super().__init__()
+        self.lstm = nn.LSTM(
+            input_size=input_dim,
+            hidden_size=hidden_dim,
+            num_layers=num_layers,
+            batch_first=True,
+            dropout=0.3
+        )
+        self.fc = nn.Linear(hidden_dim, num_classes)
+
+    def forward(self, x):
+        # x shape: (batch, seq_len, input_dim)
+        lstm_out, (hidden, cell) = self.lstm(x)
+
+        # Use last hidden state for classification:
+        last_hidden = hidden[-1]  # last layer's hidden state
+        output = self.fc(last_hidden)
+        return output
+
+# WHY LSTMS REPLACED VANILLA RNNS:
+# → Vanilla RNN: vanishing gradient problem (forgets early inputs)
+# → LSTM: cell state + gates (forget, input, output)
+# → LSTM remembers long-term dependencies
+
+# LSTM GATES:
+# Forget gate: what to remove from memory
+# Input gate: what new info to store
+# Output gate: what to output
+# Cell state: the "conveyor belt" of memory
+
+# SEQUENCE TASKS:
+# → Text classification (sentiment, topic)
+# → Machine translation (seq2seq + attention)
+# → Speech recognition (audio → text)
+# → Time series forecasting
+# → Music generation
+
+# TRANSFORMERS REPLACED RNNs (2017+):
+# → RNN: sequential processing (slow, can't parallelize)
+# → Transformer: parallel self-attention (fast, scalable)
+# → GPT, BERT, T5, Llama = all Transformers
+# → LSTM still useful for: edge devices, small models, real-time</div>
+
+<div class="code-block"># ── STEP 5: Self-attention and transformer ──
+# The architecture behind all modern LLMs.
+
+import torch
+import torch.nn as nn
+import math
+
+class SelfAttention(nn.Module):
+    """The core of the Transformer architecture."""
+    def __init__(self, embed_dim, num_heads):
+        super().__init__()
+        self.embed_dim = embed_dim
+        self.num_heads = num_heads
+        self.head_dim = embed_dim // num_heads
+
+        # Q, K, V projections:
+        self.query = nn.Linear(embed_dim, embed_dim)
+        self.key = nn.Linear(embed_dim, embed_dim)
+        self.value = nn.Linear(embed_dim, embed_dim)
+
+        self.output = nn.Linear(embed_dim, embed_dim)
+
+    def forward(self, x):
+        batch_size, seq_len, _ = x.shape
+
+        # Project to Q, K, V:
+        Q = self.query(x)  # (batch, seq, embed_dim)
+        K = self.key(x)
+        V = self.value(x)
+
+        # Reshape for multi-head:
+        Q = Q.view(batch_size, seq_len, self.num_heads, self.head_dim).transpose(1, 2)
+        K = K.view(batch_size, seq_len, self.num_heads, self.head_dim).transpose(1, 2)
+        V = V.view(batch_size, seq_len, self.num_heads, self.head_dim).transpose(1, 2)
+
+        # Scaled dot-product attention:
+        scores = torch.matmul(Q, K.transpose(-2, -1)) / math.sqrt(self.head_dim)
+        attention_weights = torch.softmax(scores, dim=-1)
+        attended = torch.matmul(attention_weights, V)
+
+        # Concatenate heads + output projection:
+        attended = attended.transpose(1, 2).contiguous()
+        attended = attended.view(batch_size, seq_len, self.embed_dim)
+        return self.output(attended)
+
+# ATTENTION FORMULA: Attention(Q, K, V) = softmax(QK^T / sqrt(d)) · V
+
+# WHY ATTENTION IS POWERFUL:
+# → Every token can "look at" every other token
+# → Captures long-range dependencies (no distance limit)
+# → Parallelizable (unlike RNN's sequential processing)
+# → Interpretable: attention weights show what model focuses on
+
+# FULL TRANSFORMER = STACK OF:
+# → Self-attention layers
+# → Feed-forward layers
+# → Layer normalization
+# → Residual connections
+# → Positional encoding (since attention has no position info)
+
+# MODERN VARIANTS:
+# → GPT: decoder-only (autoregressive, text generation)
+# → BERT: encoder-only (bidirectional, understanding)
+# → T5: encoder-decoder (text-to-text)
+# → ViT: transformer for images (patches as tokens)</div>
+
+<div class="code-block"># ── STEP 6: Architecture comparison and best practices ──
+# Choosing the right architecture for each task.
+
+comparison = """
+DEEP LEARNING ARCHITECTURE COMPARISON:
+
+┌──────────────────┬──────────────────────────────────┐
+│ Architecture     │ Best For                      │
+├──────────────────┼──────────────────────────────────┤
+│ MLP              │ Tabular data, simple tasks    │
+│ CNN              │ Images, spatial data          │
+│ RNN/LSTM         │ Sequential (legacy)           │
+│ Transformer      │ Text, language, modern AI     │
+│ ViT              │ Images (transformer-based)    │
+│ Diffusion        │ Image/audio generation        │
+│ GAN              │ Image generation (adversarial)│
+│ Autoencoder      │ Compression, anomaly detect   │
+│ VAE              │ Generative, interpolation     │
+│ GNN              │ Graph-structured data         │
+└──────────────────┴──────────────────────────────────┘
+
+ARCHITECTURE SELECTION:
+  Images → CNN or ViT (ViT newer, CNN simpler)
+  Text → Transformer (GPT for generation, BERT for understanding)
+  Tabular → Gradient Boosting (XGBoost) > MLP usually
+  Time series → Transformer or LSTM
+  Graph → GNN (GraphSAGE, GAT)
+  Generation → Diffusion (images) or Transformer (text)
+
+TRAINING BEST PRACTICES:
+  → Start with pretrained model (transfer learning)
+  → Use appropriate loss function (CE for classification, MSE for regression)
+  → Learning rate scheduling (warmup → cosine decay)
+  → Regularization: dropout, weight decay, data augmentation
+  → Batch normalization or layer normalization
+  → Monitor training/validation loss (detect overfitting)
+  → Early stopping (don't overtrain)
+  → Use mixed precision (fp16) for faster training
+  → Gradient clipping (prevent explosion)
+  → Save checkpoints regularly
+"""
+
+print(comparison)
+
+# EVOLUTION TIMELINE:
+# 1957: Perceptron (Rosenblatt)
+# 1986: Backpropagation (Rumelhart)
+# 1998: LeNet (LeCun) — first CNN
+# 2012: AlexNet (Krizhevsky) — deep learning revolution
+# 2014: GAN (Goodfellow), VAE (Kingma)
+# 2015: ResNet (He) — residual connections, 152 layers
+# 2017: Transformer (Vaswani) — "Attention is All You Need"
+# 2018: BERT (Google), GPT (OpenAI)
+# 2020: ViT (Dosovitskiy) — images as patches
+# 2021: DALL-E, CLIP (OpenAI)
+# 2022: Stable Diffusion (Rombach)
+# 2023+: GPT-4, Llama, Claude — LLM era
+# 2024+: Sora, multimodal, agentic AI</div>
 
 <div class="secret-box">💡 <strong>একটি নিউরন = একটি ওজনযুক্ত ভোটগ্রহণ।</strong> প্রতিটি ইনপুট ভোট দেয়, ওজন সেই ভোটের শক্তি নির্ধারণ করে, এবং যদি মোট ভোট থ্রেশহোল্ড পার হয় — নিউরন সিদ্ধান্ত নেয়। কিন্তু একটি ভোটগ্রাহক একা জটিল সিদ্ধান্ত নিতে পারে না। দরকার একটি পরিষদ।</div>`,
   senior: {
