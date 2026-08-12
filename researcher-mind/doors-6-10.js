@@ -93,53 +93,427 @@ doors.push({
 <div class="dialogue">"আমি তোমাকে আমার আবিষ্কারের গল্প বলি," মরিয়ম বললেন। "ছয় মাস ধরে একটা সমস্যা নিয়ে কাজ করছিলাম। মাথায় ভাবনা ঘুরছে — কিন্তু সমাধান আসছে না। একদিন আমি বসলাম লিখতে। আধ ঘণ্টা। পুরো সমস্যা কাগজে লিখলাম। মাঝখানে দেখলাম — আমি তিনটা জিনিস আলাদা ভাবছিলাম কিন্তু তিনটিই এক। লেখার সময় সেটা পরিষ্কার হলো। সমাধান এলো — কারণ সমস্যা পরিষ্কার হলো।"</div>
 <div class="dialogue en">"Let me tell you the story of my discovery," Maryam said. "For six months I worked on a problem. Thoughts circled in my head — but no solution came. One day I sat to write. Half an hour. Wrote the entire problem on paper. In the middle, I realized — I was thinking of three things separately, but they were one. While writing, that became clear. The solution came — because the problem became clear."</div>
 
-<div class="code-block">গবেষকের লেখা — পাঁচ ধরন:
+<div class="code-block"># ── STEP 1: The researcher's writing toolkit ──
+# Five types of writing that make a researcher effective.
 
-১. রিসার্চ ডায়েরি (প্রতিদিন)
-   # ─────────────────────────────────────────# 
-   #  তারিখ:                                  # 
-   #  আজ কী ভাবলাম:                          # 
-   #  কী পরীক্ষা করলাম:                      # 
-   #  ফলাফল:                                  # 
-   #  প্রশ্ন যা এখনো আছে:                    # 
-   #  আগামীকাল কী করবো:                     # 
-   # ─────────────────────────────────────────# 
-   → ১০-১৫ মিনিট। প্রতিদিন। এটা তোমার 
-     চিন্তার আয়না।
+# 1. RESEARCH DIARY (daily, 10-15 min)
+#    Your thinking mirror — capture ideas before they vanish
 
-২. পেপার নোটস (প্রতি পেপার পড়ার পর)
-   # ─────────────────────────────────────────# 
-   #  পেপার নাম:                              # 
-   #  মূল দাবি (১ বাক্যে):                   # 
-   #  পদ্ধতি (৩ বাক্যে):                     # 
-   #  আমার প্রশ্ন:                            # 
-   #  আমার কাজে কীভাবে ব্যবহার করবো:        # 
-   # ─────────────────────────────────────────# 
+research_diary = """
+RESEARCH DIARY (Daily, 10-15 min):
+─────────────────────────────────────
+Date: 2025-01-15
+What I thought about today:
+  - Could sparse attention reduce memory for long sequences?
+What I experimented with:
+  - Implemented local attention window of 512 tokens
+Results:
+  - Memory dropped 40% but accuracy fell 3%
+Questions I still have:
+  - Would sliding window attention preserve accuracy?
+What I'll do tomorrow:
+  - Try sliding window with overlap of 64 tokens
+─────────────────────────────────────
+"""
 
-৩. কনসেপ্ট নোট (নতুন আইডিয়া)
-   # ─────────────────────────────────────────# 
-   #  আইডিয়া নাম:                            # 
-   #  সমস্যা কী:                              # 
-   #  আমার সমাধান:                           # 
-   #  কেন কাজ করবে বলে মনে হয়:             # 
-   #  কীভাবে পরীক্ষা করবো:                  # 
-   #  সম্ভাব্য ব্যর্থতা:                      # 
-   # ─────────────────────────────────────────# 
+print(research_diary)
 
-৪. রিসার্চ পেপার (প্রকাশের জন্য)
-   - Abstract (২০০ শব্দ — পুরো পেপারের সারাংশ)
-   - Introduction (কেন এই কাজ দরকার)
-   - Related Work (আগে কী হয়েছে)
-   - Method (আমরা কীভাবে করেছি)
-   - Results (কী পেয়েছি)
-   - Discussion (এর মানে কী)
-   - Conclusion (এক লাইনে)
+# 2. PAPER NOTES (after each paper)
+paper_notes = """
+PAPER NOTES (Per paper):
+─────────────────────────────────────
+Paper: "Attention is All You Need" (Vaswani et al., 2017)
+Main claim (1 sentence):
+  Self-attention can replace recurrence entirely for sequence tasks.
+Method (3 sentences):
+  Multi-head attention computes Q, K, V matrices from input.
+  Scaled dot-product attention: softmax(QK^T/sqrt(d))V.
+  Positional encoding adds position info to embeddings.
+My questions:
+  - Why divide by sqrt(d)? (gradient stability)
+  - How does multi-head capture different relationships?
+How I'll use this:
+  - Apply transformer encoder to my RAG retrieval model
+─────────────────────────────────────
+"""
 
-৫. পিয়ার রিভিউ (অন্যের কাজ পড়ে)
-   - এই পেপারের সবচেয়ে শক্তিশালী দিক কী?
-   - সবচেয়ে দুর্বল দিক কী?
-   - কোন প্রশ্নের উত্তর দেয়নি?
-   → এটা তোমার সন্দেহ ধারালো করে</div>
+print(paper_notes)
+
+# 3. CONCEPT NOTES (new ideas)
+concept_notes = """
+CONCEPT NOTES (New ideas):
+─────────────────────────────────────
+Idea: Adaptive Attention Span
+Problem:
+  Standard attention looks at ALL tokens (wasteful for long docs)
+My solution:
+  Learn a span parameter per head — some heads look near, some far
+Why it might work:
+  Different relationships need different ranges
+  Reduces computation from O(n^2) to O(n*k) where k < n
+How to test:
+  Implement, compare with baseline on long-document tasks
+─────────────────────────────────────
+"""
+
+print(concept_notes)
+
+# 4. EXPERIMENT LOG (track all experiments)
+# 5. IDEA LEDGER (capture random insights)
+# → Use a notebook, Notion, Obsidian, or LaTeX
+# → The KEY is consistency: write DAILY, even if just 5 minutes</div>
+
+<div class="code-block"># ── STEP 2: Research methodology ──
+# The scientific method applied to CS research.
+
+# THE RESEARCH LOOP:
+
+research_loop = """
+1. OBSERVATION:
+   Notice something interesting or broken.
+   "Attention is slow for long sequences (O(n^2) memory)."
+
+2. QUESTION:
+   Turn observation into a specific question.
+   "Can we approximate attention in O(n log n) or O(n)?"
+
+3. HYPOTHESIS:
+   Propose a testable answer.
+   "Locality-sensitive hashing can group similar tokens, reducing
+    the number of attention pairs computed."
+
+4. PREDICTION:
+   What should happen if hypothesis is true?
+   "LSH-attention should match full attention accuracy on language
+    modeling while using 50% less memory."
+
+5. EXPERIMENT:
+   Test the prediction.
+   Implement LSH-attention, run on WikiText-103, compare perplexity.
+
+6. ANALYSIS:
+   Did the results match the prediction?
+   "Perplexity increased 2% (worse), but memory dropped 60% (better)."
+
+7. ITERATION:
+   If results don't match → revise hypothesis → repeat.
+   "Maybe 2% accuracy loss is acceptable for 60% memory savings.
+    Let's test on downstream tasks to see if quality matters."
+"""
+
+print(research_loop)
+
+# EXPERIMENT DESIGN PRINCIPLES:
+
+experiment_principles = {
+    "Control": "Compare against a baseline (existing method)",
+    "Variable": "Change ONE thing at a time (isolate effects)",
+    "Reproducible": "Document everything (seed, hyperparams, data)",
+    "Statistical": "Run multiple times (mean + std deviation)",
+    "Fair": "Same compute budget for all methods compared",
+    "Ablation": "Test each component separately (what matters?)",
+}
+
+print("EXPERIMENT DESIGN PRINCIPLES:")
+for principle, desc in experiment_principles.items():
+    print(f"  {principle}: {desc}")
+
+# PYTHON (experiment tracker):
+import json
+from datetime import date
+
+class ExperimentTracker:
+    """Track ML experiments systematically."""
+    def __init__(self):
+        self.experiments = []
+
+    def log(self, name, method, params, metrics, notes=""):
+        entry = {
+            "id": len(self.experiments) + 1,
+            "date": str(date.today()),
+            "name": name,
+            "method": method,
+            "params": params,
+            "metrics": metrics,
+            "notes": notes,
+        }
+        self.experiments.append(entry)
+        print(f"  Logged: #{entry['id']} {name}")
+        for metric, value in metrics.items():
+            print(f"    {metric}: {value}")
+
+    def best(self, metric, higher_is_better=True):
+        """Find best experiment by metric."""
+        sorted_exp = sorted(self.experiments,
+                           key=lambda e: e["metrics"].get(metric, 0),
+                           reverse=higher_is_better)
+        return sorted_exp[0] if sorted_exp else None
+
+tracker = ExperimentTracker()
+tracker.log("baseline_transformer", "full_attention",
+            {"layers": 6, "heads": 8, "dim": 512},
+            {"perplexity": 22.3, "memory_gb": 12.0, "speed_ms": 450})
+tracker.log("lsh_attention", "lsh_approx",
+            {"layers": 6, "heads": 8, "dim": 512, "n_hashes": 4},
+            {"perplexity": 24.1, "memory_gb": 5.0, "speed_ms": 180},
+            "60% memory reduction, 2.6% accuracy cost")
+
+best_acc = tracker.best("perplexity", higher_is_better=False)
+print(f"\nBest accuracy: #{best_acc['id']} {best_acc['name']}")</div>
+
+<div class="code-block"># ── STEP 3: Formulating research questions ──
+# The art of asking the right question.
+
+# GOOD vs BAD RESEARCH QUESTIONS:
+
+questions = {
+    "❌ TOO VAGUE": [
+        "How can we make AI better?",
+        "What's the future of NLP?",
+        "Can transformers solve everything?",
+    ],
+    "❌ TOO SPECIFIC (trivial)": [
+        "What learning rate gives best accuracy on dataset X?",
+        "Does adding 1 layer improve BLEU by 0.1?",
+    ],
+    "✅ GOOD (specific but meaningful)": [
+        "Can locality-sensitive hashing approximate full attention
+         with less than 2% accuracy loss on long-document tasks?",
+        "Does pre-training on code improve reasoning ability
+         in language models? (measured by GSM8K)",
+        "How does model size affect sample efficiency
+         in few-shot learning?",
+    ],
+}
+
+for category, qs in questions.items():
+    print(f"\n{category}:")
+    for q in qs:
+        print(f"  • {q}")
+
+# THE FINER FRAMEWORK (for evaluating research questions):
+finer = {
+    "F - Feasible": "Can you actually do this? (data, compute, time)",
+    "I - Interesting": "Does anyone care about the answer?",
+    "N - Novel": "Has this been done before? (check literature)",
+    "E - Ethical": "Are there ethical concerns? (bias, privacy, harm)",
+    "R - Relevant": "Does this advance the field?",
+}
+
+print("\nTHE FINER FRAMEWORK:")
+for letter, question in finer.items():
+    print(f"  {letter}")
+    print(f"    → {question}")
+
+# WHERE DO RESEARCH IDEAS COME FROM?
+
+idea_sources = [
+    "Reading papers → 'what if we did X differently?'",
+    "Real-world problems → 'this system is broken, can we fix it?'",
+    "Cross-domain inspiration → 'biology solves this efficiently'",
+    "Failure analysis → 'why did this method fail here?'",
+    "Scaling laws → 'what happens if we make X 10x bigger?'",
+    "Combining ideas → 'what if A and B were combined?'",
+    "Simplification → 'can we remove component X and still work?'",
+    "Edge cases → 'what happens with extreme inputs?'",
+    "Theory gaps → 'theory says X, but practice shows Y. Why?'",
+    "Industry needs → 'companies need Y, but no method exists'",
+]
+
+print("\nWHERE RESEARCH IDEAS COME FROM:")
+for source in idea_sources:
+    print(f"  💡 {source}")
+
+# THE IDEA FUNNEL:
+# 100 ideas → 10 worth exploring → 3 worth implementing
+# → 1 worth publishing → 0.1 becomes influential
+# → Generate MANY ideas (volume matters for quality)</div>
+
+<div class="code-block"># ── STEP 4: Literature mapping ──
+# Building the map of your research area.
+
+# HOW TO MAP A RESEARCH AREA:
+
+mapping_process = """
+1. SURVEY PAPERS:
+   → Find 1-2 recent surveys on your topic
+   → Gives you the landscape (approaches, benchmarks, gaps)
+   → Search: "survey [topic] 2024" on Google Scholar
+
+2. KEY PAPERS:
+   → Identify 5-10 foundational papers (highly cited)
+   → Read these DEEPLY (understand every detail)
+   → These define the vocabulary of the field
+
+3. RECENT PAPERS:
+   → Read last 2 years of papers (what's new?)
+   → Attend top conferences (NeurIPS, ICML, ACL, CVPR)
+   → Follow top researchers on Twitter/Scholar
+
+4. BENCHMARKS:
+   → What datasets does everyone evaluate on?
+   → What metrics? (BLEU, F1, accuracy, perplexity)
+   → What are current SOTA numbers?
+
+5. GAPS:
+   → What do papers mention in "limitations"?
+   → What's in "future work" sections?
+   → What problems are known but unsolved?
+"""
+
+print(mapping_process)
+
+# LITERATURE MAP STRUCTURE:
+
+literature_map = {
+    "Foundational": {
+        "papers": ["Attention is All You Need (2017)", "BERT (2018)"],
+        "role": "Defines the paradigm everyone builds on",
+    },
+    "Incremental improvements": {
+        "papers": ["RoBERTa", "ALBERT", "T5"],
+        "role": "Small improvements on foundational work",
+    },
+    "New directions": {
+        "papers": ["GPT-3 (scaling)", "Chinchilla (compute-optimal)"],
+        "role": "Opens new research directions",
+    },
+    "Applications": {
+        "papers": ["Codex (code)", "InstructGPT (alignment)"],
+        "role": "Applies research to specific domains",
+    },
+    "Analysis": {
+        "papers": ["Mechanistic interpretability", "Scaling laws"],
+        "role": "Understanding WHY models work",
+    },
+    "YOUR PAPER": {
+        "papers": ["[Your contribution]"],
+        "role": "Fills a gap identified above",
+    },
+}
+
+print("LITERATURE MAP STRUCTURE:")
+for category, info in literature_map.items():
+    print(f"\n  {category}:")
+    print(f"    Papers: {info['papers']}")
+    print(f"    Role: {info['role']}")
+
+# KEEP A READING QUEUE:
+# → Papers to read (backlog)
+# → Papers reading now (in-progress)
+# → Papers read + notes (done)
+# → Review monthly: what patterns emerged?</div>
+
+<div class="code-block"># ── STEP 5: Collaboration and communication ──
+# Research is a team sport.
+
+# RESEARCH COLLABORATION:
+
+collaboration = """
+TYPES OF COLLABORATION:
+
+1. ADVISOR-STUDENT:
+   → Weekly meetings: progress, ideas, blockers
+   → Advisor: guidance, resources, network
+   → Student: execution, writing, fresh ideas
+   → Communication: honest about progress (don't hide failures)
+
+2. PEER COLLABORATION:
+   → Co-authors: complementary skills
+   → Reading groups: discuss papers together
+   → Code review: improve each other's code
+   → Brainstorming: 2 minds > 1 for generating ideas
+
+3. INTER-LAB COLLABORATION:
+   → Different expertise → stronger papers
+   → Access to different datasets/compute
+   → Broader dissemination network
+   → Cross-disciplinary = innovative
+
+4. OPEN SOURCE:
+   → Release code (GitHub) → community contribution
+   → Others build on your work → more citations
+   → Bug reports improve your method
+   → Reputation building
+
+5. INDUSTRY COLLABORATION:
+   → Real-world data and problems
+   → Compute resources (Google, Microsoft)
+   → Internship → full-time opportunity
+   → Validate research in production
+"""
+
+print(collaboration)
+
+# COMMUNICATION SKILLS (as important as research itself):
+communication = [
+    "Writing: clear papers > brilliant-but-unreadable papers",
+    "Speaking: conference talks, poster sessions, lab meetings",
+    "Teaching: mentoring undergrads, TA duties, blog posts",
+    "Networking: conferences, email, social media",
+    "Visualization: clear figures tell your paper's story",
+    "Code documentation: others should be able to use your code",
+    "Grant writing: securing funding for your research",
+    "Peer review: reviewing others' work improves your own",
+]
+
+print("COMMUNICATION SKILLS:")
+for skill in communication:
+    print(f"  ☐ {skill}")
+
+# THE COLLABORATION EQUATION:
+# Good research + Good communication = Impact
+# Good research + Bad communication = Ignored
+# Mediocre research + Great communication = Overhyped (but noticed)
+# → Don't neglect communication — it's how research spreads</div>
+
+<div class="code-block"># ── STEP 6: The researcher's mindset ──
+# How successful researchers think.
+
+best_practices = [
+    "Be curious (ask 'why?' constantly)",
+    "Read broadly (not just your sub-area)",
+    "Embrace failure (most experiments don't work)",
+    "Be persistent (breakthroughs take years, not weeks)",
+    "Think independently (don't just follow trends)",
+    "Collaborate generously (research is not zero-sum)",
+    "Communicate clearly (writing IS research)",
+    "Be ethical (honesty > glory)",
+    "Manage time well (deep work > busy work)",
+    "Take care of mental health (burnout is common in academia)",
+    "Find mentors (advisor, senior students, industry contacts)",
+    "Give credit (cite predecessors, acknowledge contributors)",
+    "Stay humble (there's always more to learn)",
+    "Follow your passion (research what genuinely interests you)",
+    "Think long-term (impact compounds over decades)",
+]
+
+print("THE RESEARCHER'S MINDSET:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# THE RESEARCH TIMELINE (realistic expectations):
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Phase            │ Timeline                      │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Idea             │ Minutes to months (unpredictable)│
+# │ Literature review│ 2-4 weeks                      │
+# │ Implementation   │ 2-6 months                     │
+# │ Experiments      │ 1-3 months (many iterations)   │
+# │ Writing          │ 1-2 months                     │
+# │ Submission       │ 1 day                          │
+# │ Review           │ 3-6 months (waiting)           │
+# │ Revision         │ 1-2 months                     │
+# │ Camera-ready     │ 2-4 weeks                      │
+# │ Publication      │ 6-12 months from idea to paper │
+# └──────────────────┴──────────────────────────────────┘
+#
+# "If we knew what we were doing, it wouldn't be called research."
+#  — Albert Einstein
+#
+# Research is EXPLORATION. You don't know the answer.
+# That's the point. If you knew, it wouldn't be research.
+# Embrace uncertainty. Follow curiosity. Create knowledge.</div>
 
 <div class="callout tip"><span class="co-icon">✊</span><div><strong>লেখার সোনার নিয়ম:</strong> লেখা = চিন্তা করা, ব্যাখ্যা করা নয়। লেখা কঠিন লাগলে → চিন্তা অস্পষ্ট। লেখা সহজ হলে → চিন্তা স্পষ্ট।</div></div>
 
