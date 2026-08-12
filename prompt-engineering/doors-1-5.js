@@ -46,36 +46,426 @@ doors.push({
 </div>
 <div class="svg-caption">শব্দ → টোকেন: LLM প্রতিটি অক্ষর-খণ্ড আলাদা টোকেন হিসেবে দেখে — প্রতিটি টোকেনই খরচ ও সীমার অংশ</div>
 
-<div class="code-block">Token Reality — LLMs Don't See Words:
+<div class="code-block"># ── STEP 1: Token reality — LLMs don't see words ──
+# Understanding tokens is the foundation of prompt engineering.
+
+tokens = """
+TOKEN REALITY — LLMS DON'T SEE WORDS:
 
 Tokenization (BPE — Byte Pair Encoding):
-  "Hello world" → ["Hello", " world"] → ২ টোকেন
-  "unbelievable" → ["un", "believe", "able"] → ৩ টোকেন  
-  "জ্ঞান" → ["জ", "্ঞ", "া", "ন"] → ~৪ টোকেন
-  "def fibonacci(n):" → ["def", " fibonacci", "(", "n", "):"] → ৫ টোকেন
+  "Hello world" → ["Hello", " world"] → 2 tokens
+  "unbelievable" → ["un", "believe", "able"] → 3 tokens
+  "জ্ঞান" → ["জ", "্ঞ", "া", "ন"] → ~4 tokens
+  "def fibonacci(n):" → ["def", " fibonacci", "(", "n", "):"] → 5 tokens
 
-কেন এটা গুরুত্বপূর্ণ?
+WHY THIS MATTERS:
 
-১. খরচ (Cost):
-   GPT-4: $৩০/মিলিয়ন ইনপুট টোকেন
-   GPT-4o: $৫/মিলিয়ন টোকেন  
-   Claude 3.5: $৩/মিলিয়ন টোকেন
-   → একটা প্রম্পট ১০,০০০ টোকেন = $০.০৩-$০.৩০
+1. COST:
+   GPT-4: $30/million input tokens
+   GPT-4o: $5/million tokens
+   Claude 3.5: $3/million tokens
+   → One prompt of 10,000 tokens = $0.03-$0.30
 
-২. সীমা (Context Window):
-   GPT-4o: ১২৮,০০০ টোকেন
-   Claude 3.5: ২০০,০০০ টোকেন
-   Gemini 1.5: ১,০০০,০০০+ টোকেন
-   → প্রম্পট + কন্টেক্সট + আউটপুট এই সীমার ভেতরে
+2. CONTEXT WINDOW:
+   GPT-4o: 128,000 tokens
+   Claude 3.5: 200,000 tokens
+   Gemini 1.5: 1,000,000+ tokens
+   → Prompt + context + output must fit within this limit
 
-৩. ভাষা পার্থক্য:
-   ইংরেজি: ১ শব্দ ~= ১.৩ টোকেন
-   বাংলা: ১ শব্দ ~= ৩-৫ টোকেন (বেশি ব্যয়বহুল!)
-   চাইনিজ: ১ শব্দ ~= ২-৩ টোকেন
-   → বাংলা প্রম্পট বেশি খরচ করে
+3. LANGUAGE DIFFERENCES:
+   English: 1 word ≈ 1.3 tokens
+   Bengali: 1 word ≈ 3-5 tokens (more expensive!)
+   Chinese: 1 word ≈ 2-3 tokens
+   → Bengali prompts cost more
 
-৪. ফ্যাক্ট:
-   " Please be concise" = ৩ টোকেন
+4. WHITESPACE:
+   " Please be concise" = 3 tokens
+   "Please be concise" = 3 tokens
+   → Spaces are tokens! Remove unnecessary spaces.
+
+PYTHON (count tokens with tiktoken):
+  import tiktoken
+
+  enc = tiktoken.encoding_for_model("gpt-4o")
+
+  prompt = "Explain gradient descent in simple terms."
+  tokens = enc.encode(prompt)
+
+  print(f"Text: {prompt}")
+  print(f"Tokens: {len(tokens)}")
+  print(f"Token IDs: {tokens}")
+  # Tokens: 8 (not 6 words!)
+
+  # Count cost:
+  input_cost = len(tokens) / 1_000_000 * 5  # $5/M for GPT-4o
+  print("Input cost: $" + str(round(input_cost, 6)))
+
+TOKEN OPTIMIZATION TIPS:
+  → Remove unnecessary words ("please", "I was wondering")
+  → Use English for system prompts (fewer tokens)
+  → Compact formats (shorter JSON keys)
+  → Don't repeat instructions
+  → Use abbreviations for long repeated terms
+"""
+
+print(tokens)</div>
+
+<div class="code-block"># ── STEP 2: Sampling parameters ──
+# The hidden controls of LLM output.
+
+sampling = """
+SAMPLING PARAMETERS — THE HIDDEN CONTROLS:
+
+1. TEMPERATURE (default: 1.0):
+   → 0.0: deterministic (always same output)
+   → 0.1-0.3: focused, factual (coding, analysis)
+   → 0.5-0.7: balanced (general conversation)
+   → 0.8-1.0: creative, varied (writing, brainstorming)
+   → 1.0+: wild, unpredictable (experimental)
+
+   Rule: low for facts, high for creativity
+
+2. TOP_P (nucleus sampling, default: 1.0):
+   → Only sample from top P% probability tokens
+   → 0.1: only top 10% likely tokens (very focused)
+   → 0.9: top 90% (most tokens, more variety)
+   → Use temperature OR top_p (not both)
+
+3. TOP_K (default: varies):
+   → Only sample from top K tokens
+   → K=1: greedy (always pick most likely)
+   → K=40: top 40 tokens (balanced)
+   → K=100: many options (creative)
+
+4. FREQUENCY PENALTY (default: 0.0):
+   → Penalize tokens that appear frequently
+   → Reduces repetition
+   → 0.5-1.0: good for avoiding loops
+
+5. PRESENCE PENALTY (default: 0.0):
+   → Penalize tokens that have appeared at all
+   → Encourages new topics
+   → 0.5-1.0: good for diverse output
+
+6. MAX TOKENS:
+   → Maximum output length
+   → Set appropriately: too low = truncated, too high = cost
+
+7. STOP SEQUENCES:
+   → Stop generation at specific text
+   → e.g., stop=["\\n\\n"] for single-paragraph output
+
+PYTHON (parameter tuning):
+  from openai import OpenAI
+  client = OpenAI()
+
+  # Factual response (low temperature):
+  response = client.chat.completions.create(
+      model="gpt-4o",
+      messages=[{"role": "user", "content": "What is 2+2?"}],
+      temperature=0.0,      # deterministic
+      max_tokens=50
+  )
+
+  # Creative response (high temperature):
+  response = client.chat.completions.create(
+      model="gpt-4o",
+      messages=[{"role": "user", "content": "Write a poem about the ocean"}],
+      temperature=0.9,      # creative
+      top_p=0.95,           # slightly restrict
+      max_tokens=300,
+      frequency_penalty=0.5  # avoid repetition
+  )
+
+PARAMETER RECIPES:
+  Coding: temp=0.0, top_p=1.0, max_tokens=2000
+  Analysis: temp=0.1, top_p=0.9, max_tokens=1000
+  Chat: temp=0.7, top_p=0.9, max_tokens=500
+  Creative writing: temp=0.9, top_p=0.95, max_tokens=2000
+  Brainstorming: temp=1.0, top_p=0.95, frequency_penalty=0.5
+"""
+
+print(sampling)</div>
+
+<div class="code-block"># ── STEP 3: Prompt hierarchy — the hidden weight ──
+# Where you put information matters.
+
+hierarchy = """
+PROMPT HIERARCHY — THE HIDDEN WEIGHT:
+
+LLMs weight information differently based on position and role.
+
+MESSAGE ROLES (OpenAI format):
+  system: "You are a helpful assistant" (highest priority)
+  user: "What is X?" (the question)
+  assistant: "X is..." (previous responses)
+  tool: "Result: ..." (tool output)
+
+PRIORITY ORDER:
+  system > user (first) > user (last) > assistant > tool
+
+KEY INSIGHTS:
+
+1. SYSTEM PROMPT IS KING:
+   → Defines personality, rules, constraints
+   → LLM follows system over user
+   → But: prompt injection can override (security risk)
+
+2. RECENCY BIAS:
+   → LLM remembers recent messages better
+   → Last user message has outsized influence
+   → Important instructions: put at the END
+
+3. PRIMACY EFFECT:
+   → First few messages also well-remembered
+   → System prompt + first user = strong anchor
+
+4. LOST IN THE MIDDLE:
+   → Information in the middle of long prompts gets lost
+   → Put critical info at START and END
+   → Less critical info in the middle
+
+5. STRUCTURED PROMPTS:
+   → Use clear sections: <context>, <instructions>, <output_format>
+   → XML tags or markdown headers help LLM parse
+   → Explicit structure > wall of text
+
+PYTHON (structured prompt):
+  system_prompt = \"\"\"You are an expert code reviewer.
+
+  <rules>
+  - Focus on security, performance, readability
+  - Give specific, actionable feedback
+  - Rate severity: critical, warning, suggestion
+  </rules>
+
+  <output_format>
+  Return JSON:
+  {"issues": [{"severity": "...", "line": ..., "issue": "...", "fix": "..."}]}
+  </output_format>
+  \"\"\"
+
+  user_prompt = f\"\"\"
+  <code>
+  {code_to_review}
+  </code>
+
+  Review this code for issues. Follow the output format exactly.
+  \"\"\"
+
+  response = client.chat.completions.create(
+      model="gpt-4o",
+      messages=[
+          {"role": "system", "content": system_prompt},
+          {"role": "user", "content": user_prompt}
+      ],
+      temperature=0.0
+  )
+
+BEST PRACTICES:
+  → System prompt: role, rules, constraints, output format
+  → User prompt: specific task, context, examples
+  → Put critical instructions at END of user prompt
+  → Use XML tags for structure: <context>, <task>, <format>
+  → Keep prompts focused (one task per prompt)
+"""
+
+print(hierarchy)</div>
+
+<div class="code-block"># ── STEP 4: Chain-of-Thought (CoT) ──
+# The 6-word revolution in reasoning.
+
+cot = """
+CHAIN-OF-THOUGHT (COT) — THE 6-WORD REVOLUTION:
+
+"Let's think step by step."
+
+These 6 words dramatically improve LLM reasoning on complex tasks.
+→ Forces LLM to show intermediate steps
+→ Reduces errors on multi-step problems
+→ Especially effective for math, logic, coding
+
+WHY IT WORKS:
+  Without CoT:
+    Q: "If I have 3 boxes of 12 apples and eat 5, how many left?"
+    A: "31" (wrong, jumped to conclusion)
+
+  With CoT:
+    Q: "If I have 3 boxes of 12 apples and eat 5, how many left?"
+    A: "Let me think step by step.
+        3 boxes × 12 apples = 36 total.
+        36 - 5 eaten = 31 apples left."
+    → Correct! And the reasoning is visible.
+
+ZERO-SHOT CoT:
+  → Just append "Let's think step by step."
+  → Works without any examples
+  → Simplest technique
+
+FEW-SHOT CoT:
+  → Provide examples that show reasoning
+  → More reliable than zero-shot
+  → Better for complex/domain-specific tasks
+
+PYTHON (zero-shot CoT):
+  response = client.chat.completions.create(
+      model="gpt-4o",
+      messages=[{
+          "role": "user",
+          "content": \"\"\"
+          A train travels 60 mph for 2 hours, then 80 mph for 1 hour.
+          What is the average speed?
+
+          Let's think step by step.
+          \"\"\"
+      }],
+      temperature=0.0
+  )
+  # Output shows full reasoning → correct answer
+
+SELF-CONSISTENCY (advanced CoT):
+  → Generate multiple CoT responses (temp > 0)
+  → Take majority vote of final answers
+  → More reliable than single response
+
+  answers = []
+  for _ in range(5):
+      r = generate(prompt + " Think step by step.", temperature=0.7)
+      answers.append(extract_answer(r))
+
+  final = most_common(answers)  # majority vote
+
+WHEN TO USE CoT:
+  ✅ Math and arithmetic
+  ✅ Logic puzzles
+  ✅ Multi-step reasoning
+  ✅ Code debugging
+  ✅ Causal analysis
+  ❌ Simple factual questions (wastes tokens)
+  ❌ Creative writing (no need for step-by-step)
+"""
+
+print(cot)</div>
+
+<div class="code-block"># ── STEP 5: Few-shot prompting ──
+# The power of examples.
+
+few_shot = """
+FEW-SHOT PROMPTING — POWER OF EXAMPLES:
+
+Show the LLM what you want through examples.
+→ "Don't tell, show"
+→ 2-5 examples dramatically improve output quality
+
+ZERO-SHOT (no examples):
+  "Classify sentiment: 'This movie was great!'"
+  → Works for simple tasks, may be inconsistent
+
+ONE-SHOT (1 example):
+  "Classify sentiment:
+   Input: 'I love this!' → Positive
+   Input: 'This movie was great!'"
+  → Better, but may not generalize
+
+FEW-SHOT (2-5 examples):
+  "Classify sentiment:
+   Input: 'I love this!' → Positive
+   Input: 'Terrible service' → Negative
+   Input: 'It was okay' → Neutral
+   Input: 'Best purchase ever!' → Positive
+   Input: 'This movie was great!'"
+  → Consistent, follows pattern
+
+PYTHON (few-shot):
+  prompt = \"\"\"Classify the sentiment of each review.
+
+  Review: "Amazing product, highly recommend!"
+  Sentiment: Positive
+
+  Review: "Waste of money, broke after one day."
+  Sentiment: Negative
+
+  Review: "Fast delivery, good quality."
+  Sentiment: Positive
+
+  Review: "Average, nothing special."
+  Sentiment: Neutral
+
+  Review: "{user_review}"
+  Sentiment:\"\"\"
+
+  response = client.chat.completions.create(
+      model="gpt-4o",
+      messages=[{"role": "user", "content": prompt}],
+      temperature=0.0
+  )
+
+FEW-SHOT BEST PRACTICES:
+  → Use diverse examples (cover edge cases)
+  → Keep examples consistent in format
+  → 3-5 examples is the sweet spot (more = token cost)
+  → Put the most relevant examples last (recency bias)
+  → Include both positive AND negative examples
+
+ADVANCED: DYNAMIC FEW-SHOT:
+  → Retrieve relevant examples based on input
+  → Use embeddings to find similar examples
+  → Adapts to each query
+
+  def dynamic_few_shot(query, example_db, k=3):
+      query_emb = embed(query)
+      examples = example_db.search(query_emb, k=k)
+      prompt = format_examples(examples) + f"\\n\\nQuery: {query}"
+      return llm.generate(prompt)
+
+WHEN FEW-SHOT HELPS:
+  ✅ Classification tasks
+  ✅ Format-specific output (JSON, code, structured)
+  ✅ Domain-specific tasks (medical, legal)
+  ✅ Tasks where format matters more than content
+  ❌ Creative tasks (examples constrain creativity)
+  ❌ Simple factual QA (examples unnecessary)
+"""
+
+print(few_shot)</div>
+
+<div class="code-block"># ── STEP 6: Prompt engineering best practices ──
+# The complete toolkit.
+
+best_practices = [
+    "Be specific: 'Summarize in 3 bullet points' > 'Summarize'",
+    "Use system prompt for role/rules, user for task/context",
+    "Provide output format: JSON schema, markdown, examples",
+    "Chain-of-Thought for complex reasoning ('think step by step')",
+    "Few-shot examples for format consistency (3-5 examples)",
+    "Set temperature appropriately (0 for facts, 0.7 for creative)",
+    "Count tokens: optimize cost and fit context window",
+    "Use XML tags for structure: <context>, <task>, <format>",
+    "Put critical instructions at the END (recency bias)",
+    "Iterate: test, measure, refine prompts",
+    "Version your prompts (track changes like code)",
+    "Use stop sequences to control output length",
+    "Handle errors: 'If you don't know, say I don't know'",
+    "Avoid ambiguity: define terms, give constraints",
+    "Test with edge cases: empty input, long input, adversarial",
+]
+
+print("PROMPT ENGINEERING BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# TECHNIQUE QUICK REFERENCE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Technique        │ When to Use                   │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Zero-shot        │ Simple tasks                  │
+# │ Few-shot         │ Format-specific, classification│
+# │ Chain-of-Thought │ Math, logic, multi-step       │
+# │ Role prompting   │ Domain expertise (act as...)  │
+# │ Self-consistency │ High-stakes (vote on answers) │
+# │ Structured output│ JSON, code, specific format   │
+# │ Dynamic few-shot │ Large example database        │
+# └──────────────────┴──────────────────────────────────┘</div>
    "Please be concise" = ৩ টোকেন
    → স্পেসও একটা টোকেন! অপ্রয়োজনীয় স্পেস বাদ দাও।
 
