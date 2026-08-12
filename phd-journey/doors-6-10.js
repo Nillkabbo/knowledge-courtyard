@@ -22,39 +22,430 @@ doors.push({
 <div class="dialogue">পণ্ডিত বলেছিলেন — SOP লেখো। কিন্তু আমি বলি — SOP লেখার অনেক আগে শুরু। কারণ PhD অ্যাডমিশন কমিটি সিদ্ধান্ত নেয় না — প্রফেসর নেন। যদি কোনো প্রফেসর তোমাকে চান, তিনি কমিটিকে বলেন "এই ছাত্র নাও।" কিন্তু তিনি তোমাকে চিনবেন কীভাবে? কোল্ড ইমেইল।</div>
 <div class="dialogue en">"The scholar said — write your SOP. But I say — start long before the SOP. Because the PhD admissions committee doesn't decide — the professor does. If a professor wants you, they tell the committee 'take this student.' But how will they know you? Cold email."</div>
 
-<div class="code-block">Cold Email to Professors — ধাপে ধাপে:
+<div class="code-block"># ── STEP 1: Cold email to professors ──
+# The #1 strategy for PhD admission.
 
-কেন কোল্ড ইমেইল?
-  • PhD অ্যাডমিশন = প্রফেসরের সিদ্ধান্ত
-  • যদি কোনো প্রফেসর তোমাকে চান → 
-    তিনি funding এনে দেন, কমিটিতে তোমার নাম রাখেন
-  • কোল্ড ইমেইল ছাড়া = এক হাজার আবেদনের ভিড়ে হারিয়ে যাও
+# WHY COLD EMAIL?
+# → PhD admission = professor's decision (not just committee)
+# → If a professor WANTS you → they bring funding, advocate for you
+# → Without cold email → lost among 1000+ applications
 
-কাকে ইমেইল করবে?
-  • তোমার রিসার্চ এরিয়ার প্রফেসর
-  • CSRankings.org → এরিয়া → বিভাগ → প্রফেসর
-  • তাঁর সাম্প্রতিক পেপার পড়ো (গুগল স্কলার)
+# WHO TO EMAIL:
+# → Professors in YOUR research area
+# → CSRankings.org → your area → department → professor
+# → Read their recent papers (Google Scholar)
 
-ইমেইল কাঠামো (১৫০-২০০ শব্দ সর্বোচ্চ):
+# EMAIL STRUCTURE (150-200 words MAX):
 
-Subject: Prospective PhD Student — [তোমার এরিয়া]
-  
-প্যারা ১: কে তুমি + কেন তাঁকে
-  "Dear Professor X, I'm [নাম], MSIS from Trine 
-   University. I read your recent paper on [শিরোনাম] 
-   and was fascinated by [নির্দিষ্ট অংশ]."
+email_template = """
+Subject: Prospective PhD Student — [Your Research Area]
 
-প্যারা ২: তোমার প্রস্তুতি
-  "My background: [১-২ বাক্যে]. I've worked on 
-   [প্রজেক্ট/কাজ] which connects to your research 
-   on [নির্দিষ্ট সংযোগ]."
+Dear Professor [Last Name],
 
-প্যারা ৩: প্রশ্ন
-  "Are you accepting PhD students for Fall 2027? 
-   I'd love to discuss whether my background fits 
+I'm [Your Name], [MS/BS] from [University]. I read your recent
+paper "[Paper Title]" and was fascinated by [specific aspect
+that impressed you — show you actually read it].
+
+My background: [1-2 sentences about your relevant experience].
+I've worked on [project/research] which connects to your work
+on [specific connection — show overlap].
+
+Are you accepting PhD students for Fall [Year]? I'd love to
+discuss whether my background fits your lab. My CV is attached.
+
+Thank you for your time,
+[Your Name]
+[Link to GitHub/website]
+"""
+
+print(email_template)
+
+# PYTHON (cold email campaign tracker):
+class EmailCampaign:
+    """Track PhD cold emails and responses."""
+    def __init__(self):
+        self.emails = {}  # professor → {date, status, response}
+
+    def send(self, professor, university, area, date):
+        self.emails[professor] = {
+            "university": university,
+            "area": area,
+            "date": date,
+            "status": "sent",
+            "response": None,
+        }
+        print(f"  → Email sent to Prof. {professor} ({university})")
+
+    def log_response(self, professor, response_type, notes=""):
+        statuses = {
+            "positive": "Interested! Schedule a meeting",
+            "neutral": "No funding / Not accepting students",
+            "negative": "Not a good fit",
+            "no_response": "No reply after 2 weeks",
+        }
+        self.emails[professor]["status"] = response_type
+        self.emails[professor]["response"] = notes
+        print(f"  ← {professor}: {statuses.get(response_type, 'unknown')}")
+
+    def stats(self):
+        total = len(self.emails)
+        positive = sum(1 for e in self.emails.values()
+                       if e["status"] == "positive")
+        print(f"\nCampaign stats:")
+        print(f"  Total sent: {total}")
+        print(f"  Positive: {positive} ({positive/max(total,1)*100:.0f}%)")
+        print(f"  Response rate: {sum(1 for e in self.emails.values() if e['status'] != 'sent')}/{total}")
+
+# EXPECTED RESPONSE RATES:
+# → Send 30-50 emails → expect 5-10 responses → 2-3 positive
+# → This is NORMAL — don't be discouraged
+# → Professors are busy — no response ≠ rejection
+
+# COLD EMAIL RULES:
+# → Research the professor FIRST (read 1-2 papers)
+# → Show SPECIFIC interest (not generic "I like your work")
+# → Be CONCISE (professors skim — 150 words max)
+# → Attach CV (PDF, 1-2 pages)
+# → Follow up after 1 week if no response (ONE follow-up only)
+# → Don't send same email to multiple professors at same university</div>
+
+<div class="code-block"># ── STEP 2: PhD application strategy ──
+# Building a competitive application.
+
+# PHD APPLICATION COMPONENTS:
+components = {
+    "1. RESEARCH STATEMENT (MOST IMPORTANT)": {
+        "what": "2-3 page document describing your research interests",
+        "key": "Show you understand the field, have specific ideas, fit the professor",
+        "tip": "Mention 2-3 professors by name and how your interests align",
+    },
+    "2. LETTERS OF RECOMMENDATION": {
+        "what": "3 letters from people who know your research/work",
+        "key": "Strong letters > generic letters. A 'top 5%' letter is gold.",
+        "tip": "Ask researchers you've worked with, not just course instructors",
+    },
+    "3. GPA AND TRANSCRIPTS": {
+        "what": "Undergraduate + graduate transcripts",
+        "key": "Most CS PhD programs want 3.5+ GPA (3.7+ for top-10)",
+        "tip": "Upward trend matters more than overall GPA",
+    },
+    "4. GRE (increasingly optional)": {
+        "what": "Standardized test (many programs waived this requirement)",
+        "key": "Check each program — many CS programs no longer require GRE",
+        "tip": "If required: 90th+ percentile quantitative",
+    },
+    "5. PUBLICATIONS (huge advantage)": {
+        "what": "Peer-reviewed papers (workshop, conference, journal)",
+        "key": "Even 1 publication puts you ahead of 80% of applicants",
+        "tip": "Quality > quantity. 1 good conference paper > 5 low-tier papers",
+    },
+    "6. CV / RESUME": {
+        "what": "Academic CV (different from industry resume)",
+        "key": "Research experience, publications, skills, education",
+        "tip": "Include GitHub, personal website, Google Scholar profile",
+    },
+    "7. TOEFL/IELTS (international)": {
+        "what": "English proficiency test",
+        "key": "Most programs: TOEFL 100+ or IELTS 7.0+",
+        "tip": "Some programs waive this if you studied in English",
+    },
+}
+
+for component, details in components.items():
+    print(f"\n{component}")
+    for key, value in details.items():
+        print(f"  {key}: {value}")
+
+# WHAT MAKES A STANDOUT APPLICATION:
+# 1. RESEARCH FIT: Your interests align with a specific professor
+# 2. EVIDENCE OF RESEARCH ABILITY: Papers, projects, thesis
+# 3. STRONG LETTERS: From known researchers, saying specific things
+# 4. CLEAR NARRATIVE: Your application tells a coherent story
+# 5. PROFESSOR ADVOCACY: A professor says "I want this student"</div>
+
+<div class="code-block"># ── STEP 3: Choosing programs and funding ──
+# Where to apply and how to fund your PhD.
+
+# HOW TO CHOOSE PROGRAMS:
+
+selection_criteria = {
+    "RESEARCH FIT": {
+        "weight": "CRITICAL (40%)",
+        "check": "Do 2+ professors work in your area?",
+        "action": "Read their recent papers, check if accepting students",
+    },
+    "FUNDING": {
+        "weight": "CRITICAL (30%)",
+        "check": "Is PhD fully funded? (tuition + stipend $25K-40K)",
+        "action": "Most US PhD programs are fully funded. Ask if unsure.",
+    },
+    "RANKING": {
+        "weight": "IMPORTANT (15%)",
+        "check": "Top-10? Top-50? Doesn't matter as much as advisor fit",
+        "action": "Use CSRankings.org for area-specific rankings",
+    },
+    "LOCATION": {
+        "weight": "MODERATE (10%)",
+        "check": "Cost of living, climate, proximity to industry",
+        "action": "Bay Area = high COL but near tech; Midwest = low COL",
+    },
+    "CULTURE": {
+        "weight": "MODERATE (5%)",
+        "check": "Collaborative vs competitive? Work-life balance?",
+        "action": "Email current students to ask about culture",
+    },
+}
+
+for criterion, info in selection_criteria.items():
+    print(f"\n{criterion} ({info['weight']})")
+    print(f"  Check: {info['check']}")
+    print(f"  Action: {info['action']}")
+
+# FUNDING TYPES:
+funding = """
+1. RESEARCH ASSISTANTSHIP (RA):
+   → Professor pays you from their grant
+   → You work on their research (your dissertation)
+   → Most common for PhD students
+   → Typically: tuition + $25K-40K/year stipend
+
+2. TEACHING ASSISTANTSHIP (TA):
+   → Department pays you to teach/grade courses
+   → 20 hours/week commitment
+   → Same compensation as RA, but teaching instead of research
+
+3. FELLOWSHIPS (BEST):
+   → NSF GRFP, NDSEG, Hertz Foundation
+   → No work requirement — pure research time
+   → Prestigious (looks great on CV)
+   → NSF GRFP: $37K/year for 3 years
+
+4. INDUSTRY FELLOWSHIPS:
+   → Google PhD Fellowship, Microsoft Research Fellowship
+   → Very competitive, very prestigious
+   → Often includes internship opportunity
+"""
+
+print(funding)
+
+# APPLICATION TIMELINE (for Fall admission):
+timeline = [
+    ("May-Aug", "Research programs, read papers, cold email professors"),
+    ("Sep-Oct", "Take GRE/TOEFL, draft research statement"),
+    ("Oct-Nov", "Request recommendation letters (give 6+ weeks notice)"),
+    ("Nov-Dec", "Submit applications (deadlines Dec 1 - Jan 15)"),
+    ("Jan-Feb", "Interviews, campus visits"),
+    ("Feb-Apr", "Acceptances/rejections, decide by Apr 15"),
+    ("May-Aug", "Prepare: read papers, learn tools, move to campus"),
+]
+
+print("PHD APPLICATION TIMELINE:")
+for month, task in timeline:
+    print(f"  {month}: {task}")</div>
+
+<div class="code-block"># ── STEP 4: Research statement writing ──
+# The most important document in your application.
+
+# RESEARCH STATEMENT STRUCTURE (2-3 pages):
+
+statement_template = """
+RESEARCH STATEMENT STRUCTURE:
+
+1. RESEARCH VISION (1 paragraph):
+   What broad problem do you want to solve? Why does it matter?
+   "I want to develop efficient inference methods for large language
+    models, enabling deployment on edge devices."
+
+2. PRIOR RESEARCH (1-2 paragraphs):
+   What have you ALREADY done? Show you can do research.
+   "In my MS thesis, I implemented a quantization-aware training
+    pipeline that reduced model size by 4x with <1% accuracy loss."
+
+3. PROPOSED RESEARCH (2-3 paragraphs):
+   What do you want to do in your PhD? Be specific but flexible.
+   "During my PhD, I plan to explore:
+    (a) Hardware-aware neural architecture search
+    (b) Sparse attention mechanisms for long-context models
+    (c) Energy-efficient inference on mobile devices"
+
+4. FIT (1 paragraph):
+   Why THIS university? Which professors? How do you align?
+   "I'm particularly interested in working with Prof. X on [topic]
+    and Prof. Y on [topic]. [University]'s strengths in [area]
+    make it ideal for this research."
+
+5. BROADER IMPACT (1 paragraph, optional):
+   How will your research help society/industry?
+"""
+
+print(statement_template)
+
+# RESEARCH STATEMENT TIPS:
+tips = [
+    "Show you KNOW the field (cite recent work)",
+    "Be SPECIFIC about what you want to research (not vague)",
+    "Show CAPABILITY (evidence you can do the work)",
+    "Mention professors BY NAME at the target university",
+    "Be CONCISE (2-3 pages, no longer)",
+    "Tell a STORY (your research journey has a narrative)",
+    "Be HONEST (don't overclaim — professors see through hype)",
+    "Proofread (typos signal carelessness about research)",
+    "Get feedback from your advisor/mentors",
+    "Customize for EACH university (different professors = different fit)",
+]
+
+print("RESEARCH STATEMENT TIPS:")
+for tip in tips:
+    print(f"  ☐ {tip}")
+
+# COMMON MISTAKES:
+mistakes = [
+    "Too vague: 'I want to do AI research' (everyone says this)",
+    "Too ambitious: 'I will solve general intelligence' (unrealistic)",
+    "No prior evidence: claims interest but no research experience",
+    "Generic: same statement for all universities (no professor names)",
+    "Too long: 5+ pages (professors won't read it all)",
+    "No narrative: just a list of topics (show the STORY)",
+]
+print("\nCOMMON MISTAKES:")
+for mistake in mistakes:
+    print(f"  ❌ {mistake}")</div>
+
+<div class="code-block"># ── STEP 5: Interview preparation ──
+# What happens when a professor says "let's talk".
+
+# PHD INTERVIEW TYPES:
+interview_types = {
+    "INFORMAL CHAT (15-30 min)": {
+        "purpose": "Professor wants to gauge your interest and fit",
+        "questions": "Why PhD? Why this lab? What are your interests?",
+        "tip": "Be enthusiastic, specific about their research",
+    },
+    "TECHNICAL INTERVIEW (30-60 min)": {
+        "purpose": "Assess your technical depth",
+        "questions": "Explain your previous research. How would you approach X?",
+        "tip": "Know your own work deeply. Think out loud.",
+    },
+    "FORMAL INTERVIEW (multiple faculty)": {
+        "purpose": "Department-level evaluation",
+        "questions": "Research interests, future plans, why this program",
+        "tip": "Connect with each faculty member's research area",
+    },
+    "CAMPUS VISIT (full day)": {
+        "purpose": "Mutual evaluation — is this the right fit?",
+        "questions": "Meet current students, tour labs, 1-on-1 with faculty",
+        "tip": "Ask current students about culture, advisor style, funding",
+    },
+}
+
+for itype, details in interview_types.items():
+    print(f"\n{itype}")
+    for key, value in details.items():
+        print(f"  {key}: {value}")
+
+# COMMON PHD INTERVIEW QUESTIONS:
+common_questions = [
+    "Tell me about your research interests.",
+    "Why do you want to do a PhD?",
+    "Why this university? Why my lab specifically?",
+    "Describe your previous research. What was your contribution?",
+    "What's a recent paper you enjoyed? Why?",
+    "What are your strengths and weaknesses as a researcher?",
+    "Where do you see yourself in 5 years?",
+    "How do you handle failure in research?",
+    "What would you work on if you joined my lab?",
+    "Do you have questions for me?",
+]
+
+print("\nCOMMON QUESTIONS:")
+for q in common_questions:
+    print(f"  ? {q}")
+
+# PREPARATION CHECKLIST:
+prep = [
+    "Read 2-3 recent papers from each interviewer",
+    "Prepare a 2-minute elevator pitch of your research interests",
+    "Review your own research — know it cold",
+    "Prepare 3-5 questions to ask them",
+    "Test your tech (Zoom/Meet camera, mic, screen sharing)",
+    "Dress one level above casual (no t-shirts, no suits)",
+    "Follow up with thank-you email within 24 hours",
+]
+print("\nPREPARATION CHECKLIST:")
+for item in prep:
+    print(f"  ☐ {item}")
+
+# QUESTIONS TO ASK (shows interest + helps YOU decide):
+ask = [
+    "What's the typical timeline to graduation in your lab?",
+    "How do you mentor students? (Hands-on or hands-off?)",
+    "What's the funding situation for new students?",
+    "What does a typical week look like for your PhD students?",
+    "What are the biggest recent successes from your lab?",
+    "How do students collaborate within the lab?",
+    "What conferences does the lab typically attend?",
+    "What's your view on work-life balance?",
+]
+print("\nQUESTIONS TO ASK:")
+for q in ask:
+    print(f"  ❓ {q}")</div>
+
+<div class="code-block"># ── STEP 6: PhD journey and best practices ──
+# What to expect in a PhD program.
+
+best_practices = [
+    "Choose your advisor carefully (they make or break your PhD)",
+    "Read 3-5 papers per week (consistent reading = deep knowledge)",
+    "Write daily (research notes, blog posts, paper drafts)",
+    "Publish early (workshop paper in year 1-2, conference by year 3)",
+    "Network at conferences (meet future collaborators/employers)",
+    "Learn to take rejection (papers get rejected — it's normal)",
+    "Find a support group (PhD is isolating — connect with peers)",
+    "Maintain work-life balance (burnout is the #1 PhD killer)",
+    "Talk to your advisor regularly (weekly 1-on-1 minimum)",
+    "Manage your time (treat research like a job, not a lifestyle)",
+    "Learn to code well (reproducible experiments, clean code)",
+    "Present often (lab meetings, reading groups, conferences)",
+    "Mentor undergrads (teaching deepens your own understanding)",
+    "Plan your career early (academia vs industry — both need prep)",
+    "Enjoy the journey (PhD is a privilege — pursue questions you love)",
+]
+
+print("PHD BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# THE PHD JOURNEY (5-6 years):
+# ┌──────────────┬────────────────────────────────────────┐
+# │ Year         │ Focus                                  │
+# ├──────────────┼────────────────────────────────────────┤
+# │ Year 1       │ Coursework, read papers, find advisor  │
+# │              → Lab rotations, identify research area    │
+# ├──────────────┼────────────────────────────────────────┤
+# │ Year 2       │ Start research, first experiments      │
+# │              → Workshop paper, qualify exam prep        │
+# ├──────────────┼────────────────────────────────────────┤
+# │ Year 3       │ Deepen research, first conference paper│
+# │              → Qualifying/comprehensive exam             │
+# ├──────────────┼────────────────────────────────────────┤
+# │ Year 4       │ Lead research projects, multiple pubs  │
+# │              → Mentor juniors, attend top conferences   │
+# ├──────────────┼────────────────────────────────────────┤
+# │ Year 5       │ Dissertation writing, job market       │
+# │              → Faculty applications / industry search   │
+# ├──────────────┼────────────────────────────────────────┤
+# │ Year 6 (opt) │ Postdoc or transition to career        │
+# │              → If academia: postdoc at another lab      │
+# └──────────────┴────────────────────────────────────────┘
+#
+# "A PhD is a training in how to think, not just what to know."
+#  The goal is to become an independent researcher who can
+#  identify important problems and solve them.
+#
+# It's hard. It's worth it. Pursue questions you genuinely care about.</div> 
    your group."
 
-Signature: CV সংযুক্ত (PDF, ২ পৃষ্ঠা)</div>
+   # Signature: Attach CV (PDF, 1-2 pages)</div>
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">৩০-৫০</div><div class="sc-label">প্রফেসরকে ইমেইল করো</div></div>
