@@ -59,12 +59,375 @@ doors.push({
   <text x="290" y="240" text-anchor="middle" font-size="11" fill="#fbbf24" font-weight="700">নোড = জ্ঞান · রেখা = সংযোগ</text>
 </svg></div><div class="svg-caption">ধারণার জাল — বিচ্ছিন্ন বিন্দু থেকে সংযুক্ত নেটওয়ার্ক</div>
 
-<div class="code-block">— Idea Network Audit —
-  silo_mind  = [RAG, Psychology, Systems]   # আলাদা বিন্দু
-  web_mind   = silo_mind + edges(RAG→Psy, Psy→Sys, RAG→Sys)
-  # যত বেশি edge, তত গভীর বোঝা
-  def connect(a, b): return "কীভাবে " + a + " ও " + b + " সম্পর্কিত?"
-  for pair in pairs(books): ask connect(pair)  # missing edge = gap</div>`,
+<div class="code-block"># ── STEP 1: Idea network audit ──
+# Finding disconnected islands in your knowledge.
+
+# SILO MIND: separate knowledge points with no connections
+# WEB MIND: everything connected → deeper understanding
+
+# AUDIT: list what you know → find missing connections
+
+# PYTHON (knowledge graph audit):
+from itertools import combinations
+
+class KnowledgeGraph:
+    """Map what you know and find disconnected islands."""
+    def __init__(self):
+        self.nodes = set()   # topics you know
+        self.edges = {}       # connections between topics
+
+    def add_topic(self, topic):
+        self.nodes.add(topic)
+
+    def connect(self, a, b, how=""):
+        """Connect two topics with an explanation."""
+        key = tuple(sorted([a, b]))
+        self.edges[key] = how
+
+    def find_gaps(self):
+        """Find pairs of topics with NO connection (missing bridges)."""
+        gaps = []
+        for a, b in combinations(sorted(self.nodes), 2):
+            key = tuple(sorted([a, b]))
+            if key not in self.edges:
+                gaps.append((a, b))
+        return gaps
+
+    def density(self):
+        """How connected is your knowledge?"""
+        total_possible = len(self.nodes) * (len(self.nodes) - 1) / 2
+        if total_possible == 0:
+            return 0
+        return len(self.edges) / total_possible
+
+kg = KnowledgeGraph()
+for topic in ["RAG", "Psychology", "Systems", "Embeddings", "Attention"]:
+    kg.add_topic(topic)
+
+# Known connections:
+kg.connect("RAG", "Embeddings", "RAG uses embeddings for vector search")
+kg.connect("RAG", "Attention", "RAG retrieval feeds into attention mechanism")
+kg.connect("Embeddings", "Attention", "Self-attention computes weighted embeddings")
+
+gaps = kg.find_gaps()
+print(f"Topics: {sorted(kg.nodes)}")
+print(f"Density: {kg.density():.0%}")
+print(f"\nMissing connections (gaps):")
+for a, b in gaps:
+    print(f"  ❓ How does {a} connect to {b}?")
+
+# EXAMPLE CONNECTIONS (build the web):
+# Helplessness + Feynman: "Feynman breaks math helplessness by forcing
+#   simple explanation — reveals the gap is small, not insurmountable."
+# RAG + Systems: "RAG is a system with feedback loops — retrieval quality
+#   affects generation, which affects trust, which affects usage."
+# Spaced Repetition + Papers: "Review paper notes at 1d, 7d, 30d intervals."
+# Mental Models + Debugging: "Each mental model is a debugging lens.
+#   Systems thinking reveals root causes. First principles strips assumptions."
+# Deep Work + Coding: "Flow state + deep work = 4 hours of code > 8 hours
+#   of distracted coding."
+
+# RULE: If you can make 10+ connections, you're building a web.
+#       If fewer than 5, you're in silos.</div>
+
+<div class="code-block"># ── STEP 2: Analogical reasoning — the bridge builder ──
+# Understanding new concepts by mapping to known ones.
+
+# GENTNER'S STRUCTURE-MAPPING THEORY (1983):
+# → Humans understand new concepts by mapping to known ones
+# → "X is like Y" — but WHAT maps and what doesn't?
+# → Hofstadter: "Analogy IS cognition"
+
+# GOOD ANALOGY: maps RELATIONSHIPS, not surface features
+# BAD ANALOGY: maps surface features, breaks under scrutiny
+
+# PYTHON (analogy builder):
+class Analogy:
+    def __init__(self, source, target):
+        self.source = source  # what you KNOW
+        self.target = target  # what you're LEARNING
+        self.mappings = {}
+
+    def map(self, source_attr, target_attr, note=""):
+        """Map a feature from source to target."""
+        self.mappings[source_attr] = {
+            "target": target_attr,
+            "note": note,
+        }
+
+    def evaluate(self):
+        """Check where the analogy holds and breaks."""
+        print(f"Analogy: {self.source} ≈ {self.target}")
+        print("\nWhere it MAPS (structure):")
+        for src, info in self.mappings.items():
+            print(f"  {src} → {info['target']}: {info['note']}")
+        print("\nWhere it BREAKS (limits):")
+        print("  Every analogy breaks eventually — know the limits!")
+
+# EXAMPLE: Zettelkasten ≈ Neural Network
+a = Analogy("Zettelkasten (notes)", "Neural Network")
+a.map("notes", "neurons", "units that store information")
+a.map("links between notes", "synapses", "connections between units")
+a.map("search finds connected notes", "activation spreads through network",
+      "retrieval triggers related concepts")
+a.map("notes strengthen with use", "synapses strengthen with use",
+      "Hebbian learning: 'neurons that fire together wire together'")
+a.evaluate()
+
+# FAMOUS ANALOGIES IN COMPUTER SCIENCE:
+analogies = {
+    "Computer ≈ Kitchen": "CPU=chef, RAM=counter, disk=pantry, cache=holding area",
+    "Hash table ≈ Dictionary": "word=key, definition=value, O(1) lookup",
+    "Recursive function ≈ Russian nesting doll": "each call opens a smaller doll",
+    "Git commit ≈ Save point in a game": "restore to any previous state",
+    "API ≈ Restaurant menu": "menu lists what you can order, kitchen handles details",
+    "Thread ≈ Waiter": "each thread serves a customer concurrently",
+    "Garbage collector ≈ Janitor": "cleans up memory you're no longer using",
+    "Load balancer ≈ Traffic cop": "distributes requests to available servers",
+}
+
+print("\nFAMOUS CS ANALOGIES:")
+for source, mapping in analogies.items():
+    print(f"  {source}")
+    print(f"    → {mapping}")</div>
+
+<div class="code-block"># ── STEP 3: Cross-domain thinking ──
+# The most innovative ideas come from connecting different fields.
+
+# INNOVATION = CONNECTING UNEXPECTED DOMAINS
+
+cross_domain = """
+FAMOUS CROSS-DOMAIN INNOVATIONS:
+
+1. BIOLOGY → COMPUTER SCIENCE:
+   → Neural networks inspired by brain neurons
+   → Genetic algorithms inspired by DNA evolution
+   → Ant colony optimization from insect behavior
+
+2. PHYSICS → COMPUTER SCIENCE:
+   → Simulated annealing from metallurgy (cooling metal)
+   → Quantum computing from quantum mechanics
+   → Annealing schedules from thermodynamics
+
+3. ECONOMICS → MACHINE LEARNING:
+   → Multi-armed bandit from A/B testing economics
+   → Game theory → GANs (generator vs discriminator)
+   → Market equilibrium → contrastive learning
+
+4. PSYCHOLOGY → AI:
+   → Reinforcement learning from behavioral psychology
+   → Attention mechanism from human visual attention
+   → Curiosity-driven exploration from child development
+
+5. LINGUISTICS → NLP:
+   → Chomsky hierarchy → parser design
+   → Sapir-Whorf hypothesis → language → thought connection
+   → Pragmatics → context-aware LLMs
+"""
+
+print(cross_domain)
+
+# HOW TO PRACTICE CROSS-DOMAIN THINKING:
+practice = [
+    "Read outside your field (biology, economics, psychology, art)",
+    "Ask: 'What is THIS like in my domain?' (habitual analogy)",
+    "Study failures cross-domain (why do systems fail everywhere?)",
+    "Look for isomorphisms (same structure, different domain)",
+    "Attend conferences outside your specialty",
+    "Talk to people in different fields (diverse network)",
+    "Keep a 'connections journal' (write unexpected links)",
+    "Teach your domain to non-experts (forces clear analogies)",
+]
+
+print("CROSS-DOMAIN THINKING PRACTICES:")
+for p in practice:
+    print(f"  ☐ {p}")
+
+# THE CONNECTOR'S ADVANTAGE:
+# → Specialists: deep in ONE area (valuable but limited)
+# → Generalists: broad but shallow (replaceable by AI)
+# → CONNECTORS: deep in one + broad across many = INNOVATIVE
+# → Most breakthroughs come from connectors, not narrow specialists</div>
+
+<div class="code-block"># ── STEP 4: Systems thinking — seeing the whole ──
+# Understanding relationships, not just parts.
+
+# SYSTEMS THINKING (Donella Meadows, "Thinking in Systems"):
+
+systems_concepts = {
+    "Feedback Loops": {
+        "Positive (reinforcing)": "A → B → more A (exponential growth)",
+        "Negative (balancing)": "A → B → less A (stabilization)",
+        "Example": "More users → more data → better model → more users",
+    },
+    "Emergence": {
+        "Definition": "Whole has properties that parts don't",
+        "Example": "Consciousness emerges from neurons (no single neuron is conscious)",
+        "Implication": "Can't understand system by studying parts in isolation",
+    },
+    "Bottlenecks": {
+        "Definition": "The slowest part of a system limits everything",
+        "Example": "DB query takes 3s, everything else takes 0.01s → 3s total",
+        "Solution": "Optimize the bottleneck first (Theory of Constraints)",
+    },
+    "Leverage Points": {
+        "Definition": "Small change → huge impact",
+        "Example": "Changing constants/parameters > changing structure",
+        "Best leverage": "Changing the PARADIGM (how you see the system)",
+    },
+}
+
+for concept, details in systems_concepts.items():
+    print(f"\n{concept}:")
+    for key, value in details.items():
+        print(f"  {key}: {value}")
+
+# PYTHON (simple system dynamics model):
+def feedback_loop(initial, growth_rate, rounds=10, carrying_capacity=None):
+    """Model a reinforcing feedback loop (with optional limit)."""
+    values = [initial]
+    for _ in range(rounds):
+        next_val = values[-1] * (1 + growth_rate)
+        if carrying_capacity:
+            next_val = min(next_val, carrying_capacity)
+        values.append(next_val)
+    return values
+
+# Positive feedback (exponential growth):
+growth = feedback_loop(initial=10, growth_rate=0.5, rounds=8)
+print(f"\nPositive feedback (50% growth): {growth}")
+
+# Negative feedback (converges to limit):
+convergence = feedback_loop(initial=10, growth_rate=0.5, rounds=8,
+                             carrying_capacity=100)
+print(f"Bounded growth (cap=100): {[int(v) for v in convergence]}")
+
+# THE TWELVE LEVERAGE POINTS (Meadows, from least to most powerful):
+leverage_points = [
+    "12. Constants/parameters (weakest — least leverage)",
+    "11. Buffer sizes",
+    "10. Structure of material stocks/flows",
+    "9. Length of delays (reduce lag time)",
+    "8. Strength of negative feedback loops",
+    "7. Strength of positive feedback loops",
+    "6. Information flow (who sees what)",
+    "5. Rules of the system (incentives, constraints)",
+    "4. Power to add/change rules",
+    "3. Goal of the system",
+    "2. Paradigm out of which system arises",
+    "1. Power to transcend paradigms (STRONGEST — most leverage)",
+]
+print("\nLEVERAGE POINTS (weakest→strongest):")
+for point in leverage_points:
+    print(f"  {point}")</div>
+
+<div class="code-block"># ── STEP 5: Mental model integration ──
+# Combining multiple models for better decisions.
+
+# THE MUNGER LATTICEWORK:
+# Charlie Munger: "You must know the big ideas in the big disciplines
+# and use them routinely — all of them, not just a few."
+# → Most people use 1-2 models (hammer-man syndrome)
+# → Successful thinkers use 80-90 models across disciplines
+
+# HOW MODELS COMBINE (synergy):
+# Model 1 (First Principles) + Model 2 (Inversion) =
+# → Break problem to fundamentals AND identify guaranteed failure
+# → Together: build from truth + avoid known traps
+
+# PYTHON (multi-model decision framework):
+class DecisionFramework:
+    """Apply multiple mental models to a decision."""
+    def __init__(self, decision):
+        self.decision = decision
+        self.analyses = {}
+
+    def first_principles(self, fundamentals):
+        self.analyses["first_principles"] = fundamentals
+
+    def inversion(self, failures):
+        self.analyses["inversion"] = failures
+
+    def systems_thinking(self, feedback_loops):
+        self.analyses["systems"] = feedback_loops
+
+    def second_order(self, consequences):
+        self.analyses["second_order"] = consequences
+
+    def synthesize(self):
+        print(f"DECISION: {self.decision}\n")
+        print("FIRST PRINCIPLES (what must be true?):")
+        print(f"  {self.analyses.get('first_principles', 'N/A')}")
+        print("\nINVERSION (what guarantees failure?):")
+        print(f"  {self.analyses.get('inversion', 'N/A')}")
+        print("\nSYSTEMS (feedback loops?):")
+        print(f"  {self.analyses.get('systems', 'N/A')}")
+        print("\nSECOND-ORDER (and then what?):")
+        print(f"  {self.analyses.get('second_order', 'N/A')}")
+
+d = DecisionFramework("Should I pursue a PhD in CS?")
+d.first_principles("Need knowledge depth, research skills, credential for academia")
+d.inversion("Guaranteed failure: no curiosity, only want the title, hate uncertainty")
+d.systems_thinking("PhD → publications → network → faculty position → more research")
+d.second_order("After PhD: academia (postdoc→faculty) or industry (research lab)")
+d.synthesize()
+
+# MODEL COMBINATION EXAMPLES:
+combinations = {
+    "First Principles + Occam's Razor": "Simplest fundamental solution",
+    "Systems + Feedback Loops": "How will this compound over time?",
+    "Bayesian + Inversion": "Update beliefs AND avoid guaranteed failure",
+    "Margin of Safety + Inversion": "Build buffer AND prevent catastrophe",
+    "Opportunity Cost + Time Horizon": "What am I giving up long-term?",
+    "Comparative Advantage + Specialization": "What should I delegate?",
+    "Network Effects + Scale": "How does value grow with users?",
+    "Entropy + Feedback Loops": "How fast will this decay without effort?",
+}
+
+print("\nMODEL COMBINATIONS:")
+for combo, insight in combinations.items():
+    print(f"  {combo} → {insight}")</div>
+
+<div class="code-block"># ── STEP 6: Building a knowledge web — best practices ──
+# Making connections your superpower.
+
+best_practices = [
+    "Read widely across disciplines (breadth enables connections)",
+    "After learning something, ask: 'What does this remind me of?'",
+    "Keep an idea journal (capture connections as they emerge)",
+    "Teach across domains (explain CS to biologists, biology to CS)",
+    "Use analogy deliberately (map structure, not surface)",
+    "Study the history of ideas (innovation = recombination)",
+    "Build a Zettelkasten (permanent notes linked to each other)",
+    "Practice 'what if' thought experiments (combine unlikely domains)",
+    "Attend interdisciplinary conferences (edge of fields = innovation)",
+    "Question your models: 'What would change my mind about this?'",
+    "Seek cognitive diversity (talk to people unlike you)",
+    "Map your knowledge graph (find and fill gaps)",
+    "Apply systems thinking (see relationships, not just parts)",
+    "Use multiple models per problem (avoid hammer-man syndrome)",
+    "Embrace uncertainty (the best connections emerge from exploration)",
+]
+
+print("KNOWLEDGE WEB BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# THE CONNECTOR'S FORMULA:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Input            │ Output                         │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Read broadly     │ Diverse raw material           │
+# │ Connect actively │ Unexpected analogies           │
+# │ Apply models     │ Better decisions               │
+# │ Teach others     │ Deeper understanding           │
+# │ Iterate          │ Compounding knowledge web      │
+# └──────────────────┴──────────────────────────────────┘
+#
+# "Creativity is just connecting things." — Steve Jobs
+# The broader your knowledge, the more connections you can make.
+# The more connections, the more innovative your ideas.
+# Innovation is not genius — it's connection.</div>`,
   senior:{
     title:"তোমার বিচ্ছিন্ন দ্বীপগুলো খুঁজে নাও — Find Your Disconnected Islands",
     body:`<p><strong>এখনই তোমার জ্ঞান যাচাই করো — Audit your knowledge right now:</strong></p><p><em>তোমার ৫টা বই থেকে ৫টা জিনিস লেখো যা তুমি শিখেছ। প্রতিটা জোড়ার জন্য জিজ্ঞেস করো — "X কীভাবে Y-এর সাথে সংযুক্ত?" যদি সংযোগ খুঁজে না পাও — সেটাই gap।</em></p><p>১. List 5 things you learned from different books (e.g., Zettelkasten from Book 26, learned helplessness from Book 24, first principles from Book 23).</p><p>২. For EACH pair, ask: "How does X connect to Y?"</p><p>৩. If you can't find a connection — that's a missing bridge. You have two islands with no road.</p><p><strong>Example connections you should be able to make:</strong></p><p>- Book 24 (helplessness) + Book 26 (Feynman) = "If you have learned helplessness about math, Feynman technique can break it because it forces you to explain simply — revealing that the gap is small."</p><p>- Book 10 (RAG) + Book 23 (systems thinking) = "RAG is a system with feedback loops — the retrieval quality affects generation quality, which affects user trust, which affects usage."</p><p>- Book 5 (spaced repetition) + Book 27 (reading papers) = "Use spaced repetition for key paper findings — review your paper notes at 1 day, 7 days, 30 days."</p><p><strong>If you can make 10+ such connections — you're building a web. If fewer than 5 — you're in silos.</strong></p>`
