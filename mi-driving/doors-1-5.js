@@ -919,36 +919,68 @@ LANE SIGNALS (হাইওয়ে লেন নিয়ন্ত্রণ)
   → সম্পূর্ণ থামো, ক্রম মেনে যাও
   → Michigan ঝড়ে খুব কমন — মুখস্থ রাখো!</div>
 
-<div class="code-block">PAVEMENT MARKINGS — সড়ক দাগ
-# — — — — — — — — — — — — — — — — — — — — — —
+<div class="code-block"># ── STEP 5: Pavement markings — road lines ──
+# What every painted line on the road means.
 
-🟡 YELLOW LINES = ট্রাফিক ভাগ করে (opposite direction)
-# — — — — — — — — — — — — — — — — — — — — — —
+# PAVEMENT MARKING SYSTEM:
 
-  ━━━━━━━━ সলিড হলুদ ডাবল লাইন
-    → দুই দিকের ট্রাফিক আলাদা
-    → কোনো দিক থেকেই পার হওয়া নিষেধ
-    → U-turn নিষেধ, পাস করা নিষেধ
+markings = {
+    "YELLOW LINES (separate opposite-direction traffic)": {
+        "SOLID DOUBLE YELLOW": "NO passing either direction. No U-turn.",
+        "SOLID SINGLE YELLOW": "No passing on the solid side. Other side may pass if dashed.",
+        "DASHED YELLOW": "Passing allowed — when safe.",
+    },
+    "WHITE LINES (separate same-direction lanes)": {
+        "SOLID WHITE": "Lane change discouraged (e.g., expressway lanes).",
+        "DASHED WHITE": "Lane change allowed — when safe.",
+        "SOLID WIDE WHITE": "Road edge / shoulder line.",
+    },
+    "SPECIAL MARKINGS": {
+        "CROSSWALK (white stripes)": "Pedestrian crossing. Stop for people.",
+        "STOP LINE (solid white)": "Stop BEFORE this line at intersections.",
+        "YIELD TRIANGLE (white)": "Yield to cross-traffic ahead.",
+        "BIKE LANE (white + bike symbol)": "Bicycle lane. Do not drive in it.",
+        "HOV LANE (diamond)": "High-occupancy vehicle (2+ people).",
+        "RAILROAD CROSSING (X + RR)": "Railroad crossing ahead. Stop if signals active.",
+    },
+}
 
-  ━━━━━━━━ সলিড হলুদ সিঙ্গেল লাইন
-    → এক দিক পার হওয়া নিষেধ (যে দিকে সলিড)
-    → অন্য দিক পার হতে পারে যদি ড্যাশড হয়
+for category, items in markings.items():
+    print(f"\n{category}")
+    for marking, meaning in items.items():
+        print(f"  {marking}")
+        print(f"    → {meaning}")
 
-  - - - - - ড্যাশড হলুদ লাইন
-    → পার হওয়া যায় — নিরাপদ হলে পাস করো
+# PYTHON (pavement marking interpreter):
+def interpret_marking(color, style, context=""):
+    """Determine what a pavement marking means."""
+    if color == "yellow":
+        if style == "solid_double":
+            return "NO passing either direction. No U-turn."
+        elif style == "solid_single":
+            return "No passing on solid side."
+        elif style == "dashed":
+            return "Passing allowed when safe."
+    elif color == "white":
+        if style == "solid":
+            return "Lane change discouraged."
+        elif style == "dashed":
+            return "Lane change allowed when safe."
+        elif style == "solid_wide":
+            return "Road edge / shoulder."
 
-⚪ WHITE LINES = একই দিকের লেন আলাদা করে
-# — — — — — — — — — — — — — — — — — — — — — —
+    return f"Unknown marking: {color} {style}"
 
-  ━━━━━━━━ সলিড সাদা লাইন
-    → লেন পরিবর্তন নিরুৎসাহিত
-    → (যেমন expressway লেন সেপারেটর)
-
-  - - - - - ড্যাশড সাদা লাইন
-    → লেন পরিবর্তন করতে পারো — নিরাপদ হলে
-
-  ━━━━━━━━ সলিড সাদা (চওড়া)
-    → রাস্তার কিনারা — shoulder line
+# Quick reference:
+print("\nPAVEMENT MARKING QUICK REFERENCE:")
+tests = [
+    ("yellow", "solid_double"),
+    ("yellow", "dashed"),
+    ("white", "dashed"),
+    ("white", "solid"),
+]
+for color, style in tests:
+    print(f"  {color} {style}: {interpret_marking(color, style)}")</div>
     → এই লাইনের ডানে চালাবে না (বাইরে)
 
 # — — — — — — — — — — — — — — — — — — — — — —
@@ -1189,40 +1221,102 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Driving Without Insurance:</strong> Pulled over, no proof of insurance. Car impounded, $500 fine. Fix: keep insurance card in car.</div></div>
 
 
-<div class="code-block">RIGHT-OF-WAY — COMPLETE RULES
-# — — — — — — — — — — — — — — — — — — — — — —
+<div class="code-block"># ── STEP 6: Right-of-way — complete rules ──
+# Who goes first in every situation.
 
-🛑 4-WAY STOP (চার-মুখী STOP)
-# — — — — — — — — — — — — — — — — — — — — — —
+# RIGHT-OF-WAY RULES (Memorize These!):
 
-  নিয়ম ১: যে প্রথম থামে, সে প্রথম যায়
-    → First to stop = first to go
+right_of_way = {
+    "4-WAY STOP (all directions have STOP sign)": [
+        "Rule 1: First to stop = first to go",
+        "Rule 2: Same time? → yield to car on your RIGHT",
+        "Rule 3: Opposite directions same time? → straight goes first",
+        "Rule 4: When in doubt → YIELD (let others go)",
+    ],
+    "UNCONTROLLED INTERSECTION (no signs/signals)": [
+        "Yield to traffic coming from your RIGHT",
+        "Slow down, be prepared to stop",
+    ],
+    "T-INTERSECTION (one road ends at another)": [
+        "The road that ENDS must yield to the through road",
+        "Through traffic has right-of-way",
+    ],
+    "ROUNDABOUT (circular intersection)": [
+        "Traffic INSIDE the roundabout has right-of-way",
+        "Yield before entering — wait for a gap",
+        "Signal right before your exit",
+        "Never stop inside the roundabout",
+    ],
+    "LEFT TURN (at any intersection)": [
+        "Yield to ALL oncoming (opposite-direction) traffic",
+        "Wait for a safe gap before turning",
+        "Even on green light — oncoming traffic goes first",
+    ],
+    "EMERGENCY VEHICLES (police, fire, ambulance)": [
+        "Pull to the RIGHT and stop",
+        "Clear the intersection if you're in it",
+        "Wait until emergency vehicle passes",
+        "NEVER follow within 500 feet of emergency vehicle",
+    ],
+    "SCHOOL BUS (red flashing lights + stop arm)": [
+        "STOP from BOTH directions (on undivided road)",
+        "Wait until lights stop flashing and arm retracts",
+        "Fine for passing: $200-500 + points",
+        "On divided highway (with median): only same-direction stops",
+    ],
+    "PEDESTRIANS": [
+        "ALWAYS yield to pedestrians in crosswalks",
+        "Even if they're jaywalking — don't hit them",
+        "Stop before the crosswalk line, not in it",
+    ],
+    "FUNERAL PROCESSION": [
+        "Yield to all vehicles in a funeral procession",
+        "Don't cut into or pass the procession",
+        "They have right-of-way even through red lights",
+    ],
+}
 
-  নিয়ম ২: একই সময়ে থামলে — ডান দিকের গাড়ি 
-    প্রথম
-    → Tie → yield to the car on your RIGHT
+for situation, rules in right_of_way.items():
+    print(f"\n{situation}:")
+    for rule in rules:
+        print(f"  → {rule}")
 
-  নিয়ম ৩: বিপরীত দিক থেকে একই সময়ে — 
-    সোজা যাওয়া গাড়ি প্রথম
-    → Straight traffic before turning
+# PYTHON (4-way stop resolver):
+def four_way_stop(car_north=False, car_south=False, car_east=False,
+                  car_west=False, arrival_order=None):
+    """Determine who goes first at a 4-way stop."""
+    cars = {
+        "North": car_north, "South": car_south,
+        "East": car_east, "West": car_west,
+    }
+    present = [d for d, there in cars.items() if there]
 
-  নিয়ম ৪: সন্দেহ হলে — অন্যকে দাও
-    → When in doubt, yield
+    if len(present) == 1:
+        return f"{present[0]} goes (only car present)"
 
-# — — — — — — — — — — — — — — — — — — — — — —
-🚦 UNCONTROLLED INTERSECTION (কোনো সাইন/সিগন্যাল নেই)
-# — — — — — — — — — — — — — — — — — — — — — —
+    if arrival_order:  # if we know who stopped first
+        return f"{arrival_order[0]} goes first (stopped first)"
 
-  নিয়ম: ডান দিক থেকে আসা গাড়িকে অগ্রাধিকার দাও
-    → Yield to traffic on the right
+    # Same time tie → right has priority:
+    # North's right = East, East's right = South, etc.
+    right_priority = {"North": "East", "East": "South",
+                      "South": "West", "West": "North"}
 
-# — — — — — — — — — — — — — — — — — — — — — —
-🔀 T-INTERSECTION (টি-মোড়)
-# — — — — — — — — — — — — — — — — — — — — — —
+    # Simplified: yield to right means rightmost goes first
+    if "North" in present and "West" in present:
+        return "North goes first (West is on North's left → North yields right = West)"
+    if "East" in present and "North" in present:
+        return "East goes first (East has right-of-way over North)"
 
-  নিয়ম: শেষ হয়ে যাওয়া রাস্তার গাড়ি (T-এর পা)
-    through রাস্তার সব ট্রাফিককে yield করবে
-    → Through road always has right-of-way
+    return "Yield to the car on your right. When in doubt, wait."
+
+print("\n4-WAY STOP EXAMPLES:")
+print(f"  Only North: {four_way_stop(car_north=True)}")
+print(f"  N+S+E+W same time: {four_way_stop(True, True, True, True)}")
+
+# GOLDEN RULE OF RIGHT-OF-WAY:
+# "When in doubt, YIELD."
+# A few seconds of patience > a lifetime of regret.</div>
 
 # — — — — — — — — — — — — — — — — — — — — — —
 🏠 DRIVEWAY / PRIVATE ROAD / PARKING LOT
