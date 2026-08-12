@@ -113,11 +113,78 @@ doors.push({
 
 <div class="diagram"><svg viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="30" width="140" height="50" rx="8" fill="rgba(45,212,191,.08)" stroke="#2dd4bf" stroke-width="1.5"/><text x="90" y="50" text-anchor="middle" fill="#2dd4bf" font-size="10" font-weight="bold">ROLE</text><text x="90" y="68" text-anchor="middle" fill="#9a93b8" font-size="9">who</text><defs><marker id="ar2" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L4,3 L0,6" fill="#34d399"/></marker></defs><line x1="160" y1="55" x2="200" y2="55" stroke="#34d399" stroke-width="2" marker-end="url(#ar2)"/><rect x="205" y="30" width="140" height="50" rx="8" fill="rgba(82,196,26,.08)" stroke="#52c41a" stroke-width="1.5"/><text x="275" y="50" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">TASK</text><text x="275" y="68" text-anchor="middle" fill="#9a93b8" font-size="9">what</text><line x1="345" y1="55" x2="385" y2="55" stroke="#34d399" stroke-width="2" marker-end="url(#ar2)"/><rect x="390" y="30" width="140" height="50" rx="8" fill="rgba(167,139,250,.08)" stroke="#a78bfa" stroke-width="1.5"/><text x="460" y="50" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="bold">FORMAT</text><text x="460" y="68" text-anchor="middle" fill="#9a93b8" font-size="9">how</text><text x="280" y="110" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">Role + Task + Format = reliable prompt</text><text x="280" y="135" text-anchor="middle" fill="#9a93b8" font-size="9">Vague prompt = vague output</text></svg></div>
 
-<div class="code-block">Good Prompt = Role + Task + Format
+<div class="code-block"># ── STEP 1: Good prompt = Role + Task + Format ──
+# The fundamental formula for effective LLM prompting.
 
-তুমি একজন [ভূমিকা]।
-তোমার কাজ: [স্পষ্ট কাজ, শ্রোতা/পাঠকসহ]।
-উত্তর দাও এই ফরম্যাটে: [নির্দিষ্ট গঠন]।</div>
+# GOOD PROMPT FORMULA:
+# Role + Task + Format = Clear Output
+
+# ❌ BAD PROMPT (vague → LLM guesses → inconsistent):
+bad_prompt = "Write an email"
+
+# ✅ GOOD PROMPT (specific → no guessing → consistent):
+good_prompt = """
+You are a Senior Software Engineer writing to a non-technical manager.
+Task: Write a professional email explaining why we need 2 weeks
+      to refactor the authentication system before adding new features.
+Format:
+  - Subject line (under 10 words)
+  - 3 short paragraphs
+  - End with a clear recommendation
+  - Tone: respectful, urgent but not alarmist
+"""
+
+print("BAD PROMPT:")
+print(f"  {bad_prompt}")
+print("  → LLM guesses everything → different output every time")
+print()
+print("GOOD PROMPT:")
+print(good_prompt[:200] + "...")
+print("  → LLM knows exactly what to do → consistent output")
+
+# PROMPT COMPONENTS (the complete checklist):
+components = {
+    "ROLE": "Who is the AI? ('You are a senior data scientist...')",
+    "TASK": "What exactly should it do? ('Analyze this dataset for...')",
+    "CONTEXT": "What background info? ('Our company sells...')",
+    "FORMAT": "How should output look? ('JSON with fields: name, score')",
+    "CONSTRAINTS": "What are the rules? ('Under 200 words, no jargon')",
+    "EXAMPLES": "Show what good output looks like (few-shot)",
+    "AUDIENCE": "Who will read this? ('Explain to a 5-year-old')",
+    "TONE": "What feeling? ('Professional, warm, authoritative')",
+}
+
+print("\nPROMPT COMPONENTS CHECKLIST:")
+for comp, desc in components.items():
+    print(f"  {comp}: {desc}")
+
+# PYTHON (prompt builder):
+def build_prompt(role, task, context="", fmt="", constraints=""):
+    """Build a structured prompt with all key components."""
+    parts = [f"You are {role}.", f"", f"Task: {task}"]
+    if context:
+        parts.append(f"\nContext: {context}")
+    if fmt:
+        parts.append(f"\nFormat: {fmt}")
+    if constraints:
+        parts.append(f"\nConstraints: {constraints}")
+    parts.append(f"\nProvide your best response.")
+    return "\n".join(parts)
+
+email_prompt = build_prompt(
+    role="a professional email writer",
+    task="write a follow-up email after a job interview",
+    context="I interviewed for a Senior Python Developer role yesterday",
+    fmt="3 short paragraphs, professional but warm tone",
+    constraints="under 150 words, include a question about next steps",
+)
+print(f"\nBUILT PROMPT:\n{email_prompt}")
+
+# THE COST OF BAD PROMPTS:
+# Startup used vague prompts → $2000/month API costs
+# → Same work with structured prompts → $50/month
+# → 40x cost reduction just by being specific
+# → Vagueness = LLM generates long irrelevant text = $$$ wasted</div>
 
 <p>তারপর উস্তাদ ইসরাফিল কলমটা নামিয়ে রাখলেন। গলাটা নরম করলেন।</p>
 <p class="en">Then Ustad Israfeel set the pen down. Softened his voice.</p>

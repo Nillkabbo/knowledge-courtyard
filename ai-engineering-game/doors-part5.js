@@ -29,17 +29,76 @@ doors.push({
 
 <div class="diagram"><svg viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="30" width="140" height="50" rx="8" fill="rgba(45,212,191,.08)" stroke="#2dd4bf" stroke-width="1.5"/><text x="90" y="50" text-anchor="middle" fill="#2dd4bf" font-size="10" font-weight="bold">OBSERVE</text><text x="90" y="68" text-anchor="middle" fill="#9a93b8" font-size="9">input</text><defs><marker id="ar10" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L4,3 L0,6" fill="#34d399"/></marker></defs><line x1="160" y1="55" x2="200" y2="55" stroke="#34d399" stroke-width="2" marker-end="url(#ar10)"/><rect x="205" y="30" width="140" height="50" rx="8" fill="rgba(82,196,26,.08)" stroke="#52c41a" stroke-width="1.5"/><text x="275" y="50" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">PLAN</text><text x="275" y="68" text-anchor="middle" fill="#9a93b8" font-size="9">LLM thinks</text><line x1="345" y1="55" x2="385" y2="55" stroke="#34d399" stroke-width="2" marker-end="url(#ar10)"/><rect x="390" y="30" width="140" height="50" rx="8" fill="rgba(167,139,250,.08)" stroke="#a78bfa" stroke-width="1.5"/><text x="460" y="50" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="bold">ACT</text><text x="460" y="68" text-anchor="middle" fill="#9a93b8" font-size="9">tool call</text><text x="280" y="110" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">Agent = observe-plan-act loop</text><text x="280" y="135" text-anchor="middle" fill="#9a93b8" font-size="9">No max_iterations = infinite loop</text></svg></div>
 
-<div class="code-block">AI Agent = ReAct Loop
+<div class="code-block"># ── STEP 1: AI Agent = ReAct Loop ──
+# From single tool calls to autonomous reasoning.
 
-১. Reason: "ইউজার চায় ফ্লাইট বুক করতে"
-২. Act: search_flights(from="DAC", to="DXB", date="2026-01-15")
-৩. Observe: "৩টা ফ্লাইট পাওয়া গেছে"
-৪. Reason: "দাম দেখানো দরকার"
-৫. Act: format_results(flights)
-৬. Observe: "তালিকা তৈরি"
-৭. Reason: "শেষ হয়েছে → উত্তর দাও"
+# ReAct = Reason + Act (Yao et al., 2022)
+# The agent THINKS, then ACTS, then OBSERVES, then repeats.
 
-একটা টুল এই লুপ করে না। এজেন্ট করে।</div>
+# THE ReAct LOOP:
+react_loop = """
+AGENT THOUGHT CYCLE:
+
+Step 1 - REASON: "User wants to book a flight DAC → DXB"
+Step 2 - ACT: search_flights(from="DAC", to="DXB", date="2026-01-15")
+Step 3 - OBSERVE: "Found 3 flights: Biman $450, Emirates $520, Flydubai $380"
+Step 4 - REASON: "User budget is $400. Flydubai fits. Show details."
+Step 5 - ACT: format_results(cheapest_flight)
+Step 6 - OBSERVE: "Formatted: Flydubai $380, departs 8AM, 4h flight"
+Step 7 - REASON: "Task complete → respond to user"
+
+A TOOL does one call. An AGENT makes decisions.
+"""
+
+print(react_loop)
+
+# PYTHON (simple ReAct agent):
+class ReActAgent:
+    """A simple Reason-Act-Observe agent loop."""
+    def __init__(self, tools, max_steps=10):
+        self.tools = tools  # available tools/functions
+        self.max_steps = max_steps  # safety limit!
+        self.history = []
+
+    def run(self, user_request):
+        """Execute the ReAct loop until done or max_steps."""
+        thought = f"I need to: {user_request}"
+
+        for step in range(self.max_steps):
+            # 1. REASON:
+            action = self._decide_action(thought)
+            self.history.append({"step": step, "thought": thought,
+                                "action": action})
+
+            if action["type"] == "finish":
+                return action["response"]
+
+            # 2. ACT:
+            tool_name = action["tool"]
+            tool_args = action["args"]
+
+            # 3. OBSERVE:
+            observation = self.tools[tool_name](**tool_args)
+            thought = f"Observed: {observation}. What next?"
+
+        return "Max steps reached without completion."
+
+    def _decide_action(self, thought):
+        """LLM decides next action (simplified)."""
+        # In practice: call LLM with thought → get action
+        return {"type": "finish", "response": "Done"}
+
+# CRITICAL: ALWAYS set max_steps!
+# → Agent without limits → error → retry → error → infinite loop
+# → One startup: 6 hours of looping → $3,000 wasted
+# → Fix: max_iterations=10, timeout=60s, cost_limit=$10
+
+# AGENT vs TOOL:
+# TOOL: User calls search_flights() → gets results
+# AGENT: User says "book cheapest flight" → agent:
+#   → searches flights → compares prices → checks budget
+#   → selects cheapest → books → confirms → reports
+#   → Makes DECISIONS at each step</div>
 
 <div class="dialogue">কিন্তু সাবধান। আমি দূতকে বলি — 'কূপ খোঁজো।' সে যদি বুঝে নেয় 'দোকান খোঁজো' — বিপদ। তাই আমি স্পষ্ট বলি — সীমা দিই। 'এই পথে যাও, এই গ্রামে যাও না, সন্ধ্যার আগে ফিরো।' এজেন্টকেও সীমা দিতে হয় — কোন টুল কখন, কত ধাপ, কখন থামবে। সীমা ছাড়া এজেন্ট পথভ্রষ্ট হয় — অসীম লুপে পড়ে।</div>
 <div class="dialogue en">"But beware. I tell the scout — 'find a well.' If he interprets 'find a shop' — disaster. So I'm explicit — I give limits. 'Take this road, not that village, return before sunset.' An agent needs the same — which tool when, how many steps, when to stop. Without limits, the agent wanders — caught in an infinite loop."</div>
