@@ -82,36 +82,546 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Waterfall (linear, rigid) → Agile (iterative, adaptive) → DevOps (automated, continuous)।</div>
 
-<div class="code-block">— Git Workflow: Agile/DevOps in Practice —
+<div class="code-block"># ── STEP 1: Software development lifecycle (SDLC) ──
+# How professional software gets built.
 
-  # Feature branch workflow (trunk-based):
-  $ git checkout -b feature/payment-api
-  $ git add -A && git commit -m "feat: add payment endpoint"
-  $ git push origin feature/payment-api
+sdlc = """
+SOFTWARE DEVELOPMENT LIFECYCLE (SDLC):
 
-  # PR → CI runs → code review → merge
-  # GitHub Actions CI/CD:
-  # .github/workflows/ci.yml
-  name: CI
-  on: [pull_request]
-  jobs:
-    test:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v4
-        - run: pip install -r requirements.txt
-        - run: pytest --cov
-        - run: ruff check .
+1. PLANNING:
+   → Requirements gathering (what to build?)
+   → Feasibility study (can we build it?)
+   → Resource estimation (time, people, cost)
+   → Risk assessment
 
-  # Scrum ceremony (Jira/Linear):
-  # Sprint planning → daily standup →
-  # sprint review → retrospective
+2. DESIGN:
+   → Architecture (system design, tech stack)
+   → Database schema
+   → API design (REST/GraphQL endpoints)
+   → UI/UX wireframes
 
-  # DORA metrics (measure DevOps):
-  # Deploy frequency: daily = elite
-  # Lead time: < 1 hour = elite
-  # MTTR: < 1 hour = elite
-  # Change failure rate: < 15% = elite</div>
+3. DEVELOPMENT:
+   → Write code following conventions
+   → Code reviews (every PR reviewed)
+   → Version control (Git, feature branches)
+   → Pair programming for complex features
+
+4. TESTING:
+   → Unit tests (individual functions)
+   → Integration tests (component interaction)
+   → End-to-end tests (full user flow)
+   → Performance testing (load, stress)
+   → Security testing (penetration, audit)
+
+5. DEPLOYMENT:
+   → CI/CD pipeline (automated build + test + deploy)
+   → Staging → Production (gradual rollout)
+   → Feature flags (decouple deploy from release)
+   → Blue-green or canary deployment
+
+6. MAINTENANCE:
+   → Bug fixes
+   → Monitoring and alerting
+   → Performance optimization
+   → Security patches
+   → Feature updates
+
+AGILE METHODOLOGIES:
+  Scrum: sprints (2 weeks), daily standup, sprint review
+  Kanban: continuous flow, WIP limits, no fixed sprints
+  Extreme Programming (XP): TDD, pair programming, continuous integration
+
+DORA METRICS (measure DevOps performance):
+  Deploy frequency: daily = elite
+  Lead time: < 1 hour = elite
+  MTTR (Mean Time To Recovery): < 1 hour = elite
+  Change failure rate: < 15% = elite
+
+GIT WORKFLOW (trunk-based development):
+  git checkout -b feature/payment-api
+  git add -A && git commit -m "feat: add payment endpoint"
+  git push origin feature/payment-api
+  → PR → CI runs tests → code review → merge to main
+
+CONVENTIONAL COMMITS:
+  feat: new feature
+  fix: bug fix
+  docs: documentation
+  refactor: code restructuring
+  test: adding tests
+  chore: maintenance
+"""
+
+print(sdlc)</div>
+
+<div class="code-block"># ── STEP 2: SOLID principles ──
+# The foundation of object-oriented design.
+
+solid = """
+SOLID PRINCIPLES:
+
+S - Single Responsibility (SRP):
+  → Each class should have ONE reason to change
+  → Bad: User class that authenticates, saves to DB, sends email
+  → Good: User (data) + AuthService (login) + UserRepository (DB) + EmailService (email)
+
+O - Open/Closed (OCP):
+  → Open for extension, closed for modification
+  → Add new behavior without changing existing code
+  → Use: inheritance, interfaces, strategy pattern
+
+L - Liskov Substitution (LSP):
+  → Subtypes must be substitutable for base types
+  → If B extends A, anywhere A works, B should work
+  → Bad: Ostrich extends Bird but can't fly()
+
+I - Interface Segregation (ISP):
+  → Don't force clients to depend on unused methods
+  → Many small interfaces > one big interface
+  → Bad: Machine with print(), scan(), fax() (not all machines fax)
+
+D - Dependency Inversion (DIP):
+  → Depend on abstractions, not concretions
+  → High-level modules shouldn't depend on low-level modules
+  → Use: dependency injection, interfaces
+
+PYTHON (SOLID in practice):
+  # ❌ BAD: God class (violates SRP)
+  class User:
+      def login(self, password): ...
+      def save_to_db(self): ...
+      def send_email(self, subject): ...
+      def generate_report(self): ...
+
+  # ✅ GOOD: Separate responsibilities
+  class User:
+      def __init__(self, name, email):
+          self.name = name
+          self.email = email
+
+  class AuthService:           # SRP: authentication only
+      def login(self, user, password): ...
+
+  class UserRepository:        # SRP: DB operations only
+      def save(self, user): ...
+      def find_by_email(self, email): ...
+
+  class EmailService:          # SRP: email only
+      def send(self, to, subject, body): ...
+
+  # Dependency Injection (DIP):
+  class UserService:
+      def __init__(self, repo: UserRepository, email: EmailService):
+          self.repo = repo        # depends on abstraction
+          self.email = email      # not concrete implementation
+
+  # Open/Closed: add notification type without changing UserService
+  class SMSNotification:
+      def send(self, phone, message): ...
+
+  class PushNotification:
+      def send(self, device_id, message): ...
+"""
+
+print(solid)</div>
+
+<div class="code-block"># ── STEP 3: Design patterns ──
+# Proven solutions to common problems.
+
+patterns = """
+DESIGN PATTERNS (most useful ones):
+
+1. STRATEGY (behavioral):
+   → Swap algorithms at runtime
+   → Example: different payment methods
+
+   from abc import ABC, abstractmethod
+
+   class PaymentStrategy(ABC):
+       @abstractmethod
+       def pay(self, amount): pass
+
+   class CreditCard(PaymentStrategy):
+       def pay(self, amount):
+           print(f"Charging {amount} to credit card")
+
+   class PayPal(PaymentStrategy):
+       def pay(self, amount):
+           print(f"Charging {amount} to PayPal")
+
+   class Crypto(PaymentStrategy):
+       def pay(self, amount):
+           print(f"Charging {amount} in crypto")
+
+   # Usage:
+   def checkout(amount, strategy: PaymentStrategy):
+       strategy.pay(amount)
+
+   checkout(99.99, CreditCard())
+   checkout(99.99, PayPal())
+
+2. OBSERVER (behavioral):
+   → Notify subscribers when state changes
+   → Example: event systems, React state, message queues
+
+   class EventEmitter:
+       def __init__(self):
+           self.listeners = {}
+
+       def on(self, event, callback):
+           self.listeners.setdefault(event, []).append(callback)
+
+       def emit(self, event, data=None):
+           for cb in self.listeners.get(event, []):
+               cb(data)
+
+   emitter = EventEmitter()
+   emitter.on("user_signup", lambda user: send_welcome(user))
+   emitter.on("user_signup", lambda user: analytics.track(user))
+   emitter.emit("user_signup", {"name": "Rakib"})
+
+3. FACTORY (creational):
+   → Create objects without specifying exact class
+   → Example: database connection factory
+
+   class DatabaseFactory:
+       @staticmethod
+       def create(db_type, **kwargs):
+           if db_type == "postgres":
+               return PostgresConnection(**kwargs)
+           elif db_type == "mysql":
+               return MySQLConnection(**kwargs)
+           else:
+               raise ValueError(f"Unknown DB: {db_type}")
+
+   db = DatabaseFactory.create("postgres", host="localhost")
+
+4. SINGLETON (creational):
+   → Only one instance exists
+   → Example: configuration, connection pool, logger
+
+   class Singleton:
+       _instance = None
+
+       def __new__(cls):
+           if cls._instance is None:
+               cls._instance = super().__new__(cls)
+           return cls._instance
+
+   a = Singleton()
+   b = Singleton()
+   print(a is b)  # True (same instance)
+
+5. DECORATOR (structural):
+   → Add behavior without modifying original
+   → Python has built-in decorator syntax
+
+   def log_execution(func):
+       def wrapper(*args, **kwargs):
+           print(f"Calling {func.__name__}")
+           result = func(*args, **kwargs)
+           print(f"Finished {func.__name__}")
+           return result
+       return wrapper
+
+   @log_execution
+   def fetch_data():
+       return {"data": [1, 2, 3]}
+
+   # Also: Django's @login_required, Flask's @app.route
+
+WHEN TO USE PATTERNS:
+  → Don't force patterns where they don't fit
+  → Patterns solve RECURRING problems
+  → Start simple, refactor to pattern when needed
+  → Over-engineering with patterns = worse than no pattern
+"""
+
+print(patterns)</div>
+
+<div class="code-block"># ── STEP 4: Testing strategies ──
+# Writing tests that actually matter.
+
+testing = """
+TESTING STRATEGIES:
+
+TEST PYRAMID:
+  Unit tests (many): test individual functions/methods
+  Integration tests (some): test component interaction
+  E2E tests (few): test full user flows
+
+UNIT TESTS (pytest):
+  import pytest
+
+  def test_add():
+      assert add(2, 3) == 5
+      assert add(-1, 1) == 0
+
+  def test_divide_by_zero():
+      with pytest.raises(ZeroDivisionError):
+          divide(10, 0)
+
+  # Fixtures (setup/teardown):
+  @pytest.fixture
+  def db():
+      db = create_test_db()
+      yield db          # provide to test
+      db.cleanup()       # teardown after test
+
+  def test_user_creation(db):
+      user = db.create_user("Rakib")
+      assert user.name == "Rakib"
+
+  # Parametrized tests:
+  @pytest.mark.parametrize("a, b, expected", [
+      (1, 2, 3),
+      (0, 0, 0),
+      (-1, 1, 0),
+      (100, 200, 300),
+  ])
+  def test_add_many(a, b, expected):
+      assert add(a, b) == expected
+
+  # Mocking external dependencies:
+  from unittest.mock import Mock, patch
+
+  @patch("myapp.requests.get")
+  def test_fetch_user(mock_get):
+      mock_get.return_value.json.return_value = {"name": "Rakib"}
+      user = fetch_user(123)
+      assert user["name"] == "Rakib"
+
+TEST-DRIVEN DEVELOPMENT (TDD):
+  Red: write failing test
+  Green: write minimum code to pass
+  Refactor: improve code while keeping tests green
+
+  # Step 1: Red (failing test)
+  def test_fizzbuzz():
+      assert fizzbuzz(3) == "Fizz"
+      assert fizzbuzz(5) == "Buzz"
+      assert fizzbuzz(15) == "FizzBuzz"
+      assert fizzbuzz(1) == "1"
+
+  # Step 2: Green (implement)
+  def fizzbuzz(n):
+      if n % 15 == 0: return "FizzBuzz"
+      if n % 3 == 0: return "Fizz"
+      if n % 5 == 0: return "Buzz"
+      return str(n)
+
+  # Step 3: Refactor (improve if needed)
+
+INTEGRATION TESTS:
+  → Test database interactions with real (test) DB
+  → Test API endpoints end-to-end
+  → Test service interactions
+
+  from fastapi.testclient import TestClient
+  from myapp.main import app
+
+  client = TestClient(app)
+
+  def test_create_user_api():
+      response = client.post("/users", json={"name": "Rakib"})
+      assert response.status_code == 201
+      assert response.json()["name"] == "Rakib"
+
+COVERAGE:
+  → Measure % of code exercised by tests
+  → pytest --cov=myapp --cov-report=html
+  → Target: 80%+ for critical paths
+  → 100% coverage ≠ bug-free (but 20% coverage = risky)
+
+WHAT TO TEST:
+  ✅ Test: business logic, edge cases, error handling, API contracts
+  ❌ Don't test: framework internals, getters/setters, third-party code
+"""
+
+print(testing)</div>
+
+<div class="code-block"># ── STEP 5: Code quality and clean code ──
+# Writing code humans can read.
+
+clean_code = """
+CLEAN CODE PRINCIPLES:
+
+1. MEANINGFUL NAMES:
+   → Bad: d, data, x, temp, helper, process_stuff
+   → Good: user_age, payment_amount, validate_email, calculate_tax
+   → Names describe WHAT, not HOW
+
+2. SMALL FUNCTIONS:
+   → Do ONE thing (SRP)
+   → < 20 lines ideally
+   → < 4 parameters (more = extract object)
+   → Extract complex conditions into named booleans
+
+   # Bad:
+   def process(u):
+       if u.age > 18 and u.country == "US" and u.verified:
+           ...
+
+   # Good:
+   def can_vote(user):
+       return user.age > 18 and user.country == "US" and user.verified
+
+   if can_vote(user):
+       ...
+
+3. NO DEEP NESTING:
+   → Max 2-3 levels of indentation
+   → Extract nested logic into functions
+   → Use early returns (guard clauses)
+
+   # Bad (4 levels deep):
+   def process(data):
+       if data:
+           if data.valid:
+               if data.items:
+                   for item in data.items:
+                       if item.active:
+                           process_item(item)
+
+   # Good (guard clauses, flat):
+   def process(data):
+       if not data or not data.valid or not data.items:
+           return
+       for item in data.items:
+           if item.active:
+               process_item(item)
+
+4. DRY (Don't Repeat Yourself):
+   → Extract duplicated code into shared function
+   → But: don't over-abstract (Rule of Three)
+
+5. COMMENTS:
+   → Good code is self-documenting
+   → Comments explain WHY, not WHAT
+   → Outdated comments are worse than no comments
+
+6. ERROR HANDLING:
+   → Handle errors at the right level
+   → Use exceptions for exceptional cases
+   → Return Result/Option types for expected failures
+   → Never swallow exceptions silently
+
+LINTING AND FORMATTING:
+  # Python:
+  ruff check .            # fast linter (replaces flake8)
+  ruff format .           # formatter (replaces black)
+  mypy .                  # type checking
+
+  # Pre-commit hooks:
+  # .pre-commit-config.yaml
+  repos:
+    - repo: https://github.com/astral-sh/ruff-pre-commit
+      hooks:
+        - id: ruff
+        - id: ruff-format
+
+CODE REVIEW CHECKLIST:
+  ☐ Does it solve the problem?
+  ☐ Is it readable?
+  ☐ Are there tests?
+  ☐ Any security issues?
+  ☐ Any performance issues?
+  ☐ Does it follow conventions?
+  ☐ Are edge cases handled?
+"""
+
+print(clean_code)</div>
+
+<div class="code-block"># ── STEP 6: Git workflow and collaboration ──
+# Working effectively in a team.
+
+git_workflow = """
+GIT WORKFLOW AND COLLABORATION:
+
+BRANCHING STRATEGIES:
+
+1. TRUNK-BASED (modern, recommended):
+   main (always deployable)
+   ├── feature/payment → PR → merge to main
+   ├── fix/login-bug → PR → merge to main
+   └── refactor/cleanup → PR → merge to main
+   → Short-lived branches (< 2 days)
+   → Continuous integration to main
+
+2. GIT FLOW (traditional):
+   main (production)
+   develop (integration)
+   feature/* (from develop)
+   release/* (from develop → main)
+   hotfix/* (from main)
+   → Longer release cycles
+
+DAILY GIT WORKFLOW:
+  # Start new feature:
+  git checkout main && git pull
+  git checkout -b feature/user-profiles
+
+  # Make changes, commit frequently:
+  git add -A
+  git commit -m "feat: add user profile page"
+  git commit -m "feat: add avatar upload"
+  git commit -m "fix: handle large file errors"
+
+  # Rebase on latest main (keep history clean):
+  git fetch origin
+  git rebase origin/main
+
+  # Push and create PR:
+  git push origin feature/user-profiles
+  → Create PR on GitHub → code review → merge
+
+RESOLVING CONFLICTS:
+  git rebase origin/main
+  # CONFLICT in file.py
+  # Edit file to resolve conflict
+  git add file.py
+  git rebase --continue
+
+USEFUL GIT COMMANDS:
+  git log --oneline --graph --all    # visual history
+  git stash                          # save changes temporarily
+  git stash pop                      # restore stashed changes
+  git reset --soft HEAD~1            # undo last commit, keep changes
+  git reflog                         # find lost commits
+  git cherry-pick <commit>           # apply specific commit to branch
+
+CODE REVIEW BEST PRACTICES:
+  → Review for: correctness, security, performance, readability
+  → Be kind: suggest, don't command
+  → Ask questions: "Why did you choose this approach?"
+  → Approve when good enough (don't nitpick)
+  → Use PR templates for consistency
+  → Small PRs (< 400 lines) review faster
+
+MONOREPO vs MULTIREPO:
+  Monorepo: all code in one repo (Google, Meta)
+    ✅ Easy sharing, atomic changes, single source of truth
+    ❌ Scale issues, slower clones
+  Multirepo: each service in own repo
+    ✅ Independence, simpler CI/CD
+    ❌ Harder to coordinate changes, version management
+"""
+
+print(git_workflow)
+
+# SOFTWARE ENGINEERING SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Practice         │ Tool/Standard                 │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Version control  │ Git (trunk-based)             │
+# │ CI/CD            │ GitHub Actions, GitLab CI     │
+# │ Code quality     │ Ruff, mypy, pre-commit        │
+# │ Testing          │ pytest, coverage > 80%        │
+# │ Design           │ SOLID, design patterns        │
+# │ Code review      │ Every PR reviewed             │
+# │ Documentation    │ README, docstrings, ADRs      │
+# │ Monitoring       │ Sentry, Datadog, logging      │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 <div class="secret-box">📜 <strong>Methodology = কীভাবে কাজ করবে।</strong> Waterfall (planned), Agile (adaptive), DevOps (automated), Platform Engineering (self-service)। প্রতিটি যুগের সমাধান তার আগের যুগের সমস্যা থেকে জন্ম নেয়। কিন্তু নিয়ম জানা এক জিন্তু — ভালো কোড লেখা আরেক জিনিস। সেই কৌশল আসবে পরের দরজায় — clean code।</div>`,
   senior: {
