@@ -70,20 +70,347 @@ doors.push({
 </div>
 <div class="svg-caption">চিত্র: Learned Helplessness-এর তিন উপাদান (Seligman). Three P's of helplessness.</div>
 
-<div class="code-block">Seligman Explanatory Style — Self-Test (count your pattern)
-──────────────────────────────────────────────────────────────────────
-When something bad happens, do you say:
-  P  "এটা সবসময়ই হয়"            (Permanent)    → "এই বার হলো"
-  P  "সব কিছুতে এমন"             (Pervasive)    → "শুধু এই কাজে"
-  P  "আমি বোকা/অক্ষম"           (Personal)     → "আমি প্রস্তুতি নিইনি"
+<div class="code-block"># ── STEP 1: Learned optimism — Seligman's explanatory style ──
+# How your self-talk shapes your reality.
 
-Reframing (Learned Optimism, Seligman 1991):
-  Bad event → specific, temporary, external
-  "Math পরীক্ষায় কাটছিল"     ≠  "আমি বোকা"
-  "এই চেষ্টায় প্রস্তুতি কম"   ≠  "আমি কিছুতেই পারি না"
-──────────────────────────────────────────────────────────────────────
-# Reversal proof (Maier 2016): DRN serotonin surge কমালে helplessness
-# উল্টায়। "Pet the dog" — কেউ দেখালে পালানোর রাস্তা, কুকুর উঠে দাঁড়ায়।</div>
+# SELIGMAN'S 3 P's OF EXPLANATORY STYLE:
+# When something BAD happens, how do you explain it?
+
+# P - PERMANENT: "This always happens" vs "This time only"
+# P - PERVASIVE: "Everything is ruined" vs "This one area"
+# P - PERSONAL:  "I'm stupid" vs "I wasn't prepared"
+
+# OPTIMIST (healthy):
+# Bad event → temporary, specific, external
+#   "I failed this test" ≠ "I'm stupid"
+#   "This attempt wasn't great" ≠ "I can never succeed"
+# Good event → permanent, pervasive, personal
+#   "I'm good at this" (permanent) vs "I got lucky" (temporary)
+
+# PESSIMIST (depression-prone):
+# Bad event → permanent, pervasive, personal
+#   "I always fail at everything because I'm worthless"
+# Good event → temporary, specific, external
+#   "I only passed because the test was easy"
+
+# PYTHON (explanatory style audit):
+def audit_self_talk(thought):
+    """Check if a thought is pessimistic (3 P's)."""
+    pessimistic_patterns = {
+        "permanent": ["always", "never", "forever", "every time"],
+        "pervasive": ["everything", "nothing", "all", "completely"],
+        "personal": ["I'm stupid", "I'm worthless", "I can't"],
+    }
+
+    issues = []
+    for category, words in pessimistic_patterns.items():
+        for word in words:
+            if word in thought.lower():
+                issues.append(f"{category}: contains '{word}'")
+
+    if issues:
+        return {"status": "pessimistic", "issues": issues,
+                "fix": "Reframe: specific, temporary, situational"}
+    return {"status": "balanced", "issues": []}
+
+# Test:
+thoughts = [
+    "I always fail at math, I'm just not smart enough",
+    "This particular test was hard, I need more practice",
+]
+for t in thoughts:
+    result = audit_self_talk(t)
+    print(f"Thought: {t}")
+    print(f"  Status: {result['status']}")
+    if result['issues']:
+        print(f"  Issues: {result['issues']}")
+    print()
+
+# LEARNED OPTIMISM TECHNIQUE (ABCDE):
+# A - Adversity: What happened?
+# B - Belief: What do you believe about it?
+# C - Consequence: How does it make you feel/act?
+# D - Dispute: Challenge the belief (evidence? alternative?)
+# E - Energization: How do you feel after disputing?
+
+# LEARNED HELPLESSNESS IS REVERSIBLE:
+# Maier (2016): DRN serotonin surge control → helplessness can be unlearned
+# "Pet the dog" — if someone shows the escape route, the dog stands up
+# Small wins + reframing = path from helplessness to agency</div>
+
+<div class="code-block"># ── STEP 2: Emotional intelligence and persuasion ──
+# Cialdini's 7 principles of influence.
+
+# EMOTIONAL INTELLIGENCE (EQ > IQ for success):
+# 1. Self-awareness: knowing your emotions
+# 2. Self-regulation: managing your emotions
+# 3. Motivation: using emotions to drive action
+# 4. Empathy: recognizing others' emotions
+# 5. Social skills: managing relationships
+
+# CIALDINI'S 7 PRINCIPLES OF PERSUASION:
+principles = {
+    "Reciprocity": "Give first, people feel obligated to return",
+    "Commitment/Consistency": "Small yes → big yes (foot in door)",
+    "Social Proof": "Others are doing it, so should you",
+    "Authority": "Experts/authority figures influence",
+    "Liking": "We say yes to people we like",
+    "Scarcity": "Limited availability = more desirable",
+    "Unity": "Shared identity = stronger influence (2021 addition)",
+}
+
+print("CIALDINI'S 7 PRINCIPLES:")
+for p, desc in principles.items():
+    print(f"  {p}: {desc}")
+
+# DEFENSE: THE 24-HOUR RULE
+# When you feel pressured to decide:
+# 1. Pause: "Let me think about it for 24 hours"
+# 2. Identify: Which Cialdini principle is being used on you?
+# 3. Evaluate: Is this decision good WITHOUT the pressure?
+# 4. Decide: After cooling down, with clear head
+
+# PYTHON (manipulation awareness):
+def check_pressure(trigger):
+    """Identify persuasion technique being used."""
+    triggers = {
+        "limited time offer": "Scarcity (artificial urgency)",
+        "everyone is buying": "Social Proof",
+        "as an expert, I recommend": "Authority",
+        "free gift with purchase": "Reciprocity",
+        "you already agreed to": "Commitment/Consistency",
+        "because we're friends": "Liking",
+        "as a member of our community": "Unity",
+    }
+    for pattern, technique in triggers.items():
+        if pattern in trigger.lower():
+            return f"⚠️ Persuasion technique: {technique}"
+    return "No obvious manipulation detected"
+
+print(check_pressure("Limited time offer! Only 2 left in stock!"))
+print(check_pressure("Join 50,000 satisfied customers today!"))</div>
+
+<div class="code-block"># ── STEP 3: Stress, power dynamics, and motivation ──
+# Understanding the biology and psychology of stress.
+
+# STRESS BIOLOGY (Sapolsky / Whitehall Studies):
+# HPA Axis: Hypothalamus → Pituitary → Adrenal → Cortisol
+# Cortisol: stress hormone (chronic = brain damage, immune suppression)
+
+# SAPOLSKY'S KEY FINDING (from baboon studies):
+# STRESS HIERARCHY: Low status = high stress = poor health
+# → Not the AMOUNT of work, but the LACK OF CONTROL
+# → Whitehall Study: British civil servants
+#   Lowest grade: 4x heart disease risk vs highest grade
+#   Even when controlling for diet, exercise, smoking
+# → CONTROL over your work > the work itself
+
+# THREE TYPES OF STRESS:
+# 1. ACUTE (good): Short-term, exciting, fight-or-flight
+#    → Exercise, public speaking, deadline
+#    → Recovery builds resilience
+# 2. CHRONIC (bad): Long-term, uncontrollable, never ends
+#    → Bad boss, financial worry, toxic relationship
+#    → Damages brain (hippocampus shrinks)
+# 3. TRAUMATIC: Overwhelming, life-threatening
+#    → PTSD, ACEs (adverse childhood experiences)
+
+# MOTIVATION SCIENCE:
+# EXTRINSIC: Rewards/punishments from outside (money, grades)
+# INTRINSIC: Internal satisfaction (curiosity, mastery, purpose)
+# → Extrinsic KILLS intrinsic for creative tasks (Deci & Ryan)
+# → "Pay enough to take money off the table" (Pink)
+# → Then: Autonomy + Mastery + Purpose = motivation
+
+# CIRCLE OF CONTROL (Stoicism + CBT):
+things = {
+    "IN YOUR CONTROL": [
+        "Your effort",
+        "Your attitude",
+        "Your preparation",
+        "Your response",
+        "Your values",
+    ],
+    "NOT IN YOUR CONTROL": [
+        "Other people's opinions",
+        "The economy",
+        "The weather",
+        "Past events",
+        "Outcomes (only effort is controllable)",
+    ],
+}
+
+for category, items in things.items():
+    print(f"\n{category}:")
+    for item in items:
+        print(f"  {'✓' if 'CONTROL' in category else '✗'} {item}")
+
+# STOIC PRINCIPLE:
+# Focus energy ONLY on what's in your control
+# Accept what's not (don't waste energy fighting the uncontrollable)
+
+# SMALL-WINS PROTOCOL (build agency):
+# 1. Choose ONE tiny action (so small it feels ridiculous)
+# 2. Do it TODAY
+# 3. Celebrate completion (dopamine hit)
+# 4. Repeat tomorrow (slightly bigger)
+# 5. Build momentum → confidence → agency</div>
+
+<div class="code-block"># ── STEP 4: Gaslighting recovery and boundaries ──
+# Recognizing and recovering from manipulation.
+
+# GASLIGHTING = making someone doubt their own reality
+# Named from the 1944 film "Gaslight" (husband manipulates wife)
+
+# GASLIGHTING TACTICS:
+tactics = [
+    "Deny events happened: 'That never happened, you're imagining things'",
+    "Trivialize feelings: 'You're too sensitive / overreacting'",
+    "Shift blame: 'You made me do this'",
+    "Project: Accuse YOU of what THEY are doing",
+    "Isolate: Cut you off from friends/family who validate reality",
+    "Counter: 'You're remembering wrong, I never said that'",
+    "Withhold: 'I don't understand what you're talking about'",
+    "Forget/Deny: 'I don't remember that' or 'You're making things up'",
+]
+
+print("GASLIGHTING TACTICS:")
+for t in tactics:
+    print(f"  ⚠️ {t}")
+
+# REALITY ANCHOR JOURNAL (Stern, 2007):
+# When gaslit, your memory becomes unreliable
+# Solution: WRITE IT DOWN immediately
+
+journal_template = """
+REALITY ANCHOR JOURNAL ENTRY:
+Date: 2025-01-15
+Time: 3:45 PM
+
+What happened (objective facts, no interpretation):
+  "X said: 'I never agreed to that meeting'
+   But: Text message from 1/10 confirms: 'See you at the meeting Thursday'"
+
+What I saw/heard (direct observation):
+  "X raised their voice and rolled their eyes when I showed the text"
+
+What I felt:
+  "Confused, doubted myself, then angry"
+
+Physical evidence (texts, emails, recordings):
+  "Screenshot of 1/10 text message saved"
+
+Pattern check (has this happened before?):
+  "Yes, 3x in past month — denying conversations that happened"
+"""
+
+print(journal_template)
+
+# HEALTHY BOUNDARIES:
+boundaries = {
+    "Emotional": "I am not responsible for other people's emotions",
+    "Time": "I will not answer work messages after 7 PM",
+    "Physical": "My body, my rules. No means no.",
+    "Financial": "I will not lend money I can't afford to lose",
+    "Digital": "I will not share passwords or location constantly",
+    "Verbal": "I will not accept name-calling or insults",
+}
+
+print("HEALTHY BOUNDARIES:")
+for category, boundary in boundaries.items():
+    print(f"  🛡️ {category}: {boundary}")
+
+# RECOVERY STEPS:
+# 1. RECOGNIZE: Name the behavior (it's not you, it's them)
+# 2. DOCUMENT: Keep evidence (journal, texts, emails)
+# 3. VALIDATE: Talk to trusted friends/therapist
+# 4. SET BOUNDARIES: Clear, firm, enforced
+# 5. EXIT: If boundaries aren't respected, leave the relationship
+# 6. HEAL: Therapy, community, self-compassion</div>
+
+<div class="code-block"># ── STEP 5: Attachment styles and relationships ──
+# How childhood shapes adult relationships.
+
+# ATTACHMENT THEORY (Bowlby, Ainsworth):
+# Your relationship with caregivers → template for adult relationships
+
+attachment_styles = {
+    "SECURE (60% of population)": {
+        "origin": "Consistent, responsive caregiving",
+        "adult": "Comfortable with intimacy AND autonomy",
+        "conflict": "Communicates, resolves together",
+        "self_worth": "I'm worthy of love. Others are trustworthy.",
+    },
+    "ANXIOUS (20%)": {
+        "origin": "Inconsistent caregiving (sometimes there, sometimes not)",
+        "adult": "Clingy, fears abandonment, needs constant reassurance",
+        "conflict": "Protests, escalates, pursues",
+        "self_worth": "I need others to be worthy. I fear being alone.",
+    },
+    "AVOIDANT (15%)": {
+        "origin": "Emotionally unavailable caregivers",
+        "adult": "Discomfort with closeness, values independence above all",
+        "conflict": "Withdraws, shuts down, leaves",
+        "self_worth": "I don't need anyone. Others are demanding.",
+    },
+    "DISORGANIZED (5%)": {
+        "origin": "Caregiver was source of BOTH comfort AND fear (abuse)",
+        "adult": "Wants closeness but fears it. Contradictory behavior.",
+        "conflict": "Chaotic, freeze response, dissociation",
+        "self_worth": "I'm bad. Others will hurt me.",
+    },
+}
+
+for style, traits in attachment_styles.items():
+    print(f"\n{style}:")
+    for trait, desc in traits.items():
+        print(f"  {trait}: {desc}")
+
+# KEY INSIGHT: Attachment styles can CHANGE
+# → Anxious + Secure partner → moves toward secure (earned security)
+# → Therapy: Process trauma, build secure base
+# → Self-awareness: Recognize your pattern, interrupt it
+# → Practice: Healthy relationships heal old wounds
+
+# EMOTIONALLY FOCUSED THERAPY (EFT):
+# The CYCLE is the enemy, not the partner
+# → Identify the negative cycle (pursue-withdraw, attack-defend)
+# → Both partners share underlying fears/needs
+# → Create new cycle: vulnerable communication → responsive partner</div>
+
+<div class="code-block"># ── STEP 6: Psychology best practices ──
+# Applying psychology to daily life.
+
+best_practices = [
+    "Self-awareness: track your emotions, triggers, patterns",
+    "Reframe negative self-talk (Seligman ABCDE)",
+    "Practice gratitude daily (proven to increase happiness)",
+    "Build secure relationships (communication, trust, vulnerability)",
+    "Set healthy boundaries (emotional, time, physical)",
+    "Manage stress: exercise, sleep, meditation, social connection",
+    "Focus on what you CAN control (Stoicism)",
+    "Seek therapy when needed (strength, not weakness)",
+    "Understand your attachment style (and your partner's)",
+    "Small wins build agency (defeat learned helplessness)",
+    "Be aware of cognitive biases (they affect everyone)",
+    "Practice empathy (understand before being understood)",
+    "Develop EQ (self-awareness + self-regulation + social skills)",
+    "Recognize manipulation (Cialdini's principles + gaslighting)",
+    "Invest in relationships (strongest predictor of happiness)",
+]
+
+print("PSYCHOLOGY BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# THE LONGEST HAPPINESS STUDY (Harvard, 85+ years):
+# Question: What predicts a happy, healthy life?
+# Answer: QUALITY OF CLOSE RELATIONSHIPS
+# → Not money, not fame, not career success
+# → Not even physical health (though correlated)
+# → The warmth of your relationships at age 50 predicts health at 80
+# → "Good relationships keep us happier and healthier. Period."
+#   — Robert Waldinger, Harvard Study director</div>
 
 <div class="dialogue">নফস আম্মারা — আত্মসমর্পণকারী মন। কুরআনে আল্লাহ বলেন — "নিশ্চয় মানুষের মন খুব কঠোরভাবে খারাপ আদেশ দেয়।" (১২:৫৩)। নফস আম্মারা হলো সেই অবস্থা যেখানে মন বলে — চেষ্টা কোরো না, কিছু হবে না, তুমি পারবে না। Seligman-এর কুকুরের মতো — শুয়ে থাকো। কিন্তু কুরআন আরও বলে — "যারা জিহাদ করে (চেষ্টা করে), আমি তাদের আমার পথ দেখাই।" (২৯:৬৯)। চেষ্টা = শেখানোর শর্ত। নফস আম্মারা থেকে নফস মুতমাইন্না (প্রশান্ত মন) — এটাই যাত্রা। সম্ভব। প্রমাণিত।</div>
 <div class="dialogue en">"Nafs Ammara — the self that commands to surrender. The Quran says — 'The human soul certainly commands evil.' (12:53). Nafs Ammara is the state where the mind says — don't try, nothing will happen, you can't. Like Seligman's dog — lie down. But the Quran also says — 'Those who strive, We show them Our paths.' (29:69). Effort = the condition for learning. From Nafs Ammara to Nafs Mutma'innah (the tranquil self) — this is the journey. Possible. Proven."</div>`,
