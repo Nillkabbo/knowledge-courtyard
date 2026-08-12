@@ -787,36 +787,47 @@ print(f"  {identify_route('white_shield', 131)}")
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক যা করবে</div>STOP sign-এ সম্পূর্ণ থামো। চাকা স্থির। ৩ সেকেন্ড গণনা করো (one-thousand-one, one-thousand-two, one-thousand-three)। তারপর বাম-ডান-বাম দেখো। তারপর যাও। নিরাপদ।</div>
 </div>
 
-<div class="code-block">EXAM PATTERN QUESTIONS — Traffic Signs:
+<div class="code-block"># ── STEP 11: Exam pattern questions — traffic signs ──
+# Practice questions from the Michigan permit test.
 
-❓ লাল অষ্টভুজ (octagon) সাইন কী বোঝায়?
-✅ STOP — সম্পূর্ণ থামো
+# PYTHON (interactive practice test — traffic signs section):
 
-❓ হলুদ হীরা (diamond) সাইন কী শ্রেণী?
-✅ Warning sign — সতর্কতা
+traffic_signs_qa = [
+    {"q": "Red octagon sign means?", "a": "STOP — complete stop",
+     "options": ["YIELD", "STOP", "WARNING", "DO NOT ENTER"]},
+    {"q": "Yellow diamond sign category?", "a": "WARNING — caution",
+     "options": ["REGULATORY", "WARNING", "GUIDE", "SERVICES"]},
+    {"q": "Inverted red triangle means?", "a": "YIELD — give right-of-way",
+     "options": ["STOP", "YIELD", "MERGE", "SCHOOL"]},
+    {"q": "Orange diamond sign means?", "a": "CONSTRUCTION — reduce speed",
+     "options": ["WARNING", "CONSTRUCTION", "SERVICES", "SCHOOL"]},
+    {"q": "Green rectangle sign category?", "a": "GUIDE — directional info",
+     "options": ["REGULATORY", "WARNING", "GUIDE", "PROHIBITED"]},
+    {"q": "Blue rectangle sign indicates?", "a": "SERVICES — gas, food, lodging",
+     "options": ["GUIDE", "SERVICES", "WARNING", "SCHOOL"]},
+    {"q": "Brown rectangle sign means?", "a": "RECREATION — parks, historic sites",
+     "options": ["CONSTRUCTION", "RECREATION", "SERVICES", "REGULATORY"]},
+    {"q": "Yellow pentagon (school shape) means?", "a": "SCHOOL ZONE — slow down",
+     "options": ["WARNING", "CONSTRUCTION", "SCHOOL ZONE", "SERVICES"]},
+    {"q": "Red circle with slash means?", "a": "DO NOT / PROHIBITED",
+     "options": ["STOP", "WARNING", "DO NOT", "YIELD"]},
+    {"q": "White rectangle (SPEED LIMIT 55)?", "a": "REGULATORY — legal speed limit",
+     "options": ["WARNING", "GUIDE", "REGULATORY", "ADVISORY"]},
+]
 
-❓ উল্টানো ত্রিভুজ (triangle) লাল-সাদা সাইন কী?
-✅ YIELD — অন্যকে অগ্রাধিকার দাও
+# Test runner:
+score = 0
+for i, qa in enumerate(traffic_signs_qa, 1):
+    print(f"\nQ{i}: {qa['q']}")
+    for j, opt in enumerate(qa['options'], 1):
+        marker = " ←" if opt == qa['a'] else ""
+        print(f"  {j}) {opt}{marker}")
+    print(f"  Answer: {qa['a']}")
+    score += 1
 
-❓ কমলা হীরা (diamond) সাইন কী বোঝায়?
-✅ Construction zone — ধীরে চালাও, দ্বিগুণ জরিমানা
-
-❓ সবুজ আয়ত সাইন কী শ্রেণী?
-✅ Guide/information — দিক নির্দেশনা
-
-❓ নীল আয়ত সাইন কী নির্দেশ করে?
-✅ Services — গ্যাস, হাসপাতাল, খাবার
-
-❓ বাদামি আয়ত সাইন কী?
-✅ Recreation — পার্ক, historical site
-
-❓ হলুদ পেন্টাগন (school shape) কী?
-✅ School zone — ধীরে চালাও
-
-❓ লাল বৃত্তে কাটা সাইন (circle) কী?
-✅ Do Not / No — নিষেধাজ্ঞা
-
-❓ "SPEED LIMIT 55" সাদা সাইন — কী মানে?
+print(f"\n{'='*40}")
+print(f"Signs section: {score}/{len(traffic_signs_qa)}")
+print(f"Need 20/25 (80%) to pass this section")</div>
 ✅ সর্বোচ্চ ৫৫ mph — এর বেশি অবৈধ
 
 ❓ Pennant (শোয়ানো ত্রিভুজ) সাইন কী?
@@ -1252,36 +1263,46 @@ SPECIAL MARKINGS
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক</div>হলুদ আলো দেখে যদি নিরাপদে থামতে পারো (পেছনে গাড়ি খুব কাছে না থাকলে), ধীরে ব্রেক করো। যদি ইতিমধ্যে জংশনে ঢুকে থাকো, তবে নিরাপদে পার হও।</div>
 </div>
 
-<div class="code-block">EXAM PATTERN QUESTIONS — Signals & Markings:
+<div class="code-block"># ── STEP 12: Exam pattern questions — signals & markings ──
+# Practice for the rules-of-road section of the permit test.
 
-❓ হলুদ আলো দেখলে কী করবে?
-✅ থামার প্রস্তুতি নাও। যদি নিরাপদে থামতে 
-   পারো, থামো।
+# PYTHON (interactive practice — signals & markings):
 
-❓ ফ্ল্যাশিং লাল আলো কীভাবে আচরণ করবে?
-✅ STOP sign-এর মতো — সম্পূর্ণ থামো, তারপর যাও।
+signals_qa = [
+    {"q": "Yellow light means?", "a": "Prepare to stop. Stop if safe.",
+     "options": ["Speed up", "Prepare to stop", "Go fast", "Stop immediately"]},
+    {"q": "Flashing red light?", "a": "Treat as STOP sign — stop, then go",
+     "options": ["Proceed with caution", "Treat as STOP sign", "Yield only", "Go fast"]},
+    {"q": "Flashing yellow light?", "a": "Slow down, proceed with caution",
+     "options": ["Stop", "Slow down, proceed", "Speed up", "Wait for green"]},
+    {"q": "Double solid yellow line?", "a": "No passing either direction",
+     "options": ["Pass allowed", "No passing either way", "Pass right only", "U-turn allowed"]},
+    {"q": "Dashed yellow line?", "a": "Passing allowed when safe",
+     "options": ["No passing", "Pass when safe", "Stop required", "Left turn only"]},
+    {"q": "White line separates?", "a": "Same-direction traffic lanes",
+     "options": ["Opposite directions", "Same direction lanes", "Bike lanes only", "Parking zones"]},
+    {"q": "Michigan right turn on red?", "a": "Legal after complete stop, unless sign prohibits",
+     "options": ["Always illegal", "Legal after full stop unless prohibited", "Legal without stopping", "Only on weekends"]},
+    {"q": "Pedestrian in crosswalk?", "a": "Always stop — pedestrians have right-of-way",
+     "options": ["Honk and pass", "Always stop", "Yield only if red", "Drive around"]},
+    {"q": "Red X lane signal?", "a": "Lane closed — do not enter",
+     "options": ["Caution", "Lane closed", "Merge left", "Reduce speed"]},
+    {"q": "Green arrow signal?", "a": "Protected turn — you have right-of-way",
+     "options": ["Yield first", "Protected turn", "Stop then go", "Caution only"]},
+]
 
-❓ ফ্ল্যাশিং হলুদ আলো কী করবে?
-✅ ধীরে করো, সতর্ক হও, যাও।
+score = 0
+for i, qa in enumerate(signals_qa, 1):
+    print(f"\nQ{i}: {qa['q']}")
+    for j, opt in enumerate(qa['options'], 1):
+        marker = " <-" if opt == qa['a'] else ""
+        print(f"  {j}) {opt}{marker}")
+    print(f"  Answer: {qa['a']}")
+    score += 1
 
-❓ ডাবল সলিড হলুদ লাইন কী বোঝায়?
-✅ কোনো দিক থেকেই পার হওয়া নিষেধ।
-
-❓ ড্যাশড হলুদ লাইন কী?
-✅ নিরাপদ হলে পার হওয়া যায় (পাস করা যায়)।
-
-❓ সাদা লাইন কী নির্দেশ করে?
-✅ একই দিকের লেন আলাদা করে।
-
-❓ Michigan-এ right turn on red কি আইনি?
-✅ হ্যাঁ — যদি "NO TURN ON RED" সাইন না থাকে।
-   প্রথমে সম্পূর্ণ থামো, তারপর নিরাপদে যাও।
-
-❓ ক্রসওয়াকে পেডেস্ট্রিয়ান থাকলে কী করবে?
-✅ থামো। পেডেস্ট্রিয়ান সবসময় অগ্রাধিকার পায়।
-
-❓ কাটা লাল (✕) লেন সিগন্যাল কী?
-✅ সেই লেন বন্ধ — ঢুকো না।
+print(f"\n{'='*40}")
+print(f"Signals section: {score}/{len(signals_qa)}")
+print(f"Need 20/25 (80%) to pass this section")</div>
 
 ❓ সবুজ তীর (green arrow) কী মানে?
 ✅ Protected turn — সেই দিকে নিরাপদে যাও।
