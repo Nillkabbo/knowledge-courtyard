@@ -285,19 +285,84 @@ LEVEL 2 RESTRICTIONS:
   ✦ বেশিরভাগ মানুষ ২য় বারে পাশ করে
   ✦ Fail = তথ্য: কোন টপিক দুর্বল, সেটা পড়ো</div>
 
-<div class="code-block">KNOWLEDGE TEST কমন প্রশ্ন — প্রস্তুতি:
+<div class="code-block"># ── STEP 2: Knowledge test common questions ──
+# Prepare for the Michigan permit exam.
 
-❓ প্রশ্ন: Michigan-এ learner license-এর জন্য 
-   ন্যূনতম বয়স কত?
-✅ উত্তর: ১৪ বছর ৮ মাস (Segment 1 শুরুর জন্য)
+# KNOWLEDGE TEST FORMAT:
+# → 50 questions total: 25 signs + 25 rules
+# → Each section scored separately
+# → Must get 20/25 (80%) in EACH section
+# → Fail one section = retake that section only
 
-❓ প্রশ্ন: Knowledge test-এ কতটা প্রশ্ন,
-   কতটা পাশ করতে হবে?
-✅ উত্তর: ৫০টা প্রশ্ন — ২৫টা সাইন + ২৫টা নিয়ম,
-   দুইটা ভাগ আলাদাভাবে স্কোর হয়। প্রতি ভাগে
-   কমপক্ষে ২০টা (৮০%) সঠিক করতে হবে — একটা
-   ভাগে কম হলে পুরো টেস্ট fail, শুধু সেই ভাগ
-   আবার দিতে হয়।
+# PYTHON (practice test simulator):
+import random
+
+class PermitTestSimulator:
+    """Simulate the Michigan knowledge test."""
+    def __init__(self):
+        self.signs_questions = [
+            {"q": "Octagon shape means?", "a": "STOP"},
+            {"q": "Upside-down triangle means?", "a": "YIELD"},
+            {"q": "Diamond shape means?", "a": "WARNING"},
+            {"q": "Pentagon shape means?", "a": "SCHOOL"},
+            {"q": "Round sign means?", "a": "RAILROAD"},
+            {"q": "Red circle with slash means?", "a": "DO NOT / PROHIBITED"},
+            {"q": "Green sign means?", "a": "GUIDE/DIRECTIONAL"},
+            {"q": "Yellow sign means?", "a": "GENERAL WARNING"},
+            {"q": "Orange sign means?", "a": "CONSTRUCTION"},
+            {"q": "White sign means?", "a": "REGULATORY (law)"},
+        ]
+        self.rules_questions = [
+            {"q": "Min age for Segment 1?", "a": "14 years 8 months"},
+            {"q": "Level 1 requires adult of what age?", "a": "21+ years"},
+            {"q": "Supervised hours needed?", "a": "50 hours (10 at night)"},
+            {"q": "Level 2 night driving restriction?", "a": "Midnight-5AM"},
+            {"q": "School zone speed limit?", "a": "25 mph"},
+            {"q": "Default residential speed?", "a": "25 mph"},
+            {"q": "Highway speed limit?", "a": "70 mph (rural)"},
+            {"q": "Following distance (seconds)?", "a": "3 seconds"},
+            {"q": "Blood alcohol limit (21+)?", "a": "0.08%"},
+            {"q": "Texting while driving?", "a": "ILLEGAL (all ages)"},
+        ]
+
+    def take_test(self):
+        """Simulate the 50-question test."""
+        # 25 signs + 25 rules (sample from question banks)
+        signs = random.sample(self.signs_questions * 3, 25)
+        rules = random.sample(self.rules_questions * 3, 25)
+
+        print("MICHIGAN KNOWLEDGE TEST SIMULATION")
+        print("=" * 40)
+        print(f"Section 1: Traffic Signs (25 questions)")
+        print(f"Section 2: Rules of Road (25 questions)")
+        print(f"Passing: 20/25 (80%) in EACH section")
+        print()
+
+        # Simulate scoring (in practice, user answers each):
+        signs_score = random.randint(18, 25)
+        rules_score = random.randint(19, 25)
+
+        print(f"Signs section:  {signs_score}/25 {'PASS' if signs_score >= 20 else 'FAIL'}")
+        print(f"Rules section:  {rules_score}/25 {'PASS' if rules_score >= 20 else 'FAIL'}")
+        print()
+        if signs_score >= 20 and rules_score >= 20:
+            print("RESULT: PASS! You qualify for Level 1 License.")
+        else:
+            failed = []
+            if signs_score < 20: failed.append("signs")
+            if rules_score < 20: failed.append("rules")
+            print(f"RESULT: FAIL. Retake: {', '.join(failed)} section(s).")
+
+sim = PermitTestSimulator()
+sim.take_test()
+
+# STUDY TIPS FOR THE KNOWLEDGE TEST:
+# 1. Read the "What Every Driver Must Know" booklet (Michigan SOS)
+# 2. Take free practice tests online (driving-tests.org, dmv-written-test.com)
+# 3. Memorize traffic sign shapes AND colors (not just symbols)
+# 4. Focus on: speed limits, right-of-way, parking rules, alcohol laws
+# 5. Practice until you score 90%+ consistently on practice tests
+# 6. The test is offered in multiple languages (including Bengali!)</div>
 
 ❓ প্রশ্ন: Level 1 Learner License-এ চালানোর 
    শর্ত কী?
@@ -414,18 +479,89 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Texting While Driving:</strong> Driver texted 'omw' — rear-ended a stopped car at 45mph. Totaled both cars. Fix: phone on Do Not Disturb.</div></div>
 
 
-<div class="code-block">উপরের SVG সাইনগুলো মুখস্থ করো — আকার আর রঙ।
+<div class="code-block"># ── STEP 3: Traffic sign recognition system ──
+# Memorize by SHAPE and COLOR, not just symbol.
 
-🔴 REGULATORY (আইনি):
-  STOP (অষ্টভুজ লাল) → সম্পূর্ণ থামো, ৩ সেকেন্ড
-  YIELD (ত্রিভুজ লাল) → অন্যকে অগ্রাধিকার দাও
-  SPEED LIMIT (আয়ত সাদা) → সর্বোচ্চ গতি
-  DO NOT ENTER (বর্গ লাল + সাদা দণ্ড) → ঢুকো না
-  NO LEFT TURN (বৃত্ত লাল কাটা) → মোড় নিষেধ
+# SIGN CLASSIFICATION SYSTEM:
 
-🟡 WARNING (সতর্কতা):
-  হীরা হলুদ → বাঁক, হরিণ, স্লিপারি, মার্জ, ঢাল
-  পেডেস্ট্রিয়ান ক্রসিং → মানুষ রাস্তা পার হতে পারে
+sign_types = {
+    "REGULATORY (Law — must obey)": {
+        "color": "Red / White / Black",
+        "examples": {
+            "STOP (octagon red)": "Complete stop, count 3 seconds",
+            "YIELD (triangle red)": "Give right-of-way to others",
+            "SPEED LIMIT (rect white)": "Maximum legal speed",
+            "DO NOT ENTER (square red)": "Wrong way — do not enter",
+            "NO LEFT TURN (circle red slash)": "Turn prohibited",
+            "ONE WAY (black/white arrow)": "Traffic flows one direction only",
+        },
+    },
+    "WARNING (Caution — slow down)": {
+        "color": "Yellow / Orange",
+        "examples": {
+            "CURVE AHEAD (diamond yellow)": "Reduce speed, prepare for bend",
+            "DEER CROSSING (diamond yellow)": "Watch for animals",
+            "SLIPPERY WHEN WET (diamond yellow)": "Reduce speed, no sudden moves",
+            "MERGE (diamond yellow)": "Lane ends, merge safely",
+            "PEDESTRIAN CROSSING (diamond yellow)": "People may cross",
+            "CONSTRUCTION (diamond orange)": "Work zone, reduce speed, fines double",
+        },
+    },
+    "GUIDE (Information — directional)": {
+        "color": "Green / Blue / Brown",
+        "examples": {
+            "HIGHWAY EXIT (green)": "Exit number and direction",
+            "DISTANCE (green)": "Miles to next city",
+            "SERVICES (blue)": "Gas, food, lodging nearby",
+            "REST AREA (blue)": "Stop, restrooms available",
+            "PARK/RECREATION (brown)": "Historical site, park, campground",
+        },
+    },
+    "SCHOOL (Special — extreme caution)": {
+        "color": "Fluorescent Yellow-Green",
+        "examples": {
+            "SCHOOL ZONE (pentagon)": "25 mph, children present, fines double",
+            "SCHOOL CROSSING (pentagon)": "Children crossing, stop if needed",
+        },
+    },
+}
+
+for category, info in sign_types.items():
+    print(f"\n{category} [{info['color']}]")
+    for sign, action in info["examples"].items():
+        print(f"  {sign}")
+        print(f"    → {action}")
+
+# PYTHON (sign quiz):
+import random
+
+def sign_quiz():
+    """Quiz yourself on sign meanings."""
+    quiz = [
+        ("Red octagon", "STOP — full stop, 3 seconds"),
+        ("Red upside-down triangle", "YIELD — give right-of-way"),
+        ("Yellow diamond", "WARNING — slow down, be alert"),
+        ("Orange diamond", "CONSTRUCTION — reduce speed, double fines"),
+        ("Green rectangle", "GUIDE — directional information"),
+        ("Blue rectangle", "SERVICES — gas, food, lodging"),
+        ("Pentagon (yellow-green)", "SCHOOL — 25mph, children present"),
+        ("Round (yellow)", "RAILROAD — train crossing ahead"),
+        ("White rectangle", "REGULATORY — speed limit, rules"),
+        ("Red circle + slash", "PROHIBITED — do not do this"),
+    ]
+    score = 0
+    for shape, meaning in random.sample(quiz, 5):
+        print(f"\n  What does this sign mean: {shape}?")
+        # In practice: user answers, compare to 'meaning'
+        print(f"  Answer: {meaning}")
+    return quiz
+
+questions = sign_quiz()
+
+# MEMORIZATION TRICK:
+# Shape → Category (octagon=stop, triangle=yield, diamond=warning)
+# Color → Urgency (red=law, yellow=caution, green=info)
+# Learn SHAPE + COLOR first → meaning follows naturally</div>
 
 🟢 GUIDE (নির্দেশনা):
   আয়ত সবুজ → গন্তব্য, এক্সিট নম্বর
@@ -647,34 +783,73 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Running a Red Light:</strong> Driver tried to beat yellow — T-boned pedestrian in crosswalk. Fix: yellow = prepare to stop.</div></div>
 
 
-<div class="code-block">TRAFFIC SIGNALS — COMPLETE GUIDE
-# — — — — — — — — — — — — — — — — — — — — — —
+<div class="code-block"># ── STEP 4: Traffic signals — complete guide ──
+# What every signal means and how to respond.
 
-🟢 GREEN LIGHT (সবুজ আলো)
-  ✅ যাও — যদি রাস্তা পরিষ্কার থাকে
-  ⚠️ জংশনে ঢোকার আগে বাম-ডান দেখো
-  ⚠️ পেডেস্ট্রিয়ান থাকলে থামো
-  ⚠️ বাম মোড় নিলে oncoming traffic কে 
-     অগ্রাধিকার দাও
+# TRAFFIC SIGNAL MEANINGS AND RESPONSES:
 
-🟡 YELLOW LIGHT (হলুদ আলো)
-  ⚠️ থামো — যদি নিরাপদে থামতে পারো
-  ⚠️ যদি খুব কাছে, তবে যাও
-  ❌ গ্যাস চেপে তাড়াতাড়ি করো না
-  ❌ হলুদ দেখে accelerate করো না
-  💡 হলুদ মানে — লাল আসছে, প্রস্তুত হও
+signals = {
+    "GREEN LIGHT (go)": {
+        "action": "Proceed if intersection is clear",
+        "caution": "Look left-right before entering. Yield to pedestrians.",
+        "left_turn": "Yield to oncoming traffic. Wait for a safe gap.",
+    },
+    "YELLOW LIGHT (prepare to stop)": {
+        "action": "Stop if you can safely. If too close to stop, proceed.",
+        "caution": "DO NOT accelerate to beat the red. That's how accidents happen.",
+        "rule": "Yellow means red is coming. Prepare to stop.",
+    },
+    "RED LIGHT (stop)": {
+        "action": "Complete stop BEFORE the stop line",
+        "caution": "Do not enter intersection. Wait for green.",
+        "right_turn": "Michigan allows RIGHT TURN ON RED after complete stop, unless sign says NO TURN ON RED",
+    },
+    "RED + YELLOW (preparing)": {
+        "action": "Green is coming. Prepare to go, but DO NOT move.",
+        "caution": "Wait for green before proceeding.",
+    },
+    "FLASHING RED": {
+        "action": "Treat as STOP sign. Stop completely, then proceed when safe.",
+        "caution": "Other direction likely has flashing yellow or green.",
+    },
+    "FLASHING YELLOW": {
+        "action": "Slow down, proceed with caution. Do NOT stop.",
+        "caution": "Yield to pedestrians and cross-traffic.",
+    },
+    "GREEN ARROW": {
+        "action": "Turn in arrow direction. You have right-of-way.",
+        "caution": "Still check for pedestrians and reckless drivers.",
+    },
+    "YELLOW ARROW": {
+        "action": "Arrow is ending. Stop if safe, or complete turn if already in intersection.",
+        "caution": "Yield to oncoming traffic after arrow ends.",
+    },
+}
 
-🔴 RED LIGHT (লাল আলো)
-  🛑 সম্পূর্ণ থামো
-  🛑 STOP line এর আগে থামো
-  🛑 জংশনে ঢুকো না
-  ⚠️ Right turn on red — Michigan-এ যদি 
-     কোনো সাইন না থাকে "NO TURN ON RED",
-     তবে প্রথমে সম্পূর্ণ থামো, তারপর 
-     নিরাপদ হলে ডানে মোড় নিতে পারো
+for signal, info in signals.items():
+    print(f"\n{signal}")
+    for key, value in info.items():
+        print(f"  {key}: {value}")
 
-🔴🟡 লাল+হলুদ একসাথে (কিছু সিগন্যালে)
-  → সবুজ আসছে — প্রস্তুত হও, কিন্তু যাও না
+# PYTHON (signal decision-maker):
+def signal_response(signal_color, in_intersection=False, sign_says_no_turn=False):
+    """Determine correct action for a traffic signal."""
+    rules = {
+        "green": "Go — if intersection is clear and no pedestrians",
+        "yellow": "Stop if safe. If already in intersection, clear it." if in_intersection else "Stop. Do NOT accelerate.",
+        "red": "Stop completely. Wait for green." + ("" if sign_says_no_turn else " Right turn allowed after full stop."),
+        "flashing_red": "Stop completely (like a STOP sign). Proceed when clear.",
+        "flashing_yellow": "Slow down. Proceed with caution. Yield to cross-traffic.",
+    }
+    return rules.get(signal_color.lower(), "Unknown signal — stop and assess.")
+
+# Test:
+print("\nSIGNAL DECISION EXAMPLES:")
+print(f"  Green light: {signal_response('green')}")
+print(f"  Yellow (in intersection): {signal_response('yellow', in_intersection=True)}")
+print(f"  Red light: {signal_response('red')}")
+print(f"  Red (NO TURN sign): {signal_response('red', sign_says_no_turn=True)}")
+print(f"  Flashing red: {signal_response('flashing_red')}")</div>
 
 # — — — — — — — — — — — — — — — — — — — — — —
 FLASHING SIGNALS
