@@ -26,36 +26,400 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Quantization Quality Crash:</strong> INT4 reduced size 4x but accuracy dropped 20%. Fix: use QLoRA or GPTQ with calibration.</div></div>
 
 
-<div class="code-block">KV Cache — The Heart of Fast Inference:
+<div class="code-block"># ── STEP 1: KV Cache — the heart of fast inference ──
+# Avoid recomputing past tokens.
+
+kv_cache = """
+KV CACHE — THE HEART OF FAST INFERENCE:
 
 THE PROBLEM (without cache):
-  
-  Token ১: process [token ১] → output
-  Token ২: process [token ১, ২] → output
-  Token ৩: process [token ১, ২, ৩] → output
-  ...
-  Token N: process [token ১, ২, ..., N] → output
-  
-  Total work: ১ + ২ + ৩ + ... + N = N²/২
-  → ১০০০ tokens = ৫০০,০০০ operations!
-  → O(N²) → quadratic growth → VERY slow
+  Token 1: process [token 1] → output
+  Token 2: process [token 1, 2] → output
+  Token 3: process [token 1, 2, 3] → output
+  Token N: process [token 1..N] → output
+
+  Total work: 1 + 2 + 3 + ... + N = N^2/2
+  → 1000 tokens = 500,000 operations!
+  → O(N^2) quadratic growth → VERY slow
 
 THE SOLUTION (with KV cache):
-  
-  Prefill phase (process prompt once):
-    → compute K (keys) and V (values) for all 
-      prompt tokens
-    → store in cache
-  
-  Decode phase (generate one token at a time):
-    → new token → compute its Q (query)
-    → attention: Q * cached K → attention weights
-    → weights * cached V → output
-    → store new token's K, V in cache
-  
-  Total work: N (prefill) + N * ১ (decode) = ২N
-  → ১০০০ tokens = ২,০০০ operations!
-  → O(N) → LINEAR growth → MUCH faster
+  Prefill phase: compute K (keys) and V (values) for all prompt tokens → store
+  Decode phase: new token → compute Q → attention(Q, cached K, cached V) → output
+  → store new token's K, V in cache
+
+  Total work: N (prefill) + N * 1 (decode) = 2N
+  → 1000 tokens = 2,000 operations!
+  → O(N) linear growth → MUCH faster
+
+KV CACHE MEMORY USAGE:
+  Per token per layer: K (d_head floats) + V (d_head floats)
+  Total per token: 2 * n_layers * n_heads * d_head * bytes
+
+  Llama 3.1 8B example:
+    n_layers=32, n_heads=32, d_head=128, dtype=fp16 (2 bytes)
+    Per token: 2 * 32 * 32 * 128 * 2 = 524,288 bytes = 0.5 MB
+    4K context: 4096 * 0.5 MB = 2 GB cache!
+    128K context: 64 GB cache!
+
+KV CACHE OPTIMIZATIONS:
+
+1. PagedAttention (vLLM):
+   → Virtual memory like OS → pages of KV cache
+   → Near-zero waste → 2-3x more concurrent requests
+
+2. Prefix Caching:
+   → Cache system prompt KV ONCE → reuse for all requests
+   → TTFT drops 50-80%
+
+3. KV Cache Compression:
+   → Evict old/unimportant KV entries (H2O: top-k important tokens)
+   → Quantize KV cache (int8, int4) → 2-4x less memory
+
+4. Multi-Query Attention (MQA):
+   → Multiple heads share ONE K, V → 32x less cache (Llama 2)
+
+5. Grouped-Query Attention (GQA):
+   → Middle ground: M groups share K, V (Llama 3: 8 KV heads from 32 Q heads)
+
+KV CACHE LIFECYCLE:
+  1. Allocate: request starts → allocate cache
+  2. Fill (prefill): process prompt → fill cache
+  3. Append (decode): each token → append KV
+  4. Reuse (prefix): shared prefix → reuse
+  5. Evict: context too long → evict old
+  6. Free: request done → free cache
+"""
+
+print(kv_cache)</div>
+
+<div class="code-block"># ── STEP 2: Quantization — smaller, faster, cheaper ──
+# Reduce model precision for faster inference.
+
+quantization = """
+QUANTIZATION — SMALLER, FASTER, CHEAPER:
+
+Reduce model precision: fp32 → fp16 → int8 → int4
+→ Smaller model, faster inference, less memory
+→ Slight quality loss (usually negligible)
+
+PRECISION LEVELS:
+  FP32 (32-bit float): original training precision
+  FP16 (16-bit): 2x smaller, standard for inference
+  BF16 (brain float): better range than FP16
+  INT8 (8-bit): 4x smaller than FP32
+  INT4 (4-bit): 8x smaller, used in QLoRA
+
+QUANTIZATION METHODS:
+
+1. POST-TRAINING QUANTIZATION (PTQ):
+   → Quantize AFTER training (no retraining needed)
+   → Simple, fast to apply
+   → Slightly more quality loss
+
+2. QUANTIZATION-AWARE TRAINING (QAT):
+   → Simulate quantization DURING training
+   → Model learns to be robust to quantization
+   → Better quality, but requires retraining
+
+POPULAR FORMATS:
+
+GPTQ:
+  → Post-training, weight-only quantization
+  → INT4 weights, FP16 activations
+  → Good accuracy, fast inference
+  → Used by: HuggingFace, vLLM
+
+AWQ (Activation-aware Weight Quantization):
+  → Better than GPTQ for some models
+  → Protects important weights (salient channels)
+  → INT4 weights, minimal quality loss
+
+GGUF (GPT-Generated Unified Format):
+  → For llama.cpp (CPU/Mac/GPU)
+  → Supports: Q4_0, Q4_K_M, Q5_K_M, Q8_0
+  → Best for: local/edge deployment
+
+BITSANDBYTES:
+  → INT8/INT4 on-the-fly quantization
+  → Used in: QLoRA fine-tuning
+  → NF4 (NormalFloat 4-bit): near-FP16 quality
+
+PYTHON (quantization):
+  # GGUF conversion (for llama.cpp):
+  # python convert.py model --outtype f16
+  # ./quantize model-f16.gguf model-Q4_K_M.gguf Q4_K_M
+
+  # GPTQ (HuggingFace):
+  from transformers import AutoModelForCausalLM
+  model = AutoModelForCausalLM.from_pretrained(
+      "model_name",
+      device_map="auto",
+      load_in_4bit=True,        # bitsandbytes 4-bit
+      bnb_4bit_quant_type="nf4",
+      bnb_4bit_compute_dtype=torch.float16
+  )
+
+  # AWQ:
+  from awq import AutoAWQForCausalLM
+  model = AutoAWQForCausalLM.from_quantized(
+      "model-awq",
+      fuse_layers=True,
+      device="cuda:0"
+  )
+
+QUALITY VS SIZE TRADEOFF:
+  FP16: 100% quality, 100% size (baseline)
+  INT8: ~99% quality, 50% size
+  INT4: ~97% quality, 25% size
+  INT3: ~93% quality, 19% size (diminishing returns)
+"""
+
+print(quantization)</div>
+
+<div class="code-block"># ── STEP 3: Batching — GPU utilization mastery ──
+# Process multiple requests simultaneously.
+
+batching = """
+BATCHING — GPU UTILIZATION MASTERY:
+
+WHY BATCH?
+  Single request: GPU at 10% utilization (wasteful!)
+  Batch of 32: GPU at 90% utilization (efficient!)
+  → Same time, 32x more work done
+
+BATCHING TYPES:
+
+1. STATIC BATCHING (naive):
+   → Collect N requests → process all → return all
+   → Wait for batch to fill (latency penalty)
+   → Fast request waits for slow one
+
+2. DYNAMIC BATCHING:
+   → New requests join running batch
+   → No waiting, immediate start
+   → Better throughput
+
+3. CONTINUOUS BATCHING (vLLM):
+   → New request joins IMMEDIATELY when slot opens
+   → As soon as any request finishes, new one enters
+   → GPU NEVER idle → maximum throughput
+   → 3-5x throughput vs static batching
+
+HOW IT WORKS:
+  Request A: [token] [token] [token] [done]
+  Request B:     [token] [token] [token] [token] [done]
+  Request C:         [token] [token] [token] [done]
+  Request D:                 [token] [token] [token] ...
+
+  → Each row is one time step
+  → Requests enter/leave independently
+  → GPU processes all active tokens simultaneously
+
+PYTHON (vLLM continuous batching):
+  from vllm import LLM
+
+  llm = LLM(model="meta-llama/Llama-2-7b-chat-hf")
+
+  # Batch of prompts processed together:
+  prompts = ["Hello", "How are you?", "Tell me a story", ...]
+  outputs = llm.generate(prompts)
+  # All processed in one batch, maximizing GPU utilization
+
+BATCH SIZE TRADEOFF:
+  Small batch (1-4): low latency, low throughput
+  Medium batch (8-32): balanced
+  Large batch (64+): high throughput, higher latency
+  → Choose based on SLA requirements
+
+TOKEN-LEVEL BATCHING:
+  → Different requests generate different length responses
+  → Pad to max length (waste) or use attention masks
+  → Continuous batching handles variable lengths elegantly
+"""
+
+print(batching)</div>
+
+<div class="code-block"># ── STEP 4: Attention optimization ──
+# Making the transformer core faster.
+
+attention = """
+ATTENTION OPTIMIZATION:
+
+Self-attention is O(N^2) — the bottleneck for long sequences.
+N tokens → N x N attention matrix.
+
+OPTIMIZATIONS:
+
+1. FLASH ATTENTION (Dao, 2022):
+   → I/O-aware exact attention
+   → Reduces memory reads/writes
+   → Same result, 2-4x faster
+   → Now standard in all major frameworks
+   → Flash Attention 2: even faster (2023)
+   → Flash Attention 3: Hopper GPU optimized (2024)
+
+2. SPARSE ATTENTION:
+   → Don't compute all N x N pairs
+   → Local attention: only nearby tokens
+   → Random attention: sample some pairs
+   → BigBird, Longformer: 2-10x faster for long sequences
+
+3. SLIDING WINDOW ATTENTION:
+   → Each token attends to last W tokens only
+   → O(N * W) instead of O(N^2)
+   → Mistral: W=4096 (local context)
+   → Global tokens for long-range dependencies
+
+4. ALIBI (Attention with Linear Biases):
+   → Replace positional encoding with distance-based bias
+   → Enables extrapolation to longer sequences
+   → No retraining needed for longer context
+
+5. RING ATTENTION (distributed):
+   → Split sequence across multiple GPUs
+   → Each GPU computes local attention
+   → KV passed in ring → combine
+   → Enables million-token context
+
+6. MLA (Multi-Head Latent Attention, DeepSeek):
+   → Compress KV into low-rank latent
+   → Massive KV cache reduction
+   → DeepSeek-V2/V3 innovation
+
+PYTHON (Flash Attention):
+  import torch
+  from flash_attn import flash_attn_func
+
+  # Standard attention:
+  # attn = softmax(Q @ K.T / sqrt(d)) @ V  → O(N^2) memory
+
+  # Flash Attention:
+  q = torch.randn(1, 8, 4096, 64)   # batch, heads, seq, dim
+  k = torch.randn(1, 8, 4096, 64)
+  v = torch.randn(1, 8, 4096, 64)
+
+  output = flash_attn_func(q, k, v)
+  # Same result, but 2-4x faster, much less memory
+
+COMPARISON:
+  ┌──────────────────┬──────────┬──────────┬──────────┐
+  │ Method           │ Speed    │ Memory   │ Quality  │
+  ├──────────────────┼──────────┼──────────┼──────────┤
+  │ Standard attn    │ 1x       │ O(N^2)   │ Exact    │
+  │ Flash Attention  │ 2-4x     │ O(N)     │ Exact    │
+  │ Sparse (BigBird) │ 5-10x    │ O(N)     │ Approx   │
+  │ Sliding window   │ 10x+     │ O(N*W)   │ Approx   │
+  └──────────────────┴──────────┴──────────┴──────────┘
+"""
+
+print(attention)</div>
+
+<div class="code-block"># ── STEP 5: Speculative decoding — fast guesses ──
+# Big model verifies small model's draft.
+
+speculative = """
+SPECULATIVE DECODING — FAST GUESSES, BIG VERIFICATION:
+
+PROBLEM:
+  → Large model generates 1 token per forward pass
+  → Each forward pass is slow (big model)
+  → 500 tokens = 500 forward passes
+
+INSIGHT:
+  → Small model can generate tokens fast (but lower quality)
+  → Large model can VERIFY multiple tokens in one pass
+  → If small model guesses right → accept all (much faster!)
+  → If wrong → large model corrects (no quality loss)
+
+HOW IT WORKS:
+  1. Draft model generates K tokens (fast, e.g., 5 tokens)
+  2. Target model processes all K + original in ONE forward pass
+  3. Compare: target model agrees with draft?
+     → Yes: accept all K tokens (K tokens in 1 pass!)
+     → No: accept first J correct tokens, reject rest
+
+  Speedup: if draft model is 80% accurate:
+  → 5 tokens * 0.8 = 4 accepted on average
+  → 4x speedup!
+
+VARIANTS:
+
+1. STANDARD SPECULATIVE DECODING:
+   → Small draft model + large target model
+   → Draft: Llama 68M, Target: Llama 7B
+
+2. MEDUSA:
+   → Multiple "heads" predict future tokens
+   → No separate draft model needed
+   → Train extra heads on target model
+
+3. EAGLE / EAGLE-2:
+   → Better draft generation using hidden states
+   → Higher acceptance rate → more speedup
+
+4. LOOKAHEAD DECODING:
+   → Generate multiple candidates in parallel
+   → Jacobi iteration for parallelism
+
+PYTHON (vLLM speculative decoding):
+  # Start vLLM with speculative decoding:
+  # python -m vllm.entrypoints.openai.api_server \\
+  #     --model meta-llama/Llama-2-7b-chat-hf \\
+  #     --speculative-model meta-llama/Llama-68M \\
+  #     --num-speculative-tokens 5
+
+  # Client code is identical — speedup is transparent!
+
+WHEN SPECULATIVE DECODING HELPS:
+  → Draft model is much smaller (10-100x fewer params)
+  → Draft model is reasonably accurate (>70% match)
+  → Batch size is small (1-8, speedup diminishes at scale)
+
+ACCEPTANCE RATE:
+  → High (80%+): 3-5x speedup
+  → Medium (60%): 1.5-2x speedup
+  → Low (<40%): negligible speedup (overhead of verification)
+"""
+
+print(speculative)</div>
+
+<div class="code-block"># ── STEP 6: Inference optimization best practices ──
+# The complete checklist.
+
+best_practices = [
+    "Use Flash Attention 2/3 (2-4x speedup, no quality loss)",
+    "Use continuous batching (vLLM) for 3-5x throughput",
+    "Quantize to INT4 (AWQ/GPTQ) for 4x smaller models",
+    "Enable prefix caching for shared system prompts (50-80% TTFT reduction)",
+    "Use GQA/MQA models for smaller KV cache",
+    "Try speculative decoding for 2-4x latency reduction",
+    "Choose right batch size (balance latency vs throughput)",
+    "Use tensor parallelism for models >1 GPU",
+    "Stream responses (perceived latency = TTFT, not total)",
+    "Cache results (semantic cache: 30-50% hit rate)",
+    "Route simple queries to smaller models",
+    "Profile your model (find the actual bottleneck)",
+    "Benchmark before AND after optimization",
+    "Monitor GPU utilization (target >70%)",
+    "Consider edge deployment (GGUF) for privacy/offline",
+]
+
+print("INFERENCE OPTIMIZATION BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# OPTIMIZATION IMPACT SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Technique        │ Speedup                       │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Flash Attention  │ 2-4x (exact, no quality loss) │
+# │ Continuous batch │ 3-5x throughput               │
+# │ INT4 quant       │ 2-3x faster, 4x smaller       │
+# │ Prefix caching   │ 50-80% TTFT reduction         │
+# │ Speculative dec  │ 2-4x latency (no quality loss)│
+# │ KV compress      │ 2-4x memory reduction         │
+# │ Combined (all)   │ 10-20x vs naive               │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 MEMORY ANALOGY:
   

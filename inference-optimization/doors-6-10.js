@@ -30,22 +30,400 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — FlashAttention Version Conflict:</strong> FlashAttention v2 needed PyTorch 2.0, deployed on 1.13. Fix: verify version compatibility.</div></div>
 
 
-<div class="code-block">Memory Optimization — Fitting More in Less:
+<div class="code-block"># ── STEP 1: Memory optimization ──
+# Fitting more in less.
+
+memory = """
+MEMORY OPTIMIZATION — FITTING MORE IN LESS:
 
 GPU MEMORY BUDGET (A100 80GB):
+  Model weights (7B fp16):   14 GB
+  KV cache (per request):    0.5-2 GB
+  Activations:               2-5 GB
+  Framework overhead:        2-3 GB
+  CUDA context:              1 GB
+  Available for batching:    ~55 GB
+  → ~25-100 concurrent requests
 
-  # ──────────────────────────# ──────────# 
-  #  Component                #  Memory   # 
-  # ──────────────────────────# ──────────# 
-  #  Model weights (৭B fp16)  #  ১৪ GB    # 
-  #  KV cache (per request)   #  ০.৫-২ GB# 
-  #  Activations              #  ২-৫ GB   # 
-  #  Framework overhead       #  ২-৩ GB   # 
-  #  CUDA context             #  ১ GB     # 
-  # ──────────────────────────# ──────────# 
-  #  Available for batching   #  ~৫৫ GB   # 
-  #  → ~২৫-১০০ concurrent reqs#           # 
-  # ──────────────────────────# ──────────# 
+MEMORY OPTIMIZATION TECHNIQUES:
+
+1. MODEL OFFLOADING (CPU-GPU):
+   → Keep some weights in CPU RAM
+   → Only active layers on GPU
+   → DeepSpeed Zero, Accelerate
+   ✅ Big model, small GPU
+   ❌ Slower (CPU-GPU transfer)
+
+2. MEMORY-EFFICIENT ATTENTION:
+   → Flash Attention: activations O(N^2) → O(N)
+   → Long context becomes feasible
+
+3. TENSOR PARALLELISM:
+   → Split model across multiple GPUs
+   → 70B model: 2 x A100 (40GB each)
+   → vLLM: --tensor-parallel-size 2
+
+4. PIPELINE PARALLELISM:
+   → Model layers split across GPUs
+   → GPU 1: layers 1-16, GPU 2: layers 17-32
+   → Less efficient than tensor parallel
+
+5. CPU OFFLOAD KV CACHE:
+   → KV cache full → move to CPU RAM
+   → Recall when needed
+   → FlexGen, InfiniGen
+
+6. WEIGHT SHARING:
+   → Same base model for multiple LoRA adapters
+   → vLLM multi-LoRA serving
+
+PRACTICAL MEMORY FORMULA:
+  Total VRAM = model_weights + (batch * kv_cache) + activations + overhead
+
+  Example (7B fp16, 4K context, batch 32):
+    14 GB (weights) + 64 GB (KV cache!) + 5 GB + 3 GB = 86 GB → OOM!
+
+  With INT4 quantization:
+    3.5 GB + 32 GB + 8 GB = 43.5 GB → fits easily! 2x more batch!
+
+MEMORY MONITORING:
+  nvidia-smi: real-time VRAM usage
+  vLLM logs: KV cache utilization %
+  torch.cuda.memory_allocated()
+
+  Alert: VRAM > 90% → reduce batch size
+  Alert: OOM → crash! Prevent proactively
+"""
+
+print(memory)</div>
+
+<div class="code-block"># ── STEP 2: Pruning and distillation ──
+# Smaller models, same knowledge.
+
+pruning = """
+PRUNING & DISTILLATION — SMALLER MODELS, SAME KNOWLEDGE:
+
+1. PRUNING (remove unnecessary weights):
+
+   Unstructured pruning:
+   → Set individual weights to zero
+   → Sparse matrix (many zeros)
+   → Needs special hardware/kernels for speedup
+   → Lottery Ticket Hypothesis: 90% prunable!
+
+   Structured pruning:
+   → Remove entire neurons/heads/layers
+   → No special kernels needed
+   → Direct speedup on any hardware
+   → More quality loss than unstructured
+
+   PYTHON (pruning):
+     import torch.nn.utils.prune as prune
+
+     # Unstructured: prune 30% of weights
+     prune.l1_unstructured(model.layer1, 'weight', amount=0.3)
+
+     # Structured: prune entire channels
+     prune.ln_structured(model.layer1, 'weight', amount=0.3, n=2, dim=0)
+
+2. KNOWLEDGE DISTILLATION:
+
+   Teacher (big) → Student (small):
+   → Teacher generates soft labels (probabilities)
+   → Student learns to match teacher's output distribution
+   → Student captures teacher's "dark knowledge"
+
+   TYPES:
+   → Offline distillation: pre-trained teacher, train student
+   → Online distillation: teacher and student train together
+   → Self-distillation: model teaches itself (earlier vs later layers)
+
+   PYTHON (distillation):
+     def distillation_loss(student_logits, teacher_logits, labels, temp=4.0):
+         # Soft target loss (KL divergence with temperature):
+         soft_loss = F.kl_div(
+             F.log_softmax(student_logits / temp, dim=-1),
+             F.softmax(teacher_logits / temp, dim=-1),
+             reduction='batchmean'
+         ) * (temp ** 2)
+
+         # Hard target loss (normal cross-entropy):
+         hard_loss = F.cross_entropy(student_logits, labels)
+
+         return 0.7 * soft_loss + 0.3 * hard_loss
+
+   SUCCESSFUL DISTILLED MODELS:
+   → DistilBERT: 40% smaller, 60% faster, 97% of BERT quality
+   → TinyLlama: 1.1B params distilled from larger models
+   → Phi-2/3: Microsoft's "textbook quality" small models
+
+3. MODEL COMPRESSION PIPELINE:
+   → Prune unnecessary weights (30-50% reduction)
+   → Quantize remaining weights (4x reduction)
+   → Distill to smaller architecture (2-4x reduction)
+   → Combined: 10-30x smaller with minimal quality loss
+
+EXAMPLE:
+  BERT-base (110M params, 420MB)
+  → Pruned: 70M params (267MB)
+  → Quantized INT8: 67MB
+  → Total: 6x smaller, 3x faster, 95% quality
+"""
+
+print(pruning)</div>
+
+<div class="code-block"># ── STEP 3: Kernel optimization ──
+# Hardware-level speed.
+
+kernels = """
+KERNEL OPTIMIZATION — HARDWARE-LEVEL SPEED:
+
+GPU KERNELS:
+  → Fused operations (combine multiple ops into one kernel)
+  → Reduce memory bandwidth bottleneck
+  → Custom CUDA/Triton kernels
+
+FUSED KERNELS:
+  → Standard: matmul → add bias → activation → dropout (4 kernels)
+  → Fused: all in one kernel (1 pass through memory)
+  → 2-5x faster
+
+POPULAR KERNEL LIBRARIES:
+
+1. TRITON (OpenAI):
+   → Python-like syntax for GPU kernels
+   → Compiles to efficient PTX
+   → Used in: vLLM, Flash Attention
+
+2. CUDA (NVIDIA):
+   → Low-level GPU programming
+   → Maximum control, maximum speed
+   → Steep learning curve
+
+3. CUTLASS (NVIDIA):
+   → CUDA Templates for Linear Algebra
+   → Building blocks for GEMM (matrix multiply)
+   → Used in: cuBLAS, TensorRT
+
+4. COMPILED MODELS:
+   → torch.compile(): PyTorch 2.0+ JIT compiler
+   → XLA (TensorFlow): compile to optimized graphs
+   → ONNX Runtime: cross-platform optimization
+
+PYTHON (torch.compile):
+  import torch
+
+  model = AutoModelForCausalLM.from_pretrained(...)
+
+  # Compile for speed:
+  model = torch.compile(model, mode="max-autotune")
+  # 1.3-2x speedup with no code changes!
+
+PYTHON (custom Triton kernel):
+  import triton
+  import triton.language as tl
+
+  @triton.jit
+  def fused_matmul_relu(X, W, Y, N, M, K):
+      pid = tl.program_id(0)
+      row = pid // tl.cdiv(K, BLOCK_K)
+      col = pid % tl.cdiv(K, BLOCK_K)
+      # ... fused matmul + relu in one kernel
+
+TENSORRT (NVIDIA, enterprise):
+  → Highest-performance inference on NVIDIA GPUs
+  → Layer fusion, precision calibration, kernel auto-tuning
+  → Used in: Triton Inference Server
+  → TensorRT-LLM: LLM-specific optimizations
+
+BENCHMARKING KERNELS:
+  → Use nvprof / Nsight to profile
+  → Measure: kernel time, memory bandwidth, occupancy
+  → Identify: compute-bound vs memory-bound
+  → Optimize the bottleneck
+"""
+
+print(kernels)</div>
+
+<div class="code-block"># ── STEP 4: Hardware selection ──
+# Right GPU for the right task.
+
+hardware = """
+HARDWARE CHOICE — RIGHT GPU PER TASK:
+
+GPU OPTIONS (2024-2025):
+
+NVIDIA Data Center:
+  H100 (80GB): $30K, best for training, FP8 support
+  H200 (141GB): newest, largest memory, best for long context
+  A100 (40/80GB): $10-15K, workhorse for inference
+  L40S (48GB): $8K, good for inference, FP8
+
+NVIDIA Consumer:
+  RTX 4090 (24GB): $1.6K, best consumer GPU, great value
+  RTX 4080 (16GB): $1.2K, good for smaller models
+  RTX 3090 (24GB): $800 used, still excellent
+
+Apple Silicon:
+  M2/M3 Ultra (128-192GB): unified memory, great for large models
+  → llama.cpp, MLX framework
+
+AMD:
+  MI300X (192GB): competitor to H100
+  ROCm framework (growing support)
+
+CLOUD GPU PRICING (per hour):
+  H100: $2.50-4.00 (together, Lambda)
+  A100: $1.50-2.50
+  RTX 4090: $0.50-0.80 (vast.ai)
+  L4: $0.50-0.80 (cheap, good for small models)
+
+GPU SELECTION BY MODEL SIZE:
+  7B model (fp16): 14 GB → RTX 4090 (24GB) or A10G
+  7B model (INT4): 3.5 GB → RTX 3060 (12GB) works!
+  13B model (fp16): 26 GB → A100 (40GB) or 2x 4090
+  70B model (fp16): 140 GB → 2x H100 or 4x A100
+  70B model (INT4): 35 GB → 2x A100 or 1x H100
+
+GPU SELECTION BY USE CASE:
+  Development/prototyping: local GPU (4090) or Mac
+  Small production: A10G, L4
+  Large production: A100, H100
+  Training: H100 (FP8 for speed)
+  Edge/IoT: Jetson, mobile GPU
+
+KEY METRICS:
+  VRAM (GB): max model + batch size
+  TFLOPS (FP16/INT8): compute speed
+  Memory bandwidth (TB/s): data transfer speed
+  NVLink: multi-GPU interconnect speed
+  Cost per TFLOP: value metric
+"""
+
+print(hardware)</div>
+
+<div class="code-block"># ── STEP 5: Complete optimization stack ──
+# All techniques combined.
+
+complete = """
+COMPLETE INFERENCE OPTIMIZATION STACK:
+
+LAYER 1: MODEL LEVEL (before serving):
+  → Choose efficient architecture (GQA, SwiGLU, RoPE)
+  → Quantize to INT4 (AWQ or GPTQ)
+  → Prune unnecessary weights (if further reduction needed)
+  → Distill to smaller model (if extreme size needed)
+
+LAYER 2: KERNEL LEVEL (compiled):
+  → Flash Attention 2/3
+  → Fused kernels (matmul + activation + bias)
+  → torch.compile or TensorRT
+  → Custom Triton kernels for hotspots
+
+LAYER 3: BATCHING LEVEL (serving):
+  → Continuous batching (vLLM)
+  → Optimal batch size for GPU
+  → Dynamic batch padding
+
+LAYER 4: CACHE LEVEL (request):
+  → Prefix caching (shared system prompt)
+  → Semantic cache (similar queries)
+  → KV cache compression (H2O, quantization)
+
+LAYER 5: DECODING LEVEL (generation):
+  → Speculative decoding (draft model)
+  → Beam search optimization
+  → Early stopping (stop tokens)
+  → Max token limits
+
+LAYER 6: INFRASTRUCTURE LEVEL:
+  → Multi-GPU (tensor parallel)
+  → Multi-node (pipeline parallel)
+  → Load balancing
+  → Auto-scaling
+
+LAYER 7: APPLICATION LEVEL:
+  → Streaming (reduce perceived latency)
+  → Response caching
+  → Model routing (simple→small, complex→large)
+
+COMBINED IMPACT:
+  Naive inference: 1 token/sec, 1 user at a time
+  With all optimizations:
+    → 100-500 tokens/sec per user (streaming)
+    → 50-200 concurrent users per GPU
+    → 100-200x throughput improvement
+
+PRODUCTION STACK (recommended):
+  Model: Llama-3-8B-Instruct (INT4 AWQ)
+  Serving: vLLM with continuous batching
+  Kernel: Flash Attention 2 + torch.compile
+  Cache: prefix caching + semantic cache
+  Decoding: speculative (if applicable)
+  Hardware: A100 or 2x 4090
+  Result: 100+ tokens/sec, 50+ concurrent, <500ms TTFT
+"""
+
+print(complete)</div>
+
+<div class="code-block"># ── STEP 6: Optimization journey ──
+# Your path to fast LLM inference.
+
+journey = """
+YOUR INFERENCE OPTIMIZATION JOURNEY:
+
+You started seeing inference as "model.generate()."
+You finish seeing a MULTI-LAYERED OPTIMIZATION STACK:
+
+WHAT YOU'VE MASTERED:
+  ✅ KV Cache (the heart of fast inference)
+  ✅ Quantization (INT4/INT8, AWQ, GPTQ, GGUF)
+  ✅ Batching (continuous batching, vLLM)
+  ✅ Attention optimization (Flash Attention, sparse)
+  ✅ Speculative decoding (2-4x speedup)
+  ✅ Memory optimization (offloading, parallelism)
+  ✅ Pruning & distillation (smaller models)
+  ✅ Kernel optimization (fused kernels, torch.compile)
+  ✅ Hardware selection (GPU choice)
+  ✅ Complete optimization stack
+
+THE INFERENCE ENGINEER'S MINDSET:
+  1. "What's the bottleneck?" (compute? memory? bandwidth?)
+  2. "What can I cache?" (KV, prefix, semantic)
+  3. "What can I batch?" (requests, tokens)
+  4. "What can I approximate?" (quantization, pruning)
+  5. "What can I parallelize?" (tensor, pipeline, request)
+
+"Premature optimization is the root of all evil.
+ But in LLM inference, optimization is survival."
+ — Adapted from Knuth
+
+WHAT TO STUDY NEXT:
+  → Read: vLLM paper (PagedAttention)
+  → Read: Flash Attention paper (Dao)
+  → Practice: Deploy with vLLM, measure performance
+  → Explore: TensorRT-LLM, SGLang
+  → Follow: GPU architecture papers (NVIDIA)
+  → Benchmark: Compare optimization techniques
+
+Welcome to inference optimization mastery.
+"""
+
+print(journey)
+
+# FINAL SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Technique        │ Impact                        │
+# ├──────────────────┼──────────────────────────────────┤
+# │ KV Cache         │ O(N^2) → O(N)                 │
+# │ Flash Attention  │ 2-4x faster, exact            │
+# │ INT4 Quant       │ 4x smaller, 2-3x faster      │
+# │ Continuous batch │ 3-5x throughput               │
+# │ Prefix cache     │ 50-80% TTFT reduction         │
+# │ Speculative dec  │ 2-4x latency                  │
+# │ torch.compile    │ 1.3-2x faster                 │
+# │ Combined         │ 10-100x vs naive              │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 MEMORY OPTIMIZATION TECHNIQUES:
 
