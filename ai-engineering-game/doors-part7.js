@@ -29,22 +29,215 @@ doors.push({
 
 <div class="diagram"><svg viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="30" width="140" height="50" rx="8" fill="rgba(45,212,191,.08)" stroke="#2dd4bf" stroke-width="1.5"/><text x="90" y="50" text-anchor="middle" fill="#2dd4bf" font-size="10" font-weight="bold">INPUT</text><text x="90" y="68" text-anchor="middle" fill="#9a93b8" font-size="9">tokens in</text><defs><marker id="ar14" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L4,3 L0,6" fill="#34d399"/></marker></defs><line x1="160" y1="55" x2="200" y2="55" stroke="#34d399" stroke-width="2" marker-end="url(#ar14)"/><rect x="205" y="30" width="140" height="50" rx="8" fill="rgba(82,196,26,.08)" stroke="#52c41a" stroke-width="1.5"/><text x="275" y="50" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">PROCESS</text><text x="275" y="68" text-anchor="middle" fill="#9a93b8" font-size="9">per 1K tokens</text><line x1="345" y1="55" x2="385" y2="55" stroke="#34d399" stroke-width="2" marker-end="url(#ar14)"/><rect x="390" y="30" width="140" height="50" rx="8" fill="rgba(167,139,250,.08)" stroke="#a78bfa" stroke-width="1.5"/><text x="460" y="50" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="bold">COST</text><text x="460" y="68" text-anchor="middle" fill="#9a93b8" font-size="9">$ per request</text><text x="280" y="110" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">Monitor cost per request</text><text x="280" y="135" text-anchor="middle" fill="#9a93b8" font-size="9">100K context = 100K billed</text></svg></div>
 
-<div class="code-block">মডেল নির্বাচন — Model Selection:
+<div class="code-block"># ── STEP 1: Model selection — gold, silver, copper ──
+# Choosing the right model for each task.
 
-সোনা (Frontier: GPT-4, Claude Opus)
-  ✓ জটিল যুক্তি, আইনি বিশ্লেষণ, কোড লেখা
-  ✗ দাম ১০-৫০ গুণ বেশি প্রতি টোকেনে
-  → ব্যবহার: ৫% কাজে
+# MODEL TIERS (2024-2025):
 
-রূপা (Mid: GPT-4o-mini, Claude Haiku)
-  ✓ সাধারণ কাজ, সারাংশ, অনুবাদ, সহজ কোড
-  ✗ অত্যন্ত জটিল যুক্তিতে দুর্বল
-  → ব্যবহার: ৩০% কাজে
+model_tiers = {
+    "GOLD (Frontier: GPT-4o, Claude Sonnet/Opus)": {
+        "strength": "Complex reasoning, legal analysis, code generation",
+        "weakness": "10-50x more expensive per token",
+        "use_for": "5% of tasks (hard reasoning, creative, high-stakes)",
+        "cost": "~$10-15 per 1M tokens",
+    },
+    "SILVER (Mid: GPT-4o-mini, Claude Haiku, Llama-3-70B)": {
+        "strength": "General tasks, summarization, translation, simple code",
+        "weakness": "Struggles with very complex reasoning",
+        "use_for": "30% of tasks (moderate complexity)",
+        "cost": "~$0.15-0.30 per 1M tokens",
+    },
+    "COPPER (Small: Llama-3-8B, Phi-3, Gemma-2B)": {
+        "strength": "Classification, extraction, simple Q&A",
+        "weakness": "Cannot do deep analysis",
+        "use_for": "65% of tasks (routine, high-volume)",
+        "cost": "~$0.01-0.05 per 1M tokens (or self-hosted)",
+    },
+}
 
-তামা (Small: Llama-3-8B, Haiku-class)
-  ✓ শ্রেণীবিভাগ, ঠিকানা বের, সহজ প্রশ্ন
-  ✗ গভীর বিশ্লেষণে অক্ষম
-  → ব্যবহার: ৬৫% কাজে</div>
+for tier, info in model_tiers.items():
+    print(f"\n{tier}")
+    for key, value in info.items():
+        print(f"  {key}: {value}")
+
+# THE COST MISTAKE:
+# Using GPT-4 for EVERYTHING → 50x overpaying
+# → 65% of tasks need only copper-level models
+# → Route requests to the cheapest model that works
+
+# PYTHON (model router):
+class ModelRouter:
+    """Route requests to the cheapest capable model."""
+    def __init__(self):
+        self.routes = {
+            "classification": "copper",   # Llama-3-8B
+            "extraction": "copper",
+            "summarization": "silver",    # GPT-4o-mini
+            "translation": "silver",
+            "simple_code": "silver",
+            "complex_reasoning": "gold",  # GPT-4o
+            "creative_writing": "gold",
+            "legal_analysis": "gold",
+        }
+
+    def route(self, task_type):
+        tier = self.routes.get(task_type, "silver")
+        costs = {"gold": 15.0, "silver": 0.30, "copper": 0.05}
+        return {"tier": tier, "cost_per_1M": costs[tier]}
+
+router = ModelRouter()
+for task in ["classification", "summarization", "complex_reasoning"]:
+    result = router.route(task)
+    print(f"  {task} → {result['tier']} (${result['cost_per_1M']}/1M tokens)")
+
+# COST COMPARISON (1M requests, 500 tokens each):
+# All GPT-4:     1M * 500 * $15/1M  = $7,500
+# Smart routing: 65% copper + 30% silver + 5% gold = ~$200
+# → 37x cost reduction with model routing!</div>
+
+<div class="code-block"># ── STEP 2: Cost formula and optimization ──
+# Understanding LLM API costs.
+
+# COST FORMULA:
+# Cost = (input_tokens * input_price) + (output_tokens * output_price)
+
+# PYTHON (cost calculator):
+def calculate_cost(input_tokens, output_tokens, model="gpt-4o"):
+    """Calculate API cost for a request."""
+    prices = {
+        # per 1M tokens: (input, output)
+        "gpt-4o":         (2.50, 10.00),
+        "gpt-4o-mini":    (0.15, 0.60),
+        "claude-sonnet":  (3.00, 15.00),
+        "claude-haiku":   (0.25, 1.25),
+        "llama-3-70b":    (0.59, 0.79),  # via Groq/Together
+        "llama-3-8b":     (0.05, 0.08),  # via Groq
+    }
+
+    if model not in prices:
+        return f"Unknown model: {model}"
+
+    in_price, out_price = prices[model]
+    cost = (input_tokens / 1_000_000 * in_price) + \
+           (output_tokens / 1_000_000 * out_price)
+    return cost
+
+# Compare costs for a typical request (500 in, 200 out):
+print("COST PER REQUEST (500 input + 200 output tokens):")
+for model in ["gpt-4o", "gpt-4o-mini", "claude-haiku", "llama-3-8b"]:
+    cost = calculate_cost(500, 200, model)
+    print(f"  " + model.ljust(20) + ": $" + str(round(cost, 4)))
+
+# MONTHLY COST (10K requests/day):
+print("\nMONTHLY COST (10,000 requests/day, 30 days):")
+for model in ["gpt-4o", "gpt-4o-mini", "claude-haiku", "llama-3-8b"]:
+    daily = calculate_cost(500, 200, model) * 10_000
+    monthly = daily * 30
+    print(f"  " + model.ljust(20) + ": $" + str(round(monthly, 2)) + "/month")
+
+# THREE COST OPTIMIZATION TECHNIQUES:
+optimization = """
+1. MODEL ROUTING:
+   → Use cheap models for easy tasks (65% of traffic)
+   → Save expensive models for hard tasks (5%)
+   → 10-50x cost reduction
+
+2. CACHING:
+   → Store previous responses (exact match or semantic)
+   → Don't call API for questions you've already answered
+   → Redis cache: 30-60% of queries are cacheable
+   → Semantic cache: embed query → find similar → reuse
+
+3. PROMPT COMPRESSION:
+   → Remove unnecessary tokens from prompts
+   → Shorter system prompts (cache the common parts)
+   → Use prompt templates (reuse, don't repeat)
+   → Batch similar requests
+"""
+print(optimization)</div>
+
+<div class="code-block"># ── STEP 3: Structured output — JSON schema ──
+# Forcing LLMs to output parseable data.
+
+# PROBLEM: Free text is unpredictable
+# → Parsing LLM output with regex = fragile nightmare
+# → Different format every time → breaks your pipeline
+
+# SOLUTION: Structured output (JSON schema / function calling)
+
+# ❌ BAD (free text → parsing nightmare):
+bad_prompt = "Extract the user info from this text and list it."
+
+# ✅ GOOD (structured → always parseable):
+structured_prompt = """
+Extract user information and return as JSON:
+{
+  "name": "string",
+  "email": "string",
+  "age": "integer",
+  "interests": ["array of strings"]
+}
+
+Text: "Hi, I'm Rakib, rakib@example.com, 25 years old.
+       I love Python, ML, and hiking."
+
+Return ONLY valid JSON, nothing else.
+"""
+
+# PYTHON (structured output with OpenAI):
+import json
+
+def extract_structured(text, schema):
+    """Use function calling for guaranteed structured output."""
+    # Using OpenAI function calling (simplified):
+    response = openai_client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": text}],
+        response_format={"type": "json_object"},
+        functions=[{
+            "name": "extract_user",
+            "parameters": schema
+        }],
+        function_call={"name": "extract_user"}
+    )
+    return json.loads(response.choices[0].message.function_call.arguments)
+
+# JSON SCHEMA (guaranteed structure):
+user_schema = {
+    "type": "object",
+    "properties": {
+        "name": {"type": "string"},
+        "email": {"type": "string", "format": "email"},
+        "age": {"type": "integer", "minimum": 0, "maximum": 150},
+        "interests": {"type": "array", "items": {"type": "string"}}
+    },
+    "required": ["name", "email"],
+}
+
+# PYDANTIC (Python-native schema validation):
+from pydantic import BaseModel, EmailStr
+from typing import List
+
+class UserInfo(BaseModel):
+    name: str
+    email: EmailStr
+    age: int | None = None
+    interests: List[str] = []
+
+# Pydantic guarantees:
+# → email is valid format
+# → age is integer (or None)
+# → interests is list of strings
+# → If LLM output doesn't match → validation error → retry
+
+# THREE STRUCTURED OUTPUT METHODS:
+methods = {
+    "1. JSON MODE": "response_format=json_object (OpenAI)",
+    "2. FUNCTION CALLING": "Define function + schema → LLM fills args",
+    "3. PYDANTIC + INSTRUCTOR": "Python types → automatic validation + retry",
+}
+for method, desc in methods.items():
+    print(f"  {method}: {desc}")</div>
 
 <p>তুমি দেখলে — ৬৫% কাজে তামা যথেষ্ট। বণিক ভুল করছিল — প্রতিটা কাজে সোনা খরচ করছিল। দাম ৫০ গুণ বেশি।</p>
 <p class="en">You saw — 65% of work needs only copper. The merchant was wrong — spending gold on every task. Fifty times the cost.</p>
