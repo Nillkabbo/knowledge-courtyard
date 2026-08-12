@@ -26,25 +26,484 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Image+Text Misalignment:</strong> Model described the wrong image — encoder and decoder were mismatched. Fix: use pretrained aligned vision-language models.</div></div>
 
 
-<div class="code-block">Vision Encoders — How AI Sees:
+<div class="code-block"># ── STEP 1: Vision encoders — how AI sees ──
+# Turning pixels into understanding.
+
+vision_encoders = """
+VISION ENCODERS — HOW AI SEES:
 
 THE IMAGE PROBLEM:
-  ছবি = কোটি pixel
-  প্রতিটি pixel = ৩ number (RGB)
-  ২২৪*২২৪ image = ১৫০,৫২৮ numbers
-  
-  → সরাসরি neural network-এ? অসম্ভব বড়।
-  → দরকার: ছবিকে ছোট ছোট ভাগে করা
+  Image = millions of pixels, each pixel = 3 numbers (RGB)
+  224x224 image = 150,528 numbers
+  → Too large for direct neural network processing
+  → Need to break image into manageable pieces
 
 ViT (Vision Transformer, Dosovitskiy et al., 2020):
 
-  # ─────────────────────────────────────# 
-  #  Step ১: PATCHING                    # 
-  #  ছবি → ১৬*১৬ pixel patches          # 
-  #  ২২৪*২২৪ → ১৯৬ patches              # 
-  #  প্রতিটা patch = ১টা "token"        # 
-  #  (টেক্সটের শব্দের মতো)               # 
-  # ─────────────────────────────────────# 
+  Step 1: PATCHING
+    → Split image into 16x16 pixel patches
+    → 224x224 → 196 patches
+    → Each patch = one "token" (like a word in text)
+
+  Step 2: LINEAR PROJECTION
+    → Each patch (768 values) → embedding vector (768 dim)
+    → Exactly like text embeddings!
+
+  Step 3: POSITIONAL ENCODING
+    → Add position to each patch: "top-left", "center-right"
+
+  Step 4: TRANSFORMER ENCODER
+    → Patch embeddings → multi-head attention
+    → Patches "look at" each other → context
+
+  Step 5: OUTPUT
+    → Each patch has a contextualized embedding
+    → Full image understanding
+
+  Key insight: ViT = same as text Transformer, but "tokens" = image patches
+
+CLIP (Contrastive Language-Image Pre-training, Radford et al., 2021):
+  Goal: bring images and text into the SAME embedding space
+
+  Training:
+    [Image] → Image Encoder → emb_I
+    [Text]  → Text Encoder  → emb_T
+    → Matching pairs (image + correct caption) should be CLOSE
+    → Non-matching pairs should be FAR
+    → Contrastive loss: maximize matching, minimize non-matching
+
+  Result:
+    → Image and text in same vector space!
+    → "a cat playing with yarn" → CLIP finds matching images
+    → Any image → CLIP can describe it
+    → Zero-shot image classification (no training needed!)
+
+PYTHON (CLIP):
+  from transformers import CLIPModel, CLIPProcessor
+
+  model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
+  processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+
+  from PIL import Image
+
+  image = Image.open("photo.jpg")
+  texts = ["a cat", "a dog", "a car", "a house"]
+
+  inputs = processor(text=texts, images=image, return_tensors="pt", padding=True)
+  outputs = model(**inputs)
+
+  # Cosine similarity between image and each text:
+  probs = outputs.logits_per_image.softmax(dim=-1)
+  for text, prob in zip(texts, probs[0]):
+      print(f"{text}: {prob.item():.4f}")
+  # "a cat": 0.92, "a dog": 0.05, ...
+
+CLIP APPLICATIONS:
+  → Image search: "find photos of [concept]"
+  → Content moderation: detect harmful images
+  → Image generation guidance (DALL-E uses CLIP)
+  → Zero-shot classification: no training needed
+  → RAG for images: retrieve by text description
+
+VISION MODEL FAMILIES (2024-2025):
+  ViT (Google): foundation vision encoder
+  SigLIP (Google): improved CLIP, sigmoid loss
+  DINOv2 (Meta): self-supervised, excellent features
+  EVA-CLIP: improved CLIP at scale
+  OpenCLIP: open-source CLIP training
+"""
+
+print(vision_encoders)</div>
+
+<div class="code-block"># ── STEP 2: Vision-Language Models (VLMs) ──
+# AI that sees and speaks.
+
+vlms = """
+VISION-LANGUAGE MODELS (VLMs):
+
+VLMs combine vision encoder + LLM = AI that can see images AND generate text.
+
+ARCHITECTURE:
+  Image → ViT/CLIP → image embeddings
+                          |
+  Text → tokenizer → text embeddings
+                          |
+  Both → cross-modal fusion → LLM decoder → text response
+
+  Example: User uploads a photo and asks "What's in this image?"
+  → VLM sees image + question → generates: "I see a cat on a table"
+
+MAJOR VLMs (2024-2025):
+
+1. GPT-4o (OpenAI):
+   → Native multimodal (text + image + audio)
+   → Excellent at understanding charts, diagrams, screenshots
+   → Can read text from images (OCR capability)
+
+2. Claude 3.5 Sonnet (Anthropic):
+   → Strong visual reasoning
+   → Excellent at UI understanding (computer use)
+   → Can analyze complex diagrams and charts
+
+3. Gemini (Google):
+   → Native multimodal from training
+   → Handles video, multiple images
+   → Large context window (up to 2M tokens)
+
+4. LLaVA (open-source):
+   → ViT + Llama = open VLM
+   → Fine-tunable for specific domains
+   → Good for privacy-sensitive applications
+
+5. Qwen-VL (Alibaba):
+   → Multilingual VLM
+   → Strong document understanding
+   → OCR capability
+
+PYTHON (GPT-4o vision):
+  from openai import OpenAI
+  import base64
+
+  client = OpenAI()
+
+  def encode_image(path):
+      with open(path, "rb") as f:
+          return base64.b64encode(f.read()).decode()
+
+  img_b64 = encode_image("photo.jpg")
+
+  response = client.chat.completions.create(
+      model="gpt-4o",
+      messages=[{
+          "role": "user",
+          "content": [
+              {"type": "text", "text": "What's in this image?"},
+              {"type": "image_url", "image_url": {
+                  "url": f"data:image/jpeg;base64,{img_b64}"
+              }}
+          ]
+      }],
+      max_tokens=300
+  )
+  print(response.choices[0].message.content)
+  # "I see a golden retriever sitting on a green lawn..."
+
+VLM CAPABILITIES:
+  → Image description and Q&A
+  → Chart/diagram analysis
+  → OCR (reading text from images)
+  → UI understanding (for computer use)
+  → Code from screenshots
+  → Visual reasoning (spatial relationships)
+  → Medical imaging analysis (with fine-tuning)
+
+VLM LIMITATIONS:
+  → Hallucination: may invent things not in image
+  → Spatial reasoning: struggles with exact positions
+  → Counting: poor at counting many objects
+  → Fine details: may miss small text/features
+  → Video: temporal understanding still developing
+"""
+
+print(vlms)</div>
+
+<div class="code-block"># ── STEP 3: Image generation ──
+# Words to pixels.
+
+image_gen = """
+IMAGE GENERATION — WORDS TO PIXELS:
+
+Turn text descriptions into images using diffusion models.
+
+DIFFUSION MODELS (2024-2025):
+  → Start with random noise
+  → Gradually "denoise" toward target image
+  → Guided by text conditioning (CLIP/T5 encoder)
+
+MAJOR MODELS:
+
+1. DALL-E 3 (OpenAI):
+   → Integrated with ChatGPT (conversational prompting)
+   → Excellent prompt adherence
+   → Strong at text rendering in images
+
+2. Midjourney v6:
+   → Best artistic/aesthetic quality
+   → Style, lighting, composition control
+   → Discord/website interface
+
+3. Stable Diffusion 3 (Stability AI):
+   → Open-source, local deployment
+   → Fine-tunable (LoRA, ControlNet)
+   → Large ecosystem of community models
+
+4. Flux (Black Forest Labs, 2024):
+   → Newer, high quality
+   → Open weights available
+   → Strong text rendering
+
+5. Imagen 3 (Google):
+   → Photorealistic quality
+   → Available via Google AI
+
+PYTHON (DALL-E 3 via API):
+  from openai import OpenAI
+  client = OpenAI()
+
+  response = client.images.generate(
+      model="dall-e-3",
+      prompt="A serene Bengali village at sunset, watercolor style",
+      size="1024x1024",
+      quality="hd",
+      n=1
+  )
+  image_url = response.data[0].url
+  print(f"Image generated: {image_url}")
+
+PYTHON (Stable Diffusion local):
+  from diffusers import StableDiffusionPipeline
+  import torch
+
+  pipe = StableDiffusionPipeline.from_pretrained(
+      "stabilityai/stable-diffusion-xl-base-1.0",
+      torch_dtype=torch.float16
+  ).to("cuda")
+
+  image = pipe(
+      "a cat wearing a spacesuit, realistic photo",
+      num_inference_steps=30,
+      guidance_scale=7.5
+  ).images[0]
+
+  image.save("cat_astronaut.png")
+
+IMAGE EDITING:
+  → Inpainting: edit specific regions
+  → Outpainting: extend beyond original
+  → Style transfer: apply artistic style
+  → Img2img: transform existing image
+  → ControlNet: control pose, edges, depth
+
+PYTHON (inpainting):
+  from diffusers import StableDiffusionInpaintPipeline
+
+  pipe = StableDiffusionInpaintPipeline.from_pretrained(...)
+  # Edit a region of an image:
+  result = pipe(
+      prompt="a red car",
+      image=original_image,
+      mask_image=mask,  # white = edit, black = keep
+      num_inference_steps=30
+  ).images[0]
+"""
+
+print(image_gen)</div>
+
+<div class="code-block"># ── STEP 4: Audio processing ──
+# AI that hears.
+
+audio = """
+AUDIO PROCESSING — AI THAT HEARS:
+
+SPEECH-TO-TEXT (ASR - Automatic Speech Recognition):
+
+1. WHISPER (OpenAI):
+   → 680K hours of multilingual training
+   → 99+ languages
+   → Excellent accuracy, even with noise/accents
+   → Open-source, free
+
+2. WAV2VEC 2.0 (Meta):
+   → Self-supervised pre-training
+   → Fine-tunable for specific languages/dialects
+
+PYTHON (Whisper):
+  import whisper
+
+  model = whisper.load_model("base")  # tiny, base, small, medium, large
+  result = model.transcribe("audio.mp3")
+  print(result["text"])
+  # "Hello, this is a test of the Whisper model."
+
+  # With timestamps:
+  for segment in result["segments"]:
+      print(f"[{segment['start']:.1f}s] {segment['text']}")
+
+TEXT-TO-SPEECH (TTS):
+
+1. ELEVENLABS:
+   → Best quality voice cloning
+   → Multiple languages
+   → Emotional control
+
+2. OPENAI TTS:
+   → 6 natural voices
+   → Fast, API-based
+
+3. BARK (open-source):
+   → Local deployment
+   → Multilingual, sound effects
+
+4. COQUI XTTS:
+   → Open-source voice cloning
+   → 17+ languages
+
+PYTHON (OpenAI TTS):
+  from openai import OpenAI
+  client = OpenAI()
+
+  response = client.audio.speech.create(
+      model="tts-1",
+      voice="alloy",
+      input="Hello! How are you today?"
+  )
+  response.stream_to_file("output.mp3")
+
+MUSIC GENERATION:
+
+1. SUNO AI:
+   → Full songs with vocals
+   → Multiple genres, styles
+
+2. UDIO:
+   → High quality music generation
+   → Instrumental + vocals
+
+3. AUDIOCRAFT (Meta, open-source):
+   → MusicGen: instrumental music
+   → AudioGen: sound effects
+
+PYTHON (MusicGen):
+  from audiocraft.models import MusicGen
+  import torch
+
+  model = MusicGen.get_pretrained("facebook/musicgen-large")
+  model.set_generation_params(duration=10)
+
+  wav = model.generate(["happy jazz piano with drums"])
+  # Save to file...
+
+AUDIO ANALYSIS:
+  → Speaker diarization (who spoke when)
+  → Emotion detection from voice
+  → Music genre classification
+  → Sound event detection (dog bark, siren, etc.)
+"""
+
+print(audio)</div>
+
+<div class="code-block"># ── STEP 5: Video understanding ──
+# AI that watches.
+
+video = """
+VIDEO UNDERSTANDING — AI THAT WATCHES:
+
+Video = sequence of images over time → temporal reasoning needed.
+
+CAPABILITIES:
+  → Video description: "What happens in this video?"
+  → Video Q&A: "What color is the car at 0:15?"
+  → Action recognition: "running", "cooking", "playing"
+  → Temporal understanding: cause and effect over time
+  → Anomaly detection: unusual events
+
+MAJOR MODELS:
+
+1. GEMINI 1.5 PRO (Google):
+   → Handles up to 1 hour of video
+   → 2M token context window
+   → Best video understanding available
+
+2. GPT-4O (OpenAI):
+   → Processes video frames
+   → Limited duration (seconds to minutes)
+
+3. VIDEO-LLAVA (open-source):
+   → Video + LLM
+   → Fine-tunable
+
+PYTHON (Gemini video understanding):
+  import google.generativeai as genai
+
+  model = genai.GenerativeModel("gemini-1.5-pro")
+
+  # Upload video:
+  video_file = genai.upload_file("video.mp4")
+
+  response = model.generate_content([
+      video_file,
+      "Summarize what happens in this video."
+  ])
+  print(response.text)
+
+VIDEO PROCESSING PIPELINE:
+  1. Extract frames (e.g., 1 frame per second)
+  2. Encode each frame with vision encoder
+  3. Add temporal position encoding (frame order)
+  4. Feed sequence to LLM with cross-attention
+  5. Generate text about the video
+
+CHALLENGES:
+  → High compute (many frames = many tokens)
+  → Long videos: context window limits
+  → Temporal reasoning: hard to understand causality
+  → Fine-grained actions: "opening a door" vs "closing"
+  → Video generation: Sora (OpenAI) is leading edge
+
+VIDEO GENERATION (2024-2025):
+  → SORA (OpenAI): text-to-video, up to 1 minute
+  → RUNWAY Gen-3: video editing and generation
+  → KLING (Kuaishou): open video generation
+  → Stable Video Diffusion: open-source
+
+APPLICATIONS:
+  → Security: anomaly detection in surveillance
+  → Sports: automatic highlight detection
+  → Education: video summarization
+  → Accessibility: video description for blind users
+  → Content moderation: detect harmful video content
+"""
+
+print(video)</div>
+
+<div class="code-block"># ── STEP 6: Multimodal best practices ──
+# Building production multimodal systems.
+
+best_practices = [
+    "Choose right VLM for task (GPT-4o for complex, LLaVA for privacy)",
+    "Resize/compress images before sending (reduce latency + cost)",
+    "Use CLIP for image search and zero-shot classification",
+    "Whisper for STT: best open-source accuracy",
+    "Cache image embeddings to avoid re-encoding",
+    "Batch image processing for throughput",
+    "Handle multimodal errors (bad image, corrupt audio)",
+    "Use CLIP similarity for deduplication",
+    "Rate limit image/audio generation (expensive!)",
+    "OCR: use VLM for complex, Tesseract for simple text",
+    "Test with diverse images (lighting, angles, quality)",
+    "Video: sample frames strategically (1fps for most tasks)",
+    "Audio: noise reduction before Whisper for better accuracy",
+    "Store multimodal metadata (caption, tags, embeddings)",
+    "Consider edge deployment for privacy-sensitive multimodal",
+]
+
+print("MULTIMODAL AI BEST PRACTICES:")
+for practice in best_practices:
+    print(f"  ☐ {practice}")
+
+# SUMMARY TABLE:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Modality         │ Tool/Model                    │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Vision (encode)  │ CLIP, ViT, DINOv2             │
+# │ VLM (understand) │ GPT-4o, Claude 3.5, Gemini    │
+# │ Image gen        │ DALL-E 3, Stable Diffusion    │
+# │ Speech-to-text   │ Whisper (OpenAI)              │
+# │ Text-to-speech   │ ElevenLabs, OpenAI TTS        │
+# │ Music gen        │ Suno, AudioCraft              │
+# │ Video understand │ Gemini 1.5 Pro                │
+# │ Video gen        │ Sora, Runway Gen-3            │
+# └──────────────────┴──────────────────────────────────┘</div>
   #  Step ২: LINEAR PROJECTION           # 
   #  প্রতিটা patch (৭৬৮ values) →       # 
   #  embedding vector (৭৬৮ dim)          # 

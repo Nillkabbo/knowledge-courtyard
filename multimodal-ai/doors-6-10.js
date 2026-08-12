@@ -25,27 +25,460 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Resolution Mismatch:</strong> Model trained on 224x224, deployed on 4K photos — performance collapsed. Fix: consistent preprocessing.</div></div>
 
 
-<div class="code-block">Cross-Modal Alignment — One World, Many Senses:
+<div class="code-block"># ── STEP 1: Cross-modal alignment ──
+# One world, many senses.
+
+alignment = """
+CROSS-MODAL ALIGNMENT — ONE WORLD, MANY SENSES:
 
 THE PROBLEM:
-  Image embedding space: ৭৬৮ dim
-  Text embedding space: ৭৬৮ dim
+  Image embedding space: 768 dim
+  Text embedding space: 768 dim
   → BUT they are DIFFERENT spaces!
   → "cat" text embedding ≠ cat image embedding
-  
+
   Need: align the spaces
-  → "a cat" text ~= cat image (close in shared space)
+  → "a cat" text ~ cat image (close in shared space)
 
 ALIGNMENT METHODS:
 
-১. CONTRASTIVE LEARNING (CLIP)
-  → matching pairs → pull together
-  → non-matching pairs → push apart
-  
-  একই vector space-এ:
-    "a dog playing" ~= [dog image]
-    "a cat sleeping" ~= [cat image]
-    "a dog" vs [cat image] → far apart
+1. CONTRASTIVE LEARNING (CLIP):
+   → Matching pairs → pull together
+   → Non-matching pairs → push apart
+   → "a dog playing" ~= [dog image] in shared space
+
+2. GENERATIVE ALIGNMENT (BLIP, Flamingo):
+   → Cross-attention between modalities
+   → Text attends to image regions, image attends to text tokens
+   → Deep, joint understanding
+
+3. PROJECTION LAYER (LLaVA):
+   → Train MLP to project image embeddings → text embedding space
+   → Lightweight, works with any LLM
+
+SHARED EMBEDDING SPACE:
+  After alignment, all modalities live in one vector space:
+  → "a dog" (text) ↔ [dog image]: close
+  → "a cat" (text) ↔ [cat image]: close
+  → dog ↔ cat: moderate distance
+  → dog ↔ car: far apart
+  → Cosine similarity = semantic match
+
+MULTIMODAL RETRIEVAL:
+  Text → Image: "sunset over mountains" → search image DB
+  Image → Text: [birthday cake photo] → find recipes
+  Image → Image: [reference photo] → find similar photos
+  Audio → Text: [bird song] → "yellow warbler"
+
+ALIGNMENT QUALITY:
+  CLIP zero-shot accuracy: ~76% (ImageNet)
+  SigLIP: ~77% (improved)
+  Fine-tuned domain CLIP: 85-90%
+  → Good but not perfect, domain-specific fine-tuning helps
+
+TRAINING DATA FOR ALIGNMENT:
+  → (image, caption) pairs: millions needed
+  → LAION-5B: 5 billion image-text pairs
+  → COCO: 330K images with captions
+  → Quality > quantity: clean pairs matter
+
+PYTHON (multimodal search with CLIP):
+  from transformers import CLIPModel, CLIPProcessor
+  from PIL import Image
+  import chromadb
+
+  model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
+  processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+
+  # Embed images and text in same space:
+  def embed_image(img_path):
+      img = Image.open(img_path)
+      inputs = processor(images=img, return_tensors="pt")
+      return model.get_image_features(**inputs).detach().numpy()[0]
+
+  def embed_text(text):
+      inputs = processor(text=text, return_tensors="pt")
+      return model.get_text_features(**inputs).detach().numpy()[0]
+
+  # Store image embeddings in vector DB:
+  db = chromadb.Client().create_collection("images")
+  db.add(embeddings=[embed_image("cat.jpg")], ids=["cat"])
+
+  # Search by text:
+  query = embed_text("a furry animal")
+  results = db.query(query_embeddings=[query], n_results=3)
+  # Returns: cat.jpg (closest match!)
+"""
+
+print(alignment)</div>
+
+<div class="code-block"># ── STEP 2: Multimodal embeddings & RAG ──
+# All senses search.
+
+mm_rag = """
+MULTIMODAL EMBEDDINGS & RAG:
+
+Traditional RAG: text query → text retrieval → text answer
+Multimodal RAG: ANY modality query → ANY modality retrieval → text answer
+
+MULTIMODAL RAG PIPELINE:
+
+1. INGESTION:
+   → Documents: text + images + tables + charts
+   → Embed each modality with CLIP (shared space)
+   → Store all embeddings in vector DB with metadata
+
+2. RETRIEVAL:
+   → Text query: "explain this diagram" + image
+   → Embed query (text + image) → search vector DB
+   → Retrieve: relevant text chunks + relevant images
+
+3. GENERATION:
+   → Feed retrieved text + images to VLM (GPT-4o, Gemini)
+   → VLM generates answer using both modalities
+
+PYTHON (multimodal RAG):
+  from transformers import CLIPModel, CLIPProcessor
+  from PIL import Image
+  import chromadb
+
+  # CLIP for shared embedding space:
+  model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
+  processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+
+  # Vector DB with both images and text:
+  db = chromadb.Client().create_collection("multimodal_docs")
+
+  # Add text chunks:
+  for chunk in text_chunks:
+      emb = embed_text(chunk)
+      db.add(embeddings=[emb], documents=[chunk],
+             metadatas=[{"type": "text"}], ids=[...])
+
+  # Add images:
+  for img_path in images:
+      emb = embed_image(img_path)
+      db.add(embeddings=[emb], documents=[img_path],
+             metadatas=[{"type": "image"}], ids=[...])
+
+  # Query with text:
+  results = db.query(query_embeddings=[embed_text("revenue chart")], n_results=5)
+  # Returns both text about revenue AND the actual chart image!
+
+  # Feed to VLM:
+  retrieved_images = [r for r in results if r['type'] == 'image']
+  retrieved_text = [r for r in results if r['type'] == 'text']
+
+  response = vlm.generate(
+      images=retrieved_images,
+      text=retrieved_text,
+      question="What does the revenue chart show?"
+  )
+
+USE CASES:
+  → Medical: X-ray + patient history → diagnosis
+  → E-commerce: product image + description → recommendations
+  → Education: diagrams + text → explanations
+  → Legal: evidence photos + case documents → analysis
+  → Manufacturing: defect images + specs → quality reports
+
+CHALLENGES:
+  → Mixed-modality retrieval: some queries match images, some text
+  → Embedding quality: CLIP may not capture fine details
+  → Context length: images consume many tokens
+  → Cross-modal reasoning: connecting image content to text facts
+"""
+
+print(mm_rag)</div>
+
+<div class="code-block"># ── STEP 3: Multimodal applications ──
+# Real-world impact.
+
+applications = """
+MULTIMODAL APPLICATIONS — REAL-WORLD IMPACT:
+
+1. HEALTHCARE:
+   → Medical imaging analysis (X-ray, MRI, CT)
+   → VLM reads scan + patient history → suggests diagnosis
+   → Pathology slide analysis
+   → Surgical assistance (real-time video analysis)
+
+2. E-COMMERCE:
+   → Visual search: "find similar products"
+   → Product description generation from images
+   → Virtual try-on (clothing, glasses)
+   → Review analysis (text + customer photos)
+
+3. EDUCATION:
+   → Diagram understanding: "explain this diagram"
+   → Math problem solving from photos
+   → Language learning with visual context
+   → Interactive tutors (see student's work)
+
+4. ACCESSIBILITY:
+   → Image description for blind users
+   → Sign language recognition
+   → Screen reader enhancement (understands images)
+   → Video captioning for deaf users
+
+5. CONTENT MODERATION:
+   → Detect harmful images + text together
+   → Understand memes (image + text = meaning)
+   → Context-aware moderation
+
+6. AUTOMOTIVE / ROBOTICS:
+   → Self-driving: camera + lidar + radar fusion
+   → Robot navigation: vision + spatial understanding
+   → Industrial inspection: defect detection
+
+7. CREATIVE:
+   → Image editing from text instructions
+   → Video generation from storyboards
+   → Music + image sync (music video creation)
+   → Architectural rendering from sketches
+
+8. DOCUMENT AI:
+   → OCR + understanding (forms, invoices, receipts)
+   → Table extraction from images
+   → Chart understanding ("read this graph")
+   → Handwriting recognition
+
+PYTHON (healthcare example):
+  from openai import OpenAI
+  import base64
+
+  client = OpenAI()
+
+  # X-ray image + patient history → diagnosis suggestion
+  response = client.chat.completions.create(
+      model="gpt-4o",
+      messages=[{
+          "role": "user",
+          "content": [
+              {"type": "text", "text": \"\"\"
+              Patient: 55-year-old male, chronic cough, smoker.
+              What do you observe in this chest X-ray?
+              Note: This is educational only, not medical advice.
+              \"\"\"},
+              {"type": "image_url", "image_url": {
+                  "url": f"data:image/jpeg;base64,{xray_b64}"
+              }}
+          ]
+      }]
+  )
+  print(response.choices[0].message.content)
+"""
+
+print(applications)</div>
+
+<div class="code-block"># ── STEP 4: Multimodal challenges ──
+# Know your limits.
+
+challenges = """
+MULTIMODAL CHALLENGES — KNOW YOUR LIMITS:
+
+1. HALLUCINATION:
+   → VLM invents things not in the image
+   → "I see a person" when there is none
+   → Worse with low-quality/ambiguous images
+   → Fix: grounding, confidence calibration
+
+2. SPATIAL REASONING:
+   → "Is the cup to the left or right of the plate?"
+   → VLMs struggle with precise spatial relationships
+   → Counting objects: poor above 5-10 items
+
+3. FINE DETAIL:
+   → Small text in images often missed
+   → Thin lines, subtle patterns lost
+   → High-resolution needed for document analysis
+
+4. BIAS:
+   → CLIP: gender/racial biases from training data
+   → "doctor" → male images, "nurse" → female images
+   → Fix: diverse training data, debiasing
+
+5. COMPUTE COST:
+   → Images: 1000+ tokens per image (expensive!)
+   → Video: 1 frame/sec × 1 hour = 3600 frames
+   → Batch processing: GPU-intensive
+
+6. TEMPORAL REASONING (video):
+   → Understanding cause and effect over time
+   → "Why did the person pick up the phone?"
+   → Still an active research area
+
+7. CROSS-MODAL REASONING:
+   → Connect visual content to text knowledge
+   → "This graph shows revenue growth" (needs finance knowledge + vision)
+   → Requires strong base model
+
+8. DATA QUALITY:
+   → Garbage in, garbage out
+   → Blurry, low-light, unusual angles → poor performance
+   → Augmentation helps but doesn't fully solve
+
+MITIGATION STRATEGIES:
+  → High-resolution mode for detail tasks
+  → Chain-of-thought prompting for reasoning
+  → Ensemble: multiple VLMs vote on answer
+  → Fine-tune for specific domain
+  → Human-in-the-loop for critical decisions
+  → Confidence thresholds (reject low-confidence)
+"""
+
+print(challenges)</div>
+
+<div class="code-block"># ── STEP 5: Complete multimodal architecture ──
+# Full production system.
+
+architecture = """
+COMPLETE MULTIMODAL AI ARCHITECTURE:
+
+COMPONENTS:
+
+1. INPUT PROCESSING:
+   → Image: resize, compress, encode (base64 or URL)
+   → Audio: noise reduction, chunk if long
+   → Video: frame extraction, temporal sampling
+   → Text: tokenize, embed
+
+2. EMBEDDING LAYER:
+   → CLIP: shared text + image space
+   → Whisper: audio → text
+   → ViT: detailed image features
+   → Audio embeddings for sound classification
+
+3. STORAGE:
+   → Vector DB: multimodal embeddings (Chroma, Qdrant)
+   → Object storage: raw images, audio, video files
+   → Metadata DB: modality, source, tags, timestamps
+
+4. RETRIEVAL:
+   → Cross-modal search: text → images, image → text
+   → Hybrid: semantic + keyword + metadata filters
+   → Reranking: cross-encoder for precision
+
+5. GENERATION:
+   → VLM (GPT-4o, Gemini) for multimodal reasoning
+   → Image generation (DALL-E, Stable Diffusion)
+   → TTS for voice output
+
+6. OUTPUT:
+   → Text response with image references
+   → Generated images/diagrams
+   → Voice response (TTS)
+   → Structured data (JSON)
+
+PYTHON (production multimodal pipeline):
+  class MultimodalPipeline:
+      def __init__(self):
+          self.clip = CLIPModel.from_pretrained(...)
+          self.whisper = whisper.load_model("base")
+          self.vlm = OpenAI()  # GPT-4o
+          self.vdb = chromadb.Client().create_collection("mm")
+
+      def ingest(self, files):
+          for f in files:
+              if f.endswith(('.jpg', '.png')):
+                  emb = self.clip_embed_image(f)
+                  self.vdb.add(embeddings=[emb], ids=[f],
+                               metadatas=[{"type": "image"}])
+              elif f.endswith(('.mp3', '.wav')):
+                  text = self.whisper.transcribe(f)["text"]
+                  emb = self.clip_embed_text(text)
+                  self.vdb.add(embeddings=[emb], documents=[text],
+                               metadatas=[{"type": "audio_transcript"}])
+              else:  # text
+                  emb = self.clip_embed_text(f)
+                  self.vdb.add(embeddings=[emb], documents=[f],
+                               metadatas=[{"type": "text"}])
+
+      async def query(self, question, image=None):
+          # Retrieve relevant content:
+          q_emb = self.clip_embed_text(question)
+          results = self.vdb.query(query_embeddings=[q_emb], n_results=5)
+
+          # Build prompt for VLM:
+          content = [{"type": "text", "text": question}]
+          if image:
+              content.append({"type": "image_url", "image_url": {"url": image}})
+
+          response = self.vlm.chat.completions.create(
+              model="gpt-4o",
+              messages=[{"role": "user", "content": content}]
+          )
+          return response.choices[0].message.content
+
+DEPLOYMENT:
+  → API: FastAPI with multipart upload support
+  → Storage: S3 for images/audio, vector DB for embeddings
+  → Processing: Celery workers for async ingestion
+  → CDN: for serving images to clients
+"""
+
+print(architecture)</div>
+
+<div class="code-block"># ── STEP 6: Multimodal AI journey ──
+# Your path to multimodal mastery.
+
+journey = """
+YOUR MULTIMODAL AI JOURNEY:
+
+You started seeing AI as "text in, text out."
+You finish seeing AI THAT SEES, HEARS, SPEAKS, AND CREATES:
+
+WHAT YOU'VE MASTERED:
+  ✅ Vision encoders (ViT, CLIP, DINOv2)
+  ✅ Vision-Language Models (GPT-4o, Claude, Gemini, LLaVA)
+  ✅ Image generation (DALL-E, Stable Diffusion, Flux)
+  ✅ Audio processing (Whisper STT, TTS, MusicGen)
+  ✅ Video understanding (Gemini, frame extraction)
+  ✅ Cross-modal alignment (shared embedding space)
+  ✅ Multimodal RAG (search across all modalities)
+  ✅ Real-world applications (healthcare, e-commerce, education)
+  ✅ Challenges (hallucination, spatial reasoning, cost)
+  ✅ Complete architecture (ingestion → retrieval → generation)
+
+THE MULTIMODAL ENGINEER'S MINDSET:
+  1. "What modalities are involved?" (text, image, audio, video)
+  2. "How do I align them?" (CLIP, shared embedding space)
+  3. "What model handles this?" (VLM, Whisper, diffusion)
+  4. "What's the cost?" (images = many tokens)
+  5. "What can go wrong?" (hallucination, bias, detail loss)
+
+"The future of AI is not text-only.
+ It is multimodal: seeing, hearing, speaking.
+ Like humans experience the world."
+ — Multimodal AI vision
+
+WHAT TO STUDY NEXT:
+  → Build a multimodal RAG system
+  → Fine-tune LLaVA for your domain
+  → Explore Stable Diffusion + ControlNet
+  → Try Whisper for podcast transcription
+  → Study CLIP paper (Radford et al., 2021)
+  → Follow: Sora, Gemini updates, VLM benchmarks
+
+Welcome to multimodal AI mastery.
+"""
+
+print(journey)
+
+# FINAL SUMMARY:
+# ┌──────────────────┬──────────────────────────────────┐
+# │ Modality         │ Tool/Model                    │
+# ├──────────────────┼──────────────────────────────────┤
+# │ Vision encode    │ CLIP, ViT, DINOv2             │
+# │ VLM              │ GPT-4o, Claude 3.5, Gemini    │
+# │ Image gen        │ DALL-E 3, SD, Flux            │
+# │ Speech-to-text   │ Whisper                       │
+# │ Text-to-speech   │ ElevenLabs, OpenAI TTS        │
+# │ Music gen        │ Suno, AudioCraft/MusicGen     │
+# │ Video understand │ Gemini 1.5 Pro                │
+# │ Video gen        │ Sora, Runway Gen-3            │
+# │ Cross-modal RAG  │ CLIP + Chroma + VLM           │
+# └──────────────────┴──────────────────────────────────┘</div>
 
 ২. GENERATIVE ALIGNMENT (BLIP, Flamingo)
   → cross-attention between modalities
