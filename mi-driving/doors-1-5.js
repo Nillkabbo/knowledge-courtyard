@@ -256,34 +256,107 @@ LEVEL 2 RESTRICTIONS:
 <div class="dialogue">"একটা জিনিস মনে রাখো," কর্মকর্তা বললেন। "Knowledge test — সেটাই তোমার লেখিত পরীক্ষা। ৫০টা প্রশ্ন, দুই ভাগে: ২৫টা ট্রাফিক সাইন নিয়ে, ২৫টা ট্রাফিক নিয়ম নিয়ে। প্রতিটা ভাগে আলাদাভাবে কমপক্ষে ২০টা (৮০%) সঠিক করতে হবে — শুধু মোট ৪০/৫০ হলেই চলবে না, দুই ভাগেই আলাদা পাশ করতে হবে। এই বই তোমাকে প্রস্তুত করবে।"</div>
 <div class="dialogue en">"One thing to remember," the officer said. "The knowledge test — that's your written exam. 50 questions, split into two sections: 25 on traffic signs, 25 on traffic rules. You need at least 20 correct (80%) in EACH section separately — 40/50 overall isn't enough if one section falls short. This book will prepare you."</div>
 
-<div class="code-block">🏢 SOS OFFICE-এ যাওয়ার দিন — ব্যবহারিক প্রস্তুতি
-# — — — — — — — — — — — — — — — — — — — — — —
+<div class="code-block"># ── STEP 9: SOS office visit — practical preparation ──
+# What to bring and what to expect at the Secretary of State office.
 
-  📄 সাথে যা নেবে:
-  ✦ Identity: birth certificate বা valid passport
-  ✦ Social Security proof (SSN card/W-2)
-  ✦ Michigan residency-র ২টা প্রমাণ
-    (utility bill, lease, bank statement...)
-  ✦ Under 18 হলে: parent/guardian সাথে + সই
-  💡 আগে online appointment নিলে লাইন বাঁচে
+# DOCUMENTS CHECKLIST (what to bring):
 
-  👁️ VISION TEST — যা মাপা হয়:
-  ✦ কমপক্ষে 20/40 acuity (এক বা দুই চোখে)
-  ✦ Peripheral vision কমপক্ষে 110°
-  ✦ চশমা/লেন্স দিয়ে পাশ করলে → license-এ
-    "corrective lenses" restriction লেখা হবে —
-    মানে চশমা ছাড়া চালানো বেআইনি
+documents = {
+    "Identity (1 required)": [
+        "Birth certificate (certified copy)",
+        "Valid US passport",
+        "Permanent resident card",
+        "Employment authorization document",
+    ],
+    "Social Security (1 required)": [
+        "SSN card",
+        "W-2 form with SSN",
+        "Pay stub with SSN",
+    ],
+    "Michigan Residency (2 required)": [
+        "Utility bill (gas, electric, water)",
+        "Lease or mortgage document",
+        "Bank statement",
+        "Insurance policy",
+        "School transcript",
+    ],
+    "If under 18": [
+        "Parent or legal guardian must accompany you",
+        "Parent must sign the application",
+        "Segment 1 Certificate of Completion",
+    ],
+}
 
-  💻 ONLINE KNOWLEDGE TEST (নতুন সুবিধা):
-  ✦ ১৮+ আবেদনকারীরা এখন SOS-এর মাধ্যমে
-    online-এও knowledge test দিতে পারে —
-    ঘরে বসে! (SOS website-এ বিস্তারিত)
+for doc_type, items in documents.items():
+    print(f"\n{doc_type}:")
+    for item in items:
+        print(f"  → {item}")
 
-  😰 FAIL করলে কী হয়? — কিছুই ভয়ংকর না:
-  ✦ আবার দেওয়া যায় — অপেক্ষা সামান্য
-  ✦ যে section fail, শুধু সেটাই আবার
-  ✦ বেশিরভাগ মানুষ ২য় বারে পাশ করে
-  ✦ Fail = তথ্য: কোন টপিক দুর্বল, সেটা পড়ো</div>
+# VISION TEST REQUIREMENTS:
+vision_requirements = """
+VISION TEST AT SOS OFFICE:
+
+Minimum standards:
+  → Visual acuity: 20/40 (one or both eyes)
+  → Peripheral vision: at least 110 degrees
+  → Color blindness: NOT a disqualifier
+
+If you wear glasses/contacts:
+  → Test with them on
+  → License will say "corrective lenses required"
+  → Driving WITHOUT glasses = illegal (violation!)
+"""
+
+print(vision_requirements)
+
+# ONLINE KNOWLEDGE TEST (new convenience):
+# → 18+ applicants can take the test online via SOS website
+# → Proctored remotely (webcam required)
+# → Same 50-question format as in-person test
+# → Results available immediately
+
+# WHAT IF YOU FAIL? (Nothing terrible!):
+# → Retake the test (small waiting period, usually next day)
+# → Only retake the SECTION you failed (signs OR rules, not both)
+# → Most people pass on the 2nd attempt
+# → Failure = information: study the weak topics, try again
+
+# PYTHON (document checklist validator):
+def check_documents(has_id, has_ssn, residency_proofs, under_18=False, parent_present=False, seg1_cert=False):
+    """Validate SOS office visit readiness."""
+    issues = []
+
+    if not has_id:
+        issues.append("Missing identity document (birth cert/passport)")
+    if not has_ssn:
+        issues.append("Missing Social Security proof")
+    if len(residency_proofs) < 2:
+        issues.append(f"Need 2 residency proofs, only have {len(residency_proofs)}")
+
+    if under_18:
+        if not parent_present:
+            issues.append("Under 18: parent/guardian must accompany you")
+        if not seg1_cert:
+            issues.append("Under 18: need Segment 1 Certificate")
+
+    if issues:
+        print("❌ NOT READY. Missing:")
+        for issue in issues:
+            print(f"  → {issue}")
+        return False
+    else:
+        print("✅ READY! All documents in order. Book your SOS appointment.")
+        return True
+
+# Check readiness:
+print("\nDOCUMENT CHECKLIST VALIDATOR:")
+check_documents(has_id=True, has_ssn=True,
+                residency_proofs=["lease", "bank statement"],
+                under_18=False)
+print()
+check_documents(has_id=True, has_ssn=False,
+                residency_proofs=["utility bill"],
+                under_18=True, parent_present=True, seg1_cert=True)</div>
 
 <div class="code-block"># ── STEP 2: Knowledge test common questions ──
 # Prepare for the Michigan permit exam.
@@ -638,17 +711,76 @@ questions = sign_quiz()
 <div class="sign-item"><svg viewBox="0 0 90 90" width="62" height="62"><polygon points="45,6 84,45 45,84 6,45" fill="#ccff00" stroke="#222" stroke-width="3"/><text x="45" y="56" text-anchor="middle" font-size="22">🚸</text></svg><div class="sign-label">💚 <strong>FLUORESCENT</strong><br>নতুন school/pedestrian রং</div></div>
 </div>
 
-<div class="code-block">🗺️ ROUTE MARKERS — GPS বলার আগেই চিনে ফেলো:
+<div class="code-block"># ── STEP 10: Route markers — identify roads before GPS ──
+# Recognize highway types by their shield shapes.
 
-  🛡️ নীল-লাল shield = INTERSTATE (I-75, I-94, I-696)
-     → জাতীয় freeway। জোড় সংখ্যা = পূর্ব-পশ্চিম,
-       বিজোড় = উত্তর-দক্ষিণ। ৩ digit (I-696) = লুপ/bypass
-  ⬜ সাদা shield = US ROUTE (US-23, US-131)
-  ◇ সাদা হীরা "M" = MICHIGAN STATE ROUTE (M-52, M-59)
-     → শুধু Michigan-এর নিজস্ব — অন্য রাজ্যে নেই!
-  💚 FLUORESCENT হলুদ-সবুজ = নতুন standard —
-     school zone ও pedestrian সাইনে হলুদের বদলে
-     ধীরে ধীরে এটাই আসছে। অর্থ একই: মানুষ, সতর্ক।</div>
+# ROUTE MARKER SYSTEM (Michigan and US):
+
+route_markers = {
+    "INTERSTATE (blue-red shield)": {
+        "examples": "I-75, I-94, I-696, I-275",
+        "meaning": "National freeway system",
+        "numbering": "Even = East-West (I-94), Odd = North-South (I-75)",
+        "three_digit": "I-696 = loop/spur (starts/ends at parent I-96)",
+        "speed": "Usually 70 mph rural, 55-65 urban",
+    },
+    "US ROUTE (white shield)": {
+        "examples": "US-23, US-131, US-31, US-10",
+        "meaning": "Federal highway (older system than interstates)",
+        "numbering": "Even = East-West, Odd = North-South",
+        "speed": "Varies: 35-65 mph depending on area",
+    },
+    "MICHIGAN STATE ROUTE (white diamond with M)": {
+        "examples": "M-52, M-59, M-14, M-1 (Woodward Ave)",
+        "meaning": "Michigan state highway (only in Michigan!)",
+        "numbering": "No consistent direction pattern",
+        "speed": "Varies: 25-70 mph",
+    },
+    "COUNTY ROAD (blue pentagon with letter-number)": {
+        "examples": "County Road D-19, County Road 12",
+        "meaning": "County-maintained road (often rural)",
+        "numbering": "Letter = region, number = specific road",
+        "speed": "Usually 55 mph",
+    },
+}
+
+for marker, info in route_markers.items():
+    print(f"\n{marker}")
+    for key, value in info.items():
+        print(f"  {key}: {value}")
+
+# PYTHON (route identifier):
+def identify_route(shield_type, route_number=None):
+    """Identify road type from its marker shape."""
+    types = {
+        "blue_red_shield": ("INTERSTATE", "National freeway"),
+        "white_shield": ("US ROUTE", "Federal highway"),
+        "white_diamond_M": ("MICHIGAN ROUTE", "State highway"),
+        "blue_pentagon": ("COUNTY ROAD", "County-maintained road"),
+    }
+
+    if shield_type in types:
+        name, desc = types[shield_type]
+        result = f"{name} — {desc}"
+
+        # Direction from number (interstate/US):
+        if route_number and shield_type in ("blue_red_shield", "white_shield"):
+            direction = "East-West" if route_number % 2 == 0 else "North-South"
+            result += f" | Direction: {direction}"
+
+        return result
+    return "Unknown route marker"
+
+print("\nROUTE IDENTIFIER:")
+print(f"  {identify_route('blue_red_shield', 75)}")
+print(f"  {identify_route('blue_red_shield', 94)}")
+print(f"  {identify_route('white_diamond_M', 52)}")
+print(f"  {identify_route('white_shield', 131)}")
+
+# FLUORESCENT YELLOW-GREEN (newer standard):
+# → Replacing plain yellow on school/pedestrian signs
+# → Higher visibility (especially dawn/dusk)
+# → Same meaning: caution, people present</div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল যা করবে না</div>STOP sign-এ ধীরে নামি (rolling stop) — এটা বেআইনি এবং বিপজ্জনক। সম্পূর্ণ থামতে হবে। চাকা যেন সম্পূর্ণ থামে। এটাকে California stop / Michigan stop বলে কথায় — কিন্তু আইন নয়। টেস্টে fail করবে।</div>
