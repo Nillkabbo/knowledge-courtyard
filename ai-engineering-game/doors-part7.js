@@ -88,7 +88,8 @@ class ModelRouter:
 router = ModelRouter()
 for task in ["classification", "summarization", "complex_reasoning"]:
     result = router.route(task)
-    print(f"  {task} → {result['tier']} (${result['cost_per_1M']}/1M tokens)")
+    cost = result["cost_per_1M"]
+    print("  " + task + " -> " + result["tier"] + " ($" + str(cost) + "/1M tokens)")
 
 # COST COMPARISON (1M requests, 500 tokens each):
 # All GPT-4:     1M * 500 * $15/1M  = $7,500
