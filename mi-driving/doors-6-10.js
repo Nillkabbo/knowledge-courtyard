@@ -520,29 +520,87 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Left Turn Accident:</strong> Turned left on solid green — hit oncoming motorcycle. Fault: left-turn driver. Fix: solid green = yield.</div></div>
 
 
-<div class="code-block">SHARING THE ROAD — COMPLETE GUIDE
-# — — — — — — — — — — — — — — — — — — — — — —
+<div class="code-block"># ── STEP 6: Sharing the road — complete guide ──
+# How to drive safely around pedestrians, cyclists, and large vehicles.
 
-🚶 PEDESTRIANS (পথচারী)
-# — — — — — — — — — — — — — — — — — — — — — —
+# SHARING THE ROAD WITH ALL USERS:
 
-  ✦ পেডেস্ট্রিয়ান সবসময় অগ্রাধিকার
-  ✦ ক্রসওয়াকে কেউ থাকলে থামো
-  ✦ School zone-এ বিশেষ সতর্ক
-  ✦ Blind person (cane/guide dog) — সবসময় yield
-  ✦ টার্ন নেওয়ার সময় পেডেস্ট্রিয়ান দেখো
-  ✦ Jaywalker-ও থামলে থামো
+sharing = {
+    "PEDESTRIANS": {
+        "rules": [
+            "ALWAYS yield to pedestrians in crosswalks",
+            "Stop if someone is waiting at a crosswalk",
+            "Extra caution in school zones (25 mph)",
+            "Yield to blind persons (cane or guide dog) ALWAYS",
+            "Check for pedestrians before turning",
+            "Even jaywalkers — DON'T hit them",
+        ],
+        "fine": "Failure to yield to pedestrian: $100-500 + points",
+    },
+    "BICYCLISTS": {
+        "rules": [
+            "Cyclists have SAME rights as cars (same road, same rules)",
+            "Maintain at least 3 FEET clearance when passing",
+            "Pass on the LEFT (move to left lane if needed)",
+            "Check blind spots — cyclists are hard to see",
+            "Cyclists may change lanes to avoid debris",
+            "Watch for opening car doors (door zone)",
+            "NEVER honk at a cyclist (startles them, causes crashes)",
+        ],
+        "fine": "Passing too close to cyclist: citation + points",
+    },
+    "MOTORCYCLES": {
+        "rules": [
+            "Motorcycles are HARDER to see — check blind spots twice",
+            "Allow MORE following distance (they can stop faster than you)",
+            "Motorcyclists may shift position within lane (avoiding debris)",
+            "NEVER share a lane with a motorcycle (one vehicle per lane)",
+            "Their turn signals don't auto-cancel — they may forget to turn it off",
+            "Half of motorcycle-car crashes involve cars turning left",
+        ],
+        "fine": "Causing motorcycle crash: severe penalties",
+    },
+    "LARGE TRUCKS / BUSES": {
+        "rules": [
+            "Trucks have HUGE blind spots (NO ZONES): front, both sides, rear",
+            "If you can't see the truck's mirrors, the driver can't see you",
+            "NEVER tailgate a truck (you're invisible behind it)",
+            "Pass on the LEFT (driver's side, smaller blind spot)",
+            "Give trucks EXTRA space for wide turns (they swing right to turn left)",
+            "Trucks take 40% LONGER to stop than cars",
+            "Buses make frequent stops — be patient",
+        ],
+        "rule": "Don't linger in a truck's blind spot — pass quickly or fall back",
+    },
+    "EMERGENCY VEHICLES": {
+        "rules": [
+            "Pull to the RIGHT and stop for sirens/lights",
+            "Clear the intersection if you're in it",
+            "Stay stopped until the vehicle passes",
+            "Keep 500 FEET behind any emergency vehicle",
+            "Slow Down / Move Over law: change lanes for stopped emergency vehicles",
+            "If you can't move over: slow to 10+ mph below speed limit",
+        ],
+    },
+    "CONSTRUCTION WORKERS": {
+        "rules": [
+            "Reduce speed in construction zones (fines DOUBLE)",
+            "Follow flagger instructions (they have authority over signs/signals)",
+            "Change lanes early to give workers space",
+            "Keep distance from construction vehicles entering road",
+            "Hitting a worker: up to $7,500 fine + 15 years in prison",
+        ],
+    },
+}
 
-# — — — — — — — — — — — — — — — — — — — — — —
-🚴 BICYCLISTS (সাইকেল চালক)
-# — — — — — — — — — — — — — — — — — — — — — —
-
-  ✦ Cyclist একই road user — একই অধিকার
-  ✦ কমপক্ষে ৩ ফুট (3 feet) দূরত্ব রাখো
-  ✦ বাম দিয়ে পাস করো (left lane-এ সরে যাও)
-  ✦ Cyclist blind spot চেক করো
-  ✦ Cyclist lane পরিবর্তন করতে পারে
-  ✦ Door zone: parked car door খুলতে পারে
+for user, info in sharing.items():
+    print(f"\n{'='*50}")
+    print(f"  SHARING THE ROAD: {user}")
+    print(f"{'='*50}")
+    for rule in info["rules"]:
+        print(f"  → {rule}")
+    if "fine" in info:
+        print(f"  💰 {info['fine']}")</div>
 
 <div class="sign-gallery">
 <div class="sign-item"><svg viewBox="0 0 80 60" width="64"><rect x="10" y="15" width="60" height="3" fill="#f1c40f"/><circle cx="55" cy="16" r="5" fill="#e8a838"/><text x="20" y="12" font-size="8">🖐️</text><line x1="25" y1="16" x2="55" y2="16" stroke="#e8a838" stroke-width="3"/><text x="40" y="40" text-anchor="middle" fill="#999" font-size="10">LEFT TURN</text></svg><div class="sign-label">⬅️ <strong>LEFT</strong><br>বাম হাত সোজা</div></div>
