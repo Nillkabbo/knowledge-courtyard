@@ -25,95 +25,36 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Speeding in School Zone:</strong> Driver did 35mph in a 25mph school zone — $200 ticket + 3 points. Fix: always slow down near schools.</div></div>
 
 
-<div class="code-block"># ── STEP 1: Michigan Graduated Driver Licensing (GDL) ──
-# The 3-step path to a full driver license.
+<div class="code-block">MICHIGAN GRADUATED DRIVER LICENSING (GDL) — ৩ ধাপ:
 
-gdl_steps = """
-MICHIGAN GRADUATED DRIVER LICENSING (GDL) — 3 STEPS:
+# — — — — — — — — — — — — — — — — — — — — — —
+ধাপ ১: SEGMENT 1 DRIVER EDUCATION (বয়স ১৪ বছর ৮ মাস+)
+# — — — — — — — — — — — — — — — — — — — — — —
 
-═══════════════════════════════════════════
-STEP 1: SEGMENT 1 DRIVER EDUCATION (Age 14y 8m+)
-═══════════════════════════════════════════
-Prerequisites:
-  → Minimum age: 14 years 8 months
-  → Parent/guardian consent
-  → Physical exam + vision test
+পূর্বশর্ত:
+  ✦ বয়স কমপক্ষে ১৪ বছর ৮ মাস
+  ✦ Parent/guardian consent
+  ✦ Physical exam + vision test
 
-Segment 1 Course (must complete all):
-  → 24 hours classroom instruction
-  → 6 hours behind-the-wheel driving
-  → 4 hours observation (watching others drive)
+Segment 1 Course (মাস্টার করতে হবে):
+  📚 ২৪ ঘণ্টা classroom instruction
+  🚗 ৬ ঘণ্টা behind-the-wheel driving
+  👀 ৪ ঘণ্টা observation (অন্যকে চালাতে দেখা)
 
-  → Pass a written test at end
-  → Receive Segment 1 Certificate
+  → শেষে একটা written test পাশ করতে হবে
+  → শেষে Segment 1 Certificate পাবে
 
-═══════════════════════════════════════════
-STEP 2: LEARNER LICENSE (Age 14y 9m+)
-═══════════════════════════════════════════
-After Segment 1, go to SOS office:
-  → Submit Segment 1 Certificate
-  → Pass vision test
-  → Pass Knowledge Test (written) ← THE PERMIT EXAM!
-  → Pay fee
+# — — — — — — — — — — — — — — — — — — — — — —
+ধাপ ২: LEARNER LICENSE (বয়স ১৪ বছর ৯ মাস+)
+# — — — — — — — — — — — — — — — — — — — — — —
 
-  → If pass: receive Level 1 Learner License
+Segment 1 শেষে SOS office-এ গিয়ে:
+  ✦ Segment 1 Certificate জমা দাও
+  ✦ Vision test দাও
+  ✦ Knowledge test (written) দাও ← এটাই পারমিট পরীক্ষা!
+  ✦ ফি দাও ($)
 
-  Level 1 Restrictions:
-  → Drive ONLY with licensed adult (21+, 2+ years experience)
-  → No driving alone
-  → Must hold for minimum 3 months
-
-═══════════════════════════════════════════
-STEP 3: PROVISIONAL LICENSE (Age 16+)
-═══════════════════════════════════════════
-After holding Level 1 for 3+ months:
-  → Complete Segment 2 Driver Education
-  → Pass driving skills test (road test)
-  → Log 50 hours supervised driving (10 at night)
-
-  Level 2 Restrictions:
-  → No driving midnight-5AM (with exceptions)
-  → No more than 1 passenger under 21 (unless family)
-
-═══════════════════════════════════════════
-FULL LICENSE (Age 17+)
-═══════════════════════════════════════════
-  → Hold Level 2 for 6+ months
-  → Clean driving record
-  → Level 3 = full driving privileges
-"""
-
-print(gdl_steps)
-
-# PYTHON (GDL eligibility checker):
-def check_gdl_eligibility(age_years, age_months, segment1_done,
-                          supervised_hours, level1_held_months):
-    """Check what license level you qualify for."""
-    total_months = age_years * 12 + age_months
-
-    if total_months < 176:  # 14y 8m = 176 months
-        return "Too young. Wait until 14 years 8 months for Segment 1."
-
-    if not segment1_done:
-        return "Eligible for Segment 1 Driver Education."
-
-    if total_months < 177:
-        return "Complete Segment 1 first, then apply for Level 1."
-
-    if level1_held_months < 3:
-        return f"Level 1 Learner. Hold for {3 - level1_held_months} more months."
-
-    if supervised_hours < 50:
-        return f"Need {50 - supervised_hours} more supervised hours."
-
-    if total_months < 192:  # 16 years
-        return "Eligible for Segment 2 + driving skills test → Level 2."
-
-    return "May qualify for Level 2/3. Check with SOS."
-
-# Check eligibility:
-print(check_gdl_eligibility(16, 2, True, 52, 4))
-# → "Eligible for Segment 2 + driving skills test → Level 2."</div>
+  → পাশ করলে Level 1 Learner License পাবে
 
 LEARNER LICENSE RESTRICTIONS:
   ⚠️ শুধুমাত্র licensed adult (২১+ বছর) 
@@ -256,186 +197,48 @@ LEVEL 2 RESTRICTIONS:
 <div class="dialogue">"একটা জিনিস মনে রাখো," কর্মকর্তা বললেন। "Knowledge test — সেটাই তোমার লেখিত পরীক্ষা। ৫০টা প্রশ্ন, দুই ভাগে: ২৫টা ট্রাফিক সাইন নিয়ে, ২৫টা ট্রাফিক নিয়ম নিয়ে। প্রতিটা ভাগে আলাদাভাবে কমপক্ষে ২০টা (৮০%) সঠিক করতে হবে — শুধু মোট ৪০/৫০ হলেই চলবে না, দুই ভাগেই আলাদা পাশ করতে হবে। এই বই তোমাকে প্রস্তুত করবে।"</div>
 <div class="dialogue en">"One thing to remember," the officer said. "The knowledge test — that's your written exam. 50 questions, split into two sections: 25 on traffic signs, 25 on traffic rules. You need at least 20 correct (80%) in EACH section separately — 40/50 overall isn't enough if one section falls short. This book will prepare you."</div>
 
-<div class="code-block"># ── STEP 9: SOS office visit — practical preparation ──
-# What to bring and what to expect at the Secretary of State office.
+<div class="code-block">🏢 SOS OFFICE-এ যাওয়ার দিন — ব্যবহারিক প্রস্তুতি
+# — — — — — — — — — — — — — — — — — — — — — —
 
-# DOCUMENTS CHECKLIST (what to bring):
+  📄 সাথে যা নেবে:
+  ✦ Identity: birth certificate বা valid passport
+  ✦ Social Security proof (SSN card/W-2)
+  ✦ Michigan residency-র ২টা প্রমাণ
+    (utility bill, lease, bank statement...)
+  ✦ Under 18 হলে: parent/guardian সাথে + সই
+  💡 আগে online appointment নিলে লাইন বাঁচে
 
-documents = {
-    "Identity (1 required)": [
-        "Birth certificate (certified copy)",
-        "Valid US passport",
-        "Permanent resident card",
-        "Employment authorization document",
-    ],
-    "Social Security (1 required)": [
-        "SSN card",
-        "W-2 form with SSN",
-        "Pay stub with SSN",
-    ],
-    "Michigan Residency (2 required)": [
-        "Utility bill (gas, electric, water)",
-        "Lease or mortgage document",
-        "Bank statement",
-        "Insurance policy",
-        "School transcript",
-    ],
-    "If under 18": [
-        "Parent or legal guardian must accompany you",
-        "Parent must sign the application",
-        "Segment 1 Certificate of Completion",
-    ],
-}
+  👁️ VISION TEST — যা মাপা হয়:
+  ✦ কমপক্ষে 20/40 acuity (এক বা দুই চোখে)
+  ✦ Peripheral vision কমপক্ষে 110°
+  ✦ চশমা/লেন্স দিয়ে পাশ করলে → license-এ
+    "corrective lenses" restriction লেখা হবে —
+    মানে চশমা ছাড়া চালানো বেআইনি
 
-for doc_type, items in documents.items():
-    print(f"\n{doc_type}:")
-    for item in items:
-        print(f"  → {item}")
+  💻 ONLINE KNOWLEDGE TEST (নতুন সুবিধা):
+  ✦ ১৮+ আবেদনকারীরা এখন SOS-এর মাধ্যমে
+    online-এও knowledge test দিতে পারে —
+    ঘরে বসে! (SOS website-এ বিস্তারিত)
 
-# VISION TEST REQUIREMENTS:
-vision_requirements = """
-VISION TEST AT SOS OFFICE:
+  😰 FAIL করলে কী হয়? — কিছুই ভয়ংকর না:
+  ✦ আবার দেওয়া যায় — অপেক্ষা সামান্য
+  ✦ যে section fail, শুধু সেটাই আবার
+  ✦ বেশিরভাগ মানুষ ২য় বারে পাশ করে
+  ✦ Fail = তথ্য: কোন টপিক দুর্বল, সেটা পড়ো</div>
 
-Minimum standards:
-  → Visual acuity: 20/40 (one or both eyes)
-  → Peripheral vision: at least 110 degrees
-  → Color blindness: NOT a disqualifier
+<div class="code-block">KNOWLEDGE TEST কমন প্রশ্ন — প্রস্তুতি:
 
-If you wear glasses/contacts:
-  → Test with them on
-  → License will say "corrective lenses required"
-  → Driving WITHOUT glasses = illegal (violation!)
-"""
+❓ প্রশ্ন: Michigan-এ learner license-এর জন্য 
+   ন্যূনতম বয়স কত?
+✅ উত্তর: ১৪ বছর ৮ মাস (Segment 1 শুরুর জন্য)
 
-print(vision_requirements)
-
-# ONLINE KNOWLEDGE TEST (new convenience):
-# → 18+ applicants can take the test online via SOS website
-# → Proctored remotely (webcam required)
-# → Same 50-question format as in-person test
-# → Results available immediately
-
-# WHAT IF YOU FAIL? (Nothing terrible!):
-# → Retake the test (small waiting period, usually next day)
-# → Only retake the SECTION you failed (signs OR rules, not both)
-# → Most people pass on the 2nd attempt
-# → Failure = information: study the weak topics, try again
-
-# PYTHON (document checklist validator):
-def check_documents(has_id, has_ssn, residency_proofs, under_18=False, parent_present=False, seg1_cert=False):
-    """Validate SOS office visit readiness."""
-    issues = []
-
-    if not has_id:
-        issues.append("Missing identity document (birth cert/passport)")
-    if not has_ssn:
-        issues.append("Missing Social Security proof")
-    if len(residency_proofs) < 2:
-        issues.append(f"Need 2 residency proofs, only have {len(residency_proofs)}")
-
-    if under_18:
-        if not parent_present:
-            issues.append("Under 18: parent/guardian must accompany you")
-        if not seg1_cert:
-            issues.append("Under 18: need Segment 1 Certificate")
-
-    if issues:
-        print("❌ NOT READY. Missing:")
-        for issue in issues:
-            print(f"  → {issue}")
-        return False
-    else:
-        print("✅ READY! All documents in order. Book your SOS appointment.")
-        return True
-
-# Check readiness:
-print("\nDOCUMENT CHECKLIST VALIDATOR:")
-check_documents(has_id=True, has_ssn=True,
-                residency_proofs=["lease", "bank statement"],
-                under_18=False)
-print()
-check_documents(has_id=True, has_ssn=False,
-                residency_proofs=["utility bill"],
-                under_18=True, parent_present=True, seg1_cert=True)</div>
-
-<div class="code-block"># ── STEP 2: Knowledge test common questions ──
-# Prepare for the Michigan permit exam.
-
-# KNOWLEDGE TEST FORMAT:
-# → 50 questions total: 25 signs + 25 rules
-# → Each section scored separately
-# → Must get 20/25 (80%) in EACH section
-# → Fail one section = retake that section only
-
-# PYTHON (practice test simulator):
-import random
-
-class PermitTestSimulator:
-    """Simulate the Michigan knowledge test."""
-    def __init__(self):
-        self.signs_questions = [
-            {"q": "Octagon shape means?", "a": "STOP"},
-            {"q": "Upside-down triangle means?", "a": "YIELD"},
-            {"q": "Diamond shape means?", "a": "WARNING"},
-            {"q": "Pentagon shape means?", "a": "SCHOOL"},
-            {"q": "Round sign means?", "a": "RAILROAD"},
-            {"q": "Red circle with slash means?", "a": "DO NOT / PROHIBITED"},
-            {"q": "Green sign means?", "a": "GUIDE/DIRECTIONAL"},
-            {"q": "Yellow sign means?", "a": "GENERAL WARNING"},
-            {"q": "Orange sign means?", "a": "CONSTRUCTION"},
-            {"q": "White sign means?", "a": "REGULATORY (law)"},
-        ]
-        self.rules_questions = [
-            {"q": "Min age for Segment 1?", "a": "14 years 8 months"},
-            {"q": "Level 1 requires adult of what age?", "a": "21+ years"},
-            {"q": "Supervised hours needed?", "a": "50 hours (10 at night)"},
-            {"q": "Level 2 night driving restriction?", "a": "Midnight-5AM"},
-            {"q": "School zone speed limit?", "a": "25 mph"},
-            {"q": "Default residential speed?", "a": "25 mph"},
-            {"q": "Highway speed limit?", "a": "70 mph (rural)"},
-            {"q": "Following distance (seconds)?", "a": "3 seconds"},
-            {"q": "Blood alcohol limit (21+)?", "a": "0.08%"},
-            {"q": "Texting while driving?", "a": "ILLEGAL (all ages)"},
-        ]
-
-    def take_test(self):
-        """Simulate the 50-question test."""
-        # 25 signs + 25 rules (sample from question banks)
-        signs = random.sample(self.signs_questions * 3, 25)
-        rules = random.sample(self.rules_questions * 3, 25)
-
-        print("MICHIGAN KNOWLEDGE TEST SIMULATION")
-        print("=" * 40)
-        print(f"Section 1: Traffic Signs (25 questions)")
-        print(f"Section 2: Rules of Road (25 questions)")
-        print(f"Passing: 20/25 (80%) in EACH section")
-        print()
-
-        # Simulate scoring (in practice, user answers each):
-        signs_score = random.randint(18, 25)
-        rules_score = random.randint(19, 25)
-
-        print(f"Signs section:  {signs_score}/25 {'PASS' if signs_score >= 20 else 'FAIL'}")
-        print(f"Rules section:  {rules_score}/25 {'PASS' if rules_score >= 20 else 'FAIL'}")
-        print()
-        if signs_score >= 20 and rules_score >= 20:
-            print("RESULT: PASS! You qualify for Level 1 License.")
-        else:
-            failed = []
-            if signs_score < 20: failed.append("signs")
-            if rules_score < 20: failed.append("rules")
-            print(f"RESULT: FAIL. Retake: {', '.join(failed)} section(s).")
-
-sim = PermitTestSimulator()
-sim.take_test()
-
-# STUDY TIPS FOR THE KNOWLEDGE TEST:
-# 1. Read the "What Every Driver Must Know" booklet (Michigan SOS)
-# 2. Take free practice tests online (driving-tests.org, dmv-written-test.com)
-# 3. Memorize traffic sign shapes AND colors (not just symbols)
-# 4. Focus on: speed limits, right-of-way, parking rules, alcohol laws
-# 5. Practice until you score 90%+ consistently on practice tests
-# 6. The test is offered in multiple languages (including Bengali!)</div>
+❓ প্রশ্ন: Knowledge test-এ কতটা প্রশ্ন,
+   কতটা পাশ করতে হবে?
+✅ উত্তর: ৫০টা প্রশ্ন — ২৫টা সাইন + ২৫টা নিয়ম,
+   দুইটা ভাগ আলাদাভাবে স্কোর হয়। প্রতি ভাগে
+   কমপক্ষে ২০টা (৮০%) সঠিক করতে হবে — একটা
+   ভাগে কম হলে পুরো টেস্ট fail, শুধু সেই ভাগ
+   আবার দিতে হয়।
 
 ❓ প্রশ্ন: Level 1 Learner License-এ চালানোর 
    শর্ত কী?
@@ -552,89 +355,18 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Texting While Driving:</strong> Driver texted 'omw' — rear-ended a stopped car at 45mph. Totaled both cars. Fix: phone on Do Not Disturb.</div></div>
 
 
-<div class="code-block"># ── STEP 3: Traffic sign recognition system ──
-# Memorize by SHAPE and COLOR, not just symbol.
+<div class="code-block">উপরের SVG সাইনগুলো মুখস্থ করো — আকার আর রঙ।
 
-# SIGN CLASSIFICATION SYSTEM:
+🔴 REGULATORY (আইনি):
+  STOP (অষ্টভুজ লাল) → সম্পূর্ণ থামো, ৩ সেকেন্ড
+  YIELD (ত্রিভুজ লাল) → অন্যকে অগ্রাধিকার দাও
+  SPEED LIMIT (আয়ত সাদা) → সর্বোচ্চ গতি
+  DO NOT ENTER (বর্গ লাল + সাদা দণ্ড) → ঢুকো না
+  NO LEFT TURN (বৃত্ত লাল কাটা) → মোড় নিষেধ
 
-sign_types = {
-    "REGULATORY (Law — must obey)": {
-        "color": "Red / White / Black",
-        "examples": {
-            "STOP (octagon red)": "Complete stop, count 3 seconds",
-            "YIELD (triangle red)": "Give right-of-way to others",
-            "SPEED LIMIT (rect white)": "Maximum legal speed",
-            "DO NOT ENTER (square red)": "Wrong way — do not enter",
-            "NO LEFT TURN (circle red slash)": "Turn prohibited",
-            "ONE WAY (black/white arrow)": "Traffic flows one direction only",
-        },
-    },
-    "WARNING (Caution — slow down)": {
-        "color": "Yellow / Orange",
-        "examples": {
-            "CURVE AHEAD (diamond yellow)": "Reduce speed, prepare for bend",
-            "DEER CROSSING (diamond yellow)": "Watch for animals",
-            "SLIPPERY WHEN WET (diamond yellow)": "Reduce speed, no sudden moves",
-            "MERGE (diamond yellow)": "Lane ends, merge safely",
-            "PEDESTRIAN CROSSING (diamond yellow)": "People may cross",
-            "CONSTRUCTION (diamond orange)": "Work zone, reduce speed, fines double",
-        },
-    },
-    "GUIDE (Information — directional)": {
-        "color": "Green / Blue / Brown",
-        "examples": {
-            "HIGHWAY EXIT (green)": "Exit number and direction",
-            "DISTANCE (green)": "Miles to next city",
-            "SERVICES (blue)": "Gas, food, lodging nearby",
-            "REST AREA (blue)": "Stop, restrooms available",
-            "PARK/RECREATION (brown)": "Historical site, park, campground",
-        },
-    },
-    "SCHOOL (Special — extreme caution)": {
-        "color": "Fluorescent Yellow-Green",
-        "examples": {
-            "SCHOOL ZONE (pentagon)": "25 mph, children present, fines double",
-            "SCHOOL CROSSING (pentagon)": "Children crossing, stop if needed",
-        },
-    },
-}
-
-for category, info in sign_types.items():
-    print(f"\n{category} [{info['color']}]")
-    for sign, action in info["examples"].items():
-        print(f"  {sign}")
-        print(f"    → {action}")
-
-# PYTHON (sign quiz):
-import random
-
-def sign_quiz():
-    """Quiz yourself on sign meanings."""
-    quiz = [
-        ("Red octagon", "STOP — full stop, 3 seconds"),
-        ("Red upside-down triangle", "YIELD — give right-of-way"),
-        ("Yellow diamond", "WARNING — slow down, be alert"),
-        ("Orange diamond", "CONSTRUCTION — reduce speed, double fines"),
-        ("Green rectangle", "GUIDE — directional information"),
-        ("Blue rectangle", "SERVICES — gas, food, lodging"),
-        ("Pentagon (yellow-green)", "SCHOOL — 25mph, children present"),
-        ("Round (yellow)", "RAILROAD — train crossing ahead"),
-        ("White rectangle", "REGULATORY — speed limit, rules"),
-        ("Red circle + slash", "PROHIBITED — do not do this"),
-    ]
-    score = 0
-    for shape, meaning in random.sample(quiz, 5):
-        print(f"\n  What does this sign mean: {shape}?")
-        # In practice: user answers, compare to 'meaning'
-        print(f"  Answer: {meaning}")
-    return quiz
-
-questions = sign_quiz()
-
-# MEMORIZATION TRICK:
-# Shape → Category (octagon=stop, triangle=yield, diamond=warning)
-# Color → Urgency (red=law, yellow=caution, green=info)
-# Learn SHAPE + COLOR first → meaning follows naturally</div>
+🟡 WARNING (সতর্কতা):
+  হীরা হলুদ → বাঁক, হরিণ, স্লিপারি, মার্জ, ঢাল
+  পেডেস্ট্রিয়ান ক্রসিং → মানুষ রাস্তা পার হতে পারে
 
 🟢 GUIDE (নির্দেশনা):
   আয়ত সবুজ → গন্তব্য, এক্সিট নম্বর
@@ -711,123 +443,53 @@ questions = sign_quiz()
 <div class="sign-item"><svg viewBox="0 0 90 90" width="62" height="62"><polygon points="45,6 84,45 45,84 6,45" fill="#ccff00" stroke="#222" stroke-width="3"/><text x="45" y="56" text-anchor="middle" font-size="22">🚸</text></svg><div class="sign-label">💚 <strong>FLUORESCENT</strong><br>নতুন school/pedestrian রং</div></div>
 </div>
 
-<div class="code-block"># ── STEP 10: Route markers — identify roads before GPS ──
-# Recognize highway types by their shield shapes.
+<div class="code-block">🗺️ ROUTE MARKERS — GPS বলার আগেই চিনে ফেলো:
 
-# ROUTE MARKER SYSTEM (Michigan and US):
-
-route_markers = {
-    "INTERSTATE (blue-red shield)": {
-        "examples": "I-75, I-94, I-696, I-275",
-        "meaning": "National freeway system",
-        "numbering": "Even = East-West (I-94), Odd = North-South (I-75)",
-        "three_digit": "I-696 = loop/spur (starts/ends at parent I-96)",
-        "speed": "Usually 70 mph rural, 55-65 urban",
-    },
-    "US ROUTE (white shield)": {
-        "examples": "US-23, US-131, US-31, US-10",
-        "meaning": "Federal highway (older system than interstates)",
-        "numbering": "Even = East-West, Odd = North-South",
-        "speed": "Varies: 35-65 mph depending on area",
-    },
-    "MICHIGAN STATE ROUTE (white diamond with M)": {
-        "examples": "M-52, M-59, M-14, M-1 (Woodward Ave)",
-        "meaning": "Michigan state highway (only in Michigan!)",
-        "numbering": "No consistent direction pattern",
-        "speed": "Varies: 25-70 mph",
-    },
-    "COUNTY ROAD (blue pentagon with letter-number)": {
-        "examples": "County Road D-19, County Road 12",
-        "meaning": "County-maintained road (often rural)",
-        "numbering": "Letter = region, number = specific road",
-        "speed": "Usually 55 mph",
-    },
-}
-
-for marker, info in route_markers.items():
-    print(f"\n{marker}")
-    for key, value in info.items():
-        print(f"  {key}: {value}")
-
-# PYTHON (route identifier):
-def identify_route(shield_type, route_number=None):
-    """Identify road type from its marker shape."""
-    types = {
-        "blue_red_shield": ("INTERSTATE", "National freeway"),
-        "white_shield": ("US ROUTE", "Federal highway"),
-        "white_diamond_M": ("MICHIGAN ROUTE", "State highway"),
-        "blue_pentagon": ("COUNTY ROAD", "County-maintained road"),
-    }
-
-    if shield_type in types:
-        name, desc = types[shield_type]
-        result = f"{name} — {desc}"
-
-        # Direction from number (interstate/US):
-        if route_number and shield_type in ("blue_red_shield", "white_shield"):
-            direction = "East-West" if route_number % 2 == 0 else "North-South"
-            result += f" | Direction: {direction}"
-
-        return result
-    return "Unknown route marker"
-
-print("\nROUTE IDENTIFIER:")
-print(f"  {identify_route('blue_red_shield', 75)}")
-print(f"  {identify_route('blue_red_shield', 94)}")
-print(f"  {identify_route('white_diamond_M', 52)}")
-print(f"  {identify_route('white_shield', 131)}")
-
-# FLUORESCENT YELLOW-GREEN (newer standard):
-# → Replacing plain yellow on school/pedestrian signs
-# → Higher visibility (especially dawn/dusk)
-# → Same meaning: caution, people present</div>
+  🛡️ নীল-লাল shield = INTERSTATE (I-75, I-94, I-696)
+     → জাতীয় freeway। জোড় সংখ্যা = পূর্ব-পশ্চিম,
+       বিজোড় = উত্তর-দক্ষিণ। ৩ digit (I-696) = লুপ/bypass
+  ⬜ সাদা shield = US ROUTE (US-23, US-131)
+  ◇ সাদা হীরা "M" = MICHIGAN STATE ROUTE (M-52, M-59)
+     → শুধু Michigan-এর নিজস্ব — অন্য রাজ্যে নেই!
+  💚 FLUORESCENT হলুদ-সবুজ = নতুন standard —
+     school zone ও pedestrian সাইনে হলুদের বদলে
+     ধীরে ধীরে এটাই আসছে। অর্থ একই: মানুষ, সতর্ক।</div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল যা করবে না</div>STOP sign-এ ধীরে নামি (rolling stop) — এটা বেআইনি এবং বিপজ্জনক। সম্পূর্ণ থামতে হবে। চাকা যেন সম্পূর্ণ থামে। এটাকে California stop / Michigan stop বলে কথায় — কিন্তু আইন নয়। টেস্টে fail করবে।</div>
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক যা করবে</div>STOP sign-এ সম্পূর্ণ থামো। চাকা স্থির। ৩ সেকেন্ড গণনা করো (one-thousand-one, one-thousand-two, one-thousand-three)। তারপর বাম-ডান-বাম দেখো। তারপর যাও। নিরাপদ।</div>
 </div>
 
-<div class="code-block"># ── STEP 11: Exam pattern questions — traffic signs ──
-# Practice questions from the Michigan permit test.
+<div class="code-block">EXAM PATTERN QUESTIONS — Traffic Signs:
 
-# PYTHON (interactive practice test — traffic signs section):
+❓ লাল অষ্টভুজ (octagon) সাইন কী বোঝায়?
+✅ STOP — সম্পূর্ণ থামো
 
-traffic_signs_qa = [
-    {"q": "Red octagon sign means?", "a": "STOP — complete stop",
-     "options": ["YIELD", "STOP", "WARNING", "DO NOT ENTER"]},
-    {"q": "Yellow diamond sign category?", "a": "WARNING — caution",
-     "options": ["REGULATORY", "WARNING", "GUIDE", "SERVICES"]},
-    {"q": "Inverted red triangle means?", "a": "YIELD — give right-of-way",
-     "options": ["STOP", "YIELD", "MERGE", "SCHOOL"]},
-    {"q": "Orange diamond sign means?", "a": "CONSTRUCTION — reduce speed",
-     "options": ["WARNING", "CONSTRUCTION", "SERVICES", "SCHOOL"]},
-    {"q": "Green rectangle sign category?", "a": "GUIDE — directional info",
-     "options": ["REGULATORY", "WARNING", "GUIDE", "PROHIBITED"]},
-    {"q": "Blue rectangle sign indicates?", "a": "SERVICES — gas, food, lodging",
-     "options": ["GUIDE", "SERVICES", "WARNING", "SCHOOL"]},
-    {"q": "Brown rectangle sign means?", "a": "RECREATION — parks, historic sites",
-     "options": ["CONSTRUCTION", "RECREATION", "SERVICES", "REGULATORY"]},
-    {"q": "Yellow pentagon (school shape) means?", "a": "SCHOOL ZONE — slow down",
-     "options": ["WARNING", "CONSTRUCTION", "SCHOOL ZONE", "SERVICES"]},
-    {"q": "Red circle with slash means?", "a": "DO NOT / PROHIBITED",
-     "options": ["STOP", "WARNING", "DO NOT", "YIELD"]},
-    {"q": "White rectangle (SPEED LIMIT 55)?", "a": "REGULATORY — legal speed limit",
-     "options": ["WARNING", "GUIDE", "REGULATORY", "ADVISORY"]},
-]
+❓ হলুদ হীরা (diamond) সাইন কী শ্রেণী?
+✅ Warning sign — সতর্কতা
 
-# Test runner:
-score = 0
-for i, qa in enumerate(traffic_signs_qa, 1):
-    print(f"\nQ{i}: {qa['q']}")
-    for j, opt in enumerate(qa['options'], 1):
-        marker = " ←" if opt == qa['a'] else ""
-        print(f"  {j}) {opt}{marker}")
-    print(f"  Answer: {qa['a']}")
-    score += 1
+❓ উল্টানো ত্রিভুজ (triangle) লাল-সাদা সাইন কী?
+✅ YIELD — অন্যকে অগ্রাধিকার দাও
 
-print(f"\n{'='*40}")
-print(f"Signs section: {score}/{len(traffic_signs_qa)}")
-print(f"Need 20/25 (80%) to pass this section")</div>
+❓ কমলা হীরা (diamond) সাইন কী বোঝায়?
+✅ Construction zone — ধীরে চালাও, দ্বিগুণ জরিমানা
+
+❓ সবুজ আয়ত সাইন কী শ্রেণী?
+✅ Guide/information — দিক নির্দেশনা
+
+❓ নীল আয়ত সাইন কী নির্দেশ করে?
+✅ Services — গ্যাস, হাসপাতাল, খাবার
+
+❓ বাদামি আয়ত সাইন কী?
+✅ Recreation — পার্ক, historical site
+
+❓ হলুদ পেন্টাগন (school shape) কী?
+✅ School zone — ধীরে চালাও
+
+❓ লাল বৃত্তে কাটা সাইন (circle) কী?
+✅ Do Not / No — নিষেধাজ্ঞা
+
+❓ "SPEED LIMIT 55" সাদা সাইন — কী মানে?
 ✅ সর্বোচ্চ ৫৫ mph — এর বেশি অবৈধ
 
 ❓ Pennant (শোয়ানো ত্রিভুজ) সাইন কী?
@@ -926,73 +588,34 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Running a Red Light:</strong> Driver tried to beat yellow — T-boned pedestrian in crosswalk. Fix: yellow = prepare to stop.</div></div>
 
 
-<div class="code-block"># ── STEP 4: Traffic signals — complete guide ──
-# What every signal means and how to respond.
+<div class="code-block">TRAFFIC SIGNALS — COMPLETE GUIDE
+# — — — — — — — — — — — — — — — — — — — — — —
 
-# TRAFFIC SIGNAL MEANINGS AND RESPONSES:
+🟢 GREEN LIGHT (সবুজ আলো)
+  ✅ যাও — যদি রাস্তা পরিষ্কার থাকে
+  ⚠️ জংশনে ঢোকার আগে বাম-ডান দেখো
+  ⚠️ পেডেস্ট্রিয়ান থাকলে থামো
+  ⚠️ বাম মোড় নিলে oncoming traffic কে 
+     অগ্রাধিকার দাও
 
-signals = {
-    "GREEN LIGHT (go)": {
-        "action": "Proceed if intersection is clear",
-        "caution": "Look left-right before entering. Yield to pedestrians.",
-        "left_turn": "Yield to oncoming traffic. Wait for a safe gap.",
-    },
-    "YELLOW LIGHT (prepare to stop)": {
-        "action": "Stop if you can safely. If too close to stop, proceed.",
-        "caution": "DO NOT accelerate to beat the red. That's how accidents happen.",
-        "rule": "Yellow means red is coming. Prepare to stop.",
-    },
-    "RED LIGHT (stop)": {
-        "action": "Complete stop BEFORE the stop line",
-        "caution": "Do not enter intersection. Wait for green.",
-        "right_turn": "Michigan allows RIGHT TURN ON RED after complete stop, unless sign says NO TURN ON RED",
-    },
-    "RED + YELLOW (preparing)": {
-        "action": "Green is coming. Prepare to go, but DO NOT move.",
-        "caution": "Wait for green before proceeding.",
-    },
-    "FLASHING RED": {
-        "action": "Treat as STOP sign. Stop completely, then proceed when safe.",
-        "caution": "Other direction likely has flashing yellow or green.",
-    },
-    "FLASHING YELLOW": {
-        "action": "Slow down, proceed with caution. Do NOT stop.",
-        "caution": "Yield to pedestrians and cross-traffic.",
-    },
-    "GREEN ARROW": {
-        "action": "Turn in arrow direction. You have right-of-way.",
-        "caution": "Still check for pedestrians and reckless drivers.",
-    },
-    "YELLOW ARROW": {
-        "action": "Arrow is ending. Stop if safe, or complete turn if already in intersection.",
-        "caution": "Yield to oncoming traffic after arrow ends.",
-    },
-}
+🟡 YELLOW LIGHT (হলুদ আলো)
+  ⚠️ থামো — যদি নিরাপদে থামতে পারো
+  ⚠️ যদি খুব কাছে, তবে যাও
+  ❌ গ্যাস চেপে তাড়াতাড়ি করো না
+  ❌ হলুদ দেখে accelerate করো না
+  💡 হলুদ মানে — লাল আসছে, প্রস্তুত হও
 
-for signal, info in signals.items():
-    print(f"\n{signal}")
-    for key, value in info.items():
-        print(f"  {key}: {value}")
+🔴 RED LIGHT (লাল আলো)
+  🛑 সম্পূর্ণ থামো
+  🛑 STOP line এর আগে থামো
+  🛑 জংশনে ঢুকো না
+  ⚠️ Right turn on red — Michigan-এ যদি 
+     কোনো সাইন না থাকে "NO TURN ON RED",
+     তবে প্রথমে সম্পূর্ণ থামো, তারপর 
+     নিরাপদ হলে ডানে মোড় নিতে পারো
 
-# PYTHON (signal decision-maker):
-def signal_response(signal_color, in_intersection=False, sign_says_no_turn=False):
-    """Determine correct action for a traffic signal."""
-    rules = {
-        "green": "Go — if intersection is clear and no pedestrians",
-        "yellow": "Stop if safe. If already in intersection, clear it." if in_intersection else "Stop. Do NOT accelerate.",
-        "red": "Stop completely. Wait for green." + ("" if sign_says_no_turn else " Right turn allowed after full stop."),
-        "flashing_red": "Stop completely (like a STOP sign). Proceed when clear.",
-        "flashing_yellow": "Slow down. Proceed with caution. Yield to cross-traffic.",
-    }
-    return rules.get(signal_color.lower(), "Unknown signal — stop and assess.")
-
-# Test:
-print("\nSIGNAL DECISION EXAMPLES:")
-print(f"  Green light: {signal_response('green')}")
-print(f"  Yellow (in intersection): {signal_response('yellow', in_intersection=True)}")
-print(f"  Red light: {signal_response('red')}")
-print(f"  Red (NO TURN sign): {signal_response('red', sign_says_no_turn=True)}")
-print(f"  Flashing red: {signal_response('flashing_red')}")</div>
+🔴🟡 লাল+হলুদ একসাথে (কিছু সিগন্যালে)
+  → সবুজ আসছে — প্রস্তুত হও, কিন্তু যাও না
 
 # — — — — — — — — — — — — — — — — — — — — — —
 FLASHING SIGNALS
@@ -1062,68 +685,36 @@ LANE SIGNALS (হাইওয়ে লেন নিয়ন্ত্রণ)
   → সম্পূর্ণ থামো, ক্রম মেনে যাও
   → Michigan ঝড়ে খুব কমন — মুখস্থ রাখো!</div>
 
-<div class="code-block"># ── STEP 5: Pavement markings — road lines ──
-# What every painted line on the road means.
+<div class="code-block">PAVEMENT MARKINGS — সড়ক দাগ
+# — — — — — — — — — — — — — — — — — — — — — —
 
-# PAVEMENT MARKING SYSTEM:
+🟡 YELLOW LINES = ট্রাফিক ভাগ করে (opposite direction)
+# — — — — — — — — — — — — — — — — — — — — — —
 
-markings = {
-    "YELLOW LINES (separate opposite-direction traffic)": {
-        "SOLID DOUBLE YELLOW": "NO passing either direction. No U-turn.",
-        "SOLID SINGLE YELLOW": "No passing on the solid side. Other side may pass if dashed.",
-        "DASHED YELLOW": "Passing allowed — when safe.",
-    },
-    "WHITE LINES (separate same-direction lanes)": {
-        "SOLID WHITE": "Lane change discouraged (e.g., expressway lanes).",
-        "DASHED WHITE": "Lane change allowed — when safe.",
-        "SOLID WIDE WHITE": "Road edge / shoulder line.",
-    },
-    "SPECIAL MARKINGS": {
-        "CROSSWALK (white stripes)": "Pedestrian crossing. Stop for people.",
-        "STOP LINE (solid white)": "Stop BEFORE this line at intersections.",
-        "YIELD TRIANGLE (white)": "Yield to cross-traffic ahead.",
-        "BIKE LANE (white + bike symbol)": "Bicycle lane. Do not drive in it.",
-        "HOV LANE (diamond)": "High-occupancy vehicle (2+ people).",
-        "RAILROAD CROSSING (X + RR)": "Railroad crossing ahead. Stop if signals active.",
-    },
-}
+  ━━━━━━━━ সলিড হলুদ ডাবল লাইন
+    → দুই দিকের ট্রাফিক আলাদা
+    → কোনো দিক থেকেই পার হওয়া নিষেধ
+    → U-turn নিষেধ, পাস করা নিষেধ
 
-for category, items in markings.items():
-    print(f"\n{category}")
-    for marking, meaning in items.items():
-        print(f"  {marking}")
-        print(f"    → {meaning}")
+  ━━━━━━━━ সলিড হলুদ সিঙ্গেল লাইন
+    → এক দিক পার হওয়া নিষেধ (যে দিকে সলিড)
+    → অন্য দিক পার হতে পারে যদি ড্যাশড হয়
 
-# PYTHON (pavement marking interpreter):
-def interpret_marking(color, style, context=""):
-    """Determine what a pavement marking means."""
-    if color == "yellow":
-        if style == "solid_double":
-            return "NO passing either direction. No U-turn."
-        elif style == "solid_single":
-            return "No passing on solid side."
-        elif style == "dashed":
-            return "Passing allowed when safe."
-    elif color == "white":
-        if style == "solid":
-            return "Lane change discouraged."
-        elif style == "dashed":
-            return "Lane change allowed when safe."
-        elif style == "solid_wide":
-            return "Road edge / shoulder."
+  - - - - - ড্যাশড হলুদ লাইন
+    → পার হওয়া যায় — নিরাপদ হলে পাস করো
 
-    return f"Unknown marking: {color} {style}"
+⚪ WHITE LINES = একই দিকের লেন আলাদা করে
+# — — — — — — — — — — — — — — — — — — — — — —
 
-# Quick reference:
-print("\nPAVEMENT MARKING QUICK REFERENCE:")
-tests = [
-    ("yellow", "solid_double"),
-    ("yellow", "dashed"),
-    ("white", "dashed"),
-    ("white", "solid"),
-]
-for color, style in tests:
-    print(f"  {color} {style}: {interpret_marking(color, style)}")</div>
+  ━━━━━━━━ সলিড সাদা লাইন
+    → লেন পরিবর্তন নিরুৎসাহিত
+    → (যেমন expressway লেন সেপারেটর)
+
+  - - - - - ড্যাশড সাদা লাইন
+    → লেন পরিবর্তন করতে পারো — নিরাপদ হলে
+
+  ━━━━━━━━ সলিড সাদা (চওড়া)
+    → রাস্তার কিনারা — shoulder line
     → এই লাইনের ডানে চালাবে না (বাইরে)
 
 # — — — — — — — — — — — — — — — — — — — — — —
@@ -1263,46 +854,36 @@ SPECIAL MARKINGS
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক</div>হলুদ আলো দেখে যদি নিরাপদে থামতে পারো (পেছনে গাড়ি খুব কাছে না থাকলে), ধীরে ব্রেক করো। যদি ইতিমধ্যে জংশনে ঢুকে থাকো, তবে নিরাপদে পার হও।</div>
 </div>
 
-<div class="code-block"># ── STEP 12: Exam pattern questions — signals & markings ──
-# Practice for the rules-of-road section of the permit test.
+<div class="code-block">EXAM PATTERN QUESTIONS — Signals & Markings:
 
-# PYTHON (interactive practice — signals & markings):
+❓ হলুদ আলো দেখলে কী করবে?
+✅ থামার প্রস্তুতি নাও। যদি নিরাপদে থামতে 
+   পারো, থামো।
 
-signals_qa = [
-    {"q": "Yellow light means?", "a": "Prepare to stop. Stop if safe.",
-     "options": ["Speed up", "Prepare to stop", "Go fast", "Stop immediately"]},
-    {"q": "Flashing red light?", "a": "Treat as STOP sign — stop, then go",
-     "options": ["Proceed with caution", "Treat as STOP sign", "Yield only", "Go fast"]},
-    {"q": "Flashing yellow light?", "a": "Slow down, proceed with caution",
-     "options": ["Stop", "Slow down, proceed", "Speed up", "Wait for green"]},
-    {"q": "Double solid yellow line?", "a": "No passing either direction",
-     "options": ["Pass allowed", "No passing either way", "Pass right only", "U-turn allowed"]},
-    {"q": "Dashed yellow line?", "a": "Passing allowed when safe",
-     "options": ["No passing", "Pass when safe", "Stop required", "Left turn only"]},
-    {"q": "White line separates?", "a": "Same-direction traffic lanes",
-     "options": ["Opposite directions", "Same direction lanes", "Bike lanes only", "Parking zones"]},
-    {"q": "Michigan right turn on red?", "a": "Legal after complete stop, unless sign prohibits",
-     "options": ["Always illegal", "Legal after full stop unless prohibited", "Legal without stopping", "Only on weekends"]},
-    {"q": "Pedestrian in crosswalk?", "a": "Always stop — pedestrians have right-of-way",
-     "options": ["Honk and pass", "Always stop", "Yield only if red", "Drive around"]},
-    {"q": "Red X lane signal?", "a": "Lane closed — do not enter",
-     "options": ["Caution", "Lane closed", "Merge left", "Reduce speed"]},
-    {"q": "Green arrow signal?", "a": "Protected turn — you have right-of-way",
-     "options": ["Yield first", "Protected turn", "Stop then go", "Caution only"]},
-]
+❓ ফ্ল্যাশিং লাল আলো কীভাবে আচরণ করবে?
+✅ STOP sign-এর মতো — সম্পূর্ণ থামো, তারপর যাও।
 
-score = 0
-for i, qa in enumerate(signals_qa, 1):
-    print(f"\nQ{i}: {qa['q']}")
-    for j, opt in enumerate(qa['options'], 1):
-        marker = " <-" if opt == qa['a'] else ""
-        print(f"  {j}) {opt}{marker}")
-    print(f"  Answer: {qa['a']}")
-    score += 1
+❓ ফ্ল্যাশিং হলুদ আলো কী করবে?
+✅ ধীরে করো, সতর্ক হও, যাও।
 
-print(f"\n{'='*40}")
-print(f"Signals section: {score}/{len(signals_qa)}")
-print(f"Need 20/25 (80%) to pass this section")</div>
+❓ ডাবল সলিড হলুদ লাইন কী বোঝায়?
+✅ কোনো দিক থেকেই পার হওয়া নিষেধ।
+
+❓ ড্যাশড হলুদ লাইন কী?
+✅ নিরাপদ হলে পার হওয়া যায় (পাস করা যায়)।
+
+❓ সাদা লাইন কী নির্দেশ করে?
+✅ একই দিকের লেন আলাদা করে।
+
+❓ Michigan-এ right turn on red কি আইনি?
+✅ হ্যাঁ — যদি "NO TURN ON RED" সাইন না থাকে।
+   প্রথমে সম্পূর্ণ থামো, তারপর নিরাপদে যাও।
+
+❓ ক্রসওয়াকে পেডেস্ট্রিয়ান থাকলে কী করবে?
+✅ থামো। পেডেস্ট্রিয়ান সবসময় অগ্রাধিকার পায়।
+
+❓ কাটা লাল (✕) লেন সিগন্যাল কী?
+✅ সেই লেন বন্ধ — ঢুকো না।
 
 ❓ সবুজ তীর (green arrow) কী মানে?
 ✅ Protected turn — সেই দিকে নিরাপদে যাও।
@@ -1374,102 +955,40 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Driving Without Insurance:</strong> Pulled over, no proof of insurance. Car impounded, $500 fine. Fix: keep insurance card in car.</div></div>
 
 
-<div class="code-block"># ── STEP 6: Right-of-way — complete rules ──
-# Who goes first in every situation.
+<div class="code-block">RIGHT-OF-WAY — COMPLETE RULES
+# — — — — — — — — — — — — — — — — — — — — — —
 
-# RIGHT-OF-WAY RULES (Memorize These!):
+🛑 4-WAY STOP (চার-মুখী STOP)
+# — — — — — — — — — — — — — — — — — — — — — —
 
-right_of_way = {
-    "4-WAY STOP (all directions have STOP sign)": [
-        "Rule 1: First to stop = first to go",
-        "Rule 2: Same time? → yield to car on your RIGHT",
-        "Rule 3: Opposite directions same time? → straight goes first",
-        "Rule 4: When in doubt → YIELD (let others go)",
-    ],
-    "UNCONTROLLED INTERSECTION (no signs/signals)": [
-        "Yield to traffic coming from your RIGHT",
-        "Slow down, be prepared to stop",
-    ],
-    "T-INTERSECTION (one road ends at another)": [
-        "The road that ENDS must yield to the through road",
-        "Through traffic has right-of-way",
-    ],
-    "ROUNDABOUT (circular intersection)": [
-        "Traffic INSIDE the roundabout has right-of-way",
-        "Yield before entering — wait for a gap",
-        "Signal right before your exit",
-        "Never stop inside the roundabout",
-    ],
-    "LEFT TURN (at any intersection)": [
-        "Yield to ALL oncoming (opposite-direction) traffic",
-        "Wait for a safe gap before turning",
-        "Even on green light — oncoming traffic goes first",
-    ],
-    "EMERGENCY VEHICLES (police, fire, ambulance)": [
-        "Pull to the RIGHT and stop",
-        "Clear the intersection if you're in it",
-        "Wait until emergency vehicle passes",
-        "NEVER follow within 500 feet of emergency vehicle",
-    ],
-    "SCHOOL BUS (red flashing lights + stop arm)": [
-        "STOP from BOTH directions (on undivided road)",
-        "Wait until lights stop flashing and arm retracts",
-        "Fine for passing: $200-500 + points",
-        "On divided highway (with median): only same-direction stops",
-    ],
-    "PEDESTRIANS": [
-        "ALWAYS yield to pedestrians in crosswalks",
-        "Even if they're jaywalking — don't hit them",
-        "Stop before the crosswalk line, not in it",
-    ],
-    "FUNERAL PROCESSION": [
-        "Yield to all vehicles in a funeral procession",
-        "Don't cut into or pass the procession",
-        "They have right-of-way even through red lights",
-    ],
-}
+  নিয়ম ১: যে প্রথম থামে, সে প্রথম যায়
+    → First to stop = first to go
 
-for situation, rules in right_of_way.items():
-    print(f"\n{situation}:")
-    for rule in rules:
-        print(f"  → {rule}")
+  নিয়ম ২: একই সময়ে থামলে — ডান দিকের গাড়ি 
+    প্রথম
+    → Tie → yield to the car on your RIGHT
 
-# PYTHON (4-way stop resolver):
-def four_way_stop(car_north=False, car_south=False, car_east=False,
-                  car_west=False, arrival_order=None):
-    """Determine who goes first at a 4-way stop."""
-    cars = {
-        "North": car_north, "South": car_south,
-        "East": car_east, "West": car_west,
-    }
-    present = [d for d, there in cars.items() if there]
+  নিয়ম ৩: বিপরীত দিক থেকে একই সময়ে — 
+    সোজা যাওয়া গাড়ি প্রথম
+    → Straight traffic before turning
 
-    if len(present) == 1:
-        return f"{present[0]} goes (only car present)"
+  নিয়ম ৪: সন্দেহ হলে — অন্যকে দাও
+    → When in doubt, yield
 
-    if arrival_order:  # if we know who stopped first
-        return f"{arrival_order[0]} goes first (stopped first)"
+# — — — — — — — — — — — — — — — — — — — — — —
+🚦 UNCONTROLLED INTERSECTION (কোনো সাইন/সিগন্যাল নেই)
+# — — — — — — — — — — — — — — — — — — — — — —
 
-    # Same time tie → right has priority:
-    # North's right = East, East's right = South, etc.
-    right_priority = {"North": "East", "East": "South",
-                      "South": "West", "West": "North"}
+  নিয়ম: ডান দিক থেকে আসা গাড়িকে অগ্রাধিকার দাও
+    → Yield to traffic on the right
 
-    # Simplified: yield to right means rightmost goes first
-    if "North" in present and "West" in present:
-        return "North goes first (West is on North's left → North yields right = West)"
-    if "East" in present and "North" in present:
-        return "East goes first (East has right-of-way over North)"
+# — — — — — — — — — — — — — — — — — — — — — —
+🔀 T-INTERSECTION (টি-মোড়)
+# — — — — — — — — — — — — — — — — — — — — — —
 
-    return "Yield to the car on your right. When in doubt, wait."
-
-print("\n4-WAY STOP EXAMPLES:")
-print(f"  Only North: {four_way_stop(car_north=True)}")
-print(f"  N+S+E+W same time: {four_way_stop(True, True, True, True)}")
-
-# GOLDEN RULE OF RIGHT-OF-WAY:
-# "When in doubt, YIELD."
-# A few seconds of patience > a lifetime of regret.</div>
+  নিয়ম: শেষ হয়ে যাওয়া রাস্তার গাড়ি (T-এর পা)
+    through রাস্তার সব ট্রাফিককে yield করবে
+    → Through road always has right-of-way
 
 # — — — — — — — — — — — — — — — — — — — — — —
 🏠 DRIVEWAY / PRIVATE ROAD / PARKING LOT
@@ -1747,55 +1266,41 @@ print(f"  N+S+E+W same time: {four_way_stop(True, True, True, True)}")
 <div class="scn-explain">বাস্তব রাস্তায় সবাই নিয়ম মানে না — কেউ ভুলে যায়, কেউ তাড়াহুড়ো করে। Right-of-way "নেওয়ার" জিনিস নয়, "দেওয়ার" জিনিস। Crash হলে "কিন্তু আমার অগ্রাধিকার ছিল" বলে লাভ নেই। Defensive driving-এর মূলমন্ত্র: predictable হও, সন্দেহ হলে yield করো।</div>
 </div>
 
-<div class="code-block"># ── STEP 13: Exam pattern questions — right-of-way ──
-# Practice for right-of-way scenarios on the permit test.
+<div class="code-block">EXAM PATTERN QUESTIONS — Right-of-Way:
 
-# PYTHON (interactive practice — right-of-way):
+❓ 4-way stop-এ একই সময়ে ২টা গাড়ি থামলে 
+   কে আগে যাবে?
+✅ ডান দিকের গাড়ি প্রথম যায়।
 
-right_of_way_qa = [
-    {"q": "4-way stop, 2 cars stop same time — who goes first?",
-     "a": "Car on the RIGHT goes first",
-     "options": ["Car on the left", "Car on the right", "Faster car", "Larger car"]},
-    {"q": "Uncontrolled intersection (no signs) — yield to?",
-     "a": "Traffic coming from your RIGHT",
-     "options": ["Traffic from left", "Traffic from right", "Faster traffic", "No one"]},
-    {"q": "Left turn at green light (no arrow) — yield to?",
-     "a": "All oncoming (opposite-direction) traffic",
-     "options": ["No one", "Oncoming traffic", "Right-turning cars", "Pedestrians only"]},
-    {"q": "Entering a roundabout — yield to?",
-     "a": "Traffic already INSIDE the roundabout",
-     "options": ["Exiting traffic", "Traffic inside roundabout", "Pedestrians only", "No one"]},
-    {"q": "School bus with red flashing lights + stop arm?",
-     "a": "STOP from both directions (on undivided road)",
-     "options": ["Pass slowly", "Stop both directions", "Only same-direction stops", "Honk and pass"]},
-    {"q": "Ambulance approaching with sirens?",
-     "a": "Pull to the RIGHT and stop",
-     "options": ["Pull left", "Pull right and stop", "Keep driving", "Speed up"]},
-    {"q": "Pedestrian standing at crosswalk?",
-     "a": "Always stop — pedestrians have right-of-way",
-     "options": ["Wave them across", "Always stop", "Honk", "Drive around"]},
-    {"q": "Green light, turning left (no arrow) — who goes first?",
-     "a": "Yield to oncoming traffic going straight",
-     "options": ["You go first", "Yield to oncoming", "Both go together", "Wait for yellow"]},
-    {"q": "Funeral procession approaching?",
-     "a": "Yield — do not cut through the procession",
-     "options": ["Cut through", "Yield and wait", "Honk", "Pass on right"]},
-    {"q": "U-turn is ALWAYS prohibited at?",
-     "a": "Where NO U-TURN sign posted, curves, hill crests, intersections with no U-turn sign",
-     "options": ["Everywhere", "Posted areas, curves, hills", "Only highways", "Only at night"]},
-]
+❓ কোনো সাইন ছাড়া intersection-এ কাকে 
+   অগ্রাধিকার দেবে?
+✅ ডান দিক থেকে আসা গাড়িকে।
 
-score = 0
-for i, qa in enumerate(right_of_way_qa, 1):
-    print(f"\nQ{i}: {qa['q']}")
-    for j, opt in enumerate(qa['options'], 1):
-        marker = " <-" if opt == qa['a'] else ""
-        print(f"  {j}) {opt}{marker}")
-    print(f"  Answer: {qa['a']}")
-    score += 1
+❓ বাম মোড় নিলে কাকে yield করবে?
+✅ Oncoming (বিপরীত দিকের) traffic কে।
 
-print(f"\n{'='*40}")
-print(f"Right-of-Way section: {score}/{len(right_of_way_qa)}")</div>
+❓ Roundabout-এ কাকে yield করবে?
+✅ ভেতরে already থাকা গাড়িকে।
+
+❓ স্কুল বাস লাল আলো + STOP arm দেখালে 
+   কী করবে?
+✅ উভয় দিক থেকে সম্পূর্ণ থামো।
+
+❓ জরুরি গাড়ি (ambulance) সাইরেন নিয়ে 
+   আসলে কী করবে?
+✅ ডানে সরে যাও, থামো।
+
+❓ ক্রসওয়াকে পেডেস্ট্রিয়ান দাঁড়িয়ে থাকলে?
+✅ থামো। পেডেস্ট্রিয়ান সবসময় অগ্রাধিকার।
+
+❓ সবুজ তীর (arrow) ছাড়া solid green আলোতে 
+   বাম মোড় নিলে?
+✅ Oncoming traffic কে yield করো।
+
+❓ Funeral procession দেখলে কী করবে?
+✅ Yield করো — অগ্রাধিকার দাও।
+
+❓ U-turn কোথায় সম্পূর্ণ নিষেধ?
 ✅ Business district-এ। অন্যত্র নিরাপদ হলে করা যায়।
 
 ❓ "Michigan Left" কী?
@@ -1860,163 +1365,56 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — DUI Checkpoint:</strong> 2 beers, thought fine — BAC 0.09. License suspended 6 months. Fix: one drink = wait one hour.</div></div>
 
 
-<div class="code-block"># ── STEP 7: Michigan speed limits — complete list ──
-# Know the default speed for every road type.
+<div class="code-block">MICHIGAN SPEED LIMITS — সম্পূর্ণ তালিকা
+# — — — — — — — — — — — — — — — — — — — — — —
 
-# MICHIGAN SPEED LIMITS (default when no sign posted):
+🚗 MICHIGAN SPEED LIMITS (default যদি সাইন না থাকে):
 
-speed_limits = {
-    "Residential / Business District": {"mph": 25, "note": "City streets, neighborhoods"},
-    "School Zone": {"mph": 25, "note": "When children present / flashing light active"},
-    "County / Local Road": {"mph": 55, "note": "Rural roads, country highways"},
-    "Freeway / Expressway (rural)": {"mph": 70, "note": "Most highways outside cities"},
-    "Freeway (some rural)": {"mph": 75, "note": "Upper Peninsula, sign posted"},
-    "Freeway (urban)": {"mph": 55-65, "note": "Metro Detroit, Grand Rapids"},
-    "Trucks (freeway)": {"mph": 65, "note": "Vehicles over 10,000 lbs"},
-    "Construction Zone": {"mph": "as posted", "note": "Fines DOUBLE in work zones"},
-}
+  🏘️ Residential / Business District: 25 mph
+  🚸 School Zone: সাইনে লেখা গতি — সাধারণত
+     school hours-এ বা "WHEN CHILDREN ARE
+     PRESENT" / flashing light জ্বললে কার্যকর
+  🛣️ County/Local Road: 55 mph
+  🛤️ Freeway/Expressway: 70 mph (সাধারণ)
+     কিছু rural freeway-তে 75 mph (সাইন দেখো)
+     urban এলাকায় 55-65 mph হতে পারে
+  🚚 Trucks: 65 mph (freeway-তে)
 
-print("MICHIGAN SPEED LIMITS:")
-for road_type, info in speed_limits.items():
-    print(f"  {road_type}: {info['mph']} mph — {info['note']}")
+  ⚠️ সবসময় posted সাইন অনুসরণ করো
+  ⚠️ সাইনের গতি সর্বোচ্চ — কখনো minimum নয়
 
-# BASIC SPEED LAW (most important!):
-# "Drive at a careful and prudent speed for conditions"
-# → Speed limit is MAXIMUM in PERFECT conditions
-# → In bad weather, legal speed may be WELL below limit
+# — — — — — — — — — — — — — — — — — — — — — —
+⚠️ BASIC SPEED LAW (সবচেয়ে গুরুত্বপূর্ণ)
+# — — — — — — — — — — — — — — — — — — — — — —
 
-# PYTHON (safe speed calculator):
-def safe_speed(posted_limit, weather="clear", road_type="dry", traffic="light"):
-    """Calculate safe driving speed based on conditions."""
-    speed = posted_limit
+  "Drive at a careful and prudent speed 
+   for conditions"
 
-    # Weather adjustments:
-    weather_reduction = {
-        "clear": 0,
-        "rain": 0.15,        # reduce 15%
-        "snow": 0.35,        # reduce 35%
-        "ice": 0.50,         # reduce 50%!
-        "fog": 0.30,         # reduce 30%
-        "heavy_rain": 0.25,  # reduce 25%
-    }
+  অর্থাৎ: weather, traffic, road condition 
+  অনুযায়ী গতি ঠিক করো
 
-    # Road condition adjustments:
-    road_reduction = {
-        "dry": 0,
-        "wet": 0.10,
-        "snow_covered": 0.30,
-        "icy": 0.50,
-        "gravel": 0.15,
-    }
+  ❄️ Snow/Ice: speed limit এর অনেক কম
+  🌧️ Rain: speed limit এর কিছু কম
+  🌫️ Fog: খুব ধীরে
+  🚦 Traffic: traffic অনুযায়ী
+  🔨 Construction: সাইন অনুযায়ী (double fine!)
 
-    w_factor = weather_reduction.get(weather, 0)
-    r_factor = road_reduction.get(road_type, 0)
-    total_reduction = max(w_factor, r_factor)  # take the worse condition
+  → Speed limit 55 হলেও snow-এ 30 mph 
+    আইনি হতে পারে
 
-    safe = int(posted_limit * (1 - total_reduction))
+# — — — — — — — — — — — — — — — — — — — — — —
+🚨 TOO FAST / TOO SLOW — উভয়ই বেআইনি
+# — — — — — — — — — — — — — — — — — — — — — —
 
-    print(f"  Posted: {posted_limit} mph | Weather: {weather} | Road: {road_type}")
-    print(f"  → Safe speed: {safe} mph (reduce {total_reduction*100:.0f}%)")
+  ❌ খুব দ্রুত: accident risk, ticket, points
+  ❌ খুব ধীরে: traffic block, rear-end risk
+     → minimum speed highway-এ আছে
+     → খুব ধীরে চালালেও ticket
 
-    if safe < posted_limit * 0.6:
-        print(f"  ⚠️ DANGEROUS conditions — consider not driving!")
+  💡 নিয়ম: traffic flow-এর সাথে চালাও
+     কিন্তু speed limit পার করো না</div>
 
-    return safe
-
-print("\nSAFE SPEED CALCULATOR:")
-safe_speed(70, "snow", "snow_covered")
-safe_speed(55, "rain", "wet")
-safe_speed(25, "clear", "dry")
-safe_speed(70, "ice", "icy")
-
-# TOO FAST vs TOO SLOW — both illegal:
-# → Too fast: accident risk, ticket, points
-# → Too slow: traffic hazard, rear-end risk, ALSO ticketable
-# → Rule: drive with traffic flow, but never exceed speed limit
-# → Highway minimum speed: usually 45-55 mph (posted)</div>
-
-<div class="code-block"># ── STEP 8: Parking rules — where and how ──
-# Legal vs illegal parking in Michigan.
-
-# PARKING RULES:
-
-parking_rules = {
-    "ILLEGAL PARKING (never park here)": [
-        "Within 15 feet of a fire hydrant",
-        "Within 20 feet of a crosswalk at an intersection",
-        "Within 30 feet of a STOP sign, YIELD sign, or traffic signal",
-        "Within 50 feet of a railroad crossing",
-        "In front of a public or private driveway",
-        "On the travel lane of any road (except emergency)",
-        "In a space reserved for disabled persons (without placard)",
-        "On a sidewalk or bike lane",
-        "Within 500 feet of a fire or accident (emergency scene)",
-        "On a bridge or in a tunnel",
-    ],
-    "LEGAL PARKING (generally OK)": [
-        "Designated parking spaces (lined, marked)",
-        "Street parking where not prohibited by sign",
-        "Private property with owner's permission",
-        "Parking lots (follow posted rules)",
-        "Parallel parking on city streets (curb side only)",
-    ],
-    "PARALLEL PARKING STEPS": [
-        "1. Signal and stop alongside the car in front of your space",
-        "2. Check mirrors and blind spots",
-        "3. Reverse slowly, turning wheel toward curb",
-        "4. When front bumper clears the car ahead, turn wheel away from curb",
-        "5. Straighten wheels, center car in space",
-        "6. Park within 12 inches of curb",
-        "7. Car must be within the painted lines",
-    ],
-    "HILL PARKING (prevent rolling)": {
-        "Uphill with curb": "Turn wheels AWAY from curb (roll back into curb)",
-        "Uphill no curb": "Turn wheels to the RIGHT (roll off road)",
-        "Downhill": "Turn wheels TOWARD curb (roll forward into curb)",
-        "Always": "Set parking brake + put in Park (or gear for manual)",
-    },
-    "DISABLED PARKING (handicap placard)": [
-        "Only park in blue spaces if you have a valid placard/plate",
-        "Fine for illegal use: $50-500",
-        "Placard must be displayed on rearview mirror",
-        "Only the placard holder can use it (not family members)",
-    ],
-    "WINTER PARKING (Michigan special)": [
-        "Many cities have overnight winter parking bans (Nov-Apr)",
-        "Check local ordinances — street parking may be prohibited 2AM-6AM",
-        "Snow emergencies: no parking on designated snow routes",
-        "Violators may be towed + fined",
-    ],
-}
-
-for category, rules in parking_rules.items():
-    print(f"\n{category}:")
-    if isinstance(rules, list):
-        for rule in rules:
-            print(f"  → {rule}")
-    elif isinstance(rules, dict):
-        for situation, action in rules.items():
-            print(f"  {situation}: {action}")
-
-# PYTHON (parking fine calculator):
-def parking_fine(violation_type):
-    """Calculate Michigan parking fines."""
-    fines = {
-        "fire_hydrant": 100,
-        "disabled_space": 250,
-        "blocking_driveway": 75,
-        "too_close_intersection": 75,
-        "expired_meter": 25,
-        "snow_emergency": 150,
-        "no_parking_zone": 50,
-        "sidewalk": 75,
-    }
-    base_fine = fines.get(violation_type, 50)
-    return base_fine
-
-print("\nPARKING FINE EXAMPLES:")
-for violation in ["fire_hydrant", "disabled_space", "expired_meter", "snow_emergency"]:
-    print(f"  {violation}: ${parking_fine(violation)}")</div>
+<div class="code-block">PARKING RULES — কোথায় পার্ক করবে, কোথায় নয়
 # — — — — — — — — — — — — — — — — — — — — — —
 💺 SEATBELT LAW (সিটবেল্ট আইন)
 # — — — — — — — — — — — — — — — — — — — — — —
@@ -2159,61 +1557,41 @@ for violation in ["fire_hydrant", "disabled_space", "expired_meter", "snow_emerg
 <div class="scn-explain">Speed limit সর্বোচ্চ — কিন্তু condition-এর জন্য আইনি নয়। বরফে ২৫-৩০ mph বা তার কম নিরাপদ হতে পারে। Police "too fast for conditions" টিকিট দিতে পারে।</div>
 </div>
 
-<div class="code-block"># ── STEP 14: Exam pattern questions — speed & parking ──
-# Practice for speed limits and parking rules.
+<div class="code-block">EXAM PATTERN QUESTIONS — Speed & Parking:
 
-# PYTHON (interactive practice — speed & parking):
+❓ Michigan-এ residential area speed limit কত?
+✅ ২৫ mph।
 
-speed_parking_qa = [
-    {"q": "Residential/business district speed limit?",
-     "a": "25 mph",
-     "options": ["15 mph", "25 mph", "35 mph", "55 mph"]},
-    {"q": "School zone speed limit (when active)?",
-     "a": "25 mph (when children present / flashing light)",
-     "options": ["15 mph", "25 mph", "30 mph", "As posted, usually 25"]},
-    {"q": "Freeway/expressway default speed (rural)?",
-     "a": "70 mph (75 in some rural, 55-65 urban)",
-     "options": ["55 mph", "65 mph", "70 mph", "75 mph"]},
-    {"q": "Basic Speed Law means?",
-     "a": "Drive at a safe speed for conditions (weather, traffic, road)",
-     "options": ["Drive at speed limit always", "Safe speed for conditions", "Never below 55", "Match fastest car"]},
-    {"q": "Construction zone speeding fine?",
-     "a": "DOUBLE the normal fine",
-     "options": ["Same as normal", "Double fine", "Triple fine", "Warning only"]},
-    {"q": "Minimum distance from fire hydrant to park?",
-     "a": "15 feet",
-     "options": ["5 feet", "10 feet", "15 feet", "25 feet"]},
-    {"q": "Minimum distance from crosswalk to park?",
-     "a": "20 feet",
-     "options": ["10 feet", "15 feet", "20 feet", "30 feet"]},
-    {"q": "Minimum distance from STOP sign to park?",
-     "a": "30 feet",
-     "options": ["15 feet", "20 feet", "30 feet", "50 feet"]},
-    {"q": "Minimum distance from railroad track to park?",
-     "a": "50 feet",
-     "options": ["25 feet", "50 feet", "75 feet", "100 feet"]},
-    {"q": "Downhill parking — which way to turn wheels?",
-     "a": "TOWARD the curb (right)",
-     "options": ["Away from curb", "Toward curb", "Straight", "Doesn't matter"]},
-    {"q": "Uphill parking WITH curb — which way to turn wheels?",
-     "a": "AWAY from curb (left) — car rolls back into curb",
-     "options": ["Toward curb", "Away from curb", "Straight", "Right only"]},
-    {"q": "Disabled parking without placard fine?",
-     "a": "$50-500",
-     "options": ["$25", "$50-500", "$1000", "Warning only"]},
-]
+❓ School zone-এ speed limit কত?
+✅ ২৫ mph (সাইন থাকলে)।
 
-score = 0
-for i, qa in enumerate(speed_parking_qa, 1):
-    print(f"\nQ{i}: {qa['q']}")
-    for j, opt in enumerate(qa['options'], 1):
-        marker = " <-" if opt == qa['a'] else ""
-        print(f"  {j}) {opt}{marker}")
-    print(f"  Answer: {qa['a']}")
-    score += 1
+❓ Freeway/expressway-এ default speed limit?
+✅ ৭০ mph (কিছু rural freeway-তে ৭৫,
+   urban-এ ৫৫-৬৫ — সবসময় posted সাইন দেখো)।
 
-print(f"\n{'='*40}")
-print(f"Speed & Parking section: {score}/{len(speed_parking_qa)}")</div>
+❓ Basic speed law কী বলে?
+✅ Weather ও condition অনুযায়ী নিরাপদ 
+   গতিতে চালাও। Speed limit সর্বোচ্চ, minimum নয়।
+
+❓ Construction zone-এ অতিরিক্ত গতির জরিমানা?
+✅ দ্বিগুণ জরিমানা (double fine)।
+
+❓ Fire hydrant থেকে কত দূরে পার্ক করতে হবে?
+✅ কমপক্ষে ১৫ ফুট দূরে।
+
+❓ Crosswalk থেকে কত দূরে পার্ক?
+✅ কমপক্ষে ২০ ফুট।
+
+❓ STOP sign থেকে কত দূরে পার্ক?
+✅ কমপক্ষে ৩০ ফুট।
+
+❓ Railroad track থেকে কত দূরে পার্ক?
+✅ কমপক্ষে ৫০ ফুট।
+
+❓ Downhill পার্ক করলে চাকা কোন দিকে?
+✅ কার্বের দিকে (ডানে) ঘুরাও।
+
+❓ Uphill পার্ক করলে চাকা কোন দিকে?
 ✅ কার্ব থেকে দূরে (বামে) ঘুরাও।
 
 ❓ Disabled parking-এ পার্ক করলে জরিমানা?

@@ -21,151 +21,36 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Winter Black Ice:</strong> Hit black ice on US-23 — spun into oncoming traffic. Fix: assume invisible ice below 32F.</div></div>
 
 
-<div class="code-block"># ── STEP 1: Safe driving techniques — SEE system ──
-# Defensive driving mastery.
+<div class="code-block">SAFE DRIVING TECHNIQUES — COMPLETE
+# — — — — — — — — — — — — — — — — — — — — — —
 
-# THE SEE SYSTEM (Smith System, used by professional drivers):
-# S - SEARCH: Scan 20-30 seconds ahead, check mirrors every 5-8 sec
-# E - EVALUATE: Predict what could happen (that car might change lanes)
-# E - EXECUTE: Take action early (slow down, create space, plan escape)
+🧠 DEFENSIVE DRIVING — SEE SYSTEM
+# — — — — — — — — — — — — — — — — — — — — — —
 
-# PYTHON (defensive driving system):
-def see_system(speed_mph, traffic="moderate", weather="clear"):
-    """Apply the SEE defensive driving system."""
-    # 1. SEARCH — what to look for:
-    search_targets = [
-        "20-30 seconds ahead (upcoming hazards)",
-        "Mirrors every 5-8 seconds",
-        "Intersections: left-right-left before entering",
-        "Blind spots before lane changes",
-        "Road surface (potholes, debris, ice)",
-    ]
+  প্রতি মুহূর্তে তিনটা কাজ:
+  1️⃣ SEARCH — চোখ ঘোরাও: সামনে ২০-৩০ সেকেন্ড
+     দূর পর্যন্ত, mirror প্রতি ৫-৮ সেকেন্ডে,
+     intersection-এ বাম-ডান-বাম
+  2️⃣ EVALUATE — কী ঘটতে পারে ভাবো: ওই গাড়ি
+     কি লেন বদলাবে? বাচ্চাটা কি রাস্তায় নামবে?
+  3️⃣ EXECUTE — আগে থেকে ব্যবস্থা নাও: গতি
+     কমাও, জায়গা রাখো, escape route ভাবো
 
-    # 2. EVALUATE — potential hazards:
-    hazards = [
-        "Car drifting in lane (distracted driver?)",
-        "Child near road (might run into street)",
-        "Ball rolling into road (child following?)",
-        "Tailgating truck (brake early, increase space)",
-        "Blind curve (oncoming car in your lane?)",
-    ]
+  💡 Defensive driver = যে ধরে নেয় অন্যরা ভুল
+     করবে, এবং তার জন্য প্রস্তুত থাকে
 
-    # 3. EXECUTE — actions to take:
-    # Following distance adjusts for conditions:
-    base_seconds = 3
-    if weather in ("rain", "snow"): base_seconds += 1
-    if weather == "ice": base_seconds += 3
-    if traffic == "heavy": base_seconds += 1
-    if speed_mph > 55: base_seconds += 1
+# — — — — — — — — — — — — — — — — — — — — — —
+🛡️ SPACE CUSHION — গাড়ির চারপাশে ৬টা zone
+# — — — — — — — — — — — — — — — — — — — — — —
 
-    # Following distance in feet (at speed):
-    feet_per_second = speed_mph * 1.467
-    safe_distance = int(feet_per_second * base_seconds)
+  তোমার গাড়ির চারদিকে ৬টা জায়গা:
+  সামনে | পেছনে | বাম-সামনে | ডান-সামনে |
+  বাম-পেছনে | ডান-পেছনে
 
-    return {
-        "search": search_targets,
-        "evaluate": hazards[:3],  # top 3
-        "execute": f"Maintain {base_seconds}s following distance ({safe_distance} ft)",
-        "speed_adjust": f"Reduce speed if any hazard identified",
-    }
-
-result = see_system(55, "moderate", "rain")
-print("SEE DEFENSIVE DRIVING SYSTEM:")
-print("\n1. SEARCH:")
-for s in result["search"]:
-    print(f"  → {s}")
-print("\n2. EVALUATE (top hazards):")
-for h in result["evaluate"]:
-    print(f"  ⚠️ {h}")
-print(f"\n3. EXECUTE:")
-print(f"  → {result['execute']}")
-print(f"  → {result['speed_adjust']}")
-
-# SPACE CUSHION (6 zones around your car):
-zones = [
-    "FRONT: 3+ second following distance",
-    "REAR: If tailgated, increase front distance",
-    "LEFT-FRONT: Watch blind spot before lane change",
-    "RIGHT-FRONT: Watch for merging traffic",
-    "LEFT-REAR: Check mirror before moving left",
-    "RIGHT-REAR: Check mirror before moving right",
-]
-print("\nSPACE CUSHION (keep zones clear):")
-for zone in zones:
-    print(f"  🛡️ {zone}")
-
-# DEFENSIVE DRIVING RULE: Assume others will make mistakes
-# and be prepared to react. Better to yield than crash.</div>
-
-<div class="code-block"># ── STEP 2: Lane change technique and following distance ──
-# How to change lanes and maintain safe distance.
-
-# LANE CHANGE PROCEDURE (SMOG):
-# S - SIGNAL (turn signal, early)
-# M - MIRROR (check rear-view and side mirror)
-# O - OVER SHOULDER (check blind spot)
-# G - GO (smoothly, don't jerk the wheel)
-
-lane_change_steps = [
-    "1. CHECK traffic ahead (is it safe to change?)",
-    "2. SIGNAL (turn signal, at least 100 feet before change)",
-    "3. CHECK mirrors (is car in adjacent lane?)",
-    "4. CHECK blind spot (quick over-shoulder glance)",
-    "5. CHANGE LANES (smooth, gradual move)",
-    "6. CANCEL signal (most cars auto-cancel)",
-    "7. ADJUST speed to match new lane flow",
-]
-
-print("LANE CHANGE PROCEDURE (SMOG):")
-for step in lane_change_steps:
-    print(f"  {step}")
-
-# FOLLOWING DISTANCE (3-second rule):
-# → Pick a fixed object ahead (sign, pole, shadow)
-# → When car ahead passes it, count: "one-thousand-one, one-thousand-two, one-thousand-three"
-# → If you reach the object before 3: TOO CLOSE
-
-# PYTHON (following distance calculator):
-def following_distance(speed_mph, conditions="clear"):
-    """Calculate safe following distance for conditions."""
-    base_seconds = 3.0
-
-    adjustments = {
-        "clear": 0,
-        "rain": 1.0,
-        "wet_road": 1.0,
-        "snow": 2.0,
-        "ice": 4.0,
-        "fog": 3.0,
-        "night": 1.0,
-        "heavy_traffic": 1.0,
-        "tailgated": 2.0,
-        "large_vehicle_ahead": 2.0,
-    }
-
-    extra = adjustments.get(conditions, 0)
-    total_seconds = base_seconds + extra
-    feet_per_second = speed_mph * 1.467
-    distance_feet = int(total_seconds * feet_per_second)
-    car_lengths = int(distance_feet / 15)  # average car = 15 feet
-
-    print(f"  Speed: {speed_mph} mph | Condition: {conditions}")
-    print(f"  Following distance: {total_seconds:.0f} seconds")
-    print(f"  = {distance_feet} feet ({car_lengths} car lengths)")
-
-    return distance_feet
-
-print("\nFOLLOWING DISTANCE CALCULATOR:")
-following_distance(55, "clear")
-following_distance(70, "rain")
-following_distance(45, "ice")
-following_distance(25, "snow")
-following_distance(70, "tailgated")
-
-# 2-SECOND RULE (minimum, good conditions only):
-# 3-SECOND RULE (standard, any conditions)
-# 4+ SECOND RULE (bad weather, night, tailgated)
-# NEVER tailgate — it's the #1 cause of rear-end crashes</div>
+  লক্ষ্য: যত বেশি zone খালি রাখা যায়:
+  ✦ সামনে: following distance (৩+ সেকেন্ড)
+  ✦ পাশে: অন্য গাড়ির ঠিক পাশে "ভেসে" থেকো না —
+    একটু আগে বা পিছে থাকো (blind spot-এও পড়বে না)
   ✦ পেছনে: tailgater থাকলে সামনের gap বাড়াও
   ✦ সবসময় একটা ESCAPE ROUTE ভাবো —
     "এখনই সামনের গাড়ি থামলে আমি কোথায় যাব?"
@@ -399,55 +284,12 @@ following_distance(70, "tailgated")
 <div class="rt-caption">🟢 সবুজ = mirror-এ দেখা যায় | 🔴 লাল = blind spot — শুধু কাঁধ ঘুরিয়ে (shoulder check) দেখা যায়</div>
 </div>
 
-<div class="code-block"># ── STEP 7: Safe driving exam questions ──
-# Practice for the safe driving section of the permit test.
-
-# PYTHON (interactive practice — safe driving):
-
-safe_driving_qa = [
-    {"q": "Minimum following distance in dry weather?",
-     "a": "3 seconds",
-     "options": ["1 second", "2 seconds", "3 seconds", "5 seconds"]},
-    {"q": "Following distance in rain?",
-     "a": "4 seconds",
-     "options": ["2 seconds", "3 seconds", "4 seconds", "6 seconds"]},
-    {"q": "Following distance in snow/ice?",
-     "a": "6+ seconds",
-     "options": ["3 seconds", "4 seconds", "5 seconds", "6+ seconds"]},
-    {"q": "Before changing lanes you should?",
-     "a": "Signal, check mirrors, check blind spot (SMOG)",
-     "options": ["Just signal", "Signal + mirrors only", "Signal + mirrors + shoulder check", "Just check mirrors"]},
-    {"q": "When entering a freeway, you should?",
-     "a": "Accelerate to highway speed on the on-ramp, then merge smoothly",
-     "options": ["Drive slowly on ramp", "Match highway speed then merge", "Stop before merging", "Honk before entering"]},
-    {"q": "The SEE system stands for?",
-     "a": "Search, Evaluate, Execute",
-     "options": ["See, Examine, Enter", "Search, Evaluate, Execute", "Stop, Examine, Exit", "Signal, Evaluate, Execute"]},
-    {"q": "When approaching a blind curve, you should?",
-     "a": "Slow down, keep right, honk if needed",
-     "options": ["Speed up", "Slow down, keep right", "Keep speed, honk", "Stop"]},
-    {"q": "Defensive driving means?",
-     "a": "Assume other drivers will make mistakes and be prepared",
-     "options": ["Drive aggressively", "Assume others will make mistakes", "Always yield", "Drive slowly always"]},
-    {"q": "At a blind intersection (no signs/signals), you should?",
-     "a": "Slow to 15 mph and be ready to stop",
-     "options": ["Proceed at speed limit", "Slow to 15 mph", "Stop completely", "Honk and proceed"]},
-    {"q": "When driving in fog, you should use?",
-     "a": "Low beam headlights (NOT high beams)",
-     "options": ["High beams", "Low beams", "Parking lights only", "Hazard lights"]},
-]
-
-score = 0
-for i, qa in enumerate(safe_driving_qa, 1):
-    print(f"\nQ{i}: {qa['q']}")
-    for j, opt in enumerate(qa['options'], 1):
-        marker = " <-" if opt == qa['a'] else ""
-        print(f"  {j}) {opt}{marker}")
-    print(f"  Answer: {qa['a']}")
-    score += 1
-
-print(f"\n{'='*40}")
-print(f"Safe Driving section: {score}/{len(safe_driving_qa)}")</div>
+<div class="code-block">Lane change করার সঠিক ক্রম:
+  1️⃣ Signal দাও
+  2️⃣ Mirror দেখো (rear-view + side)
+  3️⃣ Shoulder check (কাঁধ ঘুরিয়ে)
+  4️⃣ নিরাপদ হলে → move
+  ❌ Mirror alone কখনোই যথেষ্ট নয়</div>
 
 <div class="scenario-box">
 <div class="scn-label">🎭 COMPLEX SCENARIO — Highway Merge</div>
@@ -563,87 +405,29 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Left Turn Accident:</strong> Turned left on solid green — hit oncoming motorcycle. Fault: left-turn driver. Fix: solid green = yield.</div></div>
 
 
-<div class="code-block"># ── STEP 6: Sharing the road — complete guide ──
-# How to drive safely around pedestrians, cyclists, and large vehicles.
+<div class="code-block">SHARING THE ROAD — COMPLETE GUIDE
+# — — — — — — — — — — — — — — — — — — — — — —
 
-# SHARING THE ROAD WITH ALL USERS:
+🚶 PEDESTRIANS (পথচারী)
+# — — — — — — — — — — — — — — — — — — — — — —
 
-sharing = {
-    "PEDESTRIANS": {
-        "rules": [
-            "ALWAYS yield to pedestrians in crosswalks",
-            "Stop if someone is waiting at a crosswalk",
-            "Extra caution in school zones (25 mph)",
-            "Yield to blind persons (cane or guide dog) ALWAYS",
-            "Check for pedestrians before turning",
-            "Even jaywalkers — DON'T hit them",
-        ],
-        "fine": "Failure to yield to pedestrian: $100-500 + points",
-    },
-    "BICYCLISTS": {
-        "rules": [
-            "Cyclists have SAME rights as cars (same road, same rules)",
-            "Maintain at least 3 FEET clearance when passing",
-            "Pass on the LEFT (move to left lane if needed)",
-            "Check blind spots — cyclists are hard to see",
-            "Cyclists may change lanes to avoid debris",
-            "Watch for opening car doors (door zone)",
-            "NEVER honk at a cyclist (startles them, causes crashes)",
-        ],
-        "fine": "Passing too close to cyclist: citation + points",
-    },
-    "MOTORCYCLES": {
-        "rules": [
-            "Motorcycles are HARDER to see — check blind spots twice",
-            "Allow MORE following distance (they can stop faster than you)",
-            "Motorcyclists may shift position within lane (avoiding debris)",
-            "NEVER share a lane with a motorcycle (one vehicle per lane)",
-            "Their turn signals don't auto-cancel — they may forget to turn it off",
-            "Half of motorcycle-car crashes involve cars turning left",
-        ],
-        "fine": "Causing motorcycle crash: severe penalties",
-    },
-    "LARGE TRUCKS / BUSES": {
-        "rules": [
-            "Trucks have HUGE blind spots (NO ZONES): front, both sides, rear",
-            "If you can't see the truck's mirrors, the driver can't see you",
-            "NEVER tailgate a truck (you're invisible behind it)",
-            "Pass on the LEFT (driver's side, smaller blind spot)",
-            "Give trucks EXTRA space for wide turns (they swing right to turn left)",
-            "Trucks take 40% LONGER to stop than cars",
-            "Buses make frequent stops — be patient",
-        ],
-        "rule": "Don't linger in a truck's blind spot — pass quickly or fall back",
-    },
-    "EMERGENCY VEHICLES": {
-        "rules": [
-            "Pull to the RIGHT and stop for sirens/lights",
-            "Clear the intersection if you're in it",
-            "Stay stopped until the vehicle passes",
-            "Keep 500 FEET behind any emergency vehicle",
-            "Slow Down / Move Over law: change lanes for stopped emergency vehicles",
-            "If you can't move over: slow to 10+ mph below speed limit",
-        ],
-    },
-    "CONSTRUCTION WORKERS": {
-        "rules": [
-            "Reduce speed in construction zones (fines DOUBLE)",
-            "Follow flagger instructions (they have authority over signs/signals)",
-            "Change lanes early to give workers space",
-            "Keep distance from construction vehicles entering road",
-            "Hitting a worker: up to $7,500 fine + 15 years in prison",
-        ],
-    },
-}
+  ✦ পেডেস্ট্রিয়ান সবসময় অগ্রাধিকার
+  ✦ ক্রসওয়াকে কেউ থাকলে থামো
+  ✦ School zone-এ বিশেষ সতর্ক
+  ✦ Blind person (cane/guide dog) — সবসময় yield
+  ✦ টার্ন নেওয়ার সময় পেডেস্ট্রিয়ান দেখো
+  ✦ Jaywalker-ও থামলে থামো
 
-for user, info in sharing.items():
-    print(f"\n{'='*50}")
-    print(f"  SHARING THE ROAD: {user}")
-    print(f"{'='*50}")
-    for rule in info["rules"]:
-        print(f"  → {rule}")
-    if "fine" in info:
-        print(f"  💰 {info['fine']}")</div>
+# — — — — — — — — — — — — — — — — — — — — — —
+🚴 BICYCLISTS (সাইকেল চালক)
+# — — — — — — — — — — — — — — — — — — — — — —
+
+  ✦ Cyclist একই road user — একই অধিকার
+  ✦ কমপক্ষে ৩ ফুট (3 feet) দূরত্ব রাখো
+  ✦ বাম দিয়ে পাস করো (left lane-এ সরে যাও)
+  ✦ Cyclist blind spot চেক করো
+  ✦ Cyclist lane পরিবর্তন করতে পারে
+  ✦ Door zone: parked car door খুলতে পারে
 
 <div class="sign-gallery">
 <div class="sign-item"><svg viewBox="0 0 80 60" width="64"><rect x="10" y="15" width="60" height="3" fill="#f1c40f"/><circle cx="55" cy="16" r="5" fill="#e8a838"/><text x="20" y="12" font-size="8">🖐️</text><line x1="25" y1="16" x2="55" y2="16" stroke="#e8a838" stroke-width="3"/><text x="40" y="40" text-anchor="middle" fill="#999" font-size="10">LEFT TURN</text></svg><div class="sign-label">⬅️ <strong>LEFT</strong><br>বাম হাত সোজা</div></div>
@@ -1057,101 +841,36 @@ doors.push({
 <div class="rt-caption">সূত্র: "যেদিকে যেতে চাও, সেদিকে steer" = পেছন যেদিকে পিছলাচ্ছে সেদিকেই wheel ঘোরাও — শান্তভাবে, ঝাঁকি ছাড়া</div>
 </div>
 
-<div class="code-block"># ── STEP 4: Emergency handling — hazards ──
-# What to do when things go wrong on the road.
+<div class="code-block">💧 HYDROPLANING (জলে ভাসা)
+# — — — — — — — — — — — — — — — — — — — — — —
 
-# EMERGENCY RESPONSE PROCEDURES:
+  ১. Gas ছেড়ে দাও (slowly)
+  ২. ❌ Brake না
+  ৩. Steering straight ধরো
+  ৪. Tire পানিতে চলে গেলে — ধীরে ধীরে
+  ৫. Prevent: good tire, slow speed, 4+ sec
 
-emergencies = {
-    "HYDROPLANING (tires lose contact with road on water)": {
-        "do": [
-            "Ease off gas pedal SLOWLY",
-            "Keep steering STRAIGHT",
-            "Wait for tires to regain contact",
-        ],
-        "dont": [
-            "BRAKE (causes spin)",
-            "Turn the wheel suddenly",
-            "Accelerate",
-        ],
-        "prevent": "Good tires, reduce speed in rain, 4+ second following distance",
-    },
-    "BRAKE FAILURE": {
-        "do": [
-            "Pump the brake pedal (may restore pressure)",
-            "Apply parking brake SLOWLY",
-            "Downshift to lower gears",
-            "Look for escape route (shoulder, uphill)",
-        ],
-        "dont": ["Panic-steer into traffic"],
-        "prevent": "Regular brake maintenance, check brake fluid",
-    },
-    "TIRE BLOWOUT": {
-        "do": [
-            "Hold steering wheel FIRMLY",
-            "Keep foot on gas momentarily (stabilize)",
-            "Ease off gas gradually",
-            "Signal and move to shoulder slowly",
-        ],
-        "dont": ["Brake hard (causes spin)", "Release gas instantly"],
-        "prevent": "Check tire pressure monthly, inspect for wear/damage",
-    },
-    "PAVEMENT DROP-OFF (wheel off road edge)": {
-        "do": [
-            "DO NOT jerk the wheel back (causes rollover!)",
-            "Ease off gas, slow down gradually",
-            "Light braking",
-            "When slow: turn wheel gradually back onto road at shallow angle",
-        ],
-        "dont": ["Jerk wheel suddenly (most common cause of fatal rollovers)"],
-        "prevent": "Stay alert, don't drift onto shoulder",
-    },
-    "SKIDDING (loss of traction)": {
-        "do": [
-            "Turn steering wheel IN the direction of the skid",
-            "If rear skids right → steer right",
-            "If rear skids left → steer left",
-            "Ease off gas/brake",
-        ],
-        "dont": ["Brake hard", "Steer opposite the skid"],
-        "prevent": "Slow down on wet/icy roads, gentle inputs",
-    },
-    "ACCELERATOR STUCK": {
-        "do": [
-            "Shift to NEUTRAL",
-            "Brake gently",
-            "Steer to safe area",
-            "Turn off engine when stopped",
-        ],
-        "dont": ["Turn off engine while moving (loss of power steering/brakes)"],
-        "prevent": "Check floor mats (can jam pedal)",
-    },
-}
+🚗 BRAKE FAILURE
+# — — — — — — — — — — — — — — — — — — — — — —
 
-for emergency, actions in emergencies.items():
-    print(f"\n{emergency}")
-    print(f"  ✅ DO:")
-    for item in actions["do"]:
-        print(f"     → {item}")
-    print(f"  ❌ DON'T:")
-    for item in actions["dont"]:
-        print(f"     ✗ {item}")
-    print(f"  🛡️ PREVENT: {actions['prevent']}")
+  ১. Parking brake ধীরে টানো
+  ২. গিয়ার নিচে নামাও (downshift)
+  ৩. নিরাপদ জায়গায় থামানোর চেষ্টা
 
-# PYTHON (hydroplaning speed calculator):
-def hydroplaning_speed(tire_pressure_psi):
-    """Approximate speed at which hydroplaning begins."""
-    # Formula: speed = 10.35 * sqrt(tire_pressure)
-    speed = 10.35 * (tire_pressure_psi ** 0.5)
-    print(f"  Tire pressure: {tire_pressure_psi} psi")
-    print(f"  Hydroplaning starts at: {speed:.0f} mph")
-    print(f"  ⚠️ Drive WELL below this in heavy rain!")
-    return speed
+🔥 TIRE BLOWOUT
+# — — — — — — — — — — — — — — — — — — — — — —
 
-print("\nHYDROPLANING SPEED CALCULATOR:")
-hydroplaning_speed(32)  # typical sedan
-hydroplaning_speed(35)  # properly inflated
-hydroplaning_speed(28)  # underinflated (hydroplanes EARLIER!)</div>
+  ১. Gas ধরে রাখো (মুহূর্তে)
+  ২. ধীরে ধীরে গ্যাস ছাড়ো
+  ৩. Steering straight ধরো
+  ৪. নিরাপদে থামাও
+
+🛞 PAVEMENT DROP-OFF (চাকা রাস্তার বাইরে!)
+# — — — — — — — — — — — — — — — — — — — — — —
+
+  ডান চাকা shoulder-এ নেমে গেছে (মাটি/gravel):
+  ১. ভয় পেয়ে wheel ঝাঁকিও না! ← এটাই মারে
+  ২. Gas ছাড়ো, ধীরে হও — brake হালকা
   ৩. Wheel শক্ত ধরে সোজা চলো shoulder-এই
   ৪. গতি কমলে (২৫-৩০) — mirror দেখে ধীরে,
      ছোট angle-এ রাস্তায় ফিরে এসো
@@ -1397,98 +1116,36 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Drowsy Driving:</strong> Fell asleep after 12-hour shift — crossed center line. Fix: pull over if you can't remember last mile.</div></div>
 
 
-<div class="code-block"># ── STEP 3: Michigan OWI (Operating While Intoxicated) laws ──
-# The complete guide to drunk/drugged driving penalties.
+<div class="code-block">MICHIGAN OWI LAWS — COMPLETE
+# — — — — — — — — — — — — — — — — — — — — — —
 
-# MICHIGAN OWI LAWS — BAC LIMITS:
-bac_limits = {
-    "21+ years": {"legal_limit": 0.08, "offense": "OWI (Operating While Intoxicated)"},
-    "21+ (High BAC)": {"legal_limit": 0.17, "offense": "Super Drunk (enhanced penalties)"},
-    "Under 21": {"legal_limit": 0.02, "offense": "Zero Tolerance (any alcohol)"},
-    "Commercial (CDL)": {"legal_limit": 0.04, "offense": "OWI (lower threshold)"},
-    "Any drugs": {"legal_limit": 0.00, "offense": "OWI (marijuana, prescription, illegal)"},
-}
+🍺 OPERATING WHILE INTOXICATED (OWI)
+# — — — — — — — — — — — — — — — — — — — — — —
 
-print("MICHIGAN OWI BAC LIMITS:")
-for category, info in bac_limits.items():
-    print(f"  {category}: {info['legal_limit']}+ = {info['offense']}")
+  BAC Limits:
+  # ────────────────────────────────────────# 
+  #   21+ বছর: 0.08+ = OWI                 # 
+  #   0.17+ = "SUPER DRUNK" (High BAC)     # 
+  #   Under 21: 0.02+ = Zero Tolerance     # 
+  #   Commercial (CDL): 0.04+              # 
+  #   Any drug: যেকোনো পরিমাণ = OWI        # 
+  # ────────────────────────────────────────# 
 
-# OWI PENALTIES (Michigan):
-penalties = {
-    "FIRST OFFENSE (BAC 0.08-0.16)": [
-        "Up to 93 days in jail",
-        "$100-$500 fine",
-        "Up to 360 days license suspension",
-        "6 points on license",
-        "Mandatory $500-$1,000 driver responsibility fee (2 years)",
-        "Possible ignition interlock device",
-    ],
-    "SUPER DRUNK (BAC 0.17+)": [
-        "Up to 180 days in jail",
-        "$200-$700 fine",
-        "45 days NO driving (hard suspension)",
-        "Then 320 days restricted (interlock required)",
-        "Up to 360 hours community service",
-        "Mandatory alcohol treatment (1 year)",
-    ],
-    "SECOND OFFENSE (within 7 years)": [
-        "5 days-1 year in jail",
-        "$200-$1,000 fine",
-        "Minimum 1 year license suspension",
-        "Mandatory alcohol treatment",
-        "Vehicle immobilization (90-180 days)",
-    ],
-    "THIRD OFFENSE (FELONY)": [
-        "1-5 years in prison",
-        "$500-$5,000 fine",
-        "Minimum 5 year license revocation",
-        "Felony record (permanent)",
-        "Vehicle forfeiture possible",
-    ],
-}
+  ⚡ "SUPER DRUNK" LAW (BAC 0.17+) — enhanced
+     first offense:
+  ✦ Up to 180 days jail (93-এর বদলে)
+  ✦ $200-$700 fine
+  ✦ 45 দিন সম্পূর্ণ suspension (কোনো driving নয়)
+    + এরপর ৩২০ দিন শুধু ignition interlock
+    device লাগানো গাড়িতে restricted driving
+  ✦ Up to 360 hours community service
+  ✦ Mandatory alcohol treatment (1 year)
 
-print("\nOWI PENALTIES:")
-for offense, details in penalties.items():
-    print(f"\n  {offense}:")
-    for d in details:
-        print(f"    → {d}")
-
-# PYTHON (BAC estimator — educational only, NOT a guide!):
-def estimate_bac(drinks, body_weight_lbs, hours, gender="male"):
-    """Rough BAC estimate (Widmark formula). NEVER use to decide if OK to drive!"""
-    r = 0.73 if gender == "male" else 0.66  # body water ratio
-    # Standard drink = 0.6 oz alcohol
-    alcohol_oz = drinks * 0.6
-    bac = (alcohol_oz * 5.14 / (body_weight_lbs * r)) - (0.015 * hours)
-
-    if bac < 0:
-        bac = 0
-
-    # Legal assessment:
-    if bac >= 0.17:
-        status = "SUPER DRUNK — felony risk"
-    elif bac >= 0.08:
-        status = "OWI — ILLEGAL to drive"
-    elif bac >= 0.02 and body_weight_lbs < 200:
-        status = "Under 21: ZERO TOLERANCE violation"
-    else:
-        status = "Possibly legal, but DON'T risk it"
-
-    print(f"  {drinks} drinks, {body_weight_lbs} lbs, {hours}h elapsed")
-    print(f"  Estimated BAC: {bac:.3f} → {status}")
-    print(f"  ⚠️ NEVER use this to decide if you can drive!")
-    return bac
-
-print("\nBAC ESTIMATOR (educational only — DO NOT use to drive!):")
-estimate_bac(3, 160, 2, "male")
-estimate_bac(2, 120, 1, "female")
-
-# THE GOLDEN RULE:
-# "If you drink, DON'T drive. Period."
-# → One drink per hour is NOT safe for everyone
-# → Coffee, cold showers, food do NOT sober you up
-# → Only TIME reduces BAC (about 0.015/hour)
-# → Uber/Lyft/taxi/friend = always cheaper than a DUI</div>
+  শাস্তি — FIRST OFFENSE:
+  ✦ Up to 93 days in jail
+  ✦ $100-$500 fine
+  ✦ Up to 360 days license suspension
+  ✦ 6 points on license
   ✦ Community service
   ✦ Mandatory alcohol treatment program
 
@@ -1634,86 +1291,36 @@ estimate_bac(2, 120, 1, "female")
 <div class="rt-caption">গড় text পড়া/লেখা = চোখ ৫ সেকেন্ড রাস্তার বাইরে। 70 mph-এ সেটা এক football field-এর চেয়েও বেশি পথ — চোখ বেঁধে চালানোর সমান। এজন্যই hands-free law</div>
 </div>
 
-<div class="code-block"># ── STEP 5: Michigan no-fault insurance and points system ──
-# Essential insurance and license knowledge for the test.
+<div class="code-block">🚗 MICHIGAN NO-FAULT INSURANCE (কমন পরীক্ষার প্রশ্ন)
+# — — — — — — — — — — — — — — — — — — — — — —
 
-# MICHIGAN NO-FAULT INSURANCE SYSTEM:
+  Michigan = No-Fault Insurance state
 
-insurance = {
-    "WHAT IS NO-FAULT?": "Regardless of who caused the accident, each person's OWN insurance pays for their medical/injury costs",
-    "REQUIRED COVERAGES": {
-        "PIP (Personal Injury Protection)": "Covers medical bills (lifetime, unlimited or tier-selected)",
-        "Property Protection": "Covers damage to others' property (up to $1 million)",
-        "Residual Liability": "Covers serious injury/death above threshold",
-    },
-    "PIP COVERAGE TIERS (2020 reform)": {
-        "Unlimited": "Full lifetime medical coverage (traditional)",
-        "$500,000": "Half million cap",
-        "$250,000": "Quarter million cap",
-        "$250,000 with exclusion": "Excludes household members",
-        "$50,000": "Minimal (Medicaid-eligible only)",
-        "Opt-out": "Only if you have Medicare Parts A and B",
-    },
-    "MINIMUM LIABILITY": {
-        "Bodily Injury": "$250K/person, $500K/accident (default, waivable to $50K/$100K)",
-        "Property Damage": "$10,000 (other state's property)",
-    },
-}
+  ✦ No-Fault মানে: কে দোষী তা নির্বিশেষে, 
+    প্রত্যেকের নিজের insurance নিজের 
+    injury/medical খরচ বহন করে
+  ✦ Required coverages:
+    → PIP (Personal Injury Protection) — medical bills
+    → Property Protection — অন্যের property damage 
+      (up to $1 million)
+    → Residual Liability — serious injury/death-এ 
+      (নির্দিষ্ট threshold ছাড়ালে)
+  ✦ PIP coverage-এ ৬টা tier বেছে নেওয়া যায় (2020
+    reform থেকে): Unlimited, $500,000, $250,000,
+    $250,000 (exclusion সহ), $50,000, বা opt-out
+    (নির্দিষ্ট শর্তে — যেমন Medicare থাকলে)
+  ✦ Minimum Bodily Injury Liability: $250,000/
+    person, $500,000/accident (default) — waiver
+    দিয়ে $50,000/$100,000-এ নামানো যায়
+  ✦ Minimum Property Damage Liability: $10,000
+  ✦ বিনা insurance-এ গাড়ি চালানো = অপরাধ
+    → Fine, license suspension, plate confiscation
 
-print("MICHIGAN NO-FAULT INSURANCE:")
-for key, value in insurance.items():
-    print(f"\n  {key}:")
-    if isinstance(value, dict):
-        for k, v in value.items():
-            print(f"    {k}: {v}")
-    else:
-        print(f"    {value}")
+# — — — — — — — — — — — — — — — — — — — — — —
+📊 DRIVER LICENSE POINT SYSTEM
+# — — — — — — — — — — — — — — — — — — — — — —
 
-# DRIVING WITHOUT INSURANCE = CRIME:
-# → Fine: $200-$500
-# → License suspension
-# → Plate confiscation
-# → Vehicle impoundment
-# → SR-22 requirement (high-risk insurance for 3 years)
-
-# DRIVER LICENSE POINT SYSTEM:
-point_system = {
-    "6 points": ["OWI/DUI", "Reckless driving", "Fleeing police", "Manslaughter"],
-    "4 points": ["Drag racing", "Impaired driving", "Under 21 with any BAC"],
-    "3 points": ["Careless driving", "Disobeying school bus", "Speeding 16-25 over"],
-    "2 points": ["Speeding 10-15 over", "Running red light/stop sign", "Illegal passing"],
-    "1 point": ["Minor moving violations"],
-}
-
-print("\nDRIVER LICENSE POINT SYSTEM:")
-for points, violations in point_system.items():
-    print(f"  {points}: {', '.join(violations)}")
-
-# PYTHON (license status checker):
-def license_status(points, age=25):
-    """Determine license status based on points."""
-    if age < 21 and points >= 4:
-        return "SUSPENDED — under 21 with 4+ points"
-    if points >= 12:
-        return "SUSPENDED — 12+ points in 2 years"
-    if points >= 7:
-        return "RESTRICTED — 7-11 points (driver retraining required)"
-    if points >= 4:
-        return "WARNING — points accumulating, drive carefully"
-    return "CLEAN — good driving record"
-
-print("\nLICENSE STATUS CHECKER:")
-print(f"  3 points: {license_status(3)}")
-print(f"  5 points: {license_status(5)}")
-print(f"  8 points: {license_status(8)}")
-print(f"  15 points: {license_status(15)}")
-print(f"  4 points (age 19): {license_status(4, age=19)}")
-
-# POINTS STAY ON RECORD:
-# → 2 years from conviction date
-# → After 2 years: points drop off
-# → Violation itself stays on record longer
-# → Insurance companies check: 3-5 years for rates</div>
+  ✦ প্রতিটা violation = points (2-6)
   ✦ Points driving record-এ ২ বছর থাকে
   ✦ Points বাড়লে:
     → Insurance premium বাড়ে
@@ -1859,124 +1466,27 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Unregistered Vehicle:</strong> Forgot registration renewal — $150 ticket. Fix: set annual calendar reminder.</div></div>
 
 
-<div class="code-block"># ── STEP 8: Road test — complete preparation guide ──
-# What to expect, what examiners check, and how to pass.
+<div class="code-block">🏢 ROAD TEST REALITY — কোথায়, কীভাবে, কত টাকা
+# — — — — — — — — — — — — — — — — — — — — — —
 
-# MICHIGAN ROAD TEST FACTS:
-# → NOT at SOS office — at SOS-approved THIRD-PARTY testing business
-# → Find approved testers on SOS website
-# → Fee: ~$50-100 (unregulated, varies by location)
-# → Test is in TWO parts:
+  ⚠️ গুরুত্বপূর্ণ: Michigan-এ road test SOS office-এ
+  হয় না! SOS-approved THIRD-PARTY driver testing
+  business-এ হয়।
 
-road_test = {
-    "PART A — CLOSED COURSE (off-street, parking lot)": {
-        "exercises": [
-            "Forward stop (stop at a marked line)",
-            "Backing (reverse in a straight line, 50 feet)",
-            "Parallel parking (between cones/markers)",
-            "Y-turn / three-point turn",
-            "Parking on a hill (uphill/downhill)",
-        ],
-        "pass_criteria": "Complete all maneuvers without hitting cones or crossing lines",
-        "note": "Must pass Part A before taking Part B",
-    },
-    "PART B — ON-ROAD (real traffic, 20-30 minutes)": {
-        "exercises": [
-            "Residential driving (25 mph, stop signs)",
-            "Business district driving (traffic, signals, turns)",
-            "Expressway driving (merge, lane change, exit)",
-            "Lane changes (SMOG: signal-mirror-shoulder-go)",
-            "Left and right turns (proper positioning, yield)",
-            "Stop at stop signs (COMPLETE stop, 3 seconds)",
-            "Approach intersections (check left-right-left)",
-        ],
-        "pass_criteria": "Drive safely, follow all laws, no dangerous errors",
-        "note": "Examiner sits with clipboard, marks every action",
-    },
-}
-
-for part, details in road_test.items():
-    print(f"\n{part}")
-    print(f"  Exercises:")
-    for ex in details["exercises"]:
-        print(f"    → {ex}")
-    print(f"  Pass: {details['pass_criteria']}")
-
-# VEHICLE SAFETY CHECK (examiner will ask):
-vehicle_check = [
-    "Headlight switch location",
-    "Brake light operation",
-    "Turn signal location and operation",
-    "Hazard light location",
-    "Defroster (front and rear)",
-    "Windshield wipers",
-    "Horn",
-    "Parking brake location",
-    "Mirror adjustment",
-    "Seatbelt operation",
-]
-
-print("\nVEHICLE SAFETY CHECK (examiner will ask):")
-for item in vehicle_check:
-    print(f"  → Know: {item}")
-
-# PYTHON (road test readiness checker):
-def check_test_readiness(items_ready, hours_practiced, know_vehicle_controls):
-    """Check if you're ready for the road test."""
-    issues = []
-
-    if hours_practiced < 50:
-        issues.append(f"Need 50+ supervised hours, currently: {hours_practiced}")
-    if not know_vehicle_controls:
-        issues.append("Must know all vehicle controls for safety check")
-    if items_ready < 5:
-        issues.append(f"Only {items_ready}/8 vehicle items known")
-
-    # Required items:
-    required = [
-        "Valid Level 1 License (held 3+ months)",
-        "Segment 2 Certificate",
-        "Log of 50+ hours (10 at night)",
-        "Vehicle with current registration + insurance",
-        "Working lights, signals, horn, brakes",
-        "Licensed adult to accompany you",
-    ]
-
-    if issues:
-        print("❌ NOT READY:")
-        for issue in issues:
-            print(f"  → {issue}")
-        return False
-    else:
-        print("✅ READY for road test!")
-        print("  Required items:")
-        for item in required:
-            print(f"    → {item}")
-        return True
-
-print("\nROAD TEST READINESS CHECKER:")
-check_test_readiness(items_ready=8, hours_practiced=55, know_vehicle_controls=True)
-print()
-check_test_ready = check_test_readiness(items_ready=4, hours_practiced=30,
-                                        know_vehicle_controls=False)
-
-# TOP 10 REASONS PEOPLE FAIL THE ROAD TEST:
-fail_reasons = [
-    "Rolling stop (not stopping completely at STOP sign)",
-    "Not checking blind spot before lane change",
-    "Forgetting to signal (or signaling too late)",
-    "Too fast or too slow for conditions",
-    "Poor parallel parking (hitting cones, too far from curb)",
-    "Not yielding at intersections (left turn especially)",
-    "Straddling lane lines",
-    "Not checking mirrors frequently enough",
-    "Improper hand position on steering wheel (10-and-2)",
-    "Nervous mistakes (deep breath, take your time)",
-]
-
-print("\nTOP 10 REASONS PEOPLE FAIL:")
-for i, reason in enumerate(fail_reasons, 1):
-    print(f"  {i}. {reason}")</div>
+  ✦ SOS website-এ approved tester-দের তালিকা আছে
+  ✦ ফি unregulated — জায়গাভেদে ~$50-100
+    (weekend/জরুরি booking-এ বেশি হতে পারে)
+  ✦ টেস্ট দুই ভাগে:
+    PART A: CLOSED-COURSE (off-street) —
+      basic control: parking lot-এ forward stop,
+      backing, parallel parking, Y-turn
+    PART B: ON-ROAD — বাস্তব রাস্তায় ~২০-৩০ মিনিট:
+      residential, business, এবং সম্ভব হলে
+      expressway driving
+  ✦ Part A fail করলে Part B হবে না
+  ✦ পাশ করলে examiner দেবে Driving Skills Test
+    Certificate → সেটা + TIP/learner license নিয়ে
+    SOS office-এ যাও → license issue হবে ($25)
 
 # — — — — — — — — — — — — — — — — — — — — — —
 ROAD TEST — EXAMINER CHECKLIST
