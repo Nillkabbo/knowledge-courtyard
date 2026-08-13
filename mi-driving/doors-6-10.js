@@ -956,36 +956,101 @@ doors.push({
 <div class="rt-caption">সূত্র: "যেদিকে যেতে চাও, সেদিকে steer" = পেছন যেদিকে পিছলাচ্ছে সেদিকেই wheel ঘোরাও — শান্তভাবে, ঝাঁকি ছাড়া</div>
 </div>
 
-<div class="code-block">💧 HYDROPLANING (জলে ভাসা)
-# — — — — — — — — — — — — — — — — — — — — — —
+<div class="code-block"># ── STEP 4: Emergency handling — hazards ──
+# What to do when things go wrong on the road.
 
-  ১. Gas ছেড়ে দাও (slowly)
-  ২. ❌ Brake না
-  ৩. Steering straight ধরো
-  ৪. Tire পানিতে চলে গেলে — ধীরে ধীরে
-  ৫. Prevent: good tire, slow speed, 4+ sec
+# EMERGENCY RESPONSE PROCEDURES:
 
-🚗 BRAKE FAILURE
-# — — — — — — — — — — — — — — — — — — — — — —
+emergencies = {
+    "HYDROPLANING (tires lose contact with road on water)": {
+        "do": [
+            "Ease off gas pedal SLOWLY",
+            "Keep steering STRAIGHT",
+            "Wait for tires to regain contact",
+        ],
+        "dont": [
+            "BRAKE (causes spin)",
+            "Turn the wheel suddenly",
+            "Accelerate",
+        ],
+        "prevent": "Good tires, reduce speed in rain, 4+ second following distance",
+    },
+    "BRAKE FAILURE": {
+        "do": [
+            "Pump the brake pedal (may restore pressure)",
+            "Apply parking brake SLOWLY",
+            "Downshift to lower gears",
+            "Look for escape route (shoulder, uphill)",
+        ],
+        "dont": ["Panic-steer into traffic"],
+        "prevent": "Regular brake maintenance, check brake fluid",
+    },
+    "TIRE BLOWOUT": {
+        "do": [
+            "Hold steering wheel FIRMLY",
+            "Keep foot on gas momentarily (stabilize)",
+            "Ease off gas gradually",
+            "Signal and move to shoulder slowly",
+        ],
+        "dont": ["Brake hard (causes spin)", "Release gas instantly"],
+        "prevent": "Check tire pressure monthly, inspect for wear/damage",
+    },
+    "PAVEMENT DROP-OFF (wheel off road edge)": {
+        "do": [
+            "DO NOT jerk the wheel back (causes rollover!)",
+            "Ease off gas, slow down gradually",
+            "Light braking",
+            "When slow: turn wheel gradually back onto road at shallow angle",
+        ],
+        "dont": ["Jerk wheel suddenly (most common cause of fatal rollovers)"],
+        "prevent": "Stay alert, don't drift onto shoulder",
+    },
+    "SKIDDING (loss of traction)": {
+        "do": [
+            "Turn steering wheel IN the direction of the skid",
+            "If rear skids right → steer right",
+            "If rear skids left → steer left",
+            "Ease off gas/brake",
+        ],
+        "dont": ["Brake hard", "Steer opposite the skid"],
+        "prevent": "Slow down on wet/icy roads, gentle inputs",
+    },
+    "ACCELERATOR STUCK": {
+        "do": [
+            "Shift to NEUTRAL",
+            "Brake gently",
+            "Steer to safe area",
+            "Turn off engine when stopped",
+        ],
+        "dont": ["Turn off engine while moving (loss of power steering/brakes)"],
+        "prevent": "Check floor mats (can jam pedal)",
+    },
+}
 
-  ১. Parking brake ধীরে টানো
-  ২. গিয়ার নিচে নামাও (downshift)
-  ৩. নিরাপদ জায়গায় থামানোর চেষ্টা
+for emergency, actions in emergencies.items():
+    print(f"\n{emergency}")
+    print(f"  ✅ DO:")
+    for item in actions["do"]:
+        print(f"     → {item}")
+    print(f"  ❌ DON'T:")
+    for item in actions["dont"]:
+        print(f"     ✗ {item}")
+    print(f"  🛡️ PREVENT: {actions['prevent']}")
 
-🔥 TIRE BLOWOUT
-# — — — — — — — — — — — — — — — — — — — — — —
+# PYTHON (hydroplaning speed calculator):
+def hydroplaning_speed(tire_pressure_psi):
+    """Approximate speed at which hydroplaning begins."""
+    # Formula: speed = 10.35 * sqrt(tire_pressure)
+    speed = 10.35 * (tire_pressure_psi ** 0.5)
+    print(f"  Tire pressure: {tire_pressure_psi} psi")
+    print(f"  Hydroplaning starts at: {speed:.0f} mph")
+    print(f"  ⚠️ Drive WELL below this in heavy rain!")
+    return speed
 
-  ১. Gas ধরে রাখো (মুহূর্তে)
-  ২. ধীরে ধীরে গ্যাস ছাড়ো
-  ৩. Steering straight ধরো
-  ৪. নিরাপদে থামাও
-
-🛞 PAVEMENT DROP-OFF (চাকা রাস্তার বাইরে!)
-# — — — — — — — — — — — — — — — — — — — — — —
-
-  ডান চাকা shoulder-এ নেমে গেছে (মাটি/gravel):
-  ১. ভয় পেয়ে wheel ঝাঁকিও না! ← এটাই মারে
-  ২. Gas ছাড়ো, ধীরে হও — brake হালকা
+print("\nHYDROPLANING SPEED CALCULATOR:")
+hydroplaning_speed(32)  # typical sedan
+hydroplaning_speed(35)  # properly inflated
+hydroplaning_speed(28)  # underinflated (hydroplanes EARLIER!)</div>
   ৩. Wheel শক্ত ধরে সোজা চলো shoulder-এই
   ৪. গতি কমলে (২৫-৩০) — mirror দেখে ধীরে,
      ছোট angle-এ রাস্তায় ফিরে এসো
@@ -1468,36 +1533,86 @@ estimate_bac(2, 120, 1, "female")
 <div class="rt-caption">গড় text পড়া/লেখা = চোখ ৫ সেকেন্ড রাস্তার বাইরে। 70 mph-এ সেটা এক football field-এর চেয়েও বেশি পথ — চোখ বেঁধে চালানোর সমান। এজন্যই hands-free law</div>
 </div>
 
-<div class="code-block">🚗 MICHIGAN NO-FAULT INSURANCE (কমন পরীক্ষার প্রশ্ন)
-# — — — — — — — — — — — — — — — — — — — — — —
+<div class="code-block"># ── STEP 5: Michigan no-fault insurance and points system ──
+# Essential insurance and license knowledge for the test.
 
-  Michigan = No-Fault Insurance state
+# MICHIGAN NO-FAULT INSURANCE SYSTEM:
 
-  ✦ No-Fault মানে: কে দোষী তা নির্বিশেষে, 
-    প্রত্যেকের নিজের insurance নিজের 
-    injury/medical খরচ বহন করে
-  ✦ Required coverages:
-    → PIP (Personal Injury Protection) — medical bills
-    → Property Protection — অন্যের property damage 
-      (up to $1 million)
-    → Residual Liability — serious injury/death-এ 
-      (নির্দিষ্ট threshold ছাড়ালে)
-  ✦ PIP coverage-এ ৬টা tier বেছে নেওয়া যায় (2020
-    reform থেকে): Unlimited, $500,000, $250,000,
-    $250,000 (exclusion সহ), $50,000, বা opt-out
-    (নির্দিষ্ট শর্তে — যেমন Medicare থাকলে)
-  ✦ Minimum Bodily Injury Liability: $250,000/
-    person, $500,000/accident (default) — waiver
-    দিয়ে $50,000/$100,000-এ নামানো যায়
-  ✦ Minimum Property Damage Liability: $10,000
-  ✦ বিনা insurance-এ গাড়ি চালানো = অপরাধ
-    → Fine, license suspension, plate confiscation
+insurance = {
+    "WHAT IS NO-FAULT?": "Regardless of who caused the accident, each person's OWN insurance pays for their medical/injury costs",
+    "REQUIRED COVERAGES": {
+        "PIP (Personal Injury Protection)": "Covers medical bills (lifetime, unlimited or tier-selected)",
+        "Property Protection": "Covers damage to others' property (up to $1 million)",
+        "Residual Liability": "Covers serious injury/death above threshold",
+    },
+    "PIP COVERAGE TIERS (2020 reform)": {
+        "Unlimited": "Full lifetime medical coverage (traditional)",
+        "$500,000": "Half million cap",
+        "$250,000": "Quarter million cap",
+        "$250,000 with exclusion": "Excludes household members",
+        "$50,000": "Minimal (Medicaid-eligible only)",
+        "Opt-out": "Only if you have Medicare Parts A and B",
+    },
+    "MINIMUM LIABILITY": {
+        "Bodily Injury": "$250K/person, $500K/accident (default, waivable to $50K/$100K)",
+        "Property Damage": "$10,000 (other state's property)",
+    },
+}
 
-# — — — — — — — — — — — — — — — — — — — — — —
-📊 DRIVER LICENSE POINT SYSTEM
-# — — — — — — — — — — — — — — — — — — — — — —
+print("MICHIGAN NO-FAULT INSURANCE:")
+for key, value in insurance.items():
+    print(f"\n  {key}:")
+    if isinstance(value, dict):
+        for k, v in value.items():
+            print(f"    {k}: {v}")
+    else:
+        print(f"    {value}")
 
-  ✦ প্রতিটা violation = points (2-6)
+# DRIVING WITHOUT INSURANCE = CRIME:
+# → Fine: $200-$500
+# → License suspension
+# → Plate confiscation
+# → Vehicle impoundment
+# → SR-22 requirement (high-risk insurance for 3 years)
+
+# DRIVER LICENSE POINT SYSTEM:
+point_system = {
+    "6 points": ["OWI/DUI", "Reckless driving", "Fleeing police", "Manslaughter"],
+    "4 points": ["Drag racing", "Impaired driving", "Under 21 with any BAC"],
+    "3 points": ["Careless driving", "Disobeying school bus", "Speeding 16-25 over"],
+    "2 points": ["Speeding 10-15 over", "Running red light/stop sign", "Illegal passing"],
+    "1 point": ["Minor moving violations"],
+}
+
+print("\nDRIVER LICENSE POINT SYSTEM:")
+for points, violations in point_system.items():
+    print(f"  {points}: {', '.join(violations)}")
+
+# PYTHON (license status checker):
+def license_status(points, age=25):
+    """Determine license status based on points."""
+    if age < 21 and points >= 4:
+        return "SUSPENDED — under 21 with 4+ points"
+    if points >= 12:
+        return "SUSPENDED — 12+ points in 2 years"
+    if points >= 7:
+        return "RESTRICTED — 7-11 points (driver retraining required)"
+    if points >= 4:
+        return "WARNING — points accumulating, drive carefully"
+    return "CLEAN — good driving record"
+
+print("\nLICENSE STATUS CHECKER:")
+print(f"  3 points: {license_status(3)}")
+print(f"  5 points: {license_status(5)}")
+print(f"  8 points: {license_status(8)}")
+print(f"  15 points: {license_status(15)}")
+print(f"  4 points (age 19): {license_status(4, age=19)}")
+
+# POINTS STAY ON RECORD:
+# → 2 years from conviction date
+# → After 2 years: points drop off
+# → Violation itself stays on record longer
+# → Insurance companies check: 3-5 years for rates</div>
   ✦ Points driving record-এ ২ বছর থাকে
   ✦ Points বাড়লে:
     → Insurance premium বাড়ে
