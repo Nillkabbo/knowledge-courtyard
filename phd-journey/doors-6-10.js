@@ -19,10 +19,10 @@ doors.push({
 <p class="scene-setting">ষষ্ঠ স্থান। একটা দুর্গের ফটক। সামনে একজন কঠোর দরোয়ান — দীর্ঘ দাড়ি, লোহার দণ্ড, চোখে তীক্ষ্ণতা। ভিড় — শত শত আবেদনকারী। কিন্তু দরোয়ান সবাইকে ঢুকতে দেয় না। কিছু মানুষ আসে — দরোয়ান তাদের দেখে হাসেন, দরজা খোলেন। তারা আগে থেকে পরিচিত।</p>
 <p class="scene-setting en">The sixth station. A fortress gate. Before it: a stern gatekeeper — long beard, iron staff, sharp eyes. A crowd — hundreds of applicants. But the gatekeeper doesn't let everyone in. Some people come — the gatekeeper smiles, opens the door. They're already known.</p>
 
-<div class="dialogue">পণ্ডিত বলেছিলেন — SOP লেখো। কিন্তু আমি বলি — SOP লেখার অনেক আগে শুরু। কারণ PhD অ্যাডমিশন কমিটি সিদ্ধান্ত নেয় না — প্রফেসর নেন। যদি কোনো প্রফেসর তোমাকে চান, তিনি কমিটিকে বলেন "এই ছাত্র নাও।" কিন্তু তিনি তোমাকে চিনবেন কীভাবে? কোল্ড ইমেইল।</div>
-<div class="dialogue en">"The scholar said — write your SOP. But I say — start long before the SOP. Because the PhD admissions committee doesn't decide — the professor does. If a professor wants you, they tell the committee 'take this student.' But how will they know you? Cold email."</div>
+<div class="dialogue">পণ্ডিত বলেছিলেন — SOP লেখো। কিন্তু আমি বলি — SOP লেখার অনেক আগে শুরু। কারণ PhD অ্যাডমিশন কমিটি সিদ্ধান্ত নেয় না — প্রফেসর নেন। যদি কোনো প্রফেসর তোমাকে চান, তিনি কমিটিকে বলেন "এই ছাত্র নাও।" কিন্তু তিনি তোমাকে চিনবেন কীভাবে? কোল্ড ইমেইল।</div></div>
+<div class="dialogue en">"The scholar said — write your SOP. But I say — start long before the SOP. Because the PhD admissions committee doesn't decide — the professor does. If a professor wants you, they tell the committee 'take this student.' But how will they know you? Cold email."</div></div>
 
-<div class="code-block">Cold Email to Professors — ধাপে ধাপে:
+<div class="callout tip"><span class="co-icon">📋</span><div>Cold Email to Professors — ধাপে ধাপে:
 
 কেন কোল্ড ইমেইল?
   • PhD অ্যাডমিশন = প্রফেসরের সিদ্ধান্ত
@@ -54,14 +54,14 @@ Subject: Prospective PhD Student — [তোমার এরিয়া]
    I'd love to discuss whether my background fits 
    your group."
 
-Signature: CV সংযুক্ত (PDF, ২ পৃষ্ঠা)</div>
+Signature: CV সংযুক্ত (PDF, ২ পৃষ্ঠা)</div></div>
 
 <div class="stat-grid">
-<div class="stat-card"><div class="sc-num">৩০-৫০</div><div class="sc-label">প্রফেসরকে ইমেইল করো</div></div>
-<div class="stat-card"><div class="sc-num">~৯০%</div><div class="sc-label">কোনো উত্তরই আসবে না</div></div>
-<div class="stat-card"><div class="sc-num">৩-৫</div><div class="sc-label">আগ্রহী, ফলো-আপ কথোপকথন</div></div>
-<div class="stat-card"><div class="sc-num">১-২</div><div class="sc-label">"Yes, apply to my lab"</div></div>
-</div>
+<div class="stat-card"><div class="sc-num">৩০-৫০</div><div class="sc-label">প্রফেসরকে ইমেইল করো</div></div></div>
+<div class="stat-card"><div class="sc-num">~৯০%</div><div class="sc-label">কোনো উত্তরই আসবে না</div></div></div>
+<div class="stat-card"><div class="sc-num">৩-৫</div><div class="sc-label">আগ্রহী, ফলো-আপ কথোপকথন</div></div></div>
+<div class="stat-card"><div class="sc-num">১-২</div><div class="sc-label">"Yes, apply to my lab"</div></div></div>
+</div></div>
 
 <div class="svg-fig">
 <svg viewBox="0 0 640 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cold email funnel">
@@ -74,14 +74,14 @@ Signature: CV সংযুক্ত (PDF, ২ পৃষ্ঠা)</div>
 <polygon points="270,205 370,205 350,235 290,235" fill="rgba(82,196,26,.25)" stroke="#52c41a"/>
 <text x="320" y="226" fill="#52c41a" font-size="12" text-anchor="middle" font-weight="bold">১-২ "apply to my lab"</text>
 </svg>
-<div class="fig-cap">চিত্র: ভালো লেখা ইমেইলেও ১০-২০% উত্তর — স্বাভাবিক। এটা ব্যর্থতা নয়, সংখ্যার খেলা। ডেডলাইনের অন্তত ৩ মাস আগে প্রথম ব্যাচ পাঠাও।</div>
-</div>
+<div class="fig-cap">চিত্র: ভালো লেখা ইমেইলেও ১০-২০% উত্তর — স্বাভাবিক। এটা ব্যর্থতা নয়, সংখ্যার খেলা। ডেডলাইনের অন্তত ৩ মাস আগে প্রথম ব্যাচ পাঠাও।</div></div>
+</div></div>
 
-<div class="src-box"><div class="src-label">যাচাইকৃত উৎস / Verified Sources</div>Cold-email প্রতিক্রিয়ার হার: ভালো personalized ইমেইলে ১০-২০% reply স্বাভাবিক; ১৫০-২০০ শব্দ, ৩ প্যারা — একাধিক admission-guide-এর ঐকমত্য (academiatoindustry.com; riseglobaleducation.com) · টাইমিং: ডেডলাইনের ≥৩ মাস আগে প্রথম ব্যাচ · প্রফেসর খোঁজা: csrankings.org + Google Scholar সাম্প্রতিক পেপার।</div>
+<div class="src-box"><div class="src-label">যাচাইকৃত উৎস / Verified Sources</div>Cold-email প্রতিক্রিয়ার হার: ভালো personalized ইমেইলে ১০-২০% reply স্বাভাবিক; ১৫০-২০০ শব্দ, ৩ প্যারা — একাধিক admission-guide-এর ঐকমত্য (academiatoindustry.com; riseglobaleducation.com) · টাইমিং: ডেডলাইনের ≥৩ মাস আগে প্রথম ব্যাচ · প্রফেসর খোঁজা: csrankings.org + Google Scholar সাম্প্রতিক পেপার।</div></div>
 
-<div class="callout tip"><span class="co-icon">📨</span><div><strong>Funnel বাস্তবতা:</strong> নীরবতা ব্যর্থতা নয় — সংখ্যার খেলা। ১-২ জন সত্যিকারের আগ্রহী প্রফেসরই একটা অ্যাডমিশন এনে দিতে যথেষ্ট। তাই কম মানের ৫টা নয়, বেশি মানের ৩০-৫০টা নির্দিষ্ট ইমেইল পাঠাও।</div></div>
+<div class="callout tip"><span class="co-icon">📨</span><div><strong>Funnel বাস্তবতা:</strong> নীরবতা ব্যর্থতা নয় — সংখ্যার খেলা। ১-২ জন সত্যিকারের আগ্রহী প্রফেসরই একটা অ্যাডমিশন এনে দিতে যথেষ্ট। তাই কম মানের ৫টা নয়, বেশি মানের ৩০-৫০টা নির্দিষ্ট ইমেইল পাঠাও।</div></div></div>
 
-<div class="dialogue">সুহবত — সঙ্গ, সাথী খোঁজা। ইসলামে সঙ্গের গুরুত্ব অনেক — নবীজি (সা) বলেছেন, "মানুষ তার বন্ধুর দ্বীনে থাকে।" PhD-তেও সঙ্গ গুরুত্বপূর্ণ — কোন প্রফেসরের সাথে, কোন ল্যাবে। কোল্ড ইমেইল হলো সেই সঙ্গ খোঁজা — আগে থেকে, নিয়ত সহকারে। যে সঙ্গ খোঁজে, সে পায়। যে অপেক্ষা করে, সে হারায়।</div>
+<div class="dialogue">সুহবত — সঙ্গ, সাথী খোঁজা। ইসলামে সঙ্গের গুরুত্ব অনেক — নবীজি (সা) বলেছেন, "মানুষ তার বন্ধুর দ্বীনে থাকে।" PhD-তেও সঙ্গ গুরুত্বপূর্ণ — কোন প্রফেসরের সাথে, কোন ল্যাবে। কোল্ড ইমেইল হলো সেই সঙ্গ খোঁজা — আগে থেকে, নিয়ত সহকারে। যে সঙ্গ খোঁজে, সে পায়। যে অপেক্ষা করে, সে হারায়।</div></div>
 <div class="dialogue en">"Suhbat — companionship, seeking associates. In Islam, companionship is vital — the Prophet (pbuh) said, 'A person follows the religion of their friend.' In PhD too, companionship matters — which professor, which lab. Cold email is seeking that companionship — early, with intention. One who seeks, finds. One who waits, loses."</div>`,
   senior:{
     title:"ইমেইল কৌশল — ৩০-৫০ প্রফেসরকে করো",
@@ -105,8 +105,8 @@ doors.push({
 <p class="scene-setting">সপ্তম স্থান। একটা কক্ষে তিনটি বড় স্কেল — স্বর্ণ, রৌপ্য, ব্রোঞ্জ। মিযান রক্ষক হাজেরা পাশে দাঁড়িয়ে আছেন — ক্যালিপার হাতে, চোখে নিপুণতা। "তিন ধরনের আবেদনকারী," তিনি বললেন। "স্বর্ণ — উচ্চ প্রোফাইল। রৌপ্য — মাঝারি। ব্রোঞ্জ — নিম্ন। প্রতেকের জন্য আলাদা পথ। নিজের মাপ জানো আগে।"</p>
 <p class="scene-setting en">The seventh station. A room with three large scales — gold, silver, bronze. Scale keeper Hazeera stands beside — calipers in hand, precision in eyes. "Three types of applicants," she said. "Gold — high profile. Silver — mid. Bronze — low. Each has a different path. Know your measure first."</p>
 
-<div class="dialogue">দরোয়ান বলেছিলেন — প্রফেসরকে ইমেইল করো। কিন্তু আমি বলি — কোন প্রফেসরকে? কোন বিশ্ববিদ্যালয়ে? এটা নির্ভর করে তোমার প্রোফাইলের উপর। নিজের মাপ না জানলে ভুল জায়গায় আবেদন = সব জায়গায় রিজেক্ট। মিযান — নিজেকে সততার সাথে মাপা।</div>
-<div class="dialogue en">"The gatekeeper said — email professors. But I say — which professors? Which universities? This depends on your profile. Not knowing your measure = applying to wrong places = all rejections. Mizan — measuring yourself honestly."</div>
+<div class="dialogue">দরোয়ান বলেছিলেন — প্রফেসরকে ইমেইল করো। কিন্তু আমি বলি — কোন প্রফেসরকে? কোন বিশ্ববিদ্যালয়ে? এটা নির্ভর করে তোমার প্রোফাইলের উপর। নিজের মাপ না জানলে ভুল জায়গায় আবেদন = সব জায়গায় রিজেক্ট। মিযান — নিজেকে সততার সাথে মাপা।</div></div>
+<div class="dialogue en">"The gatekeeper said — email professors. But I say — which professors? Which universities? This depends on your profile. Not knowing your measure = applying to wrong places = all rejections. Mizan — measuring yourself honestly."</div></div>
 
 <table class="kv-table"><tr><th>প্রোফাইল</th><th>সংকেত</th><th>কোথায় আবেদন</th><th>সম্ভাবনা</th></tr>
 <tr><td class="hl">🥇 High</td><td>GPA ৩.৮+, ১-২+ পাবলিকেশন, thesis/RA, একাডেমিক LOR</td><td>Top-20 reach + Top-50 match, ১০-১৫টি</td><td>২০-৪০% (অন্তত একটি top-20)</td></tr>
@@ -134,12 +134,12 @@ doors.push({
 <path d="M125 165 C 200 200, 440 200, 515 165" fill="none" stroke="#5eead4" stroke-width="1.5" stroke-dasharray="5 4"/>
 <text x="320" y="215" fill="#5eead4" font-size="12" text-anchor="middle">সব পথই PhD-তে পৌঁছায় — গতি আলাদা, গন্তব্য এক 🎓</text>
 </svg>
-<div class="fig-cap">চিত্র: প্রোফাইল কোনো রায় নয় — শুধু শুরুর বিন্দু। bridge year একটা low/mid প্রোফাইলকে ৬-১২ মাসে বদলে দিতে পারে।</div>
-</div>
+<div class="fig-cap">চিত্র: প্রোফাইল কোনো রায় নয় — শুধু শুরুর বিন্দু। bridge year একটা low/mid প্রোফাইলকে ৬-১২ মাসে বদলে দিতে পারে।</div></div>
+</div></div>
 
-<div class="callout info"><span class="co-icon">🥈</span><div><strong>Mid-profile = সবচেয়ে সাধারণ জায়গা।</strong> এখানে কোল্ড ইমেইল আর একটা bridge (নিচে) তোমার সম্ভাবনা প্রায় দ্বিগুণ করতে পারে — কারণ কমিটি "potential researcher" খোঁজে, নিখুঁত অতীত নয়।</div></div>
+<div class="callout info"><span class="co-icon">🥈</span><div><strong>Mid-profile = সবচেয়ে সাধারণ জায়গা।</strong> এখানে কোল্ড ইমেইল আর একটা bridge (নিচে) তোমার সম্ভাবনা প্রায় দ্বিগুণ করতে পারে — কারণ কমিটি "potential researcher" খোঁজে, নিখুঁত অতীত নয়।</div></div></div>
 
-<div class="callout tip"><span class="co-icon">🌉</span><div><strong>Mid-profile bridge (৬-১২ মাস):</strong></div></div>
+<div class="callout tip"><span class="co-icon">🌉</span><div><strong>Mid-profile bridge (৬-১২ মাস):</strong></div></div></div>
 <ul class="checklist">
 <li>আন্ডারগ্র্যাড/মাস্টার্সের কোনো প্রফেসরকে ইমেইল করো — volunteer RA হিসেবে।</li>
 <li>একটা ওপেন-সোর্স রিসার্চ প্রজেক্টে কন্ট্রিবিউট করো (PapersWithCode)।</li>
@@ -148,7 +148,7 @@ doors.push({
 <li>৬-১২ মাস পরে আবেদন করো — এখন তোমার প্রোফাইল "mid+"।</li>
 </ul>
 
-<div class="dialogue">মিযান — দাঁড়িপাল্লা, ভারসাম্য, ন্যায্যতা। কুরআনে আল্লাহ বলেন — "আমরা সত্যের সাথে মিযান স্থাপন করেছি।" (২১:৪৭)। নিজের মাপ জানা — অহংকার নয়, বিনয়। "আমি সব পারি" নয়, "আমি এটুকু পারি" — এই সততাই মিযান। PhD-তে আবেদন করার আগে নিজের স্কেলে দাঁড় করাও — সততার সাথে। তারপর কৌশল বানাও।</div>
+<div class="dialogue">মিযান — দাঁড়িপাল্লা, ভারসাম্য, ন্যায্যতা। কুরআনে আল্লাহ বলেন — "আমরা সত্যের সাথে মিযান স্থাপন করেছি।" (২১:৪৭)। নিজের মাপ জানা — অহংকার নয়, বিনয়। "আমি সব পারি" নয়, "আমি এটুকু পারি" — এই সততাই মিযান। PhD-তে আবেদন করার আগে নিজের স্কেলে দাঁড় করাও — সততার সাথে। তারপর কৌশল বানাও।</div></div>
 <div class="dialogue en">"Mizan — scale, balance, fairness. Allah says — 'We established the scale with justice.' (21:47). Knowing your measure isn't arrogance — it's humility. Not 'I can do everything' but 'I can do this much' — this honesty is mizan. Before applying to PhD, stand on your scale — honestly. Then build your strategy."</div>`,
   senior:{
     title:"তোমার MSIS থেকে PhD — গ্যাপ ব্রিজ করো",
@@ -172,8 +172,8 @@ doors.push({
 <p class="scene-setting">অষ্টম স্থান। একটা কারিগরের কর্মশালা। সামনে কাঁচা পাপিরাস — ফাঁকা। কারিগর ইব্রাহিম একটা হাতে কলম, অন্য হাতে প্রজেক্ট। "প্রথম পেপার," তিনি বললেন। "সবচেয়ে কঠিন। কিন্তু এটাই প্রমাণ — তুমি শুধু পড়তে পারো না, তৈরি করতে পারো।"</p>
 <p class="scene-setting en">The eighth station. A craftsman's workshop. Before: blank papyrus. Craftsman Ibrahim holds pen in one hand, project in other. "First paper," he said. "Hardest. But this is proof — you don't just read, you create."</p>
 
-<div class="dialogue">মিযান রক্ষক বলেছিলেন — নিজের মাপ জানো। কিন্তু আমি বলি — মাপ জানার পর সেই মাপ বাড়াও। কীভাবে? রিসার্চ করে। একটা পেপার লিখে। এটাই সবচেয়ে শক্তিশালী প্রমাণ — তুমি গবেষক হতে পারবে। কোনো প্রফেসর তোমার কাজ দেখলে, তিনি বুঝবেন তুমি প্রস্তুত।</div>
-<div class="dialogue en">"The scale keeper said — know your measure. But I say — after knowing, increase it. How? By doing research. Writing a paper. This is the strongest proof — you can be a researcher. When a professor sees your work, they'll know you're ready."</div>
+<div class="dialogue">মিযান রক্ষক বলেছিলেন — নিজের মাপ জানো। কিন্তু আমি বলি — মাপ জানার পর সেই মাপ বাড়াও। কীভাবে? রিসার্চ করে। একটা পেপার লিখে। এটাই সবচেয়ে শক্তিশালী প্রমাণ — তুমি গবেষক হতে পারবে। কোনো প্রফেসর তোমার কাজ দেখলে, তিনি বুঝবেন তুমি প্রস্তুত।</div></div>
+<div class="dialogue en">"The scale keeper said — know your measure. But I say — after knowing, increase it. How? By doing research. Writing a paper. This is the strongest proof — you can be a researcher. When a professor sees your work, they'll know you're ready."</div></div>
 
 <table class="kv-table"><tr><th>পথ</th><th>কীভাবে</th><th>প্রভাব</th></tr>
 <tr><td class="hl">Volunteer RA</td><td>প্রফেসরকে ইমেইল, ১০-১৫ ঘ/সপ্তাহ বিনা বেতনে, লক্ষ্য co-author</td><td>সর্বোচ্চ (কিন্তু কঠিন)</td></tr>
@@ -193,14 +193,14 @@ doors.push({
 <path d="M570 95 C 570 125, 300 130, 250 95" fill="none" stroke="#ff6b35" stroke-width="1.5" stroke-dasharray="5 4"/>
 <text x="410" y="135" fill="#ff6b35" font-size="10.5" text-anchor="middle">Review → revision → আবার এক্সপেরিমেন্ট (স্বাভাবিক লুপ!)</text>
 </svg>
-<div class="fig-cap">চিত্র: রিজেক্ট হলে লুপে ফেরো — এটাই রিসার্চ। প্রথমবার সবচেয়ে ধীর; দ্বিতীয় পেপার দ্বিগুণ দ্রুত হয়।</div>
-</div>
+<div class="fig-cap">চিত্র: রিজেক্ট হলে লুপে ফেরো — এটাই রিসার্চ। প্রথমবার সবচেয়ে ধীর; দ্বিতীয় পেপার দ্বিগুণ দ্রুত হয়।</div></div>
+</div></div>
 
-<div class="callout info"><span class="co-icon">🔬</span><div><strong>The paper pipeline (৬-১৮ মাস):</strong> Idea → Literature Review → Hypothesis → Experiment → Analysis → Writing → Submission → Review → Revision → Publication। প্রতিটা ধাপ ছোট মনে হলেও শেখার — প্রথমবার সবচেয়ে ধীর, পরেরবার দ্বিগুণ দ্রুত।</div></div>
+<div class="callout info"><span class="co-icon">🔬</span><div><strong>The paper pipeline (৬-১৮ মাস):</strong> Idea → Literature Review → Hypothesis → Experiment → Analysis → Writing → Submission → Review → Revision → Publication। প্রতিটা ধাপ ছোট মনে হলেও শেখার — প্রথমবার সবচেয়ে ধীর, পরেরবার দ্বিগুণ দ্রুত।</div></div></div>
 
-<div class="callout tip"><span class="co-icon">💡</span><div><strong>প্রথম পেপারের idea কোথায়:</strong> তোমার কাজের সময় যে সমস্যায় আটকেছ, বা যে AI টুল ভালো ফল দিয়েছে — সেটাই। একটা case study + একটা technique = একটা workshop paper (যেমন: "LLM-based structured output with retrieval constraints")।</div></div>
+<div class="callout tip"><span class="co-icon">💡</span><div><strong>প্রথম পেপারের idea কোথায়:</strong> তোমার কাজের সময় যে সমস্যায় আটকেছ, বা যে AI টুল ভালো ফল দিয়েছে — সেটাই। একটা case study + একটা technique = একটা workshop paper (যেমন: "LLM-based structured output with retrieval constraints")।</div></div></div>
 
-<div class="dialogue">বিদায় — ত্যাগ। হজ্জে পশু কুরবানি — সম্পদের ত্যাগ। PhD-এর প্রস্তুতিতেও ত্যাগ — সময়ের, শ্রমের। Volunteer RA = বিনা পারিশ্রমিকে কাজ। সন্ধ্যায় পেপার লেখা = বিশ্রামের ত্যাগ। কিন্তু এই ত্যাগই তোমার পথ তৈরি করে। প্রথম পেপার = প্রথম কুরবানি — তোমার গবেষক হওয়ার প্রমাণ।</div>
+<div class="dialogue">বিদায় — ত্যাগ। হজ্জে পশু কুরবানি — সম্পদের ত্যাগ। PhD-এর প্রস্তুতিতেও ত্যাগ — সময়ের, শ্রমের। Volunteer RA = বিনা পারিশ্রমিকে কাজ। সন্ধ্যায় পেপার লেখা = বিশ্রামের ত্যাগ। কিন্তু এই ত্যাগই তোমার পথ তৈরি করে। প্রথম পেপার = প্রথম কুরবানি — তোমার গবেষক হওয়ার প্রমাণ।</div></div>
 <div class="dialogue en">"Biday — sacrifice. In Hajj, animal sacrifice — giving wealth. In PhD preparation, sacrifice too — of time, labor. Volunteer RA = unpaid work. Evening paper writing = sacrificing rest. But this sacrifice builds your path. First paper = first sacrifice — proof you can be a researcher."</div>`,
   senior:{
     title:"৬ মাসে প্রথম পাবলিকেশন — ক্রম",
@@ -224,15 +224,15 @@ doors.push({
 <p class="scene-setting">নবম স্থান। একটা গোলাকার কক্ষ। মাঝখানে একটা বড় টেবিল — তিন-চারজন প্রফেসর বসে আছেন। তুমি সামনে। কোনো হাতুড়ি-পেরেক নেই, কোনো কোডিং স্ক্রিন নেই। শুধু কথোপকথন। প্রফেসর মাহমুদ হাসান হাসিমুখে বললেন — "বলো, তোমার কী ভাবনা?"</p>
 <p class="scene-setting en">The ninth station. A circular room. A large table in center — three-four professors seated. You before them. No hammer-nails, no coding screen. Just conversation. Professor Mahmud Hasan smiles — "Tell me, what are you thinking about?"</p>
 
-<div class="dialogue">কারিগর বলেছিলেন — পেপার লেখো। কিন্তু আমি বলি — পেপার লেখার পর আসে শেষ পরীক্ষা। PhD ইন্টারভিউ। কিন্তু এটা কোডিং ইন্টারভিউ নয় — রিসার্চ কথোপকথন। প্রফেসর দেখতে চান — তুমি কি তাঁর সাথে ৫ বছর কাজ করতে পারবে?</div>
-<div class="dialogue en">"The craftsman said — write a paper. But I say — after the paper comes the final test. PhD interview. But this isn't a coding interview — it's a research conversation. The professor wants to see — can you work with them for 5 years?"</div>
+<div class="dialogue">কারিগর বলেছিলেন — পেপার লেখো। কিন্তু আমি বলি — পেপার লেখার পর আসে শেষ পরীক্ষা। PhD ইন্টারভিউ। কিন্তু এটা কোডিং ইন্টারভিউ নয় — রিসার্চ কথোপকথন। প্রফেসর দেখতে চান — তুমি কি তাঁর সাথে ৫ বছর কাজ করতে পারবে?</div></div>
+<div class="dialogue en">"The craftsman said — write a paper. But I say — after the paper comes the final test. PhD interview. But this isn't a coding interview — it's a research conversation. The professor wants to see — can you work with them for 5 years?"</div></div>
 
 <table class="kv-table"><tr><th>ধরন</th><th>কী হয়</th><th>তারা যা দেখে</th></tr>
 <tr><td class="hl">Zoom/Video<br><small>সবচেয়ে সাধারণ</small></td><td>৩০-৬০ মিনিট, ১-৩ জন প্রফেসর; SOP/পেপার/প্রজেক্ট নিয়ে আলোচনা</td><td>আগ্রহ ও ফিট</td></tr>
 <tr><td class="hl">Campus visit<br><small>recruitment weekend</small></td><td>১-২ দিন; ১:১ মিটিং, বর্তমান শিক্ষার্থীদের সাথে কথা, ল্যাব ট্যুর</td><td>সংস্কৃতি ও পারস্পরিক ফিট</td></tr>
 <tr><td class="hl">Technical<br><small>discussion</small></td><td>একটা পেপার নিয়ে: "এই method-এ সমস্যা কী? কীভাবে উন্নত করবে?"</td><td>চিন্তার প্রক্রিয়া</td></tr></table>
 
-<div class="callout info"><span class="co-icon">❓</span><div><strong>যে প্রশ্ন প্রায় সবসময় আসে:</strong></div></div>
+<div class="callout info"><span class="co-icon">❓</span><div><strong>যে প্রশ্ন প্রায় সবসময় আসে:</strong></div></div></div>
 <ul class="checklist">
 <li>"কেন PhD? কেন এখন?"</li>
 <li>"কোন সমস্যা নিয়ে কাজ করতে চাও?"</li>
@@ -242,9 +242,9 @@ doors.push({
 </ul>
 
 <div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">❌ খারাপ উত্তর</div>"আমি সব পারি।" "আমি ভালো ছাত্র।" "আপনার ল্যাব বিখ্যাত।" — জেনেরিক, নির্দিষ্ট নয়। প্রফেসর বিরক্ত।</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ ভালো উত্তর</div>"আমি আপনার ২০২৩ paper on constrained decoding পড়েছি। আমি LedgerPilot-এ RAG নিয়ে কাজ করেছি — একই সমস্যা। আমি জানতে চাই — constrained generation কি retrieval-augmented settings-এ কাজ করে?" — নির্দিষ্ট, পেপারের উল্লেখ, প্রশ্ন।</div>
-</div>
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ খারাপ উত্তর</div>"আমি সব পারি।" "আমি ভালো ছাত্র।" "আপনার ল্যাব বিখ্যাত।" — জেনেরিক, নির্দিষ্ট নয়। প্রফেসর বিরক্ত।</div></div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ ভালো উত্তর</div>"আমি আপনার ২০২৩ paper on constrained decoding পড়েছি। আমি LedgerPilot-এ RAG নিয়ে কাজ করেছি — একই সমস্যা। আমি জানতে চাই — constrained generation কি retrieval-augmented settings-এ কাজ করে?" — নির্দিষ্ট, পেপারের উল্লেখ, প্রশ্ন।</div></div>
+</div></div>
 
 <div class="svg-fig">
 <svg viewBox="0 0 640 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two-way interview evaluation">
@@ -260,10 +260,10 @@ doors.push({
 <path d="M395 100 L245 100" stroke="#5eead4" stroke-width="2"/><polygon points="245,100 257,94 257,106" fill="#5eead4"/>
 <text x="320" y="155" fill="#e8e6f0" font-size="12" text-anchor="middle">ইন্টারভিউ = দ্বিমুখী যাচাই। খারাপ advisor-fit-ই ঝরে পড়ার ১ নম্বর কারণ।</text>
 </svg>
-<div class="fig-cap">চিত্র: প্রশ্ন করা দুর্বলতা নয় — ভালো প্রশ্ন করাই সবচেয়ে শক্ত সিগন্যাল যে তুমি গবেষকের মতো ভাবছ।</div>
-</div>
+<div class="fig-cap">চিত্র: প্রশ্ন করা দুর্বলতা নয় — ভালো প্রশ্ন করাই সবচেয়ে শক্ত সিগন্যাল যে তুমি গবেষকের মতো ভাবছ।</div></div>
+</div></div>
 
-<div class="dialogue">বাইআত — আনুগত্যের শপথ। বাইআতে দুই পক্ষ — এক হাত বাড়ায়, অন্য গ্রহণ করে। PhD ইন্টারভিউও তেমনি — প্রফেসর দেখছেন তুমি তাঁর সাথে কাজ করতে প্রস্তুত কি না। তুমি দেখছ তাঁর ল্যাব তোমার জন্য ঠিক কি না। বাইআত একপাক্ষিক নয় — উভয়ের সম্মতি। ইন্টারভিউও — তুমিও প্রশ্ন করো, শুধু উত্তর দাও না।</div>
+<div class="dialogue">বাইআত — আনুগত্যের শপথ। বাইআতে দুই পক্ষ — এক হাত বাড়ায়, অন্য গ্রহণ করে। PhD ইন্টারভিউও তেমনি — প্রফেসর দেখছেন তুমি তাঁর সাথে কাজ করতে প্রস্তুত কি না। তুমি দেখছ তাঁর ল্যাব তোমার জন্য ঠিক কি না। বাইআত একপাক্ষিক নয় — উভয়ের সম্মতি। ইন্টারভিউও — তুমিও প্রশ্ন করো, শুধু উত্তর দাও না।</div></div>
 <div class="dialogue en">"Bai'at — pledge of allegiance. In bai'at, two parties — one extends hand, other accepts. PhD interview too — the professor sees if you're ready to work with them. You see if their lab is right for you. Bai'at isn't one-sided — mutual consent. Interview too — you also ask questions, don't just answer."</div>`,
   senior:{
     title:"ইন্টারভিউতে যে ৫টি প্রশ্ন তুমি করবে",
@@ -287,13 +287,13 @@ doors.push({
 <p class="scene-setting">দশম স্থান। শেষ স্থান। একটা শান্ত গ্রন্থাগার — কিন্তু সাধারণ নয়। এই গ্রন্থাগারে কোনো বই পূর্ণ নয় — প্রতিটা খোলা, প্রতিটা লেখা হচ্ছে। কারণ জ্ঞান শেষ হয় না। স্কলার সাঈদ দাঁড়িয়ে আছেন — বয়স্ক, কিন্তু চোখে তরুণের কৌতূহল। "মুকুট?" তিনি হাসলেন। "মুকুট নয়। চাবি। জ্ঞানের দরজা খোলার চাবি।"</p>
 <p class="scene-setting en">The tenth station. The last. A quiet library — but not ordinary. No book here is complete — each open, each being written. Because knowledge never ends. Scholar Saeed stands — elderly, yet with a youth's curiosity. "Crown?" he laughed. "Not a crown. A key. A key to open the doors of knowledge."</p>
 
-<div class="dialogue">নয়টি স্থান পেরিয়েছ। তীর্থযাত্রী বলেছিলেন — কেন। মানচিত্রকার বলেছিলেন — কী। বণিক বলেছিলেন — ফান্ডিং। দিকনির্দেশক বলেছিলেন — কোথায়। পণ্ডিত বলেছিলেন — SOP। দরোয়ান বলেছিলেন — ইমেইল করো। মিযান রক্ষক বলেছিলেন — নিজের মাপ জানো। কারিগর বলেছিলেন — পেপার লেখো। কমিটির কক্ষ বলেছিলেন — কথোপকথন। আর আমি বলি — এই সবের পরে আসল জীবন। PhD জীবন।</div>
-<div class="dialogue en">"You've passed nine stations. The pilgrim said — why. The cartographer said — what. The merchant said — funding. The guide said — where. The scholar said — SOP. The gatekeeper said — email. The scale keeper said — know your measure. The craftsman said — write a paper. The committee said — conversation. And I say — after all this comes real life. PhD life."</div>
+<div class="dialogue">নয়টি স্থান পেরিয়েছ। তীর্থযাত্রী বলেছিলেন — কেন। মানচিত্রকার বলেছিলেন — কী। বণিক বলেছিলেন — ফান্ডিং। দিকনির্দেশক বলেছিলেন — কোথায়। পণ্ডিত বলেছিলেন — SOP। দরোয়ান বলেছিলেন — ইমেইল করো। মিযান রক্ষক বলেছিলেন — নিজের মাপ জানো। কারিগর বলেছিলেন — পেপার লেখো। কমিটির কক্ষ বলেছিলেন — কথোপকথন। আর আমি বলি — এই সবের পরে আসল জীবন। PhD জীবন।</div></div>
+<div class="dialogue en">"You've passed nine stations. The pilgrim said — why. The cartographer said — what. The merchant said — funding. The guide said — where. The scholar said — SOP. The gatekeeper said — email. The scale keeper said — know your measure. The craftsman said — write a paper. The committee said — conversation. And I say — after all this comes real life. PhD life."</div></div>
 
-<div class="callout info"><span class="co-icon">🕊️</span><div><strong>স্বাধীনতা:</strong> কেউ বলবে না কী করতে — তুমিই তোমার সময়, প্রশ্ন আর সময়সূচীর মালিক। দারুণ, কিন্তু স্বাধীনতা = দায়িত্ব।</div></div>
-<div class="callout info"><span class="co-icon">🌑</span><div><strong>একাকীত্ব:</strong> তোমার সমস্যা শুধু তোমার; বন্ধুরা ইন্ডাস্ট্রিতে চলে গেছে। কিন্তু ল্যাবের সহকর্মীরাই হয়ে ওঠে নতুন পরিবার।</div></div>
-<div class="callout warn"><span class="co-icon">💥</span><div><strong>ব্যর্থতা:</strong> রিসার্চ = ব্যর্থতার আরেক নাম। এক্সপেরিমেন্ট ভাঙবে, পেপার বারবার রিজেক্ট হবে — কিন্তু "negative result"-ও ফলাফল, প্রতিটা ব্যর্থতা শেখা।</div></div>
-<div class="callout warn"><span class="co-icon">🧠</span><div><strong>মানসিক স্বাস্থ্য:</strong> PhD-তে depression/anxiety-র হার উচ্চ; imposter syndrome ("আমি যথেষ্ট ভালো না") প্রায় সবার হয়। এটা দুর্বলতা নয় — সিস্টেমের চাপ। থেরাপি, কমিউনিটি, ঘুম ও ব্যায়ামকে "luxury" নয়, রিসার্চের অংশ ভাবো। প্রয়োজনে সাহায্য চাওয়াই শক্তি।</div></div>
+<div class="callout info"><span class="co-icon">🕊️</span><div><strong>স্বাধীনতা:</strong> কেউ বলবে না কী করতে — তুমিই তোমার সময়, প্রশ্ন আর সময়সূচীর মালিক। দারুণ, কিন্তু স্বাধীনতা = দায়িত্ব।</div></div></div>
+<div class="callout info"><span class="co-icon">🌑</span><div><strong>একাকীত্ব:</strong> তোমার সমস্যা শুধু তোমার; বন্ধুরা ইন্ডাস্ট্রিতে চলে গেছে। কিন্তু ল্যাবের সহকর্মীরাই হয়ে ওঠে নতুন পরিবার।</div></div></div>
+<div class="callout warn"><span class="co-icon">💥</span><div><strong>ব্যর্থতা:</strong> রিসার্চ = ব্যর্থতার আরেক নাম। এক্সপেরিমেন্ট ভাঙবে, পেপার বারবার রিজেক্ট হবে — কিন্তু "negative result"-ও ফলাফল, প্রতিটা ব্যর্থতা শেখা।</div></div></div>
+<div class="callout warn"><span class="co-icon">🧠</span><div><strong>মানসিক স্বাস্থ্য:</strong> PhD-তে depression/anxiety-র হার উচ্চ; imposter syndrome ("আমি যথেষ্ট ভালো না") প্রায় সবার হয়। এটা দুর্বলতা নয় — সিস্টেমের চাপ। থেরাপি, কমিউনিটি, ঘুম ও ব্যায়ামকে "luxury" নয়, রিসার্চের অংশ ভাবো। প্রয়োজনে সাহায্য চাওয়াই শক্তি।</div></div></div>
 
 <div class="svg-fig">
 <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Post PhD career branches">
@@ -309,8 +309,8 @@ doors.push({
 <text x="440" y="143" fill="#f0c75e" font-size="12">🚀 স্টার্টআপ — রিসার্চ → প্রোডাক্ট</text>
 <text x="440" y="190" fill="#ff6b35" font-size="12">🏦 সরকারি / জাতীয় ল্যাব</text>
 </svg>
-<div class="fig-cap">চিত্র: মুকুট নয় — চাবি। একই PhD থেকে চারটা দরজা খোলে, আর মাঝপথে দরজা বদলানোও যায়।</div>
-</div>
+<div class="fig-cap">চিত্র: মুকুট নয় — চাবি। একই PhD থেকে চারটা দরজা খোলে, আর মাঝপথে দরজা বদলানোও যায়।</div></div>
+</div></div>
 
 <table class="kv-table"><tr><th>PhD-এর পরে</th><th>কী</th><th>আয় (আনুমানিক)</th></tr>
 <tr><td class="hl">একাডেমিয়া</td><td>প্রফেসর → নিজের ল্যাব, রিসার্চ, শিক্ষার্থী</td><td>$৮০-১৫০K+ (tenure-track)</td></tr>
@@ -318,12 +318,12 @@ doors.push({
 <tr><td class="hl">স্টার্টআপ</td><td>নিজের রিসার্চ → প্রোডাক্ট → কোম্পানি</td><td>পরিবর্তনশীল (equity)</td></tr>
 <tr><td class="hl">সরকারি/জাতীয় ল্যাব</td><td>NSF, DARPA, NASA, national labs</td><td>$১০০-১৮০K</td></tr></table>
 
-<div class="src-box"><div class="src-label">যাচাইকৃত উৎস / Verified Sources</div>মানসিক স্বাস্থ্য: Evans et al., <em>Nature Biotechnology</em> 36, 282–284 (2018) — ৪১% মাঝারি-গুরুতর anxiety, ৩৯% depression; ভালো mentor-সম্পর্ক ও work-life balance কম উপসর্গের সাথে যুক্ত · ক্যারিয়ার ও আয়ের রেঞ্জ আনুমানিক — বর্তমান সংখ্যার জন্য NSF SED "postgraduation plans" টেবিল (ncses.nsf.gov) ও levels.fyi (self-reported) দেখো।</div>
+<div class="src-box"><div class="src-label">যাচাইকৃত উৎস / Verified Sources</div>মানসিক স্বাস্থ্য: Evans et al., <em>Nature Biotechnology</em> 36, 282–284 (2018) — ৪১% মাঝারি-গুরুতর anxiety, ৩৯% depression; ভালো mentor-সম্পর্ক ও work-life balance কম উপসর্গের সাথে যুক্ত · ক্যারিয়ার ও আয়ের রেঞ্জ আনুমানিক — বর্তমান সংখ্যার জন্য NSF SED "postgraduation plans" টেবিল (ncses.nsf.gov) ও levels.fyi (self-reported) দেখো।</div></div>
 
-<div class="dialogue">ইলম — জ্ঞান। নবীজি (সা) বলেছেন — "জ্ঞান অর্জন প্রতিটি মুসলিমের উপর ফরজ।" PhD হলো জ্ঞানের সবচেয়ে গভীর পথ — শুধু জ্ঞান গ্রহণ নয়, জ্ঞান সৃষ্টি। এটা শুধু পেশাগত নয় — আধ্যাত্মিক। প্রতিটি নতুন আবিষ্কার আল্লাহর সৃষ্টির একটি নতুন দিক উন্মোচন। PhD-র মাধ্যমে তুমি আল্লাহর কালামের আরেকটি আয়াত পড়ো — "সবকিছু আমরা গণনা করেছি একটি সুরক্ষিত গ্রন্থে।" (৭৮:২৯)</div>
-<div class="dialogue en">"Ilm — knowledge. The Prophet (pbuh) said — 'Seeking knowledge is obligatory upon every Muslim.' PhD is the deepest path of knowledge — not just receiving knowledge, but creating it. This isn't just professional — it's spiritual. Each new discovery reveals a new aspect of Allah's creation. Through PhD you read another ayah of Allah's word — 'We have enumerated all things in a secure register.' (78:29)"</div>
+<div class="dialogue">ইলম — জ্ঞান। নবীজি (সা) বলেছেন — "জ্ঞান অর্জন প্রতিটি মুসলিমের উপর ফরজ।" PhD হলো জ্ঞানের সবচেয়ে গভীর পথ — শুধু জ্ঞান গ্রহণ নয়, জ্ঞান সৃষ্টি। এটা শুধু পেশাগত নয় — আধ্যাত্মিক। প্রতিটি নতুন আবিষ্কার আল্লাহর সৃষ্টির একটি নতুন দিক উন্মোচন। PhD-র মাধ্যমে তুমি আল্লাহর কালামের আরেকটি আয়াত পড়ো — "সবকিছু আমরা গণনা করেছি একটি সুরক্ষিত গ্রন্থে।" (৭৮:২৯)</div></div>
+<div class="dialogue en">"Ilm — knowledge. The Prophet (pbuh) said — 'Seeking knowledge is obligatory upon every Muslim.' PhD is the deepest path of knowledge — not just receiving knowledge, but creating it. This isn't just professional — it's spiritual. Each new discovery reveals a new aspect of Allah's creation. Through PhD you read another ayah of Allah's word — 'We have enumerated all things in a secure register.' (78:29)"</div></div>
 
-<div class="verse">"মানুষের জন্য সে ছাড়া কিছু নেই যা সে চেষ্টা করে।"<br>— কুরআন ৫৩:৩৯<br><br>PhD একটা চেষ্টা — দীর্ঘ, কঠিন, কিন্তু গভীর। প্রতিটা চেষ্টা আল্লাহর কাছে গৃহীত। প্রতিটা পরীক্ষা একটি সুযোগ। প্রতিটা ব্যর্থতা একটি শেখা। যারা জ্ঞানের পথে চলে, আল্লাহ তাদের জন্য সহজ করে দেন জান্নাতের পথ।</div>
+<div class="verse">"মানুষের জন্য সে ছাড়া কিছু নেই যা সে চেষ্টা করে।"<br>— কুরআন ৫৩:৩৯<br><br>PhD একটা চেষ্টা — দীর্ঘ, কঠিন, কিন্তু গভীর। প্রতিটা চেষ্টা আল্লাহর কাছে গৃহীত। প্রতিটা পরীক্ষা একটি সুযোগ। প্রতিটা ব্যর্থতা একটি শেখা। যারা জ্ঞানের পথে চলে, আল্লাহ তাদের জন্য সহজ করে দেন জান্নাতের পথ।</div></div>
 
 <div class="secret-box"><div class="label">দশম স্থান — রহস্য</div><div class="text">🎓 PhD = মুকুট নয়, চাবি। জ্ঞানের চাবি।<br><small>স্বাধীনতা + একাকীত্ব + ব্যর্থতা = সৃষ্টি। ইলম ইবাদত — জ্ঞান সৃষ্টি সবচেয়ে গভীর ইবাদত।</small></div></div>`
 });

@@ -20,8 +20,8 @@ doors.push({
   story:`<p class="scene-setting">১৮৮৫ সাল। জার্মানি। মনোবিজ্ঞানী হারমান এবিংহাউস (Hermann Ebbinghaus) একটা অদ্ভুত পরীক্ষা করলেন। তিনি অর্থহীন শব্দের তালিকা মুখস্থ করে সময় ধরে কতটা ভুলে যান তা গণনা করলেন। ফলাফল স্তম্ভিত করা — ১ ঘণ্টায় ৫০% ভুলে গেলেন। ১ দিনে ৭০%। ১ সপ্তাহে ৮০%। ২ সপ্তাহে ৯০%। এটাই Ebbinghaus Forgetting Curve — মানুষের স্মৃতির সবচেয়ে নির্মম সত্য।</p>
 <p class="scene-setting en">1885. Germany. Psychologist Hermann Ebbinghaus did a strange experiment. He memorized lists of meaningless syllables and tracked how much he forgot over time. The results were staggering — in 1 hour: 50% forgotten. In 1 day: 70%. In 1 week: 80%. In 2 weeks: 90%. This is the Ebbinghaus Forgetting Curve — the most brutal truth about human memory.</p>
 
-<div class="dialogue">তুমি ভাবো — আমি তো বই পড়েছি! কিন্তু ২ সপ্তাহ পর কতটা মনে আছে? Ebbinghaus বলেন — ১০%। ৯০% গেছে। তুমি বই পড়েছ কিন্তু জ্ঞান ধরে রাখোনি। পানি বহন করেছ — ছিদ্র বালতিতে। এটাই প্যাসিভ রিডিং — চোখ চলে, মস্তিষ্ক ধরে না। কিন্তু সমাধান আছে। ছিদ্র বন্ধ করা যায়।</div>
-<div class="dialogue en">"You think — I read the book! But how much remains after 2 weeks? Ebbinghaus says — 10%. 90% is gone. You read but didn't retain knowledge. You carried water — in a leaking bucket. This is passive reading — eyes move, brain doesn't hold. But there's a fix. The holes can be plugged."</div>
+<div class="dialogue">তুমি ভাবো — আমি তো বই পড়েছি! কিন্তু ২ সপ্তাহ পর কতটা মনে আছে? Ebbinghaus বলেন — ১০%। ৯০% গেছে। তুমি বই পড়েছ কিন্তু জ্ঞান ধরে রাখোনি। পানি বহন করেছ — ছিদ্র বালতিতে। এটাই প্যাসিভ রিডিং — চোখ চলে, মস্তিষ্ক ধরে না। কিন্তু সমাধান আছে। ছিদ্র বন্ধ করা যায়।</div></div>
+<div class="dialogue en">"You think — I read the book! But how much remains after 2 weeks? Ebbinghaus says — 10%. 90% is gone. You read but didn't retain knowledge. You carried water — in a leaking bucket. This is passive reading — eyes move, brain doesn't hold. But there's a fix. The holes can be plugged."</div></div>
 
 <table class="kv-table"><tr><th>সময় (Ebbinghaus, 1885)</th><th>মনে থাকে</th><th>ভুলে যাই</th></tr>
 <tr><td class="hl">এখন</td><td>১০০%</td><td>০%</td></tr>
@@ -29,7 +29,7 @@ doors.push({
 <tr><td class="hl">১ দিন</td><td>~৩৩%</td><td>~৬৭%</td></tr>
 <tr><td class="hl">৬ দিন</td><td>~২৫%</td><td>~৭৫%</td></tr>
 <tr><td class="hl">৩১ দিন</td><td>~২১%</td><td>~৭৯%</td></tr></table>
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> এই সঠিক শতাংশ প্রচলিত কিন্তু পুরোপুরি নির্ভরযোগ্য নয় — Ebbinghaus-এর গবেষণা ছিল N=১ (নিজের উপর), nonsense syllables দিয়ে। বাস্তব তথ্যে curve-এর আকৃতি ভিন্ন। তবে মূল নীতি — "ব্যবধানে না-পুনরাবৃত্তি করলে দ্রুত ভুলে যাই" — সুপ্রতিষ্ঠিত। "গত বছর একটা বই পড়েছি" = কার্যত নতুন করে পড়া, যদি না retention-কৌশল ব্যবহার করো।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> এই সঠিক শতাংশ প্রচলিত কিন্তু পুরোপুরি নির্ভরযোগ্য নয় — Ebbinghaus-এর গবেষণা ছিল N=১ (নিজের উপর), nonsense syllables দিয়ে। বাস্তব তথ্যে curve-এর আকৃতি ভিন্ন। তবে মূল নীতি — "ব্যবধানে না-পুনরাবৃত্তি করলে দ্রুত ভুলে যাই" — সুপ্রতিষ্ঠিত। "গত বছর একটা বই পড়েছি" = কার্যত নতুন করে পড়া, যদি না retention-কৌশল ব্যবহার করো।</div></div></div>
 
 <table class="kv-table"><tr><th>Passive reading (ভুলে যাওয়া)</th><th>Active reading (ধরে রাখা)</th></tr>
 <tr><td>চোখ শব্দ scan করে</td><td>মন শব্দ প্রশ্ন করে</td></tr>
@@ -37,12 +37,12 @@ doors.push({
 <tr><td>যা জানে তার সাথে সংযোগ নেই</td><td>যা জানে তার সাথে যুক্ত করে</td></tr>
 <tr><td>retention: ~১০%</td><td>retention: ~৭০-৯০%</td></tr></table>
 
-<div class="callout tip"><span class="co-icon">🔌</span><div><strong>ছিদ্র বন্ধের ৩ উপায়:</strong> ① <strong>Active engagement</strong> (Maryanne Wolf, 2018 — deep reading আলাদা brain network জাগায়): প্রশ্ন করো, সংযোগ করো, মূল্যায়ন করো। ② <strong>Spaced repetition</strong>: Day 1 → 2 → 7 → 30 → 90 review, প্রতিবার forgetting curve সমতল হয়। ③ <strong>Testing effect</strong> (Roediger & Karpicke, 2006): re-read ৩ বার = ৪২% retention; একবার পড়ে test = ৫৬%। নিজেকে test করা re-read-কে হারায়।</div></div>
+<div class="callout tip"><span class="co-icon">🔌</span><div><strong>ছিদ্র বন্ধের ৩ উপায়:</strong> ① <strong>Active engagement</strong> (Maryanne Wolf, 2018 — deep reading আলাদা brain network জাগায়): প্রশ্ন করো, সংযোগ করো, মূল্যায়ন করো। ② <strong>Spaced repetition</strong>: Day 1 → 2 → 7 → 30 → 90 review, প্রতিবার forgetting curve সমতল হয়। ③ <strong>Testing effect</strong> (Roediger & Karpicke, 2006): re-read ৩ বার = ৪২% retention; একবার পড়ে test = ৫৬%। নিজেকে test করা re-read-কে হারায়।</div></div></div>
 
-<div class="callout info"><span class="co-icon">🎯</span><div><strong>Retention = Comprehension * Engagement * Repetition</strong> — যেকোনো factor শূন্য হলে retention শূন্য। বেশিরভাগ পাঠকের comprehension ✓ কিন্তু engagement ✗ ও repetition ✗ → retention ০। লক্ষ্য "এ বছর ৫০ বই" নয়, "এ বছর ৫ বই থেকে গভীর শেখা।" (Naval: "কম বই পড়ো, বেশি যত্নে; ভালোগুলো ৫-১০ বার পুনরায় পড়ো।")</div></div>
+<div class="callout info"><span class="co-icon">🎯</span><div><strong>Retention = Comprehension * Engagement * Repetition</strong> — যেকোনো factor শূন্য হলে retention শূন্য। বেশিরভাগ পাঠকের comprehension ✓ কিন্তু engagement ✗ ও repetition ✗ → retention ০। লক্ষ্য "এ বছর ৫০ বই" নয়, "এ বছর ৫ বই থেকে গভীর শেখা।" (Naval: "কম বই পড়ো, বেশি যত্নে; ভালোগুলো ৫-১০ বার পুনরায় পড়ো।")</div></div></div>
 
 <div class="diagram">
-  <div class="diag-title">ছিদ্র বালতি — Passive Reading যা ধরে রাখে না</div>
+  <div class="diag-title">ছিদ্র বালতি — Passive Reading যা ধরে রাখে না</div></div>
   <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
     <!-- bucket -->
     <path d="M 180 70 L 200 200 L 360 200 L 380 70 Z" class="cell" style="fill:rgba(245,158,11,.08);stroke:#f59e0b;stroke-width:2"/>
@@ -57,10 +57,10 @@ doors.push({
     <text class="lbl-sm" x="395" y="170" fill="#9290a8" style="font-size:9px">no notes, no recall</text>
     <text class="lbl-sm" x="280" y="220" fill="#5e5c74">৯০% পড়ার ২ সপ্তাহ পর ফোটা ফোটা গলে যায় — যাওয়া পানি</text>
   </svg>
-  <div class="diag-cap">চোখ দিয়ে পড়া = ছিদ্র বালতিতে পানি ঢালা। ৯০% গলে যায়। সমাধান বালতি বদলানো নয় — ছিদ্র বন্ধ করা: active engagement, note-taking, spaced repetition, testing effect।</div>
-</div>
+  <div class="diag-cap">চোখ দিয়ে পড়া = ছিদ্র বালতিতে পানি ঢালা। ৯০% গলে যায়। সমাধান বালতি বদলানো নয় — ছিদ্র বন্ধ করা: active engagement, note-taking, spaced repetition, testing effect।</div></div>
+</div></div>
 
-<div class="code-block">Plug the Leaks — ৩ উপায় (প্রমাণ-ভিত্তিক):
+<div class="callout tip"><span class="co-icon">📋</span><div>Plug the Leaks — ৩ উপায় (প্রমাণ-ভিত্তিক):
 
   ① ACTIVE ENGAGEMENT (Maryanne Wolf, 2018)
      deep reading আলাদা brain network জাগায়।
@@ -76,21 +76,21 @@ doors.push({
      নিজেকে test করা re-read-কে হারায়।
 
   Naval: "কম বই পড়ো, বেশি যত্নে।
-         ভালোগুলো ৫-১০ বার পুনরায় পড়ো।"</div>
+         ভালোগুলো ৫-১০ বার পুনরায় পড়ো।"</div></div>
 
 <div class="stat-grid">
-<div class="stat-card"><div class="sc-num">৯০%</div><div class="sc-label">২ সপ্তাহে ভুলে যাওয়া (Ebbinghaus)</div></div>
-<div class="stat-card"><div class="sc-num">১৮৮৫</div><div class="sc-label">Ebbinghaus-এর মূল পরীক্ষা</div></div>
-<div class="stat-card"><div class="sc-num">৪২% → ৫৬%</div><div class="sc-label">re-read বনাম test (Roediger 2006)</div></div>
-<div class="stat-card"><div class="sc-num">~৭০-৯০%</div><div class="sc-label">active reading-এ retention</div></div>
-</div>
+<div class="stat-card"><div class="sc-num">৯০%</div><div class="sc-label">২ সপ্তাহে ভুলে যাওয়া (Ebbinghaus)</div></div></div>
+<div class="stat-card"><div class="sc-num">১৮৮৫</div><div class="sc-label">Ebbinghaus-এর মূল পরীক্ষা</div></div></div>
+<div class="stat-card"><div class="sc-num">৪২% → ৫৬%</div><div class="sc-label">re-read বনাম test (Roediger 2006)</div></div></div>
+<div class="stat-card"><div class="sc-num">~৭০-৯০%</div><div class="sc-label">active reading-এ retention</div></div></div>
+</div></div>
 
 <div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">❌ Passive reading (ছিদ্র বালতি)</div>চোখ শব্দ scan করে, নোট নেই, ফিরে দেখে না, যা জানে তার সাথে সংযোগ নেই। retention ~১০%। "এ বছর ৫০ বই পড়েছি" — কিন্তু ২ সপ্তাহ পর প্রায় কিছুই মনে নেই। বই পড়া হলো, জ্ঞান ধরে রাখা হলো না।</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ Active reading (ছিদ্র বন্ধ)</div>প্রতি section-এ নোট, প্রশ্ন করো, যা জানে তার সাথে যুক্ত করো, spaced re-read, নিজেকে test করো। retention ~৭০-৯০%। "এ বছর ৫ বই গভীর পড়েছি" — প্রতিটি থেকে স্থায়ী জ্ঞান। কম পড়ো, বেশি ধরো।</div>
-</div>
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ Passive reading (ছিদ্র বালতি)</div>চোখ শব্দ scan করে, নোট নেই, ফিরে দেখে না, যা জানে তার সাথে সংযোগ নেই। retention ~১০%। "এ বছর ৫০ বই পড়েছি" — কিন্তু ২ সপ্তাহ পর প্রায় কিছুই মনে নেই। বই পড়া হলো, জ্ঞান ধরে রাখা হলো না।</div></div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ Active reading (ছিদ্র বন্ধ)</div>প্রতি section-এ নোট, প্রশ্ন করো, যা জানে তার সাথে যুক্ত করো, spaced re-read, নিজেকে test করো। retention ~৭০-৯০%। "এ বছর ৫ বই গভীর পড়েছি" — প্রতিটি থেকে স্থায়ী জ্ঞান। কম পড়ো, বেশি ধরো।</div></div>
+</div></div>
 
-<div class="dialogue">যাওয়া পানি — pouring water, like water that flows through and leaves nothing। কুরআনে আল্লাহ বলেন — "তাদের উপমা এমন যেন তারা বৃষ্টিতে আচ্ছাদিত — কিন্তু কিছু নেই।" পড়াও তেমনি — চোখ দিয়ে পড়ে, মস্তিষ্কে কিছু থাকে না। যাওয়া পানি। কিন্তু কুরআন আরও বলে — "যারা জ্ঞান দেওয়া হয়েছে, তাদের অন্তর সত্যের জন্য পিপাসার্ত।" পিপাসা = গভীর পড়া। যে গভীর পড়ে, সে ধরে রাখে। যে শুধু চোখ চালায়, সে যাওয়া পানি। প্রথম দরজার সত্য — পড়া শেষ নয়, ধরে রাখাই শুরু।</div>
+<div class="dialogue">যাওয়া পানি — pouring water, like water that flows through and leaves nothing। কুরআনে আল্লাহ বলেন — "তাদের উপমা এমন যেন তারা বৃষ্টিতে আচ্ছাদিত — কিন্তু কিছু নেই।" পড়াও তেমনি — চোখ দিয়ে পড়ে, মস্তিষ্কে কিছু থাকে না। যাওয়া পানি। কিন্তু কুরআন আরও বলে — "যারা জ্ঞান দেওয়া হয়েছে, তাদের অন্তর সত্যের জন্য পিপাসার্ত।" পিপাসা = গভীর পড়া। যে গভীর পড়ে, সে ধরে রাখে। যে শুধু চোখ চালায়, সে যাওয়া পানি। প্রথম দরজার সত্য — পড়া শেষ নয়, ধরে রাখাই শুরু।</div></div>
 <div class="dialogue en">"Jaoa pani — pouring water, like water that flows through leaving nothing. Allah says — 'Their example is as if they were covered by rain — but have nothing.' Reading too — eyes read, brain holds nothing. Jaoa pani. But the Quran also says — 'Those given knowledge, their hearts thirst for truth.' Thirst = deep reading. One who reads deeply, retains. One who merely moves eyes, is jaoa pani. The first door's truth — reading is not the end, retention is the beginning."</div>`,
   senior:{
     title:"Stop Leaking — 3 Habits Today",
@@ -113,19 +113,19 @@ doors.push({
   story:`<p class="scene-setting">১৯৪০ সাল। শিকাগো বিশ্ববিদ্যালয়। দার্শনিক মর্টিমার অ্যাডলার (Mortimer Adler) একটা বই প্রকাশ করলেন — How to Read a Book। সবাই হাসল — পড়তে শেখায় কে? কিন্তু Adler বললেন — তুমি যা করছ তা আসলে পড়া নয়। শব্দ চেনা। প্রকৃত পড়া ৪টা স্তরে। তুমি প্রথম স্তরে আটকে। ১৯৭২ সালে তিনি বইটা আপডেট করলেন — Charles Van Doren-এর সাথে। আজও এটা পড়ার পদ্ধতির বাইবেল।</p>
 <p class="scene-setting en">1940. University of Chicago. Philosopher Mortimer Adler published a book — How to Read a Book. Everyone laughed — who needs to learn reading? But Adler said — what you're doing isn't reading. It's word recognition. True reading has 4 levels. You're stuck at the first. In 1972, he updated it with Charles Van Doren. It remains the bible of reading methodology today.</p>
 
-<div class="dialogue">Ebbinghaus বলেছিলেন — কেন ভুলে যাই। Adler বলেন — কারণ তুমি আসলে পড়ছই না। তুমি শব্দ দেখছ। পড়ার ৪টা স্তর আছে — প্রতিটা আগেরটার চেয়ে গভীর। যে প্রথম স্তরে আটকে, সে বলে — আমি বই পড়েছি। কিন্তু সে শুধু শব্দ দেখেছে। যে চতুর্থ স্তরে পৌঁছায়, সে বইয়ের সাথে কথা বলে, প্রশ্ন করে, সংযুক্ত করে।</div>
-<div class="dialogue en">"Ebbinghaus said — why we forget. Adler says — because you're not actually reading. You're seeing words. Reading has 4 levels — each deeper than the last. One stuck at level 1 says — I read the book. But they just saw words. One who reaches level 4 talks WITH the book, questions it, connects it."</div>
+<div class="dialogue">Ebbinghaus বলেছিলেন — কেন ভুলে যাই। Adler বলেন — কারণ তুমি আসলে পড়ছই না। তুমি শব্দ দেখছ। পড়ার ৪টা স্তর আছে — প্রতিটা আগেরটার চেয়ে গভীর। যে প্রথম স্তরে আটকে, সে বলে — আমি বই পড়েছি। কিন্তু সে শুধু শব্দ দেখেছে। যে চতুর্থ স্তরে পৌঁছায়, সে বইয়ের সাথে কথা বলে, প্রশ্ন করে, সংযুক্ত করে।</div></div>
+<div class="dialogue en">"Ebbinghaus said — why we forget. Adler says — because you're not actually reading. You're seeing words. Reading has 4 levels — each deeper than the last. One stuck at level 1 says — I read the book. But they just saw words. One who reaches level 4 talks WITH the book, questions it, connects it."</div></div>
 
 <div class="timeline">
-<div class="tl-step"><div class="tl-when">Level ১ · মাস</div><div class="tl-title">📗 Elementary</div><div class="tl-body">"শব্দ পড়তে পারো?" — অক্ষর/শব্দ চেনা, আক্ষরিক অর্থ। এটা decoding, reading নয়। বেশিরভাগ মানুষ এখানেই আটকে থাকে।</div></div>
-<div class="tl-step"><div class="tl-when">Level ২ · ৫-১৫ মিনিট/বই</div><div class="tl-title">🔍 Inspectional (skim)</div><div class="tl-body">"বইটা কী নিয়ে?" — title/subtitle, preface, TOC, index, key অধ্যায়ের প্রথম-শেষ প্যারা, শেষ ২-৩ পাতা। উদ্দেশ্য: পুরো পড়ার যোগ্য কিনা ঠিক করা। <em>১০টা skim করে ১টা গভীর পড়ার মতো খোঁজো।</em></div></div>
-<div class="tl-step"><div class="tl-when">Level ৩ · বছর</div><div class="tl-title">🧠 Analytical (গভীর)</div><div class="tl-body">"বইটার মানে কী?" — Structure (মূল থিম ১ বাক্যে) → Interpretation (key term ও proposition) → Criticism (বোঝার পরই দ্বিমত) → Synthesis। Adler-এর দ্বিমতের ৪ উপায়: uninformed / misinformed / illogical / incomplete — অনুভূতি নয়, নির্দিষ্ট প্রমাণ লাগে।</div></div>
-<div class="tl-step"><div class="tl-when">Level ৪ · দশক</div><div class="tl-title">🕸️ Syntopical</div><div class="tl-body">"একাধিক বই কীভাবে সম্পর্কিত?" — সর্বোচ্চ স্তর। একই বিষয়ে বহু বই পড়ে সংশ্লেষণ (bibliography → skim সব → key প্রশ্ন → মতভেদ ম্যাপ → নিজের মত)। PhD/গবেষক/বড় লেখকরা যা করেন।</div></div>
-</div>
-<div class="callout tip"><span class="co-icon">📖</span><div><strong>আজই শুরু করতে পারো Level ২ থেকে</strong> — পড়ার আগে skim করো; বেশিরভাগ বই Level ৩-এর যোগ্য নয়, তাই গভীর পড়া রাখো সেই বইগুলোর জন্য যেগুলো সত্যিই গুরুত্বপূর্ণ। <strong>Adler-এর সোনালি নিয়ম:</strong> "'একমত/দ্বিমত' বোলো না যতক্ষণ না বলতে পারো 'আমি বুঝেছি।'"</div></div>
+<div class="tl-step"><div class="tl-when">Level ১ · মাস</div><div class="tl-title">📗 Elementary</div><div class="tl-body">"শব্দ পড়তে পারো?" — অক্ষর/শব্দ চেনা, আক্ষরিক অর্থ। এটা decoding, reading নয়। বেশিরভাগ মানুষ এখানেই আটকে থাকে।</div></div></div>
+<div class="tl-step"><div class="tl-when">Level ২ · ৫-১৫ মিনিট/বই</div><div class="tl-title">🔍 Inspectional (skim)</div><div class="tl-body">"বইটা কী নিয়ে?" — title/subtitle, preface, TOC, index, key অধ্যায়ের প্রথম-শেষ প্যারা, শেষ ২-৩ পাতা। উদ্দেশ্য: পুরো পড়ার যোগ্য কিনা ঠিক করা। <em>১০টা skim করে ১টা গভীর পড়ার মতো খোঁজো।</em></div></div></div>
+<div class="tl-step"><div class="tl-when">Level ৩ · বছর</div><div class="tl-title">🧠 Analytical (গভীর)</div><div class="tl-body">"বইটার মানে কী?" — Structure (মূল থিম ১ বাক্যে) → Interpretation (key term ও proposition) → Criticism (বোঝার পরই দ্বিমত) → Synthesis। Adler-এর দ্বিমতের ৪ উপায়: uninformed / misinformed / illogical / incomplete — অনুভূতি নয়, নির্দিষ্ট প্রমাণ লাগে।</div></div></div>
+<div class="tl-step"><div class="tl-when">Level ৪ · দশক</div><div class="tl-title">🕸️ Syntopical</div><div class="tl-body">"একাধিক বই কীভাবে সম্পর্কিত?" — সর্বোচ্চ স্তর। একই বিষয়ে বহু বই পড়ে সংশ্লেষণ (bibliography → skim সব → key প্রশ্ন → মতভেদ ম্যাপ → নিজের মত)। PhD/গবেষক/বড় লেখকরা যা করেন।</div></div></div>
+</div></div>
+<div class="callout tip"><span class="co-icon">📖</span><div><strong>আজই শুরু করতে পারো Level ২ থেকে</strong> — পড়ার আগে skim করো; বেশিরভাগ বই Level ৩-এর যোগ্য নয়, তাই গভীর পড়া রাখো সেই বইগুলোর জন্য যেগুলো সত্যিই গুরুত্বপূর্ণ। <strong>Adler-এর সোনালি নিয়ম:</strong> "'একমত/দ্বিমত' বোলো না যতক্ষণ না বলতে পারো 'আমি বুঝেছি।'"</div></div></div>
 
 <div class="diagram">
-  <div class="diag-title">Adler-এর ৪ স্তর — পিরামিড, যত উপরে তত গভীর</div>
+  <div class="diag-title">Adler-এর ৪ স্তর — পিরামিড, যত উপরে তত গভীর</div></div>
   <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
     <!-- pyramid layers (bottom widest = most common) -->
     <polygon points="120,200 440,200 400,160 160,160" class="cell-hot" style="stroke:#ff6b35"/>
@@ -142,10 +142,10 @@ doors.push({
     <text class="lbl-sm" x="280" y="68" fill="#b37feb" style="font-weight:700">৪ · Syntopical</text>
     <text class="lbl-sm" x="280" y="35" fill="#b37feb" style="font-size:9px">বহু বইয়ের সংশ্লেষণ</text>
   </svg>
-  <div class="diag-cap">নিচের স্তর সবচেয়ে বেশি মানুষ, উপরের স্তর সবচেয়ে কম। যে চতুর্থ স্তরে পৌঁছায় — PhD/গবেষক/বড় লেখক — সে বইয়ের সাথে কথা বলে, প্রশ্ন করে, সংযুক্ত করে। তারাবি — ধাপে ধাপে গভীরে।</div>
-</div>
+  <div class="diag-cap">নিচের স্তর সবচেয়ে বেশি মানুষ, উপরের স্তর সবচেয়ে কম। যে চতুর্থ স্তরে পৌঁছায় — PhD/গবেষক/বড় লেখক — সে বইয়ের সাথে কথা বলে, প্রশ্ন করে, সংযুক্ত করে। তারাবি — ধাপে ধাপে গভীরে।</div></div>
+</div></div>
 
-<div class="code-block">Adler-এর ৪ স্তর — কখন কোনটা:
+<div class="callout tip"><span class="co-icon">📋</span><div>Adler-এর ৪ স্তর — কখন কোনটা:
 
   Level ১ · Elementary — শব্দ চেনা (decoding)
     বেশিরভাগ মানুষ এখানেই আটকে। এটা reading নয়।
@@ -167,21 +167,21 @@ doors.push({
     নিজের মত। PhD/গবেষকরা যা করেন।
 
   সোনালি নিয়ম: "একমত/দ্বিমত" বোলো না যতক্ষণ না
-  বলতে পারো "আমি বুঝেছি।"</div>
+  বলতে পারো "আমি বুঝেছি।"</div></div>
 
 <div class="stat-grid">
-<div class="stat-card"><div class="sc-num">১৯৪০</div><div class="sc-label">"How to Read a Book" প্রথম প্রকাশ</div></div>
-<div class="stat-card"><div class="sc-num">১৯৭২</div><div class="sc-label">Van Doren-এর সাথে updated edition</div></div>
-<div class="stat-card"><div class="sc-num">৪ স্তর</div><div class="sc-label">Elementary → Inspectional → Analytical → Syntopical</div></div>
-<div class="stat-card"><div class="sc-num">Level ৪</div><div class="sc-label">PhD/গবেষক/বড় লেখকদের স্তর</div></div>
-</div>
+<div class="stat-card"><div class="sc-num">১৯৪০</div><div class="sc-label">"How to Read a Book" প্রথম প্রকাশ</div></div></div>
+<div class="stat-card"><div class="sc-num">১৯৭২</div><div class="sc-label">Van Doren-এর সাথে updated edition</div></div></div>
+<div class="stat-card"><div class="sc-num">৪ স্তর</div><div class="sc-label">Elementary → Inspectional → Analytical → Syntopical</div></div></div>
+<div class="stat-card"><div class="sc-num">Level ৪</div><div class="sc-label">PhD/গবেষক/বড় লেখকদের স্তর</div></div></div>
+</div></div>
 
 <div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">❌ Level ১-এ আটকে</div>"আমি বই পড়েছি" — কিন্তু শুধু শব্দ দেখেছ। decoding, reading নয়। বইয়ের সাথে কথা বলো না, প্রশ্ন করো না, সংযুক্ত করো না। ফল: ২ সপ্তাহ পর ৯০% ভুল (Door 1)। "পড়েছি" মনে হয়, জানো না।</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ Level ৩-৪-এ পৌঁছাও</div>skim করে যোগ্য বই বেছে নাও (Level ২), গভীর পড়ো (Level ৩), একাধিক বই সংশ্লেষণ করো (Level ৪)। বইয়ের সাথে কথা বলো — প্রশ্ন, দ্বিমত, সংযোগ। তারাবি — ধাপে ধাপে গভীরে। যে এখানে পৌঁছায়, সে জ্ঞান গড়ে।</div>
-</div>
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ Level ১-এ আটকে</div>"আমি বই পড়েছি" — কিন্তু শুধু শব্দ দেখেছ। decoding, reading নয়। বইয়ের সাথে কথা বলো না, প্রশ্ন করো না, সংযুক্ত করো না। ফল: ২ সপ্তাহ পর ৯০% ভুল (Door 1)। "পড়েছি" মনে হয়, জানো না।</div></div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ Level ৩-৪-এ পৌঁছাও</div>skim করে যোগ্য বই বেছে নাও (Level ২), গভীর পড়ো (Level ৩), একাধিক বই সংশ্লেষণ করো (Level ৪)। বইয়ের সাথে কথা বলো — প্রশ্ন, দ্বিমত, সংযোগ। তারাবি — ধাপে ধাপে গভীরে। যে এখানে পৌঁছায়, সে জ্ঞান গড়ে।</div></div>
+</div></div>
 
-<div class="dialogue">তারাবি — gradual progression, like the tarawih prayer built in layers। রমজানে তারাবি ধীরে ধীরে গড়ে — প্রতিদিন একটু বেশি। পড়াও তেমনি — প্রতিটা স্তর ধীরে আসে। প্রথম স্তর = শিশু। দ্বিতীয় = কিশোর। তৃতীয় = প্রাপ্তবয়স্ক। চতুর্থ = প্রবীণ। কেউ রাতারাতি চতুর্থ স্তরে পৌঁছায় না। কিন্তু প্রতিটা ধাপে গভীরতা বাড়ে। Adler দেখালেন — পড়া একটা শিল্প, শিল্পে সময় লাগে। তারাবি — ধাপে ধাপে গভীরে।</div>
+<div class="dialogue">তারাবি — gradual progression, like the tarawih prayer built in layers। রমজানে তারাবি ধীরে ধীরে গড়ে — প্রতিদিন একটু বেশি। পড়াও তেমনি — প্রতিটা স্তর ধীরে আসে। প্রথম স্তর = শিশু। দ্বিতীয় = কিশোর। তৃতীয় = প্রাপ্তবয়স্ক। চতুর্থ = প্রবীণ। কেউ রাতারাতি চতুর্থ স্তরে পৌঁছায় না। কিন্তু প্রতিটা ধাপে গভীরতা বাড়ে। Adler দেখালেন — পড়া একটা শিল্প, শিল্পে সময় লাগে। তারাবি — ধাপে ধাপে গভীরে।</div></div>
 <div class="dialogue en">"Tarawi — gradual progression, like the tarawih prayer built in layers. In Ramadan, tarawih grows slowly — a bit more each day. Reading too — each level comes slowly. Level 1 = child. Level 2 = adolescent. Level 3 = adult. Level 4 = elder. Nobody reaches level 4 overnight. But depth grows at each step. Adler showed — reading is an art, art takes time. Tarawi — step by step deeper."</div>`,
   senior:{
     title:"Adler's Method — Try This Weekend",
@@ -204,16 +204,16 @@ doors.push({
   story:`<p class="scene-setting">১৯৫২ সাল। জার্মানি। একজন সরকারি কর্মচারী — নিকলাস লুহমান (Niklas Luhmann)। সন্ধ্যায় সমাজবিজ্ঞান পড়তেন। নোট নিতেন — কিন্তু সাধারণ নোট নয়। প্রতিটা নোট একটা ছোট কার্ডে। প্রতিটা কার্ডে একটা ধারণা। প্রতিটা কার্ড অন্য কার্ডের সাথে সংযুক্ত। ৪৬ বছর ধরে এই কাজ চলল। শেষে? ৯০,০০০ কার্ড। এই কার্ড থেকে ~৫০ বই, ~৫৫০ প্রবন্ধ। তিনি অসাধারণ প্রায়োগিক সমাজবিজ্ঞানী হলেন — শুধু নোট কার্ড দিয়ে।</p>
 <p class="scene-setting en">1952. Germany. A civil servant — Niklas Luhmann. In the evenings, he read sociology. He took notes — but not ordinary notes. Each note on a small card. Each card had ONE idea. Each card linked to other cards. This continued for 46 years. Result? 90,000 cards. From these cards: ~50 books, ~550 articles. He became one of the most productive sociologists ever — just from note cards.</p>
 
-<div class="dialogue">Adler বলেছিলেন — ৪ স্তরে পড়ো। কিন্তু আমি বলি — পড়ে যা শিখলে, তা কোথায় রাখবে? মস্তিষ্কে? Ebbinghaus বলেন — ৯০% ভুলে যাবে। খাতায়? খাতা হারিয়ে যায়। Luhmann দেখালেন একটা সিস্টেম — Zettelkasten। নোট শুধু লেখা নয় — চিন্তার জাল। প্রতিটা নোট একটা নোড, প্রতিটা সংযোগ একটা সেতু। জাল বড় হয়, জ্ঞান গভীর হয়।</div>
-<div class="dialogue en">"Adler said — read at 4 levels. But I say — once you learn, where do you store it? Brain? Ebbinghaus says — 90% forgotten. Notebook? Notebooks get lost. Luhmann showed a system — Zettelkasten. Notes aren't just writing — they're a web of thought. Each note a node, each connection a bridge. The web grows, knowledge deepens."</div>
+<div class="dialogue">Adler বলেছিলেন — ৪ স্তরে পড়ো। কিন্তু আমি বলি — পড়ে যা শিখলে, তা কোথায় রাখবে? মস্তিষ্কে? Ebbinghaus বলেন — ৯০% ভুলে যাবে। খাতায়? খাতা হারিয়ে যায়। Luhmann দেখালেন একটা সিস্টেম — Zettelkasten। নোট শুধু লেখা নয় — চিন্তার জাল। প্রতিটা নোট একটা নোড, প্রতিটা সংযোগ একটা সেতু। জাল বড় হয়, জ্ঞান গভীর হয়।</div></div>
+<div class="dialogue en">"Adler said — read at 4 levels. But I say — once you learn, where do you store it? Brain? Ebbinghaus says — 90% forgotten. Notebook? Notebooks get lost. Luhmann showed a system — Zettelkasten. Notes aren't just writing — they're a web of thought. Each note a node, each connection a bridge. The web grows, knowledge deepens."</div></div>
 
 <div class="stat-grid">
-<div class="stat-card"><div class="sc-num">৪৬ বছর</div><div class="sc-label">Luhmann-এর slip-box (1952-98)</div></div>
-<div class="stat-card"><div class="sc-num">~৯০,০০০</div><div class="sc-label">নোট কার্ড</div></div>
-<div class="stat-card"><div class="sc-num">~৫০</div><div class="sc-label">বই</div></div>
-<div class="stat-card"><div class="sc-num">~৫৫০</div><div class="sc-label">প্রবন্ধ</div></div>
-</div>
-<div class="callout info"><span class="co-icon">🗃️</span><div>Luhmann: "আমি নিজেকে creative মনে করি না — আমি শুধু machine-এর সামনে দাঁড়িয়ে হাতল ঘোরাই।" সৃজনশীলতা এসেছে <strong>সিস্টেম</strong> থেকে, ব্যক্তি থেকে নয়। দিনে ~৫-৬ card।</div></div>
+<div class="stat-card"><div class="sc-num">৪৬ বছর</div><div class="sc-label">Luhmann-এর slip-box (1952-98)</div></div></div>
+<div class="stat-card"><div class="sc-num">~৯০,০০০</div><div class="sc-label">নোট কার্ড</div></div></div>
+<div class="stat-card"><div class="sc-num">~৫০</div><div class="sc-label">বই</div></div></div>
+<div class="stat-card"><div class="sc-num">~৫৫০</div><div class="sc-label">প্রবন্ধ</div></div></div>
+</div></div>
+<div class="callout info"><span class="co-icon">🗃️</span><div>Luhmann: "আমি নিজেকে creative মনে করি না — আমি শুধু machine-এর সামনে দাঁড়িয়ে হাতল ঘোরাই।" সৃজনশীলতা এসেছে <strong>সিস্টেম</strong> থেকে, ব্যক্তি থেকে নয়। দিনে ~৫-৬ card।</div></div></div>
 
 <table class="kv-table"><tr><th>নোটের ৩ ধরন (Ahrens, 2017)</th><th>কী</th></tr>
 <tr><td class="hl">Fleeting</td><td>পড়া/জীবনের সময় দ্রুত idea; ১-২ দিনে permanent-এ রূপান্তর বা বাদ</td></tr>
@@ -226,10 +226,10 @@ doors.push({
 <tr><td>topic-ভিত্তিক, linear (তথ্যের তালিকা)</td><td>idea-ভিত্তিক, network (সংযোগের জাল)</td></tr>
 <tr><td>output: কিছুই না</td><td>output: বই, পেপার, insight</td></tr></table>
 
-<div class="callout tip"><span class="co-icon">🔗</span><div><strong>মূল পার্থক্য = CONNECTIONS।</strong> একটা নোট = একটা fact; নোটের network = emergent idea। Luhmann-এর অন্তর্দৃষ্টি: সৃজনশীলতা আসে নোটের মধ্যে <em>অপ্রত্যাশিত</em> সংযোগ থেকে (biology-র নোট economics-এর নোটের সাথে জোড়া → নতুন insight)।</div></div>
+<div class="callout tip"><span class="co-icon">🔗</span><div><strong>মূল পার্থক্য = CONNECTIONS।</strong> একটা নোট = একটা fact; নোটের network = emergent idea। Luhmann-এর অন্তর্দৃষ্টি: সৃজনশীলতা আসে নোটের মধ্যে <em>অপ্রত্যাশিত</em> সংযোগ থেকে (biology-র নোট economics-এর নোটের সাথে জোড়া → নতুন insight)।</div></div></div>
 
 <div class="diagram">
-  <div class="diag-title">Zettelkasten — নোটের জাল, linear তালিকা নয়</div>
+  <div class="diag-title">Zettelkasten — নোটের জাল, linear তালিকা নয়</div></div>
   <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
     <!-- LEFT: linear notes (dead) -->
     <text class="lbl-sm" x="120" y="30" fill="#ff6b35">সাধারণ নোট (linear)</text>
@@ -248,10 +248,10 @@ doors.push({
     <text class="lbl-sm" x="400" y="205" fill="#9290a8" style="font-size:9px">প্রতিটা নোট atomic + linked → emergent idea</text>
     <text class="lbl-sm" x="280" y="222" fill="#5e5c74">প্রতিটা নতুন নোট অন্তত ১টা বিদ্যমান নোটের সাথে link করো — এখানেই insight</text>
   </svg>
-  <div class="diag-cap">সাধারণ নোট = linear তালিকা, মরা। Zettelkasten = network, জীবন্ত। সৃজনশীলতা আসে অপ্রত্যাশিত সংযোগ থেকে — biology-র নোট economics-এর সাথে জোড়া হলে নতুন insight জন্মায়।</div>
-</div>
+  <div class="diag-cap">সাধারণ নোট = linear তালিকা, মরা। Zettelkasten = network, জীবন্ত। সৃজনশীলতা আসে অপ্রত্যাশিত সংযোগ থেকে — biology-র নোট economics-এর সাথে জোড়া হলে নতুন insight জন্মায়।</div></div>
+</div></div>
 
-<div class="code-block">Zettelkasten — ৩ ধরনের নোট (Ahrens, 2017):
+<div class="callout tip"><span class="co-icon">📋</span><div>Zettelkasten — ৩ ধরনের নোট (Ahrens, 2017):
 
   FLEETING (ক্ষণস্থায়ী)
     পড়া/জীবনের সময় দ্রুত idea।
@@ -271,16 +271,16 @@ doors.push({
   এখানেই insight লুকায়।
 
   Luhmann-এর হার: দিনে ৫-৬ permanent note।
-  দিনে ১টা হলেও = বছরে ৩৬৫ = একটা বইয়ের মতো।</div>
+  দিনে ১টা হলেও = বছরে ৩৬৫ = একটা বইয়ের মতো।</div></div>
 
 <div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">❌ সাধারণ নোট (মরা)</div>খাতায় লেখা, আর কখনো দেখা হয় না। topic-ভিত্তিক, linear। নোটের মধ্যে সংযোগ নেই। output: কিছুই না। বছরে ১০টা খাতা ভর্তি হয়, কিন্তু কোনো idea জন্ম নেয় না। তথ্যের কবরখানা।</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ Zettelkasten (জীবন্ত)</div>প্রতিটা নোট atomic (এক idea), পরস্পর linked, cross-referenced। idea-ভিত্তিক network। output: বই, পেপার, insight। অপ্রত্যাশিত সংযোগে নতুন idea জন্মায়। Luhmann: ৯০,০০০ নোট → ~৫০ বই। হিফজ — সংযুক্ত সংরক্ষণ।</div>
-</div>
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ সাধারণ নোট (মরা)</div>খাতায় লেখা, আর কখনো দেখা হয় না। topic-ভিত্তিক, linear। নোটের মধ্যে সংযোগ নেই। output: কিছুই না। বছরে ১০টা খাতা ভর্তি হয়, কিন্তু কোনো idea জন্ম নেয় না। তথ্যের কবরখানা।</div></div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ Zettelkasten (জীবন্ত)</div>প্রতিটা নোট atomic (এক idea), পরস্পর linked, cross-referenced। idea-ভিত্তিক network। output: বই, পেপার, insight। অপ্রত্যাশিত সংযোগে নতুন idea জন্মায়। Luhmann: ৯০,০০০ নোট → ~৫০ বই। হিফজ — সংযুক্ত সংরক্ষণ।</div></div>
+</div></div>
 
-<div class="callout info"><span class="co-icon">🛠️</span><div><strong>আধুনিক টুল:</strong> Obsidian (free, local, সবচেয়ে জনপ্রিয়), Logseq, Notion, Heptabase, Capacities/Tana। AI-PKM (2024-26): Obsidian Smart Connections/Copilot, Notion AI, NotebookLM (multi-doc synthesis)। ⚠️ AI ভুল সংযোগ বা অস্তিত্বহীন citation বানাতে পারে — verify করো। <strong>শুরু:</strong> প্রতিটা নতুন নোট অন্তত ১টা বিদ্যমান নোটের সাথে link করো — এখানেই insight।</div></div>
+<div class="callout info"><span class="co-icon">🛠️</span><div><strong>আধুনিক টুল:</strong> Obsidian (free, local, সবচেয়ে জনপ্রিয়), Logseq, Notion, Heptabase, Capacities/Tana। AI-PKM (2024-26): Obsidian Smart Connections/Copilot, Notion AI, NotebookLM (multi-doc synthesis)। ⚠️ AI ভুল সংযোগ বা অস্তিত্বহীন citation বানাতে পারে — verify করো। <strong>শুরু:</strong> প্রতিটা নতুন নোট অন্তত ১টা বিদ্যমান নোটের সাথে link করো — এখানেই insight।</div></div></div>
 
-<div class="dialogue">হিফজ — preservation, memorization, the act of keeping। কুরআনে আল্লাহ বলেন — "নিশ্চয় আমরা কুরআন নাজিল করেছি এবং নিশ্চয় আমরাই এর সংরক্ষক।" (১৫:৯)। সংরক্ষণ = হিফজ। Zettelkasten-ও হিফজ — জ্ঞান সংরক্ষণ করা। কিন্তু শুধু সংরক্ষণ নয় — সংযুক্ত করা। যে হিফজ করে, সে ধরে রাখে। যে সংযুক্ত করে, সে গড়ে। Luhmann শুধু পড়েননি — তিনি হিফজ করেছেন, সংযুক্ত করেছেন, গড়েছেন। ৯০,০০০ নোট = একটা সংরক্ষিত জ্ঞানের মস্তিষ্ক। হিফজ — শুধু মুখস্থ নয়, সংযুক্ত সংরক্ষণ।</div>
+<div class="dialogue">হিফজ — preservation, memorization, the act of keeping। কুরআনে আল্লাহ বলেন — "নিশ্চয় আমরা কুরআন নাজিল করেছি এবং নিশ্চয় আমরাই এর সংরক্ষক।" (১৫:৯)। সংরক্ষণ = হিফজ। Zettelkasten-ও হিফজ — জ্ঞান সংরক্ষণ করা। কিন্তু শুধু সংরক্ষণ নয় — সংযুক্ত করা। যে হিফজ করে, সে ধরে রাখে। যে সংযুক্ত করে, সে গড়ে। Luhmann শুধু পড়েননি — তিনি হিফজ করেছেন, সংযুক্ত করেছেন, গড়েছেন। ৯০,০০০ নোট = একটা সংরক্ষিত জ্ঞানের মস্তিষ্ক। হিফজ — শুধু মুখস্থ নয়, সংযুক্ত সংরক্ষণ।</div></div>
 <div class="dialogue en">"Hifz — preservation, memorization, the act of keeping. Allah says — 'We sent down the Quran and We are its preserver.' (15:9). Preservation = hifz. Zettelkasten too — preserving knowledge. But not just preserving — connecting. One who does hifz, retains. One who connects, builds. Luhmann didn't just read — he preserved, connected, built. 90,000 notes = a preserved knowledge brain. Hifz — not just memorization, connected preservation."</div>`,
   senior:{
     title:"Start Your Zettelkasten — Today",
@@ -303,19 +303,19 @@ doors.push({
   story:`<p class="scene-setting">রিচার্ড ফাইনম্যান (Richard Feynman, 1918-1988) — নোবেলজয়ী পদার্থবিজ্ঞানী। কিন্তু তার আসল প্রতিভা শেখা নয় — শেখানো। Caltech-এ তার ছাত্ররা বলত — ফাইনম্যান যেকোনো জটিল ধারণা এত সহজ করে ব্যাখ্যা করত যে মনে হতো সেটা সহজই। কিন্তু ফাইনম্যান বলতেন — সহজ নয়। আমি নিজে বুঝি বলে সহজ করতে পারি। যে বোঝে না, সে জটিল করে। যে বোঝে, সে সহজ করে।</p>
 <p class="scene-setting en">Richard Feynman (1918-1988) — Nobel Prize-winning physicist. But his real genius wasn't learning — it was teaching. At Caltech, students said — Feynman could explain any complex idea so simply it seemed easy. But Feynman said — it's not easy. I can make it simple because I understand it myself. One who doesn't understand, complicates. One who understands, simplifies.</p>
 
-<div class="dialogue">Zettelkasten বলেছিলেন — নোট নাও, সংযুক্ত করো। কিন্তু আমি বলি — নোট নিলেও বুঝতে না পারলে কিছু হবে না। কীভাবে জানবে বুঝেছ কি না? ফাইনম্যান দেখালেন একটা পরীক্ষা — সহজ ভাষায় ব্যাখ্যা করো। যেখানে আটকাও, সেখানে তুমি বুঝতে পারোনি। এটাই ফাইনম্যান টেকনিক — বোঝার আসল পরীক্ষা।</div>
-<div class="dialogue en">"Zettelkasten said — take notes, connect them. But I say — even with notes, if you don't understand, nothing happens. How do you know if you understand? Feynman showed a test — explain it simply. Where you get stuck, you don't understand. This is the Feynman technique — the real test of comprehension."</div>
+<div class="dialogue">Zettelkasten বলেছিলেন — নোট নাও, সংযুক্ত করো। কিন্তু আমি বলি — নোট নিলেও বুঝতে না পারলে কিছু হবে না। কীভাবে জানবে বুঝেছ কি না? ফাইনম্যান দেখালেন একটা পরীক্ষা — সহজ ভাষায় ব্যাখ্যা করো। যেখানে আটকাও, সেখানে তুমি বুঝতে পারোনি। এটাই ফাইনম্যান টেকনিক — বোঝার আসল পরীক্ষা।</div></div>
+<div class="dialogue en">"Zettelkasten said — take notes, connect them. But I say — even with notes, if you don't understand, nothing happens. How do you know if you understand? Feynman showed a test — explain it simply. Where you get stuck, you don't understand. This is the Feynman technique — the real test of comprehension."</div></div>
 
 <div class="timeline">
-<div class="tl-step"><div class="tl-when">ধাপ ১</div><div class="tl-title">✏️ Concept বাছো</div><div class="tl-body">যা "জানো" তা খালি পাতায় লেখো।</div></div>
-<div class="tl-step"><div class="tl-when">ধাপ ২</div><div class="tl-title">🧒 সহজ করে ব্যাখ্যা</div><div class="tl-body">১২ বছরের শিশুকে বোঝাচ্ছ যেন — jargon নয়, analogy। যেমন quantum entanglement: "দুটো জাদুর কয়েন — একটা New York-এ heads হলে Tokyo-রটা তৎক্ষণাৎ tails।"</div></div>
-<div class="tl-step"><div class="tl-when">ধাপ ৩</div><div class="tl-title">🕳️ গ্যাপ চিহ্নিত করো</div><div class="tl-body">যেখানে সহজে বলতে পারলে না, jargon দিয়ে লুকালে, আটকে গেলে — সেটাই তোমার ঘাটতি। "জানি কিন্তু বলতে পারি না" = জানো না।</div></div>
-<div class="tl-step"><div class="tl-when">ধাপ ৪</div><div class="tl-title">🔁 ফিরে গিয়ে শেখো</div><div class="tl-body">উৎসে ফিরে সেই গ্যাপ শেখো, আবার ব্যাখ্যা করো — যতক্ষণ না পুরোটা সহজে বয়ে যায়।</div></div>
-</div>
-<div class="callout info"><span class="co-icon">🔬</span><div><strong>কেন কাজ করে:</strong> Illusion of competence (Koriat & Bjork, 2005) — সাবলীল পড়া বোঝার বিভ্রম দেয়। Testing effect (Roediger & Karpicke, 2006) — শূন্য থেকে ব্যাখ্যা তৈরি re-reading-ের চেয়ে ~৩৩% ভালো retention। Metacognition (Flavell, 1979) — নিজের জানা যাচাই; Feynman technique = বাধ্যতামূলক metacognition।</div></div>
+<div class="tl-step"><div class="tl-when">ধাপ ১</div><div class="tl-title">✏️ Concept বাছো</div><div class="tl-body">যা "জানো" তা খালি পাতায় লেখো।</div></div></div>
+<div class="tl-step"><div class="tl-when">ধাপ ২</div><div class="tl-title">🧒 সহজ করে ব্যাখ্যা</div><div class="tl-body">১২ বছরের শিশুকে বোঝাচ্ছ যেন — jargon নয়, analogy। যেমন quantum entanglement: "দুটো জাদুর কয়েন — একটা New York-এ heads হলে Tokyo-রটা তৎক্ষণাৎ tails।"</div></div></div>
+<div class="tl-step"><div class="tl-when">ধাপ ৩</div><div class="tl-title">🕳️ গ্যাপ চিহ্নিত করো</div><div class="tl-body">যেখানে সহজে বলতে পারলে না, jargon দিয়ে লুকালে, আটকে গেলে — সেটাই তোমার ঘাটতি। "জানি কিন্তু বলতে পারি না" = জানো না।</div></div></div>
+<div class="tl-step"><div class="tl-when">ধাপ ৪</div><div class="tl-title">🔁 ফিরে গিয়ে শেখো</div><div class="tl-body">উৎসে ফিরে সেই গ্যাপ শেখো, আবার ব্যাখ্যা করো — যতক্ষণ না পুরোটা সহজে বয়ে যায়।</div></div></div>
+</div></div>
+<div class="callout info"><span class="co-icon">🔬</span><div><strong>কেন কাজ করে:</strong> Illusion of competence (Koriat & Bjork, 2005) — সাবলীল পড়া বোঝার বিভ্রম দেয়। Testing effect (Roediger & Karpicke, 2006) — শূন্য থেকে ব্যাখ্যা তৈরি re-reading-ের চেয়ে ~৩৩% ভালো retention। Metacognition (Flavell, 1979) — নিজের জানা যাচাই; Feynman technique = বাধ্যতামূলক metacognition।</div></div></div>
 
 <div class="diagram">
-  <div class="diag-title">Feynman Loop — বোঝার আসল পরীক্ষা</div>
+  <div class="diag-title">Feynman Loop — বোঝার আসল পরীক্ষা</div></div>
   <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <marker id="arrowAmberD4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L6,4 L0,8" fill="#fcd34d"/></marker>
@@ -328,10 +328,10 @@ doors.push({
     <text class="lbl-sm" x="290" y="118" fill="#fcd34d">যতক্ষণ না সহজে বয়</text>
     <text class="lbl-sm" x="280" y="210" fill="#5e5c74">"জানি কিন্তু বলতে পারি না" = জানো না। সহজে ব্যাখ্যা করতে পারলেই বুঝেছ।</text>
   </svg>
-  <div class="diag-cap">Feynman টেকনিক একটা লুপ — বাছো → সহজে ব্যাখ্যা → গ্যাপ ধরা → ফিরে গিয়ে শেখা → আবার ব্যাখ্যা। যতক্ষণ না পুরোটা সহজে বয়ে যায়। এটাই বোঝার আসল পরীক্ষা — বায়ান, স্পষ্ট প্রকাশ।</div>
-</div>
+  <div class="diag-cap">Feynman টেকনিক একটা লুপ — বাছো → সহজে ব্যাখ্যা → গ্যাপ ধরা → ফিরে গিয়ে শেখা → আবার ব্যাখ্যা। যতক্ষণ না পুরোটা সহজে বয়ে যায়। এটাই বোঝার আসল পরীক্ষা — বায়ান, স্পষ্ট প্রকাশ।</div></div>
+</div></div>
 
-<div class="code-block">Feynman Technique — ৪ ধাপ (এখনই করো):
+<div class="callout tip"><span class="co-icon">📋</span><div>Feynman Technique — ৪ ধাপ (এখনই করো):
 
   একটা কনসেপ্ট বাছো যা তুমি "জানো":
     ১. খালি পাতার উপরে concept-টা লেখো।
@@ -344,21 +344,21 @@ doors.push({
        যতক্ষণ না পুরোটা সহজে বয়ে যায়।
 
   Zettelkasten-এর সাথে মিল: permanent note = Feynman explanation।
-  এক idea, সহজ ভাষায়, নিজের কথায়। সেটাই বোঝার পরীক্ষা।</div>
+  এক idea, সহজ ভাষায়, নিজের কথায়। সেটাই বোঝার পরীক্ষা।</div></div>
 
 <div class="stat-grid">
-<div class="stat-card"><div class="sc-num">~৩৩%</div><div class="sc-label">বেশি retention re-reading-এর চেয়ে (Roediger 2006)</div></div>
-<div class="stat-card"><div class="sc-num">১২ বছর</div><div class="sc-label">শিশুর বয়স — target audience</div></div>
-<div class="stat-card"><div class="sc-num">১৯৬৪</div><div class="sc-label">Feynman-এর Cornell lecture (Gates "Project Tuva")</div></div>
-</div>
+<div class="stat-card"><div class="sc-num">~৩৩%</div><div class="sc-label">বেশি retention re-reading-এর চেয়ে (Roediger 2006)</div></div></div>
+<div class="stat-card"><div class="sc-num">১২ বছর</div><div class="sc-label">শিশুর বয়স — target audience</div></div></div>
+<div class="stat-card"><div class="sc-num">১৯৬৪</div><div class="sc-label">Feynman-এর Cornell lecture (Gates "Project Tuva")</div></div></div>
+</div></div>
 
 <div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">❌ বিভ্রমের বোঝা</div>"জানি কিন্তু বলতে পারি না" — এটা জানা নয়, শুধু চেনা। সাবলীল পড়া বোঝার বিভ্রম দেয় (Koriat & Bjork 2005)। jargon দিয়ে ঘাটতি লুকানো যায় — কিন্তু শিশুকে বোঝানো যায় না। যে ভান করে, সে পরীক্ষায় বা প্রয়োগে ধরা পড়ে।</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ বায়ান — স্পষ্ট প্রকাশ</div>সহজ ভাষায় ব্যাখ্যা করো। যেখানে আটকাও, সে তোমার ঘাটতি — ফিরে যাও, শেখো, আবার ব্যাখ্যা। যতক্ষণ না ১২ বছরের শিশু বুঝবে। যে বায়ান করতে পারে, সে-ই জানে। Feynman: "যে বোঝে না, সে জটিল করে। যে বোঝে, সে সহজ করে।"</div>
-</div>
-<div class="callout tip"><span class="co-icon">💬</span><div><strong>জীবনী-প্রমাণ:</strong> Gleick-এর "Genius" (1992) — Feynman ঘণ্টার পর ঘণ্টা ফলাফল নিজে নতুন করে derive করতেন ("তাদের জ্ঞান এত ভঙ্গুর!")। Bill Gates: Feynman-এর 1964 Cornell lecture-এর distribution-স্বত্ব কিনে "Project Tuva" নাম দেন — "the best teacher I never had।" <em>("সহজে ব্যাখ্যা করতে না পারলে যথেষ্ট বোঝোনি" — প্রায়ই Einstein-কে দায়ী করা হয়, কিন্তু তার প্রমাণ নেই; নীতিটি তবু সঠিক, আর এটাই Feynman করতেন।)</em></div></div>
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ বিভ্রমের বোঝা</div>"জানি কিন্তু বলতে পারি না" — এটা জানা নয়, শুধু চেনা। সাবলীল পড়া বোঝার বিভ্রম দেয় (Koriat & Bjork 2005)। jargon দিয়ে ঘাটতি লুকানো যায় — কিন্তু শিশুকে বোঝানো যায় না। যে ভান করে, সে পরীক্ষায় বা প্রয়োগে ধরা পড়ে।</div></div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ বায়ান — স্পষ্ট প্রকাশ</div>সহজ ভাষায় ব্যাখ্যা করো। যেখানে আটকাও, সে তোমার ঘাটতি — ফিরে যাও, শেখো, আবার ব্যাখ্যা। যতক্ষণ না ১২ বছরের শিশু বুঝবে। যে বায়ান করতে পারে, সে-ই জানে। Feynman: "যে বোঝে না, সে জটিল করে। যে বোঝে, সে সহজ করে।"</div></div>
+</div></div>
+<div class="callout tip"><span class="co-icon">💬</span><div><strong>জীবনী-প্রমাণ:</strong> Gleick-এর "Genius" (1992) — Feynman ঘণ্টার পর ঘণ্টা ফলাফল নিজে নতুন করে derive করতেন ("তাদের জ্ঞান এত ভঙ্গুর!")। Bill Gates: Feynman-এর 1964 Cornell lecture-এর distribution-স্বত্ব কিনে "Project Tuva" নাম দেন — "the best teacher I never had।" <em>("সহজে ব্যাখ্যা করতে না পারলে যথেষ্ট বোঝোনি" — প্রায়ই Einstein-কে দায়ী করা হয়, কিন্তু তার প্রমাণ নেই; নীতিটি তবু সঠিক, আর এটাই Feynman করতেন।)</em></div></div></div>
 
-<div class="dialogue">বায়ান — clear speech, expression। কুরআনে আল্লাহ বলেন — "তিনি মানুষকে শিখিয়েছেন বায়ান — স্পষ্ট বাক্য।" (৫৫:৩-৪)। বায়ান হলো স্পষ্ট করে প্রকাশ করার ক্ষমতা — জটিলকে সহজ করা। ফাইনম্যান টেকনিক-ও বায়ান — যা বুঝেছ, তা স্পষ্ট করে প্রকাশ করো। যেখানে আটকাও, সেখানে ঘাটতি। যে বায়ান করতে পারে, সে বোঝে। যে পারে না, সে ভান করে। বায়ান — বোঝার আসল পরীক্ষা। কুরআনে বায়ান আল্লাহর নিয়ামত — কথা স্পষ্ট করার ক্ষমতা। ফাইনম্যান দেখালেন — যে স্পষ্ট করতে পারে, সে-ই জানে।</div>
+<div class="dialogue">বায়ান — clear speech, expression। কুরআনে আল্লাহ বলেন — "তিনি মানুষকে শিখিয়েছেন বায়ান — স্পষ্ট বাক্য।" (৫৫:৩-৪)। বায়ান হলো স্পষ্ট করে প্রকাশ করার ক্ষমতা — জটিলকে সহজ করা। ফাইনম্যান টেকনিক-ও বায়ান — যা বুঝেছ, তা স্পষ্ট করে প্রকাশ করো। যেখানে আটকাও, সেখানে ঘাটতি। যে বায়ান করতে পারে, সে বোঝে। যে পারে না, সে ভান করে। বায়ান — বোঝার আসল পরীক্ষা। কুরআনে বায়ান আল্লাহর নিয়ামত — কথা স্পষ্ট করার ক্ষমতা। ফাইনম্যান দেখালেন — যে স্পষ্ট করতে পারে, সে-ই জানে।</div></div>
 <div class="dialogue en">"Bayan — clear speech, expression. Allah says — 'He taught man bayan — clear speech.' (55:3-4). Bayan is the ability to express clearly — making complex simple. The Feynman technique too is bayan — express clearly what you understand. Where you get stuck, there's the gap. One who can do bayan, understands. One who can't, pretends. Bayan — the real test of understanding. In the Quran, bayan is Allah's gift — the power to speak clearly. Feynman showed — one who can speak clearly, truly knows."</div>`,
   senior:{
     title:"Feynman Technique — Right Now",
@@ -381,8 +381,8 @@ doors.push({
   story:`<p class="scene-setting">ওমাহা, নেব্রাস্কা। পৃথিবীর অন্যতম ধনী মানুষ Warren Buffett একদল ছাত্রের সামনে দাঁড়িয়ে এক গাদা রিপোর্ট তুলে ধরলেন — "প্রতিদিন এরকম ৫০০ পৃষ্ঠা পড়ো। জ্ঞান এভাবেই কাজ করে — compound interest-এর মতো জমে। তোমরা সবাই এটা পারবে, কিন্তু কথা দিচ্ছি — তোমাদের খুব কম জনই করবে।" তিনি একা নন। Elon Musk — বলেন, আমি মূলত পড়ে শিখেছি; রকেট বানানো শিখেছেন textbook থেকে। Bill Gates — বছরে ৫০+ বই। Charlie Munger — "আমি পাগলের মতো পড়ি।" Naval Ravikant — "পড়াই ultimate meta-skill।" Ryan Holiday — প্রতিটা বই থেকে নোট কার্ড। ভিন্ন ক্ষেত্র, ভিন্ন সাম্রাজ্য — কিন্তু একই অভ্যাস। কাকতালীয়? না।</p>
 <p class="scene-setting en">Omaha, Nebraska. Warren Buffett, one of the world's richest people, held up a stack of reports before a group of students — "Read 500 pages like this every day. That's how knowledge works — it builds up, like compound interest. All of you can do it, but I guarantee not many of you will." He's not alone. Elon Musk — says, I learned mainly through reading; learned rocketry from textbooks. Bill Gates — 50+ books a year. Charlie Munger — "I read obsessively." Naval Ravikant — "reading is the ultimate meta-skill." Ryan Holiday — note cards from every book. Different fields, different empires — same habit. Coincidence? No.</p>
 
-<div class="dialogue">ফাইনম্যান বলেছিলেন — সহজ করে ব্যাখ্যা করো। কিন্তু আমি বলি — সহজ করার জন্য প্রথমে গভীরে যেতে হবে। গভীরে যাওয়ার উপায়? পড়া। কিন্তু কীভাবে? মহামানুষরা কীভাবে পড়েন? তাদের পদ্ধতি আমাদের শেখায় — পড়া শুধু সময় কাটানো নয়। পড়া জীবন গড়ার হাতিয়ার।</div>
-<div class="dialogue en">"Feynman said — explain simply. But I say — to simplify, you must first go deep. How to go deep? Reading. But how? How do great minds read? Their methods teach us — reading isn't passing time. Reading is a tool for building a life."</div>
+<div class="dialogue">ফাইনম্যান বলেছিলেন — সহজ করে ব্যাখ্যা করো। কিন্তু আমি বলি — সহজ করার জন্য প্রথমে গভীরে যেতে হবে। গভীরে যাওয়ার উপায়? পড়া। কিন্তু কীভাবে? মহামানুষরা কীভাবে পড়েন? তাদের পদ্ধতি আমাদের শেখায় — পড়া শুধু সময় কাটানো নয়। পড়া জীবন গড়ার হাতিয়ার।</div></div>
+<div class="dialogue en">"Feynman said — explain simply. But I say — to simplify, you must first go deep. How to go deep? Reading. But how? How do great minds read? Their methods teach us — reading isn't passing time. Reading is a tool for building a life."</div></div>
 
 <table class="kv-table"><tr><th>মহামানুষ</th><th>পদ্ধতি</th><th>সূত্র</th></tr>
 <tr><td class="hl">Warren Buffett</td><td>দিনে ~৫০০ পৃষ্ঠা (report, filing, বই); কর্মদিবসের ~৮০% পড়া ও চিন্তা; ক্যালেন্ডার প্রায় ফাঁকা রাখেন — পড়ার সময় রক্ষা করতে</td><td>Snowball (Schroeder, 2008), HBO doc (2017)</td></tr>
@@ -391,20 +391,20 @@ doors.push({
 <tr><td class="hl">Charlie Munger</td><td>দিনে ৫+ ঘণ্টা, বহু-শাস্ত্র; ~১০০ mental model-এর latticework (physics, biology, psychology, economics)</td><td>Poor Charlie's Almanack (2005)</td></tr>
 <tr><td class="hl">Naval Ravikant</td><td>যা ভালোবাসো পড়ো; ভালো বই ৫-১০ বার পুনরায়; জোর করে শেষ কোরো না; foundational বই</td><td>Almanack of Naval (2020)</td></tr>
 <tr><td class="hl">Ryan Holiday</td><td>ভৌত index-card system (Robert Greene থেকে) — key passage + নিজের ভাবনা, topic-অনুযায়ী box; কার্ডই বইয়ের outline</td><td>Holiday-র blog</td></tr></table>
-<div class="callout info"><span class="co-icon">⚡</span><div><strong>সবার এক মিল:</strong> পড়া তাদের জীবনের অবিচ্ছেদ্য অংশ — বিনোদন নয়। তারা <em>আকল দিয়ে</em> পড়ে (তথ্য সংগ্রহ নয়, mental model গড়া) — Munger: "সব বড় শাস্ত্রের বড় idea জানো ও নিয়মিত ব্যবহার করো; বেশিরভাগ মানুষ এক model দিয়ে সব করতে চায়।"</div></div>
-<div class="callout tip"><span class="co-icon">🎒</span><div><strong>Starter kit:</strong> Naval দিয়ে শুরু করো (যা ভালোবাসো পড়ো) → Munger-ের শৃঙ্খলা যোগ করো (দৈনিক পড়া) → Holiday-র নোট-টেকিং যোগ করো (topic-ভিত্তিক কার্ড)।</div></div>
+<div class="callout info"><span class="co-icon">⚡</span><div><strong>সবার এক মিল:</strong> পড়া তাদের জীবনের অবিচ্ছেদ্য অংশ — বিনোদন নয়। তারা <em>আকল দিয়ে</em> পড়ে (তথ্য সংগ্রহ নয়, mental model গড়া) — Munger: "সব বড় শাস্ত্রের বড় idea জানো ও নিয়মিত ব্যবহার করো; বেশিরভাগ মানুষ এক model দিয়ে সব করতে চায়।"</div></div></div>
+<div class="callout tip"><span class="co-icon">🎒</span><div><strong>Starter kit:</strong> Naval দিয়ে শুরু করো (যা ভালোবাসো পড়ো) → Munger-ের শৃঙ্খলা যোগ করো (দৈনিক পড়া) → Holiday-র নোট-টেকিং যোগ করো (topic-ভিত্তিক কার্ড)।</div></div></div>
 
 <div class="timeline">
-<div class="tl-step"><div class="tl-when">গোপন সূত্র ১</div><div class="tl-title">📈 জ্ঞান compound হয়</div><div class="tl-body">Buffett: "জ্ঞান compound interest-এর মতো জমে।" আজকের পড়া কালকের পড়াকে সহজ করে — model-এ model জোড়ে। ১০ বছরের দৈনিক পাঠক আর অ-পাঠকের ব্যবধান রৈখিক নয় — সূচকীয়। তাই তারা তাড়াতাড়ি শুরু করে, কখনো থামে না।<br><span style="opacity:.7">Buffett: "Knowledge builds up like compound interest." Today's reading makes tomorrow's easier — models stack on models. After 10 years, the gap between daily reader and non-reader isn't linear — it's exponential. So they start early and never stop.</span></div></div>
-<div class="tl-step"><div class="tl-when">গোপন সূত্র ২</div><div class="tl-title">🎯 তাদের কাজ = সিদ্ধান্ত, ঘণ্টা নয়</div><div class="tl-body">CEO/investor-এর leverage আসে ভালো সিদ্ধান্ত থেকে, বেশি ঘণ্টা কাজ থেকে নয়। বছরে ২-৩টা সঠিক বড় সিদ্ধান্ত = বিলিয়ন ডলার। পড়া হলো সিদ্ধান্তের কাঁচামাল। তাই Buffett দিনের ৮০% পড়েন — এটা কাজ ফাঁকি নয়, এটাই কাজ।<br><span style="opacity:.7">A CEO/investor's leverage comes from better decisions, not more hours. 2-3 right big calls a year = billions. Reading is the raw material of decisions. Buffett reads 80% of his day — that's not avoiding work, that IS the work.</span></div></div>
-<div class="tl-step"><div class="tl-when">গোপন সূত্র ৩</div><div class="tl-title">🕸️ বহু-শাস্ত্র mental model</div><div class="tl-body">Munger-এর latticework — physics, biology, psychology, economics থেকে ~১০০ model। এক শাস্ত্রের মানুষ hammer হাতে সব কিছুকে পেরেক দেখে। বহু-শাস্ত্রের পাঠক সমস্যাকে ৫ দিক থেকে দেখে — এটাই তাদের "অলৌকিক" বিচারবুদ্ধির উৎস।<br><span style="opacity:.7">Munger's latticework — ~100 models from physics, biology, psychology, economics. A one-discipline person with a hammer sees only nails. The multi-disciplinary reader sees a problem from 5 angles — that's the source of their "uncanny" judgment.</span></div></div>
-<div class="tl-step"><div class="tl-when">গোপন সূত্র ৪</div><div class="tl-title">✍️ Active পড়া — নোট, পুনরায়, প্রয়োগ</div><div class="tl-body">তারা কেউ scroll করার মতো পড়ে না। Gates: margin note + review লেখা। Holiday: index card। Naval: ৫-১০ বার re-read। Musk: পড়ে rocket বানানো — চূড়ান্ত প্রয়োগ। Book 26-এর ভাষায় — তারা ছিদ্র বালতি (Door ১) মেরামত করেছে।<br><span style="opacity:.7">None of them read like scrolling. Gates: margin notes + written reviews. Holiday: index cards. Naval: re-reads 5-10 times. Musk: reads then builds rockets — ultimate application. In Book 26's language — they fixed the leaking bucket (Door 1).</span></div></div>
-<div class="tl-step"><div class="tl-when">গোপন সূত্র ৫</div><div class="tl-title">🛡️ সময় রক্ষা করা</div><div class="tl-body">Buffett-এর ক্যালেন্ডার প্রায় ফাঁকা। Gates বছরে ২ সপ্তাহ জঙ্গলের কুটিরে অদৃশ্য। পড়ার সময় তাদের কাছে meeting-এর চেয়ে দামি — তারা এটা schedule করে ও পাহারা দেয়। যে জিনিস ক্যালেন্ডারে নেই, তা ঘটে না।<br><span style="opacity:.7">Buffett's calendar is nearly empty. Gates disappears to a forest cabin 2 weeks a year. Reading time is worth more to them than meetings — they schedule it and guard it. What's not on the calendar doesn't happen.</span></div></div>
-</div>
-<div class="callout info"><span class="co-icon">💰</span><div><strong>কেন এটা billionaire-দের মধ্যে common?</strong> কারণ যত উপরে ওঠো, কাজ তত কম "করা" আর তত বেশি "জানা ও সিদ্ধান্ত নেওয়া" হয়ে যায়। শ্রমিকের leverage পেশি, engineer-এর leverage কোড, আর capital allocator-এর leverage বিচারবুদ্ধি — যা শুধু পড়া+চিন্তা দিয়েই ধারালো হয়। Munger: "আমার সারা জীবনে এমন কোনো জ্ঞানী মানুষ দেখিনি যে সব সময় পড়ে না — একজনও না।" <em>("In my whole life, I have known no wise people who didn't read all the time — none, zero.")</em></div></div>
+<div class="tl-step"><div class="tl-when">গোপন সূত্র ১</div><div class="tl-title">📈 জ্ঞান compound হয়</div><div class="tl-body">Buffett: "জ্ঞান compound interest-এর মতো জমে।" আজকের পড়া কালকের পড়াকে সহজ করে — model-এ model জোড়ে। ১০ বছরের দৈনিক পাঠক আর অ-পাঠকের ব্যবধান রৈখিক নয় — সূচকীয়। তাই তারা তাড়াতাড়ি শুরু করে, কখনো থামে না।<br><span style="opacity:.7">Buffett: "Knowledge builds up like compound interest." Today's reading makes tomorrow's easier — models stack on models. After 10 years, the gap between daily reader and non-reader isn't linear — it's exponential. So they start early and never stop.</span></div></div></div>
+<div class="tl-step"><div class="tl-when">গোপন সূত্র ২</div><div class="tl-title">🎯 তাদের কাজ = সিদ্ধান্ত, ঘণ্টা নয়</div><div class="tl-body">CEO/investor-এর leverage আসে ভালো সিদ্ধান্ত থেকে, বেশি ঘণ্টা কাজ থেকে নয়। বছরে ২-৩টা সঠিক বড় সিদ্ধান্ত = বিলিয়ন ডলার। পড়া হলো সিদ্ধান্তের কাঁচামাল। তাই Buffett দিনের ৮০% পড়েন — এটা কাজ ফাঁকি নয়, এটাই কাজ।<br><span style="opacity:.7">A CEO/investor's leverage comes from better decisions, not more hours. 2-3 right big calls a year = billions. Reading is the raw material of decisions. Buffett reads 80% of his day — that's not avoiding work, that IS the work.</span></div></div></div>
+<div class="tl-step"><div class="tl-when">গোপন সূত্র ৩</div><div class="tl-title">🕸️ বহু-শাস্ত্র mental model</div><div class="tl-body">Munger-এর latticework — physics, biology, psychology, economics থেকে ~১০০ model। এক শাস্ত্রের মানুষ hammer হাতে সব কিছুকে পেরেক দেখে। বহু-শাস্ত্রের পাঠক সমস্যাকে ৫ দিক থেকে দেখে — এটাই তাদের "অলৌকিক" বিচারবুদ্ধির উৎস।<br><span style="opacity:.7">Munger's latticework — ~100 models from physics, biology, psychology, economics. A one-discipline person with a hammer sees only nails. The multi-disciplinary reader sees a problem from 5 angles — that's the source of their "uncanny" judgment.</span></div></div></div>
+<div class="tl-step"><div class="tl-when">গোপন সূত্র ৪</div><div class="tl-title">✍️ Active পড়া — নোট, পুনরায়, প্রয়োগ</div><div class="tl-body">তারা কেউ scroll করার মতো পড়ে না। Gates: margin note + review লেখা। Holiday: index card। Naval: ৫-১০ বার re-read। Musk: পড়ে rocket বানানো — চূড়ান্ত প্রয়োগ। Book 26-এর ভাষায় — তারা ছিদ্র বালতি (Door ১) মেরামত করেছে।<br><span style="opacity:.7">None of them read like scrolling. Gates: margin notes + written reviews. Holiday: index cards. Naval: re-reads 5-10 times. Musk: reads then builds rockets — ultimate application. In Book 26's language — they fixed the leaking bucket (Door 1).</span></div></div></div>
+<div class="tl-step"><div class="tl-when">গোপন সূত্র ৫</div><div class="tl-title">🛡️ সময় রক্ষা করা</div><div class="tl-body">Buffett-এর ক্যালেন্ডার প্রায় ফাঁকা। Gates বছরে ২ সপ্তাহ জঙ্গলের কুটিরে অদৃশ্য। পড়ার সময় তাদের কাছে meeting-এর চেয়ে দামি — তারা এটা schedule করে ও পাহারা দেয়। যে জিনিস ক্যালেন্ডারে নেই, তা ঘটে না।<br><span style="opacity:.7">Buffett's calendar is nearly empty. Gates disappears to a forest cabin 2 weeks a year. Reading time is worth more to them than meetings — they schedule it and guard it. What's not on the calendar doesn't happen.</span></div></div></div>
+</div></div>
+<div class="callout info"><span class="co-icon">💰</span><div><strong>কেন এটা billionaire-দের মধ্যে common?</strong> কারণ যত উপরে ওঠো, কাজ তত কম "করা" আর তত বেশি "জানা ও সিদ্ধান্ত নেওয়া" হয়ে যায়। শ্রমিকের leverage পেশি, engineer-এর leverage কোড, আর capital allocator-এর leverage বিচারবুদ্ধি — যা শুধু পড়া+চিন্তা দিয়েই ধারালো হয়। Munger: "আমার সারা জীবনে এমন কোনো জ্ঞানী মানুষ দেখিনি যে সব সময় পড়ে না — একজনও না।" <em>("In my whole life, I have known no wise people who didn't read all the time — none, zero.")</em></div></div></div>
 
 <div class="diagram">
-  <div class="diag-title">মহামানুষ — ভিন্ন পদ্ধতি, এক মিল</div>
+  <div class="diag-title">মহামানুষ — ভিন্ন পদ্ধতি, এক মিল</div></div>
   <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
     ${[ ['Buffett','৫০০ পৃষ্ঠা/দিন','জ্ঞান compound হয়','#fcd34d',58], ['Musk','first principles','fundamentals, textbook','#ff6b35',169], ['Gates','Think Week','বছরে ২* কুটিরে একা','#5b9eff',280], ['Munger','৫+ ঘণ্টা/দিন','বহু-শাস্ত্র model','#52c41a',391], ['Naval','যা ভালোবাসো','৫-১০ বার পুনরায়','#b37feb',502] ].map(s=>`<rect class="cell" x="${s[4]-52}" y="50" width="104" height="70" rx="8" style="stroke:${s[3]}"/><text class="lbl-sm" x="${s[4]}" y="73" fill="${s[3]}" style="font-weight:700">${s[0]}</text><text class="lbl-sm" x="${s[4]}" y="92" fill="#e8e6f0" style="font-size:9px">${s[1]}</text><text class="lbl-sm" x="${s[4]}" y="107" fill="#9290a8" style="font-size:8px">${s[2]}</text>`).join('')}
     <!-- convergence: all → আকল -->
@@ -413,10 +413,10 @@ doors.push({
     <text class="lbl" x="280" y="182" fill="#52c41a">আকল দিয়ে পড়া</text>
     <text class="lbl-sm" x="280" y="218" fill="#5e5c74">মিল — পড়া জীবনের অবিচ্ছেদ্য অংশ, বিনোদন নয়। আকল দিয়ে, mental model গড়তে।</text>
   </svg>
-  <div class="diag-cap">ভিন্ন মানুষ, ভিন্ন পদ্ধতি — কিন্তু এক মিল: পড়া জীবনের অংশ, বিনোদন নয়। আকল দিয়ে পড়া — তথ্য সংগ্রহ নয়, mental model গড়া। Munger: "বেশিরভাগ মানুষ এক model দিয়ে সব করতে চায়।"</div>
-</div>
+  <div class="diag-cap">ভিন্ন মানুষ, ভিন্ন পদ্ধতি — কিন্তু এক মিল: পড়া জীবনের অংশ, বিনোদন নয়। আকল দিয়ে পড়া — তথ্য সংগ্রহ নয়, mental model গড়া। Munger: "বেশিরভাগ মানুষ এক model দিয়ে সব করতে চায়।"</div></div>
+</div></div>
 
-<div class="code-block">Great Minds Reading — স্টার্টার কিট:
+<div class="callout tip"><span class="co-icon">📋</span><div>Great Minds Reading — স্টার্টার কিট:
 
   Naval (শুরু করো এখান থেকে):
     যা ভালোবাসো পড়ো। জোর করে শেষ কোরো না।
@@ -441,23 +441,23 @@ doors.push({
   + Buffett (দীর্ঘমেয়াদ যোগ করো):
     প্রতিদিন পড়ো — volume matters।
     জ্ঞান compound interest-এর মতো জমে।
-    ক্যালেন্ডারে পড়ার সময় রক্ষা করো।</div>
+    ক্যালেন্ডারে পড়ার সময় রক্ষা করো।</div></div>
 
 <div class="stat-grid">
-<div class="stat-card"><div class="sc-num">৫০০</div><div class="sc-label">পৃষ্ঠা/দিন — Buffett</div></div>
-<div class="stat-card"><div class="sc-num">~৮০%</div><div class="sc-label">কর্মদিবস পড়া+চিন্তা — Buffett</div></div>
-<div class="stat-card"><div class="sc-num">~৫০</div><div class="sc-label">বই/বছর — Gates</div></div>
-<div class="stat-card"><div class="sc-num">৫+ ঘণ্টা</div><div class="sc-label">দৈনিক পড়া — Munger</div></div>
-<div class="stat-card"><div class="sc-num">৫-১০*</div><div class="sc-label">ভালো বই পুনরায় — Naval</div></div>
-<div class="stat-card"><div class="sc-num">Think Week</div><div class="sc-label">বছরে ২* কুটিরে একা — Gates</div></div>
-</div>
+<div class="stat-card"><div class="sc-num">৫০০</div><div class="sc-label">পৃষ্ঠা/দিন — Buffett</div></div></div>
+<div class="stat-card"><div class="sc-num">~৮০%</div><div class="sc-label">কর্মদিবস পড়া+চিন্তা — Buffett</div></div></div>
+<div class="stat-card"><div class="sc-num">~৫০</div><div class="sc-label">বই/বছর — Gates</div></div></div>
+<div class="stat-card"><div class="sc-num">৫+ ঘণ্টা</div><div class="sc-label">দৈনিক পড়া — Munger</div></div></div>
+<div class="stat-card"><div class="sc-num">৫-১০*</div><div class="sc-label">ভালো বই পুনরায় — Naval</div></div></div>
+<div class="stat-card"><div class="sc-num">Think Week</div><div class="sc-label">বছরে ২* কুটিরে একা — Gates</div></div></div>
+</div></div>
 
 <div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভোক্তা পাঠক</div>পড়া = বিনোদন, সময় কাটানো। যা ইজি পড়ো, মতামত/summary। একবার পড়ে পরের বই। "এ বছর ৫০ বই" — কিন্তু প্রতিটি থেকে কিছু গভীর নয়। mental model গড়ে না। পড়া জীবনকে বদলায় না।</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ আকল পাঠক (মহামানুষ)</div>পড়া = জীবনের অবিচ্ছেদ্য অংশ। fundamentals, বহু-শাস্ত্র, নোট, পুনরায়। আকল দিয়ে — mental model গড়া। কম বই, গভীর। Munger: "সব বড় শাস্ত্রের বড় idea জানো ও নিয়মিত ব্যবহার করো।" পড়া জীবন গড়ে।</div>
-</div>
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভোক্তা পাঠক</div>পড়া = বিনোদন, সময় কাটানো। যা ইজি পড়ো, মতামত/summary। একবার পড়ে পরের বই। "এ বছর ৫০ বই" — কিন্তু প্রতিটি থেকে কিছু গভীর নয়। mental model গড়ে না। পড়া জীবনকে বদলায় না।</div></div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ আকল পাঠক (মহামানুষ)</div>পড়া = জীবনের অবিচ্ছেদ্য অংশ। fundamentals, বহু-শাস্ত্র, নোট, পুনরায়। আকল দিয়ে — mental model গড়া। কম বই, গভীর। Munger: "সব বড় শাস্ত্রের বড় idea জানো ও নিয়মিত ব্যবহার করো।" পড়া জীবন গড়ে।</div></div>
+</div></div>
 
-<div class="dialogue">আকল — intellect, reason, the faculty of understanding fundamentals। কুরআনে আল্লাহ বলেন — "তারা কি চিন্তা করে না?" আকল হলো মৌলিক সত্য বোঝার ক্ষমতা। মহামানুষরা আকল দিয়ে পড়েন — শুধু তথ্য সংগ্রহ নয়। Buffett: দিনে ৫০০ পৃষ্ঠা — জ্ঞান compound হতে দেন। Musk: মৌলিক বিজ্ঞান থেকে শিখেন। Gates: Think Week-এ গভীরে যান। Munger: mental models গড়েন প্রতিটা ক্ষেত্র থেকে। Naval: যা ভালোবাসেন তা-ই পড়েন, বারবার। Holiday: প্রতিটা বই থেকে নোট কার্ড। সবার মিল — আকল দিয়ে পড়া, শুধু চোখ দিয়ে নয়। আর এটাই আসল গোপন কথা — billionaire হওয়ার পর তারা পড়া শুরু করেননি; পড়তেন বলেই সেই বিচারবুদ্ধি গড়ে উঠেছে যা তাদের সেখানে নিয়ে গেছে।</div>
+<div class="dialogue">আকল — intellect, reason, the faculty of understanding fundamentals। কুরআনে আল্লাহ বলেন — "তারা কি চিন্তা করে না?" আকল হলো মৌলিক সত্য বোঝার ক্ষমতা। মহামানুষরা আকল দিয়ে পড়েন — শুধু তথ্য সংগ্রহ নয়। Buffett: দিনে ৫০০ পৃষ্ঠা — জ্ঞান compound হতে দেন। Musk: মৌলিক বিজ্ঞান থেকে শিখেন। Gates: Think Week-এ গভীরে যান। Munger: mental models গড়েন প্রতিটা ক্ষেত্র থেকে। Naval: যা ভালোবাসেন তা-ই পড়েন, বারবার। Holiday: প্রতিটা বই থেকে নোট কার্ড। সবার মিল — আকল দিয়ে পড়া, শুধু চোখ দিয়ে নয়। আর এটাই আসল গোপন কথা — billionaire হওয়ার পর তারা পড়া শুরু করেননি; পড়তেন বলেই সেই বিচারবুদ্ধি গড়ে উঠেছে যা তাদের সেখানে নিয়ে গেছে।</div></div>
 <div class="dialogue en">"Aql — intellect, reason, the faculty of understanding fundamentals. Allah says — 'Do they not reflect?' Aql is the ability to grasp fundamental truths. Great minds read with aql — not just gathering information. Buffett: 500 pages a day — lets knowledge compound. Musk: learns from fundamental science. Gates: goes deep in Think Week. Munger: builds mental models from every field. Naval: reads what he loves, repeatedly. Holiday: note cards from every book. All share — reading with intellect, not just with eyes. And that's the real secret — they didn't start reading after becoming billionaires; they read their way into the judgment that got them there."</div>`,
   senior:{
     title:"Choose Your Reading Archetype",

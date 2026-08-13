@@ -20,7 +20,7 @@ doors.push({
   },
   story: `<p class="scene-setting">তুমি বলেছো — 'আর চিপস খাবো না।' তিন দিন পার করেছো। চতুর্থ দিন সন্ধ্যায় একটা চিপসের প্যাকেট টেবিলে পড়ে আছে। তোমার ভেতরে একটা চাপ তৈরি হয় — 'খেতে ইচ্ছা করছে।' তুমি লড়াই করো — 'না, খাবো না।' লড়াই যত বেশি, ইচ্ছা তত বেশি। দশ মিনিট পর তুমি হারলে — পুরো প্যাকেট খেলে।</p>
   <p class="scene-setting en">You said 'no more chips.' Three days clean. Day four — a bag on the table. Pressure builds. You fight: 'Don't eat it.' The more you fight, the louder the craving. Ten minutes later — you eat the whole bag.</p>
-  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সমস্যা:</strong> তুমি ভাবো ইচ্ছাশক্তি দিয়ে লড়াই করতে হবে। কিন্তু লড়াই করলে মস্তিষ্ক আরও বেশি চায়। এটাকে বলে <em>ironic rebound</em> — যাকে দমন করো, সে আরও শক্তিশালী হয়। সমাধান হলো লড়াই নয় — <strong>দেখা</strong>।</div></div>
+  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সমস্যা:</strong> তুমি ভাবো ইচ্ছাশক্তি দিয়ে লড়াই করতে হবে। কিন্তু লড়াই করলে মস্তিষ্ক আরও বেশি চায়। এটাকে বলে <em>ironic rebound</em> — যাকে দমন করো, সে আরও শক্তিশালী হয়। সমাধান হলো লড়াই নয় — <strong>দেখা</strong>।</div></div></div>
   <p class="scene-setting">এখন শোনো <strong>কারিগর ইউসুফের</strong> গল্প। ইউসুফ একজন নাবিক — সে ঝড়ের সমুদ্রে নৌকা চালায়। তার ডান গোড়ালিতে একটা পুরোনো ক্ষত — লোহার নোঙরের শেকড় লেগে গিয়েছিল।</p>
   <div class="dialogue">
     <p><strong>তরুণ নাবিক:</strong> ওস্তাদ, বড় ঢেউ এলে আমি ভয় পাই। আমি ঢেউকে ধাক্কা দিতে চাই — সরিয়ে দিতে চাই। কিন্তু পারি না।</p>
@@ -29,28 +29,28 @@ doors.push({
     <p><strong>ইউসুফ:</strong> সার্ফ কর। ঢেউয়ের উপরে উঠে বস। ঢেউ তোমাকে উপরে তুলবে — তারপর নামিয়ে দেবে। তুমি শুধু বসে থাকো। দেখো। ঢেউ চরমে উঠবে — তুমি ভয় পেয়ো না। তারপর ঢেউ নামবে। নিজে থেকে। তুমি কিছু করোনি।</p>
     <p><strong>তরুণ নাবিক:</strong> আর যদি ঢেউ না নামে?</p>
     <p><strong>ইউসুফ:</strong> প্রতিটা ঢেউ নামে। এটা প্রকৃতির নিয়ম। কোনো আকাঙ্ক্ষা চিরকাল থাকে না — ৯০ সেকেন্ড থেকে ২০ মিনিট। তুমি শুধু সার্ফ করো। দেখো।</p>
-  </div>
+  </div></div>
   <p class="scene-setting">তোমার খারাপ অভ্যাসের আকাঙ্ক্ষাও ইউসুফের ঢেউয়ের মতো। সে আসে, চরমে ওঠে, তারপর নামে। তুমি যদি লড়াই করো — ডুবে যাও। যদি সার্ফ করো — বেঁচে যাও।</p>
-  <div class="code-block">
+  <div class="callout tip"><span class="co-icon">📋</span><div>
     <h4>🔧 সিস্টেম — The Urge Surfing Protocol (৪টি ধাপ)</h4>
     <p><strong>ধাপ ১ — থামো এবং নাম দাও (Stop & Name):</strong> আকাঙ্ক্ষা এলে থামো। বলো — 'এটা আকাঙ্ক্ষা।' নাম দিলে মস্তিষ্কের prefrontal cortex চালু হয়, amygdala (ভয়ের কেন্দ্র) শান্ত হয়।</p>
     <p><strong>ধাপ ২ — শরীরে খুঁজে দেখো (Scan the Body):</strong> এই আকাঙ্ক্ষা শরীরে কোথায়? মুখে? পেটে? বুকে? সেই অনুভূতিটা দেখো — কেমন? গরম? ঠান্ডা? কম্পন? বিচার করো না — শুধু দেখো।</p>
     <p><strong>ধাপ ৩ — শ্বাসে গণনা করো (Breathe & Count):</strong> শ্বাস নাও — ১। ছাড়ো — ২। আকাঙ্ক্ষাটা কমলো কি না দেখো। সম্ভবত বাড়লো — ঢেউ উঠছে। চিন্তা করো না। শ্বাস চালিয়ে যাও — ৩, ৪, ৫...</p>
     <p>সাধারণত ৯০ সেকেন্ড থেকে ২০ মিনিট — ঢেউ চরমে উঠবে, তারপর নামবে। তুমি শুধু দেখো।</p>
     <p><strong>ধাপ ৪ — শূন্যতা পূরণ করো (Fill the Void):</strong> খারাপ অভ্যাস গেলে একটা শূন্যতা থাকে। সেটা পূরণ না করলে খারাপ অভ্যাস ফিরে আসে। নতুন কাজ বসাও — হাঁটা, পানি খাওয়া, কাউকে কল করা।</p>
-  </div>
-  <div class="callout tip"><span class="co-icon">🎯</span><div><strong>কেন কাজ করে — The Science:</strong> <strong>Judson Brewer</strong> (Brown University, পূর্বে Yale) ও সহযোগীরা ২০১১ সালে <em>Drug and Alcohol Dependence</em>-এ প্রকাশ করেছেন — mindfulness training (urge surfing) ধূমপান ছাড়ার ক্ষেত্রে <strong>৪ গুণ বেশি কার্যকর</strong> ছিল American Lung Association-এর প্রোগ্রামের চেয়ে (<strong>~৩১% vs ~৬%</strong> abstinent at 4-month follow-up)। <strong>Alan Marlatt</strong> (University of Washington) এবং J.R. Gordon ১৯৮৫ সালে <em>Relapse Prevention</em> বইয়ে <strong>'urge surfing'</strong> শব্দটি তৈরি করেছেন। <strong>Azrin & Nunn</strong> (১৯৭৩, <em>Behaviour Research and Therapy</em>) হ্যাবিট রিভার্সাল ট্রেনিং তৈরি করেছেন — সচেতনতা প্রশিক্ষণ + competing response। এই পদ্ধতিতে এক সেশনেই নখ কামড়, আঙুল চোষার মতো অভ্যাস ~৯৫% কমে যেতে পারে। Brewer (২০২১, <em>Unwinding Anxiety</em>) এই পদ্ধতিকে উদ্বেগের ক্ষেত্রেও প্রয়োগ করেছেন।</div></div>
+  </div></div>
+  <div class="callout tip"><span class="co-icon">🎯</span><div><strong>কেন কাজ করে — The Science:</strong> <strong>Judson Brewer</strong> (Brown University, পূর্বে Yale) ও সহযোগীরা ২০১১ সালে <em>Drug and Alcohol Dependence</em>-এ প্রকাশ করেছেন — mindfulness training (urge surfing) ধূমপান ছাড়ার ক্ষেত্রে <strong>৪ গুণ বেশি কার্যকর</strong> ছিল American Lung Association-এর প্রোগ্রামের চেয়ে (<strong>~৩১% vs ~৬%</strong> abstinent at 4-month follow-up)। <strong>Alan Marlatt</strong> (University of Washington) এবং J.R. Gordon ১৯৮৫ সালে <em>Relapse Prevention</em> বইয়ে <strong>'urge surfing'</strong> শব্দটি তৈরি করেছেন। <strong>Azrin & Nunn</strong> (১৯৭৩, <em>Behaviour Research and Therapy</em>) হ্যাবিট রিভার্সাল ট্রেনিং তৈরি করেছেন — সচেতনতা প্রশিক্ষণ + competing response। এই পদ্ধতিতে এক সেশনেই নখ কামড়, আঙুল চোষার মতো অভ্যাস ~৯৫% কমে যেতে পারে। Brewer (২০২১, <em>Unwinding Anxiety</em>) এই পদ্ধতিকে উদ্বেগের ক্ষেত্রেও প্রয়োগ করেছেন।</div></div></div>
   <div class="stat-grid">
-    <div class="stat-card"><div class="sc-num">৩১% vs ৬%</div><div class="sc-label">Urge surfing vs standard ধূমপান ছাড়া<br>Brewer et al. (2011)</div></div>
-    <div class="stat-card"><div class="sc-num">৯০সে–২০মি</div><div class="sc-label">আকাঙ্ক্ষার স্বাভাবিক স্থায়িত্ব — যদি খাওয়া না<br>(সময়কাল ব্যক্তিভেদে ভিন্ন)</div></div>
-  </div>
+    <div class="stat-card"><div class="sc-num">৩১% vs ৬%</div><div class="sc-label">Urge surfing vs standard ধূমপান ছাড়া<br>Brewer et al. (2011)</div></div></div>
+    <div class="stat-card"><div class="sc-num">৯০সে–২০মি</div><div class="sc-label">আকাঙ্ক্ষার স্বাভাবিক স্থায়িত্ব — যদি খাওয়া না<br>(সময়কাল ব্যক্তিভেদে ভিন্ন)</div></div></div>
+  </div></div>
   <div class="compare">
-    <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল উপায়</div>'খাবো না! খাবো না! খাবো না!' — ইচ্ছাশক্তি দিয়ে লড়াই। মস্তিষ্ক আরও বেশি চায়। দশ মিনিট পর পুরো প্যাকেট খাও।</div>
-    <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক উপায়</div>থামো। নাম দাও — 'এটা আকাঙ্ক্ষা।' শরীরে খুঁজে দেখো। শ্বাসে গণনা করো। ঢেউ চরমে উঠবে — তারপর নামবে। তুমি কিছু করোনি।</div>
-  </div>
-  <div class="callout info"><span class="co-icon">🧠</span><div><strong>পবিত্র সমতুল্য — Sacred Analogue:</strong> তাওবা — ফিরে আসা। ইসলামে গুনাহ থেকে ফিরে আসার নিয়ম হলো: থামো, স্বীকার করো, অনুতপ্ত হও, ফিরে যাও। এটাই urge surfing — আকাঙ্ক্ষা এলে থামো, স্বীকার করো ('এটা আকাঙ্ক্ষা'), বিচার না করে দেখো, তারপর ফিরে যাও। নবী ﷺ বলেছেন: <em>'প্রত্যেক মানুষ পাপী, শ্রেষ্ঠ পাপীরা হলো যারা তাওবা করে।'</em> — তিরমিযী। আর শূন্যতা পূরণ? আল্লাহ বলেছেন: <em>'যে আমাকে স্মরণ করে ভুলে যায়, সে নিজেকে ভুলিয়ে দেয়।'</em> (৫৯:১৯) — গুনাহ একটা শূন্যতা তৈরি করে, আর সেই শূন্যতা শুধু জিকির দিয়ে ভরা যায়।</div></div>
-  <div class="verse">"হে মুমিনগণ, তোমরা সবাই আল্লাহর কাছে তাওবা করো — যাতে তোমরা সফল হও।" — কুরআন ২৪:৩১</div>
-  <div class="verse en">"And turn to Allah in repentance, all of you, O believers, that you might succeed." — Quran 24:31</div>
+    <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল উপায়</div>'খাবো না! খাবো না! খাবো না!' — ইচ্ছাশক্তি দিয়ে লড়াই। মস্তিষ্ক আরও বেশি চায়। দশ মিনিট পর পুরো প্যাকেট খাও।</div></div>
+    <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক উপায়</div>থামো। নাম দাও — 'এটা আকাঙ্ক্ষা।' শরীরে খুঁজে দেখো। শ্বাসে গণনা করো। ঢেউ চরমে উঠবে — তারপর নামবে। তুমি কিছু করোনি।</div></div>
+  </div></div>
+  <div class="callout info"><span class="co-icon">🧠</span><div><strong>পবিত্র সমতুল্য — Sacred Analogue:</strong> তাওবা — ফিরে আসা। ইসলামে গুনাহ থেকে ফিরে আসার নিয়ম হলো: থামো, স্বীকার করো, অনুতপ্ত হও, ফিরে যাও। এটাই urge surfing — আকাঙ্ক্ষা এলে থামো, স্বীকার করো ('এটা আকাঙ্ক্ষা'), বিচার না করে দেখো, তারপর ফিরে যাও। নবী ﷺ বলেছেন: <em>'প্রত্যেক মানুষ পাপী, শ্রেষ্ঠ পাপীরা হলো যারা তাওবা করে।'</em> — তিরমিযী। আর শূন্যতা পূরণ? আল্লাহ বলেছেন: <em>'যে আমাকে স্মরণ করে ভুলে যায়, সে নিজেকে ভুলিয়ে দেয়।'</em> (৫৯:১৯) — গুনাহ একটা শূন্যতা তৈরি করে, আর সেই শূন্যতা শুধু জিকির দিয়ে ভরা যায়।</div></div></div>
+  <div class="verse">"হে মুমিনগণ, তোমরা সবাই আল্লাহর কাছে তাওবা করো — যাতে তোমরা সফল হও।" — কুরআন ২৪:৩১</div></div>
+  <div class="verse en">"And turn to Allah in repentance, all of you, O believers, that you might succeed." — Quran 24:31</div></div>
   <div class="checklist">
     <li>পরবর্তী আকাঙ্ক্ষা এলে থামো — লড়াই করো না</li>
     <li>নাম দাও — 'এটা আকাঙ্ক্ষা' (prefrontal cortex চালু হয়)</li>
@@ -58,7 +58,7 @@ doors.push({
     <li>শ্বাসে গণনা করো — সাধারণত ৯০ সেকেন্ড থেকে ২০ মিনিট লাগে</li>
     <li>ঢেউ নামলে শূন্যতা পূরণ করো — হাঁটা, পানি, কল</li>
     <li>ঘুমানোর আগে আজকের তাওবা করো — ক্ষমা চাও</li>
-  </div>
+  </div></div>
 <div class="svg-diagram">
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="280" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🌊 Urge Surfing: Wave Rises, Peaks, Falls</text>
@@ -72,13 +72,13 @@ doors.push({
   <text x="455" y="188" text-anchor="middle" fill="#4ade80" font-size="10">name it then watch it</text>
   <text x="455" y="200" text-anchor="middle" fill="#4ade80" font-size="10">then it passes</text>
 </svg>
-</div>
-<div class="svg-caption">চিত্র: আকাঙ্ক্ষার ঢেউ — লড়াই করলে ডুব, সার্ফ করলে বাঁচ।</div>
+</div></div>
+<div class="svg-caption">চিত্র: আকাঙ্ক্ষার ঢেউ — লড়াই করলে ডুব, সার্ফ করলে বাঁচ।</div></div>
 
   <div class="secret-box">
-    <div class="secret-icon">🌊</div>
-    <div class="secret-line">আকাঙ্ক্ষা ঢেউয়ের মতো — লড়াই করলে ডুব, সার্ফ করলে বাঁচ।</div>
-    <div class="secret-why">কারণ ইচ্ছাশক্তি দিয়ে লড়াই করলে মস্তিষ্ক আরও চায়। কিন্তু নাম দিয়ে দেখলে — prefrontal cortex চালু হয়, amygdala শান্ত হয়। ঢেউ চরমে ওঠে, তারপর নিজে থেমে যায়। তুমি কিছু করোনি — শুধু দেখেছ।</div>
+    <div class="secret-icon">🌊</div></div>
+    <div class="secret-line">আকাঙ্ক্ষা ঢেউয়ের মতো — লড়াই করলে ডুব, সার্ফ করলে বাঁচ।</div></div>
+    <div class="secret-why">কারণ ইচ্ছাশক্তি দিয়ে লড়াই করলে মস্তিষ্ক আরও চায়। কিন্তু নাম দিয়ে দেখলে — prefrontal cortex চালু হয়, amygdala শান্ত হয়। ঢেউ চরমে ওঠে, তারপর নিজে থেমে যায়। তুমি কিছু করোনি — শুধু দেখেছ।</div></div>
   </div>`,
   senior: {
     title: "পরবর্তী আকাঙ্ক্ষায় করো — Next Craving",
@@ -104,7 +104,7 @@ doors.push({
   },
   story: `<p class="scene-setting">তুমি বলো — 'আজ থেকে প্রতিদিন ২ ঘণ্টা পড়বো।' প্রথম দিন পড়লে — ২ ঘণ্টা। দ্বিতীয় দিন — ১ ঘণ্টা ৩০ মিনিট। তৃতীয় দিন — ৩০ মিনিট। চতুর্থ দিন — কিছুই না। তুমি ভাবো — 'আমি পারছি না।' কিন্তু সমস্যা তোমার লক্ষ্যে নয় — সমস্যা তোমার লাফে। তুমি বড় লাফ দিতে চাইছো, আর ভাঙতে চাইছো।</p>
   <p class="scene-setting en">You say 'from today, 2 hours daily.' Day 1: 2h. Day 2: 1.5h. Day 3: 30m. Day 4: nothing. You think you failed. But the problem is the LEAP — you tried to jump, not to crawl.</p>
-  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুল ধারণা:</strong> 'বড় পরিবর্তন দ্রুত আসে।' <strong>সত্য:</strong> বড় পরিবর্তন ধীরে আসে — প্রতিদিন ১% করে। এক দিনে কেউ ব্রিটিশ সাইক্লিং দলকে বিশ্বসেরা বানায়নি। ৫ বছর ধরে প্রতিদিন ১% — সাইকেলের আসন, হাতল, পোশাক, ঘুম, খাবার — সবকিছুতে। এটাই aggregation of marginal gains।</div></div>
+  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুল ধারণা:</strong> 'বড় পরিবর্তন দ্রুত আসে।' <strong>সত্য:</strong> বড় পরিবর্তন ধীরে আসে — প্রতিদিন ১% করে। এক দিনে কেউ ব্রিটিশ সাইক্লিং দলকে বিশ্বসেরা বানায়নি। ৫ বছর ধরে প্রতিদিন ১% — সাইকেলের আসন, হাতল, পোশাক, ঘুম, খাবার — সবকিছুতে। এটাই aggregation of marginal gains।</div></div></div>
   <p class="scene-setting">এখন শোনো <strong>কারিগর রুকাইয়ার</strong> গল্প। রুকাইয়া একজন মশা জাল বোনার কারিগর। সে একটা জাল বোনে — প্রতিদিন এক ছেদ যোগ করে।</p>
   <div class="dialogue">
     <p><strong>প্রতিবেশী:</strong> রুকাইয়া, তোমার জাল তো ছোট। তুমি এক সপ্তাহে একটা বড় জাল বুনতে পারবে না।</p>
@@ -113,9 +113,9 @@ doors.push({
     <p><strong>রুকাইয়া:</strong> এক ছেদ কিছু না। কিন্তু ৩৬৫ দিনে ৩৬৫টা ছেদ। এক বছরে একটা সম্পূর্ণ জাল — যে জালে মশা আটকানো যায়। তোমার বড় জাল কোথায়?</p>
     <p><strong>প্রতিবেশী (লজ্জিত):</strong> ...আমি তো শুরুই করিনি। বড় লাফ দিতে গিয়ে ভেঙে পড়লাম।</p>
     <p><strong>রুকাইয়া:</strong> দেখ — আমার জাল আজ ছোট মনে হয়। কিন্তু প্রতিদিন এক ছেদ যোগ হয়। এক বছর পর তুমি এসে দেখবে — আমার জাল তোমার চেয়ে বড়। কারণ আমি থামিনি।</p>
-  </div>
+  </div></div>
   <p class="scene-setting">রুকাইয়ার জাল হলো ১% যৌগিক বৃদ্ধির উদাহরণ। প্রতিদিন এক ছেদ — অদৃশ্য। কিন্তু সময়ের সাথে সে একটা সম্পূর্ণ জাল হয়ে যায়। তোমার অভ্যাসও এভাবে গড়ে ওঠে — প্রতিদিন ১%, অদৃশ্যভাবে, কিন্তু অনিবার্যভাবে।</p>
-  <div class="code-block">
+  <div class="callout tip"><span class="co-icon">📋</span><div>
     <h4>🔧 সিস্টেম — The Compound System (৩টি নিয়ম)</h4>
     <p><strong>নিয়ম ১ — প্রতিদিন ১% করো, লাফ দিও না:</strong></p>
     <table class="kv-table">
@@ -129,19 +129,19 @@ doors.push({
     <p>⚠️ সততা টিকা: 'চেইন ভাঙিও না' কৌশলটি Jerry Seinfeld-এর নামে পরিচিত — কিন্তু Seinfeld নিজে ২০১৪-এ এটা অস্বীকার করেছেন। কৌশলটি কার্যকর (goal-gradient effect, Kivetz et al., ২০০৬), কিন্তু সত্যিকারের উৎস অজানা।</p>
     <p><strong>নিয়ম ৩ — ফলাফল নয়, প্রক্রিয়া ট্র্যাক করো (Track Process, Not Outcome):</strong></p>
     <p>ভুল: 'কত পৃষ্ঠা পড়লাম?' সঠিক: 'পড়েছি কি না?' ভুল: 'কত কেজি কমলো?' সঠিক: 'ব্যায়াম করেছি কি না?' প্রক্রিয়া নিয়ন্ত্রণযোগ্য, ফলাফল নয়।</p>
-  </div>
-  <div class="callout tip"><span class="co-icon">🎯</span><div><strong>কেন কাজ করে — The Science:</strong> <strong>Dave Brailsford</strong> — ব্রিটিশ সাইক্লিং দলের পারফরম্যান্স ডিরেক্টর (২০০৩)। তিনি <strong>'aggregation of marginal gains'</strong> নীতি চালু করেছেন — সাইকেলের ডিজাইন, আসনের আরাম, হাতলের গ্রিপ, রাইডারের ঘুমের ম্যাট্রেস, পোশাকের কাপড়, এমনকি হাত ধোওয়ার সাবান — সবকিছুতে ১% উন্নতি। ফল? ব্রিটিশ সাইক্লিং দল ২০০৮ বেইজিং অলিম্পিকে ট্র্যাক সাইক্লিং-এর ১০টি গোল্ডের ৮টি জিতেছিল। <strong>James Clear</strong> (২০১৮, <em>Atomic Habits</em>) এর গাণিতিক রূপ দিয়েছেন: <strong>১.০১^৩৬৫ ~= ৩৭.৭৮</strong> (প্রতিদিন ১% উন্নতি = এক বছরে ৩৭ গুণ)। <strong>০.৯৯^৩৬৫ ~= ০.০৩</strong> (প্রতিদিন ১% অবনতি = এক বছরে প্রায় শূন্য)। ⚠️ <em>সততা টিকা:</em> এই সূত্রটি একটি শক্তিশালী রূপক — কিন্তু এটি একটি প্রকৃত গবেষণা নয়। বাস্তব জীবনে উন্নতি কখনো পুরোপুরি যৌগিক হয় না (plateau, আঘাত, রিগ্রেশন আসে)। তবে নীতিটা শক্ত: ছোট ধারাবাহিক প্রচেষ্টা বড় বিচ্ছিন্ন প্রচেষ্টাকে হারায়। <strong>Kivetz, Urminsky & Zheng</strong> (২০০৬, <em>Journal of Marketing Research</em>) দেখিয়েছেন — লক্ষ্যের কাছাকাছি পৌঁছালে মানুষের প্রেরণা বাড়ে (goal-gradient effect)।</div></div>
+  </div></div>
+  <div class="callout tip"><span class="co-icon">🎯</span><div><strong>কেন কাজ করে — The Science:</strong> <strong>Dave Brailsford</strong> — ব্রিটিশ সাইক্লিং দলের পারফরম্যান্স ডিরেক্টর (২০০৩)। তিনি <strong>'aggregation of marginal gains'</strong> নীতি চালু করেছেন — সাইকেলের ডিজাইন, আসনের আরাম, হাতলের গ্রিপ, রাইডারের ঘুমের ম্যাট্রেস, পোশাকের কাপড়, এমনকি হাত ধোওয়ার সাবান — সবকিছুতে ১% উন্নতি। ফল? ব্রিটিশ সাইক্লিং দল ২০০৮ বেইজিং অলিম্পিকে ট্র্যাক সাইক্লিং-এর ১০টি গোল্ডের ৮টি জিতেছিল। <strong>James Clear</strong> (২০১৮, <em>Atomic Habits</em>) এর গাণিতিক রূপ দিয়েছেন: <strong>১.০১^৩৬৫ ~= ৩৭.৭৮</strong> (প্রতিদিন ১% উন্নতি = এক বছরে ৩৭ গুণ)। <strong>০.৯৯^৩৬৫ ~= ০.০৩</strong> (প্রতিদিন ১% অবনতি = এক বছরে প্রায় শূন্য)। ⚠️ <em>সততা টিকা:</em> এই সূত্রটি একটি শক্তিশালী রূপক — কিন্তু এটি একটি প্রকৃত গবেষণা নয়। বাস্তব জীবনে উন্নতি কখনো পুরোপুরি যৌগিক হয় না (plateau, আঘাত, রিগ্রেশন আসে)। তবে নীতিটা শক্ত: ছোট ধারাবাহিক প্রচেষ্টা বড় বিচ্ছিন্ন প্রচেষ্টাকে হারায়। <strong>Kivetz, Urminsky & Zheng</strong> (২০০৬, <em>Journal of Marketing Research</em>) দেখিয়েছেন — লক্ষ্যের কাছাকাছি পৌঁছালে মানুষের প্রেরণা বাড়ে (goal-gradient effect)।</div></div></div>
   <div class="stat-grid">
-    <div class="stat-card"><div class="sc-num">৩৭.৭৮*</div><div class="sc-label">১% প্রতিদিন = ৩৭ গুণ এক বছরে<br>1.01^365 (Clear, 2018)</div></div>
-    <div class="stat-card"><div class="sc-num">০.০৩*</div><div class="sc-label">−১% প্রতিদিন = প্রায় শূন্য এক বছরে<br>0.99^365</div></div>
-  </div>
+    <div class="stat-card"><div class="sc-num">৩৭.৭৮*</div><div class="sc-label">১% প্রতিদিন = ৩৭ গুণ এক বছরে<br>1.01^365 (Clear, 2018)</div></div></div>
+    <div class="stat-card"><div class="sc-num">০.০৩*</div><div class="sc-label">−১% প্রতিদিন = প্রায় শূন্য এক বছরে<br>0.99^365</div></div></div>
+  </div></div>
   <div class="compare">
-    <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল উপায়</div>'আজ থেকে ২ ঘণ্টা!' বড় লাফ। দিন তিনেক পর ভেঙে পড়ো। হতাশ হও। ছেড়ে দাও।</div>
-    <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক উপায়</div>আজ ১ পৃষ্ঠা। কাল ১ পৃষ্ঠা। পরশু ১ পৃষ্ঠা। এক বছর পর — ৩৬৫ পৃষ্ঠা। তুমি একটা বই শেষ করেছ। কোনো লাফ ছাড়াই।</div>
-  </div>
-  <div class="callout info"><span class="co-icon">🧠</span><div><strong>পবিত্র সমতুল্য — Sacred Analogue:</strong> কুরআনে আল্লাহ বলেছেন: <em>'যে ব্যক্তি অণু পরিমাণ ভালো কাজ করে, সে তা দেখবে। যে ব্যক্তি অণু পরিমাণ মন্দ কাজ করে, সে তা দেখবে।'</em> (৯৯:৭-৮)। <strong>অণু</strong> — পরমাণুর চেয়ে ছোট — এটাই ১% এর চেয়েও কম। আল্লাহ বলছেন — এই অণু পরিমাণও গণনা হয়। কারণ অণু জমলে পাহাড় হয়। নবী ﷺ বলেছেন: <em>'সবচেয়ে প্রিয় আমল যেটা নিয়মিত, যদিও ছোট।'</em> — বুখারি। এটাই ১% — ছোট, নিয়মিত, অবিরাম। আল্লাহ আরও বলেছেন: <em>'আমি তোমাদের মধ্যে যে ব্যক্তি কোনো কাজ করে, তা ব্যর্থ করবো না।'</em> (৩:১৯৫) — ছোট কাজ তিনি ব্যর্থ করেন না। তিনি জমিয়ে রাখেন, বাড়িয়ে দেন — যৌগিকভাবে।</div></div>
-  <div class="verse">"অতএব যে অণু পরিমাণ ভালো করে, সে তা দেখবে। এবং যে অণু পরিমাণ মন্দ করে, সে তা দেখবে।" — কুরআন ৯৯:৭-৮</div>
-  <div class="verse en">"So whoever does an atom's weight of good will see it. And whoever does an atom's weight of evil will see it." — Quran 99:7-8</div>
+    <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল উপায়</div>'আজ থেকে ২ ঘণ্টা!' বড় লাফ। দিন তিনেক পর ভেঙে পড়ো। হতাশ হও। ছেড়ে দাও।</div></div>
+    <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক উপায়</div>আজ ১ পৃষ্ঠা। কাল ১ পৃষ্ঠা। পরশু ১ পৃষ্ঠা। এক বছর পর — ৩৬৫ পৃষ্ঠা। তুমি একটা বই শেষ করেছ। কোনো লাফ ছাড়াই।</div></div>
+  </div></div>
+  <div class="callout info"><span class="co-icon">🧠</span><div><strong>পবিত্র সমতুল্য — Sacred Analogue:</strong> কুরআনে আল্লাহ বলেছেন: <em>'যে ব্যক্তি অণু পরিমাণ ভালো কাজ করে, সে তা দেখবে। যে ব্যক্তি অণু পরিমাণ মন্দ কাজ করে, সে তা দেখবে।'</em> (৯৯:৭-৮)। <strong>অণু</strong> — পরমাণুর চেয়ে ছোট — এটাই ১% এর চেয়েও কম। আল্লাহ বলছেন — এই অণু পরিমাণও গণনা হয়। কারণ অণু জমলে পাহাড় হয়। নবী ﷺ বলেছেন: <em>'সবচেয়ে প্রিয় আমল যেটা নিয়মিত, যদিও ছোট।'</em> — বুখারি। এটাই ১% — ছোট, নিয়মিত, অবিরাম। আল্লাহ আরও বলেছেন: <em>'আমি তোমাদের মধ্যে যে ব্যক্তি কোনো কাজ করে, তা ব্যর্থ করবো না।'</em> (৩:১৯৫) — ছোট কাজ তিনি ব্যর্থ করেন না। তিনি জমিয়ে রাখেন, বাড়িয়ে দেন — যৌগিকভাবে।</div></div></div>
+  <div class="verse">"অতএব যে অণু পরিমাণ ভালো করে, সে তা দেখবে। এবং যে অণু পরিমাণ মন্দ করে, সে তা দেখবে।" — কুরআন ৯৯:৭-৮</div></div>
+  <div class="verse en">"So whoever does an atom's weight of good will see it. And whoever does an atom's weight of evil will see it." — Quran 99:7-8</div></div>
   <div class="checklist">
     <li>একটা অভ্যাস বেছে নাও — প্রতিদিন ১% করে বাড়াবে</li>
     <li>আজ এক পৃষ্ঠা পড়ো — কাল আরেকটু</li>
@@ -149,7 +149,7 @@ doors.push({
     <li>চেইন ভাঙতে দিও না — এমনকি এক দিনের জন্য</li>
     <li>ফলাফল নয়, প্রক্রিয়া ট্র্যাক করো ('পড়েছি কি না?')</li>
     <li>এক বছর ধৈর্য ধরো — ৩৭ গুণ ফল আসবে</li>
-  </div>
+  </div></div>
 <div class="svg-diagram">
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="280" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">📈 Compound Growth: 1% Better vs 1% Worse</text>
@@ -161,13 +161,13 @@ doors.push({
   <text x="280" y="215" text-anchor="middle" fill="#94a3b8" font-size="10">Day 0 (baseline)</text>
   <text x="280" y="140" text-anchor="middle" fill="#fbbf24" font-size="8">差距 widens daily</text>
 </svg>
-</div>
-<div class="svg-caption">চিত্র: যৌগিক বৃদ্ধি — প্রতিদিন ১% উন্নতি = এক বছরে ৩৭ গুণ।</div>
+</div></div>
+<div class="svg-caption">চিত্র: যৌগিক বৃদ্ধি — প্রতিদিন ১% উন্নতি = এক বছরে ৩৭ গুণ।</div></div>
 
   <div class="secret-box">
-    <div class="secret-icon">📈</div>
-    <div class="secret-line">প্রতিদিন ১% — এক বছরে ৩৭ গুণ। প্রতিদিন −১% — এক বছরে শূন্য।</div>
-    <div class="secret-why">কারণ যৌগিক বৃদ্ধি জাদু নয় — গণিত। কিন্তু এই গণিত শুধু তাদের কাজ করে যারা প্রতিদিন করে, থামে না। ছোট ধারাবাহিক প্রচেষ্টা বড় বিচ্ছিন্ন লাফকে হারায় — প্রতিটা অণু গণনা হয়।</div>
+    <div class="secret-icon">📈</div></div>
+    <div class="secret-line">প্রতিদিন ১% — এক বছরে ৩৭ গুণ। প্রতিদিন −১% — এক বছরে শূন্য।</div></div>
+    <div class="secret-why">কারণ যৌগিক বৃদ্ধি জাদু নয় — গণিত। কিন্তু এই গণিত শুধু তাদের কাজ করে যারা প্রতিদিন করে, থামে না। ছোট ধারাবাহিক প্রচেষ্টা বড় বিচ্ছিন্ন লাফকে হারায় — প্রতিটা অণু গণনা হয়।</div></div>
   </div>`,
   senior: {
     title: "আজই শুরু করো — Start Your 1%",
@@ -193,7 +193,7 @@ doors.push({
   },
   story: `<p class="scene-setting">তুমি কাজ করতে বসো। একটা ট্যাব খোলো। আরেকটা। মেইল চেক। একটু পড়ো। মেইল আসলো — রিপ্লাই। একটু পড়ো। স্ল্যাক মেসেজ — রিপ্লাই। একটু পড়ো। ফোন বাজলো। একটু পড়ো। তিন ঘণ্টা পর — তুমি কাজ করেছো মনে হয়, কিন্তু আসলে কিছুই হয়নি। কারণ তুমি কাজ করোনি — তুমি শুধু বসে ছিলে, আর মস্তিষ্ক এদিক-ওদিক লাফিয়েছে।</p>
   <p class="scene-setting en">You sit to work. Open a tab. Check email. Read a bit. Slack message. Read. Phone buzzes. Read. Three hours later — you think you worked. But you didn't. Your brain jumped around and produced nothing.</p>
-  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সমস্যা:</strong> তুমি 'কাজ করছো' ভাবো, কিন্তু আসলে তুমি <strong>shallow work</strong> করছো — বিঘিরণমুলক, অগভীর কাজ। এটা দিয়ে কিছু হয় না। আসল কাজ — যেটা দিয়ে দক্ষতা বাড়ে, জ্ঞান গভীর হয় — সেটা হলো <strong>deep work</strong>। আর ডিপ ওয়ার্ক নিজে থেকে হয় না — তাকে স্থাপত্য করতে হয়।</div></div>
+  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সমস্যা:</strong> তুমি 'কাজ করছো' ভাবো, কিন্তু আসলে তুমি <strong>shallow work</strong> করছো — বিঘিরণমুলক, অগভীর কাজ। এটা দিয়ে কিছু হয় না। আসল কাজ — যেটা দিয়ে দক্ষতা বাড়ে, জ্ঞান গভীর হয় — সেটা হলো <strong>deep work</strong>। আর ডিপ ওয়ার্ক নিজে থেকে হয় না — তাকে স্থাপত্য করতে হয়।</div></div></div>
   <p class="scene-setting">এখন শোনো <strong>কারিগর তামিমের</strong> গল্প। তামিম একজন সেতু নির্মাতা — সে নদীর উপর সেতু বানায়। তার হাতের কবজিতে সবসময় একটা পুরোনো পরিমাপের দাগ — সুতোর কাটা দাগ।</p>
   <div class="dialogue">
     <p><strong>শাগরেদ:</strong> ওস্তাদ, আমি একটা সেতু বানাতে চাই। কিন্তু শুরু করি, তারপর থামি। আবার শুরু, আবার থামি। সেতু হয় না।</p>
@@ -204,9 +204,9 @@ doors.push({
     <p><strong>তামিম:</strong> অবশ্যই। এগুলো ঠিক না করলে তুই ইট সাজাবি — তারপর ভাঙবি। আবার সাজাবি। আবার ভাঙবি। সেতু হবে না। আমি প্রতিটা সেতুর আগে একটা নীল নকশা করি — কোথায়, কখন, কত দিন, কী। তারপর শুরু করি। আর শেষে একটা বিশেষ কাজ করি — নদীর কাছে যাই, হাত ধুই, বলি — 'আজকের কাজ শেষ।' এটাই শাটডাউন।</p>
     <p><strong>শাগরেদ:</strong> শাটডাউন কেন?</p>
     <p><strong>তামিম:</strong> কারণ আমি যদি শাটডাউন না করি — আমার মস্তিষ্ক সারা রাত সেতু নিয়ে ভাববে। সকালে উঠে দেখবে — ক্লান্ত। কিন্তু শাটডাউন করলে মস্তিষ্ক বলে — 'কাজ শেষ, এখন বিশ্রাম।' আর বিশ্রামের সময় সে গোপনে সমাধান খুঁজে — সকালে আমি উঠে দেখি — সমাধান প্রস্তুত।</p>
-  </div>
+  </div></div>
   <p class="scene-setting">তোমার কাজও তামিমের সেতুর মতো। তুমি ইট সাজাচ্ছো — কাজ করছো না। ডিপ ওয়ার্কের জন্য স্থাপত্য দরকার — চারটা সিদ্ধান্ত, একটা রিচুয়াল, আর একটা শাটডাউন।</p>
-  <div class="code-block">
+  <div class="callout tip"><span class="co-icon">📋</span><div>
     <h4>🔧 সিস্টেম — The Deep Work Architecture (৪টি স্তম্ভ)</h4>
     <p><strong>স্তম্ভ ১ — চার সিদ্ধান্ত (Four Decisions):</strong></p>
     <table class="kv-table">
@@ -229,19 +229,19 @@ doors.push({
     <p><strong>স্তম্ভ ৪ — শাটডাউন রিচুয়াল (Shutdown Ritual):</strong> কাজ শেষে একটা সচেতন বন্ধ।</p>
     <p>মেইল চেক করো (শেষবার), টু-ডু লিস্ট পরশুর জন্য লেখো, ল্যাপটপ বন্ধ করো, বলো — 'আজকের কাজ শেষ।' এটাই শাটডাউন।</p>
     <p>কেন দরকার? কারণ শাটডাউন না করলে মস্তিষ্ক সারা রাত কাজ ভাববে — বিশ্রাম নেবে না। শাটডাউন করলে মস্তিষ্ক <strong>diffuse mode</strong>-এ যায় — গোপনে সমস্যা সমাধান করে, সৃজনশীল সংযোগ তৈরি করে।</p>
-  </div>
-  <div class="callout tip"><span class="co-icon">🎯</span><div><strong>কেন কাজ করে — The Science:</strong> <strong>Cal Newport</strong> (Georgetown University, কম্পিউটার সায়েন্স অধ্যাপক, ২০১৬, <em>Deep Work</em>) এই কাঠামো তৈরি করেছেন। তাঁর সংজ্ঞা: <em>'ডিপ ওয়ার্ক হলো বিঘিরণমুক্ত অবস্থায় জ্ঞানীয় সক্ষমতার সীমায় পৌঁছানো পেশাদার কাজ।'</em> এটা একটা সংশ্লেষণ — এরিকসনের ইচ্ছাকৃত অনুশীলন, সিকসেন্টমিহাইয়ের ফ্লো, এবং মনোযোগ গবেষণার উপর ভিত্তি করে — নিজস্ব পরীক্ষা নয়। <strong>K. Anders Ericsson</strong> (Florida State University, ১৯৯৩, <em>Psychological Review</em>) দেখিয়েছেন — বিশেষজ্ঞ বেহালারা ২০ বছর বয়সে গড়ে ~১০,০০০ ঘণ্টা <strong>ইচ্ছাকৃত অনুশীলন</strong> (deliberate practice) করেছেন। ⚠️ <em>সততা টিকা:</em> '১০,০০০ ঘণ্টার নিয়ম' — ম্যালকম গ্ল্যাডওয়েল (২০০৮, <em>Outliers</em>) জনপ্রিয় করেছেন, কিন্তু এরিকসন নিজেই এটি প্রত্যাখ্যান করেছেন। ম্যাকনামারা মেটা-অ্যানালাইসিস (২০১৪) দেখিয়েছে ইচ্ছাকৃত অনুশীলন শুধু <strong>৪-২৬% পার্থক্য</strong> ব্যাখ্যা করে — ক্ষেত্রভেদে (খেলা ২৬%, পেশা ১%-এর কম)। ডিপ ওয়ার্ক প্রয়োজন, কিন্তু একমাত্র কারণ নয়। শাটডাউনের diffuse mode হলো মার্কাস রাইখলের <strong>ডিফল্ট মোড নেটওয়ার্ক</strong> (DMN) — বিশ্রামের সময় মস্তিষ্ক যে নেটওয়ার্ক চালায়, সেটা সৃজনশীল সমস্যা সমাধানে সক্রিয়।</div></div>
+  </div></div>
+  <div class="callout tip"><span class="co-icon">🎯</span><div><strong>কেন কাজ করে — The Science:</strong> <strong>Cal Newport</strong> (Georgetown University, কম্পিউটার সায়েন্স অধ্যাপক, ২০১৬, <em>Deep Work</em>) এই কাঠামো তৈরি করেছেন। তাঁর সংজ্ঞা: <em>'ডিপ ওয়ার্ক হলো বিঘিরণমুক্ত অবস্থায় জ্ঞানীয় সক্ষমতার সীমায় পৌঁছানো পেশাদার কাজ।'</em> এটা একটা সংশ্লেষণ — এরিকসনের ইচ্ছাকৃত অনুশীলন, সিকসেন্টমিহাইয়ের ফ্লো, এবং মনোযোগ গবেষণার উপর ভিত্তি করে — নিজস্ব পরীক্ষা নয়। <strong>K. Anders Ericsson</strong> (Florida State University, ১৯৯৩, <em>Psychological Review</em>) দেখিয়েছেন — বিশেষজ্ঞ বেহালারা ২০ বছর বয়সে গড়ে ~১০,০০০ ঘণ্টা <strong>ইচ্ছাকৃত অনুশীলন</strong> (deliberate practice) করেছেন। ⚠️ <em>সততা টিকা:</em> '১০,০০০ ঘণ্টার নিয়ম' — ম্যালকম গ্ল্যাডওয়েল (২০০৮, <em>Outliers</em>) জনপ্রিয় করেছেন, কিন্তু এরিকসন নিজেই এটি প্রত্যাখ্যান করেছেন। ম্যাকনামারা মেটা-অ্যানালাইসিস (২০১৪) দেখিয়েছে ইচ্ছাকৃত অনুশীলন শুধু <strong>৪-২৬% পার্থক্য</strong> ব্যাখ্যা করে — ক্ষেত্রভেদে (খেলা ২৬%, পেশা ১%-এর কম)। ডিপ ওয়ার্ক প্রয়োজন, কিন্তু একমাত্র কারণ নয়। শাটডাউনের diffuse mode হলো মার্কাস রাইখলের <strong>ডিফল্ট মোড নেটওয়ার্ক</strong> (DMN) — বিশ্রামের সময় মস্তিষ্ক যে নেটওয়ার্ক চালায়, সেটা সৃজনশীল সমস্যা সমাধানে সক্রিয়।</div></div></div>
   <div class="stat-grid">
-    <div class="stat-card"><div class="sc-num">৯০ মিনিট</div><div class="sc-label">একটা ডিপ ওয়ার্ক ব্লক<br>আল্ট্রাডিয়ান চক্র</div></div>
-    <div class="stat-card"><div class="sc-num">৪-২৬%</div><div class="sc-label">ইচ্ছাকৃত অনুশীলন পার্থক্য ব্যাখ্যা করে<br>Macnamara et al. (2014)</div></div>
-  </div>
+    <div class="stat-card"><div class="sc-num">৯০ মিনিট</div><div class="sc-label">একটা ডিপ ওয়ার্ক ব্লক<br>আল্ট্রাডিয়ান চক্র</div></div></div>
+    <div class="stat-card"><div class="sc-num">৪-২৬%</div><div class="sc-label">ইচ্ছাকৃত অনুশীলন পার্থক্য ব্যাখ্যা করে<br>Macnamara et al. (2014)</div></div></div>
+  </div></div>
   <div class="compare">
-    <div class="cmp-card cmp-bad"><div class="cmp-label">❌ শ্যালো ওয়ার্ক</div>১০টা ট্যাব। মেইল চেক। স্ল্যাক রিপ্লাই। ফোন। ৩ ঘণ্টা — কিছুই হয়নি। মস্তিষ্ক লাফিয়েছে, কাজ করেনি।</div>
-    <div class="cmp-card cmp-good"><div class="cmp-label">✅ ডিপ ওয়ার্ক</div>১টা কাজ, ১টা ট্যাব, ফোন অন্য ঘরে, ৯০ মিনিট, একই ডেস্ক। শাটডাউন রিচুয়াল। অবচেতন মন রাতে কাজ চালিয়ে যায়।</div>
-  </div>
-  <div class="callout info"><span class="co-icon">🧠</span><div><strong>পবিত্র সমতুল্য — Sacred Analogue:</strong> ইতিকাফ — রমজানের শেষ দশকে মসজিদে নিরেট থাকা। এটাই ডিপ ওয়ার্কের আধ্যাত্মিক রূপ। নবী ﷺ ইতিকাফ করতেন — মসজিদে একটা নির্দিষ্ট জায়গায়, নির্দিষ্ট সময়ে, একটাই কাজ — ইবাদত। বাইরের পৃথিবী বন্ধ। কোথায় (মসজিদ), কখন (শেষ দশক), কতক্ষণ (১০ দিন), কী (ইবাদত) — চারটাই ঠিক। এটাই স্থাপত্য। আর শাটডাউন? নবী ﷺ-এর দুআ: <em>'হে আল্লাহ, আমি তোমার কাছে দুনিয়া ও আখিরাতের কল্যাণ চাই।'</em> — দিন শেষে সচেতন বন্ধ। এটাই diffuse mode — রাতে আল্লাহ বান্দার দিকে তাকান, সমাধান পাঠান।</div></div>
-  <div class="verse">"তোমরা যা ভালো কাজ করো, আল্লাহ তা জানেন।" — কুরআন ২:১১০</div>
-  <div class="verse en">"And whatever good you do — Allah knows it." — Quran 2:110</div>
+    <div class="cmp-card cmp-bad"><div class="cmp-label">❌ শ্যালো ওয়ার্ক</div>১০টা ট্যাব। মেইল চেক। স্ল্যাক রিপ্লাই। ফোন। ৩ ঘণ্টা — কিছুই হয়নি। মস্তিষ্ক লাফিয়েছে, কাজ করেনি।</div></div>
+    <div class="cmp-card cmp-good"><div class="cmp-label">✅ ডিপ ওয়ার্ক</div>১টা কাজ, ১টা ট্যাব, ফোন অন্য ঘরে, ৯০ মিনিট, একই ডেস্ক। শাটডাউন রিচুয়াল। অবচেতন মন রাতে কাজ চালিয়ে যায়।</div></div>
+  </div></div>
+  <div class="callout info"><span class="co-icon">🧠</span><div><strong>পবিত্র সমতুল্য — Sacred Analogue:</strong> ইতিকাফ — রমজানের শেষ দশকে মসজিদে নিরেট থাকা। এটাই ডিপ ওয়ার্কের আধ্যাত্মিক রূপ। নবী ﷺ ইতিকাফ করতেন — মসজিদে একটা নির্দিষ্ট জায়গায়, নির্দিষ্ট সময়ে, একটাই কাজ — ইবাদত। বাইরের পৃথিবী বন্ধ। কোথায় (মসজিদ), কখন (শেষ দশক), কতক্ষণ (১০ দিন), কী (ইবাদত) — চারটাই ঠিক। এটাই স্থাপত্য। আর শাটডাউন? নবী ﷺ-এর দুআ: <em>'হে আল্লাহ, আমি তোমার কাছে দুনিয়া ও আখিরাতের কল্যাণ চাই।'</em> — দিন শেষে সচেতন বন্ধ। এটাই diffuse mode — রাতে আল্লাহ বান্দার দিকে তাকান, সমাধান পাঠান।</div></div></div>
+  <div class="verse">"তোমরা যা ভালো কাজ করো, আল্লাহ তা জানেন।" — কুরআন ২:১১০</div></div>
+  <div class="verse en">"And whatever good you do — Allah knows it." — Quran 2:110</div></div>
   <div class="checklist">
     <li>আগামীকাল একটা ডিপ ওয়ার্ক ব্লক সাজাও — কোথায়, কখন, কতক্ষণ, কী</li>
     <li>ফোন অন্য ঘরে, ট্যাব ১টা, শুধু এক কাজ</li>
@@ -249,7 +249,7 @@ doors.push({
     <li>৯০ মিনিট কাজ → বিরতি (কোনো স্ক্রিন নয়)</li>
     <li>দিন শেষে শাটডাউন রিচুয়াল করো — 'আজকের কাজ শেষ'</li>
     <li>ছন্দময় (rhythmic) সময়সূচী বেছে নাও — প্রতিদিন একই ব্লক</li>
-  </div>
+  </div></div>
 <div class="svg-diagram">
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="280" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🏗️ Deep Work: Architecture Required</text>
@@ -269,13 +269,13 @@ doors.push({
   <text x="280" y="180" text-anchor="middle" fill="#94a3b8" font-size="10">Shutdown lets diffuse mode work</text>
   <text x="280" y="210" text-anchor="middle" fill="#fbbf24" font-size="10">Newport: Deep Work = 21st century superpower</text>
 </svg>
-</div>
-<div class="svg-caption">চিত্র: ডিপ ওয়ার্ক — চার সিদ্ধান্ত + রিচুয়াল + শাটডাউন।</div>
+</div></div>
+<div class="svg-caption">চিত্র: ডিপ ওয়ার্ক — চার সিদ্ধান্ত + রিচুয়াল + শাটডাউন।</div></div>
 
   <div class="secret-box">
-    <div class="secret-icon">🏗️</div>
-    <div class="secret-line">ডিপ ওয়ার্ক ঘটে না — তাকে সাজাতে হয়। চার সিদ্ধান্ত + রিচুয়াল + শাটডাউন।</div>
-    <div class="secret-why">কারণ মস্তিষ্ক স্থাপত্য ছাড়া বিঘিরণে ভেঙে পড়ে। কোথায়-কখন-কতক্ষণ-কী ঠিক করলে মস্তিষ্ক জানে — 'ডাইভ।' শাটডাউন করলে অবচেতন মন গোপনে কাজ চালিয়ে যায় — diffuse mode। তুমি বিশ্রাম করো, মস্তিষ্ক সমাধান খোঁজে।</div>
+    <div class="secret-icon">🏗️</div></div>
+    <div class="secret-line">ডিপ ওয়ার্ক ঘটে না — তাকে সাজাতে হয়। চার সিদ্ধান্ত + রিচুয়াল + শাটডাউন।</div></div>
+    <div class="secret-why">কারণ মস্তিষ্ক স্থাপত্য ছাড়া বিঘিরণে ভেঙে পড়ে। কোথায়-কখন-কতক্ষণ-কী ঠিক করলে মস্তিষ্ক জানে — 'ডাইভ।' শাটডাউন করলে অবচেতন মন গোপনে কাজ চালিয়ে যায় — diffuse mode। তুমি বিশ্রাম করো, মস্তিষ্ক সমাধান খোঁজে।</div></div>
   </div>`,
   senior: {
     title: "আগামীকাল সাজাও — Build Your Deep Work Block",
@@ -301,7 +301,7 @@ doors.push({
   },
   story: `<p class="scene-setting">তুমি ভাবো — 'আমি এত বয়সে নতুন কিছু শিখবো কীভাবে? আমার মস্তিষ্ক তো পাথর হয়ে গেছে।' এটা একটা মিথ্যা যা বিজ্ঞান ভেঙে দিয়েছে। তোমার মস্তিষ্ক পাথর নয় — এটা কাদামাটি। যতবার নতুন কিছু করো, নতুন পথ তৈরি হয়। পুরোনো পথ মুছে যায় না — নতুন পথ তার পাশে বসে।</p>
   <p class="scene-setting en">You think 'I'm too old to learn.' Wrong. Your brain is not stone — it is clay. Every new experience carves a new path. Old paths don't vanish — new ones form alongside.</p>
-  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>পুরোনো ধারণা:</strong> 'মস্তিষ্ক বয়সের সাথে নষ্ট হয়, নতুন কিছু শেখা যায় না।' <strong>সত্য:</strong> এটা ভুল। ১৯৬০-এর দশক পর্যন্ত বিজ্ঞানীরা ভাবতেন প্রাপ্তবয়স্ক মস্তিষ্ক আর বদলায় না। কিন্তু ১৯৮০-৯০-এর গবেষণায় প্রমাণিত — প্রাপ্তবয়স্ক মস্তিষ্কও নতুন সংযোগ তৈরি করে, নতুন দক্ষতা গ্রহণ করে। এটাই নিউরোপ্লাস্টিসিটি।</div></div>
+  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>পুরোনো ধারণা:</strong> 'মস্তিষ্ক বয়সের সাথে নষ্ট হয়, নতুন কিছু শেখা যায় না।' <strong>সত্য:</strong> এটা ভুল। ১৯৬০-এর দশক পর্যন্ত বিজ্ঞানীরা ভাবতেন প্রাপ্তবয়স্ক মস্তিষ্ক আর বদলায় না। কিন্তু ১৯৮০-৯০-এর গবেষণায় প্রমাণিত — প্রাপ্তবয়স্ক মস্তিষ্কও নতুন সংযোগ তৈরি করে, নতুন দক্ষতা গ্রহণ করে। এটাই নিউরোপ্লাস্টিসিটি।</div></div></div>
   <p class="scene-setting">এখন শোনো <strong>কারিগর লুৎফুর</strong> গল্প। লুৎফু একজন নকশা খোদাইকারী — সে পাথরের উপর জ্যামিতিক নকশা খোদাই করে। তার ডান হাতের বুড়ো আঙুলে একটা স্থায়ী ফাটা দাগ — ছুড়ি ধরার জন্য।</p>
   <div class="dialogue">
     <p><strong>শাগরেদ:</strong> ওস্তাদ, আমি এই বয়সে নতুন নকশা শিখবো কীভাবে? আমার হাত তো অভ্যস্ত না।</p>
@@ -310,9 +310,9 @@ doors.push({
     <p><strong>লুৎফু:</strong> ভুল হওয়াই শেখা। প্রতিটা ভুলে তোর হাত শিখছে — কোন দিকে চাপ দিতে হয়। ভুল করলে হাত বলে — 'এই দিকে না।' সঠিক করলে হাত বলে — 'এই দিকে।' প্রতিটা চেষ্টায় হাতের ভেতরে নতুন পথ তৈরি হয়।</p>
     <p><strong>শাগরেদ:</strong> কতদিন লাগে?</p>
     <p><strong>লুৎফু:</strong> একদিনে না। কিন্তু প্রতিদিন একটু করলে — এক মাসে হাত নড়তে শুরু করে। তিন মাসে রেখা সোজা হয়। ছয় মাসে নকশা আসে। কিন্তু সবচেয়ে অদ্ভুত জিনিস — এক সময় তুই ভুলে যাবি যে তুই খোদাই করছিস। হাত নিজে চলবে। চোখ নিজে দেখবে। সময় মুছে যাবে। এটাই ফ্লো।</p>
-  </div>
+  </div></div>
   <p class="scene-setting">লুৎফুর হাত যেমন কাদামাটি — তোমার মস্তিষ্কও তেমন। প্রতিটা নতুন কাজে নতুন পথ তৈরি হয়। আর একসময় — কাজটা নিজে চলতে শুরু করে। সেটাই ফ্লো।</p>
-  <div class="code-block">
+  <div class="callout tip"><span class="co-icon">📋</span><div>
     <h4>🔧 সিস্টেম — Plasticity & Flow (৩টি স্তর)</h4>
     <p><strong>স্তর ১ — নিউরোপ্লাস্টিসিটি (Brain Rewiring):</strong> প্রতিবার তুমি নতুন কিছু শেখো, মস্তিষ্কের নিউরনগুলো নতুন সংযোগ (synapse) তৈরি করে। Hebb-এর নিয়ম (১৯৪৯): <em>'একসাথে ফায়ার করে এমন নিউরন, একসাথে সংযুক্ত হয়।'</em></p>
     <p>বারবার করলে সংযোগ শক্ত হয় — <strong>myelin</strong> নামক একটা চর্বির আস্তরণ সংযোগের চারপাশে জমে। মাইলিন সংকেতের গতি <strong>১০-১০০ গুণ বাড়ায়</strong>।</p>
@@ -321,19 +321,19 @@ doors.push({
     <p>৩টি উপাদান: (১) স্পষ্ট লক্ষ্য, (২) তাৎক্ষণিক ফিডব্যাক, (৩) বর্তমান সক্ষমতার একটু বেশি।</p>
     <p><strong>স্তর ৩ — ফ্লো স্টেট (Flow):</strong> যখন চ্যালেঞ্জ ও দক্ষতা উভয়ই উচ্চ এবং মিলে যায় — তুমি ফ্লোতে যাও।</p>
     <p>ফ্লোর ৯টি উপাদান (Csikszentmihalyi): চ্যালেঞ্জ-দক্ষতা মিল, কাজে ডুবে যাওয়া, স্পষ্ট লক্ষ্য, তাৎক্ষণিক ফিডব্যাক, মনোযোগ, নিয়ন্ত্রণ, সময় বিকৃতি, আত্ম-চেতনার অভাব, কাজেই পুরস্কার।</p>
-  </div>
-  <div class="callout tip"><span class="co-icon">🎯</span><div><strong>কেন কাজ করে — The Science:</strong> <strong>Michael Merzenich</strong> (UCSF) ও সহযোগীরা ১৯৮৩ সালে <em>Neuroscience</em>-এ দেখিয়েছেন — প্রাপ্তবয়স্ক বানরের মস্তিষ্কের সংবেদী মানচিত্র (somatotopic map) স্নায়ু কাটার পর <strong>পুনর্গঠিত</strong> হয়। Merzenich, Jenkins ও Recanzone দেখিয়েছেন প্রাপ্তবয়স্ক মস্তিষ্ক প্রশিক্ষণে পুনর্গঠিত হয়। Merzenich ২০১৬ সালে <strong>Kavli Prize in Neuroscience</strong> পেয়েছেন — 'অভিজ্ঞতা ও স্নায়বিক কার্যকলাপ কীভাবে মস্তিষ্কের কার্যকারিতা পুনর্গঠন করে' সেই আবিষ্কারের জন্য। <strong>Norman Doidge</strong> (Toronto/Columbia, ২০০৭, <em>The Brain That Changes Itself</em>) এই গবেষণাকে জনসাধারণের কাছে নিয়ে এসেছেন — স্ট্রোক রোগীরা হারানো দক্ষতা ফিরে পাচ্ছেন, শিশুরা শেখার অক্ষমতা কাটিয়ে উঠছে। ⚠️ <em>সততা টিকা:</em> Doidge-এর কিছু ক্লিনিক্যাল দাবি সমালোচিত (বিশেষ করে সিক্যুয়েল <em>The Brain's Way of Healing</em>, ২০১৫) — কিছু চিকিৎসা অপ্রমাণিত। তবে মূল নিউরোপ্লাস্টিসিটি গবেষণা দৃঢ়। <strong>Mihaly Csikszentmihalyi</strong> (Claremont Graduate University, ১৯৯০, <em>Flow</em>) ফ্লো স্টেট বর্ণনা করেছেন — সম্পূর্ণ শোষণের অবস্থা, যেখানে চ্যালেঞ্জ ও দক্ষতা মিলে যায়। ⚠️ '৪% চ্যালেঞ্জ-দক্ষতা ব্যালেন্স' জনপ্রিয় সংখ্যা — কিন্তু Csikszentmihalyi-র নিজের কাজে এটি নেই। জনপ্রিয় সরলীকরণ, প্রকৃত গবেষণা নয়।</div></div>
+  </div></div>
+  <div class="callout tip"><span class="co-icon">🎯</span><div><strong>কেন কাজ করে — The Science:</strong> <strong>Michael Merzenich</strong> (UCSF) ও সহযোগীরা ১৯৮৩ সালে <em>Neuroscience</em>-এ দেখিয়েছেন — প্রাপ্তবয়স্ক বানরের মস্তিষ্কের সংবেদী মানচিত্র (somatotopic map) স্নায়ু কাটার পর <strong>পুনর্গঠিত</strong> হয়। Merzenich, Jenkins ও Recanzone দেখিয়েছেন প্রাপ্তবয়স্ক মস্তিষ্ক প্রশিক্ষণে পুনর্গঠিত হয়। Merzenich ২০১৬ সালে <strong>Kavli Prize in Neuroscience</strong> পেয়েছেন — 'অভিজ্ঞতা ও স্নায়বিক কার্যকলাপ কীভাবে মস্তিষ্কের কার্যকারিতা পুনর্গঠন করে' সেই আবিষ্কারের জন্য। <strong>Norman Doidge</strong> (Toronto/Columbia, ২০০৭, <em>The Brain That Changes Itself</em>) এই গবেষণাকে জনসাধারণের কাছে নিয়ে এসেছেন — স্ট্রোক রোগীরা হারানো দক্ষতা ফিরে পাচ্ছেন, শিশুরা শেখার অক্ষমতা কাটিয়ে উঠছে। ⚠️ <em>সততা টিকা:</em> Doidge-এর কিছু ক্লিনিক্যাল দাবি সমালোচিত (বিশেষ করে সিক্যুয়েল <em>The Brain's Way of Healing</em>, ২০১৫) — কিছু চিকিৎসা অপ্রমাণিত। তবে মূল নিউরোপ্লাস্টিসিটি গবেষণা দৃঢ়। <strong>Mihaly Csikszentmihalyi</strong> (Claremont Graduate University, ১৯৯০, <em>Flow</em>) ফ্লো স্টেট বর্ণনা করেছেন — সম্পূর্ণ শোষণের অবস্থা, যেখানে চ্যালেঞ্জ ও দক্ষতা মিলে যায়। ⚠️ '৪% চ্যালেঞ্জ-দক্ষতা ব্যালেন্স' জনপ্রিয় সংখ্যা — কিন্তু Csikszentmihalyi-র নিজের কাজে এটি নেই। জনপ্রিয় সরলীকরণ, প্রকৃত গবেষণা নয়।</div></div></div>
   <div class="stat-grid">
-    <div class="stat-card"><div class="sc-num">Kavli ২০১৬</div><div class="sc-label">Merzenich-কে নিউরোপ্লাস্টিসিটি আবিষ্কারের জন্য<br>নোবেল-সমমানের পুরস্কার</div></div>
-    <div class="stat-card"><div class="sc-num">৯টি</div><div class="sc-label">ফ্লো স্টেটের উপাদান<br>Csikszentmihalyi (1990)</div></div>
-  </div>
+    <div class="stat-card"><div class="sc-num">Kavli ২০১৬</div><div class="sc-label">Merzenich-কে নিউরোপ্লাস্টিসিটি আবিষ্কারের জন্য<br>নোবেল-সমমানের পুরস্কার</div></div></div>
+    <div class="stat-card"><div class="sc-num">৯টি</div><div class="sc-label">ফ্লো স্টেটের উপাদান<br>Csikszentmihalyi (1990)</div></div></div>
+  </div></div>
   <div class="compare">
-    <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল উপায়</div>'আমি পারবো না, আমার মস্তিষ্ক পাথর।' চেষ্টাই করো না। মস্তিষ্কে নতুন পথ তৈরি হওয়ার সুযোগ নাই।</div>
-    <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক উপায়</div>প্রতিদিন একটু শেখো। ভুল করো — শুধরে নাও। মস্তিষ্কে নতুন সংযোগ তৈরি হয়। মাইলিন জমে। একদিন ফ্লোতে যাও — সময় মুছে যায়।</div>
-  </div>
-  <div class="callout info"><span class="co-icon">🧠</span><div><strong>পবিত্র সমতুল্য — Sacred Analogue:</strong> কুরআনে আল্লাহ বলেছেন: <em>'যে ব্যক্তি সৎপথে আসে, তার জন্য তিনি সহজ করে দেন। আর যে বিপথে যায়, তার জন্য তিনি তা কঠিন করে দেন।'</em> (৯২:৫-৭, ৯২:৮-১০)। এটাই নিউরোপ্লাস্টিসিটির আধ্যাত্মিক বিবরণ। সৎপথে হাঁটলে সেই পথ সহজ হয় — মস্তিষ্কে সেই সংযোগ মজবুত হয়, মাইলিন জমে। বিপথে হাঁটলে সেই পথ শক্ত হয় — কিন্তু সৎপথের সংযোগ দুর্বল হয়। আল্লাহ মস্তিষ্কের নিয়ম বদলান না — তিনি সেই নিয়মের ভেতর দিয়ে কাজ করেন। নবী ﷺ বলেছেন: <em>'জ্ঞান অর্জন প্রত্যেক মুসলিমের উপর কর্তব্য।'</em> — ইবনে মাজাহ (এই হাদিসটি দুর্বল বলে গণ্য করেছেন কিছু মুহাদ্দিস, তবে অর্থটি সঠিক)। জ্ঞান অর্জন শুধু তথ্য সংগ্রহ নয় — এটা মস্তিষ্ক পুনর্গঠন। প্রতিটা নতুন জ্ঞান তোমার মস্তিষ্কে নতুন পথ খোদাই করে। এটাই নকশ — মস্তিষ্কে নতুন নকশা খোদাই।</div></div>
-  <div class="verse">"যে ব্যক্তি সৎপথে আসে এবং ঈমান আনে, তার জন্য তিনি সহজ করে দেবেন পথ চলা।" — কুরআন ৯২:৫-৭</div>
-  <div class="verse en">"As for the one who gives and fears Allah, and believes in the best — We will ease for him the path of ease." — Quran 92:5-7</div>
+    <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল উপায়</div>'আমি পারবো না, আমার মস্তিষ্ক পাথর।' চেষ্টাই করো না। মস্তিষ্কে নতুন পথ তৈরি হওয়ার সুযোগ নাই।</div></div>
+    <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক উপায়</div>প্রতিদিন একটু শেখো। ভুল করো — শুধরে নাও। মস্তিষ্কে নতুন সংযোগ তৈরি হয়। মাইলিন জমে। একদিন ফ্লোতে যাও — সময় মুছে যায়।</div></div>
+  </div></div>
+  <div class="callout info"><span class="co-icon">🧠</span><div><strong>পবিত্র সমতুল্য — Sacred Analogue:</strong> কুরআনে আল্লাহ বলেছেন: <em>'যে ব্যক্তি সৎপথে আসে, তার জন্য তিনি সহজ করে দেন। আর যে বিপথে যায়, তার জন্য তিনি তা কঠিন করে দেন।'</em> (৯২:৫-৭, ৯২:৮-১০)। এটাই নিউরোপ্লাস্টিসিটির আধ্যাত্মিক বিবরণ। সৎপথে হাঁটলে সেই পথ সহজ হয় — মস্তিষ্কে সেই সংযোগ মজবুত হয়, মাইলিন জমে। বিপথে হাঁটলে সেই পথ শক্ত হয় — কিন্তু সৎপথের সংযোগ দুর্বল হয়। আল্লাহ মস্তিষ্কের নিয়ম বদলান না — তিনি সেই নিয়মের ভেতর দিয়ে কাজ করেন। নবী ﷺ বলেছেন: <em>'জ্ঞান অর্জন প্রত্যেক মুসলিমের উপর কর্তব্য।'</em> — ইবনে মাজাহ (এই হাদিসটি দুর্বল বলে গণ্য করেছেন কিছু মুহাদ্দিস, তবে অর্থটি সঠিক)। জ্ঞান অর্জন শুধু তথ্য সংগ্রহ নয় — এটা মস্তিষ্ক পুনর্গঠন। প্রতিটা নতুন জ্ঞান তোমার মস্তিষ্কে নতুন পথ খোদাই করে। এটাই নকশ — মস্তিষ্কে নতুন নকশা খোদাই।</div></div></div>
+  <div class="verse">"যে ব্যক্তি সৎপথে আসে এবং ঈমান আনে, তার জন্য তিনি সহজ করে দেবেন পথ চলা।" — কুরআন ৯২:৫-৭</div></div>
+  <div class="verse en">"As for the one who gives and fears Allah, and believes in the best — We will ease for him the path of ease." — Quran 92:5-7</div></div>
   <div class="checklist">
     <li>আজ একটা নতুন জিনিস শেখো — ছোট হলেও</li>
     <li>ভুল করো — ভুল ধরো, শুধরে নাও</li>
@@ -341,7 +341,7 @@ doors.push({
     <li>চ্যালেঞ্জ বর্তমান দক্ষতার একটু বেশি রাখো</li>
     <li>একসময় তুমি ভুলে যাবে যে কাজ করছো — সেটাই ফ্লো</li>
     <li>মনে রাখো — তোমার মস্তিষ্ক পাথর নয়, কাদামাটি</li>
-  </div>
+  </div></div>
 <div class="svg-diagram">
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
   <text x="280" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">🧬 Neuroplasticity: Neurons That Fire Together Wire Together</text>
@@ -362,13 +362,13 @@ doors.push({
   <text x="280" y="200" text-anchor="middle" fill="#fbbf24" font-size="8">Hebb: fire together = wire together</text>
   <text x="280" y="215" text-anchor="middle" fill="#94a3b8" font-size="10">Flow = challenge matches skill</text>
 </svg>
-</div>
-<div class="svg-caption">চিত্র: নিউরোপ্লাস্টিসিটি — বারবার অনুশীলন করলে সংযোগ শক্ত ও দ্রুত হয়।</div>
+</div></div>
+<div class="svg-caption">চিত্র: নিউরোপ্লাস্টিসিটি — বারবার অনুশীলন করলে সংযোগ শক্ত ও দ্রুত হয়।</div></div>
 
   <div class="secret-box">
-    <div class="secret-icon">🧬</div>
-    <div class="secret-line">মস্তিষ্ক কাদামাটি — প্রতিটা নতুন কাজে নতুন পথ তৈরি হয়।</div>
-    <div class="secret-why">কারণ নিউরন একসাথে ফায়ার করলে সংযুক্ত হয় (Hebb)। বারবার করলে মাইলিন জমে — সংকেত ১০-১০০ গুণ দ্রুত। চ্যালেঞ্জ-দক্ষতা মিললে ফ্লো আসে — সময় মুছে যায়, কাজ নিজে চলে।</div>
+    <div class="secret-icon">🧬</div></div>
+    <div class="secret-line">মস্তিষ্ক কাদামাটি — প্রতিটা নতুন কাজে নতুন পথ তৈরি হয়।</div></div>
+    <div class="secret-why">কারণ নিউরন একসাথে ফায়ার করলে সংযুক্ত হয় (Hebb)। বারবার করলে মাইলিন জমে — সংকেত ১০-১০০ গুণ দ্রুত। চ্যালেঞ্জ-দক্ষতা মিললে ফ্লো আসে — সময় মুছে যায়, কাজ নিজে চলে।</div></div>
   </div>`,
   senior: {
     title: "আজই শেখো শুরু করো — Start Learning Today",
@@ -394,10 +394,10 @@ doors.push({
   },
   story: `<p class="scene-setting">তুমি এই বইয়ের চৌদ্দটা দরজা পার হয়েছ। চৌদ্দজন কারিগর তোমাকে চৌদ্দটা উপায় শিখিয়েছেন। এখন তুমি ভাবো — 'এত কিছু আমি কীভাবে মনে রাখবো? কোনটা আগে করবো?' উত্তর হলো — তোমাকে মনে রাখতে হবে না। তোমার একটা দৈনিক ব্যবস্থা দরকার — একটা Operating System — যেখানে সব কারিগরের পাঠ একসাথে বসে যায়।</p>
   <p class="scene-setting en">You have passed 14 doors. 14 masters taught you 14 techniques. Now you ask — 'how do I remember all this?' Answer: you don't. You need a daily system — an operating system — where all 14 lessons fit together.</p>
-  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>শেষ পরীক্ষা:</strong> তুমি যদি শুধু একটা দরজা মনে রাখো, সেটা এই দরজা হোক। কারণ এই দরজায় সব কারিগরের পাঠ একসাথে বসেছে। এটাই তোমার দৈনিক ব্লুপ্রিন্ট।</div></div>
+  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>শেষ পরীক্ষা:</strong> তুমি যদি শুধু একটা দরজা মনে রাখো, সেটা এই দরজা হোক। কারণ এই দরজায় সব কারিগরের পাঠ একসাথে বসেছে। এটাই তোমার দৈনিক ব্লুপ্রিন্ট।</div></div></div>
   <p class="scene-setting">মনে আছে ভূমিকায় ৪টা ধাপের কথা বলেছিলাম? ধাপ ১ (তাৎক্ষণিক কৌশল, দরজা ১-৫), ধাপ ২ (শরীর-মনের অবস্থা নিয়ন্ত্রণ, ৬-৮), ধাপ ৩ (অভ্যাস ইঞ্জিনিয়ারিং, ৯-১২), ধাপ ৪ (গভীর দক্ষতা, ১৩-১৫)। এই চারটা ধাপ আলাদা আলাদা শেখার জন্য ভাগ করা হয়েছিল — কিন্তু বাস্তব জীবনে এরা আলাদা থাকে না। একটা দিনে চারটাই একসাথে চলে। চলো দেখি কীভাবে — দিনের এক একটা মুহূর্তে এক একজন কারিগরকে ডাকি।</p>
   <p class="scene-setting en">Remember the 4 phases from the prologue? Phase 1 (instant techniques, doors 1-5), Phase 2 (state regulation, 6-8), Phase 3 (habit engineering, 9-12), Phase 4 (deep mastery, 13-15). They were separated for learning — but in real life they run together, all in one day. Let's see how — calling on each master at their moment.</p>
-  <div class="code-block">
+  <div class="callout tip"><span class="co-icon">📋</span><div>
     <h4>🌅 সকাল — দরজা ৬, ৫, ১, ২</h4>
     <p><strong>ফজরের আজানে উঠো</strong> — কারিগর <strong>ইব্রাহিম</strong> (দরজা ৬) বলেছেন: সকালের আলো মাস্টার ক্লক সেট করে। বাইরে যাও, ৫ মিনিট আকাশের দিকে তাকাও। গোসলের শেষে ৩০ সেকেন্ড ঠান্ডা পানি।</p>
     <p><strong>শ্বাস-সুইচ</strong> — কারিগর <strong>সুমাইয়া</strong> (দরজা ৫) বলেছেন: দুইবার নাকে শ্বাস, একবার লম্বা মুখে ছাড়ো। দিন শুরুর আগে ৩ চক্র।</p>
@@ -418,10 +418,10 @@ doors.push({
     <h4>😴 রাত — দরজা ৮, ৬, ১৪</h4>
     <p><strong>ঘুমই শেখা</strong> — কারিগর <strong>জাকারিয়া</strong> (দরজা ৮) বলেছেন: ঘুমানোর আগে পড়ো। স্ক্রিন বন্ধ। ঘর ঠান্ডা। ৭-৯ ঘণ্টা। গভীর ঘুমে মস্তিষ্ক সেভ করে।</p>
     <p><strong>মস্তিষ্ক পুনর্গঠন</strong> — কারিগর <strong>লুৎফু</strong> (দরজা ১৪) বলেছেন: আজ যা শিখলে, রাতে মস্তিষ্ক সেই পথ মজবুত করে। মাইলিন জমে। কাদামাটি গড়ে ওঠে।</p>
-  </div>
-  <div class="callout tip"><span class="co-icon">🎯</span><div><strong>এক দিনের ব্লুপ্রিন্ট — One-Day Blueprint:</strong></div></div>
+  </div></div>
+  <div class="callout tip"><span class="co-icon">🎯</span><div><strong>এক দিনের ব্লুপ্রিন্ট — One-Day Blueprint:</strong></div></div></div>
   <div class="diagram">
-    <div class="diag-title">দৈনিক অপারেটিং সিস্টেম · Daily OS</div>
+    <div class="diag-title">দৈনিক অপারেটিং সিস্টেম · Daily OS</div></div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrowFinal" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c4b5fd"/></marker>
@@ -471,19 +471,19 @@ doors.push({
       <line class="edge" x1="280" y1="205" x2="280" y2="242" marker-end="url(#arrowFinal)"/>
       <text class="lbl-amber" x="280" y="305" text-anchor="middle" style="font-size:.7rem">প্রতিদিন ১% → এক বছরে ৩৭ গুণ</text>
     </svg>
-    <div class="diag-cap">চৌদ্দ কারিগর — এক দিন। এক ব্যবস্থা।</div>
-  </div>
-  <div class="callout info"><span class="co-icon">🧠</span><div><strong>সব কারিগরের এক কথা — The Unifying Principle:</strong> বখতিয়ার বলেছেন ছোট শুরু। নাফিসা বলেছেন পরিবেশ। জাফর বলেছেন ভঙ্গি। ফারহান বলেছেন আনন্দ বাঁধাই। সুমাইয়া বলেছেন শ্বাস। ইব্রাহিম বলেছেন আলো। রিদওয়ান বলেছেন ফোকাসের পেশী। জাকারিয়া বলেছেন ঘুম। ইসহাক বলেছেন লুপ। আমিনা বলেছেন পরিচয়। ইউসুফ বলেছেন ঢেউ সার্ফ। রুকাইয়া বলেছেন ১%। তামিম বলেছেন স্থাপত্য। লুৎফু বলেছেন কাদামাটি। চৌদ্দ জন, চৌদ্দ উপায় — কিন্তু সবাই এক কথা বলেছেন:</div></div>
+    <div class="diag-cap">চৌদ্দ কারিগর — এক দিন। এক ব্যবস্থা।</div></div>
+  </div></div>
+  <div class="callout info"><span class="co-icon">🧠</span><div><strong>সব কারিগরের এক কথা — The Unifying Principle:</strong> বখতিয়ার বলেছেন ছোট শুরু। নাফিসা বলেছেন পরিবেশ। জাফর বলেছেন ভঙ্গি। ফারহান বলেছেন আনন্দ বাঁধাই। সুমাইয়া বলেছেন শ্বাস। ইব্রাহিম বলেছেন আলো। রিদওয়ান বলেছেন ফোকাসের পেশী। জাকারিয়া বলেছেন ঘুম। ইসহাক বলেছেন লুপ। আমিনা বলেছেন পরিচয়। ইউসুফ বলেছেন ঢেউ সার্ফ। রুকাইয়া বলেছেন ১%। তামিম বলেছেন স্থাপত্য। লুৎফু বলেছেন কাদামাটি। চৌদ্দ জন, চৌদ্দ উপায় — কিন্তু সবাই এক কথা বলেছেন:</div></div></div>
   <div class="secret-box" style="margin:1.5rem 0;padding:1.5rem;border:2px solid var(--amber)">
-    <div class="secret-icon" style="font-size:2.5rem">⚡</div>
-    <div class="secret-line" style="font-size:1.1rem;font-weight:800">তোমার মস্তিষ্ককে জোর করো না। এমন ব্যবস্থা বানাও যেখানে কাজ করাটা সহজ, করতে না চাওয়াটা কঠিন।</div>
-    <div class="secret-why" style="font-size:.85rem;margin-top:.5rem">Don't force your brain. Engineer the world so doing the work is easy, avoiding it is hard.</div>
-  </div>
-  <div class="callout info"><span class="co-icon">🧠</span><div><strong>পবিত্র সমতুল্য — Sacred Analogue:</strong> নবী ﷺ বলেছেন: <em>'সবচেয়ে প্রিয় আমল আল্লাহর কাছে সেটা, যেটা নিয়মিত হয় — যদিও ছোট।'</em> — বুখারি। এই একটা হাদিস পুরো বইয়ের সারাংশ। ছোট (বখতিয়ার), নিয়মিত (রুকাইয়া), লুপে বাঁধা (ইসহাক), পরিচয়ে রূপান্তর (আমিনা), পরিবেশে সহজ (নাফিসা)। আল্লাহ বলেছেন: <em>'নিশ্চয়ই আল্লাহ কোনো ব্যক্তির জন্য তার অবস্থার পরিবর্তন করেন না, যতক্ষণ না সে নিজের অবস্থার পরিবর্তন করে।'</em> (১৩:১১)। এটাই নিউরোপ্লাস্টিসিটির আদেশ — তুমি নিজে বদলাও, তাহলে আল্লাহ তোমার মস্তিষ্ক বদলাবেন। তুমি চেষ্টা করো — আল্লাহ সেই চেষ্টাকে ফল দেবেন। এটাই চুক্তি।</div></div>
-  <div class="verse">"নিশ্চয়ই আল্লাহ কোনো সম্প্রদায়ের অবস্থার পরিবর্তন করেন না, যতক্ষণ না তারা নিজেদের অবস্থার পরিবর্তন করে।" — কুরআন ১৩:১১</div>
-  <div class="verse en">"Indeed, Allah will not change the condition of a people until they change what is in themselves." — Quran 13:11</div>
-  <div class="verse">"তিনি শিখিয়েছেন কলমের মাধ্যমে। শিখিয়েছেন মানুষকে যা সে জানত না।" — কুরআন ৯৬:৪-৫</div>
-  <div class="verse en">"He taught by the pen. He taught man that which he knew not." — Quran 96:4-5</div>
+    <div class="secret-icon" style="font-size:2.5rem">⚡</div></div>
+    <div class="secret-line" style="font-size:1.1rem;font-weight:800">তোমার মস্তিষ্ককে জোর করো না। এমন ব্যবস্থা বানাও যেখানে কাজ করাটা সহজ, করতে না চাওয়াটা কঠিন।</div></div>
+    <div class="secret-why" style="font-size:.85rem;margin-top:.5rem">Don't force your brain. Engineer the world so doing the work is easy, avoiding it is hard.</div></div>
+  </div></div>
+  <div class="callout info"><span class="co-icon">🧠</span><div><strong>পবিত্র সমতুল্য — Sacred Analogue:</strong> নবী ﷺ বলেছেন: <em>'সবচেয়ে প্রিয় আমল আল্লাহর কাছে সেটা, যেটা নিয়মিত হয় — যদিও ছোট।'</em> — বুখারি। এই একটা হাদিস পুরো বইয়ের সারাংশ। ছোট (বখতিয়ার), নিয়মিত (রুকাইয়া), লুপে বাঁধা (ইসহাক), পরিচয়ে রূপান্তর (আমিনা), পরিবেশে সহজ (নাফিসা)। আল্লাহ বলেছেন: <em>'নিশ্চয়ই আল্লাহ কোনো ব্যক্তির জন্য তার অবস্থার পরিবর্তন করেন না, যতক্ষণ না সে নিজের অবস্থার পরিবর্তন করে।'</em> (১৩:১১)। এটাই নিউরোপ্লাস্টিসিটির আদেশ — তুমি নিজে বদলাও, তাহলে আল্লাহ তোমার মস্তিষ্ক বদলাবেন। তুমি চেষ্টা করো — আল্লাহ সেই চেষ্টাকে ফল দেবেন। এটাই চুক্তি।</div></div></div>
+  <div class="verse">"নিশ্চয়ই আল্লাহ কোনো সম্প্রদায়ের অবস্থার পরিবর্তন করেন না, যতক্ষণ না তারা নিজেদের অবস্থার পরিবর্তন করে।" — কুরআন ১৩:১১</div></div>
+  <div class="verse en">"Indeed, Allah will not change the condition of a people until they change what is in themselves." — Quran 13:11</div></div>
+  <div class="verse">"তিনি শিখিয়েছেন কলমের মাধ্যমে। শিখিয়েছেন মানুষকে যা সে জানত না।" — কুরআন ৯৬:৪-৫</div></div>
+  <div class="verse en">"He taught by the pen. He taught man that which he knew not." — Quran 96:4-5</div></div>
   <div class="checklist">
     <li>আগামীকাল সকাল থেকে এই ব্লুপ্রিন্ট অনুসরণ করো</li>
     <li>ফজর: আলো (ইব্রাহিম) + শ্বাস (সুমাইয়া)</li>
@@ -493,11 +493,11 @@ doors.push({
     <li>সন্ধ্যা: পরিচয় মনে করো (আমিনা) + লুপ ম্যাপ (ইসহাক)</li>
     <li>রাত: ঘুমের আগে পড়া (জাকারিয়া) + স্ক্রিন বন্ধ</li>
     <li>খারাপ অভ্যাস এলে: ঢেউ সার্ফ (ইউসুফ) + লুৎফুর কাদামাটি মনে রাখো</li>
-  </div>
+  </div></div>
   <div class="secret-box">
-    <div class="secret-icon">⚡</div>
-    <div class="secret-line">চৌদ্দ কারিগর, এক কথা — মস্তিষ্ককে জোর করো না, ব্যবস্থা বানাও।</div>
-    <div class="secret-why">কারণ মস্তিষ্ক পাথর নয় — কাদামাটি (লুৎফু)। ছোট শুরু করলে হাসে (বখতিয়ার)। পরিবেশ সাজালে নিজে চলে (নাফিসা)। লুপ বাঁধলে অটোপাইলটে চলে (ইসহাক)। পরিচয় ধরলে থামে না (আমিনা)। ঢেউ সার্ফ করলে খারাপ ভাঙে (ইউসুফ)। ১% করলে ৩৭ গুণ হয় (রুকাইয়া)। ঘুমালে সেভ হয় (জাকারিয়া)। সব মিলিয়ে — তুমি নিজের মস্তিষ্কের কারিগর।</div>
+    <div class="secret-icon">⚡</div></div>
+    <div class="secret-line">চৌদ্দ কারিগর, এক কথা — মস্তিষ্ককে জোর করো না, ব্যবস্থা বানাও।</div></div>
+    <div class="secret-why">কারণ মস্তিষ্ক পাথর নয় — কাদামাটি (লুৎফু)। ছোট শুরু করলে হাসে (বখতিয়ার)। পরিবেশ সাজালে নিজে চলে (নাফিসা)। লুপ বাঁধলে অটোপাইলটে চলে (ইসহাক)। পরিচয় ধরলে থামে না (আমিনা)। ঢেউ সার্ফ করলে খারাপ ভাঙে (ইউসুফ)। ১% করলে ৩৭ গুণ হয় (রুকাইয়া)। ঘুমালে সেভ হয় (জাকারিয়া)। সব মিলিয়ে — তুমি নিজের মস্তিষ্কের কারিগর।</div></div>
   </div>`,
   senior: {
     title: "আগামীকাল থেকে শুরু — Start Tomorrow",

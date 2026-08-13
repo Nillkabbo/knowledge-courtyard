@@ -20,24 +20,24 @@ doors.push({
   story:`<p class="scene-setting">১৯৬৭ সাল। পেন্সিলভেনিয়া বিশ্ববিদ্যালয়। একটা ল্যাব। মনোবিজ্ঞানী মার্টিন সেলিগম্যান (Martin Seligman) এবং স্টিভেন মাইয়ার (Steven Maier) কুকুরদের নিয়ে পরীক্ষা করছেন। তিনটে দল। প্রথম দল: কোনো শক নেই। দ্বিতীয় দল: শক আছে, কিন্তু একটা লিভার চাপলে শক বন্ধ। তৃতীয় দল: শক আছে, কিন্তু কিছুতেই বন্ধ করা যায় না। অসহায়।</p>
 <p class="scene-setting en">1967. University of Pennsylvania. A lab. Psychologist Martin Seligman and Steven Maier experimenting with dogs. Three groups. First: no shock. Second: shock, but pressing a lever stops it. Third: shock, but nothing stops it. Helpless.</p>
 
-<div class="dialogue">পরের দিন সব কুকুরকে একটা নতুন বাক্সে রাখা হলো। বাক্সে একটা নিচু প্রাচীর — লাফ দিলেই পালানো যায়। শক শুরু হলো। প্রথম ও দ্বিতীয় দলের কুকুর লাফ দিল — পালাল। কিন্তু তৃতীয় দল? তারা শুয়ে রইল। লাফ দিল না। চেষ্টাই করল না। তারা শিখেছিল — কিছুতেই কিছু হয় না। এমনকি যখন পালানোর রাস্তা খোলা — তারা পালাল না। Seligman এর নাম দিলেন — Learned Helplessness।</div>
-<div class="dialogue en">Next day, all dogs placed in a new box. Low partition — jump over to escape. Shock starts. First and second group dogs jump — escape. But the third group? They lay down. Didn't jump. Didn't even try. They had learned — nothing makes a difference. Even when escape was open — they didn't run. Seligman named it — Learned Helplessness.</div>
+<div class="dialogue">পরের দিন সব কুকুরকে একটা নতুন বাক্সে রাখা হলো। বাক্সে একটা নিচু প্রাচীর — লাফ দিলেই পালানো যায়। শক শুরু হলো। প্রথম ও দ্বিতীয় দলের কুকুর লাফ দিল — পালাল। কিন্তু তৃতীয় দল? তারা শুয়ে রইল। লাফ দিল না। চেষ্টাই করল না। তারা শিখেছিল — কিছুতেই কিছু হয় না। এমনকি যখন পালানোর রাস্তা খোলা — তারা পালাল না। Seligman এর নাম দিলেন — Learned Helplessness।</div></div>
+<div class="dialogue en">Next day, all dogs placed in a new box. Low partition — jump over to escape. Shock starts. First and second group dogs jump — escape. But the third group? They lay down. Didn't jump. Didn't even try. They had learned — nothing makes a difference. Even when escape was open — they didn't run. Seligman named it — Learned Helplessness.</div></div>
 
 <table class="kv-table"><tr><th>দল (Seligman & Maier, 1967)</th><th>অবস্থা</th><th>পরে নতুন বাক্সে</th></tr>
 <tr><td class="hl">Group ১</td><td>কোনো shock নেই</td><td>সহজে পালাল</td></tr>
 <tr><td class="hl">Group ২</td><td>shock + control (lever)</td><td>পালাল</td></tr>
 <tr><td class="hl">Group ৩</td><td>shock + কোনো control নেই</td><td>চেষ্টাই করল না — শিখেছিল response-এ কিছু হয় না</td></tr></table>
 
-<div class="callout info"><span class="co-icon">🧬</span><div><strong>মস্তিষ্কের পরিবর্তন (Maier, 2016 reframing):</strong> dorsal raphe nucleus (DRN) hyperactive হয়, serotonin flood করে — এই surge-ই passive behavior ঘটায়। এটা অলসতা নয়, neurochemical। কিন্তু Group ৩-এর কুকুরদের যখন হাতে ধরে barrier পার করানো হলো, DRN শান্ত হলো → তারা সেরে উঠল। <strong>Helplessness reversible</strong> — এটাই মূল আবিষ্কার।</div></div>
+<div class="callout info"><span class="co-icon">🧬</span><div><strong>মস্তিষ্কের পরিবর্তন (Maier, 2016 reframing):</strong> dorsal raphe nucleus (DRN) hyperactive হয়, serotonin flood করে — এই surge-ই passive behavior ঘটায়। এটা অলসতা নয়, neurochemical। কিন্তু Group ৩-এর কুকুরদের যখন হাতে ধরে barrier পার করানো হলো, DRN শান্ত হলো → তারা সেরে উঠল। <strong>Helplessness reversible</strong> — এটাই মূল আবিষ্কার।</div></div></div>
 
 <table class="kv-table"><tr><th>প্রেক্ষাপট</th><th>যা ঘটে</th></tr>
 <tr><td class="hl">শৈশব</td><td>বারবার "তুমি পারবে না" → মস্তিষ্ক শেখে effort = হতাশা → চেষ্টা বন্ধ</td></tr>
 <tr><td class="hl">প্রাপ্তবয়স্ক</td><td>বারবার ব্যর্থতা → "কিছুতেই কিছু হয় না" → বিষণ্নতা, passivity</td></tr>
 <tr><td class="hl">দারিদ্র্য</td><td>systemic বাধা → "সিস্টেম rigged" → হাল ছেড়ে দেওয়া, প্রজন্মান্তরে</td></tr></table>
 
-<div class="callout warn"><span class="co-icon">🌀</span><div><strong>Helplessness-এর ৩ উপাদান (Seligman):</strong> Internal ("এটা আমার দোষ") + Permanent ("সবসময় এমনই থাকবে") + Pervasive ("সব কিছুতে প্রভাব ফেলে")। তিনটা একসাথে = clinical depression। পরে Seligman একে "explanatory style" গবেষণায় পরিণত করেন।</div></div>
+<div class="callout warn"><span class="co-icon">🌀</span><div><strong>Helplessness-এর ৩ উপাদান (Seligman):</strong> Internal ("এটা আমার দোষ") + Permanent ("সবসময় এমনই থাকবে") + Pervasive ("সব কিছুতে প্রভাব ফেলে")। তিনটা একসাথে = clinical depression। পরে Seligman একে "explanatory style" গবেষণায় পরিণত করেন।</div></div></div>
 
-<div class="callout tip"><span class="co-icon">🌤️</span><div><strong>সুসংবাদ — Learned Optimism (1991):</strong> helplessness-এর মতো optimism-ও শেখা যায়। উপায় — explanatory style বদলানো: "আমি বোকা" → "ভালো প্রস্তুতি নিইনি"; "সবসময় fail করে" → "এই নির্দিষ্ট চেষ্টাটা fail করেছে"; "সব ভুল" → "এই একটা জিনিস ভুল"। Optimism বিভ্রম নয় — এটা সঠিক মূল্যায়ন যে setback নির্দিষ্ট, সাময়িক ও বাহ্যিক। ("Pet the dog" — কেউ তোমাকে দেখিয়ে দিলে যে পালানো সম্ভব, তখন তুমি বিশ্বাস করো।)</div></div>
+<div class="callout tip"><span class="co-icon">🌤️</span><div><strong>সুসংবাদ — Learned Optimism (1991):</strong> helplessness-এর মতো optimism-ও শেখা যায়। উপায় — explanatory style বদলানো: "আমি বোকা" → "ভালো প্রস্তুতি নিইনি"; "সবসময় fail করে" → "এই নির্দিষ্ট চেষ্টাটা fail করেছে"; "সব ভুল" → "এই একটা জিনিস ভুল"। Optimism বিভ্রম নয় — এটা সঠিক মূল্যায়ন যে setback নির্দিষ্ট, সাময়িক ও বাহ্যিক। ("Pet the dog" — কেউ তোমাকে দেখিয়ে দিলে যে পালানো সম্ভব, তখন তুমি বিশ্বাস করো।)</div></div></div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -67,10 +67,10 @@ doors.push({
 <text x="290" y="262" text-anchor="middle" fill="#86efac" font-size="10">প্রতিটা P চ্যালেঞ্জ করো → reversal সম্ভব (Maier 2016)</text>
 <text x="290" y="295" text-anchor="middle" fill="#94a3b8" font-size="9" font-style="italic">Permanence * Pervasiveness * Personal → Helplessness</text>
 </svg>
-</div>
-<div class="svg-caption">চিত্র: Learned Helplessness-এর তিন উপাদান (Seligman). Three P's of helplessness.</div>
+</div></div>
+<div class="svg-caption">চিত্র: Learned Helplessness-এর তিন উপাদান (Seligman). Three P's of helplessness.</div></div>
 
-<div class="code-block">Seligman Explanatory Style — Self-Test (count your pattern)
+<div class="callout tip"><span class="co-icon">📋</span><div>Seligman Explanatory Style — Self-Test (count your pattern)
 ──────────────────────────────────────────────────────────────────────
 When something bad happens, do you say:
   P  "এটা সবসময়ই হয়"            (Permanent)    → "এই বার হলো"
@@ -83,9 +83,9 @@ Reframing (Learned Optimism, Seligman 1991):
   "এই চেষ্টায় প্রস্তুতি কম"   ≠  "আমি কিছুতেই পারি না"
 ──────────────────────────────────────────────────────────────────────
 # Reversal proof (Maier 2016): DRN serotonin surge কমালে helplessness
-# উল্টায়। "Pet the dog" — কেউ দেখালে পালানোর রাস্তা, কুকুর উঠে দাঁড়ায়।</div>
+# উল্টায়। "Pet the dog" — কেউ দেখালে পালানোর রাস্তা, কুকুর উঠে দাঁড়ায়।</div></div>
 
-<div class="dialogue">নফস আম্মারা — আত্মসমর্পণকারী মন। কুরআনে আল্লাহ বলেন — "নিশ্চয় মানুষের মন খুব কঠোরভাবে খারাপ আদেশ দেয়।" (১২:৫৩)। নফস আম্মারা হলো সেই অবস্থা যেখানে মন বলে — চেষ্টা কোরো না, কিছু হবে না, তুমি পারবে না। Seligman-এর কুকুরের মতো — শুয়ে থাকো। কিন্তু কুরআন আরও বলে — "যারা জিহাদ করে (চেষ্টা করে), আমি তাদের আমার পথ দেখাই।" (২৯:৬৯)। চেষ্টা = শেখানোর শর্ত। নফস আম্মারা থেকে নফস মুতমাইন্না (প্রশান্ত মন) — এটাই যাত্রা। সম্ভব। প্রমাণিত।</div>
+<div class="dialogue">নফস আম্মারা — আত্মসমর্পণকারী মন। কুরআনে আল্লাহ বলেন — "নিশ্চয় মানুষের মন খুব কঠোরভাবে খারাপ আদেশ দেয়।" (১২:৫৩)। নফস আম্মারা হলো সেই অবস্থা যেখানে মন বলে — চেষ্টা কোরো না, কিছু হবে না, তুমি পারবে না। Seligman-এর কুকুরের মতো — শুয়ে থাকো। কিন্তু কুরআন আরও বলে — "যারা জিহাদ করে (চেষ্টা করে), আমি তাদের আমার পথ দেখাই।" (২৯:৬৯)। চেষ্টা = শেখানোর শর্ত। নফস আম্মারা থেকে নফস মুতমাইন্না (প্রশান্ত মন) — এটাই যাত্রা। সম্ভব। প্রমাণিত।</div></div>
 <div class="dialogue en">"Nafs Ammara — the self that commands to surrender. The Quran says — 'The human soul certainly commands evil.' (12:53). Nafs Ammara is the state where the mind says — don't try, nothing will happen, you can't. Like Seligman's dog — lie down. But the Quran also says — 'Those who strive, We show them Our paths.' (29:69). Effort = the condition for learning. From Nafs Ammara to Nafs Mutma'innah (the tranquil self) — this is the journey. Possible. Proven."</div>`,
   senior:{
     title:"Learned Helplessness — Are You Affected?",
@@ -108,8 +108,8 @@ doors.push({
   story:`<p class="scene-setting">১৯৮৪ সাল। আরিজোনা স্টেট ইউনিভার্সিটি। মনোবিজ্ঞানী রবার্ট সিয়ালডিনি (Robert Cialdini) একটা অদ্ভুত কাজ করলেন। তিনি ক্লাসরুমে নয় — রাস্তায় নামলেন। বিক্রেতা, তহবিল সংগ্রহকারী, কাল্ট নেতা, দরকষাকষিকারী — তাদের সাথে কাজ করলেন। ৩ বছর। তিনি জানতে চাইলেন — এরা কীভাবে মানুষকে নিয়ন্ত্রণ করে? জাদু নয় — বিজ্ঞান। প্রথমে ৬টি নীতি (১৯৮৪), পরে ৭ম (Unity, ২০২১) যোগ হয়।</p>
 <p class="scene-setting en">1984. Arizona State University. Psychologist Robert Cialdini did something unusual. Not in the classroom — on the streets. With salespeople, fundraisers, cult recruiters, negotiators — worked alongside them for 3 years. He wanted to know — how do they control people? Not magic — science. 7 principles.</p>
 
-<div class="dialogue">Cialdini আবিষ্কার করলেন — মানুষের মস্তিষ্কে সিদ্ধান্ত নেওয়ার shortcut আছে। প্রতিদিন হাজার হাজার সিদ্ধান্ত — প্রতিটা বিশ্লেষণ করলে মস্তিষ্ক ক্লান্ত। তাই shortcut। কিন্তু এই shortcut-ই নিয়ন্ত্রকদের দুর্বলতা। যে জানে কোন shortcut কীভাবে কাজ করে, সে প্রতিরোধ করতে পারে। যে জানে না, সে নিয়ন্ত্রিত হয়।</div>
-<div class="dialogue en">Cialdini discovered — the human brain has decision-making shortcuts. Thousands of daily decisions — analyzing each exhausts the brain. So shortcuts. But these shortcuts are what controllers exploit. One who knows which shortcut, how it works, can resist. One who doesn't, is controlled.</div>
+<div class="dialogue">Cialdini আবিষ্কার করলেন — মানুষের মস্তিষ্কে সিদ্ধান্ত নেওয়ার shortcut আছে। প্রতিদিন হাজার হাজার সিদ্ধান্ত — প্রতিটা বিশ্লেষণ করলে মস্তিষ্ক ক্লান্ত। তাই shortcut। কিন্তু এই shortcut-ই নিয়ন্ত্রকদের দুর্বলতা। যে জানে কোন shortcut কীভাবে কাজ করে, সে প্রতিরোধ করতে পারে। যে জানে না, সে নিয়ন্ত্রিত হয়।</div></div>
+<div class="dialogue en">Cialdini discovered — the human brain has decision-making shortcuts. Thousands of daily decisions — analyzing each exhausts the brain. So shortcuts. But these shortcuts are what controllers exploit. One who knows which shortcut, how it works, can resist. One who doesn't, is controlled.</div></div>
 
 <table class="kv-table"><tr><th>নীতি</th><th>গবেষণা</th><th>প্রতিরক্ষা</th></tr>
 <tr><td class="hl">১. Reciprocity</td><td>bill-এর সাথে mint → tip +১৪%, দুটো mint → +২৩%</td><td>"free জিনিসের জন্য আমি ঋণী নই"</td></tr>
@@ -120,9 +120,9 @@ doors.push({
 <tr><td class="hl">৬. Scarcity</td><td>"limited time" → +৩৭% কেনা; Worchel cookie jar (1975); loss aversion ২x (Kahneman & Tversky, 1979)</td><td>"urgency বানানো; আসল মূল্য ২৪ ঘণ্টায় শেষ হয় না"</td></tr>
 <tr><td class="hl">৭. Unity (২০২১)</td><td>shared identity ("we") — family, tribe, nation → compliance বাড়ে</td><td>"shared identity ≠ shared truth"</td></tr></table>
 
-<div class="callout warn"><span class="co-icon">🎭</span><div><strong>Combination attack:</strong> নিয়ন্ত্রকরা নীতিগুলো একসাথে stack করে। Cult recruitment: Unity ("আমরা family") → Reciprocity ("free meal") → Social proof ("সবাই খুশি") → Authority ("নেতা সত্য জানেন") → Commitment ("কেন যোগ দিলে লেখো") → Scarcity ("পৃথিবী শেষ, শুধু আমরা বাঁচাতে পারি") → Liking ("আমরা তোমাকে ভালোবাসি")। প্রতিটা principle চিনতে না পারলে বের হওয়া প্রায় অসম্ভব।</div></div>
+<div class="callout warn"><span class="co-icon">🎭</span><div><strong>Combination attack:</strong> নিয়ন্ত্রকরা নীতিগুলো একসাথে stack করে। Cult recruitment: Unity ("আমরা family") → Reciprocity ("free meal") → Social proof ("সবাই খুশি") → Authority ("নেতা সত্য জানেন") → Commitment ("কেন যোগ দিলে লেখো") → Scarcity ("পৃথিবী শেষ, শুধু আমরা বাঁচাতে পারি") → Liking ("আমরা তোমাকে ভালোবাসি")। প্রতিটা principle চিনতে না পারলে বের হওয়া প্রায় অসম্ভব।</div></div></div>
 
-<div class="callout info"><span class="co-icon">🧠</span><div><strong>মস্তিষ্ক কেন এতে ধরা দেয়:</strong> এগুলো decision shortcut — প্রতিদিন হাজার সিদ্ধান্ত বিশ্লেষণ করলে মস্তিষ্ক ক্লান্ত হয়, তাই shortcut। authority-র সামনে prefrontal cortex (নৈতিক যুক্তি) কার্যত বন্ধ হয়ে যায়; in-group-এ oxytocin critical thinking কমায়। <strong>নিয়ম: যেকোনো বড় সিদ্ধান্তে ২৪ ঘণ্টা delay — manipulation দিনের আলোয় মরে যায়।</strong></div></div>
+<div class="callout info"><span class="co-icon">🧠</span><div><strong>মস্তিষ্ক কেন এতে ধরা দেয়:</strong> এগুলো decision shortcut — প্রতিদিন হাজার সিদ্ধান্ত বিশ্লেষণ করলে মস্তিষ্ক ক্লান্ত হয়, তাই shortcut। authority-র সামনে prefrontal cortex (নৈতিক যুক্তি) কার্যত বন্ধ হয়ে যায়; in-group-এ oxytocin critical thinking কমায়। <strong>নিয়ম: যেকোনো বড় সিদ্ধান্তে ২৪ ঘণ্টা delay — manipulation দিনের আলোয় মরে যায়।</strong></div></div></div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -164,10 +164,10 @@ doors.push({
 <text x="310" y="289" fill="#cbd5e1" font-size="10">• নিজের মূল্যবোধে স্থির</text>
 <text x="310" y="306" fill="#fbbf24" font-size="10" font-style="italic">→ decide সময় নাও</text></g>
 </svg>
-</div>
-<div class="svg-caption">চিত্র: আবেগজ্ঞানের চার স্তর ও ম্যানিপুলেশন-সংকেত। Four EI domains + body cues.</div>
+</div></div>
+<div class="svg-caption">চিত্র: আবেগজ্ঞানের চার স্তর ও ম্যানিপুলেশন-সংকেত। Four EI domains + body cues.</div></div>
 
-<div class="code-block">Emotional Intelligence — Cialdini Trigger Check (24h Rule)
+<div class="callout tip"><span class="co-icon">📋</span><div>Emotional Intelligence — Cialdini Trigger Check (24h Rule)
 ──────────────────────────────────────────────────────────────────────
 Feeling pressured? Run this checklist (any YES = pause 24 hours):
 
@@ -183,9 +183,9 @@ Body signal log (nightly, 2 minutes):
   time | trigger | body cue | which principle | decision (delayed/y/n)
   09:15 | boss "now" | gut punch | authority | delayed 24h
 ──────────────────────────────────────────────────────────────────────
-# Goleman: EQ 4x stronger predictor of success than IQ (1995).</div>
+# Goleman: EQ 4x stronger predictor of success than IQ (1995).</div></div>
 
-<div class="dialogue">গাসল — covering, concealing, deception। কুরআনে আল্লাহ বলেন — "শয়তান তাদের কাজ সুশোভন করে তোলে।" (১৬:৬৩)। গাসল হলো সত্যকে ঢেকে রেখে মিথ্যা সুন্দর করে দেখানো। Cialdini-র নীতিগুলো গাসলের বিজ্ঞান — প্রতিটা shortcut মানুষের মস্তিষ্কের দুর্বলতা যা নিয়ন্ত্রক ব্যবহার করে। কিন্তু যে জানে, সে দেখে। যে দেখে, সে প্রতিরোধ করে। গাসল থেকে কাশফ (প্রকাশ) — এটাই সচেতনতার পথ।</div>
+<div class="dialogue">গাসল — covering, concealing, deception। কুরআনে আল্লাহ বলেন — "শয়তান তাদের কাজ সুশোভন করে তোলে।" (১৬:৬৩)। গাসল হলো সত্যকে ঢেকে রেখে মিথ্যা সুন্দর করে দেখানো। Cialdini-র নীতিগুলো গাসলের বিজ্ঞান — প্রতিটা shortcut মানুষের মস্তিষ্কের দুর্বলতা যা নিয়ন্ত্রক ব্যবহার করে। কিন্তু যে জানে, সে দেখে। যে দেখে, সে প্রতিরোধ করে। গাসল থেকে কাশফ (প্রকাশ) — এটাই সচেতনতার পথ।</div></div>
 <div class="dialogue en">"Ghasl — covering, concealing, deception. Allah says — 'Satan makes their deeds appear fair to them.' (16:63). Ghasl is hiding truth while making falsehood appear beautiful. Cialdini's principles are the science of ghasl — each shortcut is a brain vulnerability that controllers exploit. But one who knows, sees. One who sees, resists. From ghasl to kashf (uncovering) — this is the path of awareness."</div>`,
   senior:{
     title:"Defense Against Manipulation",
@@ -208,26 +208,26 @@ doors.push({
   story:`<p class="scene-setting">২০০৭ সাল। ইউসিএ বার্কলে। মনোবিজ্ঞানী ড্যাচার কেল্টনার (Dacher Keltner) ২০ বছরের গবেষণা প্রকাশ করলেন — The Power Paradox (২০০৭ সালে গবেষণাপত্র, ২০১৬ সালে বই)। তিনি দেখালেন এমন কিছু যা সবাই জানে কিন্তু কেউ স্বীকার করে না। ক্ষমতা মানুষকে পরিবর্তন করে। ভালো মানুষ ক্ষমতা পেলে — খারাপ হয়ে যায়। কেন?</p>
 <p class="scene-setting en">2007. UC Berkeley. Psychologist Dacher Keltner published a book with 20 years of research — The Power Paradox. He showed something everyone knows but nobody admits. Power changes people. Good people get power — become worse. Why?</p>
 
-<div class="dialogue">Cialdini বলেছিলেন — কীভাবে নিয়ন্ত্রণ করা হয়। কিন্তু আমি বলি — ক্ষমতা পেলে মস্তিষ্কে কী হয়? Keltner দেখালেন — prefrontal cortex বন্ধ হয়ে যায়। empathy কমে। মানুষ বস্তু হয়ে যায় — মানুষ না। Sapolsky দেখালেন — পদমর্যাদায় নিচে থাকলে ক্রনিক স্ট্রেস, উপরে থাকলে empathy loss। দুই পক্ষই ক্ষতিগ্রস্ত।</div>
-<div class="dialogue en">"Cialdini said — how people are controlled. But I say — what happens to the brain when you GET power? Keltner showed — the prefrontal cortex shuts down. Empathy drops. People become objects — not humans. Sapolsky showed — low rank = chronic stress, high rank = empathy loss. Both sides suffer."</div>
+<div class="dialogue">Cialdini বলেছিলেন — কীভাবে নিয়ন্ত্রণ করা হয়। কিন্তু আমি বলি — ক্ষমতা পেলে মস্তিষ্কে কী হয়? Keltner দেখালেন — prefrontal cortex বন্ধ হয়ে যায়। empathy কমে। মানুষ বস্তু হয়ে যায় — মানুষ না। Sapolsky দেখালেন — পদমর্যাদায় নিচে থাকলে ক্রনিক স্ট্রেস, উপরে থাকলে empathy loss। দুই পক্ষই ক্ষতিগ্রস্ত।</div></div>
+<div class="dialogue en">"Cialdini said — how people are controlled. But I say — what happens to the brain when you GET power? Keltner showed — the prefrontal cortex shuts down. Empathy drops. People become objects — not humans. Sapolsky showed — low rank = chronic stress, high rank = empathy loss. Both sides suffer."</div></div>
 
-<div class="callout warn"><span class="co-icon">⚡</span><div><strong>The Power Paradox (Keltner):</strong> মানুষ ক্ষমতা <em>পায়</em> empathy, generosity ও collaboration দিয়ে — অন্যরা স্বেচ্ছায় অনুসরণ করে। কিন্তু ক্ষমতা তাদের <em>যা করে</em>: empathy কমায়, impulsivity বাড়ায় — তারা এমন মানুষ হয়ে ওঠে যাকে কেউ অনুসরণ করত না। "Cookie experiment" (2003): এলোমেলোভাবে নিযুক্ত "leader" বেশি খেল, শেষ cookie না-বলে নিল — random ক্ষমতাও অসচেতন-স্বার্থপর বানায়।</div></div>
+<div class="callout warn"><span class="co-icon">⚡</span><div><strong>The Power Paradox (Keltner):</strong> মানুষ ক্ষমতা <em>পায়</em> empathy, generosity ও collaboration দিয়ে — অন্যরা স্বেচ্ছায় অনুসরণ করে। কিন্তু ক্ষমতা তাদের <em>যা করে</em>: empathy কমায়, impulsivity বাড়ায় — তারা এমন মানুষ হয়ে ওঠে যাকে কেউ অনুসরণ করত না। "Cookie experiment" (2003): এলোমেলোভাবে নিযুক্ত "leader" বেশি খেল, শেষ cookie না-বলে নিল — random ক্ষমতাও অসচেতন-স্বার্থপর বানায়।</div></div></div>
 
 <table class="kv-table"><tr><th>মস্তিষ্ক অঞ্চল</th><th>ক্ষমতার প্রভাব</th></tr>
 <tr><td class="hl">Prefrontal cortex</td><td>নিষ্ক্রিয় — mirror neuron কম, অন্যের আবেগ পড়তে পারে না</td></tr>
 <tr><td class="hl">Amygdala</td><td>অন্যের distress-সংকেতে কম সাড়া</td></tr>
 <tr><td class="hl">Reward circuit</td><td>নিজের reward-এ hypersensitive, অন্যের ব্যথায় অন্ধ</td></tr></table>
 
-<div class="callout info"><span class="co-icon">🔬</span><div>fMRI (Hogeveen, 2014): high-power অংশগ্রহণকারীদের mirror-neuron activity কমে যায় — তারা আক্ষরিক অর্থে অন্যের অনুভূতি simulate করতে পারে না। ক্ষমতা তোমাকে অন্য মানুষের প্রতি অন্ধ করে।</div></div>
+<div class="callout info"><span class="co-icon">🔬</span><div>fMRI (Hogeveen, 2014): high-power অংশগ্রহণকারীদের mirror-neuron activity কমে যায় — তারা আক্ষরিক অর্থে অন্যের অনুভূতি simulate করতে পারে না। ক্ষমতা তোমাকে অন্য মানুষের প্রতি অন্ধ করে।</div></div></div>
 
 <table class="kv-table"><tr><th>Sapolsky ও Whitehall</th><th>ফলাফল</th></tr>
 <tr><td class="hl">নিচু র‍্যাঙ্কের baboon</td><td>উচ্চ cortisol, ছোট আয়ু, hippocampus সংকুচিত</td></tr>
 <tr><td class="hl">উঁচু র‍্যাঙ্ক (স্থিতিশীল)</td><td>কম cortisol — কিন্তু অস্থিতিশীল hierarchy-তে সবাই stressed</td></tr>
 <tr><td class="hl">Whitehall (Marmot, 1967+)</td><td>একই healthcare-এও নিচু র‍্যাঙ্কে ৩x হৃদরোগ-মৃত্যু; র‍্যাঙ্ক ধূমপানের চেয়েও বেশি স্বাস্থ্য-ভবিষ্যদ্বাণী করে</td></tr></table>
 
-<div class="callout warn"><span class="co-icon">🎯</span><div><strong>মূল আবিষ্কার:</strong> "control-এর অভাবের অনুভূতি" = #১ stressor, প্রকৃত কষ্টের চেয়েও বেশি। control-হীন middle manager বিশাল কাজের CEO-র চেয়ে বেশি stressed। <strong>Workload নয়, control-ই আসল।</strong> (তুলনীয়: Zimbardo Stanford Prison 1971 — random ক্ষমতা ২ দিনে guard-দের sadistic করে; Milgram 1961 — ৬৫% authority-র আদেশে ক্ষতিকর কাজ করে।)</div></div>
+<div class="callout warn"><span class="co-icon">🎯</span><div><strong>মূল আবিষ্কার:</strong> "control-এর অভাবের অনুভূতি" = #১ stressor, প্রকৃত কষ্টের চেয়েও বেশি। control-হীন middle manager বিশাল কাজের CEO-র চেয়ে বেশি stressed। <strong>Workload নয়, control-ই আসল।</strong> (তুলনীয়: Zimbardo Stanford Prison 1971 — random ক্ষমতা ২ দিনে guard-দের sadistic করে; Milgram 1961 — ৬৫% authority-র আদেশে ক্ষতিকর কাজ করে।)</div></div></div>
 
-<div class="callout tip"><span class="co-icon">🕊️</span><div><strong>প্রতিষেধক — servant leadership:</strong> Keltner-এর গবেষণা বলে ক্ষমতা <em>টেকে</em> শুধু তখনই যখন empathy ধরে রাখা হয় — সচেতনভাবে perspective-taking চর্চা করো, ground truth-এর (user, front line) সাথে যুক্ত থাকো, dissent আমন্ত্রণ করো (yes-men নয়)। যারা টেকে, তারা ক্ষমতার মস্তিষ্ক-পরিবর্তনকে সচেতনভাবে প্রতিরোধ করে — নম্রতা ও শোনাকে বেছে নেয়।</div></div>
+<div class="callout tip"><span class="co-icon">🕊️</span><div><strong>প্রতিষেধক — servant leadership:</strong> Keltner-এর গবেষণা বলে ক্ষমতা <em>টেকে</em> শুধু তখনই যখন empathy ধরে রাখা হয় — সচেতনভাবে perspective-taking চর্চা করো, ground truth-এর (user, front line) সাথে যুক্ত থাকো, dissent আমন্ত্রণ করো (yes-men নয়)। যারা টেকে, তারা ক্ষমতার মস্তিষ্ক-পরিবর্তনকে সচেতনভাবে প্রতিরোধ করে — নম্রতা ও শোনাকে বেছে নেয়।</div></div></div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -264,10 +264,10 @@ doors.push({
 <text x="415" y="275" fill="#fecaca" font-size="10">hippocampus shrink</text>
 <text x="415" y="290" fill="#fca5a5" font-size="9" font-style="italic">→ small wins (Bandura)</text></g>
 </svg>
-</div>
-<div class="svg-caption">চিত্র: ক্ষমতা ও পদমর্যাদার স্নায়বিজ্ঞান (Keltner + Sapolsky). Power & hierarchy neuroscience.</div>
+</div></div>
+<div class="svg-caption">চিত্র: ক্ষমতা ও পদমর্যাদার স্নায়বিজ্ঞান (Keltner + Sapolsky). Power & hierarchy neuroscience.</div></div>
 
-<div class="code-block">Power Dynamics — Stress-by-Control Audit (Sapolsky / Whitehall)
+<div class="callout tip"><span class="co-icon">📋</span><div>Power Dynamics — Stress-by-Control Audit (Sapolsky / Whitehall)
 ──────────────────────────────────────────────────────────────────────
 Question                    Low control     High control
 ─────────────────────────── ─────────────── ───────────────
@@ -285,9 +285,9 @@ Self-check: list 5 daily tasks. Mark C (you control) or N (not).
   Fix: reclaim ONE control-point this week (when/how/what).
 ──────────────────────────────────────────────────────────────────────
 # Keltner (2003) "cookie experiment": random "leader" ate more,
-# took the last cookie without asking. Power corrupts even randomly.</div>
+# took the last cookie without asking. Power corrupts even randomly.</div></div>
 
-<div class="dialogue">সুলতান আন-নাফস — sovereignty over the self। সুফি ঐতিহ্যে সর্বোচ্চ স্তর — নিজের মনের উপর সম্পূর্ণ সার্বভৌমত্ব। কুরআনে আল্লাহ বলেন — "নিশ্চয় আল্লাহ তাদের ভালোবাসেন যারা তাদের মনকে নিয়ন্ত্রণ করে।" Keltner দেখালেন — বাইরের ক্ষমতা যদি চিত্তবিনোদনমূলক হয়, ভেতরের ক্ষমতা ধ্বংস হয়। কিন্তু যে নিজের মনের সুলতান, সে বাইরের ক্ষমতায় অহংকারী হয় না। সুলতান আন-নাফস — আত্মসার্বভৌমত্ব, বাইরের ক্ষমতা নয়।</div>
+<div class="dialogue">সুলতান আন-নাফস — sovereignty over the self। সুফি ঐতিহ্যে সর্বোচ্চ স্তর — নিজের মনের উপর সম্পূর্ণ সার্বভৌমত্ব। কুরআনে আল্লাহ বলেন — "নিশ্চয় আল্লাহ তাদের ভালোবাসেন যারা তাদের মনকে নিয়ন্ত্রণ করে।" Keltner দেখালেন — বাইরের ক্ষমতা যদি চিত্তবিনোদনমূলক হয়, ভেতরের ক্ষমতা ধ্বংস হয়। কিন্তু যে নিজের মনের সুলতান, সে বাইরের ক্ষমতায় অহংকারী হয় না। সুলতান আন-নাফস — আত্মসার্বভৌমত্ব, বাইরের ক্ষমতা নয়।</div></div>
 <div class="dialogue en">"Sultan an-Nafs — sovereignty over the self. In Sufi tradition, the highest level — complete sovereignty over one's own mind. Allah says — 'Allah loves those who control themselves.' Keltner showed — external power, if intoxicating, destroys internal power. But one who is sultan of their own mind, doesn't become arrogant with external power. Sultan an-Nafs — self-sovereignty, not external power."</div>`,
   senior:{
     title:"Power Awareness — Protecting Yourself",
@@ -310,17 +310,17 @@ doors.push({
   story:`<p class="scene-setting">১৯৪৪ সাল। একটা সিনেমা — Gaslight। একজন স্বামী তার পত্নীকে ধীরে ধীরে বিশ্বাস করায় যে সে পাগল হয়ে যাচ্ছে। সে বাতি কমায় (gaslight), কিন্তু স্বামী বলে — বাতি কমেনি, তুমি কল্পনা করছ। সে জিনিস সরায়, স্বামী বলে — তুমি ভুলে গেছ। ধীরে ধীরে পত্নী নিজের চোখকে অবিশ্বাস করতে শুরু করে। এটাই gaslighting — বাস্তবতা চুরি করার শিল্প।</p>
 <p class="scene-setting en">1944. A film — Gaslight. A husband slowly convinces his wife she's going insane. He dims the lights (gaslight), but says — the lights didn't dim, you're imagining. He moves things, says — you forgot. Gradually the wife stops trusting her own eyes. This is gaslighting — the art of stealing reality.</p>
 
-<div class="dialogue">Power paradox বলেছিলেন — ক্ষমতা মস্তিষ্ক পরিবর্তন করে। কিন্তু আমি বলি — সবচেয়ে ভয়ংকর নিয়ন্ত্রণ ক্ষমতা দিয়ে নয়, বাস্তবতা চুরি করে। Gaslighting। তুমি জানো কী দেখেছ, কিন্তু কেউ বারবার বলে — তুমি ভুল দেখেছ। ধীরে ধীরে তুমি নিজেকে অবিশ্বাস করো। নিজের মন থেকে বেরিয়ে যাও। এটাই অদৃশ্য খাঁচা।</div>
-<div class="dialogue en">"The power paradox said — power changes the brain. But I say — the most terrifying control isn't through power, but through stealing reality. Gaslighting. You know what you saw, but someone repeatedly says — you saw wrong. Gradually you distrust yourself. Leave your own mind. This is the invisible cage."</div>
+<div class="dialogue">Power paradox বলেছিলেন — ক্ষমতা মস্তিষ্ক পরিবর্তন করে। কিন্তু আমি বলি — সবচেয়ে ভয়ংকর নিয়ন্ত্রণ ক্ষমতা দিয়ে নয়, বাস্তবতা চুরি করে। Gaslighting। তুমি জানো কী দেখেছ, কিন্তু কেউ বারবার বলে — তুমি ভুল দেখেছ। ধীরে ধীরে তুমি নিজেকে অবিশ্বাস করো। নিজের মন থেকে বেরিয়ে যাও। এটাই অদৃশ্য খাঁচা।</div></div>
+<div class="dialogue en">"The power paradox said — power changes the brain. But I say — the most terrifying control isn't through power, but through stealing reality. Gaslighting. You know what you saw, but someone repeatedly says — you saw wrong. Gradually you distrust yourself. Leave your own mind. This is the invisible cage."</div></div>
 
 <div class="timeline">
-<div class="tl-step"><div class="tl-when">Stage ১</div><div class="tl-title">🚫 Disproof</div><div class="tl-body">"সেটা কখনো ঘটেনি", "তুমি বড় বেশি sensitive", "আমি তো বলিনি" — victim-এর নিশ্চয়তা অস্বীকারের মুখোমুখি।</div></div>
-<div class="tl-step"><div class="tl-when">Stage ২</div><div class="tl-title">❓ Confusion</div><div class="tl-body">"আমি কি সত্যিই ভুল শুনেছি/দেখেছি?" — second-guessing শুরু, তবু আংশিক নিজের উপর বিশ্বাস।</div></div>
-<div class="tl-step"><div class="tl-when">Stage ৩</div><div class="tl-title">🔗 Dependence</div><div class="tl-body">"হয়তো তারাই ঠিক, আমারই মনে নেই" — gaslighter-এর version মানতে শুরু, self-trust ক্ষয়।</div></div>
-<div class="tl-step"><div class="tl-when">Stage ৪</div><div class="tl-title">🌑 Depression</div><div class="tl-body">"নিজের মনকেই বিশ্বাস করতে পারি না" — উদ্বেগ, বিষণ্নতা, "reality"-র জন্য সম্পূর্ণ gaslighter-নির্ভর। (Robin Stern, 2007)</div></div>
-</div>
+<div class="tl-step"><div class="tl-when">Stage ১</div><div class="tl-title">🚫 Disproof</div><div class="tl-body">"সেটা কখনো ঘটেনি", "তুমি বড় বেশি sensitive", "আমি তো বলিনি" — victim-এর নিশ্চয়তা অস্বীকারের মুখোমুখি।</div></div></div>
+<div class="tl-step"><div class="tl-when">Stage ২</div><div class="tl-title">❓ Confusion</div><div class="tl-body">"আমি কি সত্যিই ভুল শুনেছি/দেখেছি?" — second-guessing শুরু, তবু আংশিক নিজের উপর বিশ্বাস।</div></div></div>
+<div class="tl-step"><div class="tl-when">Stage ৩</div><div class="tl-title">🔗 Dependence</div><div class="tl-body">"হয়তো তারাই ঠিক, আমারই মনে নেই" — gaslighter-এর version মানতে শুরু, self-trust ক্ষয়।</div></div></div>
+<div class="tl-step"><div class="tl-when">Stage ৪</div><div class="tl-title">🌑 Depression</div><div class="tl-body">"নিজের মনকেই বিশ্বাস করতে পারি না" — উদ্বেগ, বিষণ্নতা, "reality"-র জন্য সম্পূর্ণ gaslighter-নির্ভর। (Robin Stern, 2007)</div></div></div>
+</div></div>
 
-<div class="callout info"><span class="co-icon">🧠</span><div><strong>কেন কাজ করে:</strong> মস্তিষ্ক contradiction ঘৃণা করে — বিশ্বস্ত কেউ তোমার বাস্তবতা অস্বীকার করলে মস্তিষ্ক সম্পর্ক রক্ষার্থে নিজেকেই সন্দেহ করতে চায়। তার উপর, মানব-স্মৃতি সত্যিই অনির্ভরযোগ্য (Loftus, 1970s+) — "হয়তো ভুল মনে করেছি" plausible শোনায়। Isolation এই দুর্বলতা বাড়ায় — কোনো external reality-check থাকে না।</div></div>
+<div class="callout info"><span class="co-icon">🧠</span><div><strong>কেন কাজ করে:</strong> মস্তিষ্ক contradiction ঘৃণা করে — বিশ্বস্ত কেউ তোমার বাস্তবতা অস্বীকার করলে মস্তিষ্ক সম্পর্ক রক্ষার্থে নিজেকেই সন্দেহ করতে চায়। তার উপর, মানব-স্মৃতি সত্যিই অনির্ভরযোগ্য (Loftus, 1970s+) — "হয়তো ভুল মনে করেছি" plausible শোনায়। Isolation এই দুর্বলতা বাড়ায় — কোনো external reality-check থাকে না।</div></div></div>
 
 <table class="kv-table"><tr><th>প্রেক্ষাপট</th><th>gaslighting-এর রূপ</th></tr>
 <tr><td class="hl">সম্পর্ক (partner)</td><td>"তুমি পাগল, সেটা ঘটেনি, তুমি বড্ড sensitive"</td></tr>
@@ -328,9 +328,9 @@ doors.push({
 <tr><td class="hl">পরিবার (parent)</td><td>"তোমার শৈশব দারুণ ছিল, তুমি বানিয়ে বলছ"</td></tr>
 <tr><td class="hl">সমাজ (systemic)</td><td>"তোমার racism/sexism-এর অভিজ্ঞতা সত্যি নয়, তুমি victim সাজছ"</td></tr></table>
 
-<div class="callout warn"><span class="co-icon">🚩</span><div><strong>লক্ষণ — তোমাকে gaslight করা হচ্ছে:</strong> সবসময় নিজেকে second-guess করো · ভাবো তুমি "বড় বেশি sensitive" · সারাক্ষণ ক্ষমা চাও · বুঝতে পারো না কেন অসুখী · gaslighter-এর জন্য অজুহাত বানাও · সবসময় confused · আগে আত্মবিশ্বাসী ছিলে, এখন সব সন্দেহ করো। (এটা larger "coercive control"-এর অংশ — Evan Stark 2007; UK-তে ২০১৫ থেকে অপরাধ।)</div></div>
+<div class="callout warn"><span class="co-icon">🚩</span><div><strong>লক্ষণ — তোমাকে gaslight করা হচ্ছে:</strong> সবসময় নিজেকে second-guess করো · ভাবো তুমি "বড় বেশি sensitive" · সারাক্ষণ ক্ষমা চাও · বুঝতে পারো না কেন অসুখী · gaslighter-এর জন্য অজুহাত বানাও · সবসময় confused · আগে আত্মবিশ্বাসী ছিলে, এখন সব সন্দেহ করো। (এটা larger "coercive control"-এর অংশ — Evan Stark 2007; UK-তে ২০১৫ থেকে অপরাধ।)</div></div></div>
 
-<div class="callout tip"><span class="co-icon">🧭</span><div><strong>বেরোনোর পথ:</strong> ① <strong>লিখে রাখো</strong> — কী ঘটল, কখন, কী বলা হলো; এই record gaslighting-প্রতিরোধী। ② <strong>অন্যদের সাথে reconnect</strong> — "এটা কি স্বাভাবিক শোনায়?" ③ <strong>শরীরকে বিশ্বাস করো</strong> — tension, dread মিথ্যা বলে না। ④ <strong>Professional help</strong> — therapist objective reality-check; CBT self-trust পুনর্গঠন করে। ⑤ <strong>সব document করো।</strong> মনে রেখো — confusion-ই gaslighting-এর <em>উপসর্গ</em>, তোমার অক্ষমতার প্রমাণ নয়।</div></div>
+<div class="callout tip"><span class="co-icon">🧭</span><div><strong>বেরোনোর পথ:</strong> ① <strong>লিখে রাখো</strong> — কী ঘটল, কখন, কী বলা হলো; এই record gaslighting-প্রতিরোধী। ② <strong>অন্যদের সাথে reconnect</strong> — "এটা কি স্বাভাবিক শোনায়?" ③ <strong>শরীরকে বিশ্বাস করো</strong> — tension, dread মিথ্যা বলে না। ④ <strong>Professional help</strong> — therapist objective reality-check; CBT self-trust পুনর্গঠন করে। ⑤ <strong>সব document করো।</strong> মনে রেখো — confusion-ই gaslighting-এর <em>উপসর্গ</em>, তোমার অক্ষমতার প্রমাণ নয়।</div></div></div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -367,10 +367,10 @@ doors.push({
 <text x="310" y="289" fill="#cbd5e1" font-size="10">③ body signal trust (gut, sleep)</text>
 <text x="310" y="310" fill="#86efac" font-size="10" font-style="italic">④ therapist — CBT rebuilds self-trust</text></g>
 </svg>
-</div>
-<div class="svg-caption">চিত্র: গ্যাসলাইটিং চক্র ও উদ্বেগের লক্ষণ। Gaslighting spiral + anxiety body cues.</div>
+</div></div>
+<div class="svg-caption">চিত্র: গ্যাসলাইটিং চক্র ও উদ্বেগের লক্ষণ। Gaslighting spiral + anxiety body cues.</div></div>
 
-<div class="code-block">Gaslighting Recovery — Reality Anchor Journal (Stern 2007)
+<div class="callout tip"><span class="co-icon">📋</span><div>Gaslighting Recovery — Reality Anchor Journal (Stern 2007)
 ──────────────────────────────────────────────────────────────────────
 Template (fill nightly, 3 minutes):
 
@@ -394,9 +394,9 @@ Weekly review (Sunday):
 ──────────────────────────────────────────────────────────────────────
 # Stark (2007) coercive control: GT is part of a pattern,
 # not isolated. UK 2015: criminal offense. CBT rebuilds
-# self-trust in 12-16 weeks (Beck Institute).</div>
+# self-trust in 12-16 weeks (Beck Institute).</div></div>
 
-<div class="dialogue">তাদলিস — deception, fraud, misleading। ইসলামী ফিকহে তাদলিস একটা গুরুতর অপরাধ — কাউকে মিথ্যা বিশ্বাস গ্রহণ করানো। কুরআনে আল্লাহ বলেন — "শয়তান তাদের কাজ সুশোভন করে তোলে।" (১৬:৬৩)। Gaslighting হলো তাদলিসের সবচেয়ে গভীর রূপ — কাউকে তার নিজের বাস্তবতা থেকে বিচ্ছিন্ন করা। কিন্তু কুরআন আরও বলে — "সত্য এসেছে, মিথ্যা বিলুপ্ত।" (১৭:৮১)। সচেতনতা = সত্যের আলো। যে আলো জালে, সে তাদলিস দেখে। যে অন্ধকারে, সে বিভ্রান্ত হয়।</div>
+<div class="dialogue">তাদলিস — deception, fraud, misleading। ইসলামী ফিকহে তাদলিস একটা গুরুতর অপরাধ — কাউকে মিথ্যা বিশ্বাস গ্রহণ করানো। কুরআনে আল্লাহ বলেন — "শয়তান তাদের কাজ সুশোভন করে তোলে।" (১৬:৬৩)। Gaslighting হলো তাদলিসের সবচেয়ে গভীর রূপ — কাউকে তার নিজের বাস্তবতা থেকে বিচ্ছিন্ন করা। কিন্তু কুরআন আরও বলে — "সত্য এসেছে, মিথ্যা বিলুপ্ত।" (১৭:৮১)। সচেতনতা = সত্যের আলো। যে আলো জালে, সে তাদলিস দেখে। যে অন্ধকারে, সে বিভ্রান্ত হয়।</div></div>
 <div class="dialogue en">"Tadlis — deception, fraud, misleading. In Islamic jurisprudence, tadlis is a serious offense — making someone accept a false belief. Allah says — 'Satan makes their deeds appear fair.' (16:63). Gaslighting is the deepest form of tadlis — disconnecting someone from their own reality. But the Quran also says — 'Truth has come, falsehood has vanished.' (17:81). Awareness = the light of truth. One who has light, sees tadlis. One in darkness, is deceived."</div>`,
   senior:{
     title:"Gaslighting Recovery — Practical Steps",
@@ -419,17 +419,17 @@ doors.push({
   story:`<p class="scene-setting">১৯৬৬ সাল। ওহিও স্টেট ইউনিভার্সিটি। মনোবিজ্ঞানী জুলিয়ান রটার (Julian Rotter) একটা সাধারণ প্রশ্ন করলেন — সাফল্য কে নির্ধারণ করে? তুমি নাকি ভাগ্য? একই পরীক্ষায় কেউ বলল — আমি পড়াশোনা করিনি, তাই ফেল করেছি (internal)। কেউ বলল — প্রশ্ন কঠিন ছিল, ভাগ্য খারাপ (external)। Rotter দেখলেন — এই বিশ্বাসই জীবনের গতি নির্ধারণ করে।</p>
 <p class="scene-setting en">1966. Ohio State University. Psychologist Julian Rotter asked a simple question — who determines success? You or fate? In the same exam, someone said — I didn't study, so I failed (internal). Someone said — questions were hard, bad luck (external). Rotter saw — this belief shapes life's trajectory.</p>
 
-<div class="dialogue">Gaslighting বলেছিলেন — কীভাবে বাস্তবতা চুরি হয়। কিন্তু আমি বলি — কেউ বাস্তবতা না চুরি করলেও কেউ নিয়ন্ত্রিত হয় কেন? কারণ তারা বিশ্বাস করে — আমি নিয়ন্ত্রণ করি না। ভাগ্য নিয়ন্ত্রণ করে। Rotter দেখালেন — এই বিশ্বাসই সবকিছু। Internal locus = আমি নিয়ন্ত্রণ করি। External locus = ভাগ্য নিয়ন্ত্রণ করে। ৫০ বছরের গবেষণা — internal মানুষের জীবন ভালো হয়, সব ক্ষেত্রে।</div>
-<div class="dialogue en">"Gaslighting said — how reality is stolen. But I say — even without gaslighting, why are some controlled? Because they believe — I don't control. Fate controls. Rotter showed — this belief is everything. Internal locus = I control. External locus = fate controls. 50 years of research — internal people do better in life, in everything."</div>
+<div class="dialogue">Gaslighting বলেছিলেন — কীভাবে বাস্তবতা চুরি হয়। কিন্তু আমি বলি — কেউ বাস্তবতা না চুরি করলেও কেউ নিয়ন্ত্রিত হয় কেন? কারণ তারা বিশ্বাস করে — আমি নিয়ন্ত্রণ করি না। ভাগ্য নিয়ন্ত্রণ করে। Rotter দেখালেন — এই বিশ্বাসই সবকিছু। Internal locus = আমি নিয়ন্ত্রণ করি। External locus = ভাগ্য নিয়ন্ত্রণ করে। ৫০ বছরের গবেষণা — internal মানুষের জীবন ভালো হয়, সব ক্ষেত্রে।</div></div>
+<div class="dialogue en">"Gaslighting said — how reality is stolen. But I say — even without gaslighting, why are some controlled? Because they believe — I don't control. Fate controls. Rotter showed — this belief is everything. Internal locus = I control. External locus = fate controls. 50 years of research — internal people do better in life, in everything."</div></div>
 
 <table class="kv-table"><tr><th>Internal locus</th><th>External locus</th></tr>
 <tr><td>"পরিশ্রম করেছি বলে সফল হয়েছি"</td><td>"ভাগ্য ভালো ছিল বলে সফল"</td></tr>
 <tr><td>"প্রস্তুতি নিইনি বলে fail করেছি"</td><td>"পরীক্ষা অন্যায্য ছিল"</td></tr>
 <tr><td>"আমার সিদ্ধান্তই আমার জীবন গড়ে"</td><td>"ভাগ্য/অন্যরা আমার জীবন নিয়ন্ত্রণ করে"</td></tr></table>
 
-<div class="callout info"><span class="co-icon">📊</span><div><strong>৫০ বছরের গবেষণা (Rotter, 1966+):</strong> Internal locus-এর মানুষ — বেশি academic achievement, ভালো শারীরিক স্বাস্থ্য, কম বিষণ্নতা, বেশি job satisfaction, business শুরুর সম্ভাবনা বেশি, দীর্ঘ আয়ু। External locus — বেশি learned helplessness, উদ্বেগ, passive coping, খারাপ পরিস্থিতিতে আটকে থাকা।</div></div>
+<div class="callout info"><span class="co-icon">📊</span><div><strong>৫০ বছরের গবেষণা (Rotter, 1966+):</strong> Internal locus-এর মানুষ — বেশি academic achievement, ভালো শারীরিক স্বাস্থ্য, কম বিষণ্নতা, বেশি job satisfaction, business শুরুর সম্ভাবনা বেশি, দীর্ঘ আয়ু। External locus — বেশি learned helplessness, উদ্বেগ, passive coping, খারাপ পরিস্থিতিতে আটকে থাকা।</div></div></div>
 
-<div class="callout warn"><span class="co-icon">🧠</span><div><strong>Scarcity mindset (Mullainathan & Shafir, 2013):</strong> ভারতীয় আখ-চাষিদের harvest-এর আগে (গরিব, stressed) ও পরে (টাকা পেয়ে) পরীক্ষা করা হলো — একই মানুষ, harvest-এর আগে IQ ~১৩ পয়েন্ট কমে গেল (এক রাত না-ঘুমানোর সমান)। <strong>দারিদ্র্য নিজেই cognitive capacity কমায়</strong> — চরিত্রদোষ নয়, stress-এ prefrontal cortex দুর্বল হওয়ার neurological ফল। scarcity "tunnel vision" আনে → short-term সিদ্ধান্ত → খারাপ long-term ফল → loop।</div></div>
+<div class="callout warn"><span class="co-icon">🧠</span><div><strong>Scarcity mindset (Mullainathan & Shafir, 2013):</strong> ভারতীয় আখ-চাষিদের harvest-এর আগে (গরিব, stressed) ও পরে (টাকা পেয়ে) পরীক্ষা করা হলো — একই মানুষ, harvest-এর আগে IQ ~১৩ পয়েন্ট কমে গেল (এক রাত না-ঘুমানোর সমান)। <strong>দারিদ্র্য নিজেই cognitive capacity কমায়</strong> — চরিত্রদোষ নয়, stress-এ prefrontal cortex দুর্বল হওয়ার neurological ফল। scarcity "tunnel vision" আনে → short-term সিদ্ধান্ত → খারাপ long-term ফল → loop।</div></div></div>
 
 <table class="kv-table"><tr><th>Victim (External)</th><th>Creator (Internal)</th></tr>
 <tr><td>"তারা আমার সাথে এটা করল"</td><td>"আমি বেছে নিলাম..."</td></tr>
@@ -437,7 +437,7 @@ doors.push({
 <tr><td>যা নিয়ন্ত্রণে নেই তাতে focus</td><td>যা নিয়ন্ত্রণ করা যায় তাতে focus</td></tr>
 <tr><td>অভিযোগ করে, উদ্ধারের অপেক্ষা</td><td>কাজ করে, পরিবর্তন তৈরি করে</td></tr></table>
 
-<div class="callout tip"><span class="co-icon">🔄</span><div><strong>Locus বদলানোর উপায় (evidence-based):</strong> ① <strong>Small wins</strong> (Bandura, 1977) — খুব ছোট থেকে শুরু (বিছানা গোছানো), প্রতিটা জয় self-efficacy গড়ে। ② <strong>Circle of control</strong> (Covey/Stoics) — যা নিয়ন্ত্রণ করা যায় তাতেই শক্তি দাও। ③ <strong>Setback reframe</strong> — "সবসময় আমার সাথেই হয়" নয়, "কী শিখলাম, ভিন্নভাবে কী করব?" ④ প্রতিদিন <strong>একটা action</strong> — তুমি বেছে নিয়েছ এমন। ⑤ <strong>Complaint time সীমিত করো</strong> (৫ মিনিট), তারপর — "কোন action নেব?" এটা victim থেকে creator-এ রূপান্তর। (এটাই তাওয়াক্কুল + আকল — যা পারো তাতে চেষ্টা, বাকিটা ভরসা।)</div></div>
+<div class="callout tip"><span class="co-icon">🔄</span><div><strong>Locus বদলানোর উপায় (evidence-based):</strong> ① <strong>Small wins</strong> (Bandura, 1977) — খুব ছোট থেকে শুরু (বিছানা গোছানো), প্রতিটা জয় self-efficacy গড়ে। ② <strong>Circle of control</strong> (Covey/Stoics) — যা নিয়ন্ত্রণ করা যায় তাতেই শক্তি দাও। ③ <strong>Setback reframe</strong> — "সবসময় আমার সাথেই হয়" নয়, "কী শিখলাম, ভিন্নভাবে কী করব?" ④ প্রতিদিন <strong>একটা action</strong> — তুমি বেছে নিয়েছ এমন। ⑤ <strong>Complaint time সীমিত করো</strong> (৫ মিনিট), তারপর — "কোন action নেব?" এটা victim থেকে creator-এ রূপান্তর। (এটাই তাওয়াক্কুল + আকল — যা পারো তাতে চেষ্টা, বাকিটা ভরসা।)</div></div></div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -468,10 +468,10 @@ doors.push({
 <text x="315" y="295" fill="#ffedd5" font-size="10">short-term সিদ্ধান্ত, ঋণ loop</text>
 <text x="315" y="312" fill="#fdba74" font-size="9" font-style="italic">একই মানুষ, pre-harvest (stressed)</text></g>
 </svg>
-</div>
-<div class="svg-caption">চিত্র: অন্তর্নিহিত বনাম বাহ্যিক নিয়ন্ত্রণ ও দারিদ্র্যের সংজ্ঞানাত্মক প্রভাব। Locus + scarcity bandwidth.</div>
+</div></div>
+<div class="svg-caption">চিত্র: অন্তর্নিহিত বনাম বাহ্যিক নিয়ন্ত্রণ ও দারিদ্র্যের সংজ্ঞানাত্মক প্রভাব। Locus + scarcity bandwidth.</div></div>
 
-<div class="code-block">Motivation Audit — Circle of Control + Small-Wins Protocol
+<div class="callout tip"><span class="co-icon">📋</span><div>Motivation Audit — Circle of Control + Small-Wins Protocol
 ──────────────────────────────────────────────────────────────────────
 Step 1: Draw two circles. List 10 daily concerns.
 
@@ -499,9 +499,9 @@ Step 4: Scarcity slack (Mullainathan 2013)
   Slack restores ~13 IQ points of bandwidth.
 ──────────────────────────────────────────────────────────────────────
 # Rotter (1966): internal locus → +achievement, +health, +longevity
-# across 50 years of replication. Shift is TRAINABLE.</div>
+# across 50 years of replication. Shift is TRAINABLE.</div></div>
 
-<div class="dialogue">তাওয়াক্কুল + আকল — trust + reason। কুরআনে আল্লাহ বলেন — "তোমরা চেষ্টা করো, তারপর আল্লাহর উপর তাওয়াক্কুল করো।" (৩:১৫৯)। তাওয়াক্কুল অলসতা নয় — চেষ্টার পর ফলাফলে ভরসা। আকল হলো যুক্তি — কী নিয়ন্ত্রণ করা যায়, কী নয়। Internal locus of control = তাওয়াক্কুল + আকল। যা নিয়ন্ত্রণ করা যায়, তা নিয়ে চেষ্টা (আকল)। যা নিয়ন্ত্রণে নেই, তা আল্লাহর উপর ছাড়া (তাওয়াক্কুল)। এটাই সঠিক অবস্থান। External locus = শুধু ভাগ্যের অপেক্ষা — আকল ছাড়া তাওয়াক্কুল, যা অলসতা। Internal locus = আকল সহ তাওয়াক্কুল — যা সঠিক কর্ম।</div>
+<div class="dialogue">তাওয়াক্কুল + আকল — trust + reason। কুরআনে আল্লাহ বলেন — "তোমরা চেষ্টা করো, তারপর আল্লাহর উপর তাওয়াক্কুল করো।" (৩:১৫৯)। তাওয়াক্কুল অলসতা নয় — চেষ্টার পর ফলাফলে ভরসা। আকল হলো যুক্তি — কী নিয়ন্ত্রণ করা যায়, কী নয়। Internal locus of control = তাওয়াক্কুল + আকল। যা নিয়ন্ত্রণ করা যায়, তা নিয়ে চেষ্টা (আকল)। যা নিয়ন্ত্রণে নেই, তা আল্লাহর উপর ছাড়া (তাওয়াক্কুল)। এটাই সঠিক অবস্থান। External locus = শুধু ভাগ্যের অপেক্ষা — আকল ছাড়া তাওয়াক্কুল, যা অলসতা। Internal locus = আকল সহ তাওয়াক্কুল — যা সঠিক কর্ম।</div></div>
 <div class="dialogue en">"Tawakkul + Aql — trust + reason. Allah says — 'Strive, then trust in Allah.' (3:159). Tawakkul is not laziness — it's trusting the outcome AFTER effort. Aql is reason — what can be controlled, what can't. Internal locus of control = tawakkul + aql. Control what you can (aql). Trust Allah with what you can't (tawakkul). This is the correct position. External locus = waiting for fate — tawakkul without aql, which is laziness. Internal locus = tawakkul with aql — which is right action."</div>`,
   senior:{
     title:"Shift Your Locus — This Week",
