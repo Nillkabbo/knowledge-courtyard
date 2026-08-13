@@ -399,12 +399,55 @@ following_distance(70, "tailgated")
 <div class="rt-caption">🟢 সবুজ = mirror-এ দেখা যায় | 🔴 লাল = blind spot — শুধু কাঁধ ঘুরিয়ে (shoulder check) দেখা যায়</div>
 </div>
 
-<div class="code-block">Lane change করার সঠিক ক্রম:
-  1️⃣ Signal দাও
-  2️⃣ Mirror দেখো (rear-view + side)
-  3️⃣ Shoulder check (কাঁধ ঘুরিয়ে)
-  4️⃣ নিরাপদ হলে → move
-  ❌ Mirror alone কখনোই যথেষ্ট নয়</div>
+<div class="code-block"># ── STEP 7: Safe driving exam questions ──
+# Practice for the safe driving section of the permit test.
+
+# PYTHON (interactive practice — safe driving):
+
+safe_driving_qa = [
+    {"q": "Minimum following distance in dry weather?",
+     "a": "3 seconds",
+     "options": ["1 second", "2 seconds", "3 seconds", "5 seconds"]},
+    {"q": "Following distance in rain?",
+     "a": "4 seconds",
+     "options": ["2 seconds", "3 seconds", "4 seconds", "6 seconds"]},
+    {"q": "Following distance in snow/ice?",
+     "a": "6+ seconds",
+     "options": ["3 seconds", "4 seconds", "5 seconds", "6+ seconds"]},
+    {"q": "Before changing lanes you should?",
+     "a": "Signal, check mirrors, check blind spot (SMOG)",
+     "options": ["Just signal", "Signal + mirrors only", "Signal + mirrors + shoulder check", "Just check mirrors"]},
+    {"q": "When entering a freeway, you should?",
+     "a": "Accelerate to highway speed on the on-ramp, then merge smoothly",
+     "options": ["Drive slowly on ramp", "Match highway speed then merge", "Stop before merging", "Honk before entering"]},
+    {"q": "The SEE system stands for?",
+     "a": "Search, Evaluate, Execute",
+     "options": ["See, Examine, Enter", "Search, Evaluate, Execute", "Stop, Examine, Exit", "Signal, Evaluate, Execute"]},
+    {"q": "When approaching a blind curve, you should?",
+     "a": "Slow down, keep right, honk if needed",
+     "options": ["Speed up", "Slow down, keep right", "Keep speed, honk", "Stop"]},
+    {"q": "Defensive driving means?",
+     "a": "Assume other drivers will make mistakes and be prepared",
+     "options": ["Drive aggressively", "Assume others will make mistakes", "Always yield", "Drive slowly always"]},
+    {"q": "At a blind intersection (no signs/signals), you should?",
+     "a": "Slow to 15 mph and be ready to stop",
+     "options": ["Proceed at speed limit", "Slow to 15 mph", "Stop completely", "Honk and proceed"]},
+    {"q": "When driving in fog, you should use?",
+     "a": "Low beam headlights (NOT high beams)",
+     "options": ["High beams", "Low beams", "Parking lights only", "Hazard lights"]},
+]
+
+score = 0
+for i, qa in enumerate(safe_driving_qa, 1):
+    print(f"\nQ{i}: {qa['q']}")
+    for j, opt in enumerate(qa['options'], 1):
+        marker = " <-" if opt == qa['a'] else ""
+        print(f"  {j}) {opt}{marker}")
+    print(f"  Answer: {qa['a']}")
+    score += 1
+
+print(f"\n{'='*40}")
+print(f"Safe Driving section: {score}/{len(safe_driving_qa)}")</div>
 
 <div class="scenario-box">
 <div class="scn-label">🎭 COMPLEX SCENARIO — Highway Merge</div>
@@ -1816,27 +1859,124 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ভুলের গল্প — Unregistered Vehicle:</strong> Forgot registration renewal — $150 ticket. Fix: set annual calendar reminder.</div></div>
 
 
-<div class="code-block">🏢 ROAD TEST REALITY — কোথায়, কীভাবে, কত টাকা
-# — — — — — — — — — — — — — — — — — — — — — —
+<div class="code-block"># ── STEP 8: Road test — complete preparation guide ──
+# What to expect, what examiners check, and how to pass.
 
-  ⚠️ গুরুত্বপূর্ণ: Michigan-এ road test SOS office-এ
-  হয় না! SOS-approved THIRD-PARTY driver testing
-  business-এ হয়।
+# MICHIGAN ROAD TEST FACTS:
+# → NOT at SOS office — at SOS-approved THIRD-PARTY testing business
+# → Find approved testers on SOS website
+# → Fee: ~$50-100 (unregulated, varies by location)
+# → Test is in TWO parts:
 
-  ✦ SOS website-এ approved tester-দের তালিকা আছে
-  ✦ ফি unregulated — জায়গাভেদে ~$50-100
-    (weekend/জরুরি booking-এ বেশি হতে পারে)
-  ✦ টেস্ট দুই ভাগে:
-    PART A: CLOSED-COURSE (off-street) —
-      basic control: parking lot-এ forward stop,
-      backing, parallel parking, Y-turn
-    PART B: ON-ROAD — বাস্তব রাস্তায় ~২০-৩০ মিনিট:
-      residential, business, এবং সম্ভব হলে
-      expressway driving
-  ✦ Part A fail করলে Part B হবে না
-  ✦ পাশ করলে examiner দেবে Driving Skills Test
-    Certificate → সেটা + TIP/learner license নিয়ে
-    SOS office-এ যাও → license issue হবে ($25)
+road_test = {
+    "PART A — CLOSED COURSE (off-street, parking lot)": {
+        "exercises": [
+            "Forward stop (stop at a marked line)",
+            "Backing (reverse in a straight line, 50 feet)",
+            "Parallel parking (between cones/markers)",
+            "Y-turn / three-point turn",
+            "Parking on a hill (uphill/downhill)",
+        ],
+        "pass_criteria": "Complete all maneuvers without hitting cones or crossing lines",
+        "note": "Must pass Part A before taking Part B",
+    },
+    "PART B — ON-ROAD (real traffic, 20-30 minutes)": {
+        "exercises": [
+            "Residential driving (25 mph, stop signs)",
+            "Business district driving (traffic, signals, turns)",
+            "Expressway driving (merge, lane change, exit)",
+            "Lane changes (SMOG: signal-mirror-shoulder-go)",
+            "Left and right turns (proper positioning, yield)",
+            "Stop at stop signs (COMPLETE stop, 3 seconds)",
+            "Approach intersections (check left-right-left)",
+        ],
+        "pass_criteria": "Drive safely, follow all laws, no dangerous errors",
+        "note": "Examiner sits with clipboard, marks every action",
+    },
+}
+
+for part, details in road_test.items():
+    print(f"\n{part}")
+    print(f"  Exercises:")
+    for ex in details["exercises"]:
+        print(f"    → {ex}")
+    print(f"  Pass: {details['pass_criteria']}")
+
+# VEHICLE SAFETY CHECK (examiner will ask):
+vehicle_check = [
+    "Headlight switch location",
+    "Brake light operation",
+    "Turn signal location and operation",
+    "Hazard light location",
+    "Defroster (front and rear)",
+    "Windshield wipers",
+    "Horn",
+    "Parking brake location",
+    "Mirror adjustment",
+    "Seatbelt operation",
+]
+
+print("\nVEHICLE SAFETY CHECK (examiner will ask):")
+for item in vehicle_check:
+    print(f"  → Know: {item}")
+
+# PYTHON (road test readiness checker):
+def check_test_readiness(items_ready, hours_practiced, know_vehicle_controls):
+    """Check if you're ready for the road test."""
+    issues = []
+
+    if hours_practiced < 50:
+        issues.append(f"Need 50+ supervised hours, currently: {hours_practiced}")
+    if not know_vehicle_controls:
+        issues.append("Must know all vehicle controls for safety check")
+    if items_ready < 5:
+        issues.append(f"Only {items_ready}/8 vehicle items known")
+
+    # Required items:
+    required = [
+        "Valid Level 1 License (held 3+ months)",
+        "Segment 2 Certificate",
+        "Log of 50+ hours (10 at night)",
+        "Vehicle with current registration + insurance",
+        "Working lights, signals, horn, brakes",
+        "Licensed adult to accompany you",
+    ]
+
+    if issues:
+        print("❌ NOT READY:")
+        for issue in issues:
+            print(f"  → {issue}")
+        return False
+    else:
+        print("✅ READY for road test!")
+        print("  Required items:")
+        for item in required:
+            print(f"    → {item}")
+        return True
+
+print("\nROAD TEST READINESS CHECKER:")
+check_test_readiness(items_ready=8, hours_practiced=55, know_vehicle_controls=True)
+print()
+check_test_ready = check_test_readiness(items_ready=4, hours_practiced=30,
+                                        know_vehicle_controls=False)
+
+# TOP 10 REASONS PEOPLE FAIL THE ROAD TEST:
+fail_reasons = [
+    "Rolling stop (not stopping completely at STOP sign)",
+    "Not checking blind spot before lane change",
+    "Forgetting to signal (or signaling too late)",
+    "Too fast or too slow for conditions",
+    "Poor parallel parking (hitting cones, too far from curb)",
+    "Not yielding at intersections (left turn especially)",
+    "Straddling lane lines",
+    "Not checking mirrors frequently enough",
+    "Improper hand position on steering wheel (10-and-2)",
+    "Nervous mistakes (deep breath, take your time)",
+]
+
+print("\nTOP 10 REASONS PEOPLE FAIL:")
+for i, reason in enumerate(fail_reasons, 1):
+    print(f"  {i}. {reason}")</div>
 
 # — — — — — — — — — — — — — — — — — — — — — —
 ROAD TEST — EXAMINER CHECKLIST
