@@ -82,7 +82,7 @@ doors.push({
   বাইপাস নেই; নতুন সুরক্ষিত রুট meta-তে অপ্ট-ইন
 
 ভাষার নিয়ম:
-  · <script setup lang="ts"> একটাই রূপ
+  · &lt;script setup lang="ts"&gt; একটাই রূপ
   · defineProps<T>() — রানটাইম ঘোষণা নিষেধ
   · Pinia: defineStore('id', () => {...})
   · সেবা = অবজেক্ট-লিটারেল এক্সপোর্ট
