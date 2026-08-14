@@ -19,8 +19,8 @@ doors.push({
   story:`<p class="scene-setting">প্রথম দরজা। একটা পরিত্যক্ত কারখানা। ধুলো, মাকড়সার জাল, ভাঙা মনিটর। দেয়ালে পোস্টার: jQuery, Angular.js, Flash, Backbone — সব এক সময়ের সবচেয়ে চাহিদার প্রযুক্তি। এখন কেউ মনে রাখে না। একটা বৃদ্ধ কারিগর জহির বসে আছেন, হাতে একটা পুরোনো বই: Mastering jQuery UI। তিনি ১০ বছর শিখেছেন, নিখুঁত হয়েছেন। এখন কেউ তাকে চায় না।</p>
 <p class="scene-setting en">The first door. An abandoned workshop. Dust, cobwebs, broken monitors. Posters on walls: jQuery, Angular.js, Flash, Backbone — once the most in-demand technologies. Now forgotten. An old craftsman Zahir sits, holding a book: Mastering jQuery UI. He spent 10 years learning, perfecting. Now nobody wants him.</p>
 
-<div class="dialogue">তুমি একটা প্রশ্ন করো — কেন এমন হলো? জহির চোখ তুলে তাকালেন। তুমি ভাবলে তিনি তার চাকরি হারিয়েছেন কারণ তিনি খারাপ ছিলেন। কিন্তু তিনি ছিলেন সেরা। jQuery-তে কেউ তাকে ছাড়তে পারত না। সমস্যা দক্ষতায় নয় — উপাদানে। তিনি এমন কিছুতে দশ বছর মূল্য দিয়েছেন যা পচনশীল। যা অবশ্যই শেষ হবে। এটাই অবচয় ফাঁদ — obsolescence trap।</div></div>
-<div class="dialogue en">You ask — why did this happen? Zahir looked up. You think he lost his job because he was bad. But he was the best. Nobody could beat him in jQuery. The problem wasn't skill — it was material. He invested ten years in something perishable. Something that was bound to end. This is the obsolescence trap.</div></div>
+<div class="dialogue">তুমি একটা প্রশ্ন করো — কেন এমন হলো? জহির চোখ তুলে তাকালেন। তুমি ভাবলে তিনি তার চাকরি হারিয়েছেন কারণ তিনি খারাপ ছিলেন। কিন্তু তিনি ছিলেন সেরা। jQuery-তে কেউ তাকে ছাড়তে পারত না। সমস্যা দক্ষতায় নয় — উপাদানে। তিনি এমন কিছুতে দশ বছর মূল্য দিয়েছেন যা পচনশীল। যা অবশ্যই শেষ হবে। এটাই অবচয় ফাঁদ — obsolescence trap।</div>
+<div class="dialogue en">You ask — why did this happen? Zahir looked up. You think he lost his job because he was bad. But he was the best. Nobody could beat him in jQuery. The problem wasn't skill — it was material. He invested ten years in something perishable. Something that was bound to end. This is the obsolescence trap.</div>
 
 <table class="kv-table"><tr><th>🍂 Perishable (মূল্য কমে)</th><th>🌳 Permanent (মূল্য বাড়ে)</th></tr>
 <tr><td>নির্দিষ্ট framework (jQuery, Angular, Flash)</td><td>First principles (কম্পিউটার কীভাবে চলে)</td></tr>
@@ -36,8 +36,8 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🧪</span><div><strong>The test — নিজেকে জিজ্ঞেস করো:</strong> এই দক্ষতা কি ১০ বছর পরে মূল্যবান থাকবে? Tool হারিয়ে গেলে কী থাকে? আমি TOOL শিখছি নাকি PRINCIPLE? AI কি এটা ২ বছরে পারবে?</div></div></div>
 
-<div class="dialogue">ফানা — impermanence, annihilation, that which passes away। সুফি ঐতিহ্যে ফানা হলো সেই অবস্থা যেখানে অহংকার, দক্ষতা, পরিচয় — সব ক্ষয় হয়। জহিরের jQuery দক্ষতা ফানার শিকার হয়েছে। কিন্তু ফানার বিপরীত হলো বাকা — permanence, eternity, that which remains। যে কারিগর নিজের দক্ষতাকে ফানা থেকে বাকায় স্থানান্তর করে, সে অবিচ্ছেয্য হয়। ফানা থেকে বাকা — এটাই এই বইয়ের যাত্রা।</div></div>
-<div class="dialogue en">"Fana — impermanence, annihilation, that which passes away. In Sufi tradition, fana is the state where ego, skill, identity — all dissolve. Zahir's jQuery mastery fell victim to fana. But the opposite of fana is baqa — permanence, eternity, that which remains. The craftsman who transfers their investment from fana to baqa becomes irreplaceable. From fana to baqa — this is this book's journey."</div></div>
+<div class="dialogue">ফানা — impermanence, annihilation, that which passes away। সুফি ঐতিহ্যে ফানা হলো সেই অবস্থা যেখানে অহংকার, দক্ষতা, পরিচয় — সব ক্ষয় হয়। জহিরের jQuery দক্ষতা ফানার শিকার হয়েছে। কিন্তু ফানার বিপরীত হলো বাকা — permanence, eternity, that which remains। যে কারিগর নিজের দক্ষতাকে ফানা থেকে বাকায় স্থানান্তর করে, সে অবিচ্ছেয্য হয়। ফানা থেকে বাকা — এটাই এই বইয়ের যাত্রা।</div>
+<div class="dialogue en">"Fana — impermanence, annihilation, that which passes away. In Sufi tradition, fana is the state where ego, skill, identity — all dissolve. Zahir's jQuery mastery fell victim to fana. But the opposite of fana is baqa — permanence, eternity, that which remains. The craftsman who transfers their investment from fana to baqa becomes irreplaceable. From fana to baqa — this is this book's journey."</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -106,8 +106,8 @@ doors.push({
   story:`<p class="scene-setting">দ্বিতীয় দরজা। একটা ভাঙা যন্ত্র। কারিগর ইব্রাহিম চোখ বন্ধ করে যন্ত্রের প্রতিটা অংশ স্পর্শ করছেন। গিয়ার, চেইন, পাম্প, ভাল্ব। তুমি ভাবলে তিনি যন্ত্র ঠিক করছেন। কিন্তু তিনি একটাও টুল ধরেননি। তিনি শুধু প্রশ্ন করছেন — এই অংশটা কেন আছে? এর উদ্দেশ্য কী? কী ছাড়া এটা কাজ করবে না?</p>
 <p class="scene-setting en">The second door. A broken machine. Craftsman Ibrahim touches each part with eyes closed. Gears, chains, pump, valve. You think he's fixing it. But he hasn't picked up a tool. He's only asking — why does this part exist? What's its purpose? Without what, it won't work?</p>
 
-<div class="dialogue">তুমি জিজ্ঞেস করো — ভাঙা যন্ত্র ঠিক করছেন না কেন? ইব্রাহিম চোখ খুললেন। যন্ত্র ভাঙা, কিন্তু সমস্যা যন্ত্রে নয়। সমস্যা চিন্তায়। যিনি যন্ত্র বানিয়েছেন তিনি প্রতিটা অংশ একটা উদ্দেশ্য থেকে বানিয়েছেন। সেই উদ্দেশ্য না বুঝলে ঠিক করা অসম্ভব। প্রতিটা সমস্যাকে ভেঙে যাওয়া পর্যন্ত প্রশ্ন করো — এটাই first principles।</div></div>
-<div class="dialogue en">"You ask — why aren't you fixing the broken machine? Ibrahim opened his eyes. The machine is broken, but the problem isn't the machine. It's the thinking. The builder made each part for a purpose. Without understanding that purpose, fixing is impossible. Break every problem down to its roots — this is first principles."</div></div>
+<div class="dialogue">তুমি জিজ্ঞেস করো — ভাঙা যন্ত্র ঠিক করছেন না কেন? ইব্রাহিম চোখ খুললেন। যন্ত্র ভাঙা, কিন্তু সমস্যা যন্ত্রে নয়। সমস্যা চিন্তায়। যিনি যন্ত্র বানিয়েছেন তিনি প্রতিটা অংশ একটা উদ্দেশ্য থেকে বানিয়েছেন। সেই উদ্দেশ্য না বুঝলে ঠিক করা অসম্ভব। প্রতিটা সমস্যাকে ভেঙে যাওয়া পর্যন্ত প্রশ্ন করো — এটাই first principles।</div>
+<div class="dialogue en">"You ask — why aren't you fixing the broken machine? Ibrahim opened his eyes. The machine is broken, but the problem isn't the machine. It's the thinking. The builder made each part for a purpose. Without understanding that purpose, fixing is impossible. Break every problem down to its roots — this is first principles."</div>
 
 <table class="kv-table"><tr><th>Analogy thinking (Junior)</th><th>First principles (Senior)</th></tr>
 <tr><td>"আগে কীভাবে হয়েছে?"</td><td>"কেন এটা এভাবে হতে হবে?"</td></tr>
@@ -127,8 +127,9 @@ doors.push({
 <tr><td>tutorial ছাড়া নতুন কিছু বানাতে পারো</td><td>pattern না মিললে ঘাবড়ে যাও</td></tr>
 <tr><td>জটিল সিস্টেম সরল করো</td><td>framework ছাড়া কাজ করতে পারো না</td></tr></table>
 
-<div class="dialogue">আকল — intellect, reason, the faculty of understanding fundamental truths। কুরআনে আল্লাহ বলেন — "তারা কি চিন্তা করে না? তাদের মধ্যে আকল নেই?" আকল হলো অন্ধ অনুকরণের বিপরীত। যে আকল ব্যবহার করে, সে প্রশ্ন করে। যে অনুকরণ করে, সে অন্ধ। First principles thinking-ও আকল — প্রতিটা সমস্যাকে মৌলিক সত্য পর্যন্ত ভাঙা। যে আকল দিয়ে চিন্তা করে, সে মূল থেকে উপরে ওঠে। যে অন্ধভাবে অনুকরণ করে, সে কখনো মূল দেখে না।</div></div>
-<div class="dialogue en">"Aql — intellect, reason, the faculty of understanding fundamental truths. Allah says — 'Do they not reflect? Have they no intellect?' Aql is the opposite of blind imitation. One who uses aql, questions. One who imitates, is blind. First principles thinking too is aql — breaking every problem to its fundamental truth. One who thinks with aql, builds up from the root. One who blindly imitates, never sees the root."</div></div>
+<div class="dialogue">আকল — intellect, reason, the faculty of understanding fundamental truths। কুরআনে আল্লাহ বলেন — "তারা কি চিন্তা করে না? তাদের মধ্যে আকল নেই?" আকল হলো অন্ধ অনুকরণের বিপরীত। যে আকল ব্যবহার করে, সে প্রশ্ন করে। যে অনুকরণ করে, সে অন্ধ। First principles thinking-ও আকল — প্রতিটা সমস্যাকে মৌলিক সত্য পর্যন্ত ভাঙা। যে আকল দিয়ে চিন্তা করে, সে মূল থেকে উপরে ওঠে। যে অন্ধভাবে অনুকরণ করে, সে কখনো মূল দেখে না।</div>
+<div class="verse">"তারা কি চিন্তা করে না? তাদের মধ্যে আকল নেই?"<br>— কুরআন</div>
+<div class="dialogue en">"Aql — intellect, reason, the faculty of understanding fundamental truths. Allah says — 'Do they not reflect? Have they no intellect?' Aql is the opposite of blind imitation. One who uses aql, questions. One who imitates, is blind. First principles thinking too is aql — breaking every problem to its fundamental truth. One who thinks with aql, builds up from the root. One who blindly imitates, never sees the root."</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -200,8 +201,8 @@ doors.push({
   story:`<p class="scene-setting">তৃতীয় দরজা। একটা হ্রদ। কারিগর খাদিজা পাথর ফেলছেন — ঢেউ তৈরি হয়। ঢেউ ছড়ায়, অন্য পাড়ে আছড়ে পড়ে, ফিরে আসে। তুমি ভাবলে এটা শুধু পাথর ও ঢেউ। কিন্তু খাদিজা দেখছেন — পাথর → ঢেউ → প্রতিফলন → হ্রদের তলায় পলি সরে যায় → মাছের ডিম নষ্ট → মাছ কমে → জেলে ক্ষতিগ্রস্ত। একটা পাথর = একটা জীবন বদল।</p>
 <p class="scene-setting en">The third door. A lake. Craftswoman Khadija throws a stone — ripples form. They spread, hit the far shore, return. You think it's just stone and ripple. But Khadija sees — stone → ripple → reflection → sediment shifts → fish eggs destroyed → fish decline → fishermen suffer. One stone = one life changed.</p>
 
-<div class="dialogue">First principles বলেছিলেন — মূল খুঁজো। কিন্তু আমি বলি — মূল খুঁজলেও সংযোগ না দেখলে অর্ধেক। প্রতিটা সিদ্ধান্ত একটা পাথর। সিস্টেমে ঢেউ তৈরি করে। এই ঢেউ কোথায় যাবে? কাকে নাড়িয়ে দেবে? কোথায় ফিরে আসবে? সিস্টেম চিন্তা — প্রতিটা সিদ্ধান্তের ঢেউ দেখা।</div></div>
-<div class="dialogue en">"First principles said — find the root. But I say — even finding the root is half without seeing connections. Every decision is a stone. It creates ripples in the system. Where will these ripples go? Who will they disturb? Where will they return? Systems thinking — seeing the ripples of every decision."</div></div>
+<div class="dialogue">First principles বলেছিলেন — মূল খুঁজো। কিন্তু আমি বলি — মূল খুঁজলেও সংযোগ না দেখলে অর্ধেক। প্রতিটা সিদ্ধান্ত একটা পাথর। সিস্টেমে ঢেউ তৈরি করে। এই ঢেউ কোথায় যাবে? কাকে নাড়িয়ে দেবে? কোথায় ফিরে আসবে? সিস্টেম চিন্তা — প্রতিটা সিদ্ধান্তের ঢেউ দেখা।</div>
+<div class="dialogue en">"First principles said — find the root. But I say — even finding the root is half without seeing connections. Every decision is a stone. It creates ripples in the system. Where will these ripples go? Who will they disturb? Where will they return? Systems thinking — seeing the ripples of every decision."</div>
 
 <table class="kv-table"><tr><th>Linear thinking (Junior)</th><th>Systems thinking (Senior)</th></tr>
 <tr><td>A → B (cause → effect)</td><td>A → B → C → D → back to A (feedback loop)</td></tr>
@@ -222,8 +223,9 @@ doors.push({
 
 <div class="callout info"><span class="co-icon">🐜</span><div><strong>Emergence:</strong> একটা পিঁপড়া বোকা, কিন্তু পিঁপড়ার কলোনি বুদ্ধিমান; একটা neuron ভাবতে পারে না, মস্তিষ্ক পারে। সিস্টেমের এমন বৈশিষ্ট্য থাকে যা আলাদা অংশে নেই — তাই অংশ নয়, <strong>interaction</strong> পড়ো। Senior সবসময় জিজ্ঞেস করে: "And THEN what?"</div></div></div>
 
-<div class="dialogue">কদর — measure, proportion, destiny। কুরআনে আল্লাহ বলেন — "সবকিছু আমরা একটা নির্ধারিত পরিমাপে সৃষ্টি করেছি।" (৫৪:৪৯)। কদর = প্রতিটা জিনিসের সংযোগ, পরিমাপ, প্রভাব। সিস্টেম চিন্তা-ও কদর — প্রতিটা সিদ্ধান্তের সংযোগ দেখা। যে কদর বোঝে, সে দেখে — একটা সিদ্ধান্ত কীভাবে পুরো সিস্টেমকে নাড়ায়। যে কদর বোঝে না, সে শুধু নিজের অংশ দেখে, বাকি সব অন্ধকার।</div></div>
-<div class="dialogue en">"Qadar — measure, proportion, destiny. Allah says — 'We created all things in determined measure.' (54:49). Qadar = the connections, proportions, effects of everything. Systems thinking too is qadar — seeing the connections of every decision. One who understands qadar sees — how one decision shakes the whole system. One who doesn't, sees only their part, and the rest is darkness."</div></div>
+<div class="dialogue">কদর — measure, proportion, destiny। কুরআনে আল্লাহ বলেন — "সবকিছু আমরা একটা নির্ধারিত পরিমাপে সৃষ্টি করেছি।" (৫৪:৪৯)। কদর = প্রতিটা জিনিসের সংযোগ, পরিমাপ, প্রভাব। সিস্টেম চিন্তা-ও কদর — প্রতিটা সিদ্ধান্তের সংযোগ দেখা। যে কদর বোঝে, সে দেখে — একটা সিদ্ধান্ত কীভাবে পুরো সিস্টেমকে নাড়ায়। যে কদর বোঝে না, সে শুধু নিজের অংশ দেখে, বাকি সব অন্ধকার।</div>
+<div class="verse">"সবকিছু আমরা একটা নির্ধারিত পরিমাপে সৃষ্টি করেছি।"<br>— কুরআন ৫৪:৪৯</div>
+<div class="dialogue en">"Qadar — measure, proportion, destiny. Allah says — 'We created all things in determined measure.' (54:49). Qadar = the connections, proportions, effects of everything. Systems thinking too is qadar — seeing the connections of every decision. One who understands qadar sees — how one decision shakes the whole system. One who doesn't, sees only their part, and the rest is darkness."</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -295,8 +297,8 @@ doors.push({
   story:`<p class="scene-setting">চতুর্থ দরজা। একটা বাজার। কারিগর আব্দুর রহমান কোড লিখছেন না — গ্রাহকের সাথে কথা বলছেন। তুমি অবাক। ইঞ্জিনিয়ার কেন বাজারে? আব্দুর রহমান হাসলেন। "আমি ২০ বছর কোড লিখেছি। কিন্তু একদিন বুঝলাম — আমার কোড কে কিনছে? কেন কিনছে? কোন সমস্যা সমাধান হচ্ছে? না জানলে আমি শুধু টাইপিস্ট, ইঞ্জিনিয়ার না।"</p>
 <p class="scene-setting en">The fourth door. A marketplace. Craftsman Abdur Rahman isn't writing code — he's talking to customers. You're surprised. Why is an engineer in the market? Abdur Rahman smiled. "I wrote code for 20 years. But one day I understood — who buys my code? Why? What problem is solved? Without knowing, I'm just a typist, not an engineer."</p>
 
-<div class="dialogue">সিস্টেম চিন্তা বলেছিলেন — সংযোগ দেখো। কিন্তু আমি বলি — সবচেয়ে গুরুত্বপূর্ণ সংযোগ কোড ও গ্রাহকের মধ্যে। গ্রাহক কেন টাকা দেয়? কোন সমস্যা সমাধান হয়? এটা না বুঝলে তুমি শুধু কোড লেখো — মূল্য তৈরি করো না। ব্যবসায়িক মস্তিষ্ক — কোড কেন গুরুত্বপূর্ণ, তা বোঝা।</div></div>
-<div class="dialogue en">"Systems thinking said — see connections. But I say — the most important connection is between code and customer. Why does the customer pay? What problem is solved? Without understanding this, you just write code — you don't create value. Business brain — understanding why code matters."</div></div>
+<div class="dialogue">সিস্টেম চিন্তা বলেছিলেন — সংযোগ দেখো। কিন্তু আমি বলি — সবচেয়ে গুরুত্বপূর্ণ সংযোগ কোড ও গ্রাহকের মধ্যে। গ্রাহক কেন টাকা দেয়? কোন সমস্যা সমাধান হয়? এটা না বুঝলে তুমি শুধু কোড লেখো — মূল্য তৈরি করো না। ব্যবসায়িক মস্তিষ্ক — কোড কেন গুরুত্বপূর্ণ, তা বোঝা।</div>
+<div class="dialogue en">"Systems thinking said — see connections. But I say — the most important connection is between code and customer. Why does the customer pay? What problem is solved? Without understanding this, you just write code — you don't create value. Business brain — understanding why code matters."</div>
 
 <div class="callout info"><span class="co-icon">🔗</span><div><strong>Value chain:</strong> Code → Feature → User-problem solved → User happy → User pays → Company revenue → Engineer paid → আরও কোড। যেকোনো link ভাঙলে chain ভেঙে পড়ে। Junior দেখে শুধু Code→Feature; senior দেখে পুরো chain; irreplaceable engineer chain-টা optimize করে।</div></div></div>
 
@@ -316,8 +318,9 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">👥</span><div><strong>Users বোঝা (empathy multiplier):</strong> সপ্তাহে ১ জন user-এর সাথে কথা বলো — support ticket নয়, আসল ৩০ মিনিটের কথোপকথন; ৩ মাসের কোডিং-এর চেয়ে বেশি শিখবে। উদাহরণ: তুমি ভাবো user "advanced search filter" চায় → কথা বললে দেখা যায় তারা চায় "just find my stuff faster" — একটা সরল sort-ই যথেষ্ট ছিল।</div></div></div>
 
-<div class="dialogue">রিযিক — provision, sustenance, livelihood। কুরআনে আল্লাহ বলেন — "আল্লাহ প্রতিটা জীবকে তার রিযিক দেন।" (১১:৬)। রিযিক = জীবিকা যা স্বয়ংক্রিয়ভাবে আসে — কিন্তু শর্ত হলো চেষ্টা। ব্যবসায়িক মস্তিষ্ক-ও রিযিকের বোধ — উপার্জন কোথা থেকে আসে, কেন আসে, কীভাবে বাড়ে। যে রিযিক বোঝে, সে শুধু কোড লেখে না — মূল্য তৈরি করে। যে না বোঝে, সে ধারক — উপার্জন তার হাত দিয়ে যায়, কিন্তু সে জানে না কেন।</div></div>
-<div class="dialogue en">"Rizq — provision, sustenance, livelihood. Allah says — 'Allah provides for every living creature.' (11:6). Rizq = livelihood that comes — but the condition is effort. Business brain too is awareness of rizq — where revenue comes from, why, how it grows. One who understands rizq doesn't just write code — creates value. One who doesn't, is a container — revenue passes through their hands, but they don't know why."</div></div>
+<div class="dialogue">রিযিক — provision, sustenance, livelihood। কুরআনে আল্লাহ বলেন — "আল্লাহ প্রতিটা জীবকে তার রিযিক দেন।" (১১:৬)। রিযিক = জীবিকা যা স্বয়ংক্রিয়ভাবে আসে — কিন্তু শর্ত হলো চেষ্টা। ব্যবসায়িক মস্তিষ্ক-ও রিযিকের বোধ — উপার্জন কোথা থেকে আসে, কেন আসে, কীভাবে বাড়ে। যে রিযিক বোঝে, সে শুধু কোড লেখে না — মূল্য তৈরি করে। যে না বোঝে, সে ধারক — উপার্জন তার হাত দিয়ে যায়, কিন্তু সে জানে না কেন।</div>
+<div class="verse">"আল্লাহ প্রতিটা জীবকে তার রিযিক দেন।"<br>— কুরআন ১১:৬</div>
+<div class="dialogue en">"Rizq — provision, sustenance, livelihood. Allah says — 'Allah provides for every living creature.' (11:6). Rizq = livelihood that comes — but the condition is effort. Business brain too is awareness of rizq — where revenue comes from, why, how it grows. One who understands rizq doesn't just write code — creates value. One who doesn't, is a container — revenue passes through their hands, but they don't know why."</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -399,8 +402,8 @@ doors.push({
   story:`<p class="scene-setting">পঞ্চম দরজা। একটা নীরব কক্ষ। কারিগর মারইয়াম বসে আছেন — কিছু করছেন না। শুধু দেখছেন। চারপাশে অন্য কারিগররা দ্রুত কাজ করছে — সমাধান বানাচ্ছে, ফিক্স করছে, শিপ করছে। তুমি ভাবলে মারইয়াম অলস। কিন্তু তিনি সবচেয়ে গুরুত্বপূর্ণ কাজ করছেন — সমস্যা খুঁজছেন। সবাই সমাধান নিয়ে ব্যস্ত, কেউ সমস্যা নিয়ে ভাবছে না।</p>
 <p class="scene-setting en">The fifth door. A silent room. Craftswoman Maryam sits — doing nothing. Just observing. Around her, other craftsmen work fast — building solutions, fixing, shipping. You think Maryam is lazy. But she's doing the most important work — finding problems. Everyone is busy with solutions, nobody is thinking about problems.</p>
 
-<div class="dialogue">ব্যবসায়িক মস্তিষ্ক বলেছিলেন — কোড কেন গুরুত্বপূর্ণ তা বোঝো। কিন্তু আমি বলি — সবচেয়ে গুরুত্বপূর্ণ প্রশ্ন: কোন সমস্যা সমাধান করবে? সবাই সমাধান নিয়ে ব্যস্ত। কিন্তু সঠিক সমস্যা খুঁজছে কে? ভুল সমস্যা সমাধান = সময়, টাকা, শক্তি নষ্ট। অবিচ্ছেয্য ইঞ্জিনিয়ার সমস্যা খুঁজে, তারপর সমাধান।</div></div>
-<div class="dialogue en">"The business brain said — understand why code matters. But I say — the most important question: WHICH problem to solve? Everyone is busy with solutions. But who is finding the right problem? Wrong problem solved = wasted time, money, energy. The irreplaceable engineer finds problems first, then solves them."</div></div>
+<div class="dialogue">ব্যবসায়িক মস্তিষ্ক বলেছিলেন — কোড কেন গুরুত্বপূর্ণ তা বোঝো। কিন্তু আমি বলি — সবচেয়ে গুরুত্বপূর্ণ প্রশ্ন: কোন সমস্যা সমাধান করবে? সবাই সমাধান নিয়ে ব্যস্ত। কিন্তু সঠিক সমস্যা খুঁজছে কে? ভুল সমস্যা সমাধান = সময়, টাকা, শক্তি নষ্ট। অবিচ্ছেয্য ইঞ্জিনিয়ার সমস্যা খুঁজে, তারপর সমাধান।</div>
+<div class="dialogue en">"The business brain said — understand why code matters. But I say — the most important question: WHICH problem to solve? Everyone is busy with solutions. But who is finding the right problem? Wrong problem solved = wasted time, money, energy. The irreplaceable engineer finds problems first, then solves them."</div>
 
 <table class="kv-table"><tr><th>স্তর</th><th>ভূমিকা</th><th>মূল্য</th></tr>
 <tr><td class="hl">১. Code Writer</td><td>"বলো কী বানাতে, কোড করে দিই"</td><td>কম — AI-replaceable</td></tr>
@@ -419,8 +422,9 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">📓</span><div><strong>Problem Journal:</strong> রোজ একটা সমস্যা লেখো যা লক্ষ্য করেছ (সমাধান নয়) — "user ৩ বার back চাপে → confusion", "onboarding step ৪-এ ৬০% drop-off"। সাপ্তাহিক review, top ৩ টিমকে দেখাও। তুমি হয়ে ওঠো সেই লোক যে সমস্যা <em>দেখে</em> — এটাই irreplaceable, কারণ বেশিরভাগ engineer THINK-এর চেয়ে CODE করতে বেশি পছন্দ করে।</div></div></div>
 
-<div class="dialogue">তালাশ — search, seek, quest। কুরআনে আল্লাহ বলেন — "যারা আমার সন্ধানে চলে, আমি তাদের পথ দেখাই।" তালাশ শুধু সমাধানের নয় — সমস্যারও। প্রকৃত তালাশ হলো সঠিক সমস্যা খুঁজে বের করা, সমাধানের আগে। যে তালাশ করে, সে আগে দেখে — সমস্যা বড় হওয়ার আগেই। যে তালাশ করে না, সে অপেক্ষা করে — সমস্যা ফেটে পড়ার জন্য।</div></div>
-<div class="dialogue en">"Talash — search, seek, quest. Allah says — 'Those who seek Me, I guide them.' Talash isn't just for solutions — it's for problems too. True talash is finding the right problem before the solution. One who seeks, sees early — before the problem grows. One who doesn't seek, waits — for the problem to explode."</div></div>
+<div class="dialogue">তালাশ — search, seek, quest। কুরআনে আল্লাহ বলেন — "যারা আমার সন্ধানে চলে, আমি তাদের পথ দেখাই।" তালাশ শুধু সমাধানের নয় — সমস্যারও। প্রকৃত তালাশ হলো সঠিক সমস্যা খুঁজে বের করা, সমাধানের আগে। যে তালাশ করে, সে আগে দেখে — সমস্যা বড় হওয়ার আগেই। যে তালাশ করে না, সে অপেক্ষা করে — সমস্যা ফেটে পড়ার জন্য।</div>
+<div class="verse">"যারা আমার সন্ধানে চলে, আমি তাদের পথ দেখাই।"<br>— কুরআন</div>
+<div class="dialogue en">"Talash — search, seek, quest. Allah says — 'Those who seek Me, I guide them.' Talash isn't just for solutions — it's for problems too. True talash is finding the right problem before the solution. One who seeks, sees early — before the problem grows. One who doesn't seek, waits — for the problem to explode."</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">

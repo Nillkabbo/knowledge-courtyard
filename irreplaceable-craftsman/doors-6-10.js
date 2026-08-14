@@ -18,8 +18,8 @@ doors.push({
   story:`<p class="scene-setting">ষষ্ঠ দরজা। একটা কারখানার মেঝে। দশজন কারিগর একটা জিনিস বানাচ্ছে। কিন্তু প্রত্যেকে ভিন্ন ভিন্ন পিছন বুঝছে। কেউ বলছে গোল, কেউ চৌকো, কেউ ত্রিভুজ। কারিগর ইউসুফ এক জায়গায় দাঁড়িয়ে একটা ছবি আঁকলেন — সবাই দেখল। হঠাৎ সবাই একমত। একটা ছবি = দশজনের একতা। "এটাই communication," ইউসুফ বললেন। "স্পষ্ট বাক্য = সবাই এক দিকে।"</p>
 <p class="scene-setting en">The sixth door. A factory floor. Ten craftsmen building one thing. But each understands a different blueprint. One says circle, one square, one triangle. Craftsman Yusuf draws one picture — everyone sees. Suddenly everyone agrees. One picture = ten people aligned. "This is communication," Yusuf said. "Clear words = everyone in one direction."</p>
 
-<div class="dialogue">Problem finding বলেছিলেন — সমস্যা খুঁজো। কিন্তু আমি বলি — সমস্যা খুঁজলেও দলকে বোঝাতে না পারলে কিছু হবে না। যোগাযোগ ছাড়া তুমি একা। একা প্রতিভা সীমিত। দল প্রতিভা অসীম। স্পষ্ট বাক্য = ১০x multiplier। যে স্পষ্ট বলে, সে দল নির্দেশ দেয়। যে অস্পষ্ট বলে, সে বিভ্রান্তি ছড়ায়।</div></div>
-<div class="dialogue en">"Problem finding said — find problems. But I say — even if you find problems, without communicating them to the team, nothing happens. Without communication, you're alone. Solo talent is limited. Team talent is infinite. Clear speech = 10x multiplier. One who speaks clearly, directs the team. One who speaks unclearly, spreads confusion."</div></div>
+<div class="dialogue">Problem finding বলেছিলেন — সমস্যা খুঁজো। কিন্তু আমি বলি — সমস্যা খুঁজলেও দলকে বোঝাতে না পারলে কিছু হবে না। যোগাযোগ ছাড়া তুমি একা। একা প্রতিভা সীমিত। দল প্রতিভা অসীম। স্পষ্ট বাক্য = ১০x multiplier। যে স্পষ্ট বলে, সে দল নির্দেশ দেয়। যে অস্পষ্ট বলে, সে বিভ্রান্তি ছড়ায়।</div>
+<div class="dialogue en">"Problem finding said — find problems. But I say — even if you find problems, without communicating them to the team, nothing happens. Without communication, you're alone. Solo talent is limited. Team talent is infinite. Clear speech = 10x multiplier. One who speaks clearly, directs the team. One who speaks unclearly, spreads confusion."</div>
 
 <div class="callout info"><span class="co-icon">✖️</span><div><strong>যোগাযোগ = #১ senior skill:</strong> senior-এর কাজ বেশি কোড লেখা নয় — টিমের output গুণ করা। IC = নিজের কোড = ১x। ভালো যোগাযোগকারী senior = টিম output = ৫-১০x। খারাপ যোগাযোগকারী = নিজের কোড + টিম confusion = <strong>০.৫x (negative multiplier!)</strong> — misalignment, rework, conflict।</div></div></div>
 
@@ -38,8 +38,9 @@ doors.push({
 
 <div class="callout info"><span class="co-icon">🧠</span><div><strong>Feynman test:</strong> non-technical কাউকে সরলভাবে বোঝাতে না পারলে তুমি নিজেই পুরোপুরি বোঝোনি। শেষ প্রজেক্টটা দাদিকে বোঝাও — বুঝলে তুমি বুঝেছ; confused হলে তুমি jargon-এর পেছনে লুকিয়ে আছ।</div></div></div>
 
-<div class="dialogue">বায়ান — clear speech, expression, manifestation। কুরআনে আল্লাহ বলেন — "তিনি মানুষকে শিখিয়েছেন বায়ান — স্পষ্ট বাক্য।" (৫৫:৩-৪)। বায়ান হলো আল্লাহর নিয়ামত — স্পষ্টভাবে প্রকাশ করার ক্ষমতা। যোগাযোগ-ও বায়ান — জটিল ধারণা স্পষ্টভাবে প্রকাশ। যে বায়ান করে, সে আলো — অন্ধকার দূর করে। যে বায়ান করতে পারে না, সে জ্ঞান ধরে রাখে অন্ধকারে। জ্ঞান + বায়ান = নূর। জ্ঞান - বায়ান = বন্দি জ্ঞান।</div></div>
-<div class="dialogue en">"Bayan — clear speech, expression, manifestation. Allah says — 'He taught man bayan — clear speech.' (55:3-4). Bayan is Allah's gift — the ability to express clearly. Communication too is bayan — expressing complex ideas clearly. One who has bayan, is light — removes darkness. One who can't express, holds knowledge in darkness. Knowledge + bayan = light. Knowledge - bayan = imprisoned knowledge."</div></div>
+<div class="dialogue">বায়ান — clear speech, expression, manifestation। কুরআনে আল্লাহ বলেন — "তিনি মানুষকে শিখিয়েছেন বায়ান — স্পষ্ট বাক্য।" (৫৫:৩-৪)। বায়ান হলো আল্লাহর নিয়ামত — স্পষ্টভাবে প্রকাশ করার ক্ষমতা। যোগাযোগ-ও বায়ান — জটিল ধারণা স্পষ্টভাবে প্রকাশ। যে বায়ান করে, সে আলো — অন্ধকার দূর করে। যে বায়ান করতে পারে না, সে জ্ঞান ধরে রাখে অন্ধকারে। জ্ঞান + বায়ান = নূর। জ্ঞান - বায়ান = বন্দি জ্ঞান।</div>
+<div class="verse">"তিনি মানুষকে শিখিয়েছেন বায়ান — স্পষ্ট বাক্য।"<br>— কুরআন ৫৫:৩-৪</div>
+<div class="dialogue en">"Bayan — clear speech, expression, manifestation. Allah says — 'He taught man bayan — clear speech.' (55:3-4). Bayan is Allah's gift — the ability to express clearly. Communication too is bayan — expressing complex ideas clearly. One who has bayan, is light — removes darkness. One who can't express, holds knowledge in darkness. Knowledge + bayan = light. Knowledge - bayan = imprisoned knowledge."</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -133,8 +134,8 @@ doors.push({
   story:`<p class="scene-setting">সপ্তম দরজা। একটা নদীর ধারে। কারিগর নূহ একটা নৌকা বানিয়েছেন — নিখুঁত, সুন্দর, শক্তিশালী। কিন্তু নৌকাটা স্থলভাগে পড়ে আছে। নদী থেকে অনেক দূর। তুমি ভাবলে — কী সুন্দর নৌকা! কিন্তু নূহ দুঃখিত। "নৌকা সুন্দর, কিন্তু নদী ছাড়া মূল্যহীন। আমি নৌকা বানিয়েছি, কিন্তু ভুলে গেছি — নৌকা কোথায় চলবে।" এটাই পণ্য নির্মাণের সবচেয়ে বড় ভুল — সমাধান বানানো, সমস্যা ভুলে যাওয়া।</p>
 <p class="scene-setting en">The seventh door. A riverbank. Craftsman Nuh built a boat — perfect, beautiful, strong. But the boat sits on land. Far from the river. You think — what a beautiful boat! But Nuh is sad. "The boat is beautiful, but without a river, worthless. I built the boat, but forgot — where will it sail." This is the biggest product mistake — building solutions, forgetting problems.</p>
 
-<div class="dialogue">যোগাযোগ বলেছিলেন — স্পষ্ট বলো। কিন্তু আমি বলি — স্পষ্ট বললেও ভুল জিনিস বানালে কিছু হবে না। নৌকা সুন্দর, কিন্তু নদী ছাড়া মূল্যহীন। পণ্য = সমস্যা + সমাধান + মানুষ। যে সমাধান বানায় কিন্তু সমস্যা বোঝে না, সে স্থলভাগে নৌকা বানায়। যে তিনটাই বোঝে, সে সমুদ্রে যাত্রা করে।</div></div>
-<div class="dialogue en">"Communication said — speak clearly. But I say — even speaking clearly, if you build the wrong thing, nothing happens. The boat is beautiful, but without a river, worthless. Product = problem + solution + people. One who builds solutions without understanding problems, builds boats on land. One who understands all three, sails the ocean."</div></div>
+<div class="dialogue">যোগাযোগ বলেছিলেন — স্পষ্ট বলো। কিন্তু আমি বলি — স্পষ্ট বললেও ভুল জিনিস বানালে কিছু হবে না। নৌকা সুন্দর, কিন্তু নদী ছাড়া মূল্যহীন। পণ্য = সমস্যা + সমাধান + মানুষ। যে সমাধান বানায় কিন্তু সমস্যা বোঝে না, সে স্থলভাগে নৌকা বানায়। যে তিনটাই বোঝে, সে সমুদ্রে যাত্রা করে।</div>
+<div class="dialogue en">"Communication said — speak clearly. But I say — even speaking clearly, if you build the wrong thing, nothing happens. The boat is beautiful, but without a river, worthless. Product = problem + solution + people. One who builds solutions without understanding problems, builds boats on land. One who understands all three, sails the ocean."</div>
 
 <div class="callout info"><span class="co-icon">🧮</span><div><strong>Product equation:</strong> Great Product = Real Problem * Good Solution * Right People। যেকোনো factor শূন্য হলে product শূন্য।</div></div></div>
 
@@ -160,8 +161,9 @@ doors.push({
 
 <div class="callout warn"><span class="co-icon">🚫</span><div><strong>Anti-patterns:</strong> building blind ("PM বলল, বানালাম") · feature factory (sprint-এ ১০ feature, ব্যবহার হয় না) · reinventing · perfectionism ("আরও ৬ মাস") · vanity metrics ("১০,০০০ signup!" নয় — "২,০০০ দৈনিক ব্যবহার করে, ৫০০ pay করে")।</div></div></div>
 
-<div class="dialogue">খলক — creation, making, bringing into existence। কুরআনে আল্লাহ বলেন — "তিনি আসমান ও জমিন সৃষ্টি করেছেন উদ্দেশ্য সহ।" (২১:১৬)। উদ্দেশ্য সহ সৃষ্টি = খলক। পণ্য নির্মাণ-ও খলক — উদ্দেশ্য সহ নির্মাণ। যে উদ্দেশ্য ছাড়া বানায়, সে শিল্পী — সুন্দর, কিন্তু অকেজো। যে উদ্দেশ্য সহ বানায়, সে নির্মাতা — সুন্দর ও কার্যকর। খলক — উদ্দেশ্য সহ সৃষ্টির গুণ।</div></div>
-<div class="dialogue en">"Khalq — creation, making, bringing into existence. Allah says — 'We created the heavens and earth with purpose.' (21:16). Creation with purpose = khalq. Product building too — building with purpose. One who builds without purpose, is an artist — beautiful, but useless. One who builds with purpose, is a creator — beautiful and effective. Khalq — the virtue of purposeful creation."</div></div>
+<div class="dialogue">খলক — creation, making, bringing into existence। কুরআনে আল্লাহ বলেন — "তিনি আসমান ও জমিন সৃষ্টি করেছেন উদ্দেশ্য সহ।" (২১:১৬)। উদ্দেশ্য সহ সৃষ্টি = খলক। পণ্য নির্মাণ-ও খলক — উদ্দেশ্য সহ নির্মাণ। যে উদ্দেশ্য ছাড়া বানায়, সে শিল্পী — সুন্দর, কিন্তু অকেজো। যে উদ্দেশ্য সহ বানায়, সে নির্মাতা — সুন্দর ও কার্যকর। খলক — উদ্দেশ্য সহ সৃষ্টির গুণ।</div>
+<div class="verse">"তিনি আসমান ও জমিন সৃষ্টি করেছেন উদ্দেশ্য সহ।"<br>— কুরআন ২১:১৬</div>
+<div class="dialogue en">"Khalq — creation, making, bringing into existence. Allah says — 'We created the heavens and earth with purpose.' (21:16). Creation with purpose = khalq. Product building too — building with purpose. One who builds without purpose, is an artist — beautiful, but useless. One who builds with purpose, is a creator — beautiful and effective. Khalq — the virtue of purposeful creation."</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -254,8 +256,8 @@ doors.push({
   story:`<p class="scene-setting">অষ্টম দরজা। একটা বাগান। কারিগর যাইনব মৌমাছি পালন করেন। তুমি ভাবলে — ইঞ্জিনিয়ার কেন মৌমাছি? যাইনব বললেন — "মৌমাছি এক ফুল থেকে অন্য ফুলে রেণু নিয়ে যায়। দুটো আলাদা ফুল, কিন্তু সংযোগে নতুন ফল। আমিও তেমনি — এক ক্ষেত্র থেকে অন্যে ধারণা নিয়ে যাই। জীববিজ্ঞান + কম্পিউটার = নিউরাল নেটওয়ার্ক। এটাই ইনোভেশন — ক্রস-পলিনেশন।"</p>
 <p class="scene-setting en">The eighth door. A garden. Craftswoman Zainab keeps bees. You think — why bees for an engineer? Zainab said — "Bees carry pollen from one flower to another. Two separate flowers, but connection creates new fruit. I too — carry ideas from one field to another. Biology + computers = neural networks. This is innovation — cross-pollination."</p>
 
-<div class="dialogue">পণ্য নির্মাণ বলেছিলেন — উদ্দেশ্য সহ বানাও। কিন্তু আমি বলি — উদ্দেশ্য সহ বানালেও নতুন কিছু না থাকলে তুমি অনুকরণকারী। নতুন কীভাবে আসে? শূন্য থেকে নয়। পুরোনোর নতুন সংযোগ থেকে। এক ডোমেইনের সমাধান অন্য ডোমেইনের সমস্যায় প্রয়োগ। এটাই ইনোভেশন — ক্রস-পলিনেশন।</div></div>
-<div class="dialogue en">"Product building said — build with purpose. But I say — even with purpose, without something new, you're an imitator. How does new come? Not from nothing. From new connections of old things. A solution from one domain applied to a problem in another. This is innovation — cross-pollination."</div></div>
+<div class="dialogue">পণ্য নির্মাণ বলেছিলেন — উদ্দেশ্য সহ বানাও। কিন্তু আমি বলি — উদ্দেশ্য সহ বানালেও নতুন কিছু না থাকলে তুমি অনুকরণকারী। নতুন কীভাবে আসে? শূন্য থেকে নয়। পুরোনোর নতুন সংযোগ থেকে। এক ডোমেইনের সমাধান অন্য ডোমেইনের সমস্যায় প্রয়োগ। এটাই ইনোভেশন — ক্রস-পলিনেশন।</div>
+<div class="dialogue en">"Product building said — build with purpose. But I say — even with purpose, without something new, you're an imitator. How does new come? Not from nothing. From new connections of old things. A solution from one domain applied to a problem in another. This is innovation — cross-pollination."</div>
 
 <div class="callout info"><span class="co-icon">💡</span><div><strong>Steve Jobs (১৯৯৬):</strong> "Creativity is just connecting things... তারা কিছু DO করেনি, তারা কেবল কিছু SAW।" Innovation = অন্যরা যে সংযোগ মিস করে সেটা দেখা — এর জন্য জ্ঞানের <strong>breadth</strong> লাগে, শুধু depth নয়।</div></div></div>
 
@@ -273,8 +275,8 @@ doors.push({
 
 <div class="callout warn"><span class="co-icon">📉</span><div><strong>Innovator's Dilemma:</strong> ভালো কোম্পানি ব্যর্থ হয় কারণ তারা সবকিছু "ঠিক" করে — বর্তমান customer-দের শোনে (যারা incremental চায়), disruptive innovation উপেক্ষা করে (প্রথমে ছোট মনে হয়)। প্রশ্ন করো: "আমরা আগামীকালের customer-দের সেবা করছি, নাকি গতকালের? পরের curve কোনটা?"</div></div></div>
 
-<div class="dialogue">তাজদিদ — renewal, revival, restoration। ইসলামী ঐতিহ্যে তাজদিদ হলো পুরোনোকে নতুন রূপে পুনরুজ্জীবিত করা — সারমর্ম ধরে রেখে ফর্ম বদলানো। ইনোভেশন-ও তাজদিদ — পুরোনো ধারণাকে নতুন সংযোগে পুনরুজ্জীবিত করা। যে তাজদিদ করে, সে অতীত থেকে ভবিষ্যৎ বানায়। যে তাজদিদ করে না, সে অতীতে আটকে থাকে বা অতীত ছেড়ে শূন্যে পড়ে।</div></div>
-<div class="dialogue en">"Tajdid — renewal, revival, restoration. In Islamic tradition, tajdid is reviving the old in new form — keeping essence, changing form. Innovation too — reviving old ideas through new connections. One who does tajdid, builds future from past. One who doesn't, gets stuck in the past or falls into the void."</div></div>
+<div class="dialogue">তাজদিদ — renewal, revival, restoration। ইসলামী ঐতিহ্যে তাজদিদ হলো পুরোনোকে নতুন রূপে পুনরুজ্জীবিত করা — সারমর্ম ধরে রেখে ফর্ম বদলানো। ইনোভেশন-ও তাজদিদ — পুরোনো ধারণাকে নতুন সংযোগে পুনরুজ্জীবিত করা। যে তাজদিদ করে, সে অতীত থেকে ভবিষ্যৎ বানায়। যে তাজদিদ করে না, সে অতীতে আটকে থাকে বা অতীত ছেড়ে শূন্যে পড়ে।</div>
+<div class="dialogue en">"Tajdid — renewal, revival, restoration. In Islamic tradition, tajdid is reviving the old in new form — keeping essence, changing form. Innovation too — reviving old ideas through new connections. One who does tajdid, builds future from past. One who doesn't, gets stuck in the past or falls into the void."</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -360,8 +362,8 @@ doors.push({
   story:`<p class="scene-setting">নবম দরজা। একটা গিরি। উপরে কারিগর তালহা দাঁড়িয়ে। নিচে নদী। সবাই বলছে — লাফ দাও! কিন্তু তালহা দড়ি বাঁধছেন। গিরির উপরে, নিজের কোমরে। তুমি ভাবলে — সে ভীরু। কিন্তু তালহা বললেন — "আমি লাফ দেব। কিন্তু অন্ধ লাফ নয়। দড়ি দিয়ে। প্রস্তুতি ছাড়া লাফ = আত্মহত্যা। প্রস্তুতি সহ লাফ = সাহস।" এটাই উদ্যোক্তার লাফ — গণনাকৃত ঝুঁকি।</p>
 <p class="scene-setting en">The ninth door. A cliff. Craftsman Talha stands above. Below, a river. Everyone says — jump! But Talha is tying a rope. To the cliff, to his waist. You think — he's a coward. But Talha said — "I will jump. But not a blind jump. With a rope. Jumping without preparation = suicide. Jumping with preparation = courage." This is the entrepreneur's leap — calculated risk.</p>
 
-<div class="dialogue">ইনোভেশন বলেছিলেন — নতুন সংযোগ খোঁজো। কিন্তু আমি বলি — নতুন সংযোগ খুঁজলেও বাস্তবায়ন না করলে কিছু হবে না। বাস্তবায়ন = ঝুঁকি। ঝুঁকি ছাড়া কিছু নতুন হয় না। কিন্তু অন্ধ ঝুঁকি = বিপদ। গণনাকৃত ঝুঁকি = প্রবৃদ্ধি। উদ্যোক্তার লাফ — প্রস্তুতি সহ ঝুঁকি।</div></div>
-<div class="dialogue en">"Innovation said — find new connections. But I say — even finding connections, without execution, nothing happens. Execution = risk. Without risk, nothing new happens. But blind risk = danger. Calculated risk = growth. The entrepreneur's leap — risk with preparation."</div></div>
+<div class="dialogue">ইনোভেশন বলেছিলেন — নতুন সংযোগ খোঁজো। কিন্তু আমি বলি — নতুন সংযোগ খুঁজলেও বাস্তবায়ন না করলে কিছু হবে না। বাস্তবায়ন = ঝুঁকি। ঝুঁকি ছাড়া কিছু নতুন হয় না। কিন্তু অন্ধ ঝুঁকি = বিপদ। গণনাকৃত ঝুঁকি = প্রবৃদ্ধি। উদ্যোক্তার লাফ — প্রস্তুতি সহ ঝুঁকি।</div>
+<div class="dialogue en">"Innovation said — find new connections. But I say — even finding connections, without execution, nothing happens. Execution = risk. Without risk, nothing new happens. But blind risk = danger. Calculated risk = growth. The entrepreneur's leap — risk with preparation."</div>
 
 <table class="kv-table"><tr><th>Engineer</th><th>Entrepreneur</th></tr>
 <tr><td>জানা জিনিস optimize করে</td><td>অজানা explore করে</td></tr>
@@ -385,8 +387,9 @@ doors.push({
 
 <div class="callout warn"><span class="co-icon">💭</span><div><strong>The great idea myth:</strong> unique idea লাগে না — Google প্রথম search engine নয়, Facebook প্রথম social network নয়, Slack প্রথম chat নয়; সবাই <em>বিদ্যমান জিনিস আরও ভালো</em> করেছে। Idea সস্তা, execution-ই সব। পারফেক্ট idea-র অপেক্ষা কোরো না — real problem খোঁজো, solution বানাও, ship করো। "great idea" বানানোর <em>মধ্য দিয়ে</em> আসে, আগে নয়।</div></div></div>
 
-<div class="dialogue">তাওয়াক্কুল — trust, reliance, surrender after effort। কুরআনে আল্লাহ বলেন — "যারা আল্লাহর উপর তাওয়াক্কুল করে, তিনি তাদের যথেষ্ট।" (৬৫:৩)। তাওয়াক্কুল অলসতা নয় — প্রস্তুতির পর ফলাফলে ভরসা। দড়ি বাঁধো (চেষ্টা), তারপর লাফ দাও (ঝুঁকি), তারপর ফলাফলে ভরসা (তাওয়াক্কুল)। যে তাওয়াক্কুল করে, সে জানে — চেষ্টা তার, ফল আল্লাহর। এই জ্ঞানে ভয় চলে যায়, সাহস আসে।</div></div>
-<div class="dialogue en">"Tawakkul — trust, reliance, surrender after effort. Allah says — 'Whoever trusts in Allah, He is sufficient for them.' (65:3). Tawakkul is not laziness — it's trust in the outcome AFTER preparation. Tie the rope (effort), then jump (risk), then trust the result (tawakkul). One who has tawakkul knows — effort is theirs, result is Allah's. In this knowledge, fear departs, courage arrives."</div></div>
+<div class="dialogue">তাওয়াক্কুল — trust, reliance, surrender after effort। কুরআনে আল্লাহ বলেন — "যারা আল্লাহর উপর তাওয়াক্কুল করে, তিনি তাদের যথেষ্ট।" (৬৫:৩)। তাওয়াক্কুল অলসতা নয় — প্রস্তুতির পর ফলাফলে ভরসা। দড়ি বাঁধো (চেষ্টা), তারপর লাফ দাও (ঝুঁকি), তারপর ফলাফলে ভরসা (তাওয়াক্কুল)। যে তাওয়াক্কুল করে, সে জানে — চেষ্টা তার, ফল আল্লাহর। এই জ্ঞানে ভয় চলে যায়, সাহস আসে।</div>
+<div class="verse">"যারা আল্লাহর উপর তাওয়াক্কুল করে, তিনি তাদের যথেষ্ট।"<br>— কুরআন ৬৫:৩</div>
+<div class="dialogue en">"Tawakkul — trust, reliance, surrender after effort. Allah says — 'Whoever trusts in Allah, He is sufficient for them.' (65:3). Tawakkul is not laziness — it's trust in the outcome AFTER preparation. Tie the rope (effort), then jump (risk), then trust the result (tawakkul). One who has tawakkul knows — effort is theirs, result is Allah's. In this knowledge, fear departs, courage arrives."</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -472,8 +475,8 @@ doors.push({
   story:`<p class="scene-setting">দশম দরজা। শেষ। একটা প্রাচীন বৃক্ষ — শত বছর পুরোনো। ঝড় এসেছে, বন্যার জল এসেছে, খরা এসেছে। কিন্তু বৃক্ষ দাঁড়িয়ে আছে। কারণ শিকড় গভীর। স্থপতি ইদ্রিস বৃক্ষের গোড়ায় হাত রাখলেন। "উপরে তুমি ডাল দেখো," তিনি বললেন। "কিন্তু আমি নিচে শিকড় দেখি। ডাল ভাঙে, শিকড় থাকে। তুমি নয় দরজা পেরিয়েছ — এখন তুমি শিকড়। গভীরে যাও। চিরস্থায়ী হও।"</p>
 <p class="scene-setting en">The tenth door. The last. An ancient tree — hundreds of years old. Storms came, floodwaters came, drought came. But the tree stands. Because roots are deep. Architect Idris placed his hand on the tree's base. "Above, you see branches," he said. "But I see roots below. Branches break, roots remain. You've passed nine doors — now you are the root. Go deep. Become permanent."</p>
 
-<div class="dialogue">নয়টি দরজা পেরিয়েছ। পচনশীল উপাদান বলেছিলেন — ফানা। মূল নীতি বলেছিলেন — আকল। সিস্টেম চিন্তা বলেছিলেন — কদর। ব্যবসায়িক মস্তিষ্ক বলেছিলেন — রিযিক। সমস্যা সন্ধান বলেছিলেন — তালাশ। যোগাযোগ বলেছিলেন — বায়ান। পণ্য নির্মাণ বলেছিলেন — খলক। ইনোভেশন বলেছিলেন — তাজদিদ। উদ্যোক্তা বলেছিলেন — তাওয়াক্কুল। এখন — সব একসাথে। ফানা থেকে বাকা।</div></div>
-<div class="dialogue en">"You've passed nine doors. Perishable material said — fana. First principles said — aql. Systems thinking said — qadar. Business brain said — rizq. Problem finding said — talash. Communication said — bayan. Product building said — khalq. Innovation said — tajdid. Entrepreneur said — tawakkul. Now — all together. From fana to baqa."</div></div>
+<div class="dialogue">নয়টি দরজা পেরিয়েছ। পচনশীল উপাদান বলেছিলেন — ফানা। মূল নীতি বলেছিলেন — আকল। সিস্টেম চিন্তা বলেছিলেন — কদর। ব্যবসায়িক মস্তিষ্ক বলেছিলেন — রিযিক। সমস্যা সন্ধান বলেছিলেন — তালাশ। যোগাযোগ বলেছিলেন — বায়ান। পণ্য নির্মাণ বলেছিলেন — খলক। ইনোভেশন বলেছিলেন — তাজদিদ। উদ্যোক্তা বলেছিলেন — তাওয়াক্কুল। এখন — সব একসাথে। ফানা থেকে বাকা।</div>
+<div class="dialogue en">"You've passed nine doors. Perishable material said — fana. First principles said — aql. Systems thinking said — qadar. Business brain said — rizq. Problem finding said — talash. Communication said — bayan. Product building said — khalq. Innovation said — tajdid. Entrepreneur said — tawakkul. Now — all together. From fana to baqa."</div>
 
 <table class="kv-table"><tr><th>বৃক্ষের স্তর</th><th>কী</th></tr>
 <tr><td class="hl">🌿 Canopy (দৃশ্যমান)</td><td>Title, salary, shipped features, recognition — যা অন্যরা দেখে</td></tr>
@@ -568,5 +571,8 @@ doors.push({
          ফানা থেকে বাকা। তুমি সেই বৃক্ষ।
 </div></div>
 
-<div class="secret-box"><div class="label">দশম দরজা — সমন্বয়</div><div class="text">🌳 অবিচ্ছেয্যতা = Permanent Knowledge + First Principles + Systems Thinking + Business Brain + Problem Finding + Communication + Product Sense + Innovation + Entrepreneurship।<br><small>ফানা থেকে বাকা — পচনশীল থেকে চিরস্থায়ী। গভীরে শিকড় দাও। তুমি সেই বৃক্ষ।</small></div></div>`
+<div class="secret-box"><div class="label">দশম দরজা — সমন্বয়</div><div class="text">🌳 অবিচ্ছেয্যতা = Permanent Knowledge + First Principles + Systems Thinking + Business Brain + Problem Finding + Communication + Product Sense + Innovation + Entrepreneurship।<br><small>ফানা থেকে বাকা — পচনশীল থেকে চিরস্থায়ী। গভীরে শিকড় দাও। তুমি সেই বৃক্ষ।</small></div></div>`,  senior:{
+    title:"গভীর শিকড়ে যাওয়ার চেকলিস্ট — এই ত্রৈমাসিক",
+    body:`<p><strong>১.</strong> নিজের বৃক্ষ-ম্যাপ আঁকো — Canopy (দৃশ্যমান), Trunk (skill), Roots (অদৃশ্য), Soil (ভিত্তি)। প্রতিটা স্তরে নিজেকে ০-৫ দাও। যেখানে স্কোর কম — সেই শিকড়ে এই ত্রৈমাসিকের বিনিয়োগ।</p><p><strong>২.</strong> পচনশীল তালিকা করো — শেখা কোন জিনিস framework-নির্ভর (ফানা), কোনটা principle (বাকা)। আগামী সপ্তাহে একটা ফানা-skill-এর জায়গায় একটা বাকা-principle শেখো।</p><p><strong>৩.</strong> অনুপস্থিতি-পরীক্ষা দাও — ধরো তুমি ৩ মাস নেই। টিমের কী ক্ষতি? উত্তর "কিছুই না" হলে তুমি এখনো পাতা — শিকড়ে কাজ করো: institutional knowledge, trust, judgment।</p><p><strong>৪.</strong> নয়টি দরজার বাস্তব প্রয়োগ নথিভুক্ত করো — এই বছর কোন প্রজেক্টে কোন দরজার নীতি কাজে লাগালে। এটাই তোমার বাকা-পোর্টফোলিও।</p><p><strong>৫.</strong> প্রতি মাসে একজনকে গভীর করো — যা শিখলে অন্যকে শেখাও। যে বৃক্ষ ফল দেয়, সে বন বানায়। Force multiplier-ই চিরস্থায়ী মূল্য।</p>`
+  }
 });

@@ -18,8 +18,8 @@ doors.push({
   story:`<p class="scene-setting">২০০৭ সাল। ওয়াটারলু বিশ্ববিদ্যালয়। কম্পিউটার বিজ্ঞানী S. Keshav একটা সাধারণ সমস্যা দেখলেন — ছাত্ররা research paper পড়তে পারে না। তারা শুরু থেকে শেষ পর্যন্ত পড়ে, হাল ছাড়ে, কিছু বোঝে না। Keshav একটা পদ্ধতি লিখলেন — How to Read a Paper। ৩টা পাস। প্রতিটা পাসে একটা নির্দিষ্ট উদ্দেশ্য। পেপার পড়ার সবচেয়ে উদ্ধৃত গাইড। আজও।</p>
 <p class="scene-setting en">2007. University of Waterloo. Computer scientist S. Keshav noticed a common problem — students can't read research papers. They read start to finish, give up, understand nothing. Keshav wrote a method — How to Read a Paper. 3 passes. Each pass has a specific purpose. The most cited guide to paper reading. Still today.</p>
 
-<div class="dialogue">মহামানুষদের পড়া বলেছিলেন — Gates, Munger কীভাবে পড়েন। কিন্তু আমি বলি — সবচেয়ে কঠিন পড়া কোনটা? Research paper। কেন? কারণ paper সাধারণ মানুষের জন্য লেখা নয় — গবেষকদের জন্য। জার্গন, রেফারেন্স, গাণিতিক প্রমাণ। কিন্তু Keshav দেখালেন — ৩টা পাসে যেকোনো paper বোঝা যায়। শুরু থেকে শেষ নয় — স্তরে স্তরে।</div></div>
-<div class="dialogue en">"Great minds said — how Gates, Munger read. But I say — what's the hardest reading? Research papers. Why? Because papers aren't written for general audiences — they're for researchers. Jargon, references, mathematical proofs. But Keshav showed — any paper can be understood in 3 passes. Not start to finish — in layers."</div></div>
+<div class="dialogue">মহামানুষদের পড়া বলেছিলেন — Gates, Munger কীভাবে পড়েন। কিন্তু আমি বলি — সবচেয়ে কঠিন পড়া কোনটা? Research paper। কেন? কারণ paper সাধারণ মানুষের জন্য লেখা নয় — গবেষকদের জন্য। জার্গন, রেফারেন্স, গাণিতিক প্রমাণ। কিন্তু Keshav দেখালেন — ৩টা পাসে যেকোনো paper বোঝা যায়। শুরু থেকে শেষ নয় — স্তরে স্তরে।</div>
+<div class="dialogue en">"Great minds said — how Gates, Munger read. But I say — what's the hardest reading? Research papers. Why? Because papers aren't written for general audiences — they're for researchers. Jargon, references, mathematical proofs. But Keshav showed — any paper can be understood in 3 passes. Not start to finish — in layers."</div>
 
 <div class="callout info"><span class="co-icon">🧭</span><div><strong>IMRaD structure:</strong> Introduction (কেন গুরুত্বপূর্ণ) · Methods (কীভাবে করল) · Results (কী পেল) · Discussion (মানে কী) + Abstract (উপরে সারাংশ) + Conclusion (নিচে) + References।</div></div></div>
 
@@ -97,7 +97,7 @@ doors.push({
 <tr><td class="hl">Connected Papers</td><td>সম্পর্কিত পেপার খোঁজা</td></tr></table>
 <div class="callout tip"><span class="co-icon">🌳</span><div><strong>Citation tracing:</strong> একটা ভালো survey পেপার থেকে শুরু → এর references (পুরোনো ভিত্তি) + Scholar-এর "Cited by" (নতুন কাজ) → foundational→current একটা tree। Andrew Ng: ৫-২০ পেপার = ভালো বোঝা, ৫০-১০০ = খুব গভীর; "প্রতিটা শব্দ নয়, কৌশলে পড়ো।"</div></div></div>
 
-<div class="dialogue">তালাশ — search, seeking। কুরআনে আল্লাহ বলেন — "যারা আমার সন্ধানে চলে, আমি তাদের পথ দেখাই।" পেপার পড়াও তালাশ — সত্যের সন্ধান। কিন্তু তালাশ অন্ধ নয় — কৌশল দিয়ে। Keshav-র ৩ পাস = কৌশল। প্রথম পাসে দেখো — কোথায় যেতে হবে। দ্বিতীয়ে যাও। তৃতীয়ে গভীরে যাও। যে তালাশ কৌশল দিয়ে করে, সে পায়। যে অন্ধভাবে পড়ে, সে হারায়।</div></div>
+<div class="dialogue">তালাশ — search, seeking। কুরআনে আল্লাহ বলেন — "যারা আমার সন্ধানে চলে, আমি তাদের পথ দেখাই।" পেপার পড়াও তালাশ — সত্যের সন্ধান। কিন্তু তালাশ অন্ধ নয় — কৌশল দিয়ে। Keshav-র ৩ পাস = কৌশল। প্রথম পাসে দেখো — কোথায় যেতে হবে। দ্বিতীয়ে যাও। তৃতীয়ে গভীরে যাও। যে তালাশ কৌশল দিয়ে করে, সে পায়। যে অন্ধভাবে পড়ে, সে হারায়।</div>
 <div class="dialogue en">"Talash — search, seeking. Allah says — 'Those who seek Me, I guide them.' Paper reading too — seeking truth. But seeking isn't blind — with strategy. Keshav's 3 passes = strategy. First pass: see where to go. Second: go. Third: go deep. One who seeks with strategy, finds. One who reads blindly, gets lost."</div>`,
   senior:{
     title:"Read Your First Paper — This Week",
@@ -120,8 +120,8 @@ doors.push({
   story:`<p class="scene-setting">২০১৫ সাল। জার্নাল Science। একটা বোমা ফাটল। Open Science Collaboration — ২৭০ জন গবেষক মিলে ১০০টা psychology গবেষণা পুনরায় করলেন। ফলাফল? ৬০%+ গবেষণা replicate করা গেল না। অর্থাৎ — মূল গবেষণার ফলাফল আর পাওয়া গেল না। এর মানে — psychology-র বেশিরভাগ গবেষণা সম্ভবত ভুল বা অতিরঞ্জিত। এটাই replication crisis — এবং এটা psychology-তেই নয়, medicine, economics, সব ক্ষেত্রে।</p>
 <p class="scene-setting en">2015. Journal Science. A bomb dropped. Open Science Collaboration — 270 researchers re-did 100 psychology studies. Result? 60%+ studies FAILED to replicate. Meaning — the original results couldn't be reproduced. This means — most psychology research is probably wrong or exaggerated. This is the replication crisis — and it's not just psychology: medicine, economics, all fields.</p>
 
-<div class="dialogue">Keshav বলেছিলেন — ৩ পাসে পড়ো। কিন্তু আমি বলি — ৩ পাসে পড়লেও একটা প্রশ্ন থাকে — paper-টা কি সত্যি? অধিকাংশ মানুষ paper পড়েই বিশ্বাস করে — Science-এ প্রকাশিত, তাই সত্য। কিন্তু replication crisis বলে — ৬০% সম্ভবত ভুল। সমালোচকের চোখ দরকার — প্রতিটা claim যাচাই করো। তাহকিক — যাচাই করে তারপর বিশ্বাস।</div></div>
-<div class="dialogue en">"Keshav said — read in 3 passes. But I say — even with 3 passes, one question remains — is the paper TRUE? Most people believe papers — published in Science, therefore true. But the replication crisis says — 60% are probably wrong. You need a critical eye — verify each claim. Tahqiq — verify then believe."</div></div>
+<div class="dialogue">Keshav বলেছিলেন — ৩ পাসে পড়ো। কিন্তু আমি বলি — ৩ পাসে পড়লেও একটা প্রশ্ন থাকে — paper-টা কি সত্যি? অধিকাংশ মানুষ paper পড়েই বিশ্বাস করে — Science-এ প্রকাশিত, তাই সত্য। কিন্তু replication crisis বলে — ৬০% সম্ভবত ভুল। সমালোচকের চোখ দরকার — প্রতিটা claim যাচাই করো। তাহকিক — যাচাই করে তারপর বিশ্বাস।</div>
+<div class="dialogue en">"Keshav said — read in 3 passes. But I say — even with 3 passes, one question remains — is the paper TRUE? Most people believe papers — published in Science, therefore true. But the replication crisis says — 60% are probably wrong. You need a critical eye — verify each claim. Tahqiq — verify then believe."</div>
 
 <table class="kv-table"><tr><th>ক্ষেত্র</th><th>Replication rate</th></tr>
 <tr><td class="hl">Psychology (সামাজিক)</td><td>~৩৬% (OSC, 2015)</td></tr>
@@ -173,7 +173,7 @@ doors.push({
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ তাহকিক — যাচাই</div>"published = সম্ভাব্য সত্য, নিশ্চিত সত্য নয়।" প্রতিটা claim যাচাই করো — sample, method, funding, replication। কুরআন: "যাচাই না করে খবর বিশ্বাস করো না" (৪৯:৬)। যে তাহকিক করে, সে সত্য পায় — published-এর ভিড়ে সত্য আলাদা করে।</div></div>
 </div></div>
 
-<div class="dialogue">তাহকিক — verified truth, certainty through investigation। কুরআনে আল্লাহ বলেন — "তোমরা যাচাই না করে প্রতিটা খবর বিশ্বাস করো না।" (৪৯:৬)। তাহকিক = যাচাই করে তারপর গ্রহণ। পেপার পড়াও তাহকিক — প্রতিটা claim যাচাই করো। sample? method? funding? replication? যে তাহকিক করে, সে সত্য পায়। যে শুধু বিশ্বাস করে, সে প্রতারিত হয়। replication crisis আমাদের শেখায় — published মানে true নয়। তাহকিক করো।</div></div>
+<div class="dialogue">তাহকিক — verified truth, certainty through investigation। কুরআনে আল্লাহ বলেন — "তোমরা যাচাই না করে প্রতিটা খবর বিশ্বাস করো না।" (৪৯:৬)। তাহকিক = যাচাই করে তারপর গ্রহণ। পেপার পড়াও তাহকিক — প্রতিটা claim যাচাই করো। sample? method? funding? replication? যে তাহকিক করে, সে সত্য পায়। যে শুধু বিশ্বাস করে, সে প্রতারিত হয়। replication crisis আমাদের শেখায় — published মানে true নয়। তাহকিক করো।</div>
 <div class="dialogue en">"Tahqiq — verified truth, certainty through investigation. Allah says — 'Do not accept any news without verification.' (49:6). Tahqiq = verify then accept. Paper reading too — verify each claim. Sample? Method? Funding? Replication? One who does tahqiq, finds truth. One who merely believes, is deceived. The replication crisis teaches — published does not mean true. Verify."</div>`,
   senior:{
     title:"Critical Analysis Checklist — Every Paper",
@@ -196,8 +196,8 @@ doors.push({
   story:`<p class="scene-setting">Paul Graham — প্রবন্ধকার এবং Y Combinator-এর সহ-প্রতিষ্ঠাতা। তার প্রবন্ধ "Writing, Briefly" (২০০৭)-এ তিনি একটা সত্য বললেন — লেখা শুধু recording নয়। লেখা IS চিন্তা। তুমি যখন লেখো, তোমার মস্তিষ্ক বাধ্য হয় স্পষ্ট করতে। অস্পষ্ট ধারণা লেখার সময় স্পষ্ট হয় — বা ধ্বংস হয়। লেখা = চিন্তার পরীক্ষা।</p>
 <p class="scene-setting en">Paul Graham — essayist and Y Combinator co-founder. In his essay "Writing, Briefly" (2007), he stated a truth — writing isn't recording. Writing IS thinking. When you write, your brain is forced to clarify. Unclear ideas become clear — or collapse. Writing = the test of thought.</p>
 
-<div class="dialogue">Critical analysis বলেছিলেন — প্রতিটা claim যাচাই করো। কিন্তু আমি বলি — যাচাই করার সবচেয়ে ভালো উপায়? লেখো। যখন তুমি লেখো, তুমি বাধ্য হও প্রতিটা ধাপ স্পষ্ট করতে। মস্তিষ্কে ধোঁয়াশা — কাগজে স্পষ্ট হয় বা ধ্বংস হয়। এটাই লেখার শক্তি — চিন্তার পরীক্ষা।</div></div>
-<div class="dialogue en">"Critical analysis said — verify each claim. But I say — the best way to verify? Write. When you write, you're forced to clarify each step. Foggy ideas in the brain — become clear on paper or collapse. This is the power of writing — the test of thought."</div></div>
+<div class="dialogue">Critical analysis বলেছিলেন — প্রতিটা claim যাচাই করো। কিন্তু আমি বলি — যাচাই করার সবচেয়ে ভালো উপায়? লেখো। যখন তুমি লেখো, তুমি বাধ্য হও প্রতিটা ধাপ স্পষ্ট করতে। মস্তিষ্কে ধোঁয়াশা — কাগজে স্পষ্ট হয় বা ধ্বংস হয়। এটাই লেখার শক্তি — চিন্তার পরীক্ষা।</div>
+<div class="dialogue en">"Critical analysis said — verify each claim. But I say — the best way to verify? Write. When you write, you're forced to clarify each step. Foggy ideas in the brain — become clear on paper or collapse. This is the power of writing — the test of thought."</div>
 
 <div class="callout info"><span class="co-icon">✍️</span><div><strong>কেন লেখা = চিন্তা (Paul Graham, "Writing, Briefly", 2007):</strong> "Writing is a more exact mode of thinking than talking।" চিন্তা এলোমেলো (branch, loop, contradict); লেখা <em>linear structure</em>-এ বাধ্য করে — কী আগে, কী পরে, কীভাবে যুক্ত। "জানি কিন্তু বলতে পারি না" = আসলে জানো না (Feynman-নীতি)।</div></div></div>
 <table class="kv-table"><tr><th>লেখার ৩ ধরন</th><th>কী</th></tr>
@@ -269,7 +269,7 @@ doors.push({
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ লিখে ভাবা</div>লেখা চিন্তাকে linear structure-এ বাধ্য করে। ধোঁয়াশা স্পষ্ট হয় বা ধ্বংস হয় — দুটোই জয়। কলম = চিন্তার হাতিয়ার (কুরআন ৯৬:৪-৫)। Graham: লেখা = চিন্তা, recording নয়। যে লেখে, সে ভাবে। যে ভাবে, সে জানে।</div></div>
 </div></div>
 
-<div class="dialogue">কলম — pen, the instrument of knowledge। কুরআনে আল্লাহ বলেন — "যিনি কলমের মাধ্যমে শিখিয়েছেন। মানুষকে শিখিয়েছেন যা সে জানত না।" (৯৬:৪-৫)। কলম = জ্ঞানের সর্বপ্রথম হাতিয়ার। আল্লাহ কলম দিয়ে শিখিয়েছেন — কথা দিয়ে নয়, কলম দিয়ে। কারণ কলম = চিন্তা। যে লেখে, সে ভাবে। যে ভাবে, সে শেখে। যে শেখে, সে জানে। কলম শুধু recording এর হাতিয়ার নয় — কলম চিন্তার হাতিয়ার। আল্লাহ কলমকে এত গুরুত্ব দিয়েছেন কারণ কলম দিয়ে চিন্তা স্থায়ী হয়। কথা উড়ে যায়, লেখা থাকে।</div></div>
+<div class="dialogue">কলম — pen, the instrument of knowledge। কুরআনে আল্লাহ বলেন — "যিনি কলমের মাধ্যমে শিখিয়েছেন। মানুষকে শিখিয়েছেন যা সে জানত না।" (৯৬:৪-৫)। কলম = জ্ঞানের সর্বপ্রথম হাতিয়ার। আল্লাহ কলম দিয়ে শিখিয়েছেন — কথা দিয়ে নয়, কলম দিয়ে। কারণ কলম = চিন্তা। যে লেখে, সে ভাবে। যে ভাবে, সে শেখে। যে শেখে, সে জানে। কলম শুধু recording এর হাতিয়ার নয় — কলম চিন্তার হাতিয়ার। আল্লাহ কলমকে এত গুরুত্ব দিয়েছেন কারণ কলম দিয়ে চিন্তা স্থায়ী হয়। কথা উড়ে যায়, লেখা থাকে।</div>
 <div class="dialogue en">"Qalam — pen, the instrument of knowledge. Allah says — 'Who taught by the pen. Taught man what he knew not.' (96:4-5). The pen = the first tool of knowledge. Allah taught with the pen — not with speech, with the pen. Because the pen = thinking. One who writes, thinks. One who thinks, learns. One who learns, knows. The pen is not just a recording tool — it is a thinking tool. Allah gave the pen such importance because through it, thought becomes permanent. Speech flies away, writing remains."</div>`,
   senior:{
     title:"Start Writing to Think — Today",
@@ -292,8 +292,8 @@ doors.push({
   story:`<p class="scene-setting">তুমি একটা প্রশ্ন নিয়ে আছো — "স্মৃতি কীভাবে কাজ করে?" তুমি একটা বই পড়লে। ভালো। কিন্তু যদি ৫টা বই পড়ো? একটা বলে এক কথা, আরেকটা অন্য কথা। তুমি এখন দেখো — একমত কোথায়, অসম্মত কোথায়। তোমার নিজের সিদ্ধান্ত কী? এটাই syntopical reading — Adler-এর সর্বোচ্চ স্তর। পড়া শেষ নয় — সংশ্লেষণ শেষ।</p>
 <p class="scene-setting en">You have a question — "how does memory work?" You read one book. Good. But what if you read 5? One says one thing, another says something else. Now you see — where they agree, where they disagree. What's YOUR conclusion? This is syntopical reading — Adler's highest level. Reading isn't the end — synthesis is.</p>
 
-<div class="dialogue">লেখা = চিন্তা বলেছিলেন। কিন্তু আমি বলি — চিন্তা তখনই গভীর হয় যখন একাধিক দৃষ্টিভঙ্গি সংযুক্ত হয়। syntopical reading — ৫টা বই পড়ো এক বিষয়ে, তারপর সংযুক্ত করো। যে একটা বই পড়ে, সে একটা দৃষ্টিভঙ্গি পায়। যে ৫টা পড়ে, সে ৫টা দৃষ্টিভঙ্গি সংযুক্ত করে — সংশ্লেষণ। সিলসিলা — সংযুক্ত জ্ঞান।</div></div>
-<div class="dialogue en">"Writing = thinking said. But I say — thinking deepens when multiple perspectives connect. Syntopical reading — read 5 books on one topic, then connect. One who reads one book gets one perspective. One who reads 5 connects 5 perspectives — synthesis. Silsila — connected knowledge."</div></div>
+<div class="dialogue">লেখা = চিন্তা বলেছিলেন। কিন্তু আমি বলি — চিন্তা তখনই গভীর হয় যখন একাধিক দৃষ্টিভঙ্গি সংযুক্ত হয়। syntopical reading — ৫টা বই পড়ো এক বিষয়ে, তারপর সংযুক্ত করো। যে একটা বই পড়ে, সে একটা দৃষ্টিভঙ্গি পায়। যে ৫টা পড়ে, সে ৫টা দৃষ্টিভঙ্গি সংযুক্ত করে — সংশ্লেষণ। সিলসিলা — সংযুক্ত জ্ঞান।</div>
+<div class="dialogue en">"Writing = thinking said. But I say — thinking deepens when multiple perspectives connect. Syntopical reading — read 5 books on one topic, then connect. One who reads one book gets one perspective. One who reads 5 connects 5 perspectives — synthesis. Silsila — connected knowledge."</div>
 
 <div class="timeline">
 <div class="tl-step"><div class="tl-when">Step ১</div><div class="tl-title">📚 Bibliography</div><div class="tl-body">একটা <em>প্রশ্ন</em> বাছো (শুধু শব্দ নয়), সেরা ৫-১০ বই খোঁজো, সব inspectional-read করো।</div></div></div>
@@ -360,7 +360,7 @@ doors.push({
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ সংশ্লেষণ (সিলসিলা)</div>৫-১০ বই এক বিষয়ে পড়ো, মতভেদ ম্যাপ করো, নিজের সংশ্লেষণ গড়ো। সিলসিলা — সংযুক্ত জ্ঞান (কুরআন ৩:১০৩)। পাঠক → স্রষ্টা। PhD গবেষক, বড় লেখকরা যা করেন। নতুন জ্ঞান সৃষ্টি যা আগে ছিল না।</div></div>
 </div></div>
 
-<div class="dialogue">সিলসিলা — chain, connection, linkage। কুরআনে আল্লাহ বলেন — "তোমরা সবাই আল্লাহর রশি দৃঢ়ভাবে ধরো, একসাথে।" (৩:১০৩)। একসাথে = সিলসিলা। syntopical reading-ও সিলসিলা — একাধিক উৎস একসাথে সংযুক্ত। যে একটা বই পড়ে, সে একটা সুতো ধরে। যে পাঁচটা সংযুক্ত করে, সে একটা জাল বানায়। জাল শক্তিশালী, সুতো দুর্বল। সিলসিলা — সংযুক্ত জ্ঞান। যে সংযুক্ত করে, সে সৃষ্টি করে।</div></div>
+<div class="dialogue">সিলসিলা — chain, connection, linkage। কুরআনে আল্লাহ বলেন — "তোমরা সবাই আল্লাহর রশি দৃঢ়ভাবে ধরো, একসাথে।" (৩:১০৩)। একসাথে = সিলসিলা। syntopical reading-ও সিলসিলা — একাধিক উৎস একসাথে সংযুক্ত। যে একটা বই পড়ে, সে একটা সুতো ধরে। যে পাঁচটা সংযুক্ত করে, সে একটা জাল বানায়। জাল শক্তিশালী, সুতো দুর্বল। সিলসিলা — সংযুক্ত জ্ঞান। যে সংযুক্ত করে, সে সৃষ্টি করে।</div>
 <div class="dialogue en">"Silsila — chain, connection, linkage. Allah says — 'Hold fast to the rope of Allah, all together.' (3:103). Together = silsila. Syntopical reading too — multiple sources connected together. One who reads one book holds one thread. One who connects five builds a web. The web is strong, the thread is weak. Silsila — connected knowledge. One who connects, creates."</div>`,
   senior:{
     title:"Your First Syntopical Project",
