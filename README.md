@@ -1,8 +1,8 @@
 # জ্ঞানের প্রাঙ্গণ — The Learning Courtyard
 
-An interactive bilingual (Bengali/English) learning library built with the Seven Doors Method. **40 books, 447 chapters, 44,700 XP** — covering AI engineering, CS fundamentals, software engineering, math, statistics, research craft, career mindset, and more.
+An interactive bilingual (Bengali/English) learning library built with the Seven Doors Method. **54 books, 646 chapters, 64,600 XP** — covering AI engineering, CS fundamentals, software engineering, math, statistics, research craft, career mindset, and more.
 
-## 📚 The 40 Books — 5 Categories
+## 📚 The 54 Books — 5 Categories
 
 ### 🏛️ Core Foundations (Books 1–6)
 
@@ -33,7 +33,7 @@ An interactive bilingual (Bengali/English) learning library built with the Seven
 | 📐 18 | **The Geometry of Meaning** | Embeddings (vector search, Matryoshka) |
 | 🔌 19 | **The Tool Forge** | Tools & MCP (function calling, Model Context Protocol) |
 
-### ⚙️ CS & Systems (Books 22, 30–31, 35–40) — 9 books
+### ⚙️ CS & Systems (Books 22, 30–31, 35–41, 42–54) — 23 books
 
 | # | Book | Topic | Chapters |
 |---|------|-------|----------|
@@ -46,6 +46,20 @@ An interactive bilingual (Bengali/English) learning library built with the Seven
 | 🖥️ 38 | **The Machine's Soul** | Operating Systems (process, memory, scheduling) | 10 |
 | 📊 39 | **The Data Vault** | Databases (SQL, indexing, ACID, NoSQL, warehouse) | 10 |
 | 🔨 40 | **The Codebuilder's Guild** | Software Engineering (SDLC, SOLID, patterns, TDD, DevOps) | 10 |
+| ⏱️ 41 | **The Clockwork of Thought** | Theory of Computation (automata, Turing, P vs NP) | 10 |
+| 🔥 42 | **The Clockwork Forge** | Computer Architecture (gates, CPU, pipeline, cache, GPU) | 10 |
+| ☁️ 43 | **The Sky Fortress** | Cloud & DevOps (Docker, K8s, Terraform, CI/CD, SRE) | 10 |
+| 🌊 44 | **The River of Data** | Data Engineering (ETL, lakes, streaming, dbt) | 10 |
+| 🔤 45 | **The Word Smithy** | Compilers & PLT (lexing, parsing, codegen, types) | 10 |
+| 🔐 46 | **The Copper Fortress** | Cryptography (symmetric, asymmetric, TLS, PKI) | 10 |
+| 🛡️ 47 | **The Shields of Craft** | Testing & QA (unit, E2E, coverage, TDD, CI gates) | 10 |
+| 🧮 48 | **The Compass of Logic** | Discrete Mathematics (logic, proofs, graphs) | 10 |
+| 🎲 49 | **The Dice of Destiny** | Probability (Bayes, CLT, Markov, Monte Carlo) | 10 |
+| 📉 50 | **The Compass of Optimization** | Mathematical Optimization (gradient, convex) | 10 |
+| ⚖️ 51 | **The Algorithm Craftsman** | Practical Algorithms — Build a Search Engine | 21 |
+| 💻 52 | **The Code Craftsman** | Code quality & refactoring mastery | 21 |
+| 🐍 53 | **The Python City** | Python A to Z — 22 guilds, problem-first | 22 |
+| ⚖️ 54 | **The Ledger Craftsman** | Real-project deep-dive: LedgerPilot (Django+Vue) — domain → deep stack → feature recipe | 37 |
 
 ### 🔬 Research & Mind (Books 20–21, 23–28, 32–34) — 11 books
 
