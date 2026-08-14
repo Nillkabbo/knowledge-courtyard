@@ -116,7 +116,7 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">💡</span><div>এই ধাপগুলো লিনিয়ার মনে হলেও বাস্তবে overlap করে — coursework চলাকালীনই রিসার্চ শুরু হয়, আর proposal-এর পরও নতুন দিক আসতে পারে। মানচিত্র আছে বলেই পথ সোজা নয় — কিন্তু হারিয়ে যাওয়া কম।</div></div>
 
-<div class="dialogue">সফর — যাত্রা। কুরআনে আল্লাহ বলেন — "পৃথিবীতে ভ্রমণ করো এবং দেখো।" PhD একটা জ্ঞানের সফর। কিন্তু এই সফরের মানচিত্র জানা দরকার — কোথায় কী চ্যালেঞ্জ, কতদিন লাগবে। মানচিত্র ছাড়া সফর = হারিয়ে যাওয়া। মানচিত্র সহ = প্রস্তুত। প্রতিটা স্তর একটা মাইলফলক — স্তম্ভের মতো, পথের পাশে।</div>
+<div class="dialogue">সফর — যাত্রা। কুরআনে আল্লাহ বলেন — "পৃথিবীতে ভ্রমণ করো এবং দেখো।" (৩:১৩৭) PhD একটা জ্ঞানের সফর। কিন্তু এই সফরের মানচিত্র জানা দরকার — কোথায় কী চ্যালেঞ্জ, কতদিন লাগবে। মানচিত্র ছাড়া সফর = হারিয়ে যাওয়া। মানচিত্র সহ = প্রস্তুত। প্রতিটা স্তর একটা মাইলফলক — স্তম্ভের মতো, পথের পাশে।</div>
 <div class="dialogue en">"Safar — journey. Allah says — 'Travel through the earth and observe.' PhD is a journey of knowledge. But you need the map of this journey — what challenge where, how long. Without a map, travel = getting lost. With a map = prepared. Each stage is a milestone — like pillars, beside the path."</div>`,
   senior:{
     title:"R1 বনাম R2 বিশ্ববিদ্যালয় — পার্থক্য বুঝো (Carnegie 2025)",
