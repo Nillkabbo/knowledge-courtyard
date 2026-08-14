@@ -20,8 +20,8 @@ doors.push({
   story:`<p class="scene-setting">তুমি একটা paper হাতে পেলে। ২৫ পাতা। প্রথম পাতা থেকে পড়তে শুরু করলে — এক ঘণ্টা পর আটকে। কিন্তু কারিগর জাকেরিয়া বললেন — থামো। পত্র একটা জীব — প্রতিটা অংশের নির্দিষ্ট কাজ। তুমি সব অংশ একভাবে পড়ছ তাই আটকে যাচ্ছ। পত্র পড়ার নিয়ম — প্রতিটা অংশ আলাদাভাবে, নির্দিষ্ট উদ্দেশ্য নিয়ে।</p>
 <p class="scene-setting en">You get a paper. 25 pages. You start from page one — stuck after an hour. But Craftsman Zakariya said — stop. A paper is a living thing — each part has a specific job. You're reading all parts the same way — that's why you're stuck. The rule — read each part separately, with a specific purpose.</p>
 
-<div class="dialogue">জ্ঞানের কারিগর (Book ২৬) তোমাকে Adler-এর ৪ স্তর শিখিয়েছে। কিন্তু এখন আমি বলি — research paper একটা আলাদা জন্তু। বই নয়। প্রতিটা অংশ আলাদা কাজ করে। তুমি যদি প্রথম থেকে শেষ পর্যন্ত পড়ো — তুমি সব অংশ একভাবে দেখছ, কিন্তু প্রতিটা অংশ আলাদা নিয়মে কাজ করে। এটাই paper-এর শারীরস্থান — IMRaD।</div></div>
-<div class="dialogue en">"The Knowledge Craftsman (Book 26) taught you Adler's 4 levels. But now I say — a research paper is a different beast. Not a book. Each part works differently. If you read start to finish — you're treating all parts the same, but each part follows its own rules. This is the paper's anatomy — IMRaD."</div></div>
+<div class="dialogue">জ্ঞানের কারিগর (Book ২৬) তোমাকে Adler-এর ৪ স্তর শিখিয়েছে। কিন্তু এখন আমি বলি — research paper একটা আলাদা জন্তু। বই নয়। প্রতিটা অংশ আলাদা কাজ করে। তুমি যদি প্রথম থেকে শেষ পর্যন্ত পড়ো — তুমি সব অংশ একভাবে দেখছ, কিন্তু প্রতিটা অংশ আলাদা নিয়মে কাজ করে। এটাই paper-এর শারীরস্থান — IMRaD।</div>
+<div class="dialogue en">"The Knowledge Craftsman (Book 26) taught you Adler's 4 levels. But now I say — a research paper is a different beast. Not a book. Each part works differently. If you read start to finish — you're treating all parts the same, but each part follows its own rules. This is the paper's anatomy — IMRaD."</div>
 
 <table class="kv-table"><tr><th>সেকশন</th><th>কাজ / কীভাবে পড়বে</th></tr>
 <tr><td class="hl">Title</td><td>পরিচয়পত্র; আগে পড়ো — প্রাসঙ্গিক কিনা ঠিক করো</td></tr>
@@ -106,7 +106,9 @@ FIGURES-FIRST RULE:
   -&gt; "এরা কী গল্প বলছে?"
   -&gt; ভালো পেপারের figure text ছাড়াই দাঁড়ায়</div></div>
 
-<div class="dialogue">ফিহরিস্ত — index, catalog, map। কুরআনে আল্লাহ বলেন — "আমি প্রতিটা জিনিস বিস্তারিতভাবে ব্যাখ্যা করেছি।" (১৭:১২)। ব্যাখ্যা = ফিহরিস্ত — প্রতিটা জিনিসের নির্দিষ্ট স্থান। পত্রের শারীরস্থানও ফিহরিস্ত — প্রতিটা অংশের নির্দিষ্ট কাজ। যে ফিহরিস্ত জানে, সে দ্রুত খোঁজে। যে জানে না, সে অন্ধভাবে ঘুরে। ফিহরিস্ত — পত্রের মানচিত্র। মানচিত্র ছাড়া যাত্রা = পথহারা।</div></div>
+<div class="verse">وَكُلَّ شَيْءٍ فَصَّلْنَاهُ تَفْصِيلًا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"আমি প্রতিটা জিনিস বিস্তারিতভাবে ব্যাখ্যা করেছি।" — কুরআন ১৭:১২</div>
+<div class="dialogue">ফিহরিস্ত — index, catalog, map। ব্যাখ্যা = ফিহরিস্ত — প্রতিটা জিনিসের নির্দিষ্ট স্থান। পত্রের শারীরস্থানও ফিহরিস্ত — প্রতিটা অংশের নির্দিষ্ট কাজ। যে ফিহরিস্ত জানে, সে দ্রুত খোঁজে। যে জানে না, সে অন্ধভাবে ঘুরে। ফিহরিস্ত — পত্রের মানচিত্র। মানচিত্র ছাড়া যাত্রা = পথহারা।</div>
 <div class="dialogue en">"Fihrist — index, catalog, map. Allah says — 'We have explained everything in detail.' (17:12). Explanation = fihrist — each thing in its specific place. Paper anatomy too is fihrist — each part with its specific job. One who knows the fihrist, searches quickly. One who doesn't, wanders blindly. Fihrist — the paper's map. Journey without a map = lost."</div>`,
   senior:{
     title:"Paper Anatomy — Next Paper You Read",
@@ -129,8 +131,8 @@ doors.push({
   story:`<p class="scene-setting">তুমি একজন ইঞ্জিনিয়ার। LedgerPilot প্রজেক্টে কাজ করছ। একটা সমস্যা — ডকুমেন্ট প্রসেসিংয়ে OCR ভুল করছে। তুমি Google Scholar-এ সার্চ করলে — "OCR error correction deep learning।" ৫০টা paper। কোনটা পড়বে? কোনটা ব্যবহার করবে? কারিগর আদনান বললেন — ইঞ্জিনিয়ার পড়ে জানার জন্য নয়। ব্যবহার করার জন্য। প্রতিটা paper-এ খোঁজো — কী ব্যবহার করতে পারি?</p>
 <p class="scene-setting en">You're an engineer. Working on LedgerPilot. A problem — OCR is making errors in document processing. You search Google Scholar — "OCR error correction deep learning." 50 papers. Which to read? Which to use? Craftsman Adnan said — an engineer reads not to know. To USE. In each paper, search — what can I use?</p>
 
-<div class="dialogue">Paper anatomy বলেছিলেন — প্রতিটা অংশের কাজ। কিন্তু আমি বলি — ইঞ্জিনিয়ার হিসেবে তোমার উদ্দেশ্য আলাদা। তুমি শুধু জানতে চাও না — তুমি ব্যবহার করতে চাও। কোন method আমার সমস্যায় কাজে লাগবে? কোথায় কোড? কোথায় dataset? কীভাবে আমার প্রজেক্টে প্রয়োগ করব? এটাই ইঞ্জিনিয়ারের পাঠ — প্রয়োগের চোখ।</div></div>
-<div class="dialogue en">"Paper anatomy said — each part's job. But I say — as an engineer, your purpose is different. You don't just want to know — you want to USE. Which method applies to my problem? Where's the code? Where's the dataset? How do I apply it to my project? This is the engineer's read — the application eye."</div></div>
+<div class="dialogue">Paper anatomy বলেছিলেন — প্রতিটা অংশের কাজ। কিন্তু আমি বলি — ইঞ্জিনিয়ার হিসেবে তোমার উদ্দেশ্য আলাদা। তুমি শুধু জানতে চাও না — তুমি ব্যবহার করতে চাও। কোন method আমার সমস্যায় কাজে লাগবে? কোথায় কোড? কোথায় dataset? কীভাবে আমার প্রজেক্টে প্রয়োগ করব? এটাই ইঞ্জিনিয়ারের পাঠ — প্রয়োগের চোখ।</div>
+<div class="dialogue en">"Paper anatomy said — each part's job. But I say — as an engineer, your purpose is different. You don't just want to know — you want to USE. Which method applies to my problem? Where's the code? Where's the dataset? How do I apply it to my project? This is the engineer's read — the application eye."</div>
 
 <table class="kv-table"><tr><th>Engineer জিজ্ঞেস করে</th><th>Scientist জিজ্ঞেস করে</th></tr>
 <tr><td>এটা কি USE করতে পারি?</td><td>এটা কি VALID?</td></tr>
@@ -192,7 +194,8 @@ DECISION:
   "This paper&apos;s [method] applies to my [project]
    by [specific change], giving me [expected benefit]."</div></div>
 
-<div class="dialogue">তালাশ — search, seeking। কুরআনে আল্লাহ বলেন — "যারা আমার সন্ধানে চলে, আমি তাদের পথ দেখাই।" ইঞ্জিনিয়ারের পাঠও তালাশ — সমাধানের সন্ধান। কোন method, কোন code, কোন approach আমার সমস্যা সমাধান করবে? যে তালাশ করে, সে খোঁজে। যে অপেক্ষা করে, সে পায় না। ইঞ্জিনিয়ার = সমাধানের তালাশকারী।</div></div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"যারা আমার সন্ধানে চলে, আমি তাদের পথ দেখাই।" — কুরআন</div>
+<div class="dialogue">তালাশ — search, seeking। ইঞ্জিনিয়ারের পাঠও তালাশ — সমাধানের সন্ধান। কোন method, কোন code, কোন approach আমার সমস্যা সমাধান করবে? যে তালাশ করে, সে খোঁজে। যে অপেক্ষা করে, সে পায় না। ইঞ্জিনিয়ার = সমাধানের তালাশকারী।</div>
 <div class="dialogue en">"Talash — search, seeking. Allah says — 'Those who seek Me, I guide them.' The engineer's read too is talash — seeking a solution. Which method, which code, which approach solves my problem? One who seeks, finds. One who waits, gets nothing. Engineer = solution seeker."</div>`,
   senior:{
     title:"Engineer's Paper Reading — This Week",
@@ -215,8 +218,8 @@ doors.push({
   story:`<p class="scene-setting">ইঞ্জিনিয়ার বলেছিলেন — ব্যবহার করো। কিন্তু কারিগর খাদিজা বললেন — ব্যবহার করার আগে যাচাই করো। কারণ মনে রাখো — replication crisis। ৬০% paper সম্ভবত ভুল। তুমি যদি এমন একটা method ব্যবহার করো যা ভুল — তোমার প্রজেক্ট ভেঙে যাবে। তাই প্রথমে যাচাই। sample? method? statistics? বৈজ্ঞানিক পড়ে বিশ্বাসের জন্য নয় — যাচাইয়ের জন্য।</p>
 <p class="scene-setting en">The engineer said — use it. But Craftswoman Khadija said — before using, verify. Because remember — the replication crisis. 60% of papers are probably wrong. If you use a method that's wrong — your project breaks. So verify first. Sample? Method? Statistics? A scientist reads not to believe — but to verify.</p>
 
-<div class="dialogue">ইঞ্জিনিয়ারের পাঠ বলেছিলেন — প্রয়োগের চোখ। কিন্তু আমি বলি — প্রয়োগের আগে যাচাই। জ্ঞানের কারিগর (Book ২৬, Door ৭) তোমাকে replication crisis শিখিয়েছে। এখন আমি শেখাবো — কীভাবে প্রতিটা paper-ের প্রতিটা claim যাচাই করবে। বৈজ্ঞানিকের চোখ = যাচাইয়ের চোখ। তাহকিক — যাচাই করে তারপর গ্রহণ।</div></div>
-<div class="dialogue en">"The engineer's read said — the application eye. But I say — before application, verification. The Knowledge Craftsman (Book 26, Door 7) taught you the replication crisis. Now I'll teach — how to verify each claim in each paper. The scientist's eye = the verification eye. Tahqiq — verify then accept."</div></div>
+<div class="dialogue">ইঞ্জিনিয়ারের পাঠ বলেছিলেন — প্রয়োগের চোখ। কিন্তু আমি বলি — প্রয়োগের আগে যাচাই। জ্ঞানের কারিগর (Book ২৬, Door ৭) তোমাকে replication crisis শিখিয়েছে। এখন আমি শেখাবো — কীভাবে প্রতিটা paper-ের প্রতিটা claim যাচাই করবে। বৈজ্ঞানিকের চোখ = যাচাইয়ের চোখ। তাহকিক — যাচাই করে তারপর গ্রহণ।</div>
+<div class="dialogue en">"The engineer's read said — the application eye. But I say — before application, verification. The Knowledge Craftsman (Book 26, Door 7) taught you the replication crisis. Now I'll teach — how to verify each claim in each paper. The scientist's eye = the verification eye. Tahqiq — verify then accept."</div>
 
 <table class="kv-table"><tr><th>Sample size</th><th>ব্যাখ্যা</th></tr>
 <tr><td class="hl">n &lt; ১০</td><td>anecdote, science নয়</td></tr>
@@ -316,7 +319,9 @@ RED FLAGS:
 DECISION: only USE methods rated 4 or 5.
   3 or below -&gt; proceed with caution or find better paper.</div></div>
 
-<div class="dialogue">তাহকিক — verified truth through investigation। কুরআনে আল্লাহ বলেন — "তোমরা যাচাই না করে প্রতিটা খবর বিশ্বাস করো না।" (৪৯:৬)। তাহকিক = যাচাই করে গ্রহণ। বৈজ্ঞানিকের চোখও তাহকিক — প্রতিটা claim যাচাই। sample? method? statistics? replication? যে তাহকিক করে, সে সত্য পায়। যে বিশ্বাস করে, সে প্রতারিত হয়। replication crisis আমাদের শেখায় — published মানে true নয়। তাহকিক করো।</div></div>
+<div class="verse">يَا أَيُّهَا الَّذِينَ آمَنُوا إِن جَاءَكُمْ فَاسِقٌ بِنَبَإٍ فَتَبَيَّنُوا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"তোমরা যাচাই না করে প্রতিটা খবর বিশ্বাস করো না।" — কুরআন ৪৯:৬</div>
+<div class="dialogue">তাহকিক — verified truth through investigation। তাহকিক = যাচাই করে গ্রহণ। বৈজ্ঞানিকের চোখও তাহকিক — প্রতিটা claim যাচাই। sample? method? statistics? replication? যে তাহকিক করে, সে সত্য পায়। যে বিশ্বাস করে, সে প্রতারিত হয়। replication crisis আমাদের শেখায় — published মানে true নয়। তাহকিক করো।</div>
 <div class="dialogue en">"Tahqiq — verified truth through investigation. Allah says — 'Do not accept any news without verification.' (49:6). Tahqiq = verify then accept. The scientist's eye too is tahqiq — verify each claim. Sample? Method? Statistics? Replication? One who does tahqiq, finds truth. One who believes blindly, is deceived. The replication crisis teaches — published does not mean true. Verify."</div>`,
   senior:{
     title:"Scientist's Verification — Every Paper",
@@ -339,8 +344,8 @@ doors.push({
   story:`<p class="scene-setting">ইঞ্জিনিয়ার বলেছিলেন — ব্যবহার করো। বৈজ্ঞানিক বলেছিলেন — যাচাই করো। কিন্তু কারিগর তালহা — একজন PhD গবেষক — বললেন, আরও একটা দৃষ্টিভঙ্গি আছে। PhD ছাত্র পড়ে gap খোঁজার জন্য। কোথায় এই paper পুরো ফিল্ডে দাঁড়িয়ে? এর আগে কী হয়েছে? পরে কী হতে পারে? কী missing? এই দৃষ্টিভঙ্গি শুধু জানার নয় — সৃষ্টি করার। কারণ gap-ই গবেষণার জন্ম দেয়।</p>
 <p class="scene-setting en">The engineer said — use it. The scientist said — verify it. But Craftsman Talha — a PhD researcher — said, there's another perspective. A PhD student reads to find gaps. Where does this paper stand in the whole field? What came before? What could come after? What's missing? This perspective isn't about knowing — it's about creating. Because gaps birth research.</p>
 
-<div class="dialogue">বৈজ্ঞানিকের চোখ বলেছিলেন — যাচাই করো। কিন্তু আমি বলি — যাচাই করা শুরু। এর পরে আসে gap। প্রতিটা paper একটা পথের অংশ — কিন্তু পথ শেষ নয়। প্রতিটা paper-এর পরে নতুন প্রশ্ন জন্ম যায়। PhD ছাত্র সেই প্রশ্ন খোঁজে। Andrew Ng বলেন — ৫-২০ paper পড়লে একটা subfield-এ current হওয়া যায়। তুমি দেখো — পুরো landscape, কোথায় গ্যাপ, কোথায় তোমার contribution।</div></div>
-<div class="dialogue en">"The scientist's eye said — verify. But I say — verification is the beginning. After that comes the gap. Each paper is part of a path — but the path isn't finished. Each paper births new questions. A PhD student seeks those questions. Andrew Ng says — read 5-20 papers to become current in a subfield. You see — the whole landscape, where the gaps are, where YOUR contribution fits."</div></div>
+<div class="dialogue">বৈজ্ঞানিকের চোখ বলেছিলেন — যাচাই করো। কিন্তু আমি বলি — যাচাই করা শুরু। এর পরে আসে gap। প্রতিটা paper একটা পথের অংশ — কিন্তু পথ শেষ নয়। প্রতিটা paper-এর পরে নতুন প্রশ্ন জন্ম যায়। PhD ছাত্র সেই প্রশ্ন খোঁজে। Andrew Ng বলেন — ৫-২০ paper পড়লে একটা subfield-এ current হওয়া যায়। তুমি দেখো — পুরো landscape, কোথায় গ্যাপ, কোথায় তোমার contribution।</div>
+<div class="dialogue en">"The scientist's eye said — verify. But I say — verification is the beginning. After that comes the gap. Each paper is part of a path — but the path isn't finished. Each paper births new questions. A PhD student seeks those questions. Andrew Ng says — read 5-20 papers to become current in a subfield. You see — the whole landscape, where the gaps are, where YOUR contribution fits."</div>
 
 <div class="callout info"><span class="co-icon">🎓</span><div><strong>Andrew Ng (Stanford):</strong> "একটা নির্দিষ্ট area-তে ৫-২০ পেপার পড়লে ভালো বোঝা, ৫০-১০০ পড়লে খুব গভীর বোঝা।" তার ক্রম: Title+Abstract+Figures (৬০ সেকেন্ড) → Intro+Conclusion (৫ মিনিট) → Methods (প্রথমে proof বাদ) → References (পরে কী পড়ব)।</div></div></div>
 <div class="timeline">
@@ -381,7 +386,9 @@ doors.push({
 </div></div>
 <div class="svg-caption">PhD পাঠকের যাত্রা — survey থেকে gap পর্যন্ত, জ্ঞানের landscape ম্যাপ করা</div></div>
 
-<div class="dialogue">সাফর — journey, travel, passage। কুরআনে আল্লাহ বলেন — "তোমরা পৃথিবীতে ভ্রমণ করো এবং দেখো।" (৩০:৪২)। সাফর = জ্ঞানের যাত্রা। PhD ছাত্রের পাঠও সাফর — একটা paper থেকে আরেকটায়, একটা ধারণা থেকে আরেকটায়। যাত্রার শেষে সে দেখে — পুরো landscape। কোথায় পথ গেছে, কোথায় থেমেছে, কোথায় নতুন পথ তৈরি করা যায়। সাফর — জ্ঞানের যাত্রায় নিজের স্থান খোঁজা।</div></div>
+<div class="verse">قُلْ سِيرُوا فِي الْأَرْضِ فَانظُرُوا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"তোমরা পৃথিবীতে ভ্রমণ করো এবং দেখো।" — কুরআন ৩০:৪২</div>
+<div class="dialogue">সাফর — journey, travel, passage। সাফর = জ্ঞানের যাত্রা। PhD ছাত্রের পাঠও সাফর — একটা paper থেকে আরেকটায়, একটা ধারণা থেকে আরেকটায়। যাত্রার শেষে সে দেখে — পুরো landscape। কোথায় পথ গেছে, কোথায় থেমেছে, কোথায় নতুন পথ তৈরি করা যায়। সাফর — জ্ঞানের যাত্রায় নিজের স্থান খোঁজা।</div>
 <div class="dialogue en">"Safar — journey, travel, passage. Allah says — 'Travel through the earth and observe.' (30:42). Safar = journey of knowledge. The PhD reader's read too is safar — from one paper to another, one idea to another. At journey's end they see — the whole landscape. Where the path went, where it stopped, where a new path can be made. Safar — finding your place in the journey of knowledge."</div>`,
   senior:{
     title:"Enter a Subfield — The 5-20 Paper Method",
@@ -444,7 +451,7 @@ doors.push({
 </div></div>
 <div class="svg-caption">নিয়্যাত — gap থেকে সঠিক প্রশ্ন, FINER যাচাইয়ে ছাঁচা</div></div>
 
-<div class="dialogue">PhD পাঠক বলেছিলেন — gap খোঁজো। কিন্তু আমি বলি — gap খুঁজে পাওয়া সাফরের মাঝপথ। বাকি অর্ধেক — gap থেকে প্রশ্ন ছাঁচো। ভালো প্রশ্ন। কারণ গবেষণা = প্রশ্নের উত্তর। ভুল প্রশ্ন = ভুল দিকে ৬ মাস। সঠিক প্রশ্ন = সঠিক দিকে ৬ মাস। পার্থক্য = সময়, শক্তি, মূল্য। নিয়্যাত — উদ্দেশ্য। যে সঠিক উদ্দেশ্য নিয়ে প্রশ্ন করে, সে সঠিক উত্তর পায়।</div></div>
+<div class="dialogue">PhD পাঠক বলেছিলেন — gap খোঁজো। কিন্তু আমি বলি — gap খুঁজে পাওয়া সাফরের মাঝপথ। বাকি অর্ধেক — gap থেকে প্রশ্ন ছাঁচো। ভালো প্রশ্ন। কারণ গবেষণা = প্রশ্নের উত্তর। ভুল প্রশ্ন = ভুল দিকে ৬ মাস। সঠিক প্রশ্ন = সঠিক দিকে ৬ মাস। পার্থক্য = সময়, শক্তি, মূল্য। নিয়্যাত — উদ্দেশ্য। যে সঠিক উদ্দেশ্য নিয়ে প্রশ্ন করে, সে সঠিক উত্তর পায়।</div>
 <div class="dialogue en">"The PhD reader said — find gaps. But I say — finding the gap is halfway. The other half — form a question from the gap. A good question. Because research = answering questions. Wrong question = 6 months in wrong direction. Right question = 6 months in right direction. The difference = time, energy, value. Niyyah — intention. One who asks with right intention, gets right answers."</div>`,
   senior:{
     title:"Find Your Research Question — Exercise",

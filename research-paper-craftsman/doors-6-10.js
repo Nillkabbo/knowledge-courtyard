@@ -61,7 +61,9 @@ doors.push({
 </div>
 <div class="svg-caption">বিনা — লেখার ক্রম: figures থেকে title পর্যন্ত, স্থপতির নকশা</div>
 
-<div class="dialogue">বিনা — building, construction, architecture। কুরআনে আল্লাহ বলেন — "যিনি সৃষ্টি করেছেন এবং নিয়মে বেঁধেছেন।" (৮৭:২)। নিয়মে বাঁধা = বিনা। পত্র নির্মাণও বিনা — নিয়মে বাঁধা। প্রতিটা সেকশনের নির্দিষ্ট কাজ। প্রতিটা প্যারাগ্রাফের নির্দিষ্ট স্থান। যে বিনা করে, সে নিখুঁত। যে অগোছালো লেখে, সে বিভ্রান্ত করে। Simon Peyton Jones বলেন — writing IS research। কারণ লেখার সময় তুমি বোঝো — কোথায় তোমার গবেষণার ঘাটতি। বিনা — স্থাপত্যের শিল্প।</div>
+<div class="verse">الَّذِي خَلَقَ فَسَوَّىٰ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"যিনি সৃষ্টি করেছেন এবং নিয়মে বেঁধেছেন।" — কুরআন ৮৭:২</div>
+<div class="dialogue">বিনা — building, construction, architecture। নিয়মে বাঁধা = বিনা। পত্র নির্মাণও বিনা — নিয়মে বাঁধা। প্রতিটা সেকশনের নির্দিষ্ট কাজ। প্রতিটা প্যারাগ্রাফের নির্দিষ্ট স্থান। যে বিনা করে, সে নিখুঁত। যে অগোছালো লেখে, সে বিভ্রান্ত করে। Simon Peyton Jones বলেন — writing IS research। কারণ লেখার সময় তুমি বোঝো — কোথায় তোমার গবেষণার ঘাটতি। বিনা — স্থাপত্যের শিল্প।</div>
 <div class="dialogue en">"Bina — building, construction, architecture. Allah says — 'Who created and proportioned.' (87:2). Proportioning = bina. Paper construction too — proportioned. Each section with its specific job. Each paragraph in its specific place. One who builds with bina, perfects. One who writes messily, confuses. Simon Peyton Jones says — writing IS research. Because while writing, you discover — where your research falls short. Bina — the art of architecture."</div>`,
   senior:{
     title:"Write Your Paper Outline — This Week",
@@ -150,7 +152,9 @@ doors.push({
 </div>
 <div class="svg-caption">কলম — চারটি ড্রাফট: shitty → structural → line edit → polish</div>
 
-<div class="dialogue">কলম — pen, the instrument of knowledge। কুরআনে আল্লাহ বলেন — "যিনি কলমের মাধ্যমে শিখিয়েছেন।" (৯৬:৪)। কলম জ্ঞানের হাতিয়ার। জ্ঞানের কারিগর (Book ২৬) বলেছিলেন — লেখা = চিন্তা। এখন আমি বলি — গবেষণাপত্র লেখা = গবেষণা। লেখার সময় তুমি বোঝো — কোথায় গবেষণার ঘাটতি। কলম চালাও। ভুল হলে হবে। খালি পাতা রাখো না। কলম — জ্ঞানের স্থায়ী হাতিয়ার।</div>
+<div class="verse">الَّذِي عَلَّمَ بِالْقَلَمِ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"যিনি কলমের মাধ্যমে শিখিয়েছেন।" — কুরআন ৯৬:৪</div>
+<div class="dialogue">কলম — pen, the instrument of knowledge। কলম জ্ঞানের হাতিয়ার। জ্ঞানের কারিগর (Book ২৬) বলেছিলেন — লেখা = চিন্তা। এখন আমি বলি — গবেষণাপত্র লেখা = গবেষণা। লেখার সময় তুমি বোঝো — কোথায় গবেষণার ঘাটতি। কলম চালাও। ভুল হলে হবে। খালি পাতা রাখো না। কলম — জ্ঞানের স্থায়ী হাতিয়ার।</div>
 <div class="dialogue en">"Qalam — pen, the instrument of knowledge. Allah says — 'Who taught by the pen.' (96:4). The pen is the tool of knowledge. The Knowledge Craftsman (Book 26) said — writing = thinking. Now I say — writing a research paper = research. While writing, you discover gaps. Move the pen. Mistakes are fine. Don't leave the page blank. Qalam — the permanent tool of knowledge."</div>`,
   senior:{
     title:"Write Your First Draft — This Month",
@@ -316,7 +320,9 @@ doors.push({
 </div>
 <div class="svg-caption">সিলসিলা — cite, extend, reproduce: জ্ঞানের শৃঙ্খলে নিজের যোগ</div>
 
-<div class="dialogue">সিলসিলা — chain, connection, linkage। কুরআনে আল্লাহ বলেন — "তোমরা সবাই আল্লাহর রশি দৃঢ়ভাবে ধরো, একসাথে।" (৩:১০৩)। একসাথে = সিলসিলা। research-ও সিলসিলা — জ্ঞানের শৃঙ্খল। প্রতিটা paper আগের paper-এর সাথে সংযুক্ত। তুমি নতুন লিঙ্ক — পুরোনো সংযুক্ত, নতুন সৃষ্টি, ভবিষ্যতের জন্য ছেড়ে যাও। যে সিলসিলা ভাঙে (plagiarism), সে বিচ্ছিন্ন হয়। যে সিলসিলা মানে (cite), সে সম্মানিত হয়। যে সিলসিলা বাড়ায় (extend), সে সৃষ্টি করে। সিলসিলা — জ্ঞানের শৃঙ্খলে নিজের যোগ।</div>
+<div class="verse">وَاعْتَصِمُوا بِحَبْلِ اللَّهِ جَمِيعًا وَلَا تَفَرَّقُوا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"তোমরা সবাই আল্লাহর রশি দৃঢ়ভাবে ধরো, একসাথে।" — কুরআন ৩:১০৩</div>
+<div class="dialogue">সিলসিলা — chain, connection, linkage। একসাথে = সিলসিলা। research-ও সিলসিলা — জ্ঞানের শৃঙ্খল। প্রতিটা paper আগের paper-এর সাথে সংযুক্ত। তুমি নতুন লিঙ্ক — পুরোনো সংযুক্ত, নতুন সৃষ্টি, ভবিষ্যতের জন্য ছেড়ে যাও। যে সিলসিলা ভাঙে (plagiarism), সে বিচ্ছিন্ন হয়। যে সিলসিলা মানে (cite), সে সম্মানিত হয়। যে সিলসিলা বাড়ায় (extend), সে সৃষ্টি করে। সিলসিলা — জ্ঞানের শৃঙ্খলে নিজের যোগ।</div>
 <div class="dialogue en">"Silsila — chain, connection, linkage. Allah says — 'Hold fast to the rope of Allah, all together.' (3:103). Together = silsila. Research too — a chain of knowledge. Each paper connected to prior papers. You are a new link — connecting the old, creating the new, leaving for the future. One who breaks the chain (plagiarism) is disconnected. One who honors the chain (cite) is respected. One who extends the chain (build on) creates. Silsila — joining the chain of knowledge."</div>`,
   senior:{
     title:"From Reading to Building — The Arc",
