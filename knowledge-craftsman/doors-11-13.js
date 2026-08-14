@@ -7,6 +7,14 @@ doors.push({
   tech: "Desirable Difficulty (Bjork & Bjork, 1994), Pre-Testing Effect, Interleaving, Elaborative Interrogation",
   spirit: "ইমতিহান — কঠিন পরীক্ষাই স্থায়ী জ্ঞান দেয়",
   secret: "সহজে শেখা সহজেই ভুলে যাওয়া যায়। কঠিনে শেখা — স্থায়ী। পরিশ্রমই স্মৃতির সিমেন্ট।",
+  senior: {
+    title: "Desirable Difficulty এক নজরে",
+    body: `<table class="kv-table"><tr><th>কৌশল</th><th>কী করে</th></tr>
+<tr><td class="hl">Pre-testing</td><td>শেখার আগেই পরীক্ষা দাও — ভুল হলেও স্মৃতি প্রস্তুত হয়</td></tr>
+<tr><td class="hl">Interleaving</td><td>বিষয় মিশিয়ে অনুশীলন — ব্লক নয়, মিশ্রণ</td></tr>
+<tr><td class="hl">Spacing</td><td>ফাঁক দিয়ে পুনরাবৃত্তি — কাছে নয়, দূরে</td></tr>
+<tr><td class="hl">Elaboration</td><td>"কেন?" জিজ্ঞেস করো — প্রতিটা ধাপে</td></tr></table>`
+  },
   recall: {
     q: "Desirable Difficulty কী এবং কে এটি আবিষ্কার করেছেন?",
     qen: "What is Desirable Difficulty and who discovered it?",
@@ -84,6 +92,15 @@ doors.push({
   tech: "Sleep & Memory Consolidation, Serial Position Effect (Ebbinghaus), Leitner System (1972)",
   spirit: "রাহাত — বিশ্রামে স্মৃতি গভীর হয়, ক্লান্তিতে নয়",
   secret: "ঘুমের সময় মস্তিষ্ক দিনের শেখা গাঁথে। ঘুম ছাড়া শেখা — ছাঁচে ঢালা জল, ঠান্ডা হওয়ার আগেই গলে যায়।",
+  senior: {
+    title: "ঘুম + Leitner সিস্টেম এক নজরে",
+    body: `<table class="kv-table"><tr><th>বক্স</th><th>পুনরাবৃত্তি</th><th>মানে</th></tr>
+<tr><td class="hl">বক্স ১</td><td>প্রতিদিন</td><td>নতুন / ভুল হয়েছে</td></tr>
+<tr><td class="hl">বক্স ২</td><td>২ দিন পরপর</td><td>একবার ঠিক হয়েছে</td></tr>
+<tr><td class="hl">বক্স ৩</td><td>সপ্তাহে</td><td>স্থিতিশীল হচ্ছে</td></tr>
+<tr><td class="hl">বক্স ৪-৫</td><td>মাসে</td><td>দীর্ঘমেয়াদী স্মৃতি</td></tr></table>
+<p>রাতে ঘুমাও — deep sleep-এ তথ্য hippocampus থেকে cortex-এ যায়।</p>`
+  },
   recall: {
     q: "ঘুম কীভাবে স্মৃতি গভীর করে এবং Leitner System কী?",
     qen: "How does sleep deepen memory and what is the Leitner System?",
@@ -169,6 +186,13 @@ doors.push({
   tech: "Mind Mapping (Buzan, 1974), Concept Mapping (Novak, 1972), Lollapalooza Effect (Munger)",
   spirit: "বায়ান — স্পষ্ট প্রকাশ; যা দেখা যায় তা বোঝা যায়",
   secret: "যা দেখা যায় তা মনে থাকে। যা শুধু পড়া হয় তা ভুলে যাওয়া যায়। দৃশ্যমান জ্ঞান = স্থায়ী জ্ঞান।",
+  senior: {
+    title: "দৃশ্যমান জ্ঞানের টুল এক নজরে",
+    body: `<table class="kv-table"><tr><th>টুল</th><th>গঠন</th><th>কখন</th></tr>
+<tr><td class="hl">Mind Map (Buzan)</td><td>কেন্দ্র → শাখা (গাছ)</td><td>ব্রেইনস্টর্ম, ওভারভিউ</td></tr>
+<tr><td class="hl">Concept Map (Novak)</td><td>নোড + labeled edge (নেট)</td><td>সম্পর্ক বোঝা, গ্যাপ ধরা</td></tr>
+<tr><td class="hl">Lollapalooza</td><td>একাধিক মডেল একসাথে</td><td>চরম ফলাফলের ব্যাখ্যা</td></tr></table>`
+  },
   recall: {
     q: "Mind Map এবং Concept Map-এর পার্থক্য কী? Lollapalooza Effect কী?",
     qen: "What is the difference between a Mind Map and Concept Map? What is the Lollapalooza Effect?",
