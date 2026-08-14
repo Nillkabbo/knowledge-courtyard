@@ -9,92 +9,671 @@
     "roadmap[].parallel": "true marks phases meant to run alongside the main track",
     "roadmap[].books[]": "book numbers in reading order within this phase; optional {book,note,role} form for inline notes; role = keystone|parallel|finale|plain"
   },
-
   "books": [
-    { "n": 1,  "folder": "ai-engineering-game",     "title_en": "Twenty-Seven Doors of AI Engineering", "title_bn": "কৃত্রিম বুদ্ধিমত্তার সাতাশটি দরজা", "icon": "🤖", "category": "core",   "color": "game-1",  "tag": "Book 1 · AI Engineering",                  "status": "live" },
-    { "n": 2,  "folder": "dsa-bazaar",              "title_en": "The Bazaar of Algorithms",            "title_bn": "অ্যালগরিদমের বাজার",            "icon": "🧮", "category": "core",   "color": "game-2",  "tag": "Book 2 · DSA + Code Quality",             "status": "live" },
-    { "n": 3,  "folder": "engineer-journey",        "title_en": "The Court of the Grand Muhandis",     "title_bn": "মহাকারিগরের দরবার",            "icon": "🏛️", "category": "core",   "color": "game-3",  "tag": "Book 3 · Engineer Mindset",               "status": "live" },
-    { "n": 4,  "folder": "system-design-game",      "title_en": "The City Builder's Codex",            "title_bn": "নগরী নির্মাণের দস্তাবেজ",       "icon": "🏙️", "category": "core",   "color": "game-4",  "tag": "Book 4 · System Design",                  "status": "live" },
-    { "n": 5,  "folder": "learn-to-learn",          "title_en": "The Seed of Learning",                "title_bn": "শিক্ষার বীজ",                  "icon": "🌱", "category": "core",   "color": "game-5",  "tag": "Book 5 · Meta-Learning",                  "status": "live" },
-    { "n": 6,  "folder": "interview-prep-game",     "title_en": "The Arena of Trials",                 "title_bn": "পরীক্ষার ময়দান",              "icon": "⚔️", "category": "core",   "color": "game-6",  "tag": "Book 6 · Interview Preparation",          "status": "live" },
-    { "n": 7,  "folder": "prompt-engineering",      "title_en": "The Word Weaver's Forge",             "title_bn": "বাক্যের জাদুকর",              "icon": "🔥", "category": "ai",     "color": "game-7",  "tag": "Book 7 · Prompt & Context Engineering",   "status": "live" },
-    { "n": 8,  "folder": "llm-anatomy",             "title_en": "The LLM Anatomy",                     "title_bn": "LLM দর্শন",                    "icon": "🔬", "category": "ai",     "color": "game-8",  "tag": "Book 8 · LLM Architecture Deep Dive",     "status": "live" },
-    { "n": 9,  "folder": "context-engineering",     "title_en": "The Canvas of Sight",                 "title_bn": "দৃষ্টির ক্যানভাস",            "icon": "👁️", "category": "ai",     "color": "game-9",  "tag": "Book 9 · Context Engineering Deep Dive",  "status": "live" },
-    { "n": 10, "folder": "rag-mastery",             "title_en": "The Well of Knowledge",               "title_bn": "জ্ঞানের কুয়ো",                "icon": "🪣", "category": "ai",     "color": "game-10", "tag": "Book 10 · RAG Mastery Deep Dive",         "status": "live" },
-    { "n": 11, "folder": "fine-tuning",             "title_en": "The Forge of Refinement",             "title_bn": "কায়িক সাধনা",                "icon": "⚒️", "category": "ai",     "color": "game-11", "tag": "Book 11 · Fine-tuning Deep Dive",         "status": "live" },
-    { "n": 12, "folder": "ai-agents",               "title_en": "The Autonomous Mind",                 "title_bn": "স্বাধীন বুদ্ধি",               "icon": "🐝", "category": "ai",     "color": "game-12", "tag": "Book 12 · AI Agents Deep Dive",           "status": "live" },
-    { "n": 13, "folder": "llm-security",            "title_en": "The Fortress Guard",                  "title_bn": "দুর্গের প্রহরী",              "icon": "🛡️", "category": "ai",     "color": "game-13", "tag": "Book 13 · LLM Security Deep Dive",        "status": "live" },
-    { "n": 14, "folder": "llmops",                  "title_en": "The Control Tower",                   "title_bn": "নিয়ন্ত্রণ কেন্দ্র",            "icon": "🚀", "category": "ai",     "color": "game-14", "tag": "Book 14 · LLMOps Deep Dive",              "status": "live" },
-    { "n": 15, "folder": "multimodal-ai",           "title_en": "The Five Senses",                     "title_bn": "পঞ্চইন্দ্রিয়",                "icon": "📡", "category": "ai",     "color": "game-15", "tag": "Book 15 · Multimodal AI Deep Dive",       "status": "live" },
-    { "n": 16, "folder": "llm-evals",               "title_en": "The Measure",                         "title_bn": "মাপকাঠি",                     "icon": "📏", "category": "ai",     "color": "game-16", "tag": "Book 16 · LLM Evals Deep Dive",           "status": "live" },
-    { "n": 17, "folder": "inference-optimization",  "title_en": "The Forged Edge",                     "title_bn": "ধাতব কর্মক্ষমতা",             "icon": "⚙️", "category": "ai",     "color": "game-17", "tag": "Book 17 · Inference Optimization Deep Dive","status": "live" },
-    { "n": 18, "folder": "embeddings",              "title_en": "The Geometry of Meaning",             "title_bn": "অর্থের জ্যামিতি",              "icon": "📐", "category": "ai",     "color": "game-18", "tag": "Book 18 · Embeddings Deep Dive",          "status": "live" },
-    { "n": 19, "folder": "tools-mcp",               "title_en": "The Tool Forge",                      "title_bn": "সরঞ্জাম নির্মাণ",             "icon": "🔧", "category": "ai",     "color": "game-19", "tag": "Book 19 · Tools & MCP Deep Dive",         "status": "live" },
-    { "n": 20, "folder": "phd-journey",             "title_en": "The Research Pilgrimage",             "title_bn": "গবেষণার তীর্থযাত্রা",          "icon": "🎓", "category": "research", "color": "game-20", "tag": "Book 20 · PhD & Research",                "status": "live" },
-    { "n": 21, "folder": "researcher-mind",         "title_en": "The Researcher's Mind",               "title_bn": "গবেষকের মন",                  "icon": "🧠", "category": "research", "color": "game-21", "tag": "Book 21 · Researcher Mindset",            "status": "live" },
-    { "n": 22, "folder": "cs-ocean",                "title_en": "The Ocean of Computer Science",       "title_bn": "কম্পিউটার সায়েন্সের মহাসমুদ্র","icon": "🌊", "category": "cs", "color": "game-22", "tag": "Book 22 · CS Domain Deep Dive",           "status": "live" },
-    { "n": 23, "folder": "irreplaceable-craftsman", "title_en": "The Irreplaceable Craftsman",         "title_bn": "অবিচ্ছেয্য কারিগর",            "icon": "🌳", "category": "research", "color": "game-23", "tag": "Book 23 · Career & Mindset Deep Dive",    "status": "live" },
-    { "n": 24, "folder": "human-psychology",        "title_en": "The Throne of the Mind",              "title_bn": "মনের সিংহাসন",               "icon": "🎭", "category": "research", "color": "game-24", "tag": "Book 24 · Human Psychology Deep Dive",    "status": "live" },
-    { "n": 25, "folder": "deep-learning",           "title_en": "The Council of Deep Knowledge",       "title_bn": "গভীর জ্ঞানের সভা",            "icon": "🔮", "category": "research", "color": "game-25", "tag": "Book 25 · The Art of Deep Learning",      "status": "live" },
-    { "n": 26, "folder": "knowledge-craftsman",     "title_en": "The Craftsman of Knowledge",          "title_bn": "জ্ঞানের কারিগর",              "icon": "📖", "category": "research", "color": "game-26", "tag": "Book 26 · Reading/Thinking/Writing Deep Dive","status": "live" },
-    { "n": 27, "folder": "research-paper-craftsman","title_en": "The Research Paper Craftsman",        "title_bn": "গবেষণার কারিগর",              "icon": "📄", "category": "research", "color": "game-27", "tag": "Book 27 · Research Paper Read/Write Deep Dive","status": "live" },
-    { "n": 28, "folder": "knowledge-web",           "title_en": "The Knowledge Web",                   "title_bn": "জ্ঞানের জাল",                 "icon": "🧩", "category": "research", "color": "game-28", "tag": "Book 28 · Knowledge Connection Capstone", "status": "live" },
-    { "n": 29, "folder": "mi-driving",              "title_en": "The Michigan Driving Guide",          "title_bn": "মিশিগান ড্রাইভিং গাইড",       "icon": "🚗", "category": "extras", "color": "game-29", "tag": "Book 29 · Michigan Driving Guide",        "status": "live" },
-    { "n": 30, "folder": "math-for-ml",             "title_en": "The Architect's Compass",             "title_bn": "গণিতের নিকোবর",              "icon": "🧭", "category": "cs", "color": "game-30", "tag": "Book 30 · Math Foundations",              "status": "live" },
-    { "n": 31, "folder": "classic-ml",              "title_en": "The Marketplace of Algorithms",       "title_bn": "মেশিনের বাজার",              "icon": "📈", "category": "cs", "color": "game-31", "tag": "Book 31 · Classic ML",                       "status": "live" },
-    { "n": 32, "folder": "mind-mechanic",           "title_en": "The Brain Mechanic's Codex",          "title_bn": "মস্তিষ্কের কারিগরি",          "icon": "🔋", "category": "research", "color": "game-32", "tag": "Book 32 · Brain & Habits",                    "status": "live" },
-    { "n": 33, "folder": "clear-thinking",          "title_en": "The Loom of Reason",                  "title_bn": "যুক্তির তাঁত",                "icon": "🪡", "category": "research", "color": "game-33", "tag": "Book 33 · Critical Thinking & Problem Solving Deep Dive",                 "status": "live" },
-    { "n": 34, "folder": "statistics-evidence",     "title_en": "The Scale of Evidence",               "title_bn": "প্রমাণের দাঁড়িপাল্লা",         "icon": "⚖️", "category": "research", "color": "game-34", "tag": "Book 34 · Statistics & Experimental Design",                              "status": "live" },
-    { "n": 35, "folder": "distributed-systems",     "title_en": "The Bridge of Connections",            "title_bn": "সংযোগের সেতু",                "icon": "🌐", "category": "cs", "color": "game-35", "tag": "Book 35 · Distributed Systems Deep Dive",                                "status": "live" },
-    { "n": 36, "folder": "deep-learning-arch",      "title_en": "The Architecture of Thought",          "title_bn": "চিন্তার স্থাপত্য",              "icon": "🏗️", "category": "cs", "color": "game-36", "tag": "Book 36 · Deep Learning Architectures",                                 "status": "live" },
-    { "n": 37, "folder": "computer-networks",       "title_en": "The Web of Wires",                     "title_bn": "তারের জাল",                    "icon": "📶", "category": "cs", "color": "game-37", "tag": "Book 37 · Computer Networks Deep Dive",                                "status": "live" },
-    { "n": 38, "folder": "operating-systems",       "title_en": "The Machine's Soul",                   "title_bn": "যন্ত্রের আত্মা",              "icon": "🖥️", "category": "cs", "color": "game-38", "tag": "Book 38 · Operating Systems Deep Dive",                                "status": "live" },
-    { "n": 39, "folder": "databases",                "title_en": "The Data Vault",                       "title_bn": "উপাত্তের ভল্ট",                "icon": "📊", "category": "cs", "color": "game-39", "tag": "Book 39 · Databases Deep Dive",                                        "status": "live" },
-    { "n": 40, "folder": "software-engineering",     "title_en": "The Codebuilder's Guild",              "title_bn": "কোড নির্মাতার শিল্প",          "icon": "🔨", "category": "cs", "color": "game-40", "tag": "Book 40 · Software Engineering Big Picture",                          "status": "live" },
-    { "n": 41, "folder": "theory-of-computation",  "title_en": "The Clockwork of Thought",            "title_bn": "গণনার তত্ত্ব",               "icon": "📼", "category": "cs", "color": "game-41", "tag": "Book 41 · Theory of Computation",                                    "status": "live" },
-    { "n": 42, "folder": "computer-architecture",   "title_en": "The Clockwork Forge",                   "title_bn": "যন্ত্রের কারখানা",            "icon": "💾", "category": "cs", "color": "game-42", "tag": "Book 42 · Computer Architecture",                                   "status": "live" },
-    { "n": 43, "folder": "cloud-devops",              "title_en": "The Sky Fortress",                      "title_bn": "আকাশের দুর্গ",                "icon": "☁️", "category": "cs", "color": "game-43", "tag": "Book 43 · Cloud & DevOps Engineering",                              "status": "live" },
-    { "n": 44, "folder": "data-engineering",        "title_en": "The River of Data",                     "title_bn": "নদীর ডাটা",                 "icon": "🚰", "category": "cs", "color": "game-44", "tag": "Book 44 · Data Engineering & Pipelines",                           "status": "live" },
-    { "n": 45, "folder": "compilers-plt",            "title_en": "The Word Smithy",                        "title_bn": "শব্দের কারখানা",             "icon": "🔤", "category": "cs", "color": "game-45", "tag": "Book 45 · Compilers & Programming Language Theory",              "status": "live" },
-    { "n": 46, "folder": "cryptography",             "title_en": "The Copper Fortress",                     "title_bn": "তামার দুর্গ",                "icon": "🔐", "category": "cs", "color": "game-46", "tag": "Book 46 · Cryptography & Network Security",                      "status": "live" },
-    { "n": 47, "folder": "testing-qa",               "title_en": "The Shields of Craft",                    "title_bn": "কারিগরের ঢাল",               "icon": "🧪", "category": "cs", "color": "game-47", "tag": "Book 47 · Testing & Quality Assurance",                           "status": "live" },
-    { "n": 48, "folder": "discrete-math",             "title_en": "The Compass of Logic",                      "title_bn": "যুক্তির কম্পাস",               "icon": "🔢", "category": "cs", "color": "game-48", "tag": "Book 48 · Discrete Mathematics",                                  "status": "live" },
-    { "n": 49, "folder": "probability",                "title_en": "The Dice of Destiny",                       "title_bn": "নিয়তির পাশা",                 "icon": "🎲", "category": "cs", "color": "game-49", "tag": "Book 49 · Probability & Stochastic Processes",                    "status": "live" },
-    { "n": 50, "folder": "optimization",              "title_en": "The Compass of Optimization",               "title_bn": "অপটিমাইজেশনের কম্পাস",        "icon": "🎯", "category": "cs", "color": "game-50", "tag": "Book 50 · Mathematical Optimization",                              "status": "live" },
-    { "n": 51, "folder": "algorithm-craftsman",      "title_en": "The Algorithm Craftsman",                    "title_bn": "অ্যালগরিদমের কারিগর",          "icon": "🔨", "category": "cs", "color": "game-51", "tag": "Book 51 · Practical Algorithms (Build a Search Engine)",           "status": "live" },
-    { "n": 52, "folder": "code-craftsman",          "title_en": "The Code Craftsman's Code",                  "title_bn": "কোড কারিগরের কোড",              "icon": "💎", "category": "cs", "color": "game-52", "tag": "Book 52 · Writing Expert Code (10 SE Books Distilled)",            "status": "live" },
-    { "n": 53, "folder": "python-city",             "title_en": "The Python City",                             "title_bn": "পাইথন নগরী",                     "icon": "🐍", "category": "cs", "color": "game-53", "tag": "Book 53 · Python A to Z (20 Guilds, Problem-First Teaching)",      "status": "live" }
+    {
+      "n": 1,
+      "folder": "ai-engineering-game",
+      "title_en": "Twenty-Seven Doors of AI Engineering",
+      "title_bn": "কৃত্রিম বুদ্ধিমত্তার সাতাশটি দরজা",
+      "icon": "🤖",
+      "category": "core",
+      "color": "game-1",
+      "tag": "Book 1 · AI Engineering",
+      "status": "live"
+    },
+    {
+      "n": 2,
+      "folder": "dsa-bazaar",
+      "title_en": "The Bazaar of Algorithms",
+      "title_bn": "অ্যালগরিদমের বাজার",
+      "icon": "🧮",
+      "category": "core",
+      "color": "game-2",
+      "tag": "Book 2 · DSA + Code Quality",
+      "status": "live"
+    },
+    {
+      "n": 3,
+      "folder": "engineer-journey",
+      "title_en": "The Court of the Grand Muhandis",
+      "title_bn": "মহাকারিগরের দরবার",
+      "icon": "🏛️",
+      "category": "core",
+      "color": "game-3",
+      "tag": "Book 3 · Engineer Mindset",
+      "status": "live"
+    },
+    {
+      "n": 4,
+      "folder": "system-design-game",
+      "title_en": "The City Builder's Codex",
+      "title_bn": "নগরী নির্মাণের দস্তাবেজ",
+      "icon": "🏙️",
+      "category": "core",
+      "color": "game-4",
+      "tag": "Book 4 · System Design",
+      "status": "live"
+    },
+    {
+      "n": 5,
+      "folder": "learn-to-learn",
+      "title_en": "The Seed of Learning",
+      "title_bn": "শিক্ষার বীজ",
+      "icon": "🌱",
+      "category": "core",
+      "color": "game-5",
+      "tag": "Book 5 · Meta-Learning",
+      "status": "live"
+    },
+    {
+      "n": 6,
+      "folder": "interview-prep-game",
+      "title_en": "The Arena of Trials",
+      "title_bn": "পরীক্ষার ময়দান",
+      "icon": "⚔️",
+      "category": "core",
+      "color": "game-6",
+      "tag": "Book 6 · Interview Preparation",
+      "status": "live"
+    },
+    {
+      "n": 7,
+      "folder": "prompt-engineering",
+      "title_en": "The Word Weaver's Forge",
+      "title_bn": "বাক্যের জাদুকর",
+      "icon": "🔥",
+      "category": "ai",
+      "color": "game-7",
+      "tag": "Book 7 · Prompt & Context Engineering",
+      "status": "live"
+    },
+    {
+      "n": 8,
+      "folder": "llm-anatomy",
+      "title_en": "The LLM Anatomy",
+      "title_bn": "LLM দর্শন",
+      "icon": "🔬",
+      "category": "ai",
+      "color": "game-8",
+      "tag": "Book 8 · LLM Architecture Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 9,
+      "folder": "context-engineering",
+      "title_en": "The Canvas of Sight",
+      "title_bn": "দৃষ্টির ক্যানভাস",
+      "icon": "👁️",
+      "category": "ai",
+      "color": "game-9",
+      "tag": "Book 9 · Context Engineering Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 10,
+      "folder": "rag-mastery",
+      "title_en": "The Well of Knowledge",
+      "title_bn": "জ্ঞানের কুয়ো",
+      "icon": "🪣",
+      "category": "ai",
+      "color": "game-10",
+      "tag": "Book 10 · RAG Mastery Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 11,
+      "folder": "fine-tuning",
+      "title_en": "The Forge of Refinement",
+      "title_bn": "কায়িক সাধনা",
+      "icon": "⚒️",
+      "category": "ai",
+      "color": "game-11",
+      "tag": "Book 11 · Fine-tuning Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 12,
+      "folder": "ai-agents",
+      "title_en": "The Autonomous Mind",
+      "title_bn": "স্বাধীন বুদ্ধি",
+      "icon": "🐝",
+      "category": "ai",
+      "color": "game-12",
+      "tag": "Book 12 · AI Agents Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 13,
+      "folder": "llm-security",
+      "title_en": "The Fortress Guard",
+      "title_bn": "দুর্গের প্রহরী",
+      "icon": "🛡️",
+      "category": "ai",
+      "color": "game-13",
+      "tag": "Book 13 · LLM Security Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 14,
+      "folder": "llmops",
+      "title_en": "The Control Tower",
+      "title_bn": "নিয়ন্ত্রণ কেন্দ্র",
+      "icon": "🚀",
+      "category": "ai",
+      "color": "game-14",
+      "tag": "Book 14 · LLMOps Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 15,
+      "folder": "multimodal-ai",
+      "title_en": "The Five Senses",
+      "title_bn": "পঞ্চইন্দ্রিয়",
+      "icon": "📡",
+      "category": "ai",
+      "color": "game-15",
+      "tag": "Book 15 · Multimodal AI Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 16,
+      "folder": "llm-evals",
+      "title_en": "The Measure",
+      "title_bn": "মাপকাঠি",
+      "icon": "📏",
+      "category": "ai",
+      "color": "game-16",
+      "tag": "Book 16 · LLM Evals Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 17,
+      "folder": "inference-optimization",
+      "title_en": "The Forged Edge",
+      "title_bn": "ধাতব কর্মক্ষমতা",
+      "icon": "⚙️",
+      "category": "ai",
+      "color": "game-17",
+      "tag": "Book 17 · Inference Optimization Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 18,
+      "folder": "embeddings",
+      "title_en": "The Geometry of Meaning",
+      "title_bn": "অর্থের জ্যামিতি",
+      "icon": "📐",
+      "category": "ai",
+      "color": "game-18",
+      "tag": "Book 18 · Embeddings Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 19,
+      "folder": "tools-mcp",
+      "title_en": "The Tool Forge",
+      "title_bn": "সরঞ্জাম নির্মাণ",
+      "icon": "🔧",
+      "category": "ai",
+      "color": "game-19",
+      "tag": "Book 19 · Tools & MCP Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 20,
+      "folder": "phd-journey",
+      "title_en": "The Research Pilgrimage",
+      "title_bn": "গবেষণার তীর্থযাত্রা",
+      "icon": "🎓",
+      "category": "research",
+      "color": "game-20",
+      "tag": "Book 20 · PhD & Research",
+      "status": "live"
+    },
+    {
+      "n": 21,
+      "folder": "researcher-mind",
+      "title_en": "The Researcher's Mind",
+      "title_bn": "গবেষকের মন",
+      "icon": "🧠",
+      "category": "research",
+      "color": "game-21",
+      "tag": "Book 21 · Researcher Mindset",
+      "status": "live"
+    },
+    {
+      "n": 22,
+      "folder": "cs-ocean",
+      "title_en": "The Ocean of Computer Science",
+      "title_bn": "কম্পিউটার সায়েন্সের মহাসমুদ্র",
+      "icon": "🌊",
+      "category": "cs",
+      "color": "game-22",
+      "tag": "Book 22 · CS Domain Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 23,
+      "folder": "irreplaceable-craftsman",
+      "title_en": "The Irreplaceable Craftsman",
+      "title_bn": "অবিচ্ছেয্য কারিগর",
+      "icon": "🌳",
+      "category": "research",
+      "color": "game-23",
+      "tag": "Book 23 · Career & Mindset Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 24,
+      "folder": "human-psychology",
+      "title_en": "The Throne of the Mind",
+      "title_bn": "মনের সিংহাসন",
+      "icon": "🎭",
+      "category": "research",
+      "color": "game-24",
+      "tag": "Book 24 · Human Psychology Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 25,
+      "folder": "deep-learning",
+      "title_en": "The Council of Deep Knowledge",
+      "title_bn": "গভীর জ্ঞানের সভা",
+      "icon": "🔮",
+      "category": "research",
+      "color": "game-25",
+      "tag": "Book 25 · The Art of Deep Learning",
+      "status": "live"
+    },
+    {
+      "n": 26,
+      "folder": "knowledge-craftsman",
+      "title_en": "The Craftsman of Knowledge",
+      "title_bn": "জ্ঞানের কারিগর",
+      "icon": "📖",
+      "category": "research",
+      "color": "game-26",
+      "tag": "Book 26 · Reading/Thinking/Writing Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 27,
+      "folder": "research-paper-craftsman",
+      "title_en": "The Research Paper Craftsman",
+      "title_bn": "গবেষণার কারিগর",
+      "icon": "📄",
+      "category": "research",
+      "color": "game-27",
+      "tag": "Book 27 · Research Paper Read/Write Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 28,
+      "folder": "knowledge-web",
+      "title_en": "The Knowledge Web",
+      "title_bn": "জ্ঞানের জাল",
+      "icon": "🧩",
+      "category": "research",
+      "color": "game-28",
+      "tag": "Book 28 · Knowledge Connection Capstone",
+      "status": "live"
+    },
+    {
+      "n": 29,
+      "folder": "mi-driving",
+      "title_en": "The Michigan Driving Guide",
+      "title_bn": "মিশিগান ড্রাইভিং গাইড",
+      "icon": "🚗",
+      "category": "extras",
+      "color": "game-29",
+      "tag": "Book 29 · Michigan Driving Guide",
+      "status": "live"
+    },
+    {
+      "n": 30,
+      "folder": "math-for-ml",
+      "title_en": "The Architect's Compass",
+      "title_bn": "গণিতের নিকোবর",
+      "icon": "🧭",
+      "category": "cs",
+      "color": "game-30",
+      "tag": "Book 30 · Math Foundations",
+      "status": "live"
+    },
+    {
+      "n": 31,
+      "folder": "classic-ml",
+      "title_en": "The Marketplace of Algorithms",
+      "title_bn": "মেশিনের বাজার",
+      "icon": "📈",
+      "category": "cs",
+      "color": "game-31",
+      "tag": "Book 31 · Classic ML",
+      "status": "live"
+    },
+    {
+      "n": 32,
+      "folder": "mind-mechanic",
+      "title_en": "The Brain Mechanic's Codex",
+      "title_bn": "মস্তিষ্কের কারিগরি",
+      "icon": "🔋",
+      "category": "research",
+      "color": "game-32",
+      "tag": "Book 32 · Brain & Habits",
+      "status": "live"
+    },
+    {
+      "n": 33,
+      "folder": "clear-thinking",
+      "title_en": "The Loom of Reason",
+      "title_bn": "যুক্তির তাঁত",
+      "icon": "🪡",
+      "category": "research",
+      "color": "game-33",
+      "tag": "Book 33 · Critical Thinking & Problem Solving Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 34,
+      "folder": "statistics-evidence",
+      "title_en": "The Scale of Evidence",
+      "title_bn": "প্রমাণের দাঁড়িপাল্লা",
+      "icon": "⚖️",
+      "category": "research",
+      "color": "game-34",
+      "tag": "Book 34 · Statistics & Experimental Design",
+      "status": "live"
+    },
+    {
+      "n": 35,
+      "folder": "distributed-systems",
+      "title_en": "The Bridge of Connections",
+      "title_bn": "সংযোগের সেতু",
+      "icon": "🌐",
+      "category": "cs",
+      "color": "game-35",
+      "tag": "Book 35 · Distributed Systems Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 36,
+      "folder": "deep-learning-arch",
+      "title_en": "The Architecture of Thought",
+      "title_bn": "চিন্তার স্থাপত্য",
+      "icon": "🏗️",
+      "category": "cs",
+      "color": "game-36",
+      "tag": "Book 36 · Deep Learning Architectures",
+      "status": "live"
+    },
+    {
+      "n": 37,
+      "folder": "computer-networks",
+      "title_en": "The Web of Wires",
+      "title_bn": "তারের জাল",
+      "icon": "📶",
+      "category": "cs",
+      "color": "game-37",
+      "tag": "Book 37 · Computer Networks Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 38,
+      "folder": "operating-systems",
+      "title_en": "The Machine's Soul",
+      "title_bn": "যন্ত্রের আত্মা",
+      "icon": "🖥️",
+      "category": "cs",
+      "color": "game-38",
+      "tag": "Book 38 · Operating Systems Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 39,
+      "folder": "databases",
+      "title_en": "The Data Vault",
+      "title_bn": "উপাত্তের ভল্ট",
+      "icon": "📊",
+      "category": "cs",
+      "color": "game-39",
+      "tag": "Book 39 · Databases Deep Dive",
+      "status": "live"
+    },
+    {
+      "n": 40,
+      "folder": "software-engineering",
+      "title_en": "The Codebuilder's Guild",
+      "title_bn": "কোড নির্মাতার শিল্প",
+      "icon": "🔨",
+      "category": "cs",
+      "color": "game-40",
+      "tag": "Book 40 · Software Engineering Big Picture",
+      "status": "live"
+    },
+    {
+      "n": 41,
+      "folder": "theory-of-computation",
+      "title_en": "The Clockwork of Thought",
+      "title_bn": "গণনার তত্ত্ব",
+      "icon": "📼",
+      "category": "cs",
+      "color": "game-41",
+      "tag": "Book 41 · Theory of Computation",
+      "status": "live"
+    },
+    {
+      "n": 42,
+      "folder": "computer-architecture",
+      "title_en": "The Clockwork Forge",
+      "title_bn": "যন্ত্রের কারখানা",
+      "icon": "💾",
+      "category": "cs",
+      "color": "game-42",
+      "tag": "Book 42 · Computer Architecture",
+      "status": "live"
+    },
+    {
+      "n": 43,
+      "folder": "cloud-devops",
+      "title_en": "The Sky Fortress",
+      "title_bn": "আকাশের দুর্গ",
+      "icon": "☁️",
+      "category": "cs",
+      "color": "game-43",
+      "tag": "Book 43 · Cloud & DevOps Engineering",
+      "status": "live"
+    },
+    {
+      "n": 44,
+      "folder": "data-engineering",
+      "title_en": "The River of Data",
+      "title_bn": "নদীর ডাটা",
+      "icon": "🚰",
+      "category": "cs",
+      "color": "game-44",
+      "tag": "Book 44 · Data Engineering & Pipelines",
+      "status": "live"
+    },
+    {
+      "n": 45,
+      "folder": "compilers-plt",
+      "title_en": "The Word Smithy",
+      "title_bn": "শব্দের কারখানা",
+      "icon": "🔤",
+      "category": "cs",
+      "color": "game-45",
+      "tag": "Book 45 · Compilers & Programming Language Theory",
+      "status": "live"
+    },
+    {
+      "n": 46,
+      "folder": "cryptography",
+      "title_en": "The Copper Fortress",
+      "title_bn": "তামার দুর্গ",
+      "icon": "🔐",
+      "category": "cs",
+      "color": "game-46",
+      "tag": "Book 46 · Cryptography & Network Security",
+      "status": "live"
+    },
+    {
+      "n": 47,
+      "folder": "testing-qa",
+      "title_en": "The Shields of Craft",
+      "title_bn": "কারিগরের ঢাল",
+      "icon": "🧪",
+      "category": "cs",
+      "color": "game-47",
+      "tag": "Book 47 · Testing & Quality Assurance",
+      "status": "live"
+    },
+    {
+      "n": 48,
+      "folder": "discrete-math",
+      "title_en": "The Compass of Logic",
+      "title_bn": "যুক্তির কম্পাস",
+      "icon": "🔢",
+      "category": "cs",
+      "color": "game-48",
+      "tag": "Book 48 · Discrete Mathematics",
+      "status": "live"
+    },
+    {
+      "n": 49,
+      "folder": "probability",
+      "title_en": "The Dice of Destiny",
+      "title_bn": "নিয়তির পাশা",
+      "icon": "🎲",
+      "category": "cs",
+      "color": "game-49",
+      "tag": "Book 49 · Probability & Stochastic Processes",
+      "status": "live"
+    },
+    {
+      "n": 50,
+      "folder": "optimization",
+      "title_en": "The Compass of Optimization",
+      "title_bn": "অপটিমাইজেশনের কম্পাস",
+      "icon": "🎯",
+      "category": "cs",
+      "color": "game-50",
+      "tag": "Book 50 · Mathematical Optimization",
+      "status": "live"
+    },
+    {
+      "n": 51,
+      "folder": "algorithm-craftsman",
+      "title_en": "The Algorithm Craftsman",
+      "title_bn": "অ্যালগরিদমের কারিগর",
+      "icon": "🔨",
+      "category": "cs",
+      "color": "game-51",
+      "tag": "Book 51 · Practical Algorithms (Build a Search Engine)",
+      "status": "live"
+    },
+    {
+      "n": 52,
+      "folder": "code-craftsman",
+      "title_en": "The Code Craftsman's Code",
+      "title_bn": "কোড কারিগরের কোড",
+      "icon": "💎",
+      "category": "cs",
+      "color": "game-52",
+      "tag": "Book 52 · Writing Expert Code (10 SE Books Distilled)",
+      "status": "live"
+    },
+    {
+      "n": 53,
+      "folder": "python-city",
+      "title_en": "The Python City",
+      "title_bn": "পাইথন নগরী",
+      "icon": "🐍",
+      "category": "cs",
+      "color": "game-53",
+      "tag": "Book 53 · Python A to Z (20 Guilds, Problem-First Teaching)",
+      "status": "live"
+    },
+    {
+      "n": 54,
+      "folder": "ledgerpilot-craftsman",
+      "title": "The Ledger Craftsman",
+      "title_bn": "হিসাবের কারিগর",
+      "icon": "⚖️",
+      "color": "#2dd4bf",
+      "tag": "Book 54 · CS & Systems",
+      "category": "cs",
+      "status": "live",
+      "doors": 37,
+      "desc_bn": "LedgerPilot ডিপ-ডাইভ — ডোমেইন থেকে স্ট্যাক-গভীরতা পর্যন্ত: Django ORM, DRF, MySQL, Celery, Redis, Vue-প্রতিক্রিয়া, নতুন-ফিচার রেসিপি, আর ৪২-স্ক্রিন নিবন্ধ।",
+      "desc_en": "LedgerPilot deep-dive — domain to deep stack: Django ORM, DRF, MySQL, Celery, Redis, Vue reactivity, the new-feature recipe, and the 42-view screen register."
+    }
   ],
-
   "roadmap": [
     {
       "phase": 0,
       "title": "Phase 0: Learn How to Learn · শেখার গলা",
       "note": "Do this first — it roughly doubles the retention of every book that follows.",
       "books": [
-        { "book": 26, "why": "Ebbinghaus, Adler, Zettelkasten, Feynman, second-brain." },
-        { "book": 5,  "why": "growth mindset, spaced repetition, active recall, sleep." },
-        { "book": 25, "why": "20h vs 10,000h, Dunning-Kruger, metacognition." }
+        {
+          "book": 26,
+          "why": "Ebbinghaus, Adler, Zettelkasten, Feynman, second-brain."
+        },
+        {
+          "book": 5,
+          "why": "growth mindset, spaced repetition, active recall, sleep."
+        },
+        {
+          "book": 25,
+          "why": "20h vs 10,000h, Dunning-Kruger, metacognition."
+        }
       ]
     },
     {
       "phase": 1,
       "title": "Phase 1: Mindset & Identity · মন ও পরিচয়",
       "books": [
-        { "book": 21, "why": "curiosity, question-crafting, intellectual humility — become a researcher." },
-        { "book": 23, "why": "permanent vs perishable skills, systems thinking, product sense." },
-        { "book": 32, "why": "daily operating system — brain hacks, habits, state regulation." },
-        { "book": 33, "why": "critical thinking: latticework, logic, Bayes, first principles, Polya, Fermi." },
-        { "book": 24, "why": "biases, Cialdini, learned helplessness — understand human psychology." }
+        {
+          "book": 21,
+          "why": "curiosity, question-crafting, intellectual humility — become a researcher."
+        },
+        {
+          "book": 23,
+          "why": "permanent vs perishable skills, systems thinking, product sense."
+        },
+        {
+          "book": 32,
+          "why": "daily operating system — brain hacks, habits, state regulation."
+        },
+        {
+          "book": 33,
+          "why": "critical thinking: latticework, logic, Bayes, first principles, Polya, Fermi."
+        },
+        {
+          "book": 24,
+          "why": "biases, Cialdini, learned helplessness — understand human psychology."
+        }
       ]
     },
     {
       "phase": 2,
       "title": "Phase 2: The Engineer's Craft · প্রকৌশলীর হাত",
       "books": [
-        { "book": 1,  "why": "read inspectionally — the flyover of all AI deep-dives." },
-        { "book": 3,  "why": "first principles, abstraction, debugging, estimation." },
-        { "book": 7,  "why": "prompt & context engineering — most immediately useful skill." }
+        {
+          "book": 1,
+          "why": "read inspectionally — the flyover of all AI deep-dives."
+        },
+        {
+          "book": 3,
+          "why": "first principles, abstraction, debugging, estimation."
+        },
+        {
+          "book": 7,
+          "why": "prompt & context engineering — most immediately useful skill."
+        },
+        {
+          "book": 54,
+          "why": "a complete production codebase end-to-end — domain, patterns, stack internals, and how to ship a feature safely."
+        }
       ]
     },
     {
@@ -102,14 +681,38 @@
       "title": "Phase 3: CS Fundamentals · কম্পিউটার বিজ্ঞানের ভিত্তি",
       "note": "⚙️ The CS quartet: Algorithms → Networks → OS → Databases. Four pillars every PhD interview probes.",
       "books": [
-        { "book": 2,  "why": "Big-O, data structures, graphs, DP — run alongside other phases." },
-        { "book": 37, "why": "OSI, TCP/IP, DNS, HTTP, TLS — what happens when you type google.com." },
-        { "book": 38, "why": "processes, threads, scheduling, semaphores, memory, containers — fork()." },
-        { "book": 39, "why": "relational model, SQL, indexing, ACID, NoSQL — how indexes work." },
-        { "book": 40, "why": "SDLC, SOLID, design patterns, TDD, Git, architecture, DevOps, security, AI-assisted dev — the profession of software engineering. Connects B2+B37+B38+B39 into a unified workflow." },
-        { "book": 41, "why": "Turing machines, halting problem, Gödel incompleteness, P vs NP — the THEORETICAL foundation beneath all CS books. Every PhD interview asks 'what can/cannot be computed?' Connects to B2 (Big-O), B35 (FLP impossibility), B38 (deadlock undecidability), B40 (Rice's theorem)." },
-        { "book": 42, "why": "Transistors → logic gates → CPU datapath → pipelining → cache hierarchy → coherence → GPU SIMT → systolic arrays (TPU) — the PHYSICAL foundation beneath all CS books. Every PhD interview asks 'how does hardware shape software?' Connects to B38 (OS↔hardware), B17 (GPU inference), B2 (cache-aware algorithms), B35 (coherence=consensus)." },
-        { "book": 43, "why": "Docker containers → Kubernetes orchestration → Terraform IaC → CI/CD → observability → SRE error budgets → service mesh → progressive delivery — the OPERATIONS layer. Every production system runs on these. Connects to B38 (OS↔containers), B35 (etcd=Raft), B37 (networking=OSI), B42 (eBPF=kernel), B40 (CI/CD=delivery)." }
+        {
+          "book": 2,
+          "why": "Big-O, data structures, graphs, DP — run alongside other phases."
+        },
+        {
+          "book": 37,
+          "why": "OSI, TCP/IP, DNS, HTTP, TLS — what happens when you type google.com."
+        },
+        {
+          "book": 38,
+          "why": "processes, threads, scheduling, semaphores, memory, containers — fork()."
+        },
+        {
+          "book": 39,
+          "why": "relational model, SQL, indexing, ACID, NoSQL — how indexes work."
+        },
+        {
+          "book": 40,
+          "why": "SDLC, SOLID, design patterns, TDD, Git, architecture, DevOps, security, AI-assisted dev — the profession of software engineering. Connects B2+B37+B38+B39 into a unified workflow."
+        },
+        {
+          "book": 41,
+          "why": "Turing machines, halting problem, Gödel incompleteness, P vs NP — the THEORETICAL foundation beneath all CS books. Every PhD interview asks 'what can/cannot be computed?' Connects to B2 (Big-O), B35 (FLP impossibility), B38 (deadlock undecidability), B40 (Rice's theorem)."
+        },
+        {
+          "book": 42,
+          "why": "Transistors → logic gates → CPU datapath → pipelining → cache hierarchy → coherence → GPU SIMT → systolic arrays (TPU) — the PHYSICAL foundation beneath all CS books. Every PhD interview asks 'how does hardware shape software?' Connects to B38 (OS↔hardware), B17 (GPU inference), B2 (cache-aware algorithms), B35 (coherence=consensus)."
+        },
+        {
+          "book": 43,
+          "why": "Docker containers → Kubernetes orchestration → Terraform IaC → CI/CD → observability → SRE error budgets → service mesh → progressive delivery — the OPERATIONS layer. Every production system runs on these. Connects to B38 (OS↔containers), B35 (etcd=Raft), B37 (networking=OSI), B42 (eBPF=kernel), B40 (CI/CD=delivery)."
+        }
       ]
     },
     {
@@ -117,25 +720,47 @@
       "title": "Phase 4: Math → LLM Keystone · গণিত ও ট্রান্সফর্মার",
       "note": "📖 Book 30 teaches the math (vectors → entropy) that every AI book depends on. Then Book 8 unlocks the transformer.",
       "books": [
-        { "book": 30, "why": "vectors, matrices, probability, calculus, backprop, information theory." },
-        { "book": 8,  "role": "keystone", "why": "tokenization, attention, transformers, RLHF." }
+        {
+          "book": 30,
+          "why": "vectors, matrices, probability, calculus, backprop, information theory."
+        },
+        {
+          "book": 8,
+          "role": "keystone",
+          "why": "tokenization, attention, transformers, RLHF."
+        }
       ]
     },
     {
       "phase": 5,
       "title": "Phase 5: Meaning & Retrieval · অর্থ ও সংগ্রহ",
       "books": [
-        { "book": 18, "why": "embeddings, vector search — RAG/context/multimodal all need it." },
-        { "book": 9,  "why": "chunking, reranking, Lost-in-the-Middle." },
-        { "book": 10, "why": "RAG mastery — needs embeddings + context." }
+        {
+          "book": 18,
+          "why": "embeddings, vector search — RAG/context/multimodal all need it."
+        },
+        {
+          "book": 9,
+          "why": "chunking, reranking, Lost-in-the-Middle."
+        },
+        {
+          "book": 10,
+          "why": "RAG mastery — needs embeddings + context."
+        }
       ]
     },
     {
       "phase": 6,
       "title": "Phase 6: Action & Intelligence · ক্রিয়া ও বুদ্ধিমত্তা",
       "books": [
-        { "book": 19, "why": "function calling, MCP — hard prereq for agents." },
-        { "book": 12, "why": "ReAct, planning, multi-agent — built on tools." }
+        {
+          "book": 19,
+          "why": "function calling, MCP — hard prereq for agents."
+        },
+        {
+          "book": 12,
+          "why": "ReAct, planning, multi-agent — built on tools."
+        }
       ]
     },
     {
@@ -143,10 +768,22 @@
       "title": "Phase 7: ML Foundations → Deep Learning → Harden · মেশিন লার্নিং ও সুরক্ষা",
       "note": "🌱 Classic ML → DL architectures → Security → Fine-tuning.",
       "books": [
-        { "book": 31, "why": "linear/logistic regression, decision trees, SVM, k-NN, k-means." },
-        { "book": 36, "why": "Perceptron → CNN → LSTM → Transformer → GAN → Diffusion." },
-        { "book": 13, "why": "prompt injection, red-teaming, guardrails." },
-        { "book": 11, "why": "LoRA/QLoRA, DPO/PPO — adapt models to your domain." }
+        {
+          "book": 31,
+          "why": "linear/logistic regression, decision trees, SVM, k-NN, k-means."
+        },
+        {
+          "book": 36,
+          "why": "Perceptron → CNN → LSTM → Transformer → GAN → Diffusion."
+        },
+        {
+          "book": 13,
+          "why": "prompt injection, red-teaming, guardrails."
+        },
+        {
+          "book": 11,
+          "why": "LoRA/QLoRA, DPO/PPO — adapt models to your domain."
+        }
       ]
     },
     {
@@ -154,10 +791,22 @@
       "title": "Phase 8: Measure, Ship & Extend · পরিমাপ ও উৎপাদন",
       "note": "📏 Evals before you ship. Then optimize, deploy, extend.",
       "books": [
-        { "book": 16, "why": "LLM-as-judge, RAGAS, benchmarks." },
-        { "book": 17, "why": "KV cache, quantization, speculative decoding." },
-        { "book": 14, "why": "vLLM, PagedAttention, monitoring." },
-        { "book": 15, "why": "ViT/CLIP, diffusion, VLMs — multimodal." }
+        {
+          "book": 16,
+          "why": "LLM-as-judge, RAGAS, benchmarks."
+        },
+        {
+          "book": 17,
+          "why": "KV cache, quantization, speculative decoding."
+        },
+        {
+          "book": 14,
+          "why": "vLLM, PagedAttention, monitoring."
+        },
+        {
+          "book": 15,
+          "why": "ViT/CLIP, diffusion, VLMs — multimodal."
+        }
       ]
     },
     {
@@ -165,20 +814,45 @@
       "title": "Phase 9: Systems Engineering & Evidence · সিস্টেম ও প্রমাণ",
       "note": "🏗️ Scale up: system design → distributed systems → statistics.",
       "books": [
-        { "book": 4,  "why": "CAP, consensus, replication, idempotency — system design." },
-        { "book": 35, "why": "Lamport clocks, Paxos/Raft, MapReduce, Dynamo, BFT." },
-        { "book": 34, "why": "hypothesis testing, A/B testing, causal inference, replication crisis." }
+        {
+          "book": 4,
+          "why": "CAP, consensus, replication, idempotency — system design."
+        },
+        {
+          "book": 35,
+          "why": "Lamport clocks, Paxos/Raft, MapReduce, Dynamo, BFT."
+        },
+        {
+          "book": 34,
+          "why": "hypothesis testing, A/B testing, causal inference, replication crisis."
+        }
       ]
     },
     {
       "phase": 10,
       "title": "Phase 10: Research & Synthesis · গবেষণা ও সংশ্লেষ",
       "books": [
-        { "book": 27, "why": "IMRaD, Keshav 3-pass, peer review — read and write papers." },
-        { "book": 22, "why": "survey of 20 CS domains — references 8 other books." },
-        { "book": 20, "why": "PhD funding, SOP, cold-emailing — if grad-school bound." },
-        { "book": 6,  "why": "resume, STAR, negotiation — read when job-hunting." },
-        { "book": 28, "role": "finale", "why": "the capstone — references 14 other books. Read dead last." }
+        {
+          "book": 27,
+          "why": "IMRaD, Keshav 3-pass, peer review — read and write papers."
+        },
+        {
+          "book": 22,
+          "why": "survey of 20 CS domains — references 8 other books."
+        },
+        {
+          "book": 20,
+          "why": "PhD funding, SOP, cold-emailing — if grad-school bound."
+        },
+        {
+          "book": 6,
+          "why": "resume, STAR, negotiation — read when job-hunting."
+        },
+        {
+          "book": 28,
+          "role": "finale",
+          "why": "the capstone — references 14 other books. Read dead last."
+        }
       ]
     },
     {
@@ -187,7 +861,11 @@
       "title": "Phase 99: Anytime",
       "parallel": true,
       "books": [
-        { "book": 29, "role": "parallel", "why": "learner permit, road rules, OWI — Michigan driving." }
+        {
+          "book": 29,
+          "role": "parallel",
+          "why": "learner permit, road rules, OWI — Michigan driving."
+        }
       ]
     }
   ]

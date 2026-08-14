@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Ledger Craftsman — LedgerPilot-এর ভেতরের কারুকাজ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Hind+Siliguri:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">وَالْوَزْنَ الْقِسْطَ يَوْمَ الْقِيَامَةِ</div>
+  <h1 class="title-main">হিসাবের কারিগর</h1>
+  <div class="title-sub">The Ledger Craftsman</div>
+  <div class="title-desc">
+    LedgerPilot-এর ভেতরের কারুকাজ — ডোমেইন থেকে ব্যাংক পর্যন্ত।<br>
+    তিরিশটি দরজা — ছয় অংশে: শহর (ডোমেইন, ক্লায়েন্ট, টাইমশিট, ইনভেন্টরি, FSM), টাকার মেঝে (মিন-চেক, ক্রেডিট, NACHA, Xero, চক্র),
+    কারুকাজ (চক-কালি, তালা, RBAC, emit, ফোর্স-ইমপোর্ট, চুক্তি, ম্যানিফেস্ট), ভিত্তি (BE স্ট্যাক, FE স্ট্যাক, টুলিং-ডিপ্লয়), শৃঙ্খলা (FE, BE, গেট), গভীর খনি (ORM, DRF, MySQL, Celery, Redis, Vue-প্রতিক্রিয়া), রন্ধনপ্রণালী (ফিচার-মানচিত্র, রেসিপি, যন্ত্র-নির্বাচক, ইনফ্রা, পরীক্ষা, প্রথম-সপ্তাহ) — আর শেষে এক ক্লিকের পূর্ণ যাত্রা।<br><br>
+    <em>The complete inner craft of LedgerPilot — domain to bank. Twenty-one doors in four parts:
+    the city (domain, clients, timesheets, inventory, FSM), the money floor (min-check, credits,
+    NACHA, Xero, cycles), the craft (dry-run, guards, RBAC, emit, force-import, wire contract,
+    manifest), discipline (FE, BE, gates), recipes (feature map, new-feature charter, pattern selector, infra, testing, first week) — and one click traced through every layer.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">⚖️ যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">চার ক্যারাভানের শহর — The City of Four Caravans</div>
+    <p>ওজো বুককিপিং — চারজন মানুষের দল: পিটার টাইমশিট তোলেন, সাই ইনভয়েস বানান আর ক্রেডিট মেলেন, ভিকি অনুমোদন করেন আর ন্যূনতম-হিসাব দেখেন, ওয়েন ব্যাংকের ACH চালান। LedgerPilot তাঁদের হাতের কাজের স্বয়ংক্রিয় সঙ্গী — কিন্তু নীতিমাফিক: Xero-তে কখনো নিজে থেকে এক অক্ষর নয় (ADR-0009)। প্রতিটি লেখার আগে শুকনো-রান, প্রতিটি রায়ের পেছনে একটি নাম, প্রতিটি চুক্তির উৎস একটাই serializer।</p>
+    <p class="en">Ojo Bookkeeping — a team of four: Peter uploads timesheets, Sai builds invoices and applies credits, Vicki approves and runs min-check, Owen drives the bank ACH. LedgerPilot is their automation companion — built on principle: never one character to Xero on its own (ADR-0009). Dry-run before every write, a name behind every verdict, one serializer as the source of every contract.</p>
+    <hr class="p-divider">
+    <p><strong>কীভাবে পড়বে:</strong> প্রথমবার সম্পূর্ণ পড়ো — দরজা ১ থেকে ২১, ক্রম রক্ষা করে (প্রতিটি দরজা আগেরটার উপর দাঁড়ায়)। আবার ফিরে আসার সময়: <strong>নতুন ব্যাকএন্ড কাজের আগে</strong> দরজা ৮, ২২, ২৩; <strong>Xero ছোঁয়ার আগে</strong> ১২ ও ১৪; <strong>অনুমতি/রোল নিয়ে কাজে</strong> ১৬; <strong>নতুন পেজ বানাতে</strong> ২০-২১; <strong>স্ট্যাক গভীরে যেতে</strong> ২৪-২৯; <strong>নতুন ফিচার শুরুর আগে</strong> ২৫, ২৬; <strong>নতুন কর্মী হলে</strong> ২৯। দরজা ৩০ শেষ পাঠ — সেটাই সব মেলায়।</p>
+    <p class="en"><strong>How to read:</strong> first time, read straight through — doors 1 to 21 in order (each builds on the last). When returning: before new backend work read 8, 22, 23; before touching Xero, 12 and 14; for permissions, 16; for new pages, 20-21; before starting a new feature, 25-26; for the stack beneath, 24-29; if you are new here, 29. Door 30 is the closing read — it ties everything.</p>
+    <hr class="p-divider">
+    <p>এই বইয়ের সাঁইত্রিশটি দরজায় সাঁইত্রিশ অধ্যায় — হালিমা থেকে মুবারক পর্যন্ত — প্রত্যেকে নিজের জীবন দিয়ে একটি স্তর শেখাবেন। শেষ দরজায় ভিকির একটি "Approve" ক্লিক সব স্তরের মধ্য দিয়ে যাবে — বোতাম থেকে ব্যাংক — আর সবার পাঠ এক ইঞ্জিনে মিলবে।</p>
+    <p class="en">Thirty-seven doors — thirty-six chapters and the register — from Halima to Mubarak — each teaches one layer with their life. In the final door, Vicki's single "Approve" click travels every layer — button to bank — and every lesson converges into one engine.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 কারখানায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">📖</span><span id="hud-rank-name">প্রথম পাঠ</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 3700 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>সাঁইত্রিশটি দরজা, ক্রমানুসারে — শেষটি পরিশিষ্ট-নিবন্ধ।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-topbar">
+    <button class="tb-btn" onclick="goToMap()" title="মানচিত্রে ফিরে যাও">🗺️ মানচিত্র</button>
+    <div class="topbar-info"><span id="topbar-num"></span><span id="topbar-name"></span></div>
+    <div class="font-ctrl"><button class="tb-btn" onclick="fontStep(-1)" title="লেখা ছোট করো">A−</button><span id="font-label">100%</span><button class="tb-btn" onclick="fontStep(1)" title="লেখা বড় করো">A+</button></div>
+    <button class="tb-btn" id="topbar-prev" onclick="navDoor(-1)" title="আগের দরজা">←</button>
+    <button class="tb-btn" id="topbar-next" onclick="navDoor(1)" title="পরের দরজা">→</button>
+    <div class="read-progress"><div id="read-fill"></div></div>
+  </div>
+  <div class="story-container" id="story-container"></div>
+  <button id="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="উপরে ফিরে যাও">↑</button>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">⚖️</div>
+  <h1 class="complete-title">তুমি এখন হিসাবের কারিগর</h1>
+  <p class="complete-text">ছত্রিশটি অধ্যায় পরিশিষ্ট-নিবন্ধসহ পেরিয়েছ। ডোমেইন থেকে ব্যাংক — প্রতিটি স্তর আয়ত্ত করেছ।<br><br>আমানত (custody) · কিতাবত (FSM) · ইস্তিখারাহ (dry-run) · একাগ্রতা (guard) · রাখওয়ারি (RBAC) · তাবলিগ (emit) · শুয়াহাদাত (audit-first) · সাক্ষ্য (contract) · কিবলা (manifest) — ন-টি নীতি, এক মীজান।<br><br><strong>বিপজ্জনক কাজ নামধারী মানুষের হাতে, নির্ধারিত পথে, সাক্ষ্যসহ।</strong></p>
+  <div class="complete-verse">وَأَقِيمُوا الْمَوَازِينَ بِالْقِسْطِ</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"এবং তুলাদণ্ড স্থাপন করো ন্যায়ের সাথে" — কুরআন ৫৫:৯</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>⚖️ হিসাবের কারিগর চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>⚖️ হিসাবের কারিগর চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-2.js"></script>
+<script src="doors-3-4.js"></script>
+<script src="doors-5-6.js"></script>
+<script src="doors-7-8.js"></script>
+<script src="doors-9-10.js"></script>
+<script src="doors-11-12.js"></script>
+<script src="doors-13-14.js"></script>
+<script src="doors-15-16.js"></script>
+<script src="doors-17-18.js"></script>
+<script src="doors-19-20.js"></script>
+<script src="doors-21-22.js"></script>
+<script src="doors-23-24.js"></script>
+<script src="doors-25-26.js"></script>
+<script src="doors-27-28.js"></script>
+<script src="doors-29-30.js"></script>
+<script src="doors-31-32.js"></script>
+<script src="doors-33-34.js"></script>
+<script src="doors-35-36.js"></script>
+<script src="doors-37.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
