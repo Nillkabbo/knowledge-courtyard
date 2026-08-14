@@ -330,6 +330,15 @@ doors.push({
   subtitle:"The Research Architect", tech:"Complete Research Workflow Synthesis",
   spirit:"হিকমাহ — প্রজ্ঞা, প্রয়োগকৃত জ্ঞান",
   secret:"নয়টি দরজা পেরিয়েছ। Anatomy → engineer → scientist → PhD → question → write → review → build → synthesize। সব একসাথে = গবেষক। তুমি এখন শুধু পাঠক নয় — স্রষ্টা। শুধু consumer নয় — contributor। জ্ঞানের শৃঙ্খলে তোমার নিজের লিঙ্ক। হিকমাহ — প্রয়োগকৃত জ্ঞান। যে প্রয়োগ করে, সে জানে।",
+  senior:{
+    title:"সম্পূর্ণ গবেষণা কর্মপ্রবাহ এক নজরে",
+    body:`<table class="kv-table"><tr><th>দরজা</th><th>দক্ষতা</th><th>টুল</th></tr>
+<tr><td class="hl">১-৩</td><td>পড়া</td><td>Anatomy · Keshav 3-pass · critical eye</td></tr>
+<tr><td class="hl">৪-৫</td><td>প্রশ্ন</td><td>Gap matrix · FINER criteria</td></tr>
+<tr><td class="hl">৬-৭</td><td>লেখা</td><td>IMRaD · figures-first draft</td></tr>
+<tr><td class="hl">৮-৯</td><td>উন্নতি</td><td>Peer review · citation building</td></tr>
+<tr><td class="hl">১০</td><td>সংশ্লেষণ</td><td>সব একসাথে = contributor</td></tr></table>`
+  },
   recall:{
     q:"সব দরজার সারমর্ম কী?",
     qen:"What is the essence of all doors?",

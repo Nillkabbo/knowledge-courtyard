@@ -162,6 +162,14 @@ doors.push({
   subtitle:"The Master Gardener's Banyan", tech:"Building Mental Models & Knowledge Trees",
   spirit:"আয়াত — সব নিদর্শন সংযুক্ত",
   secret:"বিচ্ছিন্ন তথ্য মনে থাকে না। সংযুক্ত তথ্য মনে থাকে চিরকাল। Mental model = জ্ঞানের গাছ। প্রতিটা ধারণা একটা ডাল — সব এক কাণ্ডে যুক্ত।",
+  senior:{
+    title:"জ্ঞানের গাছ এক নজরে",
+    body:`<table class="kv-table"><tr><th>ধাপ</th><th>কাজ</th></tr>
+<tr><td class="hl">পাতা</td><td>বিচ্ছিন্ন তথ্য সংগ্রহ করো</td></tr>
+<tr><td class="hl">ডাল</td><td>তথ্যগুলো ধারণায় সংযুক্ত করো</td></tr>
+<tr><td class="hl">কাণ্ড</td><td>ধারণাগুলো মূল নীতিতে যুক্ত করো</td></tr>
+<tr><td class="hl">শেকড়</td><td>মূল নীতি বাস্তব অভিজ্ঞতায় গাঁথো</td></tr></table>`
+  },
   recall:{
     q:"বটগাছ কেন শত শত বছর বাঁচে, কিন্তু এককাণ্ড গাছ ঝড়ে পড়ে?",
     qen:"Why does a banyan tree live centuries, but single-trunk trees fall in storms?",
@@ -221,6 +229,18 @@ doors.push({
   subtitle:"The Garden of Sleep", tech:"Sleep & Memory Consolidation",
   spirit:"রাহাত — বিশ্রাম, প্রশান্তি",
   secret:"তুমি দিনে শেখো না — রাতে। ঘুমের সময় মস্তিষ্ক দিনের তথ্য সাজায়, দৃঢ় করে, অপ্রয়োজনীয় মুছে। ঘুম ছাড়া শেখা অসম্পূর্ণ — ভাঙা বাড়ির মতো, যা ঝড়ে ভেঙে পড়ে।",
+  senior:{
+    title:"ঘুম ও স্মৃতি এক নজরে",
+    body:`<table class="kv-table"><tr><th>রাতের ধাপ</th><th>মস্তিষ্কের কাজ</th></tr>
+<tr><td class="hl">Deep sleep</td><td>দিনের তথ্য hippocampus থেকে cortex-এ স্থানান্তর</td></tr>
+<tr><td class="hl">REM sleep</td><td>সংযোগ খোঁজা — নতুন + পুরোনো জ্ঞান মিশ্রণ</td></tr>
+<tr><td class="hl">স্বপ্ন</td><td>আবেগ প্রক্রিয়াকরণ — ভয়-চাপ নিরাময়</td></tr></table>
+<ul class="checklist">
+<li>শেখার পর ঘুমাও — consolidation এর জন্য</li>
+<li>৭-৯ ঘণ্টা — কম হলে স্মৃতি দুর্বল</li>
+<li>Exam-এর আগে রাত জাগা না — তথ্য গাছে বাঁধা হবে না</li>
+</ul>`
+  },
   recall:{
     q:"ঘুমের বাগান কেন বলা হয় 'অদৃশ্য শিক্ষক'?",
     qen:"Why is the sleep garden called 'the invisible teacher'?",
