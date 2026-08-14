@@ -35,7 +35,7 @@ doors.push({
 ছাঁচ-পরীক্ষক (lint):
   BE: ruff (pyproject [tool.ruff] — E4/E7/E9/F)
   FE: ESLint flat-config — FSD-বিচ্ছিন্নতা + ui-টোকেন-আইন
-    + Prettier (フォーマット)
+    + Prettier (বিন্যাসকারক)
   নিয়ম: lint-সতর্কতা জমানো নয় — সেদিনই সারো
 
 একক-পরীক্ষা:
