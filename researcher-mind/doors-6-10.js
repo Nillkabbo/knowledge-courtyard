@@ -9,6 +9,13 @@ doors.push({
   subtitle:"The Hall of Failures", tech:"Tolerance for Failure",
   spirit:"সবর — ধৈর্য, বিপদে অটল থাকা",
   secret:"রিসার্চ হলো ব্যর্থতার আরেক নাম। ৯০% পরীক্ষা ব্যর্থ হয়। কিন্তু প্রতিটা ব্যর্থতা একটা উত্তর — এটা কাজ করে না। সেই উত্তর থেকে সঠিক পথ বের হয়। যে ব্যর্থতাকে ভয় পায়, সে গবেষক হয় না।",
+  senior:{
+    title:"ব্যর্থতা থেকে শেখা এক নজরে",
+    body:`<table class="kv-table"><tr><th>ধাপ</th><th>কাজ</th></tr>
+<tr><td class="hl">ডকুমেন্ট</td><td>কী করেছিলে, কী হয়েছিল — লিখে রাখো</td></tr>
+<tr><td class="hl">বিশ্লেষণ</td><td>কোথায় ভুল — অনুমান? ডেটা? কোড?</td></tr>
+<tr><td class="hl">পুনর্নির্মাণ</td><td>পরবর্তী প্রচেষ্টায় শর্ত বদলাও</td></tr></table>`
+  },
   recall:{
     q:"ইব্রাহিম কেন দেয়ালে ঝোলানো ব্যর্থ পরীক্ষাগুলো সযত্নে রাখেন?",
     qen:"Why does Ibrahim carefully keep the failed experiments hanging on the wall?",
@@ -19,11 +26,11 @@ doors.push({
 <p class="scene-setting">ষষ্ঠ দরজা। একটা পুরনো কারখানা — কিন্তু অদ্ভুত। দেয়ালে ফ্রেম করে ঝোলানো — ভাঙা সার্কিট, ফেটে যাওয়া কাঁচ, মুদ্রিত পেপারে লাল দাগ। প্রতিটার নিচে ছোট কার্ড — তারিখ আর নোট। মাঝখানে একটা টেবিলে বসে আছেন ইব্রাহিম — বয়স্ক, হাতে পোড়া দাগ (একসময়ের ব্যর্থ পরীক্ষা), চোখে শান্ত গভীরতা। ধোঁয়ার গন্ধ, পুরনো কাঠের ঘ্রাণ, দূরে কোথাও পানির ড্রিপ।</p>
 <p class="scene-setting en">The sixth door. An old factory — but strange. On the walls, framed: broken circuits, cracked glass, printed papers with red marks. Below each, a small card — date and note. At the center table sits Ibrahim — older, burn scars on his hands (from past failed experiments), calm depth in his eyes. Smell of smoke, old wood, distant water drip.</p>
 
-<div class="dialogue">ইব্রাহিম তোমাকে দেখলেন। দেয়ালের দিকে ইশারা করলেন। "এগুলো কী?" তুমি দেখলে — ভাঙা সার্কিট, ফেটে যাওয়া গ্লাস, লাল দাগ দেওয়া পেপার। "ব্যর্থ পরীক্ষা?" তুমি বললে। ইব্রাহিম হাসলেন। "না। এগুলো আমার শিক্ষক। প্রতিটা।"</div></div>
-<div class="dialogue en">Ibrahim saw you. Gestured at the walls. "What are these?" You looked — broken circuits, cracked glass, red-marked papers. "Failed experiments?" you said. Ibrahim smiled. "No. These are my teachers. Each one."</div></div>
+<div class="dialogue">ইব্রাহিম তোমাকে দেখলেন। দেয়ালের দিকে ইশারা করলেন। "এগুলো কী?" তুমি দেখলে — ভাঙা সার্কিট, ফেটে যাওয়া গ্লাস, লাল দাগ দেওয়া পেপার। "ব্যর্থ পরীক্ষা?" তুমি বললে। ইব্রাহিম হাসলেন। "না। এগুলো আমার শিক্ষক। প্রতিটা।"</div>
+<div class="dialogue en">Ibrahim saw you. Gestured at the walls. "What are these?" You looked — broken circuits, cracked glass, red-marked papers. "Failed experiments?" you said. Ibrahim smiled. "No. These are my teachers. Each one."</div>
 
-<div class="dialogue">"জাইনব তোমাকে সংযোগ দেখাতে শিখিয়েছেন। ভালো। কিন্তু সংযোগ বানালে তুমি পরীক্ষা করবে। আর পরীক্ষা মানে — ব্যর্থতা।" ইব্রাহিম দেয়াল থেকে একটা ফ্রেম নামিয়ে আনলেন — একটা ভাঙা সার্কিট। "এটা ২০১৭। আমি ভেবেছিলাম এই ডিজাইনে কম্পিউটেশনাল কম লাগবে। তিন মাস কাজ। ফলাফল? সার্কিট পুড়ে গেল। ব্যর্থতা। কিন্তু এই ব্যর্থতা আমাকে শিখিয়েছিল — তাপ ডিসিপেশন এই ডিজাইনে অবহেলা করা যায় না। পরের ডিজাইনে আমি সেটা ঠিক করেছি।"</div></div>
-<div class="dialogue en">"Zainab taught you to see connections. Good. But connections lead to experiments. And experiments mean — failure." Ibrahim took down a frame from the wall — a broken circuit. "This is 2017. I thought this design would need less computation. Three months of work. Result? Circuit burned. Failure. But this failure taught me — heat dissipation can't be ignored in this design. In the next design, I fixed it."</div></div>
+<div class="dialogue">"জাইনব তোমাকে সংযোগ দেখাতে শিখিয়েছেন। ভালো। কিন্তু সংযোগ বানালে তুমি পরীক্ষা করবে। আর পরীক্ষা মানে — ব্যর্থতা।" ইব্রাহিম দেয়াল থেকে একটা ফ্রেম নামিয়ে আনলেন — একটা ভাঙা সার্কিট। "এটা ২০১৭। আমি ভেবেছিলাম এই ডিজাইনে কম্পিউটেশনাল কম লাগবে। তিন মাস কাজ। ফলাফল? সার্কিট পুড়ে গেল। ব্যর্থতা। কিন্তু এই ব্যর্থতা আমাকে শিখিয়েছিল — তাপ ডিসিপেশন এই ডিজাইনে অবহেলা করা যায় না। পরের ডিজাইনে আমি সেটা ঠিক করেছি।"</div>
+<div class="dialogue en">"Zainab taught you to see connections. Good. But connections lead to experiments. And experiments mean — failure." Ibrahim took down a frame from the wall — a broken circuit. "This is 2017. I thought this design would need less computation. Three months of work. Result? Circuit burned. Failure. But this failure taught me — heat dissipation can't be ignored in this design. In the next design, I fixed it."</div>
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">~৬০-৮০%</div><div class="sc-label">গড় PhD ছাত্রের ব্যর্থ পরীক্ষা</div></div></div>
@@ -46,11 +53,14 @@ doors.push({
 <li><strong>নতুন প্রশ্ন</strong> — "তাহলে এখন কী?" ব্যর্থতা নতুন প্রশ্ন জন্ম দেয়।</li>
 </ul>
 
-<div class="dialogue">"আমি তোমাকে একটা গোপন কথা বলি," ইব্রাহিম বললেন, গলা নামিয়ে। "নেতিবাচক ফলাফল — negative results — প্রকাশ করা সবচেয়ে কঠিন। কারণ journal গুলো সাফল্য চায়, ব্যর্থতা নয়। কিন্তু ব্যর্থতা প্রকাশ করা গুরুত্বপূর্ণ — যাতে অন্যরা একই ভুল না করে।" তিনি থামলেন। "আমার সবচেয়ে গর্বের পেপার? একটা negative results পেপার। সেটা ২০০ বার সাইট হয়েছে — কারণ মানুষ জানতে চায় — কোন পথে নয়।"</div></div>
-<div class="dialogue en">"Let me tell you a secret," Ibrahim said, lowering his voice. "Negative results — publishing them is hardest. Because journals want success, not failure. But publishing failure is important — so others don't repeat the same mistake." He paused. "My proudest paper? A negative results paper. It's been cited 200 times — because people want to know — which path NOT to take."</div></div>
+<div class="dialogue">"আমি তোমাকে একটা গোপন কথা বলি," ইব্রাহিম বললেন, গলা নামিয়ে। "নেতিবাচক ফলাফল — negative results — প্রকাশ করা সবচেয়ে কঠিন। কারণ journal গুলো সাফল্য চায়, ব্যর্থতা নয়। কিন্তু ব্যর্থতা প্রকাশ করা গুরুত্বপূর্ণ — যাতে অন্যরা একই ভুল না করে।" তিনি থামলেন। "আমার সবচেয়ে গর্বের পেপার? একটা negative results পেপার। সেটা ২০০ বার সাইট হয়েছে — কারণ মানুষ জানতে চায় — কোন পথে নয়।"</div>
+<div class="dialogue en">"Let me tell you a secret," Ibrahim said, lowering his voice. "Negative results — publishing them is hardest. Because journals want success, not failure. But publishing failure is important — so others don't repeat the same mistake." He paused. "My proudest paper? A negative results paper. It's been cited 200 times — because people want to know — which path NOT to take."</div>
 
-<div class="dialogue">সবর — ধৈর্য। কুরআনে আল্লাহ বলেন: ধৈর্য ধরো, আল্লাহ ধৈর্যশীলদের সাথে আছেন। গবেষণায় সবর হলো — মাসের পর মাস কাজ করা, বারবার ব্যর্থ হওয়া, তবু থামা না। ইব্রাহিম (আ) যখন কাবা বানালেন — বারবার, ধৈর্য ধরে। নূহ (আ) যখন নৌকা বানালেন — শত শত বছর, মানুষ হাসল, তিনি থামলেন না। গবেষকও তেমনি — বারবার ব্যর্থ, তবু থামে না। কারণ জানে — প্রতিটা ব্যর্থতা একটা ইট। সেই ইট দিয়েই সত্যের বাড়ি বানে।</div></div>
-<div class="dialogue en">Sabr — patience. Allah says: be patient, Allah is with the patient. In research, sabr means — working month after month, failing again and again, yet not stopping. Ibrahim (AS) built the Kaaba — repeatedly, with patience. Nuh (AS) built the ark — hundreds of years, people laughed, he didn't stop. A researcher too — fails repeatedly, yet doesn't stop. Because they know — each failure is a brick. Those bricks build the house of truth.</div></div>
+<div class="verse">وَاصْبِرُوا إِنَّ اللَّهَ مَعَ الصَّابِرِينَ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"ধৈর্য ধরো — নিশ্চয়ই আল্লাহ ধৈর্যশীলদের সাথে আছেন।" — কুরআন ৮:৪৬</div>
+
+<div class="dialogue">সবর — ধৈর্য। কুরআনে আল্লাহ বলেন: ধৈর্য ধরো, আল্লাহ ধৈর্যশীলদের সাথে আছেন। গবেষণায় সবর হলো — মাসের পর মাস কাজ করা, বারবার ব্যর্থ হওয়া, তবু থামা না। ইব্রাহিম (আ) যখন কাবা বানালেন — বারবার, ধৈর্য ধরে। নূহ (আ) যখন নৌকা বানালেন — শত শত বছর, মানুষ হাসল, তিনি থামলেন না। গবেষকও তেমনি — বারবার ব্যর্থ, তবু থামে না। কারণ জানে — প্রতিটা ব্যর্থতা একটা ইট। সেই ইট দিয়েই সত্যের বাড়ি বানে।</div>
+<div class="dialogue en">Sabr — patience. Allah says: be patient, Allah is with the patient. In research, sabr means — working month after month, failing again and again, yet not stopping. Ibrahim (AS) built the Kaaba — repeatedly, with patience. Nuh (AS) built the ark — hundreds of years, people laughed, he didn't stop. A researcher too — fails repeatedly, yet doesn't stop. Because they know — each failure is a brick. Those bricks build the house of truth.</div>
 
 <div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg">
 <defs><linearGradient id="grad-d6" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1e1b3a"/><stop offset="100%" stop-color="#0a0814"/></linearGradient></defs>
@@ -77,6 +87,13 @@ doors.push({
   subtitle:"The Power of the Pen", tech:"Writing as Thinking",
   spirit:"কলম — যে দ্বারা আল্লাহ শিখিয়েছেন, জ্ঞানের সর্বোচ্চ রূপ",
   secret:"লেখা শেখায় না — লেখা চিন্তা করায়। তুমি যখন লেখো, তখন তোমার ভাবনা স্পষ্ট হয়। অস্পষ্ট ভাবনা অস্পষ্ট লেখা দেয়। স্পষ্ট ভাবনা স্পষ্ট লেখা দেয়। যদি লেখা কঠিন লাগে — চিন্তা অস্পষ্ট। প্রথমে চিন্তা পরিষ্কার করো।",
+  senior:{
+    title:"গবেষণা লেখা এক নজরে",
+    body:`<table class="kv-table"><tr><th>নিয়ম</th><th>কারণ</th></tr>
+<tr><td class="hl">খসড়া আগে, সম্পাদনা পরে</td><td>একসাথে দুটো করলে দুটোই ভাঙে</td></tr>
+<tr><td class="hl">প্রতি প্যারায় এক আইডিয়া</td><td>পাঠকের কগনিটিভ লোড</td></tr>
+<tr><td class="hl">জটিল কথা সহজ ভাষায়</td><td>স্পষ্টতা = বোঝা হয়েছে</td></tr></table>`
+  },
   recall:{
     q:"মরিয়ম কেন বললেন লেখা হলো চিন্তা করার টুল, শেখানোর টুল নয়?",
     qen:"Why did Maryam say writing is a tool for thinking, not for teaching?",
@@ -87,11 +104,11 @@ doors.push({
 <p class="scene-setting">সপ্তম দরজা। একটা ছোট্ট ঘর — দেয়ালে বইয়ের তাক, জানালা দিয়ে আলো আসছে। একটা কাঠের ডেস্ক — তার উপর খাতা, কলম, চা-এর কাপ। ডেস্কে বসে আছেন মরিয়ম — তাঁর চুল বোনা, চশমা নাকে, হাতে কলম। তিনি লিখছেন — ধীরে, নিপুণভাবে। কাগজের গন্ধ, কালির শুকনো ঘ্রাণ, চায়ের মিষ্টি বাষ্প।</p>
 <p class="scene-setting en">The seventh door. A small room — bookshelves on walls, light through window. A wooden desk — notebook, pen, teacup. At the desk sits Maryam — braided hair, glasses, pen in hand. She writes — slowly, precisely. Smell of paper, dry ink, sweet tea steam.</p>
 
-<div class="dialogue">মরিয়ম তোমাকে দেখলেন। কলম রাখলেন। "ইব্রাহিম তোমাকে ব্যর্থতা শিখিয়েছেন। ভালো। কিন্তু ব্যর্থতা থেকে শেখার পর কী করবে? লিখবে।" তিনি খাতা খুললেন। "দেখো — এটা আমার গবেষণা ডায়েরি। প্রতিদিন লিখি। কী ভাবলাম, কী করলাম, কী হলো। কেন? কারণ লেখা না হলে ভাবনা উড়ে যায়। লিখলে থাকে।"</div></div>
-<div class="dialogue en">Maryam saw you. Put down the pen. "Ibrahim taught you about failure. Good. But after learning from failure, what do you do? Write." She opened the notebook. "Look — this is my research diary. I write every day. What I thought, what I did, what happened. Why? Because without writing, thoughts fly away. Written, they stay."</div></div>
+<div class="dialogue">মরিয়ম তোমাকে দেখলেন। কলম রাখলেন। "ইব্রাহিম তোমাকে ব্যর্থতা শিখিয়েছেন। ভালো। কিন্তু ব্যর্থতা থেকে শেখার পর কী করবে? লিখবে।" তিনি খাতা খুললেন। "দেখো — এটা আমার গবেষণা ডায়েরি। প্রতিদিন লিখি। কী ভাবলাম, কী করলাম, কী হলো। কেন? কারণ লেখা না হলে ভাবনা উড়ে যায়। লিখলে থাকে।"</div>
+<div class="dialogue en">Maryam saw you. Put down the pen. "Ibrahim taught you about failure. Good. But after learning from failure, what do you do? Write." She opened the notebook. "Look — this is my research diary. I write every day. What I thought, what I did, what happened. Why? Because without writing, thoughts fly away. Written, they stay."</div>
 
-<div class="dialogue">"আমি তোমাকে আমার আবিষ্কারের গল্প বলি," মরিয়ম বললেন। "ছয় মাস ধরে একটা সমস্যা নিয়ে কাজ করছিলাম। মাথায় ভাবনা ঘুরছে — কিন্তু সমাধান আসছে না। একদিন আমি বসলাম লিখতে। আধ ঘণ্টা। পুরো সমস্যা কাগজে লিখলাম। মাঝখানে দেখলাম — আমি তিনটা জিনিস আলাদা ভাবছিলাম কিন্তু তিনটিই এক। লেখার সময় সেটা পরিষ্কার হলো। সমাধান এলো — কারণ সমস্যা পরিষ্কার হলো।"</div></div>
-<div class="dialogue en">"Let me tell you the story of my discovery," Maryam said. "For six months I worked on a problem. Thoughts circled in my head — but no solution came. One day I sat to write. Half an hour. Wrote the entire problem on paper. In the middle, I realized — I was thinking of three things separately, but they were one. While writing, that became clear. The solution came — because the problem became clear."</div></div>
+<div class="dialogue">"আমি তোমাকে আমার আবিষ্কারের গল্প বলি," মরিয়ম বললেন। "ছয় মাস ধরে একটা সমস্যা নিয়ে কাজ করছিলাম। মাথায় ভাবনা ঘুরছে — কিন্তু সমাধান আসছে না। একদিন আমি বসলাম লিখতে। আধ ঘণ্টা। পুরো সমস্যা কাগজে লিখলাম। মাঝখানে দেখলাম — আমি তিনটা জিনিস আলাদা ভাবছিলাম কিন্তু তিনটিই এক। লেখার সময় সেটা পরিষ্কার হলো। সমাধান এলো — কারণ সমস্যা পরিষ্কার হলো।"</div>
+<div class="dialogue en">"Let me tell you the story of my discovery," Maryam said. "For six months I worked on a problem. Thoughts circled in my head — but no solution came. One day I sat to write. Half an hour. Wrote the entire problem on paper. In the middle, I realized — I was thinking of three things separately, but they were one. While writing, that became clear. The solution came — because the problem became clear."</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>গবেষকের লেখা — পাঁচ ধরন:
 
@@ -145,11 +162,11 @@ doors.push({
 
 <div class="callout info"><span class="co-icon">🧠</span><div><strong>ফাইনম্যান টেকনিক:</strong> একটা কনসেপ্ট যেন একটা বাচ্চাকে বোঝাচ্ছ — কাগজে লেখো। যেখানে আটকে যাও, সেটাই তোমার সত্যিকারের ফাঁক।</div></div></div>
 
-<div class="dialogue">"আরেকটা কথা," মরিয়ম বললেন। "রাইটিং ব্লক — লেখা শুরু করতে না পারা — সেটা আসলে থিংকিং ব্লক। তুমি লেখা শুরু করতে পারছ না কারণ তোমার মাথায় কিছু পরিষ্কার নেই। সমাধান? শুরু করো — যা মনে আসে লেখো। খারাপ লেখা ভালো লেখার চেয়ে ভালো, কারণ খারাপ লেখা বদলানো যায়। কিছু না লেখা বদলানো যায় না।"</div></div>
-<div class="dialogue en">"One more thing," Maryam said. "Writer's block — inability to start writing — is actually thinking block. You can't start because your head isn't clear. Solution? Start — write whatever comes. Bad writing is better than no writing, because bad writing can be fixed. Nothing can't be fixed."</div></div>
+<div class="dialogue">"আরেকটা কথা," মরিয়ম বললেন। "রাইটিং ব্লক — লেখা শুরু করতে না পারা — সেটা আসলে থিংকিং ব্লক। তুমি লেখা শুরু করতে পারছ না কারণ তোমার মাথায় কিছু পরিষ্কার নেই। সমাধান? শুরু করো — যা মনে আসে লেখো। খারাপ লেখা ভালো লেখার চেয়ে ভালো, কারণ খারাপ লেখা বদলানো যায়। কিছু না লেখা বদলানো যায় না।"</div>
+<div class="dialogue en">"One more thing," Maryam said. "Writer's block — inability to start writing — is actually thinking block. You can't start because your head isn't clear. Solution? Start — write whatever comes. Bad writing is better than no writing, because bad writing can be fixed. Nothing can't be fixed."</div>
 
-<div class="dialogue">কলম — আল্লাহ বলেন: কলমের মাধ্যমে শিখিয়েছেন। কুরআনের প্রথম পাঁচটা আয়াতে দুটো জিনিস — পড়ো আর কলম। কারণ পড়া আর লেখা — এই দুটো জ্ঞানের ভিত্তি। কলম শুধু লেখার টুল নয় — কলম চিন্তার টুল। যখন তুমি লেখো, তুমি তোমার চিন্তাকে আল্লাহর দেওয়া একটা নিয়মে বাঁধো। সেই নিয়ম তোমাকে সত্য দেখায়। মরিয়মের কলম শুধু কাগজে লেখে না — মরিয়মের কলম তাঁর মনকে পরিষ্কার করে।</div></div>
-<div class="dialogue en">Qalam — Allah says: He taught by the pen. The Quran's first five verses mention two things — read and pen. Because reading and writing are the foundations of knowledge. The pen is not just a writing tool — it's a thinking tool. When you write, you bind your thoughts to a rule Allah gave. That rule shows you truth. Maryam's pen doesn't just write on paper — it clears her mind.</div></div>
+<div class="dialogue">কলম — আল্লাহ বলেন: কলমের মাধ্যমে শিখিয়েছেন। কুরআনের প্রথম পাঁচটা আয়াতে দুটো জিনিস — পড়ো আর কলম। কারণ পড়া আর লেখা — এই দুটো জ্ঞানের ভিত্তি। কলম শুধু লেখার টুল নয় — কলম চিন্তার টুল। যখন তুমি লেখো, তুমি তোমার চিন্তাকে আল্লাহর দেওয়া একটা নিয়মে বাঁধো। সেই নিয়ম তোমাকে সত্য দেখায়। মরিয়মের কলম শুধু কাগজে লেখে না — মরিয়মের কলম তাঁর মনকে পরিষ্কার করে।</div>
+<div class="dialogue en">Qalam — Allah says: He taught by the pen. The Quran's first five verses mention two things — read and pen. Because reading and writing are the foundations of knowledge. The pen is not just a writing tool — it's a thinking tool. When you write, you bind your thoughts to a rule Allah gave. That rule shows you truth. Maryam's pen doesn't just write on paper — it clears her mind.</div>
 
 <div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg">
 <defs><linearGradient id="grad-d7" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0a0814"/><stop offset="100%" stop-color="#1e1b3a"/></linearGradient></defs>
@@ -180,6 +197,15 @@ doors.push({
   subtitle:"The Courage of Ignorance", tech:"Intellectual Humility",
   spirit:"তাওয়াদু — বিনয়, নিজের অজ্ঞতা স্বীকার",
   secret:"গবেষক হলো সে যে বলে — আমি জানি না। এই তিনটা শব্দ সবচেয়ে কঠিন। কিন্তু যে বলতে পারে, সে শেখে। যে বলতে পারে না, সে আটকে যায়। অজ্ঞতা লজ্জা নয় — অজ্ঞতা গবেষণার শুরু।",
+  senior:{
+    title:"অজ্ঞতার সাহস এক নজরে",
+    body:`<ul class="checklist">
+<li>"জানি না" বলা — দুর্বলতা নয়, সততা</li>
+<li>প্রশ্ন করো — মূর্খ মনে হওয়ার ভয়ে থামো না</li>
+<li>অন্যের সমালোচনা আমন্ত্রণ করো — আয়নার মতো</li>
+<li>প্রতিদিন: "আজ কী শিখলাম যে আগে জানতাম না?"</li>
+</ul>`
+  },
   recall:{
     q:"ইউসুফ কেন বললেন সবচেয়ে শক্তিশালী শব্দ হলো আমি জানি না?",
     qen:"Why did Yusuf say the most powerful words are I don't know?",
@@ -190,11 +216,11 @@ doors.push({
 <p class="scene-setting">অষ্টম দরজা। একটা পাহাড়ের চূড়া। বাতাস তীব্র, ঠান্ডা। নিচে উপত্যকা — সবুজ, নদী। চূড়ায় বসে আছেন ইউসুফ — সাদা চাদর, খালি পা, চোখ বন্ধ। তাঁর কোলে একটা খাতা — খোলা, কিন্তু প্রায় ফাঁকা। পাহাড়ের ঠান্ডা বাতাস, দূরে ঈগলের ডাক, শুকনো ঘাসের গন্ধ।</p>
 <p class="scene-setting en">The eighth door. A mountain peak. Wind fierce, cold. Below: a valley — green, a river. At the peak sits Yusuf — white shawl, bare feet, eyes closed. On his lap: a notebook — open, but mostly blank. Mountain cold wind, distant eagle cry, smell of dry grass.</p>
 
-<div class="dialogue">ইউসুফ চোখ খুললেন। তোমাকে দেখলেন। "মরিয়ম তোমাকে লেখা শিখিয়েছেন। ভালো। কিন্তু লেখার আগে একটা জিনিস শিখতে হবে।" তিনি খাতা দেখালেন — ফাঁকা। "দেখো — এই ফাঁকা জায়গা। এটাই সবচেয়ে গুরুত্বপূর্ণ। এই ফাঁকা জায়গা না থাকলে নতুন কিছু লেখা যায় না।"</div></div>
-<div class="dialogue en">Yusuf opened his eyes. Saw you. "Maryam taught you writing. Good. But before writing, you must learn one thing." He showed the notebook — blank. "Look — this empty space. This is most important. Without this empty space, nothing new can be written."</div></div>
+<div class="dialogue">ইউসুফ চোখ খুললেন। তোমাকে দেখলেন। "মরিয়ম তোমাকে লেখা শিখিয়েছেন। ভালো। কিন্তু লেখার আগে একটা জিনিস শিখতে হবে।" তিনি খাতা দেখালেন — ফাঁকা। "দেখো — এই ফাঁকা জায়গা। এটাই সবচেয়ে গুরুত্বপূর্ণ। এই ফাঁকা জায়গা না থাকলে নতুন কিছু লেখা যায় না।"</div>
+<div class="dialogue en">Yusuf opened his eyes. Saw you. "Maryam taught you writing. Good. But before writing, you must learn one thing." He showed the notebook — blank. "Look — this empty space. This is most important. Without this empty space, nothing new can be written."</div>
 
-<div class="dialogue">"তুমি একজন ডেভেলপার," ইউসুফ বললেন। "তুমি জানো — কীভাবে কোড লেখা যায়, কীভাবে সিস্টেম বানানো যায়। এটা ভালো। কিন্তু এই জ্ঞান যদি তোমাকে অহংকারী বানায় — তাহলে তুমি গবেষক হতে পারবে না। কারণ গবেষক হওয়া মানে — নতুন জিনিস শেখা। আর নতুন জিনিস শেখার শর্ত হলো — আমি জানি না, বলতে পারা।"</div></div>
-<div class="dialogue en">"You're a developer," Yusuf said. "You know — how to code, how to build systems. That's good. But if this knowledge makes you arrogant — you can't be a researcher. Because being a researcher means — learning new things. And the condition for learning is — being able to say, I don't know."</div></div>
+<div class="dialogue">"তুমি একজন ডেভেলপার," ইউসুফ বললেন। "তুমি জানো — কীভাবে কোড লেখা যায়, কীভাবে সিস্টেম বানানো যায়। এটা ভালো। কিন্তু এই জ্ঞান যদি তোমাকে অহংকারী বানায় — তাহলে তুমি গবেষক হতে পারবে না। কারণ গবেষক হওয়া মানে — নতুন জিনিস শেখা। আর নতুন জিনিস শেখার শর্ত হলো — আমি জানি না, বলতে পারা।"</div>
+<div class="dialogue en">"You're a developer," Yusuf said. "You know — how to code, how to build systems. That's good. But if this knowledge makes you arrogant — you can't be a researcher. Because being a researcher means — learning new things. And the condition for learning is — being able to say, I don't know."</div>
 
 <table class="kv-table"><tr><th>স্তর</th><th>মনোভাব</th><th>ফল</th></tr>
 <tr><td class="hl">১. অস্বীকার</td><td>"আমি সব জানি। এটা সহজ।"</td><td>❌ মস্তিষ্ক বন্ধ, কেউ শেখে না</td></tr>
@@ -211,11 +237,11 @@ doors.push({
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ নম্র মন</div>"আমি কোড জানি, কিন্তু গবেষণা পদ্ধতি জানি না। পরিসংখ্যান জানি না। থিওরি জানি না। আমার শেখার অনেক কিছু আছে।" — এই মন গবেষক হয়। প্রতিদিন একটু একটু করে বাড়ে।</div></div>
 </div></div>
 
-<div class="dialogue">"শেষ কথা," ইউসুফ বললেন। "বিনয় মানে দুর্বলতা নয়। বিনয় মানে শক্তি। যে বলতে পারে আমি জানি না — সে শক্তিশালী। কারণ সে নতুন কিছু গ্রহণ করতে প্রস্তুত। যে বলে আমি জানি — সে দুর্বল। কারণ সে বন্ধ। গবেষণায় সবচেয়ে বড় বাধা অজ্ঞতা নয় — অজ্ঞতা স্বীকার না করা।"</div></div>
-<div class="dialogue en">"Last word," Yusuf said. "Humility is not weakness. Humility is strength. One who can say I don't know — is strong. Because they're ready to receive new things. One who says I know — is weak. Because they're closed. In research, the biggest obstacle is not ignorance — it's not accepting ignorance."</div></div>
+<div class="dialogue">"শেষ কথা," ইউসুফ বললেন। "বিনয় মানে দুর্বলতা নয়। বিনয় মানে শক্তি। যে বলতে পারে আমি জানি না — সে শক্তিশালী। কারণ সে নতুন কিছু গ্রহণ করতে প্রস্তুত। যে বলে আমি জানি — সে দুর্বল। কারণ সে বন্ধ। গবেষণায় সবচেয়ে বড় বাধা অজ্ঞতা নয় — অজ্ঞতা স্বীকার না করা।"</div>
+<div class="dialogue en">"Last word," Yusuf said. "Humility is not weakness. Humility is strength. One who can say I don't know — is strong. Because they're ready to receive new things. One who says I know — is weak. Because they're closed. In research, the biggest obstacle is not ignorance — it's not accepting ignorance."</div>
 
-<div class="dialogue">তাওয়াদু — বিনয়। আল্লাহ বলেন: রহমানের বান্দা হলো যারা পৃথিবীতে বিনয়ে চলে। যখন অজ্ঞরা তাদের সম্বোধন করে, তারা বলে সালাম। গবেষক বিনয়ী — কারণ জানে জ্ঞান কত বিশাল, আর সে নিজে কত ছোট। প্রতিটা নতুন আবিষ্কার তাকে আরও বিনয়ী বানায় — কারণ দেখে কত কিছু সে এখনো জানে না। অহংকার মানে স্থবিরতা। বিনয় মানে প্রবাহ।</div></div>
-<div class="dialogue en">Tawadu — humility. Allah says: the servants of the Merciful are those who walk on earth with humility. When the ignorant address them, they say peace. A researcher is humble — because they know how vast knowledge is, and how small they are. Each new discovery makes them more humble — because they see how much they still don't know. Arrogance means stagnation. Humility means flow.</div></div>
+<div class="dialogue">তাওয়াদু — বিনয়। আল্লাহ বলেন: রহমানের বান্দা হলো যারা পৃথিবীতে বিনয়ে চলে। যখন অজ্ঞরা তাদের সম্বোধন করে, তারা বলে সালাম। গবেষক বিনয়ী — কারণ জানে জ্ঞান কত বিশাল, আর সে নিজে কত ছোট। প্রতিটা নতুন আবিষ্কার তাকে আরও বিনয়ী বানায় — কারণ দেখে কত কিছু সে এখনো জানে না। অহংকার মানে স্থবিরতা। বিনয় মানে প্রবাহ।</div>
+<div class="dialogue en">Tawadu — humility. Allah says: the servants of the Merciful are those who walk on earth with humility. When the ignorant address them, they say peace. A researcher is humble — because they know how vast knowledge is, and how small they are. Each new discovery makes them more humble — because they see how much they still don't know. Arrogance means stagnation. Humility means flow.</div>
 
 <div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg">
 <defs><linearGradient id="grad-d8" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e1b3a"/><stop offset="100%" stop-color="#0a0814"/></linearGradient></defs>
@@ -250,6 +276,13 @@ doors.push({
   subtitle:"The Traveler of the Long Path", tech:"Persistence & Grit",
   spirit:"ইস্তিকামাহ — অটলতা, সোজা পথে স্থির থাকা",
   secret:"গবেষণা কোনো দৌড় নয় — ম্যারাথন। প্রতিদিন একটু করে। বিরক্তিকর, ধীর, একঘেয়ে। কিন্তু যে থাকে, সে পায়। প্রতিভা নয় — অধ্যবসায় জিতে। গ্রিট (grit) জিনিসটা প্রতিভার চেয়ে ১০ গুণ শক্তিশালী।",
+  senior:{
+    title:"দীর্ঘ পথের নিয়ম এক নজরে",
+    body:`<table class="kv-table"><tr><th>নিয়ম</th><th>ব্যবহার</th></tr>
+<tr><td class="hl">ছোট ধাপ</td><td>দৈনিক লক্ষ্য — সাপ্তাহিক নয়</td></tr>
+<tr><td class="hl">প্রগতি ট্র্যাক</td><td>ল্যাব নোটবুক — দৃশ্যমান অগ্রগতি</td></tr>
+<tr><td class="hl">বিশ্রাম</td><td>ক্লান্তি = উত্পাদনশীলতার শত্রু</td></tr></table>`
+  },
   recall:{
     q:"খাদিজা কেন তোমাকে একটা গাছ দেখিয়ে গবেষণা বুঝিয়ে দিলেন?",
     qen:"Why did Khadija show you a tree to explain research?",
@@ -260,11 +293,11 @@ doors.push({
 <p class="scene-setting">নবম দরজা। একটা মরুভূমির কিনারা — কিন্তু সবুজ একটা কোণা। সেখানে একটা বিশাল পুরনো গাছ — বটবৃক্ষ, শিকড় মাটিতে গভীর, ডাল আকাশে ছড়ানো। তার তলায় বসে আছেন খাদিজা — বয়স্ক, কিন্তু মেরুদণ্ড সোজা, হাতে একটা ছোট বীজ। তাঁর পাশে একটা ঝুড়িতে পুরনো বই, নোট, শুকনো পাতা। মরুভূমির শুকনো বাতাস, গাছের ঠান্ডা ছায়া, শিকড়ের কাঠের গন্ধ।</p>
 <p class="scene-setting en">The ninth door. A desert edge — but a green corner. There, a vast old tree — banyan, roots deep in earth, branches spread in sky. Beneath it sits Khadija — older, but spine straight, a small seed in her hand. Beside her, a basket of old books, notes, dry leaves. Desert dry wind, the tree's cool shade, smell of root-wood.</p>
 
-<div class="dialogue">খাদিজা তোমাকে দেখলেন। হাতের বীজ দেখালেন। "ইউসুফ তোমাকে বিনয় শিখিয়েছেন। ভালো। কিন্তু বিনয়ী হলেও যদি থেমে যাও — তাহলে কিছু হবে না।" তিনি গাছের দিকে তাকালেন। "এই গাছটা কত বছরের? দেখো — শিকড় এত মোটা। ডাল এত বড়। এই গাছ একদিনে হয়নি। শত বছর ধরে একটু একটু করে।"</div></div>
-<div class="dialogue en">Khadija saw you. Showed the seed in her hand. "Yusuf taught you humility. Good. But if you're humble yet stop — nothing will happen." She looked at the tree. "How old is this tree? Look — roots so thick. Branches so large. This tree didn't grow in a day. A hundred years, little by little."</div></div>
+<div class="dialogue">খাদিজা তোমাকে দেখলেন। হাতের বীজ দেখালেন। "ইউসুফ তোমাকে বিনয় শিখিয়েছেন। ভালো। কিন্তু বিনয়ী হলেও যদি থেমে যাও — তাহলে কিছু হবে না।" তিনি গাছের দিকে তাকালেন। "এই গাছটা কত বছরের? দেখো — শিকড় এত মোটা। ডাল এত বড়। এই গাছ একদিনে হয়নি। শত বছর ধরে একটু একটু করে।"</div>
+<div class="dialogue en">Khadija saw you. Showed the seed in her hand. "Yusuf taught you humility. Good. But if you're humble yet stop — nothing will happen." She looked at the tree. "How old is this tree? Look — roots so thick. Branches so large. This tree didn't grow in a day. A hundred years, little by little."</div>
 
-<div class="dialogue">"আমি যখন প্রথম গবেষণা শুরু করলাম," খাদিজা বললেন, "আমি ভেবেছিলাম — এক বছরে পেপার পাবো। দুই বছরে নাম হবে। তিন বছরে গ্রান্ট। ভুল। প্রথম পেপার পেতে আমার সাড়ে তিন বছর লেগেছে। সাড়ে তিন বছর — কোনো ফল ছাড়া। অনেকে থেমে গেল। আমি থামলাম না। কারণ জানতাম — গবেষণা গাছের মতো। প্রথমে শিকড়, তারপর কাণ্ড, তারপর ডাল, তারপর পাতা, তারপর ফুল, তারপর ফল। সব তার সময়ে।"</div></div>
-<div class="dialogue en">"When I first started research," Khadija said, "I thought — paper in one year. Name in two. Grant in three. Wrong. My first paper took three and a half years. Three and a half years — with no fruit. Many stopped. I didn't. Because I knew — research is like a tree. First roots, then stem, then branches, then leaves, then flowers, then fruit. Everything in its time."</div></div>
+<div class="dialogue">"আমি যখন প্রথম গবেষণা শুরু করলাম," খাদিজা বললেন, "আমি ভেবেছিলাম — এক বছরে পেপার পাবো। দুই বছরে নাম হবে। তিন বছরে গ্রান্ট। ভুল। প্রথম পেপার পেতে আমার সাড়ে তিন বছর লেগেছে। সাড়ে তিন বছর — কোনো ফল ছাড়া। অনেকে থেমে গেল। আমি থামলাম না। কারণ জানতাম — গবেষণা গাছের মতো। প্রথমে শিকড়, তারপর কাণ্ড, তারপর ডাল, তারপর পাতা, তারপর ফুল, তারপর ফল। সব তার সময়ে।"</div>
+<div class="dialogue en">"When I first started research," Khadija said, "I thought — paper in one year. Name in two. Grant in three. Wrong. My first paper took three and a half years. Three and a half years — with no fruit. Many stopped. I didn't. Because I knew — research is like a tree. First roots, then stem, then branches, then leaves, then flowers, then fruit. Everything in its time."</div>
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">১.৫-৩ বছর</div><div class="sc-label">প্রথম পেপার প্রকাশ</div></div></div>
@@ -293,11 +326,11 @@ doors.push({
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ ম্যারাথনার মাইন্ডসেট</div>"আমি প্রতিদিন এক ঘণ্টা পড়বো। প্রতি সপ্তাহ একটা পেপার শেষ করবো। ছয় মাসে একটা আইডিয়া প্রস্তুত করবো।" — ধীর, কিন্তু অবিরাম। এক বছর পর দেখবে — অনেক দূর এসেছ।</div></div>
 </div></div>
 
-<div class="dialogue">"শেষ কথা," খাদিজা বললেন, বীজটা মাটিতে পুঁতে। "এই বীজ আজ পুঁতেছি। এক সপ্তাহ পর কিছু দেখবে না। এক মাস পর ছোট্ট চারা। এক বছর পর গাছ। দশ বছর পর ফল। তুমি যদি এক সপ্তাহ পর এসে বলো — কোথায় ফল? — তাহলে তুমি বীজ তুলে ফেলবে। আর কিছু হবে না। গবেষণা হলো বীজ পোতা। প্রতিদিন পানি দেওয়া। ধৈর্য ধরা। ফল আসবে — তার সময়ে।"</div></div>
-<div class="dialogue en">"Last word," Khadija said, burying the seed in soil. "This seed I planted today. In a week — nothing visible. In a month — a small shoot. In a year — a tree. In ten years — fruit. If you come in a week and say — where's the fruit? — you'll dig up the seed. And nothing will grow. Research is planting a seed. Watering every day. Being patient. The fruit will come — in its time."</div></div>
+<div class="dialogue">"শেষ কথা," খাদিজা বললেন, বীজটা মাটিতে পুঁতে। "এই বীজ আজ পুঁতেছি। এক সপ্তাহ পর কিছু দেখবে না। এক মাস পর ছোট্ট চারা। এক বছর পর গাছ। দশ বছর পর ফল। তুমি যদি এক সপ্তাহ পর এসে বলো — কোথায় ফল? — তাহলে তুমি বীজ তুলে ফেলবে। আর কিছু হবে না। গবেষণা হলো বীজ পোতা। প্রতিদিন পানি দেওয়া। ধৈর্য ধরা। ফল আসবে — তার সময়ে।"</div>
+<div class="dialogue en">"Last word," Khadija said, burying the seed in soil. "This seed I planted today. In a week — nothing visible. In a month — a small shoot. In a year — a tree. In ten years — fruit. If you come in a week and say — where's the fruit? — you'll dig up the seed. And nothing will grow. Research is planting a seed. Watering every day. Being patient. The fruit will come — in its time."</div>
 
-<div class="dialogue">ইস্তিকামাহ — অটলতা। আল্লাহ বলেন: যারা বলে আমাদের রব আল্লাহ, তারপর সোজা থাকে — তাদের কাছে ফেরেশতা নামে, ভয় করো না, দুঃখ করো না। ইস্তিকামাহ মানে — শুরু করার পর সোজা থাকা। বাধা এলেও, ব্যর্থতা এলেও, একঘেয়েমি এলেও — থামা না। গবেষকের সবচেয়ে বড় গুণ প্রতিভা নয় — ইস্তিকামাহ। কারণ প্রতিভা দিয়ে শুরু করা যায়, কিন্তু ইস্তিকামাহ ছাড়া শেষ করা যায় না।</div></div>
-<div class="dialogue en">Istiqamah — steadfastness. Allah says: those who say our Lord is Allah, then remain firm — angels descend on them: fear not, grieve not. Istiqamah means — after starting, staying straight. Obstacles come, failures come, monotony comes — yet not stopping. A researcher's greatest quality is not talent — it's istiqamah. Because talent starts, but without istiqamah, nothing finishes.</div></div>
+<div class="dialogue">ইস্তিকামাহ — অটলতা। আল্লাহ বলেন: যারা বলে আমাদের রব আল্লাহ, তারপর সোজা থাকে — তাদের কাছে ফেরেশতা নামে, ভয় করো না, দুঃখ করো না। ইস্তিকামাহ মানে — শুরু করার পর সোজা থাকা। বাধা এলেও, ব্যর্থতা এলেও, একঘেয়েমি এলেও — থামা না। গবেষকের সবচেয়ে বড় গুণ প্রতিভা নয় — ইস্তিকামাহ। কারণ প্রতিভা দিয়ে শুরু করা যায়, কিন্তু ইস্তিকামাহ ছাড়া শেষ করা যায় না।</div>
+<div class="dialogue en">Istiqamah — steadfastness. Allah says: those who say our Lord is Allah, then remain firm — angels descend on them: fear not, grieve not. Istiqamah means — after starting, staying straight. Obstacles come, failures come, monotony comes — yet not stopping. A researcher's greatest quality is not talent — it's istiqamah. Because talent starts, but without istiqamah, nothing finishes.</div>
 
 <div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg">
 <defs><linearGradient id="grad-d9" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a0814"/><stop offset="100%" stop-color="#1e1b3a"/></linearGradient></defs>
@@ -331,6 +364,14 @@ doors.push({
   subtitle:"The Researcher's Birth", tech:"Identity Synthesis — All Nine Masters Return",
   spirit:"তাওহিদ — একত্ব, সব জ্ঞানের একত্ব",
   secret:"গবেষক হওয়া মানে কোনো দক্ষতা নয় — একটা পরিচয়। নয়টা দরজা, নয়জন শিক্ষক, নয়টা গুণ — সব এক হয়ে গেছে। তুমি এখন কৌতূহলী, প্রশ্নকারী, পাঠক, সন্দেহকারী, সংযোগকারী, ব্যর্থতা-বন্ধু, লেখক, বিনয়ী, এবং অধ্যবসায়ী। এক কথায় — তুমি গবেষক।",
+  senior:{
+    title:"গবেষকের ৯ গুণ এক নজরে",
+    body:`<table class="kv-table"><tr><th>দরজা</th><th>গুণ</th></tr>
+<tr><td class="hl">১-২</td><td>কৌতূহল + প্রশ্নের কারিগরি</td></tr>
+<tr><td class="hl">৩-৫</td><td>পাঠ + সন্দেহ + সংযোগ</td></tr>
+<tr><td class="hl">৬-৭</td><td>ব্যর্থতা থেকে শেখা + লেখা</td></tr>
+<tr><td class="hl">৮-৯</td><td>বিনয় + ধৈর্য</td></tr></table>`
+  },
   recall:{
     q:"দশটা দরজা পেরোনোর পর তুমি কী হলে? কোন একটা গুণ নাকি সব গুণ?",
     qen:"After passing ten doors, what did you become? One quality or all?",
@@ -341,11 +382,11 @@ doors.push({
 <p class="scene-setting">দশম দরজা। তুমি আবার সেই চৌরাস্তায় দাঁড়িয়ে আছো — যেখানে শুরু করেছিলে। কিন্তু এখন চার দিকের রাস্তা আর ভয়ংকর মনে হচ্ছে না। তুমি চারপাশে তাকালে — এবং দেখলে, তোমার নয়জন শিক্ষক দাঁড়িয়ে আছেন। নুসরাত, ইমরান, সালমা, দাউদ, জাইনব, ইব্রাহিম, মরিয়ম, ইউসুফ, খাদিজা। প্রত্যেকে হাসছেন। প্রত্যেকের হাতে একটা করে উপহার। বাতাসে সব গন্ধ মিশে আছে — কাঁচা আম, পাথর, কালি, ফুল, ধোঁয়া, চা, মরুভূমির ধুলো, পাহাড়ের ঠান্ডা।</p>
 <p class="scene-setting en">The tenth door. You stand again at the crossroads — where you began. But the four roads no longer seem frightening. You look around — and see your nine teachers standing. Nusrat, Imran, Salma, Dawud, Zainab, Ibrahim, Maryam, Yusuf, Khadija. Each smiling. Each holding a gift. The wind carries all scents mixed — raw mango, stone, ink, flowers, smoke, tea, desert dust, mountain cold.</p>
 
-<div class="dialogue">নুসরাত এগিয়ে এলেন — কাঁচা আম হাতে। "কৌতূহল।" ইমরান — ছেনি হাতে। "প্রশ্ন।" সালমা — পাতা হাতে। "পাঠ।" দাউদ — ক্যালিপার হাতে। "সন্দেহ।" জাইনব — ডায়েরি হাতে। "সংযোগ।" ইব্রাহিম — ভাঙা সার্কিট হাতে। "ব্যর্থতা।" মরিয়ম — কলম হাতে। "লেখনী।" ইউসুফ — ফাঁকা খাতা হাতে। "বিনয়।" খাদিজা — বীজ হাতে। "অধ্যবসায়।"</div></div>
-<div class="dialogue en">Nusrat stepped forward — mango in hand. "Curiosity." Imran — chisel. "Question." Salma — paper. "Reading." Dawud — calipers. "Doubt." Zainab — diary. "Connection." Ibrahim — broken circuit. "Failure." Maryam — pen. "Writing." Yusuf — blank notebook. "Humility." Khadija — seed. "Persistence."</div></div>
+<div class="dialogue">নুসরাত এগিয়ে এলেন — কাঁচা আম হাতে। "কৌতূহল।" ইমরান — ছেনি হাতে। "প্রশ্ন।" সালমা — পাতা হাতে। "পাঠ।" দাউদ — ক্যালিপার হাতে। "সন্দেহ।" জাইনব — ডায়েরি হাতে। "সংযোগ।" ইব্রাহিম — ভাঙা সার্কিট হাতে। "ব্যর্থতা।" মরিয়ম — কলম হাতে। "লেখনী।" ইউসুফ — ফাঁকা খাতা হাতে। "বিনয়।" খাদিজা — বীজ হাতে। "অধ্যবসায়।"</div>
+<div class="dialogue en">Nusrat stepped forward — mango in hand. "Curiosity." Imran — chisel. "Question." Salma — paper. "Reading." Dawud — calipers. "Doubt." Zainab — diary. "Connection." Ibrahim — broken circuit. "Failure." Maryam — pen. "Writing." Yusuf — blank notebook. "Humility." Khadija — seed. "Persistence."</div>
 
-<div class="dialogue">তাঁরা সবাই তোমার চারপাশে দাঁড়ালেন। খাদিজা বললেন: "তুমি ভেবেছিলে গবেষক হওয়া মানে একটা নতুন দক্ষতা শেখা। ভুল। গবেষক হওয়া মানে একটা নতুন মানুষ হওয়া। এই নয়টা গুণ আলাদা নয় — এগুলো এক মানুষের নয়টা রূপ। কৌতূহল থেকে জন্ম নেয় প্রশ্ন। প্রশ্ন থেকে পাঠ। পাঠ থেকে সন্দেহ। সন্দেহ থেকে সংযোগ। সংযোগ থেকে পরীক্ষা। পরীক্ষা থেকে ব্যর্থতা। ব্যর্থতা থেকে লেখা। লেখা থেকে বিনয়। বিনয় থেকে অধ্যবসায়। আর অধ্যবসায় থেকে আবার কৌতূহ়ল। এটা চক্র। গবেষক এই চক্রে ঘোরে — জীবনভর।"</div></div>
-<div class="dialogue en">They all stood around you. Khadija said: "You thought becoming a researcher means learning a new skill. Wrong. Becoming a researcher means becoming a new person. These nine qualities are not separate — they are nine forms of one person. Curiosity births questions. Questions lead to reading. Reading leads to doubt. Doubt leads to connections. Connections lead to experiments. Experiments lead to failure. Failure leads to writing. Writing leads to humility. Humility leads to persistence. And persistence leads back to curiosity. It's a cycle. A researcher spins in this cycle — for life."</div></div>
+<div class="dialogue">তাঁরা সবাই তোমার চারপাশে দাঁড়ালেন। খাদিজা বললেন: "তুমি ভেবেছিলে গবেষক হওয়া মানে একটা নতুন দক্ষতা শেখা। ভুল। গবেষক হওয়া মানে একটা নতুন মানুষ হওয়া। এই নয়টা গুণ আলাদা নয় — এগুলো এক মানুষের নয়টা রূপ। কৌতূহল থেকে জন্ম নেয় প্রশ্ন। প্রশ্ন থেকে পাঠ। পাঠ থেকে সন্দেহ। সন্দেহ থেকে সংযোগ। সংযোগ থেকে পরীক্ষা। পরীক্ষা থেকে ব্যর্থতা। ব্যর্থতা থেকে লেখা। লেখা থেকে বিনয়। বিনয় থেকে অধ্যবসায়। আর অধ্যবসায় থেকে আবার কৌতূহ়ল। এটা চক্র। গবেষক এই চক্রে ঘোরে — জীবনভর।"</div>
+<div class="dialogue en">They all stood around you. Khadija said: "You thought becoming a researcher means learning a new skill. Wrong. Becoming a researcher means becoming a new person. These nine qualities are not separate — they are nine forms of one person. Curiosity births questions. Questions lead to reading. Reading leads to doubt. Doubt leads to connections. Connections lead to experiments. Experiments lead to failure. Failure leads to writing. Writing leads to humility. Humility leads to persistence. And persistence leads back to curiosity. It's a cycle. A researcher spins in this cycle — for life."</div>
 
 <table class="kv-table"><tr><th>শিক্ষক</th><th>গুণ</th><th>গোপন কথা</th></tr>
 <tr><td class="hl">নুসরাত 🌱</td><td>কৌতূহল</td><td>প্রতিদিন একটা নতুন "কেন"</td></tr>
@@ -368,11 +409,11 @@ doors.push({
 
 <div class="callout tip"><span class="co-icon">🎓</span><div><strong>এক কথায়, গবেষক হওয়া মানে:</strong> শিশুর কৌতূহল + কারিগরের নিপুণতা + সন্ন্যাসীর ধৈর্য + যোদ্ধার সাহস = এমন একজন, যে জানে না, কিন্তু জানতে চায়, এবং জানা পর্যন্ত থামে না।</div></div></div>
 
-<div class="dialogue">"এখন তুমি জিজ্ঞেস করবে," খাদিজা বললেন, "আমি কি PhD পাবো?" সব শিক্ষক হাসলেন। ইউসুফ বললেন: "এই প্রশ্নটা ভুল। সঠিক প্রশ্ন — আমার কি গবেষকের মন আছে? যদি থাকে, PhD হলো শুধু একটা ফলাফল। যদি না থাকে, PhD হলো শুধু একটা কাগজ।" ইব্রাহিম যোগ করলেন: "Research Pilgrimage বইটা তোমাকে শিখিয়েছে কীভাবে PhD পাবে। এই বই তোমাকে শিখিয়েছে — PhD পাওয়ার আগে তুমি কে হবে।"</div></div>
-<div class="dialogue en">"Now you'll ask," Khadija said, "will I get a PhD?" All teachers smiled. Yusuf said: "That's the wrong question. The right question — do I have a researcher's mind? If yes, PhD is just a result. If no, PhD is just a paper." Ibrahim added: "Research Pilgrimage taught you how to get a PhD. This book taught you — who you become before the PhD."</div></div>
+<div class="dialogue">"এখন তুমি জিজ্ঞেস করবে," খাদিজা বললেন, "আমি কি PhD পাবো?" সব শিক্ষক হাসলেন। ইউসুফ বললেন: "এই প্রশ্নটা ভুল। সঠিক প্রশ্ন — আমার কি গবেষকের মন আছে? যদি থাকে, PhD হলো শুধু একটা ফলাফল। যদি না থাকে, PhD হলো শুধু একটা কাগজ।" ইব্রাহিম যোগ করলেন: "Research Pilgrimage বইটা তোমাকে শিখিয়েছে কীভাবে PhD পাবে। এই বই তোমাকে শিখিয়েছে — PhD পাওয়ার আগে তুমি কে হবে।"</div>
+<div class="dialogue en">"Now you'll ask," Khadija said, "will I get a PhD?" All teachers smiled. Yusuf said: "That's the wrong question. The right question — do I have a researcher's mind? If yes, PhD is just a result. If no, PhD is just a paper." Ibrahim added: "Research Pilgrimage taught you how to get a PhD. This book taught you — who you become before the PhD."</div>
 
-<div class="dialogue">তাওহিদ — একত্ব। সব গুণ আসলে এক। কৌতূহল আর অধ্যবসায় — একই জিনিসের দুই মুখ। একটা জিজ্ঞাসা, একটা আগুন, একটা প্রেম — জ্ঞানের প্রতি। আল্লাহ এক। সত্য এক। জ্ঞান এক। যে জ্ঞান খোঁজে, সে সত্য খোঁজে, সে আল্লাহকে খোঁজে। কুরআনের প্রথম শব্দ — ইকরা, পড়ো। শেষ নির্দেশ — জ্ঞান বৃদ্ধি করো। এই দুইয়ের মাঝে — গবেষকের জীবন। এই জীবন তুমি এখন শুরু করছো। নয়টা দরজা পেরোলে। এখন দশম দরজা — খোলা দরজা। যে দরজা কোনো দেয়ালে নেই — তোমার মনে।</div></div>
-<div class="dialogue en">Tawhid — oneness. All qualities are one. Curiosity and persistence — two faces of one thing. One inquiry, one fire, one love — for knowledge. Allah is one. Truth is one. Knowledge is one. One who seeks knowledge, seeks truth, seeks Allah. The Quran's first word — Iqra, read. The last command — increase knowledge. Between these two — the researcher's life. This life you now begin. You've passed nine doors. Now the tenth — an open door. A door in no wall — in your mind.</div></div>
+<div class="dialogue">তাওহিদ — একত্ব। সব গুণ আসলে এক। কৌতূহল আর অধ্যবসায় — একই জিনিসের দুই মুখ। একটা জিজ্ঞাসা, একটা আগুন, একটা প্রেম — জ্ঞানের প্রতি। আল্লাহ এক। সত্য এক। জ্ঞান এক। যে জ্ঞান খোঁজে, সে সত্য খোঁজে, সে আল্লাহকে খোঁজে। কুরআনের প্রথম শব্দ — ইকরা, পড়ো। শেষ নির্দেশ — জ্ঞান বৃদ্ধি করো। এই দুইয়ের মাঝে — গবেষকের জীবন। এই জীবন তুমি এখন শুরু করছো। নয়টা দরজা পেরোলে। এখন দশম দরজা — খোলা দরজা। যে দরজা কোনো দেয়ালে নেই — তোমার মনে।</div>
+<div class="dialogue en">Tawhid — oneness. All qualities are one. Curiosity and persistence — two faces of one thing. One inquiry, one fire, one love — for knowledge. Allah is one. Truth is one. Knowledge is one. One who seeks knowledge, seeks truth, seeks Allah. The Quran's first word — Iqra, read. The last command — increase knowledge. Between these two — the researcher's life. This life you now begin. You've passed nine doors. Now the tenth — an open door. A door in no wall — in your mind.</div>
 
 <div class="svg-diagram"><svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg">
 <defs><radialGradient id="grad-d10" cx="50%" cy="50%" r="55%"><stop offset="0%" stop-color="#1e1b3a"/><stop offset="100%" stop-color="#0a0814"/></radialGradient></defs>

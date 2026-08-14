@@ -10,6 +10,13 @@ doors.push({
   subtitle:"The Child's Question", tech:"Curiosity as the Root of Research",
   spirit:"ইলম — জ্ঞান অন্বেষণ, এটি স্বভাবজাত",
   secret:"গবেষক হওয়া মানে নতুন কিছু শেখা নয় — ভুলে যাওয়া কৌতূহল ফিরে পাওয়া। প্রতিটা শিশু গবেষক। সমাজ সেটা বন্ধ করে দেয়। তোমার কাজ হলো আবার খুলে দেওয়া।",
+  senior:{
+    title:"কৌতূহল ফিরে পাওয়ার এক নজরে",
+    body:`<table class="kv-table"><tr><th>শিশুর প্রশ্ন</th><th>গবেষকের প্রশ্ন</th></tr>
+<tr><td class="hl">"এটা কী?"</td><td>"এটা কীভাবে কাজ করে?"</td></tr>
+<tr><td class="hl">"কেন?"</td><td>"কেন এভাবে, অন্যভাবে নয়?"</td></tr>
+<tr><td class="hl">"আমি জানি না"</td><td>"জানি না" = গবেষণার শুরু</td></tr></table>`
+  },
   recall:{
     q:"নুসরাত কেন তোমাকে জিনিস সরানোর আগে প্রশ্ন করতে বললেন?",
     qen:"Why did Nusrat tell you to ask before picking anything up?",
@@ -45,6 +52,9 @@ doors.push({
 
 <div class="dialogue">তুমি বললে — "কিন্তু আমি তো কৌতূহলী। আমি তো নতুন প্রযুক্তি শিখি।" নুসরাত আবার মাথা নাড়লেন। "নতুন জিনিস শেখা কৌতূহল নয় — সেটা FOMO। ভয় যে পিছিয়ে যাবে। কৌতূহল হলো যখন তুমি ভাবো — এই জিনিসটার পেছনের নীতিটা কী? এটা আমাকে কীভাবে ভাবায়? কোথায় এটা ভেঙে যায়? কীভাবে ভাঙবো না জেনেও কৌতূহল নিয়ে দেখি?"</div>
 <div class="dialogue en">You said — "But I am curious. I learn new tech." Nusrat shook her head again. "Learning new things isn't curiosity — it's FOMO. Fear of being left behind. Curiosity is when you think — what's the principle behind this? How does it make me think? Where does it break? How do I look at it with curiosity even without knowing how to break it?"</div>
+
+<div class="verse">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"পড়ো, তোমার রবের নামে, যিনি সৃষ্টি করেছেন।" — কুরআন ৯৬:১</div>
 
 <div class="dialogue">ইলম — জ্ঞান। কুরআনে প্রথম অবতীর্ণ শব্দ: ইকরা — পড়ো। পড়া মানে শুধু বই পড়া নয়। পড়া মানে — দেখা, চিন্তা করা, প্রশ্ন করা। আল্লাহ বলেন: যে জ্ঞান দেওয়া হয়েছে তাকে, আর যাকে দেওয়া হয়নি — তারা সমান নয়। কিন্তু জ্ঞান আসে জিজ্ঞাসা থেকে। জিজ্ঞাসা আসে কৌতূহল থেকে। আর কৌতূহল — সেটা তোমার ভেতরে আছে। সবসময় ছিল। তুমি শুধু ভুলে গেছ।</div>
 <div class="dialogue en">Ilm — knowledge. The first word revealed in the Quran: Iqra — Read. Reading doesn't mean only books. It means — seeing, thinking, questioning. Allah says: those given knowledge and those not given it are not equal. But knowledge comes from inquiry. Inquiry comes from curiosity. And curiosity — it's already inside you. It always was. You just forgot.</div>
@@ -82,6 +92,13 @@ doors.push({
   subtitle:"The Craft of Questions", tech:"Formulating Research Questions",
   spirit:"ফাতহা — খোলা, উন্মোচন করা",
   secret:"ভালো গবেষণা ভালো উত্তর থেকে আসে না। ভালো প্রশ্ন থেকে আসে। একটা প্রশ্ন যদি সবাই জিজ্ঞেস করছে — সেটা গবেষণার মূল্য কম। একটা প্রশ্ন যদি কেউ জিজ্ঞেস করেনি কিন্তু উত্তর দিলে অনেককে সাহায্য করে — সেটা সোনার খনি।",
+  senior:{
+    title:"ভালো প্রশ্নের কারিগরি এক নজরে",
+    body:`<table class="kv-table"><tr><th>দুর্বল প্রশ্ন</th><th>শক্তিশালী প্রশ্ন</th></tr>
+<tr><td class="hl">উত্তর জানা আছে</td><td>উত্তর অজানা, খোঁজার যোগ্য</td></tr>
+<tr><td class="hl">খুব বিস্তৃত</td><td>সুনির্দিষ্ট, সীমাবদ্ধ</td></tr>
+<tr><td class="hl">যাচাই অসম্ভব</td><td>পরীক্ষাযোগ্য (falsifiable)</td></tr></table>`
+  },
   recall:{
     q:"ইমরান কেন খোলা প্রশ্নকে বন্ধ প্রশ্নের চেয়ে দামি বললেন?",
     qen:"Why did Imran say open questions are worth more than closed ones?",
@@ -145,6 +162,13 @@ doors.push({
   subtitle:"The Weight of Leaves", tech:"Reading Research Papers",
   spirit:"তাদবির — গভীরভাবে চিন্তা করা, পরিকল্পনা",
   secret:"পেপার পড়া বই পড়ার মতো নয়। পেপার হলো স্তরযুক্ত — title, abstract, intro, method, results। প্রথমবার সব পড়ো না। তিন-পাস পদ্ধতি: স্কিম → স্ট্রাকচার → গভীর। তারপর গাছ হয়ে যায়।",
+  senior:{
+    title:"পেপার পড়ার তিন ধাপ এক নজরে",
+    body:`<table class="kv-table"><tr><th>ধাপ</th><th>কী পড়বে</th><th>সময়</th></tr>
+<tr><td class="hl">১. স্ক্যান</td><td>Title, abstract, figures</td><td>৫ মিনিট</td></tr>
+<tr><td class="hl">২. কারিগরি</td><td>Method, results</td><td>৩০ মিনিট</td></tr>
+<tr><td class="hl">৩. গভীর</td><td>পুরোটা, রেফারেন্সসহ</td><td>২-৩ ঘণ্টা</td></tr></table>`
+  },
   recall:{
     q:"সালমা কেন তোমাকে এক পেপার তিনবার পড়তে বললেন?",
     qen:"Why did Salma tell you to read one paper three times?",
@@ -209,6 +233,13 @@ doors.push({
   subtitle:"The Eye of Doubt", tech:"Critical Thinking & Skepticism",
   spirit:"ইতিবাচক সন্দেহ — সত্যকে যাচাই করা",
   secret:"বিশ্বাস করা বন্ধ করো না — কিন্তু অন্ধভাবে বিশ্বাস করো না। প্রতিটা দাবিকে প্রশ্ন করো। ডেটা দেখো, পরীক্ষা দেখো, সীমাবদ্ধতা দেখো। যে পেপার নিজের সীমাবদ্ধতা স্বীকার করে — সেটা বিশ্বাসযোগ্য। যে বলে সব ঠিক আছে — সেটা সন্দেহজনক।",
+  senior:{
+    title:"সন্দেহবাদী চোখ এক নজরে",
+    body:`<table class="kv-table"><tr><th>দাবির ধরন</th><th>প্রশ্ন</th></tr>
+<tr><td class="hl">নতুন ফলাফল</td><td>Replication হয়েছে? sample কত?</td></tr>
+<tr><td class="hl">কার্যকারণ</td><td>Correlation নাকি causation?</td></tr>
+<tr><td class="hl">স্ট্যাটিসটিক্স</td><td>p-value ঠকাচ্ছে? effect size কত?</td></tr></table>`
+  },
   recall:{
     q:"দাউদ কেন তোমাকে সুন্দর ফলাফলকে সন্দেহ করতে বললেন?",
     qen:"Why did Dawud tell you to doubt beautiful results?",
@@ -243,6 +274,9 @@ doors.push({
 <div class="dialogue">দাউদ ক্যালিপার তুলে একটা পেপারের সমীকরণ মাপলেন। "দেখো — এই পেপারের math সঠিক। কিন্তু তারা assumption করেছে যে ডেটা normal distribution ফলো করে। বাস্তবে কি তাই? সব ডেটা কি normal? এই assumption ভুল হলে — সম্পূর্ণ ফলাফল ভুল।" তিনি মোনোকল খুললেন। "গবেষক হলো সেই মানুষ যে সৌন্দর্য দেখে মুগ্ধ হয় — কিন্তু তারপর ক্যালিপার দিয়ে মাপে।"</div>
 <div class="dialogue en">Dawud picked up calipers, measured a paper's equation. "Look — the math here is correct. But they assumed data follows normal distribution. In reality? Is all data normal? If this assumption is wrong — the entire result is wrong." He removed the monocle. "A researcher is someone who is moved by beauty — but then measures with calipers."</div>
 
+<div class="verse">يَا أَيُّهَا الَّذِينَ آمَنُوا إِن جَاءَكُمْ فَاسِقٌ بِنَبَإٍ فَتَبَيَّنُوا</div>
+<div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"যদি কোনো ফাসিক খবর নিয়ে আসে, তবে যাচাই করো।" — কুরআন ৪৯:৬</div>
+
 <div class="dialogue">ইতিবাচক সন্দেহ — constructive skepticism। ইসলামে সন্দেহ করা শেখানো হয়েছে — কিন্তু নেতিবাচক নয়। পজিটিভ। হাদিসে আছে: খবর যাচাই করো। কুরআনে আল্লাহ বলেন: যদি কোনো ফাসিক খবর নিয়ে আসে, তবে যাচাই করো। এটা সন্দেহ নয় — এটা সত্যের সম্মান। সত্য এত মূল্যবান যে সেটা যাচাই ছাড়া গ্রহণ করা অসম্মান। গবেষকের সন্দেহ হলো সত্যের প্রতি ভালোবাসার প্রকাশ।</div>
 <div class="dialogue en">Constructive skepticism. Islam teaches questioning — not negative, but positive. Hadith: verify news. Allah says: if a sinner brings news, verify it. This isn't doubt — it's respect for truth. Truth is so valuable that accepting it without verification is disrespect. A researcher's doubt is an expression of love for truth.</div>
 
@@ -276,6 +310,13 @@ doors.push({
   subtitle:"The Web of Connections", tech:"Cross-Disciplinary Thinking",
   spirit:"তাফাক্কুর — এক সৃষ্টি থেকে আরেকটায় সম্পর্ক দেখা",
   secret:"সবচেয়ে শক্তিশালী গবেষণা একটা ফিল্ডের ভেতরে নয় — দুটো ফিল্ডের মাঝে। তুমি যা জানো তার সব এক জায়গায়। কিন্তু সেগুলো আলাদা। গবেষক সেই মানুষ যে আলাদা জিনিসগুলো জোড়ে — আর নতুন সত্য দেখে।",
+  senior:{
+    title:"ক্রস-ফিল্ড সংযোগ এক নজরে",
+    body:`<table class="kv-table"><tr><th>উদাহরণ</th><th>সংযোগ</th></tr>
+<tr><td class="hl">Attention</td><td>NLP × কগনিটিভ সায়েন্স</td></tr>
+<tr><td class="hl">GAN</td><td>Game theory × DL</td></tr>
+<tr><td class="hl">Diffusion</td><td>থার্মোডাইনামিক্স × ইমেজ</td></tr></table>`
+  },
   recall:{
     q:"জাইনব কেন তোমাকে মৌমাছি দেখিয়ে নিউরাল নেটওয়ার্ক বুঝিয়ে দিলেন?",
     qen:"Why did Zainab show you a bee to explain neural networks?",
