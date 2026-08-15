@@ -577,7 +577,7 @@ HOW VISION CONNECTS TO LLM:
                           ↓
   Both → cross-modal fusion → VLM
                           ↓
-  Response: "I see a cat sitting on a table"</div>
+  Response: "I see a cat sitting on a table"
 
 <div class="dialogue">বাসিরাহ — vision, clear sightedness, perception। কুরআনে আল্লাহ বলেন — "তিনি তোমাকে দৃষ্টি দিয়েছেন।" (৯০:৮-৯)। দৃষ্টি একটি নিয়ামত। Vision encoder-ও তেমনি — AI-কে দৃষ্টি দেওয়া। ছবি থেকে অর্থ, অর্থ থেকে বোঝা। যে দেখে, সে বোঝে। যে দেখে না, সে অন্ধ। বাসিরাহ — দৃষ্টির নিয়ামত।</div>
 <div class="dialogue en">"Basirah — vision, clear sightedness, perception. Allah says — 'He gave you sight.' (90:8-9). Vision is a gift. Vision encoder too — giving AI sight. From image to meaning, meaning to understanding. One who sees, understands. One who doesn't, is blind. Basirah — the gift of sight."</div>

@@ -563,7 +563,7 @@ BENCHMARKING:
   
   Track: p50 (median), p95, p99
   → p99 = worst-case user experience
-  → optimize p99, not just average</div>
+  → optimize p99, not just average
 
 <div style="text-align:center;margin:1.3rem 0">
 <svg viewBox="0 0 720 250" width="100%" style="max-width:720px;display:block;background:#070a0f;border:1px solid rgba(34,211,238,.18);border-radius:14px" font-family="Noto Sans Bengali,sans-serif" role="img" aria-label="Latency optimization">

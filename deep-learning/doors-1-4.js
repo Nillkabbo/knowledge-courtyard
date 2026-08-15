@@ -519,7 +519,7 @@ print(self_assessment)
     ৫–১০ বছর deliberate practice + coach + resources।
     ⚠️ Macnamara (২০১৪): deliberate practice শুধু ~১–২৬% variance
        ব্যাখ্যা করে। necessary, sufficient নয়। "ঘণ্টা গোনা" নয় —
-       "কেমন অনুশীলন" সেটাই আসল।</div>
+       "কেমন অনুশীলন" সেটাই আসল।
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">২০h</div><div class="sc-label">শূন্য → functional (Kaufman)</div></div>
@@ -798,7 +798,7 @@ feynman_test("Python Decorators")
     ৩. Teach — অন্যকে শেখাও (Feynman) — gap ধরা পড়বে
 
   নিয়ম: যদি ১২ বছরের শিশুকে বোঝাতে না পারো —
-         তুমি বুঝিনি, শুধু চিনেছ।</div>
+         তুমি বুঝিনি, শুধু চিনেছ।
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">১৯৯৯</div><div class="sc-label">Dunning-Kruger মূল পেপার</div></div>

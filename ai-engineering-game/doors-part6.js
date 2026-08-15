@@ -76,5 +76,6 @@ Arabic:   "العلم نور"           → ৫ টোকেন</div>
 
 <div class="callout warn" data-door="13"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> একটা LLM বাংলা ভাষায় token efficiency ৩-৫ গুণ খারাপ। 'আমি' এক token, কিন্তু অন্য ভাষায় তিন token। খরচ বাড়ে, গতি কমে।</div></div>
 
-<div class="secret-box"><div class="label">দরজা ১৩ — রহস্য</div><div class="text">🔤 Token ≠ শব্দ। প্রতিটা ভাষা আলাদা ভাবে কাটা যায়।<br><small>Temperature নিয়ন্ত্রণ করে নিশ্চয়তা — ০ = নির্ধারিত, ১ = ঝুঁকি। Transformer attention প্রতিটা টোকেনের সম্পর্ক বোঝে।</small></div></div>`
+<div class="secret-box"><div class="label">দরজা ১৩ — রহস্য</div><div class="text">🔤 Token ≠ শব্দ। প্রতিটা ভাষা আলাদা ভাবে কাটা যায়।<br><small>Temperature নিয়ন্ত্রণ করে নিশ্চয়তা — ০ = নির্ধারিত, ১ = ঝুঁকি। Transformer attention প্রতিটা টোকেনের সম্পর্ক বোঝে।</small></div></div>
+</div>`
 });

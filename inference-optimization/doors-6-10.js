@@ -510,7 +510,7 @@ MEMORY MONITORING:
   → memory profiler: torch memory_viz
   
   Alert: VRAM > ৯০% → reduce batch size
-  Alert: OOM → crash! Prevent proactively</div>
+  Alert: OOM → crash! Prevent proactively
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">

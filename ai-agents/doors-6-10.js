@@ -545,7 +545,7 @@ CHALLENGES:
   • Error cascade: এক agent ভুল → সব ভুল
     → validation প্রতিটা agent-এ
   • Latency: sequential = ধীর
-    → parallel যেখানে সম্ভব</div>
+    → parallel যেখানে সম্ভব
 
 <div class="dialogue">শূরা — consultation, council। কুরআনে আল্লাহ বলেন — "তাদের কাজ পারস্পরিক পরামর্শের মাধ্যমে হয়।" (৪২:৩৮)। একা সিদ্ধান্ত নয় — সম্মিলিত। Multi-agent-ও তেমনি — এক এজেন্ট নয়, দল। গবেষক, কোডার, পর্যালোচক — একসাথে। শূরা — সম্মিলিত প্রজ্ঞা একার চেয়ে ভালো। দলে ত্রুটি কম, গুণমান বেশি।</div>
 <div class="dialogue en">"Shura — consultation, council. Allah says — 'Their affairs are conducted by mutual consultation.' (42:38). Not solo decisions — collective. Multi-agent too — not one agent, a team. Researcher, coder, reviewer — together. Shura — collective wisdom beats individual. In teams, fewer errors, higher quality."</div>`,

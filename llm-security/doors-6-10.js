@@ -543,7 +543,7 @@ THE SWISS CHEESE MODEL:
   Attack সফল হতে হলে সব hole এক সাথে 
   পার হতে হবে।
   → বেশি স্তর = বেশি অসম্ভভ
-  → কিন্তু ১০০% অসম্ভব নয়</div>
+  → কিন্তু ১০০% অসম্ভব নয়
 
 <div class="dialogue">হিসন — fortress, stronghold, protection। কুরআনে আল্লাহ বলেন — "তোমরা নিজেদের ও তোমাদের পরিবারের জন্য জাহান্নাম থেকে প্রতিরক্ষা করো।" (৬৬:৬)। প্রতিরক্ষা = একাধিক স্তর। শুধু একটা দেয়াল নয় — পরিখা, দেয়াল, রক্ষক, সতর্কতা। Defense in depth হলো হিসন — স্তরে স্তরে সুরক্ষা।</div>
 <div class="dialogue en">"Hisn — fortress, stronghold, protection. Allah says — 'Protect yourselves and your families from the Fire.' (66:6). Protection = multiple layers. Not just one wall — moat, wall, guard, vigilance. Defense in depth is hisn — protection layer upon layer."</div>`,

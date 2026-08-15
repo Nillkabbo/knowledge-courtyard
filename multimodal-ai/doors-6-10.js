@@ -536,7 +536,7 @@ TRAINING DATA FOR ALIGNMENT:
   → (image, caption) pairs: millions
   → LAION-৫B: ৫ billion image-text pairs
   → COCO: ৩৩০K images with captions
-  → quality > quantity: clean pairs matter</div>
+  → quality > quantity: clean pairs matter
 
 <div class="dialogue">আল্লামাহ — connector, unifier, teacher। কুরআনে আল্লাহ বলেন — "তিনি মানুষকে শিখিয়েছেন।" (৯৬:৫)। শেখানো = সংযোগ করা — ভিন্ন জিনিস একসাথে। Cross-modal alignment-ও তেমনি — ছবি ও শব্দ, এক জগতে। যে সংযোগ করে, সে গভীর বোঝে। আল্লামাহ — সংযোগের গুণ।</div>
 <div class="dialogue en">"Allamah — connector, unifier, teacher. Allah says — 'He taught man.' (96:5). Teaching = connecting — different things together. Cross-modal alignment too — image and word, one world. One who connects, understands deeply. Allamah — the attribute of connection."</div>

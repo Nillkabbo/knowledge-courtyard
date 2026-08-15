@@ -882,7 +882,8 @@ print(checklist)
 # Plan for it, detect it, mitigate it. Never trust blindly.</div>
 
 <div class="dialogue">সত্য ও ভ্রম। কুরআনে আল্লাহ বলেন — "মিথ্যা তো সত্যের বিপরীত।" (১৩:১)। LLM-এর হ্যালুসিনেশন মিথ্যা নয় — ভ্রম। সে ভুল বোঝে, ভুল বলে। কিন্তু ইচ্ছা করে নয়। তবু বিপজ্জনক — কারণ আত্মবিশ্বাসী। সত্য যাচাই করা প্রতিটা মানুষের দায়িত্ব। কুরআন বলে — "যারা সত্য যাচাই করে না, তাদের কথা বিশ্বাস করো না।" (৪৯:৬)। LLM-ও তেমনি — যাচাই ছাড়া বিশ্বাস নয়।</div>
-<div class="dialogue en">"Truth and illusion. Allah says — 'Falsehood is the opposite of truth.' (13:1). LLM hallucination isn't lying — it's illusion. It misunderstands, misspeaks. But not intentionally. Still dangerous — because it's confident. Verifying truth is every person's duty. The Quran says — 'Don't believe those who don't verify.' (49:6). The LLM too — no belief without verification."</div>`,
+<div class="dialogue en">"Truth and illusion. Allah says — 'Falsehood is the opposite of truth.' (13:1). LLM hallucination isn't lying — it's illusion. It misunderstands, misspeaks. But not intentionally. Still dangerous — because it's confident. Verifying truth is every person's duty. The Quran says — 'Don't believe those who don't verify.' (49:6). The LLM too — no belief without verification."</div>
+</div>`,
   senior:{
     title:"Hallucination Audit — প্রোডাকশনে",
     body:`<p><strong>Fact-checking:</strong> প্রতিটা ফ্যাক্ট আলাদা LLM কল দিয়ে verify করো।</p><p><strong>Confidence score:</strong> logprobs চেক করো — কম confidence = বেশি hallucination ঝুঁকি।</p><p><strong>Human-in-the-loop:</strong> সংবেদনশীল আউটপুটে মানুষ review করে।</p><p><strong>Eval set:</strong> ১০০টা প্রশ্নে সঠিক উত্তর ট্র্যাক করো। নতুন মডেলে রিগ্রেশন চেক।</p>`

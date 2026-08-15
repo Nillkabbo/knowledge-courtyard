@@ -583,7 +583,7 @@ CAPACITY PLANNING — মাপজোক:
 THE SCALING CUBE (3 axes):
   X-axis: কপি যোগ (horizontal cloning) — N টা ইদেন্টিক্যাল সার্ভার
   Y-axis: ফাংশন ভাগ (microservices) — সার্ভিস আলাদা (Door 4)
-  Z-axis: ডেটা ভাগ (sharding) — ডেটা ভাগ (Door 9, 11)</div>
+  Z-axis: ডেটা ভাগ (sharding) — ডেটা ভাগ (Door 9, 11)
 
 <div class="dialogue">তুমি AI ইঞ্জিনিয়ার। LLM inference মূল্যবান — এক জিপিইউতে সব request নয়। horizontal: অনেক GPU, প্রতিটা মডেলের এক কপি ধরে (replica)। Batch serving — অনেক request একসাথে। Stateless inference — যেকোনো replica পারে। কিন্তু training? stateful — gradient মনে রাখতে হয়, checkpoint করতে হয়। আজকের scaling বুঝতে হলে stateless-এর গভীরতা বুঝতে হবে।</div>
 <div class="dialogue en">"You're an AI engineer. LLM inference is expensive — not all requests on one GPU. Horizontal: many GPUs, each holding a replica of the model. Batch serving — many requests together. Stateless inference — any replica can serve. But training? stateful — gradients must be remembered, checkpoints saved. To understand today's scaling, understand the depth of stateless."</div>

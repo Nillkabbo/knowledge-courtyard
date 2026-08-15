@@ -472,7 +472,7 @@ for practice in best_practices:
 প্র্যাকটিস:
   tiktoken (OpenAI-এর টোকেনাইজার) দিয়ে গোনো
   → pip install tiktoken
-  → প্রতিটা প্রম্পট টোকেন সংখ্যা জানো</div>
+  → প্রতিটা প্রম্পট টোকেন সংখ্যা জানো
 
 <div class="dialogue">হরফ — অক্ষর। কুরআনের ক্যালিগ্রাফিতে প্রতিটি হরফ গুরুত্বপূর্ণ। একটি হরফ বদলালে অর্থ বদলায়। টোকেনও তেমনি — LLM-এর কাছে প্রতিটি টোকেন একটা হরফ। অপ্রয়োজনীয় টোকেন = শব্দের বিকৃতি। সংক্ষিপ্ততা = স্পষ্টতা। যে প্রতিটি টোকেন গণনা করে, সে প্রতিটি শব্দ গণ্য করে।</div>
 <div class="dialogue en">"Harf — letter. In Quranic calligraphy, each letter matters. Changing one letter changes meaning. Tokens too — to the LLM, each token is a letter. Unnecessary tokens = distortion of meaning. Conciseness = clarity. One who counts each token, weighs each word."</div>`,

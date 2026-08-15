@@ -30,11 +30,11 @@ doors.push({
 <tr><td>"মুখস্থ করা যায়" — যা AI পারে</td><td>Judgment ও accountability — কী বানানো উচিত, দায়ী কে</td></tr>
 <tr><td class="hl">Curve: HIGH → ০ (৩-৫ বছরে)</td><td class="hl">Curve: LOW → দশকের পর দশক compounds</td></tr></table>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>২০২৬ acceleration:</strong> AI agents (Claude Code, Cursor, Devin) নিজেরাই decide করতে পারে কী কোড লিখবে, কোন abstraction ব্যবহার করবে। যে কাজ AI পারে, সেটা perishable — আর তার value আরও দ্রুত কমছে। জহিরের গল্প: ১০ বছরের jQuery mastery → ০ value।</div></div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>২০২৬ acceleration:</strong> AI agents (Claude Code, Cursor, Devin) নিজেরাই decide করতে পারে কী কোড লিখবে, কোন abstraction ব্যবহার করবে। যে কাজ AI পারে, সেটা perishable — আর তার value আরও দ্রুত কমছে। জহিরের গল্প: ১০ বছরের jQuery mastery → ০ value।</div></div>
 
-<div class="callout info"><span class="co-icon">🧭</span><div><strong>নতুন প্রশ্ন:</strong> "যখন AI execute করতে পারে, তুমি কী করো যা AI পারে না?" AI পারে না — কোন সমস্যা আদৌ সমাধান দরকার, কোন trade-off গ্রহণযোগ্য, ভুল হলে কে দায়ী, আর কখন "না" বলতে হবে। <strong>Job = executing code → AI তোমাকে replace করে। Job = judging what to build → AI তোমাকে amplify করে।</strong></div></div></div>
+<div class="callout info"><span class="co-icon">🧭</span><div><strong>নতুন প্রশ্ন:</strong> "যখন AI execute করতে পারে, তুমি কী করো যা AI পারে না?" AI পারে না — কোন সমস্যা আদৌ সমাধান দরকার, কোন trade-off গ্রহণযোগ্য, ভুল হলে কে দায়ী, আর কখন "না" বলতে হবে। <strong>Job = executing code → AI তোমাকে replace করে। Job = judging what to build → AI তোমাকে amplify করে।</strong></div></div>
 
-<div class="callout tip"><span class="co-icon">🧪</span><div><strong>The test — নিজেকে জিজ্ঞেস করো:</strong> এই দক্ষতা কি ১০ বছর পরে মূল্যবান থাকবে? Tool হারিয়ে গেলে কী থাকে? আমি TOOL শিখছি নাকি PRINCIPLE? AI কি এটা ২ বছরে পারবে?</div></div></div>
+<div class="callout tip"><span class="co-icon">🧪</span><div><strong>The test — নিজেকে জিজ্ঞেস করো:</strong> এই দক্ষতা কি ১০ বছর পরে মূল্যবান থাকবে? Tool হারিয়ে গেলে কী থাকে? আমি TOOL শিখছি নাকি PRINCIPLE? AI কি এটা ২ বছরে পারবে?</div></div>
 
 <div class="dialogue">ফানা — impermanence, annihilation, that which passes away। সুফি ঐতিহ্যে ফানা হলো সেই অবস্থা যেখানে অহংকার, দক্ষতা, পরিচয় — সব ক্ষয় হয়। জহিরের jQuery দক্ষতা ফানার শিকার হয়েছে। কিন্তু ফানার বিপরীত হলো বাকা — permanence, eternity, that which remains। যে কারিগর নিজের দক্ষতাকে ফানা থেকে বাকায় স্থানান্তর করে, সে অবিচ্ছেয্য হয়। ফানা থেকে বাকা — এটাই এই বইয়ের যাত্রা।</div>
 <div class="dialogue en">"Fana — impermanence, annihilation, that which passes away. In Sufi tradition, fana is the state where ego, skill, identity — all dissolve. Zahir's jQuery mastery fell victim to fana. But the opposite of fana is baqa — permanence, eternity, that which remains. The craftsman who transfers their investment from fana to baqa becomes irreplaceable. From fana to baqa — this is this book's journey."</div>
@@ -60,8 +60,8 @@ doors.push({
   <text x="90" y="265" fill="#52c41a" font-size="9">নিচু শুরু</text>
   <text x="455" y="48" fill="#52c41a" font-size="9">চিরস্থায়ী</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: কারিগরির মূল্য বক্ররেখা — পচনশীল দক্ষতা সময়ের সাথে শূন্যে নেমে যায়, চিরস্থায়ী নীতি প্রতি বছর গভীরতর হয়। ফানা থেকে বাকা।</div></div>
+</div>
+<div class="svg-caption">চিত্র: কারিগরির মূল্য বক্ররেখা — পচনশীল দক্ষতা সময়ের সাথে শূন্যে নেমে যায়, চিরস্থায়ী নীতি প্রতি বছর গভীরতর হয়। ফানা থেকে বাকা।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— কারিগরি পচনশীলতা নিরীক্ষা (Perishability Audit) —
 
@@ -84,6 +84,7 @@ doors.push({
 
   নিয়ম: যে পচনশীলে বিনিয়োগ করে, সে ফানার শিকার।
          যে চিরস্থায়ীতে বিনিয়োগ করে, সে বাকা।
+</div>
 </div>`,
   senior:{
     title:"The Perishability Audit",
@@ -115,11 +116,11 @@ doors.push({
 <tr><td>Incremental (৫% better)</td><td>Revolutionary (১০x better)</td></tr>
 <tr><td>Safe, expected</td><td>Risky, unexpected</td></tr></table>
 
-<div class="callout tip"><span class="co-icon">🚀</span><div><strong>Musk-এর battery উদাহরণ:</strong> "Batteries cost $৬০০/kWh।" Analogy → মেনে নাও, ৫% discount খোঁজো। First principles → ব্যাটারি কী দিয়ে তৈরি? (cobalt, nickel, aluminum, carbon) এর বাজারমূল্য? (~$৮০/kWh) তাহলে কেন $৬০০? ভিন্নভাবে বানানো যায়? Tesla বানায় ~$১০০/kWh — <strong>৬x কম</strong>, শুধু মৌলিক থেকে ভেবে।</div></div></div>
+<div class="callout tip"><span class="co-icon">🚀</span><div><strong>Musk-এর battery উদাহরণ:</strong> "Batteries cost $৬০০/kWh।" Analogy → মেনে নাও, ৫% discount খোঁজো। First principles → ব্যাটারি কী দিয়ে তৈরি? (cobalt, nickel, aluminum, carbon) এর বাজারমূল্য? (~$৮০/kWh) তাহলে কেন $৬০০? ভিন্নভাবে বানানো যায়? Tesla বানায় ~$১০০/kWh — <strong>৬x কম</strong>, শুধু মৌলিক থেকে ভেবে।</div></div>
 
-<div class="callout info"><span class="co-icon">🔧</span><div><strong>Engineering-এ:</strong> Junior — "React ব্যবহার করবো কারণ সবাই করে।" Senior — "কী সমস্যা সমাধান করছি? সবচেয়ে সরল সমাধান কী? React কি ঠিক tool, নির্দিষ্ট কারণসহ?" · "Microservices কারণ Netflix করে" → "আমাদের কি সেই scale-সমস্যা আছে? না (৩ জনের টিম) → monolith ভালো।"</div></div></div>
+<div class="callout info"><span class="co-icon">🔧</span><div><strong>Engineering-এ:</strong> Junior — "React ব্যবহার করবো কারণ সবাই করে।" Senior — "কী সমস্যা সমাধান করছি? সবচেয়ে সরল সমাধান কী? React কি ঠিক tool, নির্দিষ্ট কারণসহ?" · "Microservices কারণ Netflix করে" → "আমাদের কি সেই scale-সমস্যা আছে? না (৩ জনের টিম) → monolith ভালো।"</div></div>
 
-<div class="callout tip"><span class="co-icon">5️⃣</span><div><strong>৫ Whys (Sakichi Toyoda):</strong> "Website slow" → DB ৩s/query → কোনো index নেই → কেউ query pattern দেখেনি → কোনো monitoring নেই → টিমে performance culture নেই। <strong>Root cause: culture, not database।</strong> Fix — monitoring + reviews, শুধু index নয়।</div></div></div>
+<div class="callout tip"><span class="co-icon">5️⃣</span><div><strong>৫ Whys (Sakichi Toyoda):</strong> "Website slow" → DB ৩s/query → কোনো index নেই → কেউ query pattern দেখেনি → কোনো monitoring নেই → টিমে performance culture নেই। <strong>Root cause: culture, not database।</strong> Fix — monitoring + reviews, শুধু index নয়।</div></div>
 
 <table class="kv-table"><tr><th>✅ First principles-এর লক্ষণ</th><th>❌ Analogy-তে আটকে থাকার লক্ষণ</th></tr>
 <tr><td>WHY ব্যাখ্যা করতে পারো, শুধু HOW নয়</td><td>ব্যাখ্যা ছাড়া "best practice" বলো</td></tr>
@@ -153,8 +154,8 @@ doors.push({
   <path d="M 280 265 L 280 280" stroke="#5e5c74" stroke-width="1.5" marker-end="url(#d2-arr)"/>
   <defs><marker id="d2-arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#5e5c74"/></marker></defs>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: গভীর কাজ — প্রতিটা 'কেন' প্রশ্ন আরেকটা স্তর খোলে, পৃষ্ঠের অনুকরণ থেকে মৌলিক সত্য পর্যন্ত। আকল — মৌলিক চিন্তার নূর।</div></div>
+</div>
+<div class="svg-caption">চিত্র: গভীর কাজ — প্রতিটা 'কেন' প্রশ্ন আরেকটা স্তর খোলে, পৃষ্ঠের অনুকরণ থেকে মৌলিক সত্য পর্যন্ত। আকল — মৌলিক চিন্তার নূর।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— ৫ Whys গভীর-কাজ পদ্ধতি (First Principles Decomposition) —
 
@@ -179,6 +180,7 @@ doors.push({
   নিয়ম: যে ব্যাখ্যা ছাড়া "best practice" বলে,
          সে analogy-তে আটকে। যে মৌলিক থেকে ভাবে,
          সে ১০x উন্নতি করে।
+</div>
 </div>`,
   senior:{
     title:"First Principles — Daily Practice",
@@ -210,18 +212,18 @@ doors.push({
 <tr><td>Optimize locally</td><td>Optimize globally</td></tr>
 <tr><td>Short-term win</td><td>Long-term health</td></tr></table>
 
-<div class="callout warn"><span class="co-icon">🌊</span><div><strong>Linear চিন্তার ট্র্যাজেডি:</strong> "API slow → Redis যোগ করো।" Linear: API fast, done! Systems: Redis → users বেশি করে → DB load বাড়ে → DB cache যোগ → দুই cache → consistency issue → race condition → data corruption → টিম ৪০% সময় cache bug-এ → velocity কমে → প্রতিযোগী দ্রুত ships → market হারায়। "Quick fix" হয়ে গেল existential threat।</div></div></div>
+<div class="callout warn"><span class="co-icon">🌊</span><div><strong>Linear চিন্তার ট্র্যাজেডি:</strong> "API slow → Redis যোগ করো।" Linear: API fast, done! Systems: Redis → users বেশি করে → DB load বাড়ে → DB cache যোগ → দুই cache → consistency issue → race condition → data corruption → টিম ৪০% সময় cache bug-এ → velocity কমে → প্রতিযোগী দ্রুত ships → market হারায়। "Quick fix" হয়ে গেল existential threat।</div></div>
 
-<div class="callout info"><span class="co-icon">🔁</span><div><strong>Feedback loops:</strong> ভালো কোড → maintain সহজ → দ্রুত feature → খুশি user → বেশি revenue → বেশি engineer → আরও ভালো কোড (reinforcing loop, compounds)। উল্টোটা = death spiral। Code quality একটা reinforcing loop — ছোট বিনিয়োগ বছরের পর বছর জমে।</div></div></div>
+<div class="callout info"><span class="co-icon">🔁</span><div><strong>Feedback loops:</strong> ভালো কোড → maintain সহজ → দ্রুত feature → খুশি user → বেশি revenue → বেশি engineer → আরও ভালো কোড (reinforcing loop, compounds)। উল্টোটা = death spiral। Code quality একটা reinforcing loop — ছোট বিনিয়োগ বছরের পর বছর জমে।</div></div>
 
 <table class="kv-table"><tr><th>সিদ্ধান্ত</th><th>১st effect</th><th>২nd/৩rd effects</th></tr>
 <tr><td class="hl">Microservices</td><td>দ্রুত deploy</td><td>network জটিলতা → debugging hell → ধীর feature</td></tr>
 <tr><td class="hl">Skip tests</td><td>দ্রুত ship</td><td>prod bug → রাত ২টার fix → burnout</td></tr>
 <tr><td class="hl">Abstraction layer</td><td>পরিষ্কার কোড</td><td>indirection tax → trace কঠিন → ধীর onboarding</td></tr></table>
 
-<div class="callout tip"><span class="co-icon">🎯</span><div><strong>Bottleneck focus (Theory of Constraints):</strong> প্রতিটা সিস্টেমে একটাই bottleneck; সেটা ছাড়া অন্য কিছু optimize করা = অপচয়। design(২d)→code(৩d)→test(৫d)→deploy(১d)-এ bottleneck হলো test। Coding দ্রুত করলে ১০% উন্নতি; testing দ্রুত করলে ২০%। <strong>আগে bottleneck খোঁজো।</strong> মনে রাখো Brooks' Law — "দেরি হওয়া প্রজেক্টে লোক যোগ করলে আরও দেরি হয়।"</div></div></div>
+<div class="callout tip"><span class="co-icon">🎯</span><div><strong>Bottleneck focus (Theory of Constraints):</strong> প্রতিটা সিস্টেমে একটাই bottleneck; সেটা ছাড়া অন্য কিছু optimize করা = অপচয়। design(২d)→code(৩d)→test(৫d)→deploy(১d)-এ bottleneck হলো test। Coding দ্রুত করলে ১০% উন্নতি; testing দ্রুত করলে ২০%। <strong>আগে bottleneck খোঁজো।</strong> মনে রাখো Brooks' Law — "দেরি হওয়া প্রজেক্টে লোক যোগ করলে আরও দেরি হয়।"</div></div>
 
-<div class="callout info"><span class="co-icon">🐜</span><div><strong>Emergence:</strong> একটা পিঁপড়া বোকা, কিন্তু পিঁপড়ার কলোনি বুদ্ধিমান; একটা neuron ভাবতে পারে না, মস্তিষ্ক পারে। সিস্টেমের এমন বৈশিষ্ট্য থাকে যা আলাদা অংশে নেই — তাই অংশ নয়, <strong>interaction</strong> পড়ো। Senior সবসময় জিজ্ঞেস করে: "And THEN what?"</div></div></div>
+<div class="callout info"><span class="co-icon">🐜</span><div><strong>Emergence:</strong> একটা পিঁপড়া বোকা, কিন্তু পিঁপড়ার কলোনি বুদ্ধিমান; একটা neuron ভাবতে পারে না, মস্তিষ্ক পারে। সিস্টেমের এমন বৈশিষ্ট্য থাকে যা আলাদা অংশে নেই — তাই অংশ নয়, <strong>interaction</strong> পড়ো। Senior সবসময় জিজ্ঞেস করে: "And THEN what?"</div></div>
 
 <div class="dialogue">কদর — measure, proportion, destiny। কুরআনে আল্লাহ বলেন — "সবকিছু আমরা একটা নির্ধারিত পরিমাপে সৃষ্টি করেছি।" (৫৪:৪৯)। কদর = প্রতিটা জিনিসের সংযোগ, পরিমাপ, প্রভাব। সিস্টেম চিন্তা-ও কদর — প্রতিটা সিদ্ধান্তের সংযোগ দেখা। যে কদর বোঝে, সে দেখে — একটা সিদ্ধান্ত কীভাবে পুরো সিস্টেমকে নাড়ায়। যে কদর বোঝে না, সে শুধু নিজের অংশ দেখে, বাকি সব অন্ধকার।</div>
 <div class="verse">"সবকিছু আমরা একটা নির্ধারিত পরিমাপে সৃষ্টি করেছি।"<br>— কুরআন ৫৪:৪৯</div>
@@ -249,8 +251,8 @@ doors.push({
   <text x="260" y="285" fill="#5e5c74" font-size="8">সপ্তাহ ২৬</text>
   <text x="460" y="285" fill="#5e5c74" font-size="8">সপ্তাহ ৫২</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: অবিরাম শেখা — রৈখিক বিনিয়োগ সামান্য উন্নতি দেয়, কিন্তু প্রতিদিনের গভীর অনুশীলন সন্ধিকাল পেরিয়ে সঞ্চয়ী হয়ে যায়। কদর — প্রতিটা সংযোগ গণনা করে।</div></div>
+</div>
+<div class="svg-caption">চিত্র: অবিরাম শেখা — রৈখিক বিনিয়োগ সামান্য উন্নতি দেয়, কিন্তু প্রতিদিনের গভীর অনুশীলন সন্ধিকাল পেরিয়ে সঞ্চয়ী হয়ে যায়। কদর — প্রতিটা সংযোগ গণনা করে।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— শেখার পোর্টফোলিও (Learning Portfolio) —
 
@@ -275,6 +277,7 @@ doors.push({
   নিয়ম: রোজ ৩০ মিনিট গভীরে পড়ো।
          সপ্তাহে ১টা নতুন সংযোগ খোঁজো।
          সঞ্চয় compound হয় — ধৈর্য ধরো।
+</div>
 </div>`,
   senior:{
     title:"Systems Thinking — Daily Questions",
@@ -300,7 +303,7 @@ doors.push({
 <div class="dialogue">সিস্টেম চিন্তা বলেছিলেন — সংযোগ দেখো। কিন্তু আমি বলি — সবচেয়ে গুরুত্বপূর্ণ সংযোগ কোড ও গ্রাহকের মধ্যে। গ্রাহক কেন টাকা দেয়? কোন সমস্যা সমাধান হয়? এটা না বুঝলে তুমি শুধু কোড লেখো — মূল্য তৈরি করো না। ব্যবসায়িক মস্তিষ্ক — কোড কেন গুরুত্বপূর্ণ, তা বোঝা।</div>
 <div class="dialogue en">"Systems thinking said — see connections. But I say — the most important connection is between code and customer. Why does the customer pay? What problem is solved? Without understanding this, you just write code — you don't create value. Business brain — understanding why code matters."</div>
 
-<div class="callout info"><span class="co-icon">🔗</span><div><strong>Value chain:</strong> Code → Feature → User-problem solved → User happy → User pays → Company revenue → Engineer paid → আরও কোড। যেকোনো link ভাঙলে chain ভেঙে পড়ে। Junior দেখে শুধু Code→Feature; senior দেখে পুরো chain; irreplaceable engineer chain-টা optimize করে।</div></div></div>
+<div class="callout info"><span class="co-icon">🔗</span><div><strong>Value chain:</strong> Code → Feature → User-problem solved → User happy → User pays → Company revenue → Engineer paid → আরও কোড। যেকোনো link ভাঙলে chain ভেঙে পড়ে। Junior দেখে শুধু Code→Feature; senior দেখে পুরো chain; irreplaceable engineer chain-টা optimize করে।</div></div>
 
 <table class="kv-table"><tr><th>৩টা সংখ্যা</th><th>মানে</th></tr>
 <tr><td class="hl">CAC</td><td>একজন customer পেতে খরচ। CAC &gt; per-user revenue হলে business ব্যর্থ।</td></tr>
@@ -314,9 +317,9 @@ doors.push({
 <tr><td class="hl">Test coverage ৪০→৮০%</td><td>-৫০% bug → +২ দিন velocity</td></tr>
 <tr><td class="hl">Microservices</td><td>??? (হয়তো negative!)</td></tr></table>
 
-<div class="callout warn"><span class="co-icon">⏳</span><div><strong>Opportunity cost:</strong> "২ সপ্তাহ refactor করবো?" Junior — "হ্যাঁ, কোড messy।" Senior — "২ সপ্তাহ refactor = ২ সপ্তাহ feature না-shipping। সেই feature-এর revenue/user-happiness কি refactor-এর চেয়ে বেশি? হলে refactor করো, না হলে কোরো না।" প্রতি ঘণ্টার opportunity cost আছে — "এটাই কি আমার সময়ের সর্বোচ্চ-মূল্যের ব্যবহার?"</div></div></div>
+<div class="callout warn"><span class="co-icon">⏳</span><div><strong>Opportunity cost:</strong> "২ সপ্তাহ refactor করবো?" Junior — "হ্যাঁ, কোড messy।" Senior — "২ সপ্তাহ refactor = ২ সপ্তাহ feature না-shipping। সেই feature-এর revenue/user-happiness কি refactor-এর চেয়ে বেশি? হলে refactor করো, না হলে কোরো না।" প্রতি ঘণ্টার opportunity cost আছে — "এটাই কি আমার সময়ের সর্বোচ্চ-মূল্যের ব্যবহার?"</div></div>
 
-<div class="callout tip"><span class="co-icon">👥</span><div><strong>Users বোঝা (empathy multiplier):</strong> সপ্তাহে ১ জন user-এর সাথে কথা বলো — support ticket নয়, আসল ৩০ মিনিটের কথোপকথন; ৩ মাসের কোডিং-এর চেয়ে বেশি শিখবে। উদাহরণ: তুমি ভাবো user "advanced search filter" চায় → কথা বললে দেখা যায় তারা চায় "just find my stuff faster" — একটা সরল sort-ই যথেষ্ট ছিল।</div></div></div>
+<div class="callout tip"><span class="co-icon">👥</span><div><strong>Users বোঝা (empathy multiplier):</strong> সপ্তাহে ১ জন user-এর সাথে কথা বলো — support ticket নয়, আসল ৩০ মিনিটের কথোপকথন; ৩ মাসের কোডিং-এর চেয়ে বেশি শিখবে। উদাহরণ: তুমি ভাবো user "advanced search filter" চায় → কথা বললে দেখা যায় তারা চায় "just find my stuff faster" — একটা সরল sort-ই যথেষ্ট ছিল।</div></div>
 
 <div class="dialogue">রিযিক — provision, sustenance, livelihood। কুরআনে আল্লাহ বলেন — "আল্লাহ প্রতিটা জীবকে তার রিযিক দেন।" (১১:৬)। রিযিক = জীবিকা যা স্বয়ংক্রিয়ভাবে আসে — কিন্তু শর্ত হলো চেষ্টা। ব্যবসায়িক মস্তিষ্ক-ও রিযিকের বোধ — উপার্জন কোথা থেকে আসে, কেন আসে, কীভাবে বাড়ে। যে রিযিক বোঝে, সে শুধু কোড লেখে না — মূল্য তৈরি করে। যে না বোঝে, সে ধারক — উপার্জন তার হাত দিয়ে যায়, কিন্তু সে জানে না কেন।</div>
 <div class="verse">"আল্লাহ প্রতিটা জীবকে তার রিযিক দেন।"<br>— কুরআন ১১:৬</div>
@@ -353,8 +356,8 @@ doors.push({
   <text x="415" y="265" text-anchor="middle" fill="#ff6b35" font-size="9" font-style="italic">user হারিয়ে যায়</text>
   <text x="280" y="170" text-anchor="middle" fill="#5e5c74" font-size="16" font-weight="900">VS</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: রুচি ও নকশা — ভালো ডিজাইন সরল, স্পষ্ট, উদ্দেশ্যপূর্ণ; খারাপ ডিজাইন জটিল, অস্পষ্ট, উদ্দেশ্যহীন। রিযিক — মূল্য কোথা থেকে আসে তা চোখ দিয়ে দেখা।</div></div>
+</div>
+<div class="svg-caption">চিত্র: রুচি ও নকশা — ভালো ডিজাইন সরল, স্পষ্ট, উদ্দেশ্যপূর্ণ; খারাপ ডিজাইন জটিল, অস্পষ্ট, উদ্দেশ্যহীন। রিযিক — মূল্য কোথা থেকে আসে তা চোখ দিয়ে দেখা।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— নকশা সমালোচনা চেকলিস্ট (Design Critique Checklist) —
 
@@ -380,6 +383,7 @@ doors.push({
 
   নিয়ম: রুচি = অসংখ্য ভালো-খারাপ দেখার
          সঞ্চয়। দেখতে থাকো, প্রশ্ন করতে থাকো।
+</div>
 </div>`,
   senior:{
     title:"Business Brain — Quick Start",
@@ -410,9 +414,9 @@ doors.push({
 <tr><td class="hl">২. Problem Solver</td><td>"সমস্যা দাও, সমাধান করি"</td><td>মাঝারি — useful</td></tr>
 <tr><td class="hl">৩. Problem Finder</td><td>"যে সমস্যা তুমি জানতেই না, সেটা খুঁজে সমাধান করি"</td><td>সর্বোচ্চ — unique, irreplaceable</td></tr></table>
 
-<div class="callout info"><span class="co-icon">🔍</span><div><strong>Problem finding দেখতে কেমন:</strong> "App slow" — Solver: profile → slow query → index → done (symptom fix)। Finder: কেন slow? → user একসাথে ৫০০ item load করে → কেন ৫০০? → pagination নেই → <strong>আসল সমস্যা pagination, slow query নয়</strong> → ১০x দ্রুত + কম server cost + সম্পর্কিত সমস্যাও ধরা পড়ে।</div></div></div>
+<div class="callout info"><span class="co-icon">🔍</span><div><strong>Problem finding দেখতে কেমন:</strong> "App slow" — Solver: profile → slow query → index → done (symptom fix)। Finder: কেন slow? → user একসাথে ৫০০ item load করে → কেন ৫০০? → pagination নেই → <strong>আসল সমস্যা pagination, slow query নয়</strong> → ১০x দ্রুত + কম server cost + সম্পর্কিত সমস্যাও ধরা পড়ে।</div></div>
 
-<div class="callout tip"><span class="co-icon">🔮</span><div><strong>Anticipatory thinking:</strong> "মাসে ১০ user বাড়ছে → ৬ মাসে +৬০। DB ২০০ concurrent সামলায়, ২৫০-তে slow হবে → ৪ মাসে DB scaling লাগবে, এখনই প্রস্তুত করি।" Junior সমস্যায় react করে (firefighter), senior anticipate করে (architect), irreplaceable engineer prevent করে (oracle)।</div></div></div>
+<div class="callout tip"><span class="co-icon">🔮</span><div><strong>Anticipatory thinking:</strong> "মাসে ১০ user বাড়ছে → ৬ মাসে +৬০। DB ২০০ concurrent সামলায়, ২৫০-তে slow হবে → ৪ মাসে DB scaling লাগবে, এখনই প্রস্তুত করি।" Junior সমস্যায় react করে (firefighter), senior anticipate করে (architect), irreplaceable engineer prevent করে (oracle)।</div></div>
 
 <table class="kv-table"><tr><th>সমস্যা</th><th>Impact</th><th>Urgency</th><th>করণীয়</th></tr>
 <tr><td class="hl">User pay করতে পারছে না</td><td>HIGH ($)</td><td>HIGH</td><td>এখনই fix</td></tr>
@@ -420,7 +424,7 @@ doors.push({
 <tr><td class="hl">Developer experience</td><td>MEDIUM</td><td>MEDIUM</td><td>সময় পেলে</td></tr>
 <tr><td class="hl">কোড দেখতে খারাপ</td><td>LOW</td><td>LOW</td><td>পরে fix</td></tr></table>
 
-<div class="callout tip"><span class="co-icon">📓</span><div><strong>Problem Journal:</strong> রোজ একটা সমস্যা লেখো যা লক্ষ্য করেছ (সমাধান নয়) — "user ৩ বার back চাপে → confusion", "onboarding step ৪-এ ৬০% drop-off"। সাপ্তাহিক review, top ৩ টিমকে দেখাও। তুমি হয়ে ওঠো সেই লোক যে সমস্যা <em>দেখে</em> — এটাই irreplaceable, কারণ বেশিরভাগ engineer THINK-এর চেয়ে CODE করতে বেশি পছন্দ করে।</div></div></div>
+<div class="callout tip"><span class="co-icon">📓</span><div><strong>Problem Journal:</strong> রোজ একটা সমস্যা লেখো যা লক্ষ্য করেছ (সমাধান নয়) — "user ৩ বার back চাপে → confusion", "onboarding step ৪-এ ৬০% drop-off"। সাপ্তাহিক review, top ৩ টিমকে দেখাও। তুমি হয়ে ওঠো সেই লোক যে সমস্যা <em>দেখে</em> — এটাই irreplaceable, কারণ বেশিরভাগ engineer THINK-এর চেয়ে CODE করতে বেশি পছন্দ করে।</div></div>
 
 <div class="dialogue">তালাশ — search, seek, quest। কুরআনে আল্লাহ বলেন — "যারা আমার সন্ধানে চলে, আমি তাদের পথ দেখাই।" তালাশ শুধু সমাধানের নয় — সমস্যারও। প্রকৃত তালাশ হলো সঠিক সমস্যা খুঁজে বের করা, সমাধানের আগে। যে তালাশ করে, সে আগে দেখে — সমস্যা বড় হওয়ার আগেই। যে তালাশ করে না, সে অপেক্ষা করে — সমস্যা ফেটে পড়ার জন্য।</div>
 <div class="verse">"যারা আমার সন্ধানে চলে, আমি তাদের পথ দেখাই।"<br>— কুরআন</div>
@@ -452,8 +456,8 @@ doors.push({
   <line x1="40" y1="220" x2="520" y2="220" stroke="#5e5c74" stroke-width="1" stroke-dasharray="3 3"/>
   <text x="280" y="300" text-anchor="middle" fill="#5e5c74" font-size="9" font-style="italic">উপসংহার আগে, যাত্রা পরে — বিস্তারিত প্রশ্নের অপেক্ষায় থাকে</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: গল্পের খাঁজ — প্রতিটা প্রযুক্তিগত ব্যাখ্যা একটি গল্প: সেটআপ থেকে সমাধান, উপসংহার প্রথমে। তালাশ — সঠিক সমস্যার গল্প খোঁজো।</div></div>
+</div>
+<div class="svg-caption">চিত্র: গল্পের খাঁজ — প্রতিটা প্রযুক্তিগত ব্যাখ্যা একটি গল্প: সেটআপ থেকে সমাধান, উপসংহার প্রথমে। তালাশ — সঠিক সমস্যার গল্প খোঁজো।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— প্রযুক্তিগত গল্প টেমপ্লেট (Tech Story Template) —
 
@@ -481,6 +485,7 @@ doors.push({
 
   নিয়ম: যে গল্প বলে, সে মনে রাখায়।
          যে তথ্য গাদাগাদি করে, সে ভুলিয়ে দেয়।
+</div>
 </div>`,
   senior:{
     title:"Become a Problem Finder — This Week",

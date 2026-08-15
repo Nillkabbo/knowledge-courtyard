@@ -890,7 +890,8 @@ print(framework)
 <div class="svg-caption">চিত্র: Long Context সরল কিন্তু ব্যয়বহুল, RAG জটিল কিন্তু সস্তা — Hybrid সেরা</div>
 
 <div class="dialogue">কিয়াস — comparison, analogy। ইসলামী আইনে কিয়াস হলো — নতুন পরিস্থিতিতে পূর্ববর্তী নীতি প্রয়োগ করা। Long context নাকি RAG — এই সিদ্ধান্তও কিয়াস। প্রতিটা পরিস্থিতি আলাদা। প্রতিটার জন্য সঠিক পথ আলাদা। যে কিয়াস করতে পারে, সে সঠিক সিদ্ধান্ত নেয়। যে এক পথে আটকে থাকে, সে ভুল করে।</div>
-<div class="dialogue en">"Qiyas — comparison, analogy. In Islamic law, qiyas is applying prior principles to new situations. Long context or RAG — this decision is qiyas. Each situation is different. Each needs the right path. One who reasons, decides correctly. One who sticks to one path, errs."</div>`,
+<div class="dialogue en">"Qiyas — comparison, analogy. In Islamic law, qiyas is applying prior principles to new situations. Long context or RAG — this decision is qiyas. Each situation is different. Each needs the right path. One who reasons, decides correctly. One who sticks to one path, errs."</div>
+</div>`,
   senior:{
     title:"Decision Framework — তোমার প্রজেক্টে",
     body:`<p><strong>প্রশ্ন ১:</strong> কত ডকুমেন্ট? <৫০K → long context। >৫০K → RAG।</p><p><strong>প্রশ্ন ২:</strong> ডকুমেন্ট বাড়ে? হ্যাঁ → RAG। না → long context।</p><p><strong>প্রশ্ন ৩:</strong> Citation দরকার? হ্যাঁ → RAG।</p><p><strong>প্রশ্ন ৪:</strong> Cost গুরুত্বপূর্ণ? হ্যাঁ → RAG (শুধু ৫-১০K পাঠাও)।</p><p><strong>প্রশ্ন ৫:</strong> Multi-hop reasoning? হ্যাঁ → long context বা hybrid।</p>`

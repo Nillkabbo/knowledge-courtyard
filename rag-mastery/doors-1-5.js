@@ -511,7 +511,7 @@ PRODUCTION TOOLS (2024-2025):
   LlamaParse → LLM-powered, tables/charts ভালো
   Apache Tika → classic, broad format support
   Marker → PDF → Markdown, open-source
-  Docling → IBM, fast PDF parsing</div>
+  Docling → IBM, fast PDF parsing
 
 <div class="dialogue">তাহকিক — সত্যিকারের যাচাই, গবেষণা। কুরআনে আল্লাহ বলেন — "যদি কোনো ফাসিক তোমাদের কোনো খবর আনে, তবে যাচাই করো।" (৪৯:৬)। RAG-এর ingestion হলো সেই যাচাই — ডকুমেন্ট ঠিকমতো পড়ো, ফরম্যাট বুঝে পড়ো, ভুল তথ্য বাদ দাও। যাচাই ছাড়া RAG = জলের কুয়োয় বিষ।</div>
 <div class="dialogue en">"Tahqiq — true verification, research. Allah says — 'If a transgressor brings you news, verify it.' (49:6). RAG's ingestion is that verification — read documents correctly, understand the format, discard wrong information. Without verification, RAG = poison in the water well."</div>`,
@@ -1025,7 +1025,7 @@ print(checklist)
 # Invest in getting this right — it affects EVERYTHING downstream.</div>
   যখন embedding model বদলাও → সব পুনরায় embed
   → expensive! তাই model সঠিক বেছে নাও প্রথমে
-  → versioning: v1 ও v2 index একসাথে রাখো transition-এ</div>
+  → versioning: v1 ও v2 index একসাথে রাখো transition-এ
 
 <div class="dialogue">নিযাম — system, order, arrangement। কুরআনে আল্লাহ বলেন — "যিনি সবকিছু সৃষ্টি করেছেন এবং একটি নির্দিষ্ট নিয়মে সাজিয়েছেন।" (৮৭:২)। প্রকৃতিতে সব কিছু সুশৃঙ্খল — গ্রহ, পরমাণু, কোষ। Vector index-ও তেমনি — সুশৃঙ্খল বিন্যাস ছাড়া অসংখ্য ভেক্টরে হারিয়ে যাওয়া নিশ্চিত।</div>
 <div class="dialogue en">"Nizam — system, order, arrangement. Allah says — 'Who created all things and arranged them in due proportion.' (87:2). In nature, everything is ordered — planets, atoms, cells. Vector index too — without orderly arrangement, getting lost in millions of vectors is certain."</div>`,

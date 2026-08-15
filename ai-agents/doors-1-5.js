@@ -480,7 +480,7 @@ WHY AGENTS MATTER (2024-2025):
   • Devin → autonomous software engineer
   • AutoGPT → goal-driven autonomous loops
   • LangChain/LlamaIndex → agent frameworks
-  → এজেন্ট = AI-এর পরবর্তী ধাপ</div>
+  → এজেন্ট = AI-এর পরবর্তী ধাপ
 
 <div class="dialogue">খলিফা — প্রতিনিধি, উত্তরাধিকারী। কুরআনে আল্লাহ বলেন — "আমি পৃথিবীতে খলিফা স্থাপন করব।" (২:৩০)। খলিফা = যে আল্লাহর প্রতিনিধি হিসেবে কাজ করে — শুধু কথা নয়। এজেন্টও খলিফা — LLM-এর প্রতিনিধি যে কাজ করে। চ্যাটবট শুধু কথা বলে। এজেন্ট কাজ করে। এটাই খলিফা ও উপদেষ্টার পার্থক্য।</div>
 <div class="dialogue en">"Khalifa — representative, successor. Allah says — 'I will place a khalifa on earth.' (2:30). Khalifa = one who acts as Allah's representative — not just talks. An agent is a khalifa too — the LLM's representative that acts. A chatbot only talks. An agent acts. This is the difference between a representative and an advisor."</div>`,

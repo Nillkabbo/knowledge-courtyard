@@ -551,7 +551,7 @@ SERVING DECISION:
   Local/dev → Ollama
   Managed (no ops) → Together/Anyscale
   
-  Start: vLLM (most documented, most flexible)</div>
+  Start: vLLM (most documented, most flexible)
 
 <div style="text-align:center;margin:1.3rem 0">
 <svg viewBox="0 0 760 250" width="100%" style="max-width:760px;display:block;background:#070a0f;border:1px solid rgba(34,211,238,.18);border-radius:14px" font-family="Noto Sans Bengali,sans-serif" role="img" aria-label="MLOps pipeline">

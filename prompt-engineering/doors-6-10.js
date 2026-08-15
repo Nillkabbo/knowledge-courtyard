@@ -511,7 +511,7 @@ print(journey)
 সমাধান ৫: Pydantic/Zod Schema
   Python-এ Pydantic দিয়ে schema দাও
   → instructor, marvin, বা Outlines লাইব্রেরি
-  → ১০০% গ্যারান্টিড structured output</div>
+  → ১০০% গ্যারান্টিড structured output
 
 <div class="dialogue">ছাদ — আবরণ, ছাদ। কুরআনে আল্লাহ বলেন — "আমি আসমানকে করেছি সুরক্ষিত ছাদ।" (২১:৩২)। ছাদ ছাড়া বৃষ্টি, রোদ, ঝড় — সব আসে। কাঠামো ছাড়া LLM-এর আউটপুটও তেমনি — বিশৃঙ্খল, অনিশ্চিত, বিপজ্জনক। JSON schema হলো সেই ছাদ — আউটপুটকে সুরক্ষিত রাখে, নির্দিষ্ট আকারে বাধে।</div>
 <div class="dialogue en">"Chhad — cover, roof. Allah says — 'We made the sky a protected roof.' (21:32). Without a roof, rain, sun, storm — everything enters. Without structure, the LLM's output is the same — chaotic, uncertain, dangerous. JSON schema is that roof — keeps output protected, bound to a specific shape."</div>`,

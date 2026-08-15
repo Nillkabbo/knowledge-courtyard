@@ -34,18 +34,18 @@ doors.push({
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">~৬০-৮০%</div><div class="sc-label">গড় PhD ছাত্রের ব্যর্থ পরীক্ষা</div></div></div>
-<div class="stat-card"><div class="sc-num">~৬০-৭০%</div><div class="sc-label">প্রথম পেপার রিজেক্ট হার</div></div></div>
-<div class="stat-card"><div class="sc-num">~৭০-৮৫%</div><div class="sc-label">গ্রান্ট প্রপোজাল রিজেক্ট হার</div></div></div>
-</div></div>
+<div class="stat-card"><div class="sc-num">~৬০-৭০%</div><div class="sc-label">প্রথম পেপার রিজেক্ট হার</div></div>
+<div class="stat-card"><div class="sc-num">~৭০-৮৫%</div><div class="sc-label">গ্রান্ট প্রপোজাল রিজেক্ট হার</div></div>
 
-<div class="callout info"><span class="co-icon">💡</span><div>ব্যর্থতা থেকেই সাফল্য: Edison-এর হাজারো ব্যর্থ ফিলামেন্ট → বাল্ব; Fleming-এর "নষ্ট" পেট্রি ডিশ → পেনিসিলিন; 3M-এর "ব্যর্থ" দুর্বল আঠা → Post-it Note (billion-dollar product)।</div></div></div>
+
+<div class="callout info"><span class="co-icon">💡</span><div>ব্যর্থতা থেকেই সাফল্য: Edison-এর হাজারো ব্যর্থ ফিলামেন্ট → বাল্ব; Fleming-এর "নষ্ট" পেট্রি ডিশ → পেনিসিলিন; 3M-এর "ব্যর্থ" দুর্বল আঠা → Post-it Note (billion-dollar product)।</div></div>
 
 <table class="kv-table"><tr><th>ডেভেলপার মাইন্ডসেট</th><th>গবেষক মাইন্ডসেট</th></tr>
 <tr><td>"ব্যর্থ হলাম। আমি খারাপ।"</td><td>"ব্যর্থ হলো। কেন? কী শিখলাম?"</td></tr>
 <tr><td>"কাজ করল না। শেষ।"</td><td>"এই পথ ভুল — অন্য পথ খুঁজি।"</td></tr>
 <tr><td>"এটা সম্ভব নয়।"</td><td>"এই উপায়ে সম্ভব নয় — অন্য উপায় আছে।"</td></tr></table>
 
-<div class="callout tip"><span class="co-icon">🔄</span><div><strong>ব্যর্থতা প্রক্রিয়াকরণ — ৪ ধাপ:</strong></div></div></div>
+<div class="callout tip"><span class="co-icon">🔄</span><div><strong>ব্যর্থতা প্রক্রিয়াকরণ — ৪ ধাপ:</strong></div></div>
 <ul class="checklist">
 <li><strong>স্বীকার করো</strong> — "ব্যর্থ হয়েছে।" অস্বীকার নয়, লুকানো নয়।</li>
 <li><strong>বিশ্লেষণ করো</strong> — কোন ধাপে ভুল? কোন assumption ভেঙেছে?</li>
@@ -76,7 +76,7 @@ doors.push({
 <polygon points="480,130 486,124 486,136" fill="#ef4444" opacity="0.6"/>
 <text x="525" y="105" fill="#fca5a5" font-size="8">বাদ দাও</text>
 <text x="290" y="222" fill="#9290a8" font-size="9" text-anchor="middle">প্রতিটা ব্যর্থতা একটা ইট — সেই ইট দিয়েই সত্যের বাড়ি বানে</text>
-</svg><div class="svg-caption">ব্যর্থতা শত্রু নয় — গাইড। যে ব্যর্থতাকে ভালোবাসে, সে সত্য পায়।</div></div></div>
+</svg><div class="svg-caption">ব্যর্থতা শত্রু নয় — গাইড। যে ব্যর্থতাকে ভালোবাসে, সে সত্য পায়।</div></div>
 
 <div class="secret-box">🔥 রিসার্চ হলো ব্যর্থতার আরেক নাম। ৯০% ব্যর্থ, ১০% সফল। কিন্তু সেই ১০% পৃথিবী বদলায়। ব্যর্থতাকে ভয় পেও না — গাইড হিসেবে নাও।</div>`
 });
@@ -158,9 +158,9 @@ doors.push({
    - কোন প্রশ্নের উত্তর দেয়নি?
    → এটা তোমার সন্দেহ ধারালো করে</div></div>
 
-<div class="callout tip"><span class="co-icon">✊</span><div><strong>লেখার সোনার নিয়ম:</strong> লেখা = চিন্তা করা, ব্যাখ্যা করা নয়। লেখা কঠিন লাগলে → চিন্তা অস্পষ্ট। লেখা সহজ হলে → চিন্তা স্পষ্ট।</div></div></div>
+<div class="callout tip"><span class="co-icon">✊</span><div><strong>লেখার সোনার নিয়ম:</strong> লেখা = চিন্তা করা, ব্যাখ্যা করা নয়। লেখা কঠিন লাগলে → চিন্তা অস্পষ্ট। লেখা সহজ হলে → চিন্তা স্পষ্ট।</div></div>
 
-<div class="callout info"><span class="co-icon">🧠</span><div><strong>ফাইনম্যান টেকনিক:</strong> একটা কনসেপ্ট যেন একটা বাচ্চাকে বোঝাচ্ছ — কাগজে লেখো। যেখানে আটকে যাও, সেটাই তোমার সত্যিকারের ফাঁক।</div></div></div>
+<div class="callout info"><span class="co-icon">🧠</span><div><strong>ফাইনম্যান টেকনিক:</strong> একটা কনসেপ্ট যেন একটা বাচ্চাকে বোঝাচ্ছ — কাগজে লেখো। যেখানে আটকে যাও, সেটাই তোমার সত্যিকারের ফাঁক।</div></div>
 
 <div class="dialogue">"আরেকটা কথা," মরিয়ম বললেন। "রাইটিং ব্লক — লেখা শুরু করতে না পারা — সেটা আসলে থিংকিং ব্লক। তুমি লেখা শুরু করতে পারছ না কারণ তোমার মাথায় কিছু পরিষ্কার নেই। সমাধান? শুরু করো — যা মনে আসে লেখো। খারাপ লেখা ভালো লেখার চেয়ে ভালো, কারণ খারাপ লেখা বদলানো যায়। কিছু না লেখা বদলানো যায় না।"</div>
 <div class="dialogue en">"One more thing," Maryam said. "Writer's block — inability to start writing — is actually thinking block. You can't start because your head isn't clear. Solution? Start — write whatever comes. Bad writing is better than no writing, because bad writing can be fixed. Nothing can't be fixed."</div>
@@ -186,7 +186,7 @@ doors.push({
 <text x="420" y="155" fill="#3dd6c4" font-size="8" text-anchor="middle">সহজ লেখা</text>
 <text x="290" y="200" fill="#c4b5fd" font-size="9" text-anchor="middle">লেখা = চিন্তার আয়না — যা ফাঁক, দেখা যায়</text>
 <text x="290" y="222" fill="#9290a8" font-size="8" text-anchor="middle">খারাপ লেখা ভালো লেখার চেয়ে ভালো — কারণ বদলানো যায়</text>
-</svg><div class="svg-caption">লেখা শেখায় না — লেখা তোমাকে দেখায় তুমি কী জানো, কী জানো না।</div></div></div>
+</svg><div class="svg-caption">লেখা শেখায় না — লেখা তোমাকে দেখায় তুমি কী জানো, কী জানো না।</div></div>
 
 <div class="secret-box">✍️ লেখা শেখায় না — লেখা চিন্তা করায়। প্রতিদিন ১৫ মিনিট রিসার্চ ডায়েরি লেখো। যদি লেখা কঠিন লাগে — তোমার চিন্তা অস্পষ্ট। লেখো, পরিষ্কার হবে।</div>`
 });
@@ -228,14 +228,14 @@ doors.push({
 <tr><td class="hl">৩. স্বীকার</td><td>"আমি এটা জানি না। শিখতে চাই।"</td><td>✅ গবেষকের অবস্থা — খোলা, নম্র</td></tr>
 <tr><td class="hl">৪. শক্তি</td><td>"জানি না — সেটাই আমার শক্তি, কারণ তাই খুঁজছি।"</td><td>✊ সর্বোচ্চ (Socrates: "জানি যে কিছুই জানি না")</td></tr></table>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>অহংকারের ৩টা রূপ:</strong> "ভালো কোডার তাই ভালো গবেষক" (কোডিং টুল, গবেষণা চিন্তা) · "এই টেক জানি তাই সব জানি" (গবেষণা তো সেই টুলের সীমা খোঁজা) · "অভিজ্ঞ তাই শেখার নেই" (সবচেয়ে বিপজ্জনক — শেখা থামলে বাড়া থামে)।</div></div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>অহংকারের ৩টা রূপ:</strong> "ভালো কোডার তাই ভালো গবেষক" (কোডিং টুল, গবেষণা চিন্তা) · "এই টেক জানি তাই সব জানি" (গবেষণা তো সেই টুলের সীমা খোঁজা) · "অভিজ্ঞ তাই শেখার নেই" (সবচেয়ে বিপজ্জনক — শেখা থামলে বাড়া থামে)।</div></div>
 
-<div class="callout tip"><span class="co-icon">🙋</span><div><strong>"আমি জানি না" বলার সাহস:</strong> কনফারেন্সে — "এই অংশটা বুঝিনি, আরেকটু ব্যাখ্যা করবেন?" (কেউ হাসবে না, সম্মান করবে)। সিনিয়রকে — "এই সমীকরণ কীভাবে কাজ করে?" (তারা এই প্রশ্ন ভালোবাসে)। নিজেকে — "পুরোপুরি বুঝিনি, আবার পড়বো।" (সবচেয়ে গুরুত্বপূর্ণ — নিজের কাছে সৎ হওয়া)।</div></div></div>
+<div class="callout tip"><span class="co-icon">🙋</span><div><strong>"আমি জানি না" বলার সাহস:</strong> কনফারেন্সে — "এই অংশটা বুঝিনি, আরেকটু ব্যাখ্যা করবেন?" (কেউ হাসবে না, সম্মান করবে)। সিনিয়রকে — "এই সমীকরণ কীভাবে কাজ করে?" (তারা এই প্রশ্ন ভালোবাসে)। নিজেকে — "পুরোপুরি বুঝিনি, আবার পড়বো।" (সবচেয়ে গুরুত্বপূর্ণ — নিজের কাছে সৎ হওয়া)।</div></div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ অহংকারী মন</div>"আমি ৫ বছর ধরে কোড করছি। আমি LLM জানি। RAG জানি। আমার থেকে শেখার নেই।" — এই মন গবেষক হয় না। এই মন আটকে যায়। পাঁচ বছর পরেও একই জায়গায়।</div></div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ নম্র মন</div>"আমি কোড জানি, কিন্তু গবেষণা পদ্ধতি জানি না। পরিসংখ্যান জানি না। থিওরি জানি না। আমার শেখার অনেক কিছু আছে।" — এই মন গবেষক হয়। প্রতিদিন একটু একটু করে বাড়ে।</div></div>
-</div></div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ নম্র মন</div>"আমি কোড জানি, কিন্তু গবেষণা পদ্ধতি জানি না। পরিসংখ্যান জানি না। থিওরি জানি না। আমার শেখার অনেক কিছু আছে।" — এই মন গবেষক হয়। প্রতিদিন একটু একটু করে বাড়ে।</div>
+
 
 <div class="dialogue">"শেষ কথা," ইউসুফ বললেন। "বিনয় মানে দুর্বলতা নয়। বিনয় মানে শক্তি। যে বলতে পারে আমি জানি না — সে শক্তিশালী। কারণ সে নতুন কিছু গ্রহণ করতে প্রস্তুত। যে বলে আমি জানি — সে দুর্বল। কারণ সে বন্ধ। গবেষণায় সবচেয়ে বড় বাধা অজ্ঞতা নয় — অজ্ঞতা স্বীকার না করা।"</div>
 <div class="dialogue en">"Last word," Yusuf said. "Humility is not weakness. Humility is strength. One who can say I don't know — is strong. Because they're ready to receive new things. One who says I know — is weak. Because they're closed. In research, the biggest obstacle is not ignorance — it's not accepting ignorance."</div>
@@ -265,7 +265,7 @@ doors.push({
 <path d="M 200 215 Q 195 130 200 50" fill="none" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,3"/>
 <polygon points="200,50 195,60 205,60" fill="#34d399"/>
 <text x="160" y="135" fill="#3dd6c4" font-size="9" text-anchor="middle" transform="rotate(-90 160 135)">খোলা</text>
-</svg><div class="svg-caption">"আমি জানি না" — সবচেয়ে কঠিন, কিন্তু সবচেয়ে শক্তিশালী তিন শব্দ।</div></div></div>
+</svg><div class="svg-caption">"আমি জানি না" — সবচেয়ে কঠিন, কিন্তু সবচেয়ে শক্তিশালী তিন শব্দ।</div></div>
 
 <div class="secret-box">🤲 গবেষক হলো সে যে বলে — আমি জানি না। এই তিন শব্দ সবচেয়ে কঠিন, কিন্তু সবচেয়ে শক্তিশালী। অজ্ঞতা লজ্জা নয় — গবেষণার শুরু।</div>`
 });
@@ -301,19 +301,19 @@ doors.push({
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">১.৫-৩ বছর</div><div class="sc-label">প্রথম পেপার প্রকাশ</div></div></div>
-<div class="stat-card"><div class="sc-num">৩-৫ বছর</div><div class="sc-label">প্রথম গ্রান্ট লাভ</div></div></div>
-<div class="stat-card"><div class="sc-num">১-২ বছর</div><div class="sc-label">প্রকাশের পর প্রথম সাইটেশন</div></div></div>
-<div class="stat-card"><div class="sc-num">৬-৭ বছর</div><div class="sc-label">টেনিউর (পোস্ট-PhD)</div></div></div>
-</div></div>
+<div class="stat-card"><div class="sc-num">৩-৫ বছর</div><div class="sc-label">প্রথম গ্রান্ট লাভ</div></div>
+<div class="stat-card"><div class="sc-num">১-২ বছর</div><div class="sc-label">প্রকাশের পর প্রথম সাইটেশন</div></div>
+<div class="stat-card"><div class="sc-num">৬-৭ বছর</div><div class="sc-label">টেনিউর (পোস্ট-PhD)</div></div>
 
-<div class="callout tip"><span class="co-icon">🪨</span><div><strong>Duckworth-এর গ্রিট সূত্র:</strong> প্রতিভা * প্রচেষ্টা = দক্ষতা; দক্ষতা * প্রচেষ্টা = অর্জন। অর্থাৎ <strong>প্রতিভা * প্রচেষ্টা² = অর্জন</strong> — প্রচেষ্টা দুইবার গোনা হয়, প্রতিভার চেয়ে বেশি গুরুত্বপূর্ণ।</div></div></div>
+
+<div class="callout tip"><span class="co-icon">🪨</span><div><strong>Duckworth-এর গ্রিট সূত্র:</strong> প্রতিভা * প্রচেষ্টা = দক্ষতা; দক্ষতা * প্রচেষ্টা = অর্জন। অর্থাৎ <strong>প্রতিভা * প্রচেষ্টা² = অর্জন</strong> — প্রচেষ্টা দুইবার গোনা হয়, প্রতিভার চেয়ে বেশি গুরুত্বপূর্ণ।</div></div>
 
 <table class="kv-table"><tr><th>সময়সীমা</th><th>লক্ষ্য</th></tr>
 <tr><td class="hl">সপ্তাহ</td><td>একটা পেপার পড়ো, একটা নোট লেখো</td></tr>
 <tr><td class="hl">মাস</td><td>একটা সামারি — কী শিখলে, কোন কনসেপ্ট পরিষ্কার হলো</td></tr>
 <tr><td class="hl">বছর</td><td>একটা পেপার প্রস্তুত করো (৫ বছরে PhD, ১০ বছরে বিশেষজ্ঞ)</td></tr></table>
 
-<div class="callout info"><span class="co-icon">🌱</span><div><strong>গ্রিট বানানোর ৪টা অভ্যাস:</strong></div></div></div>
+<div class="callout info"><span class="co-icon">🌱</span><div><strong>গ্রিট বানানোর ৪টা অভ্যাস:</strong></div></div>
 <ul class="checklist">
 <li><strong>প্রতিদিন কাজ করো</strong> — এক ঘণ্টা হলেও। দৈনিক অভ্যাস &gt; মাঝেমধ্যে বড় পরিশ্রম।</li>
 <li><strong>ছোট সাপ্তাহিক লক্ষ্য</strong> — এক পেপার, এক নোট।</li>
@@ -323,8 +323,8 @@ doors.push({
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ স্প্রিন্টার মাইন্ডসেট</div>"আমি এই মাসে একটা পেপার লিখবো!" — এক সপ্তাহ পর হতাশ। ছেড়ে দিলে। আবার শুরু। আবার ছেড়ে। এই প্যাটার্নে কিছু হয় না। গবেষণা স্প্রিন্ট নয়।</div></div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ ম্যারাথনার মাইন্ডসেট</div>"আমি প্রতিদিন এক ঘণ্টা পড়বো। প্রতি সপ্তাহ একটা পেপার শেষ করবো। ছয় মাসে একটা আইডিয়া প্রস্তুত করবো।" — ধীর, কিন্তু অবিরাম। এক বছর পর দেখবে — অনেক দূর এসেছ।</div></div>
-</div></div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ ম্যারাথনার মাইন্ডসেট</div>"আমি প্রতিদিন এক ঘণ্টা পড়বো। প্রতি সপ্তাহ একটা পেপার শেষ করবো। ছয় মাসে একটা আইডিয়া প্রস্তুত করবো।" — ধীর, কিন্তু অবিরাম। এক বছর পর দেখবে — অনেক দূর এসেছ।</div>
+
 
 <div class="dialogue">"শেষ কথা," খাদিজা বললেন, বীজটা মাটিতে পুঁতে। "এই বীজ আজ পুঁতেছি। এক সপ্তাহ পর কিছু দেখবে না। এক মাস পর ছোট্ট চারা। এক বছর পর গাছ। দশ বছর পর ফল। তুমি যদি এক সপ্তাহ পর এসে বলো — কোথায় ফল? — তাহলে তুমি বীজ তুলে ফেলবে। আর কিছু হবে না। গবেষণা হলো বীজ পোতা। প্রতিদিন পানি দেওয়া। ধৈর্য ধরা। ফল আসবে — তার সময়ে।"</div>
 <div class="dialogue en">"Last word," Khadija said, burying the seed in soil. "This seed I planted today. In a week — nothing visible. In a month — a small shoot. In a year — a tree. In ten years — fruit. If you come in a week and say — where's the fruit? — you'll dig up the seed. And nothing will grow. Research is planting a seed. Watering every day. Being patient. The fruit will come — in its time."</div>
@@ -353,7 +353,7 @@ doors.push({
 <rect x="345" y="148" width="225" height="26" rx="6" fill="#f472b6" opacity="0.15" stroke="#f472b6"/>
 <text x="458" y="166" fill="#f9a8d4" font-size="10" text-anchor="middle">প্রতিভা * প্রচেষ্টা² = অর্জন</text>
 <text x="350" y="200" fill="#9290a8" font-size="8">প্রচেষ্টা দুইবার গোনা — প্রতিভার চেয়ে গুরুত্বপূর্ণ</text>
-</svg><div class="svg-caption">গবেষণা গাছের মতো — ধীর, কিন্তু যে থাকে সে ফল পায়।</div></div></div>
+</svg><div class="svg-caption">গবেষণা গাছের মতো — ধীর, কিন্তু যে থাকে সে ফল পায়।</div></div>
 
 <div class="secret-box">🪨 গবেষণা ম্যারাথন — স্প্রিন্ট নয়। প্রতিদিন এক ঘণ্টা, প্রতি সপ্তাহ এক পেপার, প্রতি মাস এক সামারি। ধীর, কিন্তু অবিরাম। প্রচেষ্টা প্রতিভার চেয়ে ১০ গুণ শক্তিশালী।</div>`
 });
@@ -402,12 +402,12 @@ doors.push({
 
 <div class="timeline">
 <div class="tl-step"><div class="tl-title">① কৌতূহল → ② প্রশ্ন → ③ পাঠ</div><div class="tl-body">অজানা থেকে জিজ্ঞাসা, জিজ্ঞাসা থেকে পড়া।</div></div></div>
-<div class="tl-step"><div class="tl-title">④ সন্দেহ → ⑤ সংযোগ → ⑥ ব্যর্থতা</div><div class="tl-body">যাচাই, ভিন্ন জগতের সংযোগ, পরীক্ষা ও ব্যর্থতা।</div></div></div>
-<div class="tl-step"><div class="tl-title">⑦ লেখা → ⑧ বিনয় → ⑨ অধ্যবসায়</div><div class="tl-body">লিখে স্পষ্ট করা, নিজের সীমা মানা, লেগে থাকা।</div></div></div>
-<div class="tl-step"><div class="tl-title">↻ আবার ① — নতুন কৌতূহল</div><div class="tl-body">চক্র থামে না — জীবনভর ঘোরে।</div></div></div>
-</div></div>
+<div class="tl-step"><div class="tl-title">④ সন্দেহ → ⑤ সংযোগ → ⑥ ব্যর্থতা</div><div class="tl-body">যাচাই, ভিন্ন জগতের সংযোগ, পরীক্ষা ও ব্যর্থতা।</div></div>
+<div class="tl-step"><div class="tl-title">⑦ লেখা → ⑧ বিনয় → ⑨ অধ্যবসায়</div><div class="tl-body">লিখে স্পষ্ট করা, নিজের সীমা মানা, লেগে থাকা।</div></div>
+<div class="tl-step"><div class="tl-title">↻ আবার ① — নতুন কৌতূহল</div><div class="tl-body">চক্র থামে না — জীবনভর ঘোরে।</div></div>
 
-<div class="callout tip"><span class="co-icon">🎓</span><div><strong>এক কথায়, গবেষক হওয়া মানে:</strong> শিশুর কৌতূহল + কারিগরের নিপুণতা + সন্ন্যাসীর ধৈর্য + যোদ্ধার সাহস = এমন একজন, যে জানে না, কিন্তু জানতে চায়, এবং জানা পর্যন্ত থামে না।</div></div></div>
+
+<div class="callout tip"><span class="co-icon">🎓</span><div><strong>এক কথায়, গবেষক হওয়া মানে:</strong> শিশুর কৌতূহল + কারিগরের নিপুণতা + সন্ন্যাসীর ধৈর্য + যোদ্ধার সাহস = এমন একজন, যে জানে না, কিন্তু জানতে চায়, এবং জানা পর্যন্ত থামে না।</div></div>
 
 <div class="dialogue">"এখন তুমি জিজ্ঞেস করবে," খাদিজা বললেন, "আমি কি PhD পাবো?" সব শিক্ষক হাসলেন। ইউসুফ বললেন: "এই প্রশ্নটা ভুল। সঠিক প্রশ্ন — আমার কি গবেষকের মন আছে? যদি থাকে, PhD হলো শুধু একটা ফলাফল। যদি না থাকে, PhD হলো শুধু একটা কাগজ।" ইব্রাহিম যোগ করলেন: "Research Pilgrimage বইটা তোমাকে শিখিয়েছে কীভাবে PhD পাবে। এই বই তোমাকে শিখিয়েছে — PhD পাওয়ার আগে তুমি কে হবে।"</div>
 <div class="dialogue en">"Now you'll ask," Khadija said, "will I get a PhD?" All teachers smiled. Yusuf said: "That's the wrong question. The right question — do I have a researcher's mind? If yes, PhD is just a result. If no, PhD is just a paper." Ibrahim added: "Research Pilgrimage taught you how to get a PhD. This book taught you — who you become before the PhD."</div>
@@ -438,7 +438,7 @@ doors.push({
 <path d="M 290 68 A 78 78 0 0 1 384 135" fill="none" stroke="#a78bfa" stroke-width="1" opacity="0.5" marker-end=""/>
 <path d="M 290 202 A 78 78 0 0 1 196 135" fill="none" stroke="#a78bfa" stroke-width="1" opacity="0.5"/>
 <text x="290" y="240" fill="#9290a8" font-size="8" text-anchor="middle">চক্র থামে না — জীবনভর ঘোরে</text>
-</svg><div class="svg-caption">নয়টা গুণ আলাদা নয় — এক মানুষের নয়টা রূপ, এক চক্রে বাঁধা।</div></div></div>
+</svg><div class="svg-caption">নয়টা গুণ আলাদা নয় — এক মানুষের নয়টা রূপ, এক চক্রে বাঁধা।</div></div>
 
 <div class="secret-box">🎓 তুমি এখন গবেষক। নয়টা গুণ, নয়জন শিক্ষক, এক পরিচয়। PhD হলো শুধু একটা ফলাফল — গবেষকের মনই আসল সম্পদ। এই মন নিয়ে চলো — জ্ঞানের চক্রে, জীবনভর।</div>`
 });

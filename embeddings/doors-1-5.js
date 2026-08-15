@@ -514,7 +514,7 @@ WHY EMBEDDINGS WORK:
   → model learns: similar context = similar embedding
   
   → THIS is the foundation of all embeddings
-  → meaning = context, context = geometry</div>
+  → meaning = context, context = geometry
 
 <div class="dialogue">মাআনি — meaning, semantics, significance। কুরআনে আল্লাহ বলেন — "আমি কুরআনকে সহজ করেছি বোঝার জন্য।" (৫৪:১৭)। বোঝা = অর্থ ধরা। Embedding-ও তেমনি — অর্থ ধরা, কিন্তু সংখ্যায়। ভাষা থেকে জ্যামিতি, জ্যামিতি থেকে অর্থ। মাআনি — অর্থের গুণ। যে অর্থ ধরে, সে বোঝে। যে ধরে না, সে অন্ধ।</div>
 <div class="dialogue en">"Maani — meaning, semantics, significance. Allah says — 'We have made the Quran easy to understand.' (54:17). Understanding = grasping meaning. Embeddings too — grasping meaning, but in numbers. Language to geometry, geometry to meaning. Maani — the virtue of meaning. One who grasps meaning, understands. One who doesn't, is blind."</div>

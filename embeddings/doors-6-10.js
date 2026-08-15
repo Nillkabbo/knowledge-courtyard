@@ -524,7 +524,7 @@ WHY NOT JUST USE MAX DIMENSIONS?
     ৭৬৮ dim cosine: ~০.৫ms per query (৪x faster!)
   
   → diminishing returns above ১০২৪ dim
-  → ৭৬৮-১০২৪ is optimal for most use cases</div>
+  → ৭৬৮-১০২৪ is optimal for most use cases
 
 <div class="dialogue">পরিমাণ — quantity, measure, proportion। কুরআনে আল্লাহ বলেন — "সবকিছু আমরা একটা নির্ধারিত পরিমাণে সৃষ্টি করেছি।" (৫৪:৪৯)। প্রতিটা জিনিসে সঠিক পরিমাণ। Embedding dimension-ও তেমনি — সঠিক পরিমাণ দরকার। বেশি নয়, কম নয়। যে সঠিক পরিমাণ জানে, সে সঠিক ভারসাম্য পায়।</div>
 <div class="dialogue en">"Pariman — quantity, measure, proportion. Allah says — 'We created all things in determined measure.' (54:49). Right amount in everything. Embedding dimension too — right amount needed. Not too much, not too little. One who knows the right amount, finds the right balance."</div>

@@ -1129,7 +1129,8 @@ print(n_squared)
 # Each token asks every other token: "how relevant are you to me?"</div>
 
 <div class="dialogue">নজর — দৃষ্টি, মনোযোগ। সুফি ঐতিয়া নজর বলে — কোথায় তাকাচ্ছ সেটাই তোমার অবস্থা নির্ধারণ করে। "যেখানে তোমার নজর, সেখানে তোমার অবস্থা।" LLM-এর attention-ও তেমনি — কোন শব্দের প্রতি নজর, সেটাই নির্ধারণ করে মডেল কী বোঝে। তোমার প্রম্পটে গুরুত্বপূর্ণ শব্দ কোথায় — সেটাই attention কোথায় যাবে নির্ধারণ করে।</div>
-<div class="dialogue en">"Nazar — gaze, attention. In Sufi tradition, 'where your gaze goes, there your state follows.' LLM attention too — which word gets attention determines what the model understands. Where you place important words in your prompt — determines where attention flows."</div>`,
+<div class="dialogue en">"Nazar — gaze, attention. In Sufi tradition, 'where your gaze goes, there your state follows.' LLM attention too — which word gets attention determines what the model understands. Where you place important words in your prompt — determines where attention flows."</div>
+</div>`,
   senior:{
     title:"Attention বোঝার উপযোগিতা — প্রোডাকশনে",
     body:`<p><strong>গুরুত্বপূর্ণ তথ্য শুরুতে বা শেষে দাও:</strong> attention এই অংশে সবচেয়ে বেশি।</p><p><strong>দীর্ঘ প্রম্পট ভাঙো:</strong> ১০০০+ টোকেনে attention দুর্বল হয়। ছোট প্রম্পট = তীক্ষ্ণ attention।</p><p><strong>শব্দের ক্রম গুরুত্বপূর্ণ:</strong> "A is better than B" এবং "B is better than A" — attention আলাদা, ফল আলাদা।</p>`

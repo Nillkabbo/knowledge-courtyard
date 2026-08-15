@@ -33,8 +33,8 @@ doors.push({
 <tr><td class="hl">Discussion</td><td>মানে কী; interpretation, limitation, future work</td></tr>
 <tr><td class="hl">Conclusion</td><td>abstract-এর সাথে মেলাও — না মিললে red flag</td></tr>
 <tr><td class="hl">References</td><td>জ্ঞানের শৃঙ্খল; চেনা পেপার আছে? citation count = প্রভাব</td></tr></table>
-<div class="callout info"><span class="co-icon">🔀</span><div><strong>পড়ার ক্রম উদ্দেশ্যভেদে (শুরু-থেকে-শেষ নয়):</strong> Beginner — Title→Abstract→Intro(skim)→Conclusion→Refs (৫ মিনিট)। Engineer — Abstract→Methods→Results(figures)→code link। Scientist — Abstract→Methods(deep)→Results→Discussion→stats। PhD — Abstract→Related Work→Intro→future work→Methods। Reviewer — Abstract→Conclusion→Methods→Results→Intro(শেষে)।</div></div></div>
-<div class="callout tip"><span class="co-icon">📊</span><div><strong>Figures-first:</strong> বেশিরভাগ পেপারে figure-ই গল্প বলে (Fig 1 overview, Fig 2 "money figure", Fig 3 ablation)। আগে সব figure + caption পড়ো → "এরা কী গল্প বলছে?" → তারপর text। ভালো পেপারের figure text ছাড়াই দাঁড়াতে পারে; না পারলে দুর্বল পেপার।</div></div></div>
+<div class="callout info"><span class="co-icon">🔀</span><div><strong>পড়ার ক্রম উদ্দেশ্যভেদে (শুরু-থেকে-শেষ নয়):</strong> Beginner — Title→Abstract→Intro(skim)→Conclusion→Refs (৫ মিনিট)। Engineer — Abstract→Methods→Results(figures)→code link। Scientist — Abstract→Methods(deep)→Results→Discussion→stats। PhD — Abstract→Related Work→Intro→future work→Methods। Reviewer — Abstract→Conclusion→Methods→Results→Intro(শেষে)।</div></div>
+<div class="callout tip"><span class="co-icon">📊</span><div><strong>Figures-first:</strong> বেশিরভাগ পেপারে figure-ই গল্প বলে (Fig 1 overview, Fig 2 "money figure", Fig 3 ablation)। আগে সব figure + caption পড়ো → "এরা কী গল্প বলছে?" → তারপর text। ভালো পেপারের figure text ছাড়াই দাঁড়াতে পারে; না পারলে দুর্বল পেপার।</div></div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -62,8 +62,8 @@ doors.push({
 <rect x="20" y="226" width="540" height="18" rx="5" fill="#0d1526" stroke="#52c41a" stroke-width="1.5" stroke-dasharray="3,2"/>
 <text x="290" y="239" text-anchor="middle" fill="#4ade80" font-size="10">References — জ্ঞানের শৃঙ্খল; প্রতিটা দাবির সংযোগ</text>
 </svg>
-</div></div>
-<div class="svg-caption">IMRaD কাঠামো — প্রতিটা সেকশনের নির্দিষ্ট কাজ, সঠিক ক্রমে সাজানো</div></div>
+</div>
+<div class="svg-caption">IMRaD কাঠামো — প্রতিটা সেকশনের নির্দিষ্ট কাজ, সঠিক ক্রমে সাজানো</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>Paper Anatomy — IMRaD Section Map:
 
@@ -138,9 +138,9 @@ doors.push({
 <tr><td>এটা কি USE করতে পারি?</td><td>এটা কি VALID?</td></tr>
 <tr><td>কত দ্রুত? কোড আছে? license?</td><td>কীভাবে মাপা হলো? কী data?</td></tr>
 <tr><td>Deploy করতে পারি? production-ready?</td><td>replicate করা যায়? significant?</td></tr></table>
-<div class="callout info"><span class="co-icon">🔧</span><div><strong>Engineer-এর protocol:</strong> ① আগে code/data খোঁজো (GitHub, Papers With Code, Hugging Face; কোড না থাকলে low priority)। ② Methods পড়ো spec-এর মতো (architecture, hyperparameter, GPU, dataset)। ③ Benchmark check — উন্নতি real না marginal? baseline fair? inference speed? ④ প্রযোজ্য হলে <em>তোমার</em> data-তে চালিয়ে reproduce করো। ⑤ core pattern বের করো — কোন অংশ adapt/combine করতে পারি?</div></div></div>
-<div class="callout tip"><span class="co-icon">🐙</span><div><strong>Papers With Code (paperswithcode.com)</strong> = engineer-এর best friend: প্রতিটা পেপার + implementation, task-ভিত্তিক leaderboard, SOTA। Workflow: সমস্যা search → benchmark-এ sort → code/license/recency check → পেপার পড়ে method বোঝা → clone→run→adapt। শিল্প এভাবেই academic research ব্যবহার করে (Google BERT পড়ে→বানায়→deploy করে)।</div></div></div>
-<div class="callout warn"><span class="co-icon">🚫</span><div><strong>কোড না থাকলে:</strong> Papers With Code-এ reproduction খোঁজো · GitHub-এ community implementation · পেপার থেকে নিজে implement (কঠিন কিন্তু মূল্যবান) · লেখককে email (অনেকে privately share করে) · পরের পেপার উন্নত করে কোড ছেড়েছে কিনা দেখো।</div></div></div>
+<div class="callout info"><span class="co-icon">🔧</span><div><strong>Engineer-এর protocol:</strong> ① আগে code/data খোঁজো (GitHub, Papers With Code, Hugging Face; কোড না থাকলে low priority)। ② Methods পড়ো spec-এর মতো (architecture, hyperparameter, GPU, dataset)। ③ Benchmark check — উন্নতি real না marginal? baseline fair? inference speed? ④ প্রযোজ্য হলে <em>তোমার</em> data-তে চালিয়ে reproduce করো। ⑤ core pattern বের করো — কোন অংশ adapt/combine করতে পারি?</div></div>
+<div class="callout tip"><span class="co-icon">🐙</span><div><strong>Papers With Code (paperswithcode.com)</strong> = engineer-এর best friend: প্রতিটা পেপার + implementation, task-ভিত্তিক leaderboard, SOTA। Workflow: সমস্যা search → benchmark-এ sort → code/license/recency check → পেপার পড়ে method বোঝা → clone→run→adapt। শিল্প এভাবেই academic research ব্যবহার করে (Google BERT পড়ে→বানায়→deploy করে)।</div></div>
+<div class="callout warn"><span class="co-icon">🚫</span><div><strong>কোড না থাকলে:</strong> Papers With Code-এ reproduction খোঁজো · GitHub-এ community implementation · পেপার থেকে নিজে implement (কঠিন কিন্তু মূল্যবান) · লেখককে email (অনেকে privately share করে) · পরের পেপার উন্নত করে কোড ছেড়েছে কিনা দেখো।</div></div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -157,8 +157,8 @@ doors.push({
 <rect x="20" y="208" width="520" height="30" rx="6" fill="#0d1526" stroke="#52c41a" stroke-width="2"/>
 <text x="280" y="227" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">⑤ core pattern — কোন অংশ adapt / combine করবে?</text>
 </svg>
-</div></div>
-<div class="svg-caption">ইঞ্জিনিয়ারের পাঠপথ — কোড, spec, benchmark, প্রয়োগের চোখ</div></div>
+</div>
+<div class="svg-caption">ইঞ্জিনিয়ারের পাঠপথ — কোড, spec, benchmark, প্রয়োগের চোখ</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>Engineer Paper Note Template:
 
@@ -226,14 +226,14 @@ doors.push({
 <tr><td class="hl">n ৩০-১০০</td><td>ছোট study</td></tr>
 <tr><td class="hl">n ১০০-১০০০</td><td>যুক্তিসঙ্গত</td></tr>
 <tr><td class="hl">n &gt; ১০,০০০</td><td>খুব শক্তিশালী</td></tr></table>
-<div class="callout info"><span class="co-icon">🔬</span><div><strong>৭-পয়েন্ট verification:</strong> ① Sample size (ML: dataset কত বড়, কয়টা benchmark)। ② Methodology (RCT gold; ML: proper train/test split, test-set leakage নেই, test-set-এ tuning = cheating)। ③ Statistics (p&lt;০.০৫ কিন্তু effect size? variance? কয় বার run?)। ④ Baselines (SOTA-র সাথে তুলনা নাকি দুর্বল পুরোনো method?)। ⑤ Reproducibility (code/data/seed?)। ⑥ Limitations (সততার সাথে স্বীকার?)। ⑦ Funding/conflict।</div></div></div>
-<div class="callout warn"><span class="co-icon">🚩</span><div><strong>RED FLAG:</strong> "p&lt;০.০৫" কিন্তু effect size নেই — বড় n-এ ০.১% উন্নতিও "significant" হতে পারে, কিন্তু অর্থহীন। "৯৯% accuracy" → কোন data-তে? "outperforms baselines" → কোন baseline, fair তুলনা? "Code coming soon" = সাধারণত আসে না।</div></div></div>
+<div class="callout info"><span class="co-icon">🔬</span><div><strong>৭-পয়েন্ট verification:</strong> ① Sample size (ML: dataset কত বড়, কয়টা benchmark)। ② Methodology (RCT gold; ML: proper train/test split, test-set leakage নেই, test-set-এ tuning = cheating)। ③ Statistics (p&lt;০.০৫ কিন্তু effect size? variance? কয় বার run?)। ④ Baselines (SOTA-র সাথে তুলনা নাকি দুর্বল পুরোনো method?)। ⑤ Reproducibility (code/data/seed?)। ⑥ Limitations (সততার সাথে স্বীকার?)। ⑦ Funding/conflict।</div></div>
+<div class="callout warn"><span class="co-icon">🚩</span><div><strong>RED FLAG:</strong> "p&lt;০.০৫" কিন্তু effect size নেই — বড় n-এ ০.১% উন্নতিও "significant" হতে পারে, কিন্তু অর্থহীন। "৯৯% accuracy" → কোন data-তে? "outperforms baselines" → কোন baseline, fair তুলনা? "Code coming soon" = সাধারণত আসে না।</div></div>
 <table class="kv-table"><tr><th>দাবি</th><th>কী check করবে</th></tr>
 <tr><td class="hl">"X% accuracy"</td><td>কোন data? কোন split?</td></tr>
 <tr><td class="hl">"significant improvement"</td><td>effect size? variance? কয় run?</td></tr>
 <tr><td class="hl">"state of the art"</td><td>কীসের সাথে তুলনা? কবে?</td></tr>
 <tr><td class="hl">"real-time"</td><td>কোন hardware-এ?</td></tr></table>
-<div class="callout tip"><span class="co-icon">⭐</span><div><strong>Trust level (১-৫):</strong> ৫ = সম্পূর্ণ বিশ্বাস, cite করব · ৪ = মোটামুটি, ছোট উদ্বেগ · ৩ = mixed, সতর্কতায় ব্যবহার · ২ = গুরুতর উদ্বেগ · ১ = বিশ্বাস কোরো না। শুধু ৪+ পেপারের method <em>ব্যবহার</em> করো — তোমার প্রজেক্ট যে গবেষণার উপর দাঁড়ায় তার মানের উপর নির্ভরশীল।</div></div></div>
+<div class="callout tip"><span class="co-icon">⭐</span><div><strong>Trust level (১-৫):</strong> ৫ = সম্পূর্ণ বিশ্বাস, cite করব · ৪ = মোটামুটি, ছোট উদ্বেগ · ৩ = mixed, সতর্কতায় ব্যবহার · ২ = গুরুতর উদ্বেগ · ১ = বিশ্বাস কোরো না। শুধু ৪+ পেপারের method <em>ব্যবহার</em> করো — তোমার প্রজেক্ট যে গবেষণার উপর দাঁড়ায় তার মানের উপর নির্ভরশীল।</div></div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -273,8 +273,8 @@ doors.push({
 <text x="290" y="216" text-anchor="middle" fill="#f06292" font-size="9" font-weight="bold">⑦ Funding / Conflict of interest</text>
 <text x="290" y="230" text-anchor="middle" fill="#94a3b8" font-size="10">স্বাধীন? কোম্পানির টাকা? personal stake?</text>
 </svg>
-</div></div>
-<div class="svg-caption">তাহকিক — প্রতিটা দাবি সাত মাপকাঠিতে যাচাই</div></div>
+</div>
+<div class="svg-caption">তাহকিক — প্রতিটা দাবি সাত মাপকাঠিতে যাচাই</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>Scientist Verification Checklist (Trust 1-5):
 
@@ -347,21 +347,21 @@ doors.push({
 <div class="dialogue">বৈজ্ঞানিকের চোখ বলেছিলেন — যাচাই করো। কিন্তু আমি বলি — যাচাই করা শুরু। এর পরে আসে gap। প্রতিটা paper একটা পথের অংশ — কিন্তু পথ শেষ নয়। প্রতিটা paper-এর পরে নতুন প্রশ্ন জন্ম যায়। PhD ছাত্র সেই প্রশ্ন খোঁজে। Andrew Ng বলেন — ৫-২০ paper পড়লে একটা subfield-এ current হওয়া যায়। তুমি দেখো — পুরো landscape, কোথায় গ্যাপ, কোথায় তোমার contribution।</div>
 <div class="dialogue en">"The scientist's eye said — verify. But I say — verification is the beginning. After that comes the gap. Each paper is part of a path — but the path isn't finished. Each paper births new questions. A PhD student seeks those questions. Andrew Ng says — read 5-20 papers to become current in a subfield. You see — the whole landscape, where the gaps are, where YOUR contribution fits."</div>
 
-<div class="callout info"><span class="co-icon">🎓</span><div><strong>Andrew Ng (Stanford):</strong> "একটা নির্দিষ্ট area-তে ৫-২০ পেপার পড়লে ভালো বোঝা, ৫০-১০০ পড়লে খুব গভীর বোঝা।" তার ক্রম: Title+Abstract+Figures (৬০ সেকেন্ড) → Intro+Conclusion (৫ মিনিট) → Methods (প্রথমে proof বাদ) → References (পরে কী পড়ব)।</div></div></div>
+<div class="callout info"><span class="co-icon">🎓</span><div><strong>Andrew Ng (Stanford):</strong> "একটা নির্দিষ্ট area-তে ৫-২০ পেপার পড়লে ভালো বোঝা, ৫০-১০০ পড়লে খুব গভীর বোঝা।" তার ক্রম: Title+Abstract+Figures (৬০ সেকেন্ড) → Intro+Conclusion (৫ মিনিট) → Methods (প্রথমে proof বাদ) → References (পরে কী পড়ব)।</div></div>
 <div class="timeline">
 <div class="tl-step"><div class="tl-when">Step ১</div><div class="tl-title">📖 Survey দিয়ে শুরু</div><div class="tl-body">"[topic] survey/review" — পুরো field-এর ম্যাপ; আগে পড়লে landscape হাতে আসে।</div></div></div>
-<div class="tl-step"><div class="tl-when">Step ২</div><div class="tl-title">🔗 Citation tracing</div><div class="tl-body">Backward (survey-এর references = foundational) + Forward (Scholar "Cited by" = সাম্প্রতিক)।</div></div></div>
-<div class="tl-step"><div class="tl-when">Step ৩</div><div class="tl-title">🧩 Cluster চেনো</div><div class="tl-body">পেপার approach-অনুযায়ী দল বাঁধে (transformer-based / CNN-based / hybrid) — প্রতিটা cluster = এক approach।</div></div></div>
-<div class="tl-step"><div class="tl-when">Step ৪</div><div class="tl-title">🎯 Edge খোঁজো</div><div class="tl-body">প্রতিটা cluster কী সমাধান করেনি? সাধারণ limitation কী? ৩+ পেপার "future work"-এ একই জিনিস বললে = আসল gap।</div></div></div>
-</div></div>
-<div class="callout tip"><span class="co-icon">💡</span><div><strong>Gap-finding প্রশ্ন:</strong> কেউ কী address করে না? সবাই কী <em>ধরে নেয় কিন্তু যাচাই করে না</em>? কোন trade-off কেউ explore করেনি? সবাই যে "future work" বলে? তোমার domain-এ কী কাজ করবে? (English→Bengali, image→document = বৈধ contribution)।</div></div></div>
-<div class="callout info"><span class="co-icon">📝</span><div><strong>Literature review = তালিকা নয়, narrative:</strong> "প্রথম দিকের approach [A]-তে focus করত, কিন্তু [সমস্যা]-য় সীমিত। B [method] দিয়ে সমাধান করল, [ফল] পেল, তবু [limitation] থাকল। এটা [তোমার contribution]-এর সুযোগ দেখায়।" Approach-অনুযায়ী সাজাও, evolution দেখাও, consensus ও debate চিহ্নিত করো, gap দিয়ে শেষ করো।</div></div></div>
+<div class="tl-step"><div class="tl-when">Step ২</div><div class="tl-title">🔗 Citation tracing</div><div class="tl-body">Backward (survey-এর references = foundational) + Forward (Scholar "Cited by" = সাম্প্রতিক)।</div></div>
+<div class="tl-step"><div class="tl-when">Step ৩</div><div class="tl-title">🧩 Cluster চেনো</div><div class="tl-body">পেপার approach-অনুযায়ী দল বাঁধে (transformer-based / CNN-based / hybrid) — প্রতিটা cluster = এক approach।</div></div>
+<div class="tl-step"><div class="tl-when">Step ৪</div><div class="tl-title">🎯 Edge খোঁজো</div><div class="tl-body">প্রতিটা cluster কী সমাধান করেনি? সাধারণ limitation কী? ৩+ পেপার "future work"-এ একই জিনিস বললে = আসল gap।</div></div>
+
+<div class="callout tip"><span class="co-icon">💡</span><div><strong>Gap-finding প্রশ্ন:</strong> কেউ কী address করে না? সবাই কী <em>ধরে নেয় কিন্তু যাচাই করে না</em>? কোন trade-off কেউ explore করেনি? সবাই যে "future work" বলে? তোমার domain-এ কী কাজ করবে? (English→Bengali, image→document = বৈধ contribution)।</div></div>
+<div class="callout info"><span class="co-icon">📝</span><div><strong>Literature review = তালিকা নয়, narrative:</strong> "প্রথম দিকের approach [A]-তে focus করত, কিন্তু [সমস্যা]-য় সীমিত। B [method] দিয়ে সমাধান করল, [ফল] পেল, তবু [limitation] থাকল। এটা [তোমার contribution]-এর সুযোগ দেখায়।" Approach-অনুযায়ী সাজাও, evolution দেখাও, consensus ও debate চিহ্নিত করো, gap দিয়ে শেষ করো।</div></div>
 <table class="kv-table"><tr><th>AI paper tool (2024-26)</th><th>কাজ</th></tr>
 <tr><td class="hl">Elicit</td><td>LLM literature review, পেপার জুড়ে Q&amp;A, extraction</td></tr>
 <tr><td class="hl">Consensus</td><td>200M+ পেপারে search, প্রশ্নের পক্ষে/বিপক্ষে claim</td></tr>
 <tr><td class="hl">NotebookLM</td><td>multi-PDF synthesis, source-grounded Q&amp;A</td></tr>
 <tr><td class="hl">scite.ai</td><td>citation context — supporting/contradicting/mentioning</td></tr></table>
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Hybrid workflow:</strong> AI করে first-pass summary, claim extraction, related/contradicting work খোঁজা (Keshav Pass ১ ৫ সেকেন্ডে)। <em>তুমি করো</em> verification, deep reading (Pass ২-৩), credibility বিচার, hallucination ধরা। সবসময় source PDF যাচাই করো — AI ভুল বা অস্তিত্বহীন citation বানাতে পারে। এটাই Door 3-এর scientist's eye-এর আধুনিক রূপ।</div></div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Hybrid workflow:</strong> AI করে first-pass summary, claim extraction, related/contradicting work খোঁজা (Keshav Pass ১ ৫ সেকেন্ডে)। <em>তুমি করো</em> verification, deep reading (Pass ২-৩), credibility বিচার, hallucination ধরা। সবসময় source PDF যাচাই করো — AI ভুল বা অস্তিত্বহীন citation বানাতে পারে। এটাই Door 3-এর scientist's eye-এর আধুনিক রূপ।</div></div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -383,8 +383,8 @@ doors.push({
 <rect x="20" y="222" width="540" height="20" rx="5" fill="#0d1526" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2"/>
 <text x="290" y="235" text-anchor="middle" fill="#fbbf24" font-size="10">Andrew Ng (Stanford): ৫-২০ paper = current · ৫০-১০০ = গভীর</text>
 </svg>
-</div></div>
-<div class="svg-caption">PhD পাঠকের যাত্রা — survey থেকে gap পর্যন্ত, জ্ঞানের landscape ম্যাপ করা</div></div>
+</div>
+<div class="svg-caption">PhD পাঠকের যাত্রা — survey থেকে gap পর্যন্ত, জ্ঞানের landscape ম্যাপ করা</div>
 
 <div class="verse">قُلْ سِيرُوا فِي الْأَرْضِ فَانظُرُوا</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"তোমরা পৃথিবীতে ভ্রমণ করো এবং দেখো।" — কুরআন ৩০:৪২</div>
@@ -448,8 +448,8 @@ doors.push({
 <rect x="60" y="214" width="460" height="24" rx="5" fill="#0d1526" stroke="#f06292" stroke-width="1" stroke-dasharray="3,2"/>
 <text x="290" y="229" text-anchor="middle" fill="#f06292" font-size="10">ভুল প্রশ্ন = ৬ মাস ভুল দিকে · সঠিক প্রশ্ন = ৬ মাস সঠিক দিকে</text>
 </svg>
-</div></div>
-<div class="svg-caption">নিয়্যাত — gap থেকে সঠিক প্রশ্ন, FINER যাচাইয়ে ছাঁচা</div></div>
+</div>
+<div class="svg-caption">নিয়্যাত — gap থেকে সঠিক প্রশ্ন, FINER যাচাইয়ে ছাঁচা</div>
 
 <div class="dialogue">PhD পাঠক বলেছিলেন — gap খোঁজো। কিন্তু আমি বলি — gap খুঁজে পাওয়া সাফরের মাঝপথ। বাকি অর্ধেক — gap থেকে প্রশ্ন ছাঁচো। ভালো প্রশ্ন। কারণ গবেষণা = প্রশ্নের উত্তর। ভুল প্রশ্ন = ভুল দিকে ৬ মাস। সঠিক প্রশ্ন = সঠিক দিকে ৬ মাস। পার্থক্য = সময়, শক্তি, মূল্য। নিয়্যাত — উদ্দেশ্য। যে সঠিক উদ্দেশ্য নিয়ে প্রশ্ন করে, সে সঠিক উত্তর পায়।</div>
 <div class="dialogue en">"The PhD reader said — find gaps. But I say — finding the gap is halfway. The other half — form a question from the gap. A good question. Because research = answering questions. Wrong question = 6 months in wrong direction. Right question = 6 months in right direction. The difference = time, energy, value. Niyyah — intention. One who asks with right intention, gets right answers."</div>`,

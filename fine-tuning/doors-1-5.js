@@ -434,7 +434,7 @@ FINE-TUNING USE CASES (যখন সত্যিই দরকার):
      → fine-tuning-এ consistent
 
   ✅ Tone/Personality:
-     ব্র্যান্ড ভয়েস, কাস্টম পার্সোনালিটি</div>
+     ব্র্যান্ড ভয়েস, কাস্টম পার্সোনালিটি
 
 <div class="dialogue">হিকমাহ — প্রজ্ঞা, সঠিক সিদ্ধান্ত। কুরআনে আল্লাহ বলেন — "যাকে হিকমাহ দিয়েছেন, তাকে প্রচুর কল্যাণ দিয়েছেন।" (২:২৬৯)। হিকমাহ হলো — সঠিক সময়ে সঠিক সরঞ্জাম বেছে নেওয়া। সব সমস্যায় fine-tuning নয়, সব সমস্যায় RAG নয়। প্রতিটা সমস্যা বুঝে সিদ্ধান্ত নাও। এটাই হিকমাহ।</div>
 <div class="dialogue en">"Hikmah — wisdom, right decision. Allah says — 'Whoever is given wisdom, has been given much good.' (2:269). Hikmah is — choosing the right tool at the right time. Not fine-tuning for every problem, not RAG for every problem. Understand each problem, then decide. This is hikmah."</div>
@@ -1236,7 +1236,8 @@ COMPARISON:
 </svg>
 </div>
 
-`,
+
+</div>`,
   senior:{
     title:"Method Selection — তোমার প্রজেক্টে",
     body:`<p><strong>প্রথম fine-tuning?</strong> → SFT। সহজ, well-documented, ৯০% ক্ষেত্রে যথেষ্ট।</p><p><strong>SFT ভালো কিন্তু আরও ভালো চাও?</strong> → DPO। SFT model-কে preference data দিয়ে refine করো।</p><p><strong>Production alignment?</strong> → PPO বা RLHF। কিন্তু জটিল, সম্পদ চায়। একা ট্রাই করবে না।</p><p><strong>Reasoning model বানাতে চাও (2025)?</strong> → GRPO (DeepSeek-R1 এর পদ্ধতি)। PPO-এর চেয়ে সহজ, value model লাগে না।</p><p><strong>2024-2025 trend:</strong> DPO SFT-এর পরে স্ট্যান্ডার্ড। GRPO reasoning model-এ standard (DeepSeek-R1, o1-style)।</p>`

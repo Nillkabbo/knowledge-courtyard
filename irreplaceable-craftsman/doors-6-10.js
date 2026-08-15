@@ -21,7 +21,7 @@ doors.push({
 <div class="dialogue">Problem finding বলেছিলেন — সমস্যা খুঁজো। কিন্তু আমি বলি — সমস্যা খুঁজলেও দলকে বোঝাতে না পারলে কিছু হবে না। যোগাযোগ ছাড়া তুমি একা। একা প্রতিভা সীমিত। দল প্রতিভা অসীম। স্পষ্ট বাক্য = ১০x multiplier। যে স্পষ্ট বলে, সে দল নির্দেশ দেয়। যে অস্পষ্ট বলে, সে বিভ্রান্তি ছড়ায়।</div>
 <div class="dialogue en">"Problem finding said — find problems. But I say — even if you find problems, without communicating them to the team, nothing happens. Without communication, you're alone. Solo talent is limited. Team talent is infinite. Clear speech = 10x multiplier. One who speaks clearly, directs the team. One who speaks unclearly, spreads confusion."</div>
 
-<div class="callout info"><span class="co-icon">✖️</span><div><strong>যোগাযোগ = #১ senior skill:</strong> senior-এর কাজ বেশি কোড লেখা নয় — টিমের output গুণ করা। IC = নিজের কোড = ১x। ভালো যোগাযোগকারী senior = টিম output = ৫-১০x। খারাপ যোগাযোগকারী = নিজের কোড + টিম confusion = <strong>০.৫x (negative multiplier!)</strong> — misalignment, rework, conflict।</div></div></div>
+<div class="callout info"><span class="co-icon">✖️</span><div><strong>যোগাযোগ = #১ senior skill:</strong> senior-এর কাজ বেশি কোড লেখা নয় — টিমের output গুণ করা। IC = নিজের কোড = ১x। ভালো যোগাযোগকারী senior = টিম output = ৫-১০x। খারাপ যোগাযোগকারী = নিজের কোড + টিম confusion = <strong>০.৫x (negative multiplier!)</strong> — misalignment, rework, conflict।</div></div>
 
 <table class="kv-table"><tr><th>স্তর</th><th>কাকে</th><th>কীভাবে</th></tr>
 <tr><td class="hl">১. Peers</td><td>অন্য engineer</td><td>code review, design doc — shared technical understanding</td></tr>
@@ -34,9 +34,9 @@ doors.push({
 <tr><td class="hl">Postmortem</td><td>ব্যর্থতা থেকে শেখা — পুনরাবৃত্তি রোধ</td></tr>
 <tr><td class="hl">Decision log</td><td>X কেন ঠিক হলো — বারবার তর্ক রোধ</td></tr></table>
 
-<div class="callout tip"><span class="co-icon">🗣️</span><div><strong>Great communication-এর ৫ প্যাটার্ন:</strong> ① <strong>Conclusion আগে</strong> — প্রথম বাক্যই উত্তর, journey নয়। ② <strong>Analogy</strong> non-technical-দের জন্য ("index হলো library catalog")। ③ <strong>সংখ্যায় বলো</strong> — "pretty fast" নয়, "৪.২s → ০.৮s, ৫x"। ④ <strong>Write once, read many</strong> — ২ ঘণ্টার doc ১৫ জন পড়ে; meeting-এর চেয়ে ৫x efficient। ⑤ <strong>Disagree gracefully</strong> — "That's wrong" নয়, "আমি ভিন্নভাবে দেখি, আমার উদ্বেগ..."।</div></div></div>
+<div class="callout tip"><span class="co-icon">🗣️</span><div><strong>Great communication-এর ৫ প্যাটার্ন:</strong> ① <strong>Conclusion আগে</strong> — প্রথম বাক্যই উত্তর, journey নয়। ② <strong>Analogy</strong> non-technical-দের জন্য ("index হলো library catalog")। ③ <strong>সংখ্যায় বলো</strong> — "pretty fast" নয়, "৪.২s → ০.৮s, ৫x"। ④ <strong>Write once, read many</strong> — ২ ঘণ্টার doc ১৫ জন পড়ে; meeting-এর চেয়ে ৫x efficient। ⑤ <strong>Disagree gracefully</strong> — "That's wrong" নয়, "আমি ভিন্নভাবে দেখি, আমার উদ্বেগ..."।</div></div>
 
-<div class="callout info"><span class="co-icon">🧠</span><div><strong>Feynman test:</strong> non-technical কাউকে সরলভাবে বোঝাতে না পারলে তুমি নিজেই পুরোপুরি বোঝোনি। শেষ প্রজেক্টটা দাদিকে বোঝাও — বুঝলে তুমি বুঝেছ; confused হলে তুমি jargon-এর পেছনে লুকিয়ে আছ।</div></div></div>
+<div class="callout info"><span class="co-icon">🧠</span><div><strong>Feynman test:</strong> non-technical কাউকে সরলভাবে বোঝাতে না পারলে তুমি নিজেই পুরোপুরি বোঝোনি। শেষ প্রজেক্টটা দাদিকে বোঝাও — বুঝলে তুমি বুঝেছ; confused হলে তুমি jargon-এর পেছনে লুকিয়ে আছ।</div></div>
 
 <div class="dialogue">বায়ান — clear speech, expression, manifestation। কুরআনে আল্লাহ বলেন — "তিনি মানুষকে শিখিয়েছেন বায়ান — স্পষ্ট বাক্য।" (৫৫:৩-৪)। বায়ান হলো আল্লাহর নিয়ামত — স্পষ্টভাবে প্রকাশ করার ক্ষমতা। যোগাযোগ-ও বায়ান — জটিল ধারণা স্পষ্টভাবে প্রকাশ। যে বায়ান করে, সে আলো — অন্ধকার দূর করে। যে বায়ান করতে পারে না, সে জ্ঞান ধরে রাখে অন্ধকারে। জ্ঞান + বায়ান = নূর। জ্ঞান - বায়ান = বন্দি জ্ঞান।</div>
 <div class="verse">"তিনি মানুষকে শিখিয়েছেন বায়ান — স্পষ্ট বাক্য।"<br>— কুরআন ৫৫:৩-৪</div>
@@ -80,8 +80,8 @@ doors.push({
   <text x="410" y="305" text-anchor="middle" fill="#ff6b35" font-size="10" font-weight="700">Balancing (-) death spiral</text>
   <defs><marker id="d6-a2" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#ff6b35"/></marker></defs>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: সিস্টেম চিন্তা — reinforcing loop (বৃদ্ধি, সবুজ) ও balancing/death-spiral loop (ক্ষয়, লাল)। প্রতিটা সিদ্ধান্ত কোন লুপে ঢেউ তৈরি করে? কদর — সংযোগ দেখা।</div></div>
+</div>
+<div class="svg-caption">চিত্র: সিস্টেম চিন্তা — reinforcing loop (বৃদ্ধি, সবুজ) ও balancing/death-spiral loop (ক্ষয়, লাল)। প্রতিটা সিদ্ধান্ত কোন লুপে ঢেউ তৈরি করে? কদর — সংযোগ দেখা।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— সিস্টেম ম্যাপিং টেমপ্লেট (System Mapping) —
 
@@ -112,6 +112,7 @@ doors.push({
   নিয়ম: "And THEN what?" — সিনিয়রের
          ডিফল্ট প্রশ্ন। প্রতিটা সমাধান
          নতুন সমস্যার বীজ বহন করে।
+</div>
 </div>`,
   senior:{
     title:"Communication Upgrade — This Sprint",
@@ -137,7 +138,7 @@ doors.push({
 <div class="dialogue">যোগাযোগ বলেছিলেন — স্পষ্ট বলো। কিন্তু আমি বলি — স্পষ্ট বললেও ভুল জিনিস বানালে কিছু হবে না। নৌকা সুন্দর, কিন্তু নদী ছাড়া মূল্যহীন। পণ্য = সমস্যা + সমাধান + মানুষ। যে সমাধান বানায় কিন্তু সমস্যা বোঝে না, সে স্থলভাগে নৌকা বানায়। যে তিনটাই বোঝে, সে সমুদ্রে যাত্রা করে।</div>
 <div class="dialogue en">"Communication said — speak clearly. But I say — even speaking clearly, if you build the wrong thing, nothing happens. The boat is beautiful, but without a river, worthless. Product = problem + solution + people. One who builds solutions without understanding problems, builds boats on land. One who understands all three, sails the ocean."</div>
 
-<div class="callout info"><span class="co-icon">🧮</span><div><strong>Product equation:</strong> Great Product = Real Problem * Good Solution * Right People। যেকোনো factor শূন্য হলে product শূন্য।</div></div></div>
+<div class="callout info"><span class="co-icon">🧮</span><div><strong>Product equation:</strong> Great Product = Real Problem * Good Solution * Right People। যেকোনো factor শূন্য হলে product শূন্য।</div></div>
 
 <table class="kv-table"><tr><th>Fail mode</th><th>কী</th><th>ব্যর্থতার %</th></tr>
 <tr><td class="hl">১. কোনো real problem নেই</td><td>"Cool tech, but who needs it?"</td><td>~৭০%</td></tr>
@@ -150,16 +151,16 @@ doors.push({
 <tr><td>down হলে user রেগে যায়</td><td>support ticket &gt; feature request</td></tr>
 <tr><td>growth-এ marketing খরচ লাগে না</td><td>প্রতিটা sale-এ ভারী convincing লাগে</td></tr></table>
 
-<div class="callout tip"><span class="co-icon">🔁</span><div><strong>Build-Measure-Learn (Lean Startup):</strong> সবচেয়ে ছোট জিনিস BUILD → MEASURE (কাজ করে?) → LEARN → আবার BUILD। Junior: ৩ মাস বানিয়ে launch করে prayer করে; senior: ১ সপ্তাহে বানিয়ে test → learn → iterate। <strong>MVP</strong> = অর্ধেক-বানানো নয়, একটা hypothesis টেস্ট করার সবচেয়ে ছোট জিনিস।</div></div></div>
+<div class="callout tip"><span class="co-icon">🔁</span><div><strong>Build-Measure-Learn (Lean Startup):</strong> সবচেয়ে ছোট জিনিস BUILD → MEASURE (কাজ করে?) → LEARN → আবার BUILD। Junior: ৩ মাস বানিয়ে launch করে prayer করে; senior: ১ সপ্তাহে বানিয়ে test → learn → iterate। <strong>MVP</strong> = অর্ধেক-বানানো নয়, একটা hypothesis টেস্ট করার সবচেয়ে ছোট জিনিস।</div></div>
 
-<div class="callout info"><span class="co-icon">❓</span><div><strong>বানানোর আগে ৫ প্রশ্ন:</strong> কী সমস্যা, কার জন্য? · আজ user কীভাবে সমাধান করে? · সবচেয়ে সরল version? · সাফল্য কীভাবে মাপবো? · যদি আমরা ভুল হই? উত্তর না থাকলে — এখনো বানিও না।</div></div></div>
+<div class="callout info"><span class="co-icon">❓</span><div><strong>বানানোর আগে ৫ প্রশ্ন:</strong> কী সমস্যা, কার জন্য? · আজ user কীভাবে সমাধান করে? · সবচেয়ে সরল version? · সাফল্য কীভাবে মাপবো? · যদি আমরা ভুল হই? উত্তর না থাকলে — এখনো বানিও না।</div></div>
 
 <table class="kv-table"><tr><th>Kano feature type</th><th>User reaction</th></tr>
 <tr><td class="hl">Must-have (login, basic)</td><td>"অবশ্যই থাকবে" → না থাকলে ক্ষোভ</td></tr>
 <tr><td class="hl">Performance (speed, quality)</td><td>"দ্রুত/ভালো = ভালো" → linear satisfaction</td></tr>
 <tr><td class="hl">Delightful (surprise, AI)</td><td>"WOW, আশা করিনি!" → অসামঞ্জস্য আনন্দ, loyalty ও referral</td></tr></table>
 
-<div class="callout warn"><span class="co-icon">🚫</span><div><strong>Anti-patterns:</strong> building blind ("PM বলল, বানালাম") · feature factory (sprint-এ ১০ feature, ব্যবহার হয় না) · reinventing · perfectionism ("আরও ৬ মাস") · vanity metrics ("১০,০০০ signup!" নয় — "২,০০০ দৈনিক ব্যবহার করে, ৫০০ pay করে")।</div></div></div>
+<div class="callout warn"><span class="co-icon">🚫</span><div><strong>Anti-patterns:</strong> building blind ("PM বলল, বানালাম") · feature factory (sprint-এ ১০ feature, ব্যবহার হয় না) · reinventing · perfectionism ("আরও ৬ মাস") · vanity metrics ("১০,০০০ signup!" নয় — "২,০০০ দৈনিক ব্যবহার করে, ৫০০ pay করে")।</div></div>
 
 <div class="dialogue">খলক — creation, making, bringing into existence। কুরআনে আল্লাহ বলেন — "তিনি আসমান ও জমিন সৃষ্টি করেছেন উদ্দেশ্য সহ।" (২১:১৬)। উদ্দেশ্য সহ সৃষ্টি = খলক। পণ্য নির্মাণ-ও খলক — উদ্দেশ্য সহ নির্মাণ। যে উদ্দেশ্য ছাড়া বানায়, সে শিল্পী — সুন্দর, কিন্তু অকেজো। যে উদ্দেশ্য সহ বানায়, সে নির্মাতা — সুন্দর ও কার্যকর। খলক — উদ্দেশ্য সহ সৃষ্টির গুণ।</div>
 <div class="verse">"তিনি আসমান ও জমিন সৃষ্টি করেছেন উদ্দেশ্য সহ।"<br>— কুরআন ২১:১৬</div>
@@ -203,8 +204,8 @@ doors.push({
   <text x="450" y="263" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">থামো / পুনর্বিবেচনা</text>
   <text x="280" y="310" text-anchor="middle" fill="#5e5c74" font-size="9" font-style="italic">খলক — উদ্দেশ্য সহ সৃষ্টি; উদ্দেশ্যে মানুষের কল্যাণ থাকবে</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: নৈতিক সিদ্ধান্ত — প্রতিটা প্রযুক্তিগত পছন্তে তিন শাখা: দায়বদ্ধতা, স্বচ্ছতা, ক্ষতি প্রতিরোধ। খলক — উদ্দেশ্য সহ সৃষ্টি।</div></div>
+</div>
+<div class="svg-caption">চিত্র: নৈতিক সিদ্ধান্ত — প্রতিটা প্রযুক্তিগত পছন্তে তিন শাখা: দায়বদ্ধতা, স্বচ্ছতা, ক্ষতি প্রতিরোধ। খলক — উদ্দেশ্য সহ সৃষ্টি।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— নৈতিক সিদ্ধান্ত চেকলিস্ট (Ethics Checklist) —
 
@@ -234,6 +235,7 @@ doors.push({
   নিয়ম: AI execute করতে পারে, কিন্তু
          দায়বদ্ধতা মানুষের। বিচার আর
          accountability — এটাই irreplaceable।
+</div>
 </div>`,
   senior:{
     title:"Product Sense — Engineer's Guide",
@@ -259,9 +261,9 @@ doors.push({
 <div class="dialogue">পণ্য নির্মাণ বলেছিলেন — উদ্দেশ্য সহ বানাও। কিন্তু আমি বলি — উদ্দেশ্য সহ বানালেও নতুন কিছু না থাকলে তুমি অনুকরণকারী। নতুন কীভাবে আসে? শূন্য থেকে নয়। পুরোনোর নতুন সংযোগ থেকে। এক ডোমেইনের সমাধান অন্য ডোমেইনের সমস্যায় প্রয়োগ। এটাই ইনোভেশন — ক্রস-পলিনেশন।</div>
 <div class="dialogue en">"Product building said — build with purpose. But I say — even with purpose, without something new, you're an imitator. How does new come? Not from nothing. From new connections of old things. A solution from one domain applied to a problem in another. This is innovation — cross-pollination."</div>
 
-<div class="callout info"><span class="co-icon">💡</span><div><strong>Steve Jobs (১৯৯৬):</strong> "Creativity is just connecting things... তারা কিছু DO করেনি, তারা কেবল কিছু SAW।" Innovation = অন্যরা যে সংযোগ মিস করে সেটা দেখা — এর জন্য জ্ঞানের <strong>breadth</strong> লাগে, শুধু depth নয়।</div></div></div>
+<div class="callout info"><span class="co-icon">💡</span><div><strong>Steve Jobs (১৯৯৬):</strong> "Creativity is just connecting things... তারা কিছু DO করেনি, তারা কেবল কিছু SAW।" Innovation = অন্যরা যে সংযোগ মিস করে সেটা দেখা — এর জন্য জ্ঞানের <strong>breadth</strong> লাগে, শুধু depth নয়।</div></div>
 
-<div class="callout tip"><span class="co-icon">🇹</span><div><strong>T-shaped engineer:</strong> উপরের বার = broad interest (design, business, psychology, biology, art, history); নিচের stem = deep expertise (তোমার tech stack)। Junior = শুধু stem (specialist)। Senior = পুরু বার + গভীর stem (T-shaped)। Irreplaceable = broad top + একাধিক stem (π-shaped)।</div></div></div>
+<div class="callout tip"><span class="co-icon">🇹</span><div><strong>T-shaped engineer:</strong> উপরের বার = broad interest (design, business, psychology, biology, art, history); নিচের stem = deep expertise (তোমার tech stack)। Junior = শুধু stem (specialist)। Senior = পুরু বার + গভীর stem (T-shaped)। Irreplaceable = broad top + একাধিক stem (π-shaped)।</div></div>
 
 <table class="kv-table"><tr><th>সংযোগ</th><th>Innovation</th></tr>
 <tr><td class="hl">জীববিজ্ঞান + CS (neurons)</td><td>Neural networks</td></tr>
@@ -271,9 +273,9 @@ doors.push({
 <tr><td class="hl">Toyota manufacturing + SW</td><td>Lean / Agile</td></tr>
 <tr><td class="hl">রেস্টুরেন্ট kitchen tickets + SW</td><td>Kanban</td></tr></table>
 
-<div class="callout tip"><span class="co-icon">🐝</span><div><strong>Innovation mindset গড়ার উপায়:</strong> ① রোজ ৩০ মিনিট tech-এর বাইরে পড়ো। ② <strong>Analogy hunt</strong> — "এটা অন্য ডোমেইনে কীসের মতো?" (টিম coordination ~ traffic system?)। ③ Side project ভিন্ন ভাষা/ডোমেইনে। ④ Diverse network — designer, scientist, artist। ⑤ Default প্রশ্ন করো — "উল্টোটা সত্যি হলে?"</div></div></div>
+<div class="callout tip"><span class="co-icon">🐝</span><div><strong>Innovation mindset গড়ার উপায়:</strong> ① রোজ ৩০ মিনিট tech-এর বাইরে পড়ো। ② <strong>Analogy hunt</strong> — "এটা অন্য ডোমেইনে কীসের মতো?" (টিম coordination ~ traffic system?)। ③ Side project ভিন্ন ভাষা/ডোমেইনে। ④ Diverse network — designer, scientist, artist। ⑤ Default প্রশ্ন করো — "উল্টোটা সত্যি হলে?"</div></div>
 
-<div class="callout warn"><span class="co-icon">📉</span><div><strong>Innovator's Dilemma:</strong> ভালো কোম্পানি ব্যর্থ হয় কারণ তারা সবকিছু "ঠিক" করে — বর্তমান customer-দের শোনে (যারা incremental চায়), disruptive innovation উপেক্ষা করে (প্রথমে ছোট মনে হয়)। প্রশ্ন করো: "আমরা আগামীকালের customer-দের সেবা করছি, নাকি গতকালের? পরের curve কোনটা?"</div></div></div>
+<div class="callout warn"><span class="co-icon">📉</span><div><strong>Innovator's Dilemma:</strong> ভালো কোম্পানি ব্যর্থ হয় কারণ তারা সবকিছু "ঠিক" করে — বর্তমান customer-দের শোনে (যারা incremental চায়), disruptive innovation উপেক্ষা করে (প্রথমে ছোট মনে হয়)। প্রশ্ন করো: "আমরা আগামীকালের customer-দের সেবা করছি, নাকি গতকালের? পরের curve কোনটা?"</div></div>
 
 <div class="dialogue">তাজদিদ — renewal, revival, restoration। ইসলামী ঐতিহ্যে তাজদিদ হলো পুরোনোকে নতুন রূপে পুনরুজ্জীবিত করা — সারমর্ম ধরে রেখে ফর্ম বদলানো। ইনোভেশন-ও তাজদিদ — পুরোনো ধারণাকে নতুন সংযোগে পুনরুজ্জীবিত করা। যে তাজদিদ করে, সে অতীত থেকে ভবিষ্যৎ বানায়। যে তাজদিদ করে না, সে অতীতে আটকে থাকে বা অতীত ছেড়ে শূন্যে পড়ে।</div>
 <div class="dialogue en">"Tajdid — renewal, revival, restoration. In Islamic tradition, tajdid is reviving the old in new form — keeping essence, changing form. Innovation too — reviving old ideas through new connections. One who does tajdid, builds future from past. One who doesn't, gets stuck in the past or falls into the void."</div>
@@ -306,8 +308,8 @@ doors.push({
   <text x="100" y="260" text-anchor="middle" fill="#fbbf24" font-size="9">ফলাফল থেকে শেখো</text>
   <text x="280" y="325" text-anchor="middle" fill="#5e5c74" font-size="9" font-style="italic">প্রতিটা চক্রে গল্প বদলায় — ধীরে নয়, সপ্তাহে</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: অভিযোজন — Build-Measure-Learn চক্র। প্রতিটা চক্রে hypothesis পরীক্ষা, ফলাফল থেকে শেখো, আবার বানাও। তাজদিদ — পুরোনোকে নতুন সংযোগে পুনরুজ্জীবিত করা।</div></div>
+</div>
+<div class="svg-caption">চিত্র: অভিযোজন — Build-Measure-Learn চক্র। প্রতিটা চক্রে hypothesis পরীক্ষা, ফলাফল থেকে শেখো, আবার বানাও। তাজদিদ — পুরোনোকে নতুন সংযোগে পুনরুজ্জীবিত করা।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— অভিযোজন লগ (Adaptation / Iteration Log) —
 
@@ -340,6 +342,7 @@ doors.push({
   সিনিয়র: ১ সপ্তাহে বানিয়ে test → learn।
   MVP = অর্ধেক-বানানো নয়, একটা
   hypothesis টেস্ট করার সবচেয়ে ছোট জিনিস।
+</div>
 </div>`,
   senior:{
     title:"Innovation Mindset — Practical Steps",
@@ -373,9 +376,9 @@ doors.push({
 <tr><td>কোড = product</td><td>business = product</td></tr>
 <tr><td>মাসে বেতন পায়</td><td>value তৈরি, তারপর value capture</td></tr></table>
 
-<div class="callout info"><span class="co-icon">🎲</span><div><strong>Calculated risk (জুয়া নয়):</strong> জুয়া = অন্ধ লাফ, ভাগ্যের আশা। Calculated risk = downside (worst case) বোঝো, upside (best case) বোঝো, প্রতিটার probability — যদি downside টিকে থাকার মতো আর upside বড় হয় → LEAP।</div></div></div>
+<div class="callout info"><span class="co-icon">🎲</span><div><strong>Calculated risk (জুয়া নয়):</strong> জুয়া = অন্ধ লাফ, ভাগ্যের আশা। Calculated risk = downside (worst case) বোঝো, upside (best case) বোঝো, প্রতিটার probability — যদি downside টিকে থাকার মতো আর upside বড় হয় → LEAP।</div></div>
 
-<div class="callout tip"><span class="co-icon">🪢</span><div><strong>লাফের আগে ৪টা দড়ি বাঁধো:</strong></div></div></div>
+<div class="callout tip"><span class="co-icon">🪢</span><div><strong>লাফের আগে ৪টা দড়ি বাঁধো:</strong></div></div>
 <ul class="checklist">
 <li><strong>Financial:</strong> ৬-১২ মাসের runway জমানো — "শূন্য আয়ে ১২ মাস টিকতে পারি।" (মরিয়া হলে খারাপ সিদ্ধান্ত।)</li>
 <li><strong>Skill:</strong> বানাতে পারো (depth) + market বোঝো (breadth) + বিক্রি করতে পারো — "ব্যর্থ হলে আমি আরও employable, কম নয়।"</li>
@@ -383,9 +386,9 @@ doors.push({
 <li><strong>Network:</strong> যারা করেছে এমন mentor + একই পথের peer — "আমি একা নই।"</li>
 </ul>
 
-<div class="callout info"><span class="co-icon">🏗️</span><div><strong>Engineer → Founder:</strong> ① Employee (skill/network/savings) → ② Side-project builder (রাত/উইকএন্ডে MVP, validate) → ③ Leap (দড়ি বাঁধা → পূর্ণকালীন, ৬-১২ মাসে PMF; না হলে pivot বা নতুন skill নিয়ে ফেরত) → ④ Builder (PMF পেলে scale)। Engineer-রা ভালো founder হয় (নিজে বানাতে পারে, systems thinking) কিন্তু ব্যর্থ হয় over-build, sales উপেক্ষা, আর user এড়ানোর কারণে।</div></div></div>
+<div class="callout info"><span class="co-icon">🏗️</span><div><strong>Engineer → Founder:</strong> ① Employee (skill/network/savings) → ② Side-project builder (রাত/উইকএন্ডে MVP, validate) → ③ Leap (দড়ি বাঁধা → পূর্ণকালীন, ৬-১২ মাসে PMF; না হলে pivot বা নতুন skill নিয়ে ফেরত) → ④ Builder (PMF পেলে scale)। Engineer-রা ভালো founder হয় (নিজে বানাতে পারে, systems thinking) কিন্তু ব্যর্থ হয় over-build, sales উপেক্ষা, আর user এড়ানোর কারণে।</div></div>
 
-<div class="callout warn"><span class="co-icon">💭</span><div><strong>The great idea myth:</strong> unique idea লাগে না — Google প্রথম search engine নয়, Facebook প্রথম social network নয়, Slack প্রথম chat নয়; সবাই <em>বিদ্যমান জিনিস আরও ভালো</em> করেছে। Idea সস্তা, execution-ই সব। পারফেক্ট idea-র অপেক্ষা কোরো না — real problem খোঁজো, solution বানাও, ship করো। "great idea" বানানোর <em>মধ্য দিয়ে</em> আসে, আগে নয়।</div></div></div>
+<div class="callout warn"><span class="co-icon">💭</span><div><strong>The great idea myth:</strong> unique idea লাগে না — Google প্রথম search engine নয়, Facebook প্রথম social network নয়, Slack প্রথম chat নয়; সবাই <em>বিদ্যমান জিনিস আরও ভালো</em> করেছে। Idea সস্তা, execution-ই সব। পারফেক্ট idea-র অপেক্ষা কোরো না — real problem খোঁজো, solution বানাও, ship করো। "great idea" বানানোর <em>মধ্য দিয়ে</em> আসে, আগে নয়।</div></div>
 
 <div class="dialogue">তাওয়াক্কুল — trust, reliance, surrender after effort। কুরআনে আল্লাহ বলেন — "যারা আল্লাহর উপর তাওয়াক্কুল করে, তিনি তাদের যথেষ্ট।" (৬৫:৩)। তাওয়াক্কুল অলসতা নয় — প্রস্তুতির পর ফলাফলে ভরসা। দড়ি বাঁধো (চেষ্টা), তারপর লাফ দাও (ঝুঁকি), তারপর ফলাফলে ভরসা (তাওয়াক্কুল)। যে তাওয়াক্কুল করে, সে জানে — চেষ্টা তার, ফল আল্লাহর। এই জ্ঞানে ভয় চলে যায়, সাহস আসে।</div>
 <div class="verse">"যারা আল্লাহর উপর তাওয়াক্কুল করে, তিনি তাদের যথেষ্ট।"<br>— কুরআন ৬৫:৩</div>
@@ -424,8 +427,8 @@ doors.push({
   <text x="50" y="226" fill="#9290a8" font-size="8">এটাই</text>
   <text x="50" y="239" fill="#9290a8" font-size="8">ঐতিহ্য</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: ঐতিহ্য — দৃশ্যমান ফল (shipped, title) নয়, অদৃশ্য শিকড় (mentorship, trust, culture)। যা তুমি রেখে যাও তার চেয়ে যাকে বড় করো তা গুরুত্বপূর্ণ। তাওয়াক্কুল — চেষ্টার পর ফলাফলে ভরসা।</div></div>
+</div>
+<div class="svg-caption">চিত্র: ঐতিহ্য — দৃশ্যমান ফল (shipped, title) নয়, অদৃশ্য শিকড় (mentorship, trust, culture)। যা তুমি রেখে যাও তার চেয়ে যাকে বড় করো তা গুরুত্বপূর্ণ। তাওয়াক্কুল — চেষ্টার পর ফলাফলে ভরসা।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— ঐতিহ্য নিরীক্ষা (Legacy Audit) —
 
@@ -453,6 +456,7 @@ doors.push({
   গাছ জন্মায়। ঐতিহ্য = তুমি নয়,
   তুমি যাকে বড় করো সে।
   তাওয়াক্কুল — চেষ্টা তোমার, ফল আল্লাহর।
+</div>
 </div>`,
   senior:{
     title:"The Entrepreneur's Preparation",
@@ -486,17 +490,17 @@ doors.push({
 
 <div class="timeline">
 <div class="tl-step"><div class="tl-when">বছর ১-২ · Leaf</div><div class="tl-title">🍃 Junior</div><div class="tl-body">tools শেখো, প্রথম প্রজেক্ট, learn-to-learn। Focus: code quality।</div></div></div>
-<div class="tl-step"><div class="tl-when">বছর ৩-৫ · Branch</div><div class="tl-title">🌿 Mid-level</div><div class="tl-body">first principles গভীর, systems দেখা শুরু। Focus: independence।</div></div></div>
-<div class="tl-step"><div class="tl-when">বছর ৫-৮ · Trunk</div><div class="tl-title">🪵 Senior</div><div class="tl-body">systems thinking default, business brain, communication টিমকে গুণ করে। Focus: multiplying others।</div></div></div>
-<div class="tl-step"><div class="tl-when">বছর ৮-১২ · Roots</div><div class="tl-title">🌱 Staff/Principal</div><div class="tl-body">problem finder, cross-domain innovation, product+business intuition। Focus: direction setting।</div></div></div>
-<div class="tl-step"><div class="tl-when">বছর ১২+ · Deep-Rooted Tree</div><div class="tl-title">🌳 Irreplaceable</div><div class="tl-body">শিকড় এত গভীর যে সরালে org ক্ষতিগ্রস্ত; tech+business+innovation-এর unique মিশ্রণ; আরও নেতা তৈরি করে। Focus: legacy।</div></div></div>
-</div></div>
+<div class="tl-step"><div class="tl-when">বছর ৩-৫ · Branch</div><div class="tl-title">🌿 Mid-level</div><div class="tl-body">first principles গভীর, systems দেখা শুরু। Focus: independence।</div></div>
+<div class="tl-step"><div class="tl-when">বছর ৫-৮ · Trunk</div><div class="tl-title">🪵 Senior</div><div class="tl-body">systems thinking default, business brain, communication টিমকে গুণ করে। Focus: multiplying others।</div></div>
+<div class="tl-step"><div class="tl-when">বছর ৮-১২ · Roots</div><div class="tl-title">🌱 Staff/Principal</div><div class="tl-body">problem finder, cross-domain innovation, product+business intuition। Focus: direction setting।</div></div>
+<div class="tl-step"><div class="tl-when">বছর ১২+ · Deep-Rooted Tree</div><div class="tl-title">🌳 Irreplaceable</div><div class="tl-body">শিকড় এত গভীর যে সরালে org ক্ষতিগ্রস্ত; tech+business+innovation-এর unique মিশ্রণ; আরও নেতা তৈরি করে। Focus: legacy।</div></div>
 
-<div class="callout info"><span class="co-icon">🗝️</span><div><strong>যা কাউকে সত্যিই irreplaceable করে:</strong> ① <strong>Unique combination</strong> — এক জিনিসে সেরা নয়, বহু জিনিসের intersection-এ সেরা। ② <strong>Trust capital</strong> — বছরের পর বছর কথা রাখা, ভুল মানা। ③ <strong>Institutional knowledge</strong> — কেন সিস্টেম এভাবে তা জানা। ④ <strong>Force multiplier</strong> — চারপাশের সবাইকে ভালো করা। ⑤ <strong>Judgment</strong> — skill নয়, wisdom; কখন ship, কী skip — automate করা যায় না।</div></div></div>
 
-<div class="callout tip"><span class="co-icon">🌳</span><div><strong>The timeless truth:</strong> Tools বদলায়, framework মরে, language বিবর্তিত হয় — কিন্তু problem-solving, systems thinking, communication, curiosity, integrity, business understanding কখনো বদলায় না। <strong>যা কখনো বদলায় না, তাতে বিনিয়োগ করো</strong> — প্রতি বছর আরও মূল্যবান হবে, বেশি tool জানার জন্য নয়, বেশি সত্য বোঝার জন্য। ফানা থেকে বাকা — পাতা থেকে শিকড়।</div></div></div>
+<div class="callout info"><span class="co-icon">🗝️</span><div><strong>যা কাউকে সত্যিই irreplaceable করে:</strong> ① <strong>Unique combination</strong> — এক জিনিসে সেরা নয়, বহু জিনিসের intersection-এ সেরা। ② <strong>Trust capital</strong> — বছরের পর বছর কথা রাখা, ভুল মানা। ③ <strong>Institutional knowledge</strong> — কেন সিস্টেম এভাবে তা জানা। ④ <strong>Force multiplier</strong> — চারপাশের সবাইকে ভালো করা। ⑤ <strong>Judgment</strong> — skill নয়, wisdom; কখন ship, কী skip — automate করা যায় না।</div></div>
 
-<div class="verse">"তুমি কি দেখনি আল্লাহ কীভাবে উদাহরণ দিয়েছেন? একটি ভালো কালিমা পবিত্র বৃক্ষের মতো — তার শিকড় গভীর, শাখা আসমানে।"<br>— কুরআন ১৪:২৪<br><br>"Have you not seen how Allah presents an example? A good word is like a good tree — its root is firm, its branches in the sky." অবিচ্ছেয্য কারিগর সেই বৃক্ষ — শিকড় গভীর, ডাল উঁচু। ঝড় আসে, বৃক্ষ থাকে। সময় যায়, মূল্য বাড়ে। ফানা থেকে বাকা — অস্থায়ী থেকে চিরস্থায়ী। এটাই অবিচ্ছেয্যতার সারমর্ম।</div></div>
+<div class="callout tip"><span class="co-icon">🌳</span><div><strong>The timeless truth:</strong> Tools বদলায়, framework মরে, language বিবর্তিত হয় — কিন্তু problem-solving, systems thinking, communication, curiosity, integrity, business understanding কখনো বদলায় না। <strong>যা কখনো বদলায় না, তাতে বিনিয়োগ করো</strong> — প্রতি বছর আরও মূল্যবান হবে, বেশি tool জানার জন্য নয়, বেশি সত্য বোঝার জন্য। ফানা থেকে বাকা — পাতা থেকে শিকড়।</div></div>
+
+<div class="verse">"তুমি কি দেখনি আল্লাহ কীভাবে উদাহরণ দিয়েছেন? একটি ভালো কালিমা পবিত্র বৃক্ষের মতো — তার শিকড় গভীর, শাখা আসমানে।"<br>— কুরআন ১৪:২৪<br><br>"Have you not seen how Allah presents an example? A good word is like a good tree — its root is firm, its branches in the sky." অবিচ্ছেয্য কারিগর সেই বৃক্ষ — শিকড় গভীর, ডাল উঁচু। ঝড় আসে, বৃক্ষ থাকে। সময় যায়, মূল্য বাড়ে। ফানা থেকে বাকা — অস্থায়ী থেকে চিরস্থায়ী। এটাই অবিচ্ছেয্যতার সারমর্ম।</div>
 
 <div class="svg-diagram">
 <svg viewBox="0 0 560 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -535,8 +539,8 @@ doors.push({
   <text x="40" y="332" fill="#5e5c74" font-size="8" font-style="italic">(অদৃশ্য)</text>
   <text x="280" y="195" text-anchor="middle" fill="#86efac" font-size="8" font-weight="700">সমন্বয়</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: সমন্বয় — নয়টি দরজার সত্য এক বৃক্ষে একত্রিত। উপরে দৃশ্যমান ফল, নিচে অদৃশ্য শিকড়। বাকা — যা থাকে। ফানা থেকে বাকা।</div></div>
+</div>
+<div class="svg-caption">চিত্র: সমন্বয় — নয়টি দরজার সত্য এক বৃক্ষে একত্রিত। উপরে দৃশ্যমান ফল, নিচে অদৃশ্য শিকড়। বাকা — যা থাকে। ফানা থেকে বাকা।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— অবিচ্ছেয্যতা স্ব-মূল্যায়ন (Irreplaceability Self-Assessment) —
 

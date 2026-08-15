@@ -275,7 +275,8 @@ REBALANCING — node যোগ/বাদ করলে:
 <div class="dialogue en">"Tawatur — many independent sources converging on the same message, a convergence too improbable to be a lie. In the Quran's preservation history, two methods — kitab (written copies) and hifz (memorized copies). Not one, but many — each hafiz a 'replica', each mushaf a 'replica'. If one errs, others catch it — cross-validation. One copy burning doesn't lose the Quran — many replicas. Replication's wisdom runs deep in Islamic tradition — the principle of tawatur: redundancy as protection, community as reliability."</div><div class="callout warn" data-door="11"><span class="co-icon">⚠️</span><div><strong>বাস্তব বিপদ:</strong> URL shortener failure: দুই URL একই short code — collision। Unique constraint + base62 ছিল না।</div></div>
 
 <div class="secret-box">🛡️ URL shortener = hash + base62 + unique constraint। সংঘর্ষ = বিপদ।</div>
-`,
+
+</div>`,
   senior:{
     title:"Replication বাছাই — Production Cheat Sheet",
     body:`<p><strong>Single-leader শুরু করো:</strong> ৯৫% অ্যাপ এতে থাকে। PostgreSQL/MySQL — পরিচিত, tooling পরিপক্ব।</p><p><strong>Multi-leader যখন:</strong> multi-region active-active (দুই DC-তে সক্রিয় লেখা), offline-first mobile apps। conflict resolution না শিখলে ভয়ংকর।</p><p><strong>Leaderless যখন:</strong> massive write throughput (IoT, time-series, event log), multi-region, "always writeable" দরকার। Cassandra/DynamoDB।</p><p><strong>Quorum formula:</strong> N nodes, W write quorum, R read quorum। <strong>W + R > N</strong> → strong consistency (প্রতিটা read সর্বশেষ write দেখে)। W=R=N/2+1 সাধারণ।</p><p><strong>Shard key সাবধানে:</strong> একবার বাছাই → পরিবর্তন নরক। আগেই অনেক ছোট partition (মোটামুটি ১০x বেশি node-এর জন্য) বানাও, তারপর node-এ assignment বদলাও।</p>`

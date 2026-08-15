@@ -1566,7 +1566,8 @@ print(landscape)
     <div class="secret-icon">📖</div>
     <div class="secret-text">ডেটাবেস, ক্যাশ, কিউ — সব এক। অন্তর্নিহিত সত্য একটাই: ইভেন্টের ক্রম।</div>
     <div class="secret-sub">Database, cache, queue — all one. The underlying truth: ordered events.</div>
-  </div>`,
+  </div>
+</div>`,
   senior: {
     title: "DDIA পড়ো — এটা বিতরণ সিস্টেমের বাইবেল",
     body: `<p><strong>১. বই পড়ো:</strong> <em>Designing Data-Intensive Applications</em> — O'Reilly। ২য় সংস্করণ ২০২৬ (Chris Riccomani সহ)। প্রতিটা অধ্যায় একটা বিশাল বিষয় কভার করে।</p>

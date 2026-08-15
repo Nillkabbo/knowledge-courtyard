@@ -504,7 +504,7 @@ KV CACHE LIFECYCLE:
   ৫. Evict: context too long → evict old
   ৬. Free: request done → free cache
 
-  → cache management = critical for throughput</div>
+  → cache management = critical for throughput
 
 <div class="svg-diagram">
 <svg viewBox="0 0 580 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
@@ -546,7 +546,8 @@ KV CACHE LIFECYCLE:
 <div class="svg-caption">KV Cache — পুরোনো হিসাব সংরক্ষণ, পুনরায় নয়; O(N²) থেকে O(N) তে রূপান্তর</div>
 
 <div class="dialogue">হাফিয় — preserver
-<div class="dialogue en">"Hafiz — preserver, memorizer. Allah says — 'We sent down the Quran and We are its preserver.' (15:9). Preservation = no need to re-read. KV cache too — old computations preserved, not redone. Hafiz — the virtue of memory preservation. One who preserves, is fast. One who redoes each time, is slow."</div>`,
+<div class="dialogue en">"Hafiz — preserver, memorizer. Allah says — 'We sent down the Quran and We are its preserver.' (15:9). Preservation = no need to re-read. KV cache too — old computations preserved, not redone. Hafiz — the virtue of memory preservation. One who preserves, is fast. One who redoes each time, is slow."</div>
+</div>`,
   senior:{
     title:"KV Cache — Key Numbers",
     body:`<p><strong>Per token (8B model):</strong> ~০.৫ MB KV cache। ৪K context = ~২ GB। ১২৮K = ~৬৪ GB।</p><p><strong>Optimization wins:</strong> PagedAttention (vLLM) = ২-৩x more concurrent users। Prefix caching = ৫০-৮০% TTFT reduction। GQA = ৪x less cache memory।</p><p><strong>Monitoring:</strong> Track KV cache memory usage per request। OOM? Reduce batch size বা context length বা use GQA/MQA model।</p>`

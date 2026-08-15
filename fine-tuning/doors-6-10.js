@@ -450,7 +450,7 @@ TOOLS:
   LM Evaluation Harness → standard benchmarks
   LangSmith → LangChain eval
   Weights & Biases → training metrics + eval
-  Promptfoo → test suites for LLMs</div>
+  Promptfoo → test suites for LLMs
 
 <div class="dialogue">মুহাসাবা — self-examination, evaluation। উমর (রা) বলেছেন — "নিজেকে বিচার করো আগে, তোমাকে বিচার করা হবে।" Fine-tuning-এও মুহাসাবা — মডেলকে বিচার করো deployment-এর আগে। Task metric ভালো? General capability stable? Human satisfied? বিচার ছাড়া deployment = আত্মবিশ্বাসের অন্ধ লাফ।</div>
 <div class="dialogue en">"Muhasabah — self-examination, evaluation. Umar (RA) said — 'Judge yourselves before you are judged.' In fine-tuning, muhasabah too — judge the model before deployment. Task metric good? General capability stable? Human satisfied? Without judgment, deployment = a blind leap of confidence."</div>

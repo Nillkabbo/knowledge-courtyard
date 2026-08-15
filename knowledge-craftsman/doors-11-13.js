@@ -54,17 +54,17 @@ doors.push({
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ সহজ শেখা (Illusion of Competence)</div>একই ধরনের সমস্যা বারবার। পড়ার সাথে সাথে বুঝলে মনে হয় — জানি! কিন্তু ২ সপ্তাহ পর — কিছু নেই। কারণ মস্তিষ্ক পরিশ্রম করেনি। সহজ = অগভীর স্মৃতি।</div></div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ কঠিন শেখা (Desirable Difficulty)</div>ভিন্ন ধরনের সমস্যা মিশিয়ে। ভুল করো, ফিরে যাও, আবার চেষ্টা করো। পরিশ্রম হয় — কিন্তু স্থায়ী। কারণ মস্তিষ্ক পরিশ্রম করেছে। কঠিন = গভীর স্মৃতি।</div></div>
-</div></div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ কঠিন শেখা (Desirable Difficulty)</div>ভিন্ন ধরনের সমস্যা মিশিয়ে। ভুল করো, ফিরে যাও, আবার চেষ্টা করো। পরিশ্রম হয় — কিন্তু স্থায়ী। কারণ মস্তিষ্ক পরিশ্রম করেছে। কঠিন = গভীর স্মৃতি।</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> Desirable Difficulty মানে "অযথা কঠিন" নয়। উদ্দেশ্যহীন জটিলতা কাজ করে না। কাজ করে যখন কঠিনতা তোমার স্তরের ঠিক এক ধাপ ওপরে — Lev Vygotsky-র "Zone of Proximal Development" (১৯৭৮)। খুব সহজ = অগভীর। খুব কঠিন = হতাশা। মাঝামাঝি = বিকাশ।</div></div></div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সতর্ক পাঠ:</strong> Desirable Difficulty মানে "অযথা কঠিন" নয়। উদ্দেশ্যহীন জটিলতা কাজ করে না। কাজ করে যখন কঠিনতা তোমার স্তরের ঠিক এক ধাপ ওপরে — Lev Vygotsky-র "Zone of Proximal Development" (১৯৭৮)। খুব সহজ = অগভীর। খুব কঠিন = হতাশা। মাঝামাঝি = বিকাশ।</div></div>
 
 <div class="verse">
 <strong>Robert Bjork (জন্ম ১৯৩৯) এবং Elizabeth Bjork:</strong><br>
 UCLA-এর মনোবিজ্ঞানী দম্পতি। Cognition and Learning Lab।<br>
 "Desirable Difficulties" ধারণাটি ১৯৯৪ সালে প্রবর্তন করেন — এটি শিক্ষাবিজ্ঞানে বিপ্লব এনেছে।<br><br>
 নাহুম সোনেনবার্গের "New Theory of Disuse" (১৯৯৬) — স্মৃতি দুটি স্তরে: storage strength (সংরক্ষণ শক্তি) এবং retrieval strength (পুনরুদ্ধার শক্তি)। কঠিন পুনরুদ্ধার storage strength বাড়ায়।
-</div></div>
+</div>
 
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> সহজ নয় — কঠিনই স্থায়ী। মস্তিষ্কের পরিশ্রমই জ্ঞানের সিমেন্ট।<br>
@@ -73,7 +73,7 @@ UCLA-এর মনোবিজ্ঞানী দম্পতি। Cognition an
 <div style="text-align:center;font-size:.82rem">
 ইমতিহান — ইসলামে পরীক্ষার ধারণা। আল্লাহ বলেন: "আমি তোমাদের পরীক্ষা করবো — ভালো ও মন্দ দিয়ে" (কুরআন ২১:৩৫)। কঠিনতা শুধু বাধা নয় — এটি বিকাশের শর্ত। মস্তিষ্কও তেমন — কঠিনতা ছাড়া স্মৃতি অগভীর থাকে। পরিশ্রমই পুরস্কার।
 </div></div>
-</div>`,
+`,
   senior: {
     title: "Desirable Difficulty প্র্যাকটিস গাইড",
     body: `<p><strong>১. Pre-test করো:</strong> অধ্যায় পড়ার আগে প্রশ্নগুলো দেখো। ভুল করো। তারপর পড়ো।</p>
@@ -147,18 +147,18 @@ Book ২৫ (Council of Deep Knowledge) Door ৮-এ Walker-এর insight গ�
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">৩৩%</div><div class="sc-label">ঘুমের পর স্মৃতি বৃদ্ধি</div></div></div>
-<div class="stat-card"><div class="sc-num">~৯০ মিনিট</div><div class="sc-label">একটি সম্পূর্ণ sleep cycle</div></div></div>
-<div class="stat-card"><div class="sc-num">৫টি</div><div class="sc-label">Leitner বক্স</div></div></div>
-</div></div>
+<div class="stat-card"><div class="sc-num">~৯০ মিনিট</div><div class="sc-label">একটি সম্পূর্ণ sleep cycle</div></div>
+<div class="stat-card"><div class="sc-num">৫টি</div><div class="sc-label">Leitner বক্স</div></div>
 
-<div class="callout tip"><span class="co-icon">🔌</span><div><strong>টিপ:</strong> ভারী পড়ার পর ২০ মিনিট nap নাও — দেখবে স্মৃতি উল্লেখযোগ্যভাবে উন্নত। তবে ৯০ মিনিটের কম nap এড়িয়ে চলো — incomplete cycle ক্লান্তি বাড়ায়। সেরা: ৭-৯ ঘণ্টা পূর্ণ রাতের ঘুম।</div></div></div>
+
+<div class="callout tip"><span class="co-icon">🔌</span><div><strong>টিপ:</strong> ভারী পড়ার পর ২০ মিনিট nap নাও — দেখবে স্মৃতি উল্লেখযোগ্যভাবে উন্নত। তবে ৯০ মিনিটের কম nap এড়িয়ে চলো — incomplete cycle ক্লান্তি বাড়ায়। সেরা: ৭-৯ ঘণ্টা পূর্ণ রাতের ঘুম।</div></div>
 
 <div class="verse">
 <strong>ম্যাথিউ ওয়াকার (জন্ম ১৯৭২):</strong><br>
 ব্রিটিশ নিউরোসায়েন্টিস্ট। UC Berkeley-এর Center for Human Sleep Science-এর প্রতিষ্ঠাতা।<br>
 "Why We Sleep" (২০১৭) — নিউইয়র্ক টাইমস বেস্টসেলার। ঘুম ও স্মৃতির উপর সবচেয়ে প্রভাবশালী বই।<br><br>
 Sebastian Leitner (১৯১৯-১৯৮৯) — জার্মান সাংবাদিক ও মনোবিজ্ঞানী। "So lernt man lernen" ("How to Learn to Learn", ১৯৭২) — Leitner System প্রবর্তন করেছিলেন।
-</div></div>
+</div>
 
 <div class="secret-box">
 <strong>🔑 গোপন সত্য:</strong> দিনে শেখো, রাতে ঘুমাও — মস্তিষ্ক বাকিটা করবে।<br>
@@ -167,7 +167,7 @@ Sebastian Leitner (১৯১৯-১৯৮৯) — জার্মান সা�
 <div style="text-align:center;font-size:.82rem">
 রাহাত — বিশ্রাম, প্রশান্তি। কুরআন ৭৮:৯ — "ঘুমকে করেছি বিশ্রাম।" এবং ৭৮:১০ — "রাত্রিকে করেছি আবরণ।" ঘুম আল্লাহর দান — শুধু বিশ্রাম নয়, জ্ঞান গাঁথার সময়। যে ঘুমায় না সে জ্ঞান ধরে রাখে না। যে ঘুমায় — সে জাগ্রত হয়ে আরও প্রস্তুত।
 </div></div>
-</div>`,
+`,
   senior: {
     title: "ঘুম ও স্মৃতি প্র্যাকটিস গাইড",
     body: `<p><strong>১. পূর্ণ ঘুম:</strong> ৭-৯ ঘণ্টা — non-negotiable। এটি শেখার অংশ, বিলাস নয়।</p>
@@ -226,7 +226,7 @@ Charlie Munger-এর ধারণা — একাধিক মানসিক 
 শিক্ষায়: যখন তুমি একই বিষয়কে Mind Map + Zettelkasten + Feynman + Spaced Repetition দিয়ে দেখো — প্রতিটি মডেল একে অপরকে শক্তিশালী করে। এটাই শেখার Lollapalooza।
 </div></div>
 
-<div class="callout info"><span class="co-icon">🎯</span><div><strong>এই বইয়ের Lollapalooza:</strong> তুমি এখন ১৩টি দরজা পেরিয়েছ। প্রতিটি একটি মানসিক মডেল: Ebbinghaus (ভুলে যাওয়া), Adler (স্তরে স্তরে পড়া), Luhmann (সংযুক্ত নোট), Feynman (সহজ ব্যাখ্যা), Buffett/Munger (দৈনিক পড়া), Keshav (স্তরে স্তরে পেপার), Cornell (গঠনমূলক নোট), SQ3R (সার্ভে-প্রশ্ন-পড়া), Bjork (কঠিন শেখা), Walker (ঘুমে গাঁথা), Leitner (ব্যবধান বক্স), Buzan (দৃশ্যমান মানচিত্র), Novak (সংযুক্ত ধারণা)। একসাথে — এই ১৩টি মডেল একে অপরকে বহুগুণ শক্তিশালী করে। একটি মডেল ভালো — কিন্তু ১৩টি একসাথে? অপ্রতিরোধ্য।</div></div></div>
+<div class="callout info"><span class="co-icon">🎯</span><div><strong>এই বইয়ের Lollapalooza:</strong> তুমি এখন ১৩টি দরজা পেরিয়েছ। প্রতিটি একটি মানসিক মডেল: Ebbinghaus (ভুলে যাওয়া), Adler (স্তরে স্তরে পড়া), Luhmann (সংযুক্ত নোট), Feynman (সহজ ব্যাখ্যা), Buffett/Munger (দৈনিক পড়া), Keshav (স্তরে স্তরে পেপার), Cornell (গঠনমূলক নোট), SQ3R (সার্ভে-প্রশ্ন-পড়া), Bjork (কঠিন শেখা), Walker (ঘুমে গাঁথা), Leitner (ব্যবধান বক্স), Buzan (দৃশ্যমান মানচিত্র), Novak (সংযুক্ত ধারণা)। একসাথে — এই ১৩টি মডেল একে অপরকে বহুগুণ শক্তিশালী করে। একটি মডেল ভালো — কিন্তু ১৩টি একসাথে? অপ্রতিরোধ্য।</div></div>
 
 <div class="verse">
 <strong>এই বইয়ের সম্পূর্ণ যাত্রা — ১৩টি দরজা:</strong><br><br>
@@ -241,7 +241,7 @@ Walker বলেছিলেন — ঘুমাও, মস্তিষ্ক �
 Buzan ও Novak বলেছিলেন — দৃশ্যমান করো (Door ১৩)।<br><br>
 এই ১৩টি সত্য আলাদা নয় — একটি সত্যের ১৩টি মুখ।<br>
 শেখা এক — তার রূপ বহু।
-</div></div>
+</div>
 
 <div class="secret-box">
 <strong>🔑 চূড়ান্ত গোপন সত্য:</strong> যে শেখার সব স্তর একসাথে দেখে — সে সত্যিই শিখেছে।<br>
@@ -250,7 +250,7 @@ Buzan ও Novak বলেছিলেন — দৃশ্যমান করো 
 <div style="text-align:center;font-size:.82rem">
 বায়ান — স্পষ্ট প্রকাশ। কুরআন ৫৫:৩-৪ — "মানুষকে সৃষ্টি করেছেন, তাকে শিখিয়েছে বয়ান (স্পষ্ট বাক্য)।" দৃশ্যমান জ্ঞান হলো সেই বয়ান — যা অস্পষ্টকে স্পষ্ট করে, যা লুকানোকে দৃশ্যমান করে। তুমি ১৩টি দরজা পেরিয়েছ — এখন সব একসাথে দেখো। এটাই সম্পূর্ণতা।
 </div></div>
-</div>`,
+`,
   senior: {
     title: "দৃশ্যমান জ্ঞান প্র্যাকটিস গাইড",
     body: `<p><strong>১. প্রতিটি বই/কোর্স শেষে Mind Map বানাও:</strong> কেন্দ্রে মূল ধারণা, শাখায় উপধারণা। এক নজরে পুরো বিষয়।</p>

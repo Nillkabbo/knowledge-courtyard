@@ -516,7 +516,7 @@ STRATEGY:
   → ৮০% reuse existing tools
   → ১৫% buy managed services
   → ৫% build custom
-  → NEVER rebuild what exists!</div>
+  → NEVER rebuild what exists!
 
 <div class="dialogue">উম্মাহ — community, nation, collective। কুরআনে আল্লাহ বলেন — "তোমরা শ্রেষ্ঠ উম্মাহ, মানুষের জন্য বের করা হয়েছে।" (৩:১১০)। উম্মাহ = সম্প্রদায় যা একসাথে কাজ করে। টুল ecosystem-ও উম্মাহ — একসাথে হাজার টুল। যে সম্প্রদায় থেকে নেয় ও দেয়, সে শক্তিশালী। যে একা থাকে, সে দুর্বল।</div>
 <div class="dialogue en">"Ummah — community, nation, collective. Allah says — 'You are the best community, raised for mankind.' (3:110). Ummah = community working together. Tool ecosystem too — thousands of tools together. One who takes from and gives to community, is strong. One who stays alone, is weak."</div>`,

@@ -606,7 +606,8 @@ print("Weights updated!")
 <div style="font-size:.82rem;color:var(--ink-mute);margin-top:.3rem">Time moves in chains — each moment linked to the next. The chain rule reveals how each layer's error flows backward through the network. Learning is understanding causation in reverse.</div>
 </div>
 
-<div class="secret-box">🔗 <strong>নিকোবর রহস্য ৭:</strong> চেইন রুল হলো জটিল ফাংশনের ডেরিভেটিভ বের করার নিয়ম — ধাপে ধাপে। ব্যাকপ্রোপাগেশন হলো এটি neural network-এ — ভুল আউটপুট থেকে পেছনে পেছনে দোষ কে করেছে খুঁজে বের করা। সিলসিলা — শৃঙ্খল।<br><span class="en">The chain rule computes derivatives of complex functions step by step. Backpropagation is this principle in neural networks — tracing error backward from output to find which weights caused it. Silsila — chain.</span></div>`,
+<div class="secret-box">🔗 <strong>নিকোবর রহস্য ৭:</strong> চেইন রুল হলো জটিল ফাংশনের ডেরিভেটিভ বের করার নিয়ম — ধাপে ধাপে। ব্যাকপ্রোপাগেশন হলো এটি neural network-এ — ভুল আউটপুট থেকে পেছনে পেছনে দোষ কে করেছে খুঁজে বের করা। সিলসিলা — শৃঙ্খল।<br><span class="en">The chain rule computes derivatives of complex functions step by step. Backpropagation is this principle in neural networks — tracing error backward from output to find which weights caused it. Silsila — chain.</span></div>
+</div>`,
   senior:{
     title:"Backpropagation চিন্তা — কেন এটা কাজ করে",
     body:`<p><strong>Step ১:</strong> Forward pass = input থেকে output পর্যন্ত ডেটা পাঠানো।</p>

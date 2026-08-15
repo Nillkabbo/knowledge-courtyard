@@ -591,7 +591,7 @@ TOKEN COST:
   → each tool: ~১০০-৩০০ tokens
   → ১০ tools = ~২K tokens per request
   → keep descriptions concise!
-  → remove unused tools</div>
+  → remove unused tools
 
 <div class="dialogue">আলা — tools, equipment, instruments। কুরআনে আল্লাহ বলেন — "আমি মানুষকে দিয়েছি যাবতীয় সরঞ্জাম।" (৯০:৮-১০)। মানুষের হাত হলো আলা — কাজের সরঞ্জাম। LLM-এর function calling-ও আলা — কাজের সরঞ্জাম। আলা ছাড়া মানুষ অসহায়, টুল ছাড়া LLM অসহায়। আলা — সরঞ্জামের নিয়ামত।</div>
 <div class="dialogue en">"Ala — tools, equipment, instruments. Allah says — 'We gave man all tools.' (90:8-10). Human hands are ala — tools for work. LLM function calling too — tools for work. Without ala humans are helpless, without tools LLMs are helpless. Ala — the gift of tools."</div>`,

@@ -1542,7 +1542,7 @@ except Exception:
 
 # CAREER: Database Engineer, Data Engineer, Backend Engineer
 # Every application needs a database. This skill is ALWAYS in demand.</div>
-   - Blockchain-based DB, immutability</div>
+   - Blockchain-based DB, immutability
 
 <table class="kv-table"><tr><th>উপ-ক্ষেত্র</th><th>বিষয়</th><th>কনফারেন্স</th></tr>
 <tr><td class="hl">⚡ Query Opt</td><td>Cost-based, learned optimizer, adaptive</td><td>SIGMOD, VLDB, ICDE</td></tr>

@@ -518,7 +518,7 @@ ATTACK SURFACES — কোথায় আক্রমণ?
   Training Data → poisoning
   Model API → DoS, extraction
   Plugins → insecure design
-  Fine-tuned weights → backdoor</div>
+  Fine-tuned weights → backdoor
 
 <div class="dialogue">বাসিরাহ — foresight, clear sightedness। কুরআনে আল্লাহ বলেন — "নিশ্চয় আমরা তোমাকে স্পষ্ট বিজয় দান করেছি।" (৪৮:১)। বিজয়ের প্রথম শর্ত — শত্রু চেনা। LLM নিরাপত্তাও তেমনি — হুমকি জানো, তারপর রক্ষা করো। যে শত্রু জানে না, সে অন্ধ। যে জানে, সে প্রস্তুত। বাসিরাহ — দূরদর্শিতা, সতর্কতা।</div>
 <div class="dialogue en">"Basirah — foresight, clear sightedness. Allah says — 'We have given you a clear victory.' (48:1). The first condition of victory — knowing the enemy. LLM security too — know threats, then defend. One who doesn't know the enemy is blind. One who knows, is prepared. Basirah — foresight, vigilance."</div>`,
