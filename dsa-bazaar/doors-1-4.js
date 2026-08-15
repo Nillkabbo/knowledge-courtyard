@@ -533,18 +533,18 @@ def deep_iterative(n):
   <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
     <!-- 4 nesting dolls, decreasing in size, nested -->
     <ellipse class="node-hot" cx="280" cy="105" rx="75" ry="80" fill="rgba(255,107,53,.1)" stroke="#ff6b35" stroke-width="2"/>
-    <text class="lbl" x="280" y="110" fill="#ff6b35">fact(5)</text>
+    <text class="lbl" x="280" text-anchor="middle" y="42" fill="#ff6b35">fact(5)</text>
 
     <ellipse class="node" cx="280" cy="110" rx="55" ry="60" fill="rgba(240,193,75,.1)" stroke="#f0c14b" stroke-width="2"/>
-    <text class="lbl" x="280" y="115" fill="#f0c14b">fact(4)</text>
+    <text class="lbl" x="280" text-anchor="middle" y="68" fill="#f0c14b">fact(4)</text>
 
     <ellipse class="node-cyan" cx="280" cy="115" rx="38" ry="42" fill="rgba(54,214,231,.1)" stroke="#36d6e7" stroke-width="2"/>
-    <text class="lbl-sm" x="280" y="120" fill="#36d6e7">fact(3)</text>
+    <text class="lbl-sm" x="280" text-anchor="middle" y="94" fill="#36d6e7">fact(3)</text>
 
     <ellipse class="node-leaf" cx="280" cy="118" rx="24" ry="26" fill="rgba(82,196,26,.15)" stroke="#52c41a" stroke-width="2"/>
-    <text class="lbl-sm" x="280" y="122" fill="#52c41a">fact(1)</text>
+    <text class="lbl-sm" x="280" text-anchor="middle" y="120" fill="#52c41a">fact(1)</text>
 
-    <text class="lbl-sm" x="280" y="52" text-anchor="middle" fill="#9a93b8">বাইরের পুতুল = বড় সমস্যা</text>
+    <text class="lbl-sm" x="280" y="16" text-anchor="middle" fill="#9a93b8">বাইরের পুতুল = বড় সমস্যা</text>
     <text class="lbl-sm" x="280" y="182" text-anchor="middle" fill="#52c41a">ভেতরের সবচেয়ে ছোট = base case (আর খোলার মতো নেই)</text>
 
     <!-- side annotations -->
@@ -866,7 +866,7 @@ matrix = np.array([[1, 2, 3], [4, 5, 6]])
     <rect class="cell" x="${60+i*90}" y="30" width="78" height="36" rx="5"/>
     <text class="lbl-sm" x="${99+i*90}" y="52">A${i+1}</text>
     `).join('')}
-    <text class="lbl-sm" x="${99+2*90}" y="22" fill="#ff6b35">↑ এখানে VIP</text>
+    <text class="lbl-sm" x="${99+2*90}" y="8" fill="#ff6b35">↑ এখানে VIP</text>
 
     <!-- arrow -->
     <text class="lbl-sm" x="280" y="85" text-anchor="middle" fill="#36d6e7">⬇ VIP ঢোকাও → সবাই সরে যায়</text>

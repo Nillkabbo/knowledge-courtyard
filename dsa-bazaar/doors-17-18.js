@@ -27,7 +27,7 @@ doors.push({
 
 <div class="diagram">
   <div class="diag-title">Naive বনাম KMP — মিল না হলে কোথায় ফিরবে</div>
-  <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
     <text class="lbl-sm" x="20" y="22" fill="#ff6b35">Naive — মিল না হলে ১ ধাপ পিছিয়ে শুরু থেকেই</text>
     <text class="lbl-sm" x="30" y="50">টেক্সট:</text>
     ${'ABABDABACD'.split('').map((c,i)=>`<rect class="cell" x="${80+i*30}" y="38" width="26" height="22" rx="3"/><text class="lbl-sm" x="${93+i*30}" y="53">${c}</text>`).join('')}
@@ -40,7 +40,7 @@ doors.push({
     <text class="lbl-sm" x="20" y="155" fill="#52c41a">KMP — failure function দেখে যতটা দরকার ফেরা</text>
     <text class="lbl-sm" x="30" y="180">প্যাটার্ন:</text>
     ${'ABAC'.split('').map((c,i)=>`<rect class="cell-good" x="${80+i*30}" y="168" width="26" height="22" rx="3" style="fill:rgba(82,196,26,.2)"/><text class="lbl-sm" x="${93+i*30}" y="183">${c}</text>`).join('')}
-    <text class="lbl-sm" x="210" y="183" fill="#52c41a">LPS = [0,0,1,0] → A পর্যন্ত মিল ছিল, সেখান থেকেই চালাও</text>
+    <text class="lbl-sm" x="30" y="205" fill="#52c41a">LPS = [0,0,1,0] → A পর্যন্ত মিল ছিল, সেখান থেকেই চালাও</text>
   </svg>
   <div class="diag-cap">naive প্রতিবার শুরু থেকে, KMP প্যাটার্নের ভেতরের পুনরাবৃত্তি জেনে স্মার্ট ফেরে।</div>
 </div>

@@ -729,5 +729,11 @@ doors.push({
   //   think of death causes
   //   BEFORE death occurs</div></div>
 
+  <div class="verse">
+    <div class="verse-arabic">فَإِنَّ مَعَ الْعُسْرِ يُسْرًا</div>
+    <div class="verse-translation">নিশ্চয়ই অসুরের সাথে সুখ আছে।</div>
+    <div class="verse-ref">— কুরআন ৯৪:৬</div>
+  </div>
+
 <div class="secret-box">⚙️ অ্যানালজি দিয়ে কপি করো না — ভিত্তিতে নেমে প্রশ্ন করো: 'এটা কেন কাজ করে?' আর সরাসরি সমাধান না পেলে উল্টে দাও: 'কীভাবে এটা ব্যর্থ হবে?' সেই উত্তর এড়াও। প্রিমর্টেম > পোস্টমর্টেম।</div>`
 });

@@ -148,9 +148,9 @@ LEVEL 2 RESTRICTIONS:
 <rect x="0" y="150" width="460" height="60" fill="#2a2a2a"/>
 <line x1="0" y1="180" x2="460" y2="180" stroke="#f1c40f" stroke-width="3" stroke-dasharray="18,14" opacity=".7"/>
 <!-- milestone signs -->
-<rect x="52" y="96" width="4" height="54" fill="#8a6d3b"/><rect x="22" y="72" width="66" height="28" rx="4" fill="#27ae60"/><text x="55" y="84" text-anchor="middle" fill="#fff" font-size="10" font-weight="900">LEVEL 1</text><text x="55" y="95" text-anchor="middle" fill="#fff" font-size="10">১৪ বছর ৯ মাস</text>
-<rect x="222" y="96" width="4" height="54" fill="#8a6d3b"/><rect x="192" y="72" width="66" height="28" rx="4" fill="#2980b9"/><text x="225" y="84" text-anchor="middle" fill="#fff" font-size="10" font-weight="900">LEVEL 2</text><text x="225" y="95" text-anchor="middle" fill="#fff" font-size="10">১৬ বছর</text>
-<rect x="392" y="96" width="4" height="54" fill="#8a6d3b"/><rect x="362" y="72" width="66" height="28" rx="4" fill="#f39c12"/><text x="395" y="84" text-anchor="middle" fill="#fff" font-size="10" font-weight="900">LEVEL 3</text><text x="395" y="95" text-anchor="middle" fill="#333" font-size="10">১৭ বছর — FULL</text>
+<rect x="52" y="96" width="4" height="54" fill="#8a6d3b"/><rect x="22" y="72" width="66" height="28" rx="4" fill="#27ae60"/><text x="55" y="81" text-anchor="middle" fill="#fff" font-size="10" font-weight="900">LEVEL 1</text><text x="55" y="98" text-anchor="middle" fill="#fff" font-size="10">১৪ বছর ৯ মাস</text>
+<rect x="222" y="96" width="4" height="54" fill="#8a6d3b"/><rect x="192" y="72" width="66" height="28" rx="4" fill="#2980b9"/><text x="225" y="81" text-anchor="middle" fill="#fff" font-size="10" font-weight="900">LEVEL 2</text><text x="225" y="98" text-anchor="middle" fill="#fff" font-size="10">১৬ বছর</text>
+<rect x="392" y="96" width="4" height="54" fill="#8a6d3b"/><rect x="362" y="72" width="66" height="28" rx="4" fill="#f39c12"/><text x="395" y="81" text-anchor="middle" fill="#fff" font-size="10" font-weight="900">LEVEL 3</text><text x="395" y="98" text-anchor="middle" fill="#333" font-size="10">১৭ বছর — FULL</text>
 <!-- CAR 1: learner with adult -->
 <g transform="translate(14,158)">
 <rect x="0" y="0" width="82" height="30" rx="9" fill="#27ae60"/>
@@ -160,8 +160,8 @@ LEVEL 2 RESTRICTIONS:
 <circle cx="18" cy="32" r="7" fill="#000"/><circle cx="64" cy="32" r="7" fill="#000"/>
 <rect x="66" y="-12" width="16" height="14" rx="2" fill="#fff"/><text x="74" y="-1" text-anchor="middle" fill="#c62828" font-size="11" font-weight="900">L</text>
 </g>
-<text x="55" y="216" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">২১+ adult পাশে বাধ্যতামূলক</text>
-<text x="55" y="227" text-anchor="middle" fill="#7bed9f" font-size="10">একা চালানো নিষেধ · ৫০ ঘণ্টা practice</text>
+<text x="55" y="213" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">২১+ adult পাশে বাধ্যতামূলক</text>
+<text x="55" y="230" text-anchor="middle" fill="#7bed9f" font-size="10">একা চালানো নিষেধ · ৫০ ঘণ্টা practice</text>
 <!-- CAR 2: alone + restrictions -->
 <g transform="translate(184,158)">
 <rect x="0" y="0" width="82" height="30" rx="9" fill="#2980b9"/>
@@ -169,8 +169,8 @@ LEVEL 2 RESTRICTIONS:
 <circle cx="28" cy="12" r="6" fill="#ffd8a8"/><text x="28" y="15" text-anchor="middle" font-size="10">🧑</text>
 <circle cx="18" cy="32" r="7" fill="#000"/><circle cx="64" cy="32" r="7" fill="#000"/>
 </g>
-<text x="225" y="216" text-anchor="middle" fill="#74b9ff" font-size="10" font-weight="700">একা ✓ — কিন্তু 🌙 রাত ১০টা-৫টা নিষেধ*</text>
-<text x="225" y="227" text-anchor="middle" fill="#74b9ff" font-size="10">২১-এর কম বয়সী passenger: মাত্র ১ জন</text>
+<text x="225" y="213" text-anchor="middle" fill="#74b9ff" font-size="10" font-weight="700">একা ✓ — কিন্তু 🌙 রাত ১০টা-৫টা নিষেধ*</text>
+<text x="225" y="230" text-anchor="middle" fill="#74b9ff" font-size="10">২১-এর কম বয়সী passenger: মাত্র ১ জন</text>
 <!-- CAR 3: full -->
 <g transform="translate(354,158)">
 <rect x="0" y="0" width="82" height="30" rx="9" fill="#f39c12"/>
@@ -179,8 +179,8 @@ LEVEL 2 RESTRICTIONS:
 <circle cx="18" cy="32" r="7" fill="#000"/><circle cx="64" cy="32" r="7" fill="#000"/>
 <text x="74" y="-4" text-anchor="middle" font-size="12">✅</text>
 </g>
-<text x="395" y="216" text-anchor="middle" fill="#ffeaa7" font-size="10" font-weight="700">সব restriction শেষ</text>
-<text x="395" y="227" text-anchor="middle" fill="#ffeaa7" font-size="10">Full licensed driver!</text>
+<text x="395" y="213" text-anchor="middle" fill="#ffeaa7" font-size="10" font-weight="700">সব restriction শেষ</text>
+<text x="395" y="230" text-anchor="middle" fill="#ffeaa7" font-size="10">Full licensed driver!</text>
 <!-- arrows between -->
 <path d="M 104 172 L 176 172" stroke="#666" stroke-width="2.5" marker-end="url(#gdlA)"/>
 <path d="M 274 172 L 346 172" stroke="#666" stroke-width="2.5" marker-end="url(#gdlA)"/>
@@ -327,7 +327,7 @@ doors.push({
 
 <div class="sign-item"><svg viewBox="0 0 100 90" width="110" height="98"><polygon points="50,5 95,82 5,82" fill="#c62828" stroke="#fff" stroke-width="4"/><polygon points="50,22 80,75 20,75" fill="#fff"/><text x="50" y="68" text-anchor="middle" fill="#c62828" font-family="Arial Black,sans-serif" font-weight="900" font-size="10">YIELD</text></svg><div class="sign-label">🔻 <strong>YIELD</strong><br>অন্যকে অগ্রাধিকার</div></div>
 
-<div class="sign-item"><svg viewBox="0 0 80 96" width="110" height="132"><rect x="2" y="2" width="76" height="92" rx="3" fill="#fff" stroke="#222" stroke-width="2"/><text x="40" y="22" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="700" font-size="10">SPEED</text><text x="40" y="34" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="700" font-size="10">LIMIT</text><text x="40" y="68" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="900" font-size="32">55</text></svg><div class="sign-label">⬜ <strong>SPEED LIMIT</strong><br>সর্বোচ্চ ৫৫ mph</div></div>
+<div class="sign-item"><svg viewBox="0 0 80 96" width="110" height="132"><rect x="2" y="2" width="76" height="92" rx="3" fill="#fff" stroke="#222" stroke-width="2"/><text x="40" y="19" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="700" font-size="10">SPEED</text><text x="40" y="37" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="700" font-size="10">LIMIT</text><text x="40" y="82" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="900" font-size="32">55</text></svg><div class="sign-label">⬜ <strong>SPEED LIMIT</strong><br>সর্বোচ্চ ৫৫ mph</div></div>
 
 <div class="sign-item"><svg viewBox="0 0 100 100" width="110" height="110"><polygon points="50,4 96,50 50,96 4,50" fill="#fdd835" stroke="#222" stroke-width="3"/><text x="50" y="60" text-anchor="middle" font-size="28">⚠️</text></svg><div class="sign-label">🟡 <strong>WARNING</strong><br>সতর্ক হও</div></div>
 
@@ -339,11 +339,11 @@ doors.push({
 
 <div class="sign-item"><svg viewBox="0 0 100 100" width="110" height="110"><polygon points="50,4 96,50 50,96 4,50" fill="#e67e22" stroke="#222" stroke-width="3"/><text x="50" y="60" text-anchor="middle" font-size="24">🚧</text></svg><div class="sign-label">🟠 <strong>CONSTRUCTION</strong><br>দ্বিগুণ জরিমানা</div></div>
 
-<div class="sign-item"><svg viewBox="0 0 80 50" width="110" height="69"><rect x="1" y="1" width="78" height="48" rx="2" fill="#27ae60"/><text x="40" y="22" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-weight="700" font-size="10">EXIT</text><text x="40" y="40" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-weight="900" font-size="16">12</text></svg><div class="sign-label">🟢 <strong>GUIDE</strong><br>দিক নির্দেশনা</div></div>
+<div class="sign-item"><svg viewBox="0 0 80 68" width="110" height="69"><rect x="1" y="1" width="78" height="48" rx="2" fill="#27ae60"/><text x="40" y="22" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-weight="700" font-size="10">EXIT</text><text x="40" y="54" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-weight="900" font-size="16">12</text></svg><div class="sign-label">🟢 <strong>GUIDE</strong><br>দিক নির্দেশনা</div></div>
 
 <div class="sign-item"><svg viewBox="0 0 80 50" width="110" height="69"><rect x="1" y="1" width="78" height="48" rx="2" fill="#2980b9"/><text x="40" y="36" text-anchor="middle" fill="#fff" font-size="22">🏥</text></svg><div class="sign-label">🔵 <strong>SERVICES</strong><br>হাসপাতাল, গ্যাস</div></div>
 
-<div class="sign-item"><svg viewBox="0 0 100 70" width="110" height="78"><polygon points="4,35 96,4 96,66" fill="#fdd835" stroke="#222" stroke-width="2"/><text x="62" y="30" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="900" font-size="10">NO</text><text x="62" y="42" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="900" font-size="10">PASSING</text><text x="62" y="54" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="900" font-size="10">ZONE</text></svg><div class="sign-label">🔶 <strong>PENNANT</strong><br>রাস্তার বাম পাশে!</div></div>
+<div class="sign-item"><svg viewBox="0 0 100 70" width="110" height="78"><polygon points="4,35 96,4 96,66" fill="#fdd835" stroke="#222" stroke-width="2"/><text x="62" y="27" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="900" font-size="10">NO</text><text x="62" y="45" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="900" font-size="10">PASSING</text><text x="62" y="57" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-weight="900" font-size="10">ZONE</text></svg><div class="sign-label">🔶 <strong>PENNANT</strong><br>রাস্তার বাম পাশে!</div></div>
 
 <div class="sign-item"><svg viewBox="0 0 100 100" width="110" height="110"><g transform="rotate(45 50 50)"><rect x="42" y="2" width="16" height="96" rx="2" fill="#fff" stroke="#222" stroke-width="1.5"/></g><g transform="rotate(-45 50 50)"><rect x="42" y="2" width="16" height="96" rx="2" fill="#fff" stroke="#222" stroke-width="1.5"/></g><text x="26" y="38" text-anchor="middle" fill="#222" font-size="10" font-weight="900" transform="rotate(-45 26 34)">RAILROAD</text><text x="74" y="38" text-anchor="middle" fill="#222" font-size="10" font-weight="900" transform="rotate(45 74 34)">CROSSING</text></svg><div class="sign-label">✕ <strong>CROSSBUCK</strong><br>YIELD-এর মতো আচরণ</div></div>
 
@@ -390,7 +390,7 @@ doors.push({
   ONE WAY (কালো/সাদা তীর) → শুধু তীরের দিকে চালাও</div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 260" width="100%" style="max-width:760px">
+<svg viewBox="0 0 460 265" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="260" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">🛣️ বাস্তব রাস্তায় সাইন কোথায় বসে — M-52-এ এক মাইল</text>
 <!-- road with curve: straight then bends up-right -->
@@ -408,27 +408,27 @@ doors.push({
 <g transform="rotate(45 148 100)"><rect x="130" y="82" width="36" height="36" rx="3" fill="#fdd835" stroke="#222" stroke-width="2"/></g>
 <path d="M 140 108 Q 148 92 158 96" fill="none" stroke="#222" stroke-width="3.5" marker-end="url(#sgA)"/>
 <defs><marker id="sgA" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#222"/></marker></defs>
-<text x="148" y="52" text-anchor="middle" fill="#fdd835" font-size="10" font-weight="900">🟡 WARNING</text>
-<text x="148" y="63" text-anchor="middle" fill="#fdd835" font-size="10">"সামনে বাঁক" — বাঁকের</text>
-<text x="148" y="73" text-anchor="middle" fill="#fdd835" font-size="10">~৭৫০ ফুট আগে বসে!</text>
+<text x="148" y="49" text-anchor="middle" fill="#fdd835" font-size="10" font-weight="900">🟡 WARNING</text>
+<text x="148" y="74" text-anchor="middle" fill="#fdd835" font-size="10">"সামনে বাঁক" — বাঁকের</text>
+<text x="148" y="90" text-anchor="middle" fill="#fdd835" font-size="10">~৭৫০ ফুট আগে বসে!</text>
 <!-- SIGN 2: advisory speed under warning -->
 <rect x="196" y="128" width="4" height="36" fill="#8a6d3b"/>
 <rect x="182" y="102" width="32" height="26" rx="2" fill="#fdd835" stroke="#222" stroke-width="1.5"/>
 <text x="198" y="120" text-anchor="middle" fill="#222" font-size="12" font-weight="900">35</text>
-<text x="198" y="238" text-anchor="middle" fill="#f8c471" font-size="10">advisory speed —</text>
-<text x="198" y="248" text-anchor="middle" fill="#f8c471" font-size="10">বাঁকের নিরাপদ গতি</text>
+<text x="198" y="235" text-anchor="middle" fill="#f8c471" font-size="10">advisory speed —</text>
+<text x="198" y="251" text-anchor="middle" fill="#f8c471" font-size="10">বাঁকের নিরাপদ গতি</text>
 <!-- the curve arrow marker on road -->
 <text x="330" y="178" text-anchor="middle" fill="#fff" font-size="14" opacity=".8">⤴</text>
-<text x="316" y="222" text-anchor="middle" fill="#aaa" font-size="10">এটাই সেই বাঁক — সাইন</text>
-<text x="316" y="232" text-anchor="middle" fill="#aaa" font-size="10">তোমাকে আগেই বলেছিল</text>
+<text x="316" y="219" text-anchor="middle" fill="#aaa" font-size="10">এটাই সেই বাঁক — সাইন</text>
+<text x="316" y="235" text-anchor="middle" fill="#aaa" font-size="10">তোমাকে আগেই বলেছিল</text>
 <!-- SIGN 3: regulatory speed limit AFTER curve -->
 <rect x="404" y="70" width="4" height="40" fill="#8a6d3b"/>
 <rect x="390" y="34" width="32" height="38" rx="2" fill="#fff" stroke="#222" stroke-width="1.5"/>
-<text x="406" y="46" text-anchor="middle" fill="#222" font-size="10" font-weight="700">SPEED</text>
-<text x="406" y="53" text-anchor="middle" fill="#222" font-size="10" font-weight="700">LIMIT</text>
-<text x="406" y="68" text-anchor="middle" fill="#222" font-size="13" font-weight="900">55</text>
-<text x="380" y="22" text-anchor="middle" fill="#fff" font-size="10" font-weight="900">⬜ REGULATORY</text>
-<text x="380" y="32" text-anchor="middle" fill="#ccc" font-size="10">এখান থেকে আইন — ৫৫</text>
+<text x="406" y="42" text-anchor="middle" fill="#222" font-size="10" font-weight="700">SPEED</text>
+<text x="406" y="54" text-anchor="middle" fill="#222" font-size="10" font-weight="700">LIMIT</text>
+<text x="406" y="82" text-anchor="middle" fill="#222" font-size="13" font-weight="900">55</text>
+<text x="290" y="64" text-anchor="middle" fill="#fff" font-size="10" font-weight="900">⬜ REGULATORY</text>
+<text x="290" y="42" text-anchor="middle" fill="#ccc" font-size="10">এখান থেকে আইন — ৫৫</text>
 </svg>
 <div class="rt-caption">মূল concept: 🟡 warning সাইন বিপদের আগে বসে (প্রস্তুতির সময় দেয়), ⬜ regulatory সাইন যেখানে বসে সেখান থেকেই আইন। হলুদ "35" = advisory (পরামর্শ), সাদা "55" = আইন</div>
 </div>
@@ -762,7 +762,7 @@ SPECIAL MARKINGS
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 300" width="100%" style="max-width:760px">
+<svg viewBox="0 0 460 308" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="300" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">🚥 বাস্তব intersection — সব marking একসাথে (top view)</text>
 <!-- vertical road (you travel bottom→top) -->
@@ -805,31 +805,31 @@ SPECIAL MARKINGS
 <rect x="0" y="0" width="26" height="44" rx="7" fill="#e74c3c"/>
 <rect x="4" y="25" width="18" height="12" rx="3" fill="#8e2020"/>
 </g>
-<text x="203" y="96" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">oncoming —</text>
-<text x="203" y="106" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">একে yield করো!</text>
+<text x="203" y="93" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">oncoming —</text>
+<text x="203" y="109" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">একে yield করো!</text>
 <!-- signal head with flashing yellow arrow -->
 <rect x="320" y="128" width="26" height="58" rx="6" fill="#1a1a1a" stroke="#555" stroke-width="2"/>
 <circle cx="333" cy="140" r="8" fill="#333"/>
 <circle cx="333" cy="157" r="8" fill="#f1c40f"><animate attributeName="opacity" values="1;.15;1" dur="1s" repeatCount="indefinite"/></circle>
 <text x="333" y="161" text-anchor="middle" fill="#7a5c00" font-size="10" font-weight="900">↰</text>
 <circle cx="333" cy="174" r="8" fill="#333"/>
-<text x="388" y="140" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="900">FLASHING</text>
-<text x="388" y="150" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="900">YELLOW ARROW</text>
-<text x="388" y="161" text-anchor="middle" fill="#ccc" font-size="10">বাম মোড় যায় — কিন্তু</text>
-<text x="388" y="171" text-anchor="middle" fill="#ccc" font-size="10">oncoming+🚶 কে yield</text>
+<text x="388" y="137" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="900">FLASHING</text>
+<text x="388" y="155" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="900">YELLOW ARROW</text>
+<text x="388" y="172" text-anchor="middle" fill="#ccc" font-size="10">বাম মোড় যায় — কিন্তু</text>
+<text x="388" y="188" text-anchor="middle" fill="#ccc" font-size="10">oncoming+🚶 কে yield</text>
 <!-- callout labels -->
 <path d="M 100 210 L 224 210" stroke="#f1c40f" stroke-width="1.5" stroke-dasharray="3,3"/>
-<text x="58" y="206" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">ডাবল হলুদ =</text>
-<text x="58" y="216" text-anchor="middle" fill="#f1c40f" font-size="10">opposite traffic ভাগ</text>
+<text x="58" y="203" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">ডাবল হলুদ =</text>
+<text x="58" y="221" text-anchor="middle" fill="#f1c40f" font-size="10">opposite traffic ভাগ</text>
 <path d="M 100 232 L 268 232" stroke="#eee" stroke-width="1.5" stroke-dasharray="3,3" opacity=".6"/>
-<text x="58" y="230" text-anchor="middle" fill="#ddd" font-size="10" font-weight="700">ড্যাশড সাদা =</text>
-<text x="58" y="240" text-anchor="middle" fill="#ddd" font-size="10">একই দিকের লেন</text>
+<text x="58" y="241" text-anchor="middle" fill="#ddd" font-size="10" font-weight="700">ড্যাশড সাদা =</text>
+<text x="58" y="257" text-anchor="middle" fill="#ddd" font-size="10">একই দিকের লেন</text>
 <path d="M 356 200 L 312 200" stroke="#fff" stroke-width="1.5" stroke-dasharray="3,3"/>
-<text x="398" y="197" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">STOP LINE — এখানেই</text>
-<text x="398" y="207" text-anchor="middle" fill="#fff" font-size="10">থামো, crosswalk-এ নয়</text>
+<text x="398" y="208" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">STOP LINE — এখানেই</text>
+<text x="398" y="224" text-anchor="middle" fill="#fff" font-size="10">থামো, crosswalk-এ নয়</text>
 <path d="M 356 226 L 330 186" stroke="#fff" stroke-width="1.5" stroke-dasharray="3,3" opacity=".7"/>
-<text x="398" y="228" text-anchor="middle" fill="#ccc" font-size="10" font-weight="700">CROSSWALK — 🚶 থাকলে</text>
-<text x="398" y="238" text-anchor="middle" fill="#ccc" font-size="10">wait, সবসময় অগ্রাধিকার</text>
+<text x="398" y="239" text-anchor="middle" fill="#ccc" font-size="10" font-weight="700">CROSSWALK — 🚶 থাকলে</text>
+<text x="398" y="255" text-anchor="middle" fill="#ccc" font-size="10">wait, সবসময় অগ্রাধিকার</text>
 <text x="253" y="294" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">তুমি — বাম মোড়ের অপেক্ষায়</text>
 </svg>
 <div class="rt-caption">এক ছবিতে পুরো অধ্যায়: stop line-এ থামো → crosswalk-এর 🚶 আগে → flashing yellow arrow-এ oncoming (লাল গাড়ি) পরিষ্কার হলে তবেই বাম মোড়</div>
@@ -1144,7 +1144,7 @@ doors.push({
 <!-- cross street vertical at left -->
 <rect x="80" y="0" width="60" height="270" fill="#2a2a2a"/>
 <rect x="80" y="122" width="60" height="30" fill="#333"/>
-<text x="110" y="12" text-anchor="middle" fill="#888" font-size="10">CROSS STREET</text>
+<text x="110" y="30" text-anchor="middle" fill="#888" font-size="10">CROSS STREET</text>
 <!-- NO LEFT TURN sign at intersection -->
 <circle cx="158" cy="42" r="15" fill="#fff" stroke="#c62828" stroke-width="3"/>
 <text x="158" y="48" text-anchor="middle" font-size="13">↰</text>
@@ -1162,8 +1162,8 @@ doors.push({
 <text x="230" y="230" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">১. Intersection সোজা পার হও</text>
 <!-- 2: U-turn through crossover -->
 <path d="M 340 199 Q 372 199 372 137 Q 372 75 340 75" fill="none" stroke="#f1c40f" stroke-width="3" stroke-dasharray="7,5" marker-end="url(#mlB)"/>
-<text x="416" y="140" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">২. Crossover-এ</text>
-<text x="416" y="150" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">U-turn (yield!)</text>
+<text x="416" y="137" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">২. Crossover-এ</text>
+<text x="416" y="153" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">U-turn (yield!)</text>
 <!-- 3: back west, right turn north -->
 <path d="M 330 75 L 145 75 Q 122 75 122 50 L 122 14" fill="none" stroke="#74b9ff" stroke-width="3" stroke-dasharray="7,5" marker-end="url(#mlC)"/>
 <text x="238" y="52" text-anchor="middle" fill="#74b9ff" font-size="10" font-weight="700">৩. ফিরে এসে ডানে মোড় — গন্তব্যে!</text>
@@ -1474,7 +1474,7 @@ doors.push({
   ✗ Family member এরও নিজের placard লাগে</div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 240" width="100%" style="max-width:760px">
+<svg viewBox="0 0 460 273" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="240" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">🅿️ এক রাস্তায় সব দূরত্ব — কোথায় পার্ক করা যায়?</text>
 <!-- street -->
@@ -1489,8 +1489,8 @@ doors.push({
 <text x="25" y="52" text-anchor="middle" font-size="11">🚂</text>
 <!-- red zone 50ft from railroad -->
 <rect x="32" y="141" width="88" height="7" fill="#e74c3c"/>
-<text x="76" y="162" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">৫০ ft</text>
-<text x="76" y="173" text-anchor="middle" fill="#ff8a80" font-size="10">railroad থেকে</text>
+<text x="76" y="159" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">৫০ ft</text>
+<text x="76" y="176" text-anchor="middle" fill="#ff8a80" font-size="10">railroad থেকে</text>
 <!-- GREEN legal spot 1 with parked car -->
 <rect x="120" y="141" width="66" height="7" fill="#2ecc71"/>
 <g transform="translate(124,116)">
@@ -1498,13 +1498,13 @@ doors.push({
 <rect x="9" y="4" width="38" height="10" rx="3" fill="#0b3a5c"/>
 <circle cx="13" cy="26" r="6" fill="#000"/><circle cx="43" cy="26" r="6" fill="#000"/>
 </g>
-<text x="152" y="162" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="900">✅ OK</text>
-<text x="152" y="173" text-anchor="middle" fill="#7bed9f" font-size="10">curb-এর ১২ ইঞ্চির মধ্যে</text>
+<text x="152" y="159" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="900">✅ OK</text>
+<text x="152" y="190" text-anchor="middle" fill="#7bed9f" font-size="10">curb-এর ১২ ইঞ্চির মধ্যে</text>
 <!-- FIRE HYDRANT -->
 <rect x="192" y="141" width="66" height="7" fill="#e74c3c"/>
 <g transform="translate(218,112)"><rect x="0" y="8" width="14" height="20" rx="3" fill="#c62828"/><rect x="3" y="2" width="8" height="8" rx="2" fill="#c62828"/><rect x="-4" y="12" width="6" height="6" rx="1" fill="#c62828"/><rect x="12" y="12" width="6" height="6" rx="1" fill="#c62828"/></g>
-<text x="225" y="162" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">১৫ ft</text>
-<text x="225" y="173" text-anchor="middle" fill="#ff8a80" font-size="10">hydrant-এর দুই পাশে</text>
+<text x="225" y="159" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">১৫ ft</text>
+<text x="225" y="204" text-anchor="middle" fill="#ff8a80" font-size="10">hydrant-এর দুই পাশে</text>
 <!-- GREEN legal spot 2 -->
 <rect x="258" y="141" width="44" height="7" fill="#2ecc71"/>
 <text x="280" y="162" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="900">✅ OK</text>
@@ -1512,19 +1512,19 @@ doors.push({
 <g fill="#fff" opacity=".85"><rect x="306" y="76" width="8" height="62"/><rect x="320" y="76" width="8" height="62"/><rect x="334" y="76" width="8" height="62"/></g>
 <text x="324" y="62" text-anchor="middle" font-size="11">🚶</text>
 <rect x="302" y="141" width="48" height="7" fill="#e74c3c"/>
-<text x="326" y="162" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">২০ ft</text>
-<text x="326" y="173" text-anchor="middle" fill="#ff8a80" font-size="10">crosswalk থেকে</text>
+<text x="326" y="159" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">২০ ft</text>
+<text x="326" y="176" text-anchor="middle" fill="#ff8a80" font-size="10">crosswalk থেকে</text>
 <!-- STOP SIGN at right corner -->
 <rect x="418" y="90" width="4" height="58" fill="#8a6d3b"/>
 <polygon points="408,58 432,58 442,68 442,92 432,102 408,102 398,92 398,68" fill="#c62828" stroke="#fff" stroke-width="2"/>
 <text x="420" y="85" text-anchor="middle" fill="#fff" font-size="10" font-weight="900">STOP</text>
 <rect x="350" y="141" width="100" height="7" fill="#e74c3c"/>
-<text x="400" y="162" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">৩০ ft</text>
-<text x="400" y="173" text-anchor="middle" fill="#ff8a80" font-size="10">STOP sign থেকে</text>
+<text x="400" y="159" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">৩০ ft</text>
+<text x="400" y="218" text-anchor="middle" fill="#ff8a80" font-size="10">STOP sign থেকে</text>
 <!-- memory aid -->
-<text x="230" y="200" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">মনে রাখার কৌশল: সংখ্যা বাড়ে বিপদের সাথে —</text>
-<text x="230" y="214" text-anchor="middle" fill="#ccc" font-size="10">hydrant ১৫ &lt; crosswalk ২০ &lt; stop sign ৩০ &lt; railroad ৫০</text>
-<text x="230" y="228" text-anchor="middle" fill="#888" font-size="10">🔴 লাল curb অংশ = পার্ক নিষেধ | 🟢 সবুজ = বৈধ জায়গা</text>
+<text x="230" y="225" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">মনে রাখার কৌশল: সংখ্যা বাড়ে বিপদের সাথে —</text>
+<text x="230" y="239" text-anchor="middle" fill="#ccc" font-size="10">hydrant ১৫ &lt; crosswalk ২০ &lt; stop sign ৩০ &lt; railroad ৫০</text>
+<text x="230" y="259" text-anchor="middle" fill="#888" font-size="10">🔴 লাল curb অংশ = পার্ক নিষেধ | 🟢 সবুজ = বৈধ জায়গা</text>
 </svg>
 <div class="rt-caption">একটা বাস্তব block-এ চারটা দূরত্বের নিয়ম — নীল গাড়িটা একমাত্র বৈধ জায়গায় দাঁড়িয়ে</div>
 </div>

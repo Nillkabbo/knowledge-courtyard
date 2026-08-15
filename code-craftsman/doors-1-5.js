@@ -624,7 +624,7 @@ print(response)  # {'id': 1}, 201
     <text x="100" y="210" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">✅ Works end-to-end!</text>
     <line x1="190" y1="110" x2="240" y2="110" stroke="#6b6588" stroke-width="1" stroke-dasharray="3,2"/>
     <text x="215" y="103" text-anchor="middle" fill="#6b6588" font-size="9">vs</text>
-    <text x="380" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ Isolated: Hope they connect</text>
+    <text x="380" y="38" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ Isolated: Hope they connect</text>
     <rect x="250" y="35" width="140" height="30" rx="5" fill="rgba(239,68,68,0.04)" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
     <text x="360" y="54" text-anchor="middle" fill="#ef4444" font-size="9">DB (3 weeks)</text>
     <rect x="250" y="75" width="140" height="30" rx="5" fill="rgba(239,68,68,0.04)" stroke="#ef4444" stroke-width="1" opacity="0.5"/>

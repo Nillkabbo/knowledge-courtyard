@@ -450,7 +450,7 @@ doors.push({
 
 <div class="diagram">
   <div class="diag-title">Set vs Dict — দুই ভাই</div>
-  <svg viewBox="0 0 560 140" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 560 200"mlns="http://www.w3.org/2000/svg">
     <!-- DICT -->
     <text class="lbl-sm" x="140" y="25" fill="#f0c14b">DICT (key → value)</text>
     ${['name→Rafid','age→25','city→Dhaka'].map((kv,i)=>`
@@ -468,8 +468,8 @@ doors.push({
     <text class="lbl-sm" x="420" y="135" text-anchor="middle">শুধু value, key নেই — ডুপ্লিকেট নিষিদ্ধ</text>
 
     <!-- duplicate rejected -->
-    <rect class="cell-hot" x="330" y="105" width="180" height="24" rx="5" style="fill:rgba(255,107,53,.15);stroke:#ff6b35;stroke-dasharray:4,3"/>
-    <text class="lbl-sm" x="420" y="120" text-anchor="middle" fill="#ff6b35">❌ Rafid (already exists!)</text>
+    <rect class="cell-hot" x="330" y="170" width="180" height="24" rx="5" style="fill:rgba(255,107,53,.15);stroke:#ff6b35;stroke-dasharray:4,3"/>
+    <text class="lbl-sm" x="420" y="186" text-anchor="middle" fill="#ff6b35">❌ Rafid (already exists!)</text>
   </svg>
   <div class="diag-cap">Dict = key-value pair (চাবি → ধন)। Set = শুধু চাবি, value নেই — ডুপ্লিকেট স্বয়ংক্রিয়ভাবে বাদ।</div>
 </div>
