@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎰 পুরস্কারের বাগান — The Gambler's Garden</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Amiri:wght@400;700&family=Hind+Siliguri:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══ TITLE SCREEN ══ -->
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">وَمَا تُنفِقُوا مِنْ خَيْرٍ فَلِأَنفُسِكُمْ</div>
+  <h1 class="title-main">পুরস্কারের বাগান</h1>
+  <div class="title-sub">The Gambler's Garden</div>
+  <div class="title-desc">
+    একটা বাগান আছে — প্রতিটা কাজের ফল তাৎক্ষণিক নয়, ধৈর্যে জমে।
+    এখানে তুমি শিখবে সেই শাস্ত্র — কীভাবে কোনো এজেন্ট (মানুষ, মেশিন) পুরস্কার থেকে শিখে
+    সিদ্ধান্ত নেয়: ব্যান্ডিট থেকে MDP, বেলম্যান থেকে Q-learning, পলিসি-গ্রেডিয়েন্ট থেকে RLHF।
+    <span class="en">A garden where reward comes not instantly but with patience — the science of learning from reward: bandits, MDPs, Bellman, Q-learning, policy gradients, RLHF.</span>
+  </div>
+  <button class="start-btn" onclick="startGame()">বাগানে প্রবেশ করো → Enter</button>
+</div>
+
+<!-- ══ PROLOGUE ══ -->
+<div id="prologue-screen" class="screen">
+  <div class="prologue-title">📜 প্রস্তাবনা — Prologue</div>
+  <div class="prologue-body">
+    <p><strong>বীজ থেকে শিক্ষা।</strong> একটা বীজ বোনো — কিছু মাটিতে মরে যায়, কিছু ফলে। কোনটা ফলবে আগে থেকে জানা নেই; বোনা ছাড়া জানার উপায়ও নেই। পুরো জীবন এমনই — প্রতিটা সিদ্ধান্ত একটা বীজ, ফল আসে পরে, অনিশ্চিত।</p>
+    <p>এগারোটা দরজা পেরোলে তুমি বুঝবে — এই অনিশ্চয়তার ভেতরে সিদ্ধান্ত নেওয়ার একটা <em>গণিত</em> আছে। তার নাম রিইনফোর্সমেন্ট লার্নিং। বাগানিরা তা হাজার বছর ধরে আন্দাজে করত; গত সত্তর বছরে গণিত তার ভাষা পেয়েছে — বেলম্যানের হিসাব, সাটনের ধৈর্য, ওয়াটকিন্সের খাতা।</p>
+    <p class="en">Eleven doors from seed to harvest: the mathematics of learning from reward — Bellman's arithmetic, Sutton's patience, Watkins's ledger — ending where your own fine-tuning book (B11) begins.</p>
+  </div>
+  <button class="start-btn" onclick="state.prologueSeen=true;saveState();renderMap();showScreen('map-screen')">🚪 বাগানের দিকে যাও</button>
+</div>
+
+<!-- ══ MAP SCREEN ══ -->
+<div id="map-screen" class="screen">
+  <div class="map-header">
+    <div class="hud-rank"><span id="hud-rank-icon">🌱</span> <span id="hud-rank-name">বীজ বোনার শিক্ষানবিশ</span> <span id="hud-level">স্তর ১</span></div>
+    <div class="hud-xp-wrap">
+      <div class="hud-xp-text" id="hud-xp-text">0 / 1100 XP</div>
+      <div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill"></div></div>
+    </div>
+    <button class="hud-btn" onclick="toggleMute()" id="mute-btn">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📜</button>
+  </div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<!-- ══ STORY SCREEN ══ -->
+<div id="story-screen" class="screen">
+  <button class="story-back" onclick="goToMap()">← বাগানের মানচিত্র</button>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<!-- ══ COMPLETE SCREEN ══ -->
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">👑</div>
+  <div class="complete-title">বাগান সম্পূর্ণ — The Garden Complete</div>
+  <div class="complete-text">এগারোটা দরজা পেরিয়ে তুমি এখন জানো: পুরস্কার থেকে শেখার সম্পূর্ণ বিজ্ঞান — বীজ (bandit) থেকে ফসল (policy gradient) পর্যন্ত।</div>
+  <div class="complete-verse">وَمَا تُنفِقُوا مِنْ خَيْرٍ فَلِأَنفُسِكُمْ</div>
+  <div class="cheat-grid" id="cheat-grid-end"></div>
+  <button class="continue-btn" onclick="location.reload()">আবার বাগানে ফেরো</button>
+</div>
+
+<!-- ══ CHEAT MODAL ══ -->
+<div id="cheat-modal" style="display:none">
+  <div class="cheat-modal-inner">
+    <div class="cheat-modal-head">
+      <span>📜 বাগানের খাতা — Cheat Sheet</span>
+      <button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button>
+    </div>
+    <div class="cheat-grid" id="cheat-grid"></div>
+  </div>
+</div>
+
+<div id="xp-popup"><span id="xp-amount">+100 XP</span></div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="doors-11.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>

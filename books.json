@@ -606,6 +606,17 @@
       "doors": 37,
       "desc_bn": "LedgerPilot ডিপ-ডাইভ — ডোমেইন থেকে স্ট্যাক-গভীরতা পর্যন্ত: Django ORM, DRF, MySQL, Celery, Redis, Vue-প্রতিক্রিয়া, নতুন-ফিচার রেসিপি, আর ৪২-স্ক্রিন নিবন্ধ।",
       "desc_en": "LedgerPilot deep-dive — domain to deep stack: Django ORM, DRF, MySQL, Celery, Redis, Vue reactivity, the new-feature recipe, and the 42-view screen register."
+    },
+    {
+      "n": 55,
+      "folder": "reinforcement-learning",
+      "title_en": "The Gambler's Garden",
+      "title_bn": "পুরস্কারের বাগান",
+      "icon": "🎰",
+      "category": "cs",
+      "color": "game-55",
+      "tag": "Book 55 · Reinforcement Learning",
+      "status": "live"
     }
   ],
   "roadmap": [
@@ -783,6 +794,10 @@
         {
           "book": 11,
           "why": "LoRA/QLoRA, DPO/PPO — adapt models to your domain."
+        },
+        {
+          "book": 55,
+          "why": "MDP→Bellman→TD→Q→DQN→PPO→RLHF/DPO/GRPO — the decision-science spine beneath B11 fine-tuning and every agent."
         }
       ]
     },

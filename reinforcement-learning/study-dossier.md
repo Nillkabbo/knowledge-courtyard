@@ -1,0 +1,39 @@
+# Citation Verification Dossier — RL History + Sacred Analogues (Book 55)
+
+Verified against: arXiv abstract pages (citation metadata), Nature.com, DBLP, Crossref, Semantic Scholar, Sutton & Barto 2nd-ed PDF (incompleteideas.net), sunnah.com, quran.com API. Retrieved 2026-08-15.
+
+## RL Claims
+
+| # | Claim | Verdict | Verified fact + year + source |
+|---|-------|---------|-------------------------------|
+| 1 | Bellman equation; coined "dynamic programming"; book *Dynamic Programming* 1957 | CORRECT | Richard Bellman, *Dynamic Programming*, Princeton Univ. Press, 1957 (xxv+342 pp.). S&B: "The term 'dynamic programming' is due to Bellman (1957a)." URL: https://press.princeton.edu/books/paperback/9780691146683/dynamic-programming |
+| 2 | Bellman 1957 → Howard, *Dynamic Programming and Markov Processes* 1960 | PARTIAL | Bellman (1957b, "A Markovian decision process") introduced the MDP; Howard's 1960 book (Technology Press/Wiley) devised **policy iteration** and established MDPs as a field — he didn't merely "extend" Bellman. https://ieeexplore.ieee.org/document/5152665 (ref); S&B ch.1/4 notes |
+| 3 | "Curse of dimensionality" coined by Bellman, 1957 or earlier | CORRECT | Coined by Bellman re: dynamic programming; appears in the 1957 book (often cited Bellman 1957/1961). https://en.wikipedia.org/wiki/Curse_of_dimensionality |
+| 4 | Sutton 1988 TD paper, Machine Learning | CORRECT | Sutton, R.S., "Learning to predict by the methods of temporal differences," *Machine Learning* 3(1):9–44, 1988. https://link.springer.com/article/10.1007/BF00115009 |
+| 5 | Watkins 1989 Cambridge thesis; Watkins & Dayan 1992 | CORRECT | Watkins, C.J.C.H., "Learning from Delayed Rewards," PhD thesis, Cambridge, 1989 (author's page: https://www.cs.rhul.ac.uk/~chrisw/thesis.html). Watkins & Dayan, "Technical Note: Q-Learning," *Machine Learning* 8:279–292, 1992. https://link.springer.com/article/10.1007/BF00992698 |
+| 6 | SARSA — Rummery & Niranjan 1994, orig. "Modified Connectionist Q-Learning" | CORRECT | Rummery, G.A. & Niranjan, M., "On-line Q-learning using connectionist systems," CUED/F-INFENG/TR 166, Cambridge, 1994; originally MCQ-L; name "SARSA" proposed by Sutton. https://en.wikipedia.org/wiki/State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action |
+| 7 | Experience replay — Long-Ji Lin 1992 | CORRECT | Lin, L.-J., "Self-improving reactive agents based on reinforcement learning, planning and teaching," *Machine Learning* 8:293–321, 1992. S&B: "experience replay first studied by Lin (1992)." https://link.springer.com/article/10.1007/BF00992699 |
+| 8 | REINFORCE — Williams 1992 | CORRECT | Williams, R.J., "Simple statistical gradient-following algorithms for connectionist reinforcement learning," *Machine Learning* 8:229–256, 1992. https://link.springer.com/article/10.1007/BF00992696 |
+| 9 | Actor-critic — Barto, Sutton, Anderson 1983; Klopf 1970s origins | CORRECT | Barto, Sutton & Anderson, "Neuronlike adaptive elements that can solve difficult learning control problems," *IEEE Trans. SMC* SMC-13(5):834–846, 1983. Klopf's late-1970s heterostatic/hedonistic-neuron work launched their RL collaboration (S&B book is dedicated to Klopf's memory); his book *The Hedonistic Neuron* appeared 1982. https://ieeexplore.ieee.org/document/6313077 |
+| 10 | DQN 2013 arXiv + 2015 Nature | CORRECT | Mnih et al., "Playing Atari with Deep Reinforcement Learning," arXiv:1312.5602 (19 Dec 2013), https://arxiv.org/abs/1312.5602; Mnih et al., "Human-level control through deep reinforcement learning," *Nature* 518:529–533, Feb 2015, https://www.nature.com/articles/nature14236 |
+| 11 | A3C Mnih 2016; DDPG Lillicrap 2015 | CORRECT | Mnih et al., "Asynchronous Methods for Deep Reinforcement Learning," arXiv:1602.01783 (Feb 2016; ICML 2016), https://arxiv.org/abs/1602.01783. Lillicrap et al., "Continuous control with deep reinforcement learning," arXiv:1509.02971 (Sep 2015; ICLR 2016), https://arxiv.org/abs/1509.02971 |
+| 12 | PPO Schulman 2017; TRPO Schulman 2015 | CORRECT | Schulman et al., "Proximal Policy Optimization Algorithms," arXiv:1707.06347 (Jul 2017), https://arxiv.org/abs/1707.06347. Schulman et al., "Trust Region Policy Optimization," arXiv:1502.05477 (Feb 2015; ICML 2015), https://arxiv.org/abs/1502.05477 |
+| 13 | RLHF Christiano 2017; InstructGPT Ouyang 2022 | CORRECT | Christiano et al., "Deep reinforcement learning from human preferences," arXiv:1706.03741 (Jun 2017; NeurIPS 2017), https://arxiv.org/abs/1706.03741. Ouyang et al., "Training language models to follow instructions with human feedback," arXiv:2203.02155 (Mar 2022; NeurIPS 2022), https://arxiv.org/abs/2203.02155 |
+| 14 | DPO — Rafailov 2023 | CORRECT | Rafailov et al., "Direct Preference Optimization: Your Language Model is Secretly a Reward Model," arXiv:2305.18290 (May 2023; NeurIPS 2023), https://arxiv.org/abs/2305.18290. Full subtitle should be kept in citations. |
+| 15 | GRPO — Shao 2024 DeepSeekMath | CORRECT | Shao et al., "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models," arXiv:2402.03300 (Feb 2024), https://arxiv.org/abs/2402.03300 — GRPO introduced in §4 (PPO variant with group-relative advantage). |
+| 16 | Robbins 1952 bandit roots | PARTIAL | Robbins, H., "Some aspects of the sequential design of experiments," *Bull. AMS* 58(5):527–535, 1952 — correct, but S&B notes the "sequential design of experiments" line was **introduced earlier by Thompson (1933, 1934)**; also studied by Bellman (1956). https://projecteuclid.org/journals/bulletin-of-the-american-mathematical-society/volume-58/issue-5/Some-aspects-of-the-sequential-design-of-experiments/bams/1183517406.full |
+| 17 | Deadly triad — S&B 2nd ed 2018 | CORRECT | Sutton & Barto, *Reinforcement Learning: An Introduction*, 2nd ed., MIT Press, 2018, §11.3 "The Deadly Triad": function approximation + bootstrapping + off-policy training → risk of divergence. Verified in full text: http://incompleteideas.net/book/the-book-2nd.html |
+| 18 | Reward hypothesis attributed to Sutton | PARTIAL | The hypothesis is stated in Sutton & Barto (2018, §1.1... ch.3 notes): "all of what we mean by goals and purposes can be well thought of as the maximization of the expected value of the cumulative sum of a received scalar signal." But the book's own note says the **explicit statement was suggested by Michael Littman** (personal communication). Commonly popularized by Sutton (incl. his 2018 "Reward hypothesis" talk) — attribute to "Sutton & Barto, credit Littman." |
+
+## Sacred-Analogue Claims (Islam)
+
+| # | Claim | Verdict | Verified fact + source |
+|---|-------|---------|------------------------|
+| a | Sahih Bukhari contains the Prophet's istikhara dua | CORRECT | Sahih al-Bukhari 6382 (Book 80, Invocations, ch. 48 "The invocation on making Istikharah"): Jabir narrates the Prophet ﷺ taught istikhara as he taught surahs, with full dua "Allahumma inni astakhiruka bi'ilmika…". Shorter version: Bukhari 1162. https://sunnah.com/bukhari:6382 |
+| b | Quran 17:106 — gradual revelation | CORRECT | "And [it is] a Qur'an which We have separated [by intervals] that you might recite it to the people over a prolonged period. And We have sent it down progressively." (Sahih International). Arabic: وَقُرْءَانًا فَرَقْنَـٰهُ لِتَقْرَأَهُۥ عَلَى ٱلنَّاسِ عَلَىٰ مُكْثٍ. https://quran.com/17/106 |
+| c | Quran 94:5–6 — with hardship comes ease | CORRECT | "For indeed, with hardship [will be] ease. Indeed, with hardship [will be] ease." فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا / إِنَّ مَعَ ٱلْعُسْرِ يُسْرًا (verse repeated for emphasis). https://quran.com/94/5-6 |
+
+## Summary counts
+- RL claims: 15 CORRECT, 3 PARTIAL (#2 Howard's role, #16 Thompson precedence, #18 Littman credit), 0 INCORRECT.
+- Islamic claims: 3/3 CORRECT.
+- All researcher names, years, and titles checked against at least one authoritative source (arXiv/Nature/DBLP/Crossref/S&B full text/sunnah.com/quran.com).
