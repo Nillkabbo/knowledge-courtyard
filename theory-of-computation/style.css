@@ -201,3 +201,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .legend-item{display:inline-flex;align-items:center;gap:.3rem}
 .story-text .legend-swatch{display:inline-block;width:14px;height:3px;border-radius:2px}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ported components (audit Aug 2026) */
+.story-text .svg-diagram{width:100%;max-width:620px;margin:1.2rem auto;display:block;background:linear-gradient(135deg,rgba(19,26,43,.6),rgba(7,10,15,.8));border:1px solid var(--panel-border);border-radius:12px;padding:.8rem;overflow:hidden}
+.story-text .svg-caption{font-size:.75rem;color:var(--ink-dim);text-align:center;margin:-.6rem auto 1.2rem;font-style:italic;max-width:620px}

@@ -159,3 +159,12 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 /* ══ SVG DIAGRAM + CAPTION ══ */
 .story-text .svg-diagram{background:var(--code-bg);border:1px solid var(--code-border);border-radius:12px;padding:1rem;margin:1rem 0;overflow:hidden}
 .story-text .svg-caption{text-align:center;font-size:.8rem;color:var(--ink-mute);font-style:italic;margin:.4rem 0 1rem;padding:0 .5rem;line-height:1.55}
+
+/* ported components (audit Aug 2026) */
+.story-text .timeline{position:relative;margin:1rem 0 1rem .3rem;padding-left:1.35rem;border-left:2px solid var(--panel-border)}
+.story-text .tl-step{position:relative;margin-bottom:1rem;padding-left:.25rem}
+.story-text .tl-step:last-child{margin-bottom:0}
+.story-text .tl-step::before{content:'';position:absolute;left:-1.74rem;top:.25rem;width:11px;height:11px;border-radius:50%;background:var(--amber-bright);box-shadow:0 0 8px var(--amber-glow)}
+.story-text .tl-step .tl-when{font-family:'Cinzel',serif;font-size:0.75rem;color:var(--teal);letter-spacing:.05em;text-transform:uppercase}
+.story-text .tl-step .tl-title{font-weight:700;font-size:0.9rem;color:var(--ink);margin:.08rem 0}
+.story-text .tl-step .tl-body{font-size:0.85rem;color:var(--ink-dim)}

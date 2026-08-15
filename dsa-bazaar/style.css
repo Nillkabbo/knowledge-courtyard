@@ -219,3 +219,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
+
+/* ported (audit Aug 2026) */
+.story-text svg .cell-cyan{fill:rgba(61,214,196,.18);stroke:#22d3ee;stroke-width:2}
+.story-text svg .edge-good{stroke:#52c41a;stroke-width:2.5}

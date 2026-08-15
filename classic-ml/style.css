@@ -201,3 +201,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .legend-item{display:inline-flex;align-items:center;gap:.3rem}
 .story-text .legend-swatch{display:inline-block;width:14px;height:3px;border-radius:2px}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ported (audit Aug 2026) */
+.story-text svg .cell-leaf{fill:rgba(46,204,113,.18);stroke:#2dd4bf;stroke-width:2}
+.story-text svg .lbl-purple{fill:#c084fc;font-size:10px;font-weight:700}
