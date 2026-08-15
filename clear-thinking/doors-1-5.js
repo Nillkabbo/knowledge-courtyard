@@ -36,7 +36,7 @@ doors.push({
 <div class="dialogue">"এই হাতুড়িটা নাও," জাকিরা বললেন। তুমি হাতুড়িটা হাতে নিলে। "ওজন কেমন?" তুমি বললে — "ভারী। শক্ত লাগে।" জাকিরা ঘাড় নাড়লেন। "এই হাতুড়ি দিয়ে এখন এই তাঁত ঠিক করো।" তুমি তাকালে তাঁতের দিকে — একটা সূত্র ছিঁড়ে গেছে, সেটা জোড়া লাগাতে হবে। তুমি হাতুড়ি দিয়ে সূত্র ধরতে গেলে। সূত্রটা ভেঙে গেল। আরও একটু চেষ্টা — সেটাও ভাঙল। তৃতীয়বার — হাতুড়ি পাল্লায় লেগে তাঁতের কাঠে আঘাত করল, কাঠ ফাটল।</div>
 <div class="dialogue en">"Take this hammer," Zakira said. You took it. "How does it feel?" You said — "Heavy. Solid." Zakira nodded. "Now use this hammer to fix this loom." You looked — one thread is broken, it must be rejoined. You reached for the thread with the hammer. The thread snapped. You tried again — snapped again. A third time — the hammer struck the loom's frame, the wood cracked.</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে:</strong> হাতুড়ি দিয়ে সূত্র জোড়া লাগানো যায় না। হাতুড়ির কাজ হলো পেরেক ঠোকা — সূত্র জোড়া দেওয়া নয়। কিন্তু তোমার কাছে শুধু হাতুড়ি আছে, তাই তুমি সবকিছু পেরেক ভাবো।</div></div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে:</strong> হাতুড়ি দিয়ে সূত্র জোড়া লাগানো যায় না। হাতুড়ির কাজ হলো পেরেক ঠোকা — সূত্র জোড়া দেওয়া নয়। কিন্তু তোমার কাছে শুধু হাতুড়ি আছে, তাই তুমি সবকিছু পেরেক ভাবো।</div></div>
 
 <div class="dialogue">জাকিরা আস্তে বললেন: "চার্লি ম্যাঞ্জার — ওয়ারেন বাফেটের সঙ্গী — একটা কথা বলেছেন। ইংরেজিতে একটা প্রবাদ আছে: <em>'To a man with a hammer, everything looks like a nail.'</em> যার হাতে শুধু হাতুড়ি, সে সবকিছুকে পেরেক বলে ভাবে। তুমি এইমাত্র সেটা নিজে দেখলে — হাতুড়ি দিয়ে সূত্র ধরতে গিয়ে ভাঙলে। কিন্তু সমস্যা হাতুড়ির নয়। সমস্যা হলো তোমার কাছে হাতুড়ি ছাড়া আর কিছু নেই।"</div>
 <div class="dialogue en">Zakira said softly: "Charlie Munger — Warren Buffett's partner — said something. There's an English proverb: <em>'To a man with a hammer, everything looks like a nail.'</em> One who has only a hammer thinks everything is a nail. You just saw it yourself — reaching for thread with a hammer, you broke it. But the problem isn't the hammer. The problem is you have nothing besides the hammer."</div>
@@ -45,11 +45,11 @@ doors.push({
 <div class="dialogue en">Zakira stood. Walked to the shelves. Took down a spool — deep blue. "Mend it with this thread." You mended the break with the blue thread. It worked. Zakira said: "Now another problem. The loom's wood has cracked — from the hammer's blow. What's needed now?" You thought. Glue? A piece of wood? Zakira handed you a small bottle — wood glue. "The hammer is useful here — but only to drive a peg. Glue is different. Thread is different. Every task has its own tool."</div>
 
 <div class="stat-grid">
-<div class="stat-card"><div class="sc-num">১</div><div class="sc-label">এক হাতিয়ার → সব কিছু পেরেক</div></div></div>
-<div class="stat-card"><div class="sc-num">৩-৪</div><div class="sc-label">কয়েকটা হাতিয়ার → কিছু কিছু মিলবে</div></div></div>
-<div class="stat-card"><div class="sc-num">~১০০</div><div class="sc-label">ম্যাঞ্জারের ল্যাটিসওয়ার্ক → বড় সিদ্ধান্তে সুবিধা</div></div></div>
-<div class="stat-card"><div class="sc-num">∞</div><div class="sc-label">শেখা শেষ নেই</div></div></div>
-</div></div>
+<div class="stat-card"><div class="sc-num">১</div><div class="sc-label">এক হাতিয়ার → সব কিছু পেরেক</div></div>
+<div class="stat-card"><div class="sc-num">৩-৪</div><div class="sc-label">কয়েকটা হাতিয়ার → কিছু কিছু মিলবে</div></div>
+<div class="stat-card"><div class="sc-num">~১০০</div><div class="sc-label">ম্যাঞ্জারের ল্যাটিসওয়ার্ক → বড় সিদ্ধান্তে সুবিধা</div></div>
+<div class="stat-card"><div class="sc-num">∞</div><div class="sc-label">শেখা শেষ নেই</div></div>
+</div>
 
 <div class="dialogue">"ম্যাঞ্জার বলেছিলেন," জাকিরা আবার বসলেন, "যে একজন মানুষ যদি শুধু একটা বিষয়ে দক্ষ হয় — শুধু অ্যাকাউন্টিং, বা শুধু ইঞ্জিনিয়ারিং, বা শুধু মার্কেটিং — সে একটা হাতুড়িওয়ালা। সে সব সমস্যা নিজের এক লেন্স দিয়ে দেখে। কিন্তু যে ব্যক্তি অনেকগুলো ডিসিপ্লিনের বেসিক মডেল জানে — সে একটা ল্যাটিসওয়ার্ক বানায়। একটা জাল। যে জালে অনেক গাঁথুনি আছে। সে যখন কোনো সমস্যা দেখে, সে ভাবে — 'এটা কি অর্থনীতির সমস্যা? মনোবিজ্ঞানের? ফিজিক্সের? জীববিজ্ঞানের?' — আর যেটা ফিট করে, সেই মডেলটা টানে।" জাকিরা হাত দিয়ে দেখালেন — তাঁর আঙুল বাতাসে একটা জাল আঁকল।</div>
 <div class="dialogue en">"Munger said," Zakira sat again, "that if a person is expert in only one field — only accounting, or only engineering, or only marketing — he is a man with a hammer. He sees every problem through his one lens. But one who knows the basic models of many disciplines — he builds a latticework. A mesh. With many junctions. When he sees a problem, he thinks — 'Is this an economics problem? Psychology? Physics? Biology?' — and pulls the model that fits." Zakira gestured — her fingers drew a mesh in the air.</div>
@@ -67,7 +67,7 @@ doors.push({
 <div class="dialogue">"বই ২১ (গবেষকের মন) তোমাকে একটা দরজা দেখিয়েছিল — সমালোচনামূলক চিন্তা।" জাকিরা বললেন। "কিন্তু সেই একটা দরজা। এই বই সেই একটা দরজাকে দশটা দরজায় খুলে দেবে। আর বই ২৪ (সিংহাসন) তোমাকে দেখিয়েছে কীভাবে তোমার মন তোমাকে ধোঁকা দেয় — পক্ষপাতিতা। সেটা ছিল প্রতিরোধ। এই বই হলো আক্রমণ — চিন্তার হাতিয়ার, যেগুলো তুমি সচেতনভাবে ব্যবহার করবে। রক্ষা এক, তীক্ষ্ণতা আরেক।"</div>
 <div class="dialogue en">"Book 21 (The Researcher's Mind) showed you one door — critical thinking." Zakira said. "But that was one door. This book opens that one door into ten. And Book 24 (Throne of the Mind) showed you how your mind deceives you — bias. That was defense. This book is offense — the tools of thought you will use deliberately. Defense is one thing, sharpness is another."</div>
 
-<div class="callout tip"><span class="co-icon">🗺️</span><div><strong>মানচিত্র ভূমি নয়:</strong> জাকিরা বললেন — মডেল একটা মানচিত্র। মানচিত্র কখনো ভূমির সমান হয় না। মানচিত্র ছোট, সরল, ভুল — কিন্তু কাজে লাগে। কারণ সে একটা নির্দিষ্ট উদ্দেশ্যে বানানো। দার্শনিক আলফ্রেড কোরজিবস্কি (১৯৩৩) বলেছিলেন: <em>"The map is not the territory."</em> মডেল ভুল — কিন্তু কিছু মডেল কাজে লাগে। তোমার কাজ হলো সঠিক মডেল নয় খোঁজা — কাজে লাগে এমন মডেল খোঁজা, আর জানা কখন সেটা কাজে লাগে না।</div></div></div>
+<div class="callout tip"><span class="co-icon">🗺️</span><div><strong>মানচিত্র ভূমি নয়:</strong> জাকিরা বললেন — মডেল একটা মানচিত্র। মানচিত্র কখনো ভূমির সমান হয় না। মানচিত্র ছোট, সরল, ভুল — কিন্তু কাজে লাগে। কারণ সে একটা নির্দিষ্ট উদ্দেশ্যে বানানো। দার্শনিক আলফ্রেড কোরজিবস্কি (১৯৩৩) বলেছিলেন: <em>"The map is not the territory."</em> মডেল ভুল — কিন্তু কিছু মডেল কাজে লাগে। তোমার কাজ হলো সঠিক মডেল নয় খোঁজা — কাজে লাগে এমন মডেল খোঁজা, আর জানা কখন সেটা কাজে লাগে না।</div></div>
 
 <div class="dialogue">"এখন শোনো," জাকিরা তাঁতের দিকে তাকালেন। "তোমাকে আমি একটা খালি তাঁত দিচ্ছি।" তিনি তাঁতের পাটাতন থেকে সব সূত্র সরিয়ে ফেললেন — এখন শুধু ফাঁকা কাঠের ফ্রেম। "পরের নয়টা দরজায় তুমি এক এক করে নয়টা সূত্র সংগ্রহ করবে। যুক্তির সূত্র। ভ্রষ্টাচারের সূত্র। সম্ভাবনার সূত্র। মূলসূত্রের সূত্র। সমাধানের সূত্র। আন্দাজের সূত্র। সিদ্ধান্তের সূত্র। দ্বিতীয়-স্তরের সূত্র। দশম দরজায় আমি ফিরব — আর তোমাকে দেখাব কীভাবে এই নয়টা সূত্র এক কাপড়ে বোনা যায়। যে কাপড়ের নাম — সুচিন্তিত জীবন।"</div>
 <div class="dialogue en">"Now listen," Zakira looked at the loom. "I'm giving you an empty loom." She cleared all the threads from the loom's frame — now just an empty wooden frame. "In the next nine doors you'll collect nine threads, one by one. The thread of logic. The thread of fallacies. The thread of probability. The thread of first principles. The thread of problem-solving. The thread of estimation. The thread of decision. The thread of second-order thinking. In the tenth door I'll return — and show you how all nine threads weave into one cloth. The name of that cloth — a deliberate life."</div>
@@ -103,8 +103,8 @@ doors.push({
   <text x="290" y="165" text-anchor="middle" fill="#e2e8f0" font-size="8">একটি হাতিয়ার নয় — একটি তাঁত বানাও</text>
   <text x="290" y="180" text-anchor="middle" fill="#94a3b8" font-size="10">Don't have one tool — build a loom of many tools</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: পাঁচটি মানসিক মডেল — প্রতিটি আলাদা সমস্যার জন্য। একসাথে একটি চিন্তার তাঁত।</div></div>
+</div>
+<div class="svg-caption">চিত্র: পাঁচটি মানসিক মডেল — প্রতিটি আলাদা সমস্যার জন্য। একসাথে একটি চিন্তার তাঁত।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— Build Your Latticework —
   tools = []
@@ -133,7 +133,7 @@ doors.push({
   senior:{
     title:"যুক্তি যাচাই এক নজরে",
     body:`<div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">❌ Invalid</div>গঠনই ভুল — সত্য প্রিমিস দিয়েও সিদ্ধান্ত অনির্ভরযোগ্য</div>
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ Invalid</div>গঠনই ভুল — সত্য প্রিমিস দিয়েও সিদ্ধান্ত অনির্ভরযোগ্য</div>
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ Valid + Sound</div>গঠন ঠিক + প্রিমিস সত্য = বিশ্বাসযোগ্য সিদ্ধান্ত</div>
 </div>
 <table class="kv-table"><tr><th> যুক্তি</th><th>দিক</th></tr>
@@ -158,19 +158,20 @@ doors.push({
 <div class="dialogue en">"Logic is like this," Yusuf said. "An argument is a joint — pieces of speech connected to each other. Each piece is called a premise. From premises emerges a conclusion. If the premises are true, and the joint is correct — the conclusion holds. But if the joint is wrong, or the premises are rotten — the conclusion doesn't hold." Yusuf showed a weak joint — the peg sits in the hole but loosely. "It looks strong, but push and it comes apart."</div>
 
 <div class="compare">
-  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ অবৈধ যুক্তি (Invalid)</div></div>
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ অবৈধ যুক্তি (Invalid)</div>
     <strong>প্রিমিস ১:</strong> সব মুসলিম মানুষ।<br>
     <strong>প্রিমিস ২:</strong> আমি মানুষ।<br>
     <strong>সিদ্ধান্ত:</strong> তাই আমি মুসলিম।<br><br>
     প্রিমিস দুটো সত্য, কিন্তু সিদ্ধান্ত অবশ্যই সত্য নয়। জোড় ভুল — খুঁটি গর্তে ঢুকেছে কিন্তু ফাঁকা। একে বলে <em>ফর্মালি ফলাসি</em>।
-  </div></div>
-  <div class="cmp-card cmp-good"><div class="cmp-label">✅ বৈধ যুক্তি (Valid)</div></div>
+  </div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ বৈধ যুক্তি (Valid)</div>
     <strong>প্রিমিস ১:</strong> সব মুসলিম মানুষ।<br>
     <strong>প্রিমিস ২:</strong> আমি মুসলিম।<br>
     <strong>সিদ্ধান্ত:</strong> তাই আমি মানুষ।<br><br>
     প্রিমিস সত্য হলে সিদ্ধান্ত <em>অবশ্যই</em> সত্য। জোড় মজবুত। এটাই <em>বৈধ</em> গঠন।
-  </div></div>
-</div></div>
+  </div>
+</div>
+
 
 <div class="dialogue">তুমি বললে — "কিন্তু আমি তো জানি যে আমি মানুষ। তাহলে প্রথম যুক্তিটা কি ভুল?" ইউসুফ হাসলেন। "সিদ্ধান্তটা তোমার কাছে সত্য মনে হচ্ছে কারণ তুমি আগে থেকেই জানো। কিন্তু যুক্তিটা <em>বৈধ</em> নয় — অর্থাৎ সেই গঠনে প্রিমিস সত্য হলেও সিদ্ধান্ত মিথ্যা হতে পারে। একটা যুক্তি যাচাই করার সঠিক উপায় হলো — ভাবো, <em>এই গঠনে</em> অন্য প্রিমিস বসালে কী হতে পারে?"</div>
 <div class="dialogue en">You said — "But I know I'm human. So is the first argument wrong?" Yusuf smiled. "The conclusion seems true to you because you already know it. But the argument is not <em>valid</em> — meaning in that structure, even with true premises, the conclusion could be false. The right way to check an argument is — think, what would happen if I put different premises into <em>this structure</em>?"</div>
@@ -190,7 +191,7 @@ doors.push({
 <tr><td class="hl">অ্যাবডাকশন</td><td>লক্ষণ → কারণ</td><td>সর্বোত্তম অনুমান</td><td>ডাক্তারি, ডিবাগ, ডিটেকটিভ</td></tr>
 </table>
 
-<div class="callout warn"><span class="co-icon">🔍</span><div><strong>লুকানো প্রিমিস (Hidden Premise):</strong> ইউসুফ বললেন — সবচেয়ে বিপজ্জনক জোড় সেটা নয় যা ভুল, সেটা যা লুকানো। কেউ বলে: "তুমি এই কোড বুঝো না, তাই এটা বাদ দাও।" প্রিমিস দুটো দেখা যাচ্ছে — (১) তুমি কোড বুঝো না, (২) ??? । দ্বিতীয় প্রিমিস লুকানো: <em>"যে কোড বোঝে না সে সেটা বাদ দিতে হবে।"</em> এই লুকানো প্রিমিসটা কি সত্য? হয়তো নয়। কিন্তু যুক্তিটা শুনতে সঠিক মনে হয় কারণ লুকানো অংশটা তুমি নিজে পূরণ করে ফেলো।</div></div></div>
+<div class="callout warn"><span class="co-icon">🔍</span><div><strong>লুকানো প্রিমিস (Hidden Premise):</strong> ইউসুফ বললেন — সবচেয়ে বিপজ্জনক জোড় সেটা নয় যা ভুল, সেটা যা লুকানো। কেউ বলে: "তুমি এই কোড বুঝো না, তাই এটা বাদ দাও।" প্রিমিস দুটো দেখা যাচ্ছে — (১) তুমি কোড বুঝো না, (২) ??? । দ্বিতীয় প্রিমিস লুকানো: <em>"যে কোড বোঝে না সে সেটা বাদ দিতে হবে।"</em> এই লুকানো প্রিমিসটা কি সত্য? হয়তো নয়। কিন্তু যুক্তিটা শুনতে সঠিক মনে হয় কারণ লুকানো অংশটা তুমি নিজে পূরণ করে ফেলো।</div></div>
 
 <div class="dialogue">"তুমি ডেভেলপার," ইউসুফ বললেন। "তোমার কোড রিভিউতে এই জোড়গুলো প্রতিদিন দেখবে। কেউ বলবে — 'এই ফাংশনটা স্লো, কারণ এতে নেস্টেড লুপ আছে।' ডিডাকশন: নেস্টেড লুপ = O(n²) → n বড় হলে স্লো → এই ফাংশন স্লো। বৈধ। কিন্তু কেউ বলবে — 'এই ফাংশনটা বাগি, কারণ আমি এটা লেখিনি।' লুকানো প্রিমিস: <em>'আমার লেখা কোড বাগি নয়।'</em> সেটা সত্য নয়।"</div>
 <div class="dialogue en">"You're a developer," Yusuf said. "You'll see these joints every day in code review. Someone says — 'this function is slow because it has nested loops.' Deduction: nested loop = O(n²) → large n means slow → this function is slow. Valid. But someone says — 'this function is buggy because I didn't write it.' Hidden premise: <em>'Code I write is not buggy.'</em> That's not true."</div>
@@ -246,8 +247,8 @@ doors.push({
   <text x="380" y="212" fill="#94a3b8" font-size="10">surface it, then check truth</text>
   <text x="290" y="235" text-anchor="middle" fill="#64748b" font-size="6.5">বৈধ গঠন + সত্য প্রিমিস + কোনো লুকানো প্রিমিস নেই = সাউন্ড যুক্তি</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: যুক্তির গঠন — বামে বৈধ, মাঝে অবৈধ, ডানে সাউন্ডনেস পরীক্ষা। নিচে তিন ধরনের যুক্তি।</div></div>
+</div>
+<div class="svg-caption">চিত্র: যুক্তির গঠন — বামে বৈধ, মাঝে অবৈধ, ডানে সাউন্ডনেস পরীক্ষা। নিচে তিন ধরনের যুক্তি।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— Validate Any Argument —
   premises = [P1, P2, ...]
@@ -308,7 +309,7 @@ doors.push({
 <div class="dialogue">নাফিসা তোমাকে দেখলেন। কথা বললেন না। শুধু একটা মূর্তি দেখালেন — দেখতে নিখুঁত, একটা ঘোড়ার মূর্তি। "এটা কি সত্যি নিখুঁত?" তুমি বললে — "মনে হয় হ্যাঁ।" নাফিসা তাঁর পিতলের হাতুড়ি দিয়ে ঘোড়ার পেটে টোকা দিলেন। টং। পরিষ্কার শব্দ। আবার টোকা — এবার পিঠে। টং। কিন্তু তৃতীয়বার টোকা দিলেন পা-এ। ঠক। শব্দ আলাদা — ভেতরে ফাঁকা। নাফিসা বললেন: "দেখতে নিখুঁত। কিন্তু ভেতরে ফাটল। এই পা-টা পরে ভাঙবে।"</div>
 <div class="dialogue en">Nafisa saw you. Said nothing. Just showed a statue — seemingly perfect, a horse. "Is this truly flawless?" You said — "Looks like it." Nafisa tapped the horse's belly with her brass hammer. Tong. Clear sound. Tap again — on the back. Tong. But the third tap — on the leg. Thok. Different sound — hollow inside. Nafisa said: "Looks perfect. But a crack inside. This leg will break later."</div>
 
-<div class="callout warn"><span class="co-icon">🔍</span><div><strong>নাফিসার পদ্ধতি:</strong> প্রতিটা যুক্তি টোকা দাও। যেখানে শব্দ আলাদা — সেখানে ফাটল। কিন্তু ফাটল খোঁজার আগে জানতে হবে — কেমন ফাটল হয়। চলো গ্যালারি দেখি — ছয়টা ক্লাসিক ফাটল।</div></div></div>
+<div class="callout warn"><span class="co-icon">🔍</span><div><strong>নাফিসার পদ্ধতি:</strong> প্রতিটা যুক্তি টোকা দাও। যেখানে শব্দ আলাদা — সেখানে ফাটল। কিন্তু ফাটল খোঁজার আগে জানতে হবে — কেমন ফাটল হয়। চলো গ্যালারি দেখি — ছয়টা ক্লাসিক ফাটল।</div></div>
 
 <div class="dialogue">নাফিসা প্রথম মূর্তির কাছে নিয়ে গেলেন। একটা মানুষের মূর্তি — কিন্তু মুখটা অন্য দিকে। "এই প্রথম ফাটল: <strong>অ্যাড হোমিনেম</strong>। ল্যাটিন শব্দ — মানে 'মানুষের দিকে'। যুক্তিতে আক্রমণ না করে যিনি যুক্তিটা দিয়েছেন তাঁকে আক্রমণ।" নাফিসা একটা কাল্পনিক দৃষ্টান্ত দিলেন: "কেউ বলল — 'এই ফাংশন রিফ্যাক্টর করা দরকার।' উত্তরে বলা হলো — 'তুমি জুনিয়র ডেভ, তুমি কী জানো?' যুক্তিটা ধরা হলো না — মানুষটাকে ধরা হলো। এটা অ্যাড হোমিনেম। ফাটল।"</div>
 <div class="dialogue en">Nafisa led you to the first statue. A human figure — but the face turned away. "This first crack: <strong>ad hominem</strong>. Latin — meaning 'toward the person.' Attacking the one who made the argument, not the argument." Nafisa gave an imagined example: "Someone said — 'this function needs refactoring.' The reply came — 'You're a junior dev, what do you know?' The argument wasn't addressed — the person was. This is ad hominem. A crack."</div>
@@ -337,7 +338,7 @@ doors.push({
 <div class="dialogue">ষষ্ঠ মূর্তি — একটা মাপকাঠি, কিন্তু মাপকাঠির দিকে মানুষ তাকিয়ে, মাপা জিনিসটা অদৃশ্য। "এই ফাটল: <strong>গুডহার্টের নিয়ম</strong>। অর্থনীতিবিদ চার্লস গুডহার্ট (১৯৭৫) বলেছিলেন: <em>'যখন কোনো সূচক নীতির লক্ষ্য হয়ে যায়, সে ভালো সূচক থাকে না।'</em> কোডের লাইন সংখ্যা মেপে যখন উৎপাদনশীলতা ধরা হয় — তখন ডেভেলপাররা লাইন বাড়ায়, উৎপাদন নয়। মেট্রিক লক্ষ্য হলে মেট্রিক নিজেই নষ্ট হয়।"</div>
 <div class="dialogue en">Sixth statue — a measuring rod, but people stare at the rod, the measured thing invisible. "This crack: <strong>Goodhart's Law</strong>. Economist Charles Goodhart (1975) said: <em>'When a measure becomes a policy target, it ceases to be a good measure.'</em> When lines of code measure productivity — developers add lines, not value. When a metric becomes a target, the metric itself degrades."</div>
 
-<div class="callout tip"><span class="co-icon">🛡️</span><div><strong>প্রতিষেধক — স্টিলম্যানিং (Steelmanning):</strong> নাফিসা বললেন — খড়ের পুতুল না বানিয়ে, প্রতিপক্ষের যুক্তি সবচেয়ে শক্ত করে বানাও। এমনভাবে বানাও যেন তিনি নিজে বলেন — 'হ্যাঁ, ঠিক বলেছ।' তারপর সেই শক্ত যুক্তিটা ভাঙো। এটাই স্টিলম্যান — ইস্পাতের মানুষ বানানো। বই ১৬ (এলএলএম মূল্যায়ন) এর উদাহরণ দেই: একটা এআই মডেলের আউটপুট যাচাই করার সময়, সবচেয়ে চ্যালেঞ্জিং প্রশ্ন দাও — সহজ নয়। তাহলেই আসল মান ধরা যায়। দুর্বল যুক্তি ভাঙলে কেউ কাবু হয় না। শক্ত যুক্তি ভাঙলে সত্য বের হয়।</div></div></div>
+<div class="callout tip"><span class="co-icon">🛡️</span><div><strong>প্রতিষেধক — স্টিলম্যানিং (Steelmanning):</strong> নাফিসা বললেন — খড়ের পুতুল না বানিয়ে, প্রতিপক্ষের যুক্তি সবচেয়ে শক্ত করে বানাও। এমনভাবে বানাও যেন তিনি নিজে বলেন — 'হ্যাঁ, ঠিক বলেছ।' তারপর সেই শক্ত যুক্তিটা ভাঙো। এটাই স্টিলম্যান — ইস্পাতের মানুষ বানানো। বই ১৬ (এলএলএম মূল্যায়ন) এর উদাহরণ দেই: একটা এআই মডেলের আউটপুট যাচাই করার সময়, সবচেয়ে চ্যালেঞ্জিং প্রশ্ন দাও — সহজ নয়। তাহলেই আসল মান ধরা যায়। দুর্বল যুক্তি ভাঙলে কেউ কাবু হয় না। শক্ত যুক্তি ভাঙলে সত্য বের হয়।</div></div>
 
 <div class="dialogue">তুমি জিজ্ঞেস করলে — "কিন্তু আমি কি নিজের যুক্তি যাচাই করব?" নাফিসা তাঁর হাতুড়ি তোমার হাতে দিলেন। "এটা নাও। আর তোমার সবচেয়ে প্রিয় যুক্তিটা টোকা দাও। যেটা তুমি সবচেয়ে বেশি রক্ষা করতে চাও — সেটা টোকা দাও। সেখানে সবচেয়ে বেশি ফাটল থাকে। কারণ যে যুক্তি তোমার স্বার্থ রক্ষা করে, সেই যুক্তিটা তোমার মন সবচেয়ে কম যাচাই করে।" নাফিসা একটু থামলেন। "এটাই সিদক — সততা। নিজের সাথে সচ্চরিত্র হওয়া। অন্যের ফাটল ধরা সহজ, নিজেরটা ধরা — সেটাই আসল কারিগরি।"</div>
 <div class="dialogue en">You asked — "But how do I check my own argument?" Nafisa placed her hammer in your hand. "Take this. And tap your most beloved argument. The one you most want to protect — tap that. There lie the deepest cracks. Because the argument that protects your interest, your mind checks the least." Nafisa paused. "This is sidq — honesty. Being true with yourself. Catching others' cracks is easy — catching your own, that's the real craft."</div>
@@ -394,8 +395,8 @@ doors.push({
   <text x="290" y="215" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">🛡️ Defense: STEELMAN</text>
   <text x="290" y="227" text-anchor="middle" fill="#94a3b8" font-size="6.5">Build opponent argument at its strongest, then break THAT</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: ছয়টি ভ্রষ্টাচার — যুক্তির ফাটল চেনার গ্যালারি। প্রতিষেধক: স্টিলম্যান।</div></div>
+</div>
+<div class="svg-caption">চিত্র: ছয়টি ভ্রষ্টাচার — যুক্তির ফাটল চেনার গ্যালারি। প্রতিষেধক: স্টিলম্যান।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— Fallacy Checklist —
   hear_argument(arg)
@@ -465,7 +466,7 @@ doors.push({
 <div class="dialogue">রুকাইয়া একটা খাতা খুললেন। "দেখো — এই খাতায় দুটো কলাম। বাঁ দিকে 'পূর্ব-বিশ্বাস' — আগে থেকে যা জানতে। ডান দিকে 'নতুন প্রমাণ' — এখন যা জানলাম। আমি হিসাবরক্ষক। আমার কাজ হলো এই দুটো কলাম মিলিয়ে নতুন ব্যালেন্স বের করা।" তিনি খাতায় লিখলেন: <em>পূর্ব-বিশ্বাস + নতুন প্রমাণ = নতুন বিশ্বাস</em>। "এটাই বেইসিয়ান আপডেট। থমাস বেইস — একজন পাদরি, ১৭৬১ সালে মৃত্যু, ১৭৬৩ সালে তাঁর সূত্র প্রকাশ পায়। তিনি একটা সহজ কথা বলেছিলেন — <strong>নতুন প্রমাণ পূর্বের বিশ্বাসকে বদলায়, কিন্তু মুছে দেয় না।</strong>"</div>
 <div class="dialogue en">Rukayya opened a ledger. "Look — this ledger has two columns. Left side 'prior belief' — what you already knew. Right side 'new evidence' — what you just learned. I'm an accountant. My job is to match these two columns and find the new balance." She wrote: <em>prior + evidence = new belief</em>. "This is Bayesian update. Thomas Bayes — a priest, his formula published posthumously in 1763. He said a simple thing — <strong>new evidence changes prior belief, but doesn't erase it.</strong>"</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে — বেস-রেট অবহেলা (Base-Rate Neglect):</strong> রুকাইয়া বললেন — "তুমি একটা মেডিকেল পরীক্ষা করলে। ফল পজিটিভ। তুমি ভাবলে — 'আমি অসুস্থ, ৯৯% সম্ভাবনা।' কিন্তু তুমি একটা জিনিস ভুলে গেলে — <strong>কত জনসংখ্যার মধ্যে এই রোগ আছে?</strong> সেটাই বেস রেট। সেটা না জানলে একটা পরীক্ষার ফল অর্থহীন।"</div></div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে — বেস-রেট অবহেলা (Base-Rate Neglect):</strong> রুকাইয়া বললেন — "তুমি একটা মেডিকেল পরীক্ষা করলে। ফল পজিটিভ। তুমি ভাবলে — 'আমি অসুস্থ, ৯৯% সম্ভাবনা।' কিন্তু তুমি একটা জিনিস ভুলে গেলে — <strong>কত জনসংখ্যার মধ্যে এই রোগ আছে?</strong> সেটাই বেস রেট। সেটা না জানলে একটা পরীক্ষার ফল অর্থহীন।"</div></div>
 
 <div class="dialogue">রুকাইয়া বোর্ডে একটা উদাহরণ লিখলেন। "ধরো — একটা রোগ জনসংখ্যার ১%-এ আছে। পরীক্ষাটা ৯৯% সঠিক — অর্থাৎ অসুস্থ থাকলে ৯৯% ক্ষেত্রে পজিটিভ দেবে, সুস্থ থাকলে ৯৯% ক্ষেত্রে নেগেটিভ দেবে। তুমি পরীক্ষা করলে — পজিটিভ এল। তোমার কত সম্ভাবনা সত্যিই অসুস্থ?" তুমি দ্রুত বললে — "৯৯%।" রুকাইয়া মাথা নাড়লেন। "ভুল। চলো হিসাব করি।"</div>
 <div class="dialogue en">Rukayya wrote an example on the board. "Say — a disease affects 1% of population. The test is 99% accurate — meaning if sick, 99% chance of positive; if well, 99% chance of negative. You take the test — positive. What's your chance of truly being sick?" You said quickly — "99%." Rukayya shook her head. "Wrong. Let's calculate."</div>
@@ -480,13 +481,13 @@ doors.push({
 <div class="dialogue en">"Of the total 19.8 positives," Rukayya said, "your chance of truly being sick — 9.9 ÷ 19.8 = 50%. Half! Even with a positive test, you're half-likely to be well. Because the disease is rare — base rate is low. For rare diseases, false positives outnumber true positives." You were startled. "Then what do I do?" Rukayya said — "Take another test. New evidence comes. Update again. Two positive tests multiply the probability many times. One piece of evidence is never final."</div>
 
 <div class="stat-grid">
-<div class="stat-card"><div class="sc-num">১%</div><div class="sc-label">রোগের বেস রেট</div></div></div>
-<div class="stat-card"><div class="sc-num">৯৯%</div><div class="sc-label">টেস্টের নির্ভুলতা</div></div></div>
-<div class="stat-card"><div class="sc-num">৫০%</div><div class="sc-label">পজিটিভ হলেও সত্যিই অসুস্থ হওয়ার সম্ভাবনা</div></div></div>
-<div class="stat-card"><div class="sc-num">২x</div><div class="sc-label">আরেকটা টেস্ট সম্ভাবনা কতগুণ বাড়ায়</div></div></div>
-</div></div>
+<div class="stat-card"><div class="sc-num">১%</div><div class="sc-label">রোগের বেস রেট</div></div>
+<div class="stat-card"><div class="sc-num">৯৯%</div><div class="sc-label">টেস্টের নির্ভুলতা</div></div>
+<div class="stat-card"><div class="sc-num">৫০%</div><div class="sc-label">পজিটিভ হলেও সত্যিই অসুস্থ হওয়ার সম্ভাবনা</div></div>
+<div class="stat-card"><div class="sc-num">২x</div><div class="sc-label">আরেকটা টেস্ট সম্ভাবনা কতগুণ বাড়ায়</div></div>
+</div>
 
-<div class="callout tip"><span class="co-icon">💡</span><div><strong>বই ৩০ (স্থপতির কম্পাস) স্মরণ:</strong> সেই বইয়ের সম্ভাবনা দরজায় তুমি শিখেছ — P(A), P(B), P(A|B)। বেইসিয়ান আপডেট হলো সেই ভিত্তির উপর দাঁড়িয়ে আছে। বই ৩০ তোমাকে গাণিতিক হাতিয়ার দিয়েছে, এই দরজা তোমাকে দেখায় কীভাবে সেই হাতিয়ার বাস্তব সিদ্ধান্তে লাগে। সূত্র: <em>P(রোগ|পজিটিভ) = [P(পজিটিভ|রোগ) * P(রোগ)] / P(পজিটিভ)</em>। ভয় পেও না — রুকাইয়ার খাতা পদ্ধতিটাই এই সূত্রের কথা।</div></div></div>
+<div class="callout tip"><span class="co-icon">💡</span><div><strong>বই ৩০ (স্থপতির কম্পাস) স্মরণ:</strong> সেই বইয়ের সম্ভাবনা দরজায় তুমি শিখেছ — P(A), P(B), P(A|B)। বেইসিয়ান আপডেট হলো সেই ভিত্তির উপর দাঁড়িয়ে আছে। বই ৩০ তোমাকে গাণিতিক হাতিয়ার দিয়েছে, এই দরজা তোমাকে দেখায় কীভাবে সেই হাতিয়ার বাস্তব সিদ্ধান্তে লাগে। সূত্র: <em>P(রোগ|পজিটিভ) = [P(পজিটিভ|রোগ) * P(রোগ)] / P(পজিটিভ)</em>। ভয় পেও না — রুকাইয়ার খাতা পদ্ধতিটাই এই সূত্রের কথা।</div></div>
 
 <div class="dialogue">"তুমি ডেভেলপার," রুকাইয়া বললেন। "তোমার প্রতিদিনের কাজে এটা লাগে। তুমি একটা বাগ রিপোর্ট পেলে। ব্যবহারকারী বলছে — 'লগইন কাজ করছে না।' তুমি ভাবলে — 'নিশ্চই অথেন্টিকেশন সার্ভার নষ্ট।' কিন্তু বেস রেট কী? গত সপ্তাহে কত বাগ অথেন্টিকেশনে ছিল, কত ছিল ফ্রন্টএন্ডে? যদি ৯০% বাগ ফ্রন্টএন্ডে হয়, তাহলে একটা 'লগইন কাজ করছে না' রিপোর্ট পজিটিভ হলেও সত্যিই অথেন্টিকেশনের সম্ভাবনা কম। তুমি বাজে জায়গায় সময় নষ্ট করবে।"</div>
 <div class="dialogue en">"You're a developer," Rukayya said. "This applies to your daily work. You get a bug report. User says — 'login doesn't work.' You think — 'must be the auth server.' But what's the base rate? Last week, how many bugs were in auth, how many in frontend? If 90% of bugs are frontend, then even a 'login broken' report is more likely frontend. You'll waste time in the wrong place."</div>
@@ -550,8 +551,8 @@ doors.push({
 
   <text x="290" y="235" text-anchor="middle" fill="#94a3b8" font-size="6.5">একটা পরীক্ষার ফল চূড়ান্ত নয় — বেস রেট মিলিয়ে দেখো, আবার আপডেট করো</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: বেইসিয়ান আপডেট — ১% বেস রেটে ৯৯% নির্ভুল টেস্ট পজিটিভ এলেও মাত্র ৫০% সত্যিই অসুস্থ।</div></div>
+</div>
+<div class="svg-caption">চিত্র: বেইসিয়ান আপডেট — ১% বেস রেটে ৯৯% নির্ভুল টেস্ট পজিটিভ এলেও মাত্র ৫০% সত্যিই অসুস্থ।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— Bayesian Update —
   // before seeing evidence:
@@ -594,7 +595,7 @@ doors.push({
   senior:{
     title:"ফার্স্ট প্রিন্সিপাল + ইনভার্সন এক নজরে",
     body:`<div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">❌ Analogy</div>"অন্যরা এভাবে করে, আমরাও করব" — উন্নত কপি</div>
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ Analogy</div>"অন্যরা এভাবে করে, আমরাও করব" — উন্নত কপি</div>
 <div class="cmp-card cmp-good"><div class="cmp-label">✅ First Principles</div>"এটা কেন কাজ করে? ভিত্তি কী?" — ভেঙে পুনর্গঠন</div>
 </div>
 <ul class="checklist">
@@ -616,7 +617,7 @@ doors.push({
 <div class="dialogue">সুলতান তোমাকে দেখলেন। হাতুড়ি নামিয়ে রাখলেন। "রুকাইয়া তোমাকে খাতা শিখিয়েছেন। ভালো। কিন্তু আমার কাজ আলাদা। আমি হিসাব রাখি না — আমি লোহা গলাই।" তিনি চুল্লি থেকে একটা লোহার দণ্ড টেনে নিলেন — উত্তপ্ত, কমলা জ্বলছে। "এই লোহাটা দেখো। সবাই ভাবে — এটা একটা পেরেক। কিন্তু সত্যি কী? এটা আসলে একটা জিনিস নয় — এটা পরমাণুর বন্ধন। লোহা, কার্বন, আর তাপ। আমি যখন হাতুড়ি মারি, আমি আসলে পরমাণুগুলোকে পুনর্বিন্যাস্ত করছি।" তিনি হাতুড়ি মারলেন — ডাং। লোহাটা একটু চ্যাপ্টা হলো।</div>
 <div class="dialogue en">Sultan saw you. Set the hammer down. "Rukayya taught you the ledger. Good. But my work is different. I don't keep accounts — I melt iron." He drew an iron rod from the furnace — heated, glowing orange. "Look at this iron. Everyone thinks — this is a nail. But what is it truly? It's not one thing — it's a bond of atoms. Iron, carbon, and heat. When I strike with the hammer, I'm actually rearranging atoms." He struck — dang. The iron flattened a bit.</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে — অ্যানালজি দিয়ে চিন্তা:</strong> সুলতান বললেন — "তুমি যখন কোনো সমস্যা অ্যানালজি দিয়ে সমাধান করো — 'অন্যেরা এভাবে করেছে, আমিও এভাবে করব, একটু পরিবর্তন দিয়ে' — তুমি আসলে চিন্তা করছ না। তুমি কপি করছ। কপি করা খারাপ নয় — কিন্তু সীমিত। তুমি যা কপি করো, তার চেয়ে ভালো কখনো হবে না। কারণ তুমি জানো না <em>কেন</em> সেটা কাজ করে।"</div></div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে — অ্যানালজি দিয়ে চিন্তা:</strong> সুলতান বললেন — "তুমি যখন কোনো সমস্যা অ্যানালজি দিয়ে সমাধান করো — 'অন্যেরা এভাবে করেছে, আমিও এভাবে করব, একটু পরিবর্তন দিয়ে' — তুমি আসলে চিন্তা করছ না। তুমি কপি করছ। কপি করা খারাপ নয় — কিন্তু সীমিত। তুমি যা কপি করো, তার চেয়ে ভালো কখনো হবে না। কারণ তুমি জানো না <em>কেন</em> সেটা কাজ করে।"</div></div>
 
 <div class="dialogue">"ফার্স্ট প্রিন্সিপাল," সুলতান চুল্লি থেকে আরেকটা দণ্ড টানলেন। "এলন মাস্ক এটা ব্যবহার করেছেন স্পেসএক্সে। রকেটের দাম কেন এত? অন্যেরা বলে — 'কারণ রকেট এমনিতেই দামি।' কিন্তু মাস্ক ভিত্তিতে নামলেন। রকেট কী দিয়ে তৈরি? অ্যালুমিনিয়াম, টাইটানিয়াম, কপার, কার্বন ফাইবার। সেই কাঁচামালের বাজার দাম কত? রকেটের খরচের মাত্র ২%। বাকি ৯৮% হলো প্রস্তুতি — কারণ সবাই অ্যানালজি দিয়ে ভাবে। মাস্ক ভাবলেন — 'আমি যদি নিজে কাঁচামাল কিনে রকেট বানাই?' স্পেসএক্স জন্ম নিল।" সুলতান হাতুড়ি মারলেন — ডাং।</div>
 <div class="dialogue en">"First principles," Sultan drew another rod from the furnace. "Elon Musk used this at SpaceX. Why are rockets so expensive? Others say — 'because rockets are inherently expensive.' But Musk went to the foundation. What is a rocket made of? Aluminum, titanium, copper, carbon fiber. What's the market price of those raw materials? Only 2% of the rocket's cost. The other 98% is preparation — because everyone thinks by analogy. Musk thought — 'what if I buy raw materials and build it myself?' SpaceX was born." Sultan struck — dang.</div>
@@ -625,15 +626,16 @@ doors.push({
 <div class="dialogue en">"You're a developer," Sultan said. "You use a library — React, Vue, Django. You think — 'it works, good.' But have you ever wondered why these libraries work? What does React's virtual DOM do? What does Django's ORM do inside? The day you descend to the foundation — that day you won't use libraries, you'll create them." Sultan paused. "Book 3 (Engineer's Journey) gave you the same lesson — first principles. This door goes deeper into that lesson."</div>
 
 <div class="compare">
-  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ অ্যানালজি দিয়ে</div></div>
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ অ্যানালজি দিয়ে</div>
     "অন্য কোম্পানি মাইক্রোসার্ভিস ব্যবহার করছে, আমরাও করব।"<br><br>
     কপি। তুমি জানো না কেন কাজ করে। ফলে ভাঙলে ঠিক করতে পারবে না।
-  </div></div>
-  <div class="cmp-card cmp-good"><div class="cmp-label">✅ ফার্স্ট প্রিন্সিপাল দিয়ে</div></div>
+  </div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ ফার্স্ট প্রিন্সিপাল দিয়ে</div>
     "আমাদের সিস্টেমের আসল সমস্যা কী? ব্যবহারকারী সংখ্যা? ডেটা আকার? টিম স্কেল?" ভিত্তিতে নামো, তারপর সিদ্ধান্ত।<br><br>
     মূল কারণ জানো। ভাঙলে ঠিক করতে পারো। নতুন কিছু বানাতে পারো।
-  </div></div>
-</div></div>
+  </div>
+</div>
+
 
 <div class="dialogue">"এখন দ্বিতীয় হাতিয়ার — উল্টো চিন্তা," সুলতান হাপ থেকে একটা তলোয়ার তুলে ধরলেন। সুন্দর, ধারালো। "এই তলোয়ারটা কীভাবে ভাঙবে?" তুমি ভাবলে। "খুব শক্ত আঘাতে? নতুন কোণে? ঠান্ডায়?" সুলতান ঘাড় নাড়লেন। "হ্যাঁ। এখন আমি জানি — কোন কোণ এড়াতে হবে, কোন তাপমাত্রায় নরম করতে হবে। উল্টো প্রশ্ন করলে উত্তর কম, আর স্পষ্ট।" তিনি একটু থামলেন। "গণিতজ্ঞ কার্ল গুস্তাফ জ্যাকোবি বলেছিলেন — <em>'Invert, always invert.'</em> উল্টাও, সবসময় উল্টাও। সমস্যা সরাসরি সমাধান না হলে — উল্টো প্রশ্ন করো।"</div>
 <div class="dialogue en">"Now the second tool — inversion," Sultan lifted a sword from the forge. Beautiful, sharp. "How would this sword break?" You thought. "A very hard strike? A new angle? In cold?" Sultan nodded. "Yes. Now I know — which angle to avoid, which temperature to soften. which temper to give. The inverted question has fewer answers, and clearer." He paused. "Mathematician Carl Gustav Jacobi said — <em>'Invert, always invert.'</em> Invert, always invert. If a problem won't solve directly — ask the inverted question."</div>
@@ -641,7 +643,7 @@ doors.push({
 <div class="dialogue">"তুমি একটা প্রোজেক্ট শুরু করার আগে," সুলতান বললেন, "ভাবো — 'এই প্রোজেক্টটা কীভাবে ব্যর্থ হবে?' দলে ঝগড়া হলে? ডেডলাইন মিস হলে? কাস্টমার চাইল না? এই উল্টো প্রশ্নগুলোর উত্তর এড়ালেই সফলতা। একে বলে <strong>প্রিমর্টেম</strong> — মৃত্যুর আগে মৃত্যুর কারণ ভাবা। গ্যারি ক্লেইন (২০০৭) এই কৌশলটা আনুষ্ঠানিকভাবে প্রস্তাব করেছিলেন। মৃত্যুর পরে পোস্টমর্টেম করলে দেরি হয় — প্রিমর্টেমে সময় থাকে।" সুলতান তলোয়ারটা সাঁড়িশিতে রাখলেন।</div>
 <div class="dialogue en">"Before you start a project," Sultan said, "think — 'how would this project fail?' Team conflict? Missed deadline? Customer didn't want it? Avoid the answers to these inverted questions, and success comes. This is called <strong>premortem</strong> — thinking of causes of death before death. Gary Klein (2007) formally proposed this technique. Postmortem after death is too late — premortem has time." Sultan placed the sword on the anvil.</div>
 
-<div class="callout tip"><span class="co-icon">✂️</span><div><strong>ভিয়া নেগাটিভা (Via Negativa) — উল্টো চিন্তার ভাই:</strong> সুলতান চুল্লি থেকে এক টুকরো পুরনো, বাঁকা লোহা টেনে বের করলেন। ফেলে দিললেন। "দেখলে? আমি কিছু যোগ করছি না — সরাচ্ছি। চুল্লিতে জায়গা না করলে নতুন লোহা রাখা যায় না।" ন্যাসিম তালেব একে বলেছেন <em>via negativa</em> — উন্নতি মানে কখনো কিছু যোগ করা নয়, কিছু সরানো। তোমার কোডে কোন ফিচার ব্যবহার হয় না? সরাও। কোন ডিপেন্ডেন্সি অপ্রয়োজনীয়? বাদ দাও। এটা উল্টো চিন্তার ভাই — "কী সরালে সিস্টেম আরও সহজ হবে?"</div></div></div>
+<div class="callout tip"><span class="co-icon">✂️</span><div><strong>ভিয়া নেগাটিভা (Via Negativa) — উল্টো চিন্তার ভাই:</strong> সুলতান চুল্লি থেকে এক টুকরো পুরনো, বাঁকা লোহা টেনে বের করলেন। ফেলে দিললেন। "দেখলে? আমি কিছু যোগ করছি না — সরাচ্ছি। চুল্লিতে জায়গা না করলে নতুন লোহা রাখা যায় না।" ন্যাসিম তালেব একে বলেছেন <em>via negativa</em> — উন্নতি মানে কখনো কিছু যোগ করা নয়, কিছু সরানো। তোমার কোডে কোন ফিচার ব্যবহার হয় না? সরাও। কোন ডিপেন্ডেন্সি অপ্রয়োজনীয়? বাদ দাও। এটা উল্টো চিন্তার ভাই — "কী সরালে সিস্টেম আরও সহজ হবে?"</div></div>
 
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"যখন আমি তোমার জন্য স্থান প্রশস্ত করি, তখন তুমি সংকুচিত হয়ো না।" — কুরআন ৯৪:৫-৬-এর আলোকে ধারণাগত প্যারাফ্রেজ</div>
 
@@ -694,8 +696,8 @@ doors.push({
   <path d="M 435 210 Q 435 230 290 230 Q 145 230 145 210" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4,3"/>
   <text x="290" y="243" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">⤴ INVERT: "How would this FAIL?" → avoid those</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: অ্যানালজি বনাম ফার্স্ট প্রিন্সিপাল — এবং উল্টো চিন্তা (inversion)।</div></div>
+</div>
+<div class="svg-caption">চিত্র: অ্যানালজি বনাম ফার্স্ট প্রিন্সিপাল — এবং উল্টো চিন্তা (inversion)।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— First Principles + Inversion —
 

@@ -31,7 +31,7 @@ doors.push({
 <div class="dialogue">হালিমা তোমাকে দেখলেন। মুখ থেকে পিন সরিয়ে একটা ছোট্ট বাক্সে রাখলেন। "বসো।" তুমি বসলে। "সুলতান তোমাকে লোহা গলানো শিখিয়েছেন। কিন্তু আমার কাজ আরও সূক্ষ্ম। লোহা গললে আবার শক্ত হয় — কিন্তু কাপড় কাটলে আর জুড়তে গেলে দাগ থেকে যায়। তাই দরজি হওয়া মানে — প্রথমবারেই সঠিক। আর সেটা শুধু একটা উপায়ে আসে — পদ্ধতি।"</div>
 <div class="dialogue en">Halima saw you. Removed the pins from her mouth, placed them in a small box. "Sit." You sat. "Sultan taught you to melt iron. But my work is finer. Iron re-hardens when melted — but cloth, once cut, leaves a mark if rejoined. So being a tailor means — right the first time. And that comes only one way — method."</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে — কোড কপি করে পেস্ট:</strong> হালিমা বললেন — "তুমি যখন একটা সমস্যা দেখো, তোমার হাত স্ট্যাক ওভারফ্লোতে চলে যায়। কপি করো, পেস্ট করো, চালাও। কাজ করলে ভালো। কিন্তু তুমি কিছু শিখলে না। এটা হলো দরজি ছাড়া কাপড় কাটা — মাপ ছাড়া, প্যাটার্ন ছাড়া। ভুল হবেই। আর কাপড় নষ্ট।"</div></div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে — কোড কপি করে পেস্ট:</strong> হালিমা বললেন — "তুমি যখন একটা সমস্যা দেখো, তোমার হাত স্ট্যাক ওভারফ্লোতে চলে যায়। কপি করো, পেস্ট করো, চালাও। কাজ করলে ভালো। কিন্তু তুমি কিছু শিখলে না। এটা হলো দরজি ছাড়া কাপড় কাটা — মাপ ছাড়া, প্যাটার্ন ছাড়া। ভুল হবেই। আর কাপড় নষ্ট।"</div></div>
 
 <div class="dialogue">"জর্জ পলিয়া," হালিমা বললেন, "একজন হাঙ্গেরিয়ান গণিতজ্ঞ। ১৯৪৫ সালে তিনি একটা বই লিখেছিলেন — <em>How to Solve It</em>। সেই বইয়ে তিনি সমস্যা সমাধানের চারটে ধাপ দিলেন। আমি সেই চার ধাপ দিয়ে প্রতিটা জামা বানাই। তুমি সেই চার ধাপ দিয়ে প্রতিটা সমস্যা সমাধান করবে।"</div>
 <div class="dialogue en">"George Polya," Halima said, "a Hungarian mathematician. In 1945 he wrote a book — <em>How to Solve It</em>. In it he gave four steps to solve problems. I make every garment with those four steps. You'll solve every problem with those four steps."</div>
@@ -58,7 +58,7 @@ doors.push({
 <p>হালিমা আরেকটা কৌশল যোগ করলেন — ফিরে তাকানোর সবচেয়ে কঠিন পরীক্ষা: <strong>সমাধানটা লিখে ব্যাখ্যা করো, যেন একজন নতুন শিক্ষানবিশকে শেখাচ্ছ।</strong> বই ২৬ (জ্ঞানের কারিগর) এটাকেই ফাইনম্যান টেকনিক বলেছে — লেখা মানেই চিন্তা করা। যেখানে কলম আটকে যায়, সেখানেই তোমার বোঝা অসম্পূর্ণ। যে সমাধান সহজ ভাষায় ব্যাখ্যা করতে পারো না, সেটা এখনো তোমার হয়নি।</p>
 <p class="en">Halima added one more technique — the hardest test of looking back: <strong>write out the solution as if teaching a new apprentice.</strong> Book 26 (The Knowledge Craftsman) calls this the Feynman technique — writing is thinking. Wherever the pen gets stuck, that's where your understanding is incomplete. A solution you can't explain in simple words isn't truly yours yet.</p>
 
-<div class="callout tip"><span class="co-icon">🪡</span><div><strong>পলিয়ার হিউরিস্টিক (Heuristics):</strong> হালিমা বললেন — পলিয়া শুধু চার ধাপ দেননি, কৌশলও দিয়েছেন। <strong>(১) ছোট করো:</strong> বড় সমস্যাকে ছোট ছোট ভাগে ভাগো। বই ২ (অ্যালগরিদমের বাজার) এটাই শিখিয়েছে — ডিভাইড অ্যান্ড কনকার। <strong>(২) উল্টো দিক:</strong> সমাধান থেকে শুরু করে পিছনে এসো। <strong>(৩) অনুরূপ সমস্যা:</strong> এমন কোনো সমস্যা আগে দেখেছ কি? কীভাবে সমাধান করেছিলে? <strong>(৪) সহজ উদাহরণ:</strong> সাধারণ ক্ষেত্রে আগে সমাধান করো, তারপর জটিল।</div></div></div>
+<div class="callout tip"><span class="co-icon">🪡</span><div><strong>পলিয়ার হিউরিস্টিক (Heuristics):</strong> হালিমা বললেন — পলিয়া শুধু চার ধাপ দেননি, কৌশলও দিয়েছেন। <strong>(১) ছোট করো:</strong> বড় সমস্যাকে ছোট ছোট ভাগে ভাগো। বই ২ (অ্যালগরিদমের বাজার) এটাই শিখিয়েছে — ডিভাইড অ্যান্ড কনকার। <strong>(২) উল্টো দিক:</strong> সমাধান থেকে শুরু করে পিছনে এসো। <strong>(৩) অনুরূপ সমস্যা:</strong> এমন কোনো সমস্যা আগে দেখেছ কি? কীভাবে সমাধান করেছিলে? <strong>(৪) সহজ উদাহরণ:</strong> সাধারণ ক্ষেত্রে আগে সমাধান করো, তারপর জটিল।</div></div>
 
 <div class="dialogue">তুমি জিজ্ঞেস করলে — "কিন্তু আমি তো ভুল করব। সেটা কি খারাপ?" হালিমা হাসলেন। ড্রয়ার থেকে একটা ছোট্ট হাতিয়ার বের করলেন — সেম-রিপার। সেলাই খোলার ছুরি। "এটা কী জানো?" তুমি বললে — "সেম-রিপার। সেলাই খোলার জিনিস।" হালিমা ঘাড় নাড়লেন। "আমার টেবিলে সবচেয়ে গুরুত্বপূর্ণ জিনিস এটা। কারণ আমি ভুল করি। প্রতিটা দরজি ভুল করেন। কিন্তু সেম-রিপার আছে বলেই ভুল শুধরে নেওয়া যায়। ভুল করতে ভয় পেও না — শুধরে নেওয়ার মানসিকতা রাখো।"</div>
 <div class="dialogue en">You asked — "But I'll make mistakes. Is that bad?" Halima smiled. Pulled a small tool from a drawer — a seam-ripper. The unsewing knife. "Know what this is?" You said — "Seam-ripper. To undo stitches." Halima nodded. "The most important thing on my table. Because I make mistakes. Every tailor does. But the seam-ripper exists, so mistakes can be corrected. Don't fear mistakes — keep the mindset to correct them."</div>
@@ -124,8 +124,8 @@ doors.push({
   <rect x="80" y="205" width="420" height="30" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
   <text x="290" y="224" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">🪡 Keep the seam-ripper ready — mistakes are inevitable, correction is the craft</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: পলিয়ার চার ধাপ — বুঝো, পরিকল্পনা, বানাও, ফিরে তাকাও। সেম-রিপার সবসময় প্রস্তুত।</div></div>
+</div>
+<div class="svg-caption">চিত্র: পলিয়ার চার ধাপ — বুঝো, পরিকল্পনা, বানাও, ফিরে তাকাও। সেম-রিপার সবসময় প্রস্তুত।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— Polya Four-Step Solver —
   problem arrives
@@ -195,7 +195,7 @@ doors.push({
 <div class="dialogue">আবদুল্লাহ তোমাকে দেখলেন। চশমা ঠিক করলেন। "বসো।" তুমি বসলে। একটা স্টুলে, কাউন্টারের সামনে। "হালিমা তোমাকে পদ্ধতি শিখিয়েছেন। ভালো। কিন্তু আমার সমস্যা আলাদা। আমি দরজি নই — আমার কাছে প্যাটার্ন নেই। প্রতিদিন আসে নতুন প্রশ্ন। আজ কত চাল বিক্রি হবে? ঈদে কত মসলা লাগবে? বৃষ্টির দিন কত কাস্টমার কমবে? এই প্রশ্নগুলোর সঠিক উত্তর আমার কাছে নেই — কিন্তু আমি আন্দাজ করি। আর সেই আন্দাজ ৫% ভুলের মধ্যে থাকে।"</div>
 <div class="dialogue en">Abdullah saw you. Adjusted his glasses. "Sit." You sat. On a stool, before the counter. "Halima taught you method. Good. But my problem is different. I'm not a tailor — I have no pattern. Every day a new question. How much rice will sell today? How much spice for Eid? How many fewer customers on a rainy day? I don't have the right answer — but I estimate. And that estimate stays within 5% error."</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে — 'জানি না' বলে পালানো:</strong> আবদুল্লাহ বললেন — "তুমি যখন 'কত?' প্রশ্ন পাও, তুমি বলো — 'জানি না।' এবং থেমে যাও। কিন্তু সত্যি কি তুমি কিছুই জানো না? তুমি জানো — এই এলাকায় কত মানুষ, প্রতিটা পরিবার কত চাল খায়, দোকানে কত কাস্টমার আসে। তুমি জানো অনেক কিছু — শুধু সেই জ্ঞান যোগ করোনি।"</div></div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে — 'জানি না' বলে পালানো:</strong> আবদুল্লাহ বললেন — "তুমি যখন 'কত?' প্রশ্ন পাও, তুমি বলো — 'জানি না।' এবং থেমে যাও। কিন্তু সত্যি কি তুমি কিছুই জানো না? তুমি জানো — এই এলাকায় কত মানুষ, প্রতিটা পরিবার কত চাল খায়, দোকানে কত কাস্টমার আসে। তুমি জানো অনেক কিছু — শুধু সেই জ্ঞান যোগ করোনি।"</div></div>
 
 <div class="dialogue">"এনরিকো ফার্মি," আবদুল্লাহ বললেন। "একজন পদার্থবিদ। ১৯৪৫ সালে — পারমাণবিক পরীক্ষা। বিস্ফোরণের পরে তিনি কাগজের টুকরো ছুঁড়লেন, দেখলেন কত দূরে পড়ে। সেই থেকে বোমার শক্তি আন্দাজ করলেন — ১০ কিলোটন। আসল ছিল ২০ কিলোটন। অর্ধেক ভুল — কিন্তু সঠিক মাত্রায় (order of magnitude)। এটাই ফার্মি অনুমান। সঠিক উত্তর নয় — সঠিক মাত্রা।"</div>
 <div class="dialogue en">"Enrico Fermi," Abdullah said. "A physicist. 1945 — nuclear test. After the blast he threw pieces of paper, saw how far they landed. From that he estimated the bomb's power — 10 kilotons. Actual was 20 kilotons. Half wrong — but right order of magnitude. This is Fermi estimation. Not the exact answer — the right magnitude."</div>
@@ -204,11 +204,11 @@ doors.push({
 <div class="dialogue en">"Fermi loved a question," Abdullah said. "<em>'How many piano tuners are in Chicago?'</em> Nobody knows. But Fermi said — decompose." Abdullah arranged beads on the abacus. "One — Chicago's population? ~3 million. Two — how many households? ~1 million. Three — how many have pianos? Say 1 in 20. Then 50,000 pianos. Four — how often tuned per year? Once. 50,000 tunings. Five — how many tunings per tuner per year? Say 1000. Then need 50 tuners."</div>
 
 <div class="stat-grid">
-<div class="stat-card"><div class="sc-num">৩০ লক্ষ</div><div class="sc-label">শিকাগোর জনসংখ্যা</div></div></div>
-<div class="stat-card"><div class="sc-num">৫০,০০০</div><div class="sc-label">পিয়ানো (২০-এ ১)</div></div></div>
-<div class="stat-card"><div class="sc-num">১০০০</div><div class="sc-label">প্রতি টিউনারে বার্ষিক টিউন</div></div></div>
-<div class="stat-card"><div class="sc-num">~৫০</div><div class="sc-label">টিউনার (আন্দাজ)</div></div></div>
-</div></div>
+<div class="stat-card"><div class="sc-num">৩০ লক্ষ</div><div class="sc-label">শিকাগোর জনসংখ্যা</div></div>
+<div class="stat-card"><div class="sc-num">৫০,০০০</div><div class="sc-label">পিয়ানো (২০-এ ১)</div></div>
+<div class="stat-card"><div class="sc-num">১০০০</div><div class="sc-label">প্রতি টিউনারে বার্ষিক টিউন</div></div>
+<div class="stat-card"><div class="sc-num">~৫০</div><div class="sc-label">টিউনার (আন্দাজ)</div></div>
+</div>
 
 <div class="dialogue">"আসল সংখ্যা কত?" আবদুল্লাহ বললেন। "তখন ছিল ~৬০। ৫০ এর আন্দাজ — ৬০ এর বাস্তব। কাছাকাছি! কিন্তু মূল পয়েন্ট সঠিক সংখ্যা নয় — মূল পয়েন্ট পদ্ধতি। তুমি যদি জানো কীভাবে ভাঙতে হয়, তুমি যেকোনো প্রশ্নের কাছাকাছি যেতে পারবে।"</div>
 <div class="dialogue en">"What was the actual number?" Abdullah said. "It was ~60. The estimate of 50 — the reality of 60. Close! But the main point isn't the exact number — it's the method. If you know how to decompose, you can approach any question."</div>
@@ -216,7 +216,7 @@ doors.push({
 <div class="dialogue">"তুমি ডেভেলপার," আবদুল্লাহ বললেন। "তোমার প্রতিদিন ফার্মি প্রশ্ন আসে। 'এই ডাটাবেস কত ডেটা ধরবে?' 'এই এপিআই কত রিকোয়েস্ট সামলাবে?' 'মাইগ্রেশন কতক্ষণ চলবে?' কেউ তোমাকে সঠিক উত্তর দেবে না। কিন্তু তুমি ভাঙতে পারো। ডাটাবেস — এক সারিতে কত বাইট? * কত সারি? * কত ইনডেক্স? * কত রেপ্লিকা? এপিআই — এক রিকোয়েস্টে কত সময়? * পিক আওয়ারে কত ইউজার? * কত রিকোয়েস্ট প্রতি ইউজার?"</div>
 <div class="dialogue en">"You're a developer," Abdullah said. "You get Fermi questions daily. 'How much data will this DB hold?' 'How many requests can this API handle?' 'How long will the migration take?' No one gives you the exact answer. But you can decompose. DB — bytes per row? * rows? * indexes? * replicas? API — time per request? * peak users? * requests per user?"</div>
 
-<div class="callout tip"><span class="co-icon">📏</span><div><strong>স্যানিটি চেক (Sanity Check):</strong> আবদুল্লাহ বললেন — প্রতিটা আন্দাজের পর একটা প্রশ্ন করো — <em>'এই সংখ্যাটা কি সম্ভব?'</em> তুমি বললে একটা সার্ভার ১০ মিলিয়ন কাস্টমার সামলাবে — থামো। একটা সার্ভারে কত মেমোরি? কত সিপিইউ? প্রতি কাস্টমারে কত কানেকশন? আবদুল্লাহ যখন আন্দাজ করেন, তিনি শেষে বলেন — "এটা কি সম্ভব? এটা কি বাস্তবসম্মত?" এটাই স্যানিটি চেক।</div></div></div>
+<div class="callout tip"><span class="co-icon">📏</span><div><strong>স্যানিটি চেক (Sanity Check):</strong> আবদুল্লাহ বললেন — প্রতিটা আন্দাজের পর একটা প্রশ্ন করো — <em>'এই সংখ্যাটা কি সম্ভব?'</em> তুমি বললে একটা সার্ভার ১০ মিলিয়ন কাস্টমার সামলাবে — থামো। একটা সার্ভারে কত মেমোরি? কত সিপিইউ? প্রতি কাস্টমারে কত কানেকশন? আবদুল্লাহ যখন আন্দাজ করেন, তিনি শেষে বলেন — "এটা কি সম্ভব? এটা কি বাস্তবসম্মত?" এটাই স্যানিটি চেক।</div></div>
 
 <div class="dialogue">"এখন সবচেয়ে কঠিন অংশ," আবদুল্লাহ গম্ভীর হলেন। "ক্যালিব্রেশন। তুমি যখন বলো — 'আমি ৯০% নিশ্চিত এই সংখ্যাটা এই সীমার মধ্যে।' তোমার সেই আন্দাজগুলো কি সত্যিই ৯০% সময় সঠিক? ফিলিপ টেটলক (২০০৫) একটা দশক ধরে বিশেষজ্ঞদের আন্দাজ যাচাই করেছেন। দেখেছেন — যারা '৮০% নিশ্চিত' বলে, তাদের আসলে মাত্র ~৪৫% সময় সঠিক — টেটলক একে বলেছেন 'ছুঁড়ি মারা শিম্পাঞ্জি'। অতি-আত্মবিশ্বাস। এটাই সবচেয়ে বড় ভুল — নিজেকে না চেনা।"</div>
 <div class="dialogue en">"Now the hardest part," Abdullah grew serious. "Calibration. When you say — 'I'm 90% sure this number is within this range.' Are your estimates actually right 90% of the time? Philip Tetlock (2005) verified experts' estimates over a decade. Found — those who say '80% sure' are actually right only ~45% of the time — Tetlock's famous "dart-throwing chimpanzee" result. Overconfidence. This is the biggest error — not knowing yourself."</div>
@@ -286,8 +286,8 @@ doors.push({
   <text x="500" y="221" text-anchor="middle" fill="#94a3b8" font-size="10">is this number</text>
   <text x="500" y="230" text-anchor="middle" fill="#4ade80" font-size="10">even possible?</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: ফার্মি অনুমান — বড় অজানাকে ছোট জানা অংশে ভাঙো, গুণ করো, স্যানিটি চেক করো।</div></div>
+</div>
+<div class="svg-caption">চিত্র: ফার্মি অনুমান — বড় অজানাকে ছোট জানা অংশে ভাঙো, গুণ করো, স্যানিটি চেক করো।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— Fermi Estimation Protocol —
   big_question arrives
@@ -355,7 +355,7 @@ doors.push({
 <div class="dialogue">ইব্রাহিম তোমাকে দেখলেন। ইশারায় বসতে বললেন। তুমি বসলে। নৌকার গলুইতে, তাঁর পাশে। "আবদুল্লাহ তোমাকে আন্দাজ শিখিয়েছেন। কিন্তু আন্দাজ করার পর কী? সিদ্ধান্ত। আমি প্রতিদিন সকালে একটা সিদ্ধান্ত নিই — সমুদ্রে যাব কিনা। এই সিদ্ধান্তে নির্ভর করে — আমার দিন, আমার আয়, আমার জীবন।" তিনি আকাশের দিকে তাকালেন। "দেখো — মেঘ জমছে পূর্বে। বাতাসে লবণের গন্ধ বেশি — ঝড়ের পূর্বলক্ষণ। কিন্তু মাছও থাকবে বেশি — ঝড়ের আগে মাছ জলের উপরে ওঠে। ঝুঁকি আছে, লাভও আছে। সিদ্ধান্ত নিতে হবে।"</div>
 <div class="dialogue en">Ibrahim saw you. Gestured to sit. You sat. On the bow, beside him. "Abdullah taught you estimation. But after estimation — what? Decision. Every morning I make one decision — whether to go to sea. This decision decides — my day, my income, my life." He looked at the sky. "See — clouds gathering east. Wind carries more salt — sign of storm. But fish will also be more — before storms fish rise to surface. Risk exists, reward too. Decision must be made."</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে — বিশ্লেষণ পক্ষাঘাত (Analysis Paralysis):</strong> ইব্রাহিম বললেন — "আমি যখন তরুণ ছিলাম, আমি ভাবতাম — সব তথ্য দরকার, তারপর সিদ্ধান্ত। কিন্তু সমুদ্রে সব তথ্য কখনো থাকে না। আবহাওয়া বদলায়, ঢেউ আসে, মাছ সরে যায়। আমি অপেক্ষা করতাম, করতাম — আর সুযোগ চলে যেত। অন্য নৌকা আগে বেরোত, মাছ ধরত। আমি বন্দরে বসে থাকতাম — বিশ্লেষণ করে।"</div></div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে — বিশ্লেষণ পক্ষাঘাত (Analysis Paralysis):</strong> ইব্রাহিম বললেন — "আমি যখন তরুণ ছিলাম, আমি ভাবতাম — সব তথ্য দরকার, তারপর সিদ্ধান্ত। কিন্তু সমুদ্রে সব তথ্য কখনো থাকে না। আবহাওয়া বদলায়, ঢেউ আসে, মাছ সরে যায়। আমি অপেক্ষা করতাম, করতাম — আর সুযোগ চলে যেত। অন্য নৌকা আগে বেরোত, মাছ ধরত। আমি বন্দরে বসে থাকতাম — বিশ্লেষণ করে।"</div></div>
 
 <div class="dialogue">"জেফ বেজোস," ইব্রাহিম বললেন, "আমাজনের প্রতিষ্ঠাতা। তিনি একটা কথা বলেছেন — সিদ্ধান্ত দুই ধরনের। <strong>Type 1 — একমুখী দরজা (one-way door)।</strong> একবার গেলে ফেরা কঠিন বা অসম্ভব। যেমন — চাকরি ছাড়া, শহর বদলানো, বিয়ে, বড় বিনিয়োগ। এই সিদ্ধান্তে সময় নাও। পরামর্শ নাও। প্রিমর্টেম করো — সুলতান যেমন শিখিয়েছেন। ভুল হলে ক্ষয় বড়।"</div>
 <div class="dialogue en">"Jeff Bezos," Ibrahim said, "founder of Amazon. He said one thing — decisions come in two types. <strong>Type 1 — one-way door.</strong> Once through, return is hard or impossible. Like — quitting a job, moving cities, marriage, major investment. On these decisions — take time. Seek counsel. Premortem — as Sultan taught. Wrong decision, large loss."</div>
@@ -364,13 +364,14 @@ doors.push({
 <div class="dialogue en">"<strong>Type 2 — two-way door.</strong> Once through, you can return. Like — testing a new tool, adding a small feature, taking an experimental class. On these — don't waste time. Decide fast, try fast, feedback fast. If wrong, come back — low loss." Ibrahim paused. "Leaving harbor for sea — Type 1. Where to cast the net — Type 2. I'm slow on the first, fast on the second."</div>
 
 <div class="compare">
-  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ সব সিদ্ধান্তে ধীরে</div></div>
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ সব সিদ্ধান্তে ধীরে</div>
     বিশ্লেষণ পক্ষাঘাত। ছোট সিদ্ধান্তেও সপ্তাহ কাটে। সুযোগ হারায়। প্রতিপক্ষ এগিয়ে যায়।
-  </div></div>
-  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সিদ্ধান্ত অনুযায়ী গতি</div></div>
+  </div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সিদ্ধান্ত অনুযায়ী গতি</div>
     একমুখী দরজায় ধীরে, যত্নশীল। দ্বিমুখী দরজায় দ্রুত, পরীক্ষামূলক। সময় ও শক্তি সঠিক জায়গায়।
-  </div></div>
-</div></div>
+  </div>
+</div>
+
 
 <div class="dialogue">"এখন তিনটা হাতিয়ার," ইব্রাহিম বললেন। "প্রথম — <strong>প্রত্যাশিত মান (Expected Value)</strong>। আমি যখন সমুদ্রে যেতে চিন্তা করি, আমি ভাবি: ভালো হলে কত মাছ? ~১০০ কেজি। খারাপ হলে কত ক্ষয়? ~নৌকা ক্ষতি, জীবন ঝুঁকি। ভালো হওয়ার সম্ভাবনা? ~৬০%। খারাপের? ~৪০%। প্রত্যাশিত মান = (০.৬ * ১০০ কেজি মাছ) − (০.৪ * নৌকা ক্ষয়)। যদি প্রত্যাশিত মান পজিটিভ হয় — যাওয়া যায়। নেগেটিভ হলে — বন্দরে থাকো।"</div>
 <div class="dialogue en">"Now three tools," Ibrahim said. "First — <strong>expected value</strong>. When I consider going to sea, I think: if good, how much fish? ~100 kg. If bad, how much loss? ~boat damage, life risk. Probability of good? ~60%. Of bad? ~40%. Expected value = (0.6 * 100 kg fish) − (0.4 * boat loss). If positive — go. If negative — stay in harbor."</div>
@@ -385,12 +386,12 @@ doors.push({
 <div class="dialogue">"দ্বিতীয় — <strong>অনুশোচনা কমানো (Regret Minimization)</strong>।" ইব্রাহিম চোখ বন্ধ করলেন। "আমি যখন বয়স্ক হব, শেষ বিশ্রামে শুয়ে ভাবব — আফসোস কোনটার হবে? সমুদ্রে গিয়ে ক্ষয়ের? নাকি সমুদ্রে না গিয়ে সুযোগ হারানোর? বেজোস এই ফ্রেমওয়ার্ক দিয়েছেন — সিদ্ধান্ত নাও সেটা যা না নিলে অনুশোচনা বেশি হবে।" তিনি চোখ খুললেন। "এই ফ্রেম সাহায্য করে যখন তথ্য অসম্পূর্ণ — কারণ অনুশোচনা একটা আবেগ, আবেগ স্পষ্ট কথা বলে।"</div>
 <div class="dialogue en">"Second — <strong>regret minimization</strong>." Ibrahim closed his eyes. "When I'm old, lying at final rest, I'll think — which will I regret? Going to sea and losing? Or not going and missing the chance? Bezos gave this framework — decide what you'd regret NOT doing more." He opened his eyes. "This frame helps when information is incomplete — because regret is an emotion, and emotions speak clearly."</div>
 
-<div class="callout tip"><span class="co-icon">🎯</span><div><strong>তৃতীয় — স্যাটিসফাইসিং (Satisficing):</strong> ইব্রাহিম বললেন — "আমি যখন জাল ফেলি, আমি সবচেয়ে বড় মাছের খোঁজে থাকি না। আমি যথেষ্ট ভালো মাছ চাই। যে সবচেয়ে বড় মাছ খোঁজে, সে ঝড়ে পড়ে।" হার্বার্ট সাইমন (১৯৫৬) একে বলেছেন <em>satisficing</em> — satisfy + suffice। সবচেয়ে ভালো খোঁজা (maximizing) সময়সাপেক্ষ, ক্লান্তিকর, আর অনেক সময় ভুল। যথেষ্ট ভালো নেওয়া দ্রুত, কার্যকর, আর সন্তুষ্টি দেয়। বই ৩২ (মস্তিষ্কের কারিগর) তোমাকে শিখিয়েছে — মস্তিষ্কের সম্পদ সীমিত। সব সিদ্ধান্তে পারফেকশন চাইলে মস্তিষ্ক ক্লান্ত হয়।</div></div></div>
+<div class="callout tip"><span class="co-icon">🎯</span><div><strong>তৃতীয় — স্যাটিসফাইসিং (Satisficing):</strong> ইব্রাহিম বললেন — "আমি যখন জাল ফেলি, আমি সবচেয়ে বড় মাছের খোঁজে থাকি না। আমি যথেষ্ট ভালো মাছ চাই। যে সবচেয়ে বড় মাছ খোঁজে, সে ঝড়ে পড়ে।" হার্বার্ট সাইমন (১৯৫৬) একে বলেছেন <em>satisficing</em> — satisfy + suffice। সবচেয়ে ভালো খোঁজা (maximizing) সময়সাপেক্ষ, ক্লান্তিকর, আর অনেক সময় ভুল। যথেষ্ট ভালো নেওয়া দ্রুত, কার্যকর, আর সন্তুষ্টি দেয়। বই ৩২ (মস্তিষ্কের কারিগর) তোমাকে শিখিয়েছে — মস্তিষ্কের সম্পদ সীমিত। সব সিদ্ধান্তে পারফেকশন চাইলে মস্তিষ্ক ক্লান্ত হয়।</div></div>
 
 <div class="dialogue">"তোমার কাছে একটা সিদ্ধান্ত আছে?" ইব্রাহিম জিজ্ঞেস করলেন। তুমি বললে — "হ্যাঁ। PhD করব কিনা ভাবছি।" ইব্রাহিম ঘাড় নাড়লেন। "এটা Type 1 সিদ্ধান্ত — একমুখী দরজা। সময় নাও। পরামর্শ নাও। প্রিমর্টেম করো — ভাবো কীভাবে ব্যর্থ হবে, সেটা এড়াও। অনুশোচনা ফ্রেম ব্যবহার করো — দশ বছর পর কোনটার আফসোস বেশি? PhD না করা? নাকি PhD করে অন্য কিছু ছাড়া? আর প্রত্যাশিত মান — সম্ভাবনা * ফল। শুধু আবেগ দিয়ে সিদ্ধান্ত নিও না। আবেগ স্পষ্ট কথা বলে ঠিকই — কিন্তু সম্পূর্ণ কথা বলে না।"</div>
 <div class="dialogue en">"You have a decision?" Ibrahim asked. You said — "Yes. I'm thinking whether to do a PhD." Ibrahim nodded. "This is a Type 1 decision — one-way door. Take time. Seek counsel. Premortem — think how it would fail, avoid that. Use the regret frame — in ten years, which will you regret more? Not doing PhD? Or doing PhD and losing something else? And expected value — probability * outcome. Don't decide by emotion alone. Emotions speak clearly — but not completely."</div>
 
-<div class="callout info"><span class="co-icon">📝</span><div><strong>সিদ্ধান্ত খাতা (Decision Journal):</strong> ইব্রাহিম বললেন — প্রতিটা বড় সিদ্ধান্তের পরে একটা খাতায় লেখো: কী সিদ্ধান্ত নিলে, কেন, কী প্রত্যাশা, কী ভয়। ছয় মাস পর ফিরে দেখো — কী হলো? তোমার প্রত্যাশা কি ঠিক ছিল? ভয় কি সত্যি হলো? এটা তোমার সিদ্ধান্ত নেওয়ার ক্যালিব্রেশন করবে — আবদুল্লাহর আন্দাজ খাতার মতো।</div></div></div>
+<div class="callout info"><span class="co-icon">📝</span><div><strong>সিদ্ধান্ত খাতা (Decision Journal):</strong> ইব্রাহিম বললেন — প্রতিটা বড় সিদ্ধান্তের পরে একটা খাতায় লেখো: কী সিদ্ধান্ত নিলে, কেন, কী প্রত্যাশা, কী ভয়। ছয় মাস পর ফিরে দেখো — কী হলো? তোমার প্রত্যাশা কি ঠিক ছিল? ভয় কি সত্যি হলো? এটা তোমার সিদ্ধান্ত নেওয়ার ক্যালিব্রেশন করবে — আবদুল্লাহর আন্দাজ খাতার মতো।</div></div>
 
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"হে আল্লাহ, যদি এই বিষয়ে কল্যাণ থাকে তবে তুমি তা সহজ করে দাও, আর অকল্যাণ থাকলে দূর করে দাও।" — ইস্তিখারার দুআর ভাবানুবাদ (সহিহ বুখারী)</div>
 
@@ -428,8 +429,8 @@ doors.push({
   <rect x="80" y="220" width="420" height="22" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
   <text x="290" y="235" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">Equal time on all decisions = folly. Match speed to reversibility.</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: সিদ্ধান্তের দুই ধরন — একমুখী দরজায় ধীরে, দ্বিমুখী দরজায় দ্রুত। সময় মেলাও ফেরার সম্ভাবনার সাথে।</div></div>
+</div>
+<div class="svg-caption">চিত্র: সিদ্ধান্তের দুই ধরন — একমুখী দরজায় ধীরে, দ্বিমুখী দরজায় দ্রুত। সময় মেলাও ফেরার সম্ভাবনার সাথে।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— Decision Under Uncertainty —
 
@@ -502,36 +503,37 @@ doors.push({
 <div class="dialogue">সালমা তোমাকে দেখলেন। কোদাল মাটিতে রেখে হাত ঝাড়লেন। "বসো।" তুমি মাটির একটা ঢিবিতে বসলে। সালমা বললেন: "ইব্রাহিম তোমাকে সিদ্ধান্ত শিখিয়েছেন। ভালো। কিন্তু সিদ্ধান্ত নেওয়া এক জিনিস, সেই সিদ্ধান্তের ফল সহ্য করা আরেক জিনিস। আমি কৃষক। আমি আজ বীজ বোনি — ফল পাই পাঁচ বছর পর। আমি মরসুমে ভাবি না — আমি দশকে ভাবি।"</div>
 <div class="dialogue en">Salma saw you. Set the hoe on the ground, wiped her hands. "Sit." You sat on a mound of earth. Salma said: "Ibrahim taught you decision. Good. But deciding is one thing, bearing its fruit another. I'm a farmer. I sow seeds today — I get fruit five years later. I don't think in seasons — I think in decades."</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে — প্রথম-স্তরের চিন্তা:</strong> সালমা বললেন — "তুমি যখন একটা কাজ করো, তুমি ভাবো — 'এটা করলে এই ফল হবে।' শেষ। কিন্তু ফলেরও ফল আছে। আর সেই ফলেরও ফল। তুমি শুধু প্রথমটা দেখো। বাকিগুলো অপ্রত্যাশিত আসে — আর তুমি বলো — 'হায়, আমি ভাবিনি!' সমস্যা হলো তুমি ভাবোনি, নয় — তুমি স্তরে ভাবোনি।"</div></div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে — প্রথম-স্তরের চিন্তা:</strong> সালমা বললেন — "তুমি যখন একটা কাজ করো, তুমি ভাবো — 'এটা করলে এই ফল হবে।' শেষ। কিন্তু ফলেরও ফল আছে। আর সেই ফলেরও ফল। তুমি শুধু প্রথমটা দেখো। বাকিগুলো অপ্রত্যাশিত আসে — আর তুমি বলো — 'হায়, আমি ভাবিনি!' সমস্যা হলো তুমি ভাবোনি, নয় — তুমি স্তরে ভাবোনি।"</div></div>
 
 <div class="dialogue">"হাওয়ার্ড মার্কস," সালমা বললেন, "একজন বিনিয়োগকারী। তিনি একটা সূত্র দিয়েছেন। <strong>প্রথম-স্তরের চিন্তা:</strong> 'এই কোম্পানির ভবিষ্যৎ ভালো, তাই শেয়ার কিনব।' সহজ, সোজা, সবাই ভাবে। <strong>দ্বিতীয়-স্তরের চিন্তা:</strong> 'এই কোম্পানির ভবিষ্যৎ ভালো, কিন্তু সবাই জানে — তাই শেয়ারের দামে সেটা ঢুকে গেছে। কিন্তু সবাই যা ভাবছে তার চেয়ে পরিস্থিতি আরও ভালো — তাহলে কিনব।' কঠিন, গভীর, কম লোক ভাবে।"</div>
 <div class="dialogue en">"Howard Marks," Salma said, "an investor. He gave a formula. <strong>First-order thinking:</strong> 'This company has a good future, so I'll buy shares.' Simple, direct, everyone thinks it. <strong>Second-order thinking:</strong> 'This company has a good future, but everyone knows — so the share price already reflects it. But the situation is even better than everyone thinks — then I'll buy.' Hard, deep, few think it."</div>
 
 <div class="compare">
-  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ প্রথম-স্তর</div></div>
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ প্রথম-স্তর</div>
     "এই ফিচারটা যোগ করলে ইউজার খুশি হবে।"<br><br>
     শেষ। কিন্তু ইউজার খুশি হলে কী হবে? বেশি ব্যবহার? সার্ভার লোড? বাগ রিপোর্ট? মডারেশন চাপ?
-  </div></div>
-  <div class="cmp-card cmp-good"><div class="cmp-label">✅ দ্বিতীয়-স্তর</div></div>
+  </div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ দ্বিতীয়-স্তর</div>
     "ফিচার যোগ করলে ইউজার খুশি → ব্যবহার বাড়বে → সার্ভার লোড বাড়বে → স্কেলিং দরকার → খরচ বাড়বে। প্রস্তুতি নাও।"<br><br>
     ধাপে ধাপে, প্রতিটা ফলের ফল।
-  </div></div>
-</div></div>
+  </div>
+</div>
+
 
 <div class="dialogue">"এখন একটা কাল্পনিক উদাহরণ," সালমা মাটিতে আঙুল দিয়ে দাগ টানলেন। "ব্রিটিশ আমলে দিল্লিতে কোবরা সাপ বেশি ছিল। সরকার একটা সিদ্ধান্ত নিল — মৃত কোবরা আনলে টাকা দেওয়া হবে।" সালমা একটু থামলেন। "প্রথম-স্তরের ফল কী? কোবরা কমল — মানুষ মেরে টাকা আনছে। সরকার খুশি। কিন্তু দ্বিতীয়-স্তরের ফল কী?"</div>
 <div class="dialogue en">"Now an illustrative example," Salma drew a line in the soil with her finger. "In British era, Delhi had too many cobras. Government decided — bring a dead cobra, get money." Salma paused. "First-order result? Cobras decreased — people killed them for money. Government happy. But second-order result?"</div>
 
 <div class="stat-grid">
-<div class="stat-card"><div class="sc-num">১ম স্তর</div><div class="sc-label">কোবরা কমল ✓</div></div></div>
-<div class="stat-card"><div class="sc-num">২য় স্তর</div><div class="sc-label">মানুষ কোবরা পালন শুরু ✗</div></div></div>
-<div class="stat-card"><div class="sc-num">৩য় স্তর</div><div class="sc-label">পুরস্কার বাতিল</div></div></div>
-<div class="stat-card"><div class="sc-num">৪র্থ স্তর</div><div class="sc-label">পালিত কোবরা মুক্ত — আগের চেয়ে বেশি ✗✗</div></div></div>
-</div></div>
+<div class="stat-card"><div class="sc-num">১ম স্তর</div><div class="sc-label">কোবরা কমল ✓</div></div>
+<div class="stat-card"><div class="sc-num">২য় স্তর</div><div class="sc-label">মানুষ কোবরা পালন শুরু ✗</div></div>
+<div class="stat-card"><div class="sc-num">৩য় স্তর</div><div class="sc-label">পুরস্কার বাতিল</div></div>
+<div class="stat-card"><div class="sc-num">৪র্থ স্তর</div><div class="sc-label">পালিত কোবরা মুক্ত — আগের চেয়ে বেশি ✗✗</div></div>
+</div>
 
 <div class="dialogue">"দ্বিতীয়-স্তরের ফল," সালমা বললেন, "মানুষ কোবরা পালন শুরু করল — টাকা পাওয়ার জন্য। সরকার যখন বুঝল, পুরস্কার বাতিল করল। তখন পালিত কোবরাগুলো ছেড়ে দেওয়া হলো — আগের চেয়ে বেশি কোবরা। ভালো করতে গিয়ে খারাপ। এটাই <strong>কোবরা ইফেক্ট</strong> — হর্স্ট সিবার্ট (১৯৭১) এই নাম দিয়েছেন। ইনসেনটিভ উল্টো ফল দেয় যখন দ্বিতীয়-স্তরের চিন্তা করা হয় না।"</div>
 <div class="dialogue en">"Second-order result," Salma said, "people started breeding cobras — for the bounty. When government realized, they cancelled the reward. Then bred cobras were released — more cobras than before. Good intent, bad outcome. This is the <strong>cobra effect</strong> — Horst Siebert (1971) named it. Incentives backfire when second-order thinking is absent."</div>
 
-<div class="callout tip"><span class="co-icon">🔄</span><div><strong>ফিডব্যাক লুপ (Feedback Loop):</strong> সালমা বললেন — প্রতিটা সিদ্ধান্ত একটা চক্র শুরু করে। <strong>পজিটিভ ফিডব্যাক</strong> (reinforcing): ফল আরও ফল জন্ম দেয়। যেমন — ভালো কোড → সহজ রিভিউ → দ্রুত ডেপ্লয় → বেশি ফিচার → বেশি ইউজার → বেশি রাজস্ব → বেশি ডেভেলপার → আরও ভালো কোড। <strong>নেগেটিভ ফিডব্যাক</strong> (balancing): ফল নিজেকে সীমিত করে। যেমন — বেশি ইউজার → সার্ভার ধীর → ইউজার ছাড়ে → লোড কমে → সার্ভার দ্রুত। বই ৪ (নগর নির্মাতার কোডেক্স) তোমাকে সিস্টেম চিন্তা শিখিয়েছে — এই দরজা সেটার গভীরে যায়।</div></div></div>
+<div class="callout tip"><span class="co-icon">🔄</span><div><strong>ফিডব্যাক লুপ (Feedback Loop):</strong> সালমা বললেন — প্রতিটা সিদ্ধান্ত একটা চক্র শুরু করে। <strong>পজিটিভ ফিডব্যাক</strong> (reinforcing): ফল আরও ফল জন্ম দেয়। যেমন — ভালো কোড → সহজ রিভিউ → দ্রুত ডেপ্লয় → বেশি ফিচার → বেশি ইউজার → বেশি রাজস্ব → বেশি ডেভেলপার → আরও ভালো কোড। <strong>নেগেটিভ ফিডব্যাক</strong> (balancing): ফল নিজেকে সীমিত করে। যেমন — বেশি ইউজার → সার্ভার ধীর → ইউজার ছাড়ে → লোড কমে → সার্ভার দ্রুত। বই ৪ (নগর নির্মাতার কোডেক্স) তোমাকে সিস্টেম চিন্তা শিখিয়েছে — এই দরজা সেটার গভীরে যায়।</div></div>
 
 <div class="dialogue">"আরেকটা উদাহরণ," সালমা বললেন। "বই ২৩ (অপ্রতিদ্বন্দ্বী কারিগর) তোমাকে বলেছে — সিস্টেম চিন্তা প্রথম-নীতির ভাই। তুমি একটা কোম্পানিতে কাজ করো। ম্যানেজার বললেন — 'প্রতিটা বাগ রিপোর্টের জন্য ডেভেলপারদের পুরস্কৃত করা হবে।' প্রথম-স্তর: বাগ কমবে। দ্বিতীয়-স্তর কী?" তুমি ভাবলে। "ডেভেলপাররা নিজেরাই বাগ রিপোর্ট করবে — পুরস্কার পাওয়ার জন্য।" সালমা হাসলেন। "ঠিক। আর তৃতীয়-স্তর?"</div>
 <div class="dialogue en">"Another example," Salma said. "Book 23 told you — systems thinking is first principles' sibling. You work at a company. Manager says — 'developers will be rewarded for every bug report.' First-order: bugs decrease. Second-order?" You thought. "Developers will report bugs themselves — for the reward." Salma smiled. "Exactly. And third-order?"</div>
@@ -539,7 +541,7 @@ doors.push({
 <div class="dialogue">"তৃতীয়-স্তর — ডেভেলপাররা ইচ্ছা করে বাগ রাখবে, পরে রিপোর্ট করবে।" সালমা ঘাড় নাড়লেন। "হ্যাঁ। আর চতুর্থ-স্তর — কোডের মান স্থায়ীভাবে নষ্ট। একটা ভালো উদ্দেশ্য — 'বাগ কমাও' — চার স্তর পরে কোড ধ্বংস। কোবরা ইফেক্ট।" সালমা মাটি থেকে উঠে দাঁড়ালেন। "প্রতিটা সিদ্ধান্তের পরে একটা প্রশ্ন করো — <strong>'তারপর কী?'</strong> আর তারপর কী? আর তারপর? যতক্ষণ না প্রতিটা উত্তর যাচাই করা যায়।"</div>
 <div class="dialogue en">"Third-order — developers will deliberately leave bugs, report later." Salma nodded. "Yes. And fourth-order — code quality permanently destroyed. A good intent — 'reduce bugs' — four layers later, code ruin. Cobra effect." Salma stood up from the soil. "After every decision, ask — <strong>'and then what?'</strong> And then what? And then? Until each answer can be verified."</div>
 
-<div class="callout info"><span class="co-icon">💡</span><div><strong>ইনসেনটিভ চেক (Incentive Check):</strong> সালমা বললেন — প্রতিটা সিদ্ধান্তে ভাবো — এই সিদ্ধান্তে কার স্বার্থ কী? কে লাভবান? কে ক্ষতিগ্রস্ত? চার্লি ম্যাঞ্জার বলেছেন — <em>'Show me the incentive, I'll show you the outcome.'</em> আমাকে ইনসেনটিভ দেখাও, আমি ফল দেখাব। ইনসেনটিভ বুঝলে ফল আগে থেকেই জানা যায়।</div></div></div>
+<div class="callout info"><span class="co-icon">💡</span><div><strong>ইনসেনটিভ চেক (Incentive Check):</strong> সালমা বললেন — প্রতিটা সিদ্ধান্তে ভাবো — এই সিদ্ধান্তে কার স্বার্থ কী? কে লাভবান? কে ক্ষতিগ্রস্ত? চার্লি ম্যাঞ্জার বলেছেন — <em>'Show me the incentive, I'll show you the outcome.'</em> আমাকে ইনসেনটিভ দেখাও, আমি ফল দেখাব। ইনসেনটিভ বুঝলে ফল আগে থেকেই জানা যায়।</div></div>
 
 <div class="verse">وَأَعِدُّوا لَهُم مَّا اسْتَطَعْتُم مِّن قُوَّةٍ</div>
 <div style="font-size:.85rem;color:var(--ink-dim);text-align:center;margin-bottom:1rem">"তাদের বিরুদ্ধে যতটুকু সাধ্য হয় শক্তি প্রস্তুত রাখো।" — কুরআন ৮:৬০</div>
@@ -589,8 +591,8 @@ doors.push({
   <text x="420" y="214" text-anchor="middle" fill="#94a3b8" font-size="6.5">reinforcing: result → more result</text>
   <text x="420" y="224" text-anchor="middle" fill="#94a3b8" font-size="6.5">balancing: result → self-limit</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: কোবরা ইফেক্ট — প্রথম ফল ভালো, কিন্তু দ্বিতীয়/তৃতীয় স্তরে উল্টো। প্রতিটা সিদ্ধান্তে জিজ্ঞেস করো — তারপর কী?</div></div>
+</div>
+<div class="svg-caption">চিত্র: কোবরা ইফেক্ট — প্রথম ফল ভালো, কিন্তু দ্বিতীয়/তৃতীয় স্তরে উল্টো। প্রতিটা সিদ্ধান্তে জিজ্ঞেস করো — তারপর কী?</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— Second-Order Thinking —
 
@@ -703,7 +705,7 @@ doors.push({
 <div class="dialogue">"দেখো," জাকিরা বললেন, "নয়টা সূত্র একসাথে কাজ করছে। একটা সূত্র বলছে — আবেগ দেখো। আরেকটা বলছে — বেস রেট দেখো। আরেকটা বলছে — ফিউচার দেখো। কোনো একটা সূত্র একা এই সিদ্ধান্ত দিতে পারে না। কিন্তু নয়টা মিলে একটা সম্পূর্ণ ছবি দেয়। এটাই সংশ্লেষণ।" তিনি পাতাটা ধীরে ধীরে চালালেন। কাপড় তৈরি হচ্ছে — নয় রঙের সূত্র এক জায়গায়।</div>
 <div class="dialogue en">"See," Zakira said, "the nine threads work together. One says — look at emotion. Another — look at base rate. Another — look at the future. No single thread can give this decision. But nine together give a complete picture. This is synthesis." She worked the shuttle slowly. The cloth forms — nine colored threads as one.</div>
 
-<div class="callout info"><span class="co-icon">🧠</span><div><strong>মনের ত্রয়ী (Mind Trilogy):</strong> জাকিরা বললেন — এই বই শেষ হচ্ছে, কিন্তু ত্রয়ী শেষ হচ্ছে না — ত্রয়ী <em>সম্পূর্ণ</em> হচ্ছে। <strong>বই ২৪ (সিংহাসন):</strong> তোমার মন কীভাবে ধোঁকা দেয় — প্রতিরোধ। <strong>বই ৩২ (মস্তিষ্কের কারিগর):</strong> মস্তিষ্ক কীভাবে চলে — রক্ষণাবেক্ষণ। <strong>বই ৩৩ (যুক্তির তাঁত):</strong> তুমি কীভাবে চিন্তা করবে — আক্রমণ। রক্ষা, রক্ষণাবেক্ষণ, তীক্ষ্ণতা — তিনটাই এক সাথে লাগে। একটা ছাড়া আর দুটো অর্ধেক।</div></div></div>
+<div class="callout info"><span class="co-icon">🧠</span><div><strong>মনের ত্রয়ী (Mind Trilogy):</strong> জাকিরা বললেন — এই বই শেষ হচ্ছে, কিন্তু ত্রয়ী শেষ হচ্ছে না — ত্রয়ী <em>সম্পূর্ণ</em> হচ্ছে। <strong>বই ২৪ (সিংহাসন):</strong> তোমার মন কীভাবে ধোঁকা দেয় — প্রতিরোধ। <strong>বই ৩২ (মস্তিষ্কের কারিগর):</strong> মস্তিষ্ক কীভাবে চলে — রক্ষণাবেক্ষণ। <strong>বই ৩৩ (যুক্তির তাঁত):</strong> তুমি কীভাবে চিন্তা করবে — আক্রমণ। রক্ষা, রক্ষণাবেক্ষণ, তীক্ষ্ণতা — তিনটাই এক সাথে লাগে। একটা ছাড়া আর দুটো অর্ধেক।</div></div>
 
 <div class="dialogue">তুমি জিজ্ঞেস করলে — "কিন্তু এত কিছু মনে রাখব কীভাবে?" জাকিরা হাসলেন। "মনে রাখার দরকার নেই। তাঁতি কখনো সূত্র গুনে রাখে না। সে শুধু জানে — এই রঙের সূত্র এখানে, ওই রঙের ওখানে। তুমি এক মাস এই হাতিয়ারগুলো প্রতিদিন ব্যবহার করো — একটা সংবাদ পড়ে ভাবো (ভ্রষ্টাচার?), একটা সিদ্ধান্ত নিয়ে ভাবো (Type 1 না 2?), একটা সমস্যা দেখে ভাবো (পলিয়ার চার ধাপ)। এক মাস পর তুমি আর গুনবে না — তুমি দেখবে।"</div>
 <div class="dialogue en">You asked — "But how will I remember all this?" Zakira smiled. "You don't need to remember. A weaver never counts threads. She just knows — this color goes here, that color there. Use these tools daily for one month — reading news, think (fallacy?); making a decision, think (Type 1 or 2?); seeing a problem, think (Polya's four steps). In a month you won't count — you'll see."</div>
@@ -714,7 +716,7 @@ doors.push({
 <div class="dialogue">হিকমাহ। আল্লাহ কুরআনে বলেন: <em>"যাকে হিকমাহ দেওয়া হয়েছে, তাকে অনেক কল্যাণ দেওয়া হয়েছে। কিন্তু বোধশক্তিসম্পন্ন ছাড়া কেউ উপলব্ধি করে না।"</em> (২:২৬৯) হিকমাহ শুধু জ্ঞান নয়। হিকমাহ হলো জ্ঞান প্রয়োগ করা — সঠিক সময়ে, সঠিক জায়গায়, সঠিক পরিমাণে। জাকিরা নয়টা সূত্র জানেন না — তিনি জানেন কোনটা কখন টানতে হবে। সেটাই হিকমাহ। তোমার লক্ষ্য একটা মডেল নয় — একটা হিকমাহ। আর হিকমাহ আসে অভ্যাস থেকে, প্রতিদিনের চর্চা থেকে, ভুল থেকে, সংশোধন থেকে। তাঁতি এক দিনে কারিগর হয় না — তিনি বুনতে বুনতে হন।</div>
 <div class="dialogue en">Hikmah. Allah says in the Quran: <em>Whoever is given hikmah has been given much good. But none grasp it except those of understanding.</em> (2:269) Hikmah is not just knowledge. Hikmah is applying knowledge — at the right time, in the right place, in the right amount. Zakira doesn't know nine threads — she knows which to pull when. That is hikmah. Your goal is not a model — it is hikmah. And hikmah comes from practice, daily use, error, correction. A weaver doesn't become a craftsperson in a day — she becomes by weaving.</div>
 
-<div class="callout tip"><span class="co-icon">🌟</span><div><strong>পরবর্তী যাত্রা (Next Steps):</strong> জাকিরা বললেন — এই বই শেষ, কিন্তু যাত্রা শেষ নয়। <strong>(১)</strong> প্রতিদিন একটা চিন্তার খাতা রাখো — কোন সূত্র কখন ব্যবহার করলে। <strong>(২)</strong> মাসে একটা বড় সিদ্ধান্ত নেওয়ার সময় এই নয়টা সূত্র চালাও। <strong>(৩)</strong> বই ২৪, ৩২, ৩৩ একসাথে পড়ো — ত্রয়ী হিসেবে। রক্ষা + রক্ষণাবেক্ষণ + তীক্ষ্ণতা। <strong>(৪)</strong> বই ৪ (নগর নির্মাতার কোডেক্স) সিস্টেম চিন্তায় গভীরে যায় — সেটাও পড়ো।</div></div></div>
+<div class="callout tip"><span class="co-icon">🌟</span><div><strong>পরবর্তী যাত্রা (Next Steps):</strong> জাকিরা বললেন — এই বই শেষ, কিন্তু যাত্রা শেষ নয়। <strong>(১)</strong> প্রতিদিন একটা চিন্তার খাতা রাখো — কোন সূত্র কখন ব্যবহার করলে। <strong>(২)</strong> মাসে একটা বড় সিদ্ধান্ত নেওয়ার সময় এই নয়টা সূত্র চালাও। <strong>(৩)</strong> বই ২৪, ৩২, ৩৩ একসাথে পড়ো — ত্রয়ী হিসেবে। রক্ষা + রক্ষণাবেক্ষণ + তীক্ষ্ণতা। <strong>(৪)</strong> বই ৪ (নগর নির্মাতার কোডেক্স) সিস্টেম চিন্তায় গভীরে যায় — সেটাও পড়ো।</div></div>
 
 <div class="dialogue">জাকিরা উঠে দাঁড়ালেন। তাঁতের সামনে থেকে। কাপড় প্রায় তৈরি — নয় রঙের সূত্র এক জায়গায়, এক নকশায়, এক কাপড়ে। "এটা তোমার," তিনি বললেন। "এই কাপড়ের নাম — সুচিন্তিত জীবন। তুমি এখন তাঁতের কারিগর। মনের ত্রয়ী সম্পূর্ণ। রক্ষা, রক্ষণাবেক্ষণ, তীক্ষ্ণতা — তিনটাই তোমার হাতে। এখন যাও — আর বোনো।" তুমি উঠে দাঁড়ালে। উঠোন ছেড়ে বের হলে। পেছনে জাকিরার তাঁতের ঠক-ঠক শব্দ আসছে — সদা চালু, সদা বুনছে।</div>
 <div class="dialogue en">Zakira stood. From before the loom. The cloth is almost done — nine colored threads in one place, one pattern, one cloth. "This is yours," she said. "The name of this cloth — a deliberate life. You are now a weaver of the loom. The mind trilogy is complete. Defense, maintenance, sharpness — all three in your hands. Now go — and weave." You stood. Left the courtyard. Behind you came the clack-clack of Zakira's loom — always running, always weaving.</div>
@@ -733,8 +735,8 @@ doors.push({
   <rect x="120" y="235" width="340" height="35" rx="17" fill="#052e16" stroke="#4ade80" stroke-width="2.5"/>
   <text x="290" y="257" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">HIKMAH: Applied Wisdom</text>
 </svg>
-</div></div>
-<div class="svg-caption">চিত্র: নয়টি মডেল — জাকিরা থেকে হিকমাহ পর্যন্ত একটি তাঁত।</div></div>
+</div>
+<div class="svg-caption">চিত্র: নয়টি মডেল — জাকিরা থেকে হিকমাহ পর্যন্ত একটি তাঁত।</div>
 
 <div class="callout tip"><span class="co-icon">📋</span><div>— Daily Clear Thinking Checklist —
 

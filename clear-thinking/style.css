@@ -133,6 +133,8 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .stat-card{background:linear-gradient(135deg,rgba(99,102,241,.09),rgba(96,165,250,.04));border:1px solid var(--panel-border);border-radius:12px;padding:.75rem .55rem;text-align:center}
 .story-text .stat-card .sc-num{font-family:'Cinzel',serif;font-size:1.15rem;font-weight:900;color:var(--amber-bright);line-height:1.1}
 .story-text .stat-card .sc-label{font-size:0.75rem;color:var(--ink-dim);margin-top:.28rem;line-height:1.35}
+.story-text .svg-diagram{width:100%;max-width:620px;margin:1.2rem auto;display:block;background:linear-gradient(135deg,rgba(19,26,43,.6),rgba(7,10,15,.8));border:1px solid var(--panel-border);border-radius:12px;padding:.8rem;overflow:hidden}
+.story-text .svg-caption{font-size:.75rem;color:var(--ink-dim);text-align:center;margin:-.6rem auto 1.2rem;font-style:italic;max-width:620px}
 .story-text .timeline{position:relative;margin:1rem 0 1rem .3rem;padding-left:1.35rem;border-left:2px solid var(--panel-border)}
 .story-text .tl-step{position:relative;margin-bottom:1rem;padding-left:.25rem}
 .story-text .tl-step:last-child{margin-bottom:0}
