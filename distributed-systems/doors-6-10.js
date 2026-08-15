@@ -1526,6 +1526,36 @@ print(landscape)
 
   <div class="callout tip"><span class="co-icon">🔗</span><div><strong>ক্রস-রেফারেন্স:</strong> Book ৪ (City Design) পুরো বই — Kleppmann-এর দর্শন হলো সেই বইয়ের তাত্ত্বিক ভিত্তি। Door ১৩ (Message Queues), Door ১৬ (Databases) — সব একই দর্শনের অংশ। Book ১৪ (LLMOps) — LLM সিস্টেমেও event sourcing প্রাসঙ্গিক।</div></div>
 
+<div class="svg-diagram">
+<svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+  <text x="290" y="25" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="900">📜 Event Sourcing — ইতিহাস থেকে বর্তমান</text>
+  <rect x="20" y="55" width="120" height="150" rx="8" fill="#1e3a5f" stroke="#f97316" stroke-width="2"/>
+  <text x="80" y="80" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">Event Log</text>
+  <text x="80" y="105" text-anchor="middle" fill="#7dd3fc" font-size="8">e1: অর্ডার তৈরি</text>
+  <text x="80" y="125" text-anchor="middle" fill="#7dd3fc" font-size="8">e2: পেমেন্ট ✓</text>
+  <text x="80" y="145" text-anchor="middle" fill="#7dd3fc" font-size="8">e3: শিপড ✓</text>
+  <text x="80" y="165" text-anchor="middle" fill="#7dd3fc" font-size="8">e4: ডেলিভারড ✓</text>
+  <text x="80" y="192" text-anchor="middle" fill="#a5f3fc" font-size="8" font-style="italic">অপরিবর্তনীয় সত্য</text>
+  <path d="M 150 130 L 200 130" stroke="#f97316" stroke-width="2" marker-end="url(#arrES9)"/>
+  <defs><marker id="arrES9" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/></marker></defs>
+  <text x="175" y="120" text-anchor="middle" fill="#fbbf24" font-size="8">replay</text>
+  <rect x="210" y="85" width="140" height="90" rx="8" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
+  <text x="280" y="110" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">বর্তমান অবস্থা</text>
+  <text x="280" y="135" text-anchor="middle" fill="#a7f3d0" font-size="9">status: DELIVERED</text>
+  <text x="280" y="155" text-anchor="middle" fill="#86efac" font-size="8">e1+e2+e3+e4</text>
+  <path d="M 360 130 L 410 130" stroke="#22c55e" stroke-width="2" marker-end="url(#arrES9b)"/>
+  <defs><marker id="arrES9b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22c55e"/></marker></defs>
+  <rect x="420" y="55" width="140" height="150" rx="8" fill="#1e1b4b" stroke="#a78bfa" stroke-width="2"/>
+  <text x="490" y="80" text-anchor="middle" fill="#c4b5fd" font-size="10" font-weight="700">কেন Event Sourcing?</text>
+  <text x="490" y="105" text-anchor="middle" fill="#a5b4fc" font-size="8">✔ অডিট — কে কখন কী</text>
+  <text x="490" y="125" text-anchor="middle" fill="#a5b4fc" font-size="8">✔ রিপ্লে — নতুন ভিউ তৈরি</text>
+  <text x="490" y="145" text-anchor="middle" fill="#a5b4fc" font-size="8">✔ ডিবাগ — ভুল কোথায়</text>
+  <text x="490" y="165" text-anchor="middle" fill="#a5b4fc" font-size="8">✔ টাইম ট্রাভেল</text>
+  <text x="490" y="192" text-anchor="middle" fill="#818cf8" font-size="8" font-style="italic">CQRS: লেখা ≠ পড়া</text>
+</svg>
+</div>
+<div class="svg-caption">চিত্র ৯ — Event Sourcing: ইভেন্টের ইতিহাস থেকে বর্তমান অবস্থা পুনর্নির্মাণ</div>
+
   <div class="verse">
     <div class="verse-arabic">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
     <div class="verse-translation">হে আমার রব, আমার জ্ঞান বৃদ্ধি করো।</div>
