@@ -98,7 +98,7 @@ doors.push({
   <text x="400" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">update beliefs</text>
   <rect x="460" y="55" width="100" height="50" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
   <text x="510" y="82" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">Second-Order</text>
-  <text x="510" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">consequences of consequences</text>
+  <text x="510" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">consequences²</text>
   <rect x="100" y="140" width="380" height="50" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
   <text x="290" y="165" text-anchor="middle" fill="#e2e8f0" font-size="8">একটি হাতিয়ার নয় — একটি তাঁত বানাও</text>
   <text x="290" y="180" text-anchor="middle" fill="#94a3b8" font-size="10">Don't have one tool — build a loom of many tools</text>
@@ -245,7 +245,7 @@ doors.push({
   <text x="240" y="212" fill="#94a3b8" font-size="10">symptom→cause, best guess</text>
   <text x="380" y="200" fill="#fcd34d" font-size="10" font-weight="700">Hidden Premise</text>
   <text x="380" y="212" fill="#94a3b8" font-size="10">surface it, then check truth</text>
-  <text x="290" y="235" text-anchor="middle" fill="#64748b" font-size="6.5">বৈধ গঠন + সত্য প্রিমিস + কোনো লুকানো প্রিমিস নেই = সাউন্ড যুক্তি</text>
+  <text x="290" y="235" text-anchor="middle" fill="#64748b" font-size="8">বৈধ গঠন + সত্য প্রিমিস + কোনো লুকানো প্রিমিস নেই = সাউন্ড যুক্তি</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: যুক্তির গঠন — বামে বৈধ, মাঝে অবৈধ, ডানে সাউন্ডনেস পরীক্ষা। নিচে তিন ধরনের যুক্তি।</div>
@@ -355,45 +355,45 @@ doors.push({
   <!-- Row 1 -->
   <rect x="20" y="40" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
   <text x="105" y="60" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">1. Ad Hominem</text>
-  <text x="105" y="75" text-anchor="middle" fill="#94a3b8" font-size="6.5">attacks the person,</text>
-  <text x="105" y="85" text-anchor="middle" fill="#94a3b8" font-size="6.5">not the argument</text>
+  <text x="105" y="75" text-anchor="middle" fill="#94a3b8" font-size="8">attacks the person,</text>
+  <text x="105" y="85" text-anchor="middle" fill="#94a3b8" font-size="8">not the argument</text>
   <text x="105" y="98" text-anchor="middle" fill="#64748b" font-size="10">"You are junior, what do you know?"</text>
 
   <rect x="205" y="40" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
   <text x="290" y="60" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">2. Strawman</text>
-  <text x="290" y="75" text-anchor="middle" fill="#94a3b8" font-size="6.5">builds a weak version,</text>
-  <text x="290" y="85" text-anchor="middle" fill="#94a3b8" font-size="6.5">then attacks that</text>
+  <text x="290" y="75" text-anchor="middle" fill="#94a3b8" font-size="8">builds a weak version,</text>
+  <text x="290" y="85" text-anchor="middle" fill="#94a3b8" font-size="8">then attacks that</text>
   <text x="290" y="98" text-anchor="middle" fill="#64748b" font-size="10">"So you want ONLY tests, no code?"</text>
 
   <rect x="390" y="40" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
   <text x="475" y="60" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">3. False Dilemma</text>
-  <text x="475" y="75" text-anchor="middle" fill="#94a3b8" font-size="6.5">only two options,</text>
-  <text x="475" y="85" text-anchor="middle" fill="#94a3b8" font-size="6.5">but more exist</text>
+  <text x="475" y="75" text-anchor="middle" fill="#94a3b8" font-size="8">only two options,</text>
+  <text x="475" y="85" text-anchor="middle" fill="#94a3b8" font-size="8">but more exist</text>
   <text x="475" y="98" text-anchor="middle" fill="#64748b" font-size="10">"Microservices or monolith?"</text>
 
   <!-- Row 2 -->
   <rect x="20" y="120" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
   <text x="105" y="140" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">4. Slippery Slope</text>
-  <text x="105" y="155" text-anchor="middle" fill="#94a3b8" font-size="6.5">one step = catastrophe,</text>
-  <text x="105" y="165" text-anchor="middle" fill="#94a3b8" font-size="6.5">but no proof per step</text>
+  <text x="105" y="155" text-anchor="middle" fill="#94a3b8" font-size="8">one step = catastrophe,</text>
+  <text x="105" y="165" text-anchor="middle" fill="#94a3b8" font-size="8">but no proof per step</text>
   <text x="105" y="178" text-anchor="middle" fill="#64748b" font-size="10">"Skip comments once → ruin"</text>
 
   <rect x="205" y="120" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
   <text x="290" y="140" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">5. Motivated Reasoning</text>
-  <text x="290" y="155" text-anchor="middle" fill="#94a3b8" font-size="6.5">conclusion fixed first,</text>
-  <text x="290" y="165" text-anchor="middle" fill="#94a3b8" font-size="6.5">evidence cherry-picked</text>
+  <text x="290" y="155" text-anchor="middle" fill="#94a3b8" font-size="8">conclusion fixed first,</text>
+  <text x="290" y="165" text-anchor="middle" fill="#94a3b8" font-size="8">evidence cherry-picked</text>
   <text x="290" y="178" text-anchor="middle" fill="#64748b" font-size="10">"I decided, now I justify"</text>
 
   <rect x="390" y="120" width="170" height="65" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
   <text x="475" y="140" text-anchor="middle" fill="#fca5a5" font-size="8.5" font-weight="700">6. Goodhart Law</text>
-  <text x="475" y="155" text-anchor="middle" fill="#94a3b8" font-size="6.5">metric becomes target →</text>
-  <text x="475" y="165" text-anchor="middle" fill="#94a3b8" font-size="6.5">metric degrades</text>
+  <text x="475" y="155" text-anchor="middle" fill="#94a3b8" font-size="8">metric becomes target →</text>
+  <text x="475" y="165" text-anchor="middle" fill="#94a3b8" font-size="8">metric degrades</text>
   <text x="475" y="178" text-anchor="middle" fill="#64748b" font-size="10">"Pay per line of code → bloat"</text>
 
   <!-- Steelman banner -->
   <rect x="80" y="200" width="420" height="32" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="290" y="215" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">🛡️ Defense: STEELMAN</text>
-  <text x="290" y="227" text-anchor="middle" fill="#94a3b8" font-size="6.5">Build opponent argument at its strongest, then break THAT</text>
+  <text x="290" y="227" text-anchor="middle" fill="#94a3b8" font-size="8">Build opponent argument at its strongest, then break THAT</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: ছয়টি ভ্রষ্টাচার — যুক্তির ফাটল চেনার গ্যালারি। প্রতিষেধক: স্টিলম্যান।</div>
@@ -536,12 +536,12 @@ doors.push({
 
   <rect x="40" y="150" width="160" height="50" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
   <text x="120" y="167" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="700">10 truly sick</text>
-  <text x="120" y="180" text-anchor="middle" fill="#94a3b8" font-size="6.5">9.9 test positive (true +)</text>
+  <text x="120" y="180" text-anchor="middle" fill="#94a3b8" font-size="8">9.9 test positive (true +)</text>
   <text x="120" y="192" text-anchor="middle" fill="#64748b" font-size="10">correct detection</text>
 
   <rect x="210" y="150" width="160" height="50" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
   <text x="290" y="167" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">990 truly well</text>
-  <text x="290" y="180" text-anchor="middle" fill="#94a3b8" font-size="6.5">9.9 test positive (false +)</text>
+  <text x="290" y="180" text-anchor="middle" fill="#94a3b8" font-size="8">9.9 test positive (false +)</text>
   <text x="290" y="192" text-anchor="middle" fill="#64748b" font-size="10">false alarm!</text>
 
   <rect x="380" y="150" width="160" height="50" rx="6" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
@@ -549,7 +549,7 @@ doors.push({
   <text x="460" y="180" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700">Truly sick: 9.9</text>
   <text x="460" y="193" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="900">9.9/19.8 = 50%</text>
 
-  <text x="290" y="235" text-anchor="middle" fill="#94a3b8" font-size="6.5">একটা পরীক্ষার ফল চূড়ান্ত নয় — বেস রেট মিলিয়ে দেখো, আবার আপডেট করো</text>
+  <text x="290" y="235" text-anchor="middle" fill="#94a3b8" font-size="8">একটা পরীক্ষার ফল চূড়ান্ত নয় — বেস রেট মিলিয়ে দেখো, আবার আপডেট করো</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: বেইসিয়ান আপডেট — ১% বেস রেটে ৯৯% নির্ভুল টেস্ট পজিটিভ এলেও মাত্র ৫০% সত্যিই অসুস্থ।</div>

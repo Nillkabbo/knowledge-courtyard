@@ -76,7 +76,7 @@ doors.push({
   <rect x="20" y="45" width="125" height="150" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="2"/>
   <text x="82" y="65" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="900">1</text>
   <text x="82" y="80" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">UNDERSTAND</text>
-  <text x="82" y="100" text-anchor="middle" fill="#94a3b8" font-size="6.5">শরীর মাপা</text>
+  <text x="82" y="100" text-anchor="middle" fill="#94a3b8" font-size="8">শরীর মাপা</text>
   <text x="82" y="112" text-anchor="middle" fill="#64748b" font-size="10">Read problem</text>
   <text x="82" y="124" text-anchor="middle" fill="#64748b" font-size="10">What is given?</text>
   <text x="82" y="136" text-anchor="middle" fill="#64748b" font-size="10">What is asked?</text>
@@ -89,7 +89,7 @@ doors.push({
   <rect x="170" y="45" width="125" height="150" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="232" y="65" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="900">2</text>
   <text x="232" y="80" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">PLAN</text>
-  <text x="232" y="100" text-anchor="middle" fill="#94a3b8" font-size="6.5">প্যাটার্ন কাটা</text>
+  <text x="232" y="100" text-anchor="middle" fill="#94a3b8" font-size="8">প্যাটার্ন কাটা</text>
   <text x="232" y="112" text-anchor="middle" fill="#64748b" font-size="10">Which algorithm?</text>
   <text x="232" y="124" text-anchor="middle" fill="#64748b" font-size="10">Which structure?</text>
   <text x="232" y="136" text-anchor="middle" fill="#64748b" font-size="10">Small example?</text>
@@ -102,7 +102,7 @@ doors.push({
   <rect x="320" y="45" width="125" height="150" rx="8" fill="#451a0a" stroke="#fbbf24" stroke-width="2"/>
   <text x="382" y="65" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="900">3</text>
   <text x="382" y="80" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">EXECUTE</text>
-  <text x="382" y="100" text-anchor="middle" fill="#94a3b8" font-size="6.5">সেলাই করা</text>
+  <text x="382" y="100" text-anchor="middle" fill="#94a3b8" font-size="8">সেলাই করা</text>
   <text x="382" y="112" text-anchor="middle" fill="#64748b" font-size="10">Write code</text>
   <text x="382" y="124" text-anchor="middle" fill="#64748b" font-size="10">Small steps</text>
   <text x="382" y="136" text-anchor="middle" fill="#64748b" font-size="10">Test each step</text>
@@ -115,7 +115,7 @@ doors.push({
   <rect x="470" y="45" width="95" height="150" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="2"/>
   <text x="517" y="65" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="900">4</text>
   <text x="517" y="80" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700">LOOK BACK</text>
-  <text x="517" y="100" text-anchor="middle" fill="#94a3b8" font-size="6.5">ফিট দেখা</text>
+  <text x="517" y="100" text-anchor="middle" fill="#94a3b8" font-size="8">ফিট দেখা</text>
   <text x="517" y="112" text-anchor="middle" fill="#64748b" font-size="10">Read your code</text>
   <text x="517" y="124" text-anchor="middle" fill="#64748b" font-size="10">Refactor?</text>
   <text x="517" y="136" text-anchor="middle" fill="#64748b" font-size="10">Explain simply</text>
@@ -278,11 +278,11 @@ doors.push({
   <text x="290" y="212" text-anchor="middle" fill="#94a3b8" font-size="10">Actual was ~60. Right magnitude! Method wins.</text>
   <!-- Calibration warning -->
   <rect x="20" y="195" width="120" height="40" rx="6" fill="#450a0a" stroke="#f87171" stroke-width="1"/>
-  <text x="80" y="210" text-anchor="middle" fill="#fca5a5" font-size="6.5" font-weight="700">⚠️ CALIBRATION</text>
+  <text x="80" y="210" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">⚠️ CALIBRATION</text>
   <text x="80" y="221" text-anchor="middle" fill="#94a3b8" font-size="10">you say 90% sure</text>
   <text x="80" y="230" text-anchor="middle" fill="#fca5a5" font-size="10">but correct only ~45%</text>
   <rect x="440" y="195" width="120" height="40" rx="6" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
-  <text x="500" y="210" text-anchor="middle" fill="#4ade80" font-size="6.5" font-weight="700">✓ SANITY CHECK</text>
+  <text x="500" y="210" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">✓ SANITY CHECK</text>
   <text x="500" y="221" text-anchor="middle" fill="#94a3b8" font-size="10">is this number</text>
   <text x="500" y="230" text-anchor="middle" fill="#4ade80" font-size="10">even possible?</text>
 </svg>
@@ -408,10 +408,10 @@ doors.push({
   <rect x="40" y="88" width="220" height="26" rx="5" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
   <text x="150" y="105" text-anchor="middle" fill="#7dd3fc" font-size="10">e.g. quit job, move city, marriage</text>
   <text x="150" y="128" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">GO SLOW:</text>
-  <text x="150" y="142" text-anchor="middle" fill="#94a3b8" font-size="6.5">→ seek counsel</text>
-  <text x="150" y="154" text-anchor="middle" fill="#94a3b8" font-size="6.5">→ premortem (how to fail?)</text>
-  <text x="150" y="166" text-anchor="middle" fill="#94a3b8" font-size="6.5">→ expected value calc</text>
-  <text x="150" y="178" text-anchor="middle" fill="#94a3b8" font-size="6.5">→ regret minimization frame</text>
+  <text x="150" y="142" text-anchor="middle" fill="#94a3b8" font-size="8">→ seek counsel</text>
+  <text x="150" y="154" text-anchor="middle" fill="#94a3b8" font-size="8">→ premortem (how to fail?)</text>
+  <text x="150" y="166" text-anchor="middle" fill="#94a3b8" font-size="8">→ expected value calc</text>
+  <text x="150" y="178" text-anchor="middle" fill="#94a3b8" font-size="8">→ regret minimization frame</text>
   <text x="150" y="196" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">mistake = large, lasting loss</text>
   <!-- Two-way door -->
   <rect x="300" y="40" width="260" height="170" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
@@ -420,10 +420,10 @@ doors.push({
   <rect x="320" y="88" width="220" height="26" rx="5" fill="#1e3a5f" stroke="#64748b" stroke-width="1"/>
   <text x="430" y="105" text-anchor="middle" fill="#7dd3fc" font-size="10">e.g. test a tool, try a feature</text>
   <text x="430" y="128" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">GO FAST:</text>
-  <text x="430" y="142" text-anchor="middle" fill="#94a3b8" font-size="6.5">→ decide quickly</text>
-  <text x="430" y="154" text-anchor="middle" fill="#94a3b8" font-size="6.5">→ try it, get feedback</text>
-  <text x="430" y="166" text-anchor="middle" fill="#94a3b8" font-size="6.5">→ if wrong, reverse</text>
-  <text x="430" y="178" text-anchor="middle" fill="#94a3b8" font-size="6.5">→ satisfice (good enough)</text>
+  <text x="430" y="142" text-anchor="middle" fill="#94a3b8" font-size="8">→ decide quickly</text>
+  <text x="430" y="154" text-anchor="middle" fill="#94a3b8" font-size="8">→ try it, get feedback</text>
+  <text x="430" y="166" text-anchor="middle" fill="#94a3b8" font-size="8">→ if wrong, reverse</text>
+  <text x="430" y="178" text-anchor="middle" fill="#94a3b8" font-size="8">→ satisfice (good enough)</text>
   <text x="430" y="196" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="700">mistake = small, fixable</text>
   <!-- Bottom bar -->
   <rect x="80" y="220" width="420" height="22" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
@@ -555,8 +555,8 @@ doors.push({
   <!-- First order -->
   <rect x="20" y="42" width="120" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
   <text x="80" y="60" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">1st ORDER</text>
-  <text x="80" y="75" text-anchor="middle" fill="#94a3b8" font-size="6.5">bounty for dead</text>
-  <text x="80" y="85" text-anchor="middle" fill="#94a3b8" font-size="6.5">cobras</text>
+  <text x="80" y="75" text-anchor="middle" fill="#94a3b8" font-size="8">bounty for dead</text>
+  <text x="80" y="85" text-anchor="middle" fill="#94a3b8" font-size="8">cobras</text>
   <line x1="140" y1="67" x2="160" y2="67" stroke="#fbbf24" stroke-width="2"/>
   <polygon points="155,62 165,67 155,72" fill="#fbbf24"/>
   <rect x="160" y="42" width="120" height="50" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
@@ -583,13 +583,13 @@ doors.push({
   <!-- Incentive check -->
   <rect x="40" y="180" width="240" height="50" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1.5"/>
   <text x="160" y="200" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="700">💰 INCENTIVE CHECK</text>
-  <text x="160" y="214" text-anchor="middle" fill="#94a3b8" font-size="6.5">who benefits from this decision?</text>
-  <text x="160" y="224" text-anchor="middle" fill="#94a3b8" font-size="6.5">who is harmed? what do they do?</text>
+  <text x="160" y="214" text-anchor="middle" fill="#94a3b8" font-size="8">who benefits from this decision?</text>
+  <text x="160" y="224" text-anchor="middle" fill="#94a3b8" font-size="8">who is harmed? what do they do?</text>
   <!-- Feedback loops -->
   <rect x="300" y="180" width="240" height="50" rx="8" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="420" y="200" text-anchor="middle" fill="#7dd3fc" font-size="8" font-weight="700">🔄 FEEDBACK LOOPS</text>
-  <text x="420" y="214" text-anchor="middle" fill="#94a3b8" font-size="6.5">reinforcing: result → more result</text>
-  <text x="420" y="224" text-anchor="middle" fill="#94a3b8" font-size="6.5">balancing: result → self-limit</text>
+  <text x="420" y="214" text-anchor="middle" fill="#94a3b8" font-size="8">reinforcing: result → more result</text>
+  <text x="420" y="224" text-anchor="middle" fill="#94a3b8" font-size="8">balancing: result → self-limit</text>
 </svg>
 </div>
 <div class="svg-caption">চিত্র: কোবরা ইফেক্ট — প্রথম ফল ভালো, কিন্তু দ্বিতীয়/তৃতীয় স্তরে উল্টো। প্রতিটা সিদ্ধান্তে জিজ্ঞেস করো — তারপর কী?</div>
