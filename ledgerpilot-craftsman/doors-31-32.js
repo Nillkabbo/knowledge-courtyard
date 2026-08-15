@@ -122,7 +122,7 @@ doors.push({
       <defs><marker id="arrowR22" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#5eead4"/></marker></defs>
       <rect x="30" y="12" width="500" height="36" rx="8" fill="rgba(251,191,36,0.12)" stroke="#fbbf24" stroke-width="1.6"/>
       <text x="280" y="30" text-anchor="middle" fill="#fcd34d" font-size="9.5" font-weight="700">⓪ DoR: চুক্তি · grep-মানচিত্র · অনুমতি · ব্রাঞ্চ feat/&lt;slug&gt;</text>
-      <text x="280" y="42" text-anchor="middle" fill="#94a3b8" font-size="7.5">(development থেকে; fix/ বাগে)</text>
+      <text x="280" y="42" text-anchor="middle" fill="#94a3b8" font-size="8">(development থেকে; fix/ বাগে)</text>
       <rect x="15" y="62" width="253" height="150" rx="10" fill="rgba(45,212,191,0.08)" stroke="#2dd4bf" stroke-width="1.6"/>
       <text x="141" y="84" text-anchor="middle" fill="#5eead4" font-size="10.5" font-weight="700">① ব্যাকএন্ড (চুক্তি-প্রথম)</text>
       <text x="141" y="104" text-anchor="middle" fill="#94a3b8" font-size="8">1. models.py (FSM-ছাঁচ দরজা ৫)</text>
@@ -149,7 +149,7 @@ doors.push({
       <text x="280" y="292" text-anchor="middle" fill="#6ee7b7" font-size="8.5" font-weight="600">⑤ STATE.md রিজেন (একই PR) · handoff YAML · Conventional কমিট</text>
       <line x1="280" y1="48" x2="280" y2="60" stroke="#5eead4" stroke-width="1.8" marker-end="url(#arrowR22)"/>
       <line x1="268" y1="137" x2="292" y2="137" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arrowR22)"/>
-      <text x="280" y="128" text-anchor="middle" fill="#fbbf24" font-size="7.5" font-weight="700">চুক্তি যায়</text>
+      <text x="280" y="128" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="700">চুক্তি যায়</text>
       <line x1="280" y1="212" x2="280" y2="226" stroke="#f87171" stroke-width="1.4" marker-end="url(#arrowR22)"/>
       <line x1="280" y1="260" x2="280" y2="270" stroke="#5eead4" stroke-width="1.4" marker-end="url(#arrowR22)"/>
       <text x="280" y="335" text-anchor="middle" fill="#64748b" font-size="9">ফয়েজের ক্রম অলঙ্ঘনীয়: নিচের তলা চুক্তিবদ্ধ না হলে উপরের তলার ইট নেই</text>

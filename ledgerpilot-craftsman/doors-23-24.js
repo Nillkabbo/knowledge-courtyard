@@ -91,14 +91,14 @@ doors.push({
       <text x="145" y="76" text-anchor="middle" fill="#94a3b8" font-size="8.5">pytest (floor 87%)</text>
       <text x="145" y="92" text-anchor="middle" fill="#94a3b8" font-size="8.5">manage.py check</text>
       <text x="145" y="108" text-anchor="middle" fill="#94a3b8" font-size="8.5">makemigrations --check</text>
-      <text x="145" y="126" text-anchor="middle" fill="#fbbf24" font-size="7.5">আউটপুট উদ্ধৃত করো — অনুমান নয়</text>
+      <text x="145" y="126" text-anchor="middle" fill="#fbbf24" font-size="8">আউটপুট উদ্ধৃত করো — অনুমান নয়</text>
       <rect x="300" y="15" width="230" height="120" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="415" y="40" text-anchor="middle" fill="#a5b4fc" font-size="10.5" font-weight="700">📗 ফ্রন্টএন্ড বাক্স</text>
       <text x="415" y="60" text-anchor="middle" fill="#94a3b8" font-size="8.5">npm run lint</text>
       <text x="415" y="76" text-anchor="middle" fill="#94a3b8" font-size="8.5">npm run type-check</text>
       <text x="415" y="92" text-anchor="middle" fill="#94a3b8" font-size="8.5">npm run test:run</text>
       <text x="415" y="108" text-anchor="middle" fill="#94a3b8" font-size="8.5">npm run build</text>
-      <text x="415" y="126" text-anchor="middle" fill="#818cf8" font-size="7.5">সমষ্টি: npm run check</text>
+      <text x="415" y="126" text-anchor="middle" fill="#818cf8" font-size="8">সমষ্টি: npm run check</text>
       <rect x="100" y="160" width="360" height="42" rx="10" fill="rgba(248,113,113,0.08)" stroke="#f87171" stroke-width="1.6"/>
       <text x="280" y="178" text-anchor="middle" fill="#f87171" font-size="9.5" font-weight="700">📒 হিসাব-খাতা — STATE.md (সবচেয়ে ভুলে-যাওয়া)</text>
       <text x="280" y="194" text-anchor="middle" fill="#94a3b8" font-size="8">apps/ বা src/tests/ ছোঁয়া মাত্র: generate_state.py → git add -f — একই PR-এ, নইলে merge-আটকা</text>
@@ -219,25 +219,25 @@ N+১-পাহারা (টেস্টে):
       <defs><marker id="arrowO24" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#5eead4"/></marker></defs>
       <rect x="15" y="15" width="165" height="110" rx="10" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="97" y="38" text-anchor="middle" fill="#5eead4" font-size="10" font-weight="700">📜 জন্মসনদ</text>
-      <text x="97" y="55" text-anchor="middle" fill="#94a3b8" font-size="7.5">models.Model শ্রেণি</text>
-      <text x="97" y="72" text-anchor="middle" fill="#94a3b8" font-size="7.5">ক্ষেত্র = স্তম্ভ · Meta = বংশলতিকা</text>
-      <text x="97" y="89" text-anchor="middle" fill="#94a3b8" font-size="7.5">PROTECT-FK · UniqueConstraint</text>
-      <text x="97" y="108" text-anchor="middle" fill="#fbbf24" font-size="7">db_column-এ লিগেসি-নাম</text>
+      <text x="97" y="55" text-anchor="middle" fill="#94a3b8" font-size="8">models.Model শ্রেণি</text>
+      <text x="97" y="72" text-anchor="middle" fill="#94a3b8" font-size="8">ক্ষেত্র = স্তম্ভ · Meta = বংশলতিকা</text>
+      <text x="97" y="89" text-anchor="middle" fill="#94a3b8" font-size="8">PROTECT-FK · UniqueConstraint</text>
+      <text x="97" y="108" text-anchor="middle" fill="#fbbf24" font-size="8">db_column-এ লিগেসি-নাম</text>
       <rect x="200" y="15" width="165" height="110" rx="10" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="282" y="38" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">📖 বহি</text>
-      <text x="282" y="55" text-anchor="middle" fill="#94a3b8" font-size="7.5">migrations/ (১১৭ পাতা)</text>
-      <text x="282" y="72" text-anchor="middle" fill="#94a3b8" font-size="7.5">প্রয়োগ-হওয়া = অসম্পাদনীয়</text>
-      <text x="282" y="89" text-anchor="middle" fill="#94a3b8" font-size="7.5">ধ্বংসাত্মক → Expand-Contract</text>
-      <text x="282" y="108" text-anchor="middle" fill="#fbbf24" font-size="7">ts_* = unmanaged (বহিরাগত)</text>
+      <text x="282" y="55" text-anchor="middle" fill="#94a3b8" font-size="8">migrations/ (১১৭ পাতা)</text>
+      <text x="282" y="72" text-anchor="middle" fill="#94a3b8" font-size="8">প্রয়োগ-হওয়া = অসম্পাদনীয়</text>
+      <text x="282" y="89" text-anchor="middle" fill="#94a3b8" font-size="8">ধ্বংসাত্মক → Expand-Contract</text>
+      <text x="282" y="108" text-anchor="middle" fill="#fbbf24" font-size="8">ts_* = unmanaged (বহিরাগত)</text>
       <rect x="385" y="15" width="160" height="110" rx="10" fill="rgba(129,140,248,0.10)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="465" y="38" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="700">📨 দাওয়া</text>
-      <text x="465" y="55" text-anchor="middle" fill="#94a3b8" font-size="7.5">QuerySet — অলস-মূল্যায়ন</text>
-      <text x="465" y="72" text-anchor="middle" fill="#94a3b8" font-size="7.5">select_related = JOIN</text>
-      <text x="465" y="89" text-anchor="middle" fill="#94a3b8" font-size="7.5">prefetch_related = IN</text>
-      <text x="465" y="108" text-anchor="middle" fill="#818cf8" font-size="7">F/Q/annotate/Case-When</text>
+      <text x="465" y="55" text-anchor="middle" fill="#94a3b8" font-size="8">QuerySet — অলস-মূল্যায়ন</text>
+      <text x="465" y="72" text-anchor="middle" fill="#94a3b8" font-size="8">select_related = JOIN</text>
+      <text x="465" y="89" text-anchor="middle" fill="#94a3b8" font-size="8">prefetch_related = IN</text>
+      <text x="465" y="108" text-anchor="middle" fill="#818cf8" font-size="8">F/Q/annotate/Case-When</text>
       <rect x="60" y="160" width="440" height="52" rx="10" fill="rgba(100,116,139,0.10)" stroke="#94a3b8" stroke-width="1.3"/>
       <text x="280" y="181" text-anchor="middle" fill="#cbd5e1" font-size="8.5" font-weight="600">🔐 atomic() + select_for_update — তালা আগে, লেখা পরে</text>
-      <text x="280" y="198" text-anchor="middle" fill="#94a3b8" font-size="7.5">assertNumQueries(৩) পিন — N+১ লুপ ঢুকলেই টেস্ট কাঁদে</text>
+      <text x="280" y="198" text-anchor="middle" fill="#94a3b8" font-size="8">assertNumQueries(৩) পিন — N+১ লুপ ঢুকলেই টেস্ট কাঁদে</text>
       <line x1="180" y1="70" x2="198" y2="70" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrowO24)"/>
       <line x1="365" y1="70" x2="383" y2="70" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrowO24)"/>
       <line x1="280" y1="125" x2="280" y2="158" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#arrowO24)"/>

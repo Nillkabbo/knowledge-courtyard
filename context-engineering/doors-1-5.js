@@ -2250,7 +2250,7 @@ print(pipeline_summary)
   <text x="280" y="136" text-anchor="middle" fill="#ff8a5b" font-size="10">#৩ · #৭ · #১১ ...</text>
   <rect x="216" y="145" width="128" height="16" fill="#0d3b34" stroke="#52c41a" stroke-width="0.8" rx="3"/>
   <text x="280" y="156" text-anchor="middle" fill="#4ade80" font-size="10">#১ → #১ এ উঠবে</text>
-  <text x="280" y="178" text-anchor="middle" fill="#fbbf24" font-size="6.5">প্রতিটি pair যাচাই</text>
+  <text x="280" y="178" text-anchor="middle" fill="#fbbf24" font-size="8">প্রতিটি pair যাচাই</text>
   <rect x="400" y="80" width="130" height="70" fill="#0d3b34" stroke="#52c41a" stroke-width="2" rx="8"/>
   <text x="465" y="103" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="bold">top-5</text>
   <text x="465" y="120" text-anchor="middle" fill="#4ade80" font-size="8">নির্ভুল</text>

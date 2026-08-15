@@ -87,32 +87,32 @@ doors.push({
       <text x="280" y="38" text-anchor="middle" fill="#cbd5e1" font-size="10" font-weight="700">🧱 ভাটার উঠান — ছয় স্তূপ (পেছন থেকে সামনে)</text>
       <rect x="35" y="55" width="150" height="56" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="110" y="76" text-anchor="middle" fill="#5eead4" font-size="9" font-weight="700">১ · Django 4.2</text>
-      <text x="110" y="90" text-anchor="middle" fill="#94a3b8" font-size="7.5">কাঠামো: ORM·মাইগ্রেশন·সেশন</text>
-      <text x="110" y="102" text-anchor="middle" fill="#64748b" font-size="7">Python 3.11 · সিঙ্ক</text>
+      <text x="110" y="90" text-anchor="middle" fill="#94a3b8" font-size="8">কাঠামো: ORM·মাইগ্রেশন·সেশন</text>
+      <text x="110" y="102" text-anchor="middle" fill="#64748b" font-size="8">Python 3.11 · সিঙ্ক</text>
       <rect x="200" y="55" width="150" height="56" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="275" y="76" text-anchor="middle" fill="#5eead4" font-size="9" font-weight="700">২ · DRF 3.15</text>
-      <text x="275" y="90" text-anchor="middle" fill="#94a3b8" font-size="7.5">দরজা: serializer·APIView</text>
-      <text x="275" y="102" text-anchor="middle" fill="#64748b" font-size="7">permission·throttle·pagination</text>
+      <text x="275" y="90" text-anchor="middle" fill="#94a3b8" font-size="8">দরজা: serializer·APIView</text>
+      <text x="275" y="102" text-anchor="middle" fill="#64748b" font-size="8">permission·throttle·pagination</text>
       <rect x="365" y="55" width="160" height="56" rx="9" fill="rgba(52,211,153,0.10)" stroke="#34d399" stroke-width="1.5"/>
       <text x="445" y="76" text-anchor="middle" fill="#6ee7b7" font-size="9" font-weight="700">৩ · MySQL 8</text>
-      <text x="445" y="90" text-anchor="middle" fill="#94a3b8" font-size="7.5">মাটি: সত্যের ঘুম</text>
-      <text x="445" y="102" text-anchor="middle" fill="#64748b" font-size="7">mysqlclient · utf8mb4 · STRICT</text>
+      <text x="445" y="90" text-anchor="middle" fill="#94a3b8" font-size="8">মাটি: সত্যের ঘুম</text>
+      <text x="445" y="102" text-anchor="middle" fill="#64748b" font-size="8">mysqlclient · utf8mb4 · STRICT</text>
       <rect x="35" y="130" width="150" height="56" rx="9" fill="rgba(129,140,248,0.10)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="110" y="151" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">৪ · Redis</text>
-      <text x="110" y="165" text-anchor="middle" fill="#94a3b8" font-size="7.5">স্মৃতির কলস: DB0/2/3</text>
-      <text x="110" y="177" text-anchor="middle" fill="#64748b" font-size="7">ক্যাশে·broker·ফল·SSE</text>
+      <text x="110" y="165" text-anchor="middle" fill="#94a3b8" font-size="8">স্মৃতির কলস: DB0/2/3</text>
+      <text x="110" y="177" text-anchor="middle" fill="#64748b" font-size="8">ক্যাশে·broker·ফল·SSE</text>
       <rect x="200" y="130" width="150" height="56" rx="9" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="275" y="151" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">৫ · Celery</text>
-      <text x="275" y="165" text-anchor="middle" fill="#94a3b8" font-size="7.5">বাহক+ঘড়ি (beat)</text>
-      <text x="275" y="177" text-anchor="middle" fill="#64748b" font-size="7">worker · শিডিউল → দরজা ২৭</text>
+      <text x="275" y="165" text-anchor="middle" fill="#94a3b8" font-size="8">বাহক+ঘড়ি (beat)</text>
+      <text x="275" y="177" text-anchor="middle" fill="#64748b" font-size="8">worker · শিডিউল → দরজা ২৭</text>
       <rect x="365" y="130" width="160" height="56" rx="9" fill="rgba(100,116,139,0.12)" stroke="#94a3b8" stroke-width="1.5"/>
       <text x="445" y="151" text-anchor="middle" fill="#cbd5e1" font-size="9" font-weight="700">৬ · spectacular</text>
-      <text x="445" y="165" text-anchor="middle" fill="#94a3b8" font-size="7.5">দোভাষী: OpenAPI</text>
-      <text x="445" y="177" text-anchor="middle" fill="#64748b" font-size="7">→ api.generated.ts</text>
+      <text x="445" y="165" text-anchor="middle" fill="#94a3b8" font-size="8">দোভাষী: OpenAPI</text>
+      <text x="445" y="177" text-anchor="middle" fill="#64748b" font-size="8">→ api.generated.ts</text>
       <rect x="35" y="205" width="490" height="60" rx="9" fill="rgba(248,113,113,0.06)" stroke="#f87171" stroke-width="1.2"/>
       <text x="280" y="225" text-anchor="middle" fill="#f87171" font-size="8.5" font-weight="600">🔒 ইট-বিধান: সংস্করণ-পিন অলঙ্ঘনীয় (&lt;5.0) · নতুন ইট (ডিপেন্ডেন্সি) = মানুষের অনুমতি</text>
-      <text x="280" y="241" text-anchor="middle" fill="#94a3b8" font-size="7.5">JWT নেই (সেশন+CSRF) · Postgres নয় (লিগেসি raw-SQL) · async view নয় · factory_boy নয়</text>
-      <text x="280" y="256" text-anchor="middle" fill="#94a3b8" font-size="7">সমর্থক: django-environ · cors-headers · Fernet(৩-চাবি) · gunicorn+whitenoise</text>
+      <text x="280" y="241" text-anchor="middle" fill="#94a3b8" font-size="8">JWT নেই (সেশন+CSRF) · Postgres নয় (লিগেসি raw-SQL) · async view নয় · factory_boy নয়</text>
+      <text x="280" y="256" text-anchor="middle" fill="#94a3b8" font-size="8">সমর্থক: django-environ · cors-headers · Fernet(৩-চাবি) · gunicorn+whitenoise</text>
     </svg>
     <div class="diag-cap">ছয় ইটে গাঁথা বাতিন — ব্যবহারকারী দেখে শুধু দরজা, নির্মাতাকে চিনতে হয় সব স্তূপ।</div>
   </div>
@@ -216,23 +216,23 @@ doors.push({
       <text x="280" y="38" text-anchor="middle" fill="#cbd5e1" font-size="10" font-weight="700">🪞 কাচঘর — আয়নার স্তর (পেছন থেকে সামনে)</text>
       <rect x="35" y="55" width="240" height="62" rx="9" fill="rgba(52,211,153,0.10)" stroke="#34d399" stroke-width="1.5"/>
       <text x="155" y="76" text-anchor="middle" fill="#6ee7b7" font-size="9.5" font-weight="700">১ · Vue 3.5 — চেতনা</text>
-      <text x="155" y="91" text-anchor="middle" fill="#94a3b8" font-size="7.5">Composition API · script setup TS · SFC</text>
-      <text x="155" y="103" text-anchor="middle" fill="#64748b" font-size="7">reactivity: ডেটা বদলালে প্রতিবিম্ব নিজে</text>
+      <text x="155" y="91" text-anchor="middle" fill="#94a3b8" font-size="8">Composition API · script setup TS · SFC</text>
+      <text x="155" y="103" text-anchor="middle" fill="#64748b" font-size="8">reactivity: ডেটা বদলালে প্রতিবিম্ব নিজে</text>
       <rect x="290" y="55" width="235" height="62" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="407" y="76" text-anchor="middle" fill="#5eead4" font-size="9.5" font-weight="700">২ · TypeScript 5.8 — ভাষা</text>
-      <text x="407" y="91" text-anchor="middle" fill="#94a3b8" font-size="7.5">strict · উৎস = api.generated.ts</text>
-      <text x="407" y="103" text-anchor="middle" fill="#64748b" font-size="7">চুক্তি ভাঙলে বিল্ডেই থামে</text>
+      <text x="407" y="91" text-anchor="middle" fill="#94a3b8" font-size="8">strict · উৎস = api.generated.ts</text>
+      <text x="407" y="103" text-anchor="middle" fill="#64748b" font-size="8">চুক্তি ভাঙলে বিল্ডেই থামে</text>
       <rect x="35" y="132" width="240" height="62" rx="9" fill="rgba(129,140,248,0.10)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="155" y="153" text-anchor="middle" fill="#a5b4fc" font-size="9.5" font-weight="700">৩ · Pinia — স্মৃতি</text>
-      <text x="155" y="168" text-anchor="middle" fill="#94a3b8" font-size="7.5">Composition স্টোর · ৪-টা দপ্তর মাত্র</text>
-      <text x="155" y="180" text-anchor="middle" fill="#64748b" font-size="7">auth/capabilities/features/navMenu</text>
+      <text x="155" y="168" text-anchor="middle" fill="#94a3b8" font-size="8">Composition স্টোর · ৪-টা দপ্তর মাত্র</text>
+      <text x="155" y="180" text-anchor="middle" fill="#64748b" font-size="8">auth/capabilities/features/navMenu</text>
       <rect x="290" y="132" width="235" height="62" rx="9" fill="rgba(100,116,139,0.12)" stroke="#94a3b8" stroke-width="1.5"/>
       <text x="407" y="153" text-anchor="middle" fill="#cbd5e1" font-size="9.5" font-weight="700">৪ · vue-router 4 — পথ</text>
-      <text x="407" y="168" text-anchor="middle" fill="#94a3b8" font-size="7.5">static + dynamic (ম্যানিফেস্ট)</text>
-      <text x="407" y="180" text-anchor="middle" fill="#64748b" font-size="7">guards: public → auth → roles → feature</text>
+      <text x="407" y="168" text-anchor="middle" fill="#94a3b8" font-size="8">static + dynamic (ম্যানিফেস্ট)</text>
+      <text x="407" y="180" text-anchor="middle" fill="#64748b" font-size="8">guards: public → auth → roles → feature</text>
       <rect x="35" y="207" width="490" height="58" rx="9" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1.3"/>
       <text x="280" y="228" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">✨ প্রলেপ+যন্ত্র: Tailwind-টোকেন · ApexCharts · Vite 8 (5173→8000)</text>
-      <text x="280" y="247" text-anchor="middle" fill="#94a3b8" font-size="7.5">vitest · MSW (apiClient-স্তর) · Playwright · ESLint(flat)+Prettier · axios কেবল apiClient-এ</text>
+      <text x="280" y="247" text-anchor="middle" fill="#94a3b8" font-size="8">vitest · MSW (apiClient-স্তর) · Playwright · ESLint(flat)+Prettier · axios কেবল apiClient-এ</text>
       <text x="280" y="272" text-anchor="middle" fill="#64748b" font-size="8">Redux ✗ · jsx ✗ · vee-validate/zod ✗ · Options API ✗ — চার কাচ কাটা আগে, প্রলেপ পরে</text>
     </svg>
     <div class="diag-cap">চেতনা·ভাষা·স্মৃতি·পথ = আয়না; টোকেন-প্রলেপ শুধু চাকনি — নতুনরা প্রলেপে বসে নয়, কাচে বসে।</div>

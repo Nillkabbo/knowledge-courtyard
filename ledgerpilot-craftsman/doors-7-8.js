@@ -79,32 +79,32 @@ doors.push({
       <defs><marker id="arrowP8" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#5eead4"/></marker></defs>
       <rect x="15" y="30" width="160" height="120" rx="10" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="95" y="55" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">🪨 দামের তাক</text>
-      <text x="95" y="70" text-anchor="middle" fill="#94a3b8" font-size="7.5">XeroInventoryItem</text>
-      <text x="95" y="88" text-anchor="middle" fill="#94a3b8" font-size="7.5">· Sai-এর CSV আপলোড</text>
-      <text x="95" y="100" text-anchor="middle" fill="#94a3b8" font-size="7.5">· InventoryItems-YYYY-MM-DD</text>
-      <text x="95" y="112" text-anchor="middle" fill="#94a3b8" font-size="7.5">· 462 = ন্যূনতম-টপআপ $460</text>
-      <text x="95" y="130" text-anchor="middle" fill="#fbbf24" font-size="7.5">দামের একমাত্র উৎস</text>
-      <text x="95" y="142" text-anchor="middle" fill="#f87171" font-size="7">⚠ Xero API নয়</text>
+      <text x="95" y="70" text-anchor="middle" fill="#94a3b8" font-size="8">XeroInventoryItem</text>
+      <text x="95" y="88" text-anchor="middle" fill="#94a3b8" font-size="8">· Sai-এর CSV আপলোড</text>
+      <text x="95" y="100" text-anchor="middle" fill="#94a3b8" font-size="8">· InventoryItems-YYYY-MM-DD</text>
+      <text x="95" y="112" text-anchor="middle" fill="#94a3b8" font-size="8">· 462 = ন্যূনতম-টপআপ $460</text>
+      <text x="95" y="130" text-anchor="middle" fill="#fbbf24" font-size="8">দামের একমাত্র উৎস</text>
+      <text x="95" y="142" text-anchor="middle" fill="#f87171" font-size="8">⚠ Xero API নয়</text>
       <rect x="200" y="30" width="160" height="120" rx="10" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="280" y="55" text-anchor="middle" fill="#5eead4" font-size="10" font-weight="700">📄 ব্যাচের সারি</text>
-      <text x="280" y="70" text-anchor="middle" fill="#94a3b8" font-size="7.5">InvoiceLine</text>
-      <text x="280" y="88" text-anchor="middle" fill="#94a3b8" font-size="7.5">· contact_name = jobcode</text>
-      <text x="280" y="100" text-anchor="middle" fill="#94a3b8" font-size="7.5">· inventory_item_code → পাথর</text>
-      <text x="280" y="112" text-anchor="middle" fill="#94a3b8" font-size="7.5">· unit_amount ← তাক</text>
-      <text x="280" y="130" text-anchor="middle" fill="#f87171" font-size="7">⚠ Client-এ FK নেই — নামে জোড়া</text>
-      <text x="280" y="142" text-anchor="middle" fill="#94a3b8" font-size="7">ডাকনাম = উপনামও হতে পারে</text>
+      <text x="280" y="70" text-anchor="middle" fill="#94a3b8" font-size="8">InvoiceLine</text>
+      <text x="280" y="88" text-anchor="middle" fill="#94a3b8" font-size="8">· contact_name = jobcode</text>
+      <text x="280" y="100" text-anchor="middle" fill="#94a3b8" font-size="8">· inventory_item_code → পাথর</text>
+      <text x="280" y="112" text-anchor="middle" fill="#94a3b8" font-size="8">· unit_amount ← তাক</text>
+      <text x="280" y="130" text-anchor="middle" fill="#f87171" font-size="8">⚠ Client-এ FK নেই — নামে জোড়া</text>
+      <text x="280" y="142" text-anchor="middle" fill="#94a3b8" font-size="8">ডাকনাম = উপনামও হতে পারে</text>
       <rect x="385" y="30" width="160" height="120" rx="10" fill="rgba(129,140,248,0.10)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="465" y="55" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="700">📒 দলিল</text>
-      <text x="465" y="70" text-anchor="middle" fill="#94a3b8" font-size="7.5">InvoiceSave</text>
-      <text x="465" y="88" text-anchor="middle" fill="#94a3b8" font-size="7.5">পরিচয়: report + year</text>
-      <text x="465" y="100" text-anchor="middle" fill="#94a3b8" font-size="7.5">+ month + P1/P2</text>
-      <text x="465" y="112" text-anchor="middle" fill="#94a3b8" font-size="7.5">re-save = wipe + rebuild</text>
-      <text x="465" y="130" text-anchor="middle" fill="#94a3b8" font-size="7.5">রপ্তানিতে jobcode-গ্রুপ</text>
-      <text x="465" y="142" text-anchor="middle" fill="#94a3b8" font-size="7.5">= এক XeroInvoice</text>
+      <text x="465" y="70" text-anchor="middle" fill="#94a3b8" font-size="8">InvoiceSave</text>
+      <text x="465" y="88" text-anchor="middle" fill="#94a3b8" font-size="8">পরিচয়: report + year</text>
+      <text x="465" y="100" text-anchor="middle" fill="#94a3b8" font-size="8">+ month + P1/P2</text>
+      <text x="465" y="112" text-anchor="middle" fill="#94a3b8" font-size="8">re-save = wipe + rebuild</text>
+      <text x="465" y="130" text-anchor="middle" fill="#94a3b8" font-size="8">রপ্তানিতে jobcode-গ্রুপ</text>
+      <text x="465" y="142" text-anchor="middle" fill="#94a3b8" font-size="8">= এক XeroInvoice</text>
       <line x1="175" y1="90" x2="198" y2="90" stroke="#5eead4" stroke-width="1.8" marker-end="url(#arrowP8)"/>
-      <text x="187" y="80" text-anchor="middle" fill="#64748b" font-size="7">unit_amount</text>
+      <text x="187" y="80" text-anchor="middle" fill="#64748b" font-size="8">unit_amount</text>
       <line x1="360" y1="90" x2="383" y2="90" stroke="#5eead4" stroke-width="1.8" marker-end="url(#arrowP8)"/>
-      <text x="372" y="80" text-anchor="middle" fill="#64748b" font-size="7">সারিগুলো</text>
+      <text x="372" y="80" text-anchor="middle" fill="#64748b" font-size="8">সারিগুলো</text>
       <rect x="15" y="190" width="530" height="66" rx="10" fill="rgba(100,116,139,0.08)" stroke="#94a3b8" stroke-width="1.2"/>
       <text x="280" y="212" text-anchor="middle" fill="#cbd5e1" font-size="9" font-weight="600">স্মার্ট-প্রিভিউ (Issue #919): INV-YYMMDD-NNN নম্বর ৫-জোড়া অফসেটে সামলায়</text>
       <text x="280" y="228" text-anchor="middle" fill="#94a3b8" font-size="8">ts→ba · ba→ba · ক্রস-পিরিয়ড — 120s ক্যাশ ফ্লাশ (#919)</text>
@@ -199,7 +199,7 @@ def transition_invoice_save(save_id, action, notes, actor):
       <text x="390" y="136" text-anchor="middle" fill="#94a3b8" font-size="8">অনুমোদিত</text>
       <circle cx="510" cy="125" r="30" fill="rgba(52,211,153,0.12)" stroke="#34d399" stroke-width="2"/>
       <text x="510" y="122" text-anchor="middle" fill="#6ee7b7" font-size="9" font-weight="700">EXPORTED</text>
-      <text x="510" y="134" text-anchor="middle" fill="#94a3b8" font-size="7.5">Xero-য় ঢুকেছে</text>
+      <text x="510" y="134" text-anchor="middle" fill="#94a3b8" font-size="8">Xero-য় ঢুকেছে</text>
       <line x1="104" y1="115" x2="194" y2="115" stroke="#5eead4" stroke-width="2" marker-end="url(#arrowF2)"/>
       <text x="149" y="106" text-anchor="middle" fill="#94a3b8" font-size="8">submit_for_review</text>
       <line x1="264" y1="115" x2="354" y2="115" stroke="#5eead4" stroke-width="2" marker-end="url(#arrowF2)"/>

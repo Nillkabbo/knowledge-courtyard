@@ -1206,8 +1206,8 @@ COMPARISON:
   <rect x="710" y="75" width="60" height="110" rx="10" fill="#1e293b" stroke="#4ade80" stroke-width="2.5"/>
   <text x="740" y="108" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#4ade80">Aligned</text>
   <text x="740" y="128" text-anchor="middle" font-family="monospace" font-size="16" fill="#4ade80">&#9889;</text>
-  <text x="740" y="150" text-anchor="middle" font-family="monospace" font-size="9" fill="#a7f3d0">ChatGPT-</text>
-  <text x="740" y="164" text-anchor="middle" font-family="monospace" font-size="9" fill="#a7f3d0">style</text>
+  <text x="740" y="150" text-anchor="middle" font-family="monospace" font-size="10" fill="#a7f3d0">ChatGPT-</text>
+  <text x="740" y="164" text-anchor="middle" font-family="monospace" font-size="10" fill="#a7f3d0">style</text>
   <text x="400" y="215" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Alternative: Full RLHF (PPO/GRPO)</text>
   <rect x="100" y="230" width="150" height="70" rx="8" fill="#1e293b" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="175" y="252" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#22d3ee">SFT Model</text>
@@ -1226,7 +1226,7 @@ COMPARISON:
   <line x1="650" y1="265" x2="690" y2="265" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#ft5arr)"/>
   <rect x="700" y="230" width="70" height="70" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="2.5"/>
   <text x="735" y="260" text-anchor="middle" font-family="monospace" font-size="14" fill="#4ade80">&#9889;</text>
-  <text x="735" y="280" text-anchor="middle" font-family="monospace" font-size="9" fill="#a7f3d0">RLHF</text>
+  <text x="735" y="280" text-anchor="middle" font-family="monospace" font-size="10" fill="#a7f3d0">RLHF</text>
   <rect x="30" y="325" width="740" height="105" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="400" y="348" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#fbbf24">Comparison</text>
   <text x="50" y="370" font-family="monospace" font-size="11" fill="#4ade80">SFT: সহজ, $, stable &#8594; ভালো (৯০% ক্ষেত্রে যথেষ্ট)</text>

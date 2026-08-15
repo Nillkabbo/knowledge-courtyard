@@ -1502,7 +1502,7 @@ for practice in best_practices:
   <text x="155" y="185" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="700">Transition Matrix</text>
   <text x="155" y="205" text-anchor="middle" fill="#e2e8f0" font-size="8" font-family="monospace">  Sunny  Rainy</text>
   <text x="155" y="222" text-anchor="middle" fill="#cbd5e1" font-size="8" font-family="monospace">S [0.8   0.2]</text>
-  <text x="155" y="225" text-anchor="middle" fill="#cbd5e1" font-size="0">.</text>
+  <text x="155" y="225" text-anchor="middle" fill="#cbd5e1" font-size="8">.</text>
   <rect x="300" y="165" width="255" height="65" rx="8" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
   <text x="427" y="185" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">Markov Property</text>
   <text x="427" y="203" text-anchor="middle" fill="#e2e8f0" font-size="8">পরবর্তী state শুধু বর্তমানের উপর</text>

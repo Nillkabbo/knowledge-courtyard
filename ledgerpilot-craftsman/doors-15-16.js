@@ -61,14 +61,14 @@ useMutationAction({ mutate, successMessage, onSuccess, errorMode })
       <text x="500" y="109" fill="#64748b" font-size="9">সময়</text>
       <circle cx="80" cy="105" r="7" fill="#fbbf24"/>
       <text x="80" y="88" text-anchor="middle" fill="#fcd34d" font-size="8.5" font-weight="600">ক্লিক ১</text>
-      <text x="80" y="130" text-anchor="middle" fill="#94a3b8" font-size="7.5">running=true 🔴</text>
+      <text x="80" y="130" text-anchor="middle" fill="#94a3b8" font-size="8">running=true 🔴</text>
       <rect x="80" y="98" width="180" height="14" rx="7" fill="rgba(251,191,36,0.25)"/>
       <circle cx="180" cy="105" r="7" fill="#f87171"/>
       <text x="180" y="88" text-anchor="middle" fill="#f87171" font-size="8.5" font-weight="600">ক্লিক ২ → no-op</text>
-      <text x="180" y="130" text-anchor="middle" fill="#94a3b8" font-size="7.5">guard: running → return</text>
+      <text x="180" y="130" text-anchor="middle" fill="#94a3b8" font-size="8">guard: running → return</text>
       <circle cx="300" cy="105" r="7" fill="#2dd4bf"/>
       <text x="300" y="88" text-anchor="middle" fill="#5eead4" font-size="8.5" font-weight="600">API resolves</text>
-      <text x="300" y="130" text-anchor="middle" fill="#94a3b8" font-size="7.5">running=false</text>
+      <text x="300" y="130" text-anchor="middle" fill="#94a3b8" font-size="8">running=false</text>
       <circle cx="400" cy="105" r="7" fill="#34d399"/>
       <text x="400" y="88" text-anchor="middle" fill="#6ee7b7" font-size="8.5" font-weight="600">toast ✓</text>
       <circle cx="480" cy="105" r="7" fill="#818cf8"/>
@@ -156,13 +156,13 @@ doors.push({
       <text x="137" y="70" text-anchor="middle" fill="#64748b" font-size="8.5">গিল্ডের সিল — কোডের মালিকানা</text>
       <rect x="35" y="85" width="205" height="34" rx="6" fill="rgba(100,116,139,0.12)"/>
       <text x="137" y="99" text-anchor="middle" fill="#cbd5e1" font-size="9">User.can_review_invoices()</text>
-      <text x="137" y="112" text-anchor="middle" fill="#64748b" font-size="7.5">apps/accounts/models.py — সত্যের উৎস</text>
+      <text x="137" y="112" text-anchor="middle" fill="#64748b" font-size="8">apps/accounts/models.py — সত্যের উৎস</text>
       <rect x="35" y="128" width="205" height="34" rx="6" fill="rgba(100,116,139,0.12)"/>
       <text x="137" y="142" text-anchor="middle" fill="#cbd5e1" font-size="9">IsInvoiceReviewerOrAdmin</text>
-      <text x="137" y="155" text-anchor="middle" fill="#64748b" font-size="7.5">permissions.py — DRF ক্লাস</text>
+      <text x="137" y="155" text-anchor="middle" fill="#64748b" font-size="8">permissions.py — DRF ক্লাস</text>
       <rect x="35" y="171" width="205" height="34" rx="6" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf"/>
       <text x="137" y="185" text-anchor="middle" fill="#5eead4" font-size="9">permission_classes = [...]</text>
-      <text x="137" y="198" text-anchor="middle" fill="#64748b" font-size="7.5">প্রতিটি view — 403/200 এখানেই</text>
+      <text x="137" y="198" text-anchor="middle" fill="#64748b" font-size="8">প্রতিটি view — 403/200 এখানেই</text>
       <line x1="137" y1="119" x2="137" y2="126" stroke="#5eead4" stroke-width="1.5" marker-end="url(#arrowG5)"/>
       <line x1="137" y1="162" x2="137" y2="169" stroke="#5eead4" stroke-width="1.5" marker-end="url(#arrowG5)"/>
       <rect x="300" y="30" width="245" height="200" rx="12" fill="rgba(129,140,248,0.06)" stroke="#818cf8" stroke-width="1.5"/>
@@ -170,13 +170,13 @@ doors.push({
       <text x="422" y="70" text-anchor="middle" fill="#64748b" font-size="8.5">নামফলক — DB-র মালিকানা, এডিটেবল</text>
       <rect x="320" y="85" width="205" height="34" rx="6" fill="rgba(100,116,139,0.12)"/>
       <text x="422" y="99" text-anchor="middle" fill="#cbd5e1" font-size="9">RoleFeatureGrant</text>
-      <text x="422" y="112" text-anchor="middle" fill="#64748b" font-size="7.5">প্রতি-রোল ম্যাট্রিক্স — /admin-এ টগল</text>
+      <text x="422" y="112" text-anchor="middle" fill="#64748b" font-size="8">প্রতি-রোল ম্যাট্রিক্স — /admin-এ টগল</text>
       <rect x="320" y="128" width="205" height="34" rx="6" fill="rgba(100,116,139,0.12)"/>
       <text x="422" y="142" text-anchor="middle" fill="#cbd5e1" font-size="9">UserFeatureGrant (override)</text>
-      <text x="422" y="155" text-anchor="middle" fill="#64748b" font-size="7.5">deny → grant → roles ইউনিয়ন</text>
+      <text x="422" y="155" text-anchor="middle" fill="#64748b" font-size="8">deny → grant → roles ইউনিয়ন</text>
       <rect x="320" y="171" width="205" height="34" rx="6" fill="rgba(129,140,248,0.10)" stroke="#818cf8"/>
       <text x="422" y="185" text-anchor="middle" fill="#a5b4fc" font-size="9">meta.requiresFeature + nav</text>
-      <text x="422" y="198" text-anchor="middle" fill="#64748b" font-size="7.5">দেখা যাবে কি না — এখানেই</text>
+      <text x="422" y="198" text-anchor="middle" fill="#64748b" font-size="8">দেখা যাবে কি না — এখানেই</text>
       <line x1="422" y1="119" x2="422" y2="126" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrowG5)"/>
       <line x1="422" y1="162" x2="422" y2="169" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrowG5)"/>
       <path d="M 260 140 Q 280 140 298 140" fill="none" stroke="#fbbf24" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrowG5)"/>

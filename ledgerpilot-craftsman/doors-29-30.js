@@ -103,28 +103,28 @@ composable-ছাঁচ (প্রকল্পের মান):
       <text x="280" y="31" text-anchor="middle" fill="#cbd5e1" font-size="8.5" font-weight="600">বস্তু বদলাও → আয়না শ্বাস নেয় → প্রতিবিম্ব বদলায় (DOM-কে হাত দিয়ে নয়)</text>
       <rect x="15" y="56" width="165" height="104" rx="10" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="97" y="78" text-anchor="middle" fill="#5eead4" font-size="9" font-weight="700">🖐️ স্পর্শ-কাচ</text>
-      <text x="97" y="94" text-anchor="middle" fill="#94a3b8" font-size="7">ref — এক মান, .value-স্পর্শ</text>
-      <text x="97" y="110" text-anchor="middle" fill="#94a3b8" font-size="7">ref&lt;T&gt;(initial)</text>
-      <text x="97" y="128" text-anchor="middle" fill="#64748b" font-size="6.5">স্ক্রিপ্টে .value, টেমপ্লেটে খালি</text>
-      <text x="97" y="148" text-anchor="middle" fill="#64748b" font-size="6.5">শ্বাস: লেখার সাথে সাথে</text>
+      <text x="97" y="94" text-anchor="middle" fill="#94a3b8" font-size="8">ref — এক মান, .value-স্পর্শ</text>
+      <text x="97" y="110" text-anchor="middle" fill="#94a3b8" font-size="8">ref&lt;T&gt;(initial)</text>
+      <text x="97" y="128" text-anchor="middle" fill="#64748b" font-size="8">স্ক্রিপ্টে .value, টেমপ্লেটে খালি</text>
+      <text x="97" y="148" text-anchor="middle" fill="#64748b" font-size="8">শ্বাস: লেখার সাথে সাথে</text>
       <rect x="200" y="56" width="160" height="104" rx="10" fill="rgba(129,140,248,0.10)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="280" y="78" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">🧠 স্মৃতি-কাচ</text>
-      <text x="280" y="94" text-anchor="middle" fill="#94a3b8" font-size="7">computed — গণনা+ক্যাশ</text>
-      <text x="280" y="110" text-anchor="middle" fill="#94a3b8" font-size="7">মূল অপরিবর্তিত → পুরনো উত্তর</text>
-      <text x="280" y="128" text-anchor="middle" fill="#818cf8" font-size="6.5">গণনা এখানেই, watch-এ নয়</text>
-      <text x="280" y="148" text-anchor="middle" fill="#64748b" font-size="6.5">derived-সত্যের একমাত্র ঘর</text>
+      <text x="280" y="94" text-anchor="middle" fill="#94a3b8" font-size="8">computed — গণনা+ক্যাশ</text>
+      <text x="280" y="110" text-anchor="middle" fill="#94a3b8" font-size="8">মূল অপরিবর্তিত → পুরনো উত্তর</text>
+      <text x="280" y="128" text-anchor="middle" fill="#818cf8" font-size="8">গণনা এখানেই, watch-এ নয়</text>
+      <text x="280" y="148" text-anchor="middle" fill="#64748b" font-size="8">derived-সত্যের একমাত্র ঘর</text>
       <rect x="380" y="56" width="165" height="104" rx="10" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="462" y="78" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">👁️ পাহারা-কাচ</text>
-      <text x="462" y="94" text-anchor="middle" fill="#94a3b8" font-size="7">watch — পার্শ্ব-প্রভাব</text>
-      <text x="462" y="110" text-anchor="middle" fill="#94a3b8" font-size="7">fetch · ইতিহাস · টাইমার</text>
-      <text x="462" y="128" text-anchor="middle" fill="#fbbf24" font-size="6.5">watchEffect সাবধানে</text>
-      <text x="462" y="148" text-anchor="middle" fill="#64748b" font-size="6.5">immediate/deep-সুইচ চেনো</text>
+      <text x="462" y="94" text-anchor="middle" fill="#94a3b8" font-size="8">watch — পার্শ্ব-প্রভাব</text>
+      <text x="462" y="110" text-anchor="middle" fill="#94a3b8" font-size="8">fetch · ইতিহাস · টাইমার</text>
+      <text x="462" y="128" text-anchor="middle" fill="#fbbf24" font-size="8">watchEffect সাবধানে</text>
+      <text x="462" y="148" text-anchor="middle" fill="#64748b" font-size="8">immediate/deep-সুইচ চেনো</text>
       <rect x="60" y="184" width="440" height="42" rx="10" fill="rgba(52,211,153,0.10)" stroke="#34d399" stroke-width="1.4"/>
       <text x="280" y="203" text-anchor="middle" fill="#6ee7b7" font-size="8.5" font-weight="700">🏞️ একমুখী নদী: props (পিতা→পুত্র) · emit (ফিরতি-পাখি) · মিউটেট নিষেধ</text>
-      <text x="280" y="218" text-anchor="middle" fill="#94a3b8" font-size="7">onMounted-এ প্রথম শ্বাস · onUnmounted-এ abort/শ্রোতা-বন্ধ · storeToRefs-এ প্রতিক্রিয়া-রক্ষা</text>
+      <text x="280" y="218" text-anchor="middle" fill="#94a3b8" font-size="8">onMounted-এ প্রথম শ্বাস · onUnmounted-এ abort/শ্রোতা-বন্ধ · storeToRefs-এ প্রতিক্রিয়া-রক্ষা</text>
       <rect x="60" y="242" width="440" height="42" rx="10" fill="rgba(100,116,139,0.08)" stroke="#94a3b8" stroke-width="1.2"/>
       <text x="280" y="260" text-anchor="middle" fill="#cbd5e1" font-size="8" font-weight="600">📜 টাইপ-স্রোত: components['schemas'][…] ← api.generated.ts</text>
-      <text x="280" y="275" text-anchor="middle" fill="#94a3b8" font-size="7">হাতে-লেখায় verified-টিকা · any নিষেধ (unknown+ন্যারো) · composable = অবস্থা+ক্রিয়া একসাথে</text>
+      <text x="280" y="275" text-anchor="middle" fill="#94a3b8" font-size="8">হাতে-লেখায় verified-টিকা · any নিষেধ (unknown+ন্যারো) · composable = অবস্থা+ক্রিয়া একসাথে</text>
       <line x1="280" y1="42" x2="280" y2="54" stroke="#5eead4" stroke-width="1.4" marker-end="url(#arrowV29)"/>
       <text x="280" y="302" text-anchor="middle" fill="#64748b" font-size="8.5">বস্তু → শ্বাস → প্রতিবিম্ব; আয়না নিজে কিছু বানায় না — বিশ্বস্ত অনুগামীই তার ধর্ম</text>
     </svg>
@@ -230,44 +230,44 @@ doors.push({
       <text x="280" y="20" text-anchor="middle" fill="#64748b" font-size="9.5">উপরের সারি: শহরের ভিত (identity+admin) · নিচে: কর্মের দোকান</text>
       <rect x="15" y="35" width="105" height="58" rx="9" fill="rgba(100,116,139,0.10)" stroke="#94a3b8" stroke-width="1.3"/>
       <text x="67" y="55" text-anchor="middle" fill="#cbd5e1" font-size="8.5" font-weight="700">① auth</text>
-      <text x="67" y="68" text-anchor="middle" fill="#64748b" font-size="7">লগইন/রেজিস্টার</text>
-      <text x="67" y="80" text-anchor="middle" fill="#64748b" font-size="7">accounts</text>
+      <text x="67" y="68" text-anchor="middle" fill="#64748b" font-size="8">লগইন/রেজিস্টার</text>
+      <text x="67" y="80" text-anchor="middle" fill="#64748b" font-size="8">accounts</text>
       <rect x="130" y="35" width="105" height="58" rx="9" fill="rgba(100,116,139,0.10)" stroke="#94a3b8" stroke-width="1.3"/>
       <text x="182" y="55" text-anchor="middle" fill="#cbd5e1" font-size="8.5" font-weight="700">② account</text>
-      <text x="182" y="68" text-anchor="middle" fill="#64748b" font-size="7">প্রোফাইল/MyAccess</text>
-      <text x="182" y="80" text-anchor="middle" fill="#64748b" font-size="7">accounts</text>
+      <text x="182" y="68" text-anchor="middle" fill="#64748b" font-size="8">প্রোফাইল/MyAccess</text>
+      <text x="182" y="80" text-anchor="middle" fill="#64748b" font-size="8">accounts</text>
       <rect x="245" y="35" width="150" height="58" rx="9" fill="rgba(129,140,248,0.10)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="320" y="55" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">③ admin — বৃহত্তম</text>
-      <text x="320" y="68" text-anchor="middle" fill="#64748b" font-size="7">users·Xero·jobs·access-console</text>
-      <text x="320" y="80" text-anchor="middle" fill="#64748b" font-size="7">system_admin+nav+accounts</text>
+      <text x="320" y="68" text-anchor="middle" fill="#64748b" font-size="8">users·Xero·jobs·access-console</text>
+      <text x="320" y="80" text-anchor="middle" fill="#64748b" font-size="8">system_admin+nav+accounts</text>
       <rect x="405" y="35" width="140" height="58" rx="9" fill="rgba(129,140,248,0.10)" stroke="#818cf8" stroke-width="1.3"/>
       <text x="475" y="55" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">⑩ messaging</text>
-      <text x="475" y="68" text-anchor="middle" fill="#64748b" font-size="7">1:1 inbox+SSE ব্যাজ</text>
-      <text x="475" y="80" text-anchor="middle" fill="#64748b" font-size="7">messaging</text>
+      <text x="475" y="68" text-anchor="middle" fill="#64748b" font-size="8">1:1 inbox+SSE ব্যাজ</text>
+      <text x="475" y="80" text-anchor="middle" fill="#64748b" font-size="8">messaging</text>
       <rect x="15" y="115" width="105" height="62" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="67" y="135" text-anchor="middle" fill="#5eead4" font-size="8.5" font-weight="700">④ timesheets</text>
-      <text x="67" y="148" text-anchor="middle" fill="#64748b" font-size="7">Peter: আপলোড</text>
-      <text x="67" y="160" text-anchor="middle" fill="#64748b" font-size="7">timesheets</text>
+      <text x="67" y="148" text-anchor="middle" fill="#64748b" font-size="8">Peter: আপলোড</text>
+      <text x="67" y="160" text-anchor="middle" fill="#64748b" font-size="8">timesheets</text>
       <rect x="130" y="115" width="120" height="62" rx="9" fill="rgba(45,212,191,0.12)" stroke="#2dd4bf" stroke-width="1.8"/>
       <text x="190" y="135" text-anchor="middle" fill="#5eead4" font-size="8.5" font-weight="700">⑤ invoices ★</text>
-      <text x="190" y="148" text-anchor="middle" fill="#64748b" font-size="7">জেনারেশন·ব্যাচ·রিভিউ</text>
-      <text x="190" y="160" text-anchor="middle" fill="#64748b" font-size="7">min-check · invoices</text>
+      <text x="190" y="148" text-anchor="middle" fill="#64748b" font-size="8">জেনারেশন·ব্যাচ·রিভিউ</text>
+      <text x="190" y="160" text-anchor="middle" fill="#64748b" font-size="8">min-check · invoices</text>
       <rect x="260" y="115" width="120" height="62" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="320" y="135" text-anchor="middle" fill="#5eead4" font-size="8.5" font-weight="700">⑨ credits</text>
-      <text x="320" y="148" text-anchor="middle" fill="#64748b" font-size="7">ওয়ার্কফ্লো+লেজার</text>
-      <text x="320" y="160" text-anchor="middle" fill="#64748b" font-size="7">invoices (credits)</text>
+      <text x="320" y="148" text-anchor="middle" fill="#64748b" font-size="8">ওয়ার্কফ্লো+লেজার</text>
+      <text x="320" y="160" text-anchor="middle" fill="#64748b" font-size="8">invoices (credits)</text>
       <rect x="390" y="115" width="155" height="62" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="467" y="135" text-anchor="middle" fill="#5eead4" font-size="8.5" font-weight="700">⑦ data-processing</text>
-      <text x="467" y="148" text-anchor="middle" fill="#64748b" font-size="7">Sai: ড্যাশবোর্ড·history</text>
-      <text x="467" y="160" text-anchor="middle" fill="#64748b" font-size="7">inv+bill+xero</text>
+      <text x="467" y="148" text-anchor="middle" fill="#64748b" font-size="8">Sai: ড্যাশবোর্ড·history</text>
+      <text x="467" y="160" text-anchor="middle" fill="#64748b" font-size="8">inv+bill+xero</text>
       <rect x="15" y="200" width="165" height="62" rx="9" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="97" y="220" text-anchor="middle" fill="#fcd34d" font-size="8.5" font-weight="700">⑥ payment</text>
-      <text x="97" y="233" text-anchor="middle" fill="#64748b" font-size="7">Owen: NACHA+reconcile</text>
-      <text x="97" y="245" text-anchor="middle" fill="#64748b" font-size="7">billing</text>
+      <text x="97" y="233" text-anchor="middle" fill="#64748b" font-size="8">Owen: NACHA+reconcile</text>
+      <text x="97" y="245" text-anchor="middle" fill="#64748b" font-size="8">billing</text>
       <rect x="190" y="200" width="165" height="62" rx="9" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="272" y="220" text-anchor="middle" fill="#fcd34d" font-size="8.5" font-weight="700">⑧ billing</text>
-      <text x="272" y="233" text-anchor="middle" fill="#64748b" font-size="7">cycle+exceptions+archive</text>
-      <text x="272" y="245" text-anchor="middle" fill="#64748b" font-size="7">billing · ReviewMeeting</text>
+      <text x="272" y="233" text-anchor="middle" fill="#64748b" font-size="8">cycle+exceptions+archive</text>
+      <text x="272" y="245" text-anchor="middle" fill="#64748b" font-size="8">billing · ReviewMeeting</text>
       <rect x="15" y="285" width="530" height="36" rx="9" fill="rgba(100,116,139,0.08)" stroke="#94a3b8" stroke-width="1.2"/>
       <text x="280" y="303" text-anchor="middle" fill="#cbd5e1" font-size="8.5">Sai-এর দিন: ⑦→⑤জেনারেট→⑨→⑤রিভিউ→exported→⑦চেকলিস্ট · Vicki: ⑤রিভিউ+min-check · সবাই ⑩+②</text>
     </svg>

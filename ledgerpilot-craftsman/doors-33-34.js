@@ -86,35 +86,35 @@ settings-তিন-ভাগ (ledgerpilot/settings/):
       <defs><marker id="arrowI24" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#5eead4"/></marker></defs>
       <rect x="15" y="15" width="530" height="52" rx="10" fill="rgba(45,212,191,0.08)" stroke="#2dd4bf" stroke-width="1.4"/>
       <text x="280" y="36" text-anchor="middle" fill="#5eead4" font-size="9.5" font-weight="700">🏙️ দৃশ্যমান শহর — Django app (gunicorn) + Vue (nginx/vite)</text>
-      <text x="280" y="52" text-anchor="middle" fill="#94a3b8" font-size="7.5">সব HTTP-অনুরোধ এখানে; .delay() করলে কাজ নিচে নামে (broker-env লাগে #1190)</text>
+      <text x="280" y="52" text-anchor="middle" fill="#94a3b8" font-size="8">সব HTTP-অনুরোধ এখানে; .delay() করলে কাজ নিচে নামে (broker-env লাগে #1190)</text>
       <rect x="15" y="92" width="165" height="120" rx="10" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="97" y="114" text-anchor="middle" fill="#fcd34d" font-size="9.5" font-weight="700">⏰ ঘড়ি — beat</text>
-      <text x="97" y="132" text-anchor="middle" fill="#94a3b8" font-size="7.5">৩ তারিখ ০৯:০০ — P2 ready</text>
-      <text x="97" y="146" text-anchor="middle" fill="#94a3b8" font-size="7.5">১৭ তারিখ ০৯:০০ — P1 ready</text>
-      <text x="97" y="160" text-anchor="middle" fill="#94a3b8" font-size="7.5">দৈনিক 06:00 UTC — আয়না</text>
-      <text x="97" y="182" text-anchor="middle" fill="#64748b" font-size="7">settings: BEAT_SCHEDULE</text>
-      <text x="97" y="198" text-anchor="middle" fill="#64748b" font-size="7">+ DatabaseScheduler</text>
+      <text x="97" y="132" text-anchor="middle" fill="#94a3b8" font-size="8">৩ তারিখ ০৯:০০ — P2 ready</text>
+      <text x="97" y="146" text-anchor="middle" fill="#94a3b8" font-size="8">১৭ তারিখ ০৯:০০ — P1 ready</text>
+      <text x="97" y="160" text-anchor="middle" fill="#94a3b8" font-size="8">দৈনিক 06:00 UTC — আয়না</text>
+      <text x="97" y="182" text-anchor="middle" fill="#64748b" font-size="8">settings: BEAT_SCHEDULE</text>
+      <text x="97" y="198" text-anchor="middle" fill="#64748b" font-size="8">+ DatabaseScheduler</text>
       <rect x="198" y="92" width="165" height="120" rx="10" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="280" y="114" text-anchor="middle" fill="#5eead4" font-size="9.5" font-weight="700">🧺 বাহক — worker</text>
-      <text x="280" y="132" text-anchor="middle" fill="#94a3b8" font-size="7.5">apps/*/tasks.py @shared_task</text>
-      <text x="280" y="146" text-anchor="middle" fill="#94a3b8" font-size="7.5">কাজ কাঁধে → স্রোতে ফল ফেরত</text>
-      <text x="280" y="168" text-anchor="middle" fill="#64748b" font-size="7">টেস্ট: সরাসরি কল, delay নয়</text>
-      <text x="280" y="182" text-anchor="middle" fill="#64748b" font-size="7">idempotent বাধ্যতামূলক</text>
-      <text x="280" y="198" text-anchor="middle" fill="#64748b" font-size="7">(retry-নিরাপদ)</text>
+      <text x="280" y="132" text-anchor="middle" fill="#94a3b8" font-size="8">apps/*/tasks.py @shared_task</text>
+      <text x="280" y="146" text-anchor="middle" fill="#94a3b8" font-size="8">কাজ কাঁধে → স্রোতে ফল ফেরত</text>
+      <text x="280" y="168" text-anchor="middle" fill="#64748b" font-size="8">টেস্ট: সরাসরি কল, delay নয়</text>
+      <text x="280" y="182" text-anchor="middle" fill="#64748b" font-size="8">idempotent বাধ্যতামূলক</text>
+      <text x="280" y="198" text-anchor="middle" fill="#64748b" font-size="8">(retry-নিরাপদ)</text>
       <rect x="381" y="92" width="164" height="120" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="463" y="114" text-anchor="middle" fill="#a5b4fc" font-size="9.5" font-weight="700">🧠 স্মৃতি — Redis</text>
-      <text x="463" y="132" text-anchor="middle" fill="#94a3b8" font-size="7.5">DB 0 — Django ক্যাশে</text>
-      <text x="463" y="146" text-anchor="middle" fill="#94a3b8" font-size="7.5">DB 2 — Celery broker</text>
-      <text x="463" y="160" text-anchor="middle" fill="#94a3b8" font-size="7.5">DB 3 — Celery result</text>
-      <text x="463" y="182" text-anchor="middle" fill="#64748b" font-size="7">+ SSE ব্যাজ-পুশ</text>
-      <text x="463" y="198" text-anchor="middle" fill="#64748b" font-size="7">(messaging)</text>
+      <text x="463" y="132" text-anchor="middle" fill="#94a3b8" font-size="8">DB 0 — Django ক্যাশে</text>
+      <text x="463" y="146" text-anchor="middle" fill="#94a3b8" font-size="8">DB 2 — Celery broker</text>
+      <text x="463" y="160" text-anchor="middle" fill="#94a3b8" font-size="8">DB 3 — Celery result</text>
+      <text x="463" y="182" text-anchor="middle" fill="#64748b" font-size="8">+ SSE ব্যাজ-পুশ</text>
+      <text x="463" y="198" text-anchor="middle" fill="#64748b" font-size="8">(messaging)</text>
       <line x1="150" y1="67" x2="97" y2="90" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrowI24)"/>
       <line x1="280" y1="67" x2="280" y2="90" stroke="#5eead4" stroke-width="1.5" marker-end="url(#arrowI24)"/>
       <line x1="420" y1="67" x2="463" y2="90" stroke="#818cf8" stroke-width="1.5" marker-end="url(#arrowI24)"/>
       <line x1="180" y1="152" x2="196" y2="152" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrowI24)"/>
-      <text x="188" y="142" text-anchor="middle" fill="#64748b" font-size="7">ছাড়ে</text>
+      <text x="188" y="142" text-anchor="middle" fill="#64748b" font-size="8">ছাড়ে</text>
       <line x1="363" y1="152" x2="379" y2="152" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrowI24)"/>
-      <text x="371" y="142" text-anchor="middle" fill="#64748b" font-size="7">ভাসে/ফেরে</text>
+      <text x="371" y="142" text-anchor="middle" fill="#64748b" font-size="8">ভাসে/ফেরে</text>
       <rect x="15" y="232" width="530" height="70" rx="10" fill="rgba(100,116,139,0.08)" stroke="#94a3b8" stroke-width="1.2"/>
       <text x="280" y="252" text-anchor="middle" fill="#cbd5e1" font-size="8.5" font-weight="600">⚙️ চাকা-ঘর: docker-compose — app · mysql · redis · celery-worker · celery-beat · nginx</text>
       <text x="280" y="268" text-anchor="middle" fill="#94a3b8" font-size="8">settings: base (স্পর্শ-নিষেধ) · dev/prod/test (env) · prod-গার্ড</text>
@@ -229,23 +229,23 @@ E2E (Playwright): PR-গেটে শুধু auth.spec;
       <text x="146" y="62" text-anchor="middle" fill="#94a3b8" font-size="8">conftest.py: auth_client_as(role)</text>
       <text x="146" y="76" text-anchor="middle" fill="#94a3b8" font-size="8">factory_boy নেই · is_staff=property</text>
       <text x="146" y="100" text-anchor="middle" fill="#5eead4" font-size="8.5" font-weight="600">তিন পিন:</text>
-      <text x="146" y="116" text-anchor="middle" fill="#94a3b8" font-size="7.5">① wire-contract (schema↔wire)</text>
-      <text x="146" y="130" text-anchor="middle" fill="#94a3b8" font-size="7.5">② schema-pin (raw SQL, textual)</text>
-      <text x="146" y="144" text-anchor="middle" fill="#94a3b8" font-size="7.5">③ নীরবতা-পিন (bare catch)</text>
+      <text x="146" y="116" text-anchor="middle" fill="#94a3b8" font-size="8">① wire-contract (schema↔wire)</text>
+      <text x="146" y="130" text-anchor="middle" fill="#94a3b8" font-size="8">② schema-pin (raw SQL, textual)</text>
+      <text x="146" y="144" text-anchor="middle" fill="#94a3b8" font-size="8">③ নীরবতা-পিন (bare catch)</text>
       <text x="146" y="168" text-anchor="middle" fill="#94a3b8" font-size="8">কভার: happy+রোল-ম্যাট্রিক্স+এজ</text>
       <text x="146" y="182" text-anchor="middle" fill="#94a3b8" font-size="8">মেঝে 87% — র‍্যাচেট উপরে</text>
-      <text x="146" y="202" text-anchor="middle" fill="#64748b" font-size="7.5">+ verify_docs.py (২৩ দাবি)</text>
+      <text x="146" y="202" text-anchor="middle" fill="#64748b" font-size="8">+ verify_docs.py (২৩ দাবি)</text>
       <rect x="292" y="15" width="253" height="200" rx="12" fill="rgba(129,140,248,0.07)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="418" y="40" text-anchor="middle" fill="#a5b4fc" font-size="10.5" font-weight="700">📗 FE-পাড়া (vitest+MSW)</text>
       <text x="418" y="62" text-anchor="middle" fill="#94a3b8" font-size="8">src/tests/** মিরর-পথ</text>
       <text x="418" y="76" text-anchor="middle" fill="#94a3b8" font-size="8">co-located নিষেধ</text>
       <text x="418" y="100" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="600">নকল-বাজার:</text>
-      <text x="418" y="116" text-anchor="middle" fill="#94a3b8" font-size="7.5">MSW server.use() spec-লোকাল</text>
-      <text x="418" y="130" text-anchor="middle" fill="#94a3b8" font-size="7.5">গ্লোবাল handlers/ অ-মিউটেবল</text>
+      <text x="418" y="116" text-anchor="middle" fill="#94a3b8" font-size="8">MSW server.use() spec-লোকাল</text>
+      <text x="418" y="130" text-anchor="middle" fill="#94a3b8" font-size="8">গ্লোবাল handlers/ অ-মিউটেবল</text>
       <text x="418" y="154" text-anchor="middle" fill="#94a3b8" font-size="8">৪-অবস্থা বাধ্যতামূলক:</text>
       <text x="418" y="168" text-anchor="middle" fill="#94a3b8" font-size="8">loading · empty · populated · error</text>
       <text x="418" y="192" text-anchor="middle" fill="#94a3b8" font-size="8">স্টোর: setActivePinia প্রতি-টেস্ট</text>
-      <text x="418" y="206" text-anchor="middle" fill="#64748b" font-size="7.5">E2E: auth মাত্র PR-গেটে</text>
+      <text x="418" y="206" text-anchor="middle" fill="#64748b" font-size="8">E2E: auth মাত্র PR-গেটে</text>
       <rect x="100" y="238" width="360" height="52" rx="10" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="280" y="258" text-anchor="middle" fill="#fcd34d" font-size="9.5" font-weight="700">সেলিমার চক্র: 🔴 ব্যর্থ-পরীক্ষা → 🟢 ন্যূনতম পাস → 🔵 রিফ্যাক্ট</text>
       <text x="280" y="276" text-anchor="middle" fill="#94a3b8" font-size="8">বাগ? আগে সেই বাগ ধরার ব্যর্থ-পরীক্ষা — ফিক্স পরীক্ষা ছাড়া মানে বাগ ফিরছে</text>

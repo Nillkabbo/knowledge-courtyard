@@ -162,27 +162,27 @@ FE (এক composable, তিন পাতলো অ্যাডাপ্টা�
       <marker id="arrowE3" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#f87171"/></marker></defs>
       <rect x="10" y="90" width="70" height="42" rx="8" fill="rgba(100,116,139,0.12)" stroke="#94a3b8" stroke-width="1.5"/>
       <text x="45" y="108" text-anchor="middle" fill="#cbd5e1" font-size="10" font-weight="600">idle</text>
-      <text x="45" y="122" text-anchor="middle" fill="#64748b" font-size="7.5">শূন্য</text>
+      <text x="45" y="122" text-anchor="middle" fill="#64748b" font-size="8">শূন্য</text>
       <rect x="110" y="90" width="92" height="42" rx="8" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="156" y="108" text-anchor="middle" fill="#5eead4" font-size="10" font-weight="600">previewing</text>
-      <text x="156" y="122" text-anchor="middle" fill="#64748b" font-size="7.5">fetch(dryRun=true)</text>
+      <text x="156" y="122" text-anchor="middle" fill="#64748b" font-size="8">fetch(dryRun=true)</text>
       <rect x="232" y="90" width="86" height="42" rx="8" fill="rgba(251,191,36,0.12)" stroke="#fbbf24" stroke-width="2"/>
       <text x="275" y="112" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">preview ⚠️</text>
-      <text x="275" y="122" text-anchor="middle" fill="#64748b" font-size="7.5">নকশা দেখো</text>
+      <text x="275" y="122" text-anchor="middle" fill="#64748b" font-size="8">নকশা দেখো</text>
       <rect x="348" y="90" width="92" height="42" rx="8" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="394" y="108" text-anchor="middle" fill="#5eead4" font-size="10" font-weight="600">committing</text>
-      <text x="394" y="122" text-anchor="middle" fill="#64748b" font-size="7.5">fetch(dryRun=false)</text>
+      <text x="394" y="122" text-anchor="middle" fill="#64748b" font-size="8">fetch(dryRun=false)</text>
       <rect x="470" y="90" width="76" height="42" rx="8" fill="rgba(52,211,153,0.14)" stroke="#34d399" stroke-width="2"/>
       <text x="508" y="108" text-anchor="middle" fill="#6ee7b7" font-size="10" font-weight="700">done ✓</text>
-      <text x="508" y="122" text-anchor="middle" fill="#64748b" font-size="7.5">+toast +refetch</text>
+      <text x="508" y="122" text-anchor="middle" fill="#64748b" font-size="8">+toast +refetch</text>
       <line x1="80" y1="111" x2="108" y2="111" stroke="#5eead4" stroke-width="2" marker-end="url(#arrowP3)"/>
       <line x1="202" y1="111" x2="230" y2="111" stroke="#5eead4" stroke-width="2" marker-end="url(#arrowP3)"/>
       <line x1="318" y1="111" x2="346" y2="111" stroke="#5eead4" stroke-width="2.5" marker-end="url(#arrowP3)"/>
-      <text x="380" y="87" text-anchor="middle" fill="#fbbf24" font-size="7" font-weight="700">🔑 শুধু এই দরজায়</text>
+      <text x="380" y="87" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="700">🔑 শুধু এই দরজায়</text>
       <line x1="440" y1="111" x2="468" y2="111" stroke="#5eead4" stroke-width="2" marker-end="url(#arrowP3)"/>
       <rect x="232" y="170" width="86" height="36" rx="8" fill="rgba(248,113,113,0.10)" stroke="#f87171" stroke-width="1.5"/>
       <text x="275" y="185" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">error</text>
-      <text x="275" y="198" text-anchor="middle" fill="#64748b" font-size="7.5">getApiErrorMessage</text>
+      <text x="275" y="198" text-anchor="middle" fill="#64748b" font-size="8">getApiErrorMessage</text>
       <line x1="156" y1="132" x2="240" y2="172" stroke="#f87171" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowE3)"/>
       <line x1="394" y1="132" x2="312" y2="172" stroke="#f87171" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowE3)"/>
       <text x="280" y="35" text-anchor="middle" fill="#fbbf24" font-size="10.5" font-weight="700">🔒 confirm রুট: preview ছাড়া অন্য কোথাও থেকে committing-এ পৌঁছানো যায় না</text>

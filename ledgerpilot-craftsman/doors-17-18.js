@@ -61,23 +61,23 @@ doors.push({
       <defs><marker id="arrowC6" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#5eead4"/></marker></defs>
       <rect x="15" y="60" width="120" height="70" rx="10" fill="rgba(129,140,248,0.10)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="75" y="85" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="700">HandoffEvent</text>
-      <text x="75" y="99" text-anchor="middle" fill="#94a3b8" font-size="7.5">চিঠির গায়ে চিঠির কথা:</text>
-      <text x="75" y="111" text-anchor="middle" fill="#94a3b8" font-size="7.5">role · copy · target_url</text>
-      <text x="75" y="123" text-anchor="middle" fill="#94a3b8" font-size="7.5">dedup_key · source</text>
+      <text x="75" y="99" text-anchor="middle" fill="#94a3b8" font-size="8">চিঠির গায়ে চিঠির কথা:</text>
+      <text x="75" y="111" text-anchor="middle" fill="#94a3b8" font-size="8">role · copy · target_url</text>
+      <text x="75" y="123" text-anchor="middle" fill="#94a3b8" font-size="8">dedup_key · source</text>
       <rect x="175" y="60" width="110" height="70" rx="10" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="230" y="85" text-anchor="middle" fill="#5eead4" font-size="10" font-weight="700">emit()</text>
-      <text x="230" y="99" text-anchor="middle" fill="#94a3b8" font-size="7.5">কুরিয়ারের ব্যাগ</text>
-      <text x="230" y="111" text-anchor="middle" fill="#94a3b8" font-size="7.5">dedup → resolve</text>
-      <text x="230" y="123" text-anchor="middle" fill="#94a3b8" font-size="7.5">→ deliver → stamp</text>
+      <text x="230" y="99" text-anchor="middle" fill="#94a3b8" font-size="8">কুরিয়ারের ব্যাগ</text>
+      <text x="230" y="111" text-anchor="middle" fill="#94a3b8" font-size="8">dedup → resolve</text>
+      <text x="230" y="123" text-anchor="middle" fill="#94a3b8" font-size="8">→ deliver → stamp</text>
       <rect x="325" y="60" width="100" height="70" rx="10" fill="rgba(100,116,139,0.12)" stroke="#94a3b8" stroke-width="1.5"/>
       <text x="375" y="85" text-anchor="middle" fill="#cbd5e1" font-size="10" font-weight="600">InAppChannel</text>
-      <text x="375" y="99" text-anchor="middle" fill="#94a3b8" font-size="7.5">ts_notifications</text>
-      <text x="375" y="111" text-anchor="middle" fill="#94a3b8" font-size="7.5">সারি লেখা</text>
-      <text x="375" y="123" text-anchor="middle" fill="#94a3b8" font-size="7.5">(in-app ঘণ্টা)</text>
+      <text x="375" y="99" text-anchor="middle" fill="#94a3b8" font-size="8">ts_notifications</text>
+      <text x="375" y="111" text-anchor="middle" fill="#94a3b8" font-size="8">সারি লেখা</text>
+      <text x="375" y="123" text-anchor="middle" fill="#94a3b8" font-size="8">(in-app ঘণ্টা)</text>
       <rect x="465" y="60" width="80" height="70" rx="10" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="505" y="85" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="700">🔔 ঘণ্টা</text>
-      <text x="505" y="99" text-anchor="middle" fill="#94a3b8" font-size="7.5">অপারেটরের</text>
-      <text x="505" y="111" text-anchor="middle" fill="#94a3b8" font-size="7.5">bell প্যানেল</text>
+      <text x="505" y="99" text-anchor="middle" fill="#94a3b8" font-size="8">অপারেটরের</text>
+      <text x="505" y="111" text-anchor="middle" fill="#94a3b8" font-size="8">bell প্যানেল</text>
       <line x1="135" y1="95" x2="173" y2="95" stroke="#5eead4" stroke-width="2" marker-end="url(#arrowC6)"/>
       <line x1="285" y1="95" x2="323" y2="95" stroke="#5eead4" stroke-width="2" marker-end="url(#arrowC6)"/>
       <line x1="425" y1="95" x2="463" y2="95" stroke="#5eead4" stroke-width="2" marker-end="url(#arrowC6)"/>
@@ -168,33 +168,33 @@ with ForceImportOperation(
       <marker id="arrowX7" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#f87171"/></marker></defs>
       <rect x="15" y="20" width="130" height="54" rx="9" fill="rgba(248,113,113,0.10)" stroke="#f87171" stroke-width="1.5"/>
       <text x="80" y="42" text-anchor="middle" fill="#f87171" font-size="9.5" font-weight="700">① অডিট আগে</text>
-      <text x="80" y="56" text-anchor="middle" fill="#94a3b8" font-size="7.5">সাক্ষ্য-সারি লেখো</text>
-      <text x="80" y="67" text-anchor="middle" fill="#94a3b8" font-size="7.5">atomic-এর বাইরে</text>
+      <text x="80" y="56" text-anchor="middle" fill="#94a3b8" font-size="8">সাক্ষ্য-সারি লেখো</text>
+      <text x="80" y="67" text-anchor="middle" fill="#94a3b8" font-size="8">atomic-এর বাইরে</text>
       <rect x="175" y="20" width="130" height="54" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="240" y="42" text-anchor="middle" fill="#5eead4" font-size="9.5" font-weight="700">② atomic + লক</text>
-      <text x="240" y="56" text-anchor="middle" fill="#94a3b8" font-size="7.5">skip_locked দিয়ে পিতা-সারি</text>
-      <text x="240" y="67" text-anchor="middle" fill="#94a3b8" font-size="7.5">দলিলে হাত</text>
+      <text x="240" y="56" text-anchor="middle" fill="#94a3b8" font-size="8">skip_locked দিয়ে পিতা-সারি</text>
+      <text x="240" y="67" text-anchor="middle" fill="#94a3b8" font-size="8">দলিলে হাত</text>
       <rect x="335" y="20" width="100" height="54" rx="9" fill="rgba(100,116,139,0.12)" stroke="#94a3b8" stroke-width="1.5"/>
       <text x="385" y="42" text-anchor="middle" fill="#cbd5e1" font-size="9.5" font-weight="600">③ মিউটেশন</text>
-      <text x="385" y="56" text-anchor="middle" fill="#94a3b8" font-size="7.5">ডোমেইন-বডি</text>
-      <text x="385" y="67" text-anchor="middle" fill="#94a3b8" font-size="7.5">(dry_run হলে স্কিপ)</text>
+      <text x="385" y="56" text-anchor="middle" fill="#94a3b8" font-size="8">ডোমেইন-বডি</text>
+      <text x="385" y="67" text-anchor="middle" fill="#94a3b8" font-size="8">(dry_run হলে স্কিপ)</text>
       <rect x="465" y="20" width="85" height="54" rx="9" fill="rgba(52,211,153,0.12)" stroke="#34d399" stroke-width="1.5"/>
       <text x="507" y="42" text-anchor="middle" fill="#6ee7b7" font-size="9.5" font-weight="700">✓ সাফল্য</text>
-      <text x="507" y="56" text-anchor="middle" fill="#94a3b8" font-size="7.5">success=True</text>
-      <text x="507" y="67" text-anchor="middle" fill="#94a3b8" font-size="7.5">+ extras</text>
+      <text x="507" y="56" text-anchor="middle" fill="#94a3b8" font-size="8">success=True</text>
+      <text x="507" y="67" text-anchor="middle" fill="#94a3b8" font-size="8">+ extras</text>
       <line x1="145" y1="47" x2="173" y2="47" stroke="#5eead4" stroke-width="1.8" marker-end="url(#arrowA7)"/>
       <line x1="305" y1="47" x2="333" y2="47" stroke="#5eead4" stroke-width="1.8" marker-end="url(#arrowA7)"/>
       <line x1="435" y1="47" x2="463" y2="47" stroke="#5eead4" stroke-width="1.8" marker-end="url(#arrowA7)"/>
       <rect x="175" y="130" width="180" height="52" rx="9" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="265" y="152" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">None পেলাম — এখন?</text>
-      <text x="265" y="166" text-anchor="middle" fill="#94a3b8" font-size="7.5">.exists() দিয়ে বিচ্ছেদ</text>
+      <text x="265" y="166" text-anchor="middle" fill="#94a3b8" font-size="8">.exists() দিয়ে বিচ্ছেদ</text>
       <line x1="240" y1="74" x2="255" y2="128" stroke="#fbbf24" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#arrowA7)"/>
       <rect x="15" y="215" width="200" height="44" rx="9" fill="rgba(248,113,113,0.08)" stroke="#f87171" stroke-width="1.3"/>
       <text x="115" y="233" text-anchor="middle" fill="#f87171" font-size="8.5" font-weight="600">সারি আছে → লকড → 409</text>
-      <text x="115" y="247" text-anchor="middle" fill="#94a3b8" font-size="7.5">ForceImportInProgressError</text>
+      <text x="115" y="247" text-anchor="middle" fill="#94a3b8" font-size="8">ForceImportInProgressError</text>
       <rect x="345" y="215" width="200" height="44" rx="9" fill="rgba(100,116,139,0.10)" stroke="#94a3b8" stroke-width="1.3"/>
       <text x="445" y="233" text-anchor="middle" fill="#cbd5e1" font-size="8.5" font-weight="600">সারি নেই → অনুপস্থিত → 404</text>
-      <text x="445" y="247" text-anchor="middle" fill="#94a3b8" font-size="7.5">ValueError — "not found"</text>
+      <text x="445" y="247" text-anchor="middle" fill="#94a3b8" font-size="8">ValueError — "not found"</text>
       <line x1="220" y1="180" x2="150" y2="213" stroke="#f87171" stroke-width="1.4" marker-end="url(#arrowX7)"/>
       <line x1="310" y1="180" x2="380" y2="213" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#arrowA7)"/>
       <text x="280" y="205" text-anchor="middle" fill="#64748b" font-size="8.5">একই None — দুই রোগ, দুই ওষুধ</text>

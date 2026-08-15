@@ -119,33 +119,33 @@ InboxView            ১:১ কথা+SSE-ব্যাজ (ADR-0026) → দর
       <text x="280" y="36" text-anchor="middle" fill="#f9a8d4" font-size="10" font-weight="700">📋 মহল্লা-ভিত্তিক নিবন্ধ — মোট ৪২ পর্দা</text>
       <rect x="35" y="52" width="150" height="56" rx="9" fill="rgba(45,212,191,0.08)" stroke="#2dd4bf" stroke-width="1.3"/>
       <text x="110" y="72" text-anchor="middle" fill="#5eead4" font-size="8.5" font-weight="700">admin — ২১</text>
-      <text x="110" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">সবচেয়ে বড় মহল্লা</text>
-      <text x="110" y="99" text-anchor="middle" fill="#64748b" font-size="6.5">users·clients·jobs·nav·ops</text>
+      <text x="110" y="86" text-anchor="middle" fill="#94a3b8" font-size="8">সবচেয়ে বড় মহল্লা</text>
+      <text x="110" y="99" text-anchor="middle" fill="#64748b" font-size="8">users·clients·jobs·nav·ops</text>
       <rect x="200" y="52" width="150" height="56" rx="9" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.3"/>
       <text x="275" y="72" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">data-processing — ৬</text>
-      <text x="275" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">সাই-এর কর্মক্ষেত্র</text>
-      <text x="275" y="99" text-anchor="middle" fill="#64748b" font-size="6.5">ড্যাশবোর্ড·জেন·ইতিহাস·ইনভেন্ট</text>
+      <text x="275" y="86" text-anchor="middle" fill="#94a3b8" font-size="8">সাই-এর কর্মক্ষেত্র</text>
+      <text x="275" y="99" text-anchor="middle" fill="#64748b" font-size="8">ড্যাশবোর্ড·জেন·ইতিহাস·ইনভেন্ট</text>
       <rect x="365" y="52" width="150" height="56" rx="9" fill="rgba(52,211,153,0.08)" stroke="#34d399" stroke-width="1.3"/>
       <text x="440" y="72" text-anchor="middle" fill="#6ee7b7" font-size="8.5" font-weight="700">timesheets — ৪</text>
-      <text x="440" y="86" text-anchor="middle" fill="#94a3b8" font-size="7">পিটারের পাইপলাইন-মুখ</text>
-      <text x="440" y="99" text-anchor="middle" fill="#64748b" font-size="6.5">আপলোড→ড্যাশ→রিপোর্ট→সারি</text>
+      <text x="440" y="86" text-anchor="middle" fill="#94a3b8" font-size="8">পিটারের পাইপলাইন-মুখ</text>
+      <text x="440" y="99" text-anchor="middle" fill="#64748b" font-size="8">আপলোড→ড্যাশ→রিপোর্ট→সারি</text>
       <rect x="35" y="122" width="150" height="56" rx="9" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1.3"/>
       <text x="110" y="142" text-anchor="middle" fill="#fcd34d" font-size="8.5" font-weight="700">invoices — ৩</text>
-      <text x="110" y="156" text-anchor="middle" fill="#94a3b8" font-size="7">রিভিউ+ব্যাচ+মিন-চেক</text>
-      <text x="110" y="169" text-anchor="middle" fill="#64748b" font-size="6.5">ভিকির কর্মক্ষেত্র</text>
+      <text x="110" y="156" text-anchor="middle" fill="#94a3b8" font-size="8">রিভিউ+ব্যাচ+মিন-চেক</text>
+      <text x="110" y="169" text-anchor="middle" fill="#64748b" font-size="8">ভিকির কর্মক্ষেত্র</text>
       <rect x="200" y="122" width="150" height="56" rx="9" fill="rgba(248,113,113,0.07)" stroke="#f87171" stroke-width="1.3"/>
       <text x="275" y="142" text-anchor="middle" fill="#f87171" font-size="8.5" font-weight="700">auth+account — ৪</text>
-      <text x="275" y="156" text-anchor="middle" fill="#94a3b8" font-size="7">পরিচয়ের মহল্লা</text>
-      <text x="275" y="169" text-anchor="middle" fill="#64748b" font-size="6.5">লগইন·রেজি·প্রোফাইল·সেটিংস</text>
+      <text x="275" y="156" text-anchor="middle" fill="#94a3b8" font-size="8">পরিচয়ের মহল্লা</text>
+      <text x="275" y="169" text-anchor="middle" fill="#64748b" font-size="8">লগইন·রেজি·প্রোফাইল·সেটিংস</text>
       <rect x="365" y="122" width="150" height="56" rx="9" fill="rgba(100,116,139,0.10)" stroke="#94a3b8" stroke-width="1.3"/>
       <text x="440" y="142" text-anchor="middle" fill="#cbd5e1" font-size="8.5" font-weight="700">বাকি — ৪</text>
-      <text x="440" y="156" text-anchor="middle" fill="#94a3b8" font-size="7">payment·billing·credits·messaging</text>
-      <text x="440" y="169" text-anchor="middle" fill="#64748b" font-size="6.5">প্রতি মহল্লায় ১-২টি করে</text>
+      <text x="440" y="156" text-anchor="middle" fill="#94a3b8" font-size="8">payment·billing·credits·messaging</text>
+      <text x="440" y="169" text-anchor="middle" fill="#64748b" font-size="8">প্রতি মহল্লায় ১-২টি করে</text>
       <rect x="35" y="196" width="480" height="76" rx="10" fill="rgba(244,114,182,0.05)" stroke="#f472b6" stroke-width="1.2"/>
       <text x="275" y="217" text-anchor="middle" fill="#f9a8d4" font-size="8.5" font-weight="700">🔍 reconcile-বিধান</text>
-      <text x="275" y="234" text-anchor="middle" fill="#94a3b8" font-size="7.5">ম্যানিফেস্টে আছে + নিবন্ধে নেই = ডক-ঋণ · নিবন্ধে আছে + ম্যানিফেস্টে নেই = ভুত-দরজা</text>
-      <text x="275" y="250" text-anchor="middle" fill="#94a3b8" font-size="7.5">নতুন পর্দার একই PR-এ: ম্যানিফেস্ট-সারি + নিবন্ধ-সারি + রেজিস্ট্রি-key (দরজা ২০)</text>
-      <text x="275" y="266" text-anchor="middle" fill="#64748b" font-size="7">কপি-দোকান নয়: আগে এই তালিকায় বিদ্যমান-পর্দার ট্যাব/মোডাল মেলাও</text>
+      <text x="275" y="234" text-anchor="middle" fill="#94a3b8" font-size="8">ম্যানিফেস্টে আছে + নিবন্ধে নেই = ডক-ঋণ · নিবন্ধে আছে + ম্যানিফেস্টে নেই = ভুত-দরজা</text>
+      <text x="275" y="250" text-anchor="middle" fill="#94a3b8" font-size="8">নতুন পর্দার একই PR-এ: ম্যানিফেস্ট-সারি + নিবন্ধ-সারি + রেজিস্ট্রি-key (দরজা ২০)</text>
+      <text x="275" y="266" text-anchor="middle" fill="#64748b" font-size="8">কপি-দোকান নয়: আগে এই তালিকায় বিদ্যমান-পর্দার ট্যাব/মোডাল মেলাও</text>
       <text x="280" y="283" text-anchor="middle" fill="#64748b" font-size="8">৪২ দরজার নাম, ৪২টি গল্পের ঠিকানা — নিবন্ধই বইয়ের সূচি-পত্র</text>
     </svg>
     <div class="diag-cap">এগারো মহল্লায় বিয়াল্লিশ প্রকাশ্য দরজা — প্রতিটির নাম, কাজ, আর গল্পের দরজা-নম্বর এক খাতায়।</div>

@@ -77,7 +77,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .secret-box{background:linear-gradient(135deg,rgba(251,191,36,.08),rgba(61,214,196,.05));border:1px solid var(--amber-bright);border-radius:16px;padding:1rem;margin:1rem 0;text-align:center}
 .story-text .secret-box .label{font-size:0.75rem;color:var(--amber-bright);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.25rem;font-weight:700}
 .story-text .secret-box .text{font-size:.92rem;font-weight:600;color:var(--ink)}
-.story-text .svg-diagram{width:100%;max-width:620px;margin:1.1rem auto;display:block;background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:12px;border:1px solid rgba(255,255,255,.08);padding:0;overflow:hidden}
+.story-text .svg-diagram{width:100%;max-width:940px;margin:1.1rem auto;display:block;background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:12px;border:1px solid rgba(255,255,255,.08);padding:0;overflow:hidden}
 .story-text .svg-caption{text-align:center;font-size:.8rem;color:var(--ink-mute);margin-top:-.5rem;margin-bottom:1rem;font-style:italic}
 .story-text .code-block{background:var(--code-bg);border:1px solid var(--code-border);border-radius:12px;padding:.9rem 1rem;margin:.9rem 0;font-family:'Courier New',monospace;font-size:0.875rem;color:var(--teal);overflow-x:auto;line-height:1.55;white-space:pre-wrap;overflow-wrap:break-word}
 .story-text .code-block pre{margin:0;background:transparent!important;padding:0!important;white-space:pre-wrap;overflow-wrap:break-word}

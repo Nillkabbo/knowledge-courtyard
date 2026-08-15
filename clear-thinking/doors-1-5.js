@@ -211,23 +211,23 @@ doors.push({
   <!-- VALID column -->
   <text x="90" y="48" text-anchor="middle" fill="#4ade80" font-size="9" font-weight="700">VALID</text>
   <rect x="25" y="55" width="130" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="90" y="73" text-anchor="middle" fill="#7dd3fc" font-size="7.5">P1: All Muslims are human</text>
+  <text x="90" y="73" text-anchor="middle" fill="#7dd3fc" font-size="8">P1: All Muslims are human</text>
   <rect x="25" y="90" width="130" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="90" y="108" text-anchor="middle" fill="#7dd3fc" font-size="7.5">P2: I am Muslim</text>
+  <text x="90" y="108" text-anchor="middle" fill="#7dd3fc" font-size="8">P2: I am Muslim</text>
   <line x1="90" y1="123" x2="90" y2="138" stroke="#4ade80" stroke-width="2"/>
   <polygon points="85,135 95,135 90,143" fill="#4ade80"/>
   <rect x="25" y="145" width="130" height="28" rx="5" fill="#052e16" stroke="#22c55e" stroke-width="2"/>
-  <text x="90" y="163" text-anchor="middle" fill="#4ade80" font-size="7.5" font-weight="700">C: I am human ✓</text>
+  <text x="90" y="163" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">C: I am human ✓</text>
   <!-- INVALID column -->
   <text x="270" y="48" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="700">INVALID</text>
   <rect x="205" y="55" width="130" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="270" y="73" text-anchor="middle" fill="#7dd3fc" font-size="7.5">P1: All Muslims are human</text>
+  <text x="270" y="73" text-anchor="middle" fill="#7dd3fc" font-size="8">P1: All Muslims are human</text>
   <rect x="205" y="90" width="130" height="28" rx="5" fill="#1e3a5f" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="270" y="108" text-anchor="middle" fill="#7dd3fc" font-size="7.5">P2: I am human</text>
+  <text x="270" y="108" text-anchor="middle" fill="#7dd3fc" font-size="8">P2: I am human</text>
   <line x1="270" y1="123" x2="270" y2="138" stroke="#f87171" stroke-width="2" stroke-dasharray="4,3"/>
   <polygon points="265,135 275,135 270,143" fill="#f87171"/>
   <rect x="205" y="145" width="130" height="28" rx="5" fill="#450a0a" stroke="#f87171" stroke-width="2"/>
-  <text x="270" y="163" text-anchor="middle" fill="#fca5a5" font-size="7.5" font-weight="700">C: I am Muslim ✗</text>
+  <text x="270" y="163" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="700">C: I am Muslim ✗</text>
   <!-- SOUNDNESS box -->
   <rect x="380" y="50" width="170" height="125" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="465" y="70" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">Soundness Test</text>

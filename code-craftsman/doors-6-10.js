@@ -100,32 +100,32 @@ task.status = TaskStatus.PENDING  # type-safe</div>
     <!-- Long Method -->
     <rect x="20" y="35" width="250" height="50" rx="6" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1.5"/>
     <text x="35" y="53" fill="#ef4444" font-size="10" font-weight="bold">👃 Long Method</text>
-    <text x="35" y="68" fill="#9a93b8" font-size="8">লক্ষণ: ২০+ লাইন, একাধিক কাজ</text>
-    <text x="35" y="80" fill="#a5b4fc" font-size="8">নিরাময়: Extract Method (Door 7)</text>
+    <text x="35" y="68" fill="#9a93b8" font-size="9">লক্ষণ: ২০+ লাইন, একাধিক কাজ</text>
+    <text x="35" y="80" fill="#a5b4fc" font-size="9">নিরাময়: Extract Method (Door 7)</text>
     <!-- Large Class -->
     <rect x="290" y="35" width="250" height="50" rx="6" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1.5"/>
     <text x="305" y="53" fill="#ef4444" font-size="10" font-weight="bold">👃 Large Class (God Class)</text>
-    <text x="305" y="68" fill="#9a93b8" font-size="8">লক্ষণ: ৫০+ method, সব এক জায়গায়</text>
-    <text x="305" y="80" fill="#a5b4fc" font-size="8">নিরাময়: Extract Class</text>
+    <text x="305" y="68" fill="#9a93b8" font-size="9">লক্ষণ: ৫০+ method, সব এক জায়গায়</text>
+    <text x="305" y="80" fill="#a5b4fc" font-size="9">নিরাময়: Extract Class</text>
     <!-- Feature Envy -->
     <rect x="20" y="95" width="250" height="50" rx="6" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1.5"/>
     <text x="35" y="113" fill="#ef4444" font-size="10" font-weight="bold">👃 Feature Envy</text>
-    <text x="35" y="128" fill="#9a93b8" font-size="8">লক্ষণ: অন্য class-এর data বেশি ব্যবহার</text>
-    <text x="35" y="140" fill="#a5b4fc" font-size="8">নিরাময়: Move Method</text>
+    <text x="35" y="128" fill="#9a93b8" font-size="9">লক্ষণ: অন্য class-এর data বেশি ব্যবহার</text>
+    <text x="35" y="140" fill="#a5b4fc" font-size="9">নিরাময়: Move Method</text>
     <!-- Primitive Obsession -->
     <rect x="290" y="95" width="250" height="50" rx="6" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1.5"/>
     <text x="305" y="113" fill="#ef4444" font-size="10" font-weight="bold">👃 Primitive Obsession</text>
-    <text x="305" y="128" fill="#9a93b8" font-size="8">লক্ষণ: string/int দিয়ে সব, কোনো object নয়</text>
-    <text x="305" y="140" fill="#a5b4fc" font-size="8">নিরাময়: Replace with Object/Enum</text>
+    <text x="305" y="128" fill="#9a93b8" font-size="9">লক্ষণ: string/int দিয়ে সব, কোনো object নয়</text>
+    <text x="305" y="140" fill="#a5b4fc" font-size="9">নিরাময়: Replace with Object/Enum</text>
     <!-- Other smells -->
     <rect x="20" y="160" width="520" height="50" rx="6" fill="rgba(99,102,241,0.04)" stroke="rgba(99,102,241,0.15)" stroke-width="1"/>
     <text x="30" y="178" fill="#a5b4fc" font-size="9" font-weight="bold">আরও ১৮টি smell (Fowler Ch.6):</text>
-    <text x="30" y="193" fill="#9a93b8" font-size="8">Long Parameter List · Divergent Change · Shotgun Surgery</text>
-    <text x="30" y="205" fill="#9a93b8" font-size="8">Data Clumps · Speculative Generality · Temporary Field · Message Chains</text>
+    <text x="30" y="193" fill="#9a93b8" font-size="9">Long Parameter List · Divergent Change · Shotgun Surgery</text>
+    <text x="30" y="205" fill="#9a93b8" font-size="9">Data Clumps · Speculative Generality · Temporary Field · Message Chains</text>
     <!-- Rule -->
     <rect x="20" y="220" width="680" height="40" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
     <text x="360" y="238" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Fowler: "Smells are heuristic, not rules."</text>
-    <text x="360" y="252" text-anchor="middle" fill="#9a93b8" font-size="8">অনুভব করো → নাম দাও → নিরাময় প্রয়োগ করো</text>
+    <text x="360" y="252" text-anchor="middle" fill="#9a93b8" font-size="9">অনুভব করো → নাম দাও → নিরাময় প্রয়োগ করো</text>
   </svg>
   <div class="diag-cap">Code smell = রোগের লক্ষণ। ৪ প্রধান: Long Method, Large Class, Feature Envy, Primitive Obsession। প্রতিটার নিরাময় আছে।</div>
 </div>
@@ -248,13 +248,13 @@ def get_overdue_penalty(created_at, deadline):
     <rect x="20" y="28" width="180" height="190" rx="8" fill="rgba(239,68,68,0.04)" stroke="#ef4444" stroke-width="1.5"/>
     <text x="110" y="45" text-anchor="middle" fill="#ef4444" font-size="9" font-family="monospace">calculate_priority()</text>
     <rect x="30" y="55" width="160" height="35" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
-    <text x="110" y="76" text-anchor="middle" fill="#9a93b8" font-size="8">overdue calc (10 lines)</text>
+    <text x="110" y="76" text-anchor="middle" fill="#9a93b8" font-size="9">overdue calc (10 lines)</text>
     <rect x="30" y="95" width="160" height="35" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
-    <text x="110" y="116" text-anchor="middle" fill="#9a93b8" font-size="8">importance calc (8 lines)</text>
+    <text x="110" y="116" text-anchor="middle" fill="#9a93b8" font-size="9">importance calc (8 lines)</text>
     <rect x="30" y="135" width="160" height="35" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
-    <text x="110" y="156" text-anchor="middle" fill="#9a93b8" font-size="8">weight calc (8 lines)</text>
+    <text x="110" y="156" text-anchor="middle" fill="#9a93b8" font-size="9">weight calc (8 lines)</text>
     <rect x="30" y="175" width="160" height="30" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
-    <text x="110" y="194" text-anchor="middle" fill="#9a93b8" font-size="8">combine (4 lines)</text>
+    <text x="110" y="194" text-anchor="middle" fill="#9a93b8" font-size="9">combine (4 lines)</text>
     <!-- Arrows -->
     <line x1="205" y1="72" x2="255" y2="50" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrE)"/>
     <line x1="205" y1="112" x2="255" y2="95" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrE)"/>
@@ -264,17 +264,17 @@ def get_overdue_penalty(created_at, deadline):
     <rect x="260" y="28" width="180" height="35" rx="6" fill="rgba(99,102,241,0.1)" stroke="#6366f1" stroke-width="2"/>
     <text x="350" y="50" text-anchor="middle" fill="#a5b4fc" font-size="9" font-family="monospace" font-weight="bold">calculate_priority() — 5 lines</text>
     <rect x="260" y="73" width="180" height="25" rx="5" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/>
-    <text x="350" y="89" text-anchor="middle" fill="#52c41a" font-size="8" font-family="monospace">get_overdue_penalty()</text>
+    <text x="350" y="89" text-anchor="middle" fill="#52c41a" font-size="9" font-family="monospace">get_overdue_penalty()</text>
     <rect x="260" y="103" width="180" height="25" rx="5" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/>
-    <text x="350" y="119" text-anchor="middle" fill="#52c41a" font-size="8" font-family="monospace">get_user_importance()</text>
+    <text x="350" y="119" text-anchor="middle" fill="#52c41a" font-size="9" font-family="monospace">get_user_importance()</text>
     <rect x="260" y="133" width="180" height="25" rx="5" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/>
-    <text x="350" y="149" text-anchor="middle" fill="#52c41a" font-size="8" font-family="monospace">get_task_weight()</text>
+    <text x="350" y="149" text-anchor="middle" fill="#52c41a" font-size="9" font-family="monospace">get_task_weight()</text>
     <text x="350" y="180" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Names tell the story</text>
-    <text x="350" y="195" text-anchor="middle" fill="#9a93b8" font-size="8">পড়লে ইংরেজির মতো</text>
-    <text x="350" y="210" text-anchor="middle" fill="#9a93b8" font-size="8">bug খুঁজতে সেকেন্ড</text>
+    <text x="350" y="195" text-anchor="middle" fill="#9a93b8" font-size="9">পড়লে ইংরেজির মতো</text>
+    <text x="350" y="210" text-anchor="middle" fill="#9a93b8" font-size="9">bug খুঁজতে সেকেন্ড</text>
     <!-- Rename note -->
     <rect x="455" y="28" width="90" height="80" rx="6" fill="rgba(99,102,241,0.04)" stroke="rgba(99,102,241,0.15)" stroke-width="1"/>
-    <text x="500" y="45" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Rename</text>
+    <text x="500" y="45" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Rename</text>
     <text x="500" y="60" text-anchor="middle" fill="#9a93b8" font-size="10">proc_data →</text>
     <text x="500" y="72" text-anchor="middle" fill="#52c41a" font-size="10">process_batch</text>
     <text x="500" y="88" text-anchor="middle" fill="#9a93b8" font-size="10">check →</text>
@@ -414,7 +414,7 @@ service.register('teams', TeamsNotification())
     <!-- Before: if chain -->
     <text x="100" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ Before: if/elif chain</text>
     <rect x="20" y="28" width="180" height="160" rx="8" fill="rgba(239,68,68,0.04)" stroke="#ef4444" stroke-width="1.5"/>
-    <text x="110" y="45" text-anchor="middle" fill="#ef4444" font-size="8" font-family="monospace">send_notification()</text>
+    <text x="110" y="45" text-anchor="middle" fill="#ef4444" font-size="9" font-family="monospace">send_notification()</text>
     <rect x="30" y="55" width="160" height="20" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
     <text x="110" y="69" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">if email: smtp.send()</text>
     <rect x="30" y="80" width="160" height="20" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
@@ -423,11 +423,11 @@ service.register('teams', TeamsNotification())
     <text x="110" y="119" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">elif slack: slack.post()</text>
     <rect x="30" y="130" width="160" height="20" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
     <text x="110" y="144" text-anchor="middle" fill="#9a93b8" font-size="10" font-family="monospace">elif push: fcm.send()</text>
-    <text x="110" y="165" text-anchor="middle" fill="#ef4444" font-size="8">৫ম? ফাংশন খোলো!</text>
+    <text x="110" y="165" text-anchor="middle" fill="#ef4444" font-size="9">৫ম? ফাংশন খোলো!</text>
     <text x="110" y="178" text-anchor="middle" fill="#9a93b8" font-size="10">Closed for extension ❌</text>
     <!-- Arrow -->
     <line x1="205" y1="100" x2="255" y2="100" stroke="#a5b4fc" stroke-width="2"/>
-    <text x="230" y="93" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">GoF</text>
+    <text x="230" y="93" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">GoF</text>
     <!-- After: Strategy -->
     <text x="390" y="20" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">✅ After: Strategy Pattern</text>
     <rect x="260" y="28" width="280" height="35" rx="6" fill="rgba(99,102,241,0.1)" stroke="#6366f1" stroke-width="2"/>
@@ -435,7 +435,7 @@ service.register('teams', TeamsNotification())
     <text x="400" y="75" text-anchor="middle" fill="#9a93b8" font-size="10">↓ delegates to ↓</text>
     <!-- Interface -->
     <rect x="320" y="85" width="160" height="25" rx="5" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1.5"/>
-    <text x="400" y="102" text-anchor="middle" fill="#a78bfa" font-size="8" font-family="monospace">NotificationStrategy (ABC)</text>
+    <text x="400" y="102" text-anchor="middle" fill="#a78bfa" font-size="9" font-family="monospace">NotificationStrategy (ABC)</text>
     <text x="400" y="125" text-anchor="middle" fill="#9a93b8" font-size="10">↓ implements ↓</text>
     <!-- Strategy classes -->
     <rect x="260" y="135" width="60" height="30" rx="5" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/>
@@ -448,13 +448,13 @@ service.register('teams', TeamsNotification())
     <text x="485" y="154" text-anchor="middle" fill="#52c41a" font-size="10">Push</text>
     <rect x="390" y="135" width="70" height="30" rx="5" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2"/>
     <text x="525" y="154" text-anchor="middle" fill="#fbbf24" font-size="10">+Teams</text>
-    <text x="400" y="190" text-anchor="middle" fill="#a5b4fc" font-size="8">নতুন channel? নতুন class।</text>
-    <text x="400" y="205" text-anchor="middle" fill="#a5b4fc" font-size="8">if/elif ছোঁয়ো না!</text>
-    <text x="400" y="222" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Open for extension ✅</text>
-    <text x="400" y="237" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Closed for modification ✅</text>
+    <text x="400" y="190" text-anchor="middle" fill="#a5b4fc" font-size="9">নতুন channel? নতুন class।</text>
+    <text x="400" y="205" text-anchor="middle" fill="#a5b4fc" font-size="9">if/elif ছোঁয়ো না!</text>
+    <text x="400" y="222" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">Open for extension ✅</text>
+    <text x="400" y="237" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">Closed for modification ✅</text>
     <!-- Bottom -->
     <rect x="20" y="250" width="530" height="22" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="360" y="265" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">GoF: "Encapsulate what varies. Favor composition."</text>
+    <text x="360" y="265" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">GoF: "Encapsulate what varies. Favor composition."</text>
   </svg>
   <div class="diag-cap">if/elif চেইন → Strategy class পরিবার। নতুন channel = নতুন class, কোনো পুরোনো কোড স্পর্শ নয়। Open/Closed Principle।</div>
 </div>
@@ -576,7 +576,7 @@ task = TaskFactory.create('bug', 'Fix crash', user)
     <defs><marker id="arrO" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L4,3 L0,6" fill="#a5b4fc"/></marker></defs>
     <rect x="200" y="20" width="160" height="50" rx="8" fill="rgba(99,102,241,0.1)" stroke="#6366f1" stroke-width="2"/>
     <text x="360" y="42" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">Task (Subject)</text>
-    <text x="360" y="58" text-anchor="middle" fill="#9a93b8" font-size="8">complete() → notify()</text>
+    <text x="360" y="58" text-anchor="middle" fill="#9a93b8" font-size="9">complete() → notify()</text>
     <line x1="250" y1="70" x2="100" y2="120" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrO)"/>
     <line x1="280" y1="70" x2="280" y2="120" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrO)"/>
     <line x1="310" y1="70" x2="460" y2="120" stroke="#a5b4fc" stroke-width="1.5" marker-end="url(#arrO)"/>
@@ -594,8 +594,8 @@ task = TaskFactory.create('bug', 'Fix crash', user)
     <text x="460" y="158" text-anchor="middle" fill="#9a93b8" font-size="10">log_audit()</text>
     <rect x="20" y="180" width="680" height="55" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
     <text x="360" y="200" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Loose Coupling: Task doesn't know WHO receives</text>
-    <text x="360" y="215" text-anchor="middle" fill="#9a93b8" font-size="8">নতুন observer? add_observer() — Task class ছোঁয়ো না</text>
-    <text x="360" y="228" text-anchor="middle" fill="#9a93b8" font-size="8">এক observer crash → অন্যের ক্ষতি নেই</text>
+    <text x="360" y="215" text-anchor="middle" fill="#9a93b8" font-size="9">নতুন observer? add_observer() — Task class ছোঁয়ো না</text>
+    <text x="360" y="228" text-anchor="middle" fill="#9a93b8" font-size="9">এক observer crash → অন্যের ক্ষতি নেই</text>
   </svg>
   <div class="diag-cap">Observer: Task complete() → সব observer স্বয়ংক্রিয় জানে। Task কাউকে জানে না। Loose coupling।</div>
 </div>
@@ -694,22 +694,22 @@ def process_task(task):
   <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg">
     <rect x="30" y="20" width="660" height="55" rx="8" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="50" y="40" fill="#52c41a" font-size="10" font-weight="bold">Layer 1: Assertions</text>
-    <text x="50" y="56" fill="#9a93b8" font-size="8">verify YOUR assumptions — assert x &gt; 0</text>
-    <text x="50" y="68" fill="#9a93b8" font-size="8">internal function-এ — ভুল দ্রুত ধরা যায়</text>
+    <text x="50" y="56" fill="#9a93b8" font-size="9">verify YOUR assumptions — assert x &gt; 0</text>
+    <text x="50" y="68" fill="#9a93b8" font-size="9">internal function-এ — ভুল দ্রুত ধরা যায়</text>
     <text x="690" y="45" fill="#52c41a" font-size="9" font-family="monospace" text-anchor="end">assert x &gt; 0</text>
     <rect x="30" y="85" width="500" height="55" rx="8" fill="rgba(99,102,241,0.06)" stroke="#6366f1" stroke-width="1.5"/>
     <text x="50" y="105" fill="#a5b4fc" font-size="10" font-weight="bold">Layer 2: Input Validation</text>
-    <text x="50" y="121" fill="#9a93b8" font-size="8">never trust external data — validate title, priority</text>
-    <text x="50" y="133" fill="#9a93b8" font-size="8">public API-তে — বাইরের input সবসময় সন্দেহজনক</text>
+    <text x="50" y="121" fill="#9a93b8" font-size="9">never trust external data — validate title, priority</text>
+    <text x="50" y="133" fill="#9a93b8" font-size="9">public API-তে — বাইরের input সবসময় সন্দেহজনক</text>
     <text x="690" y="110" fill="#a5b4fc" font-size="9" font-family="monospace" text-anchor="end">if not title: raise</text>
     <rect x="30" y="150" width="500" height="55" rx="8" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="50" y="170" fill="#fbbf24" font-size="10" font-weight="bold">Layer 3: Guard Clauses</text>
-    <text x="50" y="186" fill="#9a93b8" font-size="8">bad cases first — return early, rest clean</text>
-    <text x="50" y="198" fill="#9a93b8" font-size="8">if task is None: return — মূল লজিক সরল</text>
+    <text x="50" y="186" fill="#9a93b8" font-size="9">bad cases first — return early, rest clean</text>
+    <text x="50" y="198" fill="#9a93b8" font-size="9">if task is None: return — মূল লজিক সরল</text>
     <text x="690" y="175" fill="#fbbf24" font-size="9" font-family="monospace" text-anchor="end">if None: return</text>
     <rect x="30" y="215" width="500" height="35" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
     <text x="360" y="232" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">McConnell: "Fail fast, fail clearly"</text>
-    <text x="360" y="244" text-anchor="middle" fill="#9a93b8" font-size="8">error যত দ্রুত ধরা — debug তত সহজ</text>
+    <text x="360" y="244" text-anchor="middle" fill="#9a93b8" font-size="9">error যত দ্রুত ধরা — debug তত সহজ</text>
   </svg>
   <div class="diag-cap">৩ স্তর: Assertion (internal), Validation (external), Guard clause (flow)। সব input সন্দেহ করো।</div>
 </div>

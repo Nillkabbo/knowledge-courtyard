@@ -98,33 +98,33 @@ def check_row_against_matrix(i, row, matrix):
     <!-- Before: nesting pyramid -->
     <text x="120" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ Deep Nesting (5 levels)</text>
     <rect x="30" y="30" width="180" height="25" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
-    <text x="120" y="47" text-anchor="middle" fill="#9a93b8" font-size="8" font-family="monospace">for task in tasks:</text>
+    <text x="120" y="47" text-anchor="middle" fill="#9a93b8" font-size="9" font-family="monospace">for task in tasks:</text>
     <rect x="45" y="60" width="165" height="25" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
-    <text x="127" y="77" text-anchor="middle" fill="#9a93b8" font-size="8" font-family="monospace">if assignee == user:</text>
+    <text x="127" y="77" text-anchor="middle" fill="#9a93b8" font-size="9" font-family="monospace">if assignee == user:</text>
     <rect x="60" y="90" width="150" height="25" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
-    <text x="135" y="107" text-anchor="middle" fill="#9a93b8" font-size="8" font-family="monospace">if status == 'pending':</text>
+    <text x="135" y="107" text-anchor="middle" fill="#9a93b8" font-size="9" font-family="monospace">if status == 'pending':</text>
     <rect x="75" y="120" width="135" height="25" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
-    <text x="142" y="137" text-anchor="middle" fill="#9a93b8" font-size="8" font-family="monospace">if auto_assign:</text>
+    <text x="142" y="137" text-anchor="middle" fill="#9a93b8" font-size="9" font-family="monospace">if auto_assign:</text>
     <rect x="90" y="150" width="120" height="25" rx="4" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="0.5"/>
-    <text x="150" y="167" text-anchor="middle" fill="#9a93b8" font-size="8" font-family="monospace">if priority &gt; 3:</text>
-    <text x="120" y="195" text-anchor="middle" fill="#ef4444" font-size="8">৫ স্তর — কেউ বোঝে না</text>
+    <text x="150" y="167" text-anchor="middle" fill="#9a93b8" font-size="9" font-family="monospace">if priority &gt; 3:</text>
+    <text x="120" y="195" text-anchor="middle" fill="#ef4444" font-size="9">৫ স্তর — কেউ বোঝে না</text>
     <!-- Arrow -->
     <line x1="220" y1="100" x2="270" y2="100" stroke="#a5b4fc" stroke-width="2"/>
-    <text x="245" y="93" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">fix</text>
+    <text x="245" y="93" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">fix</text>
     <!-- After: guard clauses -->
     <text x="410" y="20" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">✅ Guard Clauses (flat)</text>
     <rect x="290" y="30" width="240" height="22" rx="4" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1"/>
-    <text x="410" y="45" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="monospace">for task in tasks:</text>
+    <text x="410" y="45" text-anchor="middle" fill="#a5b4fc" font-size="9" font-family="monospace">for task in tasks:</text>
     <rect x="305" y="57" width="220" height="22" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/>
-    <text x="415" y="72" text-anchor="middle" fill="#52c41a" font-size="8" font-family="monospace">if not assignee: continue</text>
+    <text x="415" y="72" text-anchor="middle" fill="#52c41a" font-size="9" font-family="monospace">if not assignee: continue</text>
     <rect x="305" y="84" width="220" height="22" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/>
-    <text x="415" y="99" text-anchor="middle" fill="#52c41a" font-size="8" font-family="monospace">if not pending: continue</text>
+    <text x="415" y="99" text-anchor="middle" fill="#52c41a" font-size="9" font-family="monospace">if not pending: continue</text>
     <rect x="305" y="111" width="220" height="22" rx="4" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/>
-    <text x="415" y="126" text-anchor="middle" fill="#52c41a" font-size="8" font-family="monospace">if not auto: continue</text>
+    <text x="415" y="126" text-anchor="middle" fill="#52c41a" font-size="9" font-family="monospace">if not auto: continue</text>
     <rect x="290" y="138" width="240" height="22" rx="4" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1.5"/>
-    <text x="410" y="153" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="monospace" font-weight="bold">if is_urgent: assign(task)</text>
-    <text x="410" y="175" text-anchor="middle" fill="#a5b4fc" font-size="8">১ স্তর — সবাই বোঝে</text>
-    <text x="410" y="190" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Bug? সরাসরি দেখা যায়</text>
+    <text x="410" y="153" text-anchor="middle" fill="#a5b4fc" font-size="9" font-family="monospace" font-weight="bold">if is_urgent: assign(task)</text>
+    <text x="410" y="175" text-anchor="middle" fill="#a5b4fc" font-size="9">১ স্তর — সবাই বোঝে</text>
+    <text x="410" y="190" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">Bug? সরাসরি দেখা যায়</text>
     <!-- Bottom -->
     <rect x="20" y="210" width="680" height="30" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
     <text x="360" y="228" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">McConnell: "Max 3 levels. Use guard clauses, named booleans."</text>
@@ -254,28 +254,28 @@ class TaskList:
     <text x="120" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ Translation Layer</text>
     <rect x="30" y="30" width="180" height="35" rx="6" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1.5"/>
     <text x="120" y="48" text-anchor="middle" fill="#ef4444" font-size="9" font-weight="bold">Business says:</text>
-    <text x="120" y="60" text-anchor="middle" fill="#9a93b8" font-size="8" font-family="monospace">"Complete this task"</text>
+    <text x="120" y="60" text-anchor="middle" fill="#9a93b8" font-size="9" font-family="monospace">"Complete this task"</text>
     <rect x="30" y="80" width="180" height="25" rx="5" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1"/>
-    <text x="120" y="97" text-anchor="middle" fill="#fbbf24" font-size="8">↓ translate ↓</text>
+    <text x="120" y="97" text-anchor="middle" fill="#fbbf24" font-size="9">↓ translate ↓</text>
     <rect x="30" y="115" width="180" height="35" rx="6" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1.5"/>
     <text x="120" y="133" text-anchor="middle" fill="#ef4444" font-size="9" font-weight="bold">Code says:</text>
-    <text x="120" y="145" text-anchor="middle" fill="#9a93b8" font-size="8" font-family="monospace">set_status_to_2(id)</text>
-    <text x="120" y="175" text-anchor="middle" fill="#ef4444" font-size="8">ভুল অনুবাদ = bug</text>
+    <text x="120" y="145" text-anchor="middle" fill="#9a93b8" font-size="9" font-family="monospace">set_status_to_2(id)</text>
+    <text x="120" y="175" text-anchor="middle" fill="#ef4444" font-size="9">ভুল অনুবাদ = bug</text>
     <text x="120" y="190" text-anchor="middle" fill="#9a93b8" font-size="10">EntityModel.field1 ← ??</text>
     <!-- Arrow -->
     <line x1="220" y1="90" x2="280" y2="90" stroke="#a5b4fc" stroke-width="2"/>
-    <text x="250" y="83" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">DDD</text>
+    <text x="250" y="83" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">DDD</text>
     <!-- After: one language -->
     <text x="410" y="20" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">✅ Ubiquitous Language</text>
     <rect x="300" y="30" width="220" height="35" rx="6" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1.5"/>
     <text x="410" y="48" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Both say:</text>
-    <text x="410" y="60" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="monospace">task.complete()</text>
+    <text x="410" y="60" text-anchor="middle" fill="#a5b4fc" font-size="9" font-family="monospace">task.complete()</text>
     <rect x="300" y="80" width="220" height="25" rx="5" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/>
-    <text x="410" y="97" text-anchor="middle" fill="#52c41a" font-size="8">= (no translation)</text>
+    <text x="410" y="97" text-anchor="middle" fill="#52c41a" font-size="9">= (no translation)</text>
     <rect x="300" y="115" width="220" height="35" rx="6" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1.5"/>
     <text x="410" y="133" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">Business reads code:</text>
-    <text x="410" y="145" text-anchor="middle" fill="#9a93b8" font-size="8">"Yes, that's what I meant!"</text>
-    <text x="410" y="175" text-anchor="middle" fill="#a5b4fc" font-size="8">এক ভাষা, এক অর্থ</text>
+    <text x="410" y="145" text-anchor="middle" fill="#9a93b8" font-size="9">"Yes, that's what I meant!"</text>
+    <text x="410" y="175" text-anchor="middle" fill="#a5b4fc" font-size="9">এক ভাষা, এক অর্থ</text>
     <text x="410" y="190" text-anchor="middle" fill="#52c41a" font-size="10" font-weight="bold">No bugs from mismatch</text>
     <!-- Bottom -->
     <rect x="20" y="205" width="680" height="25" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
@@ -427,8 +427,8 @@ class TaskManager:
     <!-- Red -->
     <circle cx="100" cy="120" r="50" fill="rgba(239,68,68,0.08)" stroke="#ef4444" stroke-width="2.5"/>
     <text x="100" y="115" text-anchor="middle" fill="#ef4444" font-size="14" font-weight="bold">🔴 RED</text>
-    <text x="100" y="132" text-anchor="middle" fill="#9a93b8" font-size="8">Write test</text>
-    <text x="100" y="144" text-anchor="middle" fill="#9a93b8" font-size="8">MUST fail</text>
+    <text x="100" y="132" text-anchor="middle" fill="#9a93b8" font-size="9">Write test</text>
+    <text x="100" y="144" text-anchor="middle" fill="#9a93b8" font-size="9">MUST fail</text>
     <text x="100" y="185" text-anchor="middle" fill="#ef4444" font-size="10">test_create()</text>
     <text x="100" y="197" text-anchor="middle" fill="#ef4444" font-size="10">→ FAIL (no code)</text>
     <!-- Arrow Red→Green -->
@@ -436,8 +436,8 @@ class TaskManager:
     <!-- Green -->
     <circle cx="280" cy="120" r="50" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="2.5"/>
     <text x="360" y="115" text-anchor="middle" fill="#52c41a" font-size="14" font-weight="bold">🟢 GREEN</text>
-    <text x="360" y="132" text-anchor="middle" fill="#9a93b8" font-size="8">Minimal code</text>
-    <text x="360" y="144" text-anchor="middle" fill="#9a93b8" font-size="8">MUST pass</text>
+    <text x="360" y="132" text-anchor="middle" fill="#9a93b8" font-size="9">Minimal code</text>
+    <text x="360" y="144" text-anchor="middle" fill="#9a93b8" font-size="9">MUST pass</text>
     <text x="360" y="185" text-anchor="middle" fill="#52c41a" font-size="10">create_task()</text>
     <text x="360" y="197" text-anchor="middle" fill="#52c41a" font-size="10">→ PASS ✅</text>
     <!-- Arrow Green→Refactor -->
@@ -445,13 +445,13 @@ class TaskManager:
     <!-- Refactor -->
     <circle cx="460" cy="120" r="50" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="2.5"/>
     <text x="460" y="115" text-anchor="middle" fill="#a5b4fc" font-size="14" font-weight="bold">♻️ REFACTOR</text>
-    <text x="460" y="132" text-anchor="middle" fill="#9a93b8" font-size="8">Clean up</text>
-    <text x="460" y="144" text-anchor="middle" fill="#9a93b8" font-size="8">Stay GREEN</text>
+    <text x="460" y="132" text-anchor="middle" fill="#9a93b8" font-size="9">Clean up</text>
+    <text x="460" y="144" text-anchor="middle" fill="#9a93b8" font-size="9">Stay GREEN</text>
     <text x="460" y="185" text-anchor="middle" fill="#a5b4fc" font-size="10">rename, extract</text>
     <text x="460" y="197" text-anchor="middle" fill="#a5b4fc" font-size="10">→ still PASS ✅</text>
     <!-- Loop arrow -->
     <path d="M 460 70 Q 280 20, 100 70" fill="none" stroke="#a5b4fc" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrR)"/>
-    <text x="360" y="35" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">REPEAT</text>
+    <text x="360" y="35" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">REPEAT</text>
     <!-- Bottom -->
     <rect x="20" y="215" width="680" height="25" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
     <text x="360" y="232" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Beck: "Test drives design. Easy to test = good API."</text>
@@ -555,28 +555,28 @@ assert manager.is_overdue(task) is True  # ← predictable!</div>
     <text x="120" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ Legacy: Hardcoded</text>
     <rect x="30" y="30" width="180" height="40" rx="6" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1.5"/>
     <text x="120" y="48" text-anchor="middle" fill="#ef4444" font-size="9" font-family="monospace">TaskManager</text>
-    <text x="120" y="62" text-anchor="middle" fill="#9a93b8" font-size="8" font-family="monospace">is_overdue(task)</text>
+    <text x="120" y="62" text-anchor="middle" fill="#9a93b8" font-size="9" font-family="monospace">is_overdue(task)</text>
     <rect x="60" y="85" width="120" height="30" rx="5" fill="rgba(239,68,68,0.04)" stroke="#ef4444" stroke-width="1"/>
-    <text x="120" y="104" text-anchor="middle" fill="#9a93b8" font-size="8" font-family="monospace">datetime.now()</text>
-    <text x="120" y="135" text-anchor="middle" fill="#ef4444" font-size="8">test অসম্ভব</text>
+    <text x="120" y="104" text-anchor="middle" fill="#9a93b8" font-size="9" font-family="monospace">datetime.now()</text>
+    <text x="120" y="135" text-anchor="middle" fill="#ef4444" font-size="9">test অসম্ভব</text>
     <line x1="220" y1="75" x2="270" y2="75" stroke="#a5b4fc" stroke-width="2"/>
-    <text x="245" y="68" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">seam</text>
+    <text x="245" y="68" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">seam</text>
     <text x="420" y="20" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">✅ Seam: Injected</text>
     <rect x="310" y="30" width="220" height="40" rx="6" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1.5"/>
     <text x="420" y="48" text-anchor="middle" fill="#a5b4fc" font-size="9" font-family="monospace">TaskManager(clock)</text>
-    <text x="420" y="62" text-anchor="middle" fill="#9a93b8" font-size="8" font-family="monospace">is_overdue(task)</text>
+    <text x="420" y="62" text-anchor="middle" fill="#9a93b8" font-size="9" font-family="monospace">is_overdue(task)</text>
     <text x="420" y="85" text-anchor="middle" fill="#9a93b8" font-size="10">↓ inject ↓</text>
     <rect x="320" y="95" width="90" height="30" rx="5" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="1"/>
-    <text x="365" y="114" text-anchor="middle" fill="#52c41a" font-size="8">SystemClock</text>
+    <text x="365" y="114" text-anchor="middle" fill="#52c41a" font-size="9">SystemClock</text>
     <rect x="420" y="95" width="90" height="30" rx="5" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1"/>
-    <text x="465" y="114" text-anchor="middle" fill="#a78bfa" font-size="8">FakeClock</text>
+    <text x="465" y="114" text-anchor="middle" fill="#a78bfa" font-size="9">FakeClock</text>
     <text x="365" y="140" text-anchor="middle" fill="#9a93b8" font-size="10">production</text>
     <text x="465" y="140" text-anchor="middle" fill="#9a93b8" font-size="10">test</text>
-    <text x="420" y="170" text-anchor="middle" fill="#a5b4fc" font-size="8">test সম্ভব — now নিয়ন্ত্রণে</text>
-    <text x="420" y="185" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Predictable ✅</text>
+    <text x="420" y="170" text-anchor="middle" fill="#a5b4fc" font-size="9">test সম্ভব — now নিয়ন্ত্রণে</text>
+    <text x="420" y="185" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">Predictable ✅</text>
     <rect x="20" y="205" width="680" height="35" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
     <text x="360" y="222" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Feathers: "Seam = alter behavior without editing in that place."</text>
-    <text x="360" y="234" text-anchor="middle" fill="#9a93b8" font-size="8">Inject dependency → create test point → add test → refactor</text>
+    <text x="360" y="234" text-anchor="middle" fill="#9a93b8" font-size="9">Inject dependency → create test point → add test → refactor</text>
   </svg>
   <div class="diag-cap">Hardcoded datetime.now() → Clock seam inject করো। test সম্ভব — now তোমার নিয়ন্ত্রণে।</div>
 </div>
@@ -676,23 +676,23 @@ class TaskAPI:
   <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg">
     <rect x="30" y="20" width="660" height="45" rx="8" fill="rgba(99,102,241,0.1)" stroke="#6366f1" stroke-width="2"/>
     <text x="50" y="40" fill="#a5b4fc" font-size="10" font-weight="bold">Presentation Layer (TaskAPI)</text>
-    <text x="50" y="56" fill="#9a93b8" font-size="8">handle_create() → JSON — SQL জানে না, business জানে না</text>
-    <text x="690" y="40" fill="#a5b4fc" font-size="8" text-anchor="end">HTTP / API</text>
+    <text x="50" y="56" fill="#9a93b8" font-size="9">handle_create() → JSON — SQL জানে না, business জানে না</text>
+    <text x="690" y="40" fill="#a5b4fc" font-size="9" text-anchor="end">HTTP / API</text>
     <rect x="30" y="68" width="500" height="15" fill="rgba(167,139,250,0.12)"/>
-    <text x="360" y="79" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="bold">⚡ ABSTRACTION BARRIER</text>
+    <text x="360" y="79" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="bold">⚡ ABSTRACTION BARRIER</text>
     <rect x="30" y="86" width="500" height="45" rx="8" fill="rgba(82,196,26,0.08)" stroke="#52c41a" stroke-width="2"/>
     <text x="50" y="106" fill="#52c41a" font-size="10" font-weight="bold">Service Layer (TaskService)</text>
-    <text x="50" y="122" fill="#9a93b8" font-size="8">create_task() → business rules — SQL জানে না, HTTP জানে না</text>
-    <text x="690" y="106" fill="#52c41a" font-size="8" text-anchor="end">Business Logic</text>
+    <text x="50" y="122" fill="#9a93b8" font-size="9">create_task() → business rules — SQL জানে না, HTTP জানে না</text>
+    <text x="690" y="106" fill="#52c41a" font-size="9" text-anchor="end">Business Logic</text>
     <rect x="30" y="134" width="500" height="15" fill="rgba(167,139,250,0.12)"/>
-    <text x="360" y="145" text-anchor="middle" fill="#a78bfa" font-size="8" font-weight="bold">⚡ ABSTRACTION BARRIER</text>
+    <text x="360" y="145" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="bold">⚡ ABSTRACTION BARRIER</text>
     <rect x="30" y="152" width="500" height="45" rx="8" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="2"/>
     <text x="50" y="172" fill="#fbbf24" font-size="10" font-weight="bold">Repository Layer (TaskRepository)</text>
-    <text x="50" y="188" fill="#9a93b8" font-size="8">save() → SQL — business জানে না, API জানে না</text>
-    <text x="690" y="172" fill="#fbbf24" font-size="8" text-anchor="end">Database / SQL</text>
+    <text x="50" y="188" fill="#9a93b8" font-size="9">save() → SQL — business জানে না, API জানে না</text>
+    <text x="690" y="172" fill="#fbbf24" font-size="9" text-anchor="end">Database / SQL</text>
     <rect x="30" y="210" width="500" height="40" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
     <text x="360" y="228" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Each barrier protects the others</text>
-    <text x="360" y="242" text-anchor="middle" fill="#9a93b8" font-size="8">Change DB? Only repository। Change UI? Only API।</text>
+    <text x="360" y="242" text-anchor="middle" fill="#9a93b8" font-size="9">Change DB? Only repository। Change UI? Only API।</text>
   </svg>
   <div class="diag-cap">৩ স্তর: API → Service → Repository। প্রতিটা barrier নিচের implementation লুকায়।</div>
 </div>

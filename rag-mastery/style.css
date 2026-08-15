@@ -141,5 +141,5 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .callout{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.25);border-radius:14px;padding:1rem 1.2rem;margin:1.2rem 0}.callout.warn{border-color:rgba(240,98,146,.25);background:rgba(240,98,146,.04)}.callout .co-icon{font-size:1.2rem;margin-right:.5rem}.callout strong{color:var(--amber,#fbbf24)}
 
 /* ported components (audit Aug 2026) */
-.story-text .svg-diagram{width:100%;max-width:620px;margin:1.2rem auto;display:block;background:linear-gradient(135deg,rgba(19,26,43,.6),rgba(7,10,15,.8));border:1px solid var(--panel-border);border-radius:12px;padding:.8rem;overflow:hidden}
+.story-text .svg-diagram{width:100%;max-width:940px;margin:1.2rem auto;display:block;background:linear-gradient(135deg,rgba(19,26,43,.6),rgba(7,10,15,.8));border:1px solid var(--panel-border);border-radius:12px;padding:.8rem;overflow:hidden}
 .story-text .svg-caption{font-size:.75rem;color:var(--ink-dim);text-align:center;margin:-.6rem auto 1.2rem;font-style:italic;max-width:620px}

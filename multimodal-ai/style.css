@@ -89,7 +89,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .cmp-bad .cmp-label{color:var(--fire)}
 .story-text .cmp-good .cmp-label{color:var(--leaf)}
 .story-text .svg-diagram{background:rgba(255,255,255,.02);border:1px solid var(--panel-border);border-radius:14px;padding:.9rem .6rem .7rem;margin:1.1rem 0;text-align:center}
-.story-text .svg-diagram svg{width:100%;height:auto;max-width:560px;display:block;margin:0 auto}
+.story-text .svg-diagram svg{width:100%;height:auto;max-width:940px;display:block;margin:0 auto}
 .story-text .svg-caption{font-size:0.75rem;color:var(--ink-mute);margin-top:.55rem;line-height:1.5;font-style:italic}
 .senior-insight{background:rgba(179,127,235,.06);border:1px solid rgba(179,127,235,.25);border-radius:16px;padding:1rem 1.2rem;margin:1rem 0}
 .senior-insight .label{font-size:0.75rem;color:var(--purple);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:.4rem}

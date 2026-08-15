@@ -169,7 +169,7 @@ doors.push({
   ✦ ABS: চাপ ধরে রাখো, পাম্প করো না</div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 240" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 240" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="240" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">🛣️ PASSING — Two-lane রাস্তায় নিরাপদ ওভারটেক</text>
 <!-- two-lane road -->
@@ -186,7 +186,7 @@ doors.push({
 <circle cx="12" cy="30" r="7" fill="#000"/><circle cx="44" cy="30" r="7" fill="#000"/>
 <polygon points="28,-16 36,-2 20,-2" fill="#e67e22" stroke="#c0392b" stroke-width="1.5"/>
 </g>
-<text x="328" y="188" text-anchor="middle" fill="#e8a838" font-size="7.5" font-weight="700">ধীর tractor — orange triangle</text>
+<text x="328" y="188" text-anchor="middle" fill="#e8a838" font-size="10" font-weight="700">ধীর tractor — orange triangle</text>
 <!-- your car path: passing arc -->
 <path d="M 40 152 L 120 152 Q 160 152 180 120 Q 200 90 240 90 Q 280 90 305 112 Q 325 130 360 138" fill="none" stroke="#2ecc71" stroke-width="3" stroke-dasharray="7,5" marker-end="url(#psA)"/>
 <defs><marker id="psA" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#2ecc71"/></marker></defs>
@@ -201,38 +201,38 @@ doors.push({
 <rect x="0" y="0" width="48" height="24" rx="7" fill="#2ecc71"/>
 </g>
 <!-- step labels -->
-<text x="70" y="212" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">১-৩: রাস্তা clear?</text>
-<text x="70" y="223" text-anchor="middle" fill="#7bed9f" font-size="7.5">mirror + shoulder + signal ⬅</text>
-<text x="200" y="212" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">৪-৫: বাম লেনে —</text>
-<text x="200" y="223" text-anchor="middle" fill="#7bed9f" font-size="7.5">দ্রুত কিন্তু limit-এর মধ্যে</text>
-<text x="330" y="212" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">৬-৮: mirror-এ tractor দেখা গেলে</text>
-<text x="330" y="223" text-anchor="middle" fill="#7bed9f" font-size="7.5">signal ➡ ফিরে যাও — cut নয়!</text>
+<text x="70" y="212" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">১-৩: রাস্তা clear?</text>
+<text x="70" y="223" text-anchor="middle" fill="#7bed9f" font-size="10">mirror + shoulder + signal ⬅</text>
+<text x="200" y="212" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">৪-৫: বাম লেনে —</text>
+<text x="200" y="223" text-anchor="middle" fill="#7bed9f" font-size="10">দ্রুত কিন্তু limit-এর মধ্যে</text>
+<text x="330" y="212" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">৬-৮: mirror-এ tractor দেখা গেলে</text>
+<text x="330" y="223" text-anchor="middle" fill="#7bed9f" font-size="10">signal ➡ ফিরে যাও — cut নয়!</text>
 <!-- danger note -->
-<text x="230" y="48" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="700">⚠️ Hilltop/curve/সলিড হলুদে কখনো নয় — oncoming না দেখা = পাস নিষেধ</text>
+<text x="230" y="48" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">⚠️ Hilltop/curve/সলিড হলুদে কখনো নয় — oncoming না দেখা = পাস নিষেধ</text>
 </svg>
 <div class="rt-caption">পুরো maneuver এক ছবিতে: check → signal → পাস → mirror-এ পুরো গাড়ি দেখা গেলে ফিরে আসা। তাড়াহুড়োয় ফিরলে (cut) tractor-কে brake করতে হয় — সেটাই fail</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 230" width="100%" style="max-width:480px">
+<svg viewBox="0 0 460 230" width="100%" style="max-width:760px">
 <!-- sky/bg -->
 <rect x="0" y="0" width="460" height="230" fill="#111" rx="8"/>
 <text x="230" y="22" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">📏 3-SECOND RULE</text>
 <!-- FRAME 1 -->
-<text x="14" y="46" fill="#888" font-size="9" font-weight="700">মুহূর্ত ১ — সামনের গাড়ি পোল পার হলো → গোনা শুরু</text>
+<text x="14" y="46" fill="#888" font-size="10" font-weight="700">মুহূর্ত ১ — সামনের গাড়ি পোল পার হলো → গোনা শুরু</text>
 <rect x="14" y="52" width="432" height="44" fill="#2a2a2a" rx="4"/>
 <line x1="14" y1="74" x2="446" y2="74" stroke="#f1c40f" stroke-width="2" stroke-dasharray="14,10" opacity=".6"/>
 <rect x="208" y="46" width="5" height="56" fill="#8a6d3b"/><circle cx="210" cy="44" r="6" fill="#c62828"/>
-<text x="210" y="112" text-anchor="middle" fill="#8a6d3b" font-size="8">POLE</text>
+<text x="210" y="112" text-anchor="middle" fill="#8a6d3b" font-size="10">POLE</text>
 <!-- lead car just past pole -->
 <rect x="224" y="58" width="44" height="18" rx="5" fill="#3498db"/><circle cx="234" cy="78" r="4" fill="#000"/><circle cx="258" cy="78" r="4" fill="#000"/>
-<text x="246" y="71" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">সামনের</text>
+<text x="246" y="71" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">সামনের</text>
 <!-- your car far behind -->
 <rect x="44" y="58" width="44" height="18" rx="5" fill="#2ecc71"/><circle cx="54" cy="78" r="4" fill="#000"/><circle cx="78" cy="78" r="4" fill="#000"/>
-<text x="66" y="71" text-anchor="middle" fill="#063" font-size="8" font-weight="900">তুমি</text>
-<text x="330" y="68" fill="#f1c40f" font-size="9" font-weight="700">⏱ "one-thousand-one…"</text>
+<text x="66" y="71" text-anchor="middle" fill="#063" font-size="10" font-weight="900">তুমি</text>
+<text x="330" y="68" fill="#f1c40f" font-size="10" font-weight="700">⏱ "one-thousand-one…"</text>
 <!-- FRAME 2 -->
-<text x="14" y="132" fill="#888" font-size="9" font-weight="700">মুহূর্ত ২ — ঠিক ৩ সেকেন্ড পরে তুমি পোলে পৌঁছালে = নিরাপদ দূরত্ব</text>
+<text x="14" y="132" fill="#888" font-size="10" font-weight="700">মুহূর্ত ২ — ঠিক ৩ সেকেন্ড পরে তুমি পোলে পৌঁছালে = নিরাপদ দূরত্ব</text>
 <rect x="14" y="138" width="432" height="44" fill="#2a2a2a" rx="4"/>
 <line x1="14" y1="160" x2="446" y2="160" stroke="#f1c40f" stroke-width="2" stroke-dasharray="14,10" opacity=".6"/>
 <rect x="208" y="132" width="5" height="56" fill="#8a6d3b"/><circle cx="210" cy="130" r="6" fill="#c62828"/>
@@ -240,9 +240,9 @@ doors.push({
 <rect x="380" y="144" width="44" height="18" rx="5" fill="#3498db"/><circle cx="390" cy="164" r="4" fill="#000"/><circle cx="414" cy="164" r="4" fill="#000"/>
 <!-- your car at pole -->
 <rect x="160" y="144" width="44" height="18" rx="5" fill="#2ecc71"/><circle cx="170" cy="164" r="4" fill="#000"/><circle cx="194" cy="164" r="4" fill="#000"/>
-<text x="182" y="157" text-anchor="middle" fill="#063" font-size="8" font-weight="900">তুমি</text>
-<text x="240" y="200" fill="#2ecc71" font-size="9" font-weight="700">✅ "…one-thousand-three" — এখন পোলে = ৩ সেকেন্ড দূরত্ব</text>
-<text x="14" y="218" fill="#e74c3c" font-size="9" font-weight="700">❌ ৩ সেকেন্ডের আগে পোলে পৌঁছালে = খুব কাছে! ধীরে করো।</text>
+<text x="182" y="157" text-anchor="middle" fill="#063" font-size="10" font-weight="900">তুমি</text>
+<text x="240" y="200" fill="#2ecc71" font-size="10" font-weight="700">✅ "…one-thousand-three" — এখন পোলে = ৩ সেকেন্ড দূরত্ব</text>
+<text x="14" y="218" fill="#e74c3c" font-size="10" font-weight="700">❌ ৩ সেকেন্ডের আগে পোলে পৌঁছালে = খুব কাছে! ধীরে করো।</text>
 </svg>
 <div class="rt-caption">সামনের গাড়ি একটা fixed point পার হলে গোনো — তুমি সেই point-এ ৩ সেকেন্ডের আগে পৌঁছালে দূরত্ব বাড়াও</div>
 </div>
@@ -251,7 +251,7 @@ doors.push({
   ☀️ Dry/clear: ৩ সেকেন্ড | 🌧️ Rain/night: ৪ | ❄️ Snow/ice: ৬+</div>
 
 <div class="rt-image">
-<svg viewBox="0 0 340 280" width="100%" style="max-width:380px">
+<svg viewBox="0 0 340 280" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="340" height="280" fill="#111" rx="8"/>
 <text x="170" y="22" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">👁️ BLIND SPOT — Mirror যা দেখে না</text>
 <!-- 3-lane road -->
@@ -260,26 +260,26 @@ doors.push({
 <line x1="217" y1="34" x2="217" y2="270" stroke="#eee" stroke-width="2" stroke-dasharray="12,10" opacity=".5"/>
 <!-- mirror vision: rear cone (green) -->
 <polygon points="170,150 120,268 220,268" fill="#2ecc71" opacity=".14"/>
-<text x="170" y="255" text-anchor="middle" fill="#2ecc71" font-size="8" font-weight="700">rear-view mirror দেখে</text>
+<text x="170" y="255" text-anchor="middle" fill="#2ecc71" font-size="10" font-weight="700">rear-view mirror দেখে</text>
 <!-- side mirror cones -->
 <polygon points="148,140 34,180 34,236" fill="#2ecc71" opacity=".14"/>
 <polygon points="192,140 306,180 306,236" fill="#2ecc71" opacity=".14"/>
 <!-- blind spots (red) -->
 <polygon points="146,150 34,140 34,178 148,168" fill="#e74c3c" opacity=".3"/>
 <polygon points="194,150 306,140 306,178 192,168" fill="#e74c3c" opacity=".3"/>
-<text x="70" y="158" fill="#ff8a80" font-size="9" font-weight="900" transform="rotate(-4 70 158)">BLIND SPOT</text>
-<text x="222" y="158" fill="#ff8a80" font-size="9" font-weight="900" transform="rotate(4 222 158)">BLIND SPOT</text>
+<text x="70" y="158" fill="#ff8a80" font-size="10" font-weight="900" transform="rotate(-4 70 158)">BLIND SPOT</text>
+<text x="222" y="158" fill="#ff8a80" font-size="10" font-weight="900" transform="rotate(4 222 158)">BLIND SPOT</text>
 <!-- your car center lane -->
 <rect x="150" y="110" width="40" height="72" rx="9" fill="#2ecc71"/>
 <rect x="156" y="122" width="28" height="14" rx="3" fill="#0a3"/>
 <rect x="156" y="158" width="28" height="12" rx="3" fill="#0a3"/>
 <circle cx="147" cy="132" r="3" fill="#ccc"/><circle cx="193" cy="132" r="3" fill="#ccc"/>
-<text x="170" y="100" text-anchor="middle" fill="#2ecc71" font-size="9" font-weight="900">তোমার গাড়ি</text>
+<text x="170" y="100" text-anchor="middle" fill="#2ecc71" font-size="10" font-weight="900">তোমার গাড়ি</text>
 <!-- hidden cars in blind spots -->
 <rect x="58" y="138" width="34" height="58" rx="8" fill="#e74c3c" opacity=".85"/>
-<text x="75" y="212" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="700">লুকানো গাড়ি!</text>
+<text x="75" y="212" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">লুকানো গাড়ি!</text>
 <rect x="248" y="138" width="34" height="58" rx="8" fill="#e74c3c" opacity=".85"/>
-<text x="265" y="212" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="700">লুকানো গাড়ি!</text>
+<text x="265" y="212" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">লুকানো গাড়ি!</text>
 </svg>
 <div class="rt-caption">🟢 সবুজ = mirror-এ দেখা যায় | 🔴 লাল = blind spot — শুধু কাঁধ ঘুরিয়ে (shoulder check) দেখা যায়</div>
 </div>
@@ -430,9 +430,9 @@ doors.push({
   ✦ Door zone: parked car door খুলতে পারে
 
 <div class="sign-gallery">
-<div class="sign-item"><svg viewBox="0 0 80 60" width="64"><rect x="10" y="15" width="60" height="3" fill="#f1c40f"/><circle cx="55" cy="16" r="5" fill="#e8a838"/><text x="20" y="12" font-size="8">🖐️</text><line x1="25" y1="16" x2="55" y2="16" stroke="#e8a838" stroke-width="3"/><text x="40" y="40" text-anchor="middle" fill="#999" font-size="10">LEFT TURN</text></svg><div class="sign-label">⬅️ <strong>LEFT</strong><br>বাম হাত সোজা</div></div>
-<div class="sign-item"><svg viewBox="0 0 80 60" width="64"><rect x="10" y="15" width="60" height="3" fill="#f1c40f"/><circle cx="55" cy="16" r="5" fill="#e8a838"/><rect x="48" y="3" width="14" height="3" fill="#e8a838"/><text x="55" y="2" text-anchor="middle" font-size="10">⬆️</text><line x1="55" y1="16" x2="55" y2="2" stroke="#e8a838" stroke-width="3"/><text x="40" y="40" text-anchor="middle" fill="#999" font-size="10">RIGHT TURN</text></svg><div class="sign-label">⬆️ <strong>RIGHT</strong><br>বাম হাত উপরে</div></div>
-<div class="sign-item"><svg viewBox="0 0 80 60" width="64"><rect x="10" y="15" width="60" height="3" fill="#f1c40f"/><circle cx="55" cy="16" r="5" fill="#e8a838"/><rect x="48" y="28" width="14" height="3" fill="#e8a838"/><line x1="55" y1="16" x2="55" y2="30" stroke="#e8a838" stroke-width="3"/><text x="40" y="50" text-anchor="middle" fill="#999" font-size="10">STOP/SLOW</text></svg><div class="sign-label">⬇️ <strong>STOP</strong><br>বাম হাত নিচে</div></div>
+<div class="sign-item"><svg viewBox="0 0 80 60" width="84"><rect x="10" y="15" width="60" height="3" fill="#f1c40f"/><circle cx="55" cy="16" r="5" fill="#e8a838"/><text x="20" y="12" font-size="10">🖐️</text><line x1="25" y1="16" x2="55" y2="16" stroke="#e8a838" stroke-width="3"/><text x="40" y="40" text-anchor="middle" fill="#999" font-size="10">LEFT TURN</text></svg><div class="sign-label">⬅️ <strong>LEFT</strong><br>বাম হাত সোজা</div></div>
+<div class="sign-item"><svg viewBox="0 0 80 60" width="84"><rect x="10" y="15" width="60" height="3" fill="#f1c40f"/><circle cx="55" cy="16" r="5" fill="#e8a838"/><rect x="48" y="3" width="14" height="3" fill="#e8a838"/><text x="55" y="2" text-anchor="middle" font-size="10">⬆️</text><line x1="55" y1="16" x2="55" y2="2" stroke="#e8a838" stroke-width="3"/><text x="40" y="40" text-anchor="middle" fill="#999" font-size="10">RIGHT TURN</text></svg><div class="sign-label">⬆️ <strong>RIGHT</strong><br>বাম হাত উপরে</div></div>
+<div class="sign-item"><svg viewBox="0 0 80 60" width="84"><rect x="10" y="15" width="60" height="3" fill="#f1c40f"/><circle cx="55" cy="16" r="5" fill="#e8a838"/><rect x="48" y="28" width="14" height="3" fill="#e8a838"/><line x1="55" y1="16" x2="55" y2="30" stroke="#e8a838" stroke-width="3"/><text x="40" y="50" text-anchor="middle" fill="#999" font-size="10">STOP/SLOW</text></svg><div class="sign-label">⬇️ <strong>STOP</strong><br>বাম হাত নিচে</div></div>
 </div>
 
 <div class="code-block">🚴 BICYCLE HAND SIGNALS (cyclist ও examiner দেখে)
@@ -522,7 +522,7 @@ doors.push({
   ✦ Flagger-এর মতোই: মানুষ &gt; সাইন/সিগন্যাল</div>
 
 <div class="sign-gallery">
-<div class="sign-item"><svg viewBox="0 0 100 100" width="60" height="60"><circle cx="50" cy="50" r="46" fill="#fdd835" stroke="#000" stroke-width="3"/><line x1="14" y1="14" x2="86" y2="86" stroke="#000" stroke-width="3"/><line x1="86" y1="14" x2="14" y2="86" stroke="#000" stroke-width="3"/><text x="50" y="44" text-anchor="middle" font-size="10" font-weight="900" fill="#000">RR</text><text x="50" y="60" text-anchor="middle" font-size="10" font-weight="900" fill="#000">RR</text></svg><div class="sign-label">🟡 <strong>RAILROAD</strong><br>রেল ক্রসিং আগে</div></div>
+<div class="sign-item"><svg viewBox="0 0 100 100" width="110" height="110"><circle cx="50" cy="50" r="46" fill="#fdd835" stroke="#000" stroke-width="3"/><line x1="14" y1="14" x2="86" y2="86" stroke="#000" stroke-width="3"/><line x1="86" y1="14" x2="14" y2="86" stroke="#000" stroke-width="3"/><text x="50" y="44" text-anchor="middle" font-size="10" font-weight="900" fill="#000">RR</text><text x="50" y="60" text-anchor="middle" font-size="10" font-weight="900" fill="#000">RR</text></svg><div class="sign-label">🟡 <strong>RAILROAD</strong><br>রেল ক্রসিং আগে</div></div>
 </div>
 
 <div class="code-block">🚂 RAILROAD CROSSINGS (রেল ক্রসিং)
@@ -555,7 +555,7 @@ doors.push({
   ✦ অমান্য করলে: fine + points</div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 250" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 250" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="250" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">🚨 MOVE OVER LAW — I-75-এ থেমে থাকা police (top view)</text>
 <!-- 2-lane freeway + shoulder -->
@@ -591,24 +591,24 @@ doors.push({
 <rect x="8" y="4" width="32" height="10" rx="3" fill="#0e4429"/>
 <circle cx="11" cy="26" r="6" fill="#000"/><circle cx="37" cy="26" r="6" fill="#000"/>
 </g>
-<text x="150" y="90" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">Option ১: আগেভাগে signal দিয়ে</text>
-<text x="150" y="101" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">এক লেন সরে যাও ✅</text>
+<text x="150" y="90" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">Option ১: আগেভাগে signal দিয়ে</text>
+<text x="150" y="101" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">এক লেন সরে যাও ✅</text>
 <!-- Option 2: can't change lane, slow down -->
 <g transform="translate(180,112)" opacity=".7">
 <rect x="0" y="0" width="48" height="24" rx="7" fill="#f39c12"/>
 </g>
-<text x="204" y="230" text-anchor="middle" fill="#f8c471" font-size="8" font-weight="700">Option ২: বাম লেন ব্যস্ত? — গতি অনেক কমাও,</text>
-<text x="204" y="241" text-anchor="middle" fill="#f8c471" font-size="8" font-weight="700">সতর্কভাবে পার হও ✅</text>
+<text x="204" y="230" text-anchor="middle" fill="#f8c471" font-size="10" font-weight="700">Option ২: বাম লেন ব্যস্ত? — গতি অনেক কমাও,</text>
+<text x="204" y="241" text-anchor="middle" fill="#f8c471" font-size="10" font-weight="700">সতর্কভাবে পার হও ✅</text>
 <!-- danger zone marker -->
 <rect x="296" y="154" width="164" height="58" fill="#e74c3c" opacity=".12"/>
-<text x="342" y="228" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">এই zone-এ full speed-এ পার হওয়া =</text>
-<text x="342" y="239" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">fine + points, আহত করলে felony</text>
+<text x="342" y="228" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">এই zone-এ full speed-এ পার হওয়া =</text>
+<text x="342" y="239" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">fine + points, আহত করলে felony</text>
 </svg>
 <div class="rt-caption">Police, ambulance, fire, tow truck, utility — shoulder-এ থেমে থাকা যে-কেউ। প্রথম চেষ্টা: লেন বদলাও; না পারলে: উল্লেখযোগ্যভাবে ধীরে। দুটোর একটা করতেই হবে</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 420 300" width="100%" style="max-width:460px">
+<svg viewBox="0 0 420 300" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="420" height="300" fill="#111" rx="8"/>
 <text x="210" y="22" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">🚛 TRUCK "NO ZONE" — Blind Spot Map (top view)</text>
 <!-- road: 3 lanes horizontal -->
@@ -618,19 +618,19 @@ doors.push({
 <!-- NO ZONES (red) -->
 <!-- front zone (right of truck, truck faces right) -->
 <rect x="300" y="132" width="72" height="62" fill="#e74c3c" opacity=".3" rx="4"/>
-<text x="336" y="160" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="900">সামনে</text>
+<text x="336" y="160" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">সামনে</text>
 <text x="336" y="172" text-anchor="middle" fill="#ff8a80" font-size="10">~20 ft</text>
 <!-- rear zone (left, biggest) -->
 <rect x="14" y="132" width="116" height="62" fill="#e74c3c" opacity=".38" rx="4"/>
-<text x="72" y="158" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="900">পেছনে — সবচেয়ে বিপজ্জনক</text>
+<text x="72" y="158" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">পেছনে — সবচেয়ে বিপজ্জনক</text>
 <text x="72" y="172" text-anchor="middle" fill="#ff8a80" font-size="10">~200 ft, driver তোমাকে দেখেই না</text>
 <!-- left-side zone (top lane) -->
 <rect x="150" y="48" width="120" height="66" fill="#e74c3c" opacity=".26" rx="4"/>
-<text x="210" y="78" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="900">বাম পাশ</text>
+<text x="210" y="78" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">বাম পাশ</text>
 <text x="210" y="92" text-anchor="middle" fill="#ff8a80" font-size="10">১ লেন</text>
 <!-- right-side zone (bottom lane, biggest side) -->
 <rect x="140" y="212" width="180" height="70" fill="#e74c3c" opacity=".38" rx="4"/>
-<text x="230" y="242" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="900">ডান পাশ — সবচেয়ে বড়!</text>
+<text x="230" y="242" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">ডান পাশ — সবচেয়ে বড়!</text>
 <text x="230" y="256" text-anchor="middle" fill="#ff8a80" font-size="10">২ লেন পর্যন্ত — এখান দিয়ে পাস করো না</text>
 <!-- truck (center lane, facing right) -->
 <rect x="140" y="134" width="110" height="58" rx="4" fill="#546e7a"/>
@@ -803,7 +803,7 @@ doors.push({
     ধরে রাখো + steer</div>
 
 <div class="rt-image">
-<svg viewBox="0 0 440 250" width="100%" style="max-width:470px">
+<svg viewBox="0 0 440 250" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="440" height="250" fill="#111" rx="8"/>
 <text x="220" y="22" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">🚗 SKID RECOVERY — Steer Into the Slide</text>
 <!-- LEFT panel: wrong -->
@@ -816,8 +816,8 @@ doors.push({
 <!-- wrong steer arrow: away from slide -->
 <path d="M 90 100 Q 70 84 52 92" fill="none" stroke="#e74c3c" stroke-width="3" marker-end="url(#raX)"/>
 <defs><marker id="raX" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#e74c3c"/></marker></defs>
-<text x="114" y="200" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="700">উল্টো দিকে steer / হার্ড brake</text>
-<text x="114" y="211" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="900">→ গাড়ি SPIN করবে!</text>
+<text x="114" y="200" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">উল্টো দিকে steer / হার্ড brake</text>
+<text x="114" y="211" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">→ গাড়ি SPIN করবে!</text>
 <!-- RIGHT panel: correct -->
 <rect x="226" y="34" width="200" height="182" fill="#2a2a2a" rx="6"/>
 <text x="326" y="52" text-anchor="middle" fill="#2ecc71" font-size="11" font-weight="900">✅ সঠিক</text>
@@ -833,10 +833,10 @@ doors.push({
 <!-- correct steer arrow: toward slide -->
 <path d="M 344 96 Q 366 82 386 92" fill="none" stroke="#2ecc71" stroke-width="3" marker-end="url(#raZ)"/>
 <defs><marker id="raZ" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#2ecc71"/></marker></defs>
-<text x="326" y="200" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">পিছলানোর দিকেই steer করো</text>
-<text x="326" y="211" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="900">→ গাড়ি straight হবে</text>
+<text x="326" y="200" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">পিছলানোর দিকেই steer করো</text>
+<text x="326" y="211" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="900">→ গাড়ি straight হবে</text>
 <!-- footer -->
-<text x="220" y="236" text-anchor="middle" fill="#aaa" font-size="9">ABS থাকলে: steady brake pressure ধরে রাখো — পাম্প করো না, ABS নিজেই পাম্প করে</text>
+<text x="220" y="236" text-anchor="middle" fill="#aaa" font-size="10">ABS থাকলে: steady brake pressure ধরে রাখো — পাম্প করো না, ABS নিজেই পাম্প করে</text>
 </svg>
 <div class="rt-caption">সূত্র: "যেদিকে যেতে চাও, সেদিকে steer" = পেছন যেদিকে পিছলাচ্ছে সেদিকেই wheel ঘোরাও — শান্তভাবে, ঝাঁকি ছাড়া</div>
 </div>
@@ -940,17 +940,17 @@ doors.push({
   ৭. যদি কেউ আহত — থামো সাহায্য করো</div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 230" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 230" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="230" fill="#0d1420" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">❄️ BLACK ICE — Bridge কেন আগে জমে (side view)</text>
 <!-- cold air arrows above -->
-<text x="90" y="44" text-anchor="middle" fill="#74b9ff" font-size="8">❄ ঠান্ডা বাতাস ❄</text>
-<text x="340" y="44" text-anchor="middle" fill="#74b9ff" font-size="8">❄ ঠান্ডা বাতাস ❄</text>
+<text x="90" y="44" text-anchor="middle" fill="#74b9ff" font-size="10">❄ ঠান্ডা বাতাস ❄</text>
+<text x="340" y="44" text-anchor="middle" fill="#74b9ff" font-size="10">❄ ঠান্ডা বাতাস ❄</text>
 <!-- road approach (left, on ground) -->
 <rect x="0" y="110" width="150" height="12" fill="#3a3a3a"/>
 <!-- ground under road -->
 <rect x="0" y="122" width="150" height="108" fill="#4a3826"/>
-<text x="75" y="170" text-anchor="middle" fill="#c9a86a" font-size="8" font-weight="700">মাটি — তাপ ধরে রাখে 🌡️</text>
+<text x="75" y="170" text-anchor="middle" fill="#c9a86a" font-size="10" font-weight="700">মাটি — তাপ ধরে রাখে 🌡️</text>
 <text x="75" y="183" text-anchor="middle" fill="#c9a86a" font-size="10">রাস্তা গরম থাকে, শুকনো</text>
 <!-- heat arrows up from ground -->
 <path d="M 40 150 L 40 128" stroke="#e67e22" stroke-width="2" marker-end="url(#biH)"/>
@@ -960,18 +960,18 @@ doors.push({
 <!-- bridge deck (middle, over water) with ICE -->
 <rect x="150" y="110" width="180" height="12" fill="#3a3a3a"/>
 <rect x="150" y="108" width="180" height="5" fill="#a8d8ff" opacity=".85"/>
-<text x="240" y="102" text-anchor="middle" fill="#a8d8ff" font-size="8.5" font-weight="900">⚠️ অদৃশ্য বরফের ফিল্ম — দেখতে ভেজা রাস্তার মতো</text>
+<text x="240" y="102" text-anchor="middle" fill="#a8d8ff" font-size="10" font-weight="900">⚠️ অদৃশ্য বরফের ফিল্ম — দেখতে ভেজা রাস্তার মতো</text>
 <!-- bridge supports -->
 <rect x="165" y="122" width="10" height="60" fill="#555"/>
 <rect x="305" y="122" width="10" height="60" fill="#555"/>
 <!-- water below bridge -->
 <path d="M 150 185 Q 175 178 200 185 Q 225 192 250 185 Q 275 178 300 185 Q 315 190 330 185 L 330 230 L 150 230 Z" fill="#16324a"/>
-<text x="240" y="212" text-anchor="middle" fill="#5dade2" font-size="8" font-weight="700">নিচে পানি/বাতাস — কোনো তাপ নেই</text>
+<text x="240" y="212" text-anchor="middle" fill="#5dade2" font-size="10" font-weight="700">নিচে পানি/বাতাস — কোনো তাপ নেই</text>
 <!-- cold arrows hitting bridge from below too -->
 <path d="M 200 160 L 200 128" stroke="#74b9ff" stroke-width="2" marker-end="url(#biC)"/>
 <path d="M 280 160 L 280 128" stroke="#74b9ff" stroke-width="2" marker-end="url(#biC)"/>
 <defs><marker id="biC" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#74b9ff"/></marker></defs>
-<text x="240" y="146" text-anchor="middle" fill="#74b9ff" font-size="7.5" font-weight="700">দুই দিক থেকেই ঠান্ডা = আগে জমে</text>
+<text x="240" y="146" text-anchor="middle" fill="#74b9ff" font-size="10" font-weight="700">দুই দিক থেকেই ঠান্ডা = আগে জমে</text>
 <!-- road continues right -->
 <rect x="330" y="110" width="130" height="12" fill="#3a3a3a"/>
 <rect x="330" y="122" width="130" height="108" fill="#4a3826"/>
@@ -981,15 +981,15 @@ doors.push({
 <rect x="9" y="3" width="34" height="10" rx="3" fill="#0e4429"/>
 <circle cx="12" cy="24" r="6" fill="#000"/><circle cx="40" cy="24" r="6" fill="#000"/>
 </g>
-<text x="56" y="76" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">Bridge-এ ওঠার আগেই</text>
-<text x="56" y="86" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">গতি কমাও — উপরে brake নয়!</text>
+<text x="56" y="76" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">Bridge-এ ওঠার আগেই</text>
+<text x="56" y="86" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">গতি কমাও — উপরে brake নয়!</text>
 <!-- BRIDGE ICES sign -->
 <rect x="128" y="52" width="4" height="58" fill="#8a6d3b"/>
 <g transform="rotate(45 130 44)"><rect x="116" y="30" width="28" height="28" rx="2" fill="#fdd835" stroke="#222" stroke-width="1.5"/></g>
-<text x="130" y="40" text-anchor="middle" fill="#222" font-size="9" font-weight="900">BRIDGE</text>
-<text x="130" y="47" text-anchor="middle" fill="#222" font-size="9" font-weight="900">ICES</text>
-<text x="130" y="54" text-anchor="middle" fill="#222" font-size="9" font-weight="900">BEFORE</text>
-<text x="130" y="61" text-anchor="middle" fill="#222" font-size="9" font-weight="900">ROAD</text>
+<text x="130" y="40" text-anchor="middle" fill="#222" font-size="10" font-weight="900">BRIDGE</text>
+<text x="130" y="47" text-anchor="middle" fill="#222" font-size="10" font-weight="900">ICES</text>
+<text x="130" y="54" text-anchor="middle" fill="#222" font-size="10" font-weight="900">BEFORE</text>
+<text x="130" y="61" text-anchor="middle" fill="#222" font-size="10" font-weight="900">ROAD</text>
 </svg>
 <div class="rt-caption">মাটি insulator — রাস্তাকে গরম রাখে। Bridge-এর নিচে শুধু ঠান্ডা বাতাস/পানি — তাই ৩২°F-এর আশেপাশে রাস্তা শুকনো থাকলেও bridge-এ বরফ। Shadow আর overpass-এও একই ঘটনা</div>
 </div>
@@ -1247,7 +1247,7 @@ doors.push({
   ✦ Any impairing substance = OWI</div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 220" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 220" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="220" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">📱 ৫ সেকেন্ডের text = চোখ বন্ধ করে এক football field</text>
 <!-- freeway -->
@@ -1264,7 +1264,7 @@ doors.push({
 <line x1="312" y1="150" x2="312" y2="194" stroke="#fff" stroke-width="1" opacity=".4"/>
 <line x1="348" y1="150" x2="348" y2="194" stroke="#fff" stroke-width="1" opacity=".4"/>
 <line x1="384" y1="150" x2="384" y2="194" stroke="#fff" stroke-width="1" opacity=".4"/>
-<text x="240" y="177" text-anchor="middle" fill="#7bed9f" font-size="9" font-weight="900">🏈 ১০০ গজ = ৩০০ ফুট</text>
+<text x="240" y="177" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="900">🏈 ১০০ গজ = ৩০০ ফুট</text>
 <!-- car at left with phone -->
 <g transform="translate(20,92)">
 <rect x="0" y="0" width="52" height="24" rx="7" fill="#e74c3c"/>
@@ -1272,7 +1272,7 @@ doors.push({
 <circle cx="12" cy="26" r="6" fill="#000"/><circle cx="40" cy="26" r="6" fill="#000"/>
 </g>
 <text x="46" y="86" text-anchor="middle" font-size="12">📱</text>
-<text x="46" y="70" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="700">চোখ নামালো…</text>
+<text x="46" y="70" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">চোখ নামালো…</text>
 <!-- blind travel zone -->
 <rect x="72" y="82" width="340" height="56" fill="#e74c3c" opacity=".14"/>
 <path d="M 80 110 L 400 110" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="8,6" marker-end="url(#txA)"/>
@@ -1281,12 +1281,12 @@ doors.push({
 <g transform="translate(400,92)" opacity=".5">
 <rect x="0" y="0" width="52" height="24" rx="7" fill="#e74c3c"/>
 </g>
-<text x="240" y="102" text-anchor="middle" fill="#ff8a80" font-size="9" font-weight="900">70 mph * ৫ সেকেন্ড = ৫১৩ ফুট — সম্পূর্ণ অন্ধ</text>
+<text x="240" y="102" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">70 mph * ৫ সেকেন্ড = ৫১৩ ফুট — সম্পূর্ণ অন্ধ</text>
 <!-- hazards that could appear -->
 <text x="250" y="132" text-anchor="middle" font-size="11">🦌</text>
 <text x="330" y="132" text-anchor="middle" font-size="11">🚶</text>
 <text x="180" y="132" text-anchor="middle" font-size="11">🛑</text>
-<text x="230" y="208 " text-anchor="middle" fill="#888" font-size="8">এই দূরত্বে যা-কিছু আসতে পারে — থেমে থাকা ট্রাফিক, হরিণ, মানুষ — তুমি দেখবেই না</text>
+<text x="230" y="208 " text-anchor="middle" fill="#888" font-size="10">এই দূরত্বে যা-কিছু আসতে পারে — থেমে থাকা ট্রাফিক, হরিণ, মানুষ — তুমি দেখবেই না</text>
 </svg>
 <div class="rt-caption">গড় text পড়া/লেখা = চোখ ৫ সেকেন্ড রাস্তার বাইরে। 70 mph-এ সেটা এক football field-এর চেয়েও বেশি পথ — চোখ বেঁধে চালানোর সমান। এজন্যই hands-free law</div>
 </div>
@@ -1509,15 +1509,15 @@ ROAD TEST — EXAMINER CHECKLIST
   → না জানলে test শুরুই হবে না!
 
 <div class="rt-image">
-<svg viewBox="0 0 460 260" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 260" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="260" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#f1c40f" font-size="12" font-weight="900">🏢 PART A: CLOSED COURSE — বাস্তবে যেমন দেখতে (top view)</text>
 <!-- parking lot -->
 <rect x="14" y="32" width="432" height="212" fill="#252525" rx="6"/>
 <!-- START box -->
 <rect x="28" y="196" width="70" height="36" fill="#1e3a1e" rx="4" stroke="#2ecc71" stroke-width="1.5"/>
-<text x="63" y="212" text-anchor="middle" fill="#2ecc71" font-size="8" font-weight="900">START</text>
-<text x="63" y="224" text-anchor="middle" fill="#7bed9f" font-size="6.5">seatbelt + control চেক</text>
+<text x="63" y="212" text-anchor="middle" fill="#2ecc71" font-size="10" font-weight="900">START</text>
+<text x="63" y="224" text-anchor="middle" fill="#7bed9f" font-size="10">seatbelt + control চেক</text>
 <!-- your car at start -->
 <g transform="translate(40,200)">
 <rect x="0" y="0" width="20" height="30" rx="6" fill="#2ecc71"/>
@@ -1526,28 +1526,28 @@ ROAD TEST — EXAMINER CHECKLIST
 <path d="M 63 196 L 63 90" stroke="#2ecc71" stroke-width="2.5" stroke-dasharray="6,5" marker-end="url(#ccA)"/>
 <rect x="44" y="80" width="40" height="6" fill="#fff"/>
 <text x="63" y="70 " text-anchor="middle" fill="#fff" font-size="10" font-weight="700">১. FORWARD STOP</text>
-<text x="63" y="60" text-anchor="middle" fill="#ccc" font-size="6.5">লাইনের আগে, ঝাঁকি ছাড়া</text>
+<text x="63" y="60" text-anchor="middle" fill="#ccc" font-size="10">লাইনের আগে, ঝাঁকি ছাড়া</text>
 <!-- 2. backing corridor with cones -->
 <path d="M 84 100 L 180 100" stroke="#74b9ff" stroke-width="2.5" stroke-dasharray="6,5" marker-end="url(#ccB)"/>
 <circle cx="110" cy="84" r="4" fill="#e67e22"/><circle cx="150" cy="84" r="4" fill="#e67e22"/>
 <circle cx="110" cy="116" r="4" fill="#e67e22"/><circle cx="150" cy="116" r="4" fill="#e67e22"/>
 <text x="132" y="48" text-anchor="middle" fill="#74b9ff" font-size="10" font-weight="700">২. BACKING (সোজা পেছনে)</text>
-<text x="132" y="58" text-anchor="middle" fill="#ccc" font-size="6.5">শরীর ঘুরিয়ে পেছনে তাকাও —</text>
-<text x="132" y="67" text-anchor="middle" fill="#ccc" font-size="6.5">শুধু mirror নয়!</text>
+<text x="132" y="58" text-anchor="middle" fill="#ccc" font-size="10">শরীর ঘুরিয়ে পেছনে তাকাও —</text>
+<text x="132" y="67" text-anchor="middle" fill="#ccc" font-size="10">শুধু mirror নয়!</text>
 <!-- 3. parallel parking box with cones -->
 <rect x="220" y="76" width="110" height="48" fill="none" stroke="#f1c40f" stroke-width="2" stroke-dasharray="5,4"/>
 <circle cx="220" cy="76" r="4" fill="#e67e22"/><circle cx="330" cy="76" r="4" fill="#e67e22"/>
 <circle cx="220" cy="124" r="4" fill="#e67e22"/><circle cx="330" cy="124" r="4" fill="#e67e22"/>
 <path d="M 200 100 Q 240 60 275 88 Q 300 108 300 100" fill="none" stroke="#f1c40f" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#ccC)"/>
 <text x="275" y="48" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">৩. PARALLEL PARKING</text>
-<text x="275" y="58" text-anchor="middle" fill="#ccc" font-size="6.5">cone ছোঁয়া = points কাটা,</text>
-<text x="275" y="67" text-anchor="middle" fill="#ccc" font-size="6.5">curb জোরে ধাক্কা = fail হতে পারে</text>
+<text x="275" y="58" text-anchor="middle" fill="#ccc" font-size="10">cone ছোঁয়া = points কাটা,</text>
+<text x="275" y="67" text-anchor="middle" fill="#ccc" font-size="10">curb জোরে ধাক্কা = fail হতে পারে</text>
 <!-- 4. Y-turn area -->
 <rect x="360" y="70" width="70" height="120" fill="#1c1c2e" rx="4"/>
 <path d="M 395 180 L 395 140 Q 395 120 380 118 M 380 118 L 408 132 M 408 132 L 395 100" fill="none" stroke="#e056fd" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#ccD)"/>
 <text x="395" y="212" text-anchor="middle" fill="#e056fd" font-size="10" font-weight="700">৪. Y-TURN</text>
-<text x="395" y="222" text-anchor="middle" fill="#ccc" font-size="6.5">(3-point turn)</text>
-<text x="395" y="232" text-anchor="middle" fill="#ccc" font-size="6.5">ঠিক ৩ ধাপে</text>
+<text x="395" y="222" text-anchor="middle" fill="#ccc" font-size="10">(3-point turn)</text>
+<text x="395" y="232" text-anchor="middle" fill="#ccc" font-size="10">ঠিক ৩ ধাপে</text>
 <defs>
 <marker id="ccA" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#2ecc71"/></marker>
 <marker id="ccB" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#74b9ff"/></marker>
@@ -1556,9 +1556,9 @@ ROAD TEST — EXAMINER CHECKLIST
 </defs>
 <!-- examiner -->
 <text x="180" y="180" font-size="12">🧑‍💼</text>
-<text x="180" y="196" text-anchor="middle" fill="#888" font-size="6.5">examiner বাইরে থেকে</text>
-<text x="180" y="205" text-anchor="middle" fill="#888" font-size="6.5">দেখে (Part A-তে)</text>
-<text x="230" y="252" text-anchor="middle" fill="#888" font-size="7.5">Part A পাশ করলে তবেই Part B (on-road) — তাই এই চারটা maneuver বাড়ির কাছে খালি lot-এ প্র্যাকটিস করো</text>
+<text x="180" y="196" text-anchor="middle" fill="#888" font-size="10">examiner বাইরে থেকে</text>
+<text x="180" y="205" text-anchor="middle" fill="#888" font-size="10">দেখে (Part A-তে)</text>
+<text x="230" y="252" text-anchor="middle" fill="#888" font-size="10">Part A পাশ করলে তবেই Part B (on-road) — তাই এই চারটা maneuver বাড়ির কাছে খালি lot-এ প্র্যাকটিস করো</text>
 </svg>
 <div class="rt-caption">চারটা station: forward stop → straight backing → parallel parking (cone box) → Y-turn। কমলা বিন্দু = cone। বেশিরভাগ tester-এর course এরকমই</div>
 </div>
@@ -1601,9 +1601,9 @@ ROAD TEST — EXAMINER CHECKLIST
   ✦ Lane change: signal + mirror + shoulder
 
 <div class="rt-image-grid">
-<div class="rt-img-card"><svg viewBox="0 0 100 100" width="90"><circle cx="50" cy="50" r="42" fill="#2c2c2c" stroke="#555" stroke-width="2"/><circle cx="50" cy="50" r="15" fill="#3a3a3a"/><circle cx="50" cy="50" r="8" fill="#222"/><line x1="50" y1="8" x2="50" y2="35" stroke="#e74c3c" stroke-width="3"/><line x1="50" y1="92" x2="50" y2="65" stroke="#e74c3c" stroke-width="3"/><line x1="8" y1="50" x2="35" y2="50" stroke="#27ae60" stroke-width="3"/><line x1="92" y1="50" x2="65" y2="50" stroke="#27ae60" stroke-width="3"/><circle cx="14" cy="14" r="5" fill="#888"/><circle cx="86" cy="14" r="5" fill="#888"/><circle cx="14" cy="86" r="5" fill="#888"/><circle cx="86" cy="86" r="5" fill="#888"/><text x="14" y="44" fill="#27ae60" font-size="8" font-weight="900">9</text><text x="80" y="44" fill="#27ae60" font-size="8" font-weight="900">3</text></svg><div class="rt-caption">✅ <strong>9-and-3 Position</strong><br>examiner এটাই দেখে</div></div>
-<div class="rt-img-card"><svg viewBox="0 0 100 80" width="90"><rect x="15" y="30" width="70" height="12" rx="4" fill="#333" stroke="#555" stroke-width="1"/><rect x="70" y="25" width="18" height="22" rx="3" fill="#444"/><polygon points="22,30 12,20 12,40" fill="#27ae60"/><text x="50" y="58" text-anchor="middle" fill="#999" font-size="10">SIGNAL LEVER</text><text x="22" y="16" font-size="10" fill="#27ae60" font-weight="700">UP=LEFT</text></svg><div class="rt-caption"><strong>Turn Signal Lever</strong><br>বাম = ↰, ডান = ↱</div></div>
-<div class="rt-img-card"><svg viewBox="0 0 100 70" width="90"><rect x="15" y="15" width="70" height="30" rx="4" fill="#1a1a1a" stroke="#555" stroke-width="2"/><rect x="20" y="20" width="60" height="20" rx="2" fill="#16213e"/><rect x="42" y="22" width="16" height="16" fill="#0f3460" opacity=".5"/><path d="M 30 40 L 25 30 L 35 30 Z" fill="#555"/><text x="50" y="58" text-anchor="middle" fill="#999" font-size="10">REAR-VIEW MIRROR</text></svg><div class="rt-caption"><strong>Rear-view Mirror</strong><br>প্রতি ৫-৮ সেকেন্ডে</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 100 100" width="105"><circle cx="50" cy="50" r="42" fill="#2c2c2c" stroke="#555" stroke-width="2"/><circle cx="50" cy="50" r="15" fill="#3a3a3a"/><circle cx="50" cy="50" r="8" fill="#222"/><line x1="50" y1="8" x2="50" y2="35" stroke="#e74c3c" stroke-width="3"/><line x1="50" y1="92" x2="50" y2="65" stroke="#e74c3c" stroke-width="3"/><line x1="8" y1="50" x2="35" y2="50" stroke="#27ae60" stroke-width="3"/><line x1="92" y1="50" x2="65" y2="50" stroke="#27ae60" stroke-width="3"/><circle cx="14" cy="14" r="5" fill="#888"/><circle cx="86" cy="14" r="5" fill="#888"/><circle cx="14" cy="86" r="5" fill="#888"/><circle cx="86" cy="86" r="5" fill="#888"/><text x="14" y="44" fill="#27ae60" font-size="10" font-weight="900">9</text><text x="80" y="44" fill="#27ae60" font-size="10" font-weight="900">3</text></svg><div class="rt-caption">✅ <strong>9-and-3 Position</strong><br>examiner এটাই দেখে</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 100 80" width="105"><rect x="15" y="30" width="70" height="12" rx="4" fill="#333" stroke="#555" stroke-width="1"/><rect x="70" y="25" width="18" height="22" rx="3" fill="#444"/><polygon points="22,30 12,20 12,40" fill="#27ae60"/><text x="50" y="58" text-anchor="middle" fill="#999" font-size="10">SIGNAL LEVER</text><text x="22" y="16" font-size="10" fill="#27ae60" font-weight="700">UP=LEFT</text></svg><div class="rt-caption"><strong>Turn Signal Lever</strong><br>বাম = ↰, ডান = ↱</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 100 70" width="105"><rect x="15" y="15" width="70" height="30" rx="4" fill="#1a1a1a" stroke="#555" stroke-width="2"/><rect x="20" y="20" width="60" height="20" rx="2" fill="#16213e"/><rect x="42" y="22" width="16" height="16" fill="#0f3460" opacity=".5"/><path d="M 30 40 L 25 30 L 35 30 Z" fill="#555"/><text x="50" y="58" text-anchor="middle" fill="#999" font-size="10">REAR-VIEW MIRROR</text></svg><div class="rt-caption"><strong>Rear-view Mirror</strong><br>প্রতি ৫-৮ সেকেন্ডে</div></div>
 </div>
 
 # — — — — — — — — — — — — — — — — — — — — — —
@@ -1653,7 +1653,7 @@ ROAD TEST — EXAMINER CHECKLIST
   ✦ Expressway entry/exit (if applicable)</div>
 
 <div class="rt-image">
-<svg viewBox="0 0 400 120" width="100%" style="max-width:440px"><rect x="0" y="80" width="400" height="6" fill="#666"/><rect x="0" y="0" width="400" height="80" fill="#0a0a0a"/><text x="5" y="95" fill="#555" font-size="10">CURB</text>
+<svg viewBox="0 0 400 120" width="100%" style="max-width:760px"><rect x="0" y="80" width="400" height="6" fill="#666"/><rect x="0" y="0" width="400" height="80" fill="#0a0a0a"/><text x="5" y="95" fill="#555" font-size="10">CURB</text>
 <rect x="60" y="35" width="50" height="25" rx="4" fill="#3498db"/><circle cx="72" cy="62" r="4" fill="#222"/><circle cx="100" cy="62" r="4" fill="#222"/><text x="75" y="50" fill="#fff" font-size="10">CAR1</text>
 <rect x="135" y="35" width="50" height="25" rx="4" fill="#e74c3c" transform="rotate(-20 160 47)"/><text x="145" y="50" fill="#fff" font-size="10" transform="rotate(-20 160 47)">STEP 2</text>
 <rect x="200" y="35" width="50" height="25" rx="4" fill="#2ecc71"/><circle cx="212" cy="62" r="4" fill="#222"/><circle cx="240" cy="62" r="4" fill="#222"/><text x="205" y="50" fill="#fff" font-size="10">DONE!</text>
@@ -1672,10 +1672,10 @@ ROAD TEST — EXAMINER CHECKLIST
   ❌ Curb hit = automatic point loss!</div>
 
 <div class="rt-image">
-<svg viewBox="0 0 400 140" width="100%" style="max-width:440px"><rect x="0" y="60" width="400" height="4" fill="#444"/><rect x="0" y="64" width="400" height="4" fill="#f1c40f" stroke-dasharray="20,15" opacity=".3"/><text x="5" y="55" fill="#555" font-size="10">ROAD</text>
+<svg viewBox="0 0 400 140" width="100%" style="max-width:760px"><rect x="0" y="60" width="400" height="4" fill="#444"/><rect x="0" y="64" width="400" height="4" fill="#f1c40f" stroke-dasharray="20,15" opacity=".3"/><text x="5" y="55" fill="#555" font-size="10">ROAD</text>
 <rect x="150" y="30" width="35" height="18" rx="3" fill="#e74c3c"/><circle cx="160" cy="50" r="3" fill="#222"/><circle cx="178" cy="50" r="3" fill="#222"/>
 <path d="M 170 45 Q 120 20 80 50 Q 120 80 170 120" fill="none" stroke="#f1c40f" stroke-width="2" stroke-dasharray="5,3"/><polygon points="165,115 175,115 170,125" fill="#f1c40f"/>
-<text x="60" y="20" fill="#e74c3c" font-size="8" font-weight="700">1: FORWARD-LEFT</text><text x="120" y="55" fill="#3498db" font-size="8" font-weight="700">2: REVERSE</text><text x="155" y="135" fill="#2ecc71" font-size="8" font-weight="700">3: FORWARD-GO</text></svg>
+<text x="60" y="20" fill="#e74c3c" font-size="10" font-weight="700">1: FORWARD-LEFT</text><text x="120" y="55" fill="#3498db" font-size="10" font-weight="700">2: REVERSE</text><text x="155" y="135" fill="#2ecc71" font-size="10" font-weight="700">3: FORWARD-GO</text></svg>
 <div class="rt-caption">Three-Point Turn (K-turn): forward-left, reverse-right, forward-left proceed</div>
 </div>
 
@@ -1697,7 +1697,7 @@ ROAD TEST — EXAMINER CHECKLIST
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 300 200" width="100%" style="max-width:440px"><rect x="0" y="0" width="300" height="200" fill="#1a1a1a"/>
+<svg viewBox="0 0 300 200" width="100%" style="max-width:760px"><rect x="0" y="0" width="300" height="200" fill="#1a1a1a"/>
 <rect x="80" y="60" width="140" height="140" fill="#333"/><rect x="85" y="65" width="135" height="135" fill="#3a3a3a"/>
 <rect x="95" y="100" width="120" height="100" fill="#2a2a2a"/><line x1="155" y1="100" x2="155" y2="200" stroke="#f1c40f" stroke-width="1" stroke-dasharray="6,4"/>
 <rect x="115" y="80" width="20" height="20" fill="#2c2c2c"/><circle cx="125" cy="105" r="4" fill="#e74c3c"/>
@@ -1707,10 +1707,10 @@ ROAD TEST — EXAMINER CHECKLIST
 </div>
 
 <div class="rt-image-grid">
-<div class="rt-img-card"><svg viewBox="0 0 80 80" width="60"><polygon points="24,4 56,4 76,24 76,56 56,76 24,76 4,56 4,24" fill="#c62828" stroke="#fff" stroke-width="3"/><text x="40" y="46" text-anchor="middle" fill="#fff" font-size="11" font-weight="900">STOP</text></svg><div class="rt-caption">STOP — সম্পূর্ণ থামো<br>3 sec minimum</div></div>
-<div class="rt-img-card"><svg viewBox="0 0 60 75" width="50"><rect x="2" y="2" width="56" height="71" rx="3" fill="#fff" stroke="#222" stroke-width="1.5"/><text x="30" y="16" text-anchor="middle" fill="#222" font-weight="700" font-size="9">SPEED</text><text x="30" y="24" text-anchor="middle" fill="#222" font-weight="700" font-size="9">LIMIT</text><text x="30" y="52" text-anchor="middle" fill="#222" font-weight="900" font-size="22">25</text></svg><div class="rt-caption">Speed Limit — limit-এর<br>5 mph নিচে রাখো</div></div>
-<div class="rt-img-card"><svg viewBox="0 0 120 60" width="100"><rect x="0" y="50" width="120" height="4" fill="#666"/><rect x="0" y="0" width="120" height="50" fill="#0a0a0a"/><rect x="25" y="15" width="40" height="20" rx="3" fill="#27ae60"/><circle cx="35" cy="38" r="3" fill="#222"/><circle cx="55" cy="38" r="3" fill="#222"/><rect x="75" y="15" width="40" height="20" rx="3" fill="#3498db"/><circle cx="85" cy="38" r="3" fill="#222"/><circle cx="105" cy="38" r="3" fill="#222"/><text x="5" y="58" fill="#555" font-size="9">PARALLEL PARKED</text></svg><div class="rt-caption">Parallel parking<br>1 ft from curb</div></div>
-<div class="rt-img-card"><svg viewBox="0 0 60 70" width="50"><rect x="5" y="10" width="50" height="50" rx="4" fill="#1a1a1a"/><path d="M 15 15 Q 30 5 45 15 L 45 30 Q 30 25 15 30 Z" fill="#27ae60"/><path d="M 15 35 Q 30 30 45 35 L 45 55 Q 30 50 15 55 Z" fill="#27ae60" opacity=".4"/><line x1="30" y1="15" x2="30" y2="55" stroke="#1a1a1a" stroke-width="2"/><text x="30" y="68" text-anchor="middle" fill="#999" font-size="10">SEATBELT</text></svg><div class="rt-caption">Seatbelt FIRST<br>before anything</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 80 80" width="84"><polygon points="24,4 56,4 76,24 76,56 56,76 24,76 4,56 4,24" fill="#c62828" stroke="#fff" stroke-width="3"/><text x="40" y="46" text-anchor="middle" fill="#fff" font-size="11" font-weight="900">STOP</text></svg><div class="rt-caption">STOP — সম্পূর্ণ থামো<br>3 sec minimum</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 60 75" width="63"><rect x="2" y="2" width="56" height="71" rx="3" fill="#fff" stroke="#222" stroke-width="1.5"/><text x="30" y="16" text-anchor="middle" fill="#222" font-weight="700" font-size="10">SPEED</text><text x="30" y="24" text-anchor="middle" fill="#222" font-weight="700" font-size="10">LIMIT</text><text x="30" y="52" text-anchor="middle" fill="#222" font-weight="900" font-size="22">25</text></svg><div class="rt-caption">Speed Limit — limit-এর<br>5 mph নিচে রাখো</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 120 60" width="126"><rect x="0" y="50" width="120" height="4" fill="#666"/><rect x="0" y="0" width="120" height="50" fill="#0a0a0a"/><rect x="25" y="15" width="40" height="20" rx="3" fill="#27ae60"/><circle cx="35" cy="38" r="3" fill="#222"/><circle cx="55" cy="38" r="3" fill="#222"/><rect x="75" y="15" width="40" height="20" rx="3" fill="#3498db"/><circle cx="85" cy="38" r="3" fill="#222"/><circle cx="105" cy="38" r="3" fill="#222"/><text x="5" y="58" fill="#555" font-size="10">PARALLEL PARKED</text></svg><div class="rt-caption">Parallel parking<br>1 ft from curb</div></div>
+<div class="rt-img-card"><svg viewBox="0 0 60 70" width="63"><rect x="5" y="10" width="50" height="50" rx="4" fill="#1a1a1a"/><path d="M 15 15 Q 30 5 45 15 L 45 30 Q 30 25 15 30 Z" fill="#27ae60"/><path d="M 15 35 Q 30 30 45 35 L 45 55 Q 30 50 15 55 Z" fill="#27ae60" opacity=".4"/><line x1="30" y1="15" x2="30" y2="55" stroke="#1a1a1a" stroke-width="2"/><text x="30" y="68" text-anchor="middle" fill="#999" font-size="10">SEATBELT</text></svg><div class="rt-caption">Seatbelt FIRST<br>before anything</div></div>
 </div>
 
 <div class="code-block">❌ TOP 10 AUTOMATIC FAIL REASONS:
@@ -1901,7 +1901,7 @@ doors.push({
 <p class="scene-setting en">The final chapter. No new rules today — today, all the rules together. The instructor hands you the key. "A complete drive, start to finish. From opening the door to parking — I'll watch every moment. Remember every scene — these exact moments will happen on test day."</p>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 200" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 200" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="200" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ১ — গাড়িতে ওঠার আগে: WALK-AROUND (৩০ সেকেন্ড)</text>
 <!-- driveway -->
@@ -1915,16 +1915,16 @@ doors.push({
 <!-- walk path around -->
 <path d="M 170 180 Q 150 120 170 70 Q 200 44 260 50 Q 300 58 296 110 Q 294 160 250 186" fill="none" stroke="#2ecc71" stroke-width="2.5" stroke-dasharray="6,5" marker-end="url(#waA)"/>
 <defs><marker id="waA" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#2ecc71"/></marker></defs>
-<text x="152" y="196" fill="#2ecc71" font-size="9" font-weight="900">🚶 শুরু</text>
+<text x="152" y="196" fill="#2ecc71" font-size="10" font-weight="900">🚶 শুরু</text>
 <!-- check callouts -->
-<text x="62" y="70" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">✓ Tire — চাপ ঠিক?</text>
+<text x="62" y="70" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">✓ Tire — চাপ ঠিক?</text>
 <text x="62" y="82" text-anchor="middle" fill="#ccc" font-size="10">flat/ফাটা নয় তো?</text>
 <path d="M 96 74 L 186 90" stroke="#f1c40f" stroke-width="1" stroke-dasharray="3,3" opacity=".6"/>
-<text x="62" y="120" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">✓ নিচে leak?</text>
+<text x="62" y="120" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">✓ নিচে leak?</text>
 <text x="62" y="132" text-anchor="middle" fill="#ccc" font-size="10">তেল/coolant-এর দাগ</text>
-<text x="398" y="70" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">✓ আলো ভাঙা নয় তো?</text>
+<text x="398" y="70" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">✓ আলো ভাঙা নয় তো?</text>
 <path d="M 362 74 L 300 80" stroke="#f1c40f" stroke-width="1" stroke-dasharray="3,3" opacity=".6"/>
-<text x="398" y="150" text-anchor="middle" fill="#e74c3c" font-size="8" font-weight="900">✓ পেছনে বাচ্চা/খেলনা?</text>
+<text x="398" y="150" text-anchor="middle" fill="#e74c3c" font-size="10" font-weight="900">✓ পেছনে বাচ্চা/খেলনা?</text>
 <text x="398" y="162" text-anchor="middle" fill="#ff8a80" font-size="10">সবচেয়ে জরুরি চেক!</text>
 <text x="352" y="184" font-size="11">🧸</text>
 <path d="M 362 172 L 330 178" stroke="#e74c3c" stroke-width="1" stroke-dasharray="3,3" opacity=".7"/>
@@ -1933,7 +1933,7 @@ doors.push({
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 250" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 250" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="250" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ২ — COCKPIT SETUP: বসেই চার কাজ, এই ক্রমে</text>
 <!-- windshield -->
@@ -1942,30 +1942,30 @@ doors.push({
 <rect x="196" y="42" width="68" height="22" rx="4" fill="#0b2545" stroke="#888" stroke-width="1.5"/>
 <text x="230" y="56" text-anchor="middle" fill="#5dade2" font-size="10">পুরো পেছনের কাচ</text>
 <circle cx="230" cy="34" r="3" fill="#666"/>
-<text x="310" y="52" fill="#f1c40f" font-size="9" font-weight="900">② Mirror</text>
+<text x="310" y="52" fill="#f1c40f" font-size="10" font-weight="900">② Mirror</text>
 <path d="M 306 50 L 268 52" stroke="#f1c40f" stroke-width="1.5" stroke-dasharray="3,3"/>
 <!-- side mirrors -->
 <rect x="18" y="88" width="34" height="24" rx="4" fill="#0b2545" stroke="#888" stroke-width="1.5"/>
 <rect x="408" y="88" width="34" height="24" rx="4" fill="#0b2545" stroke="#888" stroke-width="1.5"/>
-<text x="35" y="128" text-anchor="middle" fill="#ccc" font-size="6.5">নিজের গাড়ি সামান্য</text>
-<text x="425" y="128" text-anchor="middle" fill="#ccc" font-size="6.5">দেখা যাবে — বেশি নয়</text>
+<text x="35" y="128" text-anchor="middle" fill="#ccc" font-size="10">নিজের গাড়ি সামান্য</text>
+<text x="425" y="128" text-anchor="middle" fill="#ccc" font-size="10">দেখা যাবে — বেশি নয়</text>
 <!-- steering wheel + driver -->
 <circle cx="160" cy="180" r="52" fill="none" stroke="#555" stroke-width="9"/>
 <circle cx="160" cy="180" r="14" fill="#333"/>
 <circle cx="112" cy="180" r="8" fill="#ffd8a8"/><circle cx="208" cy="180" r="8" fill="#ffd8a8"/>
 <text x="94" y="184" text-anchor="middle" fill="#2ecc71" font-size="10" font-weight="900">9</text>
 <text x="228" y="184" text-anchor="middle" fill="#2ecc71" font-size="10" font-weight="900">3</text>
-<text x="160" y="246" text-anchor="middle" fill="#f1c40f" font-size="9" font-weight="900">④ হাত 9-and-3 — বুক wheel থেকে ১০ ইঞ্চি</text>
+<text x="160" y="246" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="900">④ হাত 9-and-3 — বুক wheel থেকে ১০ ইঞ্চি</text>
 <!-- seat adjustment -->
 <rect x="300" y="150" width="56" height="76" rx="8" fill="#3d3d3d"/>
 <rect x="300" y="140" width="56" height="18" rx="6" fill="#4a4a4a"/>
 <path d="M 328 226 L 328 240 M 316 233 L 340 233" stroke="#f1c40f" stroke-width="2"/>
-<text x="328" y="136" text-anchor="middle" fill="#f1c40f" font-size="9" font-weight="900">① Seat আগে!</text>
+<text x="328" y="136" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="900">① Seat আগে!</text>
 <text x="392" y="166" fill="#ccc" font-size="10">পেডাল পুরো চাপা যায়,</text>
 <text x="392" y="176" fill="#ccc" font-size="10">headrest মাথার মাঝে</text>
 <!-- seatbelt -->
 <path d="M 302 152 L 356 210" stroke="#e74c3c" stroke-width="6" opacity=".85"/>
-<text x="392" y="200" fill="#e74c3c" font-size="9" font-weight="900">③ Belt — সবার</text>
+<text x="392" y="200" fill="#e74c3c" font-size="10" font-weight="900">③ Belt — সবার</text>
 <text x="392" y="212" fill="#ff8a80" font-size="10">কাঁধ ও কোমরে flat,</text>
 <text x="392" y="222" fill="#ff8a80" font-size="10">ঘাড়ে নয়</text>
 <text x="60" y="240" text-anchor="middle" fill="#888" font-size="10">Seat আগে কেন? —</text>
@@ -1976,7 +1976,7 @@ doors.push({
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 210" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 210" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="210" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ৩ — ENGINE START + DASHBOARD চেক</text>
 <!-- dashboard panel -->
@@ -1992,59 +1992,59 @@ doors.push({
 <g font-size="13" text-anchor="middle">
 <text x="170" y="66">🔋</text><text x="200" y="66">🛢️</text><text x="230" y="66">🌡️</text><text x="260" y="66">⚙️</text><text x="290" y="66">🛞</text>
 </g>
-<text x="170" y="82" text-anchor="middle" fill="#888" font-size="5.5">battery</text>
-<text x="200" y="82" text-anchor="middle" fill="#888" font-size="5.5">oil</text>
-<text x="230" y="82" text-anchor="middle" fill="#888" font-size="5.5">temp</text>
-<text x="260" y="82" text-anchor="middle" fill="#888" font-size="5.5">engine</text>
-<text x="290" y="82" text-anchor="middle" fill="#888" font-size="5.5">tire/ABS</text>
-<text x="230" y="104" text-anchor="middle" fill="#f1c40f" font-size="7.5" font-weight="700">Start-এ সব জ্বলে ২-৩ সেকেন্ডে নিভে যাবে — কোনোটা জ্বলে থাকলে = সমস্যা, যেও না</text>
+<text x="170" y="82" text-anchor="middle" fill="#888" font-size="10">battery</text>
+<text x="200" y="82" text-anchor="middle" fill="#888" font-size="10">oil</text>
+<text x="230" y="82" text-anchor="middle" fill="#888" font-size="10">temp</text>
+<text x="260" y="82" text-anchor="middle" fill="#888" font-size="10">engine</text>
+<text x="290" y="82" text-anchor="middle" fill="#888" font-size="10">tire/ABS</text>
+<text x="230" y="104" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">Start-এ সব জ্বলে ২-৩ সেকেন্ডে নিভে যাবে — কোনোটা জ্বলে থাকলে = সমস্যা, যেও না</text>
 <!-- start sequence -->
 <rect x="30" y="132" width="120" height="64" rx="8" fill="#1e3a1e"/>
-<text x="90" y="150" text-anchor="middle" fill="#2ecc71" font-size="9" font-weight="900">① গিয়ার P-তে?</text>
-<text x="90" y="164" text-anchor="middle" fill="#7bed9f" font-size="7.5">(P ছাড়া start-ই হয় না</text>
-<text x="90" y="175" text-anchor="middle" fill="#7bed9f" font-size="7.5">বেশিরভাগ গাড়িতে)</text>
+<text x="90" y="150" text-anchor="middle" fill="#2ecc71" font-size="10" font-weight="900">① গিয়ার P-তে?</text>
+<text x="90" y="164" text-anchor="middle" fill="#7bed9f" font-size="10">(P ছাড়া start-ই হয় না</text>
+<text x="90" y="175" text-anchor="middle" fill="#7bed9f" font-size="10">বেশিরভাগ গাড়িতে)</text>
 <rect x="170" y="132" width="120" height="64" rx="8" fill="#1e3a1e"/>
-<text x="230" y="150" text-anchor="middle" fill="#2ecc71" font-size="9" font-weight="900">② ডান পা BRAKE-এ</text>
-<text x="230" y="164" text-anchor="middle" fill="#7bed9f" font-size="7.5">চেপে ধরো —</text>
-<text x="230" y="175" text-anchor="middle" fill="#7bed9f" font-size="7.5">গ্যাসে নয়!</text>
+<text x="230" y="150" text-anchor="middle" fill="#2ecc71" font-size="10" font-weight="900">② ডান পা BRAKE-এ</text>
+<text x="230" y="164" text-anchor="middle" fill="#7bed9f" font-size="10">চেপে ধরো —</text>
+<text x="230" y="175" text-anchor="middle" fill="#7bed9f" font-size="10">গ্যাসে নয়!</text>
 <rect x="310" y="132" width="120" height="64" rx="8" fill="#1e3a1e"/>
-<text x="370" y="150" text-anchor="middle" fill="#2ecc71" font-size="9" font-weight="900">③ START</text>
-<text x="370" y="164" text-anchor="middle" fill="#7bed9f" font-size="7.5">button/চাবি — তারপর</text>
-<text x="370" y="175" text-anchor="middle" fill="#7bed9f" font-size="7.5">dashboard light চেক</text>
+<text x="370" y="150" text-anchor="middle" fill="#2ecc71" font-size="10" font-weight="900">③ START</text>
+<text x="370" y="164" text-anchor="middle" fill="#7bed9f" font-size="10">button/চাবি — তারপর</text>
+<text x="370" y="175" text-anchor="middle" fill="#7bed9f" font-size="10">dashboard light চেক</text>
 </svg>
 <div class="rt-caption">P + brake + start = নিরাপদ শুরু। Warning light জ্বলে থাকা গাড়িতে রোড টেস্ট বাতিল হতে পারে — বাসা থেকে বেরোনোর আগেই চেক করো</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 190" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 190" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="190" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ৪ — পা ও গিয়ার: ভুল এখানেই সবচেয়ে বেশি হয়</text>
 <!-- pedals panel -->
 <rect x="30" y="34" width="180" height="140" rx="8" fill="#1c1c1c" stroke="#444" stroke-width="1.5"/>
 <rect x="60" y="70" width="44" height="66" rx="6" fill="#555"/>
-<text x="82" y="106" text-anchor="middle" fill="#fff" font-size="8" font-weight="900">BRAKE</text>
+<text x="82" y="106" text-anchor="middle" fill="#fff" font-size="10" font-weight="900">BRAKE</text>
 <rect x="130" y="60" width="30" height="80" rx="6" fill="#3a3a3a"/>
 <text x="145" y="104" text-anchor="middle" fill="#ccc" font-size="10" font-weight="900">GAS</text>
 <!-- right foot -->
 <ellipse cx="120" cy="158" rx="20" ry="11" fill="#ffd8a8"/>
 <path d="M 120 148 L 92 130 M 120 148 L 142 134" stroke="#f1c40f" stroke-width="2" stroke-dasharray="4,3"/>
-<text x="120" y="52" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">শুধু ডান পা — দুই পেডালেই!</text>
+<text x="120" y="52" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">শুধু ডান পা — দুই পেডালেই!</text>
 <text x="120" y="184" text-anchor="middle" fill="#ff8a80" font-size="10">বাম পা মেঝেতে — কখনো brake-এ নয়</text>
 <!-- PRNDL panel -->
 <rect x="240" y="34" width="190" height="140" rx="8" fill="#1c1c1c" stroke="#444" stroke-width="1.5"/>
 <g font-size="11" font-weight="900">
-<text x="262" y="60" fill="#fff">P</text><text x="282" y="60" fill="#888" font-size="7.5">Park — থামা+ছাড়ার সময়</text>
-<text x="262" y="86" fill="#fff">R</text><text x="282" y="86" fill="#888" font-size="7.5">Reverse — পেছনে (আগে পেছন দেখো!)</text>
-<text x="262" y="112" fill="#fff">N</text><text x="282" y="112" fill="#888" font-size="7.5">Neutral — engine-চাকা বিচ্ছিন্ন</text>
-<text x="262" y="138" fill="#2ecc71">D</text><text x="282" y="138" fill="#7bed9f" font-size="7.5">Drive — স্বাভাবিক চালনা</text>
-<text x="262" y="164" fill="#fff">L</text><text x="282" y="164" fill="#888" font-size="7.5">Low — খাড়া ঢাল/বরফে engine brake</text>
+<text x="262" y="60" fill="#fff">P</text><text x="282" y="60" fill="#888" font-size="10">Park — থামা+ছাড়ার সময়</text>
+<text x="262" y="86" fill="#fff">R</text><text x="282" y="86" fill="#888" font-size="10">Reverse — পেছনে (আগে পেছন দেখো!)</text>
+<text x="262" y="112" fill="#fff">N</text><text x="282" y="112" fill="#888" font-size="10">Neutral — engine-চাকা বিচ্ছিন্ন</text>
+<text x="262" y="138" fill="#2ecc71">D</text><text x="282" y="138" fill="#7bed9f" font-size="10">Drive — স্বাভাবিক চালনা</text>
+<text x="262" y="164" fill="#fff">L</text><text x="282" y="164" fill="#888" font-size="10">Low — খাড়া ঢাল/বরফে engine brake</text>
 </g>
 </svg>
 <div class="rt-caption">"ভুল পেডাল" crash-এর কারণ দুই পা ব্যবহার। এক পা = কখনো একসাথে brake+gas নয়। গিয়ার বদলের সময় সবসময় brake চাপা</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 220" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 220" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="220" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ৫ — DRIVEWAY থেকে বের হওয়া (সবচেয়ে অবহেলিত ঝুঁকি)</text>
 <!-- house -->
@@ -2070,24 +2070,24 @@ doors.push({
 <text x="290" y="170" font-size="13">🚶</text>
 <path d="M 282 165 L 230 165" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#dwB)"/>
 <defs><marker id="dwB" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#e74c3c"/></marker></defs>
-<text x="330" y="150" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">🚶 sidewalk-এর মানুষ আগে —</text>
-<text x="330" y="141" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">backing গাড়ি ALWAYS yield!</text>
+<text x="330" y="150" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">🚶 sidewalk-এর মানুষ আগে —</text>
+<text x="330" y="141" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">backing গাড়ি ALWAYS yield!</text>
 <!-- look back cue -->
-<text x="120" y="120" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">শরীর ঘুরিয়ে পেছনের</text>
-<text x="120" y="131" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">কাচ দিয়ে দেখো —</text>
-<text x="120" y="142" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">ক্যামেরা শুধু সাহায্য</text>
+<text x="120" y="120" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">শরীর ঘুরিয়ে পেছনের</text>
+<text x="120" y="131" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">কাচ দিয়ে দেখো —</text>
+<text x="120" y="142" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">ক্যামেরা শুধু সাহায্য</text>
 <!-- oncoming car on street -->
 <g transform="translate(380,178)">
 <rect x="0" y="0" width="48" height="22" rx="7" fill="#3498db"/>
 </g>
 <text x="404" y="214" text-anchor="middle" fill="#74b9ff" font-size="10">রাস্তার গাড়িকেও yield</text>
-<text x="230" y="212" text-anchor="middle" fill="#888" font-size="7.5">ধীরে — idle গতিতে, brake cover করে। Sidewalk পার হওয়ার আগে আবার থামো-দেখো</text>
+<text x="230" y="212" text-anchor="middle" fill="#888" font-size="10">ধীরে — idle গতিতে, brake cover করে। Sidewalk পার হওয়ার আগে আবার থামো-দেখো</text>
 </svg>
 <div class="rt-caption">Backing out: শরীর ঘুরাও + তিন দিক দেখো + idle গতি। Sidewalk = pedestrian-এর রাস্তা, street = গাড়ির — দুটোতেই তুমি guest</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 230" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 230" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="230" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ৬ — RESIDENTIAL রাস্তা: ২৫ mph-এ SEE প্রয়োগ</text>
 <!-- street -->
@@ -2102,7 +2102,7 @@ doors.push({
 <circle cx="216" cy="140" r="7" fill="#e74c3c"/>
 <path d="M 216 132 L 216 152" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#rsB)"/>
 <defs><marker id="rsB" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#e74c3c"/></marker></defs>
-<text x="216" y="96" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="900">⚠️ বল = পেছনে বাচ্চা আসছে!</text>
+<text x="216" y="96" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">⚠️ বল = পেছনে বাচ্চা আসছে!</text>
 <!-- your car -->
 <g transform="translate(40,146)">
 <rect x="0" y="0" width="52" height="24" rx="7" fill="#2ecc71"/>
@@ -2110,14 +2110,14 @@ doors.push({
 <circle cx="12" cy="26" r="6" fill="#000"/><circle cx="40" cy="26" r="6" fill="#000"/>
 </g>
 <!-- SEE callouts -->
-<text x="66" y="136" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="900">তুমি — ২৫ mph</text>
+<text x="66" y="136" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="900">তুমি — ২৫ mph</text>
 <path d="M 100 158 L 200 148" stroke="#2ecc71" stroke-width="1.5" stroke-dasharray="4,3"/>
-<text x="120" y="216" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">SEARCH: ২০-৩০ সেকেন্ড</text>
-<text x="120" y="226" text-anchor="middle" fill="#ccc" font-size="7.5">সামনে স্ক্যান — বলটা দেখলে</text>
-<text x="260" y="216" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">EVALUATE: বল মানে</text>
-<text x="260" y="226" text-anchor="middle" fill="#ccc" font-size="7.5">বাচ্চা আসতে পারে</text>
-<text x="390" y="216" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">EXECUTE: এখনই brake</text>
-<text x="390" y="226" text-anchor="middle" fill="#ccc" font-size="7.5">cover + গতি কমাও</text>
+<text x="120" y="216" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">SEARCH: ২০-৩০ সেকেন্ড</text>
+<text x="120" y="226" text-anchor="middle" fill="#ccc" font-size="10">সামনে স্ক্যান — বলটা দেখলে</text>
+<text x="260" y="216" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">EVALUATE: বল মানে</text>
+<text x="260" y="226" text-anchor="middle" fill="#ccc" font-size="10">বাচ্চা আসতে পারে</text>
+<text x="390" y="216" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">EXECUTE: এখনই brake</text>
+<text x="390" y="226" text-anchor="middle" fill="#ccc" font-size="10">cover + গতি কমাও</text>
 <!-- stop sign ahead -->
 <rect x="424" y="70" width="4" height="50" fill="#8a6d3b"/>
 <polygon points="416,44 436,44 444,52 444,72 436,80 416,80 408,72 408,52" fill="#c62828" stroke="#fff" stroke-width="1.5"/>
@@ -2128,7 +2128,7 @@ doors.push({
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 240" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 240" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="240" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ৭ — FREEWAY: ramp → merge → cruise → exit</text>
 <!-- freeway 2 lanes -->
@@ -2141,7 +2141,7 @@ doors.push({
 <g transform="translate(60,206)">
 <rect x="0" y="0" width="48" height="22" rx="7" fill="#2ecc71" transform="rotate(-18)"/>
 </g>
-<text x="60" y="196" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="900">১. Ramp-এ ACCELERATE</text>
+<text x="60" y="196" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="900">১. Ramp-এ ACCELERATE</text>
 <text x="60" y="186" text-anchor="middle" fill="#7bed9f" font-size="10">— highway speed-এ ওঠো</text>
 <!-- merge path -->
 <path d="M 120 200 Q 180 160 240 138" fill="none" stroke="#2ecc71" stroke-width="2.5" stroke-dasharray="6,5" marker-end="url(#fwA)"/>
@@ -2149,47 +2149,47 @@ doors.push({
 <!-- gap between two traffic cars -->
 <g transform="translate(150,122)"><rect x="0" y="0" width="48" height="22" rx="7" fill="#3498db"/></g>
 <g transform="translate(300,122)"><rect x="0" y="0" width="48" height="22" rx="7" fill="#3498db"/></g>
-<text x="250" y="118" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">২. GAP খুঁজো — signal + shoulder check</text>
+<text x="250" y="118" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">২. GAP খুঁজো — signal + shoulder check</text>
 <!-- cruising car in right lane -->
 <g transform="translate(380,122)" opacity=".0"><rect width="1" height="1"/></g>
-<text x="330" y="176" text-anchor="middle" fill="#ccc" font-size="7.5">৩. ডান লেনে cruise — বাম লেন শুধু passing</text>
+<text x="330" y="176" text-anchor="middle" fill="#ccc" font-size="10">৩. ডান লেনে cruise — বাম লেন শুধু passing</text>
 <!-- exit ramp top right -->
 <path d="M 380 60 Q 420 52 460 30" fill="none" stroke="#2a2a2a" stroke-width="34"/>
-<text x="404" y="46" text-anchor="middle" fill="#7bed9f" font-size="7.5" font-weight="700">৪. EXIT: আগে ramp-এ ঢোকো,</text>
-<text x="404" y="36" text-anchor="middle" fill="#7bed9f" font-size="7.5" font-weight="700">তারপর গতি কমাও</text>
+<text x="404" y="46" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">৪. EXIT: আগে ramp-এ ঢোকো,</text>
+<text x="404" y="36" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">তারপর গতি কমাও</text>
 <!-- exit sign -->
 <rect x="330" y="34" width="44" height="20" rx="3" fill="#27ae60"/>
-<text x="352" y="47" text-anchor="middle" fill="#fff" font-size="8" font-weight="900">EXIT 77</text>
-<text x="230" y="228 " text-anchor="middle" fill="#888" font-size="7.5">ভুল exit মিস করলে? — কখনো freeway-তে থেমো না/পেছাবে না। পরের exit নাও, ঘুরে এসো</text>
+<text x="352" y="47" text-anchor="middle" fill="#fff" font-size="10" font-weight="900">EXIT 77</text>
+<text x="230" y="228 " text-anchor="middle" fill="#888" font-size="10">ভুল exit মিস করলে? — কখনো freeway-তে থেমো না/পেছাবে না। পরের exit নাও, ঘুরে এসো</text>
 </svg>
 <div class="rt-caption">Merge-এর সূত্র: গতি মেলাও → gap → signal → shoulder check → smooth ঢোকা। Exit-এর সূত্র: আগে ramp, পরে brake — freeway-তে ধীর হওয়া নয়</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 150" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 150" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="150" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ৮ — আবহাওয়া বদলালো: দুটো reflex</text>
 <!-- left panel: rain -->
 <rect x="20" y="32" width="200" height="100" rx="8" fill="#16213e"/>
-<text x="120" y="52" text-anchor="middle" fill="#74b9ff" font-size="9" font-weight="900">🌧️ বৃষ্টি শুরু</text>
+<text x="120" y="52" text-anchor="middle" fill="#74b9ff" font-size="10" font-weight="900">🌧️ বৃষ্টি শুরু</text>
 <text x="70" y="80" text-anchor="middle" font-size="16">🌀</text>
 <text x="70" y="100" text-anchor="middle" fill="#ccc" font-size="10">wipers ON</text>
 <text x="120" y="82" text-anchor="middle" fill="#f1c40f" font-size="14" font-weight="900">=</text>
 <text x="170" y="80" text-anchor="middle" font-size="16">💡</text>
 <text x="170" y="100" text-anchor="middle" fill="#ccc" font-size="10">headlights ON</text>
-<text x="120" y="122" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">Michigan LAW — DRL যথেষ্ট নয়!</text>
+<text x="120" y="122" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">Michigan LAW — DRL যথেষ্ট নয়!</text>
 <!-- right panel: distance -->
 <rect x="240" y="32" width="200" height="100" rx="8" fill="#1e2a1e"/>
-<text x="340" y="52" text-anchor="middle" fill="#7bed9f" font-size="9" font-weight="900">📏 দূরত্ব বাড়াও</text>
-<text x="340" y="80" text-anchor="middle" fill="#ccc" font-size="9">শুকনো ৩ → বৃষ্টি ৪ → বরফ ৬+</text>
-<text x="340" y="100" text-anchor="middle" fill="#ccc" font-size="7.5">গতিও কমাও — Basic Speed Law:</text>
-<text x="340" y="112" text-anchor="middle" fill="#ccc" font-size="7.5">"condition অনুযায়ী নিরাপদ গতি"</text>
+<text x="340" y="52" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="900">📏 দূরত্ব বাড়াও</text>
+<text x="340" y="80" text-anchor="middle" fill="#ccc" font-size="10">শুকনো ৩ → বৃষ্টি ৪ → বরফ ৬+</text>
+<text x="340" y="100" text-anchor="middle" fill="#ccc" font-size="10">গতিও কমাও — Basic Speed Law:</text>
+<text x="340" y="112" text-anchor="middle" fill="#ccc" font-size="10">"condition অনুযায়ী নিরাপদ গতি"</text>
 </svg>
 <div class="rt-caption">আবহাওয়া বদলানো মাত্র দুটো কাজ automatic হওয়া চাই: wipers=lights, আর সামনের gap বড়</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 220" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 220" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="220" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ৯ — গন্তব্যে: পার্ক, secure, নিরাপদে বের হও</text>
 <!-- parking spot -->
@@ -2204,23 +2204,23 @@ doors.push({
 <text x="105" y="214" text-anchor="middle" fill="#ccc" font-size="10">দুই লাইনের মাঝে, wheel সোজা</text>
 <!-- secure checklist -->
 <rect x="200" y="40" width="240" height="106" rx="8" fill="#1c1c1c" stroke="#444" stroke-width="1.5"/>
-<text x="320" y="58" text-anchor="middle" fill="#f1c40f" font-size="9" font-weight="900">SECURE — প্রতিবার, এই ক্রমে</text>
-<text x="214" y="76" fill="#2ecc71" font-size="8">✓ সম্পূর্ণ থামো → গিয়ার P</text>
-<text x="214" y="90" fill="#2ecc71" font-size="8">✓ Parking brake টানো</text>
-<text x="214" y="104" fill="#2ecc71" font-size="8">✓ Lights/wipers OFF → engine OFF</text>
-<text x="214" y="118" fill="#2ecc71" font-size="8">✓ ভুলো না: ফোন, বাচ্চা, পোষা প্রাণী!</text>
-<text x="214" y="132" fill="#2ecc71" font-size="8">✓ চারপাশ দেখে দরজা খোলো → lock</text>
+<text x="320" y="58" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="900">SECURE — প্রতিবার, এই ক্রমে</text>
+<text x="214" y="76" fill="#2ecc71" font-size="10">✓ সম্পূর্ণ থামো → গিয়ার P</text>
+<text x="214" y="90" fill="#2ecc71" font-size="10">✓ Parking brake টানো</text>
+<text x="214" y="104" fill="#2ecc71" font-size="10">✓ Lights/wipers OFF → engine OFF</text>
+<text x="214" y="118" fill="#2ecc71" font-size="10">✓ ভুলো না: ফোন, বাচ্চা, পোষা প্রাণী!</text>
+<text x="214" y="132" fill="#2ecc71" font-size="10">✓ চারপাশ দেখে দরজা খোলো → lock</text>
 <!-- Dutch reach -->
 <rect x="200" y="156" width="240" height="52" rx="8" fill="#1e2a3a"/>
-<text x="320" y="174" text-anchor="middle" fill="#74b9ff" font-size="9" font-weight="900">🚴 DUTCH REACH — ডান হাতে দরজা খোলো</text>
-<text x="320" y="188" text-anchor="middle" fill="#ccc" font-size="7.5">দূরের হাত ব্যবহারে শরীর ঘোরে — পেছনের cyclist</text>
-<text x="320" y="199" text-anchor="middle" fill="#ccc" font-size="7.5">নিজে থেকেই চোখে পড়ে। "Dooring" crash বন্ধ</text>
+<text x="320" y="174" text-anchor="middle" fill="#74b9ff" font-size="10" font-weight="900">🚴 DUTCH REACH — ডান হাতে দরজা খোলো</text>
+<text x="320" y="188" text-anchor="middle" fill="#ccc" font-size="10">দূরের হাত ব্যবহারে শরীর ঘোরে — পেছনের cyclist</text>
+<text x="320" y="199" text-anchor="middle" fill="#ccc" font-size="10">নিজে থেকেই চোখে পড়ে। "Dooring" crash বন্ধ</text>
 </svg>
 <div class="rt-caption">যাত্রা শেষও একটা skill: P → parking brake → সব OFF → পেছন দেখে Dutch reach-এ দরজা। যেভাবে শুরু করেছিলে (চেক করে), সেভাবেই শেষ</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 200" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 200" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="200" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ১০ — GAS STATION: প্রথমবার তেল ভরা</text>
 <!-- pump island -->
@@ -2236,25 +2236,25 @@ doors.push({
 <circle cx="22" cy="46" r="10" fill="#000"/><circle cx="88" cy="46" r="10" fill="#000"/>
 <rect x="2" y="12" width="8" height="10" rx="2" fill="#f1c40f"/>
 </g>
-<text x="310" y="70" text-anchor="middle" fill="#f1c40f" font-size="7.5" font-weight="700">tank-এর ঢাকনা pump-এর দিকে</text>
+<text x="310" y="70" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">tank-এর ঢাকনা pump-এর দিকে</text>
 <!-- fuel gauge trick -->
 <circle cx="80" cy="90" r="36" fill="#1a1a1a" stroke="#444" stroke-width="2"/>
 <text x="80" y="76" text-anchor="middle" fill="#ccc" font-size="10">FUEL</text>
-<text x="56" y="102" text-anchor="middle" fill="#e74c3c" font-size="8">E</text>
-<text x="104" y="102" text-anchor="middle" fill="#2ecc71" font-size="8">F</text>
+<text x="56" y="102" text-anchor="middle" fill="#e74c3c" font-size="10">E</text>
+<text x="104" y="102" text-anchor="middle" fill="#2ecc71" font-size="10">F</text>
 <line x1="80" y1="94" x2="66" y2="78" stroke="#e74c3c" stroke-width="2.5"/>
-<text x="80" y="112" text-anchor="middle" fill="#f1c40f" font-size="9" font-weight="900">⛽ ◀</text>
-<text x="80" y="146" text-anchor="middle" fill="#f1c40f" font-size="7.5" font-weight="700">gauge-এর তীর = tank কোন পাশে!</text>
+<text x="80" y="112" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="900">⛽ ◀</text>
+<text x="80" y="146" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">gauge-এর তীর = tank কোন পাশে!</text>
 <text x="80" y="157" text-anchor="middle" fill="#ccc" font-size="10">(প্রতিটা গাড়িতে আছে — দেখো)</text>
 <!-- rules -->
-<text x="230" y="178" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="700">Engine OFF ✓ · ফোন pocket-এ ✓ · ধূমপান নিষেধ ✓ · click-এর পর "top off" নয় ✓</text>
+<text x="230" y="178" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">Engine OFF ✓ · ফোন pocket-এ ✓ · ধূমপান নিষেধ ✓ · click-এর পর "top off" নয় ✓</text>
 <text x="230" y="192" text-anchor="middle" fill="#888" font-size="10">¼ tank-এর নিচে নামার আগেই ভরো — শীতে অর্ধেকের নিচে নামিও না (fuel line জমে)</text>
 </svg>
 <div class="rt-caption">প্রথম solo কাজগুলোর একটা। Pump-এ ঢোকার আগে fuel gauge-এর ছোট তীরটা দেখো — কোন পাশে tank বলে দেয়। ভুল পাশে দাঁড়ানো নতুন driver-দের ক্লাসিক ভুল</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 230" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 230" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="230" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ১১ — Unprotected বাম মোড়ের অপেক্ষা: চাকা সোজা!</text>
 <!-- left panel: wrong (wheels turned) -->
@@ -2289,13 +2289,13 @@ doors.push({
 <marker id="ulB" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#e74c3c"/></marker>
 <marker id="ulC" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#2ecc71"/></marker>
 </defs>
-<text x="230" y="222" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">অপেক্ষার নিয়ম: intersection-এ ঢুকে থাকো, signal on, চাকা সোজা, ২-১টা গাড়ির gap-এর জন্য ধৈর্য</text>
+<text x="230" y="222" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">অপেক্ষার নিয়ম: intersection-এ ঢুকে থাকো, signal on, চাকা সোজা, ২-১টা গাড়ির gap-এর জন্য ধৈর্য</text>
 </svg>
 <div class="rt-caption">জীবন বাঁচানো ছোট্ট অভ্যাস: বাম মোড়ের অপেক্ষায় চাকা সোজা রাখো। ঘোরানো চাকায় পেছনের ধাক্কা তোমাকে সরাসরি oncoming ট্রাফিকের মুখে ঠেলে দেয়</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 240" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 240" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="240" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ১২ — SCHOOL BUS থামলো: কে থামবে, কে যাবে?</text>
 <!-- top: undivided road -->
@@ -2311,14 +2311,14 @@ doors.push({
 <circle cx="86" cy="-4" r="4" fill="#e74c3c"><animate attributeName="opacity" values=".2;1;.2" dur=".7s" repeatCount="indefinite"/></circle>
 <polygon points="-14,8 -2,8 -2,22 -14,22" fill="#c62828"/><text x="-8" y="18" text-anchor="middle" fill="#fff" font-size="10" font-weight="900">STOP</text>
 </g>
-<text x="245" y="130" text-anchor="middle" fill="#f1c40f" font-size="7.5" font-weight="700">লাল আলো + STOP arm</text>
+<text x="245" y="130" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">লাল আলো + STOP arm</text>
 <!-- child crossing -->
 <text x="180" y="72" font-size="12">🧒</text>
 <!-- both directions stopped -->
 <g transform="translate(80,84)"><rect x="0" y="0" width="44" height="22" rx="6" fill="#2ecc71"/></g>
-<text x="102" y="126" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="900">তুমি: থামো ✋</text>
+<text x="102" y="126" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="900">তুমি: থামো ✋</text>
 <g transform="translate(330,46)"><rect x="0" y="0" width="44" height="22" rx="6" fill="#2ecc71"/></g>
-<text x="352" y="42" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="900">বিপরীত দিক: থামো ✋</text>
+<text x="352" y="42" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="900">বিপরীত দিক: থামো ✋</text>
 <!-- bottom: divided road -->
 <rect x="20" y="146" width="420" height="80" fill="#2a2a2a" rx="4"/>
 <rect x="20" y="180" width="420" height="12" fill="#1e3a1e"/>
@@ -2328,17 +2328,17 @@ doors.push({
 <circle cx="4" cy="-4" r="4" fill="#e74c3c"/>
 </g>
 <g transform="translate(80,198)"><rect x="0" y="0" width="44" height="20" rx="6" fill="#2ecc71"/></g>
-<text x="102" y="236" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="900">বাসের দিক: থামো ✋</text>
+<text x="102" y="236" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="900">বাসের দিক: থামো ✋</text>
 <g transform="translate(330,152)"><rect x="0" y="0" width="44" height="20" rx="6" fill="#3498db"/></g>
 <path d="M 326 162 L 296 162" stroke="#3498db" stroke-width="2" marker-end="url(#sbA)"/>
 <defs><marker id="sbA" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#3498db"/></marker></defs>
-<text x="352" y="148" text-anchor="middle" fill="#74b9ff" font-size="8" font-weight="900">বিপরীত দিক: যেতে পারে ✓</text>
+<text x="352" y="148" text-anchor="middle" fill="#74b9ff" font-size="10" font-weight="900">বিপরীত দিক: যেতে পারে ✓</text>
 </svg>
 <div class="rt-caption">Painted line = দুই দিকই থামে। Physical median = শুধু বাসের দিক থামে। ভুল করলে $৫০০+ জরিমানা — কিন্তু আসল কারণ: বাসের সামনে-পেছনে যেকোনো মুহূর্তে বাচ্চা</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 220" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 220" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="220" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ১৩ — RAILROAD CROSSING: gate নামছে</text>
 <!-- tracks vertical right side -->
@@ -2370,8 +2370,8 @@ doors.push({
 <rect x="9" y="4" width="34" height="10" rx="3" fill="#0e4429"/>
 <circle cx="12" cy="26" r="6" fill="#000"/><circle cx="40" cy="26" r="6" fill="#000"/>
 </g>
-<text x="216" y="172" text-anchor="middle" fill="#7bed9f" font-size="7.5" font-weight="700">১৫-৫০ ফুট দূরে থামো —</text>
-<text x="216" y="182" text-anchor="middle" fill="#7bed9f" font-size="7.5" font-weight="700">gate-এর নিচে কখনো নয়</text>
+<text x="216" y="172" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">১৫-৫০ ফুট দূরে থামো —</text>
+<text x="216" y="182" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">gate-এর নিচে কখনো নয়</text>
 <!-- train coming -->
 <g transform="translate(336,36)">
 <rect x="0" y="0" width="22" height="44" rx="5" fill="#c0392b"/>
@@ -2380,16 +2380,16 @@ doors.push({
 <text x="290" y="46" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">🚆 ট্রেন — দেখতে যত দূরে,</text>
 <text x="290" y="56" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">আসলে তার চেয়ে কাছে ও দ্রুত!</text>
 <!-- rules -->
-<text x="120" y="202" text-anchor="middle" fill="#f1c40f" font-size="7.5" font-weight="700">এক ট্রেন গেল ≠ নিরাপদ — ২য় track-এ আরেকটা</text>
-<text x="120" y="212" text-anchor="middle" fill="#f1c40f" font-size="7.5" font-weight="700">আসতে পারে। Gate পুরো ওঠা পর্যন্ত অপেক্ষা</text>
-<text x="120" y="98" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="900">Track-এ আটকে গেলে: সবাই বেরোও, ট্রেনের</text>
-<text x="120" y="108" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="900">দিকে কোণাকুণি দৌড়াও (ধ্বংসাবশেষ পেছনে ছোটে)</text>
+<text x="120" y="202" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">এক ট্রেন গেল ≠ নিরাপদ — ২য় track-এ আরেকটা</text>
+<text x="120" y="212" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">আসতে পারে। Gate পুরো ওঠা পর্যন্ত অপেক্ষা</text>
+<text x="120" y="98" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">Track-এ আটকে গেলে: সবাই বেরোও, ট্রেনের</text>
+<text x="120" y="108" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">দিকে কোণাকুণি দৌড়াও (ধ্বংসাবশেষ পেছনে ছোটে)</text>
 </svg>
 <div class="rt-caption">কখনো gate-এর ফাঁক দিয়ে ঢুকো না, কখনো track-এর উপর থেমো না — সামনের জায়গা নিশ্চিত না হলে crossing-এ ঢুকোই না</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 210" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 210" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="210" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ১৪ — শীতের সকাল: বরফ পরিষ্কার + snowplow</text>
 <!-- left: snow covered car -->
@@ -2401,11 +2401,11 @@ doors.push({
 <rect x="18" y="4" width="104" height="10" rx="4" fill="#e8f4ff" opacity=".9"/>
 <circle cx="24" cy="52" r="10" fill="#000"/><circle cx="116" cy="52" r="10" fill="#000"/>
 </g>
-<text x="120" y="62" text-anchor="middle" fill="#a8d8ff" font-size="9" font-weight="900">সব পরিষ্কার করো — শুধু ছোট গর্ত নয়!</text>
+<text x="120" y="62" text-anchor="middle" fill="#a8d8ff" font-size="10" font-weight="900">সব পরিষ্কার করো — শুধু ছোট গর্ত নয়!</text>
 <text x="120" y="76" text-anchor="middle" fill="#ccc" font-size="10">windshield ✓ সব জানালা ✓ mirror ✓</text>
 <text x="120" y="160" text-anchor="middle" fill="#ccc" font-size="10">lights ✓ plate ✓ ছাদ ✓ (ছাদের বরফ উড়ে</text>
 <text x="120" y="171" text-anchor="middle" fill="#ccc" font-size="10">পেছনের গাড়িতে পড়ে — ticket হতে পারে)</text>
-<text x="120" y="190" text-anchor="middle" fill="#f1c40f" font-size="7.5" font-weight="700">Defroster আগে চালু করো — ৫ মিনিট আগে বেরোও</text>
+<text x="120" y="190" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">Defroster আগে চালু করো — ৫ মিনিট আগে বেরোও</text>
 <!-- right: snowplow -->
 <rect x="240" y="34" width="200" height="166" rx="8" fill="#1a2430"/>
 <rect x="250" y="120" width="180" height="40" fill="#2a2a2a"/>
@@ -2420,18 +2420,18 @@ doors.push({
 <text x="415" y="130" font-size="10" opacity=".8">❄️❄️</text>
 <!-- your car behind, keeping distance -->
 <g transform="translate(258,130)"><rect x="0" y="0" width="40" height="20" rx="6" fill="#2ecc71"/></g>
-<text x="340" y="62" text-anchor="middle" fill="#f8c471" font-size="9" font-weight="900">"Don't crowd the plow!"</text>
+<text x="340" y="62" text-anchor="middle" fill="#f8c471" font-size="10" font-weight="900">"Don't crowd the plow!"</text>
 <text x="340" y="78" text-anchor="middle" fill="#ccc" font-size="10">plow-এর পেছনে অনেক দূরে থাকো —</text>
 <text x="340" y="89" text-anchor="middle" fill="#ccc" font-size="10">সামনে ঘন তুষার-মেঘ, wing দুই পাশে ছড়ানো</text>
-<text x="340" y="104" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">ডান দিক দিয়ে কখনো পাস কোরো না</text>
-<text x="340" y="180" text-anchor="middle" fill="#7bed9f" font-size="7.5" font-weight="700">Plow-এর পেছনের রাস্তা = পরিষ্কার + লবণ দেওয়া —</text>
-<text x="340" y="191" text-anchor="middle" fill="#7bed9f" font-size="7.5" font-weight="700">ধৈর্য ধরে পেছনে থাকাই দ্রুততম নিরাপদ পথ</text>
+<text x="340" y="104" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">ডান দিক দিয়ে কখনো পাস কোরো না</text>
+<text x="340" y="180" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">Plow-এর পেছনের রাস্তা = পরিষ্কার + লবণ দেওয়া —</text>
+<text x="340" y="191" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">ধৈর্য ধরে পেছনে থাকাই দ্রুততম নিরাপদ পথ</text>
 </svg>
 <div class="rt-caption">Michigan-এর শীতের দুই ritual: বেরোনোর আগে গাড়ির সব বরফ (peephole driving = বিপজ্জনক + ticket), আর রাস্তায় plow দেখলে — পেছনে, দূরে, ধৈর্যে</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 210" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 210" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="210" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ১৫ — FREEWAY-তে গাড়ি নষ্ট: কী করবে, কোথায় দাঁড়াবে</text>
 <!-- freeway -->
@@ -2449,9 +2449,9 @@ doors.push({
 <circle cx="13" cy="28" r="7" fill="#000"/><circle cx="43" cy="28" r="7" fill="#000"/>
 <circle cx="4" cy="6" r="3" fill="#f1c40f"><animate attributeName="opacity" values="1;.2;1" dur=".6s" repeatCount="indefinite"/></circle>
 <circle cx="52" cy="6" r="3" fill="#f1c40f"><animate attributeName="opacity" values="1;.2;1" dur=".6s" repeatCount="indefinite"/></circle>
-<text x="28" y="42" text-anchor="middle" font-size="8">💨</text>
+<text x="28" y="42" text-anchor="middle" font-size="10">💨</text>
 </g>
-<text x="318" y="200" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">যত ডানে সম্ভব — hazard ⚠ জ্বালাও</text>
+<text x="318" y="200" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">যত ডানে সম্ভব — hazard ⚠ জ্বালাও</text>
 <!-- people behind barrier -->
 <rect x="380" y="150" width="70" height="6" fill="#666"/>
 <text x="412" y="172" font-size="11">🧍🧍</text>
@@ -2462,17 +2462,17 @@ doors.push({
 <defs><marker id="bdA" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#2ecc71"/></marker></defs>
 <text x="368" y="140" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">passenger দিক দিয়ে বেরোও</text>
 <!-- steps -->
-<text x="118" y="146" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">১. সমস্যা টের পাওয়া মাত্র signal দিয়ে ডানে</text>
-<text x="118" y="158" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">২. Hazard লাইট + hood তোলো (সাহায্যের সংকেত)</text>
-<text x="118" y="170" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">৩. ট্রাফিকের পাশে দাঁড়িও না — কখনোই</text>
-<text x="118" y="182" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">৪. 911/roadside assistance ফোন করো</text>
-<text x="230" y="34" text-anchor="middle" fill="#888" font-size="7.5">রাতে হলে: interior light জ্বালাও। গাড়িতে রাখো: flare/triangle, কম্বল, torch, jumper cable</text>
+<text x="118" y="146" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">১. সমস্যা টের পাওয়া মাত্র signal দিয়ে ডানে</text>
+<text x="118" y="158" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">২. Hazard লাইট + hood তোলো (সাহায্যের সংকেত)</text>
+<text x="118" y="170" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">৩. ট্রাফিকের পাশে দাঁড়িও না — কখনোই</text>
+<text x="118" y="182" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">৪. 911/roadside assistance ফোন করো</text>
+<text x="230" y="34" text-anchor="middle" fill="#888" font-size="10">রাতে হলে: interior light জ্বালাও। গাড়িতে রাখো: flare/triangle, কম্বল, torch, jumper cable</text>
 </svg>
 <div class="rt-caption">Freeway breakdown-এ সবচেয়ে বড় বিপদ গাড়ি নষ্ট হওয়া নয় — পাশের ৭০ mph ট্রাফিক। গাড়ির ট্রাফিক-পাশে এক সেকেন্ডও দাঁড়িও না</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 200" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 200" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="200" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ১৬ — AGGRESSIVE DRIVER: রাগী চালকের মোকাবিলা</text>
 <!-- road -->
@@ -2483,7 +2483,7 @@ doors.push({
 <rect x="0" y="0" width="50" height="24" rx="7" fill="#e74c3c"/>
 <rect x="9" y="4" width="32" height="10" rx="3" fill="#8e2020"/>
 </g>
-<text x="175" y="152" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">গায়ে লেগে, হর্ন, flash, চিৎকার</text>
+<text x="175" y="152" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">গায়ে লেগে, হর্ন, flash, চিৎকার</text>
 <path d="M 204 118 Q 220 100 236 118 Q 250 132 264 120" fill="none" stroke="#e74c3c" stroke-width="2" stroke-dasharray="4,3"/>
 <!-- your car ahead moving right -->
 <g transform="translate(280,70)">
@@ -2492,21 +2492,21 @@ doors.push({
 </g>
 <path d="M 300 100 Q 310 118 330 120" fill="none" stroke="#2ecc71" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#agA)"/>
 <defs><marker id="agA" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#2ecc71"/></marker></defs>
-<text x="318" y="62" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="900">তুমি: সরে যাও, যেতে দাও</text>
+<text x="318" y="62" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="900">তুমি: সরে যাও, যেতে দাও</text>
 <!-- rules two columns -->
-<text x="115" y="170" text-anchor="middle" fill="#e74c3c" font-size="8" font-weight="900">কোরো না ❌</text>
+<text x="115" y="170" text-anchor="middle" fill="#e74c3c" font-size="10" font-weight="900">কোরো না ❌</text>
 <text x="115" y="182" text-anchor="middle" fill="#ff8a80" font-size="10">eye contact · অঙ্গভঙ্গি · brake-check</text>
 <text x="115" y="192" text-anchor="middle" fill="#ff8a80" font-size="10">গতি-প্রতিযোগিতা · জবাবি হর্ন</text>
-<text x="345" y="170" text-anchor="middle" fill="#2ecc71" font-size="8" font-weight="900">করো ✅</text>
+<text x="345" y="170" text-anchor="middle" fill="#2ecc71" font-size="10" font-weight="900">করো ✅</text>
 <text x="345" y="182" text-anchor="middle" fill="#7bed9f" font-size="10">ডানে সরে যেতে দাও · দূরত্ব বাড়াও · শান্ত শ্বাস</text>
 <text x="345" y="192" text-anchor="middle" fill="#7bed9f" font-size="10">পিছু নিলে: বাসায় নয় — police station-এ যাও, 911</text>
-<text x="230" y="46" text-anchor="middle" fill="#888" font-size="7.5">মনে রাখো: রাস্তায় "জেতা" বলে কিছু নেই — যে সরে যায় সে-ই জেতে</text>
+<text x="230" y="46" text-anchor="middle" fill="#888" font-size="10">মনে রাখো: রাস্তায় "জেতা" বলে কিছু নেই — যে সরে যায় সে-ই জেতে</text>
 </svg>
 <div class="rt-caption">Road rage-এর একমাত্র জয়: engage না করা। সে তোমাকে চেনে না — এটা ব্যক্তিগত নয়। পিছু নিলে কখনো বাসায় যেও না — জনবহুল জায়গা বা police station</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 210" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 210" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="210" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ১৭ — জ্যামে পেছনে AMBULANCE: করিডোর বানাও</text>
 <!-- two lanes stopped traffic -->
@@ -2518,33 +2518,33 @@ doors.push({
 <g transform="translate(180,44)"><rect x="0" y="0" width="46" height="22" rx="7" fill="#3498db"/></g>
 <g transform="translate(290,46)"><rect x="0" y="0" width="46" height="22" rx="7" fill="#2ecc71"/></g>
 <path d="M 103 70 L 103 56 M 203 68 L 203 54 M 313 70 L 313 56" stroke="#f1c40f" stroke-width="2" marker-end="url(#ecA)"/>
-<text x="200" y="36" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">বাম লেন → যতটা সম্ভব বামে চাপো</text>
+<text x="200" y="36" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">বাম লেন → যতটা সম্ভব বামে চাপো</text>
 <!-- right lane cars moving RIGHT edge -->
 <g transform="translate(120,152)"><rect x="0" y="0" width="46" height="22" rx="7" fill="#e67e22"/></g>
 <g transform="translate(230,154)"><rect x="0" y="0" width="46" height="22" rx="7" fill="#9b59b6"/></g>
 <g transform="translate(340,152)"><rect x="0" y="0" width="46" height="22" rx="7" fill="#16a085"/></g>
 <path d="M 143 150 L 143 164 M 253 152 L 253 166 M 363 150 L 363 164" stroke="#f1c40f" stroke-width="2" marker-end="url(#ecA)"/>
 <defs><marker id="ecA" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#f1c40f"/></marker></defs>
-<text x="253" y="192" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">ডান লেন → যতটা সম্ভব ডানে চাপো</text>
+<text x="253" y="192" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">ডান লেন → যতটা সম্ভব ডানে চাপো</text>
 <!-- corridor middle -->
 <rect x="0" y="96" width="460" height="28" fill="#2ecc71" opacity=".1"/>
 <!-- ambulance coming through middle -->
 <g transform="translate(20,98)">
 <rect x="0" y="0" width="60" height="26" rx="6" fill="#fff"/>
 <rect x="8" y="5" width="20" height="14" fill="#e74c3c"/>
-<text x="18" y="16" text-anchor="middle" fill="#fff" font-size="9" font-weight="900">+</text>
+<text x="18" y="16" text-anchor="middle" fill="#fff" font-size="10" font-weight="900">+</text>
 <circle cx="52" cy="-3" r="4" fill="#e74c3c"><animate attributeName="opacity" values="1;.2;1" dur=".5s" repeatCount="indefinite"/></circle>
 <circle cx="44" cy="-3" r="4" fill="#3498db"><animate attributeName="opacity" values=".2;1;.2" dur=".5s" repeatCount="indefinite"/></circle>
 </g>
 <path d="M 90 111 L 440 111" stroke="#2ecc71" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#ecB)"/>
 <defs><marker id="ecB" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#2ecc71"/></marker></defs>
-<text x="230" y="205" text-anchor="middle" fill="#888" font-size="7.5">জ্যামে সাইরেন শুনলে আগে mirror দেখো কোথা থেকে আসছে — তারপর নিজের লেনের কিনারায় চাপো, থামো</text>
+<text x="230" y="205" text-anchor="middle" fill="#888" font-size="10">জ্যামে সাইরেন শুনলে আগে mirror দেখো কোথা থেকে আসছে — তারপর নিজের লেনের কিনারায় চাপো, থামো</text>
 </svg>
 <div class="rt-caption">থেমে থাকা জ্যামেও জায়গা করে দেওয়া যায় — বাম লেন বামে, ডান লেন ডানে = মাঝে জরুরি করিডোর। প্রতিটা সেকেন্ড কারো জীবন</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 200" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 200" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="200" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ১৮ — CONSTRUCTION FLAGGER: মানুষই সাইন</text>
 <!-- road -->
@@ -2560,9 +2560,9 @@ doors.push({
 <rect x="-7" y="8" width="14" height="22" rx="4" fill="#e67e22"/>
 <rect x="14" y="-24" width="3" height="34" fill="#8a6d3b"/>
 <polygon points="4,-30 28,-30 32,-22 28,-14 4,-14 0,-22" fill="#c62828" stroke="#fff" stroke-width="1.5"/>
-<text x="16" y="-19" text-anchor="middle" fill="#fff" font-size="6.5" font-weight="900">STOP</text>
+<text x="16" y="-19" text-anchor="middle" fill="#fff" font-size="10" font-weight="900">STOP</text>
 </g>
-<text x="200" y="66" text-anchor="middle" fill="#f8c471" font-size="8" font-weight="900">Flagger — paddle-এর দুই পাশ:</text>
+<text x="200" y="66" text-anchor="middle" fill="#f8c471" font-size="10" font-weight="900">Flagger — paddle-এর দুই পাশ:</text>
 <text x="200" y="76" text-anchor="middle" fill="#ccc" font-size="10">লাল STOP / কমলা SLOW</text>
 <!-- your car stopped -->
 <g transform="translate(60,108)">
@@ -2570,17 +2570,17 @@ doors.push({
 <rect x="9" y="4" width="34" height="10" rx="3" fill="#0e4429"/>
 <circle cx="12" cy="26" r="6" fill="#000"/><circle cx="40" cy="26" r="6" fill="#000"/>
 </g>
-<text x="86" y="152" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="700">Flagger-এর নির্দেশই আইন</text>
-<text x="115" y="176" text-anchor="middle" fill="#f1c40f" font-size="7.5" font-weight="700">Flagger যা বলে তা-ই করো — এমনকি signal/সাইনের</text>
-<text x="115" y="187" text-anchor="middle" fill="#f1c40f" font-size="7.5" font-weight="700">সাথে না মিললেও। ক্রম: Police > Flagger > Signal > Sign</text>
-<text x="345" y="176" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">Flagger অমান্য/worker আহত = বড় fine</text>
-<text x="345" y="187" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">+ jail পর্যন্ত। ধৈর্য — এরা কারো মা-বাবা</text>
+<text x="86" y="152" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">Flagger-এর নির্দেশই আইন</text>
+<text x="115" y="176" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">Flagger যা বলে তা-ই করো — এমনকি signal/সাইনের</text>
+<text x="115" y="187" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">সাথে না মিললেও। ক্রম: Police > Flagger > Signal > Sign</text>
+<text x="345" y="176" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">Flagger অমান্য/worker আহত = বড় fine</text>
+<text x="345" y="187" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">+ jail পর্যন্ত। ধৈর্য — এরা কারো মা-বাবা</text>
 </svg>
 <div class="rt-caption">অগ্রাধিকারের ক্রম মুখস্থ: মানুষের নির্দেশ (police/flagger) সবসময় বাতি ও সাইনের উপরে। Flagger STOP দেখালে সবুজ বাতিতেও থামো</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 220" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 220" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="220" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ১৯ — PARKING LOT: ছোট গতির বড় বিপদ</text>
 <!-- lot -->
@@ -2600,7 +2600,7 @@ doors.push({
 </g>
 <path d="M 235 80 L 235 100" stroke="#e74c3c" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#plA)"/>
 <defs><marker id="plA" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#e74c3c"/></marker></defs>
-<text x="235" y="30" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="900">⚠️ সাদা reverse light = বেরোচ্ছে!</text>
+<text x="235" y="30" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">⚠️ সাদা reverse light = বেরোচ্ছে!</text>
 <!-- pedestrian with cart -->
 <text x="150" y="128" font-size="12">🚶🛒</text>
 <!-- kid running -->
@@ -2611,7 +2611,7 @@ doors.push({
 <rect x="0" y="0" width="46" height="22" rx="7" fill="#2ecc71"/>
 <rect x="8" y="3" width="30" height="10" rx="3" fill="#0e4429"/>
 </g>
-<text x="63" y="146" text-anchor="middle" fill="#7bed9f" font-size="7.5" font-weight="700">≤ 10 mph, brake cover</text>
+<text x="63" y="146" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">≤ 10 mph, brake cover</text>
 <!-- pull-through spot -->
 <g transform="translate(316,166)"><rect x="0" y="0" width="38" height="34" rx="6" fill="#2ecc71" opacity=".35" stroke="#2ecc71" stroke-width="1.5" stroke-dasharray="4,3"/></g>
 <path d="M 335 160 L 335 138" stroke="#2ecc71" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#plB)"/>
@@ -2624,35 +2624,35 @@ doors.push({
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 190" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 190" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="190" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ২০ — FOG: কুয়াশায় আলোর নিয়ম উল্টো</text>
 <!-- left: high beam wrong -->
 <rect x="18" y="34" width="206" height="126" rx="8" fill="#1a1a24"/>
-<text x="121" y="52" text-anchor="middle" fill="#e74c3c" font-size="9" font-weight="900">❌ HIGH BEAM</text>
+<text x="121" y="52" text-anchor="middle" fill="#e74c3c" font-size="10" font-weight="900">❌ HIGH BEAM</text>
 <rect x="30" y="60" width="182" height="90" fill="#9aa5b1" opacity=".25" rx="5"/>
 <g transform="translate(36,110)"><rect x="0" y="0" width="44" height="22" rx="7" fill="#e74c3c"/></g>
 <path d="M 82 114 L 130 100 M 82 122 L 130 136" stroke="#fff59d" stroke-width="3" opacity=".9"/>
 <path d="M 132 100 L 100 112 M 132 136 L 100 124" stroke="#fff59d" stroke-width="2" stroke-dasharray="4,3" opacity=".7"/>
-<text x="160" y="90 " text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">আলো কুয়াশায় ধাক্কা খেয়ে</text>
-<text x="160" y="100" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">চোখে ফেরত — সাদা দেয়াল!</text>
+<text x="160" y="90 " text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">আলো কুয়াশায় ধাক্কা খেয়ে</text>
+<text x="160" y="100" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">চোখে ফেরত — সাদা দেয়াল!</text>
 <!-- right: low beam correct -->
 <rect x="236" y="34" width="206" height="126" rx="8" fill="#1a1a24"/>
-<text x="339" y="52" text-anchor="middle" fill="#2ecc71" font-size="9" font-weight="900">✅ LOW BEAM (+fog light)</text>
+<text x="339" y="52" text-anchor="middle" fill="#2ecc71" font-size="10" font-weight="900">✅ LOW BEAM (+fog light)</text>
 <rect x="248" y="60" width="182" height="90" fill="#9aa5b1" opacity=".25" rx="5"/>
 <g transform="translate(254,110)"><rect x="0" y="0" width="44" height="22" rx="7" fill="#2ecc71"/></g>
 <path d="M 300 122 L 360 138 M 300 118 L 348 126" stroke="#fff59d" stroke-width="3" opacity=".9"/>
 <line x1="248" y1="148" x2="430" y2="148" stroke="#fff" stroke-width="3" opacity=".7"/>
-<text x="378" y="106" text-anchor="middle" fill="#7bed9f" font-size="7.5" font-weight="700">নিচু আলো কুয়াশার নিচ</text>
-<text x="378" y="116" text-anchor="middle" fill="#7bed9f" font-size="7.5" font-weight="700">দিয়ে রাস্তায় পড়ে</text>
+<text x="378" y="106" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">নিচু আলো কুয়াশার নিচ</text>
+<text x="378" y="116" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="700">দিয়ে রাস্তায় পড়ে</text>
 <text x="339" y="158" text-anchor="middle" fill="#ccc" font-size="10">ডান কিনারার সাদা লাইন = তোমার guide</text>
-<text x="230" y="178" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">খুব ঘন? — রাস্তা থেকে সম্পূর্ণ বাইরে গিয়ে থামো, hazard জ্বালাও। চলন্ত লেনে কখনো থেমো না!</text>
+<text x="230" y="178" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">খুব ঘন? — রাস্তা থেকে সম্পূর্ণ বাইরে গিয়ে থামো, hazard জ্বালাও। চলন্ত লেনে কখনো থেমো না!</text>
 </svg>
 <div class="rt-caption">কুয়াশায় instinct বলে "বেশি আলো" — বিজ্ঞান বলে উল্টো। Low beam + ধীর গতি + ডান কিনারার লাইন ধরে। সামনের আলো হঠাৎ দেখা মানে সে অনেক কাছে</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 190" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 190" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="190" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ২১ — POTHOLE SEASON: মিশিগানের বসন্ত</text>
 <!-- road -->
@@ -2675,20 +2675,20 @@ doors.push({
 <path d="M 140 128 Q 180 96 220 100" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,4" opacity=".8"/>
 <line x1="170" y1="90 " x2="196" y2="116" stroke="#e74c3c" stroke-width="3"/>
 <line x1="196" y1="90" x2="170" y2="116" stroke="#e74c3c" stroke-width="3"/>
-<text x="150" y="86" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">হঠাৎ swerve নয় —</text>
-<text x="150" y="96" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">পাশের লেনে গাড়ি!</text>
+<text x="150" y="86" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">হঠাৎ swerve নয় —</text>
+<text x="150" y="96" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">পাশের লেনে গাড়ি!</text>
 <!-- steps -->
-<text x="115" y="166" text-anchor="middle" fill="#f1c40f" font-size="7.5" font-weight="700">১. আগে দেখো (SEE) → ধীরে</text>
-<text x="115" y="177" text-anchor="middle" fill="#f1c40f" font-size="7.5" font-weight="700">২. এড়ানো গেলে — mirror দেখে, ধীরে সরো</text>
-<text x="345" y="166" text-anchor="middle" fill="#f1c40f" font-size="7.5" font-weight="700">৩. না গেলে — brake ছেড়ে সোজা roll করো</text>
-<text x="345" y="177" text-anchor="middle" fill="#f1c40f" font-size="7.5" font-weight="700">(brake চেপে পড়লে আঘাত বেশি হয়)</text>
-<text x="230" y="46" text-anchor="middle" fill="#888" font-size="7.5">ফেব্রু-এপ্রিল = freeze-thaw = pothole season। জোরে লাগলে পরে থেমে tire/rim চেক করো</text>
+<text x="115" y="166" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">১. আগে দেখো (SEE) → ধীরে</text>
+<text x="115" y="177" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">২. এড়ানো গেলে — mirror দেখে, ধীরে সরো</text>
+<text x="345" y="166" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">৩. না গেলে — brake ছেড়ে সোজা roll করো</text>
+<text x="345" y="177" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">(brake চেপে পড়লে আঘাত বেশি হয়)</text>
+<text x="230" y="46" text-anchor="middle" fill="#888" font-size="10">ফেব্রু-এপ্রিল = freeze-thaw = pothole season। জোরে লাগলে পরে থেমে tire/rim চেক করো</text>
 </svg>
 <div class="rt-caption">Michigan-এর পঞ্চম ঋতু। নিয়ম: swerve করে পাশের গাড়িতে ধাক্কা &gt; pothole-এর ক্ষতি। ধীরে, সোজা, brake ছেড়ে — আর পানি-ভরা গর্তকে সম্মান করো</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 180" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 180" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="180" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ২২ — FUNERAL PROCESSION: থামো, সম্মান দাও</text>
 <!-- road -->
@@ -2710,22 +2710,22 @@ doors.push({
 <circle cx="45" cy="7" r="3" fill="#fff59d"/>
 <rect x="4" y="-10" width="3" height="12" fill="#8a6d3b"/><polygon points="7,-10 20,-7 7,-3" fill="#9b59b6"/>
 </g>
-<text x="245" y="48" text-anchor="middle" fill="#bba5e0" font-size="7.5" font-weight="700">headlight জ্বলা + বেগুনি পতাকা = procession</text>
+<text x="245" y="48" text-anchor="middle" fill="#bba5e0" font-size="10" font-weight="700">headlight জ্বলা + বেগুনি পতাকা = procession</text>
 <!-- your car yielding at cross street -->
 <g transform="translate(40,114)">
 <rect x="0" y="0" width="50" height="24" rx="7" fill="#2ecc71"/>
 <rect x="9" y="4" width="32" height="10" rx="3" fill="#0e4429"/>
 </g>
-<text x="65" y="156" text-anchor="middle" fill="#7bed9f" font-size="8" font-weight="900">তুমি: অপেক্ষা করো</text>
-<text x="118" y="168" text-anchor="middle" fill="#f1c40f" font-size="7.5" font-weight="700">সবুজ পেলেও procession-এর মাঝ দিয়ে যেও না</text>
-<text x="345" y="160" text-anchor="middle" fill="#ff8a80" font-size="7.5" font-weight="700">✗ লাইন কাটা ✗ মাঝে ঢোকা ✗ পাস করার চেষ্টা</text>
+<text x="65" y="156" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="900">তুমি: অপেক্ষা করো</text>
+<text x="118" y="168" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">সবুজ পেলেও procession-এর মাঝ দিয়ে যেও না</text>
+<text x="345" y="160" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">✗ লাইন কাটা ✗ মাঝে ঢোকা ✗ পাস করার চেষ্টা</text>
 <text x="345" y="171" text-anchor="middle" fill="#ccc" font-size="10">পুরো procession এক গাড়ির মতো — শেষ গাড়ি পার হওয়া পর্যন্ত</text>
 </svg>
 <div class="rt-caption">Procession lead গাড়ির signal মেনে পুরোটা একসাথে চলে — মাঝের গাড়িগুলো লাল আলোতেও যেতে পারে। তোমার কাজ: চেনা (আলো+পতাকা), অপেক্ষা, সম্মান</div>
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 210" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 210" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="210" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ২৩ — কানাডা BORDER: Ambassador Bridge / Blue Water</text>
 <!-- bridge silhouette -->
@@ -2738,7 +2738,7 @@ doors.push({
 <!-- booth -->
 <rect x="300" y="60" width="50" height="60" rx="4" fill="#1c2c3c" stroke="#555" stroke-width="1.5"/>
 <rect x="308" y="70" width="34" height="20" rx="2" fill="#0b1622"/>
-<text x="325" y="84" text-anchor="middle" font-size="9">🛂</text>
+<text x="325" y="84" text-anchor="middle" font-size="10">🛂</text>
 <rect x="350" y="66" width="60" height="6" rx="3" fill="#c62828"/>
 <text x="325" y="134" text-anchor="middle" fill="#ccc" font-size="10">booth-এ engine চালু, sunglasses খোলো,</text>
 <text x="325" y="144" text-anchor="middle" fill="#ccc" font-size="10">ফোন নামাও, অফিসারের চোখে চোখ</text>
@@ -2747,12 +2747,12 @@ doors.push({
 <g transform="translate(190,96)"><rect x="0" y="0" width="40" height="20" rx="6" fill="#95a5a6"/></g>
 <!-- documents -->
 <rect x="30" y="140" width="180" height="60" rx="8" fill="#1e2a1e"/>
-<text x="120" y="156" text-anchor="middle" fill="#2ecc71" font-size="8" font-weight="900">📄 যা লাগবে (প্রত্যেক আরোহীর):</text>
-<text x="120" y="170" text-anchor="middle" fill="#7bed9f" font-size="7.5">Passport বা Enhanced Driver's License (EDL)</text>
-<text x="120" y="182" text-anchor="middle" fill="#7bed9f" font-size="7.5">— Michigan EDL land/sea crossing-এ passport-এর</text>
-<text x="120" y="192" text-anchor="middle" fill="#7bed9f" font-size="7.5">বদলে চলে (SOS-এ বানানো যায়)</text>
+<text x="120" y="156" text-anchor="middle" fill="#2ecc71" font-size="10" font-weight="900">📄 যা লাগবে (প্রত্যেক আরোহীর):</text>
+<text x="120" y="170" text-anchor="middle" fill="#7bed9f" font-size="10">Passport বা Enhanced Driver's License (EDL)</text>
+<text x="120" y="182" text-anchor="middle" fill="#7bed9f" font-size="10">— Michigan EDL land/sea crossing-এ passport-এর</text>
+<text x="120" y="192" text-anchor="middle" fill="#7bed9f" font-size="10">বদলে চলে (SOS-এ বানানো যায়)</text>
 <rect x="240" y="152" width="200" height="48" rx="8" fill="#2a1e1e"/>
-<text x="340" y="168" text-anchor="middle" fill="#ff8a80" font-size="8" font-weight="900">সত্য বলো — সবসময়</text>
+<text x="340" y="168" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="900">সত্য বলো — সবসময়</text>
 <text x="340" y="181" text-anchor="middle" fill="#ffb3ab" font-size="10">কোথায় যাচ্ছ, কতদিন, কী নিয়ে যাচ্ছ — সোজা উত্তর।</text>
 <text x="340" y="192" text-anchor="middle" fill="#ffb3ab" font-size="10">ফল/মাংস/অস্ত্র declare করো। মিথ্যা = গাড়ি search + ban</text>
 </svg>
@@ -2760,32 +2760,32 @@ doors.push({
 </div>
 
 <div class="rt-image">
-<svg viewBox="0 0 460 200" width="100%" style="max-width:490px">
+<svg viewBox="0 0 460 200" width="100%" style="max-width:760px">
 <rect x="0" y="0" width="460" height="200" fill="#111" rx="8"/>
 <text x="230" y="20" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="900">দৃশ্য ২৪ — হরিণ ছাড়াও: কে রাস্তায় নামে, কী করবে</text>
 <!-- three panels -->
 <rect x="18" y="34" width="136" height="130" rx="8" fill="#1e2a1e"/>
-<text x="86" y="52" text-anchor="middle" fill="#7bed9f" font-size="9" font-weight="900">🦃 বড় পাখি/টার্কি</text>
+<text x="86" y="52" text-anchor="middle" fill="#7bed9f" font-size="10" font-weight="900">🦃 বড় পাখি/টার্কি</text>
 <rect x="28" y="100" width="116" height="26" fill="#2a2a2a" rx="3"/>
 <text x="60" y="118" font-size="13">🦃</text>
 <text x="100" y="118" font-size="10">🦃🦃</text>
 <text x="86" y="142" text-anchor="middle" fill="#ccc" font-size="10">দল বেঁধে রাস্তা পার হয় —</text>
 <text x="86" y="152" text-anchor="middle" fill="#ccc" font-size="10">ধীরে থামো, হর্ন দাও, অপেক্ষা</text>
 <rect x="162" y="34" width="136" height="130" rx="8" fill="#1e222e"/>
-<text x="230" y="52" text-anchor="middle" fill="#74b9ff" font-size="9" font-weight="900">🐿️ ছোট প্রাণী</text>
+<text x="230" y="52" text-anchor="middle" fill="#74b9ff" font-size="10" font-weight="900">🐿️ ছোট প্রাণী</text>
 <rect x="172" y="100" width="116" height="26" fill="#2a2a2a" rx="3"/>
 <text x="215" y="118" font-size="10">🐿️</text>
 <text x="230" y="142" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">হাইওয়ে গতিতে swerve/হার্ড</text>
 <text x="230" y="152" text-anchor="middle" fill="#ff8a80" font-size="10" font-weight="700">brake নয় — course ধরে রাখো</text>
-<text x="230" y="161" text-anchor="middle" fill="#888" font-size="6.5">(কষ্টের, কিন্তু মানুষের জীবন আগে)</text>
+<text x="230" y="161" text-anchor="middle" fill="#888" font-size="10">(কষ্টের, কিন্তু মানুষের জীবন আগে)</text>
 <rect x="306" y="34" width="136" height="130" rx="8" fill="#2a1e1e"/>
-<text x="374" y="52" text-anchor="middle" fill="#f8c471" font-size="9" font-weight="900">🫎 বড় প্রাণী (elk/moose)</text>
+<text x="374" y="52" text-anchor="middle" fill="#f8c471" font-size="10" font-weight="900">🫎 বড় প্রাণী (elk/moose)</text>
 <rect x="316" y="100" width="116" height="26" fill="#2a2a2a" rx="3"/>
 <text x="365" y="120" font-size="14">🫎</text>
 <text x="374" y="142" text-anchor="middle" fill="#ccc" font-size="10">উত্তর Michigan/UP-তে। শরীর</text>
 <text x="374" y="152" text-anchor="middle" fill="#ccc" font-size="10">উঁচু — windshield-এ পড়ে।</text>
 <text x="374" y="161" text-anchor="middle" fill="#f8c471" font-size="10" font-weight="700">সর্বশক্তিতে brake — থামো</text>
-<text x="230" y="182" text-anchor="middle" fill="#f1c40f" font-size="8" font-weight="700">মূল সূত্র: ছোট প্রাণী = সোজা থাকো · বড় প্রাণী = brake · কোনোটাতেই oncoming-এ swerve নয়</text>
+<text x="230" y="182" text-anchor="middle" fill="#f1c40f" font-size="10" font-weight="700">মূল সূত্র: ছোট প্রাণী = সোজা থাকো · বড় প্রাণী = brake · কোনোটাতেই oncoming-এ swerve নয়</text>
 <text x="230" y="194" text-anchor="middle" fill="#888" font-size="10">🦢 রাজহাঁস পরিবার রাস্তায়? — Michigan-এর বসন্তের ক্লাসিক। থামো, hazard, ওদের সময় দাও</text>
 </svg>
 <div class="rt-caption">সিদ্ধান্তের হিসাব সবসময় এক: গাড়ির নিয়ন্ত্রণ হারানো &gt; প্রাণীর সাথে সংঘর্ষ। আকার দেখে সিদ্ধান্ত — ছোট হলে হold course, windshield-উচ্চতার হলে full brake</div>

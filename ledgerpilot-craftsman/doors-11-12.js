@@ -81,25 +81,25 @@ doors.push({
       <defs><marker id="arrowV17" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#5eead4"/></marker></defs>
       <rect x="15" y="20" width="165" height="110" rx="10" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="97" y="42" text-anchor="middle" fill="#fcd34d" font-size="9.5" font-weight="700">🔑 চাবি-ঘর ১</text>
-      <text x="97" y="57" text-anchor="middle" fill="#94a3b8" font-size="7.5">SECRET_KEY</text>
-      <text x="97" y="75" text-anchor="middle" fill="#94a3b8" font-size="7.5">শহরের মাস্টার-সিল</text>
-      <text x="97" y="95" text-anchor="middle" fill="#fbbf24" font-size="7">ফাঁস হলে: সেশন/সাইনিং</text>
-      <text x="97" y="115" text-anchor="middle" fill="#64748b" font-size="7">১ ঘর</text>
+      <text x="97" y="57" text-anchor="middle" fill="#94a3b8" font-size="8">SECRET_KEY</text>
+      <text x="97" y="75" text-anchor="middle" fill="#94a3b8" font-size="8">শহরের মাস্টার-সিল</text>
+      <text x="97" y="95" text-anchor="middle" fill="#fbbf24" font-size="8">ফাঁস হলে: সেশন/সাইনিং</text>
+      <text x="97" y="115" text-anchor="middle" fill="#64748b" font-size="8">১ ঘর</text>
       <rect x="198" y="20" width="165" height="110" rx="10" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="280" y="42" text-anchor="middle" fill="#5eead4" font-size="9.5" font-weight="700">🔑 চাবি-ঘর ২</text>
-      <text x="280" y="57" text-anchor="middle" fill="#94a3b8" font-size="7.5">XERO_TOKEN_KEY</text>
-      <text x="280" y="75" text-anchor="middle" fill="#94a3b8" font-size="7.5">OAuth টোকেন — Fernet</text>
-      <text x="280" y="95" text-anchor="middle" fill="#2dd4bf" font-size="7">ফাঁস হলে: Xero পড়া/লেখা</text>
-      <text x="280" y="115" text-anchor="middle" fill="#64748b" font-size="7">১ ঘর</text>
+      <text x="280" y="57" text-anchor="middle" fill="#94a3b8" font-size="8">XERO_TOKEN_KEY</text>
+      <text x="280" y="75" text-anchor="middle" fill="#94a3b8" font-size="8">OAuth টোকেন — Fernet</text>
+      <text x="280" y="95" text-anchor="middle" fill="#2dd4bf" font-size="8">ফাঁস হলে: Xero পড়া/লেখা</text>
+      <text x="280" y="115" text-anchor="middle" fill="#64748b" font-size="8">১ ঘর</text>
       <rect x="381" y="20" width="164" height="110" rx="10" fill="rgba(248,113,113,0.08)" stroke="#f87171" stroke-width="1.8"/>
       <text x="463" y="42" text-anchor="middle" fill="#f87171" font-size="9.5" font-weight="700">🔑 চাবি-ঘর ৩</text>
-      <text x="463" y="57" text-anchor="middle" fill="#94a3b8" font-size="7.5">ACH_BANK_KEY (ADR-0027)</text>
-      <text x="463" y="75" text-anchor="middle" fill="#94a3b8" font-size="7.5">account_number_enc</text>
-      <text x="463" y="95" text-anchor="middle" fill="#f87171" font-size="7">ফাঁস হলে: ব্যাংক-সনদ মাত্র</text>
-      <text x="463" y="115" text-anchor="middle" fill="#64748b" font-size="7">১ ঘর — শহর নয়</text>
+      <text x="463" y="57" text-anchor="middle" fill="#94a3b8" font-size="8">ACH_BANK_KEY (ADR-0027)</text>
+      <text x="463" y="75" text-anchor="middle" fill="#94a3b8" font-size="8">account_number_enc</text>
+      <text x="463" y="95" text-anchor="middle" fill="#f87171" font-size="8">ফাঁস হলে: ব্যাংক-সনদ মাত্র</text>
+      <text x="463" y="115" text-anchor="middle" fill="#64748b" font-size="8">১ ঘর — শহর নয়</text>
       <rect x="130" y="160" width="300" height="44" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="280" y="178" text-anchor="middle" fill="#5eead4" font-size="9.5" font-weight="700">generate_nacha_file(cycle)</text>
-      <text x="280" y="193" text-anchor="middle" fill="#94a3b8" font-size="7.5">ডিক্রিপ্ট শুধু এখানেই · transaction_code 27/37 · ACH-94 ডিস্কে</text>
+      <text x="280" y="193" text-anchor="middle" fill="#94a3b8" font-size="8">ডিক্রিপ্ট শুধু এখানেই · transaction_code 27/37 · ACH-94 ডিস্কে</text>
       <line x1="97" y1="130" x2="200" y2="162" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowV17)"/>
       <line x1="280" y1="130" x2="280" y2="158" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrowV17)"/>
       <line x1="463" y1="130" x2="360" y2="162" stroke="#f87171" stroke-width="1.6" marker-end="url(#arrowV17)"/>
@@ -202,23 +202,23 @@ XeroClient SDK পড়া-পথ: accounts/contacts/invoices/items
       <text x="467" y="230" text-anchor="middle" fill="#94a3b8" font-size="8">বিক্রির খাতা</text>
       <rect x="15" y="30" width="330" height="38" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="180" y="46" text-anchor="middle" fill="#5eead4" font-size="8.5" font-weight="600">১. প্রবেশপত্র: SPA → 302 → Xero → 302 → SPA</text>
-      <text x="180" y="60" text-anchor="middle" fill="#94a3b8" font-size="7.5">top-level navigation · টোকেন Fernet-খামে (XERO_TOKEN_KEY)</text>
+      <text x="180" y="60" text-anchor="middle" fill="#94a3b8" font-size="8">top-level navigation · টোকেন Fernet-খামে (XERO_TOKEN_KEY)</text>
       <rect x="15" y="82" width="330" height="38" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="180" y="98" text-anchor="middle" fill="#5eead4" font-size="8.5" font-weight="600">২. মোহর-চিঠি: webhook → HMAC-SHA256 যাচাই → xero_webhook_events</text>
-      <text x="180" y="112" text-anchor="middle" fill="#94a3b8" font-size="7.5">মোহর মিললে না — চিঠি আগুনে; কোনো গ্রহণ নয়</text>
+      <text x="180" y="112" text-anchor="middle" fill="#94a3b8" font-size="8">মোহর মিললে না — চিঠি আগুনে; কোনো গ্রহণ নয়</text>
       <rect x="15" y="134" width="330" height="38" rx="9" fill="rgba(129,140,248,0.10)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="180" y="150" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="600">৩. আয়না-ঘর: sync_current_month (06:00 UTC) + Sync-now</text>
-      <text x="180" y="164" text-anchor="middle" fill="#94a3b8" font-size="7.5">mirror → min-check ট্যাব · Explorer = লাইভ, আলাদা</text>
+      <text x="180" y="164" text-anchor="middle" fill="#94a3b8" font-size="8">mirror → min-check ট্যাব · Explorer = লাইভ, আলাদা</text>
       <rect x="15" y="186" width="330" height="38" rx="9" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="180" y="202" text-anchor="middle" fill="#fcd34d" font-size="8.5" font-weight="600">৪. তিন হাতের লেখা: payment · credit-note · invoice push</text>
-      <text x="180" y="216" text-anchor="middle" fill="#94a3b8" font-size="7.5">সবই চক-কালি + নিজের key · স্বয়ংক্রিয় push নিষেধ</text>
+      <text x="180" y="216" text-anchor="middle" fill="#94a3b8" font-size="8">সবই চক-কালি + নিজের key · স্বয়ংক্রিয় push নিষেধ</text>
       <rect x="15" y="238" width="330" height="42" rx="9" fill="rgba(100,116,139,0.08)" stroke="#94a3b8" stroke-width="1.2"/>
       <text x="180" y="255" text-anchor="middle" fill="#cbd5e1" font-size="8">ADR-0012 (2026-05-26): contact-push + দৈনিক contact-আয়না বাদ</text>
-      <text x="180" y="270" text-anchor="middle" fill="#94a3b8" font-size="7.5">যোগাযোগ Xero UI-তে · contact-id মিলায় এখন XeroInvoice fallback</text>
+      <text x="180" y="270" text-anchor="middle" fill="#94a3b8" font-size="8">যোগাযোগ Xero UI-তে · contact-id মিলায় এখন XeroInvoice fallback</text>
       <line x1="345" y1="49" x2="430" y2="120" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrowX18)"/>
       <line x1="345" y1="100" x2="420" y2="170" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrowX18)"/>
       <line x1="430" y1="228" x2="345" y2="155" stroke="#818cf8" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#arrowX18)"/>
-      <text x="395" y="205" text-anchor="middle" fill="#818cf8" font-size="7.5">খাতার কপি ফেরে</text>
+      <text x="395" y="205" text-anchor="middle" fill="#818cf8" font-size="8">খাতার কপি ফেরে</text>
       <line x1="345" y1="205" x2="440" y2="235" stroke="#fbbf24" stroke-width="1.6" marker-end="url(#arrowX18)"/>
       <text x="280" y="303" text-anchor="middle" fill="#64748b" font-size="9">যাওয়া ব্রাউজারে, ফেরা আয়নায়, লেখা তিন হাতে — চতুর্থ কোনো পথ নেই</text>
     </svg>

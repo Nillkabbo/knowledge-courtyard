@@ -88,30 +88,30 @@ doors.push({
       <text x="280" y="38" text-anchor="middle" fill="#cbd5e1" font-size="10" font-weight="700">📦 বিধান ১ — মাল বাক্সবন্দি (multi-stage Docker)</text>
       <rect x="40" y="52" width="220" height="52" rx="9" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.4"/>
       <text x="150" y="72" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">স্তর ১ · builder</text>
-      <text x="150" y="86" text-anchor="middle" fill="#94a3b8" font-size="7.5">gcc·wheel·pip·collectstatic</text>
-      <text x="150" y="97" text-anchor="middle" fill="#64748b" font-size="7">ভারী হাতিয়ার — যাত্রায় যায় না</text>
+      <text x="150" y="86" text-anchor="middle" fill="#94a3b8" font-size="8">gcc·wheel·pip·collectstatic</text>
+      <text x="150" y="97" text-anchor="middle" fill="#64748b" font-size="8">ভারী হাতিয়ার — যাত্রায় যায় না</text>
       <rect x="300" y="52" width="220" height="52" rx="9" fill="rgba(52,211,153,0.10)" stroke="#34d399" stroke-width="1.4"/>
       <text x="410" y="72" text-anchor="middle" fill="#6ee7b7" font-size="9" font-weight="700">স্তর ২ · runtime</text>
-      <text x="410" y="86" text-anchor="middle" fill="#94a3b8" font-size="7.5">venv+কোড+static · non-root</text>
-      <text x="410" y="97" text-anchor="middle" fill="#64748b" font-size="7">gunicorn (--reload ✗) + whitenoise</text>
+      <text x="410" y="86" text-anchor="middle" fill="#94a3b8" font-size="8">venv+কোড+static · non-root</text>
+      <text x="410" y="97" text-anchor="middle" fill="#64748b" font-size="8">gunicorn (--reload ✗) + whitenoise</text>
       <line x1="260" y1="78" x2="298" y2="78" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrowD3)"/>
-      <text x="280" y="70" text-anchor="middle" fill="#64748b" font-size="7">শুধু চালানোর জিনিস নামে</text>
+      <text x="280" y="70" text-anchor="middle" fill="#64748b" font-size="8">শুধু চালানোর জিনিস নামে</text>
       <text x="280" y="130" text-anchor="middle" fill="#94a3b8" font-size="8">বহর: dev-compose (mysql:3307 + redis + vite-প্রক্সি) · prod-compose (app+mysql+redis+worker+beat+nginx)</text>
-      <text x="280" y="146" text-anchor="middle" fill="#64748b" font-size="7.5">ছাঁচ: ruff · ESLint-flat+Prettier · পরীক্ষা: pytest-cov(87%) · vitest+MSW · Playwright</text>
+      <text x="280" y="146" text-anchor="middle" fill="#64748b" font-size="8">ছাঁচ: ruff · ESLint-flat+Prettier · পরীক্ষা: pytest-cov(87%) · vitest+MSW · Playwright</text>
       <rect x="15" y="180" width="530" height="120" rx="12" fill="rgba(45,212,191,0.05)" stroke="#2dd4bf" stroke-width="1.3"/>
       <text x="280" y="204" text-anchor="middle" fill="#5eead4" font-size="10" font-weight="700">⛵ বিধান ২ — যাত্রার সিঁড়ি (দুই ঘাট)</text>
       <rect x="45" y="220" width="130" height="50" rx="9" fill="rgba(52,211,153,0.10)" stroke="#34d399" stroke-width="1.4"/>
       <text x="110" y="240" text-anchor="middle" fill="#6ee7b7" font-size="8.5" font-weight="700">ছোট খেয়া</text>
-      <text x="110" y="254" text-anchor="middle" fill="#94a3b8" font-size="7">feat|fix/&lt;slug&gt; নৌকা</text>
+      <text x="110" y="254" text-anchor="middle" fill="#94a3b8" font-size="8">feat|fix/&lt;slug&gt; নৌকা</text>
       <rect x="215" y="220" width="130" height="50" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.4"/>
       <text x="280" y="240" text-anchor="middle" fill="#5eead4" font-size="8.5" font-weight="700">ভেতরের ঘাট</text>
-      <text x="280" y="254" text-anchor="middle" fill="#94a3b8" font-size="7">development · হালকা টিকটিকি</text>
+      <text x="280" y="254" text-anchor="middle" fill="#94a3b8" font-size="8">development · হালকা টিকটিকি</text>
       <rect x="385" y="220" width="140" height="50" rx="9" fill="rgba(248,113,113,0.08)" stroke="#f87171" stroke-width="1.4"/>
       <text x="455" y="240" text-anchor="middle" fill="#f87171" font-size="8.5" font-weight="700">বাইরের ঘাট</text>
-      <text x="455" y="254" text-anchor="middle" fill="#94a3b8" font-size="7">production · CI+মহড়া+ডিপ্লয়</text>
+      <text x="455" y="254" text-anchor="middle" fill="#94a3b8" font-size="8">production · CI+মহড়া+ডিপ্লয়</text>
       <line x1="175" y1="245" x2="213" y2="245" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrowD3)"/>
       <line x1="345" y1="245" x2="383" y2="245" stroke="#f87171" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#arrowD3)"/>
-      <text x="365" y="234" text-anchor="middle" fill="#f87171" font-size="7">promotion-PR</text>
+      <text x="365" y="234" text-anchor="middle" fill="#f87171" font-size="8">promotion-PR</text>
       <text x="280" y="290" text-anchor="middle" fill="#64748b" font-size="8">মার্জ মানুষের হাতে · main/production-এ সরাসরি পুশ নিষেধ · prod-ডিপ্লয় স্থগিত-বিষয়</text>
     </svg>
     <div class="diag-cap">মাল বাক্সবন্দি (দুই-স্তর), যাত্রা নির্ধারিত (দুই ঘাট) — ঘাটে "আমার মেশিনে চলতো" কথা নেই।</div>

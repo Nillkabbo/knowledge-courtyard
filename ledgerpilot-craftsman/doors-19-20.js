@@ -68,21 +68,21 @@ FE গ্রহণ (ক্রমবর্ধমান):
       <defs><marker id="arrowM8" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#5eead4"/></marker></defs>
       <rect x="15" y="80" width="115" height="60" rx="10" fill="rgba(52,211,153,0.10)" stroke="#34d399" stroke-width="1.5"/>
       <text x="72" y="103" text-anchor="middle" fill="#6ee7b7" font-size="10" font-weight="700">Model / DB</text>
-      <text x="72" y="118" text-anchor="middle" fill="#94a3b8" font-size="7.5">Company.name</text>
-      <text x="72" y="130" text-anchor="middle" fill="#94a3b8" font-size="7.5">মুখ</text>
+      <text x="72" y="118" text-anchor="middle" fill="#94a3b8" font-size="8">Company.name</text>
+      <text x="72" y="130" text-anchor="middle" fill="#94a3b8" font-size="8">মুখ</text>
       <rect x="165" y="80" width="125" height="60" rx="10" fill="rgba(45,212,191,0.12)" stroke="#2dd4bf" stroke-width="2"/>
       <text x="227" y="100" text-anchor="middle" fill="#5eead4" font-size="9.5" font-weight="700">Serializer ★</text>
-      <text x="227" y="114" text-anchor="middle" fill="#94a3b8" font-size="7.5">company_name = source=</text>
-      <text x="227" y="126" text-anchor="middle" fill="#94a3b8" font-size="7.5">'company.name' read_only</text>
-      <text x="227" y="135" text-anchor="middle" fill="#fbbf24" font-size="7.5">সত্যের উৎস</text>
+      <text x="227" y="114" text-anchor="middle" fill="#94a3b8" font-size="8">company_name = source=</text>
+      <text x="227" y="126" text-anchor="middle" fill="#94a3b8" font-size="8">'company.name' read_only</text>
+      <text x="227" y="135" text-anchor="middle" fill="#fbbf24" font-size="8">সত্যের উৎস</text>
       <rect x="325" y="80" width="100" height="60" rx="10" fill="rgba(100,116,139,0.12)" stroke="#94a3b8" stroke-width="1.5"/>
       <text x="375" y="103" text-anchor="middle" fill="#cbd5e1" font-size="9.5" font-weight="600">api.schema.json</text>
-      <text x="375" y="118" text-anchor="middle" fill="#94a3b8" font-size="7.5">OpenAPI</text>
-      <text x="375" y="130" text-anchor="middle" fill="#94a3b8" font-size="7.5">স্ন্যাপশট (কমিটেড)</text>
+      <text x="375" y="118" text-anchor="middle" fill="#94a3b8" font-size="8">OpenAPI</text>
+      <text x="375" y="130" text-anchor="middle" fill="#94a3b8" font-size="8">স্ন্যাপশট (কমিটেড)</text>
       <rect x="460" y="80" width="90" height="60" rx="10" fill="rgba(129,140,248,0.10)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="505" y="103" text-anchor="middle" fill="#a5b4fc" font-size="9.5" font-weight="600">api.generated.ts</text>
-      <text x="505" y="118" text-anchor="middle" fill="#94a3b8" font-size="7.5">components['schemas']</text>
-      <text x="505" y="130" text-anchor="middle" fill="#94a3b8" font-size="7.5">আয়না / ছাঁচ</text>
+      <text x="505" y="118" text-anchor="middle" fill="#94a3b8" font-size="8">components['schemas']</text>
+      <text x="505" y="130" text-anchor="middle" fill="#94a3b8" font-size="8">আয়না / ছাঁচ</text>
       <line x1="130" y1="110" x2="163" y2="110" stroke="#5eead4" stroke-width="2" marker-end="url(#arrowM8)"/>
       <line x1="290" y1="110" x2="323" y2="110" stroke="#5eead4" stroke-width="2" marker-end="url(#arrowM8)"/>
       <line x1="425" y1="110" x2="458" y2="110" stroke="#5eead4" stroke-width="2" marker-end="url(#arrowM8)"/>
@@ -182,7 +182,7 @@ doors.push({
       <text x="420" y="185" text-anchor="middle" fill="#a5b4fc" font-size="8.5">Vue কম্পোনেন্ট = ইট, FE ডিপ্লয়ে বাড়ে</text>
       <line x1="265" y1="120" x2="293" y2="120" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arrowN9)"/>
       <text x="279" y="110" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="700">component_key</text>
-      <text x="279" y="135" text-anchor="middle" fill="#64748b" font-size="7.5">সেতু-স্ট্রিং</text>
+      <text x="279" y="135" text-anchor="middle" fill="#64748b" font-size="8">সেতু-স্ট্রিং</text>
       <text x="280" y="222" text-anchor="middle" fill="#64748b" font-size="9">BE বলে কোথায়-কে-দেখবে; বানানোর নকশা ফ্রোজেন রেজিস্ট্রির</text>
     </svg>
     <div class="diag-cap">নকশা ঘরে, ইট কারখানায়; সেতু হলো component_key স্ট্রিং — উভয় পাশে হুবহু মিলতে হয়।</div>

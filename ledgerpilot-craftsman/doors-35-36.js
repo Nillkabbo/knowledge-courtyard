@@ -98,35 +98,35 @@ doors.push({
       <defs><marker id="arrowW26" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#5eead4"/></marker></defs>
       <rect x="15" y="12" width="160" height="42" rx="8" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.4"/>
       <text x="95" y="30" text-anchor="middle" fill="#5eead4" font-size="8.5" font-weight="700">দিন ১ · শহর চালাও</text>
-      <text x="95" y="44" text-anchor="middle" fill="#94a3b8" font-size="7">setup · ৫-রোল লগইন</text>
+      <text x="95" y="44" text-anchor="middle" fill="#94a3b8" font-size="8">setup · ৫-রোল লগইন</text>
       <rect x="15" y="62" width="160" height="42" rx="8" fill="rgba(45,212,191,0.08)" stroke="#2dd4bf" stroke-width="1.3"/>
       <text x="95" y="80" text-anchor="middle" fill="#5eead4" font-size="8.5" font-weight="700">দিন ২ · দলিল পড়ো</text>
-      <text x="95" y="94" text-anchor="middle" fill="#94a3b8" font-size="7">অভিধান · সনদ · STATE</text>
+      <text x="95" y="94" text-anchor="middle" fill="#94a3b8" font-size="8">অভিধান · সনদ · STATE</text>
       <rect x="15" y="112" width="160" height="42" rx="8" fill="rgba(45,212,191,0.08)" stroke="#2dd4bf" stroke-width="1.3"/>
       <text x="95" y="130" text-anchor="middle" fill="#5eead4" font-size="8.5" font-weight="700">দিন ৩ · সুতো টানো</text>
-      <text x="95" y="144" text-anchor="middle" fill="#94a3b8" font-size="7">Approve→ব্যাংক নিজ হাতে</text>
+      <text x="95" y="144" text-anchor="middle" fill="#94a3b8" font-size="8">Approve→ব্যাংক নিজ হাতে</text>
       <rect x="15" y="162" width="160" height="42" rx="8" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.4"/>
       <text x="95" y="180" text-anchor="middle" fill="#fcd34d" font-size="8.5" font-weight="700">দিন ৪ · ভাঙা সারাও</text>
-      <text x="95" y="194" text-anchor="middle" fill="#94a3b8" font-size="7">🔴→🟢→🔵 প্রথম PR</text>
+      <text x="95" y="194" text-anchor="middle" fill="#94a3b8" font-size="8">🔴→🟢→🔵 প্রথম PR</text>
       <rect x="15" y="212" width="160" height="42" rx="8" fill="rgba(52,211,153,0.12)" stroke="#34d399" stroke-width="1.7"/>
       <text x="95" y="230" text-anchor="middle" fill="#6ee7b7" font-size="8.5" font-weight="700">দিন ৫ · প্রথম ফিচার ★</text>
-      <text x="95" y="244" text-anchor="middle" fill="#94a3b8" font-size="7">রেসিপি পূর্ণ — ন-দরজা ছোঁয়</text>
+      <text x="95" y="244" text-anchor="middle" fill="#94a3b8" font-size="8">রেসিপি পূর্ণ — ন-দরজা ছোঁয়</text>
       <rect x="15" y="262" width="160" height="42" rx="8" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.3"/>
       <text x="95" y="280" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">দিন ৬ · পাশে বসো</text>
-      <text x="95" y="294" text-anchor="middle" fill="#94a3b8" font-size="7">অপারেটরের ছন্দ দেখো</text>
+      <text x="95" y="294" text-anchor="middle" fill="#94a3b8" font-size="8">অপারেটরের ছন্দ দেখো</text>
       <rect x="15" y="312" width="160" height="26" rx="8" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.3"/>
-      <text x="95" y="329" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="600">দিন ৭ · নকশা আঁকো</text>
+      <text x="95" y="329" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="600">দিন ৭ · নকশা আঁকো</text>
       <rect x="215" y="60" width="330" height="262" rx="12" fill="rgba(52,211,153,0.05)" stroke="#34d399" stroke-width="1.4"/>
       <text x="380" y="86" text-anchor="middle" fill="#6ee7b7" font-size="10" font-weight="700">দিন-৫-এর এক ফিচার যে দরজাগুলো ছোঁয়</text>
       <text x="380" y="112" text-anchor="middle" fill="#5eead4" font-size="8.5">৫ FSM · ১১ চক-কালি · ১২ তালা · ১৩ পাহারা</text>
       <text x="380" y="130" text-anchor="middle" fill="#5eead4" font-size="8.5">১৪ বাঁশি (হলে) · ১৫ বাহি (হলে)</text>
       <text x="380" y="148" text-anchor="middle" fill="#5eead4" font-size="8.5">১৬ আয়না · ১৭ মানচিত্র · ১৯ সনদ · ২০ দরবার</text>
-      <text x="380" y="166" text-anchor="middle" fill="#64748b" font-size="7.5">(১ আমানত-নীতি সব দরজার নিচে বহমান)</text>
+      <text x="380" y="166" text-anchor="middle" fill="#64748b" font-size="8">(১ আমানত-নীতি সব দরজার নিচে বহমান)</text>
       <rect x="240" y="190" width="280" height="110" rx="10" fill="rgba(251,191,36,0.07)" stroke="#fbbf24" stroke-width="1.2"/>
       <text x="380" y="214" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">রহিমার সপ্তাহ-শেষের এক প্রশ্ন:</text>
       <text x="380" y="236" text-anchor="middle" fill="#cbd5e1" font-size="9.5">"একুশটি দরজার কতগুলো</text>
       <text x="380" y="254" text-anchor="middle" fill="#cbd5e1" font-size="9.5">তোমার নিজের হাতে খোলা?"</text>
-      <text x="380" y="282" text-anchor="middle" fill="#94a3b8" font-size="7.5">উত্তর ১৩-এর কম হলদিন যাও ফিরে — দিন-৩ আরেকবার, আরও ধীরে</text>
+      <text x="380" y="282" text-anchor="middle" fill="#94a3b8" font-size="8">উত্তর ১৩-এর কম হলদিন যাও ফিরে — দিন-৩ আরেকবার, আরও ধীরে</text>
       <line x1="175" y1="33" x2="213" y2="80" stroke="#5eead4" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowW26)"/>
       <line x1="175" y1="83" x2="213" y2="110" stroke="#5eead4" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowW26)"/>
       <line x1="175" y1="133" x2="213" y2="140" stroke="#5eead4" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowW26)"/>

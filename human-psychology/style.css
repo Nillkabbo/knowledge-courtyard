@@ -81,7 +81,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .code-block pre{margin:0;background:transparent!important;padding:0!important;white-space:pre-wrap;overflow-wrap:break-word}
 .story-text .code-block code{font-family:inherit!important;font-size:inherit!important;background:transparent!important;text-shadow:none!important;white-space:pre-wrap!important}
 .story-text .code-block table,.story-text .code-block th,.story-text .code-block td{white-space:normal;overflow-wrap:anywhere}
-.story-text .svg-diagram{width:100%;max-width:620px;margin:1.2rem auto;display:block;background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:12px;border:1px solid rgba(255,255,255,.08);padding:0;overflow:hidden}
+.story-text .svg-diagram{width:100%;max-width:940px;margin:1.2rem auto;display:block;background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:12px;border:1px solid rgba(255,255,255,.08);padding:0;overflow:hidden}
 .story-text .svg-diagram svg{width:100%;height:auto;display:block}
 .story-text .svg-caption{text-align:center;font-size:.8rem;color:var(--ink-mute);margin-top:-.5rem;margin-bottom:1rem;font-style:italic}
 .story-text .compare{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:1rem 0}

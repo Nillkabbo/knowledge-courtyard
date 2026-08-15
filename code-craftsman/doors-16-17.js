@@ -106,33 +106,33 @@ def complete_task(task_id: int) -&gt; Result:
     <!-- Chaos -->
     <text x="120" y="20" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">❌ No Integrity: 5 styles</text>
     <rect x="30" y="30" width="180" height="30" rx="5" fill="rgba(239,68,68,0.06)" stroke="#ef4444" stroke-width="1"/>
-    <text x="120" y="49" text-anchor="middle" fill="#ef4444" font-size="8" font-family="monospace">createTask() → dict</text>
+    <text x="120" y="49" text-anchor="middle" fill="#ef4444" font-size="9" font-family="monospace">createTask() → dict</text>
     <rect x="30" y="65" width="180" height="30" rx="5" fill="rgba(251,191,36,0.06)" stroke="#fbbf24" stroke-width="1"/>
-    <text x="120" y="84" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="monospace">create_task() → tuple</text>
+    <text x="120" y="84" text-anchor="middle" fill="#fbbf24" font-size="9" font-family="monospace">create_task() → tuple</text>
     <rect x="30" y="100" width="180" height="30" rx="5" fill="rgba(167,139,250,0.06)" stroke="#a78bfa" stroke-width="1"/>
-    <text x="120" y="119" text-anchor="middle" fill="#a78bfa" font-size="8" font-family="monospace">new_task() → None/error</text>
+    <text x="120" y="119" text-anchor="middle" fill="#a78bfa" font-size="9" font-family="monospace">new_task() → None/error</text>
     <rect x="30" y="135" width="180" height="30" rx="5" fill="rgba(82,196,26,0.06)" stroke="#52c41a" stroke-width="1"/>
-    <text x="120" y="154" text-anchor="middle" fill="#52c41a" font-size="8" font-family="monospace">TaskCreator.execute()</text>
-    <text x="120" y="185" text-anchor="middle" fill="#ef4444" font-size="8">৫ জন, ৫ স্টাইল = বিশৃঙ্খলা</text>
+    <text x="120" y="154" text-anchor="middle" fill="#52c41a" font-size="9" font-family="monospace">TaskCreator.execute()</text>
+    <text x="120" y="185" text-anchor="middle" fill="#ef4444" font-size="9">৫ জন, ৫ স্টাইল = বিশৃঙ্খলা</text>
     <!-- Arrow -->
     <line x1="220" y1="95" x2="280" y2="95" stroke="#a5b4fc" stroke-width="2"/>
-    <text x="250" y="88" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">Brooks</text>
+    <text x="250" y="88" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Brooks</text>
     <!-- Integrity -->
     <text x="420" y="20" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">✅ Integrity: 1 vision</text>
     <rect x="310" y="30" width="220" height="30" rx="5" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1.5"/>
-    <text x="420" y="49" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="monospace">create_task() → Result</text>
+    <text x="420" y="49" text-anchor="middle" fill="#a5b4fc" font-size="9" font-family="monospace">create_task() → Result</text>
     <rect x="310" y="65" width="220" height="30" rx="5" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1.5"/>
-    <text x="420" y="84" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="monospace">complete_task() → Result</text>
+    <text x="420" y="84" text-anchor="middle" fill="#a5b4fc" font-size="9" font-family="monospace">complete_task() → Result</text>
     <rect x="310" y="100" width="220" height="30" rx="5" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1.5"/>
-    <text x="420" y="119" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="monospace">delete_task() → Result</text>
+    <text x="420" y="119" text-anchor="middle" fill="#a5b4fc" font-size="9" font-family="monospace">delete_task() → Result</text>
     <rect x="310" y="135" width="220" height="30" rx="5" fill="rgba(99,102,241,0.08)" stroke="#6366f1" stroke-width="1.5"/>
-    <text x="420" y="154" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="monospace">ALL: snake_case, Result, Enum</text>
-    <text x="420" y="185" text-anchor="middle" fill="#a5b4fc" font-size="8">৫ জন, ১ স্টাইল = ঐক্য</text>
-    <text x="420" y="200" text-anchor="middle" fill="#52c41a" font-size="8" font-weight="bold">Predictable ✅</text>
+    <text x="420" y="154" text-anchor="middle" fill="#a5b4fc" font-size="9" font-family="monospace">ALL: snake_case, Result, Enum</text>
+    <text x="420" y="185" text-anchor="middle" fill="#a5b4fc" font-size="9">৫ জন, ১ স্টাইল = ঐক্য</text>
+    <text x="420" y="200" text-anchor="middle" fill="#52c41a" font-size="9" font-weight="bold">Predictable ✅</text>
     <!-- Brooks' Law -->
     <rect x="20" y="215" width="680" height="35" rx="6" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
     <text x="360" y="232" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">Brooks' Law: "Adding people to a late project makes it later"</text>
-    <text x="360" y="244" text-anchor="middle" fill="#9a93b8" font-size="8">Nine women can't make a baby in one month</text>
+    <text x="360" y="244" text-anchor="middle" fill="#9a93b8" font-size="9">Nine women can't make a baby in one month</text>
   </svg>
   <div class="diag-cap">৫ স্টাইল = বিশৃঙ্খলা। ১ স্টাইল = ঐক্য। Conceptual integrity — সবচেয়ে গুরুত্বপূর্ণ।</div>
 </div>
@@ -420,7 +420,7 @@ if __name__ == "__main__":
     <text x="360" y="10" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">Brooks — Integrity</text>
     <!-- Qualities list -->
     <rect x="20" y="240" width="680" height="65" rx="8" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
-    <text x="360" y="258" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="bold">১০টি গুণ (10 Qualities of a Craftsman's Code):</text>
+    <text x="360" y="258" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">১০টি গুণ (10 Qualities of a Craftsman's Code):</text>
     <text x="35" y="275" fill="#9a93b8" font-size="10">সিদক (truthful names) · কিসম (small functions) · তাওহীদ (DRY) · তাদবির (refactored)</text>
     <text x="35" y="288" fill="#9a93b8" font-size="10">হিকমাহ (patterns) · আমানত (defensive+tested) · বায়ান (domain language)</text>
     <text x="35" y="301" fill="#9a93b8" font-size="10">ইসলাহ (seams) · জালাল (abstraction) · ওয়াহদানিয়্যাহ (conceptual integrity)</text>

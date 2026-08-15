@@ -97,36 +97,36 @@ doors.push({
       <text x="280" y="33" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">🌐 অনুরোধ: apiClient (CSRF-টোকেনসহ) → /api/&lt;app&gt;/…</text>
       <rect x="15" y="60" width="96" height="88" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.4"/>
       <text x="63" y="82" text-anchor="middle" fill="#5eead4" font-size="8.5" font-weight="700">১ চেনা</text>
-      <text x="63" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">SessionAuth</text>
-      <text x="63" y="112" text-anchor="middle" fill="#94a3b8" font-size="7">কুকি দেখাও</text>
-      <text x="63" y="130" text-anchor="middle" fill="#64748b" font-size="6.5">JWT নেই</text>
+      <text x="63" y="98" text-anchor="middle" fill="#94a3b8" font-size="8">SessionAuth</text>
+      <text x="63" y="112" text-anchor="middle" fill="#94a3b8" font-size="8">কুকি দেখাও</text>
+      <text x="63" y="130" text-anchor="middle" fill="#64748b" font-size="8">JWT নেই</text>
       <rect x="126" y="60" width="96" height="88" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.4"/>
       <text x="174" y="82" text-anchor="middle" fill="#5eead4" font-size="8.5" font-weight="700">২ পরিচয়</text>
-      <text x="174" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">permission_classes</text>
-      <text x="174" y="112" text-anchor="middle" fill="#94a3b8" font-size="7">Is&lt;Role&gt; ক্লাস</text>
-      <text x="174" y="130" text-anchor="middle" fill="#64748b" font-size="6.5">দুই-অক্ষ (দরজা ১৬)</text>
+      <text x="174" y="98" text-anchor="middle" fill="#94a3b8" font-size="8">permission_classes</text>
+      <text x="174" y="112" text-anchor="middle" fill="#94a3b8" font-size="8">Is&lt;Role&gt; ক্লাস</text>
+      <text x="174" y="130" text-anchor="middle" fill="#64748b" font-size="8">দুই-অক্ষ (দরজা ১৬)</text>
       <rect x="237" y="60" width="96" height="88" rx="9" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.4"/>
       <text x="285" y="82" text-anchor="middle" fill="#fcd34d" font-size="8.5" font-weight="700">৩ ধৈর্য</text>
-      <text x="285" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">throttle_scope</text>
-      <text x="285" y="112" text-anchor="middle" fill="#94a3b8" font-size="7">'sustained' 30/min</text>
-      <text x="285" y="130" text-anchor="middle" fill="#64748b" font-size="6.5">settings-থেকে হার</text>
+      <text x="285" y="98" text-anchor="middle" fill="#94a3b8" font-size="8">throttle_scope</text>
+      <text x="285" y="112" text-anchor="middle" fill="#94a3b8" font-size="8">'sustained' 30/min</text>
+      <text x="285" y="130" text-anchor="middle" fill="#64748b" font-size="8">settings-থেকে হার</text>
       <rect x="348" y="60" width="96" height="88" rx="9" fill="rgba(129,140,248,0.10)" stroke="#818cf8" stroke-width="1.4"/>
       <text x="396" y="82" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">৪ দোভাষী</text>
-      <text x="396" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">serializer</text>
-      <text x="396" y="112" text-anchor="middle" fill="#94a3b8" font-size="7">is_valid(raise)</text>
-      <text x="396" y="130" text-anchor="middle" fill="#64748b" font-size="6.5">চুক্তি (দরজা ১৯)</text>
+      <text x="396" y="98" text-anchor="middle" fill="#94a3b8" font-size="8">serializer</text>
+      <text x="396" y="112" text-anchor="middle" fill="#94a3b8" font-size="8">is_valid(raise)</text>
+      <text x="396" y="130" text-anchor="middle" fill="#64748b" font-size="8">চুক্তি (দরজা ১৯)</text>
       <rect x="459" y="60" width="86" height="88" rx="9" fill="rgba(100,116,139,0.12)" stroke="#94a3b8" stroke-width="1.4"/>
       <text x="502" y="82" text-anchor="middle" fill="#cbd5e1" font-size="8.5" font-weight="700">৫ বিভাজক</text>
-      <text x="502" y="98" text-anchor="middle" fill="#94a3b8" font-size="7">pagination</text>
-      <text x="502" y="112" text-anchor="middle" fill="#94a3b8" font-size="7">50/পাতা</text>
-      <text x="502" y="130" text-anchor="middle" fill="#64748b" font-size="6.5">rows-খাম</text>
+      <text x="502" y="98" text-anchor="middle" fill="#94a3b8" font-size="8">pagination</text>
+      <text x="502" y="112" text-anchor="middle" fill="#94a3b8" font-size="8">50/পাতা</text>
+      <text x="502" y="130" text-anchor="middle" fill="#64748b" font-size="8">rows-খাম</text>
       <line x1="111" y1="104" x2="125" y2="104" stroke="#5eead4" stroke-width="1.5" marker-end="url(#arrowR25)"/>
       <line x1="222" y1="104" x2="236" y2="104" stroke="#5eead4" stroke-width="1.5" marker-end="url(#arrowR25)"/>
       <line x1="333" y1="104" x2="347" y2="104" stroke="#5eead4" stroke-width="1.5" marker-end="url(#arrowR25)"/>
       <line x1="444" y1="104" x2="458" y2="104" stroke="#5eead4" stroke-width="1.5" marker-end="url(#arrowR25)"/>
       <rect x="120" y="170" width="320" height="40" rx="9" fill="rgba(52,211,153,0.10)" stroke="#34d399" stroke-width="1.4"/>
       <text x="280" y="188" text-anchor="middle" fill="#6ee7b7" font-size="9" font-weight="700">handler → সেবা → Model (পাতলা view, দরজা ২২)</text>
-      <text x="280" y="202" text-anchor="middle" fill="#94a3b8" font-size="7.5">ব্যতিক্রম ছুড়ে ওঠে — খাম-বিধানে ম্যাপ হয় (APIException নিষেধ)</text>
+      <text x="280" y="202" text-anchor="middle" fill="#94a3b8" font-size="8">ব্যতিক্রম ছুড়ে ওঠে — খাম-বিধানে ম্যাপ হয় (APIException নিষেধ)</text>
       <rect x="120" y="228" width="320" height="36" rx="9" fill="rgba(248,113,113,0.07)" stroke="#f87171" stroke-width="1.3"/>
       <text x="280" y="250" text-anchor="middle" fill="#f87171" font-size="8.5" font-weight="600">📤 খাম: {rows,total,…} · 204/{ok} · {field:[msg]} · {error}</text>
       <line x1="280" y1="46" x2="280" y2="58" stroke="#818cf8" stroke-width="1.5" marker-end="url(#arrowR25)"/>
@@ -239,31 +239,31 @@ EXPLAIN — দাওয়ার পথ-নকশা:
       <defs><marker id="arrowM26" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#5eead4"/></marker></defs>
       <rect x="15" y="12" width="170" height="120" rx="10" fill="rgba(45,212,191,0.08)" stroke="#2dd4bf" stroke-width="1.4"/>
       <text x="100" y="34" text-anchor="middle" fill="#5eead4" font-size="9.5" font-weight="700">👤 ছায়া-সংস্করণ</text>
-      <text x="100" y="50" text-anchor="middle" fill="#94a3b8" font-size="7">MVCC — undo-লগে পুরনো ছায়া</text>
-      <text x="100" y="66" text-anchor="middle" fill="#94a3b8" font-size="7">পাঠক ছায়া পড়ে · লেখক নতুন জন্ম</text>
-      <text x="100" y="84" text-anchor="middle" fill="#94a3b8" font-size="7">READ COMMITTED: ডার্টি-রিড নেই</text>
-      <text x="100" y="102" text-anchor="middle" fill="#fbbf24" font-size="6.8">non-repeatable → atomic+lock-এ মেটো</text>
-      <text x="100" y="122" text-anchor="middle" fill="#64748b" font-size="6.5">টেস্ট-রান: ট্রানজেকশন-বিষ (PR #74)</text>
+      <text x="100" y="50" text-anchor="middle" fill="#94a3b8" font-size="8">MVCC — undo-লগে পুরনো ছায়া</text>
+      <text x="100" y="66" text-anchor="middle" fill="#94a3b8" font-size="8">পাঠক ছায়া পড়ে · লেখক নতুন জন্ম</text>
+      <text x="100" y="84" text-anchor="middle" fill="#94a3b8" font-size="8">READ COMMITTED: ডার্টি-রিড নেই</text>
+      <text x="100" y="102" text-anchor="middle" fill="#fbbf24" font-size="8">non-repeatable → atomic+lock-এ মেটো</text>
+      <text x="100" y="122" text-anchor="middle" fill="#64748b" font-size="8">টেস্ট-রান: ট্রানজেকশন-বিষ (PR #74)</text>
       <rect x="200" y="12" width="170" height="120" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.4"/>
       <text x="285" y="34" text-anchor="middle" fill="#a5b4fc" font-size="9.5" font-weight="700">🌳 সূচক-পথ</text>
-      <text x="285" y="50" text-anchor="middle" fill="#94a3b8" font-size="7">B+TREE — শাখা-চিহ্নে তিন লাফ</text>
-      <text x="285" y="66" text-anchor="middle" fill="#94a3b8" font-size="7">FK স্বয়ংক্রিয় · যৌগিকে বাম-অগ্রাধিকার</text>
-      <text x="285" y="84" text-anchor="middle" fill="#94a3b8" font-size="7">পথহারা: LIKE '%x' · ফাংশন-স্তম্ভ</text>
-      <text x="285" y="102" text-anchor="middle" fill="#818cf8" font-size="6.8">type-mismatch → full-scan</text>
-      <text x="285" y="122" text-anchor="middle" fill="#64748b" font-size="6.5">ক্রম-নিয়ম: (a,b)-সূচক ≠ b-only</text>
+      <text x="285" y="50" text-anchor="middle" fill="#94a3b8" font-size="8">B+TREE — শাখা-চিহ্নে তিন লাফ</text>
+      <text x="285" y="66" text-anchor="middle" fill="#94a3b8" font-size="8">FK স্বয়ংক্রিয় · যৌগিকে বাম-অগ্রাধিকার</text>
+      <text x="285" y="84" text-anchor="middle" fill="#94a3b8" font-size="8">পথহারা: LIKE '%x' · ফাংশন-স্তম্ভ</text>
+      <text x="285" y="102" text-anchor="middle" fill="#818cf8" font-size="8">type-mismatch → full-scan</text>
+      <text x="285" y="122" text-anchor="middle" fill="#64748b" font-size="8">ক্রম-নিয়ম: (a,b)-সূচক ≠ b-only</text>
       <rect x="385" y="12" width="160" height="120" rx="10" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1.4"/>
       <text x="465" y="34" text-anchor="middle" fill="#fcd34d" font-size="9.5" font-weight="700">🗺️ EXPLAIN</text>
-      <text x="465" y="50" text-anchor="middle" fill="#94a3b8" font-size="7">পথ-নকশা আগে, দাওয়া পরে</text>
-      <text x="465" y="66" text-anchor="middle" fill="#94a3b8" font-size="7">const/ref/range ✅</text>
-      <text x="465" y="82" text-anchor="middle" fill="#94a3b8" font-size="7">index ⚠ · ALL 🔴</text>
-      <text x="465" y="100" text-anchor="middle" fill="#94a3b8" font-size="6.8">rows-অনুমান · key-সূচক পড়ো</text>
-      <text x="465" y="122" text-anchor="middle" fill="#64748b" font-size="6.5">ধীর-লগ → EXPLAIN-বিচার</text>
+      <text x="465" y="50" text-anchor="middle" fill="#94a3b8" font-size="8">পথ-নকশা আগে, দাওয়া পরে</text>
+      <text x="465" y="66" text-anchor="middle" fill="#94a3b8" font-size="8">const/ref/range ✅</text>
+      <text x="465" y="82" text-anchor="middle" fill="#94a3b8" font-size="8">index ⚠ · ALL 🔴</text>
+      <text x="465" y="100" text-anchor="middle" fill="#94a3b8" font-size="8">rows-অনুমান · key-সূচক পড়ো</text>
+      <text x="465" y="122" text-anchor="middle" fill="#64748b" font-size="8">ধীর-লগ → EXPLAIN-বিচার</text>
       <rect x="60" y="160" width="440" height="54" rx="10" fill="rgba(248,113,113,0.07)" stroke="#f87171" stroke-width="1.4"/>
       <text x="280" y="180" text-anchor="middle" fill="#f87171" font-size="8.5" font-weight="700">🔒 লেখকের তালা — FOR UPDATE (fsm) · SKIP LOCKED (NACHA PR #94)</text>
-      <text x="280" y="198" text-anchor="middle" fill="#94a3b8" font-size="7.5">অন্তরঙ্গ-খণ্ড সংক্ষিপ্ত রাখো — তালা ধরে দীর্ঘ গল্প নয়; ডেডলক-বিচার LATEST DETECTED লগে</text>
+      <text x="280" y="198" text-anchor="middle" fill="#94a3b8" font-size="8">অন্তরঙ্গ-খণ্ড সংক্ষিপ্ত রাখো — তালা ধরে দীর্ঘ গল্প নয়; ডেডলক-বিচার LATEST DETECTED লগে</text>
       <rect x="60" y="232" width="440" height="52" rx="10" fill="rgba(100,116,139,0.08)" stroke="#94a3b8" stroke-width="1.2"/>
       <text x="280" y="251" text-anchor="middle" fill="#cbd5e1" font-size="8" font-weight="600">📜 লিগেসি-চুক্তি: ts_* unmanaged — raw SQL + dict-zip + schema-pin</text>
-      <text x="280" y="268" text-anchor="middle" fill="#94a3b8" font-size="7.5">utf8mb4 · STRICT_TRANS_TABLES · CONN_MAX_AGE=600 — ভিত্তির তিন শপথ</text>
+      <text x="280" y="268" text-anchor="middle" fill="#94a3b8" font-size="8">utf8mb4 · STRICT_TRANS_TABLES · CONN_MAX_AGE=600 — ভিত্তির তিন শপথ</text>
       <line x1="100" y1="132" x2="180" y2="158" stroke="#5eead4" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowM26)"/>
       <line x1="285" y1="132" x2="285" y2="158" stroke="#818cf8" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowM26)"/>
       <line x1="465" y1="132" x2="385" y2="158" stroke="#fbbf24" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowM26)"/>

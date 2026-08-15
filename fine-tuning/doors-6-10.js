@@ -792,28 +792,28 @@ STEP 6: ROLLBACK STRATEGY
   <text x="400" y="50" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#94a3b8">ইখরাজ — সৃষ্টি শেষ নয়, deployment দরকার</text>
   <rect x="20" y="72" width="140" height="90" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="1.5"/>
   <text x="90" y="94" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4ade80">Merge LoRA</text>
-  <text x="90" y="114" text-anchor="middle" font-family="monospace" font-size="9" fill="#a7f3d0">adapter + base</text>
-  <text x="90" y="128" text-anchor="middle" font-family="monospace" font-size="9" fill="#a7f3d0">&#8594; merged model</text>
-  <text x="90" y="146" text-anchor="middle" font-family="monospace" font-size="9" fill="#fbbf24">standalone</text>
+  <text x="90" y="114" text-anchor="middle" font-family="monospace" font-size="10" fill="#a7f3d0">adapter + base</text>
+  <text x="90" y="128" text-anchor="middle" font-family="monospace" font-size="10" fill="#a7f3d0">&#8594; merged model</text>
+  <text x="90" y="146" text-anchor="middle" font-family="monospace" font-size="10" fill="#fbbf24">standalone</text>
   <line x1="160" y1="117" x2="200" y2="117" stroke="#7dd3fc" stroke-width="2" marker-end="url(#ft8arr)"/>
   <rect x="210" y="72" width="140" height="90" rx="8" fill="#1e293b" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="280" y="94" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#22d3ee">Quantize</text>
-  <text x="280" y="114" text-anchor="middle" font-family="monospace" font-size="9" fill="#7dd3fc">16-bit &#8594; 4-bit</text>
-  <text x="280" y="128" text-anchor="middle" font-family="monospace" font-size="9" fill="#7dd3fc">AWQ, GPTQ, GGUF</text>
-  <text x="280" y="146" text-anchor="middle" font-family="monospace" font-size="9" fill="#fbbf24">14GB &#8594; 4GB</text>
+  <text x="280" y="114" text-anchor="middle" font-family="monospace" font-size="10" fill="#7dd3fc">16-bit &#8594; 4-bit</text>
+  <text x="280" y="128" text-anchor="middle" font-family="monospace" font-size="10" fill="#7dd3fc">AWQ, GPTQ, GGUF</text>
+  <text x="280" y="146" text-anchor="middle" font-family="monospace" font-size="10" fill="#fbbf24">14GB &#8594; 4GB</text>
   <line x1="350" y1="117" x2="390" y2="117" stroke="#7dd3fc" stroke-width="2" marker-end="url(#ft8arr)"/>
   <rect x="400" y="72" width="140" height="90" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="470" y="94" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#fbbf24">Serve</text>
-  <text x="470" y="114" text-anchor="middle" font-family="monospace" font-size="9" fill="#fcd34d">vLLM (prod)</text>
-  <text x="470" y="128" text-anchor="middle" font-family="monospace" font-size="9" fill="#fcd34d">TGI, Ollama</text>
-  <text x="470" y="146" text-anchor="middle" font-family="monospace" font-size="9" fill="#fbbf24">OpenAI API</text>
+  <text x="470" y="114" text-anchor="middle" font-family="monospace" font-size="10" fill="#fcd34d">vLLM (prod)</text>
+  <text x="470" y="128" text-anchor="middle" font-family="monospace" font-size="10" fill="#fcd34d">TGI, Ollama</text>
+  <text x="470" y="146" text-anchor="middle" font-family="monospace" font-size="10" fill="#fbbf24">OpenAI API</text>
   <line x1="540" y1="117" x2="580" y2="117" stroke="#7dd3fc" stroke-width="2" marker-end="url(#ft8arr)"/>
   <rect x="590" y="72" width="190" height="90" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="2"/>
   <text x="685" y="94" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4ade80">Monitor &#38; Rollback</text>
-  <text x="610" y="114" font-family="monospace" font-size="9" fill="#a7f3d0">&#8226; Latency p50/p95/p99</text>
-  <text x="610" y="128" font-family="monospace" font-size="9" fill="#a7f3d0">&#8226; Throughput, errors</text>
-  <text x="610" y="142" font-family="monospace" font-size="9" fill="#a7f3d0">&#8226; Version + rollback</text>
-  <text x="610" y="156" font-family="monospace" font-size="9" fill="#fbbf24">Blue-green deploy</text>
+  <text x="610" y="114" font-family="monospace" font-size="10" fill="#a7f3d0">&#8226; Latency p50/p95/p99</text>
+  <text x="610" y="128" font-family="monospace" font-size="10" fill="#a7f3d0">&#8226; Throughput, errors</text>
+  <text x="610" y="142" font-family="monospace" font-size="10" fill="#a7f3d0">&#8226; Version + rollback</text>
+  <text x="610" y="156" font-family="monospace" font-size="10" fill="#fbbf24">Blue-green deploy</text>
   <text x="200" y="195" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Serving Engine Comparison</text>
   <rect x="20" y="205" width="760" height="195" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="40" y="228" font-family="monospace" font-size="11" fill="#94a3b8">Engine</text>
@@ -1139,32 +1139,32 @@ THE COMPLETE JOURNEY:
   <rect x="20" y="115" width="120" height="80" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="1.5"/>
   <text x="80" y="137" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4ade80">Phase ১</text>
   <text x="80" y="155" text-anchor="middle" font-family="monospace" font-size="10" fill="#a7f3d0">Decision</text>
-  <text x="80" y="171" text-anchor="middle" font-family="monospace" font-size="9" fill="#94a3b8">Prompt? RAG?</text>
-  <text x="80" y="185" text-anchor="middle" font-family="monospace" font-size="9" fill="#94a3b8">FT needed?</text>
+  <text x="80" y="171" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">Prompt? RAG?</text>
+  <text x="80" y="185" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">FT needed?</text>
   <line x1="140" y1="155" x2="170" y2="155" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#ft10arr)"/>
   <rect x="175" y="115" width="120" height="80" rx="8" fill="#1e293b" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="235" y="137" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#22d3ee">Phase ২</text>
   <text x="235" y="155" text-anchor="middle" font-family="monospace" font-size="10" fill="#7dd3fc">Data</text>
-  <text x="235" y="171" text-anchor="middle" font-family="monospace" font-size="9" fill="#94a3b8">১০০-৫০০০ ex</text>
-  <text x="235" y="185" text-anchor="middle" font-family="monospace" font-size="9" fill="#94a3b8">Quality &gt; Qty</text>
+  <text x="235" y="171" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">১০০-৫০০০ ex</text>
+  <text x="235" y="185" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">Quality &gt; Qty</text>
   <line x1="295" y1="155" x2="325" y2="155" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#ft10arr)"/>
   <rect x="330" y="115" width="120" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
   <text x="390" y="137" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#fbbf24">Phase ৩</text>
   <text x="390" y="155" text-anchor="middle" font-family="monospace" font-size="10" fill="#fcd34d">Method</text>
-  <text x="390" y="171" text-anchor="middle" font-family="monospace" font-size="9" fill="#94a3b8">QLoRA/LoRA</text>
-  <text x="390" y="185" text-anchor="middle" font-family="monospace" font-size="9" fill="#94a3b8">SFT &#8594; DPO</text>
+  <text x="390" y="171" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">QLoRA/LoRA</text>
+  <text x="390" y="185" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">SFT &#8594; DPO</text>
   <line x1="450" y1="155" x2="480" y2="155" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#ft10arr)"/>
   <rect x="485" y="115" width="120" height="80" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="1.5"/>
   <text x="545" y="137" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4ade80">Phase ৪</text>
   <text x="545" y="155" text-anchor="middle" font-family="monospace" font-size="10" fill="#a7f3d0">Eval</text>
-  <text x="545" y="171" text-anchor="middle" font-family="monospace" font-size="9" fill="#94a3b8">task + general</text>
-  <text x="545" y="185" text-anchor="middle" font-family="monospace" font-size="9" fill="#94a3b8">judge + human</text>
+  <text x="545" y="171" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">task + general</text>
+  <text x="545" y="185" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">judge + human</text>
   <line x1="605" y1="155" x2="635" y2="155" stroke="#7dd3fc" stroke-width="1.5" marker-end="url(#ft10arr)"/>
   <rect x="640" y="115" width="140" height="80" rx="8" fill="#1e293b" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="710" y="137" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#22d3ee">Phase ৫</text>
   <text x="710" y="155" text-anchor="middle" font-family="monospace" font-size="10" fill="#7dd3fc">Anti-forget</text>
-  <text x="710" y="171" text-anchor="middle" font-family="monospace" font-size="9" fill="#94a3b8">LoRA, low lr</text>
-  <text x="710" y="185" text-anchor="middle" font-family="monospace" font-size="9" fill="#94a3b8">replay, early stop</text>
+  <text x="710" y="171" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">LoRA, low lr</text>
+  <text x="710" y="185" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">replay, early stop</text>
   <line x1="400" y1="210" x2="400" y2="240" stroke="#7dd3fc" stroke-width="2" marker-end="url(#ft10arr)"/>
   <rect x="200" y="245" width="400" height="60" rx="10" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
   <text x="400" y="268" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Phase ৬: Deploy</text>

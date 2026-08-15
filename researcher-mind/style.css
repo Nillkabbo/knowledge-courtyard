@@ -130,7 +130,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .cheat-section-end h3{font-family:'Cinzel',serif;text-align:center;font-size:1.3rem;color:var(--amber-bright);margin-bottom:1rem}
 /* ══ SVG DIAGRAMS ══ */
 .story-text .svg-diagram{margin:1.3rem 0;text-align:center}
-.story-text .svg-diagram svg{width:100%;max-width:640px;height:auto;display:block;margin:0 auto;border-radius:12px;border:1px solid rgba(167,139,250,.15)}
+.story-text .svg-diagram svg{width:100%;max-width:940px;height:auto;display:block;margin:0 auto;border-radius:12px;border:1px solid rgba(167,139,250,.15)}
 .story-text .svg-caption{font-size:.8rem;color:var(--ink-mute);margin-top:.55rem;font-style:italic;line-height:1.55;padding:0 .5rem}
 
 /* ══ ENRICHED UI COMPONENTS ══ */

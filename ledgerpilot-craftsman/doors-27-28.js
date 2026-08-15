@@ -96,35 +96,35 @@ doors.push({
       <defs><marker id="arrowC27" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#5eead4"/></marker></defs>
       <rect x="15" y="12" width="165" height="86" rx="10" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="97" y="34" text-anchor="middle" fill="#5eead4" font-size="9" font-weight="700">🏪 পাঠানোর ঘর</text>
-      <text x="97" y="50" text-anchor="middle" fill="#94a3b8" font-size="7">view/সেবা → task.delay()</text>
-      <text x="97" y="66" text-anchor="middle" fill="#94a3b8" font-size="7">#1190: web-এও broker env</text>
-      <text x="97" y="86" text-anchor="middle" fill="#fbbf24" font-size="6.8">না থাকলে নীরব-ডোবা</text>
+      <text x="97" y="50" text-anchor="middle" fill="#94a3b8" font-size="8">view/সেবা → task.delay()</text>
+      <text x="97" y="66" text-anchor="middle" fill="#94a3b8" font-size="8">#1190: web-এও broker env</text>
+      <text x="97" y="86" text-anchor="middle" fill="#fbbf24" font-size="8">না থাকলে নীরব-ডোবা</text>
       <rect x="200" y="12" width="160" height="86" rx="10" fill="rgba(129,140,248,0.10)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="280" y="34" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">🌊 স্রোত (broker)</text>
-      <text x="280" y="50" text-anchor="middle" fill="#94a3b8" font-size="7">Redis DB 2 — সারি-গভীরতা</text>
-      <text x="280" y="66" text-anchor="middle" fill="#94a3b8" font-size="7">চিরুনি এখানে ভাসে</text>
-      <text x="280" y="86" text-anchor="middle" fill="#64748b" font-size="6.5">visibility-timeout সীমা</text>
+      <text x="280" y="50" text-anchor="middle" fill="#94a3b8" font-size="8">Redis DB 2 — সারি-গভীরতা</text>
+      <text x="280" y="66" text-anchor="middle" fill="#94a3b8" font-size="8">চিরুনি এখানে ভাসে</text>
+      <text x="280" y="86" text-anchor="middle" fill="#64748b" font-size="8">visibility-timeout সীমা</text>
       <rect x="380" y="12" width="165" height="86" rx="10" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="462" y="34" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">🚤 করিম (worker)</text>
-      <text x="462" y="50" text-anchor="middle" fill="#94a3b8" font-size="7">acks_late — শেষে রসিদ</text>
-      <text x="462" y="66" text-anchor="middle" fill="#94a3b8" font-size="7">retry(max 3, delay 60s)</text>
-      <text x="462" y="86" text-anchor="middle" fill="#64748b" font-size="6.5">-Q সারি-ভাগ</text>
+      <text x="462" y="50" text-anchor="middle" fill="#94a3b8" font-size="8">acks_late — শেষে রসিদ</text>
+      <text x="462" y="66" text-anchor="middle" fill="#94a3b8" font-size="8">retry(max 3, delay 60s)</text>
+      <text x="462" y="86" text-anchor="middle" fill="#64748b" font-size="8">-Q সারি-ভাগ</text>
       <line x1="180" y1="55" x2="198" y2="55" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrowC27)"/>
       <line x1="360" y1="55" x2="378" y2="55" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrowC27)"/>
       <rect x="15" y="118" width="530" height="64" rx="10" fill="rgba(248,113,113,0.07)" stroke="#f87171" stroke-width="1.5"/>
       <text x="280" y="139" text-anchor="middle" fill="#f87171" font-size="9" font-weight="700">🛡️ idempotency-বলয় — পুনঃযাত্রায় বিষ নয়</text>
-      <text x="280" y="156" text-anchor="middle" fill="#94a3b8" font-size="7.5">NACHA: unique(cycle)+skip_locked+409 · চক্র: completed_at-খালি+notified-পতাকা · যেকোনো স্ট্যাম্প-তালিকা</text>
-      <text x="280" y="172" text-anchor="middle" fill="#94a3b8" font-size="7.5">স্থায়ী-ব্যর্থতা → OnFailure → logger + হ্যান্ডঅফ (নীরব-কবর নিষেধ)</text>
+      <text x="280" y="156" text-anchor="middle" fill="#94a3b8" font-size="8">NACHA: unique(cycle)+skip_locked+409 · চক্র: completed_at-খালি+notified-পতাকা · যেকোনো স্ট্যাম্প-তালিকা</text>
+      <text x="280" y="172" text-anchor="middle" fill="#94a3b8" font-size="8">স্থায়ী-ব্যর্থতা → OnFailure → logger + হ্যান্ডঅফ (নীরব-কবর নিষেধ)</text>
       <rect x="15" y="200" width="253" height="72" rx="10" fill="rgba(52,211,153,0.08)" stroke="#34d399" stroke-width="1.4"/>
       <text x="141" y="222" text-anchor="middle" fill="#6ee7b7" font-size="9" font-weight="700">⏰ ঘড়ির টাওয়ার (beat)</text>
-      <text x="141" y="238" text-anchor="middle" fill="#94a3b8" font-size="7">৩-তারিখ ০৯:০০ P2 · ১৭-তারিখ P1</text>
-      <text x="141" y="252" text-anchor="middle" fill="#94a3b8" font-size="7">দৈনিক ০৬:০০ UTC আয়না-sync</text>
-      <text x="141" y="266" text-anchor="middle" fill="#64748b" font-size="6.5">DatabaseScheduler — DB-সারি</text>
+      <text x="141" y="238" text-anchor="middle" fill="#94a3b8" font-size="8">৩-তারিখ ০৯:০০ P2 · ১৭-তারিখ P1</text>
+      <text x="141" y="252" text-anchor="middle" fill="#94a3b8" font-size="8">দৈনিক ০৬:০০ UTC আয়না-sync</text>
+      <text x="141" y="266" text-anchor="middle" fill="#64748b" font-size="8">DatabaseScheduler — DB-সারি</text>
       <rect x="292" y="200" width="253" height="72" rx="10" fill="rgba(100,116,139,0.10)" stroke="#94a3b8" stroke-width="1.4"/>
       <text x="418" y="222" text-anchor="middle" fill="#cbd5e1" font-size="9" font-weight="700">🧾 রসিদ-গুম্বজ (result)</text>
-      <text x="418" y="238" text-anchor="middle" fill="#94a3b8" font-size="7">Redis DB 3 — state/mান</text>
-      <text x="418" y="252" text-anchor="middle" fill="#94a3b8" font-size="7">পৌঁছেছে/ডুবেছে/বয়ে-চলেছে</text>
-      <text x="418" y="266" text-anchor="middle" fill="#64748b" font-size="6.5">টেস্ট: ALWAYS_EAGER + সরাসরি-কল</text>
+      <text x="418" y="238" text-anchor="middle" fill="#94a3b8" font-size="8">Redis DB 3 — state/mান</text>
+      <text x="418" y="252" text-anchor="middle" fill="#94a3b8" font-size="8">পৌঁছেছে/ডুবেছে/বয়ে-চলেছে</text>
+      <text x="418" y="266" text-anchor="middle" fill="#64748b" font-size="8">টেস্ট: ALWAYS_EAGER + সরাসরি-কল</text>
       <line x1="141" y1="98" x2="141" y2="116" stroke="#34d399" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#arrowC27)"/>
       <text x="280" y="302" text-anchor="middle" fill="#64748b" font-size="8.5">তিন শপথ: পুনঃযাত্রায় আমানত · ঘড়িতে ন্যায় · রসিদে স্বচ্ছতা — আর পাঠানোর ঘরে নদীর নাম</text>
     </svg>
@@ -233,28 +233,28 @@ pub/sub-নমুনা (SSE-ব্যাজ):
       <text x="280" y="31" text-anchor="middle" fill="#cbd5e1" font-size="8.5" font-weight="600">🏺 Redis — এক নদী, তিন জলাশয় (DB 0 · 2 · 3) + SSE-পাখি</text>
       <rect x="15" y="56" width="165" height="96" rx="10" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="97" y="78" text-anchor="middle" fill="#5eead4" font-size="9" font-weight="700">ঢাউস ক্যাশে (DB 0)</text>
-      <text x="97" y="94" text-anchor="middle" fill="#94a3b8" font-size="7">string+TTL — খোঁজ-প্রতিধ্বনি</text>
-      <text x="97" y="110" text-anchor="middle" fill="#94a3b8" font-size="7">hash — বস্তু-ক্ষেত্র · set — ঝাঁক</text>
-      <text x="97" y="128" text-anchor="middle" fill="#fbbf24" font-size="6.8">TTL-বিহীন কী নিষেধ</text>
-      <text x="97" y="144" text-anchor="middle" fill="#64748b" font-size="6.5">কী: lp:&lt;app&gt;:&lt;entity&gt;:&lt;id&gt;</text>
+      <text x="97" y="94" text-anchor="middle" fill="#94a3b8" font-size="8">string+TTL — খোঁজ-প্রতিধ্বনি</text>
+      <text x="97" y="110" text-anchor="middle" fill="#94a3b8" font-size="8">hash — বস্তু-ক্ষেত্র · set — ঝাঁক</text>
+      <text x="97" y="128" text-anchor="middle" fill="#fbbf24" font-size="8">TTL-বিহীন কী নিষেধ</text>
+      <text x="97" y="144" text-anchor="middle" fill="#64748b" font-size="8">কী: lp:&lt;app&gt;:&lt;entity&gt;:&lt;id&gt;</text>
       <rect x="200" y="56" width="160" height="96" rx="10" fill="rgba(129,140,248,0.10)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="280" y="78" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">স্রোত (DB 2)</text>
-      <text x="280" y="94" text-anchor="middle" fill="#94a3b8" font-size="7">Celery broker</text>
-      <text x="280" y="110" text-anchor="middle" fill="#94a3b8" font-size="7">চিরুনি ভাসে — দরজা ২৭</text>
-      <text x="280" y="130" text-anchor="middle" fill="#64748b" font-size="6.5">ক্যাশে-ফ্লাশে অক্ষত</text>
-      <text x="280" y="144" text-anchor="middle" fill="#64748b" font-size="6.5">(বিস্ফোরণ-ব্যাস আলাদা)</text>
+      <text x="280" y="94" text-anchor="middle" fill="#94a3b8" font-size="8">Celery broker</text>
+      <text x="280" y="110" text-anchor="middle" fill="#94a3b8" font-size="8">চিরুনি ভাসে — দরজা ২৭</text>
+      <text x="280" y="130" text-anchor="middle" fill="#64748b" font-size="8">ক্যাশে-ফ্লাশে অক্ষত</text>
+      <text x="280" y="144" text-anchor="middle" fill="#64748b" font-size="8">(বিস্ফোরণ-ব্যাস আলাদা)</text>
       <rect x="380" y="56" width="165" height="96" rx="10" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="462" y="78" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">পাখি-ডাক (pub/sub)</text>
-      <text x="462" y="94" text-anchor="middle" fill="#94a3b8" font-size="7">SSE ব্যাজ-চ্যানেল</text>
-      <text x="462" y="110" text-anchor="middle" fill="#94a3b8" font-size="7">user:&lt;id&gt;:badge</text>
-      <text x="462" y="128" text-anchor="middle" fill="#fbbf24" font-size="6.8">বার্তা স্থায়ী নয় — best-effort</text>
-      <text x="462" y="144" text-anchor="middle" fill="#64748b" font-size="6.5">শ্রোতা-নেই মানে হারায়</text>
+      <text x="462" y="94" text-anchor="middle" fill="#94a3b8" font-size="8">SSE ব্যাজ-চ্যানেল</text>
+      <text x="462" y="110" text-anchor="middle" fill="#94a3b8" font-size="8">user:&lt;id&gt;:badge</text>
+      <text x="462" y="128" text-anchor="middle" fill="#fbbf24" font-size="8">বার্তা স্থায়ী নয় — best-effort</text>
+      <text x="462" y="144" text-anchor="middle" fill="#64748b" font-size="8">শ্রোতা-নেই মানে হারায়</text>
       <rect x="15" y="172" width="530" height="94" rx="10" fill="rgba(248,113,113,0.06)" stroke="#f87171" stroke-width="1.4"/>
       <text x="280" y="193" text-anchor="middle" fill="#f87171" font-size="9" font-weight="700">📜 ক্যাশে-শৃঙ্খলা — ছায়া-বিধান</text>
-      <text x="280" y="211" text-anchor="middle" fill="#94a3b8" font-size="7.5">① সত্য মাটিতে, কলসে ছায়া · ② প্রতি SET-এ মেয়াদ (300s-ধরনের)</text>
-      <text x="280" y="227" text-anchor="middle" fill="#94a3b8" font-size="7.5">③ লেখার-সময়ে-বাতিল: save→cache.delete(কী) — TTL শেষ-রক্ষা · ④ নামস্থান-কী</text>
-      <text x="280" y="247" text-anchor="middle" fill="#94a3b8" font-size="7.5">স্বাস্থ্য: maxmemory+allkeys-lru · INFO memory · slowlog · KEYS নিষেধ, SCAN ধরো</text>
-      <text x="280" y="262" text-anchor="middle" fill="#64748b" font-size="7">প্রেত-ছায়া (stale) = মালিক-বদলে-বিনা-বাতিল</text>
+      <text x="280" y="211" text-anchor="middle" fill="#94a3b8" font-size="8">① সত্য মাটিতে, কলসে ছায়া · ② প্রতি SET-এ মেয়াদ (300s-ধরনের)</text>
+      <text x="280" y="227" text-anchor="middle" fill="#94a3b8" font-size="8">③ লেখার-সময়ে-বাতিল: save→cache.delete(কী) — TTL শেষ-রক্ষা · ④ নামস্থান-কী</text>
+      <text x="280" y="247" text-anchor="middle" fill="#94a3b8" font-size="8">স্বাস্থ্য: maxmemory+allkeys-lru · INFO memory · slowlog · KEYS নিষেধ, SCAN ধরো</text>
+      <text x="280" y="262" text-anchor="middle" fill="#64748b" font-size="8">প্রেত-ছায়া (stale) = মালিক-বদলে-বিনা-বাতিল</text>
       <text x="280" y="292" text-anchor="middle" fill="#64748b" font-size="8.5">মনে রাখা নৈপুণ্য, ভুলে যাওয়াও নৈপুণ্য — মোম-ছাপ ছাড়া কলস ভুতঘর</text>
     </svg>
     <div class="diag-cap">তিন জলাশয়, চার শৃঙ্খলা: সত্য মাটিতে · মেয়াদ বাধ্য · লেখায় বাতিল · নামস্থান কী — কলস কেবল প্রতিধ্বনির ঘর।</div>

@@ -82,28 +82,28 @@ doors.push({
       <marker id="arrowY9" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker></defs>
       <rect x="190" y="10" width="180" height="36" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="280" y="28" text-anchor="middle" fill="#5eead4" font-size="9" font-weight="700">~৩ তারিখ: আগের মাস বন্ধ</text>
-      <text x="280" y="41" text-anchor="middle" fill="#94a3b8" font-size="7.5">P1+P2 যোগ → GROSS মোট (ক্রেডিট বাদ নয়)</text>
+      <text x="280" y="41" text-anchor="middle" fill="#94a3b8" font-size="8">P1+P2 যোগ → GROSS মোট (ক্রেডিট বাদ নয়)</text>
       <rect x="190" y="62" width="180" height="36" rx="9" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="280" y="80" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">📖 খাতা আগে (exceptions)</text>
-      <text x="280" y="93" text-anchor="middle" fill="#94a3b8" font-size="7.5">ওয়েভার? পার্শিয়াল? খোলা অনুরোধ?</text>
+      <text x="280" y="93" text-anchor="middle" fill="#94a3b8" font-size="8">ওয়েভার? পার্শিয়াল? খোলা অনুরোধ?</text>
       <rect x="20" y="130" width="150" height="46" rx="9" fill="rgba(52,211,153,0.12)" stroke="#34d399" stroke-width="1.5"/>
       <text x="95" y="150" text-anchor="middle" fill="#6ee7b7" font-size="9" font-weight="700">exempt</text>
-      <text x="95" y="164" text-anchor="middle" fill="#94a3b8" font-size="7.5">minimum_exempt / এ-মাস সাইন-আপ</text>
+      <text x="95" y="164" text-anchor="middle" fill="#94a3b8" font-size="8">minimum_exempt / এ-মাস সাইন-আপ</text>
       <rect x="192" y="130" width="150" height="46" rx="9" fill="rgba(129,140,248,0.10)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="267" y="150" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">waived</text>
-      <text x="267" y="164" text-anchor="middle" fill="#94a3b8" font-size="7.5">ওয়েভার-নিষ্পত্তি (no_charge accept)</text>
+      <text x="267" y="164" text-anchor="middle" fill="#94a3b8" font-size="8">ওয়েভার-নিষ্পত্তি (no_charge accept)</text>
       <rect x="364" y="130" width="150" height="46" rx="9" fill="rgba(251,191,36,0.12)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="439" y="150" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">awaiting_reply</text>
-      <text x="439" y="164" text-anchor="middle" fill="#94a3b8" font-size="7.5">ঘাটতি আছে + অনুরোধ খোলা</text>
+      <text x="439" y="164" text-anchor="middle" fill="#94a3b8" font-size="8">ঘাটতি আছে + অনুরোধ খোলা</text>
       <rect x="192" y="200" width="150" height="46" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="267" y="220" text-anchor="middle" fill="#5eead4" font-size="9" font-weight="700">ok</text>
-      <text x="267" y="234" text-anchor="middle" fill="#94a3b8" font-size="7.5">gross ≥ floor — কিছু করার নেই</text>
+      <text x="267" y="234" text-anchor="middle" fill="#94a3b8" font-size="8">gross ≥ floor — কিছু করার নেই</text>
       <rect x="20" y="200" width="150" height="46" rx="9" fill="rgba(248,113,113,0.10)" stroke="#f87171" stroke-width="1.5"/>
       <text x="95" y="220" text-anchor="middle" fill="#f87171" font-size="9" font-weight="700">below</text>
-      <text x="95" y="234" text-anchor="middle" fill="#94a3b8" font-size="7.5">gap হিসাব + 462 প্রস্তাব</text>
+      <text x="95" y="234" text-anchor="middle" fill="#94a3b8" font-size="8">gap হিসাব + 462 প্রস্তাব</text>
       <rect x="364" y="200" width="176" height="46" rx="9" fill="rgba(100,116,139,0.10)" stroke="#94a3b8" stroke-width="1.3"/>
       <text x="452" y="220" text-anchor="middle" fill="#cbd5e1" font-size="9" font-weight="600">🪨 462-প্রস্তাব</text>
-      <text x="452" y="234" text-anchor="middle" fill="#94a3b8" font-size="7.5">Vicki Xero-তে হাতে বসান (d1)</text>
+      <text x="452" y="234" text-anchor="middle" fill="#94a3b8" font-size="8">Vicki Xero-তে হাতে বসান (d1)</text>
       <line x1="280" y1="46" x2="280" y2="60" stroke="#5eead4" stroke-width="1.8" marker-end="url(#arrowM9)"/>
       <line x1="230" y1="98" x2="100" y2="128" stroke="#fbbf24" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#arrowY9)"/>
       <line x1="267" y1="98" x2="267" y2="128" stroke="#fbbf24" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#arrowY9)"/>
@@ -213,7 +213,7 @@ doors.push({
       <text x="146" y="129" text-anchor="middle" fill="#cbd5e1" font-size="8">→ fully_applied / cancelled</text>
       <text x="146" y="152" text-anchor="middle" fill="#94a3b8" font-size="8">প্রতি প্রয়োগে CreditAllocation:</text>
       <text x="146" y="164" text-anchor="middle" fill="#94a3b8" font-size="8">balance_before → balance_after</text>
-      <text x="146" y="182" text-anchor="middle" fill="#34d399" font-size="7.5">✅ FE: CreditWorkflow + CreditLedger লাইভ</text>
+      <text x="146" y="182" text-anchor="middle" fill="#34d399" font-size="8">✅ FE: CreditWorkflow + CreditLedger লাইভ</text>
       <rect x="298" y="25" width="247" height="170" rx="12" fill="rgba(100,116,139,0.07)" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="6 3"/>
       <text x="421" y="50" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="700">⚪ সাদা খাম — সুপারসেডেড</text>
       <text x="421" y="66" text-anchor="middle" fill="#94a3b8" font-size="8">client_credits + audit · raw SQL</text>
@@ -223,7 +223,7 @@ doors.push({
       <text x="421" y="129" text-anchor="middle" fill="#94a3b8" font-size="8">এক ইনভয়েসে প্রয়োগ — শেষ</text>
       <text x="421" y="152" text-anchor="middle" fill="#94a3b8" font-size="8">FE কলার: শূন্য (G7 রিফ্যাক্টর)</text>
       <text x="421" y="164" text-anchor="middle" fill="#94a3b8" font-size="8">payments.py এখনো পড়ে · ১ সারি</text>
-      <text x="421" y="182" text-anchor="middle" fill="#fbbf24" font-size="7.5">⏳ staged deprecation পথে</text>
+      <text x="421" y="182" text-anchor="middle" fill="#fbbf24" font-size="8">⏳ staged deprecation পথে</text>
       <rect x="60" y="218" width="440" height="60" rx="10" fill="rgba(45,212,191,0.07)" stroke="#2dd4bf" stroke-width="1.3"/>
       <text x="280" y="240" text-anchor="middle" fill="#5eead4" font-size="9" font-weight="600">স্টেজড ডিপ্রিকেশন (ADR-0014 d2 লক্ষ্যে)</text>
       <text x="280" y="256" text-anchor="middle" fill="#94a3b8" font-size="8">① পড়া-পৃষ্ঠ → credit_ledger ② সারি মাইগ্রেট ③ টেবিল বাদ</text>

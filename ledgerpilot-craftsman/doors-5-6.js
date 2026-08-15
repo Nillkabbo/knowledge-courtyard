@@ -77,7 +77,7 @@ ADR-0025 নাম-সংস্কার:
       <text x="120" y="98" text-anchor="middle" fill="#94a3b8" font-size="8">· অনন্য নাম + ঠিকানা</text>
       <text x="120" y="112" text-anchor="middle" fill="#94a3b8" font-size="8">· status নেই — চিরস্থায়ী</text>
       <text x="120" y="126" text-anchor="middle" fill="#94a3b8" font-size="8">· email contacts এখানে</text>
-      <text x="120" y="145" text-anchor="middle" fill="#fbbf24" font-size="7.5">1 : N (বাস্তবে ~1:1)</text>
+      <text x="120" y="145" text-anchor="middle" fill="#fbbf24" font-size="8">1 : N (বাস্তবে ~1:1)</text>
       <rect x="350" y="40" width="180" height="150" rx="10" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="2"/>
       <text x="440" y="65" text-anchor="middle" fill="#5eead4" font-size="11.5" font-weight="700">🏠 Client</text>
       <text x="440" y="80" text-anchor="middle" fill="#64748b" font-size="8">চুক্তি — বাসা (মিউটেবল)</text>
@@ -85,17 +85,17 @@ ADR-0025 নাম-সংস্কার:
       <text x="440" y="112" text-anchor="middle" fill="#94a3b8" font-size="8">· auto_pay · is_balance_audit</text>
       <text x="440" y="126" text-anchor="middle" fill="#94a3b8" font-size="8">· status: current/old/inactive</text>
       <text x="440" y="140" text-anchor="middle" fill="#94a3b8" font-size="8">· notes এখানে (email নয়)</text>
-      <text x="440" y="158" text-anchor="middle" fill="#f87171" font-size="7.5">⚠ price_minimum = ঘণ্টা-রেট, মেঝে নয়</text>
-      <text x="440" y="172" text-anchor="middle" fill="#f87171" font-size="7.5">⚠ monthly_fee = ক্রমিক নম্বর, ফি নয়</text>
+      <text x="440" y="158" text-anchor="middle" fill="#f87171" font-size="8">⚠ price_minimum = ঘণ্টা-রেট, মেঝে নয়</text>
+      <text x="440" y="172" text-anchor="middle" fill="#f87171" font-size="8">⚠ monthly_fee = ক্রমিক নম্বর, ফি নয়</text>
       <rect x="120" y="215" width="320" height="52" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="280" y="235" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="600">👤 Supervisor — নামফলক মাত্র</text>
       <text x="280" y="250" text-anchor="middle" fill="#64748b" font-size="8">supervisors টেবিল · User-এ কোনো FK নেই (ADR-0001)</text>
       <line x1="210" y1="100" x2="348" y2="100" stroke="#5eead4" stroke-width="2" marker-end="url(#arrowE6)"/>
       <text x="280" y="92" text-anchor="middle" fill="#64748b" font-size="8">এক ভিতে একাধিক চুক্তি</text>
       <line x1="440" y1="190" x2="360" y2="220" stroke="#818cf8" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrowE6)"/>
-      <text x="420" y="212" text-anchor="middle" fill="#64748b" font-size="7.5">primary + co- (join)</text>
+      <text x="420" y="212" text-anchor="middle" fill="#64748b" font-size="8">primary + co- (join)</text>
       <line x1="120" y1="160" x2="200" y2="220" stroke="#818cf8" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrowE6)"/>
-      <text x="140" y="200" text-anchor="middle" fill="#64748b" font-size="7.5">সম্পর্ক নেই — দুই জগৎ</text>
+      <text x="140" y="200" text-anchor="middle" fill="#64748b" font-size="8">সম্পর্ক নেই — দুই জগৎ</text>
     </svg>
     <div class="diag-cap">Company স্থায়ী ভিত, Client বদলযোগ্য চুক্তি, Supervisor শুধু নামফলক — তিন টেবিল, তিন দায়, এক ইমারত।</div>
   </div>
@@ -184,37 +184,37 @@ doors.push({
       <defs><marker id="arrowS7" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#5eead4"/></marker></defs>
       <rect x="190" y="10" width="180" height="40" rx="9" fill="rgba(251,191,36,0.12)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="280" y="28" text-anchor="middle" fill="#fcd34d" font-size="9.5" font-weight="700">📄 QuickBooks Time Excel</text>
-      <text x="280" y="42" text-anchor="middle" fill="#94a3b8" font-size="7.5">Peter-এর আপলোড — ফাইলনামে তারিখ-পরিসর</text>
+      <text x="280" y="42" text-anchor="middle" fill="#94a3b8" font-size="8">Peter-এর আপলোড — ফাইলনামে তারিখ-পরিসর</text>
       <rect x="190" y="65" width="180" height="36" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="280" y="82" text-anchor="middle" fill="#5eead4" font-size="9" font-weight="600">ছাঁকনি-১ parse_excel</text>
-      <text x="280" y="95" text-anchor="middle" fill="#94a3b8" font-size="7.5">কলাম-ম্যাপ + মিশ্র-তারিখ কোয়ার্সন</text>
+      <text x="280" y="95" text-anchor="middle" fill="#94a3b8" font-size="8">কলাম-ম্যাপ + মিশ্র-তারিখ কোয়ার্সন</text>
       <rect x="190" y="116" width="180" height="36" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="280" y="133" text-anchor="middle" fill="#5eead4" font-size="9" font-weight="600">ছাঁকনি-২ validate_row</text>
-      <text x="280" y="146" text-anchor="middle" fill="#94a3b8" font-size="7.5">ঘণ্টা-সীমা · তারিখ-পরিসর · শুরু-শেষ</text>
+      <text x="280" y="146" text-anchor="middle" fill="#94a3b8" font-size="8">ঘণ্টা-সীমা · তারিখ-পরিসর · শুরু-শেষ</text>
       <rect x="190" y="167" width="180" height="36" rx="9" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.5"/>
       <text x="280" y="184" text-anchor="middle" fill="#5eead4" font-size="9" font-weight="600">ছাঁকনি-৩ duplicates</text>
-      <text x="280" y="197" text-anchor="middle" fill="#94a3b8" font-size="7.5">ক্যাননিক্যাল ৭-টুপল কী-মিল</text>
+      <text x="280" y="197" text-anchor="middle" fill="#94a3b8" font-size="8">ক্যাননিক্যাল ৭-টুপল কী-মিল</text>
       <rect x="190" y="218" width="180" height="40" rx="9" fill="rgba(52,211,153,0.14)" stroke="#34d399" stroke-width="2"/>
       <text x="280" y="236" text-anchor="middle" fill="#6ee7b7" font-size="9.5" font-weight="700">✓ TimesheetReport</text>
-      <text x="280" y="250" text-anchor="middle" fill="#94a3b8" font-size="7.5">ts_entries + গণনা → InvoiceSave-এর বীজ</text>
+      <text x="280" y="250" text-anchor="middle" fill="#94a3b8" font-size="8">ts_entries + গণনা → InvoiceSave-এর বীজ</text>
       <rect x="435" y="116" width="115" height="87" rx="9" fill="rgba(248,113,113,0.08)" stroke="#f87171" stroke-width="1.5"/>
       <text x="492" y="140" text-anchor="middle" fill="#f87171" font-size="9" font-weight="700">🧺 ঝুড়ি</text>
-      <text x="492" y="156" text-anchor="middle" fill="#94a3b8" font-size="7.5">RejectedEntry</text>
-      <text x="492" y="168" text-anchor="middle" fill="#94a3b8" font-size="7.5">raw_* স্ন্যাপশট</text>
-      <text x="492" y="180" text-anchor="middle" fill="#94a3b8" font-size="7.5">কারণসহ টিকিট</text>
-      <text x="492" y="195" text-anchor="middle" fill="#fbbf24" font-size="7">→ আতিকের দরজা ১৮ (ফোর্স)</text>
+      <text x="492" y="156" text-anchor="middle" fill="#94a3b8" font-size="8">RejectedEntry</text>
+      <text x="492" y="168" text-anchor="middle" fill="#94a3b8" font-size="8">raw_* স্ন্যাপশট</text>
+      <text x="492" y="180" text-anchor="middle" fill="#94a3b8" font-size="8">কারণসহ টিকিট</text>
+      <text x="492" y="195" text-anchor="middle" fill="#fbbf24" font-size="8">→ আতিকের দরজা ১৮ (ফোর্স)</text>
       <line x1="280" y1="50" x2="280" y2="63" stroke="#5eead4" stroke-width="1.8" marker-end="url(#arrowS7)"/>
       <line x1="280" y1="101" x2="280" y2="114" stroke="#5eead4" stroke-width="1.8" marker-end="url(#arrowS7)"/>
       <line x1="280" y1="152" x2="280" y2="165" stroke="#5eead4" stroke-width="1.8" marker-end="url(#arrowS7)"/>
       <line x1="280" y1="203" x2="280" y2="216" stroke="#5eead4" stroke-width="1.8" marker-end="url(#arrowS7)"/>
       <line x1="370" y1="134" x2="433" y2="150" stroke="#f87171" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#arrowS7)"/>
-      <text x="402" y="128" text-anchor="middle" fill="#f87171" font-size="7.5">প্রত্যাখ্যাত</text>
+      <text x="402" y="128" text-anchor="middle" fill="#f87171" font-size="8">প্রত্যাখ্যাত</text>
       <rect x="15" y="116" width="130" height="87" rx="9" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.3"/>
       <text x="80" y="140" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="600">🔐 অডিট-সারি</text>
-      <text x="80" y="156" text-anchor="middle" fill="#94a3b8" font-size="7.5">TimesheetUpload</text>
-      <text x="80" y="168" text-anchor="middle" fill="#94a3b8" font-size="7.5">Audit — ইমপোর্টের</text>
-      <text x="80" y="180" text-anchor="middle" fill="#94a3b8" font-size="7.5">আগেই (PR #68)</text>
-      <text x="80" y="195" text-anchor="middle" fill="#fbbf24" font-size="7">বাহি-নীতির আত্মীয়</text>
+      <text x="80" y="156" text-anchor="middle" fill="#94a3b8" font-size="8">TimesheetUpload</text>
+      <text x="80" y="168" text-anchor="middle" fill="#94a3b8" font-size="8">Audit — ইমপোর্টের</text>
+      <text x="80" y="180" text-anchor="middle" fill="#94a3b8" font-size="8">আগেই (PR #68)</text>
+      <text x="80" y="195" text-anchor="middle" fill="#fbbf24" font-size="8">বাহি-নীতির আত্মীয়</text>
       <line x1="190" y1="134" x2="147" y2="150" stroke="#818cf8" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#arrowS7)"/>
       <text x="280" y="285" text-anchor="middle" fill="#64748b" font-size="9">তিন ছাঁকনি, এক ঝুড়ি — প্রতিটি ঘণ্টা সাক্ষীসহ যায়</text>
     </svg>

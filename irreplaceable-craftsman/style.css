@@ -157,7 +157,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .kv-table tr:last-child td{border-bottom:none}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 /* ══ SVG DIAGRAM + CAPTION ══ */
-.story-text .svg-diagram{background:var(--code-bg);border:1px solid var(--code-border);border-radius:12px;padding:1rem;margin:1rem 0;overflow:hidden}
+.story-text .svg-diagram{background:var(--code-bg);border:1px solid var(--code-border);border-radius:12px;padding:1rem;margin:1rem 0;width:100%;max-width:940px;overflow:hidden}
 .story-text .svg-caption{text-align:center;font-size:.8rem;color:var(--ink-mute);font-style:italic;margin:.4rem 0 1rem;padding:0 .5rem;line-height:1.55}
 
 /* ported components (audit Aug 2026) */

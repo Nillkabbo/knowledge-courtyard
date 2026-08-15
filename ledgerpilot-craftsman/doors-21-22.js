@@ -109,17 +109,17 @@ doors.push({
       <text x="280" y="234" text-anchor="middle" fill="#94a3b8" font-size="8">http/ (apiClient·csrf·errors) · auth · types · utils</text>
       <rect x="192" y="259" width="176" height="40" rx="10" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="280" y="276" text-anchor="middle" fill="#fcd34d" font-size="9.5" font-weight="600">ui/ — মান-দণ্ড</text>
-      <text x="280" y="291" text-anchor="middle" fill="#94a3b8" font-size="7.5">tokens + primitives — arbitrary Tailwind নিষেধ</text>
+      <text x="280" y="291" text-anchor="middle" fill="#94a3b8" font-size="8">tokens + primitives — arbitrary Tailwind নিষেধ</text>
       <line x1="280" y1="67" x2="280" y2="80" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrowF20)"/>
       <line x1="280" y1="126" x2="280" y2="139" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrowF20)"/>
       <line x1="280" y1="185" x2="280" y2="198" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrowF20)"/>
       <line x1="280" y1="244" x2="280" y2="257" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrowF20)"/>
       <rect x="410" y="141" width="135" height="60" rx="9" fill="rgba(248,113,113,0.08)" stroke="#f87171" stroke-width="1.4"/>
       <text x="477" y="163" text-anchor="middle" fill="#f87171" font-size="8.5" font-weight="700">🚫 নিষেধ-তীর</text>
-      <text x="477" y="177" text-anchor="middle" fill="#94a3b8" font-size="7.5">feature ↔ feature</text>
-      <text x="477" y="189" text-anchor="middle" fill="#94a3b8" font-size="7.5">নিচ → উপর</text>
+      <text x="477" y="177" text-anchor="middle" fill="#94a3b8" font-size="8">feature ↔ feature</text>
+      <text x="477" y="189" text-anchor="middle" fill="#94a3b8" font-size="8">নিচ → উপর</text>
       <line x1="408" y1="171" x2="532" y2="171" stroke="#f87171" stroke-width="0.5" stroke-dasharray="2 2"/>
-      <text x="42" y="171" fill="#64748b" font-size="7.5" transform="rotate(-90 42 171)">নির্ভরতা নিচে প্রবাহিত ⬇</text>
+      <text x="42" y="171" fill="#64748b" font-size="8" transform="rotate(-90 42 171)">নির্ভরতা নিচে প্রবাহিত ⬇</text>
       <text x="280" y="322" text-anchor="middle" fill="#64748b" font-size="9">পরীক্ষা পাশের শহরতলীতে (src/tests/**) · ফটক এক (apiClient) · স্টোর তিন, সব computed(user)</text>
     </svg>
     <div class="diag-cap">পাঁচ স্তরের সোপান — প্রতিটি তীর নিচমুখী; ভাই-মহল্লার সরাসরি হাত বাজারে যায়, ঘরে নয়।</div>
@@ -221,16 +221,16 @@ xero       OAuth + Fernet + webhook + আয়না + ৩ push
       <text x="280" y="33" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="600">🌐 apiClient (CSRF+session) → /api/&lt;app&gt;/</text>
       <rect x="120" y="58" width="320" height="40" rx="8" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.6"/>
       <text x="280" y="76" text-anchor="middle" fill="#5eead4" font-size="9.5" font-weight="700">① APIView — সরলরেখা রাস্তা</text>
-      <text x="280" y="90" text-anchor="middle" fill="#94a3b8" font-size="7.5">permission_classes ✓ throttle_scope ✓ @extend_schema ✓</text>
+      <text x="280" y="90" text-anchor="middle" fill="#94a3b8" font-size="8">permission_classes ✓ throttle_scope ✓ @extend_schema ✓</text>
       <rect x="120" y="110" width="320" height="36" rx="8" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.4"/>
       <text x="280" y="128" text-anchor="middle" fill="#5eead4" font-size="9" font-weight="600">② Serializer — চুক্তির দোভাষী</text>
-      <text x="280" y="141" text-anchor="middle" fill="#94a3b8" font-size="7.5">source='company.name' read_only · Meta.fields স্পষ্ট</text>
+      <text x="280" y="141" text-anchor="middle" fill="#94a3b8" font-size="8">source='company.name' read_only · Meta.fields স্পষ্ট</text>
       <rect x="120" y="158" width="320" height="36" rx="8" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.4"/>
       <text x="280" y="176" text-anchor="middle" fill="#5eead4" font-size="9" font-weight="600">③ Service — যুক্তির ঘর (সমতল ফাংশন, atomic)</text>
-      <text x="280" y="189" text-anchor="middle" fill="#94a3b8" font-size="7.5">টাইপড ব্যতিক্রম ছুড়ে — Exception সাবক্লাস, APIException নয়</text>
+      <text x="280" y="189" text-anchor="middle" fill="#94a3b8" font-size="8">টাইপড ব্যতিক্রম ছুড়ে — Exception সাবক্লাস, APIException নয়</text>
       <rect x="120" y="206" width="320" height="36" rx="8" fill="rgba(52,211,153,0.10)" stroke="#34d399" stroke-width="1.4"/>
       <text x="280" y="224" text-anchor="middle" fill="#6ee7b7" font-size="9" font-weight="600">④ Model / raw SQL — সত্যের থাম</text>
-      <text x="280" y="237" text-anchor="middle" fill="#94a3b8" font-size="7.5">raw SQL হলে schema-pin টেস্ট + dict-zip আনপ্যাক</text>
+      <text x="280" y="237" text-anchor="middle" fill="#94a3b8" font-size="8">raw SQL হলে schema-pin টেস্ট + dict-zip আনপ্যাক</text>
       <rect x="80" y="256" width="400" height="34" rx="8" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.3"/>
       <text x="280" y="277" text-anchor="middle" fill="#fcd34d" font-size="8.5" font-weight="600">খাম: {rows,total,…} · 204/{ok} · {error} — পাশের ২টি view পড়ে নকল</text>
       <line x1="280" y1="46" x2="280" y2="56" stroke="#5eead4" stroke-width="1.6" marker-end="url(#arrowB21)"/>

@@ -164,7 +164,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .kv-table tr:last-child td{border-bottom:none}
 /* ── DIAGRAMS (inline SVG) ── */
 .story-text .diagram{background:linear-gradient(135deg,rgba(19,26,43,.6),rgba(7,10,15,.8));border:1px solid var(--panel-border);border-radius:14px;padding:1rem;margin:1.2rem 0;overflow:hidden}
-.story-text .diagram svg{display:block;width:100%;height:auto;max-width:580px;margin:0 auto;font-family:'Courier New',monospace}
+.story-text .diagram svg{display:block;width:100%;height:auto;max-width:940px;margin:0 auto;font-family:'Courier New',monospace}
 .story-text .diagram .diag-cap{font-size:0.75rem;color:var(--ink-mute);text-align:center;margin-top:.6rem;font-style:italic}
 .story-text .diagram .diag-title{font-family:'Cinzel',serif;font-size:0.8rem;color:var(--amber);text-align:center;margin-bottom:.6rem;letter-spacing:.1em;text-transform:uppercase}
 .story-text .diagram svg .grid-line{stroke:rgba(167,139,250,.1);stroke-width:1}
@@ -203,7 +203,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
 /* ported components (audit Aug 2026) */
-.story-text .svg-diagram{width:100%;max-width:620px;margin:1.2rem auto;display:block;background:linear-gradient(135deg,rgba(19,26,43,.6),rgba(7,10,15,.8));border:1px solid var(--panel-border);border-radius:12px;padding:.8rem;overflow:hidden}
+.story-text .svg-diagram{width:100%;max-width:940px;margin:1.2rem auto;display:block;background:linear-gradient(135deg,rgba(19,26,43,.6),rgba(7,10,15,.8));border:1px solid var(--panel-border);border-radius:12px;padding:.8rem;overflow:hidden}
 .story-text .svg-caption{font-size:.75rem;color:var(--ink-dim);text-align:center;margin:-.6rem auto 1.2rem;font-style:italic;max-width:620px}
 
 /* ported components (audit Aug 2026) */
