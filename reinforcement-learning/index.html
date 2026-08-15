@@ -3,84 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎰 পুরস্কারের বাগান — The Gambler's Garden</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Amiri:wght@400;700&family=Hind+Siliguri:wght@400;600;800&display=swap" rel="stylesheet">
+<title>পুরস্কারের বাগান — The Gambler's Garden</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
 </head>
 <body>
+<canvas id="particles"></canvas>
 
-<!-- ══ TITLE SCREEN ══ -->
 <div id="title-screen" class="screen active">
   <div class="title-arabic">وَمَا تُنفِقُوا مِنْ خَيْرٍ فَلِأَنفُسِكُمْ</div>
   <h1 class="title-main">পুরস্কারের বাগান</h1>
   <div class="title-sub">The Gambler's Garden</div>
   <div class="title-desc">
-    একটা বাগান আছে — প্রতিটা কাজের ফল তাৎক্ষণিক নয়, ধৈর্যে জমে।
-    এখানে তুমি শিখবে সেই শাস্ত্র — কীভাবে কোনো এজেন্ট (মানুষ, মেশিন) পুরস্কার থেকে শিখে
-    সিদ্ধান্ত নেয়: ব্যান্ডিট থেকে MDP, বেলম্যান থেকে Q-learning, পলিসি-গ্রেডিয়েন্ট থেকে RLHF।
-    <span class="en">A garden where reward comes not instantly but with patience — the science of learning from reward: bandits, MDPs, Bellman, Q-learning, policy gradients, RLHF.</span>
+    পুরস্কার থেকে শেখার সম্পূর্ণ বিজ্ঞান।<br>
+    এগারোটি দরজা — ব্যান্ডিট থেকে MDP, বেলম্যানের সমীকরণ থেকে Q-learning, DQN, policy gradient, PPO, এবং RLHF/DPO/GRPO — প্রতিটি ধাপ নাম-নাম গবেষকের প্রমাণিত কাজ দিয়ে।<br><br>
+    <em>The complete science of learning from reward. Eleven doors: bandits (Robbins 1952), MDP (Bellman 1957), TD (Sutton 1988), Q-learning (Watkins 1989), DQN (Mnih 2013/2015), policy gradient (Williams 1992), PPO (Schulman 2017), actor-critic (Barto-Sutton-Anderson 1983), and RLHF → DPO → GRPO (2017-2024). Every claim verified against primary sources.</em>
   </div>
-  <button class="start-btn" onclick="startGame()">বাগানে প্রবেশ করো → Enter</button>
+  <button class="start-btn" onclick="startGame()">🎰 যাত্রা শুরু করো</button>
 </div>
 
-<!-- ══ PROLOGUE ══ -->
 <div id="prologue-screen" class="screen">
-  <div class="prologue-title">📜 প্রস্তাবনা — Prologue</div>
   <div class="prologue-body">
-    <p><strong>বীজ থেকে শিক্ষা।</strong> একটা বীজ বোনো — কিছু মাটিতে মরে যায়, কিছু ফলে। কোনটা ফলবে আগে থেকে জানা নেই; বোনা ছাড়া জানার উপায়ও নেই। পুরো জীবন এমনই — প্রতিটা সিদ্ধান্ত একটা বীজ, ফল আসে পরে, অনিশ্চিত।</p>
-    <p>এগারোটা দরজা পেরোলে তুমি বুঝবে — এই অনিশ্চয়তার ভেতরে সিদ্ধান্ত নেওয়ার একটা <em>গণিত</em> আছে। তার নাম রিইনফোর্সমেন্ট লার্নিং। বাগানিরা তা হাজার বছর ধরে আন্দাজে করত; গত সত্তর বছরে গণিত তার ভাষা পেয়েছে — বেলম্যানের হিসাব, সাটনের ধৈর্য, ওয়াটকিন্সের খাতা।</p>
-    <p class="en">Eleven doors from seed to harvest: the mathematics of learning from reward — Bellman's arithmetic, Sutton's patience, Watkins's ledger — ending where your own fine-tuning book (B11) begins.</p>
+    <div class="prologue-title">বীজ থেকে শেখা — Learning from the Seed</div>
+    <p>একটা বীজ বোনো — কিছু মাটিতে মরে যায়, কিছু ফলে। কোনটা ফলবে আগে থেকে জানা নেই; বোনা ছাড়া জানার উপায়ও নেই। পুরো জীবন এমনই — প্রতিটা সিদ্ধান্ত একটা বীজ, ফল আসে পরে, অনিশ্চিত। বাগানিরা হাজার বছর ধরে আন্দাজে করত; গত সত্তর বছরে গণিত তার ভাষা পেয়েছে — বেলম্যানের হিসাব (১৯৫৭), সাটনের ধৈর্য (১৯৮৮), ওয়াটকিন্সের খাতা (১৯৮৯)।</p>
+    <p class="en">Sow a seed — some soils kill it, some bring fruit. You cannot know which without sowing. Life is this: every decision a seed, the fruit later, uncertain. Gardeners did it by intuition for millennia; in seventy years mathematics found its language — Bellman's arithmetic (1957), Sutton's patience (1988), Watkins's ledger (1989).</p>
+    <hr class="p-divider">
+    <p>এই বই তোমাকে শেখাবে — অনিশ্চয়তার ভেতরে সিদ্ধান্ত নেওয়ার গণিত: explore-exploit, Markov নিয়ম, discounting, Bellman সমীকরণ, TD-শিক্ষা, Q-learning ও SARSA, function approximation ও তার তিন-বিপদ, DQN-এর অ্যালবাম, policy gradient থেকে PPO, actor-critic জোড়া, এবং শেষে মানুষের পছন্দের যুগ — RLHF, DPO, GRPO। প্রতিটা দরজায় একজন কারিগর, একটা নাম, একটা প্রমাণিত পদ্ধতি।</p>
+    <p class="en">This book teaches the mathematics of deciding under uncertainty: explore-exploit, the Markov law, discounting, the Bellman equation, TD learning, Q-learning and SARSA, function approximation and its deadly triad, DQN's album, policy gradients to PPO, the actor-critic pair, and the age of human preference — RLHF, DPO, GRPO. Each door: a craftsman, a name, a proven method.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
   </div>
-  <button class="start-btn" onclick="state.prologueSeen=true;saveState();renderMap();showScreen('map-screen')">🚪 বাগানের দিকে যাও</button>
 </div>
 
-<!-- ══ MAP SCREEN ══ -->
 <div id="map-screen" class="screen">
-  <div class="map-header">
-    <div class="hud-rank"><span id="hud-rank-icon">🌱</span> <span id="hud-rank-name">বীজ বোনার শিক্ষানবিশ</span> <span id="hud-level">স্তর ১</span></div>
-    <div class="hud-xp-wrap">
-      <div class="hud-xp-text" id="hud-xp-text">0 / 1100 XP</div>
-      <div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill"></div></div>
-    </div>
-    <button class="hud-btn" onclick="toggleMute()" id="mute-btn">🔊</button>
-    <button class="hud-btn" onclick="openCheatModal()">📜</button>
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🌱</span><span id="hud-rank-name">বীজ বোনার শিক্ষানবিশ</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1100 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
   </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>এগারোটি দরজা, ক্রমানুসারে। প্রতিটি শেখার এক একটি স্তর।</p></div>
   <div class="doors-grid" id="doors-grid"></div>
 </div>
 
-<!-- ══ STORY SCREEN ══ -->
 <div id="story-screen" class="screen">
-  <button class="story-back" onclick="goToMap()">← বাগানের মানচিত্র</button>
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← বাগানের মানচিত্রে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
   <div class="story-container" id="story-container"></div>
 </div>
 
-<!-- ══ COMPLETE SCREEN ══ -->
 <div id="complete-screen" class="screen">
-  <div class="complete-crown">👑</div>
-  <div class="complete-title">বাগান সম্পূর্ণ — The Garden Complete</div>
-  <div class="complete-text">এগারোটা দরজা পেরিয়ে তুমি এখন জানো: পুরস্কার থেকে শেখার সম্পূর্ণ বিজ্ঞান — বীজ (bandit) থেকে ফসল (policy gradient) পর্যন্ত।</div>
-  <div class="complete-verse">وَمَا تُنفِقُوا مِنْ خَيْرٍ فَلِأَنفُسِكُمْ</div>
-  <div class="cheat-grid" id="cheat-grid-end"></div>
-  <button class="continue-btn" onclick="location.reload()">আবার বাগানে ফেরো</button>
+  <div class="complete-crown">🌟</div>
+  <h1 class="complete-title">তুমি এখন বাগানের ওস্তাদ</h1>
+  <p class="complete-text">এগারোটি দরজা পেরিয়েছ। বীজ থেকে ফসল — শেখার সম্পূর্ণ বিজ্ঞান আয়ত্ত করেছ।<br><br>বেলম্যানের হিসাব, সাটনের ধৈর্য, ওয়াটকিন্সের খাতা, মনিমের অ্যালবাম, শুলম্যানের লাগাম, বার্টো-সাটনের জোড়া — এবং মানুষের পছন্দের তিন প্রজন্ম।<br><br>এখন তুমি জানো — পুরস্কার থেকে শেখা মানে মুখস্থ নয়, নীতি গড়া।<br><strong>প্রত্যেক সিদ্ধান্ত একটা বীজ। বাগানি হও।</strong></p>
+  <div class="complete-verse">وَمَن يُؤْتَ الْحِكْمَةَ فَقَدْ أُوتِيَ خَيْرًا كَثِيرًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"যাকে হিকমাহ দান করা হয়, সে প্রচুর কল্যাণ পেয়েছে।" — কুরআন ২:২৬৯</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 বাগানের চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
 </div>
 
-<!-- ══ CHEAT MODAL ══ -->
-<div id="cheat-modal" style="display:none">
-  <div class="cheat-modal-inner">
-    <div class="cheat-modal-head">
-      <span>📜 বাগানের খাতা — Cheat Sheet</span>
-      <button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button>
-    </div>
-    <div class="cheat-grid" id="cheat-grid"></div>
-  </div>
-</div>
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
 
-<div id="xp-popup"><span id="xp-amount">+100 XP</span></div>
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 বাগানের চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
 
 <script src="doors-1-5.js"></script>
 <script src="doors-6-10.js"></script>
 <script src="doors-11.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
 <script src="engine.js"></script>
+  <script src="../scripts/study-materials.js"></script>
 </body>
 </html>
