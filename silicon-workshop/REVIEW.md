@@ -13,7 +13,9 @@
 >
 > The repeatable method, the tooling, and a handoff checklist live in [`scripts/book-review/PLAYBOOK.md`](../scripts/book-review/PLAYBOOK.md).
 >
-> **Remaining: Stage 4** (build-thread drift), **Stages 5–6** (new content and apparatus).
+> **Remaining: Stages 5–6** (new content and apparatus).
+>
+> **Stage 4** — done: the requirements notebook is now a figure in Door 1 (পাঁচ প্রশ্ন) and reprinted ticked in Door 16 (every line → its component + door), making future drift structurally impossible. Build 8 buys the DHT22 (closes the never-bought temperature sensor); Build 12 justifies the LDR (sleep policy + open-case alert); cadence unified at 15 min. Book now 53 diagrams. (Anchor lesson re-learned: table text-anchor must be inline style, not presentation attr — CSS class wins.)
 >
 > **Stage 3 Tier 4** — done: all 12 SVG findings cleared (label spills split into two lines or lbl-left anchored; resistor-band hardcoded colours → .cell/.cell-amber/.cell-dim palette classes, properly svg-scoped; ADC১/ADC২ → ASCII). Three mismatched photos swapped (D11 multimeter→DS3231 PCB, D12 solar→RGB LED, D15 multimeter→ESP32-C3 board); 74HC00 and enclosure photos not on Commons — D7/D16 keep topic-adjacent photos. Audit now reports only the 5 intentional structural deviations (4-diagram doors 3/12/13; 2-dialogue doors 14/16). Browser: 16/16 doors, 51 diagrams, 0 issues.
 >

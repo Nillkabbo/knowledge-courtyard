@@ -857,6 +857,27 @@ void loop() { }                        // ইচ্ছাকৃত খালি 
 <div class="diag-cap">আসল-জগতের বৃত্ত: টেবিলের সাফল্য মাঠের গ্যারান্টি নয় — বৃষ্টি-পরীক্ষা, লগ-ময়না, OTA-সংশোধনের ফিরে-যাওয়া; প্রতিটা ফসল পরের বীজ।</div>
 </div>
 
+
+<div class="diagram">
+<div class="diag-title">প্রয়োজন-খাতা v১ — চূড়ান্ত মিলানো (প্রতিটা লাইন টিক, জবাবদান-কম্পোনেন্টসহ)</div>
+<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell" x="40" y="20" width="480" height="222"/>
+  <text class="lbl" x="280" y="42">মাঠ-পাখি: ফসল-মেলার খাতা</text>
+  <g font-size="10">
+    <text class="lbl-sm" x="60" y="66" style="text-anchor:start">✓ ১. আর্দ্রতা — মাটি-প্রোব+১০k ডিভাইডার → ADC (দরজা ৬·১২)</text>
+    <text class="lbl-sm" x="60" y="88" style="text-anchor:start">✓ ১. তাপ+বাতাস-আর্দ্রতা — DHT22 (দরজা ৮-এর কেনা; দরজা ১৩-এর চিঠি)</text>
+    <text class="lbl-sm" x="60" y="110" style="text-anchor:start">✓ ২. শক্তি — সোলার→TP4056→১৮৬৫০→MCP1700 (দরজা ৪)</text>
+    <text class="lbl-sm" x="60" y="132" style="text-anchor:start">✓ ৩. বুদ্ধি+ঘুম — ESP32; ১৫-মিনিট ওয়াক্ত; রাতে আলো-নীতি (দরজা ৮·১১·১২)</text>
+    <text class="lbl-sm" x="60" y="154" style="text-anchor:start">✓ ৪. যোগাযোগ — WiFi→MQTT/TLS→ব্রোকার→ফোন-গ্রাফ; OTA (দরজা ১৫)</text>
+    <text class="lbl-sm" x="60" y="176" style="text-anchor:start">✓ ৫. কাজ — MOSFET+PWM ভালভ; মাপা-গতিতে পানি (দরজা ৩·১২)</text>
+    <text class="lbl-sm" x="60" y="198" style="text-anchor:start">✓ + বৃষ্টি-ডাক — INT-পিন পতাকা (দরজা ১০); টাইমস্ট্যাম্প — DS3231 (দরজা ১১·১৩)</text>
+    <text class="lbl-sm" x="60" y="220" style="text-anchor:start">✓ + খোলা-কেস সতর্কতা — LDR (দরজা ১২); IP65 কেস — বৃষ্টি-মোড়ানো (এই দরজা)</text>
+    <text class="lbl-cyan" x="280" y="240" font-size="10">প্রতিটা টিক = একটা দরজা; প্রতিটা দরজা = একটা লাইনের জবাব — খাতা মিলেছে</text>
+  </g>
+</svg>
+<div class="diag-cap">দরজা ১-এর খাতা ফিরে এসেছে — ষোলো দরজার প্রতিটা ইট কোন লাইনে বসেছে দেখা যাচ্ছে; নতুন প্রজেক্টেও এই মিলানোই শেষ-পরীক্ষা।</div>
+</div>
+
 <div class="verse">
 <div class="verse-arabic">إِنَّا عَرَضْنَا الْأَمَانَةَ عَلَى السَّمَاوَاتِ وَالْأَرْضِ وَالْجِبَالِ فَأَبَيْنَ أَن يَحْمِلْنَهَا وَأَشْفَقْنَ مِنْهَا وَحَمَلَهَا الْإِنسَانُ</div>
 <div class="verse-translation">আমি আমানত পেশ করেছিলাম আসমান, জমিন ও পাহাড়ের সামনে; তারা তা বহন করতে অস্বীকার করলো ও ভয় পেল — কিন্তু মানুষ তা বহন করলো।</div>

@@ -145,6 +145,25 @@ LED জ্বালানোর হিসাব (তোমার প্রথম
 <div class="diag-cap">ভোল্টমিটার সমান্তরালে বসে (প্যাড-পাশে), অ্যামিটার শ্রেণিতে (পথ কেটে) — ভুললে মিটারের ফিউজ ওড়ে।</div>
 </div>
 
+
+<div class="diagram">
+<div class="diag-title">প্রয়োজন-খাতা — যাত্রার পাঁচ প্রশ্ন (প্রতিটা দরজা এরই জবাব)</div>
+<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell" x="40" y="24" width="480" height="204"/>
+  <text class="lbl" x="280" y="46">মাঠ-পাখি: প্রয়োজন-তালিকা v১</text>
+  <g font-size="10" class="lbl-sm">
+    <text x="70" y="72" style="text-anchor:start">১. মাপবে — আর্দ্রতা + তাপ (মাটি ও বাতাস)</text>
+    <text x="70" y="96" style="text-anchor:start">২. শক্তি — ব্যাটারিতে চলবে; রোদে নিজে-চার্জ</text>
+    <text x="70" y="120" style="text-anchor:start">৩. বুদ্ধি — ছোট-শহর; ওয়াক্তে জাগবে, বাকি ঘুম</text>
+    <text x="70" y="144" style="text-anchor:start">৪. যোগাযোগ — ফোনে গ্রাফ; দূর থেকে কমান্ড</text>
+    <text x="70" y="168" style="text-anchor:start">৫. কাজ — শুকালে পানি-ভালভ মাপা-শক্তিতে</text>
+    <text x="70" y="192" style="text-anchor:start">+ বৃষ্টি-ডাকে তাৎক্ষণিক পাঠ; টাইমস্ট্যাম্প-সহ খাতা</text>
+  </g>
+  <text class="lbl-cyan" x="280" y="218" font-size="10">দরজা ১৬-তে এই খাতাই ফিরবে — প্রতিটা লাইনে টিক ও জবাবদান-কম্পোনেন্ট</text>
+</svg>
+<div class="diag-cap">প্রয়োজন-খাতা: প্রতিটা কেনাকাটা, প্রতিটা দরজার যোগ এই পাঁচ লাইনের কোনো একটার জবাব — খাতার বাইরে কোনো ইট নয়।</div>
+</div>
+
 <div class="verse">
 <div class="verse-arabic">وَمِنْ آيَاتِهِ يُرِيكُمُ الْبَرْقَ خَوْفًا وَطَمَعًا</div>
 <div class="verse-translation">তাঁর নিদর্শনের মধ্যে — তিনি তোমাদের দেখান বিদ্যুৎ-চমক, ভয় ও আশার সাথে।</div>
@@ -610,7 +629,7 @@ You thought. "Bad battery?"
 <div class="stat-card"><div class="sc-num">μA</div><div class="sc-label">ঘুমের মুদ্রা — বছরের ব্যাটারি-জীবনের চাবি</div></div>
 </div>
 
-<div class="dialogue">তিনি খাতা খুলে দেখালেন — একটা আসল প্রজেক্টের পাতা। দেখো: "MCU ঘুম: ০.০২mA / জাগা ১০mA (১% সময়) → গড় ০.১২mA। সেন্সর: ০.৫mA। রেডিও — প্রতি ১০ মিনিটে ৩সে পাঠায়, TX ১০০mA → গড় ০.৫mA। মোট গড় ≈ ১.১mA। ২০০০mAh ÷ ১.১ ≈ ১৮১৮ ঘণ্টা ≈ ৭৫ দিন!" তুমি চোখ বড় করলে — একই ব্যাটারি, সাত দিনের বদলে পঁচাত্তর। নুরুল ভাই হাসলেন: "জাদু নয় — ঘুম। সময়-ভাগের হিসাব। যন্ত্র সারাক্ষণ জাগলে সে ভোক্তা, ওয়াক্ত-মতো জাগলে সে যত্নবান। আর রেগুলেটরের গল্প — LDO সোজা রাস্তা কিন্তু ঢালুতে শক্তি ফেলে (dropout×I তাপে যায়), buck-কনভার্টার ঘুরপথ কিন্তু কম খায় (৮৫-৯৫%)। সস্তা নয়, দক্ষতা কিনতে হয় — নয়েজ আর জটিলতার দামে।"</div>
+<div class="dialogue">তিনি খাতা খুলে দেখালেন — একটা আসল প্রজেক্টের পাতা। দেখো: "MCU ঘুম: ০.০২mA / জাগা ১০mA (১% সময়) → গড় ০.১২mA। সেন্সর: ০.৫mA। রেডিও — প্রতি ১৫ মিনিটে ৩সে পাঠায়, TX ১০০mA → গড় ০.৫mA। মোট গড় ≈ ১.১mA। ২০০০mAh ÷ ১.১ ≈ ১৮১৮ ঘণ্টা ≈ ৭৫ দিন!" তুমি চোখ বড় করলে — একই ব্যাটারি, সাত দিনের বদলে পঁচাত্তর। নুরুল ভাই হাসলেন: "জাদু নয় — ঘুম। সময়-ভাগের হিসাব। যন্ত্র সারাক্ষণ জাগলে সে ভোক্তা, ওয়াক্ত-মতো জাগলে সে যত্নবান। আর রেগুলেটরের গল্প — LDO সোজা রাস্তা কিন্তু ঢালুতে শক্তি ফেলে (dropout×I তাপে যায়), buck-কনভার্টার ঘুরপথ কিন্তু কম খায় (৮৫-৯৫%)। সস্তা নয়, দক্ষতা কিনতে হয় — নয়েজ আর জটিলতার দামে।"</div>
 <div class="dialogue en">He opened the ledger to a real project page: "MCU sleep 0.02mA, awake 10mA at 1% → average 0.12mA. Sensor 0.5mA. Radio: 3 seconds per 10 minutes at 100mA → 0.5mA average. Total ≈1.1mA. 2000mAh ÷ 1.1 ≈ 1818 hours ≈ 75 days!" Your eyes widened — same battery, seven days became seventy-five. Nurul smiled: "Not magic — sleep. Duty-cycle arithmetic. A device awake around the clock is a spendthrift; awake on time, a mendicant. And regulators: LDO is the straight road but spills energy on the slope (dropout×I as heat); the buck converter takes the winding road but eats less (85-95%). Efficiency isn't free — you pay in noise and complexity."</div>
 
 <div class="code-block">রেশন-খাতার গণিত — Power Budgeting:
