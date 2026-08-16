@@ -13,7 +13,9 @@
 >
 > The repeatable method, the tooling, and a handoff checklist live in [`scripts/book-review/PLAYBOOK.md`](../scripts/book-review/PLAYBOOK.md).
 >
-> **Remaining: Stage 3 Tier 2–4** (waveform figures, the ~24 mechanical fixes, five mismatched photos), **Stage 4** (build-thread drift), **Stages 5–6** (new content and apparatus).
+> **Remaining: Stage 3 Tier 4** (~24 mechanical fixes, five mismatched photos), **Stage 4** (build-thread drift), **Stages 5–6** (new content and apparatus).
+>
+> **Stage 3 Tier 2** — done: RC curve rebuilt on a true exponential path (τ dot now ON the curve, browser-verified 0.4px; axis ticks τ…5τ≈99%); PWM duty figure redrawn with real time axis + T-brackets; UART frame rebuilt with bit-grid and LSB-first labels ('A'=0x41); three NEW figures — ADC quantisation staircase (D12), I²C transaction START→ACK→STOP dual-rail (D13), rectifier ripple with ΔV≈I·t÷C (D3). Book now 51 diagrams. Incident: an editing regex truncated doors-9-12.js (door 12 lost); recovered from 9247c8b via one-path verify-first rebuild, all structure re-verified. Lesson: multi-step story edits need verify-before-write + door-count gate.
 >
 > **Stage 2** — done in-session after playbook handoff: two-chip framing woven into Door 8 (Uno = স্বচ্ছ চিপ / ESP32 = মাঠের চিপ, "কৌশল একই — পোশাক বদলায়"), ESP32-equivalent "অন্য চিপে" boxes appended inside Doors 9–12 code-blocks (gpio_set_level, gpio_isr_handler_add + IRAM_ATTR, esp_timer, adc_oneshot_read + ADC2/WiFi warning), Door 14 build-note already JTAG-correct from Stage 1. All four door files parse; browser-verified.
 

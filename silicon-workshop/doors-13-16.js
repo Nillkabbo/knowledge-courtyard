@@ -165,16 +165,59 @@ I2C — ঠিকানা-চিঠি (দুই তার, পুল-আপ �
 <div class="diagram">
 <div class="diag-title">বাস্তব দৃশ্য — UART-ফ্রেমের বিট-বিট ব্যান্ডেলথ-চিত্র</div>
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
-  <line class="axis" x1="40" y1="40" x2="40" y2="150"/>
-  <path class="edge-cyan" d="M 40 140 L 70 140 L 70 60 L 100 60 L 100 140 L 130 140 L 130 60 L 160 60 L 160 140 L 190 140 L 190 60 L 220 60 L 220 140 L 250 140 L 250 60 L 280 60 L 280 140 L 310 140 L 310 60 L 340 60 L 340 140 L 370 140" fill="none"/>
-  <text class="lbl-sm" x="55" y="164" font-size="10">START</text>
-  <text class="lbl-sm" x="130" y="164" font-size="10">ডেটা-বিট ×৮ (LSB-আগে)</text>
-  <text class="lbl-sm" x="310" y="164" font-size="10">STOP</text>
-  <text class="lbl" x="200" y="196" font-size="10">অক্ষর 'A' = 0b01000001 — উল্টো-ক্রমে তারে!</text>
-  <rect class="cell" x="60" y="208" width="440" height="22"/>
-  <text class="lbl-sm" x="280" y="223" font-size="10">৯৬০০ baud = প্রতি-বিট ১০৪μs → এক-ফ্রেম ≈ ১.০৪ms — দুই প্রান্তের ঘড়ি-সম্মতির সীমা ২-৩%</text>
+  <line class="axis" x1="60" y1="30" x2="60" y2="150"/>
+  <path class="wire-cyan" d="M 20 60 L 60 60 L 60 130 L 100 130 L 100 60 L 140 60 L 140 130 L 180 130 L 180 130 L 220 130 L 220 130 L 260 130 L 260 130 L 300 130 L 300 130 L 340 130 L 340 60 L 380 60 L 380 130 L 420 130 L 420 60 L 460 60" fill="none"/>
+  <text class="lbl-sm" x="24" y="46" font-size="10">idle (1)</text>
+  <line class="grid-line" x1="60" y1="144" x2="60" y2="156" stroke-dasharray="2,3"/>
+<text class="lbl-sm" x="80.0" y="170" font-size="9">START</text>
+<line class="grid-line" x1="100" y1="144" x2="100" y2="156" stroke-dasharray="2,3"/>
+<text class="lbl-sm" x="120.0" y="170" font-size="9">b0</text>
+<line class="grid-line" x1="140" y1="144" x2="140" y2="156" stroke-dasharray="2,3"/>
+<text class="lbl-sm" x="160.0" y="170" font-size="9">b1</text>
+<line class="grid-line" x1="180" y1="144" x2="180" y2="156" stroke-dasharray="2,3"/>
+<text class="lbl-sm" x="200.0" y="170" font-size="9">b2</text>
+<line class="grid-line" x1="220" y1="144" x2="220" y2="156" stroke-dasharray="2,3"/>
+<text class="lbl-sm" x="240.0" y="170" font-size="9">b3</text>
+<line class="grid-line" x1="260" y1="144" x2="260" y2="156" stroke-dasharray="2,3"/>
+<text class="lbl-sm" x="280.0" y="170" font-size="9">b4</text>
+<line class="grid-line" x1="300" y1="144" x2="300" y2="156" stroke-dasharray="2,3"/>
+<text class="lbl-sm" x="320.0" y="170" font-size="9">b5</text>
+<line class="grid-line" x1="340" y1="144" x2="340" y2="156" stroke-dasharray="2,3"/>
+<text class="lbl-sm" x="360.0" y="170" font-size="9">b6</text>
+<line class="grid-line" x1="380" y1="144" x2="380" y2="156" stroke-dasharray="2,3"/>
+<text class="lbl-sm" x="400.0" y="170" font-size="9">b7</text>
+<line class="grid-line" x1="420" y1="144" x2="420" y2="156" stroke-dasharray="2,3"/>
+<text class="lbl-sm" x="440.0" y="170" font-size="9">STOP</text>
+
+  <line class="grid-line" x1="460" y1="144" x2="460" y2="156" stroke-dasharray="2,3"/>
+  <text class="lbl" x="260" y="34" font-size="11">অক্ষর 'A' = 0x41 = 0b01000001 — LSB আগে!</text>
+  <rect class="cell" x="60" y="190" width="440" height="36"/>
+  <text class="lbl-sm" x="280" y="208" font-size="10">৯৬০০ baud → প্রতি-বিট ১০৪μs; ১০-বিট ফ্রেম ≈ ১.০৪ms; দুই প্রান্তের ঘড়ি-সম্মতি ±২-৩%</text>
+  <text class="lbl-sm" x="280" y="222" font-size="9">V_HI=৩.৩V/৫V-লজিক · V_LO=GND — তরঙ্গ-উচ্চতা = লজিক-স্তর, প্রস্থ = বিট-সময়</text>
 </svg>
 <div class="diag-cap">এক-অক্ষরের পূর্ণ-যাত্রা: নিম্ন-START → ৮-বিট (LSB-প্রথমে!) → STOP — কোনো ক্লক-তার নেই, শুধু বিট-সময়ের চুক্তি; দুই ঘড়ি ভাসলে বিট-সীমানা ঝাপসা → আবর্জনা-অক্ষর।</div>
+</div>
+
+
+<div class="diagram">
+<div class="diag-title">নতুন — I2C লেনদেন: START→ঠিকানা→ACK→ডেটা→STOP (SDA/SCL দুই-রেল)</div>
+<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <text class="lbl-cyan" x="40" y="30" font-size="11">SCL (ঘড়ি)</text>
+  <text class="lbl-hot" x="40" y="120" font-size="11">SDA (ডেটা)</text>
+  <path class="wire-cyan" d="M 100 44 L 120 44 L 120 60 L 135 60 L 135 44 L 150 44 L 150 60 L 165 60 L 165 44 L 180 44 L 180 60 L 195 60 L 195 44 L 210 44 L 210 60 L 225 60 L 225 44 L 240 44 L 240 60 L 255 60 L 255 44 L 270 44 L 270 60 L 285 60 L 285 44 L 300 44 L 300 60 L 315 60 L 315 44 L 330 44 L 330 60 L 345 60 L 345 44 L 360 44 L 360 60 L 375 60 L 375 44 L 390 44 L 390 60 L 405 60 L 405 44 L 500 44" fill="none"/>
+  <path class="wire-hot" d="M 100 134 L 118 134 L 118 158 L 150 158 L 150 134 L 165 134 L 165 158 L 180 158 L 180 134 L 195 134 L 195 158 L 210 158 L 210 134 L 240 134 L 240 146 L 270 146 L 270 134 L 285 134 L 285 158 L 300 158 L 300 134 L 315 134 L 315 158 L 330 158 L 330 134 L 345 134 L 345 158 L 360 158 L 360 134 L 430 134 L 430 150 L 500 150" fill="none"/>
+  <line class="grid-line" x1="118" y1="20" x2="118" y2="170" stroke-dasharray="2,4"/>
+  <text class="lbl-sm" x="100" y="16" font-size="9">START</text>
+  <text class="lbl" x="215" y="95" font-size="10">ঠিকানা 7-বিট + R/W</text>
+  <rect class="cell" x="210" y="140" width="34" height="18" fill="none"/>
+  <text class="lbl-sm" x="228" y="185" font-size="9">ACK (দাস টানে)</text>
+  <line class="grid-line" x1="430" y1="20" x2="430" y2="170" stroke-dasharray="2,4"/>
+  <text class="lbl-sm" x="420" y="16" font-size="9">STOP</text>
+  <text class="lbl-sm" x="310" y="95" font-size="10">ডেটা-বাইট</text>
+  <rect class="cell" x="60" y="205" width="440" height="30"/>
+  <text class="lbl-sm" x="280" y="224" font-size="10">নিয়ম: SCL-হাই-থাকা অবস্থায় SDA-পতন = START, SDA-উত্থান = STOP; বিট-বদল শুধু SCL-লো-তে</text>
+</svg>
+<div class="diag-cap">I2C-এর হৃদয় এক চিত্রে: দুই তার, নয় ঘড়ি-পালস, ঠিকানা-পরে-স্বীকৃতি — দাসের ACK-টান (SDA নিচে) মাস্টারকে জানায় 'পেয়েছি'।</div>
 </div>
 
 <div class="verse">
@@ -333,7 +376,7 @@ bare-metal বনাম RTOS — সিদ্ধান্ত-স্কেল:
   <text class="lbl-sm" x="450" y="82" font-size="10">GND-প্যাড · SWD-জোড়া</text>
   <text class="lbl-sm" x="450" y="100" font-size="10">UART-TX রিং-প্যাড</text>
   <rect class="cell" x="30" y="150" width="500" height="56"/>
-  <text class="lbl-sm" x="280" y="172" font-size="10">বোর্ড-নকশায় ডিবাগ-দরজা রেখো — ARM-এ ৪ প্যাড (৩.৩V·GND·SWDIO·SWCLK), ESP32-এ ৬ (৩.৩V·GND·TMS·TCK·TDI·TDO)</text>
+  <text class="lbl-sm" x="280" y="172" font-size="9">নকশায় ডিবাগ-প্যাড রেখো — ARM-এ ৪, ESP32-তে ৬ (কোণে)</text>
   <text class="lbl-sm" x="280" y="192" font-size="10">প্রোডাক্টে SWD-প্যাড থাকা মানে অসুস্থ-ডিভাইসও চোখের সামনে জীবিত-পরীক্ষা সম্ভব</text>
 </svg>
 <div class="diag-cap">ডাক্তারের যন্ত্রের মতো: প্রোব-জাত আছে, কিন্তু রোগীর শরীরে নাড়ির-জায়গাও থাকতে হয় — টেস্ট-পয়েন্ট-সহ নকশাই পেশাদার-বোর্ডের চিহ্ন।</div>
@@ -779,7 +822,7 @@ void loop() { }                        // ইচ্ছাকৃত খালি 
   <text class="lbl-hot" x="420" y="94">BOM-শিষ্টাচার</text>
   <text class="lbl-sm" x="420" y="118" font-size="10">প্রতিটা লাইনে: মান+টলারেন্স</text>
   <text class="lbl-sm" x="420" y="138" font-size="10">বিকল্প-পার্ট-নম্বর লেখো</text>
-  <text class="lbl-sm" x="420" y="158" font-size="10">খরচ-কলাম — বাজেটের খাতা</text>
+  <text class="lbl-sm" x="420" y="150" font-size="10">খরচ-কলাম — বাজেটের খাতা</text>
   <text class="lbl-sm" x="420" y="178" font-size="10">যেখানে পাবে (পাটুয়াটুলি!) নোট</text>
   <text class="lbl-sm" x="420" y="198" font-size="10">— নকশা তখনই বাস্তব</text>
 </svg>

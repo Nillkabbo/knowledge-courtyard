@@ -238,29 +238,25 @@ LC দোলা (দুই ভাইয়ের দোলনা):
 <div class="diagram">
 <div class="diag-title">তিন ভাইয়ের সময়-খেলা — RC চার্জ-বক্ররেখা</div>
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
-  <!-- axes -->
   <line class="axis" x1="50" y1="20" x2="50" y2="200"/>
   <line class="axis" x1="50" y1="200" x2="530" y2="200"/>
-  <text class="lbl-sm" x="20" y="30">V</text>
-  <text class="lbl-sm" x="525" y="220">t</text>
-  <!-- target level -->
+  <text class="lbl-sm" x="22" y="30">V</text>
+  <text class="lbl-sm" x="524" y="218">t</text>
   <line class="grid-line" x1="50" y1="50" x2="530" y2="50" stroke-dasharray="4,4"/>
-  <text class="lbl" x="330" y="42">লক্ষ্য-ভোল্টেজ (১০০%)</text>
-  <!-- 63% level at tau -->
-  <line class="grid-line" x1="50" y1="113" x2="530" y2="113" stroke-dasharray="2,5"/>
-  <text class="lbl-cyan" x="140" y="108">৬৩% @ τ=RC</text>
-  <!-- exponential curve -->
-  <path class="edge-cyan" d="M 50 200 C 120 60, 200 52, 530 51" fill="none"/>
-  <!-- tau marker -->
-  <line class="edge" x1="160" y1="113" x2="160" y2="200"/>
-  <circle class="node-cyan" cx="160" cy="113" r="5"/>
-  <text class="lbl-sm" x="146" y="216">τ</text>
-  <text class="lbl-sm" x="210" y="216">৫τ ≈ পূর্ণ</text>
-  <!-- 5tau marker -->
-  <line class="grid-line" x1="400" y1="55" x2="400" y2="200" stroke-dasharray="2,5"/>
-  <!-- capacitor symbol -->
-  <rect class="cell" x="470" y="30" width="44" height="26"/>
-  <text class="lbl-sm" x="462" y="24">C</text>
+  <text class="lbl" x="440" y="42">লক্ষ্য ১০০%</text>
+  <line class="grid-line" x1="50" y1="105.2" x2="530" y2="105.2" stroke-dasharray="2,5"/>
+  <text class="lbl-cyan" x="150" y="99.2" font-size="11">৬৩.২% @ τ</text>
+  <path class="wire-cyan" d="M 50.0 200.0 L 56.0 185.7 L 62.0 172.8 L 68.0 161.1 L 74.0 150.5 L 80.0 141.0 L 86.0 132.3 L 92.0 124.5 L 98.0 117.4 L 104.0 111.0 L 110.0 105.2 L 116.0 99.9 L 122.0 95.2 L 128.0 90.9 L 134.0 87.0 L 140.0 83.5 L 146.0 80.3 L 152.0 77.4 L 158.0 74.8 L 164.0 72.4 L 170.0 70.3 L 176.0 68.4 L 182.0 66.6 L 188.0 65.0 L 194.0 63.6 L 200.0 62.3 L 206.0 61.1 L 212.0 60.1 L 218.0 59.1 L 224.0 58.3 L 230.0 57.5 L 236.0 56.8 L 242.0 56.1 L 248.0 55.5 L 254.0 55.0 L 260.0 54.5 L 266.0 54.1 L 272.0 53.7 L 278.0 53.4 L 284.0 53.0 L 290.0 52.7 L 296.0 52.5 L 302.0 52.2 L 308.0 52.0 L 314.0 51.8 L 320.0 51.7 L 326.0 51.5 L 332.0 51.4 L 338.0 51.2 L 344.0 51.1 L 350.0 51.0 L 356.0 50.9 L 362.0 50.8 L 368.0 50.7 L 374.0 50.7 L 380.0 50.6 L 386.0 50.6 L 392.0 50.5 L 398.0 50.5 L 404.0 50.4 L 410.0 50.4" fill="none"/>
+  <line class="grid-line" x1="110" y1="105.2" x2="110" y2="200" stroke-dasharray="2,4"/>
+  <circle class="node-cyan" cx="110" cy="105.2" r="5"/>
+  <text class="lbl-sm" x="110" y="216">τ</text>
+  <text class="lbl-sm" x="170" y="216">2τ</text>
+  <text class="lbl-sm" x="230" y="216">3τ</text>
+  <text class="lbl-sm" x="290" y="216">4τ</text>
+  <text class="lbl-sm" x="350" y="216">৫τ≈৯৯%</text>
+  <line class="grid-line" x1="350" y1="51.0" x2="350" y2="200" stroke-dasharray="2,4"/>
+  <circle class="node-hot" cx="350" cy="51.0" r="4"/>
+  <text class="lbl-sm" x="50" y="216" font-size="10">0</text>
 </svg>
 <div class="diag-cap">ক্যাপাসিটর জমায় ধীরে: এক τ (RC) সময়ে ৬৩%, প্রায় ৫τ-তে পূর্ণ — মোড়ের কাছে দ্রুত, শেষে ধীর (বিখ্যাত e-বক্ররেখা)।</div>
 </div>
@@ -532,6 +528,33 @@ LED — আলো-বিকিরণকারী জংশন:
   <text class="lbl-sm lbl-left" x="430" y="196">রেক্টিফাইড — সব কুঁজ একদিকে</text>
 </svg>
 <div class="diag-cap">চার ডায়োডের হীরা: AC-র যে অর্ধেকই আসুক, দুইটা ডায়োড খুলে যায় আর দুইটা বন্ধ — বেরোনোর পথ সবসময় একই দিকে। এরপর স্মুদিং-ক্যাপ গর্তগুলো ভরে দেয় (দরজা ২-এর জলাধার, বড় মাপে), শেষে রেগুলেটর সমান করে। মনে রেখো — ২২০V AC মানে <em>RMS</em>; শীর্ষ ৩১১V, তাই ক্যাপের ভোল্টেজ-রেটিং শীর্ষ দেখে বাছতে হয়, RMS দেখে নয়।</div>
+</div>
+
+
+<div class="diagram">
+<div class="diag-title">নতুন — রিপল: ক্যাপের আগে-পরে (ব্রিজ-রেক্টিফায়ারের ফল)</div>
+<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <line class="axis" x1="50" y1="25" x2="50" y2="220"/>
+  <line class="axis" x1="50" y1="110" x2="530" y2="110"/>
+  <text class="lbl-sm" x="20" y="30" font-size="9">+V</text>
+  <text class="lbl-sm" x="24" y="114" font-size="9">০</text>
+  <!-- AC input sine (2 cycles), before cap -->
+  <path class="grid-line" d="M 60 110 Q 95 40 130 110 Q 165 180 200 110 Q 235 40 270 110" fill="none" stroke-dasharray="3,4"/>
+  <text class="lbl-sm" x="165" y="30" font-size="10">AC ইনপুট (ক্যাপের আগে)</text>
+  <!-- rectified humps -->
+  <path class="wire-hot" d="M 290 110 Q 325 40 360 110 Q 395 40 430 110" fill="none"/>
+  <text class="lbl-sm" x="360" y="95" font-size="9">রেক্টিফায়েড (সব-ঢেউ ওপরে)</text>
+  <!-- with cap: flat with ripple -->
+  <path class="wire-cyan" d="M 290 52 L 318 52 L 325 66 Q 345 52 360 52 L 388 52 L 395 66 Q 415 52 430 52 L 520 52" fill="none"/>
+  <text class="lbl-cyan" x="470" y="40" font-size="10">ক্যাপ-সহ</text>
+  <line class="grid-line" x1="318" y1="52" x2="318" y2="80" stroke-dasharray="2,3"/>
+  <line class="grid-line" x1="325" y1="66" x2="325" y2="80" stroke-dasharray="2,3"/>
+  <text class="lbl-sm" x="295" y="72" font-size="9">ΔV রিপল</text>
+  <rect class="cell" x="60" y="196" width="440" height="40"/>
+  <text class="lbl-sm" x="280" y="212" font-size="10">রিপল-সূত্র: ΔV ≈ I × t ÷ C — বেশি কারেন্ট বা কম ক্যাপ = বেশি দোলা</text>
+  <text class="lbl-sm" x="280" y="228" font-size="10">ক্যাপের ভোল্টেজ-রেটিং ≥ পিক (২২০V RMS-এর পিক ৩১১V!) — RMS-পাঠ দরজার কাজে লাগবে</text>
+</svg>
+<div class="diag-cap">তিন স্তরের একই সংকেত: AC-দোলা → ওপরে-তোলা ঢেউ → ক্যাপে প্রায়-সমতল (ছোট ΔV-রিপল বাকি) — চার্জারের ভেতরের তিন-অঙ্কের নাটক।</div>
 </div>
 
 <div class="verse">

@@ -660,35 +660,26 @@ doors.push({
 
 <div class="diagram">
 <div class="diag-title">দুই সেতু — PWM-তরঙ্গ ও ADC-স্কেল</div>
-<svg viewBox="0 0 560 270" xmlns="http://www.w3.org/2000/svg">
-  <!-- PWM section -->
-  <text class="lbl-hot" x="140" y="24" font-size="12">PWM — শক্তি দেওয়ার সেতু (সময়ে-ভাগ)</text>
-  <!-- axis -->
-  <line class="axis" x1="30" y1="90" x2="330" y2="90"/>
-  <!-- 25% wave -->
-  <text class="lbl-sm" x="60" y="52">২৫%</text>
-  <path class="edge-hot" d="M 40 60 L 40 30 L 58 30 L 58 84 L 120 84" fill="none"/>
-  <!-- 50% wave -->
-  <text class="lbl-sm" x="190" y="52">৫০%</text>
-  <path class="edge-hot" d="M 170 60 L 170 30 L 215 30 L 215 84 L 260 84 L 260 30 L 305 30 L 305 84 L 330 84" fill="none"/>
-  <!-- average line -->
-  <text class="lbl-sm" x="300" y="70">→ গড় = duty</text>
-  <!-- note -->
-  <text class="lbl-sm" x="180" y="110">উঁচু-নিচু দ্রুত দোলে; LED/মোটর গড় পায়</text>
-  <!-- ADC section -->
-  <text class="lbl-cyan" x="445" y="24" font-size="12">ADC — পড়ার সেতু</text>
-  <!-- voltage scale -->
-  <rect class="cell-cyan" x="400" y="40" width="16" height="120"/>
-  <text class="lbl-sm" x="445" y="50">৩.৩V = ১০২৩</text>
-  <line class="grid-line" x1="416" y1="100" x2="460" y2="100" stroke-dasharray="3,4"/>
-  <text class="lbl-sm" x="445" y="97">২.৫V ≈ ৭৭৫</text>
-  <line class="grid-line" x1="416" y1="160" x2="460" y2="160" stroke-dasharray="3,4"/>
-  <text class="lbl-sm" x="445" y="157">০V = ০</text>
-  <text class="lbl-sm" x="445" y="185">ধাপ = ৩.২mV (১০-বিট)</text>
-  <!-- formula strip -->
-  <rect class="cell" x="30" y="200" width="500" height="56"/>
-  <text class="lbl" x="280" y="222">PWM: গড়-শক্তি ≈ duty% × পুরো-শক্তি (উভয় প্রান্ত পুরো-অন/পুরো-অফ)</text>
-  <text class="lbl-sm" x="280" y="244">ADC: সংখ্যা = V ÷ Vref × (২^বিট − ১) — দুই-ই গণনা: ডিজিটাল-জগৎ অ্যানালগের দুই দুয়ারে</text>
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <text class="lbl" x="290" y="22" font-size="12">PWM — সময়-অক্ষে দৃশ্যমান duty</text>
+  <path class="wire-hot" d="M 100 74 L 100 40 L 140.0 40 L 140.0 74 L 260 74 L 260 40 L 300.0 40 L 300.0 74 L 420 74 L 420 40 L 460.0 40 L 460.0 74 L 580 74" fill="none"/>
+<text class="lbl-left" x="30" y="62" font-size="11">২৫%</text>
+<line class="grid-line" x1="260" y1="82" x2="260" y2="98" stroke-dasharray="2,3"/>
+<line class="grid-line" x1="100" y1="82" x2="100" y2="98" stroke-dasharray="2,3"/>
+<text class="lbl-sm" x="180.0" y="96" font-size="10">T = পর্যায়</text>
+
+  <path class="wire-cyan" d="M 100 144 L 100 110 L 180.0 110 L 180.0 144 L 260 144 L 260 110 L 340.0 110 L 340.0 144 L 420 144 L 420 110 L 500.0 110 L 500.0 144 L 580 144" fill="none"/>
+<text class="lbl-left" x="30" y="132" font-size="11">৫০%</text>
+<line class="grid-line" x1="260" y1="152" x2="260" y2="168" stroke-dasharray="2,3"/>
+<line class="grid-line" x1="100" y1="152" x2="100" y2="168" stroke-dasharray="2,3"/>
+<text class="lbl-sm" x="180.0" y="166" font-size="10">T = পর্যায়</text>
+
+  <path class="wire" d="M 100 214 L 100 180 L 220.0 180 L 220.0 214 L 260 214 L 260 180 L 380.0 180 L 380.0 214 L 420 214 L 420 180 L 540.0 180 L 540.0 214 L 580 214" fill="none"/>
+<text class="lbl-left" x="30" y="202" font-size="11">৭৫%</text>
+<line class="grid-line" x1="260" y1="222" x2="260" y2="238" stroke-dasharray="2,3"/>
+<line class="grid-line" x1="100" y1="222" x2="100" y2="238" stroke-dasharray="2,3"/>
+
+  <text class="lbl-sm" x="290" y="237" font-size="9">উঁচু = পুরো-শক্তি; গড় ≈ duty% — LED/মোটর গড়টাই অনুভব করে</text>
 </svg>
 <div class="diag-cap">PWM-এ ডিজিটাল-হাত মাপা-অংশে শক্তি দেয় (উপরে: ২৫% ও ৫০%-এর পালস-চিত্র); ADC-তে অ্যানালগ-জগৎ মাপা-সংখ্যায় ঢোকে (ডানে: ৩.৩V-স্কেলে ২.৫V→৭৭৫) — ইনফাকের মিজান: পুরো নয়, শূন্য নয়, মাপা অংশ।</div>
 </div>
@@ -835,6 +826,31 @@ ADC-হাতিয়ারের থলি:
   <text class="lbl-sm" x="366" y="138">PWM</text>
 </svg>
 <div class="diag-cap">PWM-এর দুই মুখ: তিন চ্যানেল মিলিয়ে কোটি রঙ; এক চ্যানেলে মাপা-বাতাস — সেন্সর-পাঠ থেকে duty-সিদ্ধান্ত: এটাই অটোমেশনের প্রথম নিঃশ্বাস।</div>
+</div>
+
+
+<div class="diagram">
+<div class="diag-title">নতুন — ADC-সিঁড়ি: ধারাবাহিক বিশ্বকে ধাপে ধাপে ভাগ (quantisation)</div>
+<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <line class="axis" x1="60" y1="30" x2="60" y2="200"/>
+  <line class="axis" x1="60" y1="200" x2="520" y2="200"/>
+  <text class="lbl-sm" x="30" y="36" font-size="10">V</text>
+  <text class="lbl-sm" x="506" y="218" font-size="10">সময়→</text>
+  <path class="wire" d="M 60 195 L 110 195 L 110 172 L 160 172 L 160 149 L 210 149 L 210 126 L 260 126 L 260 103 L 310 103 L 310 80 L 360 80 L 360 57 L 410 57 L 410 40 L 470 40" fill="none"/>
+  <path class="grid-line" d="M 60 195 Q 270 90 470 40" fill="none" stroke-dasharray="4,4"/>
+  <text class="lbl-sm" x="85" y="215" font-size="9">০</text>
+  <text class="lbl-sm" x="135" y="215" font-size="9">১</text>
+  <text class="lbl-sm" x="185" y="215" font-size="9">২</text>
+  <text class="lbl-sm" x="235" y="215" font-size="9">৩</text>
+  <text class="lbl-sm" x="285" y="215" font-size="9">৪</text>
+  <text class="lbl-sm" x="335" y="215" font-size="9">৫</text>
+  <text class="lbl-sm" x="385" y="215" font-size="9">৬</text>
+  <text class="lbl-sm" x="435" y="215" font-size="9">৭</text>
+  <text class="lbl-cyan" x="470" y="60" font-size="10">৩-বিট = ৮ ধাপ</text>
+  <text class="lbl-sm" x="330" y="180" font-size="10">ভাঙা-রেখা = সত্য সংকেত</text>
+  <text class="lbl-sm" x="290" y="240" font-size="10">১০-বিট = ১০২৪ ধাপ; ধাপ-উচ্চতা = রেজোলিউশন (৩.৩V-রেফে ৩.২২mV)</text>
+</svg>
+<div class="diag-cap">ADC মানে সিঁড়ি-বানানো: মসৃণ দুনিয়া নির্দিষ্ট ধাপে ভাগ — ধাপ যত বেশি (বিট যত বেশি), ছবি তত মসৃণ; quantisation-error ধাপের ভেতরেই লুকায়।</div>
 </div>
 
 <div class="verse">
