@@ -133,6 +133,54 @@ doors.push({
 <div class="dialogue">সন্ধ্যায় LED-ছন্দ দেখতে দেখতে শারমিন আপা বললেন: "মনে রেখো এই অনুভূতি। যিনি বলেন 'হও' — সপ্তাশ্চর্য তাঁর সৃষ্টি; আর তুমি, তাঁর সামান্য ছাত্র, আজ প্রথম একটা পিনকে বললে 'জ্বলো' — আর সে জ্বলল। এই সৃষ্টি-আনন্দই ইঞ্জিনিয়ারিং-এর নেশা; এই আনন্দেই মানুষ ক্যালকুলেটর থেকে মঙ্গল-যান পর্যন্ত গড়েছে। কিন্তু কুন-এর দায়ও আছে: যে যন্ত্র তুমি জাগালে, ঘুম তারও — নগরীর আয়ন্ত্রিক হুকুমের নায়েব তুমি। কাল মুয়াজ ভাইয়ের কাছে যাও — শহরের সবচেয়ে জরুরি ডাক: ইন্টারাপ্ট। যে ডাক এলে সব কাজ থামে। মুয়াজ্জিনের সন্তান সে — আযানের মানে তার রক্তে।"</div>
 <div class="dialogue en">Watching the LED's rhythm at dusk, Sharmin said: "Remember this feeling. He who says 'Be!' — His creation is wonder; and you, His small student, today told a pin 'light' — and it lit. This joy of making is engineering's addiction; on it men built from calculators to Mars rovers. But kun carries duty: the machine you wake, you must also put to sleep — you are deputy over the city's commanded mechanisms. Tomorrow — Muaz's: the city's most urgent call, the interrupt. The call that stops all work. He is a muezzin's son — the adhan runs in his blood."</div>
 
+
+<div class="diagram">
+<div class="diag-title">কম্পোনেন্ট-চেনা — LED ও বাটনের তার-লাগানো (ব্রেডবোর্ড-ছবি)</div>
+<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell-cyan" x="40" y="40" width="120" height="60"/>
+  <text class="lbl-cyan" x="100" y="64">MCU</text>
+  <text class="lbl-sm" x="100" y="84" font-size="10">পা৯ · পা২</text>
+  <line class="edge" x1="160" y1="56" x2="230" y2="56"/>
+  <rect class="cell" x="230" y="40" width="60" height="32"/>
+  <text class="lbl-sm" x="260" y="60" font-size="10">২২০Ω</text>
+  <circle class="node-hot" cx="320" cy="56" r="14"/>
+  <text class="lbl-hot" x="290" y="76" font-size="10">LED → GND-রেল</text>
+  <line class="edge" x1="290" y1="56" x2="306" y2="56"/>
+  <line class="edge" x1="160" y1="96" x2="230" y2="96"/>
+  <rect class="cell" x="230" y="86" width="50" height="26"/>
+  <text class="lbl-sm" x="255" y="103" font-size="10">১০k</text>
+  <line class="edge" x1="230" y1="96" x2="200" y2="20"/>
+  <text class="lbl-sm" x="150" y="20" font-size="10">↑+৩.৩V (পুল-আপ)</text>
+  <circle class="node-hot" cx="310" cy="96" r="10"/>
+  <text class="lbl-hot" x="352" y="118" font-size="10">বাটন → GND</text>
+  <line class="edge" x1="280" y1="96" x2="300" y2="96"/>
+  <rect class="cell" x="400" y="40" width="140" height="90"/>
+  <text class="lbl" x="470" y="62">পোশাক-সারণি</text>
+  <text class="lbl-sm" x="470" y="84" font-size="10">LED-পিন: OUTPUT</text>
+  <text class="lbl-sm" x="470" y="102" font-size="10">বাটন-পিন: INPUT_PULLUP</text>
+  <text class="lbl-sm" x="470" y="120" font-size="10">চাপা=LOW পড়া হবে!</text>
+  <text class="lbl-sm" x="280" y="200" font-size="10">লাইনের রং-নিয়ম (নকশায়): লাল=VCC · কালো/সবুজ=GND · হলুদ=সংকেত</text>
+</svg>
+<div class="diag-cap">প্রথম দুই-বন্ধুর তার-চিত্র: LED শ্রেণিতে-রোধ-সহ (আউটপুট), বাটন পুল-আপে (চাপলে ০) — দরজা ৮-এর পোশাক-তালিকা এখন বাস্তব-ছবিতে।</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">বাস্তব দৃশ্য — ব্লিংকের টাইম-চিত্র: কোড-লাইন বনাম তরঙ্গ</div>
+<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+  <line class="axis" x1="50" y1="30" x2="50" y2="140"/>
+  <line class="axis" x1="50" y1="140" x2="530" y2="140"/>
+  <path class="edge-hot" d="M 50 130 L 90 130 L 90 50 L 200 50 L 200 130 L 310 130 L 310 50 L 420 50 L 420 130 L 530 130" fill="none"/>
+  <text class="lbl-sm" x="120" y="34" font-size="10">HIGH (ON)</text>
+  <text class="lbl-sm" x="255" y="122" font-size="10">LOW (OFF)</text>
+  <line class="grid-line" x1="200" y1="30" x2="200" y2="140" stroke-dasharray="3,4"/>
+  <text class="lbl-sm" x="145" y="160" font-size="10">delay(500) → অর্ধ-সেকেন্ড-বক্স</text>
+  <rect class="cell" x="60" y="175" width="440" height="44"/>
+  <text class="lbl-sm" x="280" y="192" font-size="10">লুপ-এক-পাক = এক-পর্যায় (period) = ১ সেকেন্ড</text>
+  <text class="lbl-sm" x="280" y="210" font-size="10">duty = ৫০% — Door ১২-এর PWM-এর পূর্বসূরিই এই ব্লিংক!</text>
+</svg>
+<div class="diag-cap">তোমার প্রথম প্রোগ্রামের অসিলোস্কোপ-চেহারা: চৌকো-তরঙ্গ, অর্ধেক উঁচু — কোডের প্রতিটা delay তরঙ্গের প্রস্থ; PWM-দরজার সেতু এখানেই।</div>
+</div>
+
 <div class="verse">
 <div class="verse-arabic">إِنَّمَا أَمْرُهُ إِذَا أَرَادَ شَيْئًا أَن يَقُولَ لَهُ كُن فَيَكُونُ</div>
 <div class="verse-translation">তিনি যখন কোনো কিছুর ইচ্ছা করেন, তার নির্দেশ শুধু এই — 'কুন (হও)', তখনই তা হয়ে যায়।</div>
@@ -291,6 +339,49 @@ AVR উদাহরণ (বাটন-ডাক, পতাকা-পদ্ধত�
 <div class="dialogue">আযান শেষে ফিরে বসে মুয়াজ ভাই তাসবিহর দানায় আঙুল রাখলেন। "শেষ কথা। কুরআন বলে — জুমার আযানে কেনাবেচা ছেড়ে ছুটে যাও (৬২:৯), আর সালাত শেষে 'দুনিয়ায় ছড়িয়ে পড়ো, আল্লাহর অনুগ্রহ খোঁজো' (৬২:১০)। খেয়াল করো — এ তো হুবহু ISR-এর প্রোটোকল: থামো, সাড়া দাও, ফিরে যাও কাজে। চিপ-নকশাকারীরা যে শৃঙ্খলা কোটি ট্রানজিস্টরে বসিয়েছেন, তা মুমিনের জীবনে চৌদ্দশো বছর ধরে চলছে। আমি যখন ISR লিখি, বাবার কণ্ঠ মনে পড়ে — ডাক যে দিয়েছে, সাড়া দ্রুত হবে, ভারী হবে না। কাল আবার আমার কাছেই — ওয়াক্তের হিসাব: টাইমার। বাবার সময়-শৃঙ্খলার বাকি অর্ধেক গল্প ওখানে।"</div>
 <div class="dialogue en">After the adhan, settling back, Muaz set a finger on a bead. "Last word. The Quran says — at the Friday call, leave trade and hasten (62:9); and when prayer ends, 'disperse in the land and seek Allah's bounty' (62:10). Notice — this is precisely the ISR protocol: stop, respond, return to work. The discipline chip-designers etched into a billion transistors has run in a believer's life for fourteen hundred years. When I write an ISR, I hear my father's voice — the call has come; the answer is swift, never heavy. Tomorrow, again with me — the reckoning of appointed times: timers. The remaining half of my father's discipline lives there."</div>
 
+
+<div class="diagram">
+<div class="diag-title">কম্পোনেন্ট-চেনা — হল-সেন্সর ও ফটোইন্টারাপ্টার: ডাক-উৎসের জাত</div>
+<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell-hot" x="40" y="40" width="150" height="70"/>
+  <text class="lbl-hot" x="115" y="64">হল-সেন্সর</text>
+  <text class="lbl-sm" x="115" y="84" font-size="10">চুম্বক-কাছে → ভোল্টেজ-লাফ</text>
+  <text class="lbl-sm" x="115" y="100" font-size="10">চাকা-গণনা · দরজা-তালা শনাক্ত</text>
+  <rect class="cell-cyan" x="230" y="40" width="160" height="70"/>
+  <text class="lbl-cyan" x="310" y="64">ফটোইন্টারাপ্টার</text>
+  <text class="lbl-sm" x="310" y="84" font-size="10">আলো-পথে বাধা → ডাক</text>
+  <text class="lbl-sm" x="310" y="100" font-size="10">প্রিন্টার-পাতা · এনকোডার-স্লট</text>
+  <rect class="cell" x="430" y="40" width="110" height="70"/>
+  <text class="lbl" x="485" y="64">PIR</text>
+  <text class="lbl-sm" x="485" y="84" font-size="10">শরীরের-তাপের নড়াচড়া</text>
+  <text class="lbl-sm" x="485" y="100" font-size="10">ঘুম-জাগানো লাইট</text>
+  <rect class="cell" x="40" y="150" width="500" height="50"/>
+  <text class="lbl-sm" x="290" y="170" font-size="10">তিন-জাতই ডিজিটাল-পালস দেয় — INT-পিনের খাবার; রোবট-চাকা, স্মার্ট-দরজা, নিরাপত্তা-বাতির চোখ এরাই</text>
+  <text class="lbl-sm" x="290" y="188" font-size="10">হার্ডওয়্যার-ডাক বনাম পোলিং: ব্যাটারি-প্রশ্নে ডাক জেতে (দরজা ৪-এর হিসাব)</text>
+</svg>
+<div class="diag-cap">ডাক-উৎসের বাহারি: চুম্বক, আলো, তাপ — প্রতিটা বাইরের ঘটনাকে পালসে অনুবাদ করে INT-পিনে পাঠায়; এনকোডার = স্লট-চাকা + ফটো = ঘূর্ণনের গণিত।</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">বাস্তব দৃশ্য — এমার্জেন্সি-বাটন: নেস্টিংয়ের শাস্তি-পুরস্কার</div>
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell-cyan" x="40" y="30" width="220" height="90"/>
+  <text class="lbl-cyan" x="150" y="56">সৎ-ISR (ছোট)</text>
+  <text class="lbl-sm" x="150" y="78" font-size="10">flag=১; ফেরা — ৫μs</text>
+  <text class="lbl-sm" x="150" y="96" font-size="10">অন্য-ডাক বাঁচে · লুপ জীবিত</text>
+  <rect class="cell-hot" x="300" y="30" width="230" height="90"/>
+  <text class="lbl-hot" x="415" y="56">পাপী-ISR (ভারী)</text>
+  <text class="lbl-sm" x="415" y="78" font-size="10">ভেতরে delay+প্রিন্ট — ৫০ms</text>
+  <text class="lbl-sm" x="415" y="96" font-size="10">এমার্জেন্সি-ডাক মিস · ডেটা-হারা</text>
+  <line class="axis" x1="50" y1="160" x2="530" y2="160"/>
+  <path class="edge-cyan" d="M 50 155 L 120 155 L 125 135 L 135 155 L 300 155" fill="none"/>
+  <text class="lbl-sm" x="170" y="180" font-size="10">সৎ-পথ: ডাক-খালি প্রায়-তাৎক্ষণিক</text>
+  <path class="edge-hot" d="M 300 175 L 490 175" fill="none"/>
+  <text class="lbl-sm" x="395" y="196" font-size="10">পাপী-পথ: ৫০ms ব্লক — দ্বিতীয়-ডাক ভুগে যায়</text>
+</svg>
+<div class="diag-cap">একই বাটন, দুই নীতি: ISR-এ পতাকা-তুলে ফিরলে সব-ডাক বাঁচে; ভারী-কাজ ভেতরে ঢুকলে জরুরি-ডাকও লাইনে মারা যায় — শৃঙ্খলার দাম টাইম-চিত্রে দেখা যায়।</div>
+</div>
+
 <div class="verse">
 <div class="verse-arabic">يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا نُودِيَ لِلصَّلَاةِ مِن يَوْمِ الْجُمُعَةِ فَاسَعَوْا إِلَىٰ ذِكْرِ اللَّهِ وَذَرُوا الْبَيْعَ</div>
 <div class="verse-translation">হে মুমিনগণ! জুমার দিন নামাজের ডাক দেওয়া হলে আল্লাহর স্মরণের দিকে ধাবিত হও এবং কেনাবেচা ছেড়ে দাও।</div>
@@ -430,6 +521,47 @@ RTC (ক্যালেন্ডার-হৃদয়):
 <div class="dialogue">দুপুরের ছায়া মিনারের গা বেয়ে নামতে মুয়াজ ভাই বাবার ঘড়িটা বাক্সে তুললেন — যত্নে। "শেষ কথা: ওয়াক্ত শুধু গণনা হলে যন্ত্র হয়ে যায়; ওয়াক্ত পাহারা হলে জীবন হয়। কুরআন বলে — নামাজ সময়-নির্ধারিত (৪:১০৩); আর হাদিসে আছে, আল্লাহর কাছে সবচেয়ে প্রিয় আমল সে-যা নিয়মিত, অল্প হলেও (বুখারি-মুসলিমের বহুল-প্রচলিত অর্থ)। টাইমারও তাই: বিশাল কাজের বিস্ফোরণ নয় — নিয়মিত ছোট ডাক, বছরের পর বছর। তোমার ফার্মওয়্যারও ওভাবেই টিকবে: প্রতিটা কাজ ওয়াক্ত-পাওয়া, প্রতিটা ঘুম হিসাব-করা। কাল রুবেল ভাইয়ের কাছে যাও — আংশিক দান: PWM। আলো কেমন করে অর্ধেক জ্বলে, মোটর কেমন করে মাপা শক্তিতে ঘোরে — সব ওই 'হাত-পুরো-খুলো-না-পুরো-বন্ধ-না'-র গণিত।"</div>
 <div class="dialogue en">As the noon shadow slid down the minaret, Muaz put the watch away in its box — carefully. "Last word: if waqt were mere counting it would be machinery; as keeping-watch it becomes life. The Quran says prayer is at fixed times (4:103); and the hadith's well-known sense — the most beloved deed to Allah is the constant one, even if small. So with timers: not the explosion of a giant task — regular small calls, year after year. That is how your firmware will survive too: every task on time, every sleep accounted. Tomorrow — Rubel's: the partial gift, PWM. How a lamp burns at half, a motor turns at measured power — all the mathematics of 'neither hand fully open, nor fully closed.'"</div>
 
+
+<div class="diagram">
+<div class="diag-title">কম্পোনেন্ট-চেনা — DS3231: RTC-চিপের শরীর-সারণি</div>
+<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell" x="40" y="30" width="220" height="170"/>
+  <text class="lbl" x="150" y="56">DS3231 মডিউল</text>
+  <text class="lbl-sm" x="150" y="82" font-size="10">±২ppm — বছরে ~১ মিনিট ভুল</text>
+  <text class="lbl-sm" x="150" y="102" font-size="10">ভেতরে: ৩২.৭৬৮kHz ক্রিস্টাল</text>
+  <text class="lbl-sm" x="150" y="122" font-size="10">+ তাপ-ক্ষতিপূরণ (TCXO)</text>
+  <text class="lbl-sm" x="150" y="142" font-size="10">+ কয়েন-ব্যাটারি-ইনপুট</text>
+  <text class="lbl-sm" x="150" y="162" font-size="10">I2C ঠিকানা ০x68</text>
+  <rect class="cell-cyan" x="300" y="50" width="230" height="120"/>
+  <text class="lbl-cyan" x="415" y="76">পা-সারণি</text>
+  <text class="lbl-sm" x="415" y="100" font-size="10">VCC · GND · SDA · SCL</text>
+  <text class="lbl-sm" x="415" y="122" font-size="10">SQW = সেকেন্ড-পালস-আউটপুট</text>
+  <text class="lbl-sm" x="415" y="144" font-size="10">(১Hz-হার্টবিট — দরজা-শুরুর বাতি!)</text>
+  <text class="lbl-sm" x="150" y="218" font-size="10">ব্যবহার: জামাত-ওয়াক্তের হিসাব, লগ-টাইমস্ট্যাম্প, জাগরণ-অ্যালার্ম</text>
+</svg>
+<div class="diag-cap">RTC-র রাজা-চিপ: ক্যালেন্ডার+ঘড়ি+তাপ-সংশোধন এক শরীরে; মূল-বিদ্যুৎ গেলে কয়েন-ব্যাটারি সময় বহন করে — শহর ঘুমালেও ওয়াক্ত-খাতা জেগে।</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">বাস্তব দৃশ্য — মিলিস-সময়চেয়ে: নন-ব্লকিং বহু-কাজ</div>
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <line class="axis" x1="50" y1="40" x2="50" y2="200"/>
+  <line class="axis" x1="50" y1="200" x2="530" y2="200"/>
+  <rect class="cell-cyan" x="50" y="50" width="96" height="26"/>
+  <rect class="cell-cyan" x="162" y="50" width="96" height="26"/>
+  <rect class="cell-cyan" x="274" y="50" width="96" height="26"/>
+  <rect class="cell-cyan" x="386" y="50" width="96" height="26"/>
+  <text class="lbl-cyan" x="265" y="40" font-size="10">কাজ-ক: প্রতি ১০০ms (সেন্সর-পাঠ)</text>
+  <rect class="cell-hot" x="50" y="100" width="240" height="26"/>
+  <rect class="cell-hot" x="340" y="100" width="190" height="26"/>
+  <text class="lbl-hot" x="265" y="92" font-size="10">কাজ-খ: প্রতি ৫০০ms (রিপোর্ট)</text>
+  <text class="lbl" x="290" y="160" font-size="10">উভয় একই লুপে নন-ব্লকিংভাবে — delay() নেই</text>
+  <rect class="cell" x="100" y="172" width="360" height="34"/>
+  <text class="lbl-sm" x="280" y="190" font-size="10">if (millis()-t_a ≥ ১০০) {…} · if (millis()-t_b ≥ ৫০০) {…}</text>
+</svg>
+<div class="diag-cap">এক MCU-তে দুই ছন্দ একসাথে: প্রত্যেক কাজ নিজের শেষ-সময় মনে রাখে, লুপ ছুটে যায় — বসে-থাকা delay-এর বদলে সময়-চেয়ে-কাজ; দরজা ১১-এর বাস্তব-ফল।</div>
+</div>
+
 <div class="verse">
 <div class="verse-arabic">إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا</div>
 <div class="verse-translation">নিশ্চয়ই নামাজ মুমিনদের ওপর নির্ধারিত সময়ে ফরজ।</div>
@@ -567,6 +699,59 @@ ADC-হাতিয়ারের থলি:
 
 <div class="dialogue">সন্ধ্যায় গুদাম-বন্ধ করতে করতে রুবেল ভাই বললেন: "এই দরজাটা আমার কাছে দানের দরজা। কুরআনে আছে — হাত গলায় বেঁধে রেখো না (কৃপণতা), পুরো খুলেও দিয়ো না (অপচয়) (১৭:২৯)। বিদ্যুৎ-দুনিয়ায় আমি এর চেয়ে নিখুঁত উপমা পাইনি: PWM পুরো-খোলা নয়, পুরো-বন্ধ নয় — মাপা অংশে দেয়; প্রকৃতির পাখাও তাই, শ্বাসও তাই, বৃষ্টিও তাই। আর ADC উল্টো পাঠ — দুনিয়ার অগণন-ধারাবাহিক দান তুমি কত-টুকু নিলে সেটাও মাপা সংখ্যায় জানো। যে ব্যবস্থা দেয়-নেয় দুই-ই মাপে, সে-ই মিজানে চলে। কাল হাসান সাহেবের কাছে যাও — পোস্টমাস্টার; এখন দেশের সবচেয়ে সুন্দর প্রয়োগ-দরজা: সুলাইমান-আলাইহিস-সালামের পত্রের মতো চিপে-চিপে চিঠি — UART, SPI, I2C।"</div>
 <div class="dialogue en">Closing the storeroom at dusk, Rubel said: "To me this is the door of giving. The Quran says — neither chain your hand to your neck (miserliness), nor stretch it fully open (waste) (17:29). In the electrical world I've found no truer image: PWM is neither fully open nor fully shut — it gives in measured part; nature's fan does so, breath does so, rain does so. And ADC is the reverse reading — how much of the world's countless continuous gifts you took, known as a measured number. A system that measures both giving and receiving walks on the mizan. Tomorrow — Hasan's, the postmaster; now the loveliest applied door: letters chip to chip like Solomon's — UART, SPI, I2C."</div>
+
+
+<div class="diagram">
+<div class="diag-title">কম্পোনেন্ট-চেনা — সেন্সর-পরিবার: যাদের ADC পড়ে</div>
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell" x="30" y="36" width="120" height="80"/>
+  <text class="lbl" x="90" y="60">থার্মিস্টর</text>
+  <text class="lbl-sm" x="90" y="80" font-size="10">তাপ↑ → রোধ↓ (NTC)</text>
+  <text class="lbl-sm" x="90" y="98" font-size="10">ডিভাইডার-সহ তাপমাত্রা</text>
+  <rect class="cell-cyan" x="170" y="36" width="120" height="80"/>
+  <text class="lbl-cyan" x="230" y="60">LDR</text>
+  <text class="lbl-sm" x="230" y="80" font-size="10">আলো↑ → রোধ↓</text>
+  <text class="lbl-sm" x="230" y="98" font-size="10">রাত-বাতি/আলো-মাপ</text>
+  <rect class="cell-hot" x="310" y="36" width="110" height="80"/>
+  <text class="lbl-hot" x="365" y="60">ভোল্টেজ-</text>
+  <text class="lbl-hot" x="365" y="76">সেন্সর</text>
+  <text class="lbl-sm" x="365" y="98" font-size="10">ব্যাটারি-নাড়ি পড়া</text>
+  <rect class="cell" x="440" y="36" width="100" height="80"/>
+  <text class="lbl" x="490" y="60">পট</text>
+  <text class="lbl-sm" x="490" y="80" font-size="10">ঘোরানো-ভোল্টেজ</text>
+  <text class="lbl-sm" x="490" y="98" font-size="10">ভলিউম/সেট-পয়েন্ট</text>
+  <rect class="cell" x="30" y="150" width="510" height="60"/>
+  <text class="lbl-sm" x="285" y="172" font-size="10">সবাই ডিভাইডার-সেতুতে (দরজা ৬) বসে ADC-পিনে পৌঁছায় — রোধ/ভোল্টেজ → সংখ্যা → খাতা (সেন্সর-শিট) → একক</text>
+  <text class="lbl-sm" x="285" y="192" font-size="10">বিশেষ-জাত: DHT২২ (ডিজিটাল-প্রোটোকল), MPU৬০৫০ (I2C) — তারা চিঠি-পথে কথা বলে (দরজা ১৩)</text>
+</svg>
+<div class="diag-cap">অ্যানালগ-জগতের প্রতিনিধিরা: তাপ, আলো, ভোল্টেজ, ঘূর্ণন — চার-ই রোধ-বা-ভোল্টেজ বদলে ডিভাইডার-সেতু পার হয়ে ADC-র সংখ্যায় যায়; ডিজিটাল-জাত সরাসরি চিঠিতে।</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">বাস্তব দৃশ্য — RGB-LED মিক্সার ও ফ্যান-থ্রটল</div>
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="120" cy="70" r="34" fill="#111"/>
+  <circle class="node-hot" cx="120" cy="70" r="6"/>
+  <text class="lbl-sm" x="120" y="120" font-size="10">RGB-LED</text>
+  <line class="edge-hot" x1="120" y1="36" x2="120" y2="20"/>
+  <line class="edge" x1="90" y1="90" x2="80" y2="104"/>
+  <line class="edge-cyan" x1="150" y1="90" x2="160" y2="104"/>
+  <text class="lbl-sm" x="55" y="118" font-size="10">লাল-চ্যানেল</text>
+  <text class="lbl-sm" x="175" y="122" font-size="10">সবুজ/নীল</text>
+  <text class="lbl" x="120" y="150" font-size="10">৩×PWM → ১৬.৭M রঙ</text>
+  <text class="lbl-sm" x="120" y="168" font-size="10">analogWrite(৯,r); analogWrite(১০,g)…</text>
+  <rect class="cell" x="300" y="36" width="100" height="40"/>
+  <text class="lbl-sm" x="350" y="60" font-size="10">MOSFET</text>
+  <circle cx="450" cy="56" r="20" fill="none" class="node"/>
+  <path class="edge-cyan" d="M 435 70 Q 450 100 465 70" fill="none"/>
+  <text class="lbl-sm" x="450" y="112" font-size="10">ফ্যান</text>
+  <line class="edge" x1="400" y1="56" x2="430" y2="56"/>
+  <rect class="cell" x="300" y="130" width="240" height="60"/>
+  <text class="lbl-sm" x="415" y="150" font-size="10">থ্রটল: duty ৩০%→ধীর · ৭০%→দ্রুত</text>
+  <text class="lbl-sm" x="415" y="170" font-size="10">তাপ-পাঠ (ADC) → duty-নির্ধারণ = বদ্ধ-লুপ</text>
+</svg>
+<div class="diag-cap">PWM-এর দুই মুখ: তিন চ্যানেল মিলিয়ে কোটি রঙ; এক চ্যানেলে মাপা-বাতাস — সেন্সর-পাঠ থেকে duty-সিদ্ধান্ত: এটাই অটোমেশনের প্রথম নিঃশ্বাস।</div>
+</div>
 
 <div class="verse">
 <div class="verse-arabic">وَلَا تَجْعَلْ يَدَكَ مَغْلُولَةً إِلَىٰ عُنُقِكَ وَلَا تَبْسُطْهَا كُلَّ الْبَسْطِ</div>

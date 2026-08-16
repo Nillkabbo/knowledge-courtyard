@@ -116,6 +116,58 @@ doors.push({
 <div class="diag-cap">তিন নিয়মে যেকোনো নকশার প্রথম-পাঠ: প্রবাহের দিক, উচ্চতার স্তর, আর প্রতিটা যন্ত্রের নাম-ঠিকানা।</div>
 </div>
 
+
+<div class="diagram">
+<div class="diag-title">কম্পোনেন্ট-চেনা — ব্রেডবোর্ডের ভেতরের রেল</div>
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell" x="60" y="30" width="440" height="180"/>
+  <line class="edge-hot" x1="80" y1="48" x2="480" y2="48"/>
+  <line class="edge-hot" x1="80" y1="192" x2="480" y2="192"/>
+  <text class="lbl-hot" x="90" y="42" font-size="10">＋ লাল-রেল (সারা-সারি এক তার)</text>
+  <text class="lbl-sm" x="90" y="206" font-size="10">− নীল-রেল (GND)</text>
+  <g>
+    <circle class="node" cx="120" cy="80" r="3"/><circle class="node" cx="120" cy="100" r="3"/><circle class="node" cx="120" cy="120" r="3"/><circle class="node" cx="120" cy="140" r="3"/><circle class="node" cx="120" cy="160" r="3"/>
+    <line class="edge-cyan" x1="120" y1="80" x2="120" y2="160"/>
+    <text class="lbl-cyan" x="120" y="70" font-size="10">a b c d e — কলাম-ভাগ এক-সুড়ঙ্গ</text>
+    <line class="edge" x1="150" y1="70" x2="150" y2="170" stroke-dasharray="2,4"/>
+    <circle class="node" cx="180" cy="80" r="3"/><circle class="node" cx="180" cy="100" r="3"/><circle class="node" cx="180" cy="120" r="3"/><circle class="node" cx="180" cy="140" r="3"/><circle class="node" cx="180" cy="160" r="3"/>
+    <line class="edge-cyan" x1="180" y1="80" x2="180" y2="160"/>
+  </g>
+  <line class="edge" x1="165" y1="60" x2="165" y2="180" stroke-dasharray="6,4"/>
+  <text class="lbl" x="330" y="110">মাঝের খাল — বিভাজক!</text>
+  <text class="lbl-sm" x="330" y="130" font-size="10">f|g সারি আলাদা; সেখানেই চিপ বসে</text>
+  <text class="lbl-sm" x="330" y="150" font-size="10">উভয় পাশের পা স্বাধীন</text>
+</svg>
+<div class="diag-cap">ব্রেডবোর্ডের গোপন-নকশা: ওপর-নিচ লম্বা রেল দুইটা (পাওয়ার), মাঝের ৫-পা-র কলাম এক-গলা — আর মাঝের খাল দুই ভাগ করে; নকশা না জানলে সব-শর্ট এক-সুড়ঙ্গে!</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">বাস্তব দৃশ্য — ভোল্টেজ-ডিভাইডারে LDR দিয়ে আলো-মাপার বিছানা</div>
+<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+  <line class="edge-hot" x1="40" y1="30" x2="520" y2="30"/>
+  <text class="lbl-hot" x="30" y="24" font-size="10">+৩.৩V</text>
+  <rect class="cell" x="120" y="50" width="70" height="40"/>
+  <text class="lbl-sm" x="155" y="74" font-size="10">১০kΩ</text>
+  <line class="edge" x1="155" y1="30" x2="155" y2="50"/>
+  <circle class="node-hot" cx="155" cy="110" r="6"/>
+  <line class="edge" x1="155" y1="90" x2="155" y2="110"/>
+  <text class="lbl-hot" x="230" y="114" font-size="10">V_out → ADC (A০)</text>
+  <circle class="node" cx="320" cy="110" r="20" fill="none"/>
+  <text class="lbl-sm" x="320" y="114" font-size="10">LDR</text>
+  <line class="edge" x1="175" y1="110" x2="300" y2="110"/>
+  <line class="edge" x1="320" y1="30" x2="320" y2="90"/>
+  <line class="edge" x1="320" y1="130" x2="320" y2="190"/>
+  <line class="edge" x1="155" y1="110" x2="155" y2="190" visibility="hidden"/>
+  <path class="edge" d="M 320 190 L 155 190 L 155 116" fill="none"/>
+  <line class="edge" x1="100" y1="190" x2="440" y2="190"/>
+  <text class="lbl-sm" x="460" y="194" font-size="10">GND</text>
+  <rect class="cell" x="380" y="150" width="160" height="40"/>
+  <text class="lbl-sm" x="460" y="168" font-size="10">উজ্জ্বল আলো: LDR~১k → V_out≈০.৩V</text>
+  <text class="lbl-sm" x="460" y="184" font-size="10">অন্ধকার: LDR~৫০০k → V_out≈৩.২V</text>
+</svg>
+<div class="diag-cap">LDR-ডিভাইডার: আলো বদলায় → রোধ বদলায় → ভাগ-অনুপাত বদলায় → ADC-সংখ্যা বদলায় — দরজা ৬-এর সূত্রের জীবন্ত প্রয়োগ, রাতের-বাতির মস্তিষ্ক।</div>
+</div>
+
 <div class="verse">
 <div class="verse-arabic">الَّذِي عَلَّمَ بِالْقَلَمِ</div>
 <div class="verse-translation">যিনি শিখিয়েছেন কলমের মাধ্যমে।</div>
@@ -240,6 +292,56 @@ doors.push({
   <text class="lbl-cyan" x="150" y="250" font-size="11">— R২-এর ভাগ যত, তার ভোল্টেজ তত</text>
 </svg>
 <div class="diag-cap">সিরিখে ভোল্টেজ রেজিস্ট্যান্স-অনুপাতে ভাগ হয় — এই মাঝ-বিন্দুই সেন্সর-জগতের দরজা: LDR/থার্মিস্টর বসালেই আলো/তাপের মান ভোল্টেজ হয়ে ADC-তে যায়।</div>
+</div>
+
+
+<div class="diagram">
+<div class="diag-title">কম্পোনেন্ট-চেনা — পটেনশিওমিটার: ঘোরানো ডিভাইডার</div>
+<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell" x="60" y="50" width="200" height="40"/>
+  <line class="edge-cyan" x1="90" y1="42" x2="90" y2="98"/>
+  <line class="edge-hot" x1="230" y1="42" x2="230" y2="98"/>
+  <text class="lbl-sm" x="90" y="36" font-size="10">পা১</text>
+  <text class="lbl-hot" x="230" y="36" font-size="10">পা৩</text>
+  <line class="edge" x1="160" y1="60" x2="160" y2="120"/>
+  <path class="edge" d="M 145 120 L 175 120 L 160 135 Z" fill="none"/>
+  <text class="lbl" x="160" y="158">ওয়াইপার (পা২)</text>
+  <text class="lbl-sm" x="160" y="176" font-size="10">ঘুরলে ভাগ-বিন্দু সরে</text>
+  <rect class="cell" x="340" y="40" width="190" height="150"/>
+  <text class="lbl" x="435" y="66">৩-পা চেনা</text>
+  <text class="lbl-sm" x="435" y="92" font-size="10">দুই-প্রান্ত + মাঝের-বিন্দু</text>
+  <text class="lbl-sm" x="435" y="116" font-size="10">ব্যবহার-১: ভোল্টেজ-ডিভাইডার</text>
+  <text class="lbl-sm" x="435" y="138" font-size="10">ব্যবহার-২: শ্রেণি-রোধ (২-পা)</text>
+  <text class="lbl-sm" x="435" y="162" font-size="10">১০k = সর্বজনীন; টিউন-নব এদেরই পরিবার</text>
+</svg>
+<div class="diag-cap">পট (পটেনশিওমিটার) মানে হাতে-ঘোরানো ডিভাইডার — ওয়াইপার যেখানে, ভাগ সেখানে; অ্যানালগ-নবের রাজা, প্রতিটা অ্যাম্পের ভলিউম-চাকতি।</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">বাস্তব দৃশ্য — কারেন্ট-শান্ট মাপ: ছোট রোধে প্রবাহ-হিসাব</div>
+<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+  <line class="edge-hot" x1="40" y1="40" x2="520" y2="40"/>
+  <text class="lbl-hot" x="45" y="34" font-size="10">+৫V (লোড-পথ)</text>
+  <rect class="cell" x="150" y="30" width="90" height="20"/>
+  <text class="lbl-sm" x="195" y="66" font-size="10">লোড (মোটর)</text>
+  <line class="edge" x1="240" y1="40" x2="330" y2="40"/>
+  <rect class="cell-cyan" x="330" y="30" width="80" height="20"/>
+  <text class="lbl-cyan" x="370" y="66" font-size="10">শান্ট ০.১Ω</text>
+  <line class="edge" x1="410" y1="40" x2="480" y2="40"/>
+  <line class="edge" x1="480" y1="40" x2="480" y2="180"/>
+  <line class="edge" x1="120" y1="180" x2="480" y2="180"/>
+  <line class="edge" x1="120" y1="180" x2="120" y2="40" visibility="hidden"/>
+  <path class="edge" d="M 480 180 L 130 180 L 130 44" fill="none" visibility="hidden"/>
+  <circle class="node-hot" cx="350" cy="40" r="4"/>
+  <circle class="node-hot" cx="395" cy="40" r="4"/>
+  <line class="edge-hot" x1="350" y1="44" x2="350" y2="120"/>
+  <line class="edge-hot" x1="395" y1="44" x2="395" y2="120"/>
+  <rect class="cell" x="290" y="120" width="170" height="40"/>
+  <text class="lbl-sm" x="375" y="138" font-size="10">V_শান্ট পড়ো → I = V ÷ ০.১</text>
+  <text class="lbl-sm" x="375" y="154" font-size="10">৫০mV পড়লে = ৫০০mA প্রবাহ!</text>
+  <text class="lbl" x="280" y="205" font-size="10">কেন: শ্রেণি-পথে ছোট্ট রোধ — ওহমের সেতুতে ভোল্টেজ-পতন প্রবাহের ছায়া</text>
+</svg>
+<div class="diag-cap">প্রবাহ সরাসরি মাপা কঠিন (পথ কাটতে হয়) — বিদ্যা: পথে ০.১Ω বসাও, তার দুই মাথার ভোল্টেজ পড়ো, ওহমে ভাগ দাও; স্মার্ট-ব্যাটারি/মোটর-নিয়ন্ত্রকের ভেতরে এই শান্টই ক্যালকুলাস।</div>
 </div>
 
 <div class="verse">
@@ -391,6 +493,46 @@ MCU-সংযোগ (আগাম-পথ):
 <div class="dialogue">আসরের আগে জাহেদ ভাই তারের ফাঁস খুলে টুলব্যাগে ভরলেন — পরের ভবনের ইনস্টল। দরজায় দাঁড়িয়ে বললেন: "কুরআনের সবচেয়ে সুন্দর উপমাগুলোর একটা — 'আল্লাহ আসমান ও জমিনের নূর' (২৪:৩৫)। আলো মানে উপস্থিতি; অন্ধকার অনুপস্থিতি। আমার জগতেও তো তাই: পিনে ভোল্টেজ আছে = কথা বলছে; নেই = চুপ। পুরো সভ্যতা এখন এই উপস্থিতি-অনুপস্থিতির বুনোনে — কোটি কোটি হ্যাঁ-না-র তালি। নূর যেমন এক ফোঁটা থেকে পুরো ঘর ভরে, একটা ছোট্ট বাটনের ১ থেকেও পুরো শহরের বেল-জাল জেগে ওঠে। উপস্থিত থাকো, বুঝো, তারপর নিজের ১-০ লিখো। কাল ফারহান ভাইয়ের কাছে যাও — সেই ১-০-এর শহর নিজেই: চিপের ভেতরের ছোট্ট নগরী।"</div>
 <div class="dialogue en">Before Asr, Jahed unhooked the wire loop and packed his tool bag — an install in the next building. At the door he said: "One of the Quran's most beautiful parables — 'Allah is the Light of the heavens and the earth' (24:35). Light is presence; darkness, absence. So in my world: voltage on a pin means it is speaking; none, silence. All civilization is now woven of presence and absence — the clapping of billions of yeses and noes. As one drop of light fills a whole house, one small button's 1 can wake a city's bell-network. Be present, understand, then write your own 1s and 0s. Tomorrow — Farhan's: that very city of 1s and 0s, the small town inside a chip."</div>
 
+
+<div class="diagram">
+<div class="diag-title">কম্পোনেন্ট-চেনা — ৭৪HC০০ চিপ: এক শরীরে চার NAND</div>
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell" x="180" y="30" width="200" height="180"/>
+  <text class="lbl" x="280" y="52">৭৪HC০০ (DIP-১৪)</text>
+  <circle class="node-hot" cx="200" cy="76" r="4"/><circle class="node" cx="200" cy="96" r="4"/><circle class="node" cx="200" cy="116" r="4"/><circle class="node" cx="200" cy="136" r="4"/>
+  <circle class="node" cx="360" cy="76" r="4"/><circle class="node" cx="360" cy="96" r="4"/><circle class="node" cx="360" cy="116" r="4"/><circle class="node" cx="360" cy="136" r="4"/>
+  <text class="lbl-sm" x="130" y="80" font-size="10">১A ১B ১Y ২A</text>
+  <text class="lbl-sm" x="375" y="80" font-size="10">২B ২Y ৩A ৩B</text>
+  <text class="lbl-hot" x="280" y="196" font-size="10">পা৭ = GND · পা১৪ = VCC</text>
+  <text class="lbl-sm" x="280" y="216" font-size="10">নচ (উপরের-কাট) = পা-১ শনাক্তকারী</text>
+  <rect class="cell-cyan" x="30" y="90" width="120" height="60"/>
+  <text class="lbl-cyan" x="90" y="112">ভেতরে ৪টা</text>
+  <text class="lbl-cyan" x="90" y="130">স্বাধীন NAND</text>
+  <text class="lbl-sm" x="440" y="100" font-size="10">HC = দ্রুত-CMOS</text>
+  <text class="lbl-sm" x="440" y="120" font-size="10">২~৬V চালু</text>
+  <text class="lbl-sm" x="440" y="140" font-size="10">ব্যবহর্তা-পাওয়ার খেয়াল!</text>
+</svg>
+<div class="diag-cap">লজিক-চিপ এক-প্যাকেটে চার দরজা — প্রতিটার A/B/Y; কর্নার-পাওয়ার প্রথম দেখো, নচ-দিক থেকে পা গোনো; একই NAND-ই গতকালের সব-যুক্তির ইট।</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">বাস্তব দৃশ্য — ডিবাউন্স: বাটনের কম্পন-মুছা ফ্লিপ-ফ্লপ</div>
+<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <line class="axis" x1="50" y1="30" x2="50" y2="120"/>
+  <line class="axis" x1="50" y1="120" x2="530" y2="120"/>
+  <path class="edge-hot" d="M 50 110 L 200 110 L 208 45 L 216 108 L 224 48 L 232 106 L 240 46 L 260 46" fill="none"/>
+  <text class="lbl-hot" x="160" y="30" font-size="10">কাঁচা-বাটন: খোলার ঝাঁকি (bounce)</text>
+  <line class="axis" x1="50" y1="150" x2="50" y2="235"/>
+  <line class="axis" x1="50" y1="235" x2="530" y2="235"/>
+  <path class="edge-cyan" d="M 50 225 L 255 225 L 255 165 L 530 165" fill="none"/>
+  <text class="lbl-cyan" x="300" y="150" font-size="10">SR-ফ্লিপ-ফ্লপের জবাব: এক-ই ধার</text>
+  <line class="grid-line" x1="255" y1="165" x2="255" y2="235" stroke-dasharray="3,4"/>
+  <text class="lbl-sm" x="400" y="205" font-size="10">দুই-ইনভার্টার ল্যাচ বা NAND-জোড়া — প্রথম ধারই ধরে রাখে</text>
+  <text class="lbl-sm" x="400" y="222" font-size="10">সফটওয়্যার-বিকল্প: ২০ms-অপেক্ষা (দরজা ১১-এর মিলিস!)</text>
+</svg>
+<div class="diag-cap">যান্ত্রিক বাটন চাপলে ৫-২০ms কাঁপে — কাঁচা-পাঠে এক-চাপ ডজন পULSE; হার্ডওয়্যার-ল্যাচ বা সফটওয়্যার-অপেক্ষা কম্পন মুছে এক-ঘটনা বানায়।</div>
+</div>
+
 <div class="verse">
 <div class="verse-arabic">اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ</div>
 <div class="verse-translation">আল্লাহ আসমানসমূহ ও পৃথিবীর নূর (আলো)।</div>
@@ -536,6 +678,42 @@ GPIO — দরওয়ানের তিন পোশাক:
 
 <div class="dialogue">রাতের দিকে ফারহান ভাই কয়েল-ব্রেসলেট খুলে টেবিলে রাখলেন। "শহর বলতে আমি কুরআনের সাবা-র কাহিনির কথা ভাবি — রানীর দরবার, সুলাইমান-আলাইহিস-সালামের চিঠি, হুদহুদের খবর — সব দপ্তর-দপ্তর কাজ, এক কেন্দ্রে ফয়সালা। আর নগরীর নিয়ম তো সেই: 'তোমাদের কাজ বিভিন্ন পথে আগিয়ে যাও, শহরে-শহরে' — প্রতিটা পেরিফেরিয়াল নিজের পথে কাজ করে, দরবার শুধু ঠিকানা জানে আর হুকুম দেয়। স্ট্যাটিক-ব্রেসলেট পর্যন্ত আমার কাছে আমানতের পাঠ: যে শহরে কোটি দরওয়ান, তার একজনকেও অবহেলায় মারা যায় না। কাল শারমিন আপার কাছে যাও — দরবারের ভাষা: C-কোড আর রেজিস্টার-চিঠি। প্রথম LED জ্বালাবে নিজের হাতে।"</div>
 <div class="dialogue en">Toward night Farhan unclipped the wrist coil and set it on the table. "By 'city' I think of the Quran's Sheba — the queen's court, Solomon's letter, the hoopoe's report — department upon department, judgment at one center. A city's rule is that: 'Work, each of you, along your paths, through the cities' — every peripheral works its own path, the court only knows addresses and commands. Even the static strap is a lesson in amanah to me: a city of billions of gatekeepers may lose none to carelessness. Tomorrow — Sharmin's: the court's own language, C and register-letters. You will light your first LED with your own hand."</div>
+
+
+<div class="diagram">
+<div class="diag-title">কম্পোনেন্ট-চেনা — ক্রিস্টাল ও রেজোনেটর: শহরের হৃদস্পন্দন-উৎস</div>
+<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell-hot" x="50" y="40" width="110" height="44"/>
+  <text class="lbl-hot" x="105" y="60">ক্রিস্টাল</text>
+  <text class="lbl-sm" x="105" y="78" font-size="10">১৬.০০০ মেগাহার্টজ</text>
+  <rect class="cell" x="220" y="40" width="130" height="44"/>
+  <text class="lbl" x="285" y="60">সিরামিক রেজোনেটর</text>
+  <text class="lbl-sm" x="285" y="78" font-size="10">সস্তা · কম-নির্ভুল</text>
+  <rect class="cell-cyan" x="410" y="40" width="130" height="44"/>
+  <text class="lbl-cyan" x="475" y="60">অভ্যন্তরীণ RC</text>
+  <text class="lbl-sm" x="475" y="78" font-size="10">ফ্যাক্টরি-ক্যালিব্রেটেড ১%</text>
+  <rect class="cell" x="50" y="130" width="490" height="70"/>
+  <text class="lbl" x="295" y="154">কোয়ার্টজ-রহস্য</text>
+  <text class="lbl-sm" x="295" y="174" font-size="10">চাপ দিলে বিদ্যুৎ, বিদ্যুৎ দিলে কম্পন (piezo) — নিজ-ছন্দে দোলে</text>
+  <text class="lbl-sm" x="295" y="192" font-size="10">USART-বন্ধুত্ব মনে রাখো: দুই প্রান্তের বিট-হার ২-৩%-এর বেশি ভাসলে চিঠি নষ্ট</text>
+</svg>
+<div class="diag-cap">ঘড়ির তিন শ্রেণি: ক্রিস্টাল (নির্ভুল ±০.০০৫%), সিরামিক (±০.৫%), অভ্যন্তরীণ RC (±১-১০%) — UART-এ যথেষ্ট, RTC-তে ক্রিস্টালই (৩২.৭৬৮kHz)।</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">বাস্তব দৃশ্য — ডেটাশিট-পাঠ: ATmega328P-র জীবন-সারণি</div>
+<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell" x="30" y="30" width="500" height="190"/>
+  <text class="lbl" x="280" y="56">ATmega328P (Arduino Uno-র হৃদয়)</text>
+  <text class="lbl-sm" x="150" y="86" font-size="11">Flash ৩২KB · RAM ২KB · EEPROM ১KB</text>
+  <text class="lbl-sm" x="150" y="108" font-size="11">১৬MHz · ২৩-পা GPIO · ১০-বিট ADC ×৬</text>
+  <text class="lbl-sm" x="150" y="130" font-size="11">টাইমার ×৩ · UART×১ · SPI×১ · I2C×১</text>
+  <text class="lbl-sm" x="150" y="152" font-size="11">VCC ১.৮-৫.৫V · ঘুম-মোড ×৬</text>
+  <rect class="cell-hot" x="70" y="168" width="420" height="34"/>
+  <text class="lbl-hot" x="280" y="188" font-size="10">ডেটাশিট পড়ার ক্রম: প্রথম-পাতা-সার → পিন-মানচিত্র → পেরিফেরিয়াল-অধ্যায় → রেজিস্টার-টেবিল</text>
+</svg>
+<div class="diag-cap">যেকোনো নতুন চিপের সাথে পরিচয় এভাবে: স্পেক-সারণি মুখস্থ নয় — কোন-দরজার প্রশ্নে কোন পাতা খুলব, সেই মানচিত্র তৈরি করা।</div>
+</div>
 
 <div class="verse">
 <div class="verse-arabic">وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ</div>

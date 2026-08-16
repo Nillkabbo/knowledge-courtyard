@@ -137,6 +137,44 @@ I2C — ঠিকানা-চিঠি (দুই তার, পুল-আপ �
 <div class="dialogue">সন্ধ্যার আজানের সময় হাসান সাহেব সীলটা বুকপকেটে ঢুকিয়ে বললেন: "শেষ কথা। সুলাইমান-আলাইহিস-সালাম সাবার রানীর কাছে পাঠালেন এক পত্র — কুরআন বলছে: 'এ তো সম্মানিত পত্র, সুলাইমানের কাছ থেকে এসেছে, আল্লাহর নামে, দয়াময়ের নামে' (২৭:২৯-৩০)। লক্ষ্য করো — পত্রের গায়ে তিনটা জিনিস: প্রেরক, প্রাপক, উদ্দেশ্য — আর হুদহুদ নিয়ে গেল, রানী স্বীকার করলো, উত্তর ফিরলো। এ যে আমার প্রোটোকল-পাঠের চেয়েও নিখুঁত চিঠির ব্যাকরণ: হেডার, ঠিকানা, ACK! তোমার চিপের প্রতিটা I2C-ফ্রেম ওই পত্রেরই নাতি-নাতনি। যে যন্ত্র সম্মানের সাথে চিঠি পাঠায় — ঠিকানা, স্বীকৃতি, সৌজন্য — তার সমাজ টেকে। কাল আরিফ ভাইয়ের কাছে যাও — যাত্রার শেষ-প্রস্তুতি: বুট-দরজা, RTOS আর ডিবাগ-ঘাট — মিকাতের মতো নিয়ত-স্থির করার দপ্তর।"</div>
 <div class="dialogue en">At the evening adhan, Hasan slipped the stamp into his pocket: "Last word. Solomon sent a letter to the queen of Sheba — the Quran says: 'It is a noble letter, from Solomon, in the name of Allah, the Merciful' (27:29-30). Mark — three things on its face: sender, recipient, purpose; the hoopoe carried it, the queen acknowledged, the reply returned. A more perfect grammar of letters than any protocol lecture: header, address, ACK! Every I2C frame in your chip is that letter's grandchild. A machine that sends letters with honor — address, acknowledgment, courtesy — its society endures. Tomorrow — Arif's: the journey's final preparation — the boot gate, RTOS, and the debug wharf; the department of fixing intention, like the miqat."</div>
 
+
+<div class="diagram">
+<div class="diag-title">কম্পোনেন্ট-চেনা — USB-সিরিয়াল সেতু ও RS-485-এর লম্বা-তার</div>
+<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell" x="30" y="40" width="130" height="70"/>
+  <text class="lbl" x="95" y="66">CH34০/CP২১০২</text>
+  <text class="lbl-sm" x="95" y="88" font-size="10">USB↔UART সেতু</text>
+  <text class="lbl-sm" x="95" y="104" font-size="10">ল্যাপটপ↔চিপ-বন্ধু</text>
+  <rect class="cell-cyan" x="200" y="40" width="150" height="70"/>
+  <text class="lbl-cyan" x="275" y="66">MAX৪৮৫</text>
+  <text class="lbl-sm" x="275" y="88" font-size="10">UART↔ডিফারেনশিয়াল</text>
+  <text class="lbl-sm" x="275" y="104" font-size="10">কিমি-তার, কারখানা-শব্দ-সহ</text>
+  <rect class="cell" x="390" y="40" width="140" height="70"/>
+  <text class="lbl" x="460" y="66">লেভেল-নিয়ম</text>
+  <text class="lbl-sm" x="460" y="88" font-size="10">TTL: ৩.৩V/৫V-লজিক</text>
+  <text class="lbl-sm" x="460" y="104" font-size="10">RS-232: ±১২V — মেলানো নিষেধ!</text>
+  <path class="edge" d="M 330 76 Q 360 130 390 76" fill="none"/>
+  <path class="edge-hot" d="M 275 110 Q 275 170 400 170 Q 520 170 520 110" fill="none"/>
+  <text class="lbl-hot" x="400" y="192" font-size="10">A/B-জোড়া তার — দুই-প্রান্তে ১২০Ω টার্মিনেটর</text>
+</svg>
+<div class="diag-cap">তিন প্রহরী: USB-সেতু (ল্যাপটপের ভাষা), RS-485 (কারখানার লম্বা-দূরত্ব, শব্দ-কাটা জোড়া-তার), আর লেভেল-শৃঙ্খলা — TTL-চিপ সরাসরি RS-232-এর ±১২V সহ্য করে না।</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">বাস্তব দৃশ্য — UART-ফ্রেমের বিট-বিট ব্যান্ডেলথ-চিত্র</div>
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <line class="axis" x1="40" y1="40" x2="40" y2="150"/>
+  <path class="edge-cyan" d="M 40 140 L 70 140 L 70 60 L 100 60 L 100 140 L 130 140 L 130 60 L 160 60 L 160 140 L 190 140 L 190 60 L 220 60 L 220 140 L 250 140 L 250 60 L 280 60 L 280 140 L 310 140 L 310 60 L 340 60 L 340 140 L 370 140" fill="none"/>
+  <text class="lbl-sm" x="55" y="164" font-size="10">START</text>
+  <text class="lbl-sm" x="130" y="164" font-size="10">ডেটা-বিট ×৮ (LSB-আগে)</text>
+  <text class="lbl-sm" x="310" y="164" font-size="10">STOP</text>
+  <text class="lbl" x="200" y="196" font-size="10">অক্ষর 'A' = ০b০১০০০০০১ — উল্টো-ক্রমে তারে!</text>
+  <rect class="cell" x="60" y="208" width="440" height="22"/>
+  <text class="lbl-sm" x="280" y="223" font-size="10">৯৬০০ baud = প্রতি-বিট ১০৪μs → এক-ফ্রেম ≈ ১.০৪ms — দুই প্রান্তের ঘড়ি-সম্মতির সীমা ২-৩%</text>
+</svg>
+<div class="diag-cap">এক-অক্ষরের পূর্ণ-যাত্রা: নিম্ন-START → ৮-বিট (LSB-প্রথমে!) → STOP — কোনো ক্লক-তার নেই, শুধু বিট-সময়ের চুক্তি; দুই ঘড়ি ভাসলে বিট-সীমানা ঝাপসা → আবর্জনা-অক্ষর।</div>
+</div>
+
 <div class="verse">
 <div class="verse-arabic">إِنَّهُ مِن سُلَيْمَانَ وَإِنَّهُ بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
 <div class="verse-translation">নিশ্চয়ই এটি সুলাইমানের পক্ষ থেকে, আর নিশ্চয়ই এটি 'পরম করুণাময় অসীম দয়ালু আল্লাহর নামে'।</div>
@@ -271,6 +309,53 @@ bare-metal বনাম RTOS — সিদ্ধান্ত-স্কেল:
 
 <div class="dialogue">সন্ধ্যায় আরিফ ভাই লুপ-চেইন চোখে তুলে বুট-ম্যাপের শেষ লাইনটা পড়লেন — তারপর নামিয়ে বললেন: "হজ-যাত্রীরা জানো মিকাতে থামে — নির্দিষ্ট স্থানে ইহরাম বাঁধে, নিয়ত ঠিক করে, তারপর যাত্রা। চিপের জাগরণও তাই: পাঁচটা মিকাত — ভেক্টর, স্ট্যাক, ডেটা, ঘড়ি, বুটলোডার — প্রতিটা স্তরে নিয়ত-বাঁধা হয়, তারপর main()-এর যাত্রা শুরু। যে ডেভেলপার এই স্তরগুলো জানে, তার কাছে 'ম্যাজিক' বলে কিছু থাকে না — বুট-ব্যর্থতাও তদন্তযোগ্য রহস্য, অন্ধকার নয়। আর মনে রেখো — শিডিউলার যত সামর্থ্যবান, নিয়ত-পরীক্ষাও তত সূক্ষ্ম: অগ্রাধিকার-উল্টো-নিয়ম (priority inversion) আর ডেডলক — এই দুই শিকারির নাম আজই মুখস্থ করে যাও। কাল শেষ প্রয়োগ-দরজা — সাদিয়া আপা: বাতাসের সাথে কথা। বাগানের ফসল মেঘে যাবে।"</div>
 <div class="dialogue en">At dusk Arif raised the loupe to read the boot map's last line, then lowered it: "Pilims stop at the miqat — at fixed stations they don the ihram, set their intention, then journey. The chip's waking is the same: five miqats — vector, stack, data, clock, bootloader — intention bound at each layer, and only then the journey of main(). A developer who knows these layers has no 'magic' left — even boot failure becomes an investigable mystery, not darkness. And remember — the mightier the scheduler, the subtler the trial: priority inversion and deadlock — memorize these two hunters' names before you go. Tomorrow, the last applied door — Sadiya: speaking with the wind. The garden's harvest goes to the cloud."</div>
+
+
+<div class="diagram">
+<div class="diag-title">কম্পোনেন্ট-চেনা — ডিবাগ-প্রোব-পরিবার ও টেস্ট-পয়েন্ট</div>
+<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell-hot" x="30" y="36" width="140" height="80"/>
+  <text class="lbl-hot" x="100" y="60">ST-Link</text>
+  <text class="lbl-sm" x="100" y="82" font-size="10">SWD: SWDIO+SWCLK</text>
+  <text class="lbl-sm" x="100" y="100" font-size="10">+৩.৩V-সেন্স · GND</text>
+  <rect class="cell" x="200" y="36" width="140" height="80"/>
+  <text class="lbl" x="270" y="60">J-Link</text>
+  <text class="lbl-sm" x="270" y="82" font-size="10">প্রো-শ্রেণি; JTAG+SWD</text>
+  <text class="lbl-sm" x="270" y="100" font-size="10">গতি+ফ্ল্যাশ-বিস্তার</text>
+  <rect class="cell-cyan" x="370" y="36" width="160" height="80"/>
+  <text class="lbl-cyan" x="450" y="60">টেস্ট-পয়েন্ট-শিষ্টাচার</text>
+  <text class="lbl-sm" x="450" y="82" font-size="10">GND-প্যাড · SWD-জোড়া</text>
+  <text class="lbl-sm" x="450" y="100" font-size="10">UART-TX রিং-প্যাড</text>
+  <rect class="cell" x="30" y="150" width="500" height="56"/>
+  <text class="lbl-sm" x="280" y="172" font-size="10">বোর্ড-নকশায় ডিবাগ-দরজা রেখো: চার-প্যাড (৩.৩V·GND·SWDIO·SWCLK) কোণে — ফিল্ড-মেরামতের নাড়ি-পরীক্ষার জায়গা</text>
+  <text class="lbl-sm" x="280" y="192" font-size="10">প্রোডাক্টে SWD-প্যাড থাকা মানে অসুস্থ-ডিভাইসও চোখের সামনে জীবিত-পরীক্ষা সম্ভব</text>
+</svg>
+<div class="diag-cap">ডাক্তারের যন্ত্রের মতো: প্রোব-জাত আছে, কিন্তু রোগীর শরীরে নাড়ির-জায়গাও থাকতে হয় — টেস্ট-পয়েন্ট-সহ নকশাই পেশাদার-বোর্ডের চিহ্ন।</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">বাস্তব দৃশ্য — লিংকার-ম্যাপ পড়া: .text/.data/.bss-এর দেশান্তর</div>
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell" x="40" y="36" width="230" height="90"/>
+  <text class="lbl" x="155" y="58">ফ্ল্যাশ-জমি (কোড-দেশ)</text>
+  <rect class="cell-hot" x="55" y="70" width="200" height="14"/>
+  <text class="lbl-sm" x="155" y="98" font-size="10">.text — নির্দেশাবলি (কম্পাইলের ফসল)</text>
+  <rect class="cell-cyan" x="55" y="90" width="150" height="14"/>
+  <text class="lbl-sm" x="155" y="118" font-size="10">.rodata — ধ্রুবক-স্ট্রিং</text>
+  <rect class="cell" x="300" y="36" width="230" height="90"/>
+  <text class="lbl" x="415" y="58">RAM-জমি (চলমান-দেশ)</text>
+  <rect class="cell-hot" x="315" y="70" width="180" height="14"/>
+  <text class="lbl-sm" x="415" y="98" font-size="10">.data — শুরু-মানসহ ভেরিয়েবল</text>
+  <rect class="cell-cyan" x="315" y="90" width="140" height="14"/>
+  <text class="lbl-sm" x="415" y="118" font-size="10">.bss — শূন্য-শুরু (বুটে মুছে)</text>
+  <path class="edge" d="M 270 90 Q 285 90 300 84" fill="none" stroke-dasharray="4,4"/>
+  <text class="lbl-sm" x="280" y="76" font-size="10">বুট-কপি</text>
+  <rect class="cell" x="40" y="160" width="500" height="50"/>
+  <text class="lbl-sm" x="290" y="182" font-size="10">avr-size চালাও: ফ্ল্যাশ=(text+data), RAM=(data+bss+স্ট্যাক)</text>
+  <text class="lbl-sm" x="290" y="200" font-size="10">স্ট্যাক-হিসাব ভুলো না: ২KB-RAM-এ গভীর-রিকার্শন = নীরব-পতন (hardfault)</text>
+</svg>
+<div class="diag-cap">কোড কোথায় বাসে তার ভূগোল: নির্দেশ-ফসল ফ্ল্যাশে, চলমান-ভেরিয়েবল RAM-এ — আর .data দুই-বাড়ির ভাড়াটে (মান ফ্ল্যাশে, বসবাস RAM-এ, বুটে পাড়ি)।</div>
+</div>
 
 <div class="verse">
 <div class="verse-arabic">وَأَذِّن فِي النَّاسِ بِالْحَجِّ يَأْتُوكَ رِجَالًا وَعَلَىٰ كُلِّ ضَامِرٍ يَأْتِينَ مِن كُلِّ فَجٍّ عَمِيقٍ</div>
@@ -417,6 +502,60 @@ OTA — নিজের বাসা থেকে নতুন পালক:
 
 <div class="dialogue">রাত নামতে সাদিয়া আপা অ্যান্টেনা-স্ট্যান্ডটা জানালার দিকে ঘুরিয়ে রাখলেন। "শেষ কথা — নিরাপত্তার। বাতাস সবার; তাই বাতাসে কথা মানেই জনতার সামনে কথা। TLS হলো গোপন-ভাষা, সার্টিফিকেট হলো পরিচয়পত্র, স্বাক্ষর হলো মোহর — তিনটা ছাড়া ইন্টারনেটে কথা বলা যায়, কিন্তু বিশ্বাসে বলা যায় না। তোমার ডিভাইস যদি একদিন কারও দরজা-তালা হয়, কারও ওষুধ-মিক্সার হয় — তাহলে 'মজা' দেখানো ছেলেটার গল্প মনে রেখো: দুর্বল তালা মানে তালাহীন। কাল শেষ দরজা — সবার ফেরা। মোস্তাফিজ চাচা ডেকেছেন; ষোলো দরজার হিসাব মিলবে এক বাগানে।"</div>
 <div class="dialogue en">As night fell, Sadiya turned the antenna-stand toward the window. "Last word — on security. The wind belongs to all; speaking on the wind means speaking before the crowd. TLS is the secret tongue, the certificate the identity-card, the signature the seal — without the three, the internet can be spoken, but not trusted. If your device someday becomes someone's door-lock, someone's medicine-mixer — remember the boy who played with lights: a weak lock is no lock. Tomorrow, the last door — everyone returns. Mostafiz chacha has called; sixteen doors' account will reconcile in one garden."</div>
+
+
+<div class="diagram">
+<div class="diag-title">কম্পোনেন্ট-চেনা — অ্যান্টেনা-জ্যামিতি ও মডিউল-পরিবার</div>
+<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell" x="30" y="36" width="150" height="80"/>
+  <text class="lbl" x="105" y="60">ESP32-WROOM</text>
+  <text class="lbl-sm" x="105" y="82" font-size="10">WiFi+BT · PCB-অ্যান্টেনা</text>
+  <text class="lbl-sm" x="105" y="100" font-size="10">সস্তা-সর্বজনীন</text>
+  <rect class="cell-cyan" x="210" y="36" width="150" height="80"/>
+  <text class="lbl-cyan" x="285" y="60">SX১২৭৬ (LoRa)</text>
+  <text class="lbl-sm" x="285" y="82" font-size="10">সংবেদনশীল-রিসিভার</text>
+  <text class="lbl-sm" x="285" y="100" font-size="10">−১৪৮dBm পর্যন্ত</text>
+  <rect class="cell-hot" x="390" y="36" width="140" height="80"/>
+  <text class="lbl-hot" x="460" y="60">nRF২৪L০১</text>
+  <text class="lbl-sm" x="460" y="82" font-size="10">২.৪GHz SPI-রেডিও</text>
+  <text class="lbl-sm" x="460" y="100" font-size="10">দ্রুত-সস্তা-সংক্ষিপ্ত</text>
+  <line class="edge" x1="105" y1="116" x2="105" y2="150"/>
+  <path class="edge" d="M 100 150 L 110 150 L 105 170 Z" fill="none"/>
+  <text class="lbl-sm" x="105" y="192" font-size="10">λ/৪-মনোপোল ~৩.১cm @২.৪GHz</text>
+  <text class="lbl-sm" x="105" y="210" font-size="10">তারের দৈর্ঘ্য = তরঙ্গের ভগ্নাংশ — জ্যামিতিই দক্ষতা</text>
+  <rect class="cell" x="220" y="150" width="310" height="60"/>
+  <text class="lbl-sm" x="375" y="172" font-size="10">ড্রপ-শিষ্টাচার: VCC-শেষ-এ কানেক্ট, অ্যান্টেনা-ছাড়া টিএক্স নিষেধ (PA-পোড়া)</text>
+  <text class="lbl-sm" x="375" y="192" font-size="10">লোরা-ফিডার: RG৫৮/লিটজ — ক্ষয়-মিলিয়ে দৈর্ঘ্য ছোট রাখো</text>
+</svg>
+<div class="diag-cap">বাতাসের দরজার জ্যামিতি: অ্যান্টেনার দৈর্ঘ্য তরঙ্গদৈর্ঘ্যের ভগ্নাংশ-হলে সবচেয়ে দক্ষ — ২.৪GHz-এ ~৩সেমি; অ্যান্টেনা-ছাড়া পাঠানো চিপের অ্যামপ্লিফায়ার পোড়ানোর শাস্তি।</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">বাস্তব দৃশ্য — MQTT-জীবনচক্র: জন্ম-থেকে-পুনর্জন্ম (LWT-সহ)</div>
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell-cyan" x="40" y="30" width="120" height="40"/>
+  <text class="lbl-cyan" x="100" y="54" font-size="10">পাখি জাগলো</text>
+  <rect class="cell" x="200" y="30" width="130" height="40"/>
+  <text class="lbl-sm" x="265" y="54" font-size="10">CONNECT + LWT-ওয়াদা</text>
+  <rect class="cell" x="380" y="30" width="150" height="40"/>
+  <text class="lbl-sm" x="455" y="54" font-size="10">CONNACK — ব্রোকার রাজি</text>
+  <line class="edge" x1="160" y1="50" x2="200" y2="50"/>
+  <line class="edge" x1="330" y1="50" x2="380" y2="50"/>
+  <rect class="cell" x="40" y="100" width="120" height="40"/>
+  <text class="lbl-sm" x="100" y="124" font-size="10">PUBLISH তাপ</text>
+  <rect class="cell" x="200" y="100" width="130" height="40"/>
+  <text class="lbl-sm" x="265" y="124" font-size="10">keep-alive পিং</text>
+  <rect class="cell-hot" x="380" y="100" width="150" height="40"/>
+  <text class="lbl-hot" x="455" y="118" font-size="10">ডিভাইস মারা গেলে:</text>
+  <text class="lbl-sm" x="455" y="134" font-size="10">ব্রোকার LWT প্রকাশ করে!</text>
+  <line class="edge" x1="160" y1="120" x2="200" y2="120"/>
+  <line class="edge" x1="330" y1="120" x2="380" y2="120"/>
+  <rect class="cell" x="40" y="170" width="490" height="44"/>
+  <text class="lbl-sm" x="285" y="188" font-size="10">LWT (Last Will): সংযোগের সময়ই বলে যাও — 'আমি নিঃশব্দে গেলে এ-খবর প্রকাশ কো'</text>
+  <text class="lbl-sm" x="285" y="206" font-size="10">সুস্থ-ডিভাইস পিং দেয়, অসুস্থ-ডিভাইসের হয়ে ওয়াদা-বার্তা যায় — জামাতে কে জীবিত, সবাই জানে</text>
+</svg>
+<div class="diag-cap">সংযোগের নাটক: CONNECT→CONNACK→পাঠ-চক্র→keep-alive — আর মৃত্যু-চুক্তি LWT: নীরব-বিচ্ছিন্ন ডিভাইসের হয়ে ব্রোকারই শোক-সংবাদ পাঠায়; সন্দেহ নয়, ঘোষণা।</div>
+</div>
 
 <div class="verse">
 <div class="verse-arabic">إِنَّ اللَّهَ يُحِبُّ الَّذِينَ يُقَاتِلُونَ فِي سَبِيلِهِ صَفًّا كَأَنَّهُم بُنيَانٌ مَّرْصُوصٌ</div>
@@ -585,6 +724,56 @@ void loop() {
 
 <div class="dialogue">মাগরিবের আযান উঠলো — মুয়াজ ভাই সবার আগে দাঁড়ালেন, সবাই দাঁড়ালেন; নামাজের পর ফিরে এসে মোস্তাফিজ চাচা বক্সটা তোমার হাতে তুলে দিলেন। "ষোলো দরজা আগে আমার ছিল, এখন তোমার। কুরআনের সেই আয়াত মনে আছে যেটা দিয়ে আমরা শুরু করেছিলাম — বিদ্যুৎ-চমকে ভয় ও আশা (৩০:২৪)? আর শেষ আয়াতটা এখন শোনো: 'আমি আমানত পেশ করেছিলাম আসমান-জমিন-পাহাড়ের সামনে; তারা তা বহন করতে ভয় পেল, কিন্তু মানুষ বহন করলো' (৩৩:৭২)। ভাবো একবার — আসমান বজ্র ধরে রাখে, জমিন ফসল, পাহাড় খনিজ; কিন্তু <em>আমানত</em> — দায়িত্ব, বিশ্বাস, ন্যায় — সেটা তারা নিতে সাহস করেনি। মানুষ করেছে। যে যন্ত্র তুমি বানাবে, সে-ও আমানত: কারও পানির হিসাব, কারও ওষুধের সময়, কারও ঘরের তালা। ভোল্টেজ আর কোড শেখা অর্ধেক কাজ; বাকি অর্ধেক — সেই খিলাফত: যা বহন করলে, বিশ্বস্তভাবে বহন করা। এই বক্স নাও। পরের বক্সটা তোমার নিজের হোক — আর তার নকশা-কাগজে তোমার নামের পাশে লেখো: আমানতদার।" বাইরে বৃষ্টি জমে এসেছে; বক্সের সেন্সর-প্রোব রফিক মামার হাতে একটা ফুলের টবে ঢুকিয়ে দেওয়া হলো — ড্যাশবোর্ডে প্রথম বাঁক উঠলো: ৬২%। ষোলো দরজা হাসলো একসাথে।</div>
 <div class="dialogue en">The maghrib adhan rose — Muaz stood first, all stood; returning after prayer, Mostafiz placed the box in your hands. "Sixteen doors were mine; now yours. The verse we began with — lightning, fear and hope (30:24)? Now hear the last: 'We offered the trust to the heavens, the earth, the mountains; they shrank from it — but man bore it' (33:72). Think once — the sky holds lightning, the earth grain, the mountain ore; but the <em>trust</em> — duty, faith, justice — those they dared not take. Man did. The machine you will build is a trust too: someone's water-account, someone's medicine-hour, someone's door-lock. Learning voltage and code is half the work; the other half is that khilafah — if you carry it, carry it faithfully. Take this box. Let the next be your own — and on its schematic, beside your name, write: trustworthy." Rain had gathered outside; Rafiq slipped the sensor-probe into a flower pot — the dashboard's first curve rose: 62%. Sixteen doors smiled together.</div>
+
+
+<div class="diagram">
+<div class="diag-title">কম্পোনেন্ট-চেনা — BOM: পূর্ণ বক্সের বাজার-তালিকা</div>
+<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell" x="30" y="30" width="500" height="200"/>
+  <text class="lbl" x="280" y="54">মাঠ-পাখির BOM (বিল অব ম্যাটেরিয়ালস)</text>
+  <text class="lbl-sm" x="60" y="80" font-size="10" style="text-anchor:start">ESP32-WROOM ×১ — শহর+রেডিও</text>
+  <text class="lbl-sm" x="60" y="100" font-size="10" style="text-anchor:start">CAPE-soil প্রোব ×১ + ১০kΩ ×২ — ডিভাইডার</text>
+  <text class="lbl-sm" x="60" y="120" font-size="10" style="text-anchor:start">DS৩২৩১ ×১ — ওয়াক্ত-খাতা (I2C)</text>
+  <text class="lbl-sm" x="60" y="140" font-size="10" style="text-anchor:start">MOSFET IRLZ৪৪N + ডায়োড + ভালভ ×১ — পানির দরজা</text>
+  <text class="lbl-sm" x="60" y="160" font-size="10" style="text-anchor:start">সোলার ৬V + TP৪০৫৬ + ১৮৬৫০ + বাক — রিযিক-চেইন</text>
+  <text class="lbl-sm" x="60" y="180" font-size="10" style="text-anchor:start">১০০nF ×৪ + ১০μF ×২ — দরজা-২-এর শান্ত-করা</text>
+  <text class="lbl-sm" x="60" y="200" font-size="10" style="text-anchor:start">কেস + কনফর্মাল-কোটিং — বৃষ্টি-বাঁচাও</text>
+  <rect class="cell-hot" x="330" y="70" width="180" height="140"/>
+  <text class="lbl-hot" x="420" y="94">BOM-শিষ্টাচার</text>
+  <text class="lbl-sm" x="420" y="118" font-size="10">প্রতিটা লাইনে: মান+টলারেন্স</text>
+  <text class="lbl-sm" x="420" y="138" font-size="10">বিকল্প-পার্ট-নম্বর লেখো</text>
+  <text class="lbl-sm" x="420" y="158" font-size="10">খরচ-কলাম — বাজেটের খাতা</text>
+  <text class="lbl-sm" x="420" y="178" font-size="10">যেখানে পাবে (পাটুয়াটুলি!) নোট</text>
+  <text class="lbl-sm" x="420" y="198" font-size="10">— নকশা তখনই বাস্তব</text>
+</svg>
+<div class="diag-cap">যন্ত্র বানানোর শেষ-পরীক্ষা কাগজের: BOM — কী লাগবে, কতটা সহনে, কোথায় পাবে, কত দাম; এই তালিকা ছাড়া নকশা ছবি মাত্র, তালিকাসহ প্রজেক্ট।</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">বাস্তব দৃশ্য — ডিভাইস-জীবনচক্র: ডেস্ক থেকে মাঠ, মাঠ থেকে সংস্করণ-২</div>
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell-cyan" x="30" y="36" width="110" height="60"/>
+  <text class="lbl-cyan" x="85" y="60" font-size="10">ডেস্ক-পরীক্ষা</text>
+  <text class="lbl-sm" x="85" y="80" font-size="10">ব্রেডবোর্ড+প্রোব</text>
+  <rect class="cell" x="170" y="36" width="110" height="60"/>
+  <text class="lbl-sm" x="225" y="60" font-size="10">বক্স-বন্দি</text>
+  <text class="lbl-sm" x="225" y="80" font-size="10">IP৬৫ কেস</text>
+  <rect class="cell-hot" x="310" y="36" width="110" height="60"/>
+  <text class="lbl-hot" x="365" y="60" font-size="10">মাঠে ৭-দিন</text>
+  <text class="lbl-sm" x="365" y="80" font-size="10">বৃষ্টি-তাপ-শব্দ</text>
+  <rect class="cell" x="450" y="36" width="100" height="60"/>
+  <text class="lbl-sm" x="500" y="60" font-size="10">লগ-ময়না</text>
+  <text class="lbl-sm" x="500" y="80" font-size="10">SWD-চোখ</text>
+  <line class="edge" x1="140" y1="66" x2="170" y2="66"/>
+  <line class="edge" x1="280" y1="66" x2="310" y2="66"/>
+  <line class="edge" x1="420" y1="66" x2="450" y2="66"/>
+  <path class="edge-cyan" d="M 500 96 Q 500 150 265 150 Q 85 150 85 96" fill="none" stroke-dasharray="5,4"/>
+  <text class="lbl-cyan" x="265" y="172" font-size="10">শিক্ষা → OTA-সংস্করণ-২ (স্বাক্ষরিত) → আবার মাঠ</text>
+  <rect class="cell" x="60" y="190" width="440" height="34"/>
+  <text class="lbl-sm" x="280" y="210" font-size="10">প্রজেক্ট কখনো এক-দফায় শেষ নয়: পরীক্ষা→মোড়ানো→পরিবেশ→ময়না→সংশোধন — এই বৃত্তই ইঞ্জিনিয়ারিং-জীবন</text>
+</svg>
+<div class="diag-cap">আসল-জগতের বৃত্ত: টেবিলের সাফল্য মাঠের গ্যারান্টি নয় — বৃষ্টি-পরীক্ষা, লগ-ময়না, OTA-সংশোধনের ফিরে-যাওয়া; প্রতিটা ফসল পরের বীজ।</div>
+</div>
 
 <div class="verse">
 <div class="verse-arabic">إِنَّا عَرَضْنَا الْأَمَانَةَ عَلَى السَّمَاوَاتِ وَالْأَرْضِ وَالْجِبَالِ فَأَبَيْنَ أَن يَحْمِلْنَهَا وَأَشْفَقْنَ مِنْهَا وَحَمَلَهَا الْإِنسَانُ</div>

@@ -99,6 +99,57 @@ LED জ্বালানোর হিসাব (তোমার প্রথম
 <div class="diag-cap">উচ্চতা-পার্থক্য (V) ধাক্কা দেয় → প্রবাহ (I) চলে → পাথর (R) সীমিত করে। এক চক্র, এক সমীকরণ।</div>
 </div>
 
+
+<div class="diagram">
+<div class="diag-title">কম্পোনেন্ট-চেনা — রেজিস্টরের কালার-কোড চাকা</div>
+<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <rect x="30" y="60" width="330" height="46" rx="20" fill="#d4c5a9"/>
+  <rect class="cell-hot" x="60" y="62" width="14" height="42"/><text class="lbl-sm" x="67" y="54" font-size="10">১</text>
+  <rect class="cell" x="84" y="62" width="14" height="42"/><text class="lbl-sm" x="91" y="54" font-size="10">২</text>
+  <rect class="cell-cyan" x="108" y="62" width="14" height="42"/><text class="lbl-sm" x="115" y="54" font-size="10">৩</text>
+  <rect x="132" y="62" width="18" height="42" fill="#8a7a5c"/><text class="lbl-sm" x="141" y="54" font-size="10">গুণক</text>
+  <rect x="230" y="62" width="30" height="42" fill="#c9a86a"/><text class="lbl-sm" x="245" y="54" font-size="10">সহন%</text>
+  <line class="edge" x1="30" y1="103" x2="360" y2="103"/>
+  <line class="edge" x1="196" y1="108" x2="196" y2="130"/>
+  <text class="lbl" x="196" y="148">উদাহ: বাদামি-কালো-লাল = ১-০-×১০০ = ১kΩ</text>
+  <text class="lbl-hot" x="196" y="178">৪-ব্যান্ড নিয়ম: ২ অঙ্ক + গুণক + সহনশীলতা</text>
+  <rect class="cell" x="400" y="30" width="140" height="190"/>
+  <text class="lbl" x="470" y="52">কালার-সারণি</text>
+  <text class="lbl-sm" x="470" y="72" font-size="10">⚫ কালো=০ · 🟤 বাদামি=১</text>
+  <text class="lbl-sm" x="470" y="90" font-size="10">🔴 লাল=২ · 🟠 কমলা=৩</text>
+  <text class="lbl-sm" x="470" y="108" font-size="10">🟡 হলুদ=৪ · 🟢 সবুজ=৫</text>
+  <text class="lbl-sm" x="470" y="126" font-size="10">🔵 নীল=৬ · 🟣 বেগুনি=৭</text>
+  <text class="lbl-sm" x="470" y="144" font-size="10">⬜ ধূসর=৮ · ⬜ সাদা=৯</text>
+  <text class="lbl-sm" x="470" y="168" font-size="10">🥇 সোনা=±৫% · ⚪ রুপা=±১০%</text>
+  <text class="lbl-sm" x="470" y="192" font-size="10">SMD: ১০৩ = ১০×১০³ = ১০kΩ</text>
+</svg>
+<div class="diag-cap">রেজিস্টরের শরীরেই তার মান লেখা — রঙের ব্যান্ড পড়ে; ছোট SMD-তে সংখ্যা-কোড। ব্যান্ড থেকে শেষ দিকে সোনা/রুপা সহনশীলতা।</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">বাস্তব দৃশ্য — মাল্টিমিটারে ভোল্টেজ-কারেন্ট মাপা</div>
+<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell-cyan" x="40" y="30" width="120" height="50"/>
+  <text class="lbl-cyan" x="100" y="50">৯V ব্যাটারি</text>
+  <text class="lbl-sm" x="100" y="68">+ পা ওপরে</text>
+  <line class="edge" x1="160" y1="42" x2="300" y2="42"/>
+  <rect class="cell" x="220" y="26" width="80" height="32"/>
+  <text class="lbl-sm" x="260" y="46">R ১০০Ω</text>
+  <line class="edge" x1="300" y1="42" x2="360" y2="42"/>
+  <circle class="node-hot" cx="380" cy="42" r="18"/>
+  <text class="lbl-hot" x="380" y="86" font-size="10">LED</text>
+  <line class="edge" x1="380" y1="60" x2="380" y2="170"/>
+  <line class="edge" x1="380" y1="170" x2="100" y2="170"/>
+  <line class="edge" x1="100" y1="170" x2="100" y2="80"/>
+  <text class="lbl-cyan" x="200" y="20" font-size="10">V-মাপ: প্যাডের দুই পাশে সমান্তরালে</text>
+  <text class="lbl-hot" x="470" y="140" font-size="10">A-মাপ: পথ কেটে শ্রেণিতে!</text>
+  <rect class="cell" x="420" y="160" width="120" height="44"/>
+  <text class="lbl-sm" x="480" y="178">মাল্টিমিটার</text>
+  <text class="lbl-sm" x="480" y="196" font-size="10">লাল=+ · কালো=COM</text>
+</svg>
+<div class="diag-cap">ভোল্টমিটার সমান্তরালে বসে (প্যাড-পাশে), অ্যামিটার শ্রেণিতে (পথ কেটে) — ভুললে মিটারের ফিউজ ওড়ে।</div>
+</div>
+
 <div class="verse">
 <div class="verse-arabic">وَمِنْ آيَاتِهِ يُرِيكُمُ الْبَرْقَ خَوْفًا وَطَمَعًا</div>
 <div class="verse-translation">তাঁর নিদর্শনের মধ্যে — তিনি তোমাদের দেখান বিদ্যুৎ-চমক, ভয় ও আশার সাথে।</div>
@@ -215,6 +266,65 @@ LC দোলা (দুই ভাইয়ের দোলনা):
   <text class="lbl-sm" x="462" y="24">C</text>
 </svg>
 <div class="diag-cap">ক্যাপাসিটর জমায় ধীরে: এক τ (RC) সময়ে ৬৩%, প্রায় ৫τ-তে পূর্ণ — মোড়ের কাছে দ্রুত, শেষে ধীর (বিখ্যাত e-বক্ররেখা)।</div>
+</div>
+
+
+<div class="diagram">
+<div class="diag-title">কম্পোনেন্ট-চেনা — ক্যাপাসিটারের জাত ও মার্কিং</div>
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <ellipse class="cell-cyan" cx="90" cy="80" rx="40" ry="26"/>
+  <text class="lbl-sm" x="90" y="126" font-size="10">সিরামিক চাকতি</text>
+  <text class="lbl-sm" x="90" y="142" font-size="10">১০৪ = ১০×১০⁴pF</text>
+  <text class="lbl-sm" x="90" y="158" font-size="10">= ১০০nF (পোলারিটি নেই)</text>
+  <rect class="cell-hot" x="200" y="50" width="44" height="60"/>
+  <line class="edge" x1="222" y1="50" x2="222" y2="38"/>
+  <text class="lbl-hot" x="222" y="132" font-size="10">ইলেকট্রোলাইটিক</text>
+  <text class="lbl-hot" x="222" y="148" font-size="10">স্ট্রাইপ-পাশ = মাইনাস!</text>
+  <text class="lbl-sm" x="222" y="164" font-size="10">৪৭₀μF ১৬V (পোলার)</text>
+  <circle class="node" cx="350" cy="80" r="28" fill="none"/>
+  <text class="lbl-sm" x="350" y="132" font-size="10">তান্তালাম</text>
+  <text class="lbl-sm" x="350" y="148" font-size="10">ছোট+বেশি ধারণ</text>
+  <text class="lbl-sm" x="350" y="164" font-size="10">+ চিহ্ন দেখো</text>
+  <rect class="cell" x="440" y="55" width="80" height="50"/>
+  <text class="lbl-sm" x="480" y="132" font-size="10">SMD-ক্যাপ</text>
+  <text class="lbl-sm" x="480" y="148" font-size="10">মার্কিং নেই-ই হতো</text>
+  <text class="lbl" x="280" y="200" font-size="11">নিয়ম: ভোল্টেজ-রেটিং ≥ ২× সার্কিট-ভোল্টেজ · পোলার উল্টালে ফাটে!</text>
+  <text class="lbl-sm" x="280" y="222" font-size="10">μF = বড়-জমা (পাওয়ার) · nF = ডিকোউপলিং · pF = ক্রিস্টাল-পাশ</text>
+</svg>
+<div class="diag-cap">চাকতি-চিহ্নে মার্কিং: তৃতীয় অঙ্ক = শূন্যের সংখ্যা (pF-তে)। ইলেকট্রোলাইটিকের স্ট্রাইপ মাইনাস-পা — উল্টো লাগালে বিস্ফোরণ-ঝুঁকি।</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">বাস্তব দৃশ্য — রিলে চালানো: ফ্লাইব্যাক-ডায়োডসহ পূর্ণ সার্কিট</div>
+<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell-cyan" x="30" y="40" width="90" height="34"/>
+  <text class="lbl-cyan" x="75" y="61">MCU পিন</text>
+  <rect class="cell" x="150" y="40" width="60" height="34"/>
+  <text class="lbl-sm" x="180" y="61">১kΩ</text>
+  <rect class="cell-hot" x="240" y="36" width="70" height="42"/>
+  <text class="lbl-hot" x="275" y="61">NPN</text>
+  <line class="edge" x1="120" y1="57" x2="150" y2="57"/>
+  <line class="edge" x1="210" y1="57" x2="240" y2="57"/>
+  <line class="edge" x1="275" y1="78" x2="275" y2="210"/>
+  <text class="lbl-sm" x="275" y="228" font-size="10">E → GND</text>
+  <rect class="cell" x="360" y="30" width="80" height="44"/>
+  <text class="lbl" x="400" y="48">রিলে-কয়েল</text>
+  <text class="lbl-sm" x="400" y="66" font-size="10">চুম্বক-সুইচ</text>
+  <line class="edge" x1="400" y1="30" x2="400" y2="14"/>
+  <line class="edge" x1="330" y1="14" x2="470" y2="14"/>
+  <text class="lbl-sm" x="490" y="18" font-size="10">+৫V</text>
+  <line class="edge" x1="400" y1="74" x2="400" y2="96"/>
+  <line class="edge" x1="330" y1="96" x2="470" y2="96"/>
+  <line class="edge" x1="400" y1="96" x2="275" y2="57" visibility="hidden"/>
+  <path class="edge" d="M 400 96 L 290 96 L 275 78" fill="none"/>
+  <path class="edge-hot" d="M 370 22 L 430 88 M 424 82 L 430 88 L 436 82" fill="none" stroke-width="2"/>
+  <text class="lbl-hot" x="345" y="120" font-size="10">ফ্লাইব্যাক-ডায়োড ১N4007 (উল্টো-বসানো!)</text>
+  <rect class="cell" x="360" y="150" width="140" height="50"/>
+  <text class="lbl-sm" x="430" y="172">AC-লোড পথ</text>
+  <text class="lbl-sm" x="430" y="190" font-size="10">চুম্বক-সুইচে বিচ্ছিন্ন-যুক্ত</text>
+  <line class="edge" x1="430" y1="74" x2="430" y2="150" stroke-dasharray="3,4"/>
+</svg>
+<div class="diag-cap">MCU-র mA দিয়ে ট্রানজিস্টর-দরওয়ান খোলে → কয়েলে বিশাল-প্রবাহ; কয়েল বন্ধের মুহূর্তে বিদ্যুৎ-লাফ (back-EMF) — ডায়োড সেই লাফ শুষে নেয়, ট্রানজিস্টর বাঁচে। AC-লোড সম্পূর্ণ আলাদা পথে — গ্যালভানিক-বিচ্ছিন্ন।</div>
 </div>
 
 <div class="verse">
@@ -351,6 +461,58 @@ LED — আলো-বিকিরণকারী জংশন:
 <div class="diag-cap">বেসে অল্প কারেন্ট (MCU-র সীমায়) → কালেক্টর-এমিটারে বিশাল প্রবাহের দরজা খোলা — ছোট নির্দেশ, বড় আমানত।</div>
 </div>
 
+
+<div class="diagram">
+<div class="diag-title">কম্পোনেন্ট-চেনা — ট্রানজিস্টার পিন-আউট ও ডায়োড-শরীর</div>
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <text class="lbl" x="120" y="26">BC547 (TO-92) — সামনে তাকিয়ে</text>
+  <rect class="cell-hot" x="70" y="40" width="100" height="110"/>
+  <text class="lbl-sm" x="86" y="60" font-size="10">বাঁয়ে পা ১</text>
+  <text class="lbl-sm" x="86" y="80" font-size="10">মাঝে ২</text>
+  <text class="lbl-sm" x="86" y="100" font-size="10">ডানে ৩</text>
+  <text class="lbl-cyan" x="120" y="130">C B E</text>
+  <text class="lbl-sm" x="120" y="172" font-size="10">BC547: C-B-E · ২N222২: E-B-C</text>
+  <text class="lbl-sm" x="120" y="190" font-size="10">ডেটাশিট-না-দেখে পা-ধরা নিষেধ!</text>
+  <text class="lbl" x="400" y="26">ডায়োড-শরীর</text>
+  <rect class="cell" x="350" y="40" width="100" height="34"/>
+  <rect class="cell-hot" x="350" y="40" width="14" height="34"/>
+  <text class="lbl-hot" x="357" y="92" font-size="10">স্ট্রাইপ=ক্যাথোড</text>
+  <text class="lbl-sm" x="400" y="112" font-size="10">১N414৮: সংকেত-দ্রুত</text>
+  <text class="lbl-sm" x="400" y="130" font-size="10">১N400৭: পাওয়ার (১A)</text>
+  <text class="lbl-sm" x="400" y="148" font-size="10">জেনার: নির্দিষ্ট-ভোল্টেজ রক্ষী</text>
+  <rect class="cell" x="350" y="170" width="200" height="50"/>
+  <text class="lbl-sm" x="450" y="190" font-size="10">LED পা-চেনা: লম্বা পা = + (অ্যানোড)</text>
+  <text class="lbl-sm" x="450" y="208" font-size="10">শরীরের চ্যাপ্টা কাট = − (ক্যাথোড)</text>
+</svg>
+<div class="diag-cap">প্যাকেজ একই, ভেতরের নকশা ভিন্ন — TO-92-র পা-ক্রম চিপভেদে বদলায়; ডায়োডের স্ট্রাইপই দিক-নির্দেশক; LED-র লম্বা পা-ই প্লাস।</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">বাস্তব দৃশ্য — ব্রিজ-রেক্টিফায়ার: AC থেকে DC-র জন্ম</div>
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <circle class="node-hot" cx="90" cy="110" r="16"/>
+  <text class="lbl-hot" x="90" y="152" font-size="10">AC ইনপুট</text>
+  <text class="lbl-sm" x="90" y="168" font-size="10">~ ১২V (ট্রান্সফর্মার)</text>
+  <path class="edge" d="M 100 98 L 160 60 L 190 80" fill="none"/>
+  <path class="edge" d="M 100 122 L 160 160 L 190 140" fill="none"/>
+  <rect class="cell" x="190" y="60" width="110" height="80"/>
+  <text class="lbl" x="245" y="94">৪×ডায়োড</text>
+  <text class="lbl-sm" x="245" y="114" font-size="10">ব্রিজ-জাল</text>
+  <line class="edge" x1="300" y1="75" x2="360" y2="75"/>
+  <line class="edge" x1="300" y1="125" x2="360" y2="125"/>
+  <rect class="cell-cyan" x="360" y="60" width="70" height="80"/>
+  <text class="lbl-cyan" x="395" y="95">স্মুদিং</text>
+  <text class="lbl-cyan" x="395" y="112">ক্যাপ</text>
+  <line class="edge" x1="430" y1="75" x2="490" y2="75"/>
+  <line class="edge" x1="430" y1="125" x2="490" y2="125"/>
+  <text class="lbl-hot" x="510" y="80" font-size="10">+DC</text>
+  <text class="lbl-sm" x="510" y="130" font-size="10">GND</text>
+  <rect class="cell" x="60" y="190" width="440" height="30"/>
+  <text class="lbl-sm" x="280" y="209" font-size="10">তরঙ্গ-যাত্রা: AC-দোলা → ডায়োড-জালে সব-ঢেউ ওপরে → ক্যাপে সমতল — ব্যাটারি-চার্জারের ভেতরে হুবহু এই চেইন</text>
+</svg>
+<div class="diag-cap">চার্জার/অ্যাডাপ্টারের প্রাণ: AC-ঢেউ ব্রিজে সোজা হয়, ক্যাপ দোলা মুছে দেয় — Door ২-এর C আর এ-দরজার ডায়োডের যৌথ-পরিবেশনা।</div>
+</div>
+
 <div class="verse">
 <div class="verse-arabic">إِنَّ اللَّهَ يَأْمُرُكُمْ أَن تُؤَدُّوا الْأَمَانَاتِ إِلَىٰ أَهْلِهَا</div>
 <div class="verse-translation">নিশ্চয়ই আল্লাহ আদেশ করেন — আমানত তার হকদারের কাছে পৌঁছে দাতে।</div>
@@ -457,6 +619,61 @@ You thought. "Bad battery?"
   <text class="lbl-sm" x="350" y="202">২০০০mAh ÷ ০.১২mA ≈ ৭৫ দিন  (আগে ছিল ৮ দিন)</text>
 </svg>
 <div class="diag-cap">একই কাজ, ভিন্ন সময়-ভাগ: ঘুমের মুদ্রা μA — ব্যাটারি-জীবন কোটি-ভাগ নয়, শুধু ডিউটি-চক্রের হিসাব।</div>
+</div>
+
+
+<div class="diagram">
+<div class="diag-title">কম্পোনেন্ট-চেনা — রেগুলেটর-পরিবার ও ব্যাটারি-শরীর</div>
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell" x="30" y="36" width="140" height="46"/>
+  <text class="lbl" x="100" y="54">৭৮০৫ (LDO-জাতি)</text>
+  <text class="lbl-sm" x="100" y="72" font-size="10">৩-পা: IN·GND·OUT</text>
+  <text class="lbl-sm" x="100" y="102" font-size="10">৭V→৫V: বাকি ২V×I তাপ!</text>
+  <rect class="cell-cyan" x="200" y="36" width="150" height="46"/>
+  <text class="lbl-cyan" x="275" y="54">LM২৫৯৬ (বাক)</text>
+  <text class="lbl-sm" x="275" y="72" font-size="10">ইন্ডাক্টর+ডায়োড+ক্যাপ</text>
+  <text class="lbl-sm" x="275" y="102" font-size="10">৯২% দক্ষ — তাপ-কম</text>
+  <rect class="cell-hot" x="380" y="36" width="150" height="46"/>
+  <text class="lbl-hot" x="455" y="54">MCP১৭০০ (৩.৩V LDO)</text>
+  <text class="lbl-sm" x="455" y="72" font-size="10">চিপ-সরু, dropout ছোট</text>
+  <rect class="cell" x="30" y="140" width="200" height="70"/>
+  <text class="lbl" x="130" y="162">Li-ion ১৮৬৫০</text>
+  <text class="lbl-sm" x="130" y="180" font-size="10">৩.৭V নাম-ভোল্ট · পূর্ণ ৪.২V</text>
+  <text class="lbl-sm" x="130" y="198" font-size="10">খালি ৩.০V-এর নিচে = মৃত্যু</text>
+  <rect class="cell-cyan" x="260" y="140" width="270" height="70"/>
+  <text class="lbl-cyan" x="395" y="162">সুরক্ষা-বেষ্টনী (BMS)</text>
+  <text class="lbl-sm" x="395" y="180" font-size="10">অতি-চার্জ/অতি-খালি/শর্ট — তিন-রক্ষী</text>
+  <text class="lbl-sm" x="395" y="198" font-size="10">TP৪০৫৬: চার্জার-মাতা · বিনা-BMS ব্যবহার নিষেধ</text>
+</svg>
+<div class="diag-cap">একই কাজে তিন প্রজাতি: সরু-তাপ (৭৮০৫), দক্ষ-জটিল (বাক), চিপ-সরু (MCP১৭০০); Li-ion-এর প্রাণ BMS-র হাতে — ভোল্টেজ-জানা ব্যাটারির অর্ধেক নিরাপত্তা।</div>
+</div>
+
+<div class="diagram">
+<div class="diag-title">বাস্তব দৃশ্য — সোলার-চার্জড IoT নোডের পাওয়ার-চেইন</div>
+<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell-hot" x="30" y="40" width="110" height="50"/>
+  <text class="lbl-hot" x="85" y="60">☀ সোলার ৬V</text>
+  <text class="lbl-sm" x="85" y="78" font-size="10">দিনে ~১০০mA</text>
+  <line class="edge" x1="140" y1="65" x2="180" y2="65"/>
+  <rect class="cell" x="180" y="40" width="110" height="50"/>
+  <text class="lbl" x="235" y="60">চার্জার</text>
+  <text class="lbl-sm" x="235" y="78" font-size="10">TP৪০৫৬+ডায়োড</text>
+  <line class="edge" x1="290" y1="65" x2="330" y2="65"/>
+  <rect class="cell-cyan" x="330" y="40" width="100" height="50"/>
+  <text class="lbl-cyan" x="380" y="60">Li-ion</text>
+  <text class="lbl-sm" x="380" y="78" font-size="10">২০০০mAh</text>
+  <line class="edge" x1="430" y1="65" x2="470" y2="65"/>
+  <rect class="cell" x="470" y="40" width="70" height="50"/>
+  <text class="lbl-sm" x="505" y="60" font-size="10">বাক</text>
+  <text class="lbl-sm" x="505" y="78" font-size="10">৩.৩V</text>
+  <line class="edge" x1="505" y1="90" x2="505" y2="120"/>
+  <rect class="cell-hot" x="430" y="120" width="120" height="36"/>
+  <text class="lbl-hot" x="490" y="142" font-size="10">MCU+রেডিও</text>
+  <rect class="cell" x="30" y="160" width="440" height="40"/>
+  <text class="lbl-sm" x="250" y="178" font-size="10">রাতে: ব্যাটারি-রিযিক → ডিউটি-ঘুম (দরজা ৪) → ডাকে-জাগরণ (দরজা ১০-১১)</text>
+  <text class="lbl-sm" x="250" y="194" font-size="10">হিসাব: গড় ১.২mA → ২০০০÷১.২ ≈ ৭০ দিন বৃষ্টি-সহনশীলতা</text>
+</svg>
+<div class="diag-cap">দিনে সূর্য জমায়, রাতে ব্যাটারি চালায় — নোডের রিযিক-চেইন: প্যানেল→চার্জার→সঞ্চয়→নিয়ন্ত্রণ→শহর; বাজেট-খাতা মিললে মাঠে বছর টেকে।</div>
 </div>
 
 <div class="verse">
