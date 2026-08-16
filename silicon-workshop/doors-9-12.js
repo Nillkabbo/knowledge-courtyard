@@ -128,7 +128,15 @@ doors.push({
 কেন bare-metal শিখবে (আর্দুইনো থাকতেই):
   মিলিসেকেন্ডে নয়, মাইক্রো-নিয়ন্ত্রণ; মেমোরি-হিসাব
   হাতে; বাগ-শিকার রেজিস্টার-স্তরে ধরা যায়;
-  আর চাকরির ইন্টারভিউতে প্রশ্ন ও-স্তরেই আসে</div>
+  আর চাকরির ইন্টারভিউতে প্রশ্ন ও-স্তরেই আসে
+
+  ── অন্য চিপে (ESP32-তে একই কাজ) ──────────
+  রেজিস্টার-চিঠির বদলে লাইব্রেরি-মোড়ক:
+    gpio_set_direction(GPIO_NUM_5, GPIO_MODE_OUTPUT);
+    gpio_set_level(GPIO_NUM_5, 1);   // "জ্বলো"
+  (Arduino-ESP32 স্তরে: pinMode/digitalWrite)
+  পোশাক বদলায়, কৌশল একই: পিন = ঠিকানা,
+  দিক ঠিক করো → মান লেখো।</div>
 
 <div class="dialogue">সন্ধ্যায় LED-ছন্দ দেখতে দেখতে শারমিন আপা বললেন: "মনে রেখো এই অনুভূতি। যিনি বলেন 'হও' — সপ্তাশ্চর্য তাঁর সৃষ্টি; আর তুমি, তাঁর সামান্য ছাত্র, আজ প্রথম একটা পিনকে বললে 'জ্বলো' — আর সে জ্বলল। এই সৃষ্টি-আনন্দই ইঞ্জিনিয়ারিং-এর নেশা; এই আনন্দেই মানুষ ক্যালকুলেটর থেকে মঙ্গল-যান পর্যন্ত গড়েছে। কিন্তু কুন-এর দায়ও আছে: যে যন্ত্র তুমি জাগালে, ঘুম তারও — নগরীর নিয়ন্ত্রিত হুকুমের নায়েব তুমি। কাল মুয়াজ ভাইয়ের কাছে যাও — শহরের সবচেয়ে জরুরি ডাক: ইন্টারাপ্ট। যে ডাক এলে সব কাজ থামে। মুয়াজ্জিনের সন্তান সে — আযানের মানে তার রক্তে।"</div>
 <div class="dialogue en">Watching the LED's rhythm at dusk, Sharmin said: "Remember this feeling. He who says 'Be!' — His creation is wonder; and you, His small student, today told a pin 'light' — and it lit. This joy of making is engineering's addiction; on it men built from calculators to Mars rovers. But kun carries duty: the machine you wake, you must also put to sleep — you are deputy over the city's commanded mechanisms. Tomorrow — Muaz's: the city's most urgent call, the interrupt. The call that stops all work. He is a muezzin's son — the adhan runs in his blood."</div>
@@ -346,7 +354,14 @@ AVR উদাহরণ (বাটন-ডাক, পতাকা-পদ্ধত�
   অগ্রাধিকার: একসাথে ডাক এলে কে আগে — নির্দিষ্ট সারি
   nested: ISR-এর ভেতরে ডাক-তালা বন্ধ থাকে (AVR-ডিফল্ট)
   race-condition: বহু-বাইট শেয়ার-ডেটা পড়া/লেখায়
-    ডাক এলে ছেঁড়া-পড়া — atomic ব্লক/cli-sei দিয়ে রক্ষা</div>
+    ডাক এলে ছেঁড়া-পড়া — atomic ব্লক/cli-sei দিয়ে রক্ষা
+
+  ── অন্য চিপে (ESP32-তে একই কাজ) ──────────
+  gpio_set_intr_type(GPIO_NUM_2, GPIO_NEGEDGE);
+  gpio_isr_handler_add(GPIO_NUM_2, onRain, NULL);
+  // ISR-এ IRAM_ATTR বাধ্য — ঘুমের ক্যাশ-ফাঁদ এড়াতে
+  একই তিন-নিয়ম: ছোট ISR · delay নিষেধ ·
+  শেয়ারে volatile — পোশাক বদলায়, শৃঙ্খলা এক।</div>
 
 <div class="dialogue">আযান শেষে ফিরে বসে মুয়াজ ভাই তাসবিহর দানায় আঙুল রাখলেন। "শেষ কথা। কুরআন বলে — জুমার আযানে কেনাবেচা ছেড়ে ছুটে যাও (৬২:৯), আর সালাত শেষে 'দুনিয়ায় ছড়িয়ে পড়ো, আল্লাহর অনুগ্রহ খোঁজো' (৬২:১০)। খেয়াল করো — এ তো হুবহু ISR-এর প্রোটোকল: থামো, সাড়া দাও, ফিরে যাও কাজে। চিপ-নকশাকারীরা যে শৃঙ্খলা কোটি ট্রানজিস্টরে বসিয়েছেন, তা মুমিনের জীবনে চৌদ্দশো বছর ধরে চলছে। আমি যখন ISR লিখি, বাবার কণ্ঠ মনে পড়ে — ডাক যে দিয়েছে, সাড়া দ্রুত হবে, ভারী হবে না। কাল আবার আমার কাছেই — ওয়াক্তের হিসাব: টাইমার। বাবার সময়-শৃঙ্খলার বাকি অর্ধেক গল্প ওখানে।"</div>
 <div class="dialogue en">After the adhan, settling back, Muaz set a finger on a bead. "Last word. The Quran says — at the Friday call, leave trade and hasten (62:9); and when prayer ends, 'disperse in the land and seek Allah's bounty' (62:10). Notice — this is precisely the ISR protocol: stop, respond, return to work. The discipline chip-designers etched into a billion transistors has run in a believer's life for fourteen hundred years. When I write an ISR, I hear my father's voice — the call has come; the answer is swift, never heavy. Tomorrow, again with me — the reckoning of appointed times: timers. The remaining half of my father's discipline lives there."</div>
@@ -535,7 +550,13 @@ RTC (ক্যালেন্ডার-হৃদয়):
 
 ঘুম-সময়-ডাকের ত্রয়ী (বছর-ব্যাটারির সূত্র):
   ঘুম (দরজা ৪) + টাইমার-ডাক (এ দরজা) + কুকুর-পাহারা
-  = সেন্সর ঘুমায়, ওয়াক্তে জাগে, আটকালে নিজেই জাগে</div>
+  = সেন্সর ঘুমায়, ওয়াক্তে জাগে, আটকালে নিজেই জাগে
+
+  ── অন্য চিপে (ESP32-তে একই কাজ) ──────────
+  esp_timer_start_periodic(h, 15*1000000ULL);
+  // ৬৪-বিট μs-টাইমার; ঘুমেও চলে (RTC-টাইমার আলাদা)
+  হিসাব-সূত্র অপরিবর্তিত: সময় × টিক-হার;
+  বড় চিপে বড় গণতাকারী মানে শুধু পাল্লা বদল।</div>
 
 <div class="dialogue">দুপুরের ছায়া মিনারের গা বেয়ে নামতে মুয়াজ ভাই বাবার ঘড়িটা বাক্সে তুললেন — যত্নে। "শেষ কথা: ওয়াক্ত শুধু গণনা হলে যন্ত্র হয়ে যায়; ওয়াক্ত পাহারা হলে জীবন হয়। কুরআন বলে — নামাজ সময়-নির্ধারিত (৪:১০৩); আর হাদিসে আছে, আল্লাহর কাছে সবচেয়ে প্রিয় আমল সে-যা নিয়মিত, অল্প হলেও (বুখারি-মুসলিমের বহুল-প্রচলিত অর্থ)। টাইমারও তাই: বিশাল কাজের বিস্ফোরণ নয় — নিয়মিত ছোট ডাক, বছরের পর বছর। তোমার ফার্মওয়্যারও ওভাবেই টিকবে: প্রতিটা কাজ ওয়াক্ত-পাওয়া, প্রতিটা ঘুম হিসাব-করা। কাল রুবেল ভাইয়ের কাছে যাও — আংশিক দান: PWM। আলো কেমন করে অর্ধেক জ্বলে, মোটর কেমন করে মাপা শক্তিতে ঘোরে — সব ওই 'হাত-পুরো-খুলো-না-পুরো-বন্ধ-না'-র গণিত।"</div>
 <div class="dialogue en">As the noon shadow slid down the minaret, Muaz put the watch away in its box — carefully. "Last word: if waqt were mere counting it would be machinery; as keeping-watch it becomes life. The Quran says prayer is at fixed times (4:103); and the hadith's well-known sense — the most beloved deed to Allah is the constant one, even if small. So with timers: not the explosion of a giant task — regular small calls, year after year. That is how your firmware will survive too: every task on time, every sleep accounted. Tomorrow — Rubel's: the partial gift, PWM. How a lamp burns at half, a motor turns at measured power — all the mathematics of 'neither hand fully open, nor fully closed.'"</div>
@@ -725,7 +746,14 @@ ADC-হাতিয়ারের থলি:
 সতর্কতা-জোড়া:
   ADC-ইনপুট কখনো Vref-ঊর্ধ্ব নয় (পিন-পোড়ার ঝুঁকি)
   PWM-ফ্রিকোয়েন্সি: শ্রবণ-সীমায় (≈৪৯০Hz) মোটরে 'হুঁ-হুঁ' শব্দ —
-    ঊর্ধ্বে তুলো (÷১ prescale ~৩১kHz), অথবা শব্দ মেনে নাও</div>
+    ঊর্ধ্বে তুলো (÷১ prescale ~৩১kHz), অথবা শব্দ মেনে নাও
+
+  ── অন্য চিপে (ESP32-তে একই কাজ) ──────────
+  adc_oneshot_read(h, ADC_CHANNEL_0, &raw);
+  // ১২-বিট: ০…৪০৯৫; attenuation দিয়ে পাল্লা বাছো
+  PWM: ledcSetup/ledcWrite (LEDC-চ্যানেল)
+  সতর্ক: ADC২-গুচ্ছ WiFi চলাকালে ব্যস্ত —
+  সেন্সর ADC১-এ: বেঞ্চে ভালো, মাঠে ফাঁদ!</div>
 
 <div class="dialogue">সন্ধ্যায় গুদাম-বন্ধ করতে করতে রুবেল ভাই বললেন: "এই দরজাটা আমার কাছে দানের দরজা। কুরআনে আছে — হাত গলায় বেঁধে রেখো না (কৃপণতা), পুরো খুলেও দিয়ো না (অপচয়) (১৭:২৯)। বিদ্যুৎ-দুনিয়ায় আমি এর চেয়ে নিখুঁত উপমা পাইনি: PWM পুরো-খোলা নয়, পুরো-বন্ধ নয় — মাপা অংশে দেয়; প্রকৃতির পাখাও তাই, শ্বাসও তাই, বৃষ্টিও তাই। আর ADC উল্টো পাঠ — দুনিয়ার অগণন-ধারাবাহিক দান তুমি কত-টুকু নিলে সেটাও মাপা সংখ্যায় জানো। যে ব্যবস্থা দেয়-নেয় দুই-ই মাপে, সে-ই মিজানে চলে। কাল হাসান সাহেবের কাছে যাও — পোস্টমাস্টার; এখন দেশের সবচেয়ে সুন্দর প্রয়োগ-দরজা: সুলাইমান-আলাইহিস-সালামের পত্রের মতো চিপে-চিপে চিঠি — UART, SPI, I2C।"</div>
 <div class="dialogue en">Closing the storeroom at dusk, Rubel said: "To me this is the door of giving. The Quran says — neither chain your hand to your neck (miserliness), nor stretch it fully open (waste) (17:29). In the electrical world I've found no truer image: PWM is neither fully open nor fully shut — it gives in measured part; nature's fan does so, breath does so, rain does so. And ADC is the reverse reading — how much of the world's countless continuous gifts you took, known as a measured number. A system that measures both giving and receiving walks on the mizan. Tomorrow — Hasan's, the postmaster; now the loveliest applied door: letters chip to chip like Solomon's — UART, SPI, I2C."</div>
