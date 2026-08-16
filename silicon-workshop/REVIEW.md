@@ -13,7 +13,9 @@
 >
 > The repeatable method, the tooling, and a handoff checklist live in [`scripts/book-review/PLAYBOOK.md`](../scripts/book-review/PLAYBOOK.md).
 >
-> **Remaining: Stage 6** (apparatus: labs, glossary, troubleshooting appendix, assessment).
+> **All six stages complete.**
+>
+> **Stage 6** — done: study/ apparatus shipped. quiz.json (50 questions, single-correct validated) · flashcards.json (74 cards) · mind-map.json (4-arc tree) · study-guide.md (starter-kit BOM ~4,300-4,800 taka, 48 hands-on labs, 26-term glossary, 17-row troubleshooting appendix, further-reading). Panel verified on completion screen.
 >
 > **Stage 5** — done: all eleven missing-knowledge items closed as code-block sections (structure-preserving) plus two new figures. D2 counterfeit parts · D3 AC/RMS (peak vs p-p vs RMS, 220→311V) · D4 mains + Li-ion safety (one-hand rule, isolation, BMS) · D5 soldering (temp, tinning, good/cold/bridge) + solder-joint figure · D6 Thévenin/loading (V_th/R_th, 10× rule, ADC source-impedance) + loaded-divider figure · D11 non-blocking state machine + millis() rollover idiom · D12 op-amp buffer/follower + anti-alias · D14 ground topology (star vs daisy, AGND/DGND) · D15 protocol stack under MQTT (radio→IP→TCP→TLS→MQTT debug ladder) + NTP · D16 two-point calibration + EMA + accuracy/precision/resolution. 55 diagrams, all browser-verified clean.
 >

@@ -1,0 +1,1155 @@
+{
+ "title": "Talking to Silicon — সিলিকনের সাথে কথা Quiz",
+ "questions": [
+  {
+   "door": 1,
+   "question": "৯V ব্যাটারি ও ১০০Ω রেজিস্টরে কত কারেন্ট প্রবাহিত হবে?",
+   "answerOptions": [
+    {
+     "text": "৯mA",
+     "correct": false
+    },
+    {
+     "text": "৯০mA",
+     "correct": true
+    },
+    {
+     "text": "৯০০mA",
+     "correct": false
+    },
+    {
+     "text": "০.৯A",
+     "correct": false
+    }
+   ],
+   "explanation": "I = V/R = 9/100 = 0.09A = 90mA — ওহমের সূত্রের সরাসরি প্রয়োগ।"
+  },
+  {
+   "door": 1,
+   "question": "পানি-রূপকে 'উচ্চতা-পার্থক্য' কোন রাশির প্রতিনিধি?",
+   "answerOptions": [
+    {
+     "text": "কারেন্ট",
+     "correct": false
+    },
+    {
+     "text": "রোধ",
+     "correct": false
+    },
+    {
+     "text": "ভোল্টেজ",
+     "correct": true
+    },
+    {
+     "text": "পাওয়ার",
+     "correct": false
+    }
+   ],
+   "explanation": "ট্যাংকের উচ্চতা-পার্থক্যই ধাক্কা — সেটা ভোল্টেজ; প্রবাহ কারেন্ট, পাথর রোধ।"
+  },
+  {
+   "door": 1,
+   "question": "LED-র সাথে রেজিস্টর কেন লাগে?",
+   "answerOptions": [
+    {
+     "text": "ভোল্টেজ কমাতে",
+     "correct": false
+    },
+    {
+     "text": "LED কারেন্ট-প্রাণী — সীমা ছাড়ানো কারেন্টে জংশন পুড়ে যায়",
+     "correct": true
+    },
+    {
+     "text": "রং বদলাতে",
+     "correct": false
+    },
+    {
+     "text": "উল্টো লাগানো ঠেকাতে",
+     "correct": false
+    }
+   ],
+   "explanation": "LED ভোল্টেজ-দালাল নয়; (V_src−V_f)/I হিসাব-করা রেজিস্টরই তার রেশন ঠিক রাখে।"
+  },
+  {
+   "door": 2,
+   "question": "১০০nF ডিকোউপলিং-ক্যাপ MCU-র পাওয়ার-পায়ে কেন বসে?",
+   "answerOptions": [
+    {
+     "text": "কারেন্ট বাড়াতে",
+     "correct": false
+    },
+    {
+     "text": "দ্রুত-জাগরণের মুহূর্তের ভোল্টেজ-দোল শুষে নিজেই জলাধার হয়",
+     "correct": true
+    },
+    {
+     "text": "তাপ কমাতে",
+     "correct": false
+    },
+    {
+     "text": "ফ্রিকোয়েন্সি বাড়াতে",
+     "correct": false
+    }
+   ],
+   "explanation": "ক্যাপের জমা-চার্জ কাছেই থাকে — সোর্স-তারের দোল পৌঁছানোর আগেই খিদা মেটায়।"
+  },
+  {
+   "door": 2,
+   "question": "ইলেকট্রোলাইটিক ক্যাপের স্ট্রাইপ কী বোঝায়?",
+   "answerOptions": [
+    {
+     "text": "ভোল্টেজ-রেটিং",
+     "correct": false
+    },
+    {
+     "text": "মাইনাস-পা (ক্যাথোড) — পোলার কম্পোনেন্ট",
+     "correct": true
+    },
+    {
+     "text": "সহনশীলতা",
+     "correct": false
+    },
+    {
+     "text": "উৎপাদন-ব্যাচ",
+     "correct": false
+    }
+   ],
+   "explanation": "পোলার ক্যাপ উল্টো লাগালে ফাটে/বিস্ফোরিত হয় — স্ট্রাইপই দিক-নির্দেশক।"
+  },
+  {
+   "door": 2,
+   "question": "রিলে-কয়েলের সাথে ফ্লাইব্যাক-ডায়োড কোন দিকে বসে?",
+   "answerOptions": [
+    {
+     "text": "ফরোয়ার্ড (সাপ্লাই-দিকে)",
+     "correct": false
+    },
+    {
+     "text": "রিভার্স (উল্টো-সমান্তরালে) — বন্ধের মুহূর্তের back-EMF শুষতে",
+     "correct": true
+    },
+    {
+     "text": "শুধু AC-তে",
+     "correct": false
+    },
+    {
+     "text": "লাগেই না",
+     "correct": false
+    }
+   ],
+   "explanation": "কয়েলের ম্যাগনেটিক-ফিল্ড ভাঙার সময় বিপরীত-লাফ — ডায়োড সেই শক্তির গলিতে নিজেই পথ দেয়।"
+  },
+  {
+   "door": 3,
+   "question": "ট্রানজিস্টরের বেসে ছোট কারেন্ট দিয়ে কালেক্টরে বড় প্রবাহ চালানোর গুণকে কী বলে?",
+   "answerOptions": [
+    {
+     "text": "α",
+     "correct": false
+    },
+    {
+     "text": "β (hFE)",
+     "correct": true
+    },
+    {
+     "text": "γ",
+     "correct": false
+    },
+    {
+     "text": "τ",
+     "correct": false
+    }
+   ],
+   "explanation": "β = I_C/I_B; সুইচ-ডিজাইনে বেস-রেজিস্টর এই গুণ ধরেই বসানো হয়।"
+  },
+  {
+   "door": 3,
+   "question": "নীল LED-র জংশন-ভোল্টেজ কতরকমের?",
+   "answerOptions": [
+    {
+     "text": "~১V",
+     "correct": false
+    },
+    {
+     "text": "~২V",
+     "correct": false
+    },
+    {
+     "text": "~৩.০-৩.৪V",
+     "correct": true
+    },
+    {
+     "text": "~৫V",
+     "correct": false
+    }
+   ],
+   "explanation": "নীল/সাদা LED প্রায় ৩V+ — তাই ৩.৩V-ব্যবস্থায় ওদের মার্জিন টাইট।"
+  },
+  {
+   "door": 3,
+   "question": "ব্রিজ-রেক্টিফায়ার কী করে?",
+   "answerOptions": [
+    {
+     "text": "AC-কে DC করে — চার ডায়োডে সব ঢেউ ওপরে তোলে",
+     "correct": true
+    },
+    {
+     "text": "ভোল্টেজ বাড়ায়",
+     "correct": false
+    },
+    {
+     "text": "কারেন্ট সীমিত করে",
+     "correct": false
+    },
+    {
+     "text": "ফ্রিকোয়েন্সি কাটে",
+     "correct": false
+    }
+   ],
+   "explanation": "৪-ডায়োডের জাল AC-র নেতিবাচক অর্ধও ধনাত্মক করে — তারপর ক্যাপ সমতল করে।"
+  },
+  {
+   "door": 4,
+   "question": "গড়-খিদা ১.১mA ডিভাইস ২০০০mAh সেলে কত দিন চলবে?",
+   "answerOptions": [
+    {
+     "text": "~৭ দিন",
+     "correct": false
+    },
+    {
+     "text": "~৭৫ দিন",
+     "correct": true
+    },
+    {
+     "text": "~৭৫০ দিন",
+     "correct": false
+    },
+    {
+     "text": "৬৯৪ দিন",
+     "correct": false
+    }
+   ],
+   "explanation": "2000/1.1 ≈ 1818 ঘণ্টা ≈ ৭৫ দিন — ডিউটি-চক্রের পুরো লাভ এখানেই।"
+  },
+  {
+   "door": 4,
+   "question": "মেইনস-মেরামতে 'এক-হাত নিয়ম' কেন?",
+   "answerOptions": [
+    {
+     "text": "দক্ষতার জন্য",
+     "correct": false
+    },
+    {
+     "text": "দুই-হাতের মধ্যে শক-পথ বুক চিরে যায় বলে",
+     "correct": true
+    },
+    {
+     "text": "টুল ধরার জন্য",
+     "correct": false
+    },
+    {
+     "text": "স্থিরতার জন্য",
+     "correct": false
+    }
+   ],
+   "explanation": "হাত-থেকে-হাতে পথ হৃদয় পেরোয় — এক হাতে পথ থাকে না; প্রাণ-রক্ষার প্রথম নিয়ম।"
+  },
+  {
+   "door": 4,
+   "question": "মেইনসে ২২০V RMS মানে পিক কত?",
+   "answerOptions": [
+    {
+     "text": "২২০V",
+     "correct": false
+    },
+    {
+     "text": "২৫০V",
+     "correct": false
+    },
+    {
+     "text": "৩১১V",
+     "correct": true
+    },
+    {
+     "text": "৪৪০V",
+     "correct": false
+    }
+   ],
+   "explanation": "পিক = √২×220 ≈ 311V — ক্যাপ/ডায়োড রেটিং এই সংখ্যায় সাজাতে হয়।"
+  },
+  {
+   "door": 5,
+   "question": "ব্রেডবোর্ডের মাঝের খাল কেন আছে?",
+   "answerOptions": [
+    {
+     "text": "ওজন কমাতে",
+     "correct": false
+    },
+    {
+     "text": "চিপের দুই পাশের পা আলাদা রাখতে — DIP-চিপ বসার জায়গা",
+     "correct": true
+    },
+    {
+     "text": "বাতাস চলাচল",
+     "correct": false
+    },
+    {
+     "text": "সুন্দর দেখাতে",
+     "correct": false
+    }
+   ],
+   "explanation": "খালের দুই পাশের ৫-পা-কলাম আলাদা সুড়ঙ্গ — চিপের দুই পাশ শর্ট হয় না।"
+  },
+  {
+   "door": 5,
+   "question": "ভালো সোল্ডার-জয়েন্ট দেখতে কেমন?",
+   "answerOptions": [
+    {
+     "text": "ময়লা-ধূসর গোলা",
+     "correct": false
+    },
+    {
+     "text": "চকচকে পাহাড়-ঢাল",
+     "correct": true
+    },
+    {
+     "text": "সমতল চ্যাপ্টা",
+     "correct": false
+    },
+    {
+     "text": "ফোলা বুদবুদ",
+     "correct": false
+    }
+   ],
+   "explanation": "চকচকে-ঢাল = ভালো ওয়েটিং; ধূসর-গোলা = ঠান্ডা-জয়েন্ট, পুনরায় গরম করো।"
+  },
+  {
+   "door": 5,
+   "question": "নকশা-কাগজে VCC ওপরে, GND নিচে রাখার নিয়মটি কীসের?",
+   "answerOptions": [
+    {
+     "text": "সৌন্দর্য",
+     "correct": false
+    },
+    {
+     "text": "পড়ার-অভ্যাস: উঁচু-ভোল্টেজ ওপরে, ফেরত-পথ নিচে — সব নকশার সাধারণ ভাষা",
+     "correct": true
+    },
+    {
+     "text": "প্রিন্ট-খরচ",
+     "correct": false
+    },
+    {
+     "text": "কপিরাইট",
+     "correct": false
+    }
+   ],
+   "explanation": "অভিন্ন রীতিতে সব নকশা পড়া যায় — ইঞ্জিনিয়ারিং-ভাষার ব্যাকরণ।"
+  },
+  {
+   "door": 6,
+   "question": "৯V, R1=R2=১০k ডিভাইডারের মাঝ-বিন্দু কতV?",
+   "answerOptions": [
+    {
+     "text": "৯V",
+     "correct": false
+    },
+    {
+     "text": "৪.৫V",
+     "correct": true
+    },
+    {
+     "text": "২.২৫V",
+     "correct": false
+    },
+    {
+     "text": "০V",
+     "correct": false
+    }
+   ],
+   "explanation": "সমান ভাগে অর্ধেক — ADC-সেন্সর পড়ার ভিত্তি-সেতু।"
+  },
+  {
+   "door": 6,
+   "question": "ডিভাইডারের মাঝে ১k-লোড বসালে কী হয়?",
+   "answerOptions": [
+    {
+     "text": "একই ৪.৫V",
+     "correct": false
+    },
+    {
+     "text": "প্রায় ০.৭৫V-তে পড়ে — লোড নিজেই নিচের-হাত হয়ে যায়",
+     "correct": true
+    },
+    {
+     "text": "৯V-এ ওঠে",
+     "correct": false
+    },
+    {
+     "text": "কিছুই হয় না",
+     "correct": false
+    }
+   ],
+   "explanation": "R_th=৫k; 4.5×1/(5+1)≈0.75V — থেভেনিনের পাঠ; ১০× নিয়মে ভার-প্রভাব <১০% রাখো।"
+  },
+  {
+   "door": 6,
+   "question": "KCL অনুযায়ী জংশনে কী মেলে?",
+   "answerOptions": [
+    {
+     "text": "ভোল্টেজ-যোগ",
+     "correct": false
+    },
+    {
+     "text": "ঢোকা কারেন্ট = বেরোনো কারেন্ট — চার্জ জমা হয় না",
+     "correct": true
+    },
+    {
+     "text": "রোধ-যোগ",
+     "correct": false
+    },
+    {
+     "text": "পাওয়ার-বিভাজন",
+     "correct": false
+    }
+   ],
+   "explanation": "জংশন জমাখানা নয়; যা আসে তা-ই যায় — এক্সচেঞ্জের কল-হিসাব।"
+  },
+  {
+   "door": 7,
+   "question": "সব লজিক-গেট কোন একটি গেট দিয়ে বানানো যায়?",
+   "answerOptions": [
+    {
+     "text": "AND",
+     "correct": false
+    },
+    {
+     "text": "OR",
+     "correct": false
+    },
+    {
+     "text": "NAND",
+     "correct": true
+    },
+    {
+     "text": "XOR",
+     "correct": false
+    }
+   ],
+   "explanation": "NAND সর্বজনীন — NOT/AND/OR সবই ওর জোড়ায়; চিপ-কারখানা তাই ওকেই ছাপায়।"
+  },
+  {
+   "door": 7,
+   "question": "১৯৩৭-এ শ্যানন কী দেখালেন?",
+   "answerOptions": [
+    {
+     "text": "ট্রানজিস্টর",
+     "correct": false
+    },
+    {
+     "text": "বুলের বীজগণিত সুইচ-তারে বসে — কম্পিউটারের জন্ম-সনদ",
+     "correct": true
+    },
+    {
+     "text": "ইন্টারনেট",
+     "correct": false
+    },
+    {
+     "text": "LED",
+     "correct": false
+    }
+   ],
+   "explanation": "MIT থিসিস: সিরিজ=AND, পাশাপাশি=OR — চিন্তার গণিত যন্ত্রে নামল।"
+  },
+  {
+   "door": 7,
+   "question": "বাটন-ডিবাউন্স কেন দরকার?",
+   "answerOptions": [
+    {
+     "text": "গতি বাড়াতে",
+     "correct": false
+    },
+    {
+     "text": "যান্ত্রিক কম্পনে এক-চাপ ডজন-পালস হয় — এক-ঘটনা বানাতে",
+     "correct": true
+    },
+    {
+     "text": "শব্দ কমাতে",
+     "correct": false
+    },
+    {
+     "text": "ভোল্টেজ বাঁচাতে",
+     "correct": false
+    }
+   ],
+   "explanation": "৫-২০ms কাঁপুনি — হার্ডওয়্যার-ল্যাচ বা সফটওয়্যার-অপেক্ষা কম্পন মুছে।"
+  },
+  {
+   "door": 8,
+   "question": "MCU-তে Flash আর RAM-এর পার্থক্য?",
+   "answerOptions": [
+    {
+     "text": "Flash দ্রুত, RAM ধীর",
+     "correct": false
+    },
+    {
+     "text": "Flash স্থায়ী (কোড-ঘর), RAM উড়ন্ত (চলমান ভেরিয়েবল)",
+     "correct": true
+    },
+    {
+     "text": "একই জিনিস",
+     "correct": false
+    },
+    {
+     "text": "RAM-এ কোড থাকে",
+     "correct": false
+    }
+   ],
+   "explanation": "বিদ্যুৎ গেলে RAM খালি, Flash থাকে — বুট কোডকে Flash থেকেই ডাকে।"
+  },
+  {
+   "door": 8,
+   "question": "ESP32-DevKit কেন এ প্রজেক্টে জিতল?",
+   "answerOptions": [
+    {
+     "text": "সবচেয়ে সস্তা",
+     "correct": false
+    },
+    {
+     "text": "শহর+রেডিও এক দানায় — WiFi-সহ, যথেষ্ট ADC/বাস",
+     "correct": true
+    },
+    {
+     "text": "সবচেয়ে বড়",
+     "correct": false
+    },
+    {
+     "text": "শুধু Arduino-ভাবনায়",
+     "correct": false
+    }
+   ],
+   "explanation": "MCU+রেডিও আলাদা হলে দুই বাজার দুই ফাঁদ — এক-দানা-শহর ছোট বিল।"
+  },
+  {
+   "door": 8,
+   "question": "GPIO-ইনপুটে পুল-আপ না দিলে কী হয়?",
+   "answerOptions": [
+    {
+     "text": "পিন গরম হয়",
+     "correct": false
+    },
+    {
+     "text": "ভাসমান-পিন — শব্দে ০/১ লাফায়, পাঠ এলোমেলো",
+     "correct": true
+    },
+    {
+     "text": "LED পোড়ে",
+     "correct": false
+    },
+    {
+     "text": "কিছু হয় না",
+     "correct": false
+    }
+   ],
+   "explanation": "অবস্থা স্থির করতে পুল-আপ/ডাউন — INPUT_PULLUP বাটন-পড়ার প্রথম নিয়ম।"
+  },
+  {
+   "door": 9,
+   "question": "AVR-এ LED জ্বালাতে কোন দুই রেজিস্টার?",
+   "answerOptions": [
+    {
+     "text": "PORT ও PIN",
+     "correct": false
+    },
+    {
+     "text": "DDR (দিক) ও PORT (মান)",
+     "correct": true
+    },
+    {
+     "text": "ADMUX ও ADCSRA",
+     "correct": false
+    },
+    {
+     "text": "TCNT ও OCR",
+     "correct": false
+    }
+   ],
+   "explanation": "আগে DDRB-এ পোশাক (আউটপুট), তারপর PORTB-এ হুকুম — দুই চিঠির পূর্ণ যাত্রা।"
+  },
+  {
+   "door": 9,
+   "question": "(1<<5) মানে কী?",
+   "answerOptions": [
+    {
+     "text": "৫ যোগ",
+     "correct": false
+    },
+    {
+     "text": "'১'-কে ৫ ঘর বামে — শুধু ৫ নম্বর বিটের মাস্ক",
+     "correct": true
+    },
+    {
+     "text": "৫ দিয়ে ভাগ",
+     "correct": false
+    },
+    {
+     "text": "৫-এর ঘাত",
+     "correct": false
+    }
+   ],
+   "explanation": "বিট-মাস্ক; |= সেট, ^= টগল, &=~ খালি — রেজিস্টার-ব্যাকরণের প্রাণ।"
+  },
+  {
+   "door": 9,
+   "question": "ডেভ-বোর্ড বনাম খালি চিপের পার্থক্য?",
+   "answerOptions": [
+    {
+     "text": "কিছু না",
+     "correct": false
+    },
+    {
+     "text": "বোর্ড = শহর+বাজার (রেগুলেটর, USB, পিন-হেডার); খালি চিপ = শুধু শহর",
+     "correct": true
+    },
+    {
+     "text": "বোর্ড ধীর",
+     "correct": false
+    },
+    {
+     "text": "চিপ সস্তা সবসময়",
+     "correct": false
+    }
+   ],
+   "explanation": "শেখা বোর্ডে, প্রোডাক্ট-বানানো খালি-চিপে নামে — Door 14-এর গল্প।"
+  },
+  {
+   "door": 10,
+   "question": "ISR-এ delay() কেন নিষেধ?",
+   "answerOptions": [
+    {
+     "text": "মেমরি খায়",
+     "correct": false
+    },
+    {
+     "text": "অন্য ডাক-সহ সব কাজ মারা যায় — ডাক-সেবাদার ছোট হতে হবে",
+     "correct": true
+    },
+    {
+     "text": "ভোল্টেজ পড়ে",
+     "correct": false
+    },
+    {
+     "text": "কম্পাইল হয় না",
+     "correct": false
+    }
+   ],
+   "explanation": "আযান-প্রোটোকল: থামো-সাড়া-দাও-ফিরো — ভারী কাজ লুপে, ISR শুধু পতাকা।"
+  },
+  {
+   "door": 10,
+   "question": "শেয়ার-করা ভেরিয়েবলে volatile কেন?",
+   "answerOptions": [
+    {
+     "text": "গতির জন্য",
+     "correct": false
+    },
+    {
+     "text": "অপ্টিমাইজারকে বলে — 'মান বাইরে থেকে বদলায়, প্রতিবার মেমরি থেকে পড়ো'",
+     "correct": true
+    },
+    {
+     "text": "সাইজ বাঁচাতে",
+     "correct": false
+    },
+    {
+     "text": "রঙের জন্য",
+     "correct": false
+    }
+   ],
+   "explanation": "নইলে কম্পাইলার পুরনো রেজিস্টার-মান ধরে রাখে — তাজা পাঠ চোখেই পড়ে না।"
+  },
+  {
+   "door": 10,
+   "question": "ESP32-তে ISR-ফাংশনে কী বাধ্য?",
+   "answerOptions": [
+    {
+     "text": "static",
+     "correct": false
+    },
+    {
+     "text": "IRAM_ATTR — ঘুমের ক্যাশ-ফাঁদ এড়াতে",
+     "correct": true
+    },
+    {
+     "text": "const",
+     "correct": false
+    },
+    {
+     "text": "inline",
+     "correct": false
+    }
+   ],
+   "explanation": "ফ্ল্যাশ-ক্যাশ ঘুমালে সাধারণ ISR মৃত্যু — IRAM-এ থাকা ফাংশন সবসময় চলে।"
+  },
+  {
+   "door": 11,
+   "question": "১৬MHz, প্রি-স্কেলার ২৫৬-এ OCR1A কত বসালে ১ সেকেন্ড ডাক হয়?",
+   "answerOptions": [
+    {
+     "text": "৬২৫০০",
+     "correct": false
+    },
+    {
+     "text": "৬২৪৯৯ — শূন্য থেকে গোনা",
+     "correct": true
+    },
+    {
+     "text": "৬২৫",
+     "correct": false
+    },
+    {
+     "text": "১৬০০০০০০",
+     "correct": false
+    }
+   ],
+   "explanation": "16e6/256=62500 টিক; গণনা ০-থেকে হলে লক্ষ্য-এক-কম।"
+  },
+  {
+   "door": 11,
+   "question": "millis() রোলওভার-নিরাপদ তুলনা কোনটি?",
+   "answerOptions": [
+    {
+     "text": "millis() > t+interval",
+     "correct": false
+    },
+    {
+     "text": "(long)(millis()-t) >= interval",
+     "correct": true
+    },
+    {
+     "text": "millis()-t < 0",
+     "correct": false
+    },
+    {
+     "text": "t-millis() > interval",
+     "correct": false
+    }
+   ],
+   "explanation": "বিয়োগ-জাদু: unsigned-মোড়ক নিজেই মোড়ানো-গণিত করে — ৪৯.৭ দিনের ফেরাও নিরাপদ।"
+  },
+  {
+   "door": 11,
+   "question": "ওয়াচডগ কী করে?",
+   "answerOptions": [
+    {
+     "text": "সময় দেখায়",
+     "correct": false
+    },
+    {
+     "text": "ফার্মওয়্যার আটকে গেলে রিসেট-ঘণ্টা — ফিল্ড-বীমা",
+     "correct": true
+    },
+    {
+     "text": "তাপ মাপে",
+     "correct": false
+    },
+    {
+     "text": "মেমরি বাঁচায়",
+     "correct": false
+    }
+   ],
+   "explanation": "নিয়মিত 'ঠেলা' না পেলে ধরে নেয় দরবার অজ্ঞান — নিজে-জাগরণ।"
+  },
+  {
+   "door": 12,
+   "question": "PWM-এ '৫০% duty' মানে ভোল্টেজ অর্ধেক?",
+   "answerOptions": [
+    {
+     "text": "হ্যাঁ",
+     "correct": false
+    },
+    {
+     "text": "না — পিন পুরো-HIGH/LOW; সময়ে-ভাগ, লোড গড় অনুভব করে",
+     "correct": true
+    },
+    {
+     "text": "শুধু মোটরে",
+     "correct": false
+    },
+    {
+     "text": "শুধু LED-তে",
+     "correct": false
+    }
+   ],
+   "explanation": "গড়-শক্তি ≈ duty×পুরো — ডিজিটাল-হাতে অ্যানালগ-অনুভূতির কাজ।"
+  },
+  {
+   "door": 12,
+   "question": "১০-বিট ADC, ৩.৩V-রেফে ২.৫V কত পড়বে?",
+   "answerOptions": [
+    {
+     "text": "৫১২",
+     "correct": false
+    },
+    {
+     "text": "৭৭৫",
+     "correct": true
+    },
+    {
+     "text": "১০২৩",
+     "correct": false
+    },
+    {
+     "text": "২৫০",
+     "correct": false
+    }
+   ],
+   "explanation": "2.5/3.3×1023 ≈ 775 — ধাপ ৩.২২mV।"
+  },
+  {
+   "door": 12,
+   "question": "সেন্সর-ডিভাইডারে অপ-অ্যাম্প ফলোয়ার কেন বসায়?",
+   "answerOptions": [
+    {
+     "text": "গেইন বাড়াতে",
+     "correct": false
+    },
+    {
+     "text": "ইনপুট-রোধ প্রায়-অসীম বলে ডিভাইডার অক্ষত, আউটপুট-রোধ শূন্য বলে ADC তৃপ্ত",
+     "correct": true
+    },
+    {
+     "text": "তাপ কমাতে",
+     "correct": false
+    },
+    {
+     "text": "ভোল্টেজ উল্টাতে",
+     "correct": false
+    }
+   ],
+   "explanation": "থেভেনিন-পাঠের প্রয়োগ: ভার-প্রভাব মুছে মাপ সৎ রাখে।"
+  },
+  {
+   "door": 13,
+   "question": "I2C-তে ACK-বিট কে টানে?",
+   "answerOptions": [
+    {
+     "text": "মাস্টার",
+     "correct": false
+    },
+    {
+     "text": "দাস — পেয়েছি বোঝাতে ডেটা-লাইন নিচে টানে",
+     "correct": true
+    },
+    {
+     "text": "ব্রোকার",
+     "correct": false
+    },
+    {
+     "text": "কেউ না",
+     "correct": false
+    }
+   ],
+   "explanation": "৯ম ঘড়ি-পালসে দাসের টান — স্বীকৃতি-প্রোটোকলের প্রাণ।"
+  },
+  {
+   "door": 13,
+   "question": "I2C-র জন্ম কবে, কার?",
+   "answerOptions": [
+    {
+     "text": "১৯৮০, ফিলিপস (১৯৮২-প্যাটেন্ট)",
+     "correct": true
+    },
+    {
+     "text": "১৯৯০, ইন্টেল",
+     "correct": false
+    },
+    {
+     "text": "২০০০, ARM",
+     "correct": false
+    },
+    {
+     "text": "১৯৭০, TI",
+     "correct": false
+    }
+   ],
+   "explanation": "১৯৮০-সালে উদ্ভাবিত, ১৯৮২-প্যাটেন্ট — ডসিয়ার-সংশোধিত তারিখ।"
+  },
+  {
+   "door": 13,
+   "question": "SPI-র সুবিধা ও দাম?",
+   "answerOptions": [
+    {
+     "text": "সস্তা কিন্তু ধীর",
+     "correct": false
+    },
+    {
+     "text": "দ্রুততম (MHz+) কিন্তু প্রতি-দাসে নির্বাচন-তার, ACK নেই",
+     "correct": true
+    },
+    {
+     "text": "ACK-সমৃদ্ধ",
+     "correct": false
+    },
+    {
+     "text": "দুই-তারেই চলে",
+     "correct": false
+    }
+   ],
+   "explanation": "প্রভু-আঙুল-ইশারা: গতির বিনিময়ে তার-বাজার — স্ক্রিন/ফ্ল্যাশে প্রাণ।"
+  },
+  {
+   "door": 14,
+   "question": "বুট-প্রবাহে .data কোথা থেকে কোথায় যায়?",
+   "answerOptions": [
+    {
+     "text": "RAM→Flash",
+     "correct": false
+    },
+    {
+     "text": "Flash→RAM (শুরুর-মান কপি)",
+     "correct": true
+    },
+    {
+     "text": "কোথাও না",
+     "correct": false
+    },
+    {
+     "text": "EEPROM→Flash",
+     "correct": false
+    }
+   ],
+   "explanation": "মান ফ্ল্যাশে থাকে, বসবাস RAM-এ — স্টার্টআপের কপি-কাজ।"
+  },
+  {
+   "door": 14,
+   "question": "bare-metal বনাম RTOS-সিদ্ধান্ত কীসের?",
+   "answerOptions": [
+    {
+     "text": "দাম",
+     "correct": false
+    },
+    {
+     "text": "জটিলতা-স্কেল: এক-স্রোত সরল → bare-metal; বহু স্বাধীন-সময়+কঠিন-সীমা → RTOS",
+     "correct": true
+    },
+    {
+     "text": "রঙ",
+     "correct": false
+    },
+    {
+     "text": "ব্র্যান্ড",
+     "correct": false
+    }
+   ],
+   "explanation": "RTOS-এর শিডিউলার বহু-টাস্কের বিভ্রম দেয় — দাম: স্ট্যাক+কনটেক্সট।"
+  },
+  {
+   "door": 14,
+   "question": "গ্রাউন্ডে স্টার-নকশা কেন?",
+   "answerOptions": [
+    {
+     "text": "সস্তা",
+     "correct": false
+    },
+    {
+     "text": "মোটর-প্রবাহ সেন্সরের ফেরত-পথে ভোল্টেজ-পতন মেরে মাপ-মিথ্যা এড়ায়",
+     "correct": true
+    },
+    {
+     "text": "সুন্দর",
+     "correct": false
+    },
+    {
+     "text": "ছোট",
+     "correct": false
+    }
+   ],
+   "explanation": "সব ফেরত-তার এক-বিন্দুতে — AGND/DGND-র এক-বিন্দু-মিলন।"
+  },
+  {
+   "door": 15,
+   "question": "MQTT-তে LWT কী?",
+   "answerOptions": [
+    {
+     "text": "সংযোগের সময় দেওয়া ওয়াদা — নীরবে মারা গেলে ব্রোকার সে-বার্তা প্রকাশ করে",
+     "correct": true
+    },
+    {
+     "text": "এক ধরনের ক্লক",
+     "correct": false
+    },
+    {
+     "text": "এনক্রিপশন-চাবি",
+     "correct": false
+    },
+    {
+     "text": "টপিক-নাম",
+     "correct": false
+    }
+   ],
+   "explanation": "জামাতে কে জীবিত সবাই জানে — নীরব-বিচ্ছিন্নতার ঘোষিত-শোক।"
+  },
+  {
+   "door": 15,
+   "question": "MQTT কেন HTTP-কে IoT-এ হারায়?",
+   "answerOptions": [
+    {
+     "text": "নত বলে",
+     "correct": false
+    },
+    {
+     "text": "২-বাইট-হেডার + স্থায়ী-TCP + প্রকাশ/শ্রবণ-মুক্তি — ব্যাটারির বন্ধু",
+     "correct": true
+    },
+    {
+     "text": "নিরাপদ বলে",
+     "correct": false
+    },
+    {
+     "text": "সহজ বলে",
+     "correct": false
+    }
+   ],
+   "explanation": "HTTP-র প্রতি-রিকোয়েস্ট হেডার-পাহাড় ব্যাটারি-শত্রু।"
+  },
+  {
+   "door": 15,
+   "question": "TLS ছাড়া খোলা-বাতাস-বার্তা মানে?",
+   "answerOptions": [
+    {
+     "text": "শুধু ধীর",
+     "correct": false
+    },
+    {
+     "text": "যে-কেউ পড়তে পারে (eavesdrop) ও নকল পাঠাতে পারে (spoof)",
+     "correct": true
+    },
+    {
+     "text": "কিছু হয় না",
+     "correct": false
+    },
+    {
+     "text": "ব্যান্ডউইথ বাঁচে",
+     "correct": false
+    }
+   ],
+   "explanation": "বাতাস সবার — গোপনীয়তা+পরিচয়+স্বাক্ষর তিন-তালাই ভরসা।"
+  },
+  {
+   "door": 16,
+   "question": "দুই-বিন্দু ক্যালিব্রেশনের দুই মান কী?",
+   "answerOptions": [
+    {
+     "text": "০°C ও ১০০°C",
+     "correct": false
+    },
+    {
+     "text": "শুকনো-বাতাস (raw_dry) ও পানিতে-ডোবানো (raw_wet)",
+     "correct": true
+    },
+    {
+     "text": "ভোল্টেজ ও কারেন্ট",
+     "correct": false
+    },
+    {
+     "text": "min ও max",
+     "correct": false
+    }
+   ],
+   "explanation": "নিজের প্রোবের দুই-প্রান্ত মেপে সূত্রে বসাও — জাদু-সংখ্যা বাদ।"
+  },
+  {
+   "door": 16,
+   "question": "OTA-প্যাকেজে স্বাক্ষর কেন বাধ্য?",
+   "answerOptions": [
+    {
+     "text": "গতির জন্য",
+     "correct": false
+    },
+    {
+     "text": "স্বাক্ষর ছাড়া প্যাকেজ = হাতিয়ার হাতে দেওয়া — যাচাই তারপরই বসাও",
+     "correct": true
+    },
+    {
+     "text": "সাইজ বাঁচাতে",
+     "correct": false
+    },
+    {
+     "text": "রঙের জন্য",
+     "correct": false
+    }
+   ],
+   "explanation": "যাচাই-তারপর-ইনস্টল — নইলে যে-কেউ তোমার ডিভাইসের নিয়ন্ত্রণ নেয়।"
+  },
+  {
+   "door": 16,
+   "question": "প্রজেক্ট-জীবনচক্রের সঠিক বৃত্ত?",
+   "answerOptions": [
+    {
+     "text": "লেখো→ডিপ্লয়→শেষ",
+     "correct": false
+    },
+    {
+     "text": "পরীক্ষা→মোড়ানো→পরিবেশ→ময়না→সংশোধন→আবার",
+     "correct": true
+    },
+    {
+     "text": "কিনো→বানালাম→বিক্রি",
+     "correct": false
+    },
+    {
+     "text": "ডিজাইন→উৎপাদন",
+     "correct": false
+    }
+   ],
+   "explanation": "টেবিলের সাফল্য মাঠের গ্যারান্টি নয় — ফিল্ড-ময়না→OTA-সংশোধনের ফেরা।"
+  },
+  {
+   "door": 16,
+   "question": "Capstone-রubric: একটি সম্পূর্ণ মাঠ-ডিভাইসে কোন পাঁচ ব্লক বাধ্য?",
+   "answerOptions": [
+    {
+     "text": "পাওয়ার+সেন্সর+MCU+রেডিও+কাজের-হাত",
+     "correct": true
+    },
+    {
+     "text": "শুধু MCU+কোড",
+     "correct": false
+    },
+    {
+     "text": "শুধু সেন্সর+রেডিও",
+     "correct": false
+    },
+    {
+     "text": "ব্যাটারি+LED",
+     "correct": false
+    }
+   ],
+   "explanation": "রিযিক-চেইন, মাপা-শহর, বাতাস-জামাত, কাজের-হাত — পাঁচ স্তম্ভই দরকার।"
+  },
+  {
+   "door": 16,
+   "question": "'প্রয়োজন-খাতা → টিক-টেবিল' মিলানো প্রজেক্টের কোন পরীক্ষা?",
+   "answerOptions": [
+    {
+     "text": "বাজেট-পরীক্ষা",
+     "correct": false
+    },
+    {
+     "text": "শেষ-পরীক্ষা — প্রতিটা লাইনের জবাবদান-কম্পোনেন্ট মিলেছে কি না",
+     "correct": true
+    },
+    {
+     "text": "রঙ-পরীক্ষা",
+     "correct": false
+    },
+    {
+     "text": "গতি-পরীক্ষা",
+     "correct": false
+    }
+   ],
+   "explanation": "Door 1-এর খাতা Door 16-তে টিক-সহ ফেরে — drift-অসম্ভব।"
+  }
+ ]
+}
