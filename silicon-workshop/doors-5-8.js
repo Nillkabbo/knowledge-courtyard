@@ -73,7 +73,21 @@ doors.push({
   ১. আগে পূর্ণ নকশা একবার পড়ো — হাত দিতে নয়
   ২. প্রশ্ন তৈরি করো: "কোন পায়ে কী থাকার কথা?"
   ৩. মিটার/স্কোপে যাচাই — প্রতিটা মিলে গেলে লাল টিক
-  ৪. টিক-বিহীন পথ = ফল্টের এলাকা</div>
+  ৪. টিক-বিহীন পথ = ফল্টের এলাকা
+
+  ── সোল্ডারিং: কারিগরখানার প্রথম-হাত ──────
+  মোস্তাফিজ চাচার মনোকল যার জন্য:
+   তাপ: ৩০০-৩৫০°C (লেড-ফ্রি ৩৫০); টিপ ঝকঝকে
+   টিন-কোট: নতুন টিপে গলা-সোল্ডারের পাতলা আস্তর
+   জয়েন্ট-নিয়ম: প্যাড+পা দুই-ই গরম → তারে সোল্ডার
+     ছোঁয়াও (টিপে নয়!) → ১-২ সে. → ঠান্ডা-হওয়ার
+     সময় নড়াবে না
+   ভালো জয়েন্ট = চকচকে পাহাড়-ঢাল; ঠান্ডা-জয়েন্ট =
+     ময়লা-ধূসর গোলা — পুনরায়-গরম করো
+   ব্রিজ লাগলে: ফ্লাক্স + ডিসোল্ডার-ব্রেড/পাম্প
+   নির্বাচনী-কথা: গাম-ফ্লাক্স সোল্ডার-তারেই থাকে;
+     SMD-তে অতিরিক্ত ফ্লাক্স দোস্ত
+   শ্বাস-নিয়ম: ধোঁয়া মুখে টানো না — জানালা/ফ্যান</div>
 
 <div class="dialogue">রাতের টিফিনের পর তাহমিনা আপা দেয়ালের ফ্রেম-করা পুরনো নকশাগুলো দেখালেন — একটার কোণে তাঁর উস্তাদের সিগনেচার। "শিক্ষার প্রথম নাম কলম — কুরআনের ভাষায় 'যিনি কলমের মাধ্যমে শিখিয়েছেন' (৯৬:৪-৫)। সার্কিটের জ্ঞান মুখে মুখে ছড়ালে প্রজন্ম বাঁচে না — নকশায় লেখা হলে তা চলে যায় শত বছর, হাজার মাইল। আমার উস্তাদ বলতেন — 'তোমার সার্কিট ভালো হোক না হোক, নকশা রেখে যাও; যে পড়বে সে তোমার চেয়ে ভালো বানাবে।' লেখা মানে আমানত — যাকে দেখানো হয়নি, তারও জন্য। তুমি এই ভাষা শিখলে তুমিও লেখো — তোমার বোর্ডের গল্প কাগজে রেখে যাও। কাল ইকবাল সাহেবের কাছে যাও — সড়কের আইন: সিরিজ-প্যারালালের নগর, কার্শফের দুই ফরমান।"</div>
 <div class="dialogue en">After evening tea she showed the framed old schematics — her mentor's signature in a corner. "The first name of teaching is the pen — in the Quran's words, 'He taught by the pen' (96:4-5). Circuit knowledge passed mouth to mouth dies with the generation; written as schematics it travels a hundred years, a thousand miles. My teacher said — 'good or bad, leave the drawing; the one who reads it will build better than you.' Writing is a trust — for those never shown. Learn this language and write too — leave your board's story on paper. Tomorrow — Iqbal's: the law of roads, series-parallel cities, Kirchhoff's two edicts."</div>
@@ -175,6 +189,32 @@ doors.push({
 <div class="diag-cap">LDR-ডিভাইডার: আলো বদলায় → রোধ বদলায় → ভাগ-অনুপাত বদলায় → ADC-সংখ্যা বদলায় — দরজা ৬-এর সূত্রের জীবন্ত প্রয়োগ, রাতের-বাতির মস্তিষ্ক।</div>
 </div>
 
+
+<div class="diagram">
+<div class="diag-title">সোল্ডার-জয়েন্টের তিন ভাগ্য — ভালো · ঠান্ডা · ব্রিজ</div>
+<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell" x="30" y="30" width="150" height="170"/>
+  <text class="lbl" x="105" y="52">ভালো ✓</text>
+  <path class="wire-cyan" d="M 80 150 L 95 110 Q 105 92 115 110 L 130 150" fill="none"/>
+  <rect class="cell-cyan" x="70" y="150" width="70" height="14"/>
+  <line class="edge" x1="105" y1="92" x2="105" y2="70"/>
+  <text class="lbl-sm" x="105" y="186" font-size="9">চকচকে পাহাড়-ঢাল</text>
+  <rect class="cell" x="205" y="30" width="150" height="170"/>
+  <text class="lbl-hot" x="280" y="52">ঠান্ডা ✗</text>
+  <path class="wire-hot" d="M 255 150 Q 280 100 305 150" fill="none"/>
+  <rect class="cell" x="245" y="150" width="70" height="14"/>
+  <text class="lbl-sm" x="280" y="186" font-size="9">ময়লা-গোলা, ফাটা-সম্ভাবনা</text>
+  <rect class="cell" x="380" y="30" width="150" height="170"/>
+  <text class="lbl-hot" x="455" y="52">ব্রিজ ✗</text>
+  <path class="wire-hot" d="M 425 150 L 440 112 Q 450 96 460 112 L 475 150" fill="none"/>
+  <path class="wire-hot" d="M 465 150 L 480 112 Q 490 96 500 112 L 515 150" fill="none"/>
+  <path class="edge-hot" d="M 460 118 Q 478 132 492 118" fill="none"/>
+  <text class="lbl-sm" x="455" y="186" font-size="9">পাশের-প্যাডে পা-ছড়ানো</text>
+  <text class="lbl-sm" x="280" y="228" font-size="10">মনোকল-পরীক্ষা: চকচকে-ঢাল = আত্মীয়তা; ধূসর-গোলা = পুনরায়-গরম; ব্রিজ = ফ্লাক্স+ব্রেড</text>
+</svg>
+<div class="diag-cap">সোল্ডারিং-শেখা চোখে নয়, মনোকলে: তিন-ভাগ্য চেনা গেলে মেরামতের অর্ধেক কাজ শেষ — ভালো-জয়েন্ট ঢালের মতো ঝরে, ঠান্ডা-জয়েন্ট গোলার মতো বসে, ব্রিজ দুই প্রতিবেশীকে জুড়ে দেয়।</div>
+</div>
+
 <div class="verse">
 <div class="verse-arabic">الَّذِي عَلَّمَ بِالْقَلَمِ</div>
 <div class="verse-translation">যিনি শিখিয়েছেন কলমের মাধ্যমে।</div>
@@ -261,7 +301,20 @@ doors.push({
   সিরিজ ভাব: লুপ ধরে V মাপো — কোন রেজিস্টরে কত পড়ল?
   জংশন ভাব: শাখা-তার কেটে I মাপো — যোগফল মিলল?
   → মিললে সার্কিট সৎ; না-মিললে সেখানেই ফাঁদ
-    (শর্ট = অস্বাভাবিক বেশি I; ওপেন = শূন্য I, পুরো V-পতন)</div>
+    (শর্ট = অস্বাভাবিক বেশি I; ওপেন = শূন্য I, পুরো V-পতন)
+
+  ── থেভেনিন: ডিভাইডারে ভার বসালে কী হয় ──────
+  গোপন-সত্য: যেকোনো দুই-প্রান্ত নেটওয়ার্ক = একটা
+  আদর্শ-ব্যাটারি + একটা সিরিজ-রোধ:
+    V_th = খোলা-প্রান্তের ভোল্টেজ (load ছাড়া)
+    R_th = সোর্স-বন্ধ অবস্থায় প্রান্ত থেকে দেখা রোধ
+  ডিভাইডারে প্রয়োগ: R1=R2=১০k, ৯V → V_th=৪.৫V,
+  R_th=৫k! এখন ১k-লোড বসালে: ৪.৫×১/(৫+১)=০.৭৫V —
+  ৪.৫ নয়!! লোড ডিভাইডারের নিচের-হাত হয়ে যায়।
+  রুল-অব-থাম্ব: R_load ≥ ১০×R_th হলে ভার-প্রভাব <১০%
+  ADC-র গল্প: স্যাম্পল-ক্যাপ চার্জ নেয় — উৎস-রোধ
+  ১০k-এর নিচে রাখো, নইলে পাঠ কাঁপে/ঝুলে থাকে
+  (এজন্যই সেন্সর-ডিভাইডার ১০k-এ রাখা ভালো, ১M-এ নয়)</div>
 
 <div class="dialogue">সন্ধ্যায় বোর্ড বন্ধ করতে করতে ইকবাল সাহেব বললেন: "জীবনে আমি দেখেছি — বিশ্বাসঘাতকতা করে যে, সে হিসাব ভাঙে; বিশ্বসেবী ব্যবস্থা হিসাব রক্ষা করে। কুরআনের ভাষায় সৃষ্টির নিয়মই তা — 'তিনি প্রতিটি কিছু সৃষ্টি করেছেন এবং তার কদর — মাপ — নির্ধারণ করেছেন' (২৫:২)। আমার এক্সচেঞ্জে কল-পালস কদরের মতোই গোনা — কোনো কল হারায় না, কোনো পাল্স নীরবে বাড়ে না। সার্কিটের জংশন-লুপও তাই: দুই খাতা মিললে বুঝো সার্কিট সুস্থ; না-মিললে খোঁজো — কে হিসাব ভাঙছে, কোন ঘাটি ফাঁদ। মেরামতের আধা কাজ এই দুই খাতা মেলানো। কাল জাহেদ ভাইয়ের কাছে যাও — হ্যাঁ-না-র জগৎ: যেখানে সব কথা দুই অঙ্কে।"</div>
 <div class="dialogue en">Closing the board at dusk, Iqbal said: "In life I've seen — the betrayer breaks the ledger; the faithful system keeps it. In the Quran's words, creation's very law: 'He created each thing and determined it with measure — qadar' (25:2). In my exchange, call-pulses are counted like qadar — no call lost, no pulse silently swelling. So with the circuit's junctions and loops: when both ledgers balance, the circuit is healthy; when they don't, hunt — who breaks the account, which link is the trap. Half of repair is reconciling these two ledgers. Tomorrow — Jahed's: the world of yes-and-no, where all speech is two digits."</div>
@@ -361,6 +414,43 @@ doors.push({
   <text class="lbl-sm lbl-left" x="344" y="198">লোডের ভোল্টেজ খেয়ে নেবে</text>
 </svg>
 <div class="diag-cap">প্রবাহ সরাসরি মাপা কঠিন (পথ কাটতে হয়) — বিদ্যা: পথে ০.১Ω বসাও, তার দুই মাথার ভোল্টেজ পড়ো, ওহমে ভাগ দাও; স্মার্ট-ব্যাটারি/মোটর-নিয়ন্ত্রকের ভেতরে এই শান্টই ক্যালকুলাস।</div>
+</div>
+
+
+<div class="diagram">
+<div class="diag-title">থেভেনিন-চোখে ডিভাইডার — খোলা বনাম ভারী (loaded)</div>
+<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell" x="30" y="30" width="240" height="170"/>
+  <text class="lbl" x="150" y="52">খোলা (ভার নেই)</text>
+  <line class="edge-hot" x1="150" y1="66" x2="150" y2="150"/>
+  <text class="lbl-sm" x="164" y="74" font-size="9">৯V</text>
+  <rect class="cell" x="135" y="80" width="30" height="18"/>
+  <text class="lbl-sm" x="185" y="94" font-size="9">R১ ১০k</text>
+  <circle class="node-hot" cx="150" cy="112" r="4"/>
+  <text class="lbl-hot" x="195" y="116" font-size="10">৪.৫V ✓</text>
+  <rect class="cell" x="135" y="126" width="30" height="18"/>
+  <text class="lbl-sm" x="200" y="140" font-size="9">R২ ১০k</text>
+  <line class="edge" x1="150" y1="144" x2="150" y2="168"/>
+  <line class="edge" x1="135" y1="168" x2="165" y2="168"/>
+  <line class="edge" x1="141" y1="174" x2="159" y2="174"/>
+  <rect class="cell" x="290" y="30" width="240" height="170"/>
+  <text class="lbl" x="410" y="52">১k-ভার বসালে</text>
+  <line class="edge-hot" x1="410" y1="66" x2="410" y2="150"/>
+  <text class="lbl-sm" x="424" y="74" font-size="9">৯V</text>
+  <rect class="cell" x="395" y="80" width="30" height="18"/>
+  <text class="lbl-sm" x="445" y="94" font-size="9">R১ ১০k</text>
+  <circle class="node-hot" cx="410" cy="112" r="4"/>
+  <rect class="cell-hot" x="440" y="100" width="50" height="24"/>
+  <text class="lbl-hot" x="465" y="116" font-size="9">ভার ১k</text>
+  <line class="edge" x1="414" y1="112" x2="440" y2="112"/>
+  <text class="lbl-hot" x="360" y="116" font-size="10">০.৭৫V!</text>
+  <rect class="cell" x="395" y="126" width="30" height="18"/>
+  <text class="lbl-sm" x="445" y="140" font-size="9">R২ ১০k ∥ ১k</text>
+  <line class="edge" x1="410" y1="144" x2="410" y2="168"/>
+  <line class="edge" x1="395" y1="168" x2="425" y2="168"/>
+  <text class="lbl-cyan" x="280" y="228" font-size="10">নিয়ম: R_load ≥ ১০×R_th হলে পতন <১০% — লোড নিজেই ডিভাইডারের হাত হয়ে যায়, ভুলে যয়ো না</text>
+</svg>
+<div class="diag-cap">ডিভাইডারের মাঝ-বিন্দু খোলা-চোখে ৪.৫V, ভার-চোখে ০.৭৫V — V_th=৪.৫V, R_th=৫kΩ; এই জোড়াই ডিভাইডারের আসল পরিচয়, আর ১০× নিয়মই সেন্সর-ডিজাইনের প্রহরী।</div>
 </div>
 
 <div class="verse">

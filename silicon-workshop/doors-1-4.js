@@ -248,7 +248,18 @@ LC দোলা (দুই ভাইয়ের দোলনা):
 ইম্পিডেন্স (Z) — AC-জগতে তিন ভাইয়ের মিলিত বাধা:
   X_C = 1/(2πfC)  → f বাড়লে ক্যাপ বাধা কমায় (উচ্চ-ফ্রি পাস)
   X_L = 2πfL      → f বাড়লে ইন্ডাক্টর বাধা বাড়ায় (নিম্ন-ফ্রি পাস)
-  এই দুই স্বভাব মিলেই ফিল্টার, টিউনার, সুইচিং-পাওয়ারের রাজ্য</div>
+  এই দুই স্বভাব মিলেই ফিল্টার, টিউনার, সুইচিং-পাওয়ারের রাজ্য
+
+  ── পাটুয়াটুলি-বাজারের প্রহরী: নকল-পার্ট চেনা ──────
+  রফিক মামার ড্রয়ারে যা লুকিয়ে থাকে:
+  • ফেক FTDI-চিপ: দাম অর্ধেক, ড্রাইভার-হানা — ব্র্যান্ডেড
+    কিনো, বা CH340-জাত সস্তাটাই সৎ
+  • রিলেবেল-মোটর-ড্রাইভার: গায়ের লেখা ২A, ভেতরে
+    ৩০০mA-দেহ — ওভার-হিট পরীক্ষা করো (১ মিনিট ফুল-লোড)
+  • ক্যাপ যার মার্কিং মিথ্যা: মাল্টিমিটারের C-মোডে
+    মাপো — চিহ্নিত ৪৭০μF আসলে ৮০μF হতে পারে
+  নিয়ম: সন্দেহজনক দাম = সন্দেহজনক পার্ট; নতুন
+  সরবরাহ প্রথমবার মাপা-পরীক্ষা তারপর প্রজেক্টে</div>
 
 <div class="dialogue">সন্ধ্যায় দোকান বন্ধ করতে করতে রফিক মামা বললেন: "কুরআনে আছে — আল্লাহ মিজান প্রতিষ্ঠা করেছেন, বলেছেন ওজনে বাড়তি-কমতি কোরো না (৫৫:৭-৯)। আমার তিন ভাই সেই মিজানেরই কারিগর: রেজিস্টর ঠিক করে কত যাবে, ক্যাপাসিটর ঠিক রাখে কত জমা, ইন্ডাক্টর ঠিক রাখে কত দ্রুত বদলাবে। কোনোটা বাড়তি হলে সার্কিট পুড়ে, কমতি হলে কাজ থামে। বোর্ডে যে সঠিক জায়গায় সঠিক ভাই বসায়, তার কাছে ইলেকট্রনিক্স মানে ওজন করা — কোথায় কতটুকু, কখন, কত দ্রুত। যাও, কাল শামসুল কাকার কাছে — একমুখী দরজার খবর: যে ভাই শুধু এক দিকে চলে।"</div>
 <div class="dialogue en">Closing the shop at dusk, Rafiq said: "The Quran says — Allah raised the balance and commanded: transgress not in measure (55:7-9). My three brothers are craftsmen of that balance: the resistor sets how much flows, the capacitor sets how much is held, the inductor sets how fast change may come. Excess burns the board; deficiency stops the work. For the one who places the right brother in the right place, electronics is weighing — how much, where, when, how fast. Go — tomorrow, Uncle Shamsul: news of the one-way door, the brother who walks one direction only."</div>
@@ -438,7 +449,17 @@ LED — আলো-বিকিরণকারী জংশন:
   "ডায়োড কেন একমুখী?" — ডোপিং+ডিপ্লেশন গল্প
   "LED রেজিস্টর ছাড়া পোড়ে কেন?" — কারেন্ট-প্রাণী তত্ত্ব
   "ট্রানজিস্টর সুইচ নাকি অ্যামপ্লিফায়ার?" — দুই-ই;
-    স্যাচুরেশন-অঞ্চল = সুইচ, সক্রিয়-অঞ্চল = অ্যামপ</div>
+    স্যাচুরেশন-অঞ্চল = সুইচ, সক্রিয়-অঞ্চল = অ্যামপ
+
+  ── AC-বিদ্যার তিন মুখ: peak · p-p · RMS ──────
+  সাইন-ঢেউয়ের ভাষা আলাদা:
+    V_peak = √২ × V_RMS          (শিখর)
+    V_p-p  = ২ × V_peak          (শিখর-থেকে-শিখর)
+  উদাহ: দেয়ালের ২২০V মানে RMS →
+    পিক = ৩১১V! — ক্যাপ/ডায়োডের রেটিং পিকে সাজাও
+  RMS = "একই তাপ দেয় যে DC" — তাই পাওয়ার-হিসাব
+  RMS দিয়েই; ১২V-AC ট্রান্সফরমারের পিক ~১৭V,
+  রেক্টিফায়ার-ক্যাপ অন্তত ২৫V-রেটিং চাই</div>
 
 <div class="dialogue">আজরের আগে শামসুল কাকা নিভু-নিভু মালা সামলে বললেন: "কুরআন বলে — আমানত তার হকদারকে ফিরিয়ে দাও (৪:৫৮)। আমার কাছে ডায়োড আর ট্রানজিস্টর আমানতদার কর্মচারীর পাঠ: ডায়োড প্রবাহকে শুধু নির্ধারিত দিকে যেতে দেয় — অন্য দিকের অধিকার না; ট্রানজিস্টর বিশাল শক্তির দরওয়ান, কিন্তু চাবি অন্যের হাতে — নির্দেশ ছাড়া সে সেই শক্তি ছোঁয় না। যে যন্ত্র নিজের সীমা জানে, সে-ই টেকে। আর যে মানুষ নিজের দায়িত্ব জানে... সে-ও। যাও — কাল নুরুল ভাইয়ের খাতার খবর: এই সব সৈনিক খায় কী, কত খায়।"</div>
 <div class="dialogue en">Before Asr, gathering the dimming strings, Shamsul said: "The Quran commands — render trusts to those entitled (4:58). To me the diode and transistor teach the trusted employee: the diode lets flow only its appointed way — no claim on the other direction; the transistor holds mighty power, but the key is another's — without orders it touches nothing. The machine that knows its limits endures. So does the person who knows their charge. Go — tomorrow, Nurul's ledger: what all these soldiers eat, and how much."</div>
@@ -659,7 +680,20 @@ You thought. "Bad battery?"
 খাতা-নিয়ম (নুরুল ভাইয়ের দুই কলাম):
   "নেয়" = প্রতিটা অংশের গড় mA (সব অবস্থা মিলিয়ে)
   "দেয়" = সোর্সের সত্যিকার Wh (ক্যালেন্ডার-জীবন+পুনরাবৃত্তি-ক্ষয় ধরে)
-  নেয় &lt; দেয় × ০.৭ (মার্জিন) — তবেই ডিজাইন পাস</div>
+  নেয় &lt; দেয় × ০.৭ (মার্জিন) — তবেই ডিজাইন পাস
+
+  ── দুই মৃত্যু-অঞ্চল: মেইনস ও Li-ion ──────
+  মেইনস (২২০V AC) — কারিগরখানার প্রথম-নিয়ম:
+   ১. এক-হাত নিয়ম: ভোল্টেজ-ওয়ালা জায়গায় এক হাতেই কাজ;
+      দুই-হাতের পথ = বুক-চিরে-যাওয়া শক-পথ
+   ২. আইসোলেশন-ট্রান্সফরমার মেরামত-টেবিলের ঢাল
+   ৩. বড়-ক্যাপ ছোঁয়ার আগে ডিসচার্জ (রেজিস্টর-দিয়ে);
+      ভাঙা-সকেট = ভোল্টেজ আছে ধরে নাও
+  Li-ion — শান্ত কিন্তু প্রতিশোধী:
+   • খালি-সেল (২.৫V-নিচে) চার্জে বসালে = তামা-শর্ট জন্ম
+   • চার্জ-কারেন্ট সেল-রেটিং মানে (১A-সেলে ১A)
+   • ফুলে-যাওয়া/গরম সেল = বাইরে, বালুতে — পানি নয়!
+   • BMS-ছাড়া সেল = বারুদ-বাক্স; TP4056+সুরক্ষা-বোর্ডই মিনিমাম</div>
 
 <div class="dialogue">সন্ধ্যায় নুরুল ভাই খাতা-ঝুলি কোমরে আঁটকে বললেন: "রিযিকের কথা শোনো — যার কাছে যা আছে, তার হিসাব রাখতে হয়। কুরআনে ইবরাহিম-আলাইহিস-সালামের দোয়া: 'যেভাবে রিযিক দিয়েছেন, তা হিসাব করে খাওয়ার তাওফিক দাও' — খাওয়া জায়েজ, অপচয় নয়; আর কৃপণতাও নয়: 'হাত পুরো বন্ধ করে রেখো না' (১৭:২৯)। আমার খাতার দুই কলাম তারই ইঞ্জিনিয়ারি: নেয় কলামে অপচয় নয় (LED সারাদিন জ্বলবে কেন?), দেয় কলামে কৃপণতা নয় (যা দরকার তা-ই দাও — রেগুলেটর স্থির, ক্যাপ পর্যাপ্ত)। যে ডিভাইস তার রেশন-খাতা জানে, সে-ই মাঠে বছর টেকে। কাল যাও তাহমিনা আপার কাছে — নকশার ভাষা: যে ভাষায় এই সব হিসাব কাগজে লেখা হয়।"</div>
 <div class="dialogue en">At dusk, buckling the ledger holster, Nurul said: "Hear the matter of rizq — whoever holds provision must keep its account. The Quran prays for measured consumption, and forbids both extremes: 'neither tie thy hand to thy neck nor stretch it to its utmost' (17:29). My two columns are its engineering: the 'takes' column forbids waste (why should an LED burn all day?), the 'gives' column forbids stinginess (give what's needed — steady rail, ample caps). The device that knows its ration ledger is the one that lasts a year in the field. Tomorrow — Tahmina's: the language of schematics, in which all this arithmetic is written on paper."</div>

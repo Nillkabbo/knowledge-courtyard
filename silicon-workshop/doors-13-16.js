@@ -351,7 +351,18 @@ bare-metal বনাম RTOS — সিদ্ধান্ত-স্কেল:
     ফ্ল্যাশ-প্রোগ্রামিং · ক্র্যাশে কল-স্ট্যাক-ময়না
   GDB-সাথী: arm-none-eabi-gdb + প্রোব = জীবন্ত-শহরের ভিডিও-কল
   শিষ্টাচার: ডিবাগ-ঘুম কমাও (ঘুম-ডিবাগ-যুদ্ধ), প্রোব-প্যাড
-    বোর্ডে রাখো — ফিল্ডে একমাত্র নাড়ি-ধরার জায়গা</div>
+    বোর্ডে রাখো — ফিল্ডে একমাত্র নাড়ি-ধরার জায়গা
+
+  ── গ্রাউন্ডের নকশা: তারাবনামী শিকলবনামী ──────
+  বোর্ডের "GND" এক নয় — প্রতিটা প্রবাহ ফেরার পথ খোঁজে:
+    ডেইজি-চেইন: সস্তা, কিন্তু মোটর-প্রবাহ সেন্সরের
+      ফেরত-পথে ভোল্টেজ-পতন = মাপ-মিথ্যা
+    স্টার: সব ফেরত-তার এক বিন্দুতে — শব্দ-দ্বীপ
+      তৈরি হয় না; অ্যানালগ-ডিজিটাল ভাগ এখানেই মেলে
+  অভ্যাস: অ্যানালগ-গ্রাউন্ড আলাদা-পথ, এক-বিন্দুতে যুক্ত;
+    মোটর/রিলে-পাখির ফেরত পাওয়ার-গ্রাউন্ডে সরাসরি
+  লম্বা-তারে (RS-485 মনে আছে?) ডিফারেনশিয়াল-জোড়া
+  জেতে এই কারণেই — দুই তারে সমান-শব্দ কাটা পড়ে</div>
 
 <div class="dialogue">সন্ধ্যায় আরিফ ভাই লুপ-চেইন চোখে তুলে বুট-ম্যাপের শেষ লাইনটা পড়লেন — তারপর নামিয়ে বললেন: "হজ-যাত্রীরা জানো মিকাতে থামে — নির্দিষ্ট স্থানে ইহরাম বাঁধে, নিয়ত ঠিক করে, তারপর যাত্রা। চিপের জাগরণও তাই: পাঁচটা মিকাত — ভেক্টর, স্ট্যাক, ডেটা, ঘড়ি, বুটলোডার — প্রতিটা স্তরে নিয়ত-বাঁধা হয়, তারপর main()-এর যাত্রা শুরু। যে ডেভেলপার এই স্তরগুলো জানে, তার কাছে 'ম্যাজিক' বলে কিছু থাকে না — বুট-ব্যর্থতাও তদন্তযোগ্য রহস্য, অন্ধকার নয়। আর মনে রেখো — শিডিউলার যত সামর্থ্যবান, নিয়ত-পরীক্ষাও তত সূক্ষ্ম: অগ্রাধিকার-উল্টো-নিয়ম (priority inversion) আর ডেডলক — এই দুই শিকারির নাম আজই মুখস্থ করে যাও। কাল শেষ প্রয়োগ-দরজা — সাদিয়া আপা: বাতাসের সাথে কথা। বাগানের ফসল মেঘে যাবে।"</div>
 <div class="dialogue en">At dusk Arif raised the loupe to read the boot map's last line, then lowered it: "Pilims stop at the miqat — at fixed stations they don the ihram, set their intention, then journey. The chip's waking is the same: five miqats — vector, stack, data, clock, bootloader — intention bound at each layer, and only then the journey of main(). A developer who knows these layers has no 'magic' left — even boot failure becomes an investigable mystery, not darkness. And remember — the mightier the scheduler, the subtler the trial: priority inversion and deadlock — memorize these two hunters' names before you go. Tomorrow, the last applied door — Sadiya: speaking with the wind. The garden's harvest goes to the cloud."</div>
@@ -546,7 +557,21 @@ OTA — নিজের বাসা থেকে নতুন পালক:
   WiFi (৮০২.১১-১৯৯৭): মেগাবিট, বাড়ির-বাতাস, mA-খিদার
   BLE: সংক্ষিপ্ত-বার্তা, ব্যাটারি-বন্ধু, ফোন-পাড়া
   LoRa/LoRaWAN (Semtech ২০১২ / স্পেক ২০১৫): কিমি-দূরত্ব,
-    μA-ঘুম — কিন্তু বাইট-হিসেবে স্বল্প (মাঝে মাঝে ছোট চিঠি)</div>
+    μA-ঘুম — কিন্তু বাইট-হিসেবে স্বল্প (মাঝে মাঝে ছোট চিঠি)
+
+  ── MQTT-এর নিচের তলা: রেডিও থেকে ব্রোকার ──────
+  প্রোটোকল-স্তূপ উপর থেকে নিচে:
+    MQTT   — প্রকাশ/শ্রবণ (এ বইয়ের জগৎ)
+    TLS    — গোপনীয়তা-পোশাক (৮৮৮৩)
+    TCP    — নির্ভরযোগ্য পাইপ; হারানো-প্যাকেট পুনরায়
+    IP     — ঠিকানা-জগৎ (DHCP দেয়, DNS নাম ভাঙে)
+    WiFi   — বাতাসের বিট (৮০২.১১-চুক্তি)
+  কেন জানা দরকার: ডিবাগ-দিনে প্রশ্ন-সিঁড়ি —
+    পিং যায়? (IP-ওকে) · পোর্ট খোলা? (TCP-ওকে) ·
+    TLS-হ্যান্ডশেক? (সার্টিফিকেট!) · CONNECT-ACK?
+    (MQTT-ক্রেডেনশিয়াল) — যে ধাপে ভাঙে, সে-তলাই আসামি
+  NTP-টোকা: RTC-এর ঘড়িও মাসে-মাসে পাল্লা-হারায় —
+    দিনে-একবার NTP-সমন্বয় = টাইমস্ট্যাম্পের বিশ্বাস</div>
 
 <div class="dialogue">সাদিয়া আপা তোমাকে পুরো চেইন চালাতে দিলেন: ESP32 WiFi-তে যুক্ত → ব্রোকারে connect → তাপ-প্রকাশ → টার্মিনালে ড্যাশবোর্ড-সাবস্ক্রাইবারের সারিতে তোমার সংখ্যা ভেসে উঠলো; তারপর উল্টো দিক — ফোন থেকে 'কমান্ড' প্রকাশ, বোর্ডের LED সাড়া দিলো। দুই দিকেই বাতাস। সংযোগ-সফল হলে তিনি পেন্ডেন্ট ছুঁলেন — রীতি। "মনে আছে, আয়েশা খালা তোমাকে কামান-ঘোরানো শিখিয়েছিলেন (বই ৫৫-এর গল্প শুনেছ নিশ্চয়ই)? ব্রোকার তেমনি — ডিভাইস-কোটির কামান, এক কেন্দ্রে। কুরআন বলে — যারা কাতারবন্দি হয়ে সারি-সারি আল্লাহর রাস্তায় থাকে, তাদের উপমা সুনির্মিত প্রাচীর (৬১:৪)। আমার ব্রোকার-চিত্রে ওই প্রাচীর: প্রতিটা ডিভাইস নিজের সারিতে, কেন্দ্র একটাই, সুর একটাই। কেউ একা নাচলে জামাত ভাঙে — তাই ক্লায়েন্ট-আইডি দুইবার এলে ব্রোকার পুরনোটা ফেলে দেয়, শৃঙ্খলা রক্ষার জন্যই।"</div>
 <div class="dialogue en">Sadiya let you run the whole chain: ESP32 onto WiFi → connect to broker → publish temperature → your number surfacing in the dashboard-subscriber's terminal row; then the reverse — a command published from the phone, the board's LED answering. Wind both ways. On the success she touched her pendant — the rite. "Remember Ayesha of the other book, teaching rudder-turns? The broker is that for a million devices — the keel at one center. The Quran says — those who rank themselves in rows for Allah's path are like a well-built wall (61:4). That wall is my broker-image: each device in its row, one center, one melody. If one dances alone the jamaat breaks — so when a client-id comes twice, the broker drops the old one; discipline preserved."</div>
@@ -798,7 +823,19 @@ void loop() { }                        // ইচ্ছাকৃত খালি 
 // ☐ ব্রোকার+টপিক-গাছ (১৫) ☐ TLS-কী (১৫)
 // ☐ OTA-স্বাক্ষর (১৪) ☐ ডিবাগ-প্যাড-বোর্ডে (১৪)
 // ☐ সেন্সর ADC1-এ, ADC2-তে নয় ☐ প্রোব দুই-বিন্দু ক্যালিব্রেট
-// ☐ ঘুম-জাগার হিসাব setup()-এ ☐ WiFi না পেলে ঘুমে ফেরার পথ</div>
+// ☐ ঘুম-জাগার হিসাব setup()-এ ☐ WiFi না পেলে ঘুমে ফেরার পথ
+
+  ── দুই-বিন্দু ক্যালিব্রেশন: জাদু-সংখ্যা বাদ ──────
+    map(raw, ১০২৩, ৩০০, ০, ১০০) — এই ১০২৩/৩০০ কার?
+    তোমার প্রোব নয়! নিজের দুই-মান মাপো:
+      শুকনো-বাতাসে (০%): raw_dry পড়ো     → টোকা
+      পানিতে ডোবাও (১০০%): raw_wet পড়ো  → টোকা
+      pct = (raw - raw_dry) × ১০০ ÷ (raw_wet - raw_dry)
+    ক্লিপ + গড়-১০ (মিডিয়ান-স্পাইক-মুছা) যোগ করো
+  এক-লাইন EMA (স্মুথিং): y += α(x − y); α≈০.২
+  ভাষা-পার্থক্য: রেজোলিউশন (ধাপ-সংখ্যা) ≠ নির্ভুলতা
+  (সত্যের-কাছাকাছি) ≠ যথার্থতা (পুনরা঵ৃত্তি) —
+  ক্যালিব্রেশন নির্ভুলতা এঁটে দেয়, রেজোলিউশন জন্মগত</div>
 
 <div class="dialogue">মাগরিবের আযান উঠলো — মুয়াজ ভাই সবার আগে দাঁড়ালেন, সবাই দাঁড়ালেন; নামাজের পর ফিরে এসে মোস্তাফিজ চাচা বক্সটা তোমার হাতে তুলে দিলেন। "ষোলো দরজা আগে আমার ছিল, এখন তোমার। কুরআনের সেই আয়াত মনে আছে যেটা দিয়ে আমরা শুরু করেছিলাম — বিদ্যুৎ-চমকে ভয় ও আশা (৩০:২৪)? আর শেষ আয়াতটা এখন শোনো: 'আমি আমানত পেশ করেছিলাম আসমান-জমিন-পাহাড়ের সামনে; তারা তা বহন করতে ভয় পেল, কিন্তু মানুষ বহন করলো' (৩৩:৭২)। ভাবো একবার — আসমান বজ্র ধরে রাখে, জমিন ফসল, পাহাড় খনিজ; কিন্তু <em>আমানত</em> — দায়িত্ব, বিশ্বাস, ন্যায় — সেটা তারা নিতে সাহস করেনি। মানুষ করেছে। যে যন্ত্র তুমি বানাবে, সে-ও আমানত: কারও পানির হিসাব, কারও ওষুধের সময়, কারও ঘরের তালা। ভোল্টেজ আর কোড শেখা অর্ধেক কাজ; বাকি অর্ধেক — সেই খিলাফত: যা বহন করলে, বিশ্বস্তভাবে বহন করা। এই বক্স নাও। পরের বক্সটা তোমার নিজের হোক — আর তার নকশা-কাগজে তোমার নামের পাশে লেখো: আমানতদার।" বাইরে বৃষ্টি জমে এসেছে; বক্সের সেন্সর-প্রোব রফিক মামার হাতে একটা ফুলের টবে ঢুকিয়ে দেওয়া হলো — ড্যাশবোর্ডে প্রথম বাঁক উঠলো: ৬২%। ষোলো দরজা হাসলো একসাথে।</div>
 <div class="dialogue en">The maghrib adhan rose — Muaz stood first, all stood; returning after prayer, Mostafiz placed the box in your hands. "Sixteen doors were mine; now yours. The verse we began with — lightning, fear and hope (30:24)? Now hear the last: 'We offered the trust to the heavens, the earth, the mountains; they shrank from it — but man bore it' (33:72). Think once — the sky holds lightning, the earth grain, the mountain ore; but the <em>trust</em> — duty, faith, justice — those they dared not take. Man did. The machine you will build is a trust too: someone's water-account, someone's medicine-hour, someone's door-lock. Learning voltage and code is half the work; the other half is that khilafah — if you carry it, carry it faithfully. Take this box. Let the next be your own — and on its schematic, beside your name, write: trustworthy." Rain had gathered outside; Rafiq slipped the sensor-probe into a flower pot — the dashboard's first curve rose: 62%. Sixteen doors smiled together.</div>

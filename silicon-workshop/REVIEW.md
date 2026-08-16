@@ -13,7 +13,9 @@
 >
 > The repeatable method, the tooling, and a handoff checklist live in [`scripts/book-review/PLAYBOOK.md`](../scripts/book-review/PLAYBOOK.md).
 >
-> **Remaining: Stages 5–6** (new content and apparatus).
+> **Remaining: Stage 6** (apparatus: labs, glossary, troubleshooting appendix, assessment).
+>
+> **Stage 5** — done: all eleven missing-knowledge items closed as code-block sections (structure-preserving) plus two new figures. D2 counterfeit parts · D3 AC/RMS (peak vs p-p vs RMS, 220→311V) · D4 mains + Li-ion safety (one-hand rule, isolation, BMS) · D5 soldering (temp, tinning, good/cold/bridge) + solder-joint figure · D6 Thévenin/loading (V_th/R_th, 10× rule, ADC source-impedance) + loaded-divider figure · D11 non-blocking state machine + millis() rollover idiom · D12 op-amp buffer/follower + anti-alias · D14 ground topology (star vs daisy, AGND/DGND) · D15 protocol stack under MQTT (radio→IP→TCP→TLS→MQTT debug ladder) + NTP · D16 two-point calibration + EMA + accuracy/precision/resolution. 55 diagrams, all browser-verified clean.
 >
 > **Stage 4** — done: the requirements notebook is now a figure in Door 1 (পাঁচ প্রশ্ন) and reprinted ticked in Door 16 (every line → its component + door), making future drift structurally impossible. Build 8 buys the DHT22 (closes the never-bought temperature sensor); Build 12 justifies the LDR (sleep policy + open-case alert); cadence unified at 15 min. Book now 53 diagrams. (Anchor lesson re-learned: table text-anchor must be inline style, not presentation attr — CSS class wins.)
 >

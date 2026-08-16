@@ -556,7 +556,27 @@ RTC (ক্যালেন্ডার-হৃদয়):
   esp_timer_start_periodic(h, 15*1000000ULL);
   // ৬৪-বিট μs-টাইমার; ঘুমেও চলে (RTC-টাইমার আলাদা)
   হিসাব-সূত্র অপরিবর্তিত: সময় × টিক-হার;
-  বড় চিপে বড় গণতাকারী মানে শুধু পাল্লা বদল।</div>
+  বড় চিপে বড় গণতাকারী মানে শুধু পাল্লা বদল।
+
+  ── নন-ব্লকিং স্টেট-মেশিন + millis()-রোলওভার ──────
+  delay() আসলে ঘুম-নয়, মৃত্যু-অপেক্ষা। বাস্তব-ফার্মওয়্যারের
+  মাঝ-স্তর (RTOS-এর আগে):
+    enum St {IDLE, MEASURING, SENDING};
+    St st = IDLE; unsigned long t0 = 0;
+    loop() {
+      switch (st) {
+        case IDLE:      if (timeToMeasure()) { startADC(); t0 = millis(); st = MEASURING; } break;
+        case MEASURING: if (adcDone()) { st = SENDING; } break;
+        case SENDING:   if (sentOk())   { st = IDLE; }  break;
+      }
+      feedWatchdog();  // প্রতি-লুপে — ডেডলক-বিমা
+    }
+  রোলওভার-গণিত (৪৯.৭ দিনে unsigned long শূন্যে ফেরে):
+    ভুল: if (millis() > t_last + interval)   // ফেরত-পথে আটকে
+    ঠিক:  if ((long)(millis() - t_last) >= interval) // বিয়োগ-জাদু
+    (হুবহু-বিয়োগে unsigned-মোড়ক নিজেই মোড়ানো-গণিত করে)
+  আরও দুই পাহারা: malloc/String এড়াও (heap-খণ্ড);
+    স্ট্যাক-গভীরতা মাপো (watermark) — উইচ-হান্টের দিন</div>
 
 <div class="dialogue">দুপুরের ছায়া মিনারের গা বেয়ে নামতে মুয়াজ ভাই বাবার ঘড়িটা বাক্সে তুললেন — যত্নে। "শেষ কথা: ওয়াক্ত শুধু গণনা হলে যন্ত্র হয়ে যায়; ওয়াক্ত পাহারা হলে জীবন হয়। কুরআন বলে — নামাজ সময়-নির্ধারিত (৪:১০৩); আর হাদিসে আছে, আল্লাহর কাছে সবচেয়ে প্রিয় আমল সে-যা নিয়মিত, অল্প হলেও (বুখারি-মুসলিমের বহুল-প্রচলিত অর্থ)। টাইমারও তাই: বিশাল কাজের বিস্ফোরণ নয় — নিয়মিত ছোট ডাক, বছরের পর বছর। তোমার ফার্মওয়্যারও ওভাবেই টিকবে: প্রতিটা কাজ ওয়াক্ত-পাওয়া, প্রতিটা ঘুম হিসাব-করা। কাল রুবেল ভাইয়ের কাছে যাও — আংশিক দান: PWM। আলো কেমন করে অর্ধেক জ্বলে, মোটর কেমন করে মাপা শক্তিতে ঘোরে — সব ওই 'হাত-পুরো-খুলো-না-পুরো-বন্ধ-না'-র গণিত।"</div>
 <div class="dialogue en">As the noon shadow slid down the minaret, Muaz put the watch away in its box — carefully. "Last word: if waqt were mere counting it would be machinery; as keeping-watch it becomes life. The Quran says prayer is at fixed times (4:103); and the hadith's well-known sense — the most beloved deed to Allah is the constant one, even if small. So with timers: not the explosion of a giant task — regular small calls, year after year. That is how your firmware will survive too: every task on time, every sleep accounted. Tomorrow — Rubel's: the partial gift, PWM. How a lamp burns at half, a motor turns at measured power — all the mathematics of 'neither hand fully open, nor fully closed.'"</div>
@@ -744,7 +764,17 @@ ADC-হাতিয়ারের থলি:
   // ১২-বিট: ০…৪০৯৫; attenuation দিয়ে পাল্লা বাছো
   PWM: ledcSetup/ledcWrite (LEDC-চ্যানেল)
   সতর্ক: ADC2-গুচ্ছ WiFi চলাকালে ব্যস্ত —
-  সেন্সর ADC1-এ: বেঞ্চে ভালো, মাঠে ফাঁদ!</div>
+  সেন্সর ADC1-এ: বেঞ্চে ভালো, মাঠে ফাঁদ!
+
+  ── অপ-অ্যাম্প-সেতু: বাফার কেন বাঁচায় ──────
+  সেন্সর-ডিভাইডার (R_th বড়) → ADC (খিদার) মাঝে
+  ভোল্টেজ-ফলোয়ার বসালে:
+    ভেতরে-ইনপুট = প্রায় অসীম-রোধ → ডিভাইডার অক্ষত
+    ভেতরে-আউটপুট = প্রায় শূন্য-রোধ → ADC তৃপ্ত
+    V_out = V_in × ১ (গেইন-এক, কিন্তু রোধ-বদল দশ-গুণ)
+  TLV9021-জাতি: রেল-টু-রেল, এক-সাপ্লাই ৩.৩V — IoT-বন্ধু
+  বোনাস-দুই: নন-ইনভার্টিং গেইন (১+Rf/Rg) ক্ষুদ্র-সংকেত
+  বড় করে; RC-লো-পাস (anti-alias) Nyquist-এর আগে-প্রহরী</div>
 
 <div class="dialogue">সন্ধ্যায় গুদাম-বন্ধ করতে করতে রুবেল ভাই বললেন: "এই দরজাটা আমার কাছে দানের দরজা। কুরআনে আছে — হাত গলায় বেঁধে রেখো না (কৃপণতা), পুরো খুলেও দিয়ো না (অপচয়) (১৭:২৯)। বিদ্যুৎ-দুনিয়ায় আমি এর চেয়ে নিখুঁত উপমা পাইনি: PWM পুরো-খোলা নয়, পুরো-বন্ধ নয় — মাপা অংশে দেয়; প্রকৃতির পাখাও তাই, শ্বাসও তাই, বৃষ্টিও তাই। আর ADC উল্টো পাঠ — দুনিয়ার অগণন-ধারাবাহিক দান তুমি কত-টুকু নিলে সেটাও মাপা সংখ্যায় জানো। যে ব্যবস্থা দেয়-নেয় দুই-ই মাপে, সে-ই মিজানে চলে। কাল হাসান সাহেবের কাছে যাও — পোস্টমাস্টার; এখন দেশের সবচেয়ে সুন্দর প্রয়োগ-দরজা: সুলাইমান-আলাইহিস-সালামের পত্রের মতো চিপে-চিপে চিঠি — UART, SPI, I2C।"</div>
 <div class="dialogue en">Closing the storeroom at dusk, Rubel said: "To me this is the door of giving. The Quran says — neither chain your hand to your neck (miserliness), nor stretch it fully open (waste) (17:29). In the electrical world I've found no truer image: PWM is neither fully open nor fully shut — it gives in measured part; nature's fan does so, breath does so, rain does so. And ADC is the reverse reading — how much of the world's countless continuous gifts you took, known as a measured number. A system that measures both giving and receiving walks on the mizan. Tomorrow — Hasan's, the postmaster; now the loveliest applied door: letters chip to chip like Solomon's — UART, SPI, I2C."</div>
