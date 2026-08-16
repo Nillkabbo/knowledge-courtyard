@@ -9,7 +9,7 @@ doors.push({
   recall:{
     q:"Arduino-র digitalWrite(13, HIGH) আর bare-metal-এর PORTB |= (1<<5) — মাঝে কী ঘটে, আর LED-ব্লিংকের ন্যূনতম দুই-চিঠি কীসের?",
     qen:"Between Arduino's digitalWrite and bare-metal PORTB |= (1<<5) — what happens, and what are the minimum two letters of an LED blink?",
-    a:"digitalWrite হলো আর্দুইনোর অনুবাদ-স্তর: পিন-নম্বর থেকে চিপের পোর্ট/বিট বের করে, রেজিস্টার-অ্যাড্রেস বসিয়ে, নিরাপত্তা-যাচাই করে একই কাজ করে — সুবিধে সহজ, দাম ধীরতা+ওজন। Bare-metal মানে সরাসরি দরবারে চিঠি: AVR-এ (দরজা ৮-এর ঠিকানা-ব্যবস্থা) দুই রেজিস্টার লাগে — DDRB (ডেটা-ডাইরেকশন-রেজিস্টার B): বিট লিখে পিনকে আউটপুট ঘোষণা, তারপর PORTB: বিট লিখে HIGH দেওয়া। LED-ব্লিংকের ন্যূনতম রূপ: DDRB |= (1<<5); তারপর লুপে PORTB ^= (1<<5) (XOR-টগল) + দেরি। (1<<5) মানে '১ কে বামে ৫ ঘর' = ০b00100000 = PB5 পিনের বিট-মাস্ক — Arduino-Uno-তে LED ঠিক ওই পিনেই। কাজের নিয়ম: ডেটাশিট খোলো (পোর্ট-বি অধ্যায়) → রেজিস্টার-নাম ও বিট-মান পড়ো → মাস্ক লিখো → কম্পাইল→ফ্ল্যাশ→টেস্ট। টুলচেইন: avr-gcc কম্পাইল করে, avrdude ফ্ল্যাশে লেখে (অথবা আর্দুইনো-IDE সব লুকিয়ে করে); ফ্ল্যাশ-লেখা মানে কাগজাঘরে নতুন সংবিধান-বসানো — রিসেটেই চালু হয়।",
+    a:"digitalWrite হলো আর্দুইনোর অনুবাদ-স্তর: পিন-নম্বর থেকে চিপের পোর্ট/বিট বের করে, রেজিস্টার-অ্যাড্রেস বসিয়ে, নিরাপত্তা-যাচাই করে একই কাজ করে — সুবিধে সহজ, দাম ধীরতা+ওজন। Bare-metal মানে সরাসরি দরবারে চিঠি: AVR-এ (দরজা ৮-এর ঠিকানা-ব্যবস্থা) দুই রেজিস্টার লাগে — DDRB (ডেটা-ডাইরেকশন-রেজিস্টার B): বিট লিখে পিনকে আউটপুট ঘোষণা, তারপর PORTB: বিট লিখে HIGH দেওয়া। LED-ব্লিংকের ন্যূনতম রূপ: DDRB |= (1<<5); তারপর লুপে PORTB ^= (1<<5) (XOR-টগল) + দেরি। (1<<5) মানে '১ কে বামে ৫ ঘর' = 0b00100000 = PB5 পিনের বিট-মাস্ক — Arduino-Uno-তে LED ঠিক ওই পিনেই। কাজের নিয়ম: ডেটাশিট খোলো (পোর্ট-বি অধ্যায়) → রেজিস্টার-নাম ও বিট-মান পড়ো → মাস্ক লিখো → কম্পাইল→ফ্ল্যাশ→টেস্ট। টুলচেইন: avr-gcc কম্পাইল করে, avrdude ফ্ল্যাশে লেখে (অথবা আর্দুইনো-IDE সব লুকিয়ে করে); ফ্ল্যাশ-লেখা মানে কাগজাঘরে নতুন সংবিধান-বসানো — রিসেটেই চালু হয়।",
     aen:"digitalWrite is Arduino's translation layer (pin→port/bit→register, with checks — convenient, slower). Bare-metal writes the court directly: DDRB |= (1<<5) declares output; PORTB ^= (1<<5) toggles the LED. (1<<5) is the bit-mask for PB5 — Uno's LED pin. Toolchain: avr-gcc compiles, avrdude flashes; flashing = installing a new constitution in Flash."
   },
   story:`
@@ -130,7 +130,7 @@ doors.push({
   হাতে; বাগ-শিকার রেজিস্টার-স্তরে ধরা যায়;
   আর চাকরির ইন্টারভিউতে প্রশ্ন ও-স্তরেই আসে</div>
 
-<div class="dialogue">সন্ধ্যায় LED-ছন্দ দেখতে দেখতে শারমিন আপা বললেন: "মনে রেখো এই অনুভূতি। যিনি বলেন 'হও' — সপ্তাশ্চর্য তাঁর সৃষ্টি; আর তুমি, তাঁর সামান্য ছাত্র, আজ প্রথম একটা পিনকে বললে 'জ্বলো' — আর সে জ্বলল। এই সৃষ্টি-আনন্দই ইঞ্জিনিয়ারিং-এর নেশা; এই আনন্দেই মানুষ ক্যালকুলেটর থেকে মঙ্গল-যান পর্যন্ত গড়েছে। কিন্তু কুন-এর দায়ও আছে: যে যন্ত্র তুমি জাগালে, ঘুম তারও — নগরীর আয়ন্ত্রিক হুকুমের নায়েব তুমি। কাল মুয়াজ ভাইয়ের কাছে যাও — শহরের সবচেয়ে জরুরি ডাক: ইন্টারাপ্ট। যে ডাক এলে সব কাজ থামে। মুয়াজ্জিনের সন্তান সে — আযানের মানে তার রক্তে।"</div>
+<div class="dialogue">সন্ধ্যায় LED-ছন্দ দেখতে দেখতে শারমিন আপা বললেন: "মনে রেখো এই অনুভূতি। যিনি বলেন 'হও' — সপ্তাশ্চর্য তাঁর সৃষ্টি; আর তুমি, তাঁর সামান্য ছাত্র, আজ প্রথম একটা পিনকে বললে 'জ্বলো' — আর সে জ্বলল। এই সৃষ্টি-আনন্দই ইঞ্জিনিয়ারিং-এর নেশা; এই আনন্দেই মানুষ ক্যালকুলেটর থেকে মঙ্গল-যান পর্যন্ত গড়েছে। কিন্তু কুন-এর দায়ও আছে: যে যন্ত্র তুমি জাগালে, ঘুম তারও — নগরীর নিয়ন্ত্রিত হুকুমের নায়েব তুমি। কাল মুয়াজ ভাইয়ের কাছে যাও — শহরের সবচেয়ে জরুরি ডাক: ইন্টারাপ্ট। যে ডাক এলে সব কাজ থামে। মুয়াজ্জিনের সন্তান সে — আযানের মানে তার রক্তে।"</div>
 <div class="dialogue en">Watching the LED's rhythm at dusk, Sharmin said: "Remember this feeling. He who says 'Be!' — His creation is wonder; and you, His small student, today told a pin 'light' — and it lit. This joy of making is engineering's addiction; on it men built from calculators to Mars rovers. But kun carries duty: the machine you wake, you must also put to sleep — you are deputy over the city's commanded mechanisms. Tomorrow — Muaz's: the city's most urgent call, the interrupt. The call that stops all work. He is a muezzin's son — the adhan runs in his blood."</div>
 
 
@@ -181,7 +181,7 @@ doors.push({
   <text class="lbl-sm" x="280" y="192" font-size="10">লুপ-এক-পাক = এক-পর্যায় (period) = ১ সেকেন্ড</text>
   <text class="lbl-sm" x="280" y="210" font-size="10">duty = ৫০% — Door ১২-এর PWM-এর পূর্বসূরিই এই ব্লিংক!</text>
 </svg>
-<div class="diag-cap">তোমার প্রথম প্রোগ্রামের অসিলোস্কোপ-চেহারা: চৌকো-তরঙ্গ, অর্ধেক উঁচু — কোডের প্রতিটা delay তরঙ্গের প্রস্থ; PWM-দরজার সেতু এখানেই।</div>
+<div class="diag-cap">তোমার প্রথম প্রোগ্রামের অসিলোসকোপ-চেহারা: চৌকো-তরঙ্গ, অর্ধেক উঁচু — কোডের প্রতিটা delay তরঙ্গের প্রস্থ; PWM-দরজার সেতু এখানেই।</div>
 </div>
 
 <div class="verse">
@@ -197,7 +197,7 @@ doors.push({
     title:"আজকের পাঠ — কী নিয়ে যাবে",
     body:`<ul class="checklist">
 <li><strong>তিন-রূপ এক-কাজ:</strong> আর্দুইনো-API, bare-metal, বিট-ব্যাকরণ — একই ব্লিংক তিন স্তরে নিজে লিখে পার্থক্য অনুভব করো (গতি, সাইজ)।</li>
-<li><strong>বিট-অপারেশন রক্তে:</strong> |= সেট, &amp;=~ খালি, ^= টগল, &amp; পড়া — এগুলো ছাড়া রেজিস্টার-জগতে এক পাওওয়া যায় না।</li>
+<li><strong>বিট-অপারেশন রক্তে:</strong> |= সেট, &amp;=~ খালি, ^= টগল, &amp; পড়া — এগুলো ছাড়া রেজিস্টার-জগতে এক পা-ও যাওয়া যায় না।</li>
 <li><strong>ডেটাশিট-অভ্যাস:</strong> আজ থেকে প্রতিটা নতুন পেরিফেরিয়ালে প্রথম কাজ ম্যানুয়ালের রেজিস্টার-টেবিল পড়া — মুখস্থ নয়, খোঁজা।</li>
 <li><strong>টুলচেইন-বোধ:</strong> কোড→হেক্স→ফ্ল্যাশ-প্রবাহ মুখে বলতে পারা; আর্দুইনো-বোতামের পেছনে কী ঘটে তার প্রশ্নের জবাব।</li>
 <li><strong>দায়ের-বোধ:</strong> কুন-এর আনন্দ + নায়েবের দায় — জাগালে ঘুম পাতানোও তোমার (ডিউটি-চক্র, Door ৪-এর পাঠ এখানে ফলে)।</li>
@@ -253,8 +253,8 @@ doors.push({
   <!-- vector table -->
   <rect class="cell" x="290" y="120" width="160" height="80"/>
   <text class="lbl" x="370" y="140">Vector Table</text>
-  <text class="lbl-sm" x="370" y="158">INT0 → ঠিকানা ০x০০২</text>
-  <text class="lbl-sm" x="370" y="174">TIMER1 → ০x০০A …</text>
+  <text class="lbl-sm" x="370" y="158">INT0 → ঠিকানা 0x002</text>
+  <text class="lbl-sm" x="370" y="174">TIMER1 → 0x00A …</text>
   <line class="edge" x1="220" y1="152" x2="290" y2="152"/>
   <text class="lbl-sm" x="255" y="145">খাতা খোলো</text>
   <!-- ISR -->
@@ -424,13 +424,13 @@ doors.push({
     aen:"16MHz ÷ 256 prescaler = 62,500 ticks/s → OCR1A = 62499 in CTC mode fires every 1s exactly. Prescaler divides the drum so a 16-bit timer can reach seconds; millis() counts Timer0 overflows; RTC = separate 32.768kHz low-power clock; watchdog = independent counter that resets a hung court unless fed."
   },
   story:`
-<p class="scene-setting">একাদশ দরজা — পরদিন সকাল, একই ছাদ-চবুতরো; ফজরের পর ঝকঝকে বাতাস, মিনারের কাছে কাঠ-ঘড়ির মতো সুন্নতি ছায়া। মুয়াজ ভাইয়ের টেবিলে আজ নতুন জিনিস: একটা ছোট্ট DS3231 RTC-মডিউল (কয়েন-ব্যাটারি-সহ), ল্যাপটপে টাইমার-রেজিস্টারের ডেটাশিট-পাতা খোলা, পাশে তাঁর বাবার পুরনো হাত-ঘড়ি — মেরামতের পাশে সাজানো, কাচে আলতো ধুলো। মুয়াজ ভাই আজ পাঞ্জাবির ওপর সোয়েটার, তাসবিহ আজ টেবিলে রাখা — আঙুল নয়, চোখে সময় মাপছেন সকালটা। গন্ধ — সকালের ঠান্ডা বাতাস, চা-ভাপ, নতুন বোর্ডের প্লাস্টিক। শব্দ — নিচে দোকান-শাটার খোলার ধামা, দূরে পাখি, টেবিলে RTC-মডিউলের সেকেন্ড-এলইডির নীরব-মৃদু জ্বলা (১ হার্জের হার্টবিট)।</p>
+<p class="scene-setting">একাদশ দরজা — পরদিন সকাল, একই ছাদ-চবুতরো; ফজরের পর ঝকঝকে বাতাস, মিনারের কাছে কাঠ-ঘড়ির মতো সুন্নতি ছায়া। মুয়াজ ভাইয়ের টেবিলে আজ নতুন জিনিস: একটা ছোট্ট DS3231 RTC-মডিউল (কয়েন-ব্যাটারি-সহ), ল্যাপটপে টাইমার-রেজিস্টারের ডেটাশিট-পাতা খোলা, পাশে তাঁর বাবার পুরনো হাত-ঘড়ি — মেরামতের পাশে সাজানো, কাচে আলতো ধুলো। মুয়াজ ভাই আজ পাঞ্জাবির ওপর সোয়েটার, তাসবিহ আজ টেবিলে রাখা — আঙুল নয়, চোখে সময় মাপছেন সকালটা। গন্ধ — সকালের ঠান্ডা বাতাস, চা-ভাপ, নতুন বোর্ডের প্লাস্টিক। শব্দ — নিচে দোকান-শাটার খোলার ধামা, দূরে পাখি, টেবিলে RTC-মডিউলের সেকেন্ড-এলইডির নীরব-মৃদু জ্বলা (১ হার্টজের হার্টবিট)।</p>
 <p class="scene-setting en">The eleventh door — next morning, same rooftop veranda; crisp post-fajr air, the minaret casting a clock-like shadow. New things on Muaz's table: a small DS3231 RTC module (coin cell attached), the datasheet's timer-register page open on the laptop, and beside them his father's old wristwatch — laid out by the repair corner, dust soft on the glass. A sweater over the panjabi today; the misbaha on the table — this morning he measures time with eyes, not fingers. Cold morning air, tea-steam, new-board plastic; shutters clattering open below, distant birds, and the RTC module's second-LED pulsing softly — a one-hertz heartbeat.</p>
 
-<div class="dialogue">তুমি এসে দাঁড়াতেই মুয়াজ ভাই RTC-র সেকেন্ড-বাতি দেখালেন। "দেখো — এ য় হার্টবিট। প্রতি সেকেন্ডে এক জ্বলা, বিদ্যুৎ-কাটলেও চলবে, বছরের পর বছর। কাল তুমি ডাক শিখলে — আজ শিখবে সময়।" তিনি বাবার হাত-ঘড়িটা হাতে নিলেন। "বাবা চল্লিশ বছর এই ঘড়িতে ওয়াক্ত মিলিয়েছেন। তাঁর কথা: 'ওয়াক্ত মানে গোনা নয়, পাহারা' — পাঁচ ওয়াক্ত মানে দিনটা ভাগ, প্রতিটা ভাগে ডাক। কুরআনও তাই বলে: নামাজ মুমিনের ওপর নির্দিষ্ট সময়ে ফরজ (৪:১০৩)। চিপের টাইমার সেই পাহারারই যন্ত্র-রূপ — আর আজ দেখবে, সময় মাপার যন্ত্র আসলে গণনার যন্ত্র।"</div>
+<div class="dialogue">তুমি এসে দাঁড়াতেই মুয়াজ ভাই RTC-র সেকেন্ড-বাতি দেখালেন। "দেখো — এ-ই হার্টবিট। প্রতি সেকেন্ডে এক জ্বলা, বিদ্যুৎ-কাটলেও চলবে, বছরের পর বছর। কাল তুমি ডাক শিখলে — আজ শিখবে সময়।" তিনি বাবার হাত-ঘড়িটা হাতে নিলেন। "বাবা চল্লিশ বছর এই ঘড়িতে ওয়াক্ত মিলিয়েছেন। তাঁর কথা: 'ওয়াক্ত মানে গোনা নয়, পাহারা' — পাঁচ ওয়াক্ত মানে দিনটা ভাগ, প্রতিটা ভাগে ডাক। কুরআনও তাই বলে: নামাজ মুমিনের ওপর নির্দিষ্ট সময়ে ফরজ (৪:১০৩)। চিপের টাইমার সেই পাহারারই যন্ত্র-রূপ — আর আজ দেখবে, সময় মাপার যন্ত্র আসলে গণনার যন্ত্র।"</div>
 <div class="dialogue en">As you arrived, Muaz showed the RTC's second-light. "See — a heartbeat. One blink per second, running through blackouts, for years. Yesterday you learned the call; today, time." He took his father's watch. "Father kept the prayer-times on this watch for forty years. His saying: 'waqt is not counting — it is keeping watch.' Five prayers mean the day is divided, a call in each part. The Quran says it too: prayer is enjoined at fixed times (4:103). The chip's timer is that vigil made machinery — and today you'll see: a timekeeping machine is really a counting machine."</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে (দুই ভাই-দরজার বিখ্যাত গল্প):</strong> মুয়াজ ভাইয়ের প্রথম মসজিদ-প্রজেক্ট — আজানের স্বয়ংক্রিয় টাইমার, ফজরের আগে ঘুম-মোডে রেখে দিয়েছিলেন রাতে। ভোরবেলা দেখা গেল ডিভাইস ঝুলে আছে — রাতের এক বিদ্যুৎ-দুলুনিতে ফার্মওয়্যার অচেতন, কেউ জাগায়নি, জামাত মিস। সেদিনই সে শিখল ফিল্ড-নিয়ম: <strong>ঘুমের আগে প্রহরী-কুকুর বসাও (watchdog) — দরবার আটকে গেলে কুকুর ঘণ্টা বাজাবে, রিসেট হবে, আযান উঠবে।</strong> এখন তাঁর প্রতিটা ফিল্ড-ডিভাইসে কুকুর আছে; বিদ্যুৎ-দুলুনিতে ডিভাইস একা-একাই ঘুম থেকে উঠে কাজে ফেরে।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে (দুই ভাই-দরজার বিখ্যাত গল্প):</strong> মুয়াজ ভাইয়ের প্রথম মসজিদ-প্রজেক্ট — আযানের স্বয়ংক্রিয় টাইমার, ফজরের আগে ঘুম-মোডে রেখে দিয়েছিলেন রাতে। ভোরবেলা দেখা গেল ডিভাইস ঝুলে আছে — রাতের এক বিদ্যুৎ-দুলুনিতে ফার্মওয়্যার অচেতন, কেউ জাগায়নি, জামাত মিস। সেদিনই সে শিখল ফিল্ড-নিয়ম: <strong>ঘুমের আগে প্রহরী-কুকুর বসাও (watchdog) — দরবার আটকে গেলে কুকুর ঘণ্টা বাজাবে, রিসেট হবে, আযান উঠবে।</strong> এখন তাঁর প্রতিটা ফিল্ড-ডিভাইসে কুকুর আছে; বিদ্যুৎ-দুলুনিতে ডিভাইস একা-একাই ঘুম থেকে উঠে কাজে ফেরে।</div></div>
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">৬২,৫০০</div><div class="sc-label">১৬MHz÷২৫৬-এ টিক/সেকেন্ড — OCR1A=৬২৪৯৯ মানে ১s ডাক</div></div>
@@ -453,12 +453,12 @@ doors.push({
   <!-- timer counter -->
   <line class="edge" x1="335" y1="50" x2="380" y2="50"/>
   <rect class="cell-cyan" x="380" y="30" width="150" height="40"/>
-  <text class="lbl-cyan" x="455" y="48">TCNT১ গণতাকারী</text>
+  <text class="lbl-cyan" x="455" y="48">TCNT1 গণতাকারী</text>
   <text class="lbl-sm" x="455" y="64">০…৬৫৫৩৫</text>
   <!-- compare -->
   <line class="edge" x1="455" y1="70" x2="455" y2="105"/>
   <rect class="cell" x="380" y="105" width="150" height="34"/>
-  <text class="lbl-sm" x="455" y="126">OCR১A = ৬২৪৯৯ ?</text>
+  <text class="lbl-sm" x="455" y="126">OCR1A = ৬২৪৯৯ ?</text>
   <!-- fire -->
   <line class="edge-hot" x1="455" y1="139" x2="455" y2="170"/>
   <rect class="cell-hot" x="380" y="170" width="150" height="40"/>
@@ -466,11 +466,11 @@ doors.push({
   <text class="lbl-sm" x="455" y="204">কম্পেয়ার-ম্যাচ ISR</text>
   <!-- reset arrow CTC -->
   <path class="edge-cyan" d="M 380 122 Q 300 122 300 70 Q 300 50 380 50" fill="none" stroke-dasharray="4,4"/>
-  <text class="lbl-cyan" x="290" y="100" font-size="11">ম্যাচ → TCNT১=০ (CTC)</text>
+  <text class="lbl-cyan" x="290" y="100" font-size="11">ম্যাচ → TCNT1=০ (CTC)</text>
   <!-- math strip -->
   <rect class="cell" x="30" y="170" width="300" height="58"/>
   <text class="lbl" x="180" y="192">১৬,০০০,০০০ ÷ ২৫৬ = ৬২,৫০০ টিক/স</text>
-  <text class="lbl-sm" x="180" y="212">→ OCR১A = ৬২,৫০০ − ১ = ৬২,৪৯৯</text>
+  <text class="lbl-sm" x="180" y="212">→ OCR1A = ৬২,৫০০ − ১ = ৬২,৪৯৯</text>
   <!-- prescaler choices -->
   <text class="lbl-sm" x="180" y="250">ভাগের পাল্লা: ১ · ৮ · ৬৪ · ২৫৬ · ১০২৪ — বড় সময় = বড় ভাগ</text>
 </svg>
@@ -505,7 +505,9 @@ CTC-এ ১-সেকেন্ড ডাক (১৬MHz, ÷২৫৬):
           → মানে ১ms = ২৫০ টিক → OCR=২৪৯
 
 millis()-এর জন্ম (আর্দুইনো-ভিত্তি):
-  Timer0 ÷৬৪ → প্রায় ৯৭৬.৬ μs/ওভারফ্লো
+  Timer0 ÷৬৪, ৮-বিট → ২৫৬×৬৪/১৬MHz = ১০২৪ μs/ওভারফ্লো
+  (অর্থাৎ সেকেন্ডে ≈৯৭৬.৬ বার — সংখ্যা দুটো গুলিয়ে ফেলো না)
+  ১০২৪ μs ≠ ১০০০ μs — এই ২.৪% ফারাকই সংশোধন লাগে:
   → ISR-এ গণনা-সংশোধন → মিলিস-খাতা
   (তাই millis() ডাক-ভিত্তিক, লুপের বিলম্বে বাঁধা নয়;
    _delay_ms-এর মতো বসে-থাকা নয় — Door ৪-এর ঘুম-পাঠের রাজা)
@@ -544,7 +546,7 @@ RTC (ক্যালেন্ডার-হৃদয়):
   <text class="lbl-sm" x="150" y="102" font-size="10">ভেতরে: ৩২.৭৬৮kHz ক্রিস্টাল</text>
   <text class="lbl-sm" x="150" y="122" font-size="10">+ তাপ-ক্ষতিপূরণ (TCXO)</text>
   <text class="lbl-sm" x="150" y="142" font-size="10">+ কয়েন-ব্যাটারি-ইনপুট</text>
-  <text class="lbl-sm" x="150" y="162" font-size="10">I2C ঠিকানা ০x68</text>
+  <text class="lbl-sm" x="150" y="162" font-size="10">I2C ঠিকানা 0x68</text>
   <rect class="cell-cyan" x="300" y="50" width="230" height="120"/>
   <text class="lbl-cyan" x="415" y="76">পা-সারণি</text>
   <text class="lbl-sm" x="415" y="100" font-size="10">VCC · GND · SDA · SCL</text>
@@ -619,7 +621,7 @@ doors.push({
 "Yes — numbers into OCR, seconds out."
 "Then today: the door of measured rationing." He held up the egg-motor, touched the battery to its wires — it spun full-speed; disconnected — stopped. "See? Two states — fully on, fully off. If I tell this motor 'turn at half' — what do I do?" You thought: "Half... voltage?" He laughed: "The chip's hand has no half-voltage! It knows two words — fully present, fully absent. Today you'll learn how half-speed emerges from that two-word world. And the reverse — fan-breeze, water-wetness, room-heat: the continuous things, and how a chip reads them as numbers."</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে:</strong> রুবেল ভাইয়ের প্রথম 'স্মার্ট-পাখা' মর্সেম — গ্রাহক চেয়েছিল ধীর-গতি। সে ভোল্টেজ-ডিভাইডার দিয়ে 'অর্ধেক ভোল্টেজ' বানাল (রেজিস্টরে অর্ধেক শক্তি তাপে বায়না!) — রেজিস্টার গরম, মোটর দুর্বল, দক্ষতা ভয়ানক। তারপর ভাইন্ডিং-যুগের পুরনো কৌশল মনে পড়ল — সিরিখ-রেজিস্টর (তাপে-বায়না) নয়, <strong>দ্রুত চালু-বন্ধ (সুইচিং)</strong>: ট্রানজিস্টর স্যাচুরেশনে প্রায়-শূন্য ক্ষতি, শক্তি যায় মোটরেই। <strong>অ্যানালগ-ভাগ (linear) মানে তাপে-বায়না; ডিজিটাল-ভাগ (PWM) মানে সময়ে-ভাগ — ইঞ্জিনিয়ারিং-ইতিহাসের এক বড় ধাপ।</strong></div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে:</strong> রুবেল ভাইয়ের প্রথম 'স্মার্ট-পাখা' মরসুম — গ্রাহক চেয়েছিল ধীর-গতি। সে ভোল্টেজ-ডিভাইডার দিয়ে 'অর্ধেক ভোল্টেজ' বানাল (রেজিস্টরে অর্ধেক শক্তি তাপে খোয়ানো!) — রেজিস্টার গরম, মোটর দুর্বল, দক্ষতা ভয়ানক। তারপর ভাইন্ডিং-যুগের পুরনো কৌশল মনে পড়ল — সিরিজ-রেজিস্টর (তাপে-বায়না) নয়, <strong>দ্রুত চালু-বন্ধ (সুইচিং)</strong>: ট্রানজিস্টর স্যাচুরেশনে প্রায়-শূন্য ক্ষতি, শক্তি যায় মোটরেই। <strong>অ্যানালগ-ভাগ (linear) মানে তাপে-বায়না; ডিজিটাল-ভাগ (PWM) মানে সময়ে-ভাগ — ইঞ্জিনিয়ারিং-ইতিহাসের এক বড় ধাপ।</strong></div></div>
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">Duty%</div><div class="sc-label">HIGH-সময়ের ভগ্নাংশ — গড় শক্তির মাপক (২৫/৫০/৭৫%)</div></div>
@@ -678,7 +680,10 @@ PWM (আর্দুইনো-স্তর — analogWrite):
 PWM (bare-metal AVR — Timer0 Fast-PWM):
   DDRD |= (1&lt;&lt;6);                 // OC0A পিন-আউটপুট
   TCCR0A = (1&lt;&lt;COM0A1) | (1&lt;&lt;WGM00) | (1&lt;&lt;WGM01);
-  TCCR0B = (1&lt;&lt;CS01);              // ÷৮ → ~৩.৯kHz @১৬MHz
+  TCCR0B = (1&lt;&lt;CS01);              // ÷৮ → ১৬MHz/(৮×২৫৬) = ৭.৮kHz
+  // ফ্রিকোয়েন্সি-সূত্র: f = clock / (prescaler × ২৫৬)   [Fast PWM]
+  // ফেজ-কারেক্ট মোডে (WGM01 বাদ) গণনা ওঠে-নামে → ৫১০ ধাপ
+  //   → ১৬MHz/(৮×৫১০) = ৩.৯kHz; মোটরে এই মোড বেশি শান্ত
   OCR0A  = 64;                     // duty ≈ ৬৪/২৫৫
   // WGM-বিট-জোড়াই মোড-নির্বাচক (CTC-এর ভাই, দরজা ১১!)
 
@@ -689,12 +694,15 @@ PWM (bare-metal AVR — Timer0 Fast-PWM):
 ADC (আর্দুইনো):
   int raw = analogRead(A0);        // ০…১০২৩ (১০-বিট)
   float v  = raw * 5.0 / 1023.0;   // ভোল্টেজে (Vref-মতো)
-  // ৩.৩V-বোর্ডে ৩.৩.০ বসাও — মাপ-কাঠি মিলাও!
+  // ৩.৩V-বোর্ডে ৩.৩ বসাও — মাপ-কাঠি মিলাও!
 
 ADC (bare-metal AVR — এককালের পূর্ণ নামাবলি):
   ADMUX  = (1&lt;&lt;REFS0);             // Vref=AVcc, চ্যানেল ০
-  ADCSRA = (1&lt;&lt;ADEN) | (1&lt;&lt;ADPS2) | (1&lt;&lt;ADPS1);
-                                   // চালু + ÷৬৪ (১২৫kHz মিষ্টি-স্পট)
+  ADCSRA = (1&lt;&lt;ADEN) | (1&lt;&lt;ADPS2) | (1&lt;&lt;ADPS1) | (1&lt;&lt;ADPS0);
+                                   // চালু + ÷১২৮ → ১৬MHz/১২৮ = ১২৫kHz
+                                   // (ডেটাশিট: পূর্ণ ১০-বিট নির্ভুলতার
+                                   //  জন্য ADC-ঘড়ি ৫০–২০০kHz-এর মধ্যে;
+                                   //  ÷৬৪ দিলে ২৫০kHz — সীমা ছাড়ায়!)
   ADCSRA |= (1&lt;&lt;ADSC);             // রওনা দাও
   while (ADCSRA &amp; (1&lt;&lt;ADSC));      // অনুবাদ শেষ-হওয়ার ডাক
   int raw = ADC;                   // ১০-বিট খাতা
@@ -740,7 +748,7 @@ ADC-হাতিয়ারের থলি:
   <text class="lbl-sm" x="490" y="98" font-size="10">ভলিউম/সেট-পয়েন্ট</text>
   <rect class="cell" x="30" y="150" width="510" height="60"/>
   <text class="lbl-sm" x="285" y="172" font-size="10">সবাই ডিভাইডার-সেতুতে (দরজা ৬) বসে ADC-পিনে পৌঁছায় — রোধ/ভোল্টেজ → সংখ্যা → খাতা (সেন্সর-শিট) → একক</text>
-  <text class="lbl-sm" x="285" y="192" font-size="10">বিশেষ-জাত: DHT২২ (ডিজিটাল-প্রোটোকল), MPU৬০৫০ (I2C) — তারা চিঠি-পথে কথা বলে (দরজা ১৩)</text>
+  <text class="lbl-sm" x="285" y="192" font-size="10">বিশেষ-জাত: DHT22 (ডিজিটাল-প্রোটোকল), MPU6050 (I2C) — তারা চিঠি-পথে কথা বলে (দরজা ১৩)</text>
 </svg>
 <div class="diag-cap">অ্যানালগ-জগতের প্রতিনিধিরা: তাপ, আলো, ভোল্টেজ, ঘূর্ণন — চার-ই রোধ-বা-ভোল্টেজ বদলে ডিভাইডার-সেতু পার হয়ে ADC-র সংখ্যায় যায়; ডিজিটাল-জাত সরাসরি চিঠিতে।</div>
 </div>

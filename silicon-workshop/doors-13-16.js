@@ -9,11 +9,11 @@ doors.push({
   recall:{
     q:"UART, SPI, I2C-এর তিন ডাক-স্বভাব এক-লাইনে কেমন — আর I2C-তে দুই মাস্টার একসাথে কথা বলতে গেলে কী হয়?",
     qen:"One line each for the three mail-systems — and what happens when two I2C masters speak at once?",
-    a:"UART: দুই তার (TX→RX, RX←TX), দুই পক্ষ, নির্দিষ্ট বিট-হার (৯৬০০/১১৫২০০) ও ফ্রেম (start+৮ডেটা+stop) — ব্যক্তিগত-চিঠি, কোনো ঠিকানা নেই, দুজনের বাইরে কেউ নেই; ক্লক-তারও নেই — দুজনের ঘড়ি আগে-থেকে মিলানো (বিট-হার চুক্তি)। SPI: চার তার (MOSI/MISO/SCK/SS) — এক মাস্টার একাধিক দাস; দ্রুততম (দশ MHz+), কিন্তু প্রতি দাসে আলাদা SS-নির্বাচন-তার লাগে আর কোনো স্বীকৃতি (ack) নেই — প্রভু-আঙুল-ইশারা, চোখের ইশারায় চলে। I2C: মাত্র দুই তার (SDA+SCL) টেনে-তোলা-সহ (open-drain+pull-up), সবাই একই রাস্তায় — প্রতিটা চিপের ৭-বিট ঠিকানা; মাস্টার ঠিকানা-ডাক দেয় (START+addr+R/W), দাস স্বীকৃতি-বিট (ACK) টেনে জানায় 'পেয়েছি' — পোস্ট-অফিস, এক রাস্তায় ১০০+ চিপ। দুই মাস্টার একসাথে শুরু করলে arbitration: উভয় লেখে, কিন্তু SDA টেনে-তোলা-যায় — যে ১-লিখেছিল কিন্তু রাস্তায় ০-দেখলো, সে বুঝলো হেরেছে, চুপ হয়ে গেল (নিম্ন-বিট জয়ী) — কোনো চিঠি নষ্ট হয় না, কারও মুখ কালো হয় না। DS3231 (Door ১১) ঠিক এভাবেই বসে: ঠিকানা ০x68। তিনের ব্যবহার-নিয়ম: দ্রুত-বেশি-ডেটা (ফ্ল্যাশ-স্ক্রিন) → SPI; সরু-সংখ্যা-বেশি-যন্ত্র (সেন্সর-RTC) → I2C; মানুষের সাথে/দুই-বোর্ড → UART।",
+    a:"UART: দুই তার (TX→RX, RX←TX), দুই পক্ষ, নির্দিষ্ট বিট-হার (৯৬০০/১১৫২০০) ও ফ্রেম (start+৮ডেটা+stop) — ব্যক্তিগত-চিঠি, কোনো ঠিকানা নেই, দুজনের বাইরে কেউ নেই; ক্লক-তারও নেই — দুজনের ঘড়ি আগে-থেকে মিলানো (বিট-হার চুক্তি)। SPI: চার তার (MOSI/MISO/SCK/SS) — এক মাস্টার একাধিক দাস; দ্রুততম (দশ MHz+), কিন্তু প্রতি দাসে আলাদা SS-নির্বাচন-তার লাগে আর কোনো স্বীকৃতি (ack) নেই — প্রভু-আঙুল-ইশারা, চোখের ইশারায় চলে। I2C: মাত্র দুই তার (SDA+SCL) টেনে-তোলা-সহ (open-drain+pull-up), সবাই একই রাস্তায় — প্রতিটা চিপের ৭-বিট ঠিকানা; মাস্টার ঠিকানা-ডাক দেয় (START+addr+R/W), দাস স্বীকৃতি-বিট (ACK) টেনে জানায় 'পেয়েছি' — পোস্ট-অফিস, এক রাস্তায় ১০০+ চিপ। দুই মাস্টার একসাথে শুরু করলে arbitration: উভয় লেখে, কিন্তু SDA টেনে-তোলা-যায় — যে ১-লিখেছিল কিন্তু রাস্তায় ০-দেখলো, সে বুঝলো হেরেছে, চুপ হয়ে গেল (নিম্ন-বিট জয়ী) — কোনো চিঠি নষ্ট হয় না, কারও মুখ কালো হয় না। DS3231 (Door ১১) ঠিক এভাবেই বসে: ঠিকানা 0x68। তিনের ব্যবহার-নিয়ম: দ্রুত-বেশি-ডেটা (ফ্ল্যাশ-স্ক্রিন) → SPI; সরু-সংখ্যা-বেশি-যন্ত্র (সেন্সর-RTC) → I2C; মানুষের সাথে/দুই-বোর্ড → UART।",
     aen:"UART: two wires, two parties, agreed bit-rate, no addresses (private letters). SPI: four wires, one master many slaves, fastest, per-slave select, no acks. I2C: two open-drain wires with pull-ups, 7-bit addresses + ACK — a post office; dual masters resolve by arbitration (loser sees the 0 and yields). DS3231 sits at 0x68. Fast bulk → SPI; many small sensors → I2C; humans/two boards → UART."
   },
   story:`
-<p class="scene-setting">ত্রয়োদশ দরজা। পাটুয়াটুলির মোড়ে পুরনো ডাকঘর-ভবনের নিচতলা — হাসান সাহেবের রিটায়ার্ড-আসর: কাচের শোকেসে সাজানো পুরনো সিলমোহর-দিয়ে-ছাপা খামের স্তূপ, দেয়ালে ঝুলছে তাঁর চাকরির আমলের 'টাকা-খাতা'র খালি ফর্ম, টেবিলে আধুনিক ডেভ-বোর্ড তিনটে — প্রতিটার সাথে আলাদা তারের গুচ্ছ। হাসান সাহেব — ষাট-পার, চুল সাদা, গায়ে ধুতি-পাঞ্জাবি, চোখে হালকা রিডিং-গ্লাস, আর তাঁর সিগনেচার: বুকপকেটে সবসময় একটা পুরনো স্টিলের তারিখ-সীল (date-stamp) — কথার মাঝে কোনো সংখ্যা-তারিখ এলেই সীলটা বের করে হাতে ঘোরান, যেন মুখের সংখ্যাটাও অফিসিয়াল করে নিতে হয়। গন্ধ — পুরনো কাগজ, গামলা, চা। শব্দ — রাস্তার ভনিতা, টেবিলে বোর্ড-তার লাগানোর টুক-টাক, দূরে ডাক-পিয়নের সাইকেলের ঘণ্টি।</p>
+<p class="scene-setting">ত্রয়োদশ দরজা। পাটুয়াটুলির মোড়ে পুরনো ডাকঘর-ভবনের নিচতলা — হাসান সাহেবের রিটায়ার্ড-আসর: কাচের শোকেসে সাজানো পুরনো সিলমোহর-দিয়ে-ছাপা খামের স্তূপ, দেয়ালে ঝুলছে তাঁর চাকরির আমলের 'টাকা-খাতা'র খালি ফর্ম, টেবিলে আধুনিক ডেভ-বোর্ড তিনটে — প্রতিটার সাথে আলাদা তারের গুচ্ছ। হাসান সাহেব — ষাট-পার, চুল সাদা, গায়ে ধুতি-পাঞ্জাবি, চোখে হালকা রিডিং-গ্লাস, আর তাঁর সিগনেচার: বুকপকেটে সবসময় একটা পুরনো স্টিলের তারিখ-সীল (date-stamp) — কথার মাঝে কোনো সংখ্যা-তারিখ এলেই সীলটা বের করে হাতে ঘোরান, যেন মুখের সংখ্যাটাও অফিসিয়াল করে নিতে হয়। গন্ধ — পুরনো কাগজ, গালা-মোহর, চা। শব্দ — রাস্তার ভনভনানি, টেবিলে বোর্ড-তার লাগানোর টুক-টাক, দূরে ডাক-পিয়নের সাইকেলের ঘণ্টি।</p>
 <p class="scene-setting en">The thirteenth door. Ground floor of the old post-office building at Patuatuli's corner — Hasan's retired den: heaps of old wax-sealed envelopes in a glass case, blank ledger-forms of his service years on the wall, three modern dev boards on the table, each with its own wire-bunch. Hasan — past sixty, white hair, dhuti-panjabi, reading glasses, and his signature: an old steel date-stamp always in his breast pocket — whenever a number or date enters the conversation, out comes the stamp, twirled in hand, as if the spoken number too must be made official. Old paper, glue-pot, tea; street horns, board-wires clicking, a postman's bicycle bell far off.</p>
 
 <div class="dialogue">তুমি সিঁড়িতে সালাম দিলে। হাসান সাহেব গ্লাস তুলে হাসলেন। "রুবেল ভাইয়ের আংশিক-দান দেখে এসেছ? এখন চিপ দেখতেও পায়, মাপা-শক্তিতে ছোঁয়ও। তারপর?"
@@ -23,7 +23,7 @@ doors.push({
 "Then... a chip alone is alone — sensors, screens, another chip — how do they talk?"
 "Ah!" He twirled the stamp. "That is my life's question. I spent thirty-four years in the post office — how a letter gets an address, an acknowledgment, which box receives which — all in my blood. Retired, teaching my grandson boards, I found — good heavens! The chip's world is my own post office! Today I'll teach you that post office — three kinds of mail systems."</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে (ডাকঘরের বিখ্যাত গল্প):</strong> হাসান সাহেবের নাতির প্রথম I2C-প্রজেক্ট — সেন্সর থেকে সারাক্ষণ ভুল-পাঠ ০xFF। খুঁটতে খুঁটতে দেখা গেল: SDA/SCL-এর পুল-আপ-রেজিস্টর বসানোই হয়নি — টেনে-তোলা-তার (open-drain) মানে দড়ি শুধু টানা যায়, ছাড়া হয় না নিজে থেকে; পুল-আপই দড়িটা 'ছাড়ে'। <strong>চিঠির ডাক-ব্যবস্থায় রাস্তার নিয়ম (pull-up) ভুললে ডাকই ওঠে না — স্বীকৃতি তো দূরের কথা।</strong> (দ্বিতীয় পাঠ: ঠিকানা ০x68-এর ভুল ০x86 — bit-shift করা ঠিকানা — ডাক-ফেরত রহস্যের আরেক পুরনো আসল কারণ।)</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে (ডাকঘরের বিখ্যাত গল্প):</strong> হাসান সাহেবের নাতির প্রথম I2C-প্রজেক্ট — সেন্সর থেকে সারাক্ষণ ভুল-পাঠ 0xFF। খুঁটতে খুঁটতে দেখা গেল: SDA/SCL-এর পুল-আপ-রেজিস্টর বসানোই হয়নি — টেনে-তোলা-তার (open-drain) মানে দড়ি শুধু টানা যায়, ছাড়া হয় না নিজে থেকে; পুল-আপই দড়িটা 'ছাড়ে'। <strong>চিঠির ডাক-ব্যবস্থায় রাস্তার নিয়ম (pull-up) ভুললে ডাকই ওঠে না — স্বীকৃতি তো দূরের কথা।</strong> (দ্বিতীয় পাঠ: ঠিকানা 0x68-এর ভুল 0x86 — bit-shift করা ঠিকানা — ডাক-ফেরত রহস্যের আরেক পুরনো আসল কারণ।)</div></div>
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">TX·RX</div><div class="sc-label">UART — দুই তার, দুই পক্ষ, বিট-হার-চুক্তি; মানুষের সিরিয়াল-জানালাও</div></div>
@@ -44,7 +44,7 @@ doors.push({
   <path class="edge-cyan" d="M 120 50 L 160 64" fill="none"/>
   <path class="edge-cyan" d="M 120 64 L 160 50" fill="none"/>
   <text class="lbl-sm" x="140" y="36" font-size="10">TX→RX · RX←TX</text>
-  <text class="lbl-sm" x="120" y="96">৯৬০০/৮N১ — দুজনের ঘড়ি-চুক্তি</text>
+  <text class="lbl-sm" x="120" y="96">৯৬০০/8N1 — দুজনের ঘড়ি-চুক্তি</text>
   <!-- SPI -->
   <text class="lbl-hot" x="120" y="130" font-size="12">SPI — প্রভুর ইশারা</text>
   <rect class="cell-hot" x="30" y="146" width="90" height="36"/>
@@ -57,7 +57,7 @@ doors.push({
   <text class="lbl-sm" x="195" y="210" font-size="10">দাস ৩</text>
   <path class="edge-hot" d="M 120 158 L 160 134 M 120 160 L 160 170 M 120 164 L 160 206" fill="none"/>
   <text class="lbl-sm" x="300" y="126" font-size="10">MOSI ↓ MISO ↑ SCK ⇄</text>
-  <text class="lbl-sm" x="300" y="144" font-size="10">SS১/SS২/SS৩ — আলাদা তার</text>
+  <text class="lbl-sm" x="300" y="144" font-size="10">SS1/SS2/SS3 — আলাদা তার</text>
   <!-- I2C -->
   <text class="lbl" x="450" y="24" font-size="12">I2C — পোস্ট-অফিস</text>
   <rect class="cell" x="380" y="40" width="90" height="30"/>
@@ -67,11 +67,11 @@ doors.push({
   <text class="lbl-sm" x="452" y="110" font-size="10">SDA</text>
   <text class="lbl-sm" x="404" y="110" font-size="10">SCL</text>
   <rect class="cell-cyan" x="470" y="95" width="70" height="24"/>
-  <text class="lbl-sm" x="505" y="111" font-size="10">০x৬৮ RTC</text>
+  <text class="lbl-sm" x="505" y="111" font-size="10">0x68 RTC</text>
   <rect class="cell-cyan" x="470" y="135" width="70" height="24"/>
-  <text class="lbl-sm" x="505" y="151" font-size="10">০x৪A সেন্সর</text>
+  <text class="lbl-sm" x="505" y="151" font-size="10">0x4A সেন্সর</text>
   <rect class="cell-cyan" x="470" y="175" width="70" height="24"/>
-  <text class="lbl-sm" x="505" y="191" font-size="10">০x3C স্ক্রিন</text>
+  <text class="lbl-sm" x="505" y="191" font-size="10">0x3C স্ক্রিন</text>
   <line class="edge" x1="440" y1="107" x2="470" y2="107"/>
   <line class="edge" x1="440" y1="147" x2="470" y2="147"/>
   <line class="edge" x1="440" y1="187" x2="470" y2="187"/>
@@ -85,7 +85,7 @@ doors.push({
 <div class="diag-cap">ওপরে UART-এর দুই-তার ক্রস-চিঠি; মাঝে SPI-র চার-তার প্রভু-দাস; ডানে I2C-র এক-রাস্তায় ঠিকানা-চিঠি (SDA/SCL + পুল-আপ) — তিন সমাজ-নির্মাণের তিন রুট।</div>
 </div>
 
-<div class="dialogue">হাসান সাহেব তিন বোর্ড সাজিয়ে তোমাকে একে-একে চালাতে দিলেন। প্রথমে UART: তোমার টার্মিনালে চিপের পাঠা প্রতিটা অক্ষর — "এ তো মানুষের সাথেও চলে, আর দুই বোর্ডের মধ্যেও — ব্যক্তিগত ডাক-সড়ক।" তারপর SPI: স্ক্রিনে ছবি উঠলো ঝলঝলে — "দেখো গতি! কিন্তু খেয়াল করো — প্রতিটা দাসের জন্য আলাদা নির্বাচন-তার। চিঠি নয়, আঙুল-ইশারা — বাড়তি যন্ত্র বাড়ালে তারও বাড়াতে হয়।" শেষে I2C: DS3231-এর ঠিকানায় ০x68 পাঠাতেই রেজিস্টার থেকে সময় ফিরে এলো — ACK-বিটে ছোট্ট টান! "দেখলে স্বীকৃতি? ডাকঘরের প্রাণ এই-ই — পাঠিয়েছি মাত্র নয়, <em>পৌঁছেছে</em> জানা।" তারপর তিনি দুই মাস্টারের গল্প বললেন — একই রাস্তায় দুজন একসাথে শুরু করলে ক্ষতি নেই: যে নিজের ১-এর জায়গায় রাস্তায় ০ দেখে, সে-ই পিছিয়ে যায় — "ডাকঘরে একে বলতাম সৌজন্য-প্রতিযোগিতা; চিপের ভাষায় arbitration। রাস্তা একটাই, অহংকার নয়।"</div>
+<div class="dialogue">হাসান সাহেব তিন বোর্ড সাজিয়ে তোমাকে একে-একে চালাতে দিলেন। প্রথমে UART: তোমার টার্মিনালে চিপের পাঠা প্রতিটা অক্ষর — "এ তো মানুষের সাথেও চলে, আর দুই বোর্ডের মধ্যেও — ব্যক্তিগত ডাক-সড়ক।" তারপর SPI: স্ক্রিনে ছবি উঠলো ঝলঝলে — "দেখো গতি! কিন্তু খেয়াল করো — প্রতিটা দাসের জন্য আলাদা নির্বাচন-তার। চিঠি নয়, আঙুল-ইশারা — বাড়তি যন্ত্র বাড়ালে তারও বাড়াতে হয়।" শেষে I2C: DS3231-এর ঠিকানায় 0x68 পাঠাতেই রেজিস্টার থেকে সময় ফিরে এলো — ACK-বিটে ছোট্ট টান! "দেখলে স্বীকৃতি? ডাকঘরের প্রাণ এই-ই — পাঠিয়েছি মাত্র নয়, <em>পৌঁছেছে</em> জানা।" তারপর তিনি দুই মাস্টারের গল্প বললেন — একই রাস্তায় দুজন একসাথে শুরু করলে ক্ষতি নেই: যে নিজের ১-এর জায়গায় রাস্তায় ০ দেখে, সে-ই পিছিয়ে যায় — "ডাকঘরে একে বলতাম সৌজন্য-প্রতিযোগিতা; চিপের ভাষায় arbitration। রাস্তা একটাই, অহংকার নয়।"</div>
 <div class="dialogue en">Hasan set the three boards and let you drive each. First UART: every character the chip sent in your terminal — "this works with humans too, and between two boards — a private mail-road." Then SPI: a screen lit crisp — "see the speed! But note — a separate select-wire per slave. Not letters, finger-signals; add a device, add a wire." Finally I2C: address 0x68 to the DS3231 — time came back from its registers, a tiny pull on the ACK bit! "Saw the acknowledgment? The post office's soul is this — not merely sent, but <em>known to arrive</em>." Then the two-master story — both starting on one road, harmlessly: whoever writes 1 and sees 0 on the wire yields — "in the post office I called it courteous contention; in chip-tongue, arbitration. One road, no egos."</div>
 
 <div class="code-block">ডাক-ব্যবস্থার নামাবলি — UART/SPI/I2C in code:
@@ -93,8 +93,8 @@ doors.push({
 UART — দুই-পক্ষ চিঠি (মানুষের সিরিয়াল-জানালা):
   আর্দুইনো: Serial.begin(115200);
              Serial.println("হ্যালো পাটুয়াটুলি!");
-  বেয়ার-মেটাল সার: UBRR০ = বিট-হার-ভাগক; UCSR০B = RXEN|TXEN;
-    পাঠাও: UDR০ = 'A'; পড়ো: c = UDR০;
+  বেয়ার-মেটাল সার: UBRR0 = বিট-হার-ভাগক; UCSR0B = RXEN|TXEN;
+    পাঠাও: UDR0 = 'A'; পড়ো: c = UDR0;
   ফ্রেম: START + ৮ ডেটা (+parity) + STOP — ঘড়ি-চুক্তি (বিট-হার)
 
 SPI — দ্রুত-ভলিউম (চার তার):
@@ -116,7 +116,7 @@ I2C — ঠিকানা-চিঠি (দুই তার, পুল-আপ �
   while (Wire.available()) b = Wire.read();
 
   ঠিকানা-নোট: ৭-বিট ঠিকানা → ফ্রেমে ৮ম বিট R/W
-  (০x68 লেখা হয় বাসে ০xD0 হিসেবে — নাতির ০x86-রহস্যের জবাব!)
+  (0x68 লেখা হয় বাসে 0xD0 হিসেবে — নাতির 0x86-রহস্যের জবাব!)
   স্ক্যানার-ছোট-কাজ: ১ থেকে ১২৭ পর্যন্ত ডেকে ACK-দাতার তালিকা —
   অচেনা বাসের প্রথম কাজ এক্কেবারে
 
@@ -134,7 +134,7 @@ I2C — ঠিকানা-চিঠি (দুই তার, পুল-আপ �
   RS-232/485: UART-এর দূর-দূরান্ত আত্মীয় (১৯৬০-এর দশকের চুক্তি;
     485-এর ডিফারেনশিয়াল-জোড়া কারখানার লম্বা তারে বিদ্যুৎ-শব্দ কাটে)</div>
 
-<div class="dialogue">সন্ধ্যার আজানের সময় হাসান সাহেব সীলটা বুকপকেটে ঢুকিয়ে বললেন: "শেষ কথা। সুলাইমান-আলাইহিস-সালাম সাবার রানীর কাছে পাঠালেন এক পত্র — কুরআন বলছে: 'এ তো সম্মানিত পত্র, সুলাইমানের কাছ থেকে এসেছে, আল্লাহর নামে, দয়াময়ের নামে' (২৭:২৯-৩০)। লক্ষ্য করো — পত্রের গায়ে তিনটা জিনিস: প্রেরক, প্রাপক, উদ্দেশ্য — আর হুদহুদ নিয়ে গেল, রানী স্বীকার করলো, উত্তর ফিরলো। এ যে আমার প্রোটোকল-পাঠের চেয়েও নিখুঁত চিঠির ব্যাকরণ: হেডার, ঠিকানা, ACK! তোমার চিপের প্রতিটা I2C-ফ্রেম ওই পত্রেরই নাতি-নাতনি। যে যন্ত্র সম্মানের সাথে চিঠি পাঠায় — ঠিকানা, স্বীকৃতি, সৌজন্য — তার সমাজ টেকে। কাল আরিফ ভাইয়ের কাছে যাও — যাত্রার শেষ-প্রস্তুতি: বুট-দরজা, RTOS আর ডিবাগ-ঘাট — মিকাতের মতো নিয়ত-স্থির করার দপ্তর।"</div>
+<div class="dialogue">সন্ধ্যার আযানের সময় হাসান সাহেব সীলটা বুকপকেটে ঢুকিয়ে বললেন: "শেষ কথা। সুলাইমান-আলাইহিস-সালাম সাবার রানীর কাছে পাঠালেন এক পত্র — কুরআন বলছে: 'এ তো সম্মানিত পত্র, সুলাইমানের কাছ থেকে এসেছে, আল্লাহর নামে, দয়াময়ের নামে' (২৭:২৯-৩০)। লক্ষ্য করো — পত্রের গায়ে তিনটা জিনিস: প্রেরক, প্রাপক, উদ্দেশ্য — আর হুদহুদ নিয়ে গেল, রানী স্বীকার করলো, উত্তর ফিরলো। এ যে আমার প্রোটোকল-পাঠের চেয়েও নিখুঁত চিঠির ব্যাকরণ: হেডার, ঠিকানা, ACK! তোমার চিপের প্রতিটা I2C-ফ্রেম ওই পত্রেরই নাতি-নাতনি। যে যন্ত্র সম্মানের সাথে চিঠি পাঠায় — ঠিকানা, স্বীকৃতি, সৌজন্য — তার সমাজ টেকে। কাল আরিফ ভাইয়ের কাছে যাও — যাত্রার শেষ-প্রস্তুতি: বুট-দরজা, RTOS আর ডিবাগ-ঘাট — মিকাতের মতো নিয়ত-স্থির করার দপ্তর।"</div>
 <div class="dialogue en">At the evening adhan, Hasan slipped the stamp into his pocket: "Last word. Solomon sent a letter to the queen of Sheba — the Quran says: 'It is a noble letter, from Solomon, in the name of Allah, the Merciful' (27:29-30). Mark — three things on its face: sender, recipient, purpose; the hoopoe carried it, the queen acknowledged, the reply returned. A more perfect grammar of letters than any protocol lecture: header, address, ACK! Every I2C frame in your chip is that letter's grandchild. A machine that sends letters with honor — address, acknowledgment, courtesy — its society endures. Tomorrow — Arif's: the journey's final preparation — the boot gate, RTOS, and the debug wharf; the department of fixing intention, like the miqat."</div>
 
 
@@ -145,11 +145,11 @@ I2C — ঠিকানা-চিঠি (দুই তার, পুল-আপ �
 <div class="diag-title">কম্পোনেন্ট-চেনা — USB-সিরিয়াল সেতু ও RS-485-এর লম্বা-তার</div>
 <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
   <rect class="cell" x="30" y="40" width="130" height="70"/>
-  <text class="lbl" x="95" y="66">CH34০/CP২১০২</text>
+  <text class="lbl" x="95" y="66">CH340/CP2102</text>
   <text class="lbl-sm" x="95" y="88" font-size="10">USB↔UART সেতু</text>
   <text class="lbl-sm" x="95" y="104" font-size="10">ল্যাপটপ↔চিপ-বন্ধু</text>
   <rect class="cell-cyan" x="200" y="40" width="150" height="70"/>
-  <text class="lbl-cyan" x="275" y="66">MAX৪৮৫</text>
+  <text class="lbl-cyan" x="275" y="66">MAX485</text>
   <text class="lbl-sm" x="275" y="88" font-size="10">UART↔ডিফারেনশিয়াল</text>
   <text class="lbl-sm" x="275" y="104" font-size="10">কিমি-তার, কারখানা-শব্দ-সহ</text>
   <rect class="cell" x="390" y="40" width="140" height="70"/>
@@ -171,7 +171,7 @@ I2C — ঠিকানা-চিঠি (দুই তার, পুল-আপ �
   <text class="lbl-sm" x="55" y="164" font-size="10">START</text>
   <text class="lbl-sm" x="130" y="164" font-size="10">ডেটা-বিট ×৮ (LSB-আগে)</text>
   <text class="lbl-sm" x="310" y="164" font-size="10">STOP</text>
-  <text class="lbl" x="200" y="196" font-size="10">অক্ষর 'A' = ০b০১০০০০০১ — উল্টো-ক্রমে তারে!</text>
+  <text class="lbl" x="200" y="196" font-size="10">অক্ষর 'A' = 0b01000001 — উল্টো-ক্রমে তারে!</text>
   <rect class="cell" x="60" y="208" width="440" height="22"/>
   <text class="lbl-sm" x="280" y="223" font-size="10">৯৬০০ baud = প্রতি-বিট ১০৪μs → এক-ফ্রেম ≈ ১.০৪ms — দুই প্রান্তের ঘড়ি-সম্মতির সীমা ২-৩%</text>
 </svg>
@@ -185,14 +185,14 @@ I2C — ঠিকানা-চিঠি (দুই তার, পুল-আপ �
 </div>
 
 
-<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 13 — চিঠি-পথ — ওয়াক্ত-খাতা যুক্ত:</strong> DS3231 I2C-তে (০x68): ঠিকানা-ডাক → ACK → রেজিস্টার-পয়েন্টার → ৭-বাইট সময়। <strong>কেন-লগ:</strong> টাইমস্ট্যাম্প-ছাড়া ডেটা অনাথ — মেঘের খাতায় কোন পাঠ কখনের, তা-ই প্রশ্ন হয়ে যেত। এখন প্রতিটা পাঠের সাথে সময়ের সনদ; আর স্ক্যানার-স্কেচ দিয়ে বাস-জরিপ — কে কোন ঠিকানায় বসে আছে।</div></div>
-<div class="secret-box"><div class="label">দরজা ১৩ — রহস্য</div><div class="text">📮 চিপের সমাজ চিঠিতে: UART ব্যক্তিগত-দুই-পক্ষ, SPI প্রভু-আঙুল-দ্রুত, I2C এক-রাস্তায় ঠিকানা+স্বীকৃতি — সৌজন্যই প্রোটোকল।<br><small>TX/RX বিট-হার-চুক্তি; SS-নির্বাচন; SDA/SCL+পুল-আপ, ACK, arbitration; ০x68→বাসে ০xD0। পত্র: ২৭:২৯-৩০।</small></div></div>`,
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 13 — চিঠি-পথ — ওয়াক্ত-খাতা যুক্ত:</strong> DS3231 I2C-তে (0x68): ঠিকানা-ডাক → ACK → রেজিস্টার-পয়েন্টার → ৭-বাইট সময়। <strong>কেন-লগ:</strong> টাইমস্ট্যাম্প-ছাড়া ডেটা অনাথ — মেঘের খাতায় কোন পাঠ কখনের, তা-ই প্রশ্ন হয়ে যেত। এখন প্রতিটা পাঠের সাথে সময়ের সনদ; আর স্ক্যানার-স্কেচ দিয়ে বাস-জরিপ — কে কোন ঠিকানায় বসে আছে।</div></div>
+<div class="secret-box"><div class="label">দরজা ১৩ — রহস্য</div><div class="text">📮 চিপের সমাজ চিঠিতে: UART ব্যক্তিগত-দুই-পক্ষ, SPI প্রভু-আঙুল-দ্রুত, I2C এক-রাস্তায় ঠিকানা+স্বীকৃতি — সৌজন্যই প্রোটোকল।<br><small>TX/RX বিট-হার-চুক্তি; SS-নির্বাচন; SDA/SCL+পুল-আপ, ACK, arbitration; 0x68→বাসে 0xD0। পত্র: ২৭:২৯-৩০।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
     body:`<ul class="checklist">
 <li><strong>তিন-ব্যবস্থার চরিত্র-বিভাজন:</strong> তার-সংখ্যা, ঠিকানা-থাকা, ACK-থাকা, গতি — চার-মাত্রার টেবিল মুখে বলা যাবে; নতুন পেরিফেরিয়াল পেলে কোনটা বেছে নেবে, সিদ্ধান্ত-সহ।</li>
 <li><strong>I2C-হাতে-চালানো:</strong> DS3231-পাঠের পূর্ণ সিকোয়েন্স (ঠিকানা→পয়েন্টার→read) — Wire-লাইব্রেরি দিয়ে আজই একবার চালাও; স্ক্যানার-স্কেচও লিখে ফেলো।</li>
-<li><strong>ঠিকানা-শিফট-রহস্য:</strong> ৭-বিট ০x68 বনাম বাস-বাইট ০xD0 — ডেটাশিটের দুই রকম লেখার কারণ এখন পরিষ্কার।</li>
+<li><strong>ঠিকানা-শিফট-রহস্য:</strong> ৭-বিট 0x68 বনাম বাস-বাইট 0xD0 — ডেটাশিটের দুই রকম লেখার কারণ এখন পরিষ্কার।</li>
 <li><strong>পুল-আপ-অন্তর্দৃষ্টি:</strong> open-drain মানে 'সবাই টানতে পারে, কেউ একা ছাড়তে পারে না' — পুল-আপই ছাড়ে; arbitration-এর ভিত্তিও একই।</li>
 <li><strong>ইতিহাস-শুদ্ধ:</strong> I2C — ফিলিপস, ১৯৮০-সালে উদ্ভাবিত (১৯৮২-প্যাটেন্ট/প্রকাশ); SPI — মোটরোলা, ৮০-এর দশকের গোড়া; RS-232 — ১৯৬০-এর দশকের EIA-চুক্তি।</li>
 </ul>`
@@ -208,7 +208,7 @@ doors.push({
   recall:{
     q:"পাওয়ার-অন থেকে তোমার main() পর্যন্ত কী কী স্তর পেরোয় — আর bare-metal লুপ বনাম RTOS-টাস্ক কখন কোনটা, JTAG তোমাকে কী ক্ষমতা দেয়?",
     qen:"What layers pass between power-on and your main() — bare-metal loop vs RTOS task when which, and what power does JTAG give you?",
-    a:"বুট-স্তর: (১) রিসেট-ভেক্টরে CPU লাফ (ঠিকানা চিপ-নকশায় নির্ধারিত; AVR-এ ফ্ল্যাশের ০x0000, ARM-এ ভেক্টর-টেবিলের প্রথম এন্ট্রি) → (২) স্টার্টআপ-কোড/বুটলোডার: স্ট্যাক-পয়েন্টার বসানো, .data কপি (ফ্ল্যাশ→RAM), .bss শূন্য-করণ, ঘড়ি-প্রি-স্কেলার স্থিরকরণ → (৩) তারপর main()। আর্দুইনো-বোর্ডে মাঝখানে বুটলোডার বসে: রিসেটে কয়েক সেকেন্ড সিরিয়াল-পোর্ট শোনে — নতুন কোড এলে ফ্ল্যাশে নিজেই লেখে, না এলে তোমার কোডে হাল ছাড়ে; এজন্যই 'আপলোড-বোতাম' চলে প্রোগ্রামার ছাড়াই। Memory map = শহরের জমিন-হাতবই: ঠিকানা-জগতে ফ্ল্যাশ/RAM/পেরিফেরিয়াল-রেজিস্টার কোথায় বসেছে — MCU-তে প্রায়ই একই ঠিকানা-স্রোতে মিশ্র (মেমোরি-ম্যাপড I/O, Door ৮-এর চিঠি-পদ্ধতির ভিত্তি!)। bare-metal বনাম RTOS: bare-metal মানে এক লুপ + ইন্টারাপ্ট — সরল, নির্ভরযোগ্য, ছোট; RTOS (FreeRTOS — রিচার্ড ব্যারি, ২০০৩; এখন AWS-এর হেফাজতে) মানে অনেক টাস্ক নিজেদের 'একসাথে চলার' বিভ্রমে চলে — শিডিউলার প্রতি টিকে সিদ্ধান্ত নেয় কে চলবে (অগ্রাধিকার-ভিত্তিক, প্রিএম্পশন-সহ), প্রতিটা টাস্কের নিজস্ব স্ট্যাক; সেমাফোর/কিউ দিয়ে টাস্ক-সময়/সম্পদ-ভাগ। সিদ্ধান্ত-নিয়ম: কয়েকটা স্বাধীন-সময়ের কাজ + কঠিন-সময়-সীমা + বড় কোড → RTOS; এক-লাইনের নিয়ন্ত্রণ → bare-metal-ই সরল। JTAG/SWD = পেছনের দরজা-ডাক্তার: চিপ চলার সময় ভেতরে ঢুকে দেখো — রেজিস্টার-মান পড়া, ব্রেক-পয়েন্টে থামানো, এক-ধাপ করে চালানো, এমনকি ফ্ল্যাশ-প্রোগ্রামিং। JTAG = IEEE 1149.1-১৯৯০ প্রমিত (৪-৫ পিন), SWD = ARM-এর দুই-তার সংক্ষিপ্ত রূপ — পেশাদার বোর্ডে সোনার প্যাডগুলো ওরাই। printf-ডিবাগ যেখানে অন্ধ, ওখানে এ-চোখ সর্বদৃষ্ট।",
+    a:"বুট-স্তর: (১) রিসেট-ভেক্টরে CPU লাফ (ঠিকানা চিপ-নকশায় নির্ধারিত; AVR-এ ফ্ল্যাশের 0x0000, ARM-এ ভেক্টর-টেবিলের প্রথম এন্ট্রি) → (২) স্টার্টআপ-কোড/বুটলোডার: স্ট্যাক-পয়েন্টার বসানো, .data কপি (ফ্ল্যাশ→RAM), .bss শূন্য-করণ, ঘড়ি-প্রি-স্কেলার স্থিরকরণ → (৩) তারপর main()। আর্দুইনো-বোর্ডে মাঝখানে বুটলোডার বসে: রিসেটে কয়েক সেকেন্ড সিরিয়াল-পোর্ট শোনে — নতুন কোড এলে ফ্ল্যাশে নিজেই লেখে, না এলে তোমার কোডে হাল ছাড়ে; এজন্যই 'আপলোড-বোতাম' চলে প্রোগ্রামার ছাড়াই। Memory map = শহরের জমিন-হাতবই: ঠিকানা-জগতে ফ্ল্যাশ/RAM/পেরিফেরিয়াল-রেজিস্টার কোথায় বসেছে — MCU-তে প্রায়ই একই ঠিকানা-স্রোতে মিশ্র (মেমোরি-ম্যাপড I/O, Door ৮-এর চিঠি-পদ্ধতির ভিত্তি!)। bare-metal বনাম RTOS: bare-metal মানে এক লুপ + ইন্টারাপ্ট — সরল, নির্ভরযোগ্য, ছোট; RTOS (FreeRTOS — রিচার্ড ব্যারি, ২০০৩; এখন AWS-এর হেফাজতে) মানে অনেক টাস্ক নিজেদের 'একসাথে চলার' বিভ্রমে চলে — শিডিউলার প্রতি টিকে সিদ্ধান্ত নেয় কে চলবে (অগ্রাধিকার-ভিত্তিক, প্রিএম্পশন-সহ), প্রতিটা টাস্কের নিজস্ব স্ট্যাক; সেমাফোর/কিউ দিয়ে টাস্ক-সময়/সম্পদ-ভাগ। সিদ্ধান্ত-নিয়ম: কয়েকটা স্বাধীন-সময়ের কাজ + কঠিন-সময়-সীমা + বড় কোড → RTOS; এক-লাইনের নিয়ন্ত্রণ → bare-metal-ই সরল। JTAG/SWD = পেছনের দরজা-ডাক্তার: চিপ চলার সময় ভেতরে ঢুকে দেখো — রেজিস্টার-মান পড়া, ব্রেক-পয়েন্টে থামানো, এক-ধাপ করে চালানো, এমনকি ফ্ল্যাশ-প্রোগ্রামিং। JTAG = IEEE 1149.1-১৯৯০ প্রমিত (৪-৫ পিন), SWD = ARM-এর দুই-তার সংক্ষিপ্ত রূপ — পেশাদার বোর্ডে সোনার প্যাডগুলো ওরাই। printf-ডিবাগ যেখানে অন্ধ, ওখানে এ-চোখ সর্বদৃষ্ট।",
     aen:"Boot: reset-vector jump → startup (stack, .data copy, .bss zero, clocks) → main(). Arduino's bootloader listens on serial a few seconds, self-flashing, else hands off. Memory map: the address book placing Flash/RAM/peripherals. Bare-metal = one loop + interrupts; RTOS (FreeRTOS, Barry 2003, AWS-stewarded) = many tasks, priority preemptive scheduler, per-task stacks, semaphores/queues. JTAG (IEEE 1149.1-1990, 4-5 pins) / SWD (ARM 2-wire) = live register view, breakpoints, single-step, flashing."
   },
   story:`
@@ -221,7 +221,7 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে (আরিফ ভাইয়ের কাছের গল্প):</strong> তাঁর দলের এক প্রজেক্ট — মাঝে মাঝেই ডিভাইস বুটের পর মরে থাকতো, লগ-এ কিছু নেই। printf দিয়ে ঘণ্টা নষ্ট; শেষে JTAG-প্রোব লাগালেন — ব্রেক-পয়েন্ট বুট-শুরুতে, এক-ধাপ-এক-ধাপ: দেখা গেল .data-কপির আগে স্ট্যাক-পয়েন্টার বসেনি (লিংকার-স্ক্রিপ্টের ভুল) — প্রথম ফাংশন-কলেই শহর-পতন, বার্তা দেওয়ার আগেই। <strong>চোখের ডাক্তার অন্ধ-ব্যথার আগেই রোগ দেখে — এমন ফাঁদে printf-অন্ধতা মারাত্মক।</strong></div></div>
 
 <div class="stat-grid">
-<div class="stat-card"><div class="sc-num">০x০০০০</div><div class="sc-label">রিসেট-ভেক্টর — জাগরণের প্রথম ঠিকানা; ARM-এ ভেক্টর-টেবিলের প্রথম এন্ট্রি</div></div>
+<div class="stat-card"><div class="sc-num">0x0000</div><div class="sc-label">রিসেট-ভেক্টর — জাগরণের প্রথম ঠিকানা; ARM-এ ভেক্টর-টেবিলের প্রথম এন্ট্রি</div></div>
 <div class="stat-card"><div class="sc-num">.data/.bss</div><div class="sc-label">স্টার্টআপের দুই কাজ: ফ্ল্যাশ→RAM কপি; শূন্য-স্ফীতি</div></div>
 <div class="stat-card"><div class="sc-num">২০০৩</div><div class="sc-label">FreeRTOS — রিচার্ড ব্যারি; এখন AWS-হেফাজতে (২০১৭-থেকে)</div></div>
 <div class="stat-card"><div class="sc-num">SWD·২ তার</div><div class="sc-label">ARM-এর সংক্ষিপ্ত ডিবাগ-দরজা; JTAG=IEEE 1149.1-১৯৯০ (৪-৫ পিন)</div></div>
@@ -335,7 +335,7 @@ bare-metal বনাম RTOS — সিদ্ধান্ত-স্কেল:
   <text class="lbl-sm" x="450" y="82" font-size="10">GND-প্যাড · SWD-জোড়া</text>
   <text class="lbl-sm" x="450" y="100" font-size="10">UART-TX রিং-প্যাড</text>
   <rect class="cell" x="30" y="150" width="500" height="56"/>
-  <text class="lbl-sm" x="280" y="172" font-size="10">বোর্ড-নকশায় ডিবাগ-দরজা রেখো: চার-প্যাড (৩.৩V·GND·SWDIO·SWCLK) কোণে — ফিল্ড-মেরামতের নাড়ি-পরীক্ষার জায়গা</text>
+  <text class="lbl-sm" x="280" y="172" font-size="10">বোর্ড-নকশায় ডিবাগ-দরজা রেখো — ARM-এ ৪ প্যাড (৩.৩V·GND·SWDIO·SWCLK), ESP32-এ ৬ (৩.৩V·GND·TMS·TCK·TDI·TDO)</text>
   <text class="lbl-sm" x="280" y="192" font-size="10">প্রোডাক্টে SWD-প্যাড থাকা মানে অসুস্থ-ডিভাইসও চোখের সামনে জীবিত-পরীক্ষা সম্ভব</text>
 </svg>
 <div class="diag-cap">ডাক্তারের যন্ত্রের মতো: প্রোব-জাত আছে, কিন্তু রোগীর শরীরে নাড়ির-জায়গাও থাকতে হয় — টেস্ট-পয়েন্ট-সহ নকশাই পেশাদার-বোর্ডের চিহ্ন।</div>
@@ -372,7 +372,7 @@ bare-metal বনাম RTOS — সিদ্ধান্ত-স্কেল:
 </div>
 
 
-<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 14 — বুট-শৃঙ্খলা ও নাড়ি-পরীক্ষা:</strong> লিংকার-খাতা: .text/.data/.bss-এর ম্যাপ দেখলাম — ফ্ল্যাশ-দখল ৪২%, RAM ১৮% (স্ট্যাক-সতর্কতাসহ)। <strong>নিয়ম-স্থাপন:</strong> SWD-প্যাড বোর্ডে + প্রথম-বুট-লগ; watchdog-স্বাক্ষর যাচাই। ডিবাগ-প্রোব লাগিয়ে এক-ব্রেক-পয়েন্টে ওয়াক্ত-ফাংশনের ভেতরে ঢুকে দেখা — শহর-পতনের রহস্য নয়, এখন সব তদন্তযোগ্য।</div></div>
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 14 — বুট-শৃঙ্খলা ও নাড়ি-পরীক্ষা:</strong> লিংকার-খাতা: .text/.data/.bss-এর ম্যাপ দেখলাম — ফ্ল্যাশ-দখল ৪২%, RAM ১৮% (স্ট্যাক-সতর্কতাসহ)। <strong>নিয়ম-স্থাপন:</strong> ডিবাগ-প্যাড বোর্ডে (আমাদের ESP32-এ <em>JTAG</em>: TMS·TCK·TDI·TDO — ARM-বোর্ডে হতো ২-তারের SWD) + প্রথম-বুট-লগ; watchdog-স্বাক্ষর যাচাই। ডিবাগ-প্রোব লাগিয়ে এক-ব্রেক-পয়েন্টে ওয়াক্ত-ফাংশনের ভেতরে ঢুকে দেখা — শহর-পতনের রহস্য নয়, এখন সব তদন্তযোগ্য।</div></div>
 <div class="secret-box"><div class="label">দরজা ১৪ — রহস্য</div><div class="text">🕋 পাওয়ার-অন = পাঁচ মিকাত: ভেক্টর→স্ট্যাক→ডেটা→ঘড়ি→বুটলোডার→main; রাস্তার ফয়সালা শিডিউলারের, রোগের চোখ SWD/JTAG।<br><small>.data-কপি/.bss-শূন্য; বুটলোডার-শ্রবণ; FreeRTOS ২০০৩; অগ্রাধিকার+প্রিএম্পশন; ব্রেক-পয়েন্ট-জীবন। মিকাত: ২২:২৭।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
@@ -525,11 +525,11 @@ OTA — নিজের বাসা থেকে নতুন পালক:
   <text class="lbl-sm" x="105" y="82" font-size="10">WiFi+BT · PCB-অ্যান্টেনা</text>
   <text class="lbl-sm" x="105" y="100" font-size="10">সস্তা-সর্বজনীন</text>
   <rect class="cell-cyan" x="210" y="36" width="150" height="80"/>
-  <text class="lbl-cyan" x="285" y="60">SX১২৭৬ (LoRa)</text>
+  <text class="lbl-cyan" x="285" y="60">SX1276 (LoRa)</text>
   <text class="lbl-sm" x="285" y="82" font-size="10">সংবেদনশীল-রিসিভার</text>
   <text class="lbl-sm" x="285" y="100" font-size="10">−১৪৮dBm পর্যন্ত</text>
   <rect class="cell-hot" x="390" y="36" width="140" height="80"/>
-  <text class="lbl-hot" x="460" y="60">nRF২৪L০১</text>
+  <text class="lbl-hot" x="460" y="60">nRF24L01</text>
   <text class="lbl-sm" x="460" y="82" font-size="10">২.৪GHz SPI-রেডিও</text>
   <text class="lbl-sm" x="460" y="100" font-size="10">দ্রুত-সস্তা-সংক্ষিপ্ত</text>
   <line class="edge" x1="105" y1="116" x2="105" y2="150"/>
@@ -538,7 +538,7 @@ OTA — নিজের বাসা থেকে নতুন পালক:
   <text class="lbl-sm" x="105" y="210" font-size="10">তারের দৈর্ঘ্য = তরঙ্গের ভগ্নাংশ — জ্যামিতিই দক্ষতা</text>
   <rect class="cell" x="220" y="150" width="310" height="60"/>
   <text class="lbl-sm" x="375" y="172" font-size="10">ড্রপ-শিষ্টাচার: VCC-শেষ-এ কানেক্ট, অ্যান্টেনা-ছাড়া টিএক্স নিষেধ (PA-পোড়া)</text>
-  <text class="lbl-sm" x="375" y="192" font-size="10">লোরা-ফিডার: RG৫৮/লিটজ — ক্ষয়-মিলিয়ে দৈর্ঘ্য ছোট রাখো</text>
+  <text class="lbl-sm" x="375" y="192" font-size="10">লোরা-ফিডার: RG58/লিটজ — ক্ষয়-মিলিয়ে দৈর্ঘ্য ছোট রাখো</text>
 </svg>
 <div class="diag-cap">বাতাসের দরজার জ্যামিতি: অ্যান্টেনার দৈর্ঘ্য তরঙ্গদৈর্ঘ্যের ভগ্নাংশ-হলে সবচেয়ে দক্ষ — ২.৪GHz-এ ~৩সেমি; অ্যান্টেনা-ছাড়া পাঠানো চিপের অ্যামপ্লিফায়ার পোড়ানোর শাস্তি।</div>
 </div>
@@ -584,7 +584,7 @@ OTA — নিজের বাসা থেকে নতুন পালক:
     body:`<ul class="checklist">
 <li><strong>প্রজ্ঞাপন-বোধ:</strong> কেন ডিভাইস-সার্ভার পরস্পরকে চেনে না — ব্রোকার-মুক্তির স্কেল-যুক্তি ইন্টারভিউ-প্রশ্নে এক নিঃশ্বাসে বলো।</li>
 <li><strong>টপিক-গাছ হাতে:</strong> নিজের বাড়ির নকশা করো — কোন সেন্সর কোন শাখায়, ড্যাশবোর্ড কোন +# শুনবে।</li>
-<li><strong>QoS-সিদ্ধান্ত:</strong> তাপ-ধারা QoS০, কমান্ড QoS১, পেমেন্ট QoS২ — কেন, নিজের উদাহরণে।</li>
+<li><strong>QoS-সিদ্ধান্ত:</strong> তাপ-ধারা QoS0, কমান্ড QoS1, পেমেন্ট QoS2 — কেন, নিজের উদাহরণে।</li>
 <li><strong>নিরাপত্তা-ত্রয়ী অভ্যাসে:</strong> TLS+পরিচয়+অনুমতি — আজ থেকে কোনো প্রজেক্ট 'ওয়ার্কিং দেখাও'-এর নামে খোলা-বাতাসে নয়।</li>
 <li><strong>রেডিও-বাছাই-টেবিল:</strong> দূরত্ব×ব্যান্ডউইথ×ব্যাটারি — কৃষি-ক্ষেতের জন্য কোনটা, বাড়ির বাতির জন্য কোনটা, এখনই বলতে পারবে।</li>
 </ul>`
@@ -600,7 +600,7 @@ doors.push({
   recall:{
     q:"ষোলো দরজার চেইন ধরে বলো — একটা কৃষি-সেন্সর ডিভাইস মাঠ থেকে তোমার ফোনের গ্রাফ পর্যন্ত কী কী স্তরে পাড়ি দেয়, কোন দরজা-জ্ঞান কোথায় লাগে?",
     qen:"Trace the sixteen-door chain — what layers does a farm-sensor cross from field to your phone's graph, and which door-knowledge works where?",
-    a:"চেইন: (১) মাটি-আর্দ্রতা-সেন্সর = রোধ-পরিবর্তনশীল উপাদান → (২) ডিভাইডার (দরজা ৬: V=Vin·R₂/(R₁+R₂)) ভোল্টেজ বানায় → (৩) ADC (দরজা ১২) সংখ্যায় পড়ে → (৪) ফার্মওয়্যার: টাইমার (দরজা ১১) ওয়াক্ত-জাগরণ ঠিক করে, ঘুম-ডিউটি (দরজা ৪) ব্যাটারি বাঁচায়, বাটন/অ্যালার্ম-ডাক ইন্টারাপ্টে (দরজা ১০), রেজিস্টার-চিঠি (দরজা ৯) সব চালায়, বুট-মিকাত (দরজা ১৪) জাগায় → (৫) RTC (দরজা ১১/১৩) I2C-তে সময় দেয় → (৬) রেডিও (দরজা ১৫) WiFi/LoRa-বাছাই → (৭) MQTT-publish (দরজা ১৫) TLS-পোশাকে ব্রোকারে → (৮) মেঘ: ডেটাবেস+ড্যাশবোর্ড → ফোন সাবস্ক্রাইব → গ্রাফ → (৯) উল্টো দিক: কমান্ড/সেচ-ভালভ → PWM (দরজা ১২) মোটর-গতি → পানি মাঠে → (১০) OTA-স্বাক্ষরিত প্যাকেজ নতুন প্যাচ পাঠায় (দরজা ১৪-১৫)। হার্ডওয়্যার-ভিত্তি: ডিভাইডার-রেজিস্টর ও ডিকোউপলিং-ক্যাপ (দরজা ২) বোর্ডে, ট্রানজিস্টর-দরওয়ান (দরজা ৩) ভালভ-মোটর চালায়, পাওয়ার-বাজেট (দরজা ৪) বছরের হিসাব দেয়, নকশা-ভাষা (দরজা ৫) সব লেখা থাকে, ওহম-কার্শফ (দরজা ১-৬) প্রতিটা মান যাচাই করে, লজিক-গেট (দরজা ৭) ভেতরে-ভেতরে সব সিদ্ধান্ত বহন করে। ষোলো দরজা = এক সিস্টেমের ষোলো অঙ্গ — এটাই capstone-এর সার: কোনো দরজা একা যন্ত্র বানায় না; সব দরজা মিলে একটা জীবিত ডিভাইস।",
+    a:"চেইন: (১) মাটি-আর্দ্রতা-সেন্সর = রোধ-পরিবর্তনশীল উপাদান → (২) ডিভাইডার (দরজা ৬: V=Vin·R2/(R1+R2)) ভোল্টেজ বানায় → (৩) ADC (দরজা ১২) সংখ্যায় পড়ে → (৪) ফার্মওয়্যার: টাইমার (দরজা ১১) ওয়াক্ত-জাগরণ ঠিক করে, ঘুম-ডিউটি (দরজা ৪) ব্যাটারি বাঁচায়, বাটন/অ্যালার্ম-ডাক ইন্টারাপ্টে (দরজা ১০), রেজিস্টার-চিঠি (দরজা ৯) সব চালায়, বুট-মিকাত (দরজা ১৪) জাগায় → (৫) RTC (দরজা ১১/১৩) I2C-তে সময় দেয় → (৬) রেডিও (দরজা ১৫) WiFi/LoRa-বাছাই → (৭) MQTT-publish (দরজা ১৫) TLS-পোশাকে ব্রোকারে → (৮) মেঘ: ডেটাবেস+ড্যাশবোর্ড → ফোন সাবস্ক্রাইব → গ্রাফ → (৯) উল্টো দিক: কমান্ড/সেচ-ভালভ → PWM (দরজা ১২) মোটর-গতি → পানি মাঠে → (১০) OTA-স্বাক্ষরিত প্যাকেজ নতুন প্যাচ পাঠায় (দরজা ১৪-১৫)। হার্ডওয়্যার-ভিত্তি: ডিভাইডার-রেজিস্টর ও ডিকোউপলিং-ক্যাপ (দরজা ২) বোর্ডে, ট্রানজিস্টর-দরওয়ান (দরজা ৩) ভালভ-মোটর চালায়, পাওয়ার-বাজেট (দরজা ৪) বছরের হিসাব দেয়, নকশা-ভাষা (দরজা ৫) সব লেখা থাকে, ওহম-কার্শফ (দরজা ১-৬) প্রতিটা মান যাচাই করে, লজিক-গেট (দরজা ৭) ভেতরে-ভেতরে সব সিদ্ধান্ত বহন করে। ষোলো দরজা = এক সিস্টেমের ষোলো অঙ্গ — এটাই capstone-এর সার: কোনো দরজা একা যন্ত্র বানায় না; সব দরজা মিলে একটা জীবিত ডিভাইস।",
     aen:"Soil sensor (resistance) → divider (D6) → ADC (D12) → firmware: timer wakes (D11), duty-sleep saves battery (D4), interrupts respond (D10), register letters run all (D9), boot miqats (D14) → RTC over I2C (D13) → radio (D15) → MQTT/TLS → broker → cloud → phone graph → reverse command → PWM valve (D12) → water → signed OTA. Sixteen doors = one system's sixteen organs — no door alone builds a machine."
   },
   story:`
@@ -613,6 +613,8 @@ doors.push({
 You began in one breath — because now you know: "A soil-moisture sensor — the probe in the soil, resistance changing; a divider makes voltage; the ADC reads a number —" Rafiq laughed — "— and my 100nF on every power pin, else the radio-wake resets it!" You laughed, nodded: "— the timer wakes it every fifteen minutes, sleeping the rest — duty-cycle buys a year of battery; a rain-sensor's call interrupts — flag raised, work in the loop; I2C fetches the timestamp from the RTC — letters with ACKs; then into the wind — MQTT in TLS dress, published to the broker; the cloud keeps the database, the phone draws the graph — and a command backwards sets PWM's measured speed on the valve-motor, water to the field. When OTA comes, the signature is verified — only then the patch." Silence. Mostafiz removed the monocle. "The accounts reconcile."</div>
 
 <div class="callout info"><span class="co-icon">🌾</span><div><strong>ক্যাপস্টোনের সত্য:</strong> এই বক্সে নতুন কোনো দরজার জ্ঞান নেই — ষোলোটা দরজার জ্ঞান <em>একসাথে</em> আছে। ইঞ্জিনিয়ারিং মানে নতুন-কিছু-আবিষ্কার প্রতিদিন নয়; ইঞ্জিনিয়ারিং মানে চেনা ইটগুলো সঠিক ক্রমে, সঠিক মাপে, সঠিক সময়ে বসানো — যেন প্রতিটা ইট তার স্থান পায় এবং প্রতিটা স্থান তার ইট। তোমার পরের প্রজেক্টে ধারণা-তালিকা নয় — <strong>দরজা-তালিকা</strong> মাথায় রাখো: পাওয়ার? বাজেট? ডিভাইডার? ডাক? ওয়াক্ত? বাতাস? পোশাক? — প্রতিটা প্রশ্নের জবাব একটা দরজা, আর সব জবাব মিললেই ডিভাইস বাঁচে।</div></div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে:</strong> এই বক্সের প্রথম সংস্করণ মাঠে গিয়ে <em>তিন দিনে</em> মরেছিল। কোড ঠিক ছিল, সোল্ডার ঠিক ছিল, ব্রোকারে পাঠও উঠছিল — তবু ব্যাটারি শেষ। কারণ খুঁজতে গিয়ে আরিফ ভাই এক লাইনেই ধরলেন: <code>loop()</code>-এর শেষে <code>deepSleepTilNext()</code> বসানো ছিল, আর তার ওপরে <code>mqtt.loop()</code>। <strong>ডিপ-স্লিপ ঘুম নয় — রিসেট।</strong> জেগে উঠে চিপ <code>loop()</code>-এ ফেরে না, <code>setup()</code> নতুন করে শুরু হয়; তাই ওই স্থায়ী MQTT-সেশনের কোনো মানে নেই, আর সাজানো কোডটা হয় কখনো ঘুমায় না, নয়তো কখনো পাঠায় না। দ্বিতীয় ফাঁদ একই দিনে: সেন্সর বসেছিল <em>ADC2</em>-র পিনে — টেবিলে WiFi বন্ধ রেখে পরীক্ষায় নিখুঁত, মাঠে WiFi চালু হতেই পাঠ শূন্য। <strong>দুই শিক্ষা:</strong> ঘুমন্ত ডিভাইসের পুরো জীবন <code>setup()</code>-এ লেখো, <code>loop()</code> খালি রাখো; আর ESP32-এ সেন্সর সবসময় ADC1-এ (GPIO32-39)। মাঠ ডেস্কের চেয়ে নিষ্ঠুর পরীক্ষক।</div></div>
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">১৬</div><div class="sc-label">দরজা = ১৬ অঙ্গ — সেন্সর থেকে OTA, এক জীবিত সিস্টেম</div></div>
@@ -683,59 +685,78 @@ You began in one breath — because now you know: "A soil-moisture sensor — th
 #include &lt;PubSubClient.h&gt;
 #include &lt;Wire.h&gt;
 
-#define SOIL_PIN   A0        // ডিভাইডার-মাঝ (দরজা ৬)
-#define VALVE_PIN  9         // PWM (দরজা ১২)
-volatile bool rain_alarm = false;      // দরজা ১০: পতাকা
+// ⚠ পিন-বাছাইয়ের প্রথম ফাঁদ: ESP32-তে ADC2-র চ্যানেলগুলো
+//   WiFi চালু থাকলে পড়া যায় না। সেন্সর সবসময় ADC1-এ (GPIO32-39)।
+#define SOIL_PIN   34        // ADC1_CH6 — ডিভাইডার-মাঝ (দরজা ৬)
+#define VALVE_PIN  25        // LEDC-PWM (দরজা ১২)
+#define RAIN_PIN   GPIO_NUM_33   // ঘুম-ভাঙানোর ডাক (দরজা ১০)
 
-void onRain() { rain_alarm = true; }   // ISR — ছোট, নিখুঁত
+// দুই-বিন্দু ক্যালিব্রেশন — তোমার নিজের প্রোবে মেপে বসাও,
+// এই সংখ্যা ধার করা চলবে না (শুকনো বাতাসে ও ডোবানো অবস্থায় পড়ো)
+const int RAW_DRY = 3200, RAW_WET = 1250;
 
 void publishReading(PubSubClient &amp;m) {
-  int raw = analogRead(SOIL_PIN);                    // ADC
-  float v  = raw * 3.3 / 1023.0;                     // সংখ্যা→ভোল্টেজ
-  int pct  = map(raw, 1023, 300, 0, 100);            // মাটি-শতকরা
-  char payload[64];
+  int raw = 0;
+  for (int i = 0; i &lt; 10; i++) raw += analogRead(SOIL_PIN); // গড় — শব্দ কমে
+  raw /= 10;
+  float v = raw * 3.3f / 4095.0f;          // ⚠ ESP32 ADC ১২-বিট: ০…৪০৯৫
+  int pct = constrain(
+      map(raw, RAW_DRY, RAW_WET, 0, 100), 0, 100);
+  char payload[80];
   snprintf(payload, sizeof payload,
            "{\"v\":%.2f,\"pct\":%d,\"ts\":%lu}",
-           v, pct, rtcNow());                        // RTC-টাইমস্ট্যাম্প
-  m.publish("farm/plot1/soil", payload);             // দরজা ১৫
+           v, pct, (unsigned long)rtcNow());
+  m.publish("farm/plot1/soil", payload, true);   // retain — দরজা ১৫
 }
 
 void valve(int duty) {                 // ০…২৫৫ — ইনফাক-মাপ
-  analogWrite(VALVE_PIN, duty);
+  ledcWrite(VALVE_PIN, duty);          // core ৩.x-এ analogWrite-ও চলে
 }
 
+// ═══ স্থাপত্য-সিদ্ধান্ত (এই দরজার আসল পাঠ) ═══
+// ডিপ-স্লিপ মানে ঘুম নয় — মানে রিসেট। জেগে উঠলে loop() ফেরে না,
+// setup() নতুন করে শুরু হয়। তাই পুরো কাজ setup()-এ, loop() খালি।
 void setup() {
   bootInit();                          // দরজা ১৪: মিকাত-সারি
+  analogSetAttenuation(ADC_11db);      // ০…~৩.৩V পাল্লা খোলা
+  ledcAttach(VALVE_PIN, 5000, 8);      // ৫kHz, ৮-বিট (দরজা ১২)
   Wire.begin();
-  rtcInit();                           // DS3231 @০x68 (দরজা ১১·১৩)
-  WiFi.begin(SSID, PASS);
-  mqttConnectTLS();                    // ৮৮৮৩ — পোশাক (দরজা ১৫)
-  attachInterrupt(digitalPinToInterrupt(2),
-                  onRain, FALLING);    // দরজা ১০
-  otaSetupSigned();                    // স্বাক্ষর-যাচাই OTA
-}
+  rtcInit();                           // DS3231 @0x68 (দরজা ১১·১৩)
 
-void loop() {
-  mqtt.loop();
-  if (rain_alarm) {                    // ডাক-প্রতিক্রিয়া
-    publishReading(mqtt);              // তাৎক্ষণিক পাঠ
-    rain_alarm = false;
-  }
-  if (timeForReading()) {              // টাইমার-ওয়াক্ত (দরজা ১১)
-    publishReading(mqtt);
+  esp_sleep_wakeup_cause_t why = esp_sleep_get_wakeup_cause();
+  bool rain_woke = (why == ESP_SLEEP_WAKEUP_EXT0);
+
+  WiFi.begin(SSID, PASS);
+  if (!waitForWiFi(15000)) deepSleep(15 * 60);   // না পেলে ঘুমাও, পরে দেখা
+  mqttConnectTLS();                    // ৮৮৮৩ — পোশাক (দরজা ১৫)
+  otaCheckSigned();                    // স্বাক্ষর-যাচাই OTA
+
+  publishReading(mqtt);
+  if (!rain_woke) {                    // বৃষ্টিতে জাগলে পানি দিও না!
     int pct = soilPercent();
     valve(pct &lt; 35 ? 200 :             // শুকনো → বেশি-দান
           pct &lt; 50 ? 100 : 0);         // মাঝামাঝি/ঠিক (দরজা ১২)
+    delay(VALVE_OPEN_MS);
+    valve(0);
   }
-  deepSleepTilNext();                  // ঘুম (দরজা ৪) — বছরের হিসাব
+  mqtt.disconnect();                   // পরিষ্কার বিদায় — LWT বাজবে না
+
+  // দুই দরজা খোলা রেখে ঘুম: ওয়াক্ত-ঘণ্টি আর বৃষ্টির ডাক
+  esp_sleep_enable_timer_wakeup(15ULL * 60 * 1000000);   // দরজা ১১
+  esp_sleep_enable_ext0_wakeup(RAIN_PIN, 0);             // দরজা ১০
+  esp_deep_sleep_start();              // ঘুম (দরজা ৪) — বছরের হিসাব
 }
+
+void loop() { }                        // ইচ্ছাকৃত খালি — এখানে কেউ আসে না
 
 // ডিপ্লয়-তালিকা (তোমার প্রথম বক্স):
 // ☐ নকশা-কাগজ (দরজা ৫) ☐ পাওয়ার-বাজেট (৪)
 // ☐ ডিভাইডার-মান (৬) ☐ ১০০nF-প্রতি-পা (২)
 // ☐ ট্রানজিস্টর-ভালভ-দরওয়ান (৩) ☐ পাল্লা-পরীক্ষা (১)
 // ☐ ব্রোকার+টপিক-গাছ (১৫) ☐ TLS-কী (১৫)
-// ☐ OTA-স্বাক্ষর (১৪) ☐ ডিবাগ-প্যাড-বোর্ডে (১৪)</div>
+// ☐ OTA-স্বাক্ষর (১৪) ☐ ডিবাগ-প্যাড-বোর্ডে (১৪)
+// ☐ সেন্সর ADC1-এ, ADC2-তে নয় ☐ প্রোব দুই-বিন্দু ক্যালিব্রেট
+// ☐ ঘুম-জাগার হিসাব setup()-এ ☐ WiFi না পেলে ঘুমে ফেরার পথ</div>
 
 <div class="dialogue">মাগরিবের আযান উঠলো — মুয়াজ ভাই সবার আগে দাঁড়ালেন, সবাই দাঁড়ালেন; নামাজের পর ফিরে এসে মোস্তাফিজ চাচা বক্সটা তোমার হাতে তুলে দিলেন। "ষোলো দরজা আগে আমার ছিল, এখন তোমার। কুরআনের সেই আয়াত মনে আছে যেটা দিয়ে আমরা শুরু করেছিলাম — বিদ্যুৎ-চমকে ভয় ও আশা (৩০:২৪)? আর শেষ আয়াতটা এখন শোনো: 'আমি আমানত পেশ করেছিলাম আসমান-জমিন-পাহাড়ের সামনে; তারা তা বহন করতে ভয় পেল, কিন্তু মানুষ বহন করলো' (৩৩:৭২)। ভাবো একবার — আসমান বজ্র ধরে রাখে, জমিন ফসল, পাহাড় খনিজ; কিন্তু <em>আমানত</em> — দায়িত্ব, বিশ্বাস, ন্যায় — সেটা তারা নিতে সাহস করেনি। মানুষ করেছে। যে যন্ত্র তুমি বানাবে, সে-ও আমানত: কারও পানির হিসাব, কারও ওষুধের সময়, কারও ঘরের তালা। ভোল্টেজ আর কোড শেখা অর্ধেক কাজ; বাকি অর্ধেক — সেই খিলাফত: যা বহন করলে, বিশ্বস্তভাবে বহন করা। এই বক্স নাও। পরের বক্সটা তোমার নিজের হোক — আর তার নকশা-কাগজে তোমার নামের পাশে লেখো: আমানতদার।" বাইরে বৃষ্টি জমে এসেছে; বক্সের সেন্সর-প্রোব রফিক মামার হাতে একটা ফুলের টবে ঢুকিয়ে দেওয়া হলো — ড্যাশবোর্ডে প্রথম বাঁক উঠলো: ৬২%। ষোলো দরজা হাসলো একসাথে।</div>
 <div class="dialogue en">The maghrib adhan rose — Muaz stood first, all stood; returning after prayer, Mostafiz placed the box in your hands. "Sixteen doors were mine; now yours. The verse we began with — lightning, fear and hope (30:24)? Now hear the last: 'We offered the trust to the heavens, the earth, the mountains; they shrank from it — but man bore it' (33:72). Think once — the sky holds lightning, the earth grain, the mountain ore; but the <em>trust</em> — duty, faith, justice — those they dared not take. Man did. The machine you will build is a trust too: someone's water-account, someone's medicine-hour, someone's door-lock. Learning voltage and code is half the work; the other half is that khilafah — if you carry it, carry it faithfully. Take this box. Let the next be your own — and on its schematic, beside your name, write: trustworthy." Rain had gathered outside; Rafiq slipped the sensor-probe into a flower pot — the dashboard's first curve rose: 62%. Sixteen doors smiled together.</div>
@@ -751,10 +772,10 @@ void loop() {
   <text class="lbl" x="280" y="54">মাঠ-পাখির BOM (বিল অব ম্যাটেরিয়ালস)</text>
   <text class="lbl-sm" x="60" y="80" font-size="10" style="text-anchor:start">ESP32-WROOM ×১ — শহর+রেডিও</text>
   <text class="lbl-sm" x="60" y="100" font-size="10" style="text-anchor:start">CAPE-soil প্রোব ×১ + ১০kΩ ×২ — ডিভাইডার</text>
-  <text class="lbl-sm" x="60" y="120" font-size="10" style="text-anchor:start">DS৩২৩১ ×১ — ওয়াক্ত-খাতা (I2C)</text>
-  <text class="lbl-sm" x="60" y="140" font-size="10" style="text-anchor:start">MOSFET IRLZ৪৪N + ডায়োড + ভালভ ×১ — পানির দরজা</text>
-  <text class="lbl-sm" x="60" y="160" font-size="10" style="text-anchor:start">সোলার ৬V + TP৪০৫৬ + ১৮৬৫০ + বাক — রিযিক-চেইন</text>
-  <text class="lbl-sm" x="60" y="180" font-size="10" style="text-anchor:start">১০০nF ×৪ + ১০μF ×২ — দরজা-২-এর শান্ত-করা</text>
+  <text class="lbl-sm" x="60" y="120" font-size="10" style="text-anchor:start">DS3231 ×১ — ওয়াক্ত-খাতা (I2C)</text>
+  <text class="lbl-sm" x="60" y="140" font-size="10" style="text-anchor:start">MOSFET IRLZ44N + ডায়োড + ভালভ ×১ — পানির দরজা</text>
+  <text class="lbl-sm" x="60" y="160" font-size="10" style="text-anchor:start">সোলার ৬V + TP4056 + ১৮৬৫০ + MCP1700 (LDO) — রিযিক-চেইন</text>
+  <text class="lbl-sm" x="60" y="180" font-size="10" style="text-anchor:start">১০০nF ×৪ + ১০μF ×২ + ৪৭০μF বাল্ক — দরজা-২-এর শান্ত-করা</text>
   <text class="lbl-sm" x="60" y="200" font-size="10" style="text-anchor:start">কেস + কনফর্মাল-কোটিং — বৃষ্টি-বাঁচাও</text>
   <rect class="cell-hot" x="330" y="70" width="180" height="140"/>
   <text class="lbl-hot" x="420" y="94">BOM-শিষ্টাচার</text>
@@ -775,7 +796,7 @@ void loop() {
   <text class="lbl-sm" x="85" y="80" font-size="10">ব্রেডবোর্ড+প্রোব</text>
   <rect class="cell" x="170" y="36" width="110" height="60"/>
   <text class="lbl-sm" x="225" y="60" font-size="10">বক্স-বন্দি</text>
-  <text class="lbl-sm" x="225" y="80" font-size="10">IP৬৫ কেস</text>
+  <text class="lbl-sm" x="225" y="80" font-size="10">IP65 কেস</text>
   <rect class="cell-hot" x="310" y="36" width="110" height="60"/>
   <text class="lbl-hot" x="365" y="60" font-size="10">মাঠে ৭-দিন</text>
   <text class="lbl-sm" x="365" y="80" font-size="10">বৃষ্টি-তাপ-শব্দ</text>

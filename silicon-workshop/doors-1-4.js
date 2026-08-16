@@ -23,7 +23,7 @@ doors.push({
 
 <div class="dialogue">তুমি দরজায় দাঁড়িয়ে। মোস্তাফিজ চাচা মুখ না তুলে বললেন, "রেডিও নিয়ে এসেছো, না কৌতূহল নিয়ে?"
 "কৌতূহল চাচা। ইলেকট্রনিক্স শিখতে চাই — শুরু থেকে।"
-তিনি হাতের স্ক্রুড্রাইভার রাখলেন, মনোকল খুলে ঝুলিয়ে দিলেন গলায়। "শুরু মানে আমার কাছে একটাই জায়গা — বজ্র। বসো।" টেবিলের ওপর থেকে একটা টর্চ, দুইটা তার, একটা ছোট্ট বাল্ব তুলে নিলেন। "কুরআনে আছে — বিদ্যুৎ-চমক আর বৃষ্টির মধ্যে তিনি ভয় ও আশা দেখান (৩০:২৪)। দুই হাজার বছর মানুষ ওই বজ্র দেখে ভয় পেত, আশা করত — কিন্তু হাতে পায়নি। পাওয়া শুরু হলো যখর বোঝা গেল: বজ্র আসলে একটা নদী — চার্জের নদী।"</div>
+তিনি হাতের স্ক্রুড্রাইভার রাখলেন, মনোকল খুলে ঝুলিয়ে দিলেন গলায়। "শুরু মানে আমার কাছে একটাই জায়গা — বজ্র। বসো।" টেবিলের ওপর থেকে একটা টর্চ, দুইটা তার, একটা ছোট্ট বাল্ব তুলে নিলেন। "কুরআনে আছে — বিদ্যুৎ-চমক আর বৃষ্টির মধ্যে তিনি ভয় ও আশা দেখান (৩০:২৪)। দুই হাজার বছর মানুষ ওই বজ্র দেখে ভয় পেত, আশা করত — কিন্তু হাতে পায়নি। পাওয়া শুরু হলো যখন বোঝা গেল: বজ্র আসলে একটা নদী — চার্জের নদী।"</div>
 <div class="dialogue en">You stood at the door. Without looking up: "Brought a radio, or curiosity?"
 "Curiosity, uncle. I want to learn electronics — from the beginning."
 He set down the screwdriver, unclamped the monocle to hang at his neck. "The beginning, for me, is one place — lightning. Sit." From the bench he took a torch, two wires, a small bulb. "The Quran says — in lightning and rain He shows fear and hope (30:24). For two thousand years people watched that lightning and feared, hoped — but never held it. Holding began when it was understood: lightning is a river — a river of charge."</div>
@@ -278,7 +278,7 @@ LC দোলা (দুই ভাইয়ের দোলনা):
 <div class="photo-frame"><img src="photos/capacitor-electrolytic.jpg" alt="ইলেকট্রোলাইটিক ক্যাপাসিটর — স্ট্রাইপ = মাইনাস-পা"><div class="photo-cap">ইলেকট্রোলাইটিক ক্যাপাসিটর — স্ট্রাইপ = মাইনাস-পা · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
 
 <div class="diagram">
-<div class="diag-title">কম্পোনেন্ট-চেনা — ক্যাপাসিটারের জাত ও মার্কিং</div>
+<div class="diag-title">কম্পোনেন্ট-চেনা — ক্যাপাসিটরের জাত ও মার্কিং</div>
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
   <ellipse class="cell-cyan" cx="90" cy="80" rx="40" ry="26"/>
   <text class="lbl-sm" x="90" y="126" font-size="10">সিরামিক চাকতি</text>
@@ -288,7 +288,7 @@ LC দোলা (দুই ভাইয়ের দোলনা):
   <line class="edge" x1="222" y1="50" x2="222" y2="38"/>
   <text class="lbl-hot" x="222" y="132" font-size="10">ইলেকট্রোলাইটিক</text>
   <text class="lbl-hot" x="222" y="148" font-size="10">স্ট্রাইপ-পাশ = মাইনাস!</text>
-  <text class="lbl-sm" x="222" y="164" font-size="10">৪৭₀μF ১৬V (পোলার)</text>
+  <text class="lbl-sm" x="222" y="164" font-size="10">470μF ১৬V (পোলার)</text>
   <circle class="node" cx="350" cy="80" r="28" fill="none"/>
   <text class="lbl-sm" x="350" y="132" font-size="10">তান্তালাম</text>
   <text class="lbl-sm" x="350" y="148" font-size="10">ছোট+বেশি ধারণ</text>
@@ -326,7 +326,7 @@ LC দোলা (দুই ভাইয়ের দোলনা):
   <line class="edge" x1="400" y1="96" x2="275" y2="57" visibility="hidden"/>
   <path class="edge" d="M 400 96 L 290 96 L 275 78" fill="none"/>
   <path class="edge-hot" d="M 370 22 L 430 88 M 424 82 L 430 88 L 436 82" fill="none" stroke-width="2"/>
-  <text class="lbl-hot" x="345" y="120" font-size="10">ফ্লাইব্যাক-ডায়োড ১N4007 (উল্টো-বসানো!)</text>
+  <text class="lbl-hot" x="345" y="120" font-size="10">ফ্লাইব্যাক-ডায়োড 1N4007 (উল্টো-বসানো!)</text>
   <rect class="cell" x="360" y="150" width="140" height="50"/>
   <text class="lbl-sm" x="430" y="172">AC-লোড পথ</text>
   <text class="lbl-sm" x="430" y="190" font-size="10">চুম্বক-সুইচে বিচ্ছিন্ন-যুক্ত</text>
@@ -342,7 +342,7 @@ LC দোলা (দুই ভাইয়ের দোলনা):
 </div>
 
 
-<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 2 — প্রথম ইট-কিনতে যাওয়া:</strong> প্রয়োজন-খাতার প্রথম জবাব: শক্তি-লাইন স্থির রাখতে <em>ডিকোউপলিং-ক্যাপ (১০০nF ×৪)</em> আর বিলম্ব-মুছাতে ১০μF — রফিক মামার দোকান থেকে। <strong>কেন-লগ:</strong> MCU-র দ্রুত-জাগরণে ভোল্টেজ দুলবে → ক্যাপ জলাধার হয়ে দোল কাবে। বিলের পরের লাইন: বাকি কেনা — ১০kΩ ×৪ (ডিভাইডার), ২২০Ω ×২ (LED), বাটন ×১।</div></div>
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 2 — প্রথম ইট-কিনতে যাওয়া:</strong> প্রয়োজন-খাতার প্রথম জবাব: শক্তি-লাইন স্থির রাখতে <em>ডিকোউপলিং-ক্যাপ (১০০nF ×৪)</em> আর বিলম্ব-মুছাতে ১০μF — রফিক মামার দোকান থেকে। <strong>কেন-লগ:</strong> MCU-র দ্রুত-জাগরণে ভোল্টেজ দুলবে → ক্যাপ জলাধার হয়ে দোল থামাবে। বিলের পরের লাইন: বাকি কেনা — ১০kΩ ×৪ (ডিভাইডার), ২২০Ω ×২ (LED), বাটন ×১।</div></div>
 <div class="secret-box"><div class="label">দরজা ২ — রহস্য</div><div class="text">🧺 রেজিস্টর এখনই খরচ করে, ক্যাপাসিটর জমায়, ইন্ডাক্টর সহজে বদলাতে দেয় না — তিন ভাই মিলে সময় আনে।<br><small>Q=CV, τ=RC (৫τ-পূর্ণ); V=L·di/dt (flyback-ডায়োড!); f=1/(2π√LC); প্রতি পাওয়ার-পায়ে ১০০nF। মিজান: ৫৫:৭-৯।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
@@ -366,7 +366,7 @@ doors.push({
   recall:{
     q:"শামসুল কাকা কেন বলেন 'ডায়োড হলো সততার উপমা' — আর LED-র সাথে কেন সবসময় রেজিস্টর, ট্রানজিস্টর কীভাবে একটা ছোট বেস-কারেন্ট দিয়ে বড় লোড চালায়?",
     qen:"Why does Shamsul call the diode 'the parable of honesty' — why does an LED always need its resistor, and how does a transistor's small base current drive a big load?",
-    a:"P-N জংশন: সিলিকনে ডোপিং দিয়ে দুই ধরনের অঞ্চল বানানো হয় — N (ইলেকট্রন-বাড়তি) আর P (হোল-বাড়তি); সীমানায় তৈরি হয় ডিপ্লেশন-অঞ্চল। ফল: এক দিকে (ফরোয়ার্ড) ভোল্টেজ ০.৭V (সিলিকন) ছাড়িয়ে গেলে প্রবাহ চলে, উল্টো দিকে (রিভার্স) আটকে যায় — একমুখী দরজা। এটাই সততার উপমা: ডিপ্লেশন-সীমা পেরোনো মানে নির্দিষ্ট দিক; উল্টো পথে চলার অনুমতি নেই। LED এই পরিবারেরই সদস্য যার জংশন-শক্তি আলো হয়ে বেরোয়: লাল ≈১.৮-২.২V (হলোনিয়াক, GE, ১৯৬২ — প্রথম দৃশ্যমান LED), নীল ≈৩.০-৩.৪V (আকাসাকি-আমানো-নাকামুরা — নোবেল ২০১৪)। রেজিস্টর লাগে কারণ LED ভোল্টেজ-দালাল নয়, কারেন্ট-প্রাণী: সীমা ছাড়ানো কারেন্টে জংশন গলে — রেজিস্টরই (V_সোর্স−V_f)÷I সেট করে দেয়। ট্রানজিস্টর (বারডিন-ব্রাটেইন-শকলি, বেল ল্যাব, ডিসেম্বর ১৯৪৭; নোবেল ১৯৫৬): তিন পা — বেস-কালেক্টর-এমিটার (BJT); বেসে ছোট্ট কারেন্ট দিলে কালেক্টর-এমিটারে বড় প্রবাহ খোলে (অ্যামপ্লিফিকেশন, β=hFE গুণ) — অথবা সম্পূর্ণ অন/অফ সুইচ: মাইক্রোকন্ট্রোলারের GPIO-র কয়েক mA দিয়ে রিলে/মোটরের শত mA-ampaire চালানো যায়। MOSFET (শকলির ১৯৪৯-তত্ত্বের বংশধর) ভোল্টেট-নিয়ন্ত্রিত দরওয়ান — গেটে কারেন্ট লাগে না প্রায়, আধুনিক চিপের কোটি কোটি দরওয়ানই MOSFET।",
+    a:"P-N জংশন: সিলিকনে ডোপিং দিয়ে দুই ধরনের অঞ্চল বানানো হয় — N (ইলেকট্রন-বাড়তি) আর P (হোল-বাড়তি); সীমানায় তৈরি হয় ডিপ্লেশন-অঞ্চল। ফল: এক দিকে (ফরোয়ার্ড) ভোল্টেজ ০.৭V (সিলিকন) ছাড়িয়ে গেলে প্রবাহ চলে, উল্টো দিকে (রিভার্স) আটকে যায় — একমুখী দরজা। এটাই সততার উপমা: ডিপ্লেশন-সীমা পেরোনো মানে নির্দিষ্ট দিক; উল্টো পথে চলার অনুমতি নেই। LED এই পরিবারেরই সদস্য যার জংশন-শক্তি আলো হয়ে বেরোয়: লাল ≈১.৮-২.২V (হলোনিয়াক, GE, ১৯৬২ — প্রথম দৃশ্যমান LED), নীল ≈৩.০-৩.৪V (আকাসাকি-আমানো-নাকামুরা — নোবেল ২০১৪)। রেজিস্টর লাগে কারণ LED ভোল্টেজ-দালাল নয়, কারেন্ট-প্রাণী: সীমা ছাড়ানো কারেন্টে জংশন গলে — রেজিস্টরই (V_সোর্স−V_f)÷I সেট করে দেয়। ট্রানজিস্টর (বারডিন-ব্রাটেইন-শকলি, বেল ল্যাব, ডিসেম্বর ১৯৪৭; নোবেল ১৯৫৬): তিন পা — বেস-কালেক্টর-এমিটার (BJT); বেসে ছোট্ট কারেন্ট দিলে কালেক্টর-এমিটারে বড় প্রবাহ খোলে (অ্যামপ্লিফিকেশন, β=hFE গুণ) — অথবা সম্পূর্ণ অন/অফ সুইচ: মাইক্রোকন্ট্রোলারের GPIO-র কয়েক mA দিয়ে রিলে/মোটরের শত mA অ্যাম্পিয়ার চালানো যায়। MOSFET (শকলির ১৯৪৯-তত্ত্বের বংশধর) ভোল্টেজ-নিয়ন্ত্রিত দরওয়ান — গেটে কারেন্ট লাগে না প্রায়, আধুনিক চিপের কোটি কোটি দরওয়ানই MOSFET।",
     aen:"Doping makes N and P regions; their junction is a one-way door (0.7V forward, blocked reverse). LEDs are glowing junctions (red ~2V, Holonyak 1962; blue ~3.2V, Nobel 2014) — current-creatures needing (Vsrc−Vf)/I resistors. The transistor (1947 Bell Labs, Nobel 1956): a small base current opens a large collector flow — amplifier or switch; MOSFETs are its voltage-driven cousins, billions per chip."
   },
   story:`
@@ -380,7 +380,7 @@ doors.push({
 "Yes. Now?"
 He unscrewed a lit LED and set it on his palm. "The three brothers are passive soldiers — block, store, swing. Today you meet the active soldier. This tiny thing decides on its own — pass, or refuse. Its name is diode. To me it teaches honesty."</div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে:</strong> শামসুল কাকার প্রথম বড় জব — এক মসজিদের মিনারের নাম-বোর্ড, সব নীল LED সিরিজে সোজা ২২০V-তে লাগিয়ে দিয়েছিলেন (রেজিস্টর ছাড়া!)। প্রথম রাতেই পুরো মালা পুড়ে কালো — কারণ LED ভোল্টেজ মানে না, কারেন্ট মানে; সীমা-রেজিস্টর ছাড়া সে নিজের সীমা জানে না। মসজিদ-কমিটির সামনে লজ্জা, দ্বিতীয়বার প্রতিটা LED-র সাথে হিসাব-করা রেজিস্টর — তারপর থেকে পনেরো বছর ওই বোর্ড জ্বলছে। <strong>শিক্ষা: কারেন্ট-প্রাণীর সাথে সবসময় তার রেশনি-রেজিস্টর।</strong></div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ব্যর্থতা আগে:</strong> শামসুল কাকার প্রথম বড় জব — এক মসজিদের মিনারের নাম-বোর্ড, সব নীল LED সিরিজে সোজা ২২০V-তে লাগিয়ে দিয়েছিলেন (রেজিস্টর ছাড়া!)। প্রথম রাতেই পুরো মালা পুড়ে কালো — কারণ LED ভোল্টেজ মানে না, কারেন্ট মানে; সীমা-রেজিস্টর ছাড়া সে নিজের সীমা জানে না। মসজিদ-কমিটির সামনে লজ্জা, দ্বিতীয়বার প্রতিটা LED-র সাথে হিসাব-করা রেজিস্টর — তারপর থেকে পনেরো বছর ওই বোর্ড জ্বলছে। <strong>শিক্ষা: কারেন্ট-প্রাণীর সাথে সবসময় তার রেশন-রেজিস্টর।</strong></div></div>
 
 <div class="stat-grid">
 <div class="stat-card"><div class="sc-num">০.৭V</div><div class="sc-label">সিলিকন জংশনের দহন-দরজা (ফরোয়ার্ড ড্রপ)</div></div>
@@ -476,7 +476,7 @@ LED — আলো-বিকিরণকারী জংশন:
 <div class="photo-frame"><img src="photos/transistor.jpg" alt="TO-92 প্যাকেজের ট্রানজিস্টর — তিন পা: বেস-কালেক্টর-এমিটার"><div class="photo-cap">TO-92 প্যাকেজের ট্রানজিস্টর — তিন পা: বেস-কালেক্টর-এমিটার · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
 
 <div class="diagram">
-<div class="diag-title">কম্পোনেন্ট-চেনা — ট্রানজিস্টার পিন-আউট ও ডায়োড-শরীর</div>
+<div class="diag-title">কম্পোনেন্ট-চেনা — ট্রানজিস্টর পিন-আউট ও ডায়োড-শরীর</div>
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
   <text class="lbl" x="120" y="26">BC547 (TO-92) — সামনে তাকিয়ে</text>
   <rect class="cell-hot" x="70" y="40" width="100" height="110"/>
@@ -484,14 +484,14 @@ LED — আলো-বিকিরণকারী জংশন:
   <text class="lbl-sm" x="86" y="80" font-size="10">মাঝে ২</text>
   <text class="lbl-sm" x="86" y="100" font-size="10">ডানে ৩</text>
   <text class="lbl-cyan" x="120" y="130">C B E</text>
-  <text class="lbl-sm" x="120" y="172" font-size="10">BC547: C-B-E · ২N222২: E-B-C</text>
+  <text class="lbl-sm" x="120" y="172" font-size="10">BC547: C-B-E · 2N2222: E-B-C</text>
   <text class="lbl-sm" x="120" y="190" font-size="10">ডেটাশিট-না-দেখে পা-ধরা নিষেধ!</text>
   <text class="lbl" x="400" y="26">ডায়োড-শরীর</text>
   <rect class="cell" x="350" y="40" width="100" height="34"/>
   <rect class="cell-hot" x="350" y="40" width="14" height="34"/>
   <text class="lbl-hot" x="357" y="92" font-size="10">স্ট্রাইপ=ক্যাথোড</text>
-  <text class="lbl-sm" x="400" y="112" font-size="10">১N414৮: সংকেত-দ্রুত</text>
-  <text class="lbl-sm" x="400" y="130" font-size="10">১N400৭: পাওয়ার (১A)</text>
+  <text class="lbl-sm" x="400" y="112" font-size="10">1N4148: সংকেত-দ্রুত</text>
+  <text class="lbl-sm" x="400" y="130" font-size="10">1N4007: পাওয়ার (১A)</text>
   <text class="lbl-sm" x="400" y="148" font-size="10">জেনার: নির্দিষ্ট-ভোল্টেজ রক্ষী</text>
   <rect class="cell" x="350" y="170" width="200" height="50"/>
   <text class="lbl-sm" x="450" y="190" font-size="10">LED পা-চেনা: লম্বা পা = + (অ্যানোড)</text>
@@ -528,7 +528,7 @@ LED — আলো-বিকিরণকারী জংশন:
 
 <div class="verse">
 <div class="verse-arabic">إِنَّ اللَّهَ يَأْمُرُكُمْ أَن تُؤَدُّوا الْأَمَانَاتِ إِلَىٰ أَهْلِهَا</div>
-<div class="verse-translation">নিশ্চয়ই আল্লাহ আদেশ করেন — আমানত তার হকদারের কাছে পৌঁছে দাতে।</div>
+<div class="verse-translation">নিশ্চয়ই আল্লাহ আদেশ করেন — আমানত তার হকদারের কাছে পৌঁছে দাও।</div>
 <div class="verse-ref">— কুরআন ৪:৫৮</div>
 </div>
 
@@ -540,7 +540,7 @@ LED — আলো-বিকিরণকারী জংশন:
     body:`<ul class="checklist">
 <li><strong>P-N গল্প নিজেভাষায়:</strong> ডোপিং → N/P → ডিপ্লেশন → একমুখী — ইন্টারভিউয়ের "diode কেন একমুখী" প্রশ্নের পূর্ণ জবাব।</li>
 <li><strong>LED-গণিত রক্তে:</strong> রঙ-ভেদে V_f আর (V_src−V_f)/I — যেকোনো LED-সার্কিট চোখের আগে হিসাব।</li>
-<li><strong>ট্রানজিস্টর-সুইচ ডিজাইন:</strong> GPIO→বেস-রেজিস্টর→BJT/MOSFET→রিলে/মোটর — প্রথম হার্ডওয়্যার-নিয়ন্ত্রণ সিঁড়ি (Door ৯-এর প্রস্তুতি)।</li>
+<li><strong>ট্রানজিস্টর-সুইচ ডিজাইন:</strong> GPIO→বেস-রেজিস্টর→BJT/MOSFET→রিলে/মোটর — প্রথম হার্ডওয়্যার-নিয়ন্ত্রণ সিঁড়ি (Door ১২-এর প্রস্তুতি)।</li>
 <li><strong>ইতিহাস-স্তর শুদ্ধ:</strong> ১৯৪৭ point-contact (ডিসেম্বর, বেল ল্যাব) → ১৯৪৯ জংশন-তত্ত্ব (শকলি) → MOSFET/IC যুগ; নীল LED-র নোবেল ২০১৪।</li>
 <li><strong>নীতি-চরিত্র:</strong> নিজের সীমা-জানা যন্ত্র = টেকসই যন্ত্র — আমানতদার দরওয়ানের মডেল মনে রাখো।</li>
 </ul>`
@@ -554,7 +554,7 @@ doors.push({
   spirit:"রিযিক — নির্ধারিত বরাদ্দে চলা; অপচয় নয়, কৃপণতাও নয়",
   secret:"প্রতিটা মিলিঅ্যাম্পের হিসাব রাখো — ব্যাটারি মানে ব্যালেন্স: যা আছে তার মধ্যে চলা, দাবি যোগ করলে যোগফল দেখো।",
   recall:{
-    q:"নুরুল ভাই কেন ডিভাইস ডিজাইনের আগে খাতায় সব যন্ত্রের কারেন্ট-যোগ করেন — আর ৩.৭V ২০০০mAh ব্যাটারিতে ৫০mA খেকে ডিভাইস কত দিন চলবে?",
+    q:"নুরুল ভাই কেন ডিভাইস ডিজাইনের আগে খাতায় সব যন্ত্রের কারেন্ট-যোগ করেন — আর ৩.৭V ২০০০mAh ব্যাটারিতে ৫০mA খেয়ে-চলা ডিভাইস কত দিন চলবে?",
     qen:"Why does Nurul sum every part's current before designing — and how long will a 50mA device run on a 3.7V 2000mAh cell?",
     a:"কারণ ব্যাটারি একটা রিযিকের থালা — মোট বরাদ্দ সীমিত। পাওয়ার-বাজেট: প্রতিটা যন্ত্রাংশের গড় কারেন্ট তালিকা করো (MCU সক্রিয়/ঘুম, সেন্সর, রেডিও TX/RX, LED), যোগ করো — সেটাই মোট চাহিদা। ব্যাটারির সঞ্চয় মাপা হয় mAh-তে: ২০০০mAh মানে ২০০০mA এক ঘণ্টা, বা ৫০mA চললে ২০০০÷৫০ = ৪০ ঘণ্টা ≈ ১.৭ দিন। এনার্জি হিসাবে: ৩.৭V×২Ah = ৭.৪Wh। রেগুলেটরের দক্ষতাও ধরো — LDO সরল কিন্তু ব্যর্থ-তাপে শক্তি নষ্ট করে (drop × I), buck (স্টেপ-ডাউন সুইচিং) ৮৫-৯৫% দক্ষ কিন্তু নয়েজ-তালিকা লম্বা। স্লিপ-মোডই IoT-এর প্রাণ: MCU ঘুমালে μA-তে নামে, বছরের ব্যাটারি-জীবন তখনই সম্ভব — বাজেট মানে শুধু যোগ নয়, সময়-ভাগ (ডিউটি-চক্র) ভিত্তিক গড়: গড় I = (চালু-সময়×I_চালু + ঘুম-সময়×I_ঘুম)/মোট।",
     aen:"A battery is a ration bowl. Budget: list every part's average current (active/sleep), sum it. 2000mAh ÷ 50mA = 40h ≈ 1.7 days; energy 3.7V×2Ah = 7.4Wh. LDO simple but burns drop×I; buck converters reach 85-95%. Duty-cycled average current is the secret of year-long battery life."
@@ -579,7 +579,7 @@ You thought. "Bad battery?"
 <div class="stat-card"><div class="sc-num">μA</div><div class="sc-label">ঘুমের মুদ্রা — বছরের ব্যাটারি-জীবনের চাবি</div></div>
 </div>
 
-<div class="dialogue">তিনি খাতা খুলে দেখালেন — একটা আসল প্রজেক্টের পাতা। দেখো: "MCU ঘুম: ০.০২mA / জাগা ১০mA (১% সময়) → গড় ০.১২mA। সেন্সর: ০.৫mA। রেডিও — প্রতি ১০ মিনিটে ৩সে পাঠায়, TX ১০০mA → গড় ০.৫mA। মোট গড় ≈ ১.১mA। ২০০০mAh ÷ ১.১ ≈ ১৮১৮ ঘণ্টা ≈ ৭৫ দিন!" তুমি চোখ বড় করলে — একই ব্যাটারি, সাত দিনের বদলে পঁচাত্তর। নুরুল ভাই হাসলেন: "জাদু নয় — ঘুম। সময়-ভাগের হিসাব। যন্ত্র সারাক্ষণ জাগলে সে ভোক্তা, ওয়াক্ত-মতো জাগলে সে যায়গীন। আর রেগুলেটরের গল্প — LDO সোজা রাস্তা কিন্তু ঢালুতে শক্তি ফেলে (dropout×I তাপে যায়), buck-কনভার্টার ঘুরপথ কিন্তু কম খায় (৮৫-৯৫%)। সস্তা নয়, দক্ষতা কিনতে হয় — নয়েজ আর জটিলতার দামে।"</div>
+<div class="dialogue">তিনি খাতা খুলে দেখালেন — একটা আসল প্রজেক্টের পাতা। দেখো: "MCU ঘুম: ০.০২mA / জাগা ১০mA (১% সময়) → গড় ০.১২mA। সেন্সর: ০.৫mA। রেডিও — প্রতি ১০ মিনিটে ৩সে পাঠায়, TX ১০০mA → গড় ০.৫mA। মোট গড় ≈ ১.১mA। ২০০০mAh ÷ ১.১ ≈ ১৮১৮ ঘণ্টা ≈ ৭৫ দিন!" তুমি চোখ বড় করলে — একই ব্যাটারি, সাত দিনের বদলে পঁচাত্তর। নুরুল ভাই হাসলেন: "জাদু নয় — ঘুম। সময়-ভাগের হিসাব। যন্ত্র সারাক্ষণ জাগলে সে ভোক্তা, ওয়াক্ত-মতো জাগলে সে যত্নবান। আর রেগুলেটরের গল্প — LDO সোজা রাস্তা কিন্তু ঢালুতে শক্তি ফেলে (dropout×I তাপে যায়), buck-কনভার্টার ঘুরপথ কিন্তু কম খায় (৮৫-৯৫%)। সস্তা নয়, দক্ষতা কিনতে হয় — নয়েজ আর জটিলতার দামে।"</div>
 <div class="dialogue en">He opened the ledger to a real project page: "MCU sleep 0.02mA, awake 10mA at 1% → average 0.12mA. Sensor 0.5mA. Radio: 3 seconds per 10 minutes at 100mA → 0.5mA average. Total ≈1.1mA. 2000mAh ÷ 1.1 ≈ 1818 hours ≈ 75 days!" Your eyes widened — same battery, seven days became seventy-five. Nurul smiled: "Not magic — sleep. Duty-cycle arithmetic. A device awake around the clock is a spendthrift; awake on time, a mendicant. And regulators: LDO is the straight road but spills energy on the slope (dropout×I as heat); the buck converter takes the winding road but eats less (85-95%). Efficiency isn't free — you pay in noise and complexity."</div>
 
 <div class="code-block">রেশন-খাতার গণিত — Power Budgeting:
@@ -597,7 +597,7 @@ You thought. "Bad battery?"
   উদাহ: (০.০১×১০mA) + (০.৯৯×০.০২mA) ≈ ০.১২mA  ← ৮০ গুণ সাশ্রয়!
 
 রেগুলেটর-প্রজাতি:
-  LDO (linear): Vout স্থির, বাড়তি V×I তাপে বায়না
+  LDO (linear): Vout স্থির, বাড়তি V×I তাপে খোয়ানো
     — সরল, শান্ত (নয়েজ-কম); দক্ষতা ≈ Vout/Vin
     (৩.৭→৩.৩V: ~৮৯%; ১২→৩.৩V: ~২৮% — এখানে LDO নিষেধ!)
   Buck (স্টেপ-ডাউন সুইচিং): ইন্ডাক্টর-দোলায় শক্তি-প্যাক
@@ -609,7 +609,7 @@ You thought. "Bad battery?"
 খাতা-নিয়ম (নুরুল ভাইয়ের দুই কলাম):
   "নেয়" = প্রতিটা অংশের গড় mA (সব অবস্থা মিলিয়ে)
   "দেয়" = সোর্সের সত্যিকার Wh (ক্যালেন্ডার-জীবন+পুনরাবৃত্তি-ক্ষয় ধরে)
-  নেয় < দেয় × ০.৭ (মার্জিন) — তবেই ডিজাইন পাস</div>
+  নেয় &lt; দেয় × ০.৭ (মার্জিন) — তবেই ডিজাইন পাস</div>
 
 <div class="dialogue">সন্ধ্যায় নুরুল ভাই খাতা-ঝুলি কোমরে আঁটকে বললেন: "রিযিকের কথা শোনো — যার কাছে যা আছে, তার হিসাব রাখতে হয়। কুরআনে ইবরাহিম-আলাইহিস-সালামের দোয়া: 'যেভাবে রিযিক দিয়েছেন, তা হিসাব করে খাওয়ার তাওফিক দাও' — খাওয়া জায়েজ, অপচয় নয়; আর কৃপণতাও নয়: 'হাত পুরো বন্ধ করে রেখো না' (১৭:২৯)। আমার খাতার দুই কলাম তারই ইঞ্জিনিয়ারি: নেয় কলামে অপচয় নয় (LED সারাদিন জ্বলবে কেন?), দেয় কলামে কৃপণতা নয় (যা দরকার তা-ই দাও — রেগুলেটর স্থির, ক্যাপ পর্যাপ্ত)। যে ডিভাইস তার রেশন-খাতা জানে, সে-ই মাঠে বছর টেকে। কাল যাও তাহমিনা আপার কাছে — নকশার ভাষা: যে ভাষায় এই সব হিসাব কাগজে লেখা হয়।"</div>
 <div class="dialogue en">At dusk, buckling the ledger holster, Nurul said: "Hear the matter of rizq — whoever holds provision must keep its account. The Quran prays for measured consumption, and forbids both extremes: 'neither tie thy hand to thy neck nor stretch it to its utmost' (17:29). My two columns are its engineering: the 'takes' column forbids waste (why should an LED burn all day?), the 'gives' column forbids stinginess (give what's needed — steady rail, ample caps). The device that knows its ration ledger is the one that lasts a year in the field. Tomorrow — Tahmina's: the language of schematics, in which all this arithmetic is written on paper."</div>
@@ -630,8 +630,9 @@ You thought. "Bad battery?"
   <text class="lbl-sm" x="196" y="128">↑ ঝলক মাত্র ১%</text>
   <!-- result box -->
   <rect class="cell" x="170" y="150" width="360" height="70"/>
-  <text class="lbl" x="350" y="178">গড় I = ০.১২mA  (৮০ গুণ সাশ্রয়!)</text>
-  <text class="lbl-sm" x="350" y="202">২০০০mAh ÷ ০.১২mA ≈ ৭৫ দিন  (আগে ছিল ৮ দিন)</text>
+  <text class="lbl" x="350" y="172">শুধু MCU: গড় I = ০.১২mA  (৮৩ গুণ সাশ্রয়)</text>
+  <text class="lbl-sm" x="350" y="192">২০০০mAh ÷ ০.১২mA ≈ ১৬,৬৬৭ ঘণ্টা ≈ ৬৯৪ দিন</text>
+  <text class="lbl-sm" x="350" y="211" font-size="10">(আগে ছিল ২০০ ঘণ্টা ≈ ৮ দিন) · সেন্সর+রেডিও যোগ হলে গড় ১.১mA → ৭৫ দিন</text>
 </svg>
 <div class="diag-cap">একই কাজ, ভিন্ন সময়-ভাগ: ঘুমের মুদ্রা μA — ব্যাটারি-জীবন কোটি-ভাগ নয়, শুধু ডিউটি-চক্রের হিসাব।</div>
 </div>
@@ -648,11 +649,11 @@ You thought. "Bad battery?"
   <text class="lbl-sm" x="100" y="72" font-size="10">৩-পা: IN·GND·OUT</text>
   <text class="lbl-sm" x="100" y="102" font-size="10">৭V→৫V: বাকি ২V×I তাপ!</text>
   <rect class="cell-cyan" x="200" y="36" width="150" height="46"/>
-  <text class="lbl-cyan" x="275" y="54">LM২৫৯৬ (বাক)</text>
+  <text class="lbl-cyan" x="275" y="54">LM2596 (বাক)</text>
   <text class="lbl-sm" x="275" y="72" font-size="10">ইন্ডাক্টর+ডায়োড+ক্যাপ</text>
   <text class="lbl-sm" x="275" y="102" font-size="10">৯২% দক্ষ — তাপ-কম</text>
   <rect class="cell-hot" x="380" y="36" width="150" height="46"/>
-  <text class="lbl-hot" x="455" y="54">MCP১৭০০ (৩.৩V LDO)</text>
+  <text class="lbl-hot" x="455" y="54">MCP1700 (৩.৩V LDO)</text>
   <text class="lbl-sm" x="455" y="72" font-size="10">চিপ-সরু, dropout ছোট</text>
   <rect class="cell" x="30" y="140" width="200" height="70"/>
   <text class="lbl" x="130" y="162">Li-ion ১৮৬৫০</text>
@@ -661,9 +662,9 @@ You thought. "Bad battery?"
   <rect class="cell-cyan" x="260" y="140" width="270" height="70"/>
   <text class="lbl-cyan" x="395" y="162">সুরক্ষা-বেষ্টনী (BMS)</text>
   <text class="lbl-sm" x="395" y="180" font-size="10">অতি-চার্জ/অতি-খালি/শর্ট — তিন-রক্ষী</text>
-  <text class="lbl-sm" x="395" y="198" font-size="10">TP৪০৫৬: চার্জার-মাতা · বিনা-BMS ব্যবহার নিষেধ</text>
+  <text class="lbl-sm" x="395" y="198" font-size="10">TP4056: চার্জার-মাতা · বিনা-BMS ব্যবহার নিষেধ</text>
 </svg>
-<div class="diag-cap">একই কাজে তিন প্রজাতি: সরু-তাপ (৭৮০৫), দক্ষ-জটিল (বাক), চিপ-সরু (MCP১৭০০); Li-ion-এর প্রাণ BMS-র হাতে — ভোল্টেজ-জানা ব্যাটারির অর্ধেক নিরাপত্তা।</div>
+<div class="diag-cap">একই কাজে তিন প্রজাতি: সরু-তাপ (৭৮০৫), দক্ষ-জটিল (বাক), চিপ-সরু (MCP1700); Li-ion-এর প্রাণ BMS-র হাতে — ভোল্টেজ-জানা ব্যাটারির অর্ধেক নিরাপত্তা।</div>
 </div>
 
 <div class="diagram">
@@ -675,7 +676,7 @@ You thought. "Bad battery?"
   <line class="edge" x1="140" y1="65" x2="180" y2="65"/>
   <rect class="cell" x="180" y="40" width="110" height="50"/>
   <text class="lbl" x="235" y="60">চার্জার</text>
-  <text class="lbl-sm" x="235" y="78" font-size="10">TP৪০৫৬+ডায়োড</text>
+  <text class="lbl-sm" x="235" y="78" font-size="10">TP4056+ডায়োড</text>
   <line class="edge" x1="290" y1="65" x2="330" y2="65"/>
   <rect class="cell-cyan" x="330" y="40" width="100" height="50"/>
   <text class="lbl-cyan" x="380" y="60">Li-ion</text>
@@ -689,20 +690,20 @@ You thought. "Bad battery?"
   <text class="lbl-hot" x="490" y="142" font-size="10">MCU+রেডিও</text>
   <rect class="cell" x="30" y="160" width="440" height="40"/>
   <text class="lbl-sm" x="250" y="178" font-size="10">রাতে: ব্যাটারি-রিযিক → ডিউটি-ঘুম (দরজা ৪) → ডাকে-জাগরণ (দরজা ১০-১১)</text>
-  <text class="lbl-sm" x="250" y="194" font-size="10">হিসাব: গড় ১.২mA → ২০০০÷১.২ ≈ ৭০ দিন বৃষ্টি-সহনশীলতা</text>
+  <text class="lbl-sm" x="250" y="194" font-size="10">হিসাব: গড় ১.১mA → ২০০০÷১.১ ≈ ১৮১৮ ঘণ্টা ≈ ৭৫ দিন বৃষ্টি-সহনশীলতা</text>
 </svg>
 <div class="diag-cap">দিনে সূর্য জমায়, রাতে ব্যাটারি চালায় — নোডের রিযিক-চেইন: প্যানেল→চার্জার→সঞ্চয়→নিয়ন্ত্রণ→শহর; বাজেট-খাতা মিললে মাঠে বছর টেকে।</div>
 </div>
 
 <div class="verse">
-<div class="verse-arabic">وَلَا تَجْعَلْ يَدَكَ مَغْلُولَةً إِلَىٰ عُنُقِكَ وَلَا تَبْسُطْهَا كُلَّ الْبَسْطِ</div>
-<div class="verse-translation">তোমার হাতকে গলায় বেঁধে রেখো না (কৃপণতা), আর পুরোপুরি খুলেও দিয়ো না (অপচয়)।</div>
-<div class="verse-ref">— কুরআন ১৭:২৯</div>
+<div class="verse-arabic">وَالَّذِينَ إِذَا أَنفَقُوا لَمْ يُسْرِفُوا وَلَمْ يَقْتُرُوا وَكَانَ بَيْنَ ذَٰلِكَ قَوَامًا</div>
+<div class="verse-translation">এবং তারা যখন ব্যয় করে, তখন অযথা ব্যয় করে না, কৃপণতাও করে না — তাদের পন্থা হয় এতদুভয়ের মধ্যবর্তী।</div>
+<div class="verse-ref">— কুরআন ২৫:৬৭</div>
 </div>
 
 
-<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 4 — রিযিক-চেইন বসানো:</strong> ব্যাটারির হিসাব প্রথম: গড়-খিদা অনুমান করলাম ১.২mA → ২০০০mAh সেলে ৭০ দিন-রেখা। কিনলাম: <em>১৮৬৫০ + TP4056 + ৬V-সোলার + MCP1700-৩.৩V</em>। <strong>কেন-লগ:</strong> দিনে চার্জ, রাতে সেল; LDO-না-বাক প্রশ্নে গড়-খিদা কম (১.২mA) তাই সরু-LDO-ই যথেষ্ট — বাকের জটিলতা বাঁচালাম; এই সিদ্ধান্তই ইঞ্জিনিয়ারিং।</div></div>
-<div class="secret-box"><div class="label">দরজা ৪ — রহস্য</div><div class="text">🔋 ব্যাটারি মানে রেশন-খাতা: প্রতিটা mA-র দুই কলাম — নেয় ও দেয়; ঘুমই বছরের জীবনের চাবি।<br><small>P=VI; সময়=mAh÷গড়mA; ডিউটি-গড়: ০.১২mA-র জাদু; LDO-সরল/বাক-দক্ষ। ১৭:২৯ — দুই কলামের নীতি।</small></div></div>`,
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 4 — রিযিক-চেইন বসানো:</strong> ব্যাটারির হিসাব প্রথম: গড়-খিদা অনুমান করলাম ১.১mA → ২০০০mAh সেলে ৭৫ দিন-রেখা। কিনলাম: <em>১৮৬৫০ + TP4056 + ৬V-সোলার + MCP1700-৩.৩V</em>। <strong>কেন-লগ:</strong> দিনে চার্জ, রাতে সেল; LDO-না-বাক প্রশ্নে <em>গড়</em>-খিদা কম (১.১mA) আর ৩.৭→৩.৩V-এ LDO-দক্ষতা ৮৯% — তাই সরু-LDO যথেষ্ট মনে হলো। <strong>কিন্তু নুরুল ভাই খাতায় লাল দাগ দিলেন:</strong> "গড় দেখে রেগুলেটর কেনো না — <em>চূড়া</em> দেখে কেনো। MCP1700 দেয় সর্বোচ্চ ২৫০mA; ESP32 WiFi পাঠানোর মুহূর্তে টানে ২৫০-৩৫০mA। গড় ১.১mA হলেও ওই আধা-সেকেন্ডেই রেগুলেটর হাঁপাবে, ভোল্টেজ পড়বে, চিপ রিসেট।" <strong>সমাধান-লগ:</strong> LDO রাখলাম (ঘুমন্ত নোডে তার ১.৬μA স্থির-খরচই আসল সম্পদ), কিন্তু আউটপুটে <em>৪৭০μF বাল্ক-ক্যাপ</em> যোগ করলাম — চূড়ার মুহূর্তে স্থানীয় জলাধারই চাহিদা মেটাবে (দরজা ২-এর পাঠ, বড় মাপে)। শিক্ষা: <strong>গড় দিয়ে ব্যাটারি বাছো, চূড়া দিয়ে রেগুলেটর।</strong></div></div>
+<div class="secret-box"><div class="label">দরজা ৪ — রহস্য</div><div class="text">🔋 ব্যাটারি মানে রেশন-খাতা: প্রতিটা mA-র দুই কলাম — নেয় ও দেয়; ঘুমই বছরের জীবনের চাবি।<br><small>P=VI; সময়=mAh÷গড়mA; ডিউটি-গড়: ০.১২mA-র জাদু; LDO-সরল/বাক-দক্ষ। ২৫:৬৭ — অপচয়ও নয়, কৃপণতাও নয়: দুই কলামের নীতি।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
     body:`<ul class="checklist">
@@ -710,7 +711,7 @@ You thought. "Bad battery?"
 <li><strong>ডিউটি-চক্র-গড় হাতে:</strong> একটা বাস্তব উদাহ নিজে হিসাব করো (১০-মিনিট-অন্তর রিপোর্ট করা সেন্সর) — ঘুম-জাগা মিশ্রণে গড় কত।</li>
 <li><strong>রেগুলেটর-নির্বাচন:</strong> ছোট dropout → LDO; বড় পার্থক্য/বেশি কারেন্ট → buck; ৩.৭→৩.৩ LDO ঠিক, ১২→৩.৩ LDO অপরাধ।</li>
 <li><strong>mAh বনাম Wh:</strong> ভোল্টেজ-ভিন্ন ব্যাটারি তুলনা করতে হবে Wh-তে — বিপণন-সংখ্যায় নয়।</li>
-<li><strong>নীতি-বোধ:</strong> ১৭:২৯-এর দুই কলাম — অপচয়-কৃপণতা নয়; ইঞ্জিনিয়ারের নির্ণায়ক গুণ হিসাব-নিষ্ঠা।</li>
+<li><strong>নীতি-বোধ:</strong> ২৫:৬৭-এর দুই কলাম — অপচয়-কৃপণতা নয়; ইঞ্জিনিয়ারের নির্ণায়ক গুণ হিসাব-নিষ্ঠা।</li>
 </ul>`
   }
 });
