@@ -3,7 +3,17 @@
 **Reviewer pass:** 16 Aug 2026 · full technical audit
 **Scope:** every formula, every C snippet, every register name, all 48 SVGs, continuity across all 16 doors, and a gap analysis against what a complete electronics→IoT curriculum must contain.
 
-> **Status — Stage 1 complete** (commit `d674538`). All six code/arithmetic errors fixed, the ASCII sweep applied (101 replacements), verse and cross-reference mismatches resolved, 37 Bengali typos corrected, the Door 16 capstone rewritten for real ESP32 hardware, and Door 16's missing failure callout written. All four door files parse; all 16 doors load with balanced HTML and the full element set. Findings below that are already fixed are marked **✅ FIXED**. Stages 2–6 remain.
+> **Status — Stages 1 and 3 complete.**
+>
+> **Stage 1** (`d674538`) — all six code/arithmetic errors fixed, ASCII sweep applied (101 replacements), verse and cross-reference mismatches resolved, 37 Bengali typos corrected, the Door 16 capstone rewritten for real ESP32 hardware, Door 16's missing failure callout written.
+>
+> **Stage 3** (`9247c8b`) — shared `<defs>` and a 35-symbol schematic library added to `index.html`; the 49 non-rendering arrowheads now work; `.lbl-left`/`.lbl-right` added; all 7 hidden orphans removed; **twelve figures redrawn as true schematics** and verified by rasterising each one.
+>
+> Two figures turned out to have wiring errors, not just cosmetic ones: Door 5's blinker had the MCU input tapped to VCC rather than the divider midpoint, and Door 9's pull-up was on the wrong node. Door 6's shunt was an open circuit because its only return path was among the hidden elements. All four door files parse; all 16 doors load with the full element set.
+>
+> The repeatable method, the tooling, and a handoff checklist live in [`scripts/book-review/PLAYBOOK.md`](../scripts/book-review/PLAYBOOK.md).
+>
+> **Remaining: Stage 2** (the AVR/ESP32 narrative seam), **Stage 3 Tier 2–4** (waveform figures, the ~24 mechanical fixes, five mismatched photos), **Stage 4** (build-thread drift), **Stages 5–6** (new content and apparatus).
 
 ---
 
