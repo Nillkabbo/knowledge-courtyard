@@ -617,6 +617,17 @@
       "color": "game-55",
       "tag": "Book 55 · Reinforcement Learning",
       "status": "live"
+    },
+    {
+      "n": 56,
+      "folder": "silicon-workshop",
+      "title_en": "Talking to Silicon",
+      "title_bn": "সিলিকনের সাথে কথা",
+      "icon": "⚡",
+      "category": "cs",
+      "color": "game-56",
+      "tag": "Book 56 · Electronics to IoT",
+      "status": "live"
     }
   ],
   "roadmap": [
@@ -723,6 +734,10 @@
         {
           "book": 43,
           "why": "Docker containers → Kubernetes orchestration → Terraform IaC → CI/CD → observability → SRE error budgets → service mesh → progressive delivery — the OPERATIONS layer. Every production system runs on these. Connects to B38 (OS↔containers), B35 (etcd=Raft), B37 (networking=OSI), B42 (eBPF=kernel), B40 (CI/CD=delivery)."
+        },
+        {
+          "book": 56,
+          "why": "Electronics→circuits→MCU→firmware→IoT — the physical layer beneath B42/B38; the hands-on bridge from voltage to cloud."
         }
       ]
     },

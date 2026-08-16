@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>সিলিকনের সাথে কথা — Talking to Silicon</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">أَنْ طُورُوا فِي الْأَرْضِ فَانْظُرُوا</div>
+  <h1 class="title-main">সিলিকনের সাথে কথা</h1>
+  <div class="title-sub">Talking to Silicon</div>
+  <div class="title-desc">
+    বজ্র থেকে মেঘ — ইলেকট্রনের নদী থেকে IoT পর্যন্ত।<br>
+    ষোলটি দরজা — ভোল্টেজ ও ওহমের নিয়ম থেকে ট্রানজিস্টর, লজিক-গেট থেকে মাইক্রোকন্ট্রোলার, C-তে রেজিস্টার-প্রোগ্রামিং থেকে ইন্টারাপ্ট-টাইমার-PWM, কমিউনিকেশন-বাস থেকে ফার্মওয়্যার-বুট আর WiFi/MQTT — শেষে সম্পূর্ণ IoT সিস্টেমের নকশা।<br><br>
+    <em>From lightning to cloud: sixteen doors — voltage/Ohm's law, R-C-L, diodes/transistors, power, schematics, Kirchhoff, logic gates, MCU anatomy, C firmware, interrupts, timers, PWM/ADC, UART/SPI/I2C, boot/RTOS, WiFi/MQTT, and a full IoT capstone. Real C code, real circuits, every name verified.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">⚡ কারিগরখানায় ঢোকো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">মেরামত-টেবিলের প্রতিশ্রুতি — The Repair Bench Promise</div>
+    <p>পাটুয়াটুলির গলিতে একটা কারিগরখানা — সামনে ভাঙা রেডিওর স্তূপ, পেছনে অসিলোস্কোপের সবুজ আলো, দেয়ালে ষাট বছরের সোল্ডারিং-আয়রনের কালো দাগ। এখানে ১৯৬০-এর ভ্যাকুয়াম-টিউব রেডিও থেকে আজকের IoT সেন্সর — সব খোলে, সব বোঝে, সব সারায়। কারিগরখানার মালিক বলেন: "জিনিস ভাঙা মানে তার সাথে কথা বলা বন্ধ হয়ে গেছে। মেরামত মানে কথা ফের চালু করা।"</p>
+    <p class="en">In a Patuatuli lane, a repair workshop — broken radios out front, the oscilloscope's green glow behind, sixty years of solder-iron marks on the wall. From 1960s vacuum-tube radios to today's IoT sensors — everything gets opened, understood, fixed. The master says: "A broken thing means conversation with it has stopped. Repair means starting the conversation again."</p>
+    <hr class="p-divider">
+    <p>এই বই তোমাকে শেখাবে সেই কথা: ইলেকট্রন কীভাবে চলে (ভোল্টেজ-কারেন্ট-রেজিস্ট্যান্স), কম্পোনেন্টরা কী বলে (R-C-L, ডায়োড, ট্রানজিস্টর), সার্কিট কীভাবে পড়া ও গড়া যায়, চিপের ভেতরের ছোট শহর (MCU) কেমন, আর সবশেষে — C-কোড দিয়ে সেই শহরের দরওয়ানদের নির্দেশ দিয়ে পৃথিবীর সাথে ওয়াই-ফাইতে কথা বলা। প্রতিটা দরজায় একজন কারিগর, একটা নাম, একটা কাজে-লাগা ধারণা।</p>
+    <p class="en">This book teaches that conversation: how electrons flow, what components say, how to read and build circuits, the small city inside a chip, and finally — commanding that city's gatekeepers with C code until it speaks to the world over WiFi. Each door: a craftsman, a name, a working idea.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🔌</span><span id="hud-rank-name">কৌতূহলী শিক্ষুক</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1600 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>কারিগরখানার দরজা বেছে নাও</h2><p>ষোলটি দরজা, ক্রমানুসারে। ইলেকট্রন থেকে মেঘ পর্যন্ত।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← কারিগরখানায় ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🌟</div>
+  <h1 class="complete-title">তুমি এখন সিলিকনের ওস্তাদ</h1>
+  <p class="complete-text">ষোলটি দরজা পেরিয়েছ। বজ্রের নদী থেকে মেঘের পথ পর্যন্ত।<br><br>ওহমের নিয়ম, কার্শফের সড়ক, বোলের বীজগণিত, শকলির সন্তান (ট্রানজিস্টর), কিলবি-নয়েসের চিপ, ফ্যাগিনের ৪০০৪, বানজির আর্দুইনো — এবং তোমার নিজের C-কোডে জ্বলা প্রথম LED।<br><br>এখন তুমি জানো — হার্ডওয়্যার মানে অজানা নয়; প্রোগ্রাম মানে কেবল স্ক্রিন নয়।<br><strong>সিলিকনের সাথে কথা বলো। দুনিয়া সাড়া দেবে।</strong></p>
+  <div class="complete-verse">إِنَّا عَرَضْنَا الْأَمَانَةَ عَلَى السَّمَاوَاتِ وَالْأَرْضِ وَالْجِبَالِ</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"আমি আমানত পেশ করেছিলাম আসমান-জমিন-পাহাড়ের সামনে... মানুষ তা বহন করেছে।" — কুরআন ৩৩:৭২</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 কারিগরখানার চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 কারিগরখানার চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-4.js"></script>
+<script src="doors-5-8.js"></script>
+<script src="doors-9-12.js"></script>
+<script src="doors-13-16.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+<script src="engine.js"></script>
+  <script src="../scripts/study-materials.js"></script>
+</body>
+</html>
