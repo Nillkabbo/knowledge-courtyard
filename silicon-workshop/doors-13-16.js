@@ -556,7 +556,7 @@ OTA — নিজের বাসা থেকে নতুন পালক:
 
 
 
-<div class="photo-frame"><img src="photos/multimeter.jpg" alt="মাল্টিমিটার — ফিল্ড-মেরামতের সঙ্গী"><div class="photo-cap">মাল্টিমিটার — ফিল্ড-মেরামতের সঙ্গী · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+<div class="photo-frame"><img src="photos/d15-antenna.jpg" alt="ESP32-বোর্ড (অ্যান্টেনা-সহ) — Wikimedia Commons"><div class="photo-cap">ESP32-বোর্ড (অ্যান্টেনা-সহ) — Wikimedia Commons · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
 
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — অ্যান্টেনা-জ্যামিতি ও মডিউল-পরিবার</div>
@@ -576,9 +576,10 @@ OTA — নিজের বাসা থেকে নতুন পালক:
   <line class="edge" x1="105" y1="116" x2="105" y2="150"/>
   <path class="edge" d="M 100 150 L 110 150 L 105 170 Z" fill="none"/>
   <text class="lbl-sm" x="105" y="192" font-size="10">λ/৪-মনোপোল ~৩.১cm @২.৪GHz</text>
-  <text class="lbl-sm" x="105" y="210" font-size="10">তারের দৈর্ঘ্য = তরঙ্গের ভগ্নাংশ — জ্যামিতিই দক্ষতা</text>
+  <text class="lbl-left" x="30" y="222" font-size="10">তারের দৈর্ঘ্য = তরঙ্গের ভগ্নাংশ — জ্যামিতিই দক্ষতা</text>
   <rect class="cell" x="220" y="150" width="310" height="60"/>
-  <text class="lbl-sm" x="375" y="172" font-size="10">ড্রপ-শিষ্টাচার: VCC-শেষ-এ কানেক্ট, অ্যান্টেনা-ছাড়া টিএক্স নিষেধ (PA-পোড়া)</text>
+  <text class="lbl-sm" x="375" y="164" font-size="10">ড্রপ-শিষ্টাচার: VCC-শেষে কানেক্ট</text>
+  <text class="lbl-sm" x="375" y="177" font-size="10">অ্যান্টেনা-ছাড়া TX নিষেধ (PA-পোড়া)</text>
   <text class="lbl-sm" x="375" y="192" font-size="10">লোরা-ফিডার: RG58/লিটজ — ক্ষয়-মিলিয়ে দৈর্ঘ্য ছোট রাখো</text>
 </svg>
 <div class="diag-cap">বাতাসের দরজার জ্যামিতি: অ্যান্টেনার দৈর্ঘ্য তরঙ্গদৈর্ঘ্যের ভগ্নাংশ-হলে সবচেয়ে দক্ষ — ২.৪GHz-এ ~৩সেমি; অ্যান্টেনা-ছাড়া পাঠানো চিপের অ্যামপ্লিফায়ার পোড়ানোর শাস্তি।</div>
@@ -850,7 +851,8 @@ void loop() { }                        // ইচ্ছাকৃত খালি 
   <path class="edge-cyan" d="M 500 96 Q 500 150 265 150 Q 85 150 85 96" fill="none" stroke-dasharray="5,4"/>
   <text class="lbl-cyan" x="265" y="172" font-size="10">শিক্ষা → OTA-সংস্করণ-২ (স্বাক্ষরিত) → আবার মাঠ</text>
   <rect class="cell" x="60" y="190" width="440" height="34"/>
-  <text class="lbl-sm" x="280" y="210" font-size="10">প্রজেক্ট কখনো এক-দফায় শেষ নয়: পরীক্ষা→মোড়ানো→পরিবেশ→ময়না→সংশোধন — এই বৃত্তই ইঞ্জিনিয়ারিং-জীবন</text>
+  <text class="lbl-sm" x="280" y="206" font-size="10">প্রজেক্ট কখনো এক-দফায় শেষ নয়</text>
+  <text class="lbl-sm" x="280" y="222" font-size="10">পরীক্ষা→মোড়ানো→পরিবেশ→ময়না→সংশোধন — এই বৃত্তই ইঞ্জিনিয়ারিং-জীবন</text>
 </svg>
 <div class="diag-cap">আসল-জগতের বৃত্ত: টেবিলের সাফল্য মাঠের গ্যারান্টি নয় — বৃষ্টি-পরীক্ষা, লগ-ময়না, OTA-সংশোধনের ফিরে-যাওয়া; প্রতিটা ফসল পরের বীজ।</div>
 </div>

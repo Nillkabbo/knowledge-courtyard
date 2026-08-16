@@ -386,7 +386,7 @@ AVR উদাহরণ (বাটন-ডাক, পতাকা-পদ্ধত�
   <text class="lbl-sm" x="485" y="84" font-size="10">শরীরের-তাপের নড়াচড়া</text>
   <text class="lbl-sm" x="485" y="100" font-size="10">ঘুম-জাগানো লাইট</text>
   <rect class="cell" x="40" y="150" width="500" height="50"/>
-  <text class="lbl-sm" x="290" y="170" font-size="10">তিন-জাতই ডিজিটাল-পালস দেয় — INT-পিনের খাবার; রোবট-চাকা, স্মার্ট-দরজা, নিরাপত্তা-বাতির চোখ এরাই</text>
+  <text class="lbl-sm" x="290" y="162" font-size="10">তিন-জাতই ডিজিটাল-পালস দেয় — INT-পিনের খাবার</text>
   <text class="lbl-sm" x="290" y="188" font-size="10">হার্ডওয়্যার-ডাক বনাম পোলিং: ব্যাটারি-প্রশ্নে ডাক জেতে (দরজা ৪-এর হিসাব)</text>
 </svg>
 <div class="diag-cap">ডাক-উৎসের বাহারি: চুম্বক, আলো, তাপ — প্রতিটা বাইরের ঘটনাকে পালসে অনুবাদ করে INT-পিনে পাঠায়; এনকোডার = স্লট-চাকা + ফটো = ঘূর্ণনের গণিত।</div>
@@ -563,7 +563,7 @@ RTC (ক্যালেন্ডার-হৃদয়):
 
 
 
-<div class="photo-frame"><img src="photos/multimeter.jpg" alt="ডিজিটাল মাল্টিমিটার — কারিগরের স্টেথোস্কোপ"><div class="photo-cap">ডিজিটাল মাল্টিমিটার — কারিগরের স্টেথোস্কোপ · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+<div class="photo-frame"><img src="photos/d11-ds3231.jpg" alt="ডিজিটাল মাল্টিমিটার — কারিগরের স্টেথোস্কোপ"><div class="photo-cap">ডিজিটাল মাল্টিমিটার — কারিগরের স্টেথোস্কোপ · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
 
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — DS3231: RTC-চিপের শরীর-সারণি</div>
@@ -580,7 +580,7 @@ RTC (ক্যালেন্ডার-হৃদয়):
   <text class="lbl-sm" x="415" y="100" font-size="10">VCC · GND · SDA · SCL</text>
   <text class="lbl-sm" x="415" y="122" font-size="10">SQW = সেকেন্ড-পালস-আউটপুট</text>
   <text class="lbl-sm" x="415" y="144" font-size="10">(১Hz-হার্টবিট — দরজা-শুরুর বাতি!)</text>
-  <text class="lbl-sm" x="150" y="218" font-size="10">ব্যবহার: জামাত-ওয়াক্তের হিসাব, লগ-টাইমস্ট্যাম্প, জাগরণ-অ্যালার্ম</text>
+  <text class="lbl-left" x="55" y="222" font-size="10">ব্যবহার: জামাত-ওয়াক্তের হিসাব, লগ-টাইমস্ট্যাম্প, জাগরণ-অ্যালার্ম</text>
 </svg>
 <div class="diag-cap">RTC-র রাজা-চিপ: ক্যালেন্ডার+ঘড়ি+তাপ-সংশোধন এক শরীরে; মূল-বিদ্যুৎ গেলে কয়েন-ব্যাটারি সময় বহন করে — শহর ঘুমালেও ওয়াক্ত-খাতা জেগে।</div>
 </div>
@@ -743,15 +743,15 @@ ADC-হাতিয়ারের থলি:
   adc_oneshot_read(h, ADC_CHANNEL_0, &raw);
   // ১২-বিট: ০…৪০৯৫; attenuation দিয়ে পাল্লা বাছো
   PWM: ledcSetup/ledcWrite (LEDC-চ্যানেল)
-  সতর্ক: ADC২-গুচ্ছ WiFi চলাকালে ব্যস্ত —
-  সেন্সর ADC১-এ: বেঞ্চে ভালো, মাঠে ফাঁদ!</div>
+  সতর্ক: ADC2-গুচ্ছ WiFi চলাকালে ব্যস্ত —
+  সেন্সর ADC1-এ: বেঞ্চে ভালো, মাঠে ফাঁদ!</div>
 
 <div class="dialogue">সন্ধ্যায় গুদাম-বন্ধ করতে করতে রুবেল ভাই বললেন: "এই দরজাটা আমার কাছে দানের দরজা। কুরআনে আছে — হাত গলায় বেঁধে রেখো না (কৃপণতা), পুরো খুলেও দিয়ো না (অপচয়) (১৭:২৯)। বিদ্যুৎ-দুনিয়ায় আমি এর চেয়ে নিখুঁত উপমা পাইনি: PWM পুরো-খোলা নয়, পুরো-বন্ধ নয় — মাপা অংশে দেয়; প্রকৃতির পাখাও তাই, শ্বাসও তাই, বৃষ্টিও তাই। আর ADC উল্টো পাঠ — দুনিয়ার অগণন-ধারাবাহিক দান তুমি কত-টুকু নিলে সেটাও মাপা সংখ্যায় জানো। যে ব্যবস্থা দেয়-নেয় দুই-ই মাপে, সে-ই মিজানে চলে। কাল হাসান সাহেবের কাছে যাও — পোস্টমাস্টার; এখন দেশের সবচেয়ে সুন্দর প্রয়োগ-দরজা: সুলাইমান-আলাইহিস-সালামের পত্রের মতো চিপে-চিপে চিঠি — UART, SPI, I2C।"</div>
 <div class="dialogue en">Closing the storeroom at dusk, Rubel said: "To me this is the door of giving. The Quran says — neither chain your hand to your neck (miserliness), nor stretch it fully open (waste) (17:29). In the electrical world I've found no truer image: PWM is neither fully open nor fully shut — it gives in measured part; nature's fan does so, breath does so, rain does so. And ADC is the reverse reading — how much of the world's countless continuous gifts you took, known as a measured number. A system that measures both giving and receiving walks on the mizan. Tomorrow — Hasan's, the postmaster; now the loveliest applied door: letters chip to chip like Solomon's — UART, SPI, I2C."</div>
 
 
 
-<div class="photo-frame"><img src="photos/solar.jpg" alt="ছোট সোলার-প্যানেল — মাঠ-ডিভাইসের দিনের রিযিক"><div class="photo-cap">ছোট সোলার-প্যানেল — মাঠ-ডিভাইসের দিনের রিযিক · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+<div class="photo-frame"><img src="photos/d12-rgb.jpg" alt="ছোট তিন-রঙের RGB LED — Wikimedia Commons"><div class="photo-cap">ছোট তিন-রঙের RGB LED — Wikimedia Commons · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
 
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — সেন্সর-পরিবার: যাদের ADC পড়ে</div>
@@ -773,7 +773,8 @@ ADC-হাতিয়ারের থলি:
   <text class="lbl-sm" x="490" y="80" font-size="10">ঘোরানো-ভোল্টেজ</text>
   <text class="lbl-sm" x="490" y="98" font-size="10">ভলিউম/সেট-পয়েন্ট</text>
   <rect class="cell" x="30" y="150" width="510" height="60"/>
-  <text class="lbl-sm" x="285" y="172" font-size="10">সবাই ডিভাইডার-সেতুতে (দরজা ৬) বসে ADC-পিনে পৌঁছায় — রোধ/ভোল্টেজ → সংখ্যা → খাতা (সেন্সর-শিট) → একক</text>
+  <text class="lbl-sm" x="285" y="164" font-size="10">সবাই ডিভাইডার-সেতুতে (দরজা ৬) বসে ADC-পিনে পৌঁছায়</text>
+  <text class="lbl-sm" x="285" y="177" font-size="10">রোধ/ভোল্টেজ → সংখ্যা → খাতা → একক</text>
   <text class="lbl-sm" x="285" y="192" font-size="10">বিশেষ-জাত: DHT22 (ডিজিটাল-প্রোটোকল), MPU6050 (I2C) — তারা চিঠি-পথে কথা বলে (দরজা ১৩)</text>
 </svg>
 <div class="diag-cap">অ্যানালগ-জগতের প্রতিনিধিরা: তাপ, আলো, ভোল্টেজ, ঘূর্ণন — চার-ই রোধ-বা-ভোল্টেজ বদলে ডিভাইডার-সেতু পার হয়ে ADC-র সংখ্যায় যায়; ডিজিটাল-জাত সরাসরি চিঠিতে।</div>

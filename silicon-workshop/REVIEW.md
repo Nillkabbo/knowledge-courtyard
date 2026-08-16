@@ -13,7 +13,9 @@
 >
 > The repeatable method, the tooling, and a handoff checklist live in [`scripts/book-review/PLAYBOOK.md`](../scripts/book-review/PLAYBOOK.md).
 >
-> **Remaining: Stage 3 Tier 4** (~24 mechanical fixes, five mismatched photos), **Stage 4** (build-thread drift), **Stages 5–6** (new content and apparatus).
+> **Remaining: Stage 4** (build-thread drift), **Stages 5–6** (new content and apparatus).
+>
+> **Stage 3 Tier 4** — done: all 12 SVG findings cleared (label spills split into two lines or lbl-left anchored; resistor-band hardcoded colours → .cell/.cell-amber/.cell-dim palette classes, properly svg-scoped; ADC১/ADC২ → ASCII). Three mismatched photos swapped (D11 multimeter→DS3231 PCB, D12 solar→RGB LED, D15 multimeter→ESP32-C3 board); 74HC00 and enclosure photos not on Commons — D7/D16 keep topic-adjacent photos. Audit now reports only the 5 intentional structural deviations (4-diagram doors 3/12/13; 2-dialogue doors 14/16). Browser: 16/16 doors, 51 diagrams, 0 issues.
 >
 > **Stage 3 Tier 2** — done: RC curve rebuilt on a true exponential path (τ dot now ON the curve, browser-verified 0.4px; axis ticks τ…5τ≈99%); PWM duty figure redrawn with real time axis + T-brackets; UART frame rebuilt with bit-grid and LSB-first labels ('A'=0x41); three NEW figures — ADC quantisation staircase (D12), I²C transaction START→ACK→STOP dual-rail (D13), rectifier ripple with ΔV≈I·t÷C (D3). Book now 51 diagrams. Incident: an editing regex truncated doors-9-12.js (door 12 lost); recovered from 9247c8b via one-path verify-first rebuild, all structure re-verified. Lesson: multi-step story edits need verify-before-write + door-count gate.
 >

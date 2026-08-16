@@ -555,8 +555,9 @@ MCU-সংযোগ (আগাম-পথ):
   <path class="edge-cyan" d="M 50 225 L 255 225 L 255 165 L 530 165" fill="none"/>
   <text class="lbl-cyan" x="300" y="150" font-size="10">SR-ফ্লিপ-ফ্লপের জবাব: এক-ই ধার</text>
   <line class="grid-line" x1="255" y1="165" x2="255" y2="235" stroke-dasharray="3,4"/>
-  <text class="lbl-sm" x="400" y="205" font-size="10">দুই-ইনভার্টার ল্যাচ বা NAND-জোড়া — প্রথম ধারই ধরে রাখে</text>
-  <text class="lbl-sm" x="400" y="222" font-size="10">সফটওয়্যার-বিকল্প: ২০ms-অপেক্ষা (দরজা ১১-এর মিলিস!)</text>
+  <text class="lbl-sm" x="290" y="196" font-size="10">দুই-ইনভার্টার ল্যাচ বা NAND-জোড়া</text>
+  <text class="lbl-sm" x="290" y="209" font-size="10">— প্রথম ধারই ধরে রাখে</text>
+  <text class="lbl-sm" x="330" y="228" font-size="9">সফটওয়্যার-বিকল্প: ২০ms-অপেক্ষা (দরজা ১১-এর মিলিস!)</text>
 </svg>
 <div class="diag-cap">যান্ত্রিক বাটন চাপলে ৫-২০ms কাঁপে — কাঁচা-পাঠে এক-চাপ ডজন পালস; হার্ডওয়্যার-ল্যাচ বা সফটওয়্যার-অপেক্ষা কম্পন মুছে এক-ঘটনা বানায়।</div>
 </div>

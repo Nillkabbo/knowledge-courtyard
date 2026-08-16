@@ -238,3 +238,6 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .photo-frame .photo-cap{font-size:.78rem;color:var(--ink-dim);margin-top:.45rem;line-height:1.5}
 .story-text .callout.build{border-left:3px solid #f97316;background:rgba(249,115,22,.07)}
 .story-text .callout.build .co-icon{color:#fbbf24}
+
+.story-text .diagram svg .cell-amber{fill:rgba(251,191,36,.5);stroke:var(--amber);stroke-width:1}
+.story-text .diagram svg .cell-dim{fill:rgba(148,163,184,.45);stroke:var(--ink-dim);stroke-width:1}

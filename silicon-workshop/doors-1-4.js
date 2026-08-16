@@ -98,12 +98,12 @@ LED জ্বালানোর হিসাব (তোমার প্রথম
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — রেজিস্টরের কালার-কোড চাকা</div>
 <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
-  <rect x="30" y="60" width="330" height="46" rx="20" fill="#d4c5a9"/>
+  <rect x="30" y="60" width="330" height="46" rx="20" class="cell"/>
   <rect class="cell-hot" x="60" y="62" width="14" height="42"/><text class="lbl-sm" x="67" y="54" font-size="10">১</text>
   <rect class="cell" x="84" y="62" width="14" height="42"/><text class="lbl-sm" x="91" y="54" font-size="10">২</text>
   <rect class="cell-cyan" x="108" y="62" width="14" height="42"/><text class="lbl-sm" x="115" y="54" font-size="10">৩</text>
-  <rect x="132" y="62" width="18" height="42" fill="#8a7a5c"/><text class="lbl-sm" x="141" y="54" font-size="10">গুণক</text>
-  <rect x="230" y="62" width="30" height="42" fill="#c9a86a"/><text class="lbl-sm" x="245" y="54" font-size="10">সহন%</text>
+  <rect x="132" y="62" width="18" height="42" class="cell-dim"/><text class="lbl-sm" x="141" y="54" font-size="10">গুণক</text>
+  <rect x="230" y="62" width="30" height="42" class="cell-amber"/><text class="lbl-sm" x="245" y="54" font-size="10">সহন%</text>
   <line class="edge" x1="30" y1="103" x2="360" y2="103"/>
   <line class="edge" x1="196" y1="108" x2="196" y2="130"/>
   <text class="lbl" x="196" y="148">উদাহ: বাদামি-কালো-লাল = ১-০-×১০০ = ১kΩ</text>
