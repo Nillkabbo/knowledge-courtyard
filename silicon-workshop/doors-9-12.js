@@ -134,6 +134,9 @@ doors.push({
 <div class="dialogue en">Watching the LED's rhythm at dusk, Sharmin said: "Remember this feeling. He who says 'Be!' — His creation is wonder; and you, His small student, today told a pin 'light' — and it lit. This joy of making is engineering's addiction; on it men built from calculators to Mars rovers. But kun carries duty: the machine you wake, you must also put to sleep — you are deputy over the city's commanded mechanisms. Tomorrow — Muaz's: the city's most urgent call, the interrupt. The call that stops all work. He is a muezzin's son — the adhan runs in his blood."</div>
 
 
+
+<div class="photo-frame"><img src="photos/led.jpg" alt="৫mm লাল LED — তোমার প্রথম কুন-এর মুখ"><div class="photo-cap">৫mm লাল LED — তোমার প্রথম কুন-এর মুখ · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — LED ও বাটনের তার-লাগানো (ব্রেডবোর্ড-ছবি)</div>
 <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
@@ -187,6 +190,8 @@ doors.push({
 <div class="verse-ref">— কুরআন ৩৬:৮২</div>
 </div>
 
+
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 9 — প্রাণ-প্রথম কুন — ফার্মওয়্যারের জন্ম:</strong> LED-ব্লিংক দিয়ে শহর-জাগরণ যাচাই: DDR→PORT-চিঠি, কম্পাইল→ফ্ল্যাশ, আর প্রথম নিজের-ছন্দের ঝলক। <strong>নিয়ম:</strong> প্রতিটা নতুন বোর্ডে প্রথম কাজ এটাই — টুলচেইন-সেতু প্রমাণ, তারপর আসল-কাজ। আজ থেকে প্রজেক্ট-ফোল্ডার: src/ (কোড) + docs/ (খাতা) + tests/ (পরীক্ষা) — শৃঙ্খলাও ইনস্টল হলো কোডের মতো।</div></div>
 <div class="secret-box"><div class="label">দরজা ৯ — রহস্য</div><div class="text">✨ LED জ্বলে যাদুতে নয় — দুই চিঠিতে: DDR 'তুমি আউটপুট', PORT 'এখন জ্বলো'; বিট-মাস্ক ছাড়া এক পিনও নড়ে না।<br><small>DDRB|=(1&lt;&lt;5) → PORTB^=(1&lt;&lt;5) + _delay_ms; |=/&amp;=/^= ব্যাকরণ; ডেটাশিট-পড়াই দক্ষতা। কুন ফায়াকুন: ৩৬:৮২।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
@@ -340,6 +345,9 @@ AVR উদাহরণ (বাটন-ডাক, পতাকা-পদ্ধত�
 <div class="dialogue en">After the adhan, settling back, Muaz set a finger on a bead. "Last word. The Quran says — at the Friday call, leave trade and hasten (62:9); and when prayer ends, 'disperse in the land and seek Allah's bounty' (62:10). Notice — this is precisely the ISR protocol: stop, respond, return to work. The discipline chip-designers etched into a billion transistors has run in a believer's life for fourteen hundred years. When I write an ISR, I hear my father's voice — the call has come; the answer is swift, never heavy. Tomorrow, again with me — the reckoning of appointed times: timers. The remaining half of my father's discipline lives there."</div>
 
 
+
+<div class="photo-frame"><img src="photos/relay.jpg" alt="রিলে-চাকতি — ছোট সংকেতে বড় লোডের দরজা"><div class="photo-cap">রিলে-চাকতি — ছোট সংকেতে বড় লোডের দরজা · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — হল-সেন্সর ও ফটোইন্টারাপ্টার: ডাক-উৎসের জাত</div>
 <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
@@ -388,6 +396,8 @@ AVR উদাহরণ (বাটন-ডাক, পতাকা-পদ্ধত�
 <div class="verse-ref">— কুরআন ৬২:৯</div>
 </div>
 
+
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 10 — ডাক-বেষ্টনী — বৃষ্টি-সেন্সরের তার:</strong> বৃষ্টি-প্লেট INT-পিনে যুক্ত: পতন-ধারে ডাক, ISR পতাকা, লুপে তাৎক্ষণিক-পাঠ। <strong>পরীক্ষা:</strong> ভেজা-আঙুল ছোঁয়াতেই LED-ডাবল-ঝলক — ডাক-প্রবাহ প্রমাণিত। কেন পোলিং নয়? খাতার ব্যাটারি-লাইন: প্রতি-সেকেন্ড-জিজ্ঞেস মানে ঘুম নেই — ডাক-বেষ্টনীতে শহর ঘুমাতেই পারে।</div></div>
 <div class="secret-box"><div class="label">দরজা ১০ — রহস্য</div><div class="text">📣 ডাক এলে থামো-সাড়া-দাও-ফিরো: ISR ছোট, delay নিষেধ, শেয়ারে volatile — আযানের শৃঙ্খলা সিলিকনে।<br><small>vector খাতা→সেবাদার→context-ফেরা; পতাকা-পদ্ধতি; polling-এর বিপরীত। আযান-প্রোটোকল: ৬২:৯-১০।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
@@ -522,6 +532,9 @@ RTC (ক্যালেন্ডার-হৃদয়):
 <div class="dialogue en">As the noon shadow slid down the minaret, Muaz put the watch away in its box — carefully. "Last word: if waqt were mere counting it would be machinery; as keeping-watch it becomes life. The Quran says prayer is at fixed times (4:103); and the hadith's well-known sense — the most beloved deed to Allah is the constant one, even if small. So with timers: not the explosion of a giant task — regular small calls, year after year. That is how your firmware will survive too: every task on time, every sleep accounted. Tomorrow — Rubel's: the partial gift, PWM. How a lamp burns at half, a motor turns at measured power — all the mathematics of 'neither hand fully open, nor fully closed.'"</div>
 
 
+
+<div class="photo-frame"><img src="photos/multimeter.jpg" alt="ডিজিটাল মাল্টিমিটার — কারিগরের স্টেথোস্কোপ"><div class="photo-cap">ডিজিটাল মাল্টিমিটার — কারিগরের স্টেথোস্কোপ · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — DS3231: RTC-চিপের শরীর-সারণি</div>
 <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
@@ -568,6 +581,8 @@ RTC (ক্যালেন্ডার-হৃদয়):
 <div class="verse-ref">— কুরআন ৪:১০৩</div>
 </div>
 
+
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 11 — ওয়াক্ত-ঘণ্টি — ১৫-মিনিটের ছন্দ:</strong> টাইমার-CTC-এ ৯০০s-ডাক বসালাম: প্রি-স্কেলার-গণিত খাতায়, OCR-এ সংখ্যা, ডাক-দরজায় পাঠ-ফাংশন। <strong>যোগ:</strong> watchdog ৮s — ফার্মওয়্যার আটকলে নিজে-জাগরণ; আর মিলিস-বিকল্প তুলনায়: ঘুম-সামঞ্জস্যে ডাক-ভিত্তিই জিতলো (μA-বাজেট)। শহর এখন নিজের ওয়াক্ত জানে।</div></div>
 <div class="secret-box"><div class="label">দরজা ১১ — রহস্য</div><div class="text">⏱️ সময় মানে গণনা: নগাড়া ভাগ করো, গোনো, নির্দিষ্ট সংখ্যায় ডাক দাও — আর দরবার-পতনের বীমা: প্রহরী-কুকুর।<br><small>OCR = clock÷prescaler×সময় − ১; CTC-নিয়মিত পর্যায়; RTC=৩২.৭৬৮kHz; WDT-রিসেট-ঘণ্টা। ওয়াক্ত: ৪:১০৩।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
@@ -701,6 +716,9 @@ ADC-হাতিয়ারের থলি:
 <div class="dialogue en">Closing the storeroom at dusk, Rubel said: "To me this is the door of giving. The Quran says — neither chain your hand to your neck (miserliness), nor stretch it fully open (waste) (17:29). In the electrical world I've found no truer image: PWM is neither fully open nor fully shut — it gives in measured part; nature's fan does so, breath does so, rain does so. And ADC is the reverse reading — how much of the world's countless continuous gifts you took, known as a measured number. A system that measures both giving and receiving walks on the mizan. Tomorrow — Hasan's, the postmaster; now the loveliest applied door: letters chip to chip like Solomon's — UART, SPI, I2C."</div>
 
 
+
+<div class="photo-frame"><img src="photos/solar.jpg" alt="ছোট সোলার-প্যানেল — মাঠ-ডিভাইসের দিনের রিযিক"><div class="photo-cap">ছোট সোলার-প্যানেল — মাঠ-ডিভাইসের দিনের রিযিক · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — সেন্সর-পরিবার: যাদের ADC পড়ে</div>
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
@@ -759,6 +777,8 @@ ADC-হাতিয়ারের থলি:
 <div class="verse-ref">— কুরআন ১৭:২৯</div>
 </div>
 
+
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 12 — হাত-মুখ — মাপা-শক্তির দুই দিক:</strong> LDR-ডিভাইডার ADC-তে (আলো-পাঠ), ভালভ-MOSFET PWM-এ (পানি-নিয়ন্ত্রণ)। <strong>পরীক্ষা-দুই:</strong> (ক) হাত ঢাকলে কাঁচা-সংখ্যা ৭০০+ → আলো-চোখ প্রমাণিত; (খ) duty ৩০/৬০/১০০-এ বালতিতে পানি-প্রবাহ দৃশ্যমানভাবে তিন-স্তর — ইনফাকের গণিত বাস্তবে। মাপা-শক্তির দুই-মুখো সম্পর্ক এখন হাতে।</div></div>
 <div class="secret-box"><div class="label">দরজা ১২ — রহস্য</div><div class="text">🌗 ডিজিটাল-অ্যানালগ সেতু দুইটা: PWM মাপা-অংশে দেয় (পুরো-অন/অফ-এর সময়-ভাগ), ADC মাপা-সংখ্যায় পড়ে (V÷Vref×(২^বিট−১))।<br><small>duty=গড়-শক্তি; analogWrite=PWM-মুখোশ; ১০-বিট=১০২৪ ধাপ; Nyquist ২×। ইনফাকের মিজান: ১৭:২৯।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",

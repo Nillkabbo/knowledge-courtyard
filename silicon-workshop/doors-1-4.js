@@ -100,6 +100,9 @@ LED জ্বালানোর হিসাব (তোমার প্রথম
 </div>
 
 
+
+<div class="photo-frame"><img src="photos/resistor.jpg" alt="আসল রেজিস্টর — রঙের ব্যান্ডে মান লেখা (Wikimedia Commons)"><div class="photo-cap">আসল রেজিস্টর — রঙের ব্যান্ডে মান লেখা (Wikimedia Commons) · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — রেজিস্টরের কালার-কোড চাকা</div>
 <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
@@ -156,6 +159,8 @@ LED জ্বালানোর হিসাব (তোমার প্রথম
 <div class="verse-ref">— কুরআন ৩০:২৪</div>
 </div>
 
+
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 1 — খাতা খোলা — প্রয়োজনের জন্ম:</strong> ক্লায়েন্টের চাহিদা শুনলাম: মাঠের আর্দ্রতা+তাপ মাপবে, ব্যাটারিতে চলবে, ফোনে গ্রাফ দেখাবে, শুকালে পানি দেবে। <strong>প্রয়োজন-খাতা লিখলাম</strong> — যাত্রার প্রতিটা প্রশ্ন এখান থেকে উঠবে: শক্তি কোথা থেকে? মাপবে কীভাবে? বুদ্ধি কোথায় হবে? পাঠাবে কী পথে? — আজ প্রথম ইট: <em>ভোল্টেজ-কারেন্ট-রোধের ভাষা</em> শিখলাম; পরের দরজা থেকে প্রতিটা কম্পোনেন্ট এই খাতার কোনো প্রশ্নের জবাব।</div></div>
 <div class="secret-box"><div class="label">দরজা ১ — রহস্য</div><div class="text">⚡ ভোল্টেজ ধাক্কা দেয়, কারেন্ট চলে, রেজিস্ট্যান্স আটকায় — V=IR এক বাক্যে তিন ভাই।<br><small>নদী-রূপক: উচ্চতা-পার্থক্য/প্রবাহ/নালার পাথর। LED: (৫−২)V÷১৫mA≈২২০Ω। ফিউজ = I²R-শহিদ। বজ্র: ৩০:২৪।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
@@ -269,6 +274,9 @@ LC দোলা (দুই ভাইয়ের দোলনা):
 </div>
 
 
+
+<div class="photo-frame"><img src="photos/capacitor-electrolytic.jpg" alt="ইলেকট্রোলাইটিক ক্যাপাসিটর — স্ট্রাইপ = মাইনাস-পা"><div class="photo-cap">ইলেকট্রোলাইটিক ক্যাপাসিটর — স্ট্রাইপ = মাইনাস-পা · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — ক্যাপাসিটারের জাত ও মার্কিং</div>
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
@@ -333,6 +341,8 @@ LC দোলা (দুই ভাইয়ের দোলনা):
 <div class="verse-ref">— কুরআন ৫৫:৭</div>
 </div>
 
+
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 2 — প্রথম ইট-কিনতে যাওয়া:</strong> প্রয়োজন-খাতার প্রথম জবাব: শক্তি-লাইন স্থির রাখতে <em>ডিকোউপলিং-ক্যাপ (১০০nF ×৪)</em> আর বিলম্ব-মুছাতে ১০μF — রফিক মামার দোকান থেকে। <strong>কেন-লগ:</strong> MCU-র দ্রুত-জাগরণে ভোল্টেজ দুলবে → ক্যাপ জলাধার হয়ে দোল কাবে। বিলের পরের লাইন: বাকি কেনা — ১০kΩ ×৪ (ডিভাইডার), ২২০Ω ×২ (LED), বাটন ×১।</div></div>
 <div class="secret-box"><div class="label">দরজা ২ — রহস্য</div><div class="text">🧺 রেজিস্টর এখনই খরচ করে, ক্যাপাসিটর জমায়, ইন্ডাক্টর সহজে বদলাতে দেয় না — তিন ভাই মিলে সময় আনে।<br><small>Q=CV, τ=RC (৫τ-পূর্ণ); V=L·di/dt (flyback-ডায়োড!); f=1/(2π√LC); প্রতি পাওয়ার-পায়ে ১০০nF। মিজান: ৫৫:৭-৯।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
@@ -462,6 +472,9 @@ LED — আলো-বিকিরণকারী জংশন:
 </div>
 
 
+
+<div class="photo-frame"><img src="photos/transistor.jpg" alt="TO-92 প্যাকেজের ট্রানজিস্টর — তিন পা: বেস-কালেক্টর-এমিটার"><div class="photo-cap">TO-92 প্যাকেজের ট্রানজিস্টর — তিন পা: বেস-কালেক্টর-এমিটার · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — ট্রানজিস্টার পিন-আউট ও ডায়োড-শরীর</div>
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
@@ -519,6 +532,8 @@ LED — আলো-বিকিরণকারী জংশন:
 <div class="verse-ref">— কুরআন ৪:৫৮</div>
 </div>
 
+
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 3 — দরওয়ান নির্বাচন:</strong> খাতার প্রশ্ন "পানির ভালভ কে খুলবে?" — উত্তর: MCU-র ২০mA পারবে না। কিনলাম: <em>BC547 ×২ + IRLZ44N MOSFET ×১ + 1N4007 ×২</em>। <strong>কেন-লগ:</strong> বাটন-পাঠে বেস-রেজিস্টরের পেছনে BJT; ভালভ-মোটরে MOSFET (ভোল্টেজ-চাবি, লো-তাপ); ফ্লাইব্যাক-ডায়োড কয়েলের বিদ্যুৎ-লাফ শুষবে। প্রতিটা কেনা তিন-লাইনের জবাবনামা: কী, কেন, কোথায় বসবে।</div></div>
 <div class="secret-box"><div class="label">দরজা ৩ — রহস্য</div><div class="text">💡 ডোপিং-জোড়া এক দরজা: এক দিকে টোল-পেরোনো, উল্টোয় তালা; ট্রানজিস্টর সেই দরজার আমানতদার দরওয়ান — ছোট নির্দেশে বিশাল প্রবাহ।<br><small>০.৭V ফরোয়ার্ড; LED: (V_src−V_f)/I রেজিস্টর-বাধ্যতা; BJT β-গুণ, MOSFET ভোল্টেজ-চাবি। ১৯৪৭→নোবেল ১৯৫৬। আমানত: ৪:৫৮।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
@@ -622,6 +637,9 @@ You thought. "Bad battery?"
 </div>
 
 
+
+<div class="photo-frame"><img src="photos/battery-liion.jpg" alt="১৮৬৫০ Li-ion সেল — IoT-ডিভাইসের প্রাণ-রিযিক"><div class="photo-cap">১৮৬৫০ Li-ion সেল — IoT-ডিভাইসের প্রাণ-রিযিক · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — রেগুলেটর-পরিবার ও ব্যাটারি-শরীর</div>
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
@@ -682,6 +700,8 @@ You thought. "Bad battery?"
 <div class="verse-ref">— কুরআন ১৭:২৯</div>
 </div>
 
+
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 4 — রিযিক-চেইন বসানো:</strong> ব্যাটারির হিসাব প্রথম: গড়-খিদা অনুমান করলাম ১.২mA → ২০০০mAh সেলে ৭০ দিন-রেখা। কিনলাম: <em>১৮৬৫০ + TP4056 + ৬V-সোলার + MCP1700-৩.৩V</em>। <strong>কেন-লগ:</strong> দিনে চার্জ, রাতে সেল; LDO-না-বাক প্রশ্নে গড়-খিদা কম (১.২mA) তাই সরু-LDO-ই যথেষ্ট — বাকের জটিলতা বাঁচালাম; এই সিদ্ধান্তই ইঞ্জিনিয়ারিং।</div></div>
 <div class="secret-box"><div class="label">দরজা ৪ — রহস্য</div><div class="text">🔋 ব্যাটারি মানে রেশন-খাতা: প্রতিটা mA-র দুই কলাম — নেয় ও দেয়; ঘুমই বছরের জীবনের চাবি।<br><small>P=VI; সময়=mAh÷গড়mA; ডিউটি-গড়: ০.১২mA-র জাদু; LDO-সরল/বাক-দক্ষ। ১৭:২৯ — দুই কলামের নীতি।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",

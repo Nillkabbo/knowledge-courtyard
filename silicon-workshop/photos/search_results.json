@@ -1,0 +1,220 @@
+{
+ "resistor": [],
+ "capacitor-electrolytic": [
+  {
+   "title": "File:Aluminium Electrolytic Capacitors.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Aluminium_Electrolytic_Capacitors.jpg/960px-Aluminium_Electrolytic_Capacitors.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Electrolytic capacitors-P1090328.JPG",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Electrolytic_capacitors-P1090328.JPG/960px-Electrolytic_capacitors-P1090328.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Electrolytic capacitors mounted on a circuit board.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Electrolytic_capacitors_mounted_on_a_circuit_board.jpg/960px-Electrolytic_capacitors_mounted_on_a_circuit_board.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  }
+ ],
+ "capacitor-ceramic": [
+  {
+   "title": "File:Soviet ceramic disc capacitors 01.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Soviet_ceramic_disc_capacitors_01.jpg/960px-Soviet_ceramic_disc_capacitors_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Soviet ceramic stick capacitors 01.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Soviet_ceramic_stick_capacitors_01.jpg/960px-Soviet_ceramic_stick_capacitors_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Soviet ceramic stick capacitors 02.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Soviet_ceramic_stick_capacitors_02.jpg/960px-Soviet_ceramic_stick_capacitors_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  }
+ ],
+ "led": [],
+ "diode": [
+  {
+   "title": "File:1N4001 Diode.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/1N4001_Diode.jpg/960px-1N4001_Diode.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:1N4007 Diode 1480378 79 80 HDR Enhancer cr.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/1N4007_Diode_1480378_79_80_HDR_Enhancer_cr.jpg/960px-1N4007_Diode_1480378_79_80_HDR_Enhancer_cr.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Diode 1n4001.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Diode_1n4001.jpg/960px-Diode_1n4001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  }
+ ],
+ "transistor": [
+  {
+   "title": "File:TO-92 Package Four Different Projections.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/7/72/TO-92_Package_Four_Different_Projections.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:To-92 footprint.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/To-92_footprint.jpg/960px-To-92_footprint.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Transistorer (cropped).jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Transistorer_%28cropped%29.jpg/960px-Transistorer_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  }
+ ],
+ "breadboard": [
+  {
+   "title": "File:400 points breadboard.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/400_points_breadboard.jpg/960px-400_points_breadboard.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Breadboard 2.png",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Breadboard_2.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "mime": "image/png"
+  },
+  {
+   "title": "File:Solderless Breadboard with LEDs.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Solderless_Breadboard_with_LEDs.jpg/960px-Solderless_Breadboard_with_LEDs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  }
+ ],
+ "multimeter": [
+  {
+   "title": "File:2017 Cyfrowy miernik uniwersalny.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/2017_Cyfrowy_miernik_uniwersalny.jpg/960px-2017_Cyfrowy_miernik_uniwersalny.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Digital Multimeter Aka.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Digital_Multimeter_Aka.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Multimeter Gossen Metra Hit.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Multimeter_Gossen_Metra_Hit.jpg/960px-Multimeter_Gossen_Metra_Hit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  }
+ ],
+ "arduino": [
+  {
+   "title": "File:Arduino Uno - R3.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/38/Arduino_Uno_-_R3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Arduino Uno 006.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Arduino_Uno_006.jpg/960px-Arduino_Uno_006.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Arduino Uno R3.JPG",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Arduino_Uno_R3.JPG/960px-Arduino_Uno_R3.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  }
+ ],
+ "esp32": [
+  {
+   "title": "File:ESP32 Dev Board.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/ESP32_Dev_Board.jpg/960px-ESP32_Dev_Board.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Espressif ESP-WROOM-32 Wi-Fi & Bluetooth Module.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/33/Espressif_ESP-WROOM-32_Wi-Fi_%26_Bluetooth_Module.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "mime": "image/jpeg"
+  }
+ ],
+ "battery-liion": [
+  {
+   "title": "File:18650 Li-ion & Panasonic CR123A 20121116.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/18650_Li-ion_%26_Panasonic_CR123A_20121116.jpg/960px-18650_Li-ion_%26_Panasonic_CR123A_20121116.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:18650 and 21700 lithium ion battery cell.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/18650_and_21700_lithium_ion_battery_cell.jpg/960px-18650_and_21700_lithium_ion_battery_cell.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Batteries 2170 18650.png",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Batteries_2170_18650.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "mime": "image/png"
+  }
+ ],
+ "solar": [
+  {
+   "title": "File:Small solar panel, Belfast - geograph.org.uk - 1728484.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Small_solar_panel%2C_Belfast_-_geograph.org.uk_-_1728484.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Small solar panel in Oksibil.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Small_solar_panel_in_Oksibil.jpg/960px-Small_solar_panel_in_Oksibil.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Street solar panel, Delfgauw (2020) 02.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Street_solar_panel%2C_Delfgauw_%282020%29_02.jpg/960px-Street_solar_panel%2C_Delfgauw_%282020%29_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  }
+ ],
+ "relay": [
+  {
+   "title": "File:Cross section of a reed relay.png",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Cross_section_of_a_reed_relay.png/960px-Cross_section_of_a_reed_relay.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/png"
+  },
+  {
+   "title": "File:TXE3Reed Relay.JPG",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/TXE3Reed_Relay.JPG/960px-TXE3Reed_Relay.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:\u041f\u043e\u043b\u044f\u0440\u0438\u0437\u043e\u0432\u0430\u043d\u043d\u043e\u0435 \u0433\u0435\u0440\u043a\u043e\u043d\u043e\u0432\u043e\u0435 \u0440\u0435\u043b\u0435 \u0420\u041c\u0413-12032, \u043c\u043e\u0441\u043a\u043e\u0432\u0441\u043a\u0438\u0439 \u0437\u0430\u0432\u043e\u0434 \u041d\u0412\u0410 (4).jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/%D0%9F%D0%BE%D0%BB%D1%8F%D1%80%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5_%D0%B3%D0%B5%D1%80%D0%BA%D0%BE%D0%BD%D0%BE%D0%B2%D0%BE%D0%B5_%D1%80%D0%B5%D0%BB%D0%B5_%D0%A0%D0%9C%D0%93-12032%2C_%D0%BC%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4_%D0%9D%D0%92%D0%90_%284%29.jpg/960px-%D0%9F%D0%BE%D0%BB%D1%8F%D1%80%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5_%D0%B3%D0%B5%D1%80%D0%BA%D0%BE%D0%BD%D0%BE%D0%B2%D0%BE%D0%B5_%D1%80%D0%B5%D0%BB%D0%B5_%D0%A0%D0%9C%D0%93-12032%2C_%D0%BC%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4_%D0%9D%D0%92%D0%90_%284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  }
+ ],
+ "crystal": [
+  {
+   "title": "File:Crystal oscillator internals.JPG",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Crystal_oscillator_internals.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Early NBS crystal oscillator frequency standards.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/7/70/Early_NBS_crystal_oscillator_frequency_standards.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:Older crystal oscillator.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Older_crystal_oscillator.jpg/960px-Older_crystal_oscillator.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  }
+ ],
+ "potentiometer": [
+  {
+   "title": "File:10K Potentiometer 1480310 1 2 Enhancer.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/10K_Potentiometer_1480310_1_2_Enhancer.jpg/960px-10K_Potentiometer_1480310_1_2_Enhancer.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:10K Potentiometer 1480313 4 5 Enhancer.jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/10K_Potentiometer_1480313_4_5_Enhancer.jpg/960px-10K_Potentiometer_1480313_4_5_Enhancer.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  },
+  {
+   "title": "File:10k Ohm Potentiometer - POT-103-BIG (4149943231).jpg",
+   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/10k_Ohm_Potentiometer_-_POT-103-BIG_%284149943231%29.jpg/960px-10k_Ohm_Potentiometer_-_POT-103-BIG_%284149943231%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "mime": "image/jpeg"
+  }
+ ]
+}

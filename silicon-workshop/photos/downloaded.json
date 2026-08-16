@@ -1,0 +1,72 @@
+{
+ "resistor": {
+  "file": "resistor.jpg",
+  "title": "File:12 board mounted potentiometers.jpg",
+  "kb": 139
+ },
+ "capacitor-electrolytic": {
+  "file": "capacitor-electrolytic.jpg",
+  "title": "File:Aluminium Electrolytic Capacitors.jpg",
+  "kb": 105
+ },
+ "capacitor-ceramic": {
+  "file": "capacitor-ceramic.jpg",
+  "title": "File:Soviet ceramic disc capacitors 01.jpg",
+  "kb": 78
+ },
+ "transistor": {
+  "file": "transistor.jpg",
+  "title": "File:TO-92 Package Four Different Projections.jpg",
+  "kb": 324
+ },
+ "arduino": {
+  "file": "arduino.jpg",
+  "title": "File:Arduino Uno - R3.jpg",
+  "kb": 238
+ },
+ "esp32": {
+  "file": "esp32.jpg",
+  "title": "File:ESP32 Dev Board.jpg",
+  "kb": 237
+ },
+ "solar": {
+  "file": "solar.jpg",
+  "title": "File:Small solar panel, Belfast - geograph.org.uk - 1728484.jpg",
+  "kb": 112
+ },
+ "relay": {
+  "file": "relay.jpg",
+  "title": "File:Cross section of a reed relay.png",
+  "kb": 1104
+ },
+ "crystal": {
+  "file": "crystal.jpg",
+  "title": "File:Crystal oscillator internals.JPG",
+  "kb": 229
+ },
+ "diode": {
+  "file": "diode.jpg",
+  "title": "File:1N4001 Diode.jpg",
+  "kb": 12
+ },
+ "breadboard": {
+  "file": "breadboard.jpg",
+  "title": "File:400 points breadboard.jpg",
+  "kb": 56
+ },
+ "multimeter": {
+  "file": "multimeter.jpg",
+  "title": "File:2017 Cyfrowy miernik uniwersalny.jpg",
+  "kb": 105
+ },
+ "battery-liion": {
+  "file": "battery-liion.jpg",
+  "title": "File:18650 Li-ion & Panasonic CR123A 20121116.jpg",
+  "kb": 90
+ },
+ "potentiometer": {
+  "file": "potentiometer.jpg",
+  "title": "File:10K Potentiometer 1480310 1 2 Enhancer.jpg",
+  "kb": 172
+ }
+}

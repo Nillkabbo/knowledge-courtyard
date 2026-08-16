@@ -117,6 +117,9 @@ doors.push({
 </div>
 
 
+
+<div class="photo-frame"><img src="photos/breadboard.jpg" alt="৪০০-পয়েন্ট ব্রেডবোর্ড — পরীক্ষার খেলার মাঠ"><div class="photo-cap">৪০০-পয়েন্ট ব্রেডবোর্ড — পরীক্ষার খেলার মাঠ · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — ব্রেডবোর্ডের ভেতরের রেল</div>
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
@@ -174,6 +177,8 @@ doors.push({
 <div class="verse-ref">— কুরআন ৯৬:৪</div>
 </div>
 
+
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 5 — নকশা-কাগজে প্রথম স্কেচ:</strong> ব্রেডবোর্ডে প্রথম পরীক্ষা-বিছানা সাজালাম — নকশা-ভাষায় লিখলাম: ওপরে ৩.৩V-রেল, নিচে GND, মাঝে MCU+ডিভাইডার+বাটন। <strong>পরীক্ষা-শৃঙ্খল:</strong> ভোল্টেজ-পয়েন্ট চিহ্নিত → মাল্টিমিটারে প্রতিটা মান খাতায় — নকশা আর বাস্তবের মিল প্রমাণ। পরের খাতা-প্রশ্ন: সেন্সর কোথায় বসবে? → ডিভাইডারের গণিত পরের দরজায়।</div></div>
 <div class="secret-box"><div class="label">দরজা ৫ — রহস্য</div><div class="text">📐 বোর্ড জঙ্গল, নকশা ম্যাপ — আগে পড়ো তারপর হাত; R-C-U-নামের ঠিকানায় প্রশ্ন, মিটারে জবাব, স্কোপে গল্প।<br><small>বাঁ→ডান, VCC-ওপরে, GND-নিচে; ডট=যুক্ত, ক্রস=মুক্ত। লাল টিক-পদ্ধতিতে ফল্ট-শিকার। কিতাব: ৯৬:৪।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
@@ -295,6 +300,9 @@ doors.push({
 </div>
 
 
+
+<div class="photo-frame"><img src="photos/potentiometer.jpg" alt="১০kΩ ঘোরানো-পট — হাতে-ধরা ভোল্টেজ-ডিভাইডার"><div class="photo-cap">১০kΩ ঘোরানো-পট — হাতে-ধরা ভোল্টেজ-ডিভাইডার · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — পটেনশিওমিটার: ঘোরানো ডিভাইডার</div>
 <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
@@ -350,6 +358,8 @@ doors.push({
 <div class="verse-ref">— কুরআন ২৫:২</div>
 </div>
 
+
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 6 — সেন্সর-বিছানার গণিত:</strong> মাটি-প্রোব + ১০kΩ ডিভাইডার বসালাম; সূত্রে মান বসালাম: ভেজা ≈ ৩০০Ω → V_out ≈ ০.৭৬V; শুকনো ≈ ৩০kΩ → ≈ ২.৫V। <strong>কেন-লগ:</strong> ADC-র ৩.৩V-জানালায় দুই প্রান্তই সুন্দর-স্প্যান — রেজোলিউশন নষ্ট হচ্ছে না। প্রতিটা সেন্সর-বাছাই এখন সূত্রের জবাবনামা: R-র মান বদলে স্প্যান বদলাও, খাতা মেলাও।</div></div>
 <div class="secret-box"><div class="label">দরজা ৬ — রহস্য</div><div class="text">🛣️ জংশনে ঢোকা=বেরোনো (KCL), লুপে ওঠা=নামা (KVL) — দুই খাতা মিললে সার্কিট সৎ; না-মিললে সেখানেই ফাঁদ।<br><small>সিরিজ: এক I, V-ভাগ; সমান্তরাল: এক V, I-ভাগ; V_out=V_in·R₂/(R₁+R₂)। কার্শফ ১৮৪৫। কদর: ২৫:২।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
@@ -494,6 +504,9 @@ MCU-সংযোগ (আগাম-পথ):
 <div class="dialogue en">Before Asr, Jahed unhooked the wire loop and packed his tool bag — an install in the next building. At the door he said: "One of the Quran's most beautiful parables — 'Allah is the Light of the heavens and the earth' (24:35). Light is presence; darkness, absence. So in my world: voltage on a pin means it is speaking; none, silence. All civilization is now woven of presence and absence — the clapping of billions of yeses and noes. As one drop of light fills a whole house, one small button's 1 can wake a city's bell-network. Be present, understand, then write your own 1s and 0s. Tomorrow — Farhan's: that very city of 1s and 0s, the small town inside a chip."</div>
 
 
+
+<div class="photo-frame"><img src="photos/diode.jpg" alt="১N400x সিরিজের ডায়োড — শরীরের স্ট্রাইপ দিক বলে"><div class="photo-cap">১N400x সিরিজের ডায়োড — শরীরের স্ট্রাইপ দিক বলে · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — ৭৪HC০০ চিপ: এক শরীরে চার NAND</div>
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
@@ -539,6 +552,8 @@ MCU-সংযোগ (আগাম-পথ):
 <div class="verse-ref">— কুরআন ২৪:৩৫</div>
 </div>
 
+
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 7 — বুদ্ধির ইট — লজিকের স্তর:</strong> কোথায় হ্যাঁ-না হিসেব হবে? ফার্মওয়্যার লেখার আগে সিদ্ধান্ত-গাছ এঁকেছি: আর্দ্রতা < ৩৫%? → ভালভ-খোলা; বৃষ্টি-ডাক? → পাঠ-এখনই। <strong>নিয়ম:</strong> গাছের প্রতিটা নোড এক প্রশ্ন — তার জবাব এক বিট; চিপের ভেতরে কোটি NAND ঠিক এই গাছই চালায়। আমাদের গাছ এখন কাগজে — পরের দরজায় সেটা শহরে বসবে।</div></div>
 <div class="secret-box"><div class="label">দরজা ৭ — রহস্য</div><div class="text">🔀 সব যুক্তি তিন ইটে — এবং/অথবা/না; NAND-এ সব ইট; দুই NAND-এর আঁকড়ানো জোড়ায় স্মৃতির জন্ম।<br><small>লেভেল-চুক্তি ০.৮/২V-ফাঁক; বুল ১৮৫৪ + শ্যানন ১৯৩৭ = তার-থেকে-কম্পিউটার সেতু; ফ্লিপ-ফ্লপ = ১ বিট। নূর: ২৪:৩৫।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
@@ -680,6 +695,9 @@ GPIO — দরওয়ানের তিন পোশাক:
 <div class="dialogue en">Toward night Farhan unclipped the wrist coil and set it on the table. "By 'city' I think of the Quran's Sheba — the queen's court, Solomon's letter, the hoopoe's report — department upon department, judgment at one center. A city's rule is that: 'Work, each of you, along your paths, through the cities' — every peripheral works its own path, the court only knows addresses and commands. Even the static strap is a lesson in amanah to me: a city of billions of gatekeepers may lose none to carelessness. Tomorrow — Sharmin's: the court's own language, C and register-letters. You will light your first LED with your own hand."</div>
 
 
+
+<div class="photo-frame"><img src="photos/crystal.jpg" alt="কোয়ার্টজ ক্রিস্টাল-ঘড়ি — শহরের হৃদস্পন্দন-উৎস"><div class="photo-cap">কোয়ার্টজ ক্রিস্টাল-ঘড়ি — শহরের হৃদস্পন্দন-উৎস · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — ক্রিস্টাল ও রেজোনেটর: শহরের হৃদস্পন্দন-উৎস</div>
 <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
@@ -721,6 +739,8 @@ GPIO — দরওয়ানের তিন পোশাক:
 <div class="verse-ref">— কুরআন ৯:১০৫</div>
 </div>
 
+
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 8 — মস্তিষ্ঠ নির্বাচন — শহর কেনাকাটা:</strong> সিদ্ধান্তের টেবিল: লোকাল-প্রসেসিং+রেডিও একসাথে চাই → <em>ESP32-DevKit</em> নির্বাচিত (WiFi-সহ, ৩.৩V, ADC×১২, I2C/SPI-সমৃদ্ধ, দুই-ডলার)। <strong>কেন-লগ:</strong> আলাদা MCU+রেডিও-মডিউল = দুই বাজার, দুই ফাঁদ; এক-দানা-শহর = ছোট বিল, কম তার। বোর্ড-বাছাইয়ের প্রশ্ন-তালিকা এখন খাতায়: পা-সংখ্যা? ADC? রেডিও? ভোল্টেজ? দাম?</div></div>
 <div class="secret-box"><div class="label">দরজা ৮ — রহস্য</div><div class="text">🏙️ চিপ এক শহর: দরবার হুকুম দেয়, RAM খেয়াল রাখে, Flash সংবিধান ধরে, GPIO দুনিয়ার দুয়ার — সব ঠিকানায় চিঠিতে চলে।<br><small>রেজিস্টার>RAM>Flash; নগাড়া-clock; পুল-আপে বাটন-পড়া; ৪০০৪→ARM→AVR→ESP32। ৯:১০৫ — কাজ করো, দেখা হবে।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",

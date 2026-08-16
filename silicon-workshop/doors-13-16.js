@@ -138,6 +138,9 @@ I2C — ঠিকানা-চিঠি (দুই তার, পুল-আপ �
 <div class="dialogue en">At the evening adhan, Hasan slipped the stamp into his pocket: "Last word. Solomon sent a letter to the queen of Sheba — the Quran says: 'It is a noble letter, from Solomon, in the name of Allah, the Merciful' (27:29-30). Mark — three things on its face: sender, recipient, purpose; the hoopoe carried it, the queen acknowledged, the reply returned. A more perfect grammar of letters than any protocol lecture: header, address, ACK! Every I2C frame in your chip is that letter's grandchild. A machine that sends letters with honor — address, acknowledgment, courtesy — its society endures. Tomorrow — Arif's: the journey's final preparation — the boot gate, RTOS, and the debug wharf; the department of fixing intention, like the miqat."</div>
 
 
+
+<div class="photo-frame"><img src="photos/arduino.jpg" alt="Arduino Uno R3 — বুট-শেখার প্রথম বোর্ড"><div class="photo-cap">Arduino Uno R3 — বুট-শেখার প্রথম বোর্ড · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — USB-সিরিয়াল সেতু ও RS-485-এর লম্বা-তার</div>
 <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
@@ -181,6 +184,8 @@ I2C — ঠিকানা-চিঠি (দুই তার, পুল-আপ �
 <div class="verse-ref">— কুরআন ২৭:৩০</div>
 </div>
 
+
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 13 — চিঠি-পথ — ওয়াক্ত-খাতা যুক্ত:</strong> DS3231 I2C-তে (০x68): ঠিকানা-ডাক → ACK → রেজিস্টার-পয়েন্টার → ৭-বাইট সময়। <strong>কেন-লগ:</strong> টাইমস্ট্যাম্প-ছাড়া ডেটা অনাথ — মেঘের খাতায় কোন পাঠ কখনের, তা-ই প্রশ্ন হয়ে যেত। এখন প্রতিটা পাঠের সাথে সময়ের সনদ; আর স্ক্যানার-স্কেচ দিয়ে বাস-জরিপ — কে কোন ঠিকানায় বসে আছে।</div></div>
 <div class="secret-box"><div class="label">দরজা ১৩ — রহস্য</div><div class="text">📮 চিপের সমাজ চিঠিতে: UART ব্যক্তিগত-দুই-পক্ষ, SPI প্রভু-আঙুল-দ্রুত, I2C এক-রাস্তায় ঠিকানা+স্বীকৃতি — সৌজন্যই প্রোটোকল।<br><small>TX/RX বিট-হার-চুক্তি; SS-নির্বাচন; SDA/SCL+পুল-আপ, ACK, arbitration; ০x68→বাসে ০xD0। পত্র: ২৭:২৯-৩০।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
@@ -311,6 +316,9 @@ bare-metal বনাম RTOS — সিদ্ধান্ত-স্কেল:
 <div class="dialogue en">At dusk Arif raised the loupe to read the boot map's last line, then lowered it: "Pilims stop at the miqat — at fixed stations they don the ihram, set their intention, then journey. The chip's waking is the same: five miqats — vector, stack, data, clock, bootloader — intention bound at each layer, and only then the journey of main(). A developer who knows these layers has no 'magic' left — even boot failure becomes an investigable mystery, not darkness. And remember — the mightier the scheduler, the subtler the trial: priority inversion and deadlock — memorize these two hunters' names before you go. Tomorrow, the last applied door — Sadiya: speaking with the wind. The garden's harvest goes to the cloud."</div>
 
 
+
+<div class="photo-frame"><img src="photos/esp32.jpg" alt="ESP32 দেভ-বোর্ড — প্রজেক্টের নির্বাচিত শহর"><div class="photo-cap">ESP32 দেভ-বোর্ড — প্রজেক্টের নির্বাচিত শহর · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — ডিবাগ-প্রোব-পরিবার ও টেস্ট-পয়েন্ট</div>
 <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
@@ -363,6 +371,8 @@ bare-metal বনাম RTOS — সিদ্ধান্ত-স্কেল:
 <div class="verse-ref">— কুরআন ২২:২৭</div>
 </div>
 
+
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 14 — বুট-শৃঙ্খলা ও নাড়ি-পরীক্ষা:</strong> লিংকার-খাতা: .text/.data/.bss-এর ম্যাপ দেখলাম — ফ্ল্যাশ-দখল ৪২%, RAM ১৮% (স্ট্যাক-সতর্কতাসহ)। <strong>নিয়ম-স্থাপন:</strong> SWD-প্যাড বোর্ডে + প্রথম-বুট-লগ; watchdog-স্বাক্ষর যাচাই। ডিবাগ-প্রোব লাগিয়ে এক-ব্রেক-পয়েন্টে ওয়াক্ত-ফাংশনের ভেতরে ঢুকে দেখা — শহর-পতনের রহস্য নয়, এখন সব তদন্তযোগ্য।</div></div>
 <div class="secret-box"><div class="label">দরজা ১৪ — রহস্য</div><div class="text">🕋 পাওয়ার-অন = পাঁচ মিকাত: ভেক্টর→স্ট্যাক→ডেটা→ঘড়ি→বুটলোডার→main; রাস্তার ফয়সালা শিডিউলারের, রোগের চোখ SWD/JTAG।<br><small>.data-কপি/.bss-শূন্য; বুটলোডার-শ্রবণ; FreeRTOS ২০০৩; অগ্রাধিকার+প্রিএম্পশন; ব্রেক-পয়েন্ট-জীবন। মিকাত: ২২:২৭।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
@@ -504,6 +514,9 @@ OTA — নিজের বাসা থেকে নতুন পালক:
 <div class="dialogue en">As night fell, Sadiya turned the antenna-stand toward the window. "Last word — on security. The wind belongs to all; speaking on the wind means speaking before the crowd. TLS is the secret tongue, the certificate the identity-card, the signature the seal — without the three, the internet can be spoken, but not trusted. If your device someday becomes someone's door-lock, someone's medicine-mixer — remember the boy who played with lights: a weak lock is no lock. Tomorrow, the last door — everyone returns. Mostafiz chacha has called; sixteen doors' account will reconcile in one garden."</div>
 
 
+
+<div class="photo-frame"><img src="photos/multimeter.jpg" alt="মাল্টিমিটার — ফিল্ড-মেরামতের সঙ্গী"><div class="photo-cap">মাল্টিমিটার — ফিল্ড-মেরামতের সঙ্গী · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — অ্যান্টেনা-জ্যামিতি ও মডিউল-পরিবার</div>
 <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
@@ -563,6 +576,8 @@ OTA — নিজের বাসা থেকে নতুন পালক:
 <div class="verse-ref">— কুরআন ৬১:৪</div>
 </div>
 
+
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 15 — বাতাস-জমায়েত — মেঘে প্রথম পাঠ:</strong> WiFi→ব্রোকার→টপিক farm/plot1/# — TLS-পোশাক, LWT-ওয়াদা, QoS-১। <strong>ফল:</strong> ফোনের ড্যাশবোর্ডে প্রথম বাঁক! দুই-দিকে প্রমাণ: পাঠ-গ্রাফ ওঠে, কমান্ড-LED সাড়া দেয়। OTA-প্রথম-সংস্করণ স্বাক্ষরসহ পাঠালাম — টেবিল থেকেই দ্বিতীয়-বিছানা আপডেট।</div></div>
 <div class="secret-box"><div class="label">দরজা ১৫ — রহস্য</div><div class="text">📡 বাতাসে সমাজ = ব্রোকারকেন্দ্রিক জামাত: প্রকাশ-শ্রবণ বিষয়-সূত্রে, QoS-নিশ্চয়তায়, TLS-পোশাকে — আর OTA-পালক স্বাক্ষরিত না হলে বিষ।<br><small>MQTT ১৯৯৯/OASIS ২০১৪; ২-বাইট-হেডার; +/# বনী-চিহ্ন; WiFi/BLE/LoRa-বাছাই; কাতার-প্রাচীর: ৬১:৪।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
@@ -726,6 +741,9 @@ void loop() {
 <div class="dialogue en">The maghrib adhan rose — Muaz stood first, all stood; returning after prayer, Mostafiz placed the box in your hands. "Sixteen doors were mine; now yours. The verse we began with — lightning, fear and hope (30:24)? Now hear the last: 'We offered the trust to the heavens, the earth, the mountains; they shrank from it — but man bore it' (33:72). Think once — the sky holds lightning, the earth grain, the mountain ore; but the <em>trust</em> — duty, faith, justice — those they dared not take. Man did. The machine you will build is a trust too: someone's water-account, someone's medicine-hour, someone's door-lock. Learning voltage and code is half the work; the other half is that khilafah — if you carry it, carry it faithfully. Take this box. Let the next be your own — and on its schematic, beside your name, write: trustworthy." Rain had gathered outside; Rafiq slipped the sensor-probe into a flower pot — the dashboard's first curve rose: 62%. Sixteen doors smiled together.</div>
 
 
+
+<div class="photo-frame"><img src="photos/breadboard.jpg" alt="ব্রেডবোর্ড — যেখানে পুরো প্রজেক্ট প্রথম হাঁটা শিখলো"><div class="photo-cap">ব্রেডবোর্ড — যেখানে পুরো প্রজেক্ট প্রথম হাঁটা শিখলো · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — BOM: পূর্ণ বক্সের বাজার-তালিকা</div>
 <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
@@ -781,6 +799,8 @@ void loop() {
 <div class="verse-ref">— কুরআন ৩৩:৭২</div>
 </div>
 
+
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 16 — ফসল-মেলা — সম্পূর্ণ সার্কিটের চূড়ান্ত নকশা:</strong> সব স্তর এক কাগজে: রিযিক-চেইন (সোলার→TP4056→১৮৬৫০→MCP1700) + মাপা-শহর (ESP32+DS3231+LDR+মাটি-প্রোব) + কাজের-হাত (MOSFET+ভালভ) + ডাক-বেষ্টনী (বৃষ্টি-INT) + বাতাস-জামাত (WiFi/MQTT/TLS) + জীবন-চক্র (BOM+কেস+OTA)। <strong>এবং রেসিপি:</strong> যেকোনো নতুন সার্কিট = প্রয়োজন-খাতা → ব্লক-চিত্র → প্রতি-ব্লকে দরজা-প্রশ্ন → কেনা-লগ → ব্রেডবোর্ড-প্রমাণ → নকশা-কাগজ → পরীক্ষা-খাতা → মোড়ানো → মাঠ — এই নয়-ধাপই তোমার যেকোনো-সার্কিটের পথ।</div></div>
 <div class="secret-box"><div class="label">দরজা ১৬ — রহস্য (কারিগরখানার সম্পূর্ণ ফসল)</div><div class="text">🌾 বজ্র থেকে মেঘ: সেন্সর→ডিভাইডার→ADC→কুন-আযান-ওয়াক্ত→I2C-চিঠি→বাতাস-জামাত→মেঘ→OTA — ষোলো দরজা এক বৃত্ত; এখন বৃত্তের খিলাফত তোমার আমানত।<br><small>ক্যাপস্টোন = সব-দরজা-একসাথে; ইঞ্জিনিয়ারিং = চেনা ইটের সঠিক বিন্যাস; পরের বক্স তোমার — নামের পাশে: আমানতদার। ৩০:২৪ → ৩৩:৭২।</small></div></div>`,
   senior:{
     title:"শেষ পাঠ — যা নিয়ে যাবে, যা রেখে যাবে",
