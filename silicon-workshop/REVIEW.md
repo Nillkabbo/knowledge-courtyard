@@ -3,6 +3,8 @@
 **Reviewer pass:** 16 Aug 2026 · full technical audit
 **Scope:** every formula, every C snippet, every register name, all 48 SVGs, continuity across all 16 doors, and a gap analysis against what a complete electronics→IoT curriculum must contain.
 
+> **Status — Stage 1 complete** (commit `d674538`). All six code/arithmetic errors fixed, the ASCII sweep applied (101 replacements), verse and cross-reference mismatches resolved, 37 Bengali typos corrected, the Door 16 capstone rewritten for real ESP32 hardware, and Door 16's missing failure callout written. All four door files parse; all 16 doors load with balanced HTML and the full element set. Findings below that are already fixed are marked **✅ FIXED**. Stages 2–6 remain.
+
 ---
 
 ## Verdict up front

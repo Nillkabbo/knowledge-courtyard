@@ -180,6 +180,22 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .diagram svg .edge-hot{stroke:var(--fire);stroke-width:2.5;fill:none;marker-end:url(#arrowFire)}
 .story-text .diagram svg .edge-cyan{stroke:var(--teal);stroke-width:2;fill:none;marker-end:url(#arrowTeal)}
 .story-text .diagram svg .edge-amber{stroke:var(--amber);stroke-width:2;fill:none;marker-end:url(#arrowAmber)}
+/* চিহ্ন-ভান্ডার (symbol library) — index.html-এর #sym-defs থেকে <use> করা হয়।
+   stroke ও color উত্তরাধিকারসূত্রে ভেতরে পৌঁছায়: রূপরেখা fill="none",
+   ভরাট অংশ fill="currentColor" — তাই এখানে রং বদলালেই পুরো চিহ্ন বদলায়। */
+.story-text .diagram svg .sym{stroke:var(--ink);color:var(--ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.story-text .diagram svg .sym-dim{stroke:var(--ink-dim);color:var(--ink-dim)}
+.story-text .diagram svg .sym-hot{stroke:var(--fire);color:var(--fire)}
+.story-text .diagram svg .sym-cyan{stroke:var(--teal);color:var(--teal)}
+.story-text .diagram svg .sym-amber{stroke:var(--amber-bright);color:var(--amber-bright)}
+.story-text .diagram svg .sym-leaf{stroke:var(--leaf);color:var(--leaf)}
+/* তার (wire) — চিহ্নের সাথে একই ওজনে, তীর ছাড়া */
+.story-text .diagram svg .wire{stroke:var(--ink-dim);stroke-width:2;fill:none;stroke-linecap:round}
+.story-text .diagram svg .wire-hot{stroke:var(--fire);stroke-width:2;fill:none;stroke-linecap:round}
+.story-text .diagram svg .wire-cyan{stroke:var(--teal);stroke-width:2;fill:none;stroke-linecap:round}
+/* প্রবাহ-তীর — দিক দেখানোর জন্য, সংযোগ নয় */
+.story-text .diagram svg .flow{stroke:var(--fire);stroke-width:1.6;fill:none;marker-end:url(#arrowFire);opacity:.85}
+.story-text .diagram svg .flow-cyan{stroke:var(--teal);stroke-width:1.6;fill:none;marker-end:url(#arrowTeal);opacity:.85}
 .story-text .diagram svg .lbl{fill:var(--ink);font-size:12px;font-weight:700;text-anchor:middle;dominant-baseline:central}
 .story-text .diagram svg .lbl-sm{fill:var(--ink-dim);font-size:10px;text-anchor:middle}
 .story-text .diagram svg .lbl-hot{fill:var(--fire);font-size:11px;font-weight:700;text-anchor:middle}
@@ -194,7 +210,17 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .diagram svg .cell-purple{fill:rgba(179,127,235,.2);stroke:var(--purple);stroke-width:1.5}
 .story-text .diagram svg .ring{fill:none;stroke:var(--amber);stroke-width:2.5}
 .story-text .diagram svg .q-mark{fill:var(--fire);font-size:16px;font-weight:900;text-anchor:middle}
-.story-text .diagram svg .band{fill:url(#bandGrad);opacity:.15}
+/* সারিবদ্ধতা — .lbl* সব ডিফল্টে middle; তালিকা/বাঁ-ঘেঁষা লেখায় এগুলো ব্যবহার করো */
+.story-text .diagram svg .lbl-left,
+.story-text .diagram svg .lbl.lbl-left,
+.story-text .diagram svg .lbl-sm.lbl-left,
+.story-text .diagram svg .lbl-hot.lbl-left,
+.story-text .diagram svg .lbl-cyan.lbl-left{text-anchor:start}
+.story-text .diagram svg .lbl-right,
+.story-text .diagram svg .lbl.lbl-right,
+.story-text .diagram svg .lbl-sm.lbl-right,
+.story-text .diagram svg .lbl-hot.lbl-right,
+.story-text .diagram svg .lbl-cyan.lbl-right{text-anchor:end}
 .story-text .diagram svg .seq-line{stroke:var(--ink-dim);stroke-width:1;stroke-dasharray:3,3}
 .story-text .diagram svg .lifeline{stroke:var(--ink-mute);stroke-width:1;stroke-dasharray:2,3}
 .story-text .legend{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:.6rem;font-size:0.75rem;color:var(--ink-dim)}

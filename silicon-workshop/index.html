@@ -11,6 +11,251 @@
 <body>
 <canvas id="particles"></canvas>
 
+<!-- ════════════════════════════════════════════════════════════════
+     সিলিকনের সাথে কথা — শেয়ার্ড SVG চিহ্ন-ভান্ডার (symbol library)
+     Injected once into the document; every door's inline <svg> can
+     reference these with <use href="#sym-xxx" transform="translate(x,y)"/>.
+
+     TERMINAL CONVENTION — every two-terminal symbol has its first
+     terminal at local (0,0) and its second on the +x axis, so a wire
+     drawn to that point always lands on a real lead. Rotate about the
+     first terminal with  transform="translate(x,y) rotate(90)".
+
+     STYLING — outlines carry fill="none" and no stroke, so they inherit
+     `stroke` from the <use>; filled parts use fill="currentColor" and
+     inherit `color`. See .sym / .sym-hot / .sym-cyan / .sym-leaf in
+     style.css. Never hardcode a colour in here.
+     ════════════════════════════════════════════════════════════════ -->
+<svg id="sym-defs" width="0" height="0" aria-hidden="true" focusable="false"
+     style="position:absolute;width:0;height:0;overflow:hidden">
+<defs>
+
+  <!-- ── তীর-মাথা (arrowheads) — .edge-hot/-cyan/-amber এদের ডাকে ── -->
+  <marker id="arrowFire" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--fire)"/>
+  </marker>
+  <marker id="arrowTeal" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--teal)"/>
+  </marker>
+  <marker id="arrowAmber" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--amber)"/>
+  </marker>
+  <marker id="arrowDim" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--ink-dim)"/>
+  </marker>
+  <marker id="dotEnd" viewBox="0 0 6 6" refX="3" refY="3"
+          markerWidth="5" markerHeight="5">
+    <circle cx="3" cy="3" r="3" fill="var(--ink-dim)"/>
+  </marker>
+
+  <!-- ══ নিষ্ক্রিয় (passives) ══ -->
+
+  <!-- রেজিস্টর — জিগজ্যাগ (IEEE); দৈর্ঘ্য ৪০ -->
+  <g id="sym-r">
+    <path fill="none" d="M0 0 h7 l3 -7 l6 14 l6 -14 l6 14 l6 -14 l3 7 h7"/>
+  </g>
+  <!-- রেজিস্টর — বাক্স (IEC); দৈর্ঘ্য ৪০ -->
+  <g id="sym-r-iec">
+    <path fill="none" d="M0 0 h8 M32 0 h8"/>
+    <rect fill="none" x="8" y="-7" width="24" height="14"/>
+  </g>
+  <!-- ক্যাপাসিটর — অ-পোলার; দৈর্ঘ্য ২৪ -->
+  <g id="sym-c">
+    <path fill="none" d="M0 0 h10 M14 0 h10 M10 -9 v18 M14 -9 v18"/>
+  </g>
+  <!-- ক্যাপাসিটর — পোলার (বাঁ পাত = +, ডান বাঁকা = −); দৈর্ঘ্য ২৪ -->
+  <g id="sym-c-pol">
+    <path fill="none" d="M0 0 h10 M15 0 h9 M10 -9 v18"/>
+    <path fill="none" d="M15 -9 Q19 0 15 9"/>
+    <path fill="none" d="M3 -12 h6 M6 -15 v6"/>
+  </g>
+  <!-- ইন্ডাক্টর / কয়েল — চার কুণ্ডলী; দৈর্ঘ্য ৪০ -->
+  <g id="sym-l">
+    <path fill="none" d="M0 0 h4 a5 5 0 0 1 8 0 a5 5 0 0 1 8 0 a5 5 0 0 1 8 0 a5 5 0 0 1 8 0 h4"/>
+  </g>
+  <!-- কয়েল + লোহার শীর্ষদণ্ড (রিলে-কয়েল, ট্রান্সফর্মার-বাহু) -->
+  <g id="sym-l-core">
+    <path fill="none" d="M0 0 h4 a5 5 0 0 1 8 0 a5 5 0 0 1 8 0 a5 5 0 0 1 8 0 a5 5 0 0 1 8 0 h4"/>
+    <path fill="none" d="M4 -8 h32"/>
+  </g>
+  <!-- পটেনশিওমিটার — রেজিস্টর + ওয়াইপার-তীর (ওয়াইপার-প্রান্ত ২০,-১৮) -->
+  <g id="sym-pot">
+    <path fill="none" d="M0 0 h7 l3 -7 l6 14 l6 -14 l6 14 l6 -14 l3 7 h7"/>
+    <path fill="none" d="M20 -18 v8"/>
+    <path fill="currentColor" d="M20 -8 l-4 -6 h8 z"/>
+  </g>
+  <!-- LDR — বৃত্তে রেজিস্টর + দুই আলো-তীর; দৈর্ঘ্য ৪০ -->
+  <g id="sym-ldr">
+    <path fill="none" d="M0 0 h4 M36 0 h4"/>
+    <circle fill="none" cx="20" cy="0" r="14"/>
+    <path fill="none" d="M9 0 h3 l2.5 -6 l5 12 l5 -12 l2.5 6 h4"/>
+    <path fill="none" d="M10 -24 l6 7 M20 -26 l6 7"/>
+    <path fill="currentColor" d="M16 -17 l-5 -1 l3 4 z M26 -19 l-5 -1 l3 4 z"/>
+  </g>
+  <!-- ক্রিস্টাল; দৈর্ঘ্য ২৮ -->
+  <g id="sym-xtal">
+    <path fill="none" d="M0 0 h9 M19 0 h9 M9 -10 v20 M19 -10 v20"/>
+    <rect fill="none" x="11" y="-13" width="6" height="26"/>
+  </g>
+  <!-- ফিউজ; দৈর্ঘ্য ৩৬ -->
+  <g id="sym-fuse">
+    <path fill="none" d="M0 0 h6 M30 0 h6"/>
+    <rect fill="none" x="6" y="-6" width="24" height="12" rx="6"/>
+    <path fill="none" d="M6 0 h24"/>
+  </g>
+
+  <!-- ══ সক্রিয় (actives) ══ -->
+
+  <!-- ডায়োড — অ্যানোড (0,0) → ক্যাথোড (30,0); দৈর্ঘ্য ৩০ -->
+  <g id="sym-d">
+    <path fill="none" d="M0 0 h9 M21 0 h9"/>
+    <path fill="currentColor" d="M9 -9 l12 9 l-12 9 z"/>
+    <path fill="none" d="M21 -9 v18"/>
+  </g>
+  <!-- LED — ডায়োড + দুই নির্গমন-তীর -->
+  <g id="sym-led">
+    <path fill="none" d="M0 0 h9 M21 0 h9"/>
+    <path fill="currentColor" d="M9 -9 l12 9 l-12 9 z"/>
+    <path fill="none" d="M21 -9 v18"/>
+    <path fill="none" d="M13 -13 l7 -8 M20 -12 l7 -8"/>
+    <path fill="currentColor" d="M20 -21 l6 -1 l-3 5 z M27 -20 l6 -1 l-3 5 z"/>
+  </g>
+  <!-- জেনার ডায়োড -->
+  <g id="sym-zener">
+    <path fill="none" d="M0 0 h9 M21 0 h9"/>
+    <path fill="currentColor" d="M9 -9 l12 9 l-12 9 z"/>
+    <path fill="none" d="M21 -9 v18 M21 -9 l-5 -4 M21 9 l5 4"/>
+  </g>
+  <!-- NPN ট্রানজিস্টর — বেস (0,0), কালেক্টর (26,-24), এমিটার (26,24) -->
+  <g id="sym-npn">
+    <circle fill="none" cx="18" cy="0" r="20"/>
+    <path fill="none" d="M0 0 h10 M10 -13 v26"/>
+    <path fill="none" d="M10 -6 L26 -24 M10 6 L26 24"/>
+    <path fill="currentColor" d="M20 17 l6 7 l-9 -1 z"/>
+  </g>
+  <!-- PNP ট্রানজিস্টর — একই টার্মিনাল, তীর ভেতরমুখী -->
+  <g id="sym-pnp">
+    <circle fill="none" cx="18" cy="0" r="20"/>
+    <path fill="none" d="M0 0 h10 M10 -13 v26"/>
+    <path fill="none" d="M10 -6 L26 -24 M10 6 L26 24"/>
+    <path fill="currentColor" d="M10 6 l10 2 l-6 6 z"/>
+  </g>
+  <!-- N-চ্যানেল MOSFET — গেট (0,0), ড্রেন (26,-24), সোর্স (26,24) -->
+  <g id="sym-nmos">
+    <circle fill="none" cx="18" cy="0" r="20"/>
+    <path fill="none" d="M0 0 h8 M8 -14 v28"/>
+    <path fill="none" d="M13 -14 v9 M13 -4.5 v9 M13 5 v9"/>
+    <path fill="none" d="M13 -10 h13 v-14 M13 10 h13 v14 M13 0 h13"/>
+    <path fill="currentColor" d="M20 -4 l6 4 l-6 4 z"/>
+  </g>
+
+  <!-- ══ শক্তি ও ভূমি (power &amp; ground) ══ -->
+
+  <!-- ব্যাটারি — দুই কোষ; + প্রান্ত (0,0), − প্রান্ত (28,0) -->
+  <g id="sym-bat">
+    <path fill="none" d="M0 0 h6 M22 0 h6"/>
+    <path fill="none" d="M6 -11 v22 M11 -6 v12 M17 -11 v22 M22 -6 v12"/>
+  </g>
+  <!-- এক কোষ -->
+  <g id="sym-cell">
+    <path fill="none" d="M0 0 h8 M14 0 h8"/>
+    <path fill="none" d="M8 -11 v22 M14 -6 v12"/>
+  </g>
+  <!-- গ্রাউন্ড — সংযোগ-বিন্দু (0,0), নিচে তিন দাগ -->
+  <g id="sym-gnd">
+    <path fill="none" d="M0 0 v9 M-11 9 h22 M-7 14 h14 M-3 19 h6"/>
+  </g>
+  <!-- VCC / সাপ্লাই-রেল — সংযোগ (0,0), ওপরে দণ্ড -->
+  <g id="sym-vcc">
+    <path fill="none" d="M0 0 v-10 M-9 -10 h18"/>
+  </g>
+  <!-- সোলার কোষ -->
+  <g id="sym-solar">
+    <path fill="none" d="M0 0 h8 M14 0 h8"/>
+    <path fill="none" d="M8 -11 v22 M14 -6 v12"/>
+    <path fill="none" d="M-2 -22 l7 8 M8 -24 l7 8"/>
+    <path fill="currentColor" d="M5 -14 l-5 -1 l3 4 z M15 -16 l-5 -1 l3 4 z"/>
+  </g>
+
+  <!-- ══ সংযোগ (connection) ══ -->
+
+  <!-- জংশন-বিন্দু — সত্যিকারের জোড়া -->
+  <g id="sym-dot"><circle cx="0" cy="0" r="3.5" fill="currentColor" stroke="none"/></g>
+  <!-- ক্রস-হপ — কাটাকাটি, যুক্ত নয় -->
+  <g id="sym-hop"><path fill="none" d="M-9 0 h5 a4.5 4.5 0 0 1 9 0 h5"/></g>
+  <!-- সুইচ SPST — খোলা; দৈর্ঘ্য ৩০ -->
+  <g id="sym-sw">
+    <path fill="none" d="M0 0 h8 M22 0 h8"/>
+    <path fill="none" d="M8 0 L22 -10"/>
+    <circle fill="none" cx="8" cy="0" r="2.5"/>
+    <circle fill="none" cx="22" cy="0" r="2.5"/>
+  </g>
+  <!-- বাটন (push-to-make); দৈর্ঘ্য ৩০ -->
+  <g id="sym-btn">
+    <path fill="none" d="M0 0 h8 M22 0 h8 M8 -6 h14 M15 -6 v-7 M8 -11 h14"/>
+    <circle fill="none" cx="8" cy="0" r="2.5"/>
+    <circle fill="none" cx="22" cy="0" r="2.5"/>
+  </g>
+  <!-- বাল্ব / ল্যাম্প; দৈর্ঘ্য ২৮ -->
+  <g id="sym-lamp">
+    <path fill="none" d="M0 0 h3 M25 0 h3"/>
+    <circle fill="none" cx="14" cy="0" r="11"/>
+    <path fill="none" d="M6.2 -7.8 L21.8 7.8 M6.2 7.8 L21.8 -7.8"/>
+  </g>
+  <!-- অ্যান্টেনা — ফিড-বিন্দু (0,0) -->
+  <g id="sym-ant">
+    <path fill="none" d="M0 0 v-10 M-11 -22 L0 -10 L11 -22"/>
+  </g>
+  <!-- স্পিকার / বাজার -->
+  <g id="sym-spk">
+    <path fill="none" d="M0 -6 h6 l10 -9 v30 l-10 -9 h-6 z"/>
+  </g>
+
+  <!-- ══ লজিক-গেট — ইনপুট বাঁয়ে (0,-9) ও (0,9), আউটপুট ডানে (50,0) ══ -->
+  <g id="sym-and">
+    <path fill="none" d="M0 -9 h10 M0 9 h10 M40 0 h10"/>
+    <path fill="none" d="M10 -18 h12 a18 18 0 0 1 0 36 h-12 z"/>
+  </g>
+  <g id="sym-or">
+    <path fill="none" d="M0 -9 h11 M0 9 h11 M40 0 h10"/>
+    <path fill="none" d="M8 -18 q12 18 0 36 q22 0 32 -18 q-10 -18 -32 -18 z"/>
+  </g>
+  <g id="sym-not">
+    <path fill="none" d="M0 0 h10 M44 0 h6"/>
+    <path fill="none" d="M10 -16 l26 16 l-26 16 z"/>
+    <circle fill="none" cx="40" cy="0" r="4"/>
+  </g>
+  <g id="sym-nand">
+    <path fill="none" d="M0 -9 h10 M0 9 h10 M44 0 h6"/>
+    <path fill="none" d="M10 -18 h12 a18 18 0 0 1 0 36 h-12 z"/>
+    <circle fill="none" cx="44" cy="0" r="4"/>
+  </g>
+  <g id="sym-nor">
+    <path fill="none" d="M0 -9 h11 M0 9 h11 M44 0 h6"/>
+    <path fill="none" d="M8 -18 q12 18 0 36 q22 0 32 -18 q-10 -18 -32 -18 z"/>
+    <circle fill="none" cx="44" cy="0" r="4"/>
+  </g>
+  <g id="sym-xor">
+    <path fill="none" d="M0 -9 h7 M0 9 h7 M40 0 h10"/>
+    <path fill="none" d="M8 -18 q12 18 0 36 q22 0 32 -18 q-10 -18 -32 -18 z"/>
+    <path fill="none" d="M1 -18 q12 18 0 36"/>
+  </g>
+
+  <!-- অপ-অ্যাম্প — ইনপুট (0,-12) ও (0,12), আউটপুট (46,0) -->
+  <g id="sym-opamp">
+    <path fill="none" d="M0 -12 h8 M0 12 h8 M42 0 h4"/>
+    <path fill="none" d="M8 -22 l34 22 l-34 22 z"/>
+    <path fill="none" d="M12 -15 h7 M12 12 h7 M15.5 8.5 v7"/>
+  </g>
+
+</defs>
+</svg>
+
+
 <div id="title-screen" class="screen active">
   <div class="title-arabic">أَنْ طُورُوا فِي الْأَرْضِ فَانْظُرُوا</div>
   <h1 class="title-main">সিলিকনের সাথে কথা</h1>

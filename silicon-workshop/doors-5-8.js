@@ -81,39 +81,37 @@ doors.push({
 
 <div class="diagram">
 <div class="diag-title">নকশা পড়ার তিন নিয়ম — এক LED-ব্লিংকারের মানচিত্র</div>
-<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
-  <!-- VCC rail -->
-  <line class="edge-hot" x1="30" y1="30" x2="530" y2="30"/>
-  <text class="lbl-hot" x="20" y="24">+৫V</text>
-  <!-- battery/supply down to switch -->
-  <line class="edge" x1="60" y1="30" x2="60" y2="70"/>
-  <rect class="cell" x="35" y="70" width="50" height="30"/>
-  <text class="lbl-sm" x="60" y="115">SW1</text>
-  <line class="edge" x1="60" y1="100" x2="60" y2="140"/>
-  <!-- chip -->
-  <rect class="node-cyan" x="180" y="95" width="120" height="90"/>
-  <text class="lbl-cyan" x="240" y="145">U1 (MCU)</text>
-  <text class="lbl-sm" x="240" y="162">পা ৮: OUT</text>
-  <line class="edge" x1="60" y1="140" x2="180" y2="140"/>
-  <!-- out to resistor -->
-  <line class="edge" x1="300" y1="140" x2="340" y2="140"/>
-  <rect class="cell" x="340" y="120" width="60" height="40"/>
-  <text class="lbl" x="370" y="110">R1 ২২০Ω</text>
-  <!-- LED -->
-  <line class="edge" x1="400" y1="140" x2="440" y2="140"/>
-  <circle class="node-hot" cx="465" cy="140" r="22"/>
-  <text class="lbl-hot" x="465" y="185">D1 LED</text>
-  <!-- LED to ground -->
-  <line class="edge" x1="465" y1="162" x2="465" y2="210"/>
-  <!-- ground rail -->
-  <line class="edge" x1="30" y1="210" x2="530" y2="210"/>
-  <line class="edge" x1="240" y1="185" x2="240" y2="210"/>
-  <text class="lbl-sm" x="535" y="214">GND</text>
-  <!-- reading rules annotations -->
-  <text class="lbl-cyan" x="285" y="232" font-size="11">নিয়ম ১: বাঁ→ডান (SW→U1→R→LED) · নিয়ম ২: VCC ওপরে, GND নিচে</text>
-  <text class="lbl-cyan" x="150" y="250" font-size="11">নিয়ম ৩: R1, U1, D1 = ঠিকানা-নাম</text>
+<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <use class="sym sym-dim" href="#sym-vcc" transform="translate(100,40)"/>
+  <text class="lbl-sm" x="100" y="22">+৫V</text>
+  <path class="wire" d="M100 40 V62"/>
+  <use class="sym" href="#sym-sw" transform="translate(100,62) rotate(90)"/>
+  <text class="lbl-sm lbl-right" x="84" y="80">SW1</text>
+  <path class="wire" d="M100 92 V124"/>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(100,124)"/>
+  <path class="wire" d="M100 124 H196"/>
+  <text class="lbl-sm" x="150" y="112">ইনপুট</text>
+  <use class="sym" href="#sym-r" transform="translate(100,124) rotate(90)"/>
+  <text class="lbl-sm lbl-right" x="84" y="146">R1 ১০kΩ</text>
+  <text class="lbl-sm lbl-right" x="84" y="162">পুল-ডাউন</text>
+  <path class="wire" d="M100 164 V198"/>
+  <use class="sym sym-dim" href="#sym-gnd" transform="translate(100,198)"/>
+  <rect class="cell-cyan" x="196" y="94" width="100" height="82" rx="8"/>
+  <text class="lbl-cyan" x="246" y="114">U1</text>
+  <text class="lbl-sm" x="246" y="134">MCU</text>
+  <text class="lbl-sm" x="246" y="152">ATmega328P</text>
+  <text class="lbl-sm lbl-right" x="290" y="170">PB5</text>
+  <path class="wire" d="M296 124 H344"/>
+  <use class="sym" href="#sym-r" transform="translate(344,124)"/>
+  <text class="lbl-sm" x="364" y="108">R2 ২২০Ω</text>
+  <path class="wire" d="M384 124 H432"/>
+  <use class="sym sym-hot" href="#sym-led" transform="translate(432,124) rotate(90)"/>
+  <text class="lbl-hot lbl-left" x="454" y="140">D1</text>
+  <path class="wire" d="M432 154 V198"/>
+  <use class="sym sym-dim" href="#sym-gnd" transform="translate(432,198)"/>
+  <text class="lbl-sm" x="280" y="228">বাঁ→ডান পড়ো: ইনপুট (SW1+R1) → প্রসেস (U1) → আউটপুট (R2+D1)</text>
 </svg>
-<div class="diag-cap">তিন নিয়মে যেকোনো নকশার প্রথম-পাঠ: প্রবাহের দিক, উচ্চতার স্তর, আর প্রতিটা যন্ত্রের নাম-ঠিকানা।</div>
+<div class="diag-cap">তিন নিয়ম এক ছবিতে: (১) বাঁ থেকে ডানে — ইনপুট, প্রসেস, আউটপুট; (২) ওপরে VCC, নিচে GND, তাই সব বিদ্যুৎ ওপর থেকে নিচে পড়ে; (৩) কালো ডট = সত্যিকারের জোড়া। SW1 আর R1 মিলে ইনপুট-ডিভাইডার — বাটন না-চাপলে R1 পিনকে ০-এ টেনে রাখে, চাপলে ৫V ওঠে। রেফারেন্স-অক্ষর মনে রাখো: R রেজিস্টর, D ডায়োড, SW সুইচ, U চিপ।</div>
 </div>
 
 
@@ -146,27 +144,33 @@ doors.push({
 
 <div class="diagram">
 <div class="diag-title">বাস্তব দৃশ্য — ভোল্টেজ-ডিভাইডারে LDR দিয়ে আলো-মাপার বিছানা</div>
-<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
-  <line class="edge-hot" x1="40" y1="30" x2="520" y2="30"/>
-  <text class="lbl-hot" x="30" y="24" font-size="10">+৩.৩V</text>
-  <rect class="cell" x="120" y="50" width="70" height="40"/>
-  <text class="lbl-sm" x="155" y="74" font-size="10">১০kΩ</text>
-  <line class="edge" x1="155" y1="30" x2="155" y2="50"/>
-  <circle class="node-hot" cx="155" cy="110" r="6"/>
-  <line class="edge" x1="155" y1="90" x2="155" y2="110"/>
-  <text class="lbl-hot" x="230" y="114" font-size="10">V_out → ADC (A0)</text>
-  <circle class="node" cx="320" cy="110" r="20" fill="none"/>
-  <text class="lbl-sm" x="320" y="114" font-size="10">LDR</text>
-  <line class="edge" x1="175" y1="110" x2="300" y2="110"/>
-  <line class="edge" x1="320" y1="30" x2="320" y2="90"/>
-  <line class="edge" x1="320" y1="130" x2="320" y2="190"/>
-  <line class="edge" x1="155" y1="110" x2="155" y2="190" visibility="hidden"/>
-  <path class="edge" d="M 320 190 L 155 190 L 155 116" fill="none"/>
-  <line class="edge" x1="100" y1="190" x2="440" y2="190"/>
-  <text class="lbl-sm" x="460" y="194" font-size="10">GND</text>
-  <rect class="cell" x="380" y="150" width="160" height="40"/>
-  <text class="lbl-sm" x="460" y="168" font-size="10">উজ্জ্বল আলো: LDR~১k → V_out≈০.৩V</text>
-  <text class="lbl-sm" x="460" y="184" font-size="10">অন্ধকার: LDR~৫০০k → V_out≈৩.২V</text>
+<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+  <use class="sym sym-dim" href="#sym-vcc" transform="translate(150,42)"/>
+  <text class="lbl-sm" x="150" y="24">৩.৩V</text>
+  <path class="wire" d="M150 42 V64"/>
+  <use class="sym" href="#sym-r" transform="translate(150,64) rotate(90)"/>
+  <text class="lbl-sm lbl-left" x="168" y="84">R1 ১০kΩ (স্থির)</text>
+  <path class="wire" d="M150 104 V132"/>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(150,132)"/>
+  <use class="sym sym-amber" href="#sym-ldr" transform="translate(150,132) rotate(90)"/>
+  <text class="lbl-sm lbl-left" x="182" y="156">LDR</text>
+  <text class="lbl-sm lbl-left" x="182" y="172">আলোয় ~১kΩ</text>
+  <text class="lbl-sm lbl-left" x="182" y="188">অন্ধকারে ~১০০kΩ</text>
+  <path class="wire" d="M150 172 V212"/>
+  <use class="sym sym-dim" href="#sym-gnd" transform="translate(150,212)"/>
+  <path class="wire-cyan" d="M150 132 H300"/>
+  <text class="lbl-cyan" x="228" y="120">V_out</text>
+  <rect class="cell-cyan" x="300" y="108" width="96" height="48" rx="8"/>
+  <text class="lbl-cyan" x="348" y="126">ADC পিন</text>
+  <text class="lbl-sm" x="348" y="144">A0</text>
+  <use class="sym sym-dim" href="#sym-c" transform="translate(300,180) rotate(-90)"/>
+  <path class="wire" d="M300 156 V180 M300 204 V212 H150"/>
+  <text class="lbl-sm lbl-left" x="316" y="186">১০০nF</text>
+  <rect class="cell" x="410" y="60" width="140" height="96" rx="8"/>
+  <text class="lbl-sm" x="480" y="80">V_out = ৩.৩ × R_LDR</text>
+  <text class="lbl-sm" x="480" y="98">÷ (১০k + R_LDR)</text>
+  <text class="lbl-sm" x="480" y="122">আলো ↑ → R_LDR ↓</text>
+  <text class="lbl-sm" x="480" y="140">→ V_out ↓</text>
 </svg>
 <div class="diag-cap">LDR-ডিভাইডার: আলো বদলায় → রোধ বদলায় → ভাগ-অনুপাত বদলায় → ADC-সংখ্যা বদলায় — দরজা ৬-এর সূত্রের জীবন্ত প্রয়োগ, রাতের-বাতির মস্তিষ্ক।</div>
 </div>
@@ -265,36 +269,41 @@ doors.push({
 
 <div class="diagram">
 <div class="diag-title">ভোল্টেজ-ডিভাইডার — সিরিজের ভাগ-বাঁট ও সেন্সর-সেতু</div>
-<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
-  <!-- 9V source -->
-  <rect class="cell" x="30" y="95" width="54" height="50"/>
-  <text class="lbl" x="57" y="85">৯V</text>
-  <!-- top wire -->
-  <line class="edge" x1="84" y1="95" x2="200" y2="95"/>
-  <!-- R1 -->
-  <rect class="cell" x="200" y="75" width="70" height="40"/>
-  <text class="lbl" x="235" y="65">R1 = ১০k</text>
-  <!-- midpoint node -->
-  <line class="edge" x1="270" y1="95" x2="400" y2="95"/>
-  <circle class="node-hot" cx="330" cy="95" r="6"/>
-  <line class="edge-hot" x1="330" y1="95" x2="330" y2="130"/>
-  <text class="lbl-hot" x="330" y="148">V_out = ৪.৫V</text>
-  <text class="lbl-sm" x="330" y="164">→ ADC পিন</text>
-  <!-- R2 -->
-  <rect class="cell" x="400" y="75" width="70" height="40"/>
-  <text class="lbl" x="435" y="65">R2 = ১০k</text>
-  <!-- bottom -->
-  <line class="edge" x1="470" y1="95" x2="510" y2="95"/>
-  <line class="edge" x1="510" y1="95" x2="510" y2="200"/>
-  <line class="edge" x1="510" y1="200" x2="57" y2="200"/>
-  <line class="edge" x1="57" y1="200" x2="57" y2="145"/>
-  <!-- ground symbol -->
-  <line class="edge" x1="285" y1="200" x2="375" y2="200"/>
-  <line class="edge" x1="297" y1="208" x2="363" y2="208"/>
-  <line class="edge" x1="309" y1="216" x2="351" y2="216"/>
-  <!-- formula -->
-  <text class="lbl-cyan" x="120" y="232" font-size="11">V_out = ৯V × R2/(R1+R2) = ৪.৫V</text>
-  <text class="lbl-cyan" x="150" y="250" font-size="11">— R2-এর ভাগ যত, তার ভোল্টেজ তত</text>
+<svg viewBox="0 0 560 270" xmlns="http://www.w3.org/2000/svg">
+  <use class="sym sym-dim" href="#sym-vcc" transform="translate(110,40)"/>
+  <text class="lbl-sm" x="110" y="22">৫V</text>
+  <path class="wire" d="M110 40 V62"/>
+  <use class="sym" href="#sym-r" transform="translate(110,62) rotate(90)"/>
+  <text class="lbl-sm lbl-left" x="128" y="82">R1 ১০kΩ</text>
+  <path class="wire" d="M110 102 V130"/>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(110,130)"/>
+  <use class="sym" href="#sym-r" transform="translate(110,130) rotate(90)"/>
+  <text class="lbl-sm lbl-left" x="128" y="152">R2 ১০kΩ</text>
+  <path class="wire" d="M110 170 V210"/>
+  <use class="sym sym-dim" href="#sym-gnd" transform="translate(110,210)"/>
+  <path class="wire-cyan" d="M110 130 H196"/>
+  <text class="lbl-cyan" x="152" y="118">২.৫V</text>
+  <text class="lbl-sm" x="152" y="240">লোড ছাড়া — নিখুঁত অর্ধেক</text>
+  <path class="seq-line" d="M240 30 V236"/>
+  <use class="sym sym-dim" href="#sym-vcc" transform="translate(330,40)"/>
+  <text class="lbl-sm" x="330" y="22">৫V</text>
+  <path class="wire" d="M330 40 V62"/>
+  <use class="sym" href="#sym-r" transform="translate(330,62) rotate(90)"/>
+  <text class="lbl-sm lbl-left" x="348" y="82">R1 ১০kΩ</text>
+  <path class="wire" d="M330 102 V130"/>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(330,130)"/>
+  <use class="sym" href="#sym-r" transform="translate(330,130) rotate(90)"/>
+  <text class="lbl-sm lbl-left" x="348" y="152">R2 ১০kΩ</text>
+  <path class="wire" d="M330 170 V210"/>
+  <use class="sym sym-dim" href="#sym-gnd" transform="translate(330,210)"/>
+  <path class="wire-hot" d="M330 130 H430"/>
+  <use class="sym sym-hot" href="#sym-r" transform="translate(430,130) rotate(90)"/>
+  <text class="lbl-hot lbl-left" x="448" y="150">R_লোড ১০kΩ</text>
+  <path class="wire" d="M430 170 V210 H330"/>
+  <text class="lbl-hot" x="380" y="118">১.৬৭V — অর্ধেক নয়!</text>
+  <text class="lbl-sm" x="392" y="240">লোড জুড়লেই ভাগ বদলে যায়</text>
+  <rect class="cell-hot" x="150" y="252" width="280" height="16" rx="6"/>
+  <text class="lbl-hot" x="290" y="262">নিয়ম: R_লোড ≥ ১০ × R_থেভেনিন</text>
 </svg>
 <div class="diag-cap">সিরিজে ভোল্টেজ রেজিস্ট্যান্স-অনুপাতে ভাগ হয় — এই মাঝ-বিন্দুই সেন্সর-জগতের দরজা: LDR/থার্মিস্টর বসালেই আলো/তাপের মান ভোল্টেজ হয়ে ADC-তে যায়।</div>
 </div>
@@ -327,27 +336,29 @@ doors.push({
 
 <div class="diagram">
 <div class="diag-title">বাস্তব দৃশ্য — কারেন্ট-শান্ট মাপ: ছোট রোধে প্রবাহ-হিসাব</div>
-<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
-  <line class="edge-hot" x1="40" y1="40" x2="520" y2="40"/>
-  <text class="lbl-hot" x="45" y="34" font-size="10">+৫V (লোড-পথ)</text>
-  <rect class="cell" x="150" y="30" width="90" height="20"/>
-  <text class="lbl-sm" x="195" y="66" font-size="10">লোড (মোটর)</text>
-  <line class="edge" x1="240" y1="40" x2="330" y2="40"/>
-  <rect class="cell-cyan" x="330" y="30" width="80" height="20"/>
-  <text class="lbl-cyan" x="370" y="66" font-size="10">শান্ট ০.১Ω</text>
-  <line class="edge" x1="410" y1="40" x2="480" y2="40"/>
-  <line class="edge" x1="480" y1="40" x2="480" y2="180"/>
-  <line class="edge" x1="120" y1="180" x2="480" y2="180"/>
-  <line class="edge" x1="120" y1="180" x2="120" y2="40" visibility="hidden"/>
-  <path class="edge" d="M 480 180 L 130 180 L 130 44" fill="none" visibility="hidden"/>
-  <circle class="node-hot" cx="350" cy="40" r="4"/>
-  <circle class="node-hot" cx="395" cy="40" r="4"/>
-  <line class="edge-hot" x1="350" y1="44" x2="350" y2="120"/>
-  <line class="edge-hot" x1="395" y1="44" x2="395" y2="120"/>
-  <rect class="cell" x="290" y="120" width="170" height="40"/>
-  <text class="lbl-sm" x="375" y="138" font-size="10">V_শান্ট পড়ো → I = V ÷ ০.১</text>
-  <text class="lbl-sm" x="375" y="154" font-size="10">৫০mV পড়লে = ৫০০mA প্রবাহ!</text>
-  <text class="lbl" x="280" y="205" font-size="10">কেন: শ্রেণি-পথে ছোট্ট রোধ — ওহমের সেতুতে ভোল্টেজ-পতন প্রবাহের ছায়া</text>
+<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <use class="sym sym-amber" href="#sym-bat" transform="translate(80,90) rotate(90)"/>
+  <text class="lbl-sm lbl-right" x="64" y="86">+</text>
+  <text class="lbl lbl-right" x="62" y="106">৫V</text>
+  <path class="wire" d="M80 90 V50 H170"/>
+  <use class="sym sym-hot" href="#sym-r" transform="translate(170,50)"/>
+  <text class="lbl-hot" x="190" y="30">R_শান্ট ০.১Ω</text>
+  <path class="wire" d="M210 50 H330"/>
+  <use class="sym sym-cyan" href="#sym-lamp" transform="translate(330,50) rotate(90)"/>
+  <text class="lbl-cyan lbl-left" x="350" y="66">লোড</text>
+  <path class="wire" d="M330 78 V190 H80 V118"/>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(170,50)"/>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(210,50)"/>
+  <path class="wire-cyan" d="M170 50 V110 M210 50 V110"/>
+  <rect class="cell-cyan" x="140" y="110" width="100" height="42" rx="8"/>
+  <text class="lbl-cyan" x="190" y="126">মিলিভোল্ট</text>
+  <text class="lbl-sm" x="190" y="142">মিটার</text>
+  <text class="lbl-sm" x="190" y="170">২২mV পড়লো</text>
+  <rect class="cell" x="330" y="120" width="216" height="80" rx="8"/>
+  <text class="lbl-sm lbl-left" x="344" y="140">I = V_শান্ট ÷ R_শান্ট</text>
+  <text class="lbl-hot lbl-left" x="344" y="160">= ০.০২২V ÷ ০.১Ω = ০.২২A</text>
+  <text class="lbl-sm lbl-left" x="344" y="182">শান্ট ছোট রাখো — নইলে সে-ই</text>
+  <text class="lbl-sm lbl-left" x="344" y="198">লোডের ভোল্টেজ খেয়ে নেবে</text>
 </svg>
 <div class="diag-cap">প্রবাহ সরাসরি মাপা কঠিন (পথ কাটতে হয়) — বিদ্যা: পথে ০.১Ω বসাও, তার দুই মাথার ভোল্টেজ পড়ো, ওহমে ভাগ দাও; স্মার্ট-ব্যাটারি/মোটর-নিয়ন্ত্রকের ভেতরে এই শান্টই ক্যালকুলাস।</div>
 </div>
@@ -415,48 +426,52 @@ You thought. "Wire them side by side?"
 
 <div class="diagram">
 <div class="diag-title">তিন ইটের রাজ্য — গেট-সিম্বল ও সত্য-সারণী</div>
-<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
-  <!-- AND gate (D-shape) -->
-  <path class="node-cyan" d="M 40 40 L 90 40 A 30 30 0 0 1 90 100 L 40 100 Z" fill="none"/>
-  <text class="lbl-cyan" x="70" y="130">AND (এবং)</text>
-  <line class="edge" x1="15" y1="55" x2="40" y2="55"/>
-  <line class="edge" x1="15" y1="85" x2="40" y2="85"/>
-  <line class="edge" x1="120" y1="70" x2="150" y2="70"/>
-  <text class="lbl-sm" x="15" y="46">A</text>
-  <text class="lbl-sm" x="15" y="102">B</text>
-  <!-- OR gate (curved) -->
-  <path class="node-hot" d="M 230 40 Q 270 40 300 70 Q 270 100 230 100 Q 250 70 230 40 Z" fill="none"/>
-  <text class="lbl-hot" x="265" y="130">OR (অথবা)</text>
-  <line class="edge" x1="200" y1="55" x2="232" y2="55"/>
-  <line class="edge" x1="200" y1="85" x2="232" y2="85"/>
-  <line class="edge" x1="300" y1="70" x2="330" y2="70"/>
-  <!-- NOT (triangle+dot) -->
-  <path class="node" d="M 420 40 L 470 70 L 420 100 Z" fill="none"/>
-  <circle class="node" cx="477" cy="70" r="6" fill="none"/>
-  <text class="lbl" x="445" y="130">NOT (না)</text>
-  <line class="edge" x1="395" y1="70" x2="420" y2="70"/>
-  <line class="edge" x1="483" y1="70" x2="510" y2="70"/>
-  <!-- truth table -->
-  <text class="lbl" x="120" y="165">সত্য-সারণী (কোন জোড়ায় কী জবাব)</text>
-  <rect class="cell" x="40" y="180" width="36" height="24"/>
-  <rect class="cell" x="76" y="180" width="36" height="24"/>
-  <rect class="cell-cyan" x="112" y="180" width="48" height="24"/>
-  <rect class="cell" x="40" y="204" width="36" height="24"/>
-  <rect class="cell" x="76" y="204" width="36" height="24"/>
-  <rect class="cell-cyan" x="112" y="204" width="48" height="24"/>
-  <rect class="cell" x="40" y="228" width="36" height="24"/>
-  <rect class="cell" x="76" y="228" width="36" height="24"/>
-  <rect class="cell-cyan" x="112" y="228" width="48" height="24"/>
-  <text class="lbl-sm" x="58" y="177">A</text>
-  <text class="lbl-sm" x="94" y="177">B</text>
-  <text class="lbl-sm" x="136" y="177">AND</text>
-  <text class="lbl-sm" x="58" y="196">১</text><text class="lbl-sm" x="94" y="196">১</text><text class="lbl-cyan" x="136" y="196">১</text>
-  <text class="lbl-sm" x="58" y="220">১</text><text class="lbl-sm" x="94" y="220">০</text><text class="lbl-sm" x="136" y="220">০</text>
-  <text class="lbl-sm" x="58" y="244">০</text><text class="lbl-sm" x="94" y="244">০</text><text class="lbl-sm" x="136" y="244">০</text>
-  <!-- NAND note -->
-  <rect class="cell-hot" x="220" y="185" width="300" height="58"/>
-  <text class="lbl-hot" x="370" y="207">NAND = AND + বুলুৎ (উল্টো-বিন্দু)</text>
-  <text class="lbl-sm" x="370" y="230">এক ইটে সব বাড়ি: NOT·AND·OR·ফ্লিপ-ফ্লপ — সর্বজনীন</text>
+<svg viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg">
+  <use class="sym sym-cyan" href="#sym-and" transform="translate(40,50)"/>
+  <text class="lbl-sm lbl-right" x="34" y="41">A</text>
+  <text class="lbl-sm lbl-right" x="34" y="59">B</text>
+  <text class="lbl-cyan" x="66" y="26">AND</text>
+  <text class="lbl-sm lbl-left" x="96" y="50">Y</text>
+  <text class="lbl-sm" x="66" y="86">দুই-ই ১ হলে ১</text>
+  <use class="sym sym-cyan" href="#sym-or" transform="translate(215,50)"/>
+  <text class="lbl-sm lbl-right" x="209" y="41">A</text>
+  <text class="lbl-sm lbl-right" x="209" y="59">B</text>
+  <text class="lbl-cyan" x="243" y="26">OR</text>
+  <text class="lbl-sm lbl-left" x="271" y="50">Y</text>
+  <text class="lbl-sm" x="243" y="86">যেকোনো ১ হলে ১</text>
+  <use class="sym sym-cyan" href="#sym-not" transform="translate(390,50)"/>
+  <text class="lbl-sm lbl-right" x="384" y="50">A</text>
+  <text class="lbl-cyan" x="416" y="26">NOT</text>
+  <text class="lbl-sm lbl-left" x="446" y="50">Y</text>
+  <text class="lbl-sm" x="416" y="86">উল্টে দেয়</text>
+  <use class="sym sym-hot" href="#sym-nand" transform="translate(60,150)"/>
+  <text class="lbl-hot" x="86" y="126">NAND — সর্বজনীন ইট</text>
+  <text class="lbl-sm lbl-right" x="54" y="141">A</text>
+  <text class="lbl-sm lbl-right" x="54" y="159">B</text>
+  <text class="lbl-sm lbl-left" x="116" y="150">Y</text>
+  <text class="lbl-sm" x="86" y="188">শুধু এই একটাই ছাপালেই</text>
+  <text class="lbl-sm" x="86" y="204">বাকি সব গেট বানানো যায়</text>
+  <rect class="cell" x="200" y="118" width="150" height="150" rx="8"/>
+  <text class="lbl-cyan" x="275" y="136">সত্য-সারণী</text>
+  <text class="lbl-sm" x="222" y="158">A</text>
+  <text class="lbl-sm" x="252" y="158">B</text>
+  <text class="lbl-sm" x="288" y="158">AND</text>
+  <text class="lbl-sm" x="326" y="158">NAND</text>
+  <path class="wire" d="M210 166 H340"/>
+  <text class="lbl-sm" x="222" y="182">০</text><text class="lbl-sm" x="252" y="182">০</text>
+  <text class="lbl-sm" x="288" y="182">০</text><text class="lbl-hot" x="326" y="182">১</text>
+  <text class="lbl-sm" x="222" y="204">০</text><text class="lbl-sm" x="252" y="204">১</text>
+  <text class="lbl-sm" x="288" y="204">০</text><text class="lbl-hot" x="326" y="204">১</text>
+  <text class="lbl-sm" x="222" y="226">১</text><text class="lbl-sm" x="252" y="226">০</text>
+  <text class="lbl-sm" x="288" y="226">০</text><text class="lbl-hot" x="326" y="226">১</text>
+  <text class="lbl-sm" x="222" y="248">১</text><text class="lbl-sm" x="252" y="248">১</text>
+  <text class="lbl-cyan" x="288" y="248">১</text><text class="lbl-hot" x="326" y="248">০</text>
+  <rect class="cell-hot" x="374" y="118" width="176" height="150" rx="8"/>
+  <text class="lbl-hot" x="462" y="136">NAND থেকে বাকি সব</text>
+  <text class="lbl-sm lbl-left" x="386" y="162">NOT A = NAND(A, A)</text>
+  <text class="lbl-sm lbl-left" x="386" y="186">A AND B = NOT(NAND(A,B))</text>
+  <text class="lbl-sm lbl-left" x="386" y="210">A OR B = NAND(¬A, ¬B)</text>
+  <text class="lbl-sm lbl-left" x="386" y="240">ডি-মর্গান: ¬(A·B) = ¬A + ¬B</text>
 </svg>
 <div class="diag-cap">তিন ইটের আকৃতি ও সত্য-সারণী — AND শুধু দুই-ই '১' হলে '১'; OR যেকোনো '১'-এ '১'; NOT উল্টে দেয়। NAND-এ সব যুক্তি গাঁথা যায়।</div>
 </div>

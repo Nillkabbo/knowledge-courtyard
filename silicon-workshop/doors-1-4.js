@@ -70,33 +70,25 @@ LED জ্বালানোর হিসাব (তোমার প্রথম
 
 <div class="diagram">
 <div class="diag-title">ওহমের নদী — এক নজরে তিন ভাই</div>
-<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
-  <!-- battery as two reservoirs -->
-  <rect class="cell" x="30" y="90" width="60" height="60"/>
-  <text class="lbl" x="60" y="80">৯V</text>
-  <text class="lbl-sm" x="32" y="170">জলাধার (V)</text>
-  <!-- wire top -->
-  <line class="edge" x1="90" y1="90" x2="240" y2="90"/>
-  <!-- resistor (zigzag simplified as box) -->
-  <rect class="cell-hot" x="240" y="70" width="80" height="40"/>
-  <text class="lbl-hot" x="280" y="60">R = ১০০Ω</text>
-  <text class="lbl-sm" x="238" y="130">নালার পাথর</text>
-  <line class="edge" x1="320" y1="90" x2="470" y2="90"/>
-  <!-- bulb -->
-  <circle class="node-hot" cx="490" cy="90" r="26"/>
-  <text class="lbl-hot" x="470" y="145">বাল্ব (লোড)</text>
-  <!-- wire bottom -->
-  <line class="edge" x1="490" y1="116" x2="490" y2="200"/>
-  <line class="edge" x1="490" y1="200" x2="60" y2="200"/>
-  <line class="edge" x1="60" y1="200" x2="60" y2="150"/>
-  <!-- current flow arrows -->
-  <text class="lbl-cyan" x="150" y="82">→ I = ৯০mA</text>
-  <text class="lbl-sm" x="330" y="82">→</text>
-  <!-- formula -->
-  <rect class="cell-cyan" x="150" y="208" width="260" height="26"/>
-  <text class="lbl-cyan" x="280" y="226">V = I × R  →  ৯ = ০.০৯ × ১০০</text>
+<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <use class="sym sym-amber" href="#sym-bat" transform="translate(90,147) rotate(90)"/>
+  <text class="lbl-sm" x="76" y="143" text-anchor="end">+</text>
+  <text class="lbl-sm" x="76" y="182" text-anchor="end">−</text>
+  <text class="lbl lbl-right" x="70" y="163">৯V</text>
+  <text class="lbl-sm lbl-right" x="70" y="181">জলাধার</text>
+  <path class="wire" d="M90 147 V75 H205"/>
+  <use class="sym" href="#sym-r" transform="translate(205,75)"/>
+  <text class="lbl" x="225" y="52">R = ১০০Ω</text>
+  <text class="lbl-sm" x="225" y="103">নালার পাথর — বাধা</text>
+  <path class="wire" d="M245 75 H455 V200 H90 V175"/>
+  <path class="flow" d="M300 58 H400"/>
+  <text class="lbl-cyan" x="350" y="40">I = ৯০mA — প্রবাহ</text>
+  <path class="flow" d="M420 214 H160"/>
+  <text class="lbl-sm" x="290" y="228">প্রবাহ ফিরে আসে — বদ্ধ পথ ছাড়া কিছুই চলে না</text>
+  <rect class="cell-cyan" x="330" y="96" width="200" height="30" rx="6"/>
+  <text class="lbl-cyan" x="430" y="115">V = I × R → ৯ = ০.০৯ × ১০০</text>
 </svg>
-<div class="diag-cap">উচ্চতা-পার্থক্য (V) ধাক্কা দেয় → প্রবাহ (I) চলে → পাথর (R) সীমিত করে। এক চক্র, এক সমীকরণ।</div>
+<div class="diag-cap">সবচেয়ে সরল সত্যিকারের সার্কিট: এক উৎস, এক বাধা, এক বদ্ধ পথ। উচ্চতা-পার্থক্য (V) ধাক্কা দেয় → প্রবাহ (I) চলে → পাথর (R) সীমিত করে। খেয়াল করো — রেজিস্টরের চিহ্নটাই দাঁতালি: সরু নালার ছবি।</div>
 </div>
 
 
@@ -305,34 +297,39 @@ LC দোলা (দুই ভাইয়ের দোলনা):
 <div class="diagram">
 <div class="diag-title">বাস্তব দৃশ্য — রিলে চালানো: ফ্লাইব্যাক-ডায়োডসহ পূর্ণ সার্কিট</div>
 <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
-  <rect class="cell-cyan" x="30" y="40" width="90" height="34"/>
-  <text class="lbl-cyan" x="75" y="61">MCU পিন</text>
-  <rect class="cell" x="150" y="40" width="60" height="34"/>
-  <text class="lbl-sm" x="180" y="61">১kΩ</text>
-  <rect class="cell-hot" x="240" y="36" width="70" height="42"/>
-  <text class="lbl-hot" x="275" y="61">NPN</text>
-  <line class="edge" x1="120" y1="57" x2="150" y2="57"/>
-  <line class="edge" x1="210" y1="57" x2="240" y2="57"/>
-  <line class="edge" x1="275" y1="78" x2="275" y2="210"/>
-  <text class="lbl-sm" x="275" y="228" font-size="10">E → GND</text>
-  <rect class="cell" x="360" y="30" width="80" height="44"/>
-  <text class="lbl" x="400" y="48">রিলে-কয়েল</text>
-  <text class="lbl-sm" x="400" y="66" font-size="10">চুম্বক-সুইচ</text>
-  <line class="edge" x1="400" y1="30" x2="400" y2="14"/>
-  <line class="edge" x1="330" y1="14" x2="470" y2="14"/>
-  <text class="lbl-sm" x="490" y="18" font-size="10">+৫V</text>
-  <line class="edge" x1="400" y1="74" x2="400" y2="96"/>
-  <line class="edge" x1="330" y1="96" x2="470" y2="96"/>
-  <line class="edge" x1="400" y1="96" x2="275" y2="57" visibility="hidden"/>
-  <path class="edge" d="M 400 96 L 290 96 L 275 78" fill="none"/>
-  <path class="edge-hot" d="M 370 22 L 430 88 M 424 82 L 430 88 L 436 82" fill="none" stroke-width="2"/>
-  <text class="lbl-hot" x="345" y="120" font-size="10">ফ্লাইব্যাক-ডায়োড 1N4007 (উল্টো-বসানো!)</text>
-  <rect class="cell" x="360" y="150" width="140" height="50"/>
-  <text class="lbl-sm" x="430" y="172">AC-লোড পথ</text>
-  <text class="lbl-sm" x="430" y="190" font-size="10">চুম্বক-সুইচে বিচ্ছিন্ন-যুক্ত</text>
-  <line class="edge" x1="430" y1="74" x2="430" y2="150" stroke-dasharray="3,4"/>
+  <use class="sym sym-dim" href="#sym-vcc" transform="translate(300,40)"/>
+  <text class="lbl-sm" x="300" y="18">+৫V</text>
+  <path class="wire" d="M300 40 H390"/>
+  <use class="sym sym-cyan" href="#sym-l-core" transform="translate(300,40) rotate(90)"/>
+  <text class="lbl-cyan lbl-left" x="322" y="58">রিলে-কয়েল</text>
+  <text class="lbl-sm lbl-left" x="322" y="74">চুম্বক হয়</text>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(300,40)"/>
+  <path class="wire" d="M300 80 V120 M300 120 H390 M390 90 V40"/>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(300,120)"/>
+  <use class="sym sym-hot" href="#sym-d" transform="translate(390,120) rotate(-90)"/>
+  <text class="lbl-hot lbl-left" x="404" y="152">ফ্লাইব্যাক</text>
+  <text class="lbl-sm lbl-left" x="404" y="168">1N4007 — উল্টো বসানো</text>
+  <text class="lbl-sm lbl-left" x="404" y="184">স্বাভাবিকে বন্ধ, লাফে খোলে</text>
+  <use class="sym" href="#sym-npn" transform="translate(274,144)"/>
+  <text class="lbl-sm lbl-right" x="266" y="130">B</text>
+  <text class="lbl-sm lbl-left" x="306" y="136">C</text>
+  <text class="lbl-sm lbl-left" x="308" y="180">E</text>
+  <text class="lbl" x="246" y="198">BC547</text>
+  <path class="wire" d="M300 168 V206"/>
+  <use class="sym sym-dim" href="#sym-gnd" transform="translate(300,206)"/>
+  <rect class="cell-cyan" x="30" y="128" width="86" height="32" rx="6"/>
+  <text class="lbl-cyan" x="73" y="144">MCU পিন</text>
+  <path class="wire" d="M116 144 H158"/>
+  <use class="sym" href="#sym-r" transform="translate(158,144)"/>
+  <text class="lbl-sm" x="178" y="126">১kΩ</text>
+  <path class="wire" d="M198 144 H274"/>
+  <path class="seq-line" d="M312 52 H434"/>
+  <rect class="cell" x="434" y="16" width="116" height="86" rx="8"/>
+  <text class="lbl-sm" x="492" y="34">রিলে-কন্টাক্ট</text>
+  <use class="sym sym-amber" href="#sym-sw" transform="translate(450,62)"/>
+  <text class="lbl-sm" x="492" y="90">AC-লোড — আলাদা পথ</text>
 </svg>
-<div class="diag-cap">MCU-র mA দিয়ে ট্রানজিস্টর-দরওয়ান খোলে → কয়েলে বিশাল-প্রবাহ; কয়েল বন্ধের মুহূর্তে বিদ্যুৎ-লাফ (back-EMF) — ডায়োড সেই লাফ শুষে নেয়, ট্রানজিস্টর বাঁচে। AC-লোড সম্পূর্ণ আলাদা পথে — গ্যালভানিক-বিচ্ছিন্ন।</div>
+<div class="diag-cap">MCU-র কয়েক mA বেস-রেজিস্টর পেরিয়ে ট্রানজিস্টর-দরওয়ান খোলে → কয়েলে বড় প্রবাহ। কয়েল বন্ধের মুহূর্তে V=L·di/dt-এর বিদ্যুৎ-লাফ — ডায়োডটা কয়েলের ঠিক দুই মাথায় উল্টো বসানো, তাই ওই লাফ তার ভেতর দিয়েই ঘুরে মরে, ট্রানজিস্টর বাঁচে। ডান পাশের কন্টাক্ট গ্যালভানিকভাবে বিচ্ছিন্ন — চুম্বক টানে, বিদ্যুৎ পেরোয় না।</div>
 </div>
 
 <div class="verse">
@@ -434,41 +431,36 @@ LED — আলো-বিকিরণকারী জংশন:
 
 <div class="diagram">
 <div class="diag-title">ট্রানজিস্টর — ছোট চাবিতে বিশাল দরজা (BJT সুইচ)</div>
-<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
-  <!-- MCU pin -->
-  <rect class="cell-cyan" x="20" y="100" width="90" height="34"/>
-  <text class="lbl-cyan" x="65" y="121">MCU পিন</text>
-  <text class="lbl-sm" x="26" y="152">~৫mA</text>
-  <!-- base resistor -->
-  <line class="edge" x1="110" y1="117" x2="150" y2="117"/>
-  <rect class="cell" x="150" y="97" width="70" height="40"/>
-  <text class="lbl" x="185" y="87">১kΩ</text>
-  <!-- transistor -->
-  <line class="edge" x1="220" y1="117" x2="270" y2="117"/>
-  <circle class="node" cx="300" cy="117" r="34" fill="none"/>
-  <text class="lbl" x="300" y="172">BC547 (NPN)</text>
-  <text class="lbl-sm" x="252" y="104">B</text>
-  <text class="lbl-sm" x="330" y="92">C</text>
-  <text class="lbl-sm" x="336" y="142">E</text>
-  <!-- collector up to load -->
-  <line class="edge" x1="322" y1="90" x2="322" y2="60"/>
-  <rect class="cell-hot" x="292" y="20" width="60" height="40"/>
-  <text class="lbl-hot" x="322" y="12">রিলে ~১০০mA</text>
-  <line class="edge" x1="322" y1="20" x2="322" y2="12" visibility="hidden"/>
-  <!-- emitter to ground -->
-  <line class="edge" x1="322" y1="144" x2="322" y2="210"/>
-  <line class="edge" x1="300" y1="210" x2="345" y2="210"/>
-  <line class="edge" x1="308" y1="218" x2="337" y2="218"/>
-  <line class="edge" x1="316" y1="226" x2="329" y2="226"/>
-  <!-- amplification arrow -->
-  <text class="lbl-hot" x="398" y="52">β ≈ ১০০</text>
-  <line class="edge-hot" x1="392" y1="70" x2="470" y2="70"/>
-  <text class="lbl-sm" x="386" y="88" font-size="11">৫mA × ১০০ = ৫০০mA</text>
-  <!-- vcc rail -->
-  <line class="edge" x1="270" y1="20" x2="500" y2="20"/>
-  <text class="lbl-sm" x="505" y="24">৫V</text>
+<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <use class="sym sym-dim" href="#sym-vcc" transform="translate(300,36)"/>
+  <text class="lbl-sm" x="300" y="16">+৫V</text>
+  <use class="sym sym-hot" href="#sym-lamp" transform="translate(300,50) rotate(90)"/>
+  <text class="lbl-hot lbl-left" x="320" y="64">লোড — রিলে/মোটর/বাতি</text>
+  <text class="lbl-sm lbl-left" x="320" y="80">১০০mA চায়</text>
+  <path class="wire" d="M300 36 V50 M300 78 V120"/>
+  <use class="sym" href="#sym-npn" transform="translate(274,144)"/>
+  <text class="lbl-sm lbl-left" x="302" y="138">C</text>
+  <text class="lbl-sm lbl-left" x="302" y="174">E</text>
+  <text class="lbl-sm lbl-right" x="266" y="130">B</text>
+  <path class="wire" d="M300 168 V202"/>
+  <use class="sym sym-dim" href="#sym-gnd" transform="translate(300,202)"/>
+  <rect class="cell-cyan" x="26" y="128" width="94" height="32" rx="6"/>
+  <text class="lbl-cyan" x="73" y="144">GPIO ৩.৩V</text>
+  <text class="lbl-sm" x="73" y="172">দেয় মাত্র কয়েক mA</text>
+  <path class="wire" d="M120 144 H158"/>
+  <use class="sym" href="#sym-r" transform="translate(158,144)"/>
+  <text class="lbl-sm" x="178" y="126">R_B ১kΩ</text>
+  <path class="wire" d="M198 144 H274"/>
+  <path class="flow-cyan" d="M150 130 H258"/>
+  <text class="lbl-cyan" x="204" y="116">I_B ≈ ২.৬mA</text>
+  <path class="flow" d="M318 88 V116"/>
+  <text class="lbl-hot lbl-left" x="326" y="104">I_C = ১০০mA</text>
+  <rect class="cell" x="352" y="176" width="196" height="64" rx="8"/>
+  <text class="lbl-sm lbl-left" x="364" y="194">I_B = (৩.৩−০.৭)/১k = ২.৬mA</text>
+  <text class="lbl-sm lbl-left" x="364" y="212">দরকার β_জোর ≈ ১০ → ২৬mA যথেষ্ট</text>
+  <text class="lbl-sm lbl-left" x="364" y="230">বেশি-ধাক্কা = পুরো খোলা</text>
 </svg>
-<div class="diag-cap">বেসে অল্প কারেন্ট (MCU-র সীমায়) → কালেক্টর-এমিটারে বিশাল প্রবাহের দরজা খোলা — ছোট নির্দেশ, বড় আমানত।</div>
+<div class="diag-cap">সুইচ হিসেবে ব্যবহার করলে ট্রানজিস্টরকে অর্ধেক খুলে রাখা চলে না — <em>পুরো</em> খুলতে হয় (saturation), নইলে V_CE-তে ভোল্টেজ পড়ে আর সে গরম হয়। তাই বেসে হিসাব-মতো নয়, হিসাবের চেয়ে বেশি প্রবাহ দাও: β ধরো ১০, ডেটাশিটের ১০০ নয়। এখানে ২.৬mA বেস-প্রবাহ ১০০mA লোড অনায়াসে টানে।</div>
 </div>
 
 
@@ -502,28 +494,44 @@ LED — আলো-বিকিরণকারী জংশন:
 
 <div class="diagram">
 <div class="diag-title">বাস্তব দৃশ্য — ব্রিজ-রেক্টিফায়ার: AC থেকে DC-র জন্ম</div>
-<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
-  <circle class="node-hot" cx="90" cy="110" r="16"/>
-  <text class="lbl-hot" x="90" y="152" font-size="10">AC ইনপুট</text>
-  <text class="lbl-sm" x="90" y="168" font-size="10">~ ১২V (ট্রান্সফর্মার)</text>
-  <path class="edge" d="M 100 98 L 160 60 L 190 80" fill="none"/>
-  <path class="edge" d="M 100 122 L 160 160 L 190 140" fill="none"/>
-  <rect class="cell" x="190" y="60" width="110" height="80"/>
-  <text class="lbl" x="245" y="94">৪×ডায়োড</text>
-  <text class="lbl-sm" x="245" y="114" font-size="10">ব্রিজ-জাল</text>
-  <line class="edge" x1="300" y1="75" x2="360" y2="75"/>
-  <line class="edge" x1="300" y1="125" x2="360" y2="125"/>
-  <rect class="cell-cyan" x="360" y="60" width="70" height="80"/>
-  <text class="lbl-cyan" x="395" y="95">স্মুদিং</text>
-  <text class="lbl-cyan" x="395" y="112">ক্যাপ</text>
-  <line class="edge" x1="430" y1="75" x2="490" y2="75"/>
-  <line class="edge" x1="430" y1="125" x2="490" y2="125"/>
-  <text class="lbl-hot" x="510" y="80" font-size="10">+DC</text>
-  <text class="lbl-sm" x="510" y="130" font-size="10">GND</text>
-  <rect class="cell" x="60" y="190" width="440" height="30"/>
-  <text class="lbl-sm" x="280" y="209" font-size="10">তরঙ্গ-যাত্রা: AC-দোলা → ডায়োড-জালে সব-ঢেউ ওপরে → ক্যাপে সমতল — ব্যাটারি-চার্জারের ভেতরে হুবহু এই চেইন</text>
+<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+  <text class="lbl-sm" x="58" y="26">২২০V AC</text>
+  <use class="sym sym-cyan" href="#sym-l-core" transform="translate(58,46) rotate(90)"/>
+  <use class="sym sym-cyan" href="#sym-l" transform="translate(94,46) rotate(90)"/>
+  <text class="lbl-sm" x="76" y="110">ট্রান্সফর্মার</text>
+  <text class="lbl-sm" x="76" y="126">২২০→৯V AC</text>
+  <path class="wire" d="M94 46 H130 V132 H166 M94 86 H112 V216 H230"/>
+  <path class="wire" d="M166 132 L230 68 M230 196 L166 132 M294 132 L230 68 M230 196 L294 132"/>
+  <use class="sym" href="#sym-d" transform="translate(187.4,110.6) rotate(-45.0)"/>
+  <use class="sym" href="#sym-d" transform="translate(208.6,174.6) rotate(-135.0)"/>
+  <use class="sym" href="#sym-d" transform="translate(272.6,110.6) rotate(-135.0)"/>
+  <use class="sym" href="#sym-d" transform="translate(251.4,174.6) rotate(-45.0)"/>
+  <text class="lbl-sm" x="176" y="88">D1</text>
+  <text class="lbl-sm" x="176" y="182">D2</text>
+  <text class="lbl-sm" x="286" y="88">D3</text>
+  <text class="lbl-sm" x="286" y="182">D4</text>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(166,132)"/>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(230,196)"/>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(230,68)"/>
+  <path class="wire" d="M230 68 V44 H360 M230 196 V216 H360"/>
+  <use class="sym sym-amber" href="#sym-c-pol" transform="translate(360,44) rotate(90)"/>
+  <text class="lbl-sm lbl-left" x="374" y="60">১০০০μF</text>
+  <text class="lbl-sm lbl-left" x="374" y="76">স্মুদিং</text>
+  <path class="wire" d="M360 68 V216 M360 44 H426 M360 216 H426"/>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(360,44)"/>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(360,216)"/>
+  <rect class="cell-cyan" x="426" y="28" width="108" height="32" rx="6"/>
+  <text class="lbl-cyan" x="480" y="44">রেগুলেটর</text>
+  <path class="wire" d="M534 44 H548 V216 H426"/>
+  <text class="lbl-hot lbl-left" x="430" y="76">+ ৫V DC</text>
+  <text class="lbl-sm lbl-left" x="430" y="234">GND</text>
+  <path class="axis" d="M426 150 H548 M426 96 V150"/>
+  <path class="wire-cyan" d="M426 124 q8 -26 16 0 q8 26 16 0 q8 -26 16 0 q8 26 16 0"/>
+  <text class="lbl-sm lbl-left" x="430" y="112">AC — দুই দিকেই দোলে</text>
+  <path class="wire-hot" d="M426 178 q6 -22 12 0 q6 22 12 0 q6 -22 12 0 q6 22 12 0 q6 -22 12 0 q6 22 12 0"/>
+  <text class="lbl-sm lbl-left" x="430" y="196">রেক্টিফাইড — সব কুঁজ একদিকে</text>
 </svg>
-<div class="diag-cap">চার্জার/অ্যাডাপ্টারের প্রাণ: AC-ঢেউ ব্রিজে সোজা হয়, ক্যাপ দোলা মুছে দেয় — Door ২-এর C আর এ-দরজার ডায়োডের যৌথ-পরিবেশনা।</div>
+<div class="diag-cap">চার ডায়োডের হীরা: AC-র যে অর্ধেকই আসুক, দুইটা ডায়োড খুলে যায় আর দুইটা বন্ধ — বেরোনোর পথ সবসময় একই দিকে। এরপর স্মুদিং-ক্যাপ গর্তগুলো ভরে দেয় (দরজা ২-এর জলাধার, বড় মাপে), শেষে রেগুলেটর সমান করে। মনে রেখো — ২২০V AC মানে <em>RMS</em>; শীর্ষ ৩১১V, তাই ক্যাপের ভোল্টেজ-রেটিং শীর্ষ দেখে বাছতে হয়, RMS দেখে নয়।</div>
 </div>
 
 <div class="verse">

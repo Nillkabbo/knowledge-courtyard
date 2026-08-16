@@ -79,7 +79,6 @@ doors.push({
   <text class="lbl-hot" x="425" y="220" font-size="10">↑পুল-আপ-রেজিস্টর দুই তারেই বাধ্য</text>
   <text class="lbl-sm" x="425" y="234" font-size="10">(open-drain — টানা সবাই পারে, ছাড়া পুল-আপ)</text>
   <!-- verdict strip -->
-  <rect class="cell" x="30" y="248" width="330" height="14" visibility="hidden"/>
   <text class="lbl" x="280" y="250" font-size="11">দ্রুত-ভলিউম → SPI · বেশি-যন্ত্র-সরু-ডেটা → I2C · দুই-পক্ষ/মানুষ → UART</text>
 </svg>
 <div class="diag-cap">ওপরে UART-এর দুই-তার ক্রস-চিঠি; মাঝে SPI-র চার-তার প্রভু-দাস; ডানে I2C-র এক-রাস্তায় ঠিকানা-চিঠি (SDA/SCL + পুল-আপ) — তিন সমাজ-নির্মাণের তিন রুট।</div>
@@ -264,7 +263,6 @@ doors.push({
   <text class="lbl-sm" x="420" y="222">উচ্চ-অগ্রাধিকার প্রস্তুত? → লাফ</text>
   <text class="lbl-sm" x="420" y="238">না? → চলন্ত টাস্ক চলতেই থাকে</text>
   <!-- bare metal note -->
-  <rect class="cell" x="60" y="248" width="440" height="14" visibility="hidden"/>
   <text class="lbl" x="280" y="260" font-size="11">bare-metal = এক-লুপ+ইন্টারাপ্ট · RTOS = বহু-টাস্ক+শিডিউলার — দুই-ই সৎ, প্রশ্ন জটিলতায়</text>
 </svg>
 <div class="diag-cap">বাঁয়ে জাগরণের পাঁচ-সিঁড়ি (ভেক্টর→স্ট্যাক→ডেটা→কনফিগ→main); ডানে শিডিউলারের প্রতি-টিক-ফয়সালা — মিকাতের মতো: যাত্রার আগে প্রতিটা স্তর নিয়ত-বাঁধা।</div>
@@ -625,55 +623,55 @@ You began in one breath — because now you know: "A soil-moisture sensor — th
 
 <div class="diagram">
 <div class="diag-title">পূর্ণ চেইনের মানচিত্র — মাঠ থেকে মেঘ, মেঘ থেকে মাঠ</div>
-<svg viewBox="0 0 560 270" xmlns="http://www.w3.org/2000/svg">
-  <!-- field left -->
-  <rect class="cell-hot" x="20" y="40" width="100" height="36"/>
-  <text class="lbl-hot" x="70" y="62">মাঠ · প্রোব</text>
-  <text class="lbl-sm" x="70" y="92" font-size="10">আর্দ্রতা→রোধ</text>
-  <!-- divider -->
-  <rect class="cell" x="140" y="40" width="90" height="36"/>
-  <text class="lbl-sm" x="185" y="62">ডিভাইডার</text>
-  <text class="lbl-sm" x="185" y="92" font-size="10">V∝R (দরজা ৬)</text>
-  <!-- MCU -->
-  <rect class="cell-cyan" x="250" y="30" width="120" height="56"/>
-  <text class="lbl-cyan" x="310" y="52">MCU শহর</text>
-  <text class="lbl-sm" x="310" y="70" font-size="10">ADC·টাইমার·ডাক·ঘুম</text>
-  <!-- RTC -->
-  <rect class="cell" x="250" y="110" width="120" height="30"/>
-  <text class="lbl-sm" x="310" y="129">RTC · I2C (ACK)</text>
-  <!-- radio -->
-  <rect class="cell" x="400" y="40" width="90" height="36"/>
-  <text class="lbl-sm" x="445" y="62">রেডিও</text>
-  <text class="lbl-sm" x="445" y="92" font-size="10">WiFi/LoRa</text>
-  <!-- broker/cloud -->
-  <rect class="cell-hot" x="400" y="120" width="140" height="44"/>
-  <text class="lbl-hot" x="470" y="138">ব্রোকার · মেঘ</text>
-  <text class="lbl-sm" x="470" y="156" font-size="10">MQTT/TLS · OTA</text>
-  <!-- phone -->
-  <rect class="cell" x="400" y="200" width="140" height="36"/>
-  <text class="lbl-sm" x="470" y="222">ফোন · ড্যাশবোর্ড</text>
-  <!-- valve -->
-  <rect class="cell" x="140" y="200" width="110" height="36"/>
-  <text class="lbl-sm" x="195" y="222">ভালভ-মোটর · PWM</text>
-  <!-- water back to field -->
-  <rect class="cell-hot" x="20" y="200" width="90" height="36"/>
-  <text class="lbl-hot" x="65" y="222">পানি → মাঠ</text>
-  <!-- arrows forward -->
-  <line class="edge" x1="120" y1="58" x2="140" y2="58"/>
-  <line class="edge" x1="230" y1="58" x2="250" y2="58"/>
-  <line class="edge" x1="370" y1="58" x2="400" y2="58"/>
-  <line class="edge" x1="445" y1="76" x2="470" y2="120"/>
-  <line class="edge" x1="470" y1="164" x2="470" y2="200"/>
-  <line class="edge" x1="310" y1="86" x2="310" y2="110"/>
-  <!-- arrows backward -->
-  <path class="edge-cyan" d="M 470 200 Q 470 260 195 240" fill="none" stroke-dasharray="4,4"/>
-  <line class="edge-cyan" x1="195" y1="200" x2="195" y2="184" visibility="hidden"/>
-  <path class="edge-cyan" d="M 140 218 Q 120 218 110 218" fill="none"/>
-  <text class="lbl-cyan" x="330" y="252" font-size="10">উল্টো দিক: কমান্ড → PWM-ভালভ → পানি (মাপা-শক্তির ফেরত-যাত্রা)</text>
-  <!-- door numbers strip -->
-  <text class="lbl-sm" x="185" y="120" font-size="10">দরজা ৬·১২</text>
-  <text class="lbl-sm" x="310" y="170" font-size="10">দরজা ৯·১০·১১·৪·১৪</text>
-  <text class="lbl-sm" x="445" y="110" font-size="10">দরজা ১৩·১৫</text>
+<svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
+  <use class="sym sym-dim" href="#sym-solar" transform="translate(30,44)"/>
+  <text class="lbl-sm" x="41" y="76">সোলার</text>
+  <path class="wire" d="M52 44 H86"/>
+  <rect class="cell" x="86" y="30" width="66" height="28" rx="6"/>
+  <text class="lbl-sm" x="119" y="44">TP4056</text>
+  <path class="wire" d="M152 44 H186"/>
+  <use class="sym sym-amber" href="#sym-cell" transform="translate(186,44)"/>
+  <text class="lbl-sm" x="197" y="76">১৮৬৫০</text>
+  <path class="wire" d="M208 44 H242"/>
+  <rect class="cell" x="242" y="30" width="76" height="28" rx="6"/>
+  <text class="lbl-sm" x="280" y="44">MCP1700</text>
+  <path class="wire" d="M318 44 H360 V80"/>
+  <text class="lbl-sm lbl-left" x="326" y="34">৩.৩V</text>
+  <text class="lbl-sm" x="176" y="16">দরজা ৪ — রিযিক-চেইন</text>
+  <use class="sym sym-amber" href="#sym-ldr" transform="translate(30,140) rotate(90)"/>
+  <text class="lbl-sm" x="36" y="198">মাটি-প্রোব</text>
+  <text class="lbl-sm" x="36" y="214">দরজা ৬</text>
+  <path class="wire" d="M30 180 V210 H90"/>
+  <path class="wire" d="M30 140 V116 H90"/>
+  <rect class="cell-cyan" x="90" y="104" width="70" height="118" rx="8"/>
+  <text class="lbl-cyan" x="125" y="124">ডিভাইডার</text>
+  <text class="lbl-sm" x="125" y="144">১০kΩ</text>
+  <text class="lbl-sm" x="125" y="168">V_out</text>
+  <text class="lbl-sm" x="125" y="188">→ ADC1</text>
+  <text class="lbl-sm" x="125" y="208">দরজা ১২</text>
+  <path class="wire-cyan" d="M160 160 H210"/>
+  <rect class="cell-cyan" x="210" y="80" width="150" height="130" rx="10"/>
+  <text class="lbl-cyan" x="285" y="102">ESP32</text>
+  <text class="lbl-sm" x="285" y="122">ADC → firmware</text>
+  <text class="lbl-sm" x="285" y="142">ইন্টারাপ্ট (১০)</text>
+  <text class="lbl-sm" x="285" y="162">টাইমার-ওয়াক্ত (১১)</text>
+  <text class="lbl-sm" x="285" y="182">PWM-ভালভ (১২)</text>
+  <text class="lbl-sm" x="285" y="200">বুট + ঘুম (১৪·৪)</text>
+  <use class="sym sym-hot" href="#sym-ant" transform="translate(400,80)"/>
+  <path class="wire" d="M360 110 H400 V80"/>
+  <text class="lbl-hot" x="412" y="46">WiFi</text>
+  <path class="flow" d="M420 110 H470"/>
+  <rect class="cell" x="470" y="88" width="80" height="46" rx="8"/>
+  <text class="lbl-sm" x="510" y="106">MQTT</text>
+  <text class="lbl-sm" x="510" y="124">ব্রোকার</text>
+  <text class="lbl-sm" x="510" y="70">দরজা ১৫</text>
+  <path class="flow-cyan" d="M470 158 H360"/>
+  <text class="lbl-cyan" x="416" y="192">কমান্ড ফিরে আসে</text>
+  <rect class="cell-hot" x="210" y="228" width="150" height="40" rx="8"/>
+  <text class="lbl-hot" x="285" y="244">MOSFET → ভালভ</text>
+  <text class="lbl-sm" x="285" y="260">পানি — দরজা ৩·১২</text>
+  <path class="wire-hot" d="M285 210 V228"/>
+  
 </svg>
 <div class="diag-cap">সম্পূর্ণ বৃত্ত: মাঠের আর্দ্রতা → ডিভাইডার-ভোল্টেজ → ADC-সংখ্যা → শহরের কুন-আযান-ওয়াক্ত → বাতাসের জামাত → মেঘ → তোমার হাতের গ্রাফ — আর ফেরত: কমান্ড → PWM → পানি → মাঠ। ষোলো দরজা, এক বৃত্ত।</div>
 </div>

@@ -139,30 +139,38 @@ doors.push({
 
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — LED ও বাটনের তার-লাগানো (ব্রেডবোর্ড-ছবি)</div>
-<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
-  <rect class="cell-cyan" x="40" y="40" width="120" height="60"/>
-  <text class="lbl-cyan" x="100" y="64">MCU</text>
-  <text class="lbl-sm" x="100" y="84" font-size="10">পা৯ · পা২</text>
-  <line class="edge" x1="160" y1="56" x2="230" y2="56"/>
-  <rect class="cell" x="230" y="40" width="60" height="32"/>
-  <text class="lbl-sm" x="260" y="60" font-size="10">২২০Ω</text>
-  <circle class="node-hot" cx="320" cy="56" r="14"/>
-  <text class="lbl-hot" x="290" y="76" font-size="10">LED → GND-রেল</text>
-  <line class="edge" x1="290" y1="56" x2="306" y2="56"/>
-  <line class="edge" x1="160" y1="96" x2="230" y2="96"/>
-  <rect class="cell" x="230" y="86" width="50" height="26"/>
-  <text class="lbl-sm" x="255" y="103" font-size="10">১০k</text>
-  <line class="edge" x1="230" y1="96" x2="200" y2="20"/>
-  <text class="lbl-sm" x="150" y="20" font-size="10">↑+৩.৩V (পুল-আপ)</text>
-  <circle class="node-hot" cx="310" cy="96" r="10"/>
-  <text class="lbl-hot" x="352" y="118" font-size="10">বাটন → GND</text>
-  <line class="edge" x1="280" y1="96" x2="300" y2="96"/>
-  <rect class="cell" x="400" y="40" width="140" height="90"/>
-  <text class="lbl" x="470" y="62">পোশাক-সারণি</text>
-  <text class="lbl-sm" x="470" y="84" font-size="10">LED-পিন: OUTPUT</text>
-  <text class="lbl-sm" x="470" y="102" font-size="10">বাটন-পিন: INPUT_PULLUP</text>
-  <text class="lbl-sm" x="470" y="120" font-size="10">চাপা=LOW পড়া হবে!</text>
-  <text class="lbl-sm" x="280" y="200" font-size="10">লাইনের রং-নিয়ম (নকশায়): লাল=VCC · কালো/সবুজ=GND · হলুদ=সংকেত</text>
+<svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell-cyan" x="212" y="72" width="120" height="90" rx="8"/>
+  <text class="lbl-cyan" x="272" y="92">MCU</text>
+  <text class="lbl-sm" x="272" y="110">৩.৩V লজিক</text>
+  <text class="lbl-sm lbl-left" x="222" y="136">PD2</text>
+  <text class="lbl-sm lbl-right" x="322" y="136">PB5</text>
+  <use class="sym sym-dim" href="#sym-vcc" transform="translate(120,30)"/>
+  <text class="lbl-sm" x="120" y="14">৩.৩V</text>
+  <path class="wire" d="M120 30 V52"/>
+  <use class="sym" href="#sym-r" transform="translate(120,52) rotate(90)"/>
+  <text class="lbl-sm lbl-right" x="104" y="70">R_পুল-আপ</text>
+  <text class="lbl-sm lbl-right" x="104" y="86">১০kΩ</text>
+  <path class="wire" d="M120 92 V136"/>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(120,136)"/>
+  <path class="wire" d="M120 136 H212"/>
+  <text class="lbl-sm" x="168" y="124">না-চাপলে ১</text>
+  <path class="wire" d="M120 136 V160"/>
+  <use class="sym sym-amber" href="#sym-btn" transform="translate(120,160) rotate(90)"/>
+  <text class="lbl-sm lbl-right" x="98" y="178">বাটন</text>
+  <text class="lbl-sm lbl-right" x="98" y="194">চাপলে ০</text>
+  <path class="wire" d="M120 190 V206"/>
+  <use class="sym sym-dim" href="#sym-gnd" transform="translate(120,206)"/>
+  <path class="wire" d="M332 136 H366"/>
+  <use class="sym" href="#sym-r" transform="translate(366,136)"/>
+  <text class="lbl-sm" x="386" y="120">২২০Ω</text>
+  <path class="wire" d="M406 136 H444"/>
+  <use class="sym sym-hot" href="#sym-led" transform="translate(444,136) rotate(90)"/>
+  <text class="lbl-hot lbl-left" x="466" y="148">LED</text>
+  <text class="lbl-sm lbl-left" x="466" y="166">লম্বা পা = অ্যানোড</text>
+  <path class="wire" d="M444 166 V206"/>
+  <use class="sym sym-dim" href="#sym-gnd" transform="translate(444,206)"/>
+  <text class="lbl-sm" x="280" y="240">বাঁয়ে পড়া (ইনপুট + পুল-আপ) · ডানে লেখা (আউটপুট + সীমক)</text>
 </svg>
 <div class="diag-cap">প্রথম দুই-বন্ধুর তার-চিত্র: LED শ্রেণিতে-রোধ-সহ (আউটপুট), বাটন পুল-আপে (চাপলে ০) — দরজা ৮-এর পোশাক-তালিকা এখন বাস্তব-ছবিতে।</div>
 </div>
@@ -272,7 +280,6 @@ doors.push({
   <line class="edge-cyan" x1="500" y1="235" x2="450" y2="235"/>
   <text class="lbl-cyan" x="500" y="150" font-size="11">ফেরা</text>
   <!-- rules box -->
-  <rect class="cell-hot" x="470" y="120" width="80" height="80" visibility="hidden"/>
   <text class="lbl-hot" x="130" y="196" font-size="11">নিয়ম: ISR ছোট · delay নিষেধ · volatile</text>
 </svg>
 <div class="diag-cap">ঘটনা → খাতায় ঠিকানা → সংক্ষিপ্ত সেবা → সঞ্চিত-প্রসঙ্গে ফেরা — আযানের শৃঙ্খলা সিলিকনে: থামো, সাড়া দাও, ফিরে যাও।</div>
@@ -755,26 +762,49 @@ ADC-হাতিয়ারের থলি:
 
 <div class="diagram">
 <div class="diag-title">বাস্তব দৃশ্য — RGB-LED মিক্সার ও ফ্যান-থ্রটল</div>
-<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="120" cy="70" r="34" fill="#111"/>
-  <circle class="node-hot" cx="120" cy="70" r="6"/>
-  <text class="lbl-sm" x="120" y="120" font-size="10">RGB-LED</text>
-  <line class="edge-hot" x1="120" y1="36" x2="120" y2="20"/>
-  <line class="edge" x1="90" y1="90" x2="80" y2="104"/>
-  <line class="edge-cyan" x1="150" y1="90" x2="160" y2="104"/>
-  <text class="lbl-sm" x="55" y="118" font-size="10">লাল-চ্যানেল</text>
-  <text class="lbl-sm" x="175" y="122" font-size="10">সবুজ/নীল</text>
-  <text class="lbl" x="120" y="150" font-size="10">৩×PWM → ১৬.৭M রঙ</text>
-  <text class="lbl-sm" x="120" y="168" font-size="10">analogWrite(৯,r); analogWrite(১০,g)…</text>
-  <rect class="cell" x="300" y="36" width="100" height="40"/>
-  <text class="lbl-sm" x="350" y="60" font-size="10">MOSFET</text>
-  <circle cx="450" cy="56" r="20" fill="none" class="node"/>
-  <path class="edge-cyan" d="M 435 70 Q 450 100 465 70" fill="none"/>
-  <text class="lbl-sm" x="450" y="112" font-size="10">ফ্যান</text>
-  <line class="edge" x1="400" y1="56" x2="430" y2="56"/>
-  <rect class="cell" x="300" y="130" width="240" height="60"/>
-  <text class="lbl-sm" x="415" y="150" font-size="10">থ্রটল: duty ৩০%→ধীর · ৭০%→দ্রুত</text>
-  <text class="lbl-sm" x="415" y="170" font-size="10">তাপ-পাঠ (ADC) → duty-নির্ধারণ = বদ্ধ-লুপ</text>
+<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+  <rect class="cell-cyan" x="26" y="60" width="94" height="110" rx="8"/>
+  <text class="lbl-cyan" x="73" y="80">MCU</text>
+  <text class="lbl-sm" x="73" y="100">PWM ×৩</text>
+  <text class="lbl-sm lbl-right" x="112" y="122">~৯</text>
+  <text class="lbl-sm lbl-right" x="112" y="142">~১০</text>
+  <text class="lbl-sm lbl-right" x="112" y="162">~১১</text>
+  <path class="wire" d="M120 122 H150"/><path class="wire" d="M120 142 H150"/><path class="wire" d="M120 162 H150"/>
+  <use class="sym" href="#sym-r" transform="translate(150,122)"/>
+  <use class="sym" href="#sym-r" transform="translate(150,142)"/>
+  <use class="sym" href="#sym-r" transform="translate(150,162)"/>
+  <text class="lbl-sm lbl-left" x="146" y="106">২২০Ω ×৩</text>
+  <path class="wire" d="M190 122 H222"/><path class="wire" d="M190 142 H222"/><path class="wire" d="M190 162 H222"/>
+  <use class="sym sym-hot" href="#sym-led" transform="translate(222,122)"/>
+  <use class="sym sym-leaf" href="#sym-led" transform="translate(222,142)"/>
+  <use class="sym sym-cyan" href="#sym-led" transform="translate(222,162)"/>
+  <text class="lbl-hot" x="262" y="118">R</text>
+  <text class="lbl-sm" x="262" y="138">G</text>
+  <text class="lbl-sm" x="262" y="158">B</text>
+  <path class="wire" d="M252 122 H276 V162 M252 142 H276 M252 162 H276 V200"/>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(276,142)"/>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(276,162)"/>
+  <use class="sym sym-dim" href="#sym-gnd" transform="translate(276,200)"/>
+  <text class="lbl-sm" x="276" y="230">সাধারণ ক্যাথোড</text>
+  <path class="seq-line" d="M330 30 V240"/>
+  <use class="sym sym-dim" href="#sym-vcc" transform="translate(430,36)"/>
+  <text class="lbl-sm" x="430" y="20">+১২V</text>
+  <path class="wire" d="M430 36 V58"/>
+  <use class="sym sym-cyan" href="#sym-l-core" transform="translate(430,58) rotate(90)"/>
+  <text class="lbl-cyan" x="470" y="52">ফ্যান-মোটর</text>
+  <path class="wire" d="M430 98 V126"/>
+  <use class="sym sym-dim" href="#sym-dot" transform="translate(430,126)"/>
+  <use class="sym sym-hot" href="#sym-d" transform="translate(500,126) rotate(-90)"/>
+  <path class="wire" d="M430 126 H500 M500 96 V58 H430"/>
+  <text class="lbl-hot" x="500" y="160">ফ্লাইব্যাক</text>
+  <use class="sym" href="#sym-nmos" transform="translate(404,150)"/>
+  <text class="lbl-sm lbl-right" x="396" y="136">G</text>
+  <text class="lbl" x="382" y="196">IRLZ44N</text>
+  <text class="lbl-sm" x="382" y="212">লজিক-লেভেল</text>
+  <path class="wire" d="M430 174 V212"/>
+  <use class="sym sym-dim" href="#sym-gnd" transform="translate(430,212)"/>
+  <path class="wire" d="M356 150 H404"/>
+  <text class="lbl-sm" x="366" y="138">PWM</text>
 </svg>
 <div class="diag-cap">PWM-এর দুই মুখ: তিন চ্যানেল মিলিয়ে কোটি রঙ; এক চ্যানেলে মাপা-বাতাস — সেন্সর-পাঠ থেকে duty-সিদ্ধান্ত: এটাই অটোমেশনের প্রথম নিঃশ্বাস।</div>
 </div>
