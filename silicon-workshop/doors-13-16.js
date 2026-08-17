@@ -751,7 +751,7 @@ You began in one breath — because now you know: "A soil-moisture sensor — th
 
 <div class="code-block">ক্যাপস্টোন-কঙ্কাল — পূর্ণ ডিভাইসের মূল ফাইল (সংক্ষিপ্ত রূপ):
 
-// ═══ মাঠ-পাখি: আর্দ্রতা → মেঘ (প্রতি ১৫ মিনিট) ═══
+// ═══ মাঠ-পাখি: আর্দ্রতা → মেঘ (প্রতি ১০ মিনিট) ═══
 #include &lt;WiFi.h&gt;
 #include &lt;PubSubClient.h&gt;
 #include &lt;Wire.h&gt;
@@ -908,7 +908,7 @@ void loop() { }                        // ইচ্ছাকৃত খালি 
     <text class="lbl-sm" x="60" y="66" style="text-anchor:start">✓ ১. আর্দ্রতা — মাটি-প্রোব+১০k ডিভাইডার → ADC (দরজা ৬·১২)</text>
     <text class="lbl-sm" x="60" y="88" style="text-anchor:start">✓ ১. তাপ+বাতাস-আর্দ্রতা — DHT22 (দরজা ৮-এর কেনা; দরজা ১৩-এর চিঠি)</text>
     <text class="lbl-sm" x="60" y="110" style="text-anchor:start">✓ ২. শক্তি — সোলার→TP4056→১৮৬৫০→MCP1700 (দরজা ৪)</text>
-    <text class="lbl-sm" x="60" y="132" style="text-anchor:start">✓ ৩. বুদ্ধি+ঘুম — ESP32; ১৫-মিনিট ওয়াক্ত; রাতে আলো-নীতি (দরজা ৮·১১·১২)</text>
+    <text class="lbl-sm" x="60" y="132" style="text-anchor:start">✓ ৩. বুদ্ধি+ঘুম — ESP32; ১০-মিনিট ওয়াক্ত; রাতে আলো-নীতি (দরজা ৮·১১·১২)</text>
     <text class="lbl-sm" x="60" y="154" style="text-anchor:start">✓ ৪. যোগাযোগ — WiFi→MQTT/TLS→ব্রোকার→ফোন-গ্রাফ; OTA (দরজা ১৫)</text>
     <text class="lbl-sm" x="60" y="176" style="text-anchor:start">✓ ৫. কাজ — MOSFET+PWM ভালভ; মাপা-গতিতে পানি (দরজা ৩·১২)</text>
     <text class="lbl-sm" x="60" y="198" style="text-anchor:start">✓ + বৃষ্টি-ডাক — INT-পিন পতাকা (দরজা ১০); টাইমস্ট্যাম্প — DS3231 (দরজা ১১·১৩)</text>
