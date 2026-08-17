@@ -462,7 +462,7 @@ LED — আলো-বিকিরণকারী জংশন:
   RMS দিয়েই; ১২V-AC ট্রান্সফরমারের পিক ~১৭V,
   রেক্টিফায়ার-ক্যাপ অন্তত ২৫V-রেটিং চাই</div>
 
-<div class="dialogue">আজরের আগে শামসুল কাকা নিভু-নিভু মালা সামলে বললেন: "কুরআন বলে — আমানত তার হকদারকে ফিরিয়ে দাও (৪:৫৮)। আমার কাছে ডায়োড আর ট্রানজিস্টর আমানতদার কর্মচারীর পাঠ: ডায়োড প্রবাহকে শুধু নির্ধারিত দিকে যেতে দেয় — অন্য দিকের অধিকার না; ট্রানজিস্টর বিশাল শক্তির দরওয়ান, কিন্তু চাবি অন্যের হাতে — নির্দেশ ছাড়া সে সেই শক্তি ছোঁয় না। যে যন্ত্র নিজের সীমা জানে, সে-ই টেকে। আর যে মানুষ নিজের দায়িত্ব জানে... সে-ও। যাও — কাল নুরুল ভাইয়ের খাতার খবর: এই সব সৈনিক খায় কী, কত খায়।"</div>
+<div class="dialogue">আসরের আগে শামসুল কাকা নিভু-নিভু মালা সামলে বললেন: "কুরআন বলে — আমানত তার হকদারকে ফিরিয়ে দাও (৪:৫৮)। আমার কাছে ডায়োড আর ট্রানজিস্টর আমানতদার কর্মচারীর পাঠ: ডায়োড প্রবাহকে শুধু নির্ধারিত দিকে যেতে দেয় — অন্য দিকের অধিকার না; ট্রানজিস্টর বিশাল শক্তির দরওয়ান, কিন্তু চাবি অন্যের হাতে — নির্দেশ ছাড়া সে সেই শক্তি ছোঁয় না। যে যন্ত্র নিজের সীমা জানে, সে-ই টেকে। আর যে মানুষ নিজের দায়িত্ব জানে... সে-ও। যাও — কাল নুরুল ভাইয়ের খাতার খবর: এই সব সৈনিক খায় কী, কত খায়।"</div>
 <div class="dialogue en">Before Asr, gathering the dimming strings, Shamsul said: "The Quran commands — render trusts to those entitled (4:58). To me the diode and transistor teach the trusted employee: the diode lets flow only its appointed way — no claim on the other direction; the transistor holds mighty power, but the key is another's — without orders it touches nothing. The machine that knows its limits endures. So does the person who knows their charge. Go — tomorrow, Nurul's ledger: what all these soldiers eat, and how much."</div>
 
 
