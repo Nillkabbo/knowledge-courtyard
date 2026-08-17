@@ -32,8 +32,8 @@ doors.push({
 <div class="stat-card"><div class="sc-num">V/div·s/div</div><div class="sc-label">অসিলোসকোপের দুই মাপকাঠি — ভোল্টেজ ও সময়ের জানালা</div></div>
 </div>
 
-<div class="dialogue">তিনি একটা নকশা সামনে রাখলেন — LED-ব্লিংকারের। "পড়া শুরু তিন নিয়মে। এক — দিক: সিগন্যাল বাঁ থেকে ডানে যায়। ওই দেখো, ব্যাটারি বাঁয়ে, তারপর সুইচ, তারপর চিপ, ডানে LED। দুই — উচ্চতা: যা উঁচু ভোল্টেজ তার ওপরে (VCC-রেল শীর্ষে), যা ভিত্তি তার নিচে (গ্রাউন্ড-চিহ্নগুলো তলায়)। তিন — নাম: প্রতিটা যন্ত্রের পরিবার-নাম আর ক্রম-সংখ্যা — R1, R2, C1, U1।" তাঁর লাল কলম এক-একটা পথ ধরে এগোল: "তারপর যাচাই-পড়া: এই পথে কারেন্ট কোথা থেকে কোথায়? U1-এর কোন পা কী নামে? প্রতিটা প্রশ্নের জবাব নকশায় লেখা আছে — খুঁজে পড়াই পড়া।" তিনি হাসলেন। "মাল্টিমিটার দিয়ে আমি নকশার দাবি মাঠে যাচাই করি — 'এই পায়ে ৩.৩V থাকার কথা, আছে তো?' আর দোলনা/নয়েজ/সময়ের খেলা দেখতে অসিলোসকোপ — মিটার বলে গড়, স্কোপ দেখায় গল্প।"</div>
-<div class="dialogue en">She laid out a schematic — an LED blinker. "Reading begins with three rules. One — direction: signals run left to right. See: battery left, then switch, then chip, LED at right. Two — height: higher voltages above (VCC rail at top), ground symbols below. Three — names: every part's family letter and number — R1, R2, C1, U1." Her red pen traced paths: "Then verification-reading: where does current enter, which pin of U1 is what? Every answer is written on the map — finding it IS the reading." She smiled. "With the multimeter I verify the schematic's claims in the field — 'this pin should hold 3.3V; does it?' And for oscillation, noise, anything of time — the oscilloscope. The meter tells the average; the scope tells the story."</div>
+<div class="dialogue">তিনি একটা নকশা সামনে রাখলেন — LED-ব্লিংকারের। "পড়া শুরু তিন নিয়মে। এক — দিক: সিগন্যাল বাঁ থেকে ডানে যায়। ওই দেখো, ব্যাটারি বাঁয়ে, তারপর সুইচ, তারপর চিপ, ডানে LED। দুই — উচ্চতা: যা উঁচু ভোল্টেজ তার ওপরে (VCC-রেল শীর্ষে), যা ভিত্তি তার নিচে (গ্রাউন্ড-চিহ্নগুলো তলায়)। তিন — নাম: প্রতিটা যন্ত্রের পরিবার-নাম আর ক্রম-সংখ্যা — R1, R2, C1, U1।" তাঁর লাল কলম এক-একটা পথ ধরে এগোল: "তারপর যাচাই-পড়া: এই পথে কারেন্ট কোথা থেকে কোথায়? U1-এর কোন পা কী নামে? প্রতিটা প্রশ্নের জবাব নকশায় লেখা আছে — খুঁজে পড়াই পড়া।" তিনি হাসলেন। "মাল্টিমিটার দিয়ে আমি নকশার দাবি মাঠে যাচাই করি — 'এই পায়ে ৩.৩V থাকার কথা, আছে তো?' পড়া বলছে কী, সেটাই আসল খেলা: কাছাকাছি ৩.৩V এলে নকশা-বাস্তব মিলল; একদম ০V এলে বুঝি পথ কোথাও কাটা (ওপেন-সার্কিট, কারেন্টই যাচ্ছে না); মাঝামাঝি অদ্ভুত মান এলে বুঝি কোথাও অবাঞ্ছিত লিকেজ বা আধা-সংযোগ লুকিয়ে। এক সংখ্যা, তিন সম্ভাব্য গল্প — প্রশ্ন বানানোর মতোই জবাব পড়াও শিখতে হয়। আর দোলনা/নয়েজ/সময়ের খেলা দেখতে অসিলোসকোপ — মিটার বলে গড়, স্কোপ দেখায় গল্প।"</div>
+<div class="dialogue en">She laid out a schematic — an LED blinker. "Reading begins with three rules. One — direction: signals run left to right. See: battery left, then switch, then chip, LED at right. Two — height: higher voltages above (VCC rail at top), ground symbols below. Three — names: every part's family letter and number — R1, R2, C1, U1." Her red pen traced paths: "Then verification-reading: where does current enter, which pin of U1 is what? Every answer is written on the map — finding it IS the reading." She smiled. "With the multimeter I verify the schematic's claims in the field — 'this pin should hold 3.3V; does it?' The reading itself tells a story: close to 3.3V means map and reality agree; a flat 0V means the path is cut somewhere (open circuit — no current flowing at all); an odd value in between means a hidden leak or half-connection. One number, three possible stories — reading the answer is a skill, same as forming the question. And for oscillation, noise, anything of time — the oscilloscope. The meter tells the average; the scope tells the story."</div>
 
 <div class="code-block">নকশার অভিধান — How to read any schematic:
 
@@ -77,7 +77,8 @@ doors.push({
 
   ── সোল্ডারিং: কারিগরখানার প্রথম-হাত ──────
   মোস্তাফিজ চাচার মনোকল যার জন্য:
-   তাপ: ৩০০-৩৫০°C (লেড-ফ্রি ৩৫০); টিপ ঝকঝকে
+   তাপ: ৩০০-৩৫০°C (লেড-ফ্রি সোল্ডারের গলনাংক সীসা-মেশানোর
+     চেয়ে বেশি, তাই টিপ বাড়তি গরম রাখা লাগে — ৩৫০); টিপ ঝকঝকে
    টিন-কোট: নতুন টিপে গলা-সোল্ডারের পাতলা আস্তর
    জয়েন্ট-নিয়ম: প্যাড+পা দুই-ই গরম → তারে সোল্ডার
      ছোঁয়াও (টিপে নয়!) → ১-২ সে. → ঠান্ডা-হওয়ার
@@ -246,7 +247,7 @@ doors.push({
   recall:{
     q:"ইকবাল সাহেবের এক্সচেঞ্জ-হিসাব কী বোঝায় — আর দুটো ১০kΩ রেজিস্টর সিরিজে ৯V-তে মাঝের ভোল্টেজ কত, সমান্তরালে মোট R কত?",
     qen:"What is Iqbal's exchange accounting — and with two 10kΩ resistors on 9V, what's the midpoint voltage in series, and total R in parallel?",
-    a:"কার্শফের দুই আইন (গুস্তাভ কার্শফ, কনিংসবার্গ-বিশ্ববিদ্যালয়ের ছাত্র, ১৮৪৫) এক্সচেঞ্জের হিসাব: KCL (কারেন্ট-আইন) — যেকোনো জংশনে ঢোকা কারেন্টের যোগফল = বেরোনোর যোগফল (কল যেমন আসে-যায়, জমা থাকে না); KVL (ভোল্টেজ-আইন) — যেকোনো বদ্ধ লুপে ভোল্টেজ-উত্থানের যোগফল = পতনের যোগফল (পাহাড়ের ট্রেক: যত উঠবে তত নামবে, ফের শুরুর উচ্চতায়)। সিরিজে (এক পথ, পরপর): কারেন্ট সবাই সমান I, ভোল্টেজ ভাগ হয় রেজিস্ট্যান্স-অনুপাতে — দুটো সমান ১০k-এ ৯V অর্ধেক-অর্ধেক: মাঝের বিন্দুতে ৪.৫V (ভোল্টেজ-ডিভাইডার — ADC-র সেন্সর-পড়ার প্রাণ!)। সমান্তরালে (দুই পথ, পাশাপাশি): দুই মাথায় ভোল্টেজ সমান, কারেন্ট ভাগ হয়, মোট R কমে: সমান দুটোতে অর্ধেক = ৫kΩ (দুই সড়ক খুললে জ্যাম কমে!)। সূত্র: সিরিজ R=R1+R2; সমান্তরাল ১/R=১/R1+১/R2। ডিভাইডার-সূত্র: V_out = V_in × R2/(R1+R2)। MCU-ব্যবহার: LDR/থার্মিস্টর + স্থির রেজিস্টরের ডিভাইডার → ADC-পিনে অনুপাত-ভোল্টেজ → আলো/তাপ পড়া।",
+    a:"কার্শফের দুই আইন (গুস্তাভ কার্শফ, কনিংসবার্গ-বিশ্ববিদ্যালয়ের ছাত্র, ১৮৪৫) এক্সচেঞ্জের হিসাব: KCL (কারেন্ট-আইন) — যেকোনো জংশনে ঢোকা কারেন্টের যোগফল = বেরোনোর যোগফল (কল যেমন আসে-যায়, জমা থাকে না); KVL (ভোল্টেজ-আইন) — যেকোনো বদ্ধ লুপে ভোল্টেজ-উত্থানের যোগফল = পতনের যোগফল (পাহাড়ের ট্রেক: যত উঠবে তত নামবে, ফের শুরুর উচ্চতায়)। সিরিজে (এক পথ, পরপর): কারেন্ট সবাই সমান I, ভোল্টেজ ভাগ হয় রেজিস্ট্যান্স-অনুপাতে — দুটো রোধ সমান বলে ভাগও সমান-সমান, মানে ৯V ÷ ২ = ৪.৫V: মাঝের বিন্দুতে ৪.৫V (ভোল্টেজ-ডিভাইডার — ADC-র সেন্সর-পড়ার প্রাণ!)। সমান্তরালে (দুই পথ, পাশাপাশি): দুই মাথায় ভোল্টেজ সমান, কারেন্ট ভাগ হয়, মোট R কমে — দুটো সমান রোধ সমান্তরালে হলে মোট R সবসময় একটার অর্ধেক, তাই ১০kΩ ÷ ২ = ৫kΩ (দুই সড়ক খুললে জ্যাম কমে!)। সূত্র: সিরিজ R=R1+R2; সমান্তরাল ১/R=১/R1+১/R2। ডিভাইডার-সূত্র: V_out = V_in × R2/(R1+R2)। MCU-ব্যবহার: LDR/থার্মিস্টর + স্থির রেজিস্টরের ডিভাইডার → ADC-পিনে অনুপাত-ভোল্টেজ → আলো/তাপ পড়া।",
     aen:"Kirchhoff (1845, Königsberg student): KCL — in = out at every junction; KVL — rises = drops around every loop. Series: same I, V divides (two 10k on 9V → midpoint 4.5V — the ADC's sensor trick). Parallel: same V, I divides, R halves (5kΩ). V_out = V_in·R2/(R1+R2)."
   },
   story:`
@@ -269,8 +270,8 @@ doors.push({
 <div class="stat-card"><div class="sc-num">১৮৪৫</div><div class="sc-label">গুস্তাভ কার্শফ — কনিংসবার্গের ছাত্র অবস্থায় দুই আইন</div></div>
 </div>
 
-<div class="dialogue">তিনি বোর্ডে তিনটা প্লাগ-গর্ত দেখিয়ে বললেন: "প্রথম খাতা — জংশনের। ধরো তিন তার মিলেছে এক বিন্দুতে। বাইরে থেকে দুই অ্যাম্পিয়ার ঢুকছে, ভেতর থেকে এক অ্যাম্পিয়ার বেরোচ্ছে। প্রশ্ন — তৃতীয় তারে কী ঘটবে?" তুমি ভাবলে: "এক অ্যাম্পিয়ার... বেরোবে?" "অবশ্যই! কারণ জংশন কোনো জমাখানা নয় — চার্জ জমা হয় না ওখানে; যা আসে তা-ই যায়। এক্সচেঞ্জে যেমন: যত কল ঢোকে, ঠিক তত কল বেরোয় — অপেক্ষায় রাখে না।" তিনি লুপ-তার ধরলেন। "দ্বিতীয় খাতা — লুপের। যেকোনো বদ্ধ ঘেরে ব্যাটারি যত ভোল্টেজ দেয়, রাস্তার রেজিস্টরগুলো ঠিক ততটাই খরচ করে — এক মিলিভোল্ট বাড়তি নয়, ঘাটতি নয়। ট্রেকের মতো: উঁচু থেকে নেমে ফের শিবিরে এলে নিট উচ্চতা-পরিবর্তন শূন্য।"</div>
-<div class="dialogue en">He pointed at three plug holes: "First ledger — the junction's. Three wires meet at a point; two amperes enter, one leaves. Question — the third wire?" You thought: "One ampere... out?" "Of course! A junction is no warehouse — charge doesn't pool there; what arrives departs. As in the exchange: however many calls enter, exactly that many leave — none kept waiting." He lifted the loop wire. "Second ledger — the loop's. In any closed circuit, the resistors along the way spend exactly what the battery raises — not a millivolt more, not a millivolt less. Like a trek: descend from the height back to camp and the net change is zero."</div>
+<div class="dialogue">তিনি বোর্ডে তিনটা প্লাগ-গর্ত দেখিয়ে বললেন: "প্রথম খাতা — জংশনের। ধরো তিন তার মিলেছে এক বিন্দুতে। বাইরে থেকে দুই অ্যাম্পিয়ার ঢুকছে, ভেতর থেকে এক অ্যাম্পিয়ার বেরোচ্ছে। প্রশ্ন — তৃতীয় তারে কী ঘটবে?" তুমি ভাবলে: "এক অ্যাম্পিয়ার... বেরোবে?" "অবশ্যই! হিসাবটা সহজ: মোট ঢোকা ২A, একটা তার দিয়ে ১A বেরিয়ে গেছে — তৃতীয় তারে বাকিটা বেরোতেই হবে, ২A - ১A = ১A, কারণ জংশন কোনো জমাখানা নয় — চার্জ জমা হয় না ওখানে; যা আসে তা-ই যায়। এক্সচেঞ্জে যেমন: যত কল ঢোকে, ঠিক তত কল বেরোয় — অপেক্ষায় রাখে না।" তিনি লুপ-তার ধরলেন। "দ্বিতীয় খাতা — লুপের। যেকোনো বদ্ধ ঘেরে ব্যাটারি যত ভোল্টেজ দেয়, রাস্তার রেজিস্টরগুলো ঠিক ততটাই খরচ করে — এক মিলিভোল্ট বাড়তি নয়, ঘাটতি নয়। ট্রেকের মতো: উঁচু থেকে নেমে ফের শিবিরে এলে নিট উচ্চতা-পরিবর্তন শূন্য।"</div>
+<div class="dialogue en">He pointed at three plug holes: "First ledger — the junction's. Three wires meet at a point; two amperes enter, one leaves. Question — the third wire?" You thought: "One ampere... out?" "Of course! The arithmetic is simple: 2A total in, 1A already leaves by one wire — the third wire must carry the rest, 2A - 1A = 1A, because a junction is no warehouse — charge doesn't pool there; what arrives departs. As in the exchange: however many calls enter, exactly that many leave — none kept waiting." He lifted the loop wire. "Second ledger — the loop's. In any closed circuit, the resistors along the way spend exactly what the battery raises — not a millivolt more, not a millivolt less. Like a trek: descend from the height back to camp and the net change is zero."</div>
 
 <div class="code-block">সড়ক-গণিত — Series, Parallel, Kirchhoff:
 
@@ -288,9 +289,11 @@ doors.push({
 
 ডিভাইডার-সূত্র (MCU-র সেন্সর-সেতু):
   V_out = V_in × R2/(R1+R2)
-  উদাহ: ৫V, R1=R2=১০k → ২.৫V (অর্ধেক)
+  উদাহ: ৫V, R1=R2=১০k → R2/(R1+R2)=১০k/২০k=০.৫
+    → V_out = ৫ × ০.৫ = ২.৫V (অর্ধেক)
   LDR-সেন্সর: R1=স্থির ১০k, R2=LDR (আলোয় ~১k,
-  অন্ধকারে ~১০০k) → V_out আলোর সাথে বদলায় →
+  অন্ধকারে ~১০০k) → একই সূত্রে R2 বসালেই V_out
+  বদলায় (R2 ছোট হলে ভাগ ছোট, বড় হলে ভাগ বড়) →
   ADC-পিনে পড়ো (Door ১২-এর আমন্ত্রণ)
 
 কার্শফের দুই খাতা (১৮৪৫ — ছাত্র-বয়সের কাজ!):
@@ -309,10 +312,17 @@ doors.push({
   আদর্শ-ব্যাটারি + একটা সিরিজ-রোধ:
     V_th = খোলা-প্রান্তের ভোল্টেজ (load ছাড়া)
     R_th = সোর্স-বন্ধ অবস্থায় প্রান্ত থেকে দেখা রোধ
-  ডিভাইডারে প্রয়োগ: R1=R2=১০k, ৯V → V_th=৪.৫V,
-  R_th=৫k! এখন ১k-লোড বসালে: ৪.৫×১/(৫+১)=০.৭৫V —
-  ৪.৫ নয়!! লোড ডিভাইডারের নিচের-হাত হয়ে যায়।
+  ডিভাইডারে প্রয়োগ: R1=R2=১০k, ৯V → V_th = খোলা-প্রান্তে
+  আগের ডিভাইডার-সূত্রেই ৪.৫V (৯÷২)। R_th বের করতে
+  ব্যাটারি শর্ট ধরো — তখন R1, R2 প্রান্ত থেকে সমান্তরাল
+  দেখায়: R_th = R1∥R2 = ১০k∥১০k = ১০k÷২ = ৫k!
+  এখন ১k-লোড বসালে নতুন ভাগ হয় R_load/(R_th+R_load) দিয়ে:
+  ৫+১=৬ → ৪.৫×১/৬ = ৪.৫/৬ = ০.৭৫V — ৪.৫ নয়!!
+  লোড ডিভাইডারের নিচের-হাত হয়ে যায়।
   রুল-অব-থাম্ব: R_load ≥ ১০×R_th হলে ভার-প্রভাব &lt;১০%
+    (কেন ১০×? R_load=১০×R_th ধরলে অনুপাত ১০/(১০+১)=১০/১১
+     ≈ ০.৯১, মানে খোলা-মানের প্রায় ৯১% থাকে — পতন ~৯%,
+     তাই "১০%-এর নিচে" নিয়মটা এখান থেকেই আসে)
   ADC-র গল্প: স্যাম্পল-ক্যাপ চার্জ নেয় — উৎস-রোধ
   ১০k-এর নিচে রাখো, নইলে পাঠ কাঁপে/ঝুলে থাকে
   (এজন্যই সেন্সর-ডিভাইডার ১০k-এ রাখা ভালো, ১M-এ নয়)</div>
@@ -414,7 +424,7 @@ doors.push({
   <text class="lbl-sm lbl-left" x="344" y="182">শান্ট ছোট রাখো — নইলে সে-ই</text>
   <text class="lbl-sm lbl-left" x="344" y="198">লোডের ভোল্টেজ খেয়ে নেবে</text>
 </svg>
-<div class="diag-cap">প্রবাহ সরাসরি মাপা কঠিন (পথ কাটতে হয়) — বিদ্যা: পথে ০.১Ω বসাও, তার দুই মাথার ভোল্টেজ পড়ো, ওহমে ভাগ দাও; স্মার্ট-ব্যাটারি/মোটর-নিয়ন্ত্রকের ভেতরে এই শান্টই ক্যালকুলাস।</div>
+<div class="diag-cap">প্রবাহ সরাসরি মাপা কঠিন (পথ কাটতে হয়) — বিদ্যা: পথে ০.১Ω বসাও, তার দুই মাথার ভোল্টেজ পড়ো (এখানে ২২mV = ০.০২২V), তারপর ওহমে ভাগ দাও: I = V÷R = ০.০২২ ÷ ০.১ = ০.২২A; স্মার্ট-ব্যাটারি/মোটর-নিয়ন্ত্রকের ভেতরে এই শান্টই ক্যালকুলাস।</div>
 </div>
 
 
@@ -462,7 +472,7 @@ doors.push({
 </div>
 
 
-<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 6 — সেন্সর-বিছানার গণিত:</strong> মাটি-প্রোব + ১০kΩ ডিভাইডার বসালাম; সূত্রে মান বসালাম: ভেজা ≈ ৩kΩ → V_out ≈ ০.৭৬V; শুকনো ≈ ৩০kΩ → ≈ ২.৫V। <strong>কেন-লগ:</strong> ADC-র ৩.৩V-জানালায় দুই প্রান্তই সুন্দর-স্প্যান — রেজোলিউশন নষ্ট হচ্ছে না। প্রতিটা সেন্সর-বাছাই এখন সূত্রের জবাবনামা: R-র মান বদলে স্প্যান বদলাও, খাতা মেলাও।</div></div>
+<div class="callout build"><span class="co-icon">🛠️</span><div><strong>নির্মাণ-পর্ব 6 — সেন্সর-বিছানার গণিত:</strong> মাটি-প্রোব + ১০kΩ ডিভাইডার বসালাম; সূত্রে মান বসালাম: ভেজা ≈ ৩kΩ → V_out = ৩.৩ × ৩/(১০+৩) = ৩.৩ × ৩/১৩ = ৯.৯/১৩ ≈ ০.৭৬V; শুকনো ≈ ৩০kΩ → V_out = ৩.৩ × ৩০/(১০+৩০) = ৯৯/৪০ ≈ ২.৫V। <strong>কেন-লগ:</strong> ADC-র ৩.৩V-জানালায় দুই প্রান্তই সুন্দর-স্প্যান — রেজোলিউশন নষ্ট হচ্ছে না। প্রতিটা সেন্সর-বাছাই এখন সূত্রের জবাবনামা: R-র মান বদলে স্প্যান বদলাও, খাতা মেলাও।</div></div>
 <div class="secret-box"><div class="label">দরজা ৬ — রহস্য</div><div class="text">🛣️ জংশনে ঢোকা=বেরোনো (KCL), লুপে ওঠা=নামা (KVL) — দুই খাতা মিললে সার্কিট সৎ; না-মিললে সেখানেই ফাঁদ।<br><small>সিরিজ: এক I, V-ভাগ; সমান্তরাল: এক V, I-ভাগ; V_out=V_in·R2/(R1+R2)। কার্শফ ১৮৪৫। কদর: ২৫:২।</small></div></div>`,
   senior:{
     title:"আজকের পাঠ — কী নিয়ে যাবে",
@@ -577,7 +587,8 @@ You thought. "Wire them side by side?"
 লেভেল-চুক্তি (৩.৩V-ব্যবস্থা):
   LOW  = ০ ~ ০.৮V   → '০' (না)
   HIGH = ২.০ ~ ৩.৩V → '১' (হ্যাঁ)
-  মাঝের ফাঁক = অ-নির্ধারিত + noise-margin (ইচ্ছা করেই রাখা)
+  মাঝের ফাঁক = ২.০ - ০.৮ = ১.২V অ-নির্ধারিত + noise-margin
+    (ইচ্ছা করেই রাখা — এই ফাঁকেই তার-লাইনের নয়েজ ধরা পড়ে না)
 
 তিন ইট (সুইচের ভাষায়):
   AND  = সিরিজ বাটন — দুই-ই চাপলে তবেই পথ
@@ -588,16 +599,26 @@ You thought. "Wire them side by side?"
   A AND B, A OR B, NOT A — যেকোনো যুক্তি এই তিনের জোড়ে
   ডি-মর্গান: NOT(A AND B) = (NOT A) OR (NOT B)
            NOT(A OR B)  = (NOT A) AND (NOT B)
-  NAND-সর্বজনীনতা:
+    যাচাই এক-লাইনে (A=১,B=০ বসিয়ে): বাঁ-দিক NOT(১ AND ০)
+    = NOT(০) = ১; ডান-দিক (NOT ১) OR (NOT ০) = ০ OR ১ = ১ — মিলল
+  NAND-সর্বজনীনতা (ভিত্তি: NAND(A,B) = NOT(A AND B) — এই একটা
+  সংজ্ঞায় বাকি সব বসিয়ে দেখো):
     NOT A = NAND(A, A)
+      → A-এর জায়গায় A বসালেই A AND A = A, তাই NOT(A AND A) = NOT A
     A AND B = NOT(NAND(A, B))
+      → NAND(A,B) নিজেই NOT(A AND B); তার ওপর আরেকটা NOT বসালে
+        দ্বৈত-খণ্ডন (NOT(NOT X) = X) ঘটে, ফল ফিরে আসে A AND B
     A OR B = NAND(NOT A, NOT B)
+      → NAND(¬A,¬B) = NOT(¬A AND ¬B); ডি-মর্গান দিয়ে
+        ¬A AND ¬B = ¬(A OR B), তাই ফল NOT(¬(A OR B)) = A OR B
     → চিপ-কারখানা শুধু NAND-ই ছাপায় — বাকি সব ডিজাইনে জোড়া!
 
 স্মৃতির জন্ম — SR ফ্লিপ-ফ্লপ:
   দুই NAND ক্রস-জোড়া: Q আর Q̄ পরস্পর-আঁকড়ে
   S=০ ধাক্কা → Q=১ (সেট, মনে রাখলো)
-  R=০ ধাক্কা → Q=০ (রিসেট)
+    কারণ: NAND-এর নিয়মে এক ইনপুট ০ পেলেই আউটপুট ১ হয়ে যায়
+    (বাকি ইনপুট যা-ই হোক) — S-এর ০ সরাসরি সেই NAND-কে ১-এ ঠেলে
+  R=০ ধাক্কা → Q=০ (রিসেট, একই যুক্তি অন্য NAND-এর ওপর)
   ছেড়ে দিলে — পূর্বের অবস্থায় আঁকড়ে থাকে (মেমোরি!)
   ১ ফ্লিপ-ফ্লপ = ১ বিট | ৮টা = ১ বাইট
   → রেজিস্টার/ক্যাশ/RAM-এর সব কাহিনি এখান থেকে
@@ -652,7 +673,7 @@ MCU-সংযোগ (আগাম-পথ):
   <text class="lbl-sm" x="290" y="209" font-size="10">— প্রথম ধারই ধরে রাখে</text>
   <text class="lbl-sm" x="330" y="228" font-size="9">সফটওয়্যার-বিকল্প: ২০ms-অপেক্ষা (দরজা ১১-এর মিলিস!)</text>
 </svg>
-<div class="diag-cap">যান্ত্রিক বাটন চাপলে ৫-২০ms কাঁপে — কাঁচা-পাঠে এক-চাপ ডজন পালস; হার্ডওয়্যার-ল্যাচ বা সফটওয়্যার-অপেক্ষা কম্পন মুছে এক-ঘটনা বানায়।</div>
+<div class="diag-cap">যান্ত্রিক বাটন চাপলে ৫-২০ms কাঁপে — কাঁচা-পাঠে এক-চাপ ডজন পালস; হার্ডওয়্যার-ল্যাচ বা সফটওয়্যার-অপেক্ষা কম্পন মুছে এক-ঘটনা বানায়। কেন ঠিক ২০ms-অপেক্ষা বাছা হয়? কাঁপনের সীমা ৫-২০ms — ওপরের-প্রান্ত ২০ms ধরলে সবচেয়ে বাজে-কেসেও কম্পন থেমে যায়, নিচের-প্রান্ত ধরলে কিছু ঝাঁকি রয়েই যেতে পারে।</div>
 </div>
 
 <div class="verse">
@@ -769,12 +790,17 @@ doors.push({
   RAM       — খাজাঞ্চি: ভেরিয়েবল, স্ট্যাক, বাফার (বিদ্যুৎ→শূন্য)
   Flash     — কাগজাঘর: কোড+ধ্রুবক (বিদ্যুৎ নেই→তবু আছে)
   AVR উদাহ: ৩২KB Flash / ২KB RAM / ১KB EEPROM
+    (অনুপাত ৩২÷২ = ১৬:১ — কোডের ঘর RAM-এর ষোলো গুণ, কারণ
+    প্রোগ্রাম বড় কিন্তু মুহূর্তের চলমান ডেটা অল্পই লাগে)
   ESP32 উদাহ: শতশত KB RAM + WiFi/BT রেডিও-দপ্তর
 
 নগাড়া আর ধাপ:
-  clock = সব দপ্তরের এক তাল; ১৬MHz → ৬২.৫ns/ধাপ
+  clock = সব দপ্তরের এক তাল; এক-ধাপের সময় = ১ ÷ ফ্রিকোয়েন্সি
+    → ১ ÷ ১৬,০০০,০০০Hz = ০.০৬২৫ µs = ৬২.৫ns/ধাপ
   এক নির্দেশ ≈ ১-কয়েক ধাপ (RISC-এ কম, CISC-এ বেশি)
   MIPS বোধ: ১৬MHz ÷ ধাপ-প্রতি-নির্দেশ ≈ কোটি-নির্দেশ/সেকেন্ড
+    (উদাহ: সহজ RISC-নির্দেশ ১ ধাপেই শেষ হলে ১৬MHz÷১
+     = ১৬,০০০,০০০/সে. = ১.৬ কোটি নির্দেশ/সে., অর্থাৎ ~১৬ MIPS)
 
 GPIO — দরওয়ানের তিন পোশাক:
   OUTPUT: লেখো — HIGH(৩.৩V)/LOW(০V); সীমা ~২০-৪০mA/পিন
@@ -825,7 +851,7 @@ GPIO — দরওয়ানের তিন পোশাক:
   <text class="lbl-sm" x="295" y="174" font-size="10">চাপ দিলে বিদ্যুৎ, বিদ্যুৎ দিলে কম্পন (piezo) — নিজ-ছন্দে দোলে</text>
   <text class="lbl-sm" x="295" y="192" font-size="10">USART-বন্ধুত্ব মনে রাখো: দুই প্রান্তের বিট-হার ২-৩%-এর বেশি ভাসলে চিঠি নষ্ট</text>
 </svg>
-<div class="diag-cap">ঘড়ির তিন শ্রেণি: ক্রিস্টাল (নির্ভুল ±০.০০৫%), সিরামিক (±০.৫%), অভ্যন্তরীণ RC (±১-১০%) — UART-এ যথেষ্ট, RTC-তে ক্রিস্টালই (৩২.৭৬৮kHz)।</div>
+<div class="diag-cap">ঘড়ির তিন শ্রেণি: ক্রিস্টাল (নির্ভুল ±০.০০৫% — ১৬MHz-এ মানে ১৬,০০০,০০০ × ০.০০০০৫ = মাত্র ±৮০০Hz এদিক-ওদিক), সিরামিক (±০.৫%), অভ্যন্তরীণ RC (±১-১০%) — UART-এ যথেষ্ট, RTC-তে ক্রিস্টালই (৩২.৭৬৮kHz)।</div>
 </div>
 
 <div class="diagram">
