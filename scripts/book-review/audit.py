@@ -232,19 +232,47 @@ def check_svg(book, doors, F):
                 if y > H - 2:
                     F('svg', tag, f'text baseline y={y} below viewBox height {H} — clipped')
 
-            # text-anchor trap: .lbl* default to middle
-            for m in re.finditer(r'<text class="(lbl[\w-]*)"[^>]*x="(' + NUM + r')"[^>]*>([^<]{18,})</text>', svg):
-                cls, x, txt = m.group(1), float(m.group(2)), m.group(3)
-                if 'lbl-left' in cls or 'lbl-right' in cls or 'text-anchor' in m.group(0):
+            # text-anchor trap: .lbl* default to middle.
+            # Width estimate must be font-size-aware: Noto Sans Bengali glyphs
+            # (conjuncts, matras) run far wider than a flat px/char guess —
+            # a flat 6px/char missed a real overflow (a &lt;-escaped label in
+            # Book 56 that visibly ran off its frame). Calibrate per-char
+            # advance as a fraction of font-size instead, and read the
+            # explicit font-size="N" attribute when the tag carries one.
+            CLASS_PT = {'lbl': 12, 'lbl-sm': 10, 'lbl-hot': 11,
+                       'lbl-cyan': 11, 'lbl-leaf': 11, 'lbl-amber': 11}
+            # avg advance width / font-size. Calibrated by sweeping EM against
+            # Book 56 (55 diagrams, all previously browser/render-verified
+            # clean except two genuine overflows found by hand): EM<=0.55
+            # found nothing, EM>=0.65 threw a wall of false positives on
+            # short labels that render fine, EM=0.60 found exactly those two
+            # confirmed defects and nothing else. Deliberately conservative —
+            # this check catches only egregious cases (a near-full-width
+            # sentence centred in the frame); it will not catch moderate
+            # overflow. Render the figure (render_fig.py) to be sure either
+            # way, especially for any book whose typical label length or
+            # font sizing differs from Book 56's.
+            EM = 0.60
+            for m in re.finditer(r'<text class="(lbl[\w-]*)"([^>]*)>([^<]{14,})</text>', svg):
+                cls, attrs, txt = m.group(1), m.group(2), m.group(3)
+                if 'lbl-left' in cls or 'lbl-right' in cls or 'text-anchor' in attrs:
                     continue
-                est = len(txt) * 6.0
+                xm = re.search(r'\bx="(' + NUM + r')"', attrs)
+                if not xm:
+                    continue
+                x = float(xm.group(1))
+                fs_m = re.search(r'font-size="(' + NUM + r')"', attrs)
+                fs = float(fs_m.group(1)) if fs_m else CLASS_PT.get(cls.split()[0], 11)
+                vis_len = len(re.sub(r'&\w+;', '#', txt))  # &lt; etc. -> 1 visual char
+                est = vis_len * fs * EM
                 if x - est / 2 < -.5:
                     F('svg', tag, f'centred label spills past the left edge '
-                                  f'(x={x}, ~{est:.0f}px wide): {txt[:30]!r} '
-                                  f'— add class lbl-left')
+                                  f'(x={x}, fs={fs:.0f}, ~{est:.0f}px wide): '
+                                  f'{txt[:36]!r} — add class lbl-left, or shorten/split')
                 if x + est / 2 > W + .5:
                     F('svg', tag, f'centred label spills past the right edge '
-                                  f'(x={x}, ~{est:.0f}px wide): {txt[:30]!r}')
+                                  f'(x={x}, fs={fs:.0f}, ~{est:.0f}px wide): '
+                                  f'{txt[:36]!r} — shorten or split across two lines')
 
 
 # ── 7. Bengali numerals where ASCII belongs ──────────────────────────────

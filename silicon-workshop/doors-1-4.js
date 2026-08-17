@@ -150,7 +150,7 @@ LED জ্বালানোর হিসাব (তোমার প্রথম
 <div class="diag-title">প্রয়োজন-খাতা — যাত্রার পাঁচ প্রশ্ন (প্রতিটা দরজা এরই জবাব)</div>
 <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
   <rect class="cell" x="40" y="24" width="480" height="204"/>
-  <text class="lbl" x="280" y="46">মাঠ-পাখি: প্রয়োজন-তালিকা v১</text>
+  <text class="lbl" x="280" y="46">মাঠ-পাখি: প্রয়োজন-তালিকা v1</text>
   <g font-size="10" class="lbl-sm">
     <text x="70" y="72" style="text-anchor:start">১. মাপবে — আর্দ্রতা + তাপ (মাটি ও বাতাস)</text>
     <text x="70" y="96" style="text-anchor:start">২. শক্তি — ব্যাটারিতে চলবে; রোদে নিজে-চার্জ</text>

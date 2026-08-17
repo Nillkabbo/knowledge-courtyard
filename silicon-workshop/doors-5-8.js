@@ -311,7 +311,7 @@ doors.push({
   ডিভাইডারে প্রয়োগ: R1=R2=১০k, ৯V → V_th=৪.৫V,
   R_th=৫k! এখন ১k-লোড বসালে: ৪.৫×১/(৫+১)=০.৭৫V —
   ৪.৫ নয়!! লোড ডিভাইডারের নিচের-হাত হয়ে যায়।
-  রুল-অব-থাম্ব: R_load ≥ ১০×R_th হলে ভার-প্রভাব <১০%
+  রুল-অব-থাম্ব: R_load ≥ ১০×R_th হলে ভার-প্রভাব &lt;১০%
   ADC-র গল্প: স্যাম্পল-ক্যাপ চার্জ নেয় — উৎস-রোধ
   ১০k-এর নিচে রাখো, নইলে পাঠ কাঁপে/ঝুলে থাকে
   (এজন্যই সেন্সর-ডিভাইডার ১০k-এ রাখা ভালো, ১M-এ নয়)</div>
@@ -425,11 +425,11 @@ doors.push({
   <line class="edge-hot" x1="150" y1="66" x2="150" y2="150"/>
   <text class="lbl-sm" x="164" y="74" font-size="9">৯V</text>
   <rect class="cell" x="135" y="80" width="30" height="18"/>
-  <text class="lbl-sm" x="185" y="94" font-size="9">R১ ১০k</text>
+  <text class="lbl-sm" x="185" y="94" font-size="9">R1 ১০k</text>
   <circle class="node-hot" cx="150" cy="112" r="4"/>
   <text class="lbl-hot" x="195" y="116" font-size="10">৪.৫V ✓</text>
   <rect class="cell" x="135" y="126" width="30" height="18"/>
-  <text class="lbl-sm" x="200" y="140" font-size="9">R২ ১০k</text>
+  <text class="lbl-sm" x="200" y="140" font-size="9">R2 ১০k</text>
   <line class="edge" x1="150" y1="144" x2="150" y2="168"/>
   <line class="edge" x1="135" y1="168" x2="165" y2="168"/>
   <line class="edge" x1="141" y1="174" x2="159" y2="174"/>
@@ -438,17 +438,18 @@ doors.push({
   <line class="edge-hot" x1="410" y1="66" x2="410" y2="150"/>
   <text class="lbl-sm" x="424" y="74" font-size="9">৯V</text>
   <rect class="cell" x="395" y="80" width="30" height="18"/>
-  <text class="lbl-sm" x="445" y="94" font-size="9">R১ ১০k</text>
+  <text class="lbl-sm" x="445" y="94" font-size="9">R1 ১০k</text>
   <circle class="node-hot" cx="410" cy="112" r="4"/>
   <rect class="cell-hot" x="440" y="100" width="50" height="24"/>
   <text class="lbl-hot" x="465" y="116" font-size="9">ভার ১k</text>
   <line class="edge" x1="414" y1="112" x2="440" y2="112"/>
   <text class="lbl-hot" x="360" y="116" font-size="10">০.৭৫V!</text>
   <rect class="cell" x="395" y="126" width="30" height="18"/>
-  <text class="lbl-sm" x="445" y="140" font-size="9">R২ ১০k ∥ ১k</text>
+  <text class="lbl-sm" x="445" y="140" font-size="9">R2 ১০k ∥ ১k</text>
   <line class="edge" x1="410" y1="144" x2="410" y2="168"/>
   <line class="edge" x1="395" y1="168" x2="425" y2="168"/>
-  <text class="lbl-cyan" x="280" y="228" font-size="10">নিয়ম: R_load ≥ ১০×R_th হলে পতন <১০% — লোড নিজেই ডিভাইডারের হাত হয়ে যায়, ভুলে যয়ো না</text>
+  <text class="lbl-cyan" x="280" y="220" font-size="10">নিয়ম: R_load ≥ ১০×R_th হলে পতন &lt;১০%</text>
+  <text class="lbl-sm" x="280" y="236" font-size="9">লোড নিজেই ডিভাইডারের হাত হয়ে যায় — ভুলে যেয়ো না</text>
 </svg>
 <div class="diag-cap">ডিভাইডারের মাঝ-বিন্দু খোলা-চোখে ৪.৫V, ভার-চোখে ০.৭৫V — V_th=৪.৫V, R_th=৫kΩ; এই জোড়াই ডিভাইডারের আসল পরিচয়, আর ১০× নিয়মই সেন্সর-ডিজাইনের প্রহরী।</div>
 </div>

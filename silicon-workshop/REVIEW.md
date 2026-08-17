@@ -13,7 +13,11 @@
 >
 > The repeatable method, the tooling, and a handoff checklist live in [`scripts/book-review/PLAYBOOK.md`](../scripts/book-review/PLAYBOOK.md).
 >
-> **All six stages complete.**
+> **All six stages complete, plus a verification pass.** Re-ran `scripts/book-review/audit.py` end to end: escaped a literal `<` that had leaked into a Door 6 code-block and SVG label (would have truncated content on render), converted four stray Bengali-numeral subscripts (`v১`→`v1`, `R১`→`R1`, `R২`→`R2`) to ASCII, and confirmed the seven doors newly showing 4 diagrams (1, 3, 5, 6, 12, 13, 16) are all legitimate — one new figure each from Stages 4/5, cross-checked by title against the stage commit messages.
+>
+> That pass also caught a real gap in the audit tool itself: its label-overflow heuristic used a flat 6px/char estimate, which underestimates real Noto Sans Bengali glyph width badly enough to miss genuine overflows. Recalibrated to a font-size-aware estimate (swept EM from 0.45–0.70 against this book's 55 already-verified diagrams to find the value with zero false positives) and it immediately found two confirmed defects the flat estimate had missed: the new Thévenin figure's rule-of-thumb caption (Door 6) and the boot/RTOS figure's closing note (Door 14) both ran off their frames. Both split across two lines and re-rendered clean. `audit.py` now carries the calibrated constant for future books.
+>
+> Final state: `node --check` clean on all four door files, all 16 doors load with the full field set, HTML balanced, zero unescaped code-blocks, zero hidden orphans, zero unresolved symbol/marker references, 55 diagrams total. The only `audit.py` output left is the 9 confirmed-intentional structural deviations above.
 >
 > **Stage 6** — done: study/ apparatus shipped. quiz.json (50 questions, single-correct validated) · flashcards.json (74 cards) · mind-map.json (4-arc tree) · study-guide.md (starter-kit BOM ~4,300-4,800 taka, 48 hands-on labs, 26-term glossary, 17-row troubleshooting appendix, further-reading). Panel verified on completion screen.
 >

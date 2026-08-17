@@ -271,7 +271,7 @@ doors.push({
 
 <div class="diagram">
 <div class="diag-title">জাগরণের সিঁড়ি ও রাস্তার ফয়সালা — বুট-প্রবাহ + শিডিউলার</div>
-<svg viewBox="0 0 560 270" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 560 284" xmlns="http://www.w3.org/2000/svg">
   <!-- boot ladder -->
   <text class="lbl-hot" x="150" y="24" font-size="12">পাওয়ার-অন → তোমার কোড</text>
   <rect class="cell-hot" x="60" y="36" width="180" height="30"/>
@@ -306,7 +306,8 @@ doors.push({
   <text class="lbl-sm" x="420" y="222">উচ্চ-অগ্রাধিকার প্রস্তুত? → লাফ</text>
   <text class="lbl-sm" x="420" y="238">না? → চলন্ত টাস্ক চলতেই থাকে</text>
   <!-- bare metal note -->
-  <text class="lbl" x="280" y="260" font-size="11">bare-metal = এক-লুপ+ইন্টারাপ্ট · RTOS = বহু-টাস্ক+শিডিউলার — দুই-ই সৎ, প্রশ্ন জটিলতায়</text>
+  <text class="lbl-sm" x="280" y="260" font-size="10">bare-metal = এক-লুপ + ইন্টারাপ্ট · RTOS = বহু-টাস্ক + শিডিউলার</text>
+  <text class="lbl-sm" x="280" y="274" font-size="10">দুই-ই সৎ পথ — প্রশ্ন শুধু জটিলতায়, কোনটা কতটা দরকার</text>
 </svg>
 <div class="diag-cap">বাঁয়ে জাগরণের পাঁচ-সিঁড়ি (ভেক্টর→স্ট্যাক→ডেটা→কনফিগ→main); ডানে শিডিউলারের প্রতি-টিক-ফয়সালা — মিকাতের মতো: যাত্রার আগে প্রতিটা স্তর নিয়ত-বাঁধা।</div>
 </div>
@@ -896,7 +897,7 @@ void loop() { }                        // ইচ্ছাকৃত খালি 
 
 
 <div class="diagram">
-<div class="diag-title">প্রয়োজন-খাতা v১ — চূড়ান্ত মিলানো (প্রতিটা লাইন টিক, জবাবদান-কম্পোনেন্টসহ)</div>
+<div class="diag-title">প্রয়োজন-খাতা v1 — চূড়ান্ত মিলানো (প্রতিটা লাইন টিক, জবাবদান-কম্পোনেন্টসহ)</div>
 <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
   <rect class="cell" x="40" y="20" width="480" height="222"/>
   <text class="lbl" x="280" y="42">মাঠ-পাখি: ফসল-মেলার খাতা</text>
