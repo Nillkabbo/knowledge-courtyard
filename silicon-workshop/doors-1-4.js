@@ -494,7 +494,7 @@ LED — আলো-বিকিরণকারী জংশন:
   <text class="lbl-hot lbl-left" x="326" y="104">I_C = ১০০mA</text>
   <rect class="cell" x="352" y="176" width="196" height="64" rx="8"/>
   <text class="lbl-sm lbl-left" x="364" y="194">I_B = (৩.৩−০.৭)/১k = ২.৬mA</text>
-  <text class="lbl-sm lbl-left" x="364" y="212">দরকার β_জোর ≈ ১০ → ২৬mA যথেষ্ট</text>
+  <text class="lbl-sm lbl-left" x="364" y="212">β_ফোর্সড ≈ ৩৮ অর্জিত — যথেষ্ট মার্জিন</text>
   <text class="lbl-sm lbl-left" x="364" y="230">বেশি-ধাক্কা = পুরো খোলা</text>
 </svg>
 <div class="diag-cap">সুইচ হিসেবে ব্যবহার করলে ট্রানজিস্টরকে অর্ধেক খুলে রাখা চলে না — <em>পুরো</em> খুলতে হয় (saturation), নইলে V_CE-তে ভোল্টেজ পড়ে আর সে গরম হয়। তাই বেসে হিসাব-মতো নয়, হিসাবের চেয়ে বেশি প্রবাহ দাও: β ধরো ১০, ডেটাশিটের ১০০ নয়। এখানে ২.৬mA বেস-প্রবাহ ১০০mA লোড অনায়াসে টানে।</div>
@@ -652,7 +652,7 @@ You thought. "Bad battery?"
 <div class="stat-card"><div class="sc-num">μA</div><div class="sc-label">ঘুমের মুদ্রা — বছরের ব্যাটারি-জীবনের চাবি</div></div>
 </div>
 
-<div class="dialogue">তিনি খাতা খুলে দেখালেন — একটা আসল প্রজেক্টের পাতা। দেখো: "MCU ঘুম: ০.০২mA / জাগা ১০mA (১% সময়) → গড় ০.১২mA। সেন্সর: ০.৫mA। রেডিও — প্রতি ১৫ মিনিটে ৩সে পাঠায়, TX ১০০mA → গড় ০.৫mA। মোট গড় ≈ ১.১mA। ২০০০mAh ÷ ১.১ ≈ ১৮১৮ ঘণ্টা ≈ ৭৫ দিন!" তুমি চোখ বড় করলে — একই ব্যাটারি, সাত দিনের বদলে পঁচাত্তর। নুরুল ভাই হাসলেন: "জাদু নয় — ঘুম। সময়-ভাগের হিসাব। যন্ত্র সারাক্ষণ জাগলে সে ভোক্তা, ওয়াক্ত-মতো জাগলে সে যত্নবান। আর রেগুলেটরের গল্প — LDO সোজা রাস্তা কিন্তু ঢালুতে শক্তি ফেলে (dropout×I তাপে যায়), buck-কনভার্টার ঘুরপথ কিন্তু কম খায় (৮৫-৯৫%)। সস্তা নয়, দক্ষতা কিনতে হয় — নয়েজ আর জটিলতার দামে।"</div>
+<div class="dialogue">তিনি খাতা খুলে দেখালেন — একটা আসল প্রজেক্টের পাতা। দেখো: "MCU ঘুম: ০.০২mA / জাগা ১০mA (১% সময়) → গড় ০.১২mA। সেন্সর: ০.৫mA। রেডিও — প্রতি ১০ মিনিটে ৩সে পাঠায়, TX ১০০mA → গড় ০.৫mA। মোট গড় ≈ ১.১mA। ২০০০mAh ÷ ১.১ ≈ ১৮১৮ ঘণ্টা ≈ ৭৫ দিন!" তুমি চোখ বড় করলে — একই ব্যাটারি, সাত দিনের বদলে পঁচাত্তর। নুরুল ভাই হাসলেন: "জাদু নয় — ঘুম। সময়-ভাগের হিসাব। যন্ত্র সারাক্ষণ জাগলে সে ভোক্তা, ওয়াক্ত-মতো জাগলে সে যত্নবান। আর রেগুলেটরের গল্প — LDO সোজা রাস্তা কিন্তু ঢালুতে শক্তি ফেলে (dropout×I তাপে যায়), buck-কনভার্টার ঘুরপথ কিন্তু কম খায় (৮৫-৯৫%)। সস্তা নয়, দক্ষতা কিনতে হয় — নয়েজ আর জটিলতার দামে।"</div>
 <div class="dialogue en">He opened the ledger to a real project page: "MCU sleep 0.02mA, awake 10mA at 1% → average 0.12mA. Sensor 0.5mA. Radio: 3 seconds per 10 minutes at 100mA → 0.5mA average. Total ≈1.1mA. 2000mAh ÷ 1.1 ≈ 1818 hours ≈ 75 days!" Your eyes widened — same battery, seven days became seventy-five. Nurul smiled: "Not magic — sleep. Duty-cycle arithmetic. A device awake around the clock is a spendthrift; awake on time, a mendicant. And regulators: LDO is the straight road but spills energy on the slope (dropout×I as heat); the buck converter takes the winding road but eats less (85-95%). Efficiency isn't free — you pay in noise and complexity."</div>
 
 <div class="code-block">রেশন-খাতার গণিত — Power Budgeting:
@@ -667,7 +667,7 @@ You thought. "Bad battery?"
 
 ডিউটি-চক্রে গড় (IoT-এর প্রাণ):
   গড় I = (t_চালু × I_চালু + t_ঘুম × I_ঘুম) / (t_চালু + t_ঘুম)
-  উদাহ: (০.০১×১০mA) + (০.৯৯×০.০২mA) ≈ ০.১২mA  ← ৮০ গুণ সাশ্রয়!
+  উদাহ: (০.০১×১০mA) + (০.৯৯×০.০২mA) ≈ ০.১২mA  ← ৮৩ গুণ সাশ্রয়!
 
 রেগুলেটর-প্রজাতি:
   LDO (linear): Vout স্থির, বাড়তি V×I তাপে খোয়ানো
