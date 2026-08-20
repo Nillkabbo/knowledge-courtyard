@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ষাট ক্রেডিটের রিহলা — The Sixty-Credit Rihla</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
+  <h1 class="title-main">ষাট ক্রেডিটের রিহলা</h1>
+  <div class="title-sub">The Sixty-Credit Rihla — A Traveler's Guide to the Trine DIT</div>
+  <div class="title-desc">
+    একটা কোর্স নয় — একটা সফর। আঠারোটি দরজা, ষাট ক্রেডিট, একটা ডক্টরেট।<br>
+    নেটওয়ার্ক-সড়ক থেকে সাইবার-দুর্গ, ডেটার নদী থেকে অ্যানালিটিক্সের যন্ত্রশাল, প্রকল্পের সেতু থেকে উদ্ভাবনের কারিগরখানা, গবেষণার চার মিনার থেকে ডিজার্টেশনের সিংহাসন — শেষে মজলিসে নিজের গ্রন্থ নিয়ে দাঁড়ানো।<br><br>
+    <em>Not a course list — a journey. Eighteen doors, sixty credits, one doctorate: networks, cybersecurity, data science, analytics, IT management, procurement, projects, innovation, Python, discrete math — then four research minarets, the dissertation throne, and the assembly where you defend your own book. Your journey. Your map.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🎒 সফর শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">মুসাফিরের নথি — The Traveler's Ledger</div>
+    <p>১৩২৫ সাল, টানজিয়ার। একুশ বছরের ইবনে বতুতা ঘর ছাড়লেন — সঙ্গে একটাই সম্বল: শেখানোর জন্য পথ, শেখার জন্য মানুষ। তিরিশ বছরে এগারো হাজার মাইল, প্রতিটি শহরে একজন মাস্টারের কাছে বসা, প্রতিটি সানদ (সনদপত্র) নতুন এক স্তম্ভ। শেষে ফিরে এসে ইবনে জুযাইয়ের কলমে সেই সফর হলো "রিহলা" — ইতিহাসের অন্যতম মহাগ্রন্থ। ডক্টরাল-যাত্রা ঠিক এভাবেই: কোর্স-শহরে ঢুকে মাস্টারদের কাছে বসা, আর শেষ পর্যন্ত নিজের গ্রন্থ (dissertation) লিখে মজলিসে (defense) তা সামনে রাখা।</p>
+    <p class="en">1325, Tangier. Twenty-one-year-old Ibn Battuta left home with one provision: roads to teach him, people to learn from. Thirty years, eleven thousand miles; in every city he sat before a master, and every ijaza (license) became a new pillar. At journey's end, the scribe Ibn Juzayy turned that travel into the Rihla — one of history's great books. A doctorate is exactly this: entering course-cities, sitting with masters, and finally writing your own book to stand before the assembly.</p>
+    <hr class="p-divider">
+    <p>এই বই তোমার হাতে সেই সফরের মানচিত্র তুলে দেবে — Trine University-র <strong>Doctor of Information Technology</strong> প্রোগ্রামের ষাট ক্রেডিট, হুবহু ক্যাটালগ থেকে: ১০টি কোর-স্টেশন (৩০ ক্রেডিট), ৪টি রিসার্চ-মিনার (১২ ক্রেডিট), ৩টি ডিজার্টেশন-স্তম্ভ (১৮ ক্রেডিট)। প্রতিটি দরজা বলবে: কোর্সটা কী শেখায় (এক মাস্টারের গল্পে), ঢোকার আগে কী জমা আছে তোমার ঝুলিতে (তোমার ইঞ্জিনিয়ার-অভিজ্ঞতা!), কোর্স শেষে বেরোবে কী artifact, আর ডিজার্টেশনের মহাসড়কে এই স্টেশন কোথায় জুড়বে। Hybrid পথ — সপ্তাহে কাজ, সেমিস্টারে residency — সেই ছন্দও শিখবে চিনতে।</p>
+    <p class="en">This book hands you that journey's map — Trine University's Doctor of Information Technology, sixty credits straight from the catalog: ten core stations (30 cr), four research minarets (12 cr), three dissertation pillars (18 cr). Every door tells: what the course teaches (through a master's story), what's already in your satchel (your engineer's experience!), what artifact you leave with, and where this station joins the dissertation highway. The hybrid rhythm — work weeks, residency semesters — you'll learn to keep too.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🎒</span><span id="hud-rank-name">মুসাফির</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1800 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>স্টেশন বেছে নাও</h2><p>আঠারোটি দরজা — কোর-দশক, রিসার্চ-চতুষ্টয়, ডিজার্টেশন-ত্রয়ী, মজলিস। ক্রমানুসারে।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← কাফেলায় ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🎓</div>
+  <h1 class="complete-title">তুমি এখন ডক্টর-ই-তথ্যপ্রযুক্তি</h1>
+  <p class="complete-text">আঠারোটি স্টেশন পেরিয়েছ। টানজিয়ার থেকে মক্কার পথ নয় — নেটওয়ার্কের সড়ক থেকে মজলিসের মিম্বর পর্যন্ত।<br><br>ষাট ক্রেডিট, সতেরোটি কোর্স, একটা গ্রন্থ — আর সেই গ্রন্থে তোমার নামের সামনে চারটি অক্ষর: DIT।<br>ইবনে বতুতা এগারো হাজার মাইল হাঁটেছিলেন সনদের জন্য। তুমি হেঁটেছ ক্রেডিটের মাইল — প্রতিটির নীচে ছিল একই সত্য:<br><strong>জ্ঞান মানে গন্তব্য নয়, জ্ঞান মানে পথ — আর পথ মানে চলতে থাকা।</strong></p>
+  <div class="complete-verse">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"বলো, হে আমার রব, আমার জ্ঞান বাড়িয়ে দাও।" — কুরআন ২০:১১৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার সফর শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 মুসাফিরের চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">স্টেশন সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 মুসাফিরের চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-4.js"></script>
+<script src="doors-5-8.js"></script>
+<script src="doors-9-12.js"></script>
+<script src="doors-13-16.js"></script>
+<script src="doors-17-18.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>

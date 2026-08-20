@@ -628,6 +628,17 @@
       "color": "game-56",
       "tag": "Book 56 · Electronics to IoT",
       "status": "live"
+    },
+    {
+      "n": 57,
+      "folder": "dit-rihla",
+      "title_en": "The Sixty-Credit Rihla",
+      "title_bn": "ষাট ক্রেডিটের রিহলা",
+      "icon": "🐪",
+      "category": "research",
+      "color": "game-57",
+      "tag": "Book 57 · Trine DIT Doctoral Journey",
+      "status": "live"
     }
   ],
   "roadmap": [
@@ -873,6 +884,10 @@
         {
           "book": 20,
           "why": "PhD funding, SOP, cold-emailing — if grad-school bound."
+        },
+        {
+          "book": 57,
+          "why": "the Trine DIT doctoral journey — 60 credits as 18 rihla stations; read alongside the actual program, one door per course."
         },
         {
           "book": 6,
