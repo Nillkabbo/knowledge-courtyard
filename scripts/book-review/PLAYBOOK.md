@@ -163,7 +163,7 @@ python3 scripts/book-review/audit.py <book>
 4. **`<` and `>` inside `code-block` stay escaped** as `&lt;` / `&gt;`. C code full of `1<<5` and `#include <avr/io.h>` will silently eat the rest of the block otherwise.
 5. **Backticks and `${` never appear unescaped inside `story`** — it's a template literal.
 6. **Element counts per door stay uniform** unless you deliberately change all of them.
-7. **`engine.js` assumptions hold:** `doors` is a single global array assembled by load order in `index.html`; XP/rank thresholds and `MAX_XP` are sized to the door count; `SAVE_KEY` is per-book (check it isn't a copy-paste from another book — Book 56's still says `knowledgeCraftsman_v2`).
+7. **`engine.js` assumptions hold:** `doors` is a single global array assembled by load order in `index.html`; XP/rank thresholds and `MAX_XP` are sized to the door count; `SAVE_KEY` is per-book (check it isn't a copy-paste from another book — Book 56's still says `knowledgeCraftsman_v2`). **Also grep the whole library for collisions** — `grep -h 'const SAVE_KEY' */engine.js | sort | uniq -c | awk '$1>1'` — Books 55 AND 56 shipped sharing Book 26's key for months because the check was written down but never run across books.
 
 ---
 
