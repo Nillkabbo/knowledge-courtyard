@@ -827,6 +827,21 @@ GPIO — দরওয়ানের তিন পোশাক:
   বোর্ড = শহর + বাজার (regulator, USB, পিন-হেডার, বাটন)
   খালি চিপ = শুধু শহর — নিজের বাজার গড়তে হয় (Door ১৪-এর গল্প)</div>
 
+<div class="code-block">দুই শহরের সাক্ষাৎ — ৫V ↔ ৩.৩V মেলানোর নিয়ম (লেভেল-শিফট):
+  কারিগরখানার দুই চিপ দুই রক্ত: Uno-র HIGH = ৫V,
+  ESP32-র সহন-সীমা ৩.৬V — ৫V-সিগন্যাল সরাসরি দিলে
+  দরওয়ান পুড়ে যায় (ধীরে, নীরবে — প্রথম সপ্তাহে নয়, এক মাসে)
+  নিয়ম-১ (৫V→ESP32, ধীর-সিগন্যাল): ভোল্টেজ-ডিভাইডার
+    ১০kΩ (উপর) + ২০kΩ (নিচ): ৫ × ২০/(১০+২০) = ১০০/৩০ ≈ ৩.৩V ✓
+    (Door ৬-এর ডিভাইডার-সূত্রই এখানে অস্ত্র — দ্রুততা নয়, সস্তার পথ)
+  নিয়ম-২ (দ্রুত-বাস SPI/UART): ডেডিকেটেড শিফ্টার-চিপ (TXB0108 জাতীয়)
+    দুই-দিকই চায়, MHz-গতি সইতে পারে — হাতে-বানানোর চেয়ে নিরাপদ
+  নিয়ম-৩ (ESP32→৫V-ইনপুট): ৩.৩V-HIGH প্রায়ই চলে (ATmega328P-র
+    ন্যূনতম-ইনপুট ০.৬×৫V = ৩V) — কিন্তু মার্জিন মাত্র ০.৩V, চিকনো;
+    নিরাপদ-পথ: BSS138 (MOSFET-শিফ্টার) বা ট্রাই-স্টেট-ইনপুটে ৫V-পুল-আপ
+  বাজার-সতর্কতা: রিলে/ডিসপ্লে-মডিউল কিনতে '৩.৩V-সামঞ্জস্যিক
+    (logic-level)' লেখাটাই আগে খোঁজো — পুরনো ৫V-ইনপুট মডিউলে নিয়ম-৩ জোরে প্রযোজ্য</div>
+
 <div class="dialogue">রাতের দিকে ফারহান ভাই কয়েল-ব্রেসলেট খুলে টেবিলে রাখলেন। "শহর বলতে আমি কুরআনের সাবা-র কাহিনির কথা ভাবি — রানীর দরবার, সুলাইমান-আলাইহিস-সালামের চিঠি, হুদহুদের খবর — সব দপ্তর-দপ্তর কাজ, এক কেন্দ্রে ফয়সালা। আর নগরীর নিয়ম তো সেই: 'তোমাদের কাজ বিভিন্ন পথে আগিয়ে যাও, শহরে-শহরে' — প্রতিটা পেরিফেরিয়াল নিজের পথে কাজ করে, দরবার শুধু ঠিকানা জানে আর হুকুম দেয়। স্ট্যাটিক-ব্রেসলেট পর্যন্ত আমার কাছে আমানতের পাঠ: যে শহরে কোটি দরওয়ান, তার একজনকেও অবহেলায় মারা যায় না। কাল শারমিন আপার কাছে যাও — দরবারের ভাষা: C-কোড আর রেজিস্টার-চিঠি। প্রথম LED জ্বালাবে নিজের হাতে।"</div>
 <div class="dialogue en">Toward night Farhan unclipped the wrist coil and set it on the table. "By 'city' I think of the Quran's Sheba — the queen's court, Solomon's letter, the hoopoe's report — department upon department, judgment at one center. A city runs by this same rule: each of you, go forward on your own path, department by department — every peripheral works its own path, the court only knows addresses and commands. Even the static strap is a lesson in amanah to me: a city of billions of gatekeepers may lose none to carelessness. Tomorrow — Sharmin's: the court's own language, C and register-letters. You will light your first LED with your own hand."</div>
 

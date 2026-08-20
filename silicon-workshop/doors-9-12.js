@@ -613,6 +613,11 @@ RTC (ক্যালেন্ডার-হৃদয়):
   আরও দুই পাহারা: malloc/String এড়াও (heap-খণ্ড);
     স্ট্যাক-গভীরতা মাপো (watermark) — উইচ-হান্টের দিন</div>
 
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ রোলওভার-গ্রাসী</div><code>if (millis() &gt; t_last + interval)</code> — ৪৯.৭ দিনে গণতাকারী শূন্যে ফেরে; তখন <code>t_last + interval</code>-ও ভবিষ্যতের চেয়ে পেছনে, শর্ত আর কখনো মেলে না — কাজ চির-বন্ধ।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ বিয়োগ-জাদু</div><code>if ((long)(millis() - t_last) &gt;= interval)</code> — বিয়োগ unsigned-জগতে মোড়ানো-গণিতে নিজেই ঠিক পথে ফেরে; ঘুরপথের পার্থক্যও সঠিক বেরোয় — চক্র অটুট।</div>
+</div>
+
 <div class="dialogue">দুপুরের ছায়া মিনারের গা বেয়ে নামতে মুয়াজ ভাই বাবার ঘড়িটা বাক্সে তুললেন — যত্নে। "শেষ কথা: ওয়াক্ত শুধু গণনা হলে যন্ত্র হয়ে যায়; ওয়াক্ত পাহারা হলে জীবন হয়। কুরআন বলে — নামাজ সময়-নির্ধারিত (৪:১০৩); আর হাদিসে আছে, আল্লাহর কাছে সবচেয়ে প্রিয় আমল সে-যা নিয়মিত, অল্প হলেও (বুখারি-মুসলিমের বহুল-প্রচলিত অর্থ)। টাইমারও তাই: বিশাল কাজের বিস্ফোরণ নয় — নিয়মিত ছোট ডাক, বছরের পর বছর। তোমার ফার্মওয়্যারও ওভাবেই টিকবে: প্রতিটা কাজ ওয়াক্ত-পাওয়া, প্রতিটা ঘুম হিসাব-করা। কাল রুবেল ভাইয়ের কাছে যাও — আংশিক দান: PWM। আলো কেমন করে অর্ধেক জ্বলে, মোটর কেমন করে মাপা শক্তিতে ঘোরে — সব ওই 'হাত-পুরো-খুলো-না-পুরো-বন্ধ-না'-র গণিত।"</div>
 <div class="dialogue en">As the noon shadow slid down the minaret, Muaz put the watch away in its box — carefully. "Last word: if waqt were mere counting it would be machinery; as keeping-watch it becomes life. The Quran says prayer is at fixed times (4:103); and there's a hadith — the deed most beloved to Allah is the one done consistently, even if small (the well-known sense from Bukhari and Muslim). So with timers: not the explosion of a giant task — regular small calls, year after year. That is how your firmware will survive too: every task on time, every sleep accounted for. Tomorrow, go to Rubel's — the partial gift: PWM. How a lamp burns at half, a motor turns at measured power — all the mathematics of 'neither hand fully open, nor fully closed.'"</div>
 

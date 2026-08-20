@@ -145,6 +145,43 @@ I2C — ঠিকানা-চিঠি (দুই তার, পুল-আপ �
   RS-232/485: UART-এর দূর-দূরান্ত আত্মীয় (১৯৬০-এর দশকের চুক্তি;
     485-এর ডিফারেনশিয়াল-জোড়া কারখানার লম্বা তারে বিদ্যুৎ-শব্দ কাটে)</div>
 
+<div class="diagram">
+<div class="diag-title">নতুন — SPI-র চার মোড: CPOL/CPHA-ঘড়ির ধার-চতুষ্টয়</div>
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+  <!-- Mode 0: CPOL=0 CPHA=0 -->
+  <rect class="cell" x="15" y="22" width="255" height="96"/>
+  <text class="lbl-sm" x="142" y="40" font-size="10">মোড ০ — CPOL=০ · CPHA=০ (নিস্তব্ধ=নিম্ন)</text>
+  <path class="edge-cyan" d="M 40 82 L 62 82 L 62 62 L 84 62 L 84 82 L 106 82 L 106 62 L 128 62 L 128 82 L 150 82 L 205 82" fill="none"/>
+  <circle class="node-leaf" cx="62" cy="56" r="3.5"/>
+  <circle class="node-leaf" cx="106" cy="56" r="3.5"/>
+  <text class="lbl-sm" x="185" y="58" font-size="9">● নমুনা: ১ম ধার (ওঠা)</text>
+  <!-- Mode 1: CPOL=0 CPHA=1 -->
+  <rect class="cell" x="290" y="22" width="255" height="96"/>
+  <text class="lbl-sm" x="417" y="40" font-size="10">মোড ১ — CPOL=০ · CPHA=১ (নিস্তব্ধ=নিম্ন)</text>
+  <path class="edge-cyan" d="M 315 82 L 337 82 L 337 62 L 359 62 L 359 82 L 381 82 L 381 62 L 403 62 L 403 82 L 425 82 L 480 82" fill="none"/>
+  <circle class="node-leaf" cx="359" cy="88" r="3.5"/>
+  <circle class="node-leaf" cx="403" cy="88" r="3.5"/>
+  <text class="lbl-sm" x="460" y="98" font-size="9">● নমুনা: ২য় ধার (নামা)</text>
+  <!-- Mode 2: CPOL=1 CPHA=0 -->
+  <rect class="cell" x="15" y="130" width="255" height="96"/>
+  <text class="lbl-sm" x="142" y="148" font-size="10">মোড ২ — CPOL=১ · CPHA=০ (নিস্তব্ধ=উচ্চ)</text>
+  <path class="edge-cyan" d="M 40 170 L 62 170 L 62 190 L 84 190 L 84 170 L 106 170 L 106 190 L 128 190 L 128 170 L 150 170 L 205 170" fill="none"/>
+  <circle class="node-leaf" cx="62" cy="196" r="3.5"/>
+  <circle class="node-leaf" cx="106" cy="196" r="3.5"/>
+  <text class="lbl-sm" x="185" y="205" font-size="9">● নমুনা: ১ম ধার (নামা)</text>
+  <!-- Mode 3: CPOL=1 CPHA=1 -->
+  <rect class="cell" x="290" y="130" width="255" height="96"/>
+  <text class="lbl-sm" x="417" y="148" font-size="10">মোড ৩ — CPOL=১ · CPHA=১ (নিস্তব্ধ=উচ্চ)</text>
+  <path class="edge-cyan" d="M 315 170 L 337 170 L 337 190 L 359 190 L 359 170 L 381 170 L 381 190 L 403 190 L 403 170 L 425 170 L 480 170" fill="none"/>
+  <circle class="node-leaf" cx="359" cy="164" r="3.5"/>
+  <circle class="node-leaf" cx="403" cy="164" r="3.5"/>
+  <text class="lbl-sm" x="460" y="160" font-size="9">● নমুনা: ২য় ধার (ওঠা)</text>
+  <!-- SCK label -->
+  <text class="lbl-sm" x="522" y="126" font-size="9">SCK</text>
+</svg>
+<div class="diag-cap">CPOL = নিস্তব্ধ-অবস্থা (০=ঘড়ি ছুটির সময় নিম্ন, ১=উচ্চ); CPHA = কোন ধারে নমুনা (০=১ম ধার, ১=২য় ধার)। দাসের ডেটাশিট বলে দেয় কোন মোড চাই — মাস্টার সেই মোডেই ঘড়ি বাজায়; মোড না-মিললে বিট এক-ঘর সরে যায়, ডেটা আসে গুলিয়ে।</div>
+</div>
+
 <div class="dialogue">সন্ধ্যার আযানের সময় হাসান সাহেব সীলটা বুকপকেটে ঢুকিয়ে বললেন: "শেষ কথা। সুলাইমান-আলাইহিস-সালাম সাবার রানীর কাছে পাঠালেন এক পত্র — কুরআন বলছে: 'এ তো সম্মানিত পত্র, সুলাইমানের কাছ থেকে এসেছে, আল্লাহর নামে, দয়াময়ের নামে' (২৭:২৯-৩০)। লক্ষ্য করো — পত্রের গায়ে তিনটা জিনিস: প্রেরক, প্রাপক, উদ্দেশ্য — আর হুদহুদ নিয়ে গেল, রানী স্বীকার করলো, উত্তর ফিরলো। এ যে আমার প্রোটোকল-পাঠের চেয়েও নিখুঁত চিঠির ব্যাকরণ: হেডার, ঠিকানা, ACK! তোমার চিপের প্রতিটা I2C-ফ্রেম ওই পত্রেরই নাতি-নাতনি। যে যন্ত্র সম্মানের সাথে চিঠি পাঠায় — ঠিকানা, স্বীকৃতি, সৌজন্য — তার সমাজ টেকে। কাল আরিফ ভাইয়ের কাছে যাও — যাত্রার শেষ-প্রস্তুতি: বুট-দরজা, RTOS আর ডিবাগ-ঘাট — মিকাতের মতো নিয়ত-স্থির করার দপ্তর।"</div>
 <div class="dialogue en">At the evening adhan, Hasan slipped the stamp into his pocket: "Last word. Solomon sent a letter to the queen of Sheba — the Quran says: 'It is a noble letter, from Solomon, in the name of Allah, the Merciful' (27:29-30). Mark — three things on its face: sender, recipient, purpose; the hoopoe carried it, the queen acknowledged, the reply returned. A more perfect grammar of letters than any protocol lecture: header, address, ACK! Every I2C frame in your chip is a descendant of that very letter. A machine that sends its messages with honor — address, acknowledgment, courtesy — builds a society that lasts. Tomorrow — Arif's: the journey's final preparation — the boot gate, RTOS, and the debug wharf — the station where intention gets fixed, like the miqat."</div>
 
@@ -430,6 +467,14 @@ bare-metal বনাম RTOS — সিদ্ধান্ত-স্কেল:
 </svg>
 <div class="diag-cap">কোড কোথায় বাসে তার ভূগোল: নির্দেশ-ফসল ফ্ল্যাশে, চলমান-ভেরিয়েবল RAM-এ — আর .data দুই-বাড়ির ভাড়াটে (মান ফ্ল্যাশে, বসবাস RAM-এ, বুটে পাড়ি)।</div>
 </div>
+
+<table class="kv-table"><tr><th>সেকশন</th><th>বাসস্থান</th><th>জন্ম-মান</th><th>আমাদের প্রজেক্টে কে থাকে</th></tr>
+<tr><td class="hl">.text</td><td>ফ্ল্যাশ</td><td>কম্পাইলারের ফসল</td><td>ফাংশন-কোড, নির্দেশাবলি</td></tr>
+<tr><td class="hl">.rodata</td><td>ফ্ল্যাশ</td><td>ধ্রুবক</td><td>স্ট্রিং-বার্তা, সারণি</td></tr>
+<tr><td class="hl">.data</td><td>RAM <small>(মান ফ্ল্যাশে)</small></td><td>বুটে ফ্ল্যাশ→RAM কপি</td><td>শুরু-মানসহ গ্লোবাল: <code>int raw_dry = 3200</code></td></tr>
+<tr><td class="hl">.bss</td><td>RAM</td><td>বুটে শূন্য-লেখা</td><td>শূন্য-শুরু গ্লোবাল: <code>char buf[64]</code></td></tr>
+<tr><td class="hl">স্ট্যাক</td><td>RAM <small>(শীর্ষ→নিচে)</small></td><td>চলমান ভাড়াটে</td><td>লোকাল ভেরিয়েবল, ফাংশন-ফেরার ঠিকানা</td></tr>
+<tr><td class="hl">হিপ</td><td>RAM <small>(.bss-এর পরে)</small></td><td>malloc-এর খনি</td><td>এই প্রজেক্টে নিষিদ্ধ — Door ১১-এর পাহারা</td></tr></table>
 
 <div class="verse">
 <div class="verse-arabic">وَأَذِّن فِي النَّاسِ بِالْحَجِّ يَأْتُوكَ رِجَالًا وَعَلَىٰ كُلِّ ضَامِرٍ يَأْتِينَ مِن كُلِّ فَجٍّ عَمِيقٍ</div>
