@@ -5,7 +5,7 @@ doors.push({
   num:9, icon:"✨", color:"#fde047", name:"কুন — প্রথম ঝলক",
   subtitle:"Be! — The First Flash", tech:"Firmware Toolchain, Register Writing (DDR/PORT), Arduino vs Bare-Metal C, datasheet Reading",
   spirit:"কুন ফায়াকুন — 'হও!' বললে তা-ই হয়; নির্দেশে অমিল নেই (৩৬:৮২)",
-  secret:"LED জ্বলে যদু দিয়ে নয় — দরবারের ঠিকানায় ঠিক বিটটা লেখায়: DDR ঠিক করে 'তুমি আউটপুট', PORT লেখে 'এখন জ্বলো'।",
+  secret:"LED জ্বলে জাদু দিয়ে নয় — দরবারের ঠিকানায় ঠিক বিটটা লেখায়: DDR ঠিক করে 'তুমি আউটপুট', PORT লেখে 'এখন জ্বলো'।",
   recall:{
     q:"Arduino-র digitalWrite(13, HIGH) আর bare-metal-এর PORTB |= (1<<5) — মাঝে কী ঘটে, আর LED-ব্লিংকের ন্যূনতম দুই-চিঠি কীসের?",
     qen:"Between Arduino's digitalWrite and bare-metal PORTB |= (1<<5) — what happens, and what are the minimum two letters of an LED blink?",
@@ -18,7 +18,7 @@ doors.push({
 
 <div class="dialogue">তুমি টেবিলের সামনে বসলে। শারমিন আপা আংটি ঘুরিয়ে তাকালেন। "ফারহান ভাইয়ের শহর-মানচিত্র দেখে এসেছ? ঠিকানা চেনো?"
 "জি — রেজিস্টার-ঠিকানায় দরবার চিঠি পাঠায়।"
-"তাহলে আজ তুমি পাঠাবে।" তিনি বোর্ডটা তোমার দিকে ঠেলে দিলেন — একটা ছোট্ট LED পালস করছে তাতে। "এই জ্বলাটা এখন যদু। আজ সন্ধ্যার মধ্যে এটা হবে তোমার লেখা বাক্য। তিনটা ধাপ: ডেটাশিট খোলো, ঠিকানা খোঁজো, চিঠি লেখো। শুরু করি সবচেয়ে পবিত্র বাক্য দিয়ে — যেটা এক আয়াতে সৃষ্টির পুরো নাটক: 'কুন ফায়াকুন — বলো হও, তা-ই হয়' (৩৬:৮২)। তোমার কুন হবে এক লাইন C।"</div>
+"তাহলে আজ তুমি পাঠাবে।" তিনি বোর্ডটা তোমার দিকে ঠেলে দিলেন — একটা ছোট্ট LED পালস করছে তাতে। "এই জ্বলাটা এখন জাদু। আজ সন্ধ্যার মধ্যে এটা হবে তোমার লেখা বাক্য। তিনটা ধাপ: ডেটাশিট খোলো, ঠিকানা খোঁজো, চিঠি লেখো। শুরু করি সবচেয়ে পবিত্র বাক্য দিয়ে — যেটা এক আয়াতে সৃষ্টির পুরো নাটক: 'কুন ফায়াকুন — বলো হও, তা-ই হয়' (৩৬:৮২)। তোমার কুন হবে এক লাইন C।"</div>
 <div class="dialogue en">You sat at the table. Sharmin spun her rings once and looked up. "Seen Farhan's city map? Know the addresses?"
 "Yes — the court writes letters to register-addresses."
 "Then today you write." She pushed the board toward you — a small LED pulsing on it. "For now, this glow is magic. By tonight, it'll be a sentence you wrote yourself. Three steps: open the datasheet, find the address, write the letter. Let's begin with the most sacred sentence — the whole drama of creation in one verse: 'Kun fa-yakun — Be! and it is' (36:82). Your kun will be one line of C."</div>

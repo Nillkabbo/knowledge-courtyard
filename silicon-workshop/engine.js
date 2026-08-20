@@ -3,7 +3,7 @@
 // ════════════════════════════════════════
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
-const SAVE_KEY = 'knowledgeCraftsman_v2';
+const SAVE_KEY = 'siliconWorkshop_v1';
 const MAX_XP = 1600;
 const RANKS = [
   {min:0,    name:'কৌতূহলী শিক্ষুক',   icon:'🔌'},

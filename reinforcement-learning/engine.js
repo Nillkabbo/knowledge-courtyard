@@ -3,7 +3,7 @@
 // ════════════════════════════════════════
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
-const SAVE_KEY = 'knowledgeCraftsman_v2';
+const SAVE_KEY = 'reinforcementLearning_v1';
 const MAX_XP = 1100;
 const RANKS = [
   {min:0,   name:'বীজ বোনার শিক্ষানবিশ', icon:'🌱'},
