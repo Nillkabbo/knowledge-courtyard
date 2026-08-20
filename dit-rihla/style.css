@@ -200,4 +200,24 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .legend{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:.6rem;font-size:0.75rem;color:var(--ink-dim)}
 .story-text .legend-item{display:inline-flex;align-items:center;gap:.3rem}
 .story-text .legend-swatch{display:inline-block;width:14px;height:3px;border-radius:2px}
+/* ── Planner (দিনপঞ্জি) ── */
+.hud-credits{font-size:.72rem;font-weight:700;color:var(--accent,#5eead4);background:rgba(94,234,212,.1);border:1px solid rgba(94,234,212,.25);padding:.25rem .6rem;border-radius:999px;white-space:nowrap}
+.planner-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;max-width:980px;margin:0 auto;padding:0 1rem 1rem}
+@media(max-width:760px){.planner-grid{grid-template-columns:1fr}}
+.pl-card{background:var(--card,#0d1524);border:1px solid var(--border,#1e293b);border-radius:12px;padding:1rem 1.1rem;transition:border-color .3s}
+.pl-card.done{border-color:rgba(94,234,212,.55);background:linear-gradient(180deg,rgba(94,234,212,.07),transparent)}
+.pl-head{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;margin-bottom:.6rem;border-bottom:1px dashed var(--border,#1e293b);padding-bottom:.45rem}
+.pl-term{font-family:'Cinzel',serif;font-weight:700;font-size:.95rem;color:#5eead4;letter-spacing:.03em}
+.pl-term-bn{font-size:.78rem;color:var(--ink-mute,#94a3b8)}
+.pl-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.pl-table td{padding:.3rem 0;border:0;vertical-align:top}
+.pl-c{color:var(--ink,#e2e8f0)}
+.pl-cr{color:#7dd3fc;font-weight:700;white-space:nowrap;text-align:right;width:3.2rem}
+.pl-chk{display:flex;align-items:center;gap:.45rem;cursor:default}
+.pl-note{font-size:.78rem;color:var(--ink-mute,#94a3b8);margin:.55rem 0 .5rem;font-style:italic}
+.pl-ms-wrap{display:flex;flex-direction:column;gap:.3rem}
+.pl-ms{display:flex;align-items:flex-start;gap:.5rem;font-size:.78rem;color:var(--ink-dim,#cbd5e1);cursor:pointer;line-height:1.45}
+.pl-ms input{accent-color:#5eead4;margin-top:.15rem;flex-shrink:0}
+.pl-ms:has(input:checked){color:#5eead4;text-decoration:line-through;text-decoration-color:rgba(94,234,212,.4)}
+.planner-note-box{max-width:980px;margin:1rem auto 0;padding:.8rem 1rem;border:1px solid rgba(251,191,36,.3);background:rgba(251,191,36,.06);border-radius:10px;font-size:.8rem;color:var(--ink-mute,#94a3b8);line-height:1.55}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}

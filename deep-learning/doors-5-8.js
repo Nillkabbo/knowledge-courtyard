@@ -666,7 +666,7 @@ for review, interval in review_schedule.items():
 
 # ANKI CARD EXAMPLES FOR PYTHON:
 anki_cards = {
-    "Q: What does `*args` do in a function?": "A: Collects positional arguments into a tuple",
+    "Q: What does \`*args\` do in a function?": "A: Collects positional arguments into a tuple",
     "Q: What is the difference between list and tuple?": "A: Lists are mutable, tuples are immutable",
     "Q: What does @staticmethod do?": "A: Method that doesn't receive self or cls",
     "Q: How to reverse a string?": "A: string[::-1]",

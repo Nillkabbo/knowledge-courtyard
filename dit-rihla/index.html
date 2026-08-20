@@ -15,9 +15,9 @@
   <h1 class="title-main">ষাট ক্রেডিটের রিহলা</h1>
   <div class="title-sub">The Sixty-Credit Rihla — A Traveler's Guide to the Trine DIT</div>
   <div class="title-desc">
-    একটা কোর্স নয় — একটা সফর। আঠারোটি দরজা, ষাট ক্রেডিট, একটা ডক্টরেট।<br>
+    একটা কোর্স নয় — একটা সফর। তেইশটি দরজা, ষাট ক্রেডিট, পাঁচ বছরের যাত্রা (২০২৬–২০৩১), একটা ডক্টরেট।<br>
     নেটওয়ার্ক-সড়ক থেকে সাইবার-দুর্গ, ডেটার নদী থেকে অ্যানালিটিক্সের যন্ত্রশাল, প্রকল্পের সেতু থেকে উদ্ভাবনের কারিগরখানা, গবেষণার চার মিনার থেকে ডিজার্টেশনের সিংহাসন — শেষে মজলিসে নিজের গ্রন্থ নিয়ে দাঁড়ানো।<br><br>
-    <em>Not a course list — a journey. Eighteen doors, sixty credits, one doctorate: networks, cybersecurity, data science, analytics, IT management, procurement, projects, innovation, Python, discrete math — then four research minarets, the dissertation throne, and the assembly where you defend your own book. Your journey. Your map.</em>
+    <em>Not a course list — a journey. Twenty-three doors, sixty credits, five years (2026–2031), one doctorate: networks, cybersecurity, data science, analytics, IT management, procurement, projects, innovation, Python, discrete math — then four research minarets, the dissertation throne, the assembly where you defend your own book — and five year-doors that walk beside you, season by season, until "Doctor." Your journey. Your map.</em>
   </div>
   <button class="start-btn" onclick="startGame()">🎒 সফর শুরু করো</button>
 </div>
@@ -38,13 +38,28 @@
   <div id="hud">
     <div class="hud-rank"><span id="hud-rank-icon">🎒</span><span id="hud-rank-name">মুসাফির</span></div>
     <div class="hud-level" id="hud-level">স্তর ১</div>
-    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1800 XP</div></div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 2300 XP</div></div>
+    <div class="hud-credits" id="hud-credits">🎓 0 / 60 ক্রেডিট</div>
     <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
     <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="goToPlanner()">📅 দিনপঞ্জি</button>
     <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
   </div>
-  <div class="map-header"><h2>স্টেশন বেছে নাও</h2><p>আঠারোটি দরজা — কোর-দশক, রিসার্চ-চতুষ্টয়, ডিজার্টেশন-ত্রয়ী, মজলিস। ক্রমানুসারে।</p></div>
+  <div class="map-header"><h2>স্টেশন বেছে নাও</h2><p>তেইশটি দরজা — কোর-দশক, রিসার্চ-চতুষ্টয়, ডিজার্টেশন-ত্রয়ী, মজলিস; সাথে পাঁচটি বর্ষ-দরজা (১৯–২৩): ২০২৬ থেকে ২০৩১, বছরে-বছরে রিহলা। 📅 বাটনে পুরো দিনপঞ্জি।</p></div>
   <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="planner-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🎒</span><span id="hud-rank-name">মুসাফির</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 2300 XP</div></div>
+    <button class="hud-btn" onclick="goToMap()">🗺️ মানচিত্র</button>
+  </div>
+  <div class="map-header"><h2>📅 দিনপঞ্জি — Fall 2026 → Spring 2031</h2><p>দশটি টার্মে ষাট ক্রেডিট — প্রতি টার্মের দরজা, মাইলস্টোন, সতর্কতা। চেকবক্স সেভ হয়; কোর্স শেষ করলে ক্রেডিট-গণনা নিজেই বাড়ে।</p></div>
+  <div class="planner-grid" id="planner-grid"></div>
+  <div class="planner-note-box">⚠️ এটি একটি <strong>সুপারিশকৃত টেমপ্লেট</strong> (Fall 2026 শুরু, প্রতি টার্মে ২টি কোর্স / ডিজার্টেশন-পর্বে ১টি ভারী কোর্স) — Trine-এর অফিসিয়াল advising নয়। রেজিস্ট্রেশনের আগে advisor-এর সাথে ক্রম ও লোড মিলিয়ে নাও; কোর্স-কোড ও ক্রেডিট ক্যাটালগ-সঠিক।</div>
+  <div style="text-align:center;margin-top:1.2rem"><button class="start-btn" onclick="goToMap()">🗺️ স্টেশন-মানচিত্রে ফেরো</button></div>
 </div>
 
 <div id="story-screen" class="screen">
@@ -55,7 +70,7 @@
 <div id="complete-screen" class="screen">
   <div class="complete-crown">🎓</div>
   <h1 class="complete-title">তুমি এখন ডক্টর-ই-তথ্যপ্রযুক্তি</h1>
-  <p class="complete-text">আঠারোটি স্টেশন পেরিয়েছ। টানজিয়ার থেকে মক্কার পথ নয় — নেটওয়ার্কের সড়ক থেকে মজলিসের মিম্বর পর্যন্ত।<br><br>ষাট ক্রেডিট, সতেরোটি কোর্স, একটা গ্রন্থ — আর সেই গ্রন্থে তোমার নামের সামনে চারটি অক্ষর: DIT।<br>ইবনে বতুতা এগারো হাজার মাইল হাঁটেছিলেন সনদের জন্য। তুমি হেঁটেছ ক্রেডিটের মাইল — প্রতিটির নীচে ছিল একই সত্য:<br><strong>জ্ঞান মানে গন্তব্য নয়, জ্ঞান মানে পথ — আর পথ মানে চলতে থাকা।</strong></p>
+  <p class="complete-text">তেইশটি স্টেশন পেরিয়েছ। টানজিয়ার থেকে মক্কার পথ নয় — নেটওয়ার্কের সড়ক থেকে মজলিসের মিম্বর পর্যন্ত।<br><br>পাঁচ বছর (২০২৬–২০৩১), ষাট ক্রেডিট, সতেরোটি কোর্স, একটা গ্রন্থ — আর সেই গ্রন্থে তোমার নামের সামনে চারটি অক্ষর: DIT।<br>ইবনে বতুতা এগারো হাজার মাইল হাঁটেছিলেন সনদের জন্য। তুমি হেঁটেছ ক্রেডিটের মাইল — প্রতিটির নীচে ছিল একই সত্য:<br><strong>জ্ঞান মানে গন্তব্য নয়, জ্ঞান মানে পথ — আর পথ মানে চলতে থাকা।</strong></p>
   <div class="complete-verse">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
   <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"বলো, হে আমার রব, আমার জ্ঞান বাড়িয়ে দাও।" — কুরআন ২০:১১৪</div>
   <button class="start-btn" onclick="resetGame()">↻ আবার সফর শুরু করো</button>
