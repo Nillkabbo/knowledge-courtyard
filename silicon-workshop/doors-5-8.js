@@ -634,8 +634,6 @@ MCU-সংযোগ (আগাম-পথ):
 
 
 
-<div class="photo-frame"><img src="photos/diode.jpg" alt="1N400x সিরিজের ডায়োড — শরীরের স্ট্রাইপ দিক বলে"><div class="photo-cap">1N400x সিরিজের ডায়োড — শরীরের স্ট্রাইপ দিক বলে · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
-
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — 74HC00 চিপ: এক শরীরে চার NAND</div>
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">

@@ -623,7 +623,7 @@ RTC (ক্যালেন্ডার-হৃদয়):
 
 
 
-<div class="photo-frame"><img src="photos/d11-ds3231.jpg" alt="ডিজিটাল মাল্টিমিটার — কারিগরের স্টেথোস্কোপ"><div class="photo-cap">ডিজিটাল মাল্টিমিটার — কারিগরের স্টেথোস্কোপ · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+<div class="photo-frame"><img src="photos/d11-ds3231.jpg" alt="RTC ঘড়ি-মডিউলের PCB (নিচের পিঠ) — সময়-রক্ষকের বোর্ড"><div class="photo-cap">RTC ঘড়ি-মডিউলের PCB (নিচের পিঠ) — সময়-রক্ষকের আসল শরীর · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
 
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — DS3231: RTC-চিপের শরীর-সারণি</div>
@@ -828,7 +828,7 @@ ADC-হাতিয়ারের থলি:
 
 
 
-<div class="photo-frame"><img src="photos/d12-rgb.jpg" alt="ছোট তিন-রঙের RGB LED — Wikimedia Commons"><div class="photo-cap">ছোট তিন-রঙের RGB LED — Wikimedia Commons · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
+<div class="photo-frame"><img src="photos/d12-rgb.jpg" alt="গেমিং-মাদারবোর্ডের RGB-আলো — PWM-নিয়ন্ত্রিত রঙের বাস্তব প্রয়োগ"><div class="photo-cap">মাদারবোর্ডের RGB-আলো — PWM-এ নিয়ন্ত্রিত রঙ-নদীর বাস্তব উদাহরণ · ছবি: Wikimedia Commons (মুক্ত লাইসেন্স)</div></div>
 
 <div class="diagram">
 <div class="diag-title">কম্পোনেন্ট-চেনা — সেন্সর-পরিবার: যাদের ADC পড়ে</div>

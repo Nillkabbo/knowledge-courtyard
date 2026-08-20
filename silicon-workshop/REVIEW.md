@@ -394,4 +394,21 @@ Stages 1–3 make the existing book correct. Stages 4–6 make it complete.
 
 ---
 
+## PART 6 — 15-year-old reader pass (2026-08-20)
+
+Persona: a curious 15-year-old reading all 16 doors start-to-finish, one door at a time, judging as a reader (not a reviewer). The pedagogy, math, metaphors, and BN/EN balance drew no complaints — the defects were all **photo honesty**: a photo that contradicts its caption breaks the trust contract with a young reader.
+
+| # | Finding | Evidence | Fix |
+|---|---|---|---|
+| 1 | D11 photo caption said "digital multimeter"; the image is a clock-module PCB (a DS3231 RTC — the door's own subject!) | `photos/downloaded_tier4.json` | Caption retitled honestly; now reinforces the door's topic |
+| 2 | D12 photo caption said "small RGB LED"; the image is an Asus ROG gaming motherboard | manifest | Caption now says what it shows — a real PWM-driven RGB application |
+| 3 | D15 photo label vague + double credit line | manifest | Precise label: ESP32-C3 NodeMCU board |
+| 4 | Same `breadboard.jpg` used in both D5 and D16 | grep | D16 now uses the until-now-unused `solar.jpg` (the box's power leaf) |
+| 5 | Diode photo sat in D7 (logic gates) though diodes are taught in D3 | grep + reading | Photo moved D7→D3, next to the P-N junction lesson |
+| 6 | D16 scene said "চৌদ্দজন দাঁড়িয়ে" but only 13 craftsmen are listed | count | "তেরোজন দাঁড়িয়ে; মোস্তাফিজ চাচাসহ চৌদ্দ কারিগরই" (BN+EN) |
+
+audit.py deltas (intentional): D3 photo 2, D7 photo 0 (D7 keeps 3 diagrams), no other drift.
+
+---
+
 *Sources consulted for the ESP32 verification in §1.2: [Random Nerd Tutorials — Migrating from 2.x to 3.0](https://randomnerdtutorials.com/esp32-migrating-version-2-to-3-arduino/), [espressif/arduino-esp32 #9336](https://github.com/espressif/arduino-esp32/issues/9336), [ESP32 Forum — ADC2/WiFi conflict](https://www.esp32.com/viewtopic.php?t=7644), [ESP32 ADC behaviour](https://www.universal-solder.ca/troubleshooting-adc-inputs/). AVR figures (ADPS prescaler tables, Timer0/Timer1 modes, ADC 50–200 kHz requirement) are from the ATmega328P datasheet.*
