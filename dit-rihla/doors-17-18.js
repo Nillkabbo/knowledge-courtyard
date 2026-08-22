@@ -32,6 +32,26 @@ doors.push({
 </table>
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>রিহলা-সেতু:</strong> এই দরজা তোমার লাইব্রেরির Book 20 (Research Pilgrimage) আর Book 21 (Researcher's Mind)-এর সরাসরি ভাই — সেখানে PhD-যাত্রার পূর্ণ মানচিত্র আছে; DIT 7003/7006 চলাকালে সেগুলো সঙ্গী রাখো।</div></div>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ফাঁদ-চেতনা:</strong> 'প্রস্তাবনা পাস করা = কাজ শেষ' — না! প্রস্তাবনা পাস মানে <strong>যাত্রার অনুমতি</strong>; আসল মরু এখন শুরু। আরেকটা ফাঁদ: চেয়ার-অনুমোদন ছাড়া নিজে নিজে প্রশ্ন বদলানো — চুক্তি একতরফা ভাঙা যায় না, কমিটিকে জানাও।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> উস্তাদ, প্রস্তাবনার পাঁচ-অংক বললেন — কোন অংক কার চোখে পড়ে সবচেয়ে আগে?<br><strong>কারিগরখানার উস্তাদ:</strong> কমিটির তিন চোখ তিন জায়গায়। <strong>চেয়ার-চোখ</strong> যায় প্রশ্ন আর সাহিত্যে — "এই ফাঁক সত্যি কি?" <strong>পদ্ধতি-বিশেষজ্ঞের চোখ</strong> যায় নকশায় — "এই যন্ত্র এই প্রশ্নের উত্তর দিতে পারে?" <strong>ক্ষেত্র-প্রতিবেশীর চোখ</strong> যায় গুরুত্বে — "এতে কারো কাজ লাগবে তো?" তাই খসড়ার আগে তিন নামের পাশে লিখে নাও কে কোন অংক পাহারা দেবেন — প্রতিটি অংক তার পাহারাদারের ভাষায় লেখো। আর মনে রেখো alignment-সূত্র: <strong>সমস্যা → প্রশ্ন → পদ্ধতি → বিশ্লেষণ</strong> — একটা আংটা দুর্বল হলে পুরো শিকল দুর্বল; পরীক্ষক সবচেয়ে কমজোর আংটাই টানবেন।<br><strong>তুমি:</strong> আর টাইমলাইন?<br><strong>উস্তাদ:</strong> টাইমলাইন হলো <strong>সততার দলিল</strong> — "৬ মাসে ডেটা, ৪ মাসে বিশ্লেষণ, ৩ মাসে খসড়া" লেখা মানে তুমি পরিকল্পনা বুঝো। প্রতিটি ধাপের পাশে বাফার-মাস দাও — মরুতে ঝড় আইন। যে প্রস্তাবনায় টাইমলাইন-বাফার নেই, কমিটি বুঝে নেয় লেখক মরুতে যায়নি।</div>
+<div class="dialogue en"><strong>You:</strong> Master, you named the proposal's five parts — which does the committee read first?<br><strong>Forge-master:</strong> Three eyes, three places. The <strong>chair-eye</strong> goes to question and literature — "is this gap real?" The <strong>methods-eye</strong> goes to design — "can this instrument answer?" The <strong>field-neighbor's eye</strong> goes to significance — "will anyone use this?" So before drafting, write beside the three names who guards which part — write each part in its guard's language. And remember the alignment chain: <strong>problem → question → method → analysis</strong> — one weak link weakens the chain; the examiner pulls the weakest link.<br><strong>You:</strong> And the timeline?<br><strong>Master:</strong> The timeline is <strong>a document of honesty</strong> — writing "6 months data, 4 analysis, 3 drafting" shows you understand planning. Give every step a buffer-month — storms are law in the desert. A proposal without buffer tells the committee its author has never walked a desert.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ গোপন-ফাঁক প্রস্তাবনা</div>সীমা-অংকে লেখা হয়নি "ডেটা শুধু এক-প্রতিষ্ঠানের" — পরীক্ষা দিনে প্রশ্ন এলে জবাব নেই; গোপন করলে আস্থা ভাঙে, লিখলে সীমা হয়ে যায় সৎ-সীমা।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ স্বীকৃত-সীমা প্রস্তাবনা</div>"এই গবেষণা এক-সংস্থার ক্ষেত্র-তথ্যে সীমাবদ্ধ; বাহ্যিক-সাধারণীকরণ দাবি করা হচ্ছে না" — এক বাক্যে দুয়ার খোলা: পরীক্ষকের অস্ত্র কেড়ে নেওয়া, আস্থার ইট বসানো।</div>
+</div>
+<div class="code-block">📜 কেস-স্টাডি: পাঁচ-অংকের এক-পাতার কঙ্কাল (DIT 9006-এর মুদ্রায়; নিজের প্রশ্নে ভরো):
+১. সমস্যা: [কার কী ব্যথা, সংখ্যায় কত দামি] — হাইব্রিড-টিমে অনবোর্ডিং ৩ সপ্তাহ ধরে, উৎপাদন-ক্ষতি X ঘণ্টা
+২. ফাঁক: [সিন্থেসিস-টেবিলের সাদা-অঞ্চল, ২-৩ সূত্র-সহ] — হাইব্রিড প্রেক্ষাপটে মেন্টরিং-মডেল তুলনা অনাবৃত (Zhang 2022; Ali 2023)
+৩. প্রশ্ন: [এক বাক্য, পরিমাপযোগ্য] — সংকর-বনাম-সরাসরি মেন্টরিং কি অনবোর্ডিং-সময় কমায়?
+৪. পদ্ধতি: [নকশা·দল·মাপ·নৈতিকতা] — ভিন্ন-সমপ্রতি-দল + DiD; দল ২×২৫; মাপ: দিন-পর্যন্ত-উৎপাদন; IRB-পূর্ব
+৫. যাচাই: [সাফল্য-মানদণ্ড + টাইমলাইন-বাফার] — সফল যদি ৯৫%CI দিয়ে ≥২০% হ্রাস; ৬+১/৪+১/৩+১ মাস
+টিপ: এই কঙ্কাল পূরণ করে চেয়ারের অফিস-আওয়ারে নিয়ে যাও — প্রথম সাক্ষাতেই তুমি "প্রস্তুত-ছাত্র" তালিকায়।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">৫</div><div class="sc-label">অংক — সমস্যা · ফাঁক · প্রশ্ন · পদ্ধতি · যাচাই</div></div>
+  <div class="stat-card"><div class="sc-num">৩</div><div class="sc-label">চোখ — চেয়ার · পদ্ধতি-বিশেষজ্ঞ · ক্ষেত্র-প্রতিবেশী</div></div>
+  <div class="stat-card"><div class="sc-num">+১</div><div class="sc-label">বাফার-মাস প্রতি ধাপে — মরুর ঝড়-আইন</div></div>
+  <div class="stat-card"><div class="sc-num">১</div><div class="sc-label">শিকল — সমস্যা→প্রশ্ন→পদ্ধতি→বিশ্লেষণ alignment</div></div>
+</div>
+
 <ul class="checklist"><li>দরজা ১২-এর প্রশ্ন-খাতা থেকে ৩টি প্রশ্ন বেছে প্রতিটির পাঁচ-অংক খসড়া লেখো (সমস্যা-ফাঁক-প্রশ্ন-পদ্ধতি-মানদণ্ড)</li><li>কমিটি-ম্যাট্রিক্স বানাও: সম্ভাব্য চেয়ার/সদস্য × কেন-এই-ব্যক্তি × তাঁর একটা পেপার</li><li>১৮-মাসের টাইমলাইন আঁকো — প্রস্তাবনা → IRB → ডেটা → খসড়া → ডিফেন্স</li></ul>
 <div class="verse">وَأَعِدُّوا لَهُمْ مَا اسْتَطَعْتُم — "তোমাদের সাধ্যমত শক্তি প্রস্তুত রাখো।" (কুরআন ৮:৬০) — যাত্রার আগে প্রস্তুতি, যুদ্ধের আগে কারিগরখানা।</div>
 <div class="secret-box">🏗️ প্রস্তাবনা = চুক্তিপত্র: সমস্যা-ফাঁক-প্রশ্ন-নকশা-বিশ্লেষণ-সময়রেখা, কমিটির তিন প্রশ্নের উত্তর-সহ। চেয়ার বেছে নাও যেভাবে মাস্টার বাছো — শিক্ষার নয়, বছরের সম্পর্ক।</div>`,
@@ -74,6 +94,32 @@ doors.push({
   <div class="stat-card"><div class="sc-num">৬</div><div class="sc-label">Program Outcome (Trine DIT লক্ষ্য)</div></div>
 </div>
 <div class="callout tip"><span class="co-icon">🎓</span><div><strong>রিহলার সমাপ্তি-সেতু:</strong> এই বইয়ের ১৮ দরজা শেষ হলেও তোমার লাইব্রেরির যাত্রা থামবে না — Book 20 (Research Pilgrimage), Book 34 (Scale of Evidence), Book 27 (Paper Craftsman) ডিজার্টেশন-পর্বের তিন সঙ্গী। আর সামনে পিএইচডি? এই DIT-রিহলাই তার প্রথম পর্ব — ডক্টর থেকে ডক্টর-গবেষক।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> গ্রন্থকার-সরদার, DIT 9016 আর 9026 — দুই কোর্সের ভাগ কী?<br><strong>বয়স্ক গ্রন্থকার-সরদার:</strong> ৯০১৬ = <strong>যাত্রার প্রথম পা</strong>: IRB-চূড়ান্ত → ডেটা-সংগ্রহ → প্রাথমিক বিশ্লেষণ → ফল-অধ্যায়ের খসড়া। ৯০২৬ = <strong>ফেরার পা</strong>: গভীর বিশ্লেষণ → আলোচনা-অধ্যায় (ফল মানে কী, সাহিত্যের সাথে কথা) → সার-নির্যাস → সমাপ্তি → ডিফেন্স। ভুলো না — এ দুই দরজা "লেখার কোর্স" নয়, <strong>গবেষণার কোর্স</strong>: মূল্যায়ন হবে তোমার প্রকল্প এগোচ্ছে কি না, পৃষ্ঠা-গুনে নয়। তাই সপ্তাহ-হিসেব নয়, মাইলফলক-হিসেব চালাও: ডেটা-সেট বন্ধ → প্রথম টেবিল → প্রথম অধ্যায়-খসড়া → চেয়ার-পাঠ। প্রতিটি মাইলফলক চেয়ারকে দেখাও — একা-গুপ্ত-লেখা সবচেয়ে বড় ফাঁদ।<br><strong>তুমি:</strong> ডিফেন্সের দিনের আসল খেলা?<br><strong>সরদার:</strong> তিন স্তরের। <strong>উপস্থাপন (২০-২৫ মিনিট)</strong>: গল্পের শৃঙ্খলে — সমস্যা→ফাঁক→প্রশ্ন→পদ্ধতি→ফল→অবদান; প্রতিটি স্লাইড এক বাক্যে বলা যায়। <strong>প্রশ্ন-পর্ব</strong>: এখানে জেতা মানে সব জানা নয় — <strong>সৎভাবে চিন্তা করা দেখানো</strong>: "ভালো প্রশ্ন — ভাবি" সম্মানিত বাক্য; না-জানা স্বীকার + যুক্তি-পথ দেখানো = পরীক্ষকের আস্থা। <strong>বিদায়-মুহূর্ত</strong>: কমিটি যখন আলোচনায় যায়, তোমার কাজ শেষ হয়ে গেছে — পাঁচ বছরের হিসাব তারা করবেন; তুমি দরজার বাইরে দাঁড়িয়ে থাকবে, হাতে রিহলা।</div>
+<div class="dialogue en"><strong>You:</strong> Elder-scribe, DIT 9016 and 9026 — how is the work divided?<br><strong>Elder-scribe:</strong> 9016 = <strong>the journey's first step</strong>: IRB-final → data collection → early analysis → results-chapter draft. 9026 = <strong>the returning step</strong>: deep analysis → discussion chapter (what findings mean, in dialogue with literature) → abstract → conclusion → defense. Forget not — these two doors are not "writing courses" but <strong>research courses</strong>: evaluated on whether your project advances, not page-counts. So run milestone-counts, not week-counts: dataset closed → first table → first chapter draft → chair-read. Show every milestone to your chair — secret-solo writing is the greatest trap.<br><strong>You:</strong> The defense-day game?<br><strong>Elder:</strong> Three layers. <strong>Present (20-25 min)</strong>: in story-chain — problem→gap→question→method→results→contribution; every slide sayable in one sentence. <strong>Question round</strong>: winning here is not knowing all — <strong>showing honest thinking</strong>: "good question — let me think" is an honored sentence; admit the unknown + show a reasoning path = examiner trust. <strong>The farewell moment</strong>: when the committee confers, your work is done — they will settle five years' accounts; you stand outside the door, rihla in hand.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ গুপ্ত-লেখক</div>ছয় মাস কেউ কিছু দেখেনি; শেষ মাসে "সব প্রায় শেষ" জানানো — চেয়ারের আস্থা ভাঙে, পুনর্লিখনের সময় থাকে না। একা-দুর্গে লেখা গ্রন্থ ডিফেন্সে প্রায়-অস্ত্রহীন।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ মাইলফলক-প্রকাশ্য লেখক</div>প্রতি মাইলফলক চেয়ারের টেবিলে: ডেটা-বন্ধ → প্রথম টেবিল → অধ্যায়-খসড়া। সংশোধন ছোট ছোট আসে, দিক সবসময় সংশোধনযোগ্য — ডিফেন্সে পৌঁছায় পাকা গ্রন্থ।</div>
+</div>
+<div class="code-block">🎯 কেস-স্টাডি: ৯০১৬→৯০২৬ মাইলফলক-তালিকা (নিজের ক্যালেন্ডারে খোদো):
+DIT 9016 (যাত্রার পা):
+  M1: IRB-চূড়ান্ত অনুমোদন + সম্মতি-ফর্ম ছাপা          [তারিখ: __]
+  M2: ডেটা-সংগ্রহ ৫০% + ডেটা-অ্যাডিট চেকপয়েন্ট           [তারিখ: __]
+  M3: ডেটা-বন্ধ + পরিচ্ছন্ন-করা সেট + কোডবুক সংস্করণ-১    [তারিখ: __]
+  M4: প্রাথমিক টেবিল/চিত্র সেট + ফল-অধ্যায় খসড়া v1      [তারিখ: __]
+DIT 9026 (ফেরার পা):
+  M5: গভীর বিশ্লেষণ সম্পন্ন + ফল-অধ্যায় চূড়ান্ত          [তারিখ: __]
+  M6: আলোচনা-অধ্যায় (সাহিত্য-কথোপকথন) খসড়া              [তারিখ: __]
+  M7: সম্পূর্ণ খসড়া → কমিটি-পাঠ → সংশোধন-চক্র ১           [তারিখ: __]
+  M8: চূড়ান্ত গ্রন্থ + স্লাইড-ডেক + ২০-প্রশ্নের খাতা       [তারিখ: __]
+  M9: দুই পূর্ণ-মহড়া (রেকর্ড + দর্শক-সামনে) → ডিফেন্স      [তারিখ: __]
+টিপ: প্রতিটি মাইলফলক শেষে চেয়ারকে এক-পাতার নোট — পাঁচ বছরের রিহলার শেষ বছরটা এই তালিকাই চালাবে।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">২</div><div class="sc-label">পা — ৯০১৬ যাত্রা · ৯০২৬ ফেরা</div></div>
+  <div class="stat-card"><div class="sc-num">৯</div><div class="sc-label">মাইলফলক — IRB থেকে মহড়া পর্যন্ত</div></div>
+  <div class="stat-card"><div class="sc-num">২০-২৫</div><div class="sc-label">মিনিট — উপস্থাপনের প্রশস্ত জানালা</div></div>
+  <div class="stat-card"><div class="sc-num">২০</div><div class="sc-label">প্রশ্ন — আগেই লিখে মহড়া-দেওয়া কমিটি-প্রশ্ন</div></div>
+</div>
+
 <ul class="checklist"><li>প্রতিটি অধ্যায়ের ১-লাইন প্রতিরক্ষা মুখস্থ-তালিকা বানাও ("এই অধ্যায় প্রমাণ করে…")</li><li>কমিটির ২০টা সম্ভাব্য প্রশ্ন লিখে প্রতিটির ৩-বাক্য উত্তর প্রস্তুত করো</li><li>২০-২৫ স্লাইডের কাঠামো সাজাও: সমস্যা → ফাঁক → প্রশ্ন → পদ্ধতি → ফল → অবদান</li></ul>
 <div class="verse">وَقُل رَّبِّ زِدْنِي عِلْمًا — "বলো: হে আমার রব, আমার জ্ঞান বাড়িয়ে দাও।" (কুরআন ২০:১১৪) — ডিগ্রির আয়াত দিয়ে যাত্রা শেষ, এই দোয়া দিয়ে শুরু।</div>
 <div class="secret-box">🎓 ৬০ ক্রেডিট = ৯ কোর + ৫ রিসার্চ + ৩ অ্যাপ্লাইড-রিসার্চ; মজলিস-পার মানে উত্তরের সনদ নয় — <strong>প্রশ্নের সনদ</strong>। ইবনে বতুতা দেশে ফিরেছিলেন উপহার-বোঝা নিয়ে; তুমি ফিরবে চোখ নিয়ে — যা প্রশ্ন দেখে, পদ্ধতি দেখে, সীমানা দেখে। রিহলা শেষ — যাত্রা শুরু।</div>`,

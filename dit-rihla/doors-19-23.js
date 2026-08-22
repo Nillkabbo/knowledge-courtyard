@@ -30,6 +30,29 @@ doors.push({
 </table>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>প্রথম-বছরের ফাঁদ:</strong> (১) প্রথম সেমিস্টারেই ৩-৪ কোর্স নেওয়ার উৎসাহ — hybrid+চাকরিতে ২-ই সঠিক গতি; (২) চুপচাপ হারিয়ে যাওয়া — দুই সপ্তাহ মিস করলে advisor-কে নিজেই খোঁজ দাও, লজ্জা নয়; (৩) residency বাদ দেওয়া — শুরুতেই ত্যাগ করা সস্তায় মনে হয়, শেষে একাকিত্ব সুদে দেনা নেয়।</div></div>
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>রিহলা-সেতু:</strong> দরজা ২-৫-এর প্রতিটি senior-গাইড এই বছরই কাজে লাগবে; আর তোমার লাইব্রেরির Book 32 (Brain Mechanic — অভ্যাস-ব্যবস্থা) রাতের ব্লক-ছন্দ স্থির করার হাতিয়ার।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> কাফেলা-নায়ক, প্রথম residency-তে গিয়ে সবচেয়ে বড় ভুল কী হয়?<br><strong>প্রথম-বছরের কাফেলা-নায়ক:</strong> <strong>অদৃশ্য-ছাত্র হয়ে থাকা।</strong> হাইব্রিড-প্রোগ্রামে তোমার সবচেয়ে বড় শত্রু দূরত্ব নয় — বিস্মৃতি। ক্যাম্পাসে ৩ দিন, প্রফেসরের চোখে ৫০ মুখ — যে নাম-সহ মুখ জিজ্ঞাসা করে, সে-ই স্মৃতিতে থাকে। তাই নিয়ম: প্রতিটি residency-তে <strong>৩টি ১৫-মিনিটের সাক্ষাৎ</strong> (এক অধ্যাপক, এক স্টাফ, এক সিনিয়র-সহপাঠী) + শেষ দিনে ধন্যবাদ-ইমেইল — পরের সেমিস্টারের ইমেইল-সম্পর্কের ভিত্তি। আর দ্বিতীয় ভুল: residency-কে "ছুটি" ভাবা — ওটা তোমার সবচেয়ে ঘন শেখার ৭২ ঘণ্টা; আগের রাতে প্রশ্ন-তালিকা লিখে যাও।<br><strong>তুমি:</strong> আর কাজ-পড়ার প্রথম ধাক্কা?<br><strong>নায়ক:</strong> তৃতীয় সপ্তাহে আসে — কাজের ডেডলাইন আর কোর্সের অ্যাসাইনমেন্ট একই সপ্তাহে। যে এখানে ভাঙে, তার প্রোগ্রাম ঝুরি ঝুরি হয়ে যায়। ওষুধ আগের দিন থেকে: <strong>সিলেবাস-ক্যালেন্ডার</strong> বানাও (দুই কোর্সের সব deadline এক পাতায়), ম্যানেজারকে আগেই জানাও ("আমার বৃহস্পতি-রাত এই পর্যায়ে বরাদ্দ"), আর প্রতি অ্যাসাইনমেন্ট শুরুর ৪৮ ঘণ্টা আগে খসড়া-শুরু — শেষ-মুহূর্ত মানে গুণমান-লুট।</div>
+<div class="dialogue en"><strong>You:</strong> Captain, what is the biggest first-residency mistake?<br><strong>First-year caravan-captain:</strong> <strong>Staying an invisible student.</strong> In a hybrid program your greatest enemy is not distance — it is oblivion. Three days on campus, fifty faces to a professor's eyes — the face that asks by name is the one remembered. So the rule: at every residency, <strong>three 15-minute meetings</strong> (one professor, one staff, one senior-student) + a thank-you email on the last day — the foundation of next semester's email-relationships. The second mistake: treating residency as "vacation" — it is your densest 72 learning-hours; arrive with a written question-list the night before.<br><strong>You:</strong> And the first work-study jolt?<br><strong>Captain:</strong> It arrives in week three — a work deadline and a course assignment in the same week. Whoever breaks here sees the program unravel. The medicine, taken early: build the <strong>syllabus-calendar</strong> (both courses' deadlines on one page), inform your manager in advance ("my Thursday nights are committed this term"), and start every assignment's draft 48 hours before — last-minute means quality-loot.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ দূরত্ব-কুপিত প্রথম বছর</div>Residency শেষে কারো সাথে যোগাযোগ নেই; সেমিস্টার-মাঝের ইমেইলের চেহারা অজানা-প্রেরকের মতো। সমস্যায় পড়লে কার দরজায় ধরা যাবে, সেই মানচিত্রই নেই।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সম্পর্ক-বহর প্রথম বছর</div>৩ সাক্ষাৎ/রেসিডেন্সি + শেষ-দিনের ধন্যবাদ-নোট + মাসে-এক প্রফেসর-ইমেইল (প্রশ্ন-সহ, শুধু সালাম নয়)। দ্বিতীয় বছরে এই বহরই committee-চেয়ারের বীজ।</div>
+</div>
+<div class="code-block">🕰️ প্রথম-বছরের টাইমলাইন (দেয়ালে টাঙাও):
+সপ্তাহ-১   : সিলেবাস-ক্যালেন্ডার + কাফেলা-সময় বরাদ্ব + ম্যানেজার-কথা
+সপ্তাহ-২   : প্রথম অ্যাসাইনমেন্ট ৪৮-ঘণ্টা-আগে-শুরু নিয়ম চালু
+সপ্তাহ-৩   : ধাক্কা-সপ্তাহ (ডেডলাইন-সংঘর্ষ) — বাফার-রাত খরচ করো
+সপ্তাহ-৪/৬ : রেসিডেন্সি-প্রস্তুতি: ৩-সাক্ষাৎ-তালিকা + প্রশ্ন-খাতা
+সপ্তাহ-৬/৮ : রেসিডেন্সি → ধন্যবাদ-ইমেইল ৪৮-ঘণ্টার ভেতর
+সপ্তাহ-১০  : মধ্য-মেয়াদ প্রতিফলন: ছন্দ টিকলো? কোন রাত ভাঙল?
+সপ্তাহ-১২/১৪: ফাইনাল-জমা + ১-পাতার সেমিস্টার-প্রতিফলন (কী কাজ করল, কী বদলাবে)
+গ্রীষ্ম      : বিশ্রাম-সিদ্ধান্ত লিখিত — শর্ত: পরের শরৎ তাজা ফিরবে
+টিপ: এই তালিকা D19-এর চেকলিস্টের বড় ভাই — ক্যালেন্ডারে খোদাও, স্মৃতির ওপর ভরসা নয়।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">৩</div><div class="sc-label">সাক্ষাৎ / রেসিডেন্সি — অধ্যাপক · স্টাফ · সিনিয়র</div></div>
+  <div class="stat-card"><div class="sc-num">১২</div><div class="sc-label">ক্রেডিট — প্রথম বছরের সঞ্চয় (৪ কোর্স)</div></div>
+  <div class="stat-card"><div class="sc-num">৭২ ঘণ্টা</div><div class="sc-label">রেসিডেন্সি — সবচেয়ে ঘন শেখার সময়</div></div>
+  <div class="stat-card"><div class="sc-num">৪৮ ঘণ্টা</div><div class="sc-label">আগে-শুরু নিয়ম — প্রতিটি অ্যাসাইনমেন্ট</div></div>
+</div>
+
 <ul class="checklist"><li>প্রথম সপ্তাহেই syllabus-ক্যালেন্ডার বানাও — দুই কোর্সের সব deadline এক জায়গায়</li><li>প্রতিদিন রাত ৮:৩০–১০ কাফেলা-সময় হিসেবে চিহ্নিত করে দুই সপ্তাহ টানাও — ছন্দ বসল কি দেখো</li><li>প্রথম residency-র আগে: প্রোগ্রাম-হ্যান্ডবুক একবার পড়া + ৩ জন সহপাঠীর সঙ্গে পরিচয়</li><li>ডিসেম্বরে নিজের প্রথম সেমিস্টার-প্রতিফলন ১ পাতায় লেখো — কী কাজ করল, কী বদলাবে</li></ul>
 <div class="verse">بِسْمِ اللَّهِ مَجْرَاهَا وَمُرْسَاهَا ۚ إِنَّ رَبِّي لَغَفُورٌ رَّحِيمٌ — "আল্লাহর নামেই এর চলা ও থামা।" (কুরআন ১১:৪১) — যাত্রার প্রথম কথা নাম, শেষ কথা ক্ষমা; মাঝে ছন্দ।</div>
 <div class="secret-box">🌅 প্রথম বছর = ছন্দের বছর: ২ কোর্স/টার্ম × ২ টার্ম = ১২ ক্রেডিট, এক ক্যালেন্ডার, এক ঘোষণা, এক পতন-পরিকল্পনা, এক residency। দৌড় নয় — থিতু।</div>`,
@@ -67,6 +90,28 @@ doors.push({
 </table>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>দ্বিতীয়-বছরের ফাঁদ:</strong> (১) 'ম্যানেজমেন্ট = সহজ কোর্স' ভেবে হালকা নেওয়া — GPA-এর সবচেয়ে বড় গর্ত এখানেই; (২) কাজের ব্যস্ততায় residency/অ্যাসাইনমেন্ট ফাঁকি — দ্বৈত-জীবনের সময় এখনই সবচেয়ে টানটান, পতন-পরিকল্পনা হালনাগাদ করো; (৩) স্ট্যাটাস-প্রশ্নে 'পরে দেখব' — I-20-বছরে প্রতিটি টার্মের এনরোলমেন্ট আগেই লিখিত-নিশ্চিত।</div></div>
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>রিহলা-সেতু:</strong> D6-D9 দরজাগুলোর senior-গাইড এই বছরের পাঠ্য; Book 23 (Irreplaceable Craftsman — প্রোডাক্ট-দৃষ্টি) আর Book 4 (City Builder — সিস্টেম-চিন্তা) ওজিরের দরবারে তোমার পেছনের দুই প্রহরী।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> মাঝরাস্তার পাহারাদার, checkpoint-সাক্ষাৎ নাকি ভয়ের জিনিস?<br><strong>মাঝরাস্তার মিলন-পাহারাদার:</strong> উল্টোটা — <strong>তোমার সস্তাতম বীমা।</strong> কোর-পর্বের অর্ধেক পথে প্রোগ্রাম-নিয়মে একটা হিসাব-নিকাশ বসে: GPA কেমন, কোন কোর্স বাকি, এপর্যন্ত artifact-পুঞ্জি কী। যে ছাত্র এই সাক্ষাতে যায় <strong>নিজের তালিকা হাতে</strong> ("আমার এই ৩টা শক্ত, এই ১টা দুর্বল, এই পরের টার্মের পরিকল্পনা") — সে সাক্ষাত চালায়; খালি হাত গেলে সাক্ষাৎ তাকে চালায়। আর I-20-বছর মনে রেখো: F-1-হাইব্রিড মানে enrollment-শর্ত প্রতি টার্মে পূরণ হচ্ছে কি না, সেটা শুধু তোমার DSO-ই বলতে পারেন — <strong>লিখিত ইমেইল-যোগাযোগ সংরক্ষণ করো</strong>, মৌখিক নয়।<br><strong>তুমি:</strong> আর কাজের চাকরির সাথে সংঘর্ষ বাড়লে?<br><strong>পাহারাদার:</strong> দ্বিতীয় বছরে চাকরির চাপ বাড়ে — প্রমোশন, প্রজেক্ট-রাশ। নিয়ম মনে রেখো: <strong>রিহলা মারাথন, স্প্রিন্ট নয়।</strong> যে সপ্তাহে কাজ ৬০ ঘণ্টা, সে সপ্তাহে কোর্স-সর্বনিম্ন-ডোজ আগেই ঠিক করো (কোন ভিডিও, কোন রিডিং — বাদ নয়, ছোট)। পুরো বাদ দেওয়া মানে পরের সপ্তাহে দ্বিগুণ পাহাড় — ধারাবাহিকতাই দ্বিতীয় বছরের দেবতা।</div>
+<div class="dialogue en"><strong>You:</strong> Midway-keeper, is the checkpoint meeting something to fear?<br><strong>Midway-gatekeeper:</strong> The opposite — <strong>your cheapest insurance.</strong> At half the core-pass, the program holds an accounting: GPA standing, courses left, artifact-pile so far. The student who arrives <strong>with his own list</strong> ("these three strong, this one weak, here is next term's plan") runs the meeting; arriving empty-handed lets the meeting run him. And in the I-20 year remember: whether your F-1 hybrid enrollment-conditions are met each term — only your DSO can say — <strong>keep written email-trails</strong>, never verbal.<br><strong>You:</strong> And when work-conflict grows?<br><strong>Keeper:</strong> Second year brings heavier work — promotions, project-storms. Remember the rule: <strong>the rihla is a marathon, not a sprint.</strong> In a 60-hour work-week, pre-decide the course minimum-dose (which video, which reading — not skipped, shrunk). Skipping entirely means double mountain next week — continuity is the second year's deity.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ মৌখিক-নির্ভর স্ট্যাটাস-ব্যবস্থাপনা</div>"DSO বললেন ঠিক আছে" — লিখিত কিছু নেই। সেমিস্টার-শেষে বিস্মিত: এক কোর্সের enrollment-শর্ত ফাঁকা; প্রমাণ নেই, সময় নেই, ঘাম বেশি।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ লিখিত-পথের ছাত্র</div>প্রতি টার্ম-শুরুতে DSO-ইমেইল: "আমার এই টার্মের কোর্স-তালিকা ও ক্রেডিট — enrollment-শর্ত পূরণ হচ্ছে তো?" উত্তর-ইমেইল ফোল্ডারে; প্রতিটি সিদ্ধান্তের জন্ম-সনদ।</div>
+</div>
+<div class="code-block">🕰️ দ্বিতীয়-বছরের টাইমলাইন (ক্রেডিট ১২→২৪):
+শরৎ-২০২৭ সপ্তাহ-১ : দুই কোর্স (DIT 7043, DIT 7053) + DSO-নিশ্চিতকরণ-ইমেইল
+শরৎ-সপ্তাহ-৫       : কাজ-চাপ-পূর্বাভাস: কোন সপ্তাহ ভারী? সেই সপ্তাহের ডোজ আগেই ছোট করো
+শরৎ-শেষ            : ১৮ ক্রেডিট; checkpoint-নথির খসড়া শুরু (GPA+artifact-পুঞ্জি)
+বসন্ত-২০২৮ সপ্তাহ-১ : DIT 7063 + DIT 7073; residency-তালিকা আগে থেকে
+বসন্ত-মধ্য         : অর্ধ-পথ checkpoint-সাক্ষাৎ — নিজের তালিকা হাতে যাও
+বসন্ত-শেষ           : ২৪ ক্রেডিট ✓; প্রথম committee-বীজ (কোন প্রফেসরের ক্লাস উপভোগ্য হলো?)
+গ্রীষ্ম-২০২৮        : সিদ্ধান্ত-পাতা: হালকা-কোর্স নাকি পূর্ণ-বিশ্রাম — লিখিত কারণসহ
+টিপ: ২৪-ক্রেডিট মাইলফলকটা পার হলে পেছনে তাকাও — অর্ধেক কোর-পর্ব শেষ; এই অভ্যাসগুলোই বহন করবে পরের তিন বছর।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">২৪</div><div class="sc-label">ক্রেডিট — দ্বিতীয় বছর-শেষে (মাঝরাস্তা)</div></div>
+  <div class="stat-card"><div class="sc-num">১</div><div class="sc-label">checkpoint-সাক্ষাৎ — নিজের তালিকা হাতে</div></div>
+  <div class="stat-card"><div class="sc-num">✉️</div><div class="sc-label">লিখিত-নিয়ম — DSO-যোগাযোগে সবসময়</div></div>
+  <div class="stat-card"><div class="sc-num">মারাথন</div><div class="sc-label">ছন্দ — স্প্রিন্ট নয়, ধারাবাহিকতা</div></div>
+</div>
+
 <ul class="checklist"><li>checkpoint-নথি জমা দাও — কোর-পর্বের অর্ধেক পথের হিসাব লিখিত রাখো</li><li>Spring-এ F-1/DSO-র সাথে enrollment-শর্ত নিয়ে লিখিত ইমেইল-যোগাযোগ রাখো</li><li>একটা কোর্স-অ্যাসাইনমেন্ট বেছে সেটাকে Ipractus/LedgerPilot-সমস্যায় বাঁধো — কাজ-পড়ার সেতু অভ্যাস করো</li><li>গ্রীষ্ম-সিদ্ধান্ত লিখে রাখো: কোর্স নেবে না বিশ্রাম নেবে — কারণসহ</li></ul>
 <div class="verse">وَلَا تَنقُصُوا الْمِكْيَالَ وَالْمِيزَانَ — "দাঁড়ি ও পাল্লা কম কোরো না।" (কুরআন ১১:৮৪) — নেতৃত্বের প্রথম কাজ ন্যায়ের মাপে মাপা।</div>
 <div class="secret-box">🧭 দ্বিতীয় বছর = দৃষ্টি-বছর: দরবার-জোড়া + নায়ক-বাজার জোড়া = ২৪ ক্রেডিট; প্রতিটি তত্ত্ব নিজের কোম্পানির টেবিলে পরীক্ষা করো, প্রতিটি স্ট্যাটাস-সিদ্ধান্ত লিখিতে বাঁধো।</div>`,
@@ -102,6 +147,28 @@ doors.push({
 </table>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>তৃতীয়-বছরের ফাঁদ:</strong> (১) কোর-মানসিকতায় রিসার্চ-কোর্স পড়া — RSH-কোর্সও সিলেবাস-চালিত, কিন্তু তাদের আসল ফল প্রশ্ন-চোখ; শুধু গ্রেড নিয়ে উঠলে বছরটা নষ্ট; (২) কমিটি শেষ মুহূর্তে জোড়া — Year 4-এর প্রস্তাবনার আগে কমিটি দাঁড়ানো না থাকলে proposal-প্রক্রিয়া আটকে যায়; (৩) নিজের প্রশ্নকে 'চাকরির কাজ, গবেষণা নয়' ভেবে ফেলে রাখা — DIT-র সৌন্দর্য ঠিক এখানেই: কাজের সমস্যাই গবেষণার উপাদান।</div></div>
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>রিহলা-সেতু:</strong> দরজা ১০-১১ (Python, Statistics) এই বছরের শরৎ-পাঠ; দরজা ১৩-১৪ (Quant, Qual) বসন্ত-পাঠ; আর Book 27 (Deep Work Sanctuary) প্রশ্ন-বাগানের সময়-রক্ষক।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> আয়েশা-আপা, কমিটি-চেয়ার চিনলাম — এবার জিজ্ঞেস করব কীভাবে?<br><strong>সন্ধিক্ষণ-পাহারাদার আয়েশা:</strong> তিন-ইমেইলের নাচ। <strong>প্রথম (পরিচয়):</strong> কোন ক্লাসে বসেছি + তাঁর এক পেপারের এক-লাইন প্রতিক্রিয়া (পড়েছি প্রমাণ) + এক-লাইন প্রশ্ন — সাত দিন অপেক্ষা। <strong>দ্বিতীয় (সাক্ষাৎ-প্রার্থনা):</strong> উত্তর এলে ১৫-মিনিটের অফিস-আওয়ার চাও — এজেন্ডা তিন বুলেট, আগে পাঠাও। <strong>তৃতীয় (অনুসরণ):</strong> সাক্ষাতের ২৪ ঘণ্টার ভেতর ধন্যবাদ + মূল-বিন্দুগুলোর এক-পাতার সার — এই পাতাটাই তোমার প্রথম "ছাত্র-নথি" তাঁর কাছে। তিন নাচ সইলে (উত্তর-প্রবাহ স্বাভাবিক, প্রশ্নের জবাবে প্রশ্ন আসে) — বছর শেষে চেয়ার-প্রস্তাব। আর মনে রেখো: <strong>চেয়ার বেছে নেয় না, সম্পর্ক গড়ে তোলে</strong> — যিনি তোমার প্রশ্নের ভাষা বলেন, তাঁর কাছেই বছর-পরের দরজা।<br><strong>তুমি:</strong> আর যদি সাড়া না আসে?<br><strong>আয়েশা:</strong> দুই সপ্তাহ নীরবতা = সামনের নাম। এটা প্রত্যাখ্যান নয় — সময়ের হিসাব। তালিকায় ৩-৫ নাম রাখো সবসময়; প্রতিটির সাথে সমান তিন-ইমেইল-নাচ চালাও। কমিটি-নির্মাণ প্রেম-নয়, কিন্তু প্রেমের মতোই — একতরফা পিপাসা দেখানো নয়, সম্মান-সহ অধ্যবসায়।</div>
+<div class="dialogue en"><strong>You:</strong> Ayesha, I have identified the committee-chair — how do I ask?<br><strong>Ayesha the Threshold-Keeper:</strong> A three-email dance. <strong>First (introduction):</strong> which of their classes I sat in + a one-line reaction to one of their papers (proof of reading) + a one-line question — wait seven days. <strong>Second (meeting-request):</strong> if answered, ask for a 15-minute office-hour — agenda in three bullets, sent ahead. <strong>Third (follow-up):</strong> within 24 hours of the meeting, thanks + a one-page summary of key points — this page becomes your first "student-file" with them. If the dance holds (answers flow, questions beget questions) — the chair-proposal at year's end. And remember: <strong>a chair is not chosen, a relationship is built</strong> — the one who speaks your question's language holds next year's door.<br><strong>You:</strong> And if no reply?<br><strong>Ayesha:</strong> Two weeks of silence = next name. Not rejection — arithmetic of time. Keep 3-5 names on the list; run the same three-email dance with each. Committee-building is not romance, but like romance — not displaying one-sided thirst, but respectful persistence.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ শেষ-মুহূর্তের কমিটি-জোগাড়</div>প্রস্তাবনার মৌসুম এসেছে, এখন চেয়ার খোঁজা — প্রফেসর দেখেন অচেনা মুখ, পেপার-পড়ার প্রমাণ নেই। প্রস্তাব-প্রক্রিয়া ৬ মাস আটকে; গবেষণা-বছর পিছিয়ে যায়।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সম্পর্ক-পূর্ব কমিটি</div>বছরজুড়ে তিন-ইমেইল-নাচ, অফিস-আওয়ার, পেপার-প্রতিক্রিয়া। প্রস্তাবনার মৌসুমে চেয়ার-প্রস্তাব স্বাভাবিক পরের ধাপ — কেউ অচেনাকে বর হয় না।</div>
+</div>
+<div class="code-block">🕰️ তৃতীয়-বছরের টাইমলাইন (২৪→৩৬ ক্রেডিট; মোড়ের বছর):
+শরৎ-২০২৮ সপ্তাহ-১ : শেষ দুই কোর (DIT 7083 Python + RSH 7093 পরিসংখ্যান) — সেতু-জোড়া
+শরৎ-সপ্তাহ-৩       : প্রশ্ন-বাগান চালু: শনি-ব্লকের অর্ধেক নিজের প্রশ্ন-চাষ
+শরৎ-শেষ            : ৩০ ক্রেডিট ✓; committee-তালিকায় ৫ নাম, প্রথম-ইমেইল নাচ শুরু
+বসন্ত-২০২৯ সপ্তাহ-১ : রিসার্চ-জোড়া (RSH 8003 Quant + RSH 8013 Qual) — নতুন চোখ
+বসন্ত-সপ্তাহ-৬      : প্রতিটি অ্যাসাইনমেন্টে ১ নিজের-প্রশ্ন লুকানোর নিয়ম চালু
+বসন্ত-শেষ           : ৩৬ ক্রেডিট ✓; দ্বিতীয়-ইমেইল নাচ চলছে; ৩-৫ নামে সাড়া-মানচিত্র
+গ্রীষ্ম-২০২৯        : কমিটি-কাঠামো স্থিরের লক্ষ্য (চেয়ার-সম্ভাব্য ২ + সদস্য ২) + প্রশ্ন-বীজ ১০+
+টিপ: এই বছরের শেষ সম্পদ = সম্পর্ক + প্রশ্ন — দুটোই কমিটি-ছাড়া অগ্রসর হয় না, দুটোই জমে শুধু সময়ে।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">৩</div><div class="sc-label">ইমেইল-নাচ — পরিচয় · সাক্ষাৎ · অনুসরণ</div></div>
+  <div class="stat-card"><div class="sc-num">৩৬</div><div class="sc-label">ক্রেডিট — তৃতীয় বছর-শেষে</div></div>
+  <div class="stat-card"><div class="sc-num">৩-৫</div><div class="sc-label">নাম — committee-সম্ভাব্য তালিকায় সবসময়</div></div>
+  <div class="stat-card"><div class="sc-num">১০+</div><div class="sc-label">প্রশ্ন-বীজ — প্রতি-কোর্সে-এক নিয়মে বছর-শেষে</div></div>
+</div>
+
 <ul class="checklist"><li>প্রতিটি অ্যাসাইনমেন্টে একটা নিজের-প্রশ্ন লুকাও — বছর শেষে ১০+ প্রশ্ন-বীজ জমা হবে</li><li>সম্ভাব্য committee-চেয়ারের ৩ নামের তালিকা + প্রত্যেকের ১টা পেপার পড়ো</li><li>শনি-ব্লকের অর্ধেক "প্রশ্ন-বাগান" — সাহিত্য-পাঠ ও খসড়া-নোটে ব্যয় করো</li><li>বছর শেষে কমিটি-কাঠামো স্থির করো — কে চেয়ার, কারা সদস্য, কেন</li></ul>
 <div class="verse">وَقُل رَّبِّ زِدْنِي عِلْمًا — "বলো, হে আমার রব, আমার জ্ঞান বাড়াও।" (কুরআন ২০:১১৪) — উত্তর জমানোর নয়, জ্ঞান-ক্ষুধা বাড়ানোর দোয়া; গবেষণা-মোড়ের প্রার্থনা।</div>
 <div class="secret-box">🔭 তৃতীয় বছর = মোড়ের বছর: শেষ কোর-জোড়া + প্রথম রিসার্চ-জোড়া = ৩৬ ক্রেডিট; প্রতি অ্যাসাইনমেন্টে এক নিজের-প্রশ্ন, প্রতি সপ্তাহে এক প্রশ্ন-বাগান-বিকাল, এবং বছর শেষে একটি স্থায়ী কমিটি-কাঠামো।</div>`,
@@ -138,6 +205,29 @@ doors.push({
 </table>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>চতুর্থ-বছরের ফাঁদ:</strong> (১) 'আরেকটু ভালো প্রশ্ন' রোগ — প্রস্তাবনা-বছরে অনন্ত-উন্নয়ন মানেই অনন্ত-বিলম্ব; চুক্তি-ধারা পাঁচটা দাঁড়ালে জমা দাও; (২) IRB-কে শেষ-মুহূর্তের কাগজ ভাবা — রিভিউয়ে সপ্তাহ লাগে, সংশোধনী চাইলে আরও; Summer-এ জমা না হলে Year 5-এর ডেটা-সংগ্রহ পিছায়; (৩) কমিটি-মন্তব্যকে আক্রমণ ভাবা — প্রতিটি মন্তব্য ডিফেন্স-দিনের পূর্বাভাস-প্রশ্ন; এখনই শুধরে নেওয়া সস্তা।</div></div>
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>রিহলা-সেতু:</strong> দরজা ১৫-১৬ (Design, Methodology) শরৎ-পাঠ; দরজা ১৭ (কারিগরখানা) বসন্ত-পাঠ; Book 19 (Researcher's Compass) চুক্তি-ধারা লেখার সঙ্গী; Book 34 (Citation Integrity) প্রস্তাবনার রেফারেন্স-প্রহরী।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> চুক্তি-লেখক, প্রস্তাবনা লিখতে বসলাম — প্রথম সপ্তাহে কী করব?<br><strong>চুক্তির কারিগর:</strong> <strong>কাজের-ক্রম উল্টে দাও।</strong> সবাই ভূমিকা লিখতে বসে — ভুল। শুরু করো <strong>পদ্ধতি-অংক দিয়ে</strong> (দরজা ১৫-এর নকশা প্রায় তৈরি), তারপর প্রশ্ন-সংজ্ঞা, তারপর সাহিত্য-ফাঁক (দরজা ১৬-এর টেবিল থেকে), শেষে ভূমিকা — কারণ শেষ মুহূর্তে তুমি জানো তুমি আসলে কী লিখেছ। আর সাপ্তাহিক ছন্দ: <strong>শুক্র-জমা, চেয়ার-টিকা</strong> — প্রতি শুক্রবার যা লেখা হলো পাঠাও; বৃহস্পতিবার টিকা ফেরত; সোমবার সংশোধন। ছোট ছোট চক্র — বড় বড় দেরির চেয়ে হাজারগুণ ভালো। আর IRB-পেপারও এখনই শুরু করো (মানুষ-গবেষণা হলে): অনুমোদনের গড় সময় ৬-১০ সপ্তাহ — প্রস্তাবনা-পাশে সমান্তরালে চালাও, ধারাবাহিক নয়।<br><strong>তুমি:</strong> আর যদি কমিটি বড় বদল চায়?<br><strong>কারিগর:</strong> বদল-চাওয়া মানে প্রস্তাবনা পড়া হয়েছে — নীরবতার চেয়ে উত্তম। প্রতিটি মন্তব্যকে তিন ঝুড়িতে ফেলো: <strong>অবশ্য</strong> (পরিবর্তন করো), <strong>আলোচনা</strong> (তর্ক করো লিখিতভাবে — কমিটি ভিন্নমত পছন্দ করে, নীরব-অবজ্ঞা নয়), <strong>ভুল-বোঝা</strong> (স্পষ্ট করে লেখো, সম্ভবত অস্পষ্টতা তোমার)। তিন-ঝুড়ির উত্তর-চিঠি লিখে সংশোধিত খসড়া পাঠাও — এই শৃঙ্খলাই প্রস্তাবনা-পাসের আসল পথ।</div>
+<div class="dialogue en"><strong>You:</strong> Contract-writer, I sit down to write the proposal — what is week one?<br><strong>Craftsman of Contracts:</strong> <strong>Invert the order of work.</strong> Everyone starts with the introduction — wrong. Begin with the <strong>methods part</strong> (Door 15's design is nearly done), then question-definition, then literature-gap (from Door 16's table), the introduction last — because at the end you know what you actually wrote. And the weekly rhythm: <strong>Friday deposit, chair's marks</strong> — send whatever is written every Friday; marks return Thursday; revise Monday. Small cycles — a thousand times better than large delays. And start IRB paperwork now too (if human-subjects): approval averages 6-10 weeks — run it parallel to the proposal, not sequential.<br><strong>You:</strong> And if the committee demands large changes?<br><strong>Craftsman:</strong> Demands mean the proposal was read — better than silence. Sort every comment into three baskets: <strong>must</strong> (change it), <strong>discuss</strong> (argue it in writing — committees like reasoned dissent, not silent disregard), <strong>misreading</strong> (clarify; the unclarity was probably yours). Send a three-basket response letter with the revised draft — this discipline is the true path to proposal-approval.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ এক-ঢিলেক প্রস্তাবনা</div>ছয় মাস লুকোিয়ে লেখা, তারপর "সম্পূর্ণ" খসড়া — কমিটির ৩০ মন্তব্য, মন-ভাঙা সংশোধন-রাত। যে দলিল কেউ দেখেনি, সে-দলিল চুক্তি নয় — জুয়া।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ চক্র-চুক্তি</div>শুক্র-জমা → চেয়ার-টিকা → সোম-সংশোধন; প্রতি চক্রে দলিল পাকা হয়। কমিটি-মন্তব্য তিন-ঝুড়িতে; প্রতিটির লিখিত জবাব। প্রস্তাবনা ইভেন্ট নয়, প্রক্রিয়া।</div>
+</div>
+<div class="code-block">🕰️ চতুর্থ-বছরের টাইমলাইন (৩৬→৪৮ ক্রেডিট; চুক্তির বছর):
+শরৎ-২০২৯ সপ্তাহ-১ : শেষ রিসার্চ-জোড়া (RSH 8023 Design + RSH 8033 Methodology)
+শরৎ-সপ্তাহ-৪      : IRB-খসড়া জমা (মানুষ-গবেষণা হলে) — সমান্তরাল পথ চালু
+শরৎ-শেষ            : ৪২ ক্রেডিট; সাহিত্য-সিন্থেসিস-টেবিল সম্পূর্ণ (D16-এর ফসল)
+বসন্ত-২০৩০ সপ্তাহ-১ : DIT 9006 (৬cr) — কারিগরখানা-মৌসুম; শুক্র-জমা ছন্দ চালু
+বসন্ত-সপ্তাহ-৫     : পাঁচ-অংকের পূর্ণ খসড়া v1 → কমিটি-পাঠ
+বসন্ত-সপ্তাহ-৮     : তিন-ঝুড়ি জবাব-চিঠি + সংশোধিত v2
+বসন্ত-শেষ           : ৪৮ ক্রেডিট ✓; proposal defense পাস; IRB-অনুমোদন পথে
+গ্রীষ্ম-২০৩০        : ডেটা-সংগ্রহের পাতি (অনুমোদন এলে সঙ্গে-সঙ্গে শুরুর প্রস্তুতি)
+টিপ: ৪৮-ক্রেডিট + অনুমোদিত-প্রস্তাবনা = রিহলার সবচেয়ে ভারী দুই মাইলফলক এক বছরে — এই টাইমলাইনই তার মেরুদণ্ড।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">৪৮</div><div class="sc-label">ক্রেডিট — চতুর্থ বছর-শেষে</div></div>
+  <div class="stat-card"><div class="sc-num">৩</div><div class="sc-label">ঝুড়ি — অবশ্য · আলোচনা · ভুল-বোঝা (কমিটি-মন্তব্য)</div></div>
+  <div class="stat-card"><div class="sc-num">৬-১০ সপ্তাহ</div><div class="sc-label">IRB-গড় সময় — সমান্তরালে চালাও</div></div>
+  <div class="stat-card"><div class="sc-num">শুক্র</div><div class="sc-label">জমা-দিন — চেয়ার-টিকা বৃহস্পতি, সংশোধন সোম</div></div>
+</div>
+
 <ul class="checklist"><li>পাঁচ-অংকের প্রস্তাবনা-খসড়ার প্রতিটি অংশ আলাদা ফাইলে লেখা শুরু করো — পূর্ণ খসড়ার আগে টুকরো টুকরো</li><li>চেয়ারের সাথে মাসিক বৈঠকের ধারা চালু করো — এজেন্ডা-নোট প্রতিবার আগে পাঠাও</li><li>মানুষ-গবেষণা হলে IRB-নথির চেকলিস্ট এখনই সংগ্রহ করো — শেষ মুহূর্তে নয়</li><li>proposal defense-এর তারিখ ঠিক হলে পিছোতে ৯০-দিনের প্রস্তুতি-ক্যালেন্ডার আঁকো</li></ul>
 <div class="verse">يَا أَيُّهَا الَّذِينَ آمَنُوا أَوْفُوا بِالْعُقُودِ — "হে ঈমানদারগণ, চুক্তি পূর্ণ করো।" (কুরআন ৫:১) — প্রস্তাবনা যে-চুক্তি, তা নিজের ওপর পূর্ণ করাই ডিসার্টেশন।</div>
 <div class="secret-box">📜 চতুর্থ বছর = চুক্তি-বছর: প্রাসাদ+তাঁত+কারিগরখানা = ৪৮ ক্রেডিট; পাঁচ-ধারার প্রস্তাবনা, তিন-পর্বের খসড়া, লিখিত জবাব-তালিকা, Summer-এ IRB।</div>`,
@@ -174,6 +264,29 @@ doors.push({
 </table>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>শেষ-বছরের ফাঁদ:</strong> (১) 'পারফেক্ট অধ্যায়' অন্বেষণ — সম্পূর্ণ-পাণ্ডুলিপি জমা দেওয়ার পরেই চমৎকার হয়, আগে নয়; খসড়া-ই কাজের জিনিস; (২) ডিফেন্স-দিনের উত্তর সেদিনই বানানো — কমিটি-রিভিউয়ের প্রতিটি প্রশ্নই ছিল পূর্বাভাস; পুরনো জবাব-নথি হাতের কাছে রাখো; (৩) ডিগ্রির পরে 'এখন বিশ্রাম' — বরং রিহলা লেখো: তোমার থিসিস-গল্প, কোন দরজায় কী শিখলে — পরের মুসাফিরের জন্য; এটাই জ্ঞানের আমানত ফেরত দেওয়া।</div></div>
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>রিহলা-সেতু:</strong> দরজা ১৭-১৮ (কারিগরখানা, সম্মিলন-মজলিস) এই বছরের পাঠ; Book 34 (Citation Integrity) চূড়ান্ত পাণ্ডুলিপির প্রহরী; Book 20 (Graduate Ascent) — ডিফেন্সের পরের জীবনের মানচিত্র। আর মনে রেখো: পুরো রিহলাটা ২০২৬-এ শুরু হয়েছিল একটাই সিদ্ধান্তে — 'আমি যাব।'</div></div>
+<div class="dialogue"><strong>তুমি:</strong> ফেরার-কাফেলার নায়িকা, শেষ বছরের সবচেয়ে বড় শত্রু কে?<br><strong>ফেরার-কাফেলার বৃদ্ধা নায়িকা:</strong> <strong>পারফেকশন-দানব।</strong> শেষ অধ্যায়ে দাঁড়িয়ে সবাই ভাবে — "আরেকটু ভালো করে লিখি, আরেকটা বিশ্লেষণ চালাই।" ওষুধ মনে রাখো: <strong>সম্পূর্ণ-জমা > নিখুঁত-খসড়া।</strong> কমিটির কাছে যে দলিল যায়নি, সে দলিলের অস্তিত্ব নেই; ৮০%-পাকা জমা-দেওয়া গ্রন্থ ১০০%-অপ্রকাশিত প্রতিভার চেয়ে অসংখ্য গুণ উত্তম। তাই মাইলফলক-পাতায় প্রতিটি অধ্যায়ের পাশে দুই তারিখ: <strong>খসড়া-জমা</strong> ও <strong>চূড়ান্ত-জমা</strong> — জমা-তারিখ পবিত্র, মানসিকতা নয়। আর দ্বিতীয় শত্রু: <strong>বিচ্ছিন্নতা</strong> — শেষ বছরে সবাই গুহায় ঢুকে যায়। সাপ্তাহিক এক মানব-সাক্ষাৎ (পরিবার/সহকর্মী/সহপাঠী) ডক্টরেটের নয়, মানুষের টিকে-থাকা-নিয়ম।<br><strong>তুমি:</strong> ডিফেন্সের পরের জীবন?<br><strong>নায়িকা:</strong> ডক্টর হওয়া শেষ নয় — <strong>দ্বিতীয় রিহলার শুরু</strong>। প্রথম ফল: প্রকাশনা — গ্রন্থ থেকে ২-৩টা নিবন্ধ/কনফারেন্স-কাগজ বের করো (শুরু করো ডিফেন্সের আগেই, ফল-অধ্যায় গরম থাকতে)। দ্বিতীয় ফল: প্রয়োগ — তোমার কাজের জগতে ফল নামাও (DIT-এর প্রতিশ্রুতিই তাই)। তৃতীয় ফল: পরবর্তী প্রশ্ন — উত্তর পাওয়ার পর নতুন ৫টা প্রশ্ন জন্মায়; তার সবচেয়ে জোরালোটাই তোমার পরের যাত্রার দিক। ইবনে বতুতাও তো ফেরার পর আবার বেরিয়েছিলেন — আন্দালুসের দিকে।</div>
+<div class="dialogue en"><strong>You:</strong> Matriarch of the returning caravan, what is the final year's greatest enemy?<br><strong>Elder matriarch:</strong> <strong>The perfection-monster.</strong> Standing at the last chapter, everyone thinks — "let me write it a little better, run one more analysis." Remember the medicine: <strong>a submitted complete beats a perfect draft.</strong> A document that never reached the committee does not exist; an 80%-ripe submitted book is infinitely better than 100%-unpublished talent. So on the milestone page, every chapter carries two dates: <strong>draft-deposit</strong> and <strong>final-deposit</strong> — the deposit-date is sacred, not the mood. And the second enemy: <strong>isolation</strong> — in the final year everyone retreats to a cave. One weekly human-meeting (family/colleague/cohort) is not a doctorate rule — it is a human survival rule.<br><strong>You:</strong> Life after the defense?<br><strong>Matriarch:</strong> Becoming a doctor is not the end — <strong>the beginning of a second rihla.</strong> First fruit: publication — extract 2-3 articles/conference papers from the book (start before the defense, while the results-chapter is warm). Second fruit: application — drop the findings into your working world (that is DIT's promise). Third fruit: the next question — every answer births five new ones; the strongest is your next journey's direction. Ibn Battuta too set out again after returning — toward al-Andalus.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ অনন্ত-পালিশ-গুহা</div>"আরেকটা সপ্তাহ, আরেকটা রান" — মাসের পর মাস; কমিটি অপেক্ষায়, পরিবার বিস্মৃত, নিজে ক্ষয়। গ্রন্থ যতটা পাকা, তার চেয়ে লেখক ততটা কাঁচা হয়ে যায়।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ জমা-পবিত্র ছন্দ</div>প্রতিটি অধ্যায়ে খসড়া-তারিখ + চূড়ান্ত-তারিখ; তারিখ মানা হয়, অনুভূতি নয়। সাপ্তাহিক মানব-সাক্ষাৎ; পালিশ-সময় চূড়ান্ত-জমার পরেও পাওয়া যায় — সংশোধন-পর্বে।</div>
+</div>
+<div class="code-block">🕰️ পঞ্চম-বছরের টাইমলাইন (৪৮→৬০ ক্রেডিট; প্রত্যাবর্তন):
+শরৎ-২০৩০ সপ্তাহ-১ : DIT 9016 শুরু — ডেটা-সংগ্রহ পূর্ণ গতি; সাপ্তাহিক ৩০০-শব্দ ছন্দ
+শরৎ-সপ্তাহ-৮      : ডেটা-বন্ধ তারিখ (পবিত্র) + কোডবুক v1
+শরৎ-শেষ            : ৫৪ ক্রেডিট; ফল-অধ্যায় খসড়া; প্রথম প্রকাশনা-খসড়া সমান্তরালে
+বসন্ত-২০৩১ সপ্তাহ-১ : DIT 9026 — আলোচনা-অধ্যায় + সার-নির্যাস + সমাপ্তি
+বসন্ত-সপ্তাহ-৫     : পূর্ণ গ্রন্থ কমিটির হাতে; তিন-ঝুড়ি সংশোধন চক্র
+বসন্ত-সপ্তাহ-৮     : চূড়ান্ত গ্রন্থ + স্লাইড-ডেক + ২০-প্রশ্নের খাতা তৈরি
+বসন্ত-সপ্তাহ-৯     : দুই পূর্ণ-মহড়া → 🎓 ডিফেন্স → ৬০ ক্রেডিট ✓ → "ডক্টর"
+গ্রীষ্ম-২০৩১        : প্রকাশনা-জমা (২-৩ কাগজ) + কাজে-প্রয়োগ + পরের-প্রশ্নের তালিকা
+টিপ: এই পাতাটাই রিহলার শেষ মানচিত্র — দরজা ১-এর সেই সন্ধ্যার টানা রুট, এখন পূর্ণ বৃত্ত।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">৬০</div><div class="sc-label">ক্রেডিট — পঞ্চম বছর-শেষে; রিহলা সম্পূর্ণ</div></div>
+  <div class="stat-card"><div class="sc-num">২-৩</div><div class="sc-label">প্রকাশনা — গ্রন্থ থেকে বের করার লক্ষ্য</div></div>
+  <div class="stat-card"><div class="sc-num">২</div><div class="sc-label">শত্রু — পারফেকশন-দানব · বিচ্ছিন্নতা</div></div>
+  <div class="stat-card"><div class="sc-num">১/সপ্তাহ</div><div class="sc-label">মানব-সাক্ষাৎ — গুহাবাসের প্রতিষেধক</div></div>
+</div>
+
 <ul class="checklist"><li>প্রতিদিন ৩০০ শব্দ — শুক্রবার সব জমা লেখা চেয়ারকে পাঠাও, সাপ্তাহিক চক্র ভাঙো না</li><li>প্রতিটি ফলাফল-টেবিল/চিত্রের নিচে ১-লাইন ব্যাখ্যা লেখো — ডিফেন্সে সেগুলোই তোমার ঢাল</li><li>কমিটির ২০ প্রশ্নের উত্তর-খাতা বানাও — প্রতি সপ্তাহে ৫টা করে মহড়া</li><li>ডিফেন্সের আগে দুই পূর্ণ-মহড়া: একা রেকর্ড করে, একবার সহকর্মী/পরিবারের সামনে</li></ul>
 <div class="verse">وَالْعَصْرِ ۝ إِنَّ الْإِنسَانَ لَفِي خُسْرٍ ۝ إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ — "সময়ের কসম — মানুষ ক্ষতিতেই, তবে যারা ঈমান রাখে, সৎকাজ করে, পরস্পরকে সত্যের উপদেশ দেয় ও ধৈর্যের উপদেশ দেয়।" (কুরআন ১০৩:১-৩) — পাঁচ বছরের রিহলার সার-সূত্র: ঈমান + কাজ + সত্য-কথা + ধৈর্য।</div>
 <div class="secret-box">🎓 পঞ্চম বছর = প্রত্যাবর্তনের বছর: ৬০ ক্রেডিট ✓, ডিফেন্স = মজলিস (শত্রু নয়), শুক্রবার-চাঙ্ক, ৬-outcome ঢাল, এবং শেষ কাজ — পরের মুসাফিরের জন্য তোমার রিহলা-নথি। ২০২৬-এ যে ছাত্রটি 'আমি যাব' বলেছিল, ২০৩১-এ সে-ই ডাকে 'ডক্টর সাহেব'।</div>`,

@@ -31,6 +31,29 @@ doors.push({
 <tr><td class="hl">Communicate</td><td>dashboards, reports</td><td>✅ তোমার রিপোর্ট-লেখা অভ্যাস</td></tr>
 </table>
 <div class="callout tip"><span class="co-icon">🧰</span><div><strong>টিপ:</strong> কোর্সে সম্ভবত R বা Tableau-তে টান পড়বে — ভয় নেই। যন্ত্র বদলালেও পাইপলাইন-যুক্তি (collect→clean→analyze→visualize→communicate) অটল। এই পাঁচ ধাপ একবার শিখলে যেকোনো যন্ত্রে বসে যাওয়া যায়।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> মশাই, আমি এক্সেলে দশ বছর ধরে রিপোর্ট বানাই — কোড শিখব কেন?<br><strong>যন্ত্রশাল-মশাই:</strong> এক্সেল-হাতি আর কোড-হাতির একটাই তফাত: <strong>পুনরাবৃত্তি।</strong> মাসের শেষে তুমি একই কাজ আবার হাতে করো — ফর্মুলা কপি, পেস্ট, ঠিক করা। স্ক্রিপ্ট একবার লেখা হয়; তারপর প্রতি মাসে এক কমান্ড — আর সবচেয়ে বড় কথা: <strong>কেউ জিজ্ঞেস করলে "এই সংখ্যা কোথা থেকে?" উত্তর পুরো লেখা থাকে</strong> — কোন ফাইল, কোন ফিল্টার, কোন হিসাব। এক্সেলে সেই জবাব মাথার ভেতরে থাকে, মাথা ছুটি নিলে হারায়। গবেষণার জগতে এর নাম reproducibility — যা ডিজার্টেশনের প্রাণ।<br><strong>তুমি:</strong> R না Python?<br><strong>মশাই:</strong> ব্যবসায়িক-বিশ্লেষণের জগতে দুটোই সম্মানিত; তোমার ঝুলিতে Python-এর ভারী পাল্লা আগেই আছে (Django, pandas-জীবন)। BAN 5013-এ দুই হাতিই দেখাবে — কিন্তু গভীর হবে সেটাতেই, যেটা তোমার দৈনন্দিন অস্ত্র। হাতি বদলাতে নেই, হাতির বাহন শক্ত করতে হয়।</div>
+<div class="dialogue en"><strong>You:</strong> Master, I have built Excel reports for ten years — why learn code?<br><strong>Workshop-master:</strong> One difference between the Excel-elephant and the code-elephant: <strong>repetition.</strong> At month-end you redo the same work by hand — copy formulas, paste, fix. A script is written once; then one command every month — and the biggest thing: <strong>when someone asks "where did this number come from?", the entire answer is written down</strong> — which file, which filter, which computation. In Excel that answer lives inside a head; when the head takes leave, it is lost. In research this is called reproducibility — the soul of a dissertation.<br><strong>You:</strong> R or Python?<br><strong>Master:</strong> Both are honored in business analytics; your satchel already carries Python's heavy side (Django, the pandas life). BAN 5013 will show both elephants — but go deep on the one that is your daily weapon. Don't change elephants; strengthen the one you ride.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ হাতে-বানানো মাসিক রিপোর্ট</div>প্রতি মাসে ৩ ঘণ্টা: ডাউনলোড → কপি-পেস্ট → সন্ধান-সংশোধন। ছোট ভুলে ভুল সংখ্যা, কেউ জানে না কোথায় ভাঙল। ব্যবহারকারী ছুটি নিলে রিপোর্ট বন্ধ।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ স্ক্রিপ্টেড পাইপলাইন</div>একবার লেখা, প্রতি মাসে ৩০ সেকেন্ড। প্রতিটি ধাপ চোখে দেখা যায়, ভুল হলে লাইন-নম্বর বলে দেয়। যে-ই চালাক, ফল এক — সংখ্যার জন্ম-সনদ লেখাই থাকে।</div>
+</div>
+<div class="code-block">📊 একই প্রশ্ন দুই জগতে — "কোন পণ্যে সবচেয়ে বেশি মার্জিন?"
+এক্সেল: ফিল্টার → SUMIF → Pivot → চার্ট → (মাসে আবার সব)
+Python:
+import pandas as pd
+df = pd.read_csv("sales.csv")
+margin = (df.groupby("product")
+            .apply(lambda g: (g.revenue - g.cost).sum() / g.revenue.sum())
+            .sort_values(ascending=False))
+print(margin.head())        # উত্তর + পদ্ধতির পূর্ণ সনদ, চিরকালের জন্য
+অনুশীলন: নিজের একটা সাপ্তাহিক এক্সেল-কাজ বেছে স্ক্রিপ্টে তুলো — সাশ্রয়ী সময়টা নোট করো (কোর্সের প্রথম artifact)।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">১×</div><div class="sc-label">লেখা — তারপর অসীম পুনরাবৃত্তি বিনামূল্যে</div></div>
+  <div class="stat-card"><div class="sc-num">৩টি</div><div class="sc-label">টুল-স্তম্ভ — স্প্রেডশিট · Python/R · ভিজ্যুয়ালাইজেশন</div></div>
+  <div class="stat-card"><div class="sc-num">৩৬০°</div><div class="sc-label">নোটবুক — কোড+লেখা+চিত্র এক দলিলে</div></div>
+  <div class="stat-card"><div class="sc-num">১</div><div class="sc-label">মানদণ্ড — অন্য কেউ চালালেও একই উত্তর</div></div>
+</div>
+
 <ul class="checklist"><li>একই ডেটাসেট দুইবার বিশ্লেষণ করো — একবার স্প্রেডশিটে, একবার pandas-এ; সময় মেপে দেখো তফাত</li><li>নিজের যেকোনো CSV-তে <code>df.describe()</code> + একটা histogram এঁকো</li><li>matplotlib দিয়ে ৩ ধরনের চার্ট (line, bar, scatter) — একই ডেটার ৩ গল্প</li></ul><div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 53 (Python City — ২২ দরজা) pandas-জীবনের পূর্ণ শহর; আর Book 2 (Bazaar of Algorithms — ১৮ দরজা) দেখাবে কোন যন্ত্র কোন কাজে। BAN 5013 চলাকালে দুটোই পাশে।</div></div>
 <div class="verse">وَأَعِدُّوا لَهُمْ — "প্রস্তুত রাখো..." (কুরআন ৮:৬০) — প্রস্তুতির মধ্যে যন্ত্রও, প্রশ্নও।</div>
 <div class="secret-box">🧰 কাঠ দেখে যন্ত্র বেছো, যন্ত্র দেখে কাঠ নয় — প্রশ্ন দেখে টুলচেইন সাজাও: সংগ্রহ→পরিষ্কার→বিশ্লেষণ→দর্শন→বয়ান। পাঁচ ধাপ জানা মানে সব যন্ত্র জানা।</div>`,
@@ -69,6 +92,26 @@ doors.push({
 <tr><td class="hl">"আমরা Kubernetes নিতে পারি"</td><td>"৬ মাসের শেখা-খরচ বনাম স্কেল-সুবিধা — কোনটা জেতে?"</td></tr>
 </table>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ফাঁদ-চেতনা:</strong> "প্রযুক্তি-প্রথম" চিন্তা — সর্বশেষ টুল কিনে তারপর ব্যবহার খোঁজা। ওজিরের নিয়ম: সমস্যা-প্রথম, তারপর প্রযুক্তি। উল্টোটা করলে দরবারে টুলের গুদাম, ব্যবসায় শূন্য হাত।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> ওজির-সাহেব, IT-বিভাগকে "খরচের কেন্দ্র" বলে যারা ঠাট্টা করে, তাদের উত্তর কী?<br><strong>ওজির:</strong> প্রশ্নটাই ভুল ছাঁচে গাঁথা। খরচের খাতায় শুধু জিনিস ঢুকে (কেনা সার্ভার, বেতন); অথচ IT আসলে <strong>বাণিজ্য-পথের রক্ষক</strong> — পথ ভাঙলে বিক্রি থামে। ওজিরের কাজ এই ছবিটা সংখ্যায় দেখানো: ডাউনটাইম-ঘণ্টা × প্রতি-ঘণ্টার বিক্রি = চুপচাপ উপেক্ষিত লোকসান। এই এক হিসাবই "খরচ" থেকে "বিনিয়োগ"-এ চোখ ঘোরায়। <strong>Alignment</strong> শব্দের অর্থ এই: প্রতিটি IT-সিদ্ধান্তের সাথে ব্যবসার লক্ষ্যের দড়ি দৃশ্যমান — দড়ি নেই মানে শখের প্রজেক্ট।<br><strong>তুমি:</strong> KPI আর OKR?<br><strong>ওজির:</strong> KPI = <strong>গেজ-ঘড়ি</strong> (কেমন চলছে: আপটাইম, টিকিট-সময়); OKR = <strong>গন্তব্য-তীর</strong> (কোথায় যাবো: "এই বছর অন-বোর্ডিং ৩ দিন থেকে ১ দিনে")। ঘড়ি না দেখে তীর ছোড়া অন্ধ; তীর ছাড়া ঘড়ি দেখা অন্ধ সাধনা। DIT 7043-এর আলোচনায় এই জোড়াই বারবার ফিরবে।</div>
+<div class="dialogue en"><strong>You:</strong> Vizier, what is the answer to those who mock IT as a "cost center"?<br><strong>Vizier:</strong> The question is framed wrong. Only things enter the expense ledger (bought servers, salaries); yet IT is truly <strong>the guardian of the trade-route</strong> — break the route and sales stop. The vizier's work is to show that picture in numbers: downtime-hours × revenue-per-hour = the silently ignored loss. That one calculation turns eyes from "cost" to "investment." <strong>Alignment</strong> means exactly this: a visible rope between every IT decision and a business goal — no rope means a hobby project.<br><strong>You:</strong> KPI vs OKR?<br><strong>Vizier:</strong> KPI is the <strong>gauge</strong> (how are we running: uptime, ticket-time); OKR is the <strong>destination-arrow</strong> (where we go: "this year, onboarding from 3 days to 1"). Shooting arrows without gauges is blind; watching gauges without arrows is blind ritual. This pair returns again and again in DIT 7043.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ প্রযুক্তি-প্রথম সিদ্ধান্ত</div>"নতুন টুল এসেছে, নিই!" — কোন ব্যথা সারবে লেখা নেই, মালিক অজানা। ছয় মাসে পরিত্যক্ত; খাতায় খরচ, কেউ দায়ী নয়।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ ব্যবসা-প্রথম সিদ্ধান্ত</div>প্রথম বাক্য: "এই সমস্যাটা মাসে কত খরচ/হারি"? তারপর বিকল্প, মানদণ্ড, রায়। টুল শেষ প্রশ্ন — এবং প্রতিটি সিদ্ধান্তের সাথে মালিকের নাম লেখা।</div>
+</div>
+<div class="code-block">📋 কেস-স্টাডি: এক-পাতার business-case ছাঁচ (DIT 7043-এর মুদ্রা):
+১. ব্যথা: [কার, কী ব্যথা, কত ঘন/দামি]           যেমন: সেলস-টিম ম্যানুয়াল রিপোর্টে সপ্তাহে ৬ ঘণ্টা
+২. মূল্য: ৬ ঘণ্টা × ৪ জন × ৫২ সপ্তাহ = ১২৪৮ ঘণ্টা/বছর → টাকায় [হিসাব]
+৩. বিকল্প: (ক) না-করা (খ) স্বয়ংক্রিয়করণ (গ) আউটসোর্স — প্রতিটির ৩-বছর TCO
+৪. মানদণ্ড: খরচ · ঝুঁকি · সময় · গুণমান — কোনটা জিততে হবে আগে ঠিক
+৫. রায় + মালিক + যাচাই-তারিখ: "৬ মাসে ঘণ্টা ৬→১; মালিক: X; যাচাই: তারিখ"
+টিপ: এই ছাঁচে নিজের কাজের একটা প্রস্তাব লিখে ফেলো — কোর্সের প্রথম বড় অ্যাসাইনমেন্টের খসড়া তৈরি।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">১</div><div class="sc-label">দড়ি — প্রতিটি সিদ্ধান্ত ব্যবসার লক্ষ্যে বাঁধা</div></div>
+  <div class="stat-card"><div class="sc-num">২</div><div class="sc-label">চোখ — গেজ (KPI) ও তীর (OKR)</div></div>
+  <div class="stat-card"><div class="sc-num">৩</div><div class="sc-label">বিকল্পের ন্যূনতম সংখ্যা সিদ্ধান্তের আগে</div></div>
+  <div class="stat-card"><div class="sc-num">১</div><div class="sc-label">মালিক — নামহীন প্রজেক্ট মানে এতিম প্রজেক্ট</div></div>
+</div>
+
 <ul class="checklist"><li>গত সপ্তাহের একটা কাজের সিদ্ধান্ত লিখে ফেলো: সমস্যা → বিকল্প → মানদণ্ড → রায়</li><li>LedgerPilot-এর একটা ফিচারের এক-পাতার business-case লেখো (কার কষ্ট কমে, কত টাকা/সময় বাঁচে)</li><li>নিজের কাজের stakeholder-মানচিত্র আঁকো — কে প্রভাবিত, কে প্রভাবক, কে সিদ্ধান্তকারী</li></ul><div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 23 (Irreplaceable Craftsman — ১০ দরজা) প্রথম-সূত্র চিন্তা আর প্রোডাক্ট-বোধ গড়ে; Book 33 (Loom of Reason — ১০ দরজা) সিদ্ধান্তের গণিত শেখায়। DIT 7043-এর প্রতিটি case-study-তে এই দুই বইয়ের চোখ লাগবে।</div></div>
 <div class="verse">وَأَمْرُهُمْ شُورَى بَيْنَهُمْ — "তাদের কাজ পরস্পর পরামর্শে।" (কুরআন ৪২:৩৮)</div>
 <div class="secret-box">🏛️ সেনাপতি বলে "কীভাবে", ওজির জিজ্ঞেস করে "কেন ও কী মূল্যে" — IT ম্যানেজমেন্ট মানে প্রতিটি প্রযুক্তি-সিদ্ধান্তকে ব্যবসার ভাষায় অনুবাদ করা। যে অনুবাদ জানে, সে-ই দরবারের রত্ন।</div>`,
@@ -106,6 +149,26 @@ doors.push({
 <tr><td class="hl">SLA</td><td>সেবার শর্তনামা — uptime, response, penalty</td><td>চুক্তির পর, সম্পর্কের আয়ু</td></tr>
 </table>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ফাঁদ-চেতনা:</strong> সস্তা দামে কেনা, কঠিন শর্তে বাঁধা — প্রথম বছর সস্তা, দ্বিতীয় বছর নবায়ন-দাম দ্বিগুণ। Vendor lock-in মানে এই: দুর্গ তোমার, চাবি বিক্রেতার কাছে।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> দালাল-সাহেব, সবাই বলে "সবচেয়ে কম দামের টেন্ডার নাও" — আপনার খাতা কী বলে?<br><strong>ক্রয়-দালাল:</strong> আমার খাতা বলে: <strong>ক্রয়-মূল্য হলো বরফের টুকরো — দেখা যায় যা, তার নিচে লুকানো যা।</strong> TCO-র তিন তলা: কেনার দাম (একবার), চলার খরচ (লাইসেন্স-নবায়ন, ক্লাউড-বিল, সাপোর্ট), আর বিদায়ের দাম (ডেটা বের করা, নতুনে শেখানো, পুরনোর সমাধান)। সস্তা জাহাজ কিনে পুরো সমুদ্রে দাম শোধ হয় — এই গল্প আমি প্রতি মাসে দেখি। তাই টেন্ডারের প্রথম সারি দাম নয় — <strong>মূল্যায়ন-মানদণ্ড</strong>: কী গুরুত্বপূর্ণ, কত ওজনে — আগে লিখে ফেলো, তারপর দাম খোলো।<br><strong>তুমি:</strong> Vendor lock-in থেকে বাঁচার উপায়?<br><strong>দালাল:</strong> চুক্তিতে তিনটা দরজা লিখিত রাখো: <strong>ডেটা-বহির্গমন</strong> (আমার ডেটা কোন ফরম্যাটে, কত দামে ফিরে পাবো), <strong>রফতানি-রূপান্তর</strong> (প্রতিযোগীতে সরানোর সহায়তা), <strong>এস্কেলেশন</strong> (সমস্যায় কার টেবিলে ওঠে)। দরজা তিনটা চুক্তিতে না থাকলে পরে সেগুলো দেয়াল হয়ে দাঁড়ায়।</div>
+<div class="dialogue en"><strong>You:</strong> Broker, everyone says "take the lowest bid" — what does your ledger say?<br><strong>Procurement-broker:</strong> My ledger says: <strong>the purchase price is an iceberg — what you see, and what hides beneath.</strong> TCO has three floors: the buying price (once), the running cost (license renewals, cloud bills, support), and the exit price (extracting data, retraining, retiring the old). Buy the cheap ship and pay across the whole sea — I watch this story monthly. So a tender's first row is not price but the <strong>evaluation criteria</strong>: what matters, at what weight — write it first, open prices later.<br><strong>You:</strong> Escape from vendor lock-in?<br><strong>Broker:</strong> Write three doors into the contract: <strong>data exit</strong> (my data, in what format, at what cost), <strong>transition assistance</strong> (help moving to a rival), <strong>escalation</strong> (whose table problems rise to). Leave the doors out of the contract, and later they become walls.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ সর্বনিম্ন-দামের কবল</div>দাম-সারি দেখে রায়; মানদণ্ড লেখা হয় পরে, ফল ঘুরিয়ে বলার জন্য। ২ বছরে: লুকানো ফি, অচল সাপোর্ট, ডেটা জিম্মি — কেনা দামের তিনগুণ খরচ।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সেরা-মূল্যের মানদণ্ড</div>আগে ওজন-টেবিল (TCO ৪০% · সক্ষমতা ৩০% · ঝুঁকি ২০% · সম্পর্ক ১০% — উদাহরণ), তারপর দর খোলা। রায় নিজেই নির্ভরযোগ্য, প্রতিদ্বন্দ্বী-পক্ষ প্রমাণ করতে পারে।</div>
+</div>
+<div class="code-block">📑 কেস-স্টাডি: SMS-gateway RFP-খসড়ার কঙ্কাল (DIT 7053-এর ভাষায়):
+১. প্রয়োজন: মাসে ~৫০হাজার OTP; ৯৯% ১০-সেকেন্ডে পৌঁছানো বাধ্যতামূলক
+২. মানদণ্ড ও ওজন: ডেলিভারি-হার ৩৫ · TCO(৩-বছর) ৩০ · SLA-শাস্তি ২০ · ইন্টিগ্রেশন-শ্রম ১৫
+৩. বাধ্যতামূলক-দরজা: ব্যর্থতায় ফলব্যাক-রুট; ডেটা কোথায় থাকে; খোলা API-স্ট্যান্ডার্ড
+৪. SLA-বিষ: uptime কীভাবে গোনা (মাসিক-গড় না ৯৫তম-শতকরা?), জরিমানা-সিঁড়ি, সর্বোচ্চ-সীমা
+৫. বিদায়-দফা: চুক্তি শেষে ডেটা-রফতানি ফরম্যাট ও রূপান্তর-সহায়তা ৩০ দিন
+অনুশীলন: নিজের প্রজেক্টের যেকোনো বাহ্যিক-সেবা এই কঙ্কালে বসাও — কোর্স-খাতার প্রথম পূর্ণ RFP এটাই হতে পারে।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">৩</div><div class="sc-label">TCO-তলা — কেনা · চলা · বিদায়</div></div>
+  <div class="stat-card"><div class="sc-num">৩</div><div class="sc-label">চুক্তি-দরজা — ডেটা · রূপান্তর · এস্কেলেশন</div></div>
+  <div class="stat-card"><div class="sc-num">আগে</div><div class="sc-label">মানদণ্ড লেখা হয় — দাম খোলার আগেই</div></div>
+  <div class="stat-card"><div class="sc-num">৪</div><div class="sc-label">দফা — প্রয়োজন·মানদণ্ড·SLA·বিদায়</div></div>
+</div>
+
 <ul class="checklist"><li>এক-পাতার RFP-খসড়া লেখো — ধরো LedgerPilot-এর SMS-gateway কেনা হবে: প্রয়োজন, শর্ত, মূল্যায়ন-মানদণ্ড</li><li>যেকোনো একটা সেবার (hosting/SMS/email) ৩-বছরের TCO-টেবিল বানাও — লুকানো খরচ খুঁজে বের করো</li><li>একটা বাস্তব SLA পড়ো — ৩টা ফাঁদ চিহ্নিত করো (uptime কীভাবে গোনা? জরিমানা কী?)</li></ul><div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 43 (Sky Fortress — ১০ দরজা) vendor-জগতের মেঘ-নকশা আর খরচ-হিসাব শেখায়; Book 33 (Loom of Reason) চুক্তির আগের সিদ্ধান্ত-পরীক্ষা দেয়। DIT 7053-এর মূল দুই সঙ্গী।</div></div>
 <div class="verse">وَفُوا بِالْعُقُودِ — "চুক্তিসমূহ পূরণ করো।" (কুরআন ৫:১)</div>
 <div class="secret-box">📜 দাম দলিলের শেষ লাইন, প্রথম নয় — প্রয়োজন → RFI → RFP → RFQ → চুক্তি → SLA: এই সিঁড়ি ভালোবেসে নামলে কেনা জিনিস নয়, কেনা নিশ্চয়তা।</div>`,
@@ -143,6 +206,29 @@ doors.push({
 <tr><td class="hl">Burndown</td><td>বাকি-মাইল খাতা</td><td>স্প্রিন্টের বাকি-পয়েন্ট গ্রাফ</td></tr>
 </table>
 <div class="callout tip"><span class="co-icon">🎯</span><div><strong>টিপ:</strong> DIT-র প্রতিটি কোর্স একটা মিনি-প্রজেক্ট — এই দরজার হাতিয়ারগুলো আজই ব্যবহার করো: নিজের ১৮-দরজার যাত্রাটাই একটা প্রজেক্ট! Scope = ৬০ ক্রেডিট, Time = সেমিস্টার-প্ল্যান, Cost = টিউশন+সময়। নিজের WBS এঁকে ফেলো।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> কাফেলার-নায়ক, risk register লিখলাম — এবার ফ্রেমে টাঙ়ালাম, শেষ?<br><strong>নায়ক:</strong> না মুসাফির — register হলো <strong>জীবন্ত দলিল</strong>, দেয়ালের চিত্র নয়। প্রতি সপ্তাহে প্রশ্ন তিনটা: কোন নতুন ঝুঁকি দেখা দিলো? কোন পুরনোটা বড় হলো (সম্ভাবনা/প্রভাব বদলাল)? কোন প্রতিকার সত্যিই কাজ করছে? যে register বদলায় না, সে ঝুঁকির নয় — অতীতের ছবি। আর শিখো <strong>critical path</strong>-এর চোখ: কাজের জালে যে দীর্ঘতম শিকল-ধারা মোট সময় ঠিক করে, সেটাই নায়কের আসল দড়ি — ওই শিকলের এক আংটা দেরি মানে পুরো কাফেলা দেরি। বাকি সব কাজের হাতে ভাঁড়ার-সময় (slack) আছে; শিকলের আংটার হাতে নেই।<br><strong>তুমি:</strong> Agile না Waterfall?<br><strong>নায়ক:</strong> প্রশ্নটা উল্টে দাও: <strong>প্রয়োজন কি আগে থেকে পাথরে-খোদা?</strong> হ্যাঁ (সেতুর নকশা, কমপ্লায়েন্স-রিপোর্ট) → ধারাবাহিক-পথ (Waterfall) দুর্বোধ্যতা কমায়। না, ধাপে-ধাপে জানা যাবে (প্রোডাক্ট-ফিচার) → চক্র-পথ (Agile/Scrum) পরিবর্তনকে আয়োজন করে। পাঁচ বছরের রিহলায় দুটোই লাগবে — কোর্স-পরিকল্পনা ধারাবাহিক, গবেষণা-প্রশ্ন চক্রাকার।</div>
+<div class="dialogue en"><strong>You:</strong> Captain, I wrote the risk register — framed it on the wall; done?<br><strong>Caravan-captain:</strong> No, traveler — a register is a <strong>living document</strong>, not wall-art. Three questions weekly: which new risk appeared? which old one grew (probability/impact shifted)? which mitigation actually works? A register that never changes is not risk's — it is a photograph of the past. And learn the <strong>critical path</strong> eye: in the web of tasks, the longest chain of links fixes the total time — that chain is the captain's true rope; one late link there delays the whole caravan. Every other task holds slack; the chain's links hold none.<br><strong>You:</strong> Agile or Waterfall?<br><strong>Captain:</strong> Flip the question: <strong>is the requirement carved in stone beforehand?</strong> Yes (bridge design, compliance report) → the sequential path (Waterfall) reduces ambiguity. No, discovered step by step (product features) → the cyclic path (Agile/Scrum) organizes change. Your five-year rihla needs both — course-planning is sequential; the research question is cyclic.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ নাম-না-জানা scope-বৃদ্ধি</div>"ছোট একটা জিনিস যোগ করি" — প্রতি সপ্তাহে, প্রতি পক্ষ থেকে। চুক্তি-রেখা নেই, পরিবর্তন-দরজা নেই; ৬ মাসের কাজ ১৪ মাসে, কেউ বলতে পারে না কখন থামবে।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ পরিবর্তন-নিয়ন্ত্রণ</div>প্রতিটি নতুন চাহিদা লিখিত প্রস্তাব: সময়/খরচ/গুণমানে কী বদলাবে, কে মানবে। "না"-র দাম জানা, "হ্যাঁ"-র দামও জানা — scope নিজেই একটা নিয়ন্ত্রিত দরজা।</div>
+</div>
+<div class="code-block">🗺️ কেস-স্টাডি: তোমার DIT-যাত্রার নিজের হাতে-খোদা পরিকল্পনা:
+স্তর-১ (Program):      ৬০cr রিহলা — ১০ টার্মের মাইলফলক
+স্তর-২ (Term):         প্রতি টার্ম: ২ কোর্স + ১ residency + ১ প্রতিফলন
+স্তর-৩ (Course):       সিলেবাসের সপ্তাহগুলোই কাজের-প্যাকেট
+স্তর-৪ (Week):         কাফেলা-সময় × ৫ রাত + শনি-ব্লক = সাপ্তাহিক সামর্থ্য
+ঝুঁকি-খাতা (শুরু করো আজই):
+  R1 কাজের চাপ-সপ্তাহে কোর্স-পিছিয়ে যাওয়া | সম্ভাবনা: উচ্চ | প্রতিকার: এক-সপ্তাহ-আগে-বাফার
+  R2 residency-তারিখ vs কাজের ডেডলাইন সংঘর্ষ | মধ্যম | ৬ মাস আগে ক্যালেন্ডার-দখল + ম্যানেজার-জানানো
+  R3 গবেষণা-প্রশ্ন দেরিতে পাকা | উচ্চ | প্রতি-কোর্সে প্রশ্ন-বীজ (দরজা ১২-এর নিয়ম)
+টিপ: এই পাতাটাই DIT 7063-এর প্রথম অ্যাসাইনমেন্টের কাঁচামাল — আগে থেকে তৈরি।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">৩</div><div class="sc-label">শিকল — scope·time·cost (একটা টানলে অন্যটা চিৎ)</div></div>
+  <div class="stat-card"><div class="sc-num">৫</div><div class="sc-label">প্রক্রিয়া-দল — শুরু→পরিকল্পনা→চলা→নিয়ন্ত্রণ→শেষ</div></div>
+  <div class="stat-card"><div class="sc-num">১</div><div class="sc-label">দড়ি — critical path, যার আংটায় slack নেই</div></div>
+  <div class="stat-card"><div class="sc-num">সাপ্তাহিক</div><div class="sc-label">ঝুঁকি-খাতার প্রশ্ন-চক্র</div></div>
+</div>
+
 <ul class="checklist"><li>নিজের DIT-যাত্রাকে WBS-এ ভাঙো — কোর্স→চ্যাপ্টার→অ্যাসাইনমেন্ট স্তরে</li><li>আগামী দুই সেমিস্টারের এক-পাতার Gantt আঁকো — residency-সপ্তাহ চিহ্নিত করে</li><li>একটা বাস্তব ঝুঁকির risk-register এন্ট্রি লেখো: ঝুঁকি, সম্ভাবনা, প্রভাব, প্রতিকার</li></ul><div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 4 (City Builder’s Codex — ২০ দরজা) ট্রেড-অফ আর মাইলস্টোন-চিন্তার গভীর খনি; আর Book 54 (LedgerPilot Craftsman — ৩৭ দরজা) প্রমাণ যে তুমি নিজেই একটা ৩৭-দরজার মেগা-প্রজেক্ট চালিয়েছ। DIT 7063-এ দুটোই খুলে রাখো।</div></div>
 <div class="verse">وَأَعِدُّوا لَهُم مَّا اسْتَطَعْتُم مِّن قُوَّةٍ — "সাধ্যমত প্রস্তুতি রাখো।" (কুরআন ৮:৬০) — প্রস্তুতি = পরিকল্পনার ইবাদত।</div>
 <div class="secret-box">🐪 ত্রিভুজ মনে রেখো: scope-time-cost — এক কোণ টানলে বাকি দুই কোণ চিৎকার করে; চিৎকার না শুনে যে তারিখ দেয়, সে বালিতে লেখে। WBS + Gantt + Risk Register = নায়কের তিন হাতিয়ার।</div>`,

@@ -30,6 +30,26 @@ doors.push({
 <tr><td class="hl">Diffusion</td><td>প্রথম ক্রেতারা → প্রধান ধারা</td><td>প্রথম ১০ ব্যবহারকারীর গভীর খোঁজ</td></tr>
 </table>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ফাঁদ-চেতনা:</strong> "বিল্ড করো, ওরা আসবে" (build it and they will come) — ইতিহাসের সবচেয়ে ব্যয়বহুল প্রযুক্তি-মিথ। আগে কষ্ট-সাক্ষাৎকার, পরে কোড। দ্বিতীয় দোকানও সুন্দর ছিল।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> বাজার-সরদার, উদ্ভাবন কি বিষয়-জ্ঞান নয় — সাহসের ব্যাপার?<br><strong>আবিষ্কার-বাজারের সরদার:</strong> সাহস লাগে, কিন্তু আসল মুদ্রা <strong>নিরীক্ষণ</strong>। আমার বাজারে প্রতি দোকান একটা hypothesis নিয়ে দাঁড়ায়: "মানুষের এই কষ্ট আছে, এই ছোট্ট জিনিস সারাবে।" তারপর সবচেয়ে সস্তা পরীক্ষা — কাগজের পোস্টার টাঙ়ানো, হাতে-লেখা তালিকা, দুই সপ্তাহ গুনা। ফল যা-ই হোক, <strong>শেখাটাই মুনাফা</strong>। তুমি Ipractus-এ যা করো — প্রতিটা ফিচার একটা hypothesis: "শিক্ষক এই দেখলে বুকমার্ক করবে।" পরীক্ষা ছাড়া hypothesis মানে পোশাক-পরা অনুমান।<br><strong>তুমি:</strong> আর pivot-এর সিদ্ধান্ত কীভাবে?<br><strong>সরদার:</strong> তিন-সপ্তাহের নিয়ম: তিন চক্র ধরে একই দেয়ালে মাথা লাগলে প্রশ্ন বদলাও — উত্তর নয়। মনে রেখো: pivot মানে ব্যর্থতা নয়; pivot মানে <strong>প্রমাণ-সংগ্রহের পর দিক-সংশোধন</strong>। যে দোকান সাতবার বদলে অষ্টম সারিতে দাঁড়ায়, আর যে একবারও বদলায় না — বাজার প্রথমজনকেই সিংহাসন দেয়।</div>
+<div class="dialogue en"><strong>You:</strong> Bazaar-chief, is innovation a matter of courage, not domain knowledge?<br><strong>Chief of the Invention-Bazaar:</strong> Courage helps, but the true currency is <strong>experimentation.</strong> In my bazaar every shop stands on a hypothesis: "people have this pain; this small thing heals it." Then the cheapest test — a paper poster, a hand-written list, two weeks of counting. Whatever the outcome, <strong>the learning is the profit.</strong> What you do at Ipractus — every feature is a hypothesis: "teachers who see this will bookmark it." A hypothesis without a test is an assumption in costume.<br><strong>You:</strong> And the pivot decision?<br><strong>Chief:</strong> The three-week rule: if the same wall breaks your head for three cycles, change the question — not the answer. Remember: pivot is not failure; pivot is <strong>direction-correction after evidence-collection.</strong> The shop that changes seven times and stands in the eighth row — and the one that never changes — the bazaar gives the throne to the first.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ অন্ধ-নির্মাণ</div>কারো কথা না জিজ্ঞেস করে ৬ মাস কোড; লঞ্চের দিন জানা গেলো কষ্টটা আর নেই। "মানুষ নিশ্চয়ই চাইবে" — ইতিহাসের সবচেয়ে ব্যয়বহুল বাক্য।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ Evidence-নির্মাণ</div>সপ্তাহ-১: কষ্ট-সাক্ষাৎকার (৫ জন)। সপ্তাহ-২: সবচেয়ে সস্তা পরীক্ষা (landing/পোস্টার)। সপ্তাহ-৩: সংখ্যা পড়ে রায় — চলবে/বদল/বন্ধ। প্রতিটি ধাপের শেখা লিখিত।</div>
+</div>
+<div class="code-block">🧪 কেস-স্টাডি: "ক্লাসে কে অনুপস্থিত" — Ipractus-ফিচারের hypothesis-খাতা:
+H1: "লাইভ-ক্লাসে শিক্ষক রোল-কল ডিজিটালি চান" → পরীক্ষা: ৩ শিক্ষকের ১-সপ্তাহ পর্যবেক্ষণ
+   ফল: ২/৩ কাগজেই থাকেন (অভ্যাস-জড়তা) → শেখা: ব্যথা আছে, অভ্যাস-বাঁধন আছে
+H2: "হাজিরা-বোতাম ক্লাস-শুরুর স্ক্রিনে দিলে চাপ কমবে" → পরীক্ষা: সবচেয়ে সস্তা MVP (এক বোতাম, এক সপ্তাহ)
+   ফল: ব্যবহার ৩/৩ → শেখা: জায়গা-মান জিতেছে যুক্তি-মানের আগে
+সিদ্ধান্ত: বোতাম-দরজাটা মূল-পথে তোলো; পরের hypothesis-লাইনে যাও।
+টিপ: DIT 7073-এর innovation-assignment এই ছাঁচেই — আজ থেকে নিজের খাতা চালু করো।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">৩</div><div class="sc-label">চক্র — build→measure→learn</div></div>
+  <div class="stat-card"><div class="sc-num">৫</div><div class="sc-label">গ্রাহক-প্রশ্ন — কষ্ট বোঝার ন্যূনতম সাক্ষাৎকার</div></div>
+  <div class="stat-card"><div class="sc-num">২ সপ্তাহ</div><div class="sc-label">সস্তা-পরীক্ষার প্রশস্ত সময়-সীমা</div></div>
+  <div class="stat-card"><div class="sc-num">৩ চক্র</div><div class="sc-label">একই দেয়াল = প্রশ্ন বদলাও (pivot-সংকেত)</div></div>
+</div>
+
 <ul class="checklist"><li>নিজের "কষ্ট-তালিকা" বানাও — দৈনন্দিন ৫টা বিরক্তি, যেগুলো সফটওয়্যার দিয়ে সারা যায়</li><li>একটা কষ্ট বেছে ৩ প্রশ্নের MVP-স্কেচ আঁকো: কার কষ্ট, ক্ষুদ্রতম সমাধান, সফলতার মাপ</li><li>S-curve এঁকে বলো — Ipractus কোথায় দাঁড়িয়ে, পরের বাঁক কোনটা?</li></ul><div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 28 (Knowledge Web — ১০ দরজা) আলাদা-আলাদা জ্ঞানের মিলনে নতুন উদ্ভাবন (Medici Effect) শেখায় — উদ্ভাবন-দরজার আসল ভিত্তি; সাথে Book 23 (Irreplaceable Craftsman)। DIT 7073-এর সঙ্গী।</div></div>
 <div class="verse">إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ — "মানুষ নিজে না বদলালে..." (কুরআন ১৩:১১) — উদ্যোক্তাও নিজের অনুমান বদলাতে না পারলে বাজার তাকে বদলে দেয়।</div>
 <div class="secret-box">💡 আইডিয়া মরুতে বাতাস — সবার মুখে আসে চলে যায়; কার্যকরণই কুয়ো খোঁড়া। MVP দিয়ে ছোট করে খোঁড়ো, পানির (চাহিদার) গভীরতা মাপো, তারপর বড় খনন।</div>`,
@@ -66,6 +86,31 @@ doors.push({
 <tr><td class="hl">"আগে পরীক্ষা, পরে রিলিজ"</td><td>TDD, unit testing, coverage</td></tr>
 </table>
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>রিহলা-সেতু:</strong> এই দরজা তোমার লাইব্রেরির Book 2 (Bazaar of Algorithms) আর Book 51 (Algorithm Craftsman) দিয়ে জুড়বে — সেখানে অ্যালগরিদমের গভীর ১৮+২১টি দরজা তৈরি করা আছে। DIT 7083 চলাকালে সপ্তাহে এক দরজা খুললে কোর্স দ্বিগুণ সহজ।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> উস্তাদ, আমি তো দশ বছর ধরে কোড লিখি — এ দরজায় নতুন কী পাব?<br><strong>কর্মশালার উস্তাদ:</strong> দশ বছরের হাতের কাজ আর কোর্সের ভাষার মাঝে একটা সেতু পাবে। তুমি অভ্যাসে যা করো — নামকরণ, ছোট ফাংশন, টেস্ট-আগে — তার প্রতিটার প্রতিষ্ঠিত নাম আছে: clean code-নীতি, SRP (এক ক্লাস-এক কারণ), TDD-চক্র। DIT 7083 তোমাকে প্র্যাকটিশনারের অভ্যাসকে <strong>পণ্ডিতের শব্দরঞ্জনে</strong> চেনাবে — যাতে ডিজার্টেশনে তুমি নিজের পদ্ধতি ব্যাখ্যা করতে পারো, শুধু চালাতে নয়। আর পাবে <strong>পরিসংখ্যান-ব্রিজ</strong>: DIT 7083-এর কোড পরে RSH 7093-এর যন্ত্রে যায় — numpy-র হিসাব, pandas-এর বণ্টন — এই দুই দরজা এক সেতুতে বাঁধা।<br><strong>তুমি:</strong> "শিক্ষানবিশ-ছাত্রের প্রশ্ন" জিজ্ঞেস করার নিয়মটা আবার?<br><strong>উস্তাদ:</strong> প্রতি ক্লাসের পরে তিন প্রশ্ন নিজেকে: আজ কোন ধারণা আমার কাছে <em>নতুন</em> ছিল? কোনটা আমি <em>ভুল</em> ভাবতাম? কোনটা আমি কালই <em>ব্যবহার</em> করব? — নতুন/ভুল/ব্যবহার: এই তিন শব্দে প্রতিটি ক্লাস সোনায় পরিণত হয়।</div>
+<div class="dialogue en"><strong>You:</strong> Master, I have coded for ten years — what is new in this door?<br><strong>Workshop-master:</strong> A bridge between your hands' decade and the course's vocabulary. What you do by habit — naming, small functions, test-first — each has an established name: clean-code principles, SRP (one class-one reason), the TDD cycle. DIT 7083 shows your practitioner habits in <strong>scholarly dress</strong> — so in the dissertation you can explain your method, not merely run it. And you gain the <strong>statistics-bridge</strong>: DIT 7083's code later feeds RSH 7093's instruments — numpy's computations, pandas' distributions — these two doors join on one bridge.<br><strong>You:</strong> The "apprentice-student question" rule again?<br><strong>Master:</strong> After every class, three self-questions: which idea was <em>new</em> to me? which did I hold <em>wrong</em>? which will I <em>use</em> tomorrow? — new/wrong/use: in these three words every class turns to gold.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ অভ্যাস-বন্দি প্রবীণ</div>"দশ বছর ধরে এভাবেই করি" — নতুন ধারণা শুনলেই প্রতিরোধ; কোর্সের ভাষা শেখা হয় না, গ্রেড আসে অভ্যাসের জোরে। ডিজার্টেশনে পদ্ধতি ব্যাখ্যা করতে গিয়ে আটকায়।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ দ্বৈত-ভাষী কারিগর</div>হাতের ভাষা (এই ফাংশনটা সরাও) + পণ্ডিতের ভাষা (SRP ভঙ্গ হচ্ছে)। প্রতিটি কোর্স-ধারণাকে জিজ্ঞেস করে "আমার বর্তমান প্রজেক্টে এর নাম কী?" — অভ্যাস ও তত্ত্ব এক সেতুতে।</div>
+</div>
+<div class="code-block">🐍 কেস-স্টাডি: একই কাজ — অভ্যাসে vs কোর্স-ভাষায়:
+# কাজ: মাসিক সক্রিয় ব্যবহারকারী গুনো
+# অভ্যাস-সংস্করণ (কাজ হয়, কিন্তু অস্পষ্ট):
+q = User.objects.filter(last_seen__gte=month_start)  # মাসে যারা এলো
+n = len(q)
+# কোর্স-সংস্করণ (একই কাজ, পদ্ধতি-স্পষ্ট — ডিজার্টেশনের ভাষা):
+def active_users(events, window):
+    """Return distinct users with >=1 event in window (operational definition)."""
+    return events[events.ts >= window].user_id.nunique()
+# পার্থক্য: দ্বিতীয়টা পুনরাবৃত্তিযোগ্য, পরীক্ষাযোগ্য, ব্যাখ্যাযোগ্য —
+# "সক্রিয় ব্যবহারকারী" মানে কী, তার operational definition কোডেই লেখা।
+টিপ: নিজের প্রজেক্ট থেকে একটা অভ্যাস-ফাংশন বেছে "কোর্স-সংস্করণে" তুলো — এটাই সপ্তাহের অনুশীলন।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">৩</div><div class="sc-label">শব্দ — নতুন/ভুল/ব্যবহার (প্রতি ক্লাসের প্রশ্ন)</div></div>
+  <div class="stat-card"><div class="sc-num">২</div><div class="sc-label">ভাষা — হাতের ও পণ্ডিতের (দ্বৈত-ভাষী কারিগর)</div></div>
+  <div class="stat-card"><div class="sc-num">১</div><div class="sc-label">সেতু — DIT 7083 → RSH 7093 (কোড → পরিসংখ্যান)</div></div>
+  <div class="stat-card"><div class="sc-num">৩:১</div><div class="sc-label">টেস্ট-কোড অনুপাতের লক্ষ্য-রেখা (মানদণ্ড নয়, দিকা)</div></div>
+</div>
+
 <ul class="checklist"><li>একটা ছোট স্ক্রিপ্ট লেখো: CSV পড়ে ৩টা পরিসংখ্যান (গড়, সর্বোচ্চ, মধ্যমা) বের করে প্রিন্ট করবে</li><li>সেই স্ক্রিপ্টে ২টা টেস্ট লেখো — খালি ফাইল দিলে কী হয়, ভাঙা সারি দিলে কী</li><li>৩ মাস পর নিজেই যেন পড়তে পারো — ভেরিয়েবলের নাম বদলে রিফ্যাক্টর করো</li></ul>
 <div class="verse">الَّذِي عَلَّمَ بِالْقَلَمِ — "যিনি শিখিয়েছেন কলমের মাধ্যমে।" (কুরআন ৯৬:৪) — কোডও কলম; নিখুঁত লেখার নৈতিকতা উভয়ের এক।</div>
 <div class="secret-box">🐍 কারিগর বলে "চলে", গবেষক বলে "কেন চলে ও কত দ্রুত" — DIT 7083 তোমার হাতের দক্ষতাকে কলমের ভাষায় অনুবাদ করার দরজা। Pseudo-code + complexity = ডিজার্টেশনের প্রথম মূলধন।</div>`,
@@ -104,6 +149,29 @@ doors.push({
 <tr><td class="hl">রিগ্রেশন</td><td>প্রবণতা-রেখা, ভবিষ্যদ্বাণীর ভিত্তি</td><td>ব্যবহার-পূর্বাভাস, বাজেট-মডেল</td></tr>
 </table>
 <div class="callout tip"><span class="co-icon">🔗</span><div><strong>রিহলা-সেতু:</strong> দরজা ১০-এর Python এখনই কাজে লাগবে — <code>df.describe()</code> মানে এই দুর্গের প্রথম প্রকোষ্ঠ। আর গভীরে যেতে চাইলে Book 49 (Dice of Destiny — সম্ভাবনা) ও Book 34 (Scale of Evidence — পরীক্ষামূলক প্রমাণ) এই দুর্গের দুই সিঁড়ি। RSH 7093 চলাকালে সেগুলো পাশে রাখো।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> কোষাধ্যক্ষ, বললেন গড়ের আগে বণ্টন — আর CLT কী কাজে লাগে?<br><strong>কোষাধ্যক্ষ:</strong> CLT হলো <strong>নমুনার ক্ষমাপ্রার্থনা</strong>। জনসংখ্যা যে-বণ্টনেরই হোক (বিষম, দাঁতালো), নমুনা-গড়গুলোর বণ্টন ক্রমে স্বাভাবিক-ঘণ্টার মতো দাঁড়ায় — যথেষ্ট বড় নমুনায়। এর মানে: তুমি সব বস্তা মাপতে পারবে না, কিন্তু যথেষ্ট থলি নিলে গড়-অনুমানের ভুল-সীমা হিসাব করতে পারবে — confidence interval তারই নাম। সাহিত্যে যখন দেখবে "b = 0.4, 95% CI [0.1, 0.7]" — পড়ো: "সত্য-মান সম্ভবত এই ঘরে, ১৯ এর ২০ বার।" ঘর শূন্য পেরুলে সম্পর্ক সার্থক; ঘর শূন্য জড়িয়ে থাকলে — সাবধানের চোখ।<br><strong>তুমি:</strong> p-মান নিয়ে এত যুদ্ধ কেন?<br><strong>কোষাধ্যক্ষ:</strong> কারণ p-মান সবচেয়ে বেশি ভুল-পঠিত সংখ্যা। এটা বলে না "H₀ সত্য হওয়ার সম্ভাবনা," বলে <strong>"H₀ সত্য হলে এমন চরম ফল কত দুর্লভ"</strong>। দুর্লভ ফল এসেছে — তাই সন্দেহ করি H₀-কে। বাজারে যা হয়: p&lt;০.০৫ দেখেই বিজয়-নাচ — অথচ হাজার নমুনায় তুচ্ছ পার্থক্যও দুর্লভ হয়। তাই রিহলার নিয়ম: <strong>p-মান ছাড়া effect size নয়, effect size ছাড়া p-মান নয়</strong> — দুটো পাশাপাশি।</div>
+<div class="dialogue en"><strong>You:</strong> Treasurer, you said distribution-before-mean — and what is CLT for?<br><strong>Treasurer:</strong> CLT is <strong>the sample's petition for mercy</strong>. Whatever the population's shape (skewed, jagged), the distribution of sample-means gradually stands like a normal bell — given a large enough sample. Meaning: you cannot weigh every sack, but with enough sacks you can compute the error-bound of your mean-estimate — the confidence interval is its name. In literature, when you read "b = 0.4, 95% CI [0.1, 0.7]" — read: "the true value likely lives in this room, 19 of 20 times." Room excludes zero → relation significant; room straddles zero → cautious eyes.<br><strong>You:</strong> Why so much war over the p-value?<br><strong>Treasurer:</strong> Because it is the most misread number. It does not say "the probability H₀ is true"; it says <strong>"if H₀ were true, how rare is this extreme a result."</strong> A rare result arrived — so we suspect H₀. What the market does: seeing p&lt;0.05, a victory dance — yet with thousands of samples, even trivial differences turn rare. Hence the rihla rule: <strong>no effect size without a p-value, no p-value without an effect size</strong> — side by side.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ p-মানের বিজয়-নাচ</div>"p=০.০০১ — জিতেছি!" প্রভাব কত বড়? কেউ জানে না। হাজারো কেসে তুচ্ছ তফাতও দুর্লভ; ফল ছাপা হলো, কেউ নকল করতে পারলো না — বিজ্ঞানের আস্থা-ফাটল।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ দুই-সংখ্যার সাক্ষাৎকার</div>প্রতিটি ফল: effect size (কত বড়) + CI (কত নিশ্চিত) + p (কত দুর্লভ)। প্রশ্ন: বড়-প্রভাব-নিশ্চিত? নাকি তুচ্ছ-প্রভাব-অনিশ্চিত? দুই জোড়া চোখে ফল পরা — প্রবীণ কোষাধ্যক্ষের অভ্যাস।</div>
+</div>
+<div class="code-block">🐍 কেস-স্টাডি: CLT নিজের চোখে (লাইব্রেরি-মুক্ত Python, ২০ লাইন):
+import random, statistics as st
+population = [random.expovariate(1/50) for _ in range(100_000)]  # বিষম দাঁতালো জনসংখ্যা
+print("pop mean:", round(st.mean(population),1), "median:", round(st.median(population),1))
+for n in (5, 30, 100):
+    means = [st.mean(random.sample(population, n)) for _ in range(2000)]
+    sd = st.stdev(means)
+    print(f"n={n:3}: sample-means sd={sd:5.1f} → 95% রুম ≈ ±{1.96*sd:5.1f}")
+# দেখবে: n=৫-এ গড়গুলো এলোমেলো; n=১০০-এ ঘণ্টা-বাঁধা — CLT চোখের সামনে।
+টিপ: RSH 7093-এর প্রথম ল্যাবে এই পরীক্ষণই ঘুরে ফিরে আসে — আগে চালিয়ে রাখো।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">১.৯৬</div><div class="sc-label">σ — ৯৫% ঘরের প্রস্থ (ঘণ্টার দুই পাশ)</div></div>
+  <div class="stat-card"><div class="sc-num">৩০+</div><div class="sc-label">নমুনা-আকার — CLT-এর শান্ত-মনের সীমা (কড়া সংখ্যা নয়)</div></div>
+  <div class="stat-card"><div class="sc-num">২</div><div class="sc-label">সংখ্যা — p ও effect size, একসাথে পড়ার নিয়ম</div></div>
+  <div class="stat-card"><div class="sc-num">০</div><div class="sc-label">CI-ঘর শূন্য পেরোলে সার্থকতার সংকেত</div></div>
+</div>
+
 <ul class="checklist"><li>নিজের ডেটাসেটে <code>df.describe()</code> চালাও — গড় আর মধ্যমা পাশাপাশি রেখে তুলনা-নোট লেখো</li><li>একটা histogram এঁকে বণ্টনের গল্প বলো — লেজ কোন দিকে, কেন</li><li>একটা মিথ্যা-সহসম্বন্ধ খুঁজে ব্যাখ্যা করো — কেন সম্পর্কটা কারণ নয় (লুকানো তৃতীয় চলক কী?)</li></ul>
 <div class="verse">وَالسَّمَاءَ رَفَعَهَا وَوَضَعَ الْمِيزَانَ — "তিনি আকাশ সমুচ্চিত করেছেন এবং স্থাপন করেছেন মিজান (পাল্লা)।" (কুরআন ৫৫:৭) — মাপার পাল্লা ছাড়া বাজার চলে না, গবেষণাও না; পরিসংখ্যান সেই মিজানেরই গণিত।</div>
 <div class="secret-box">📊 গড় একা প্রাসাদ তোলে না — বণ্টন, মধ্যমা, বিস্তার মিলে তোলে; RSH 7093 পেরোলে তোমার হাতে রিসার্চ-মিনারের চাবি: মাপার ভাষা।</div>`,
@@ -137,6 +205,27 @@ doors.push({
   <div class="cmp-card cmp-bad"><div class="cmp-label">❌ কোর্স-মানসিকতায় আটকে থাকা</div>উত্তর খোঁজো → জমা দাও → গ্রেড নাও → ভুলে যাও। রিসার্চ-মিনারে এই মানসিকতা = ডিজার্টেশন-মরুতে পানিশূন্য পথিক।</div>
   <div class="cmp-card cmp-good"><div class="cmp-label">✅ গবেষক-মানসিকতায় উত্তরণ</div>প্রশ্ন জমা রাখো → উত্তর পরীক্ষা করো → নতুন প্রশ্ন বানাও → শেয়ার করো। প্রতিটি কোর্স-নোট এখন সম্ভাব্য ডিজার্টেশনের উপাদান।</div>
 </div>
+<div class="dialogue"><strong>তুমি:</strong> সরদার, প্রশ্ন-বীজ জমালাম — কোনটা পাকা, বুঝব কীভাবে?<br><strong>কাফেলার সরদার:</strong> তিন-চাপ পরীক্ষায়। <strong>প্রথম চাপ — কৌতূহল:</strong> ছয় মাস পরেও কি প্রশ্নটা তোমাকে জাগায়? যে প্রশ্ন বইয়ের ভাঁজে ভুলে যায়, সে গবেষণা-প্রশ্ন নয়। <strong>দ্বিতীয় চাপ — ক্ষমতা:</strong> তোমার হাতের যন্ত্র (ডেটা, অ্যাক্সেস, দক্ষতা) দিয়ে কি প্রশ্নটা ভাঙা যায়? মহাকাশ-প্রশ্ন ভালো, মরুর মাঝে অকেজো। <strong>তৃতীয় চাপ — অবদান:</strong> উত্তর দিলে কে জানবে নতুন কিছু? যদি উত্তর ইতিমধ্যে হাতে-সহজ — প্রশ্নটা পাকা, কিন্তু ফসল নয়। তিন চাপ সইলে সেই বীজ রোপণের মৌসুম এসেছে।<br><strong>তুমি:</strong> আর advisor না পেলে?<br><strong>সরদার:</strong> Advisor খোঁজা প্রেমের মতো — একতরফা তালিকা খাটে না। তাঁর পেপার পড়ো (তাঁর ভাষা শেখো), residency-তে সাক্ষাৎ (তাঁর সময়ের সম্মান), এক-লাইন প্রশ্ন নিয়ে যাও (তাঁর আগ্রহের পরীক্ষা)। তিনি যদি তোমার এক-লাইনে আরও তিন প্রশ্ন ফেরত দেন — লক্ষণ ভালো; শুধু "interesting" বললে — সামনে আরও খোঁজো।</div>
+<div class="dialogue en"><strong>You:</strong> Elder, I have collected question-seeds — how do I know which is ripe?<br><strong>Caravan-elder:</strong> By the three-press test. <strong>First press — curiosity:</strong> does the question still wake you after six months? A question that lies forgotten in a book-fold is not a research question. <strong>Second press — capability:</strong> can your instruments (data, access, skill) crack it? A galaxy-question is lovely, useless mid-desert. <strong>Third press — contribution:</strong> who learns something new from the answer? If the answer is already easy at hand — the seed is ripe, but not a crop. Survive all three presses, and planting season has come.<br><strong>You:</strong> And if no advisor?<br><strong>Elder:</strong> Advisor-hunting is like courtship — one-sided lists don't work. Read their papers (learn their language), meet at residency (honor their time), bring a one-line question (test of their interest). If they return three more questions for your one line — a good sign; if only "interesting" — search further.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ সিলেবাস-পোষিত প্রশ্ন</div>"কোর্সে যা পড়ালাম তার উপরেই একটা প্রশ্ন" — নিজের দৈনন্দিন কষ্ট থেকে নয়; উত্তরে কারো কিছু যায় আসে না; ছয় মাস পরে নিজেই হারিয়ে ফেলো।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ তিন-বৃত্তের ছেদ</div>কৌতূহল (আমার জ্বালা) × ক্ষমতা (আমার যন্ত্র) × অবদান (দুনিয়ার লাভ) — তিন বৃত্ত যেখানে ওভারল্যাপ করে, সেই ছেদ-অঞ্চলেই ডিজার্টেশনের কুয়ো খোঁড়ো।</div>
+</div>
+<div class="code-block">📓 কেস-স্টাডি: প্রশ্ন-খাতার এক পাতা (নিজের হাতে ভরো):
+তারিখ: ____ | উৎস-কোর্স/ঘটনা: ____
+বীজ-প্রশ্ন: "লাইভ-ক্লাসে কেন কেউ কেউ প্রথম ৩ মিনিটেই বিদায় নেয়?"
+কৌতূহল-চাপ: ৬ মাস ধরে জাগে? [হ্যাঁ/না] + কেন (১ লাইন): ____
+ক্ষমতা-চাপ: ডেটা আছে? (কল-লগ, কোর্স-মেটাডেটা) [হ্যাঁ/আংশিক/না] → কেজো হলে পরবর্তী ধাপ: ____
+অবদান-চাপ: উত্তর জানলে কে জিতবে? (শিক্ষক / প্ল্যাটফর্ম / গবেষণা-সাহিত্য) + ১ লাইন: ____
+পরবর্তী কাজ: ৩টা সম্পর্কিত পেপারের নাম জমাও → advisor-কথার সূচনা
+টিপ: দরজা ১৭-এর প্রস্তাবনা এই পাতাগুলো থেকেই জন্ম নেবে — আজ থেকে পাতা জমাও।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">৩</div><div class="sc-label">চাপ — কৌতূহল · ক্ষমতা · অবদান</div></div>
+  <div class="stat-card"><div class="sc-num">১০+</div><div class="sc-label">প্রশ্ন-বীজ — কোর-পর্ব শেষে জমানোর লক্ষ্য</div></div>
+  <div class="stat-card"><div class="sc-num">৩</div><div class="sc-label">পেপার — advisor-সাক্ষাৎ পূর্বে পড়ার নিয়ম</div></div>
+  <div class="stat-card"><div class="sc-num">৬ মাস</div><div class="sc-label">কৌতূহল-চাপের সময়-পরীক্ষা</div></div>
+</div>
+
 <ul class="checklist">
 <li>প্রশ্ন-খাতা শুরু করো — আজই, খালি তিনটা প্রশ্ন দিয়ে</li>
 <li>প্রোগ্রামের অধ্যাপকদের গবেষণা-ক্ষেত্রের তালিকা বানাও</li>

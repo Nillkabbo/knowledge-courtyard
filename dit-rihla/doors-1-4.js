@@ -31,6 +31,25 @@ doors.push({
 <tr><td class="hl">মজলিস (এই বইয়ের ১৮ নং দরজা)</td><td>—</td><td>—</td><td>৬টি program outcome — সেখানেই সব স্টেশন মিলবে</td></tr>
 </table>
 <div class="callout info"><span class="co-icon">🕐</span><div><strong>হাইব্রিড ছন্দ:</strong> এই প্রোগ্রাম hybrid — কোর্স অনলাইনে চলে, সেমিস্টারে residency মানে ক্যাম্পাসে হাজিরা। কাজ আর পড়া একসাথে — অর্থাৎ সপ্তাহের দিনে তুমি ইঞ্জিনিয়ার, সন্ধ্যায় গবেষক। F-1 hybrid মানে এই দ্বৈত-জীবনই তোমার নতুন স্বভাব।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> রাতের সেই টেবিলে বাবা জিজ্ঞেস করলেন — PhD না DIT, পার্থক্যটা আসলে কী?<br><strong>বাবা (প্রবীণ কাফেলা-নেতা):</strong> দুটোই ডক্টর, কিন্তু দুই দিকে মুখ করা। <strong>PhD-গবেষক জিজ্ঞেস করে "জানার সীমানা কোথায়?"</strong> — তাঁর ফল একটা নতুন তত্ত্ব, পরীক্ষাগার-জন্ম। <strong>DIT-গবেষক জিজ্ঞেস করে "অফিসের ব্যথা কোথায়?"</strong> — তাঁর ফল একটা কার্যকর সমাধান, কর্মক্ষেত্র-জন্ম। তুমি ১০ বছর সিস্টেম বানিয়েছ — তোমার প্রশ্নগুলো স্বাভাবিকভাবেই দ্বিতীয় জাতের। practitioner-scholar শব্দটার ওজন এখানেই: অনুশীলনকারীর হাত + পণ্ডিতের চোখ।<br><strong>তুমি:</strong> তাহলে কি তত্ত্ব শিখতে হবে না?<br><strong>বাবা:</strong> শিখবে — কিন্তু তত্ত্ব তোমার কাছে উপাদান, রাজধানী নয়। প্রতিটি তত্ত্ব জিজ্ঞেস করবে "আমাকে কোন বাস্তব সমস্যায় নামাবে?" — এই প্রশ্নটাই DIT-ছাত্রের নিশানা।</div>
+<div class="dialogue en"><strong>You:</strong> At that night-table, father asked — PhD or DIT, what IS the difference?<br><strong>Father (elder caravan-leader):</strong> Both are doctorates, but facing two directions. <strong>The PhD-researcher asks "where is the frontier of knowledge?"</strong> — the fruit is new theory, laboratory-born. <strong>The DIT-researcher asks "where is the organization's pain?"</strong> — the fruit is a working solution, workplace-born. You have built systems for ten years; your questions are naturally of the second kind. That is the weight of "practitioner-scholar": a practitioner's hands + a scholar's eyes.<br><strong>You:</strong> So no theory?<br><strong>Father:</strong> You will learn it — but theory is your material, not your capital. Every theory will ask you "which real problem do you deploy me on?" — that question is the DIT student's compass.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ডিগ্রি-সংগ্রাহক মন</div>৬০ ক্রেডিট = জমানোর জিনিস। কোর্স পার হলে ভুলে যাও; শেষে একটা সার্টিফিকেট, শূন্য প্রশ্ন। পাঁচ বছর পর হাতে যা থাকে: ট্রান্সক্রিপ্ট।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ প্রশ্ন-সংগ্রাহক মন</div>৬০ ক্রেডিট = ৬০টা প্রশ্ন-বীজ বোনার মাঠ। প্রতি কোর্সে অন্তত একটা "এটা আরও ভালোভাবে করা যেত" খাতায় লেখা। পাঁচ বছর পর হাতে যা থাকে: একটা পাকা গবেষণা-প্রশ্ন + তার উত্তরের গ্রন্থ।</div>
+</div>
+<div class="code-block">🗓️ হাইব্রিড-সপ্তাহের ছাঁচ (নিজের ক্যালেন্ডারে বসাও):
+সোম–বৃহি  ২০:৩০–২২:০০  কাফেলা-সময় (কোর্স-পাঠ: ভিডিও → নোট → কুইজ)
+শুক্র      ২১:০০–২২:৩০  সাপ্তাহিক-জমা (অ্যাসাইনমেন্ট জমা দেওয়ার রাত)
+শনি      ০৯:০০–১৩:০০  শনি-ব্লক (গভীর-কাজ: প্রজেক্ট + লেখা + পরিবার-সময় পরে)
+রবি      —            বিশ্রাম-দিন (পুড়ে-যাওয়া ঠেকানোর নিয়ম, লঙ্ঘন নয়)
+নিয়ম: শনি-ব্লক কখনো সপ্তাহের কাজ-ব্যথা সারতে খরচ হবে না — সেটা রিহলার রাজধানী।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">৬০</div><div class="sc-label">ক্রেডিট — পাঁচ বছরের মাইল</div></div>
+  <div class="stat-card"><div class="sc-num">১৭</div><div class="sc-label">কোর্স (৯+৫+৩)</div></div>
+  <div class="stat-card"><div class="sc-num">১০</div><div class="sc-label">টার্ম (Fall 2026 → Spring 2031)</div></div>
+  <div class="stat-card"><div class="sc-num">১</div><div class="sc-label">নিয়ম — প্রতি কোর্সে এক প্রশ্ন-বীজ</div></div>
+</div>
+
 <ul class="checklist"><li>ক্যাটালগ-পেজ বুকমার্ক করো; ৯+৫+৩ ভাগটা এক পাতায় হাতে-এঁকে দেওয়ালে টাঙাও</li><li>Academic calendar খুলে আগামী দুই residency-র তারিখ নিজের ক্যালেন্ডারে লিখো</li><li>প্রতিদিনের ৯০-মিনিট "কাফেলা-সময়" (রাত ৮:৩০–১০:০০) বরাদ্দ দাও — ছুটির দিনে শনি-ব্লক</li></ul><div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 5 (Seed of Learning — কীভাবে শিখলে থাকে, ৯ দরজা) রিহলা-ছন্দ বসানোর প্রথম সঙ্গী; আর Book 21 (Researcher’s Mind — ১০ দরজা) দেখাবে ছাত্র-মন থেকে গবেষক-মনে রূপান্তর কেমন দেখতে হয়।</div></div>
 <div class="verse">وَقُل رَّبِّ زِدْنِي عِلْمًا — "বলো, হে আমার রব, আমার জ্ঞান বাড়িয়ে দাও।" (কুরআন ২০:১১৪)</div>
 <div class="secret-box">🎒 মানচিত্র আগে, পা পরে — ৬০ ক্রেডিটের তিন-ভাগ রুট মুখস্থ করো, তারপর প্রথম স্টেশনে হাঁটো। কারণ যে মুসাফির পুরো মানচিত্র জানে, তার কাছে প্রতিটি স্টেশন = গন্তব্যের এক ধাপ, নিঃসঙ্গতা নয়।</div>`,
@@ -69,6 +88,27 @@ doors.push({
 <tr><td class="hl">S — Security</td><td>ডাকাতের খবর</td><td>আক্রমণ-সনাক্তকরণ, অ্যাক্সেস-নিয়ন্ত্রণ</td><td>UFW, fail2ban, TLS</td></tr>
 </table>
 <div class="callout tip"><span class="co-icon">🔧</span><div><strong>টিপ:</strong> FCAPS মুখস্থের বদলে চেনো: তোমার DO সার্ভারে <code>docker stats</code> = কুয়োর পানির লেভেল; <code>vnstat</code> = কাফেলার মালপত্র; <code>iptables -L</code> = বন্ধ-পথের তালিকা। যে টুল ব্যবহার করছ, সেটাই সেরা শিক্ষক।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> পথরক্ষক-সাহেব, FCAPS শুনলাম — কিন্তু বাস্তবে নেটওয়ার্ক-টিম তো সারাদিন আগুন নেভায়। শৃঙ্খলা কোথায়?<br><strong>পথরক্ষক:</strong> আগুন-নেভানো হলো Fault-এর একটা অংশ মাত্র — এবং সবচেয়ে দামি অংশ। আসল খেলা আগুন লাগার আগে: <strong>Configuration</strong> (কোন ডিভাইসে কোন সেটিং — লিখিত, সংস্করণ-সহ), <strong>Accounting</strong> (কে কত ব্যান্ডউইথ খেলো — বিল ও পরিকল্পনার ভিত্তি), <strong>Performance</strong> (লেটেন্সি-গল্প: গড় নয়, ৯৫তম-শতকরা দেখো), <strong>Security</strong> (কে ঢুকতে পারে, কে পারে না — লিখিত তালিকা)। পাঁচটার একটাও অবহেলা করলে বাকি চারটা মিলে রাত-জাগা উপহার দেয়।<br><strong>তুমি:</strong> SNMP আর টেলিমেট্রির তফাত?<br><strong>পথরক্ষক:</strong> SNMP হলো <strong>ডাকঘর</strong> — ম্যানেজার জিজ্ঞেস করে, এজেন্ট উত্তর দেয় (MIB-খাতার OID-পাতা থেকে)। টেলিমেট্রি হলো <strong>পাখি</strong> — ডিভাইস নিজেই নিরন্তর পাঠায়। পুরনো ডাকঘর এখনো দুনিয়ার অর্ধেক চালায়; নতুন পাখি মেঘ-যুগের। দুটোই চিনো — কোর্সে দুটোই আসবে।</div>
+<div class="dialogue en"><strong>You:</strong> Road-keeper, I heard FCAPS — but real network teams fight fires all day. Where is the discipline?<br><strong>Road-keeper:</strong> Firefighting is one slice of Fault — the most expensive slice. The real game is before the fire: <strong>Configuration</strong> (which device holds which setting — documented, versioned), <strong>Accounting</strong> (who consumed what bandwidth — the basis for billing and planning), <strong>Performance</strong> (the latency story: not the mean, watch the 95th percentile), <strong>Security</strong> (who may enter, who may not — a written list). Neglect one of the five, and the other four gift you sleepless nights.<br><strong>You:</strong> SNMP vs telemetry?<br><strong>Road-keeper:</strong> SNMP is the <strong>post-office</strong> — the manager asks, the agent answers (from the MIB-ledger's OID pages). Telemetry is the <strong>bird</strong> — the device streams by itself. The old post-office still runs half the world; the new bird fits the cloud age. Know both — the course will test both.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ আগুন-নেভানো নেটওয়ার্ক</div>"ডাউন হলো তো চিৎকার শুনলাম" — মনিটরিং নেই, কনফিগ-ব্যাকআপ নেই। প্রতিটি ঘটনায় সবাই অন্ধ, সমাধান = রিস্টার্ট। মেয়াদ শেষে কেউ বলতে পারে না কেন বারবার পড়ে।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ FCAPS-শৃঙ্খলা</div>বেসলাইন আছে (স্বাভাবিক দেখতে কেমন), অ্যালার্ট আছে (স্বাভাবিক ভাঙলেই ঘণ্টা), কনফিগ-সংস্করণ আছে (কে কখন কী বদলাল)। ঘটনা ঘটলে প্রশ্ন "কেন" — উত্তর লেজারে খোঁজা যায়।</div>
+</div>
+<div class="code-block">🔍 নিজের হাতে দেখো (ম্যাক/লিনাক্স টার্মিনালে):
+ip route                     # নিজের রাউটিং-টেবিল: কোন পথে কোন নেটওয়ার্ক
+netstat -r                   # একই কথা, পুরনো ছাঁচে
+ping -c 4 8.8.8.8            # গেটওয়ে-হয়ে-বাইরে: RTT মিলিসেকেন্ডে
+traceroute 8.8.8.8           # প্রতিটি পথহস্তের সিঁড়ি — কোথায় সময় যাচ্ছে
+SNMP-জগতে (কোর্স-ল্যাবে):
+snmpwalk -v2c -c public <ip> system   # ডিভাইসের MIB-খাতার system-অধ্যায় পাতো
+টিপ: প্রতিটি আউটপুট কুইজ-নোটে আটকে রাখো — IS 5203-এর ল্যাব-রিপোর্টে সোনা হয়ে যাবে।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">৫</div><div class="sc-label">FCAPS স্তম্ভ</div></div>
+  <div class="stat-card"><div class="sc-num">৭</div><div class="sc-label">OSI স্তর — রোগ-নির্ণয়ের সিঁড়ি</div></div>
+  <div class="stat-card"><div class="sc-num">৩</div><div class="sc-label">TCP handshake — SYN·SYN-ACK·ACK</div></div>
+  <div class="stat-card"><div class="sc-num">৯৫%</div><div class="sc-label">শতকরা — লেটেন্সির আসল গল্প (গড় নয়)</div></div>
+</div>
+
 <ul class="checklist"><li>নিজের রাউটারে routing table দেখো (<code>netstat -r</code> বা <code>ip route</code>) — কোন গেটওয়ে কোন পথে</li><li>Wireshark খুলে ৫ মিনিট ধরো — TCP 3-way handshake-এর SYN, SYN-ACK, ACK প্যাকেটগুলো নিজে চোখে চিনো</li><li>FCAPS-এর ৫ স্তর দিয়ে LedgerPilot-এর গত সপ্তাহের একটা ঘটনা (ধরো API-timeout) শ্রেণিবদ্ধ করো</li></ul><div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 37 (Web of Wires — OSI থেকে CDN, ১০ দরজা) এই স্টেশনের পূর্ণ মানচিত্র; IS 5203 চলাকালে সপ্তাহে এক দরজা খুললে ক্লাস-লেকচার দ্বিগুণ স্বচ্ছ লাগবে।</div></div>
 <div class="verse">وَعَلَامَاتٍ وَبِالنَّجْمِ هُمْ يَهْتَدُونَ — "আর নক্ষত্র দিয়ে তারা পথ চেনে।" (কুরআন ১৬:১৬)</div>
 <div class="secret-box">🌐 রাস্তা বানানো মানে কারিগর, রাস্তার হিসাব রাখা মানে পথরক্ষক — FCAPS হলো সেই দলিল। যে মুসাফির পথরক্ষকের দলিল পড়তে জানে, তার কাফেলা কখনো অকারণে থামে না।</div>`,
@@ -105,6 +145,26 @@ doors.push({
 <tr><td class="hl">Availability</td><td>দুর্গ দরজা খোলা থাকে প্রজাদের জন্য</td><td>রিডুন্ড্যান্সি, DDoS-সুরক্ষা, ব্যাকআপ</td></tr>
 </table>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ফাঁদ-চেতনা:</strong> সবচেয়ে মজবুত প্রাচীরও কাজে লাগে না যদি দরওয়ান ঘুষ খায় — phishing ঠেকায় ফায়ারওয়াল নয়, প্রশিক্ষণ। মানুষ-স্তরটাই সবচেয়ে পাতলা।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> প্রহরী-সাহেব, STRIDE নামটা শুনেছি — কীভাবে হাঁটে?<br><strong>দুর্গ-প্রহরী:</strong> ছয় প্রশ্নের পায়ে-পায়ে হাঁটে, প্রতিটি সম্পদের গায়ে। ধরো তোমার LedgerPilot-লগইন: <strong>S</strong>poofing — কেউ কি অন্যের মুখোশ পরে ঢোকে? <strong>T</strong>ampering — চলার পথে কি প্যাকেট কেউ ছুঁয়ে বদলায়? <strong>R</strong>epudiation — কেউ কি কাজ করে বলবে "আমি করিনি"? <strong>I</strong>nformation disclosure — লগ-না-লগ কি পাসওয়ার্ড-হিন্ট ফাঁস করে? <strong>D</strong>enial — কেউ কি দরজা ভিড় করে আসল মুসাফির আটকাতে পারে? <strong>E</strong>levation — সাধারণ মুসাফির কি দুর্গের চাবি-ঘরে উঠতে পারে? প্রতিটির উত্তর থাকলে দুর্গের নকশা দাঁড়ায়।<br><strong>তুমি:</strong> Zero-trust কেন এত কথা?<br><strong>প্রহরী:</strong> পুরনো দুর্গ দেয়ালে বিশ্বাস করত — ভেতরে ঢুকলে সব-মুক্ত। আধুনিক দুর্গ কাউকে বিশ্বাস করে না, এমনকি ভেতরের চাকরকেও: <strong>প্রতিটি দরজায় পরিচয়-পত্র, প্রতিটি অনুরোধে যাচাই</strong>। কারণ আজকের চোর ভেতর থেকেও আসে — চুরি-যাওয়া ল্যাপটপ, পিশড অ্যাকাউন্ট। IS 5403-এর আধা আলোচনা এই দর্শনের যুদ্ধেই কাটবে।</div>
+<div class="dialogue en"><strong>You:</strong> Guard, I have heard of STRIDE — how does it walk?<br><strong>Fortress-guard:</strong> On six question-feet, over every asset. Take your LedgerPilot login: <strong>S</strong>poofing — can anyone enter wearing another's mask? <strong>T</strong>ampering — can packets be altered in flight? <strong>R</strong>epudiation — can someone act then say "not me"? <strong>I</strong>nformation disclosure — do logs leak password hints? <strong>D</strong>enial — can someone crowd the door to block real travelers? <strong>E</strong>levation — can an ordinary traveler reach the key-room? With answers to each, the fortress design stands.<br><strong>You:</strong> Why so much talk of zero-trust?<br><strong>Guard:</strong> The old fortress trusted its wall — inside, all was free. The modern fortress trusts no one, not even its own staff: <strong>identity at every door, verification on every request.</strong> Because today's thief also comes from inside — a stolen laptop, a phished account. Half of IS 5403's debate lives in this war of philosophies.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ প্রাচীর-মডেল (Perimeter)</div>ভেতরে ঢুকলেই আস্থা: একবার VPN-হলে সব সার্ভার খোলা। একটা পিশড অ্যাকাউন্ট = পুরো দুর্গের চাবি। দেয়াল যত উঁচু, ভেতরের অন্ধবিশ্বাস তত গভীর।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ শূন্য-আস্থা (Zero Trust)</div>প্রতিটি অনুরোধ: কে? কোথা থেকে? কী চায়? কেন? — যাচাই ছাড়া কিছু না। এক অ্যাকাউন্ট পড়লে বিস্ফোরণ এক কক্ষে সীমাবদ্ধ। খরচ বেশি, ভরসা কম — আজকের হিসাবে সস্তা।</div>
+</div>
+<div class="code-block">🛡️ কেস-স্টাডি: LedgerPilot-লগইন এন্ডপয়েন্টের কঠিনকরণ (হাতে-খাতায়):
+[ ] রেট-লিমিট: ৫ ব্যর্থ চেষ্টায় ১৫ মিনিট তালা        → DoS+ব্রুট-ফোর্স দুই থামে
+[ ] MFA: পাসওয়ার্ড + OTP/TOTP                      → পিশড পাসওয়ার্ড একা অচল
+[ ] টোকেন-আয়ু: ১৫ মিনিট, রিফ্রেশ-ঘুরপথে           → চুরি-টোকেনের মেয়াদ ছোট
+[ ] লগ: ব্যর্থ-লগইনও লেজারে, পাসওয়ার্ড-কখনো-না     → Repudiation-রোধ + ফাঁস-রোধ
+[ ] অনুমতি: সাধারণ-ব্যবহারকারী ≠ অ্যাডমিন-প্যানেল   → Elevation-রোধ (সর্বনিম্ন-অনুমতি)
+অনুশীলন: নিজের প্রজেক্টের যেকোনো এন্ডপয়েন্টে এই খাতা চালাও — ফাঁকা ঘর বের হলে সেটাই কোর্সের প্রথম পোর্টফোলিও-আইটেম।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">৬</div><div class="sc-label">STRIDE হুমকি-প্রশ্ন</div></div>
+  <div class="stat-card"><div class="sc-num">৩</div><div class="sc-label">CIA ত্রিভুজ (গোপন·অখণ্ড·সহজলভ্য)</div></div>
+  <div class="stat-card"><div class="sc-num">৫+</div><div class="sc-label">স্তর — defense-in-depth জাল</div></div>
+  <div class="stat-card"><div class="sc-num">১</div><div class="sc-label">নীতি — সবচেয়ে কম অনুমতিই সবচেয়ে নিরাপদ</div></div>
+</div>
+
 <ul class="checklist"><li>নিজের ডিজিটাল-জীবনের এক পাতার threat model লেখো: কে আক্রমণ করতে পারে, কী চায়, কোন দরজা দিয়ে</li><li>LedgerPilot-এর যেকোনো একটা API-endpoint নাও — defense-in-depth অনুযায়ী তার সুরক্ষা-স্তর গুনো (auth? rate-limit? input-validation?)</li><li>Zero-trust নীতিতে নিজের বাসার "প্রাচীর-নিরাপত্তা" পুনঃনকশা করে দেখো — কোন তালা কেন থাকল, কোনটা ভাঙা</li></ul><div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 46 (Copper Fortress — symmetric থেকে TLS, ১০ দরজা) এই দুর্গের অস্ত্রাগার; IS 5403-এর প্রতিটি লেকচারের পরে সেই দরজাটা খুলে রাখো।</div></div>
 <div class="verse">وَأَعِدُّوا لَهُمْ مَّا اسْتَطَعْتُم مِّن قُوَّةٍ — "তাদের বিরুদ্ধে সাধ্যমত শক্তি প্রস্তুত রাখো।" (কুরআন ৮:৬০)</div>
 <div class="secret-box">🛡️ দুর্গ এক দেয়াল নয় — পরিখা, প্রাচীর, দরওয়ান, দলিল, ব্যাকআপ: স্তরে স্তরে পাহারা। এক স্তর ভাঙলে গোটা দুর্গ পড়ে না।</div>`,
@@ -144,6 +204,28 @@ doors.push({
 <tr><td class="hl">Value</td><td>ভবিষ্যদ্বাণী = ফসলের পরিকল্পনা</td><td>সিদ্ধান্ত বদলানো ইনসাইট</td></tr>
 </table>
 <div class="callout info"><span class="co-icon">🧭</span><div><strong>রিহলা-সেতু:</strong> এই দরজাটা তোমার লাইব্রেরির Book 44 (River of Data) আর Book 34 (Scale of Evidence) দিয়ে জুড়বে — সেখানে ডেটা-পাইপলাইন আর পরিসংখ্যানের গভীর পাঠ পাবে। IS 5213 শেষ করে সেই দরজাগুলো খুললে দ্বিগুণ লাভ।</div></div>
+<div class="dialogue"><strong>তুমি:</strong> স্রোত-গণনাকারী, ব্যাচ আর স্ট্রিমের বাস্তব তফাত কোথায়?<br><strong>স্রোত-গণনাকারী:</strong> প্রশ্নটা করো — <strong>উত্তর কত তাড়াতাড়ি পুরনো হয়?</strong> মাসিক আর্থিক-রিপোর্টে এক ঘণ্টা দেরি কিছু না — ব্যাচ-নদী চলবে (রাতে জমা, সকালে মিল)। কিন্তু লাইভ-ক্লাসে কে ড্রপ করলো, সেটা ৩০ সেকেন্ড পরে জানা দরকার — স্ট্রিম-স্রোত (ঘটনা ঘটতেই যাত্রা)। Ipractus-এর কল-মেট্রিক স্ট্রিম; LedgerPilot-এর মাস-শেষের লাভ-ক্ষতি ব্যাচ। একই জগতে দুই নদী — ভুল নদীতে নামলে হয় অপচাশীল দ্রুততা, নয় মৃতপ্রায় ধীরতা।<br><strong>তুমি:</strong> ডেটা-লেক আর ওয়্যারহাউস?<br><strong>স্রোত-গণনাকারী:</strong> ওয়্যারহাউস = <strong>গুদাম</strong> — আগে থেকে সাজানো, গোনা, লেবেল-ওয়ালা; প্রশ্ন আসলে উত্তর দ্রুত। লেক = <strong>আস্ত নদী-জলাশয়</strong> — কাঁচা সব ঢালা, সস্তা, আকার-সীমা নেই; পরে মাছ ধরবে যখন প্রশ্ন আসবে। প্রতিষ্ঠান দুটোই রাখে: লেকে সম্ভাবনা, গুদামে নিশ্চয়তা।</div>
+<div class="dialogue en"><strong>You:</strong> Stream-counter, where is the real batch-vs-stream difference?<br><strong>Stream-counter:</strong> Ask — <strong>how fast does the answer go stale?</strong> A monthly finance report doesn't mind an hour — the batch-river flows (collect at night, reconcile at dawn). But "who dropped from the live class" must be known in thirty seconds — the stream-current (moving the moment the event happens). Ipractus call-metrics are stream; LedgerPilot's month-end P&amp;L is batch. Two rivers in one world — board the wrong one and you get either wasteful speed or deadly slowness.<br><strong>You:</strong> Data lake vs warehouse?<br><strong>Stream-counter:</strong> The warehouse is the <strong>storehouse</strong> — pre-arranged, counted, labeled; answers come fast when questions arrive. The lake is the <strong>whole reservoir</strong> — everything raw poured in, cheap, no size-limit; you fish later when the question comes. Organizations keep both: possibility in the lake, certainty in the storehouse.</div>
+<div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ডেটা-জলাভূমি</div>সব ঢালা হয়েছে, কেউ জানে না কী কোথায়। কলামের নাম-অর্থ ভাগ্গে, মালিক অজানা, একই সত্যের তিন সংস্করণ। বিশ্লেষকের অর্ধেক জীবন "এই ফাইলটা কার?" জিজ্ঞাসায় কাটে।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ ক্যাটালগ-করা হ্রদ</div>প্রতিটি উৎসের নাম-মালিক-আপডেট-সময় লেখা; স্কিমা-অর্থ এক পাতায়; গুণমান-স্কোর দৃশ্যমান। জলাভূমি নয় — বাগান: যা চাও, পথ দেখায়।</div>
+</div>
+<div class="code-block">🐍 পাইপলাইন-অনুশীলন (pandas — নিজের CSV-তে চালাও):
+import pandas as pd
+df = pd.read_csv("ledger_transactions.csv")        # ১ উৎস: নদীর মুখ
+df["date"] = pd.to_datetime(df["date"])            # ২ শুদ্ধি: গোনা-ছাঁচ
+df = df.drop_duplicates(subset=["txn_id"])         #    দ্বৈত-ফোঁটা বাদ
+monthly = (df.groupby(df["date"].dt.to_period("M"))["amount"]
+             .agg(["sum", "mean", "count"]))       # ৩ সঞ্চয়: মাস-ভাঁড়ার
+monthly.to_csv("monthly_summary.csv")              # ৪ বিতরণ: গুদামে তোলা
+টিপ: IS 5213-এর অ্যাসাইনমেন্ট প্রায় এই ছাঁচেই — আগে নিজের ডেটায় চালিয়ে রাখো।</div>
+<div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">৫</div><div class="sc-label">V — Volume·Velocity·Variety·Veracity·Value</div></div>
+  <div class="stat-card"><div class="sc-num">৪</div><div class="sc-label">পাইপলাইন-ধাপ — উৎস→শুদ্ধি→সঞ্চয়→বিতরণ</div></div>
+  <div class="stat-card"><div class="sc-num">২</div><div class="sc-label">নদী — ব্যাচ ও স্ট্রিম</div></div>
+  <div class="stat-card"><div class="sc-num">১</div><div class="sc-label">প্রশ্ন — উত্তর কত দ্রুত পুরনো হয়?</div></div>
+</div>
+
 <ul class="checklist"><li>৫V (Volume, Velocity, Variety, Veracity, Value) দিয়ে LedgerPilot-এর লেনদেন-ডেটা শ্রেণীবদ্ধ করো — প্রতিটি V-এর জন্য এক বাক্য</li><li>নিজের কোনো একটা ডেটা-প্রবাহ চিত্রে আঁকো: উৎস → ভাণ্ডার → প্রক্রিয়া → বিশ্লেষণ → সিদ্ধান্ত</li><li>Hadoop বনাম Spark — কেন/কখন, নিজের ভাষায় ৩ লাইনে নোট করো</li></ul>
 <div class="verse">إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ — "নিশ্চয়ই এতে নিদর্শন রয়েছে সেসব লোকের জন্য যারা চিন্তা করে।" (কুরআন ১৩:৩)</div>
 <div class="secret-box">📊 ডেটা = মানুষের কাজের ছাপ, বিগ ডেটা = যে স্রোত এক পাত্রে ধরে না। নদীকে বাঁধে ভাগ করো (Hadoop), পাত্রে পাত্রে গণনা করো (Spark) — শেষে জিজ্ঞেস করো: এই হিসাব কার ফসল বাঁচাল?</div>`,
