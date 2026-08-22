@@ -69,14 +69,14 @@ function goToMap(){renderMap();showScreen('map-screen')}
 const PLANNER=[
  {t:'Fall 2026', bn:'শরৎ ২০২৬', courses:[{d:2,c:'IS 5203 Network Mgmt',cr:3},{d:3,c:'IS 5403 Cybersecurity',cr:3}], note:'রিহলার প্রথম কাফেলা — দুই কোর্স, ছন্দ বাঁচাও', ms:['Advisor-সাক্ষাৎ + প্রথম residency পরিকল্পনা','সপ্তাহে ৩ রাত + শনি-ব্লক ছন্দ স্থির করা']},
  {t:'Spring 2027', bn:'বসন্ত ২০২৭', courses:[{d:4,c:'IS 5213 Data Science',cr:3},{d:5,c:'BAN 5013 Analytics Tools',cr:3}], note:'ডেটার জোড়া-দরজা — LedgerPilot-ডেটা প্র্যাকটিসে চালাও', ms:['F-1 enrollment-নিয়ম পুনরায় পড়া (full-time hybrid-শর্ত)','গ্রীষ্মে হালকা কোর্স/বিশ্রাম সিদ্ধান্ত']},
- {t:'Fall 2027', bn:'শরৎ ২০২৭', courses:[{d:6,c:'DIT 6003 IT Mgmt',cr:3},{d:7,c:'DIT 6013 Procurement',cr:3}], note:'ম্যানেজমেন্ট-বছরের শুরু — Ipractus-সিদ্ধান্তের সেতু', ms:['কোর-দশকের অর্ধেক পথ — checkpoint সাবমিট']},
- {t:'Spring 2028', bn:'বসন্ত ২০২৮', courses:[{d:8,c:'DIT 6023 Project Mgmt',cr:3},{d:9,c:'DIT 6033 Innovation',cr:3}], note:'I-20 শেষ-বছরের শুরু — স্ট্যাটাস-প্রশ্ন advisor-নোটে লিখিত রাখো', ms:['OPT/CPT-বিকল্প আলোচনা (D/S-গ্র্যান্ডফাদারিং নথিভুক্ত)']},
- {t:'Fall 2028', bn:'শরৎ ২০২৮', courses:[{d:10,c:'DIT 6043 Python',cr:3},{d:11,c:'DIT 6053 Discrete Math',cr:3}], note:'কোর-দশকের সমাপ্তি — ৩০ ক্রেডিট পূর্ণ!', ms:['কোর-GPA যাচাই; রিসার্চ-ক্ষেত্রের বীজ-নোট জমানো']},
- {t:'Spring 2029', bn:'বসন্ত ২০২৯', courses:[{d:13,c:'RSH 6003 Quantitative',cr:3},{d:14,c:'RSH 6013 Qualitative',cr:3}], note:'মিনার ও চায়ের দোকান — দুই চোখে দেখা', ms:['সম্ভাব্য committee-চেয়ার তালিকা (২-৩ নাম)']},
- {t:'Fall 2029', bn:'শরৎ ২০২৯', courses:[{d:15,c:'RSH 6023 Research Design',cr:3},{d:16,c:'RSH 6033 Adv Methodology',cr:3}], note:'নকশা ও তাঁত — artifact প্রস্তাবনার খসড়া বানাও', ms:['গবেষণা-পরিকল্পনা ডকুমেন্ট সম্পূর্ণ; IRB-প্রক্রিয়া শেখা']},
- {t:'Spring 2030', bn:'বসন্ত ২০৩০', courses:[{d:17,c:'DIT 7006 Proposal (6cr)',cr:6}], note:'কারিগরখানা — চুক্তিপত্র লেখার বছর (১টি ভারী কোর্স + কাজ)', ms:['কমিটি গঠিত; proposal defense পাস; IRB-আবেদন']},
- {t:'Fall 2030', bn:'শরৎ ২০৩০', courses:[{d:18,c:'DIT 7016 Dissertation I (6cr)',cr:6}], note:'সাক্ষ্যগ্রন্থ খণ্ড-১ — ডেটা-সংগ্রহ ও লেখা শুরু', ms:['মেথড-অধ্যায় খসড়া; ৩০০ শব্দ/দিন ছন্দ']},
- {t:'Spring 2031', bn:'বসন্ত ২০৩১', courses:[{d:18,c:'DIT 7026 Dissertation II (6cr)',cr:6}], note:'মজলিসের বছর — চূড়ান্ত লেখা, সামনে-করা, ডক্টর-হওয়া 🎓', ms:['ফাইনাল defense; সংশোধন; জমা — রিহলা সম্পূর্ণ!']}
+ {t:'Fall 2027', bn:'শরৎ ২০২৭', courses:[{d:6,c:'DIT 7043 IT Mgmt',cr:3},{d:7,c:'DIT 7053 Procurement',cr:3}], note:'ম্যানেজমেন্ট-বছরের শুরু — Ipractus-সিদ্ধান্তের সেতু', ms:['কোর-পর্বের অর্ধেক পথ — checkpoint সাবমিট']},
+ {t:'Spring 2028', bn:'বসন্ত ২০২৮', courses:[{d:8,c:'DIT 7063 Project Mgmt',cr:3},{d:9,c:'DIT 7073 Innovation',cr:3}], note:'I-20 শেষ-বছরের শুরু — স্ট্যাটাস-প্রশ্ন advisor-নোটে লিখিত রাখো', ms:['OPT/CPT-বিকল্প আলোচনা (D/S-গ্র্যান্ডফাদারিং নথিভুক্ত)']},
+ {t:'Fall 2028', bn:'শরৎ ২০২৮', courses:[{d:10,c:'DIT 7083 Python',cr:3},{d:11,c:'RSH 7093 Statistics',cr:3}], note:'কোর-পর্বের সমাপ্তি — ২৭ ক্রেডিট পূর্ণ!', ms:['কোর-GPA যাচাই; রিসার্চ-ক্ষেত্রের বীজ-নোট জমানো']},
+ {t:'Spring 2029', bn:'বসন্ত ২০২৯', courses:[{d:13,c:'RSH 8003 Quantitative',cr:3},{d:14,c:'RSH 8013 Qualitative',cr:3}], note:'মিনার ও চায়ের দোকান — দুই চোখে দেখা', ms:['সম্ভাব্য committee-চেয়ার তালিকা (২-৩ নাম)']},
+ {t:'Fall 2029', bn:'শরৎ ২০২৯', courses:[{d:15,c:'RSH 8023 Research Design',cr:3},{d:16,c:'RSH 8033 Adv Methodology',cr:3}], note:'নকশা ও তাঁত — artifact প্রস্তাবনার খসড়া বানাও', ms:['গবেষণা-পরিকল্পনা ডকুমেন্ট সম্পূর্ণ; IRB-প্রক্রিয়া শেখা']},
+ {t:'Spring 2030', bn:'বসন্ত ২০৩০', courses:[{d:17,c:'DIT 9006 Proposal (6cr)',cr:6}], note:'কারিগরখানা — চুক্তিপত্র লেখার বছর (১টি ভারী কোর্স + কাজ)', ms:['কমিটি গঠিত; proposal defense পাস; IRB-আবেদন']},
+ {t:'Fall 2030', bn:'শরৎ ২০৩০', courses:[{d:18,c:'DIT 9016 Applied Research I (6cr)',cr:6}], note:'সাক্ষ্যগ্রন্থ খণ্ড-১ — ডেটা-সংগ্রহ ও লেখা শুরু', ms:['মেথড-অধ্যায় খসড়া; ৩০০ শব্দ/দিন ছন্দ']},
+ {t:'Spring 2031', bn:'বসন্ত ২০৩১', courses:[{d:18,c:'DIT 9026 Applied Research II (6cr)',cr:6}], note:'মজলিসের বছর — চূড়ান্ত লেখা, সামনে-করা, ডক্টর-হওয়া 🎓', ms:['ফাইনাল defense; সংশোধন; জমা — রিহলা সম্পূর্ণ!']}
 ];
 function renderPlanner(){
   const host=document.getElementById('planner-grid');if(!host)return;

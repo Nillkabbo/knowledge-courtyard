@@ -16,8 +16,8 @@ doors.push({
   recall: {
     q: " Trine DIT-র ষাট ক্রেডিট তিন ভাগে কীভাবে ভাগ হয়েছে?",
     qen: "How are Trine DIT's sixty credits divided?",
-    a: "১০টি কোর কোর্স (৩০ ক্রেডিট) + ৪টি রিসার্চ কোর্স (১২ ক্রেডিট) + ৩টি ডিজার্টেশন কোর্স (১৮ ক্রেডিট) = ৬০।",
-    aen: "10 core courses (30 cr) + 4 research courses (12 cr) + 3 dissertation courses (18 cr) = 60."
+    a: "৯টি কোর কোর্স (২৭ ক্রেডিট) + ৫টি রিসার্চ কোর্স (১৫ ক্রেডিট) + ৩টি এপ্লাইড-রিসার্চ কোর্স (১৮ ক্রেডিট) = ৬০।",
+    aen: "9 core courses (27 cr) + 5 research courses (15 cr) + 3 applied-research courses (18 cr) = 60."
   },
   story: `<p class="scene-setting">১৩২৫ সালের জুন, টানজিয়ার। একুশ বছরের ইবনে বতুতা বাড়ির দরজায় দাঁড়িয়ে — পিঠে ঝুলি, হাতে কাফেলার তালিকা। তাঁর প্রথম কাজ কোনটি জানো? পথে বেরোনো নয় — <strong>রুট আঁকা।</strong> কোন শহরে কোন মাস্টার, কোন সরাইয়ে কত দিন, কোন পথে ডাকাত কম। পরের তিরিশ বছর এই কাগজটাই তাঁর আসল সঙ্গী। আজ তুমিও সেই সন্ধ্যায় দাঁড়িয়ে — Trine University-র Doctor of Information Technology-এ ভর্তি হয়েছ। প্রথম কাজ একই: মানচিত্রটা চিনে নেওয়া।</p>
 <p class="scene-setting en">June 1325, Tangier. Twenty-one-year-old Ibn Battuta stands at his door — satchel on back, caravan manifest in hand. His first act? Not stepping out — <strong>drawing the route.</strong> Which master in which city, which caravanserai for how many nights, which road has fewer bandits. For thirty years that paper remained his true companion. Tonight you stand at that same threshold — enrolled in Trine University's Doctor of Information Technology. The first act is the same: know the map.</p>
@@ -25,9 +25,9 @@ doors.push({
 <div class="dialogue en"><strong>You:</strong> I heard "doctorate" — but what's the difference between a DIT and a PhD?<br><strong>Guide:</strong> The first turn on your road. A <strong>PhD</strong> makes a researcher: new theory, the academic path. A <strong>DIT</strong> makes a <em>practitioner-scholar</em> — one who heals real-world IT problems with research. Think: the PhD is the astronomer with pen and paper; the DIT is the road-wise judge — reads books AND knows the bazaar.<br><strong>You:</strong> So my old work — Django, Vue, React, DevOps — discarded?<br><strong>Guide:</strong> Discarded? They are your <strong>ijazas</strong> — certificates earned before departure! The whole DIT idea is turning experience into research. Your LedgerPilot and Ipractus workshops become your dissertation's raw material.</div>
 <table class="kv-table">
 <tr><th>স্টেশন-গুচ্ছ</th><th>কোর্স</th><th>ক্রেডিট</th><th>তোমার যাত্রায় মানে</th></tr>
-<tr><td class="hl">কোর-দশক (১০ কোর্স)</td><td>IS 5203, IS 5403, IS 5213, BAN 5013, DIT 6003–6053</td><td>৩০</td><td>দশ শহরে দশ মাস্টার — নেটওয়ার্ক থেকে ডিসক্রিট ম্যাথ</td></tr>
-<tr><td class="hl">রিসার্চ-চতুষ্টয় (৪ কোর্স)</td><td>RSH 6003, 6013, 6023, 6033</td><td>১২</td><td>গবেষণার চার মিনার — সংখ্যা, মানুষ, নকশা, পদ্ধতি</td></tr>
-<tr><td class="hl">ডিজার্টেশন-ত্রয়ী (৩ কোর্স)</td><td>DIT 7006, 7016, 7026</td><td>১৮</td><td>প্রস্তাবনা → গ্রন্থ রচনা → সমাপ্তি</td></tr>
+<tr><td class="hl">কোর-পর্ব (৯ কোর্স)</td><td>IS 5203, IS 5403, IS 5213, BAN 5013, DIT 7043–7083</td><td>২৭</td><td>নয় শহরে নয় মাস্টার — নেটওয়ার্ক থেকে পাইথন</td></tr>
+<tr><td class="hl">রিসার্চ-পর্ব (৫ কোর্স)</td><td>RSH 7093, 8003, 8013, 8023, 8033</td><td>১৫</td><td>পরিসংখ্যান-দুর্গ ও চার মিনার — পরিসংখ্যান, সংখ্যা, মানুষ, নকশা, পদ্ধতি</td></tr>
+<tr><td class="hl">অ্যাপ্লাইড-রিসার্চ ত্রয়ী (৩ কোর্স)</td><td>DIT 9006, 9016, 9026</td><td>১৮</td><td>প্রস্তাবনা → গবেষণা-প্রকল্প → সমাপ্তি</td></tr>
 <tr><td class="hl">মজলিস (এই বইয়ের ১৮ নং দরজা)</td><td>—</td><td>—</td><td>৬টি program outcome — সেখানেই সব স্টেশন মিলবে</td></tr>
 </table>
 <div class="callout info"><span class="co-icon">🕐</span><div><strong>হাইব্রিড ছন্দ:</strong> এই প্রোগ্রাম hybrid — কোর্স অনলাইনে চলে, সেমিস্টারে residency মানে ক্যাম্পাসে হাজিরা। কাজ আর পড়া একসাথে — অর্থাৎ সপ্তাহের দিনে তুমি ইঞ্জিনিয়ার, সন্ধ্যায় গবেষক। F-1 hybrid মানে এই দ্বৈত-জীবনই তোমার নতুন স্বভাব।</div></div>
@@ -35,7 +35,7 @@ doors.push({
 <div class="secret-box">🎒 মানচিত্র আগে, পা পরে — ৬০ ক্রেডিটের তিন-ভাগ রুট মুখস্থ করো, তারপর প্রথম স্টেশনে হাঁটো। কারণ যে মুসাফির পুরো মানচিত্র জানে, তার কাছে প্রতিটি স্টেশন = গন্তব্যের এক ধাপ, নিঃসঙ্গতা নয়।</div>`,
   senior: {
     title: "যাত্রার আগের রাত — করণীয় তালিকা",
-    body: `<p><strong>প্রস্তুতি:</strong> ট্রান্সক্রিপ্ট, কোর্স-প্ল্যানার, ক্যাটালগ-বুকমার্ক রাখো; ১০+৪+৩ ভাগটা এক পাতায় এঁকে দেওয়ালে টাঙাও। <strong>Hybrid বাস্তবতা:</strong> সপ্তাহে ২-৩ কোর্সের বরাদ্দ (work-night rhythm), residency-র তারিখ আগেই ক্যালেন্ডারে। <strong>তোমার ঝুলি:</strong> ১০+ বছরের full-stack + DevOps অভিজ্ঞতা — DIT-র আসল ক্যাপিটাল; practitioner-scholar মানে তোমার দিনের কাজই গবেষণার উপাদান। <strong>ফাঁদ:</strong> "প্রথম সেমিস্টারে সব কোর্স নিয়ে নিই" — না; কাজ+পড়ার ভারসাম্য প্রথম সেমিস্টারেই মাপো, তারপর চাপ বাড়াও।</p>`
+    body: `<p><strong>প্রস্তুতি:</strong> ট্রান্সক্রিপ্ট, কোর্স-প্ল্যানার, ক্যাটালগ-বুকমার্ক রাখো; ৯+৫+৩ ভাগটা এক পাতায় এঁকে দেওয়ালে টাঙাও। <strong>Hybrid বাস্তবতা:</strong> সপ্তাহে ২-৩ কোর্সের বরাদ্দ (work-night rhythm), residency-র তারিখ আগেই ক্যালেন্ডারে। <strong>তোমার ঝুলি:</strong> ১০+ বছরের full-stack + DevOps অভিজ্ঞতা — DIT-র আসল ক্যাপিটাল; practitioner-scholar মানে তোমার দিনের কাজই গবেষণার উপাদান। <strong>ফাঁদ:</strong> "প্রথম সেমিস্টারে সব কোর্স নিয়ে নিই" — না; কাজ+পড়ার ভারসাম্য প্রথম সেমিস্টারেই মাপো, তারপর চাপ বাড়াও।</p>`
   }
 });
 
