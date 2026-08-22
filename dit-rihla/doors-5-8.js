@@ -31,6 +31,7 @@ doors.push({
 <tr><td class="hl">Communicate</td><td>dashboards, reports</td><td>✅ তোমার রিপোর্ট-লেখা অভ্যাস</td></tr>
 </table>
 <div class="callout tip"><span class="co-icon">🧰</span><div><strong>টিপ:</strong> কোর্সে সম্ভবত R বা Tableau-তে টান পড়বে — ভয় নেই। যন্ত্র বদলালেও পাইপলাইন-যুক্তি (collect→clean→analyze→visualize→communicate) অটল। এই পাঁচ ধাপ একবার শিখলে যেকোনো যন্ত্রে বসে যাওয়া যায়।</div></div>
+<ul class="checklist"><li>একই ডেটাসেট দুইবার বিশ্লেষণ করো — একবার স্প্রেডশিটে, একবার pandas-এ; সময় মেপে দেখো তফাত</li><li>নিজের যেকোনো CSV-তে <code>df.describe()</code> + একটা histogram এঁকো</li><li>matplotlib দিয়ে ৩ ধরনের চার্ট (line, bar, scatter) — একই ডেটার ৩ গল্প</li></ul><div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 53 (Python City — ২২ দরজা) pandas-জীবনের পূর্ণ শহর; আর Book 2 (Bazaar of Algorithms — ১৮ দরজা) দেখাবে কোন যন্ত্র কোন কাজে। BAN 5013 চলাকালে দুটোই পাশে।</div></div>
 <div class="verse">وَأَعِدُّوا لَهُمْ — "প্রস্তুত রাখো..." (কুরআন ৮:৬০) — প্রস্তুতির মধ্যে যন্ত্রও, প্রশ্নও।</div>
 <div class="secret-box">🧰 কাঠ দেখে যন্ত্র বেছো, যন্ত্র দেখে কাঠ নয় — প্রশ্ন দেখে টুলচেইন সাজাও: সংগ্রহ→পরিষ্কার→বিশ্লেষণ→দর্শন→বয়ান। পাঁচ ধাপ জানা মানে সব যন্ত্র জানা।</div>`,
   senior: {
@@ -68,6 +69,7 @@ doors.push({
 <tr><td class="hl">"আমরা Kubernetes নিতে পারি"</td><td>"৬ মাসের শেখা-খরচ বনাম স্কেল-সুবিধা — কোনটা জেতে?"</td></tr>
 </table>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ফাঁদ-চেতনা:</strong> "প্রযুক্তি-প্রথম" চিন্তা — সর্বশেষ টুল কিনে তারপর ব্যবহার খোঁজা। ওজিরের নিয়ম: সমস্যা-প্রথম, তারপর প্রযুক্তি। উল্টোটা করলে দরবারে টুলের গুদাম, ব্যবসায় শূন্য হাত।</div></div>
+<ul class="checklist"><li>গত সপ্তাহের একটা কাজের সিদ্ধান্ত লিখে ফেলো: সমস্যা → বিকল্প → মানদণ্ড → রায়</li><li>LedgerPilot-এর একটা ফিচারের এক-পাতার business-case লেখো (কার কষ্ট কমে, কত টাকা/সময় বাঁচে)</li><li>নিজের কাজের stakeholder-মানচিত্র আঁকো — কে প্রভাবিত, কে প্রভাবক, কে সিদ্ধান্তকারী</li></ul><div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 23 (Irreplaceable Craftsman — ১০ দরজা) প্রথম-সূত্র চিন্তা আর প্রোডাক্ট-বোধ গড়ে; Book 33 (Loom of Reason — ১০ দরজা) সিদ্ধান্তের গণিত শেখায়। DIT 7043-এর প্রতিটি case-study-তে এই দুই বইয়ের চোখ লাগবে।</div></div>
 <div class="verse">وَأَمْرُهُمْ شُورَى بَيْنَهُمْ — "তাদের কাজ পরস্পর পরামর্শে।" (কুরআন ৪২:৩৮)</div>
 <div class="secret-box">🏛️ সেনাপতি বলে "কীভাবে", ওজির জিজ্ঞেস করে "কেন ও কী মূল্যে" — IT ম্যানেজমেন্ট মানে প্রতিটি প্রযুক্তি-সিদ্ধান্তকে ব্যবসার ভাষায় অনুবাদ করা। যে অনুবাদ জানে, সে-ই দরবারের রত্ন।</div>`,
   senior: {
@@ -104,6 +106,7 @@ doors.push({
 <tr><td class="hl">SLA</td><td>সেবার শর্তনামা — uptime, response, penalty</td><td>চুক্তির পর, সম্পর্কের আয়ু</td></tr>
 </table>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ফাঁদ-চেতনা:</strong> সস্তা দামে কেনা, কঠিন শর্তে বাঁধা — প্রথম বছর সস্তা, দ্বিতীয় বছর নবায়ন-দাম দ্বিগুণ। Vendor lock-in মানে এই: দুর্গ তোমার, চাবি বিক্রেতার কাছে।</div></div>
+<ul class="checklist"><li>এক-পাতার RFP-খসড়া লেখো — ধরো LedgerPilot-এর SMS-gateway কেনা হবে: প্রয়োজন, শর্ত, মূল্যায়ন-মানদণ্ড</li><li>যেকোনো একটা সেবার (hosting/SMS/email) ৩-বছরের TCO-টেবিল বানাও — লুকানো খরচ খুঁজে বের করো</li><li>একটা বাস্তব SLA পড়ো — ৩টা ফাঁদ চিহ্নিত করো (uptime কীভাবে গোনা? জরিমানা কী?)</li></ul><div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 43 (Sky Fortress — ১০ দরজা) vendor-জগতের মেঘ-নকশা আর খরচ-হিসাব শেখায়; Book 33 (Loom of Reason) চুক্তির আগের সিদ্ধান্ত-পরীক্ষা দেয়। DIT 7053-এর মূল দুই সঙ্গী।</div></div>
 <div class="verse">وَفُوا بِالْعُقُودِ — "চুক্তিসমূহ পূরণ করো।" (কুরআন ৫:১)</div>
 <div class="secret-box">📜 দাম দলিলের শেষ লাইন, প্রথম নয় — প্রয়োজন → RFI → RFP → RFQ → চুক্তি → SLA: এই সিঁড়ি ভালোবেসে নামলে কেনা জিনিস নয়, কেনা নিশ্চয়তা।</div>`,
   senior: {
@@ -140,6 +143,7 @@ doors.push({
 <tr><td class="hl">Burndown</td><td>বাকি-মাইল খাতা</td><td>স্প্রিন্টের বাকি-পয়েন্ট গ্রাফ</td></tr>
 </table>
 <div class="callout tip"><span class="co-icon">🎯</span><div><strong>টিপ:</strong> DIT-র প্রতিটি কোর্স একটা মিনি-প্রজেক্ট — এই দরজার হাতিয়ারগুলো আজই ব্যবহার করো: নিজের ১৮-দরজার যাত্রাটাই একটা প্রজেক্ট! Scope = ৬০ ক্রেডিট, Time = সেমিস্টার-প্ল্যান, Cost = টিউশন+সময়। নিজের WBS এঁকে ফেলো।</div></div>
+<ul class="checklist"><li>নিজের DIT-যাত্রাকে WBS-এ ভাঙো — কোর্স→চ্যাপ্টার→অ্যাসাইনমেন্ট স্তরে</li><li>আগামী দুই সেমিস্টারের এক-পাতার Gantt আঁকো — residency-সপ্তাহ চিহ্নিত করে</li><li>একটা বাস্তব ঝুঁকির risk-register এন্ট্রি লেখো: ঝুঁকি, সম্ভাবনা, প্রভাব, প্রতিকার</li></ul><div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 4 (City Builder’s Codex — ২০ দরজা) ট্রেড-অফ আর মাইলস্টোন-চিন্তার গভীর খনি; আর Book 54 (LedgerPilot Craftsman — ৩৭ দরজা) প্রমাণ যে তুমি নিজেই একটা ৩৭-দরজার মেগা-প্রজেক্ট চালিয়েছ। DIT 7063-এ দুটোই খুলে রাখো।</div></div>
 <div class="verse">وَأَعِدُّوا لَهُم مَّا اسْتَطَعْتُم مِّن قُوَّةٍ — "সাধ্যমত প্রস্তুতি রাখো।" (কুরআন ৮:৬০) — প্রস্তুতি = পরিকল্পনার ইবাদত।</div>
 <div class="secret-box">🐪 ত্রিভুজ মনে রেখো: scope-time-cost — এক কোণ টানলে বাকি দুই কোণ চিৎকার করে; চিৎকার না শুনে যে তারিখ দেয়, সে বালিতে লেখে। WBS + Gantt + Risk Register = নায়কের তিন হাতিয়ার।</div>`,
   senior: {
