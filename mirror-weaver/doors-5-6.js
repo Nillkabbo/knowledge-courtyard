@@ -289,6 +289,75 @@ doors.push({
   <div class="verse">মীজান — তুলাদণ্ড: "আসমান তিনি সমুচ্চ করেছেন এবং স্থাপন করেছেন মীজান" (৫৫:৭) — দুই পাল্লা, এক দাঁড়ি। নজরুলের সেতু সেই মীজানের কারিগরি রূপ: মান নামে এক পাল্লায়, খবর ওঠে অন্য পাল্লায়, কিন্তু সত্য এক-ই ঘড়িতে। দুই পাশে দুই ঘড়ি বাঁধলে তুলাদণ্ড নয় — দুই রাজত্ব; আর দুই রাজত্বে কাপড়ের হিসাব কখনো মেলে না, কারণ প্রত্যেকে নিজের সুতো নিজেই গোনে।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সেতু-ফাঁদ:</strong> (১) <code>.number</code>-বিস্মৃত — বয়স/পরিমাণ ফর্মে স্ট্রিং হিসেবে জমে, পরে গণনায় জাদু-ভুল ("২"+"১"="২১")। (২) কম্পোনেন্টে <code>value</code>-প্রপ নিজে বাঁধে ফেলা — v-model-এর প্রকৃত নাম <code>modelValue</code>; ভুল নামে সেতু নীরবে খোলা থাকে। (৩) অবজেক্ট-মডেলে ভেতরের ক্ষেত্র সরাসরি লেখা — দুই-বহির-দোষ ফিরে আসে; অনুলিপি-সম্পাদনা-প্রকাশ প্যাটার্ন নাও (দরজা ১৬)।</div></div>
   <div class="secret-box">🔌 v-model = এক-নামের দুই-স্রোত: ইনপুটে প্রকৃত-মান, কম্পোনেন্টে defineModel; .lazy/.number/.trim স্রোতের বিধি। / One named state, two currents; bind true values, defineModel bridges components.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ৬-এর দুই-মুখী সেতু: তিন ফানুসের ফর্ম + নিজের PasswordField-কম্পোনেন্ট — defineModel-এ দুই-মুখ এক-রেফে। / Door 6's two-way bridge: a three-lantern form + your own PasswordField component on defineModel.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/PasswordField.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+// defineModel (Vue 3.4+) — এক-লাইনে দুই-মুখ খোলা:
+// পড়া: পিতার মান; লেখা: আপডেট-পাখি নিজেই ওড়ে
+const password = defineModel&lt;string&gt;()
+const show = defineModel&lt;boolean&gt;('show', { default: false })
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;input
+      :type="show ? 'text' : 'password'"
+      v-model.trim="password"
+      placeholder="গোপন সুতো"
+    &gt;
+    &lt;label&gt;
+      &lt;input type="checkbox" v-model="show"&gt; দেখাও
+    &lt;/label&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/BridgeForm.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { ref } from 'vue'
+import PasswordField from './PasswordField.vue'
+
+const firstName = ref('')
+const age = ref(18)
+const role = ref('weaver')
+const roles = ['weaver', 'dyer', 'merchant']
+const password = ref('')
+const showPwd = ref(false)
+
+function proveTypes() {
+  console.log('age ধরন:', typeof age.value, '=', age.value)
+  console.log('firstName ছাঁটা:', JSON.stringify(firstName.value))
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;form @submit.prevent="proveTypes"&gt;
+    &lt;!-- টেক্সট-ফানুস: value+input --&gt;
+    &lt;label&gt;নাম: &lt;input v-model.trim="firstName" placeholder="  রফিক  "&gt;&lt;/label&gt;
+
+    &lt;!-- সংখ্যা-ফানুস: .number ছাড়া স্ট্রিং জমে! --&gt;
+    &lt;label&gt;বয়স: &lt;input type="number" v-model.number="age"&gt;&lt;/label&gt;
+
+    &lt;!-- বাছাই-ফানুস: select --&gt;
+    &lt;label&gt;ভূমিকা:
+      &lt;select v-model="role"&gt;
+        &lt;option v-for="r in roles" :key="r" :value="r"&gt;{{ r }}&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/label&gt;
+
+    &lt;!-- কম্পোনেন্ট-সেতু: বহু-মডেল (v-model + v-model:show) --&gt;
+    &lt;PasswordField v-model="password" v-model:show="showPwd" /&gt;
+
+    &lt;button type="submit"&gt;ধরন-প্রমাণ (কনসোল দেখো)&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import BridgeForm from './BridgeForm.vue'
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;BridgeForm /&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) .number-টা সরিয়ে দাও, বয়স টাইপ করে সাবমিট — কনসোলে typeof স্ট্রিং দেখাবে; ফিরিয়ে আনো, সংখ্যা। (২) নামের আগে-পরে স্পেস দিয়ে টাইপ করো — .trim ছেঁটে দেবে। (৩) PasswordField-এর "দেখাও" চেকবক্স — v-model:show দ্বিতীয় সেতু। Context7-বোনাস: defineModel-এর ডিস্ট্রাকচার-রূপ const [model, modifiers] = defineModel() দিয়ে নিজের মডিফায়ার (যেমন .capitalize) পড়া যায়। / Tests: remove .number and check typeof; pad the name with spaces; toggle the show checkbox. Bonus: destructure defineModel() to read custom modifiers.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">Two-Way Bridge — One Lock, Two Currents</div>
     <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
