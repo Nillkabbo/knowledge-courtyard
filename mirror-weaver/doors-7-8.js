@@ -334,6 +334,77 @@ async-setup নোট:
   <div class="verse">আজল — নির্ধারিত কাল: "প্রত্যেক জাতির জন্য একটি সময়সীমা আছে" (৭:৩৪, ১০:৪৯-এর সার) — বীজেরও, পাতারও, গাছেরও। ইদ্রিসের ঘড়ি সেই আজলের উদ্যান-রূপ: রোপণের মুহূর্ত আছে, ফুলের মুহূর্ত আছে, উৎপাটনের মুহূর্ত আছে — আর প্রতিটি মুহূর্তের নিজ-নিজ কাজ। যে বীজ নিজের সময়সীমা মানে না — মরার পরেও মাটি থেকে টানতে থাকে — সে নিজে বাঁচে না, উদ্যানকেও মারে। প্রস্থান-পরিচ্ছদই প্রবেশ-পরিচ্ছদের আমানত।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ঘড়ি-ফাঁদ:</strong> (১) <code>onUnmounted</code>-বিস্মৃত — ভুত-টাইমার, ভুত-fetch (প্রস্থানের পরেও state-এ লেখে), মেমরি-ফুল; বাঁধার সাথে খোলার লাইন পাশে লিখে রাখো। (২) <code>onUpdated</code>-এ state-বদল — রেন্ডার-লুপ, প্যাড-জ্বলে; গার্ড ছাড়া কিছুই না। (৩) setup-এ browser-API (window/document) — SSR-এ বিস্ফোরণ; পার্শ্ব-প্রভাব mounted-এ।</div></div>
   <div class="secret-box">🌱 প্রথম পাতায় নহর খোলো (onMounted-fetch), ছাইয়ে সব বন্ধ করো (unmounted-clear/close/abort) — বীজের কাল মানা কারিগরের শপথ। / Open channels on mount, close everything on unmount.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ৮-এর জীবন-ঘড়ি: টাইমার-বীজ রোপণ করো, তারপর টগল-বোতামে উৎপাটন — কনসোলে জন্ম-মৃত্যু-ছায়া সব মুহূর্ত নিজের চোখে দেখো। / Door 8's life-clock: plant a timer-seed, uproot it with a toggle — and watch every birth-shadow-ash moment in the console.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/LifeClock.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { ref, onMounted, onBeforeUnmount, onUnmounted, onUpdated } from 'vue'
+
+const ticks = ref(0)
+const changes = ref(0)
+let intervalId: number | undefined
+const log = (...m: unknown[]) =&gt; console.log('[ঘড়ি]', ...m)
+
+// ③ প্রথম পাতা — নহর খোলো (জোড়া-হিসাব: বাঁধা)
+onMounted(() =&gt; {
+  log('🌱 onMounted — DOM প্রস্তুত, টাইমার বাঁধলাম')
+  intervalId = setInterval(() =&gt; {
+    ticks.value++
+  }, 1000)
+})
+
+// ④⑤ ছায়া — প্রতিটি প্যাচ
+onUpdated(() =&gt; {
+  changes.value++
+  log('🍃 onUpdated — DOM প্যাচ হলো (মোট:', changes.value, ')')
+})
+
+// ⑥⑦ উৎপাটন-ছাই — জোড়া-হিসাব: খোলা
+onBeforeUnmount(() =&gt; log('🍂 onBeforeUnmount — এখনো সব কার্যকর'))
+onUnmounted(() =&gt; {
+  clearInterval(intervalId)          // ভুত-টাইমার নিষেধ!
+  log('🔥 onUnmounted — টাইমার খোলা, বিদায়')
+})
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;টিক: {{ ticks }} সেকেন্ড — এই বীজ জীবিত&lt;/p&gt;
+    &lt;p&gt;রেন্ডার-ছায়া: {{ changes }} বার&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/GardenParent.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { ref, onErrorCaptured } from 'vue'
+import LifeClock from './LifeClock.vue'
+
+const planted = ref(true)
+const caught = ref('')
+
+// বিশেষ-হুক: পুত্রের এরর ধরা (errorBoundary-আত্মীয়)
+onErrorCaptured((err) =&gt; {
+  caught.value = String(err)
+  return false   // প্রচার থামাও
+})
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;button @click="planted = !planted"&gt;
+      {{ planted ? '🔥 উৎপাটন করো (unmount)' : '🌱 পুনরায় রোপণ (mount)' }}
+    &lt;/button&gt;
+    &lt;LifeClock v-if="planted" /&gt;
+    &lt;p v-if="caught"&gt;ধরা-এরর: {{ caught }}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import GardenParent from './GardenParent.vue'
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;GardenParent /&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) কনসোল খোলো — mount-এ 🌱, প্রতি সেকেন্ডে ছায়া, উৎপাটনে 🍂→🔥 ক্রম দেখো। (২) onUnmounted-এর clearInterval-লাইনটা কমেন্ট করে উৎপাটন করো — কনসোলে ভুত-টিক চলতেই থাকবে? (না — Vue-র রেফ-সিস্টেম থামায়; কিন্তু interval নিজে DOM-বাইরে জীবিত — মেমরি-ট্যাবে প্রমাণ)। (৩) পুনরায় রোপণে ticks শূন্য থেকে শুরু — নতুন বীজ, নতুন জীবন। Context7-নোট: onMounted/SSR-এ ডাকা হয় না — সে-কারণেই ব্রাউজার-API এখানেই। / Tests: watch the console sequence; comment out clearInterval and check memory; replant to see fresh life.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">The Life-Clock — Seed, Leaf, Shadow, Ash</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
