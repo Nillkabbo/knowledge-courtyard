@@ -105,6 +105,95 @@ doors.push({
   <div class="verse">ওয়ারাসা — উত্তরাধিকারের দুই ধারা: পাত্র পূর্বপুরুষের, ভরাট উত্তরসূরির। "মানুষের মর্যাদা তার প্রচেষ্টার" নয় বরং আয়াত-ধারা যেখানে জীবিকা ও দায় বণ্টিত (১৭:৭০-এর আত্মা) — ছাঁচ ধার দেয় গঠন, উত্তরসূরি দেয় প্রাণ। হাজিরা বিবির কার্ড সেই ওয়ারাসার কারিগরি রূপ: খোপ পূর্ব-নির্ধারিত, ভরাট প্রজন্ম-প্রজন্মান্তরে নতুন; খোপহীন কার্ড অর্থহীন, ভরাটহীন খোপ অসম্পূর্ণ — দুই-ই একসাথে মানে জীবন্ত উত্তরাধিকার।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>খোপ-ফাঁদ:</strong> (১) খোপ-নামের বানান-অমিল (<code>#footter</code>) — Vue চুপচাপ আরেকটা খোপ খুলে ফেলে, কনটেন্ট কোথাও দেখায় না; নাম-জোড়া সবসময় মিলিয়ে নাও। (২) scoped-খোপে পিতা-টেমপ্লেটে পুত্রের সব-ডেটা টানতে যাওয়া — খোপ-প্রপস সর্বনিম্ন রাখো (row+index যথেষ্ট), নইলে পুত্রের অন্তরঙ্গ সব পিতার হাতে। (৩) ডায়নামিক-খোপে খালি-স্ট্রিং বা null-নাম — রেন্ডার-এরর; ফলব্যাক-নাম বা v-if-গার্ড রাখো।</div></div>
   <div class="secret-box">🧩 ছাঁচ খোপ খোলে, পিতা ভরাট করে; scoped-খোপ উল্টো-ফিতা দেয় — পুত্রের ডেটা, পিতার কলম; ফলব্যাক খালি-ঘর বাঁচায়। / The mold opens pockets, the parent fills them; scoped slots return the thread.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ৭-এর খোপ-কারখানা: এক কার্ড-ছাঁচে তিন ধরনের খোপ — ডিফল্ট+ফলব্যাক, নাম-খোপ, আর scoped-উল্টো-ফিতা। / Door 7's pocket workshop: one card mold carrying all three pocket kinds — default+fallback, named, and the scoped reverse-thread.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/MoldCard.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { useSlots } from 'vue'
+
+const slots = useSlots()
+// শর্তসাপেক্ষ-ছাঁচ: header-থাকলেই রেল বোনো
+const hasHeader = !!slots.header
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div class="card"&gt;
+    &lt;!-- ② নাম-খোপ: header-তাক --&gt;
+    &lt;header v-if="hasHeader"&gt;
+      &lt;slot name="header" /&gt;
+    &lt;/header&gt;
+
+    &lt;!-- ① ডিফল্ট-খোপ + ফলব্যাক-কাপড় --&gt;
+    &lt;main&gt;
+      &lt;slot&gt;কিছু পাঠাওনি — ফলব্যাক-কাপড়&lt;/slot&gt;
+    &lt;/main&gt;
+
+    &lt;!-- নাম-খোপ: trailing (LP-PasswordField-প্রথা) + ফলব্যাক --&gt;
+    &lt;footer&gt;
+      &lt;slot name="trailing"&gt;👁️ ফলব্যাক-চোখ&lt;/slot&gt;
+    &lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+.card { border: 1px solid #6366f1; border-radius: 12px; padding: 1rem; max-width: 420px; }
+header { border-bottom: 1px dashed #818cf8; margin-bottom: .6rem; font-weight: 700; }
+footer { margin-top: .6rem; font-size: .85rem; color: #94a3b8; }
+&lt;/style&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/RowList.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+defineProps&lt;{
+  rows: { id: number; name: string }[]
+}&gt;()
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;!-- ③ scoped-খোপ: পুত্রের ডেটা ফিতেয় বাইরে --&gt;
+  &lt;ul&gt;
+    &lt;li v-for="(row, i) in rows" :key="row.id"&gt;
+      &lt;slot :row="row" :index="i"&gt;{{ row.name }} (ফলব্যাক-সারি)&lt;/slot&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/FillingParent.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import MoldCard from './MoldCard.vue'
+import RowList from './RowList.vue'
+
+const weavers = [
+  { id: 1, name: 'জোহরা আপা' },
+  { id: 2, name: 'রফিক' },
+  { id: 3, name: 'সালমা' }
+]
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;!-- নাম-খোপ ভরাট + implicit ডিফল্ট --&gt;
+    &lt;MoldCard&gt;
+      &lt;template #header&gt;🧵 কারিগরদের তালিকা&lt;/template&gt;
+      নিজের কাপড় — ডিফল্ট-খোপে সরাসরি
+      &lt;template #trailing&gt;✨ নিজের-পালক (ফলব্যাক-চোখ প্রতিস্থাপিত)&lt;/template&gt;
+    &lt;/MoldCard&gt;
+
+    &lt;!-- scoped-খোপ: ফিতা ধরে পিতার কলম --&gt;
+    &lt;RowList :rows="weavers"&gt;
+      &lt;template #default="{ row, index }"&gt;
+        {{ index + 1 }}. &lt;strong&gt;{{ row.name }}&lt;/strong&gt;
+      &lt;/template&gt;
+    &lt;/RowList&gt;
+
+    &lt;!-- ফলব্যাক-প্রমাণ: কিছু-না-পাঠানো কার্ড --&gt;
+    &lt;MoldCard /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import FillingParent from './FillingParent.vue'
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;FillingParent /&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) #trailing-টেমপ্লেট সরাও — ফলব্যাক-চোখ ফেরে। (২) খোলা MoldCard-টার দিকে দেখো — ডিফল্ট-ফলব্যাক "কিছু পাঠাওনি"। (৩) RowList-এর স্কোপড-ডিস্ট্রাকচারে index-এর বদলে i লেখো — ডেটা আসে না (নাম-জোড়া চুক্তি)। Context7-নোট: v-slot:নাম = #নাম সংক্ষেপ; ডায়নামিক-খোপ #[dynName] চলে। / Tests: remove the trailing template; watch the empty card's fallback; rename the scoped destructure to see the name-pair contract.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">Pockets — Value-Gift vs Cloth-Gift vs Reverse-Gift</div>
     <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
