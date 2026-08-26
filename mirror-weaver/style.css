@@ -201,3 +201,14 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .legend-item{display:inline-flex;align-items:center;gap:.3rem}
 .story-text .legend-swatch{display:inline-block;width:14px;height:3px;border-radius:2px}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ── STUDIO (copy-paste code workshop) ── */
+.story-text .studio{background:linear-gradient(135deg,rgba(99,102,241,.07),rgba(61,214,196,.04));border:1px solid rgba(99,102,241,.25);border-radius:14px;padding:1rem;margin:1.2rem 0}
+.story-text .studio-title{font-family:'Cinzel',serif;font-size:.85rem;color:var(--amber-bright);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.3rem}
+.story-text .studio-note{font-size:.8rem;color:var(--ink-mute);margin-bottom:.7rem;font-style:italic}
+.story-text .studio-file{background:var(--code-bg);border:1px solid var(--code-border);border-radius:10px;margin:.6rem 0;overflow:hidden}
+.story-text .studio-file-head{display:flex;justify-content:space-between;align-items:center;padding:.4rem .7rem;background:rgba(99,102,241,.08);border-bottom:1px solid var(--code-border);font-family:'Courier New',monospace;font-size:.78rem;color:var(--amber-bright)}
+.story-text .copy-btn{font-family:'Noto Sans Bengali',sans-serif;font-size:.72rem;color:var(--teal);background:rgba(61,214,196,.1);border:1px solid rgba(61,214,196,.3);border-radius:7px;padding:.18rem .6rem;cursor:pointer;transition:all .3s}
+.story-text .copy-btn:hover{background:rgba(61,214,196,.2)}
+.story-text .studio-file pre{margin:0;padding:.8rem .9rem;overflow-x:auto;font-family:'Courier New',monospace;font-size:.8rem;color:var(--ink);line-height:1.55;white-space:pre}
+.story-text .studio-file pre code{font-family:inherit;background:transparent;text-shadow:none;white-space:pre}

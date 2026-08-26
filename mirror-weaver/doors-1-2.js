@@ -97,6 +97,41 @@ SFC-এর তিন ঘর (এক .vue ফাইলে):
   <div class="verse">সাক্ষাৎ — প্রত্যক্ষ দর্শনের শৃঙ্খলা: আয়না সদা অনুগামী, কখনো স্বেচ্ছাচারী নয়। "যে দিন কাজের ফল প্রকাশ হবে" (৮২:১৯-এর ভাব) — কর্মের ফল প্রতিবিম্বে ধরা পড়ে, প্রতিবিম্ব নিজে কর্ম করে না। জোহরা আপার কাচ সেই সাক্ষাৎের যন্ত্র: যা দেখায় তা-ই আছে, যা আছে তা-ই দেখায়। যে কারিগর আয়নায় হাত দেয়, সে শেষে দুই সত্যের মাঝে হারিয়ে যায় — কারণ তার প্রতিবিম্ব আর বিশ্বাসের যোগ্য থাকে না।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>নতুনদের প্রথম ভুল:</strong> Vue শিখতে গিয়ে টেমপ্লেটে দস্তুর লিখে আবার পাশে <code>document.querySelector</code> চালিয়ে ফেলা — দুই জগতের সত্য একসাথে। ফল: Vue-র পরের রি-রেন্ডারে তোমার হাতের আঁকা মুছে যায় (দরজা ৩-এর আত্মীয় গল্প)। নিয়ম: Vue-র দেয়ালের ভেতরে DOM-কে সরাসরি ছোঁয়া নিষেধ — অবস্থা বদলাও।</div></div>
   <div class="secret-box">🪞 আয়নার শপথ: DOM-কে আঁতে বলো না — অবস্থা বদলাও, প্রতিবিম্ব নিজে সজ্জিত হবে। / Never command the DOM; change the state and let the mirror follow.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ১-এর প্রথম তাঁত: তিন ফাইল, হাতে-কলমে চালাও। প্রতিটি ফাইলের ডানে কপি-বোতাম — কপি করে তোমার প্রজেক্টে বসাও। / Door 1's first loom: three files, run by hand. Copy each into your project.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>index.html</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="bn"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;দরজা ১ — প্রথম তাঁত&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id="app"&gt;&lt;/div&gt;
+  &lt;script type="module" src="/src/main.ts"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/main.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { createApp } from 'vue'
+import App from './App.vue'
+
+createApp(App).mount('#app')</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { ref } from 'vue'
+
+const count = ref(0)        // অবস্থা: গুনি — তাঁতের একমাত্র সত্য
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;button @click="count++"&gt;
+    চাপা হয়েছে {{ count }} বার
+  &lt;/button&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+button { padding: .6rem 1.4rem; font-size: 1rem; border-radius: 10px; cursor: pointer; }
+&lt;/style&gt;</code></pre></div>
+    <div class="studio-note">চালানোর নিয়ম: <code>npm create vue@latest</code> দিয়ে প্রজেক্ট বানাও → এই তিন ফাইল বসাও → <code>npm run dev</code>। বোতাম চাপলে গুনি নিজে বদলায় — কোথাও একটি querySelector নেই। / Scaffold with npm create vue@latest, drop in these three files, npm run dev — the counter updates itself, zero querySelectors.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">The Mirror's Oath — Two Workshops Compared</div>
     <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
