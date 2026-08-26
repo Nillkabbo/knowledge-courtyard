@@ -282,6 +282,88 @@ Vue 3.5-নোট:
   <div class="verse">বাইয়ান — স্পষ্ট প্রকাশ: "রহমান সৃষ্টি করেছেন, শিখিয়েছেন বয়ন-কলম" নয় বরং প্রকাশের আয়াত-ধারা (৫৫:৩-৪-এর ভাব) — যা ভেতরে আছে তার বাইরে স্পষ্ট রূপ। জোহরা আপার চার চিহ্ন সেই বাইয়ানের হাতিয়ার: মান, বাঁধন, শ্রবণ, খোপ — প্রতিটি চিহ্ন ঠিক যা বোঝায় তা-ই বলে, বাড়তি গোপন অর্থ নেই। যে বর্ণমালায় এক চিহ্নের দুই মানে থাকে, সে কাপড়ে সবসময় একটা সুতো ভুল জায়গায় পড়ে।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>দুই চির-ভুল:</strong> (১) <code>v-if</code> আর <code>v-for</code> একই উপাদানে — v-if আগে মূল্যায়ন হয়, লুপ-ভেরিয়েবল পায় না; কম্পিউটেড-তালিকা (দরজা ৩) বা wrapper-এ আলাদা করো। (২) <code>v-html</code>-এ ব্যবহারকারীর লেখা ঢোকানো — XSS-এর সরাসরি দরজা; LedgerPilot এরর-বার্তাও স্যানিটাইজ করে ঢাকে।</div></div>
   <div class="secret-box">🧵 {{ }} বলে · : বাঁধে · @ শোনে · # খোলে — চার চিহ্নের ব্যাকরণে পুরো পর্দা বোনা; v-html তালাবদ্ধ, কী-শূন্য v-for নিষেধ। / Four glyphs weave any screen; v-html stays locked, v-for never keyless.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ২-এর খেলাঘর: চার চিহ্ন + শর্ত + তালিকা + একবার-সুতো — সব এক ফাইলে, প্রতিটি অংশ টগল করে ডেভটুলসে পার্থক্য দেখো। / Door 2's playground: four glyphs + conditionals + lists + once-threads in one file — toggle each and watch devtools.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/ThreadAlphabet.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { ref } from 'vue'
+
+const name = ref('রফিক')
+const isRed = ref(false)
+const fontSize = ref(16)
+const count = ref(0)
+const showIf = ref(true)
+const showShow = ref(true)
+const submitMsg = ref('')
+const todos = ref([
+  { id: 1, text: 'সুতো কেনা', done: true },
+  { id: 2, text: 'তাঁত সাজানো', done: false },
+  { id: 3, text: 'প্রথম কাপড়', done: false }
+])
+
+function toggleAll() {
+  showIf.value = !showIf.value
+  showShow.value = !showShow.value
+}
+
+function onEnter() {
+  submitMsg.value = 'submit আটকানো হলো (.prevent)'
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;!-- ① মোস্তাচিল: মান ঢালে --&gt;
+  &lt;h2&gt;হ্যালো {{ name }}!&lt;/h2&gt;
+  &lt;p&gt;{{ count % 2 === 0 ? 'জোড়' : 'বিজোড়' }} — এক-লাইন অভিব্যক্তি চলে&lt;/p&gt;
+
+  &lt;!-- ② কোলন: গুণ বাঁধে (অবজেক্ট :class, অবজেক্ট :style) --&gt;
+  &lt;p :class="{ red: isRed }" :style="{ fontSize: fontSize + 'px' }"&gt;
+    রং ও মাপ — দুটোই বাঁধা
+  &lt;/p&gt;
+  &lt;button @click="isRed = !isRed; fontSize += 2"&gt;লাল করো + বড় করো&lt;/button&gt;
+
+  &lt;!-- ③ ওঁতার: ঘটনা শোনে (+ মডিফায়ার) --&gt;
+  &lt;button @click="count++"&gt;গুনি: {{ count }}&lt;/button&gt;
+  &lt;button @click.once="count += 10"&gt;একবারই +১০ (.once)&lt;/button&gt;
+
+  &lt;form @submit.prevent="onEnter"&gt;
+    &lt;input v-model="name" @keyup.enter="submitMsg = 'Enter চাপা হলো (.enter)'"&gt;
+    &lt;button type="submit"&gt;পাঠাও&lt;/button&gt;
+  &lt;/form&gt;
+  &lt;p&gt;{{ submitMsg }}&lt;/p&gt;
+
+  &lt;!-- শর্ত-সুতো: v-if বনাম v-show — টগল করে ডেভটুলসে দেখো --&gt;
+  &lt;button @click="toggleAll"&gt;দুটোই টগল করো&lt;/button&gt;
+  &lt;p v-if="showIf"&gt;v-if — DOM থেকে সত্যিই সরে যায়&lt;/p&gt;
+  &lt;p v-show="showShow"&gt;v-show — থাকে, শুধু display:none হয়&lt;/p&gt;
+
+  &lt;!-- তালিকা-সুতো: v-for + :key (আসল id) --&gt;
+  &lt;ul&gt;
+    &lt;li v-for="todo in todos" :key="todo.id"&gt;
+      {{ todo.text }} &lt;em v-if="todo.done"&gt;(শেষ)&lt;/em&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;!-- একবার-সুতো --&gt;
+  &lt;p v-once&gt;এই লাইন প্রথম রেন্ডারেই জমা: {{ count }}&lt;/p&gt;
+  &lt;div v-memo="[count % 2]"&gt;
+    জোড়/বিজোড় বদল না হলে এই ঘর আবার বোনা হয় না — গুনি এখন {{ count }}
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+.red { color: #ef4444; }
+button { margin: .2rem .3rem; padding: .35rem .8rem; }
+&lt;/style&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import ThreadAlphabet from './ThreadAlphabet.vue'
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;ThreadAlphabet /&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-note">Vue 3.4+ বোনাস (Context7-যাচাইকৃত): সেম-নেম শর্টহ্যান্ড — <code>&lt;img :src&gt;</code> মানেই <code>:src="src"</code>। index.html/main.ts দরজা ১-এরটাই থাকবে। পরীক্ষা: টগল-বোতাম চেপে Elements-প্যানেলে দেখো v-if-লাইন মুছে যায়, v-show-লাইন শুধু <code>display:none</code> পায়। / Vue 3.4+ bonus (Context7-verified): same-name shorthand — &lt;img :src&gt; means :src="src". Watch devtools: v-if removes the node, v-show only hides it.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">The Thread Alphabet — Four Glyphs, One Grammar</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
