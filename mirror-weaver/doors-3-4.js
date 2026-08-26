@@ -102,15 +102,79 @@ Vue 3.5 স্বাদ:
   · paused: watch-পাহারা সাময়িক থামানো</div>
   <div class="stat-grid">
   <div class="stat-card"><div class="sc-num">ref</div><div class="sc-label">ছোঁয়া যায় · .value</div></div>
+  <div class="stat-card"><div class="sc-num">computed</div><div class="sc-label">মনে রাখে · ক্যাশড</div></div>
+  <div class="stat-card"><div class="sc-num">watch</div><div class="sc-label">পাহারা · পার্শ্ব-প্রভাব</div></div>
+  <div class="stat-card"><div class="sc-num">watchEffect</div><div class="sc-label">তাৎক্ষণিক · স্বয়ং-সনাক্ত</div></div>
+</div>
   <ul class="checklist"><li>computed-বনাম-method — একই ফিল্টার দুইভাবে লিখে কনসোল-লগ দিয়ে রি-রান গুনো</li><li>watchEffect-এর অটো-নির্ভরতা দেখো: কোন রেফ ছুঁলে কাজ চলে</li><li>লেজারপাইলট-গেটার একটা computed-এ নামিয়ে আনার খসড়া আঁকো</li></ul>
   <div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 4 (City Builder’s Codex — ২০ দরজা) reactive-সিস্টেমের আর্কিটেকচার-দৃষ্টি (cache/invalidate) দেয়, আর Book 49 (Dice of Destiny) নির্ভরতা-গ্রাফের গণিত।</div></div>
   <div class="verse">তাসাররুফ — প্রবাহের শাস্ত্র: শক্তি যায় কেবল নিজ-নিজ পথে। জোহরা আপার তিন কাচ সেই পথের নকশা — স্পর্শ মান বদলায়, স্মৃতি উদ্ভূত-সত্য গণনা করে, পাহারা পার্শ্ব-কাজ চালায়; একজনের কাজ অন্যজনে ঢুকলে তাঁত বিষময় হয়। "প্রত্যেকে সে-ই যা সে অর্জন করে" (৫৩:৩৯-এর ভাব) — যন্ত্র নিজ-নিজ অর্জনে বাঁচে; এক যন্ত্রে সব-কাজ চাপালে কেউ কিছুই ভালো করে না।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>শ্বাস-ফাঁদ:</strong> (১) watch-এ গণনা লেখা — দ্বৈত-গণনা/লুপ-ঝুঁকি; computed-এ নাও। (২) স্টোর-ডিস্ট্রাকচার ভুলে যাওয়া — পর্দা বোবা হয়ে যায়, কোনো এরর ছাড়াই। (৩) <code>onUnmounted</code> বিস্মৃত — মুলতুবি fetch প্রস্থানের পরেও state-এ লেখে (ভুত-আপডেট) আর টাইমার চুপচাপ মেমরি খায়।</div></div>
   <div class="secret-box">⚡ বস্তু বদলাও প্রতিবিম্ব নয় — ref ছোঁয় (.value), computed মনে রাখে, watch পাহারা দেয়; নদীর সাথে থাকো, গ্লাসে নয়। / Change the thing: ref touches, computed remembers, watch guards — stay with the river, not the glass.</div>
-  <div class="stat-card"><div class="sc-num">computed</div><div class="sc-label">মনে রাখে · ক্যাশড</div></div>
-  <div class="stat-card"><div class="sc-num">watch</div><div class="sc-label">পাহারা · পার্শ্ব-প্রভাব</div></div>
-  <div class="stat-card"><div class="sc-num">watchEffect</div><div class="sc-label">তাৎক্ষণিক · স্বয়ং-সনাক্ত</div></div>
-</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ৩-এর শ্বাস-ঘর: তিন যন্ত্র এক ফাইলে — ref ছুঁয়ে দেখো, computed-এর ক্যাশ গুনো, watch-এর পাহারা চালাও। কনসোল-লগগুলোই তোমার পরীক্ষা-নমুনা। / Door 3's breath-room: three instruments in one file — touch refs, count computed-cache runs, fire watches. Console logs are your test bench.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/ReactiveBreath.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { ref, computed, watch, watchEffect, onWatcherCleanup } from 'vue'
+
+// ① স্পর্শ-কাচ — ref
+const qty = ref(2)
+const price = ref(150)
+const runs = { computed: 0, effect: 0 }
+
+// ② স্মৃতি-কাচ — computed (উদ্ভূত-সত্য; ক্যাশড)
+const total = computed(() =&gt; {
+  runs.computed++
+  return qty.value * price.value
+})
+
+// ③ পাহারা-কাচ — watch (পার্শ্ব-প্রভাব; ডিবাউন্স-নমুনা)
+let searchTimer: number | undefined
+const query = ref('')
+const results = ref&lt;string[]&gt;([])
+watch(query, (q) =&gt; {
+  clearTimeout(searchTimer)
+  searchTimer = setTimeout(() =&gt; {
+    // নকল-API — সত্যিকারে এখানে fetch বসত
+    results.value = q ? [\`${q} — সুতো\`, \`${q} — কাপড়\`] : []
+  }, 300)
+})
+
+// onWatcherCleanup (Vue 3.5+ — Context7-যাচাইকৃত পছন্দের পথ)
+watch(query, async (q) =&gt; {
+  const ctrl = new AbortController()
+  onWatcherCleanup(() =&gt; ctrl.abort())
+  // await fetch('/api/search?q=' + q, { signal: ctrl.signal })
+})
+
+// ④ খোলা-চোখ — watchEffect (স্বয়ং-নির্ভরতা)
+watchEffect(() =&gt; {
+  runs.effect++
+  document.title = \`মোট: \${total.value} টাকা\`
+})
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;পরিমাণ: &lt;input type="number" v-model.number="qty"&gt; × দাম: &lt;input type="number" v-model.number="price"&gt;&lt;/p&gt;
+    &lt;h3&gt;মোট (computed): {{ total }} টাকা&lt;/h3&gt;
+    &lt;p&gt;computed চলেছে {{ runs.computed }} বার — একই মান দুইবার রেন্ডার করে দেখো, সংখ্যা বাড়ে না (ক্যাশ!)&lt;/p&gt;
+
+    &lt;input v-model="query" placeholder="খোঁজো… (watch + ডিবাউন্স)"&gt;
+    &lt;ul&gt;&lt;li v-for="r in results" :key="r"&gt;{{ r }}&lt;/li&gt;&lt;/ul&gt;
+
+    &lt;p&gt;watchEffect চলেছে {{ runs.effect }} বার — ট্যাব-শিরোনামও বদলায়&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import ReactiveBreath from './ReactiveBreath.vue'
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;ReactiveBreath /&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-note">পরীক্ষা-প্রশ্ন: (১) qty দুইবার বদলাও — runs.computed কত বাড়ল? (২) একই মান আবার সেট করো (qty=5 → আবার 5) — watch চলে কি? (৩) ব্রাউজার-ট্যাবের শিরোনাম দেখো — watchEffect জীবিত। Vue 3.5+: props-ডিস্ট্রাকচার এখন reactive; onWatcherCleanup পছন্দের ক্লিনআপ। / Test: change qty twice and count computed runs; set same value twice and see if watch fires; watch the tab title for the living effect.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">The Breath — Three Instruments, One River Rule</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
