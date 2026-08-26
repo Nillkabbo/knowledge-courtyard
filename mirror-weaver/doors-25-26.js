@@ -27,6 +27,8 @@ doors.push({
   LedgerPilot's seven-role palace-plan — each role's own landing room (role→dashboard), each their own menu.
   <strong>"the palace is large, the discipline simple — three ledgers are all."</strong></p>
   <div class="dialogue">('"এক চাবি-গোছা, তিন খাতা," বদরুল তাঁর বেল্ট থেকে চাবির গোছা খুলে দেখালেন, "পরিচয়, অনুমতি, মেনু — এই তিনটাই। বাকি সব শোভা। একবার শুধু দেয়ালের রং দিয়ে পাহারা দিয়েছিলাম; রং বদলালেই রাজত্ব বদলে গিয়েছিল।"', 'চাবির ধাতব ঠান্ডা তালুয়ে — তিন খাতার শৃঙ্খলা এবার হাতের স্মৃতি।')</div><div class="dialogue en">"One key-ring, three ledgers — identity, permission, menu. The rest is decoration. I once guarded with wall-paint alone; the paint changed, so did the reign."</div>
+<div class="dialogue">বদরুল তিন-চাবির-গোছা বাজিয়ে জিজ্ঞেস করলেন, "বলো — এক-চাবিতে তিন-তালা, কেন?" তুমি বললে, "নিরাপত্তা?" বদরুল মাথা নাড়লেন: "তিন-জনের-নিরাপত্তা। মেনু-ছাঁকনি — চোখ দেখে না; ডিপ-লিংক দিয়ে সরাসরি-রুটে ঢোকা যায়, তাই রুট-গার্ড; ভেতরে-ঢুকে বাটন-টিপলে তবু সার্ভার-যাচাই — কারণ দুই-তালা কেউ-একদিন ভুলে খোলা রাখবেই। তিন-তালার-প্রাসাদে চুরি মানে তিন-জনের-একসাথে-ঘুম — দুর্লভ। আর Can-কম্পোনেন্ট মানে দরজার-নিজ-পাহারা: প্রতিটি বাটন নিজে-জিজ্ঞেস করে আমি-কি-পারি — মা-পর্দার-ভরসায় নয়।"</div>
+<div class="dialogue en">Badrul jingled the three-key ring: "Why three locks, one door?" You said: "Security?" He nodded: "Three people's security. The menu-filter — the eye sees nothing; deep-links walk straight into routes, hence the route-guard; inside, a pressed button still faces server-verification — because someone, someday, leaves two locks open. In a three-locked palace, theft means three guards asleep at once — rare. And the Can-component is each door's own guard: every button asks itself may-I — never leaning on the parent screen's memory."</div>
   <div class="code-block">স্টার্টার-৪ · বহু-রোল-প্রাসাদ — মেরু-অংশসমূহ
 
 ফাইল-১ · রোল-জগৎ (core/auth/roles.ts):
@@ -155,7 +157,9 @@ doors.push({
   <div class="stat-card"><div class="sc-num">মেনু</div><div class="sc-label">ছাঁকনি · visibleMenu</div></div>
   <div class="stat-card"><div class="sc-num">ল্যান্ডিং</div><div class="sc-label">রোল→ঘর · ?next</div></div>
 </div>
-  <div class="verse">চতুর্থ-রাকাত — বহু-দরজা, ব্যক্তি-অনুযায়ী-চাবি: "প্রত্যেক-দলকে-চেনা-হবে-তাদের-নিজ-নিশানে" নয় বরং সূরা-ছায়া (৫৫:৪১-এর ভাব) — নিশানভেদে-পথ, বিশৃঙ্খলায়-নয়। বদরুলের-তিন-খাতা সেই-নিশানের-প্রাসাদ-রূপ: পরিচয়-অনুমতি-মেনু — প্রত্যেক-প্রবেশ খাতায়, প্রত্যেক-দরজা ছাপে, প্রত্যেক-দেয়াল ফলকে। যে-প্রাসাদে সবাই-সব-দরজায়-ঢোকে, সে প্রাসাদ-নয়-চত্বর; আর-যেখানে-খাতা-নেই-শুধু-দরজার-রং, সেখানে-রং-বদলালেই-রাজত্ব-বদলায়।</div>
+  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ এক-তালা-প্রাসাদ</div>পারমিশন শুধু মেনু-ছাঁকনিতে — ডিপ-লিংকে সরাসরি রুটে ঢোকা যায়; ভেতরে-বাটনও খোলা।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ তিন-তালা</div>রুট-গার্ড + <code>&lt;Can&gt;</code>-কন্ট্রোল + সার্ভার-যাচাই — প্রতিটি তালা স্বতন্ত্র পরীক্ষিত।</div></div><ul class="checklist"><li>auth-স্টোর বানাও: লগইন/রোল/ফিচার-ফ্ল্যাগ; Can-কম্পোনেন্ট দিয়ে বাটন-নিয়ন্ত্রণ</li><li>৪০৩-পথ E2E: রোল-ছাড়া ব্যবহারকারী রুট+বাটন দুই-জায়গায় আটকায় — প্রমাণ করো</li><li>ডিপ-লিংক-পরীক্ষা: সুরক্ষিত-URL সরাসরি খুলে লগইন-ফেরত দেখো</li></ul>
+<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 46 (Copper Fortress — ১০ দরজা) auth/রোল/পারমিশনের গভীর নকশা — বহু-মহল প্রাসাদের নিরাপত্তা-গ্রন্থ; আর Book 54 এর LedgerPilot-বাস্তব।</div></div>
+<div class="verse">চতুর্থ-রাকাত — বহু-দরজা, ব্যক্তি-অনুযায়ী-চাবি: "প্রত্যেক-দলকে-চেনা-হবে-তাদের-নিজ-নিশানে" নয় বরং সূরা-ছায়া (৫৫:৪১-এর ভাব) — নিশানভেদে-পথ, বিশৃঙ্খলায়-নয়। বদরুলের-তিন-খাতা সেই-নিশানের-প্রাসাদ-রূপ: পরিচয়-অনুমতি-মেনু — প্রত্যেক-প্রবেশ খাতায়, প্রত্যেক-দরজা ছাপে, প্রত্যেক-দেয়াল ফলকে। যে-প্রাসাদে সবাই-সব-দরজায়-ঢোকে, সে প্রাসাদ-নয়-চত্বর; আর-যেখানে-খাতা-নেই-শুধু-দরজার-রং, সেখানে-রং-বদলালেই-রাজত্ব-বদলায়।</div>
   <div class="diagram">
     <div class="diag-title">Starter 4 — Three Ledgers, Layered Access</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
@@ -198,7 +202,7 @@ doors.push({
   <div class="secret-box">🔐 তিন-খাতার-প্রাসাদ: পরিচয় (auth) → অনুমতি (can/গার্ড/&lt;Can&gt;) → মেনু (ছাঁকনি); পথ ও-দেয়াল দুই-স্তরে-পাহারা, ল্যান্ডিং রোলের-ঘরে। / Identity, permission, menu — layered guard on route and wall.</div>`,
   senior: {
     title: "Starter-4 Card (RBAC)",
-    body: `<p><strong>খাতা</strong>: auth.store (user/roles/login/logout/restore) · ROLE_FEATURES+can(feature) · MENU+visibleMenu (রোল∩ফিচার-ছাঁকনি; বড়-অ্যাপ=সার্ভার-ম্যানিফেস্ট+রেজিস্ট্রি)। <strong>স্তর</strong>: গার্ড (public→roles) + <Can feature/roles> (দেয়াল) + মেনু-ছাঁকনি। <strong>ল্যান্ডিং</strong>: LANDING[role]+?next। <strong>লগআউট</strong>: resetAll। <strong>টেস্ট</strong>: ৪০৩-পথ, বাটন-অনুপস্থিতি, মেনু-ছাঁকনি, লগইন-ফেরত।</p>`
+    body: `<p><strong>খাতা</strong>: auth.store (user/roles/login/logout/restore) · ROLE_FEATURES+can(feature) · MENU+visibleMenu (রোল∩ফিচার-ছাঁকনি; বড়-অ্যাপ=সার্ভার-ম্যানিফেস্ট+রেজিস্ট্রি)। <strong>স্তর</strong>: গার্ড (public→roles) + <Can feature/roles> (দেয়াল) + মেনু-ছাঁকনি। <strong>ল্যান্ডিং</strong>: LANDING[role]+?next। <strong>লগআউট</strong>: resetAll। <strong>টেস্ট</strong>: ৪০৩-পথ, বাটন-অনুপস্থিতি, মেনু-ছাঁকনি, লগইন-ফেরত। <strong>ফাঁদ</strong>: পারমিশন-যাচাই শুধু মেনু-ছাঁকনিতে রাখা — ডিপ-লিংক দিয়ে সরাসরি রুটে ঢোকা যাবে; রুট-গার্ড + <code>&lt;Can&gt;</code> + সার্ভার — তিন তালা।</p>`
   }
 });
 
@@ -231,6 +235,8 @@ doors.push({
   crown an <strong>error-embankment</strong> (an onErrorCaptured room) — if any wave breaks the screen, it reports
   without drowning the whole ghat.</p>
   <div class="dialogue">('"নদীর রং দেখে অবস্থা বলো," মাজেদা পানিতে আঙুল ডুবিয়ে দেখালেন, "স্রোত থামলে তালিকা মুছো না — শেষ জানা সত্য রাখো। বাবা বলতেন, নদী ফিরে এলে প্রথম কাজ মিস হওয়া খবরের গণনা মেলানো। একবার না-মিলিয়ে বসেছিলাম; তিন দিন পুরনো সংখ্যা দেখিয়েছিলাম সবাইকে।"', 'পানির স্রোতের টান আঙুল ঘিরে ওঠে — জলাধার ছাড়া নদীর ওপর দাঁড়ানো যায় না।')</div><div class="dialogue en">"Read the river's color as state — when the current stops, keep the last-known truth. Father said: on return, first reconcile the missed count."</div>
+<div class="dialogue">মাজেদা দড়ির-গিঁট ছাড়িয়ে জিজ্ঞেস করলেন, "বলো — নদী মরলে ঘাট কী করবে?" তুমি বললে, "অপেক্ষা?" মাজেদা মাথা নাড়লেন: "চুপ-অপেক্ষা মানে পচা-কাপড়। তিন-কাজ: ব্যাজ-দেখাও (সংযোগ-মরা খবর গোপন নয়), ব্যাকঅফে-আবার-ধরো (১-সেকেন্ড, ২, ৪, ৮ — ঝড়ের-মধ্যে নদীর-ঘাড়ে চেঁচানো নয়), আর পুরনো-কাপড়ে সতর্ক-ছাপ (এ-ডেটা এখন বাসি)। EventSource মরলে নিজে-থেকে সংযোগ ফেরে না — তুমি পুনঃযোগ করবে; আর onUnmounted-এ দড়ি-ছাড়া মানে ট্যাব-বন্ধের-পরও সার্ভারে ঘণ্টি-বাজা। জীবন্ত-নদীর কারিগর নদীর-মৃত্যুও সাজিয়ে রাখে।"</div>
+<div class="dialogue en">Majeda untied a rope-knot: "When the river dies, what does the quay do?" You said: "Wait?" She shook her head: "Silent waiting means rotten cloth. Three works: show the badge (a dead connection is no secret), catch again with backoff (1s, 2, 4, 8 — no shouting down the river's neck mid-storm), and stamp old cloth with caution (this data is stale now). A dead EventSource doesn't reconnect itself — you re-knot; and leaving the rope tied past onUnmounted means the bell keeps ringing at the server after the tab closes. The living-river craftsman dresses even the river's death."</div>
   <div class="code-block">স্টার্টার-৫ · রিয়েলটাইম-ঘাট — মেরু-ফাইল
 
 ফাইল-১ · ইভেন্ট-জগৎ (features/feed/types.ts):
@@ -353,7 +359,9 @@ doors.push({
   <div class="stat-card"><div class="sc-num">বাঁধ</div><div class="sc-label">errorCaptured</div></div>
   <div class="stat-card"><div class="sc-num">পিং</div><div class="sc-label">~২৫সে · প্রক্সি-রোধ</div></div>
 </div>
-  <div class="verse">পঞ্চম-রাকাত — চলমান-কাপড়ের-সমাপ্তি: নদী-আয়াত "উভয়-জল-প্রবাহে-তার-প্রাসাদ" নয় বরং-স্রোতের-ছায়া (৫৫:১৯-২০-এর ভাব) — দুই-জল মিশে-না, নিয়মে-বাঁধা-প্রবাহে-পাশাপাশি। মাজেদার-ঘাট সেই-নিয়মের-জীবন্ত-রূপ: নদী (ট্রিগার) আর-জলাধার (সত্য) পাশাপাশি-বয়ে-যায়, মিশে-যায়-না; স্রোত-ছিঁড়লে-নদী-থামে, জলাধার-থাকে — আর-ফিরে-এলে-গণনায়-মিলে। যে-ঘাট নদীর-ই-জলে-সত্য-গড়ে, সে-ঘাটে-ঝড়ে-সব-ভাসে; জলাধার-যার-আছে, তার-ঝড়-শুধু-বিরতি-মাত্র।</div>
+  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ চুপ-নদী</div>SSE-ভাঙলে কনসোলে-চাপা — ইউজার জানেই না সংযোগ মরেছে; পুরনো-ডেটায় সিদ্ধান্ত নেয়।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ জীবন্ত-ঘাট</div>সংযোগ-অবস্থা দৃশ্যমান (লাইভ/পুনঃসংযোগ) + ব্যাকঅফ-রিকানেক্ট — নদী থামলে ঘাট জানায়।</div></div><ul class="checklist"><li>useSse+রিকানেক্ট-ব্যাকঅফ শেষ করো; সার্ভার-বন্ধ করে পুনঃসংযোগ-প্রচেষ্টা গুনো</li><li>লাইভ-ফিড-পর্দা + সংযোগ-ব্যাজ বানাও — অবস্থা-দৃশ্যমানতা</li><li>MSW-SSE-নকল দিয়ে টেস্ট: ইভেন্ট-এলে স্টোর-আপডেট + ব্যাজ-বদল</li></ul>
+<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 35 (Bridge of Connections) SSE-প্রবাহ ও পুনঃসংযোগের ডিস্ট্রিবিউটেড-বিজ্ঞান, আর Book 37 (Web of Wires) HTTP-স্ট্রিমিং — জীবন্ত নদীর দুই তীর।</div></div>
+<div class="verse">পঞ্চম-রাকাত — চলমান-কাপড়ের-সমাপ্তি: নদী-আয়াত "উভয়-জল-প্রবাহে-তার-প্রাসাদ" নয় বরং-স্রোতের-ছায়া (৫৫:১৯-২০-এর ভাব) — দুই-জল মিশে-না, নিয়মে-বাঁধা-প্রবাহে-পাশাপাশি। মাজেদার-ঘাট সেই-নিয়মের-জীবন্ত-রূপ: নদী (ট্রিগার) আর-জলাধার (সত্য) পাশাপাশি-বয়ে-যায়, মিশে-যায়-না; স্রোত-ছিঁড়লে-নদী-থামে, জলাধার-থাকে — আর-ফিরে-এলে-গণনায়-মিলে। যে-ঘাট নদীর-ই-জলে-সত্য-গড়ে, সে-ঘাটে-ঝড়ে-সব-ভাসে; জলাধার-যার-আছে, তার-ঝড়-শুধু-বিরতি-মাত্র।</div>
   <div class="diagram">
     <div class="diag-title">Starter 5 — The Living Ghat: River + Reservoir + Embankment</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
@@ -399,6 +407,6 @@ doors.push({
   <div class="secret-box">⚡ রিয়েলটাইম-ঘাট: নদী (SSE+পিং+backoff) ট্রিগার-বয়ে, জলাধার (store+refetch) সত্য-রাখে, বাঁধ (errorCaptured) ঘাট-বাঁচায় — খবর জীবন্ত, ডেটা-নোয়ানো নয়। / River triggers, reservoir holds truth, embankment guards.</div>`,
   senior: {
     title: "Starter-5 Card (Realtime)",
-    body: `<p><strong>সার্ভার</strong>: GET /stream — text/event-stream + নামকরা-ইভেন্ট + ~২৫সে-পিং + close-শ্রোতা। <strong>ক্লায়েন্ট</strong>: useFeedStream — EventSource(withCredentials); onopen(retry=0+refetchMissed) · নাম-শ্রোতা→সারি(১০০-ক্যাপ)+টোস্ট+ব্যাজ · onerror→close+backoff(1s×2^n, 30s-cap) · onBeforeUnmount→close। <strong>স্টোর</strong>: items+unread; refetchMissed({since}) — সার্ভার-গণনা। <strong>ভিউ</strong>: connected-ফলক+badge+তালিকা; onErrorCaptured→panelError+return-false। <strong>টেস্ট</strong>: MSW-SSE-নকল।</p>`
+    body: `<p><strong>সার্ভার</strong>: GET /stream — text/event-stream + নামকরা-ইভেন্ট + ~২৫সে-পিং + close-শ্রোতা। <strong>ক্লায়েন্ট</strong>: useFeedStream — EventSource(withCredentials); onopen(retry=0+refetchMissed) · নাম-শ্রোতা→সারি(১০০-ক্যাপ)+টোস্ট+ব্যাজ · onerror→close+backoff(1s×2^n, 30s-cap) · onBeforeUnmount→close। <strong>স্টোর</strong>: items+unread; refetchMissed({since}) — সার্ভার-গণনা। <strong>ভিউ</strong>: connected-ফলক+badge+তালিকা; onErrorCaptured→panelError+return-false। <strong>টেস্ট</strong>: MSW-SSE-নকল। <strong>ফাঁদ</strong>: SSE-ত্রুটি কনসোলে-চাপা দিয়ে ইউজারকে "সংযোগ-চুপ" রাখা — onErrorCaptured→panelError দেখাও; আর রিকানেক্ট-গণনাশূন্য অসীম-লুপ।</p>`
   }
 });

@@ -34,6 +34,8 @@ doors.push({
   credit-note, payment — all three run the same registrar-clock, only each fetch-thread differs; this is the thin-adapter
   art.</p>
   <div class="dialogue">('"কালি ঢালার আগে চক দেখাও," ওস্তাদ নাজির চকের গুঁড়া নিজের হাতে মুছলেন, "আর দুই বাটনের কথা মনে রেখো — এক বার প্রিভিউ দেখালে আর ডিগ্রি দেওয়া যায় না। আমি একবার সরাসরি খুদাই করে ফেলেছিলাম; পাথর ফেটে গিয়েছিল, তিন মাসের কাজ এক রাতে।"', 'চকের নরম গুঁড়া আঙুলের ডগায় — প্রথম-দর্শনের শক্তি এবার ত্বকে অনুভূত।')</div><div class="dialogue en">"Chalk before ink — and once previewed, no degree without confirm. I once carved directly; the stone cracked, three months in one night."</div>
+<div class="dialogue">তুমি চক-বাক্সের সামনে দাঁড়িয়ে জিজ্ঞেস করলে, "উস্তাদ, দুই-দফা কেন? এক-ক্লিকে কাজ হলেই তো দ্রুত!" ইস্তিখারার কারিগর চক ঘষলেন: "দ্রুত-ভাঙা দ্রুত। বলো — মুছতে গিয়ে চোখ বুজলে কি প্রিভিউ-দরজায় সে-ভুল ধরা পড়ে?" তুমি চুপ। কারিগর বললেন, "প্রিভিউ মানে সিদ্ধান্তের-আয়না: কী-যাবে, কী-থাকবে, কত-টাকা — সব দেখে তারপর কালি। ফেজ-মেশিন এ-জিনিস পাহারা দেয়: idle → preview → confirm — শুধু প্রিভিউ থেকেই কনফার্ম-দরজা, idle থেকে নয়। রিফ্রেশ-করলে ফেরা চাই শুরুতে — অর্ধ-কাজ অবস্থায় ঝুলে থাকা মানে অগ্নিকাণ্ডের-অপেক্ষা। ধ্বংসাত্মক-কাজে দেরি বিলাসিতা নয় — বীমা।"</div>
+<div class="dialogue en">You stood at the chalk-box: "Master, why two phases? One click is faster!" The chalk-keeper ground his chalk: "Fast-breaking is fast. Tell me — eyes closed at the delete, does the preview-door catch it?" You were silent. He said: "Preview is the mirror of decision: what goes, what stays, how much — seen, then ink. The phase-machine guards this: idle → preview → confirm — the confirm-door opens only from preview, never from idle. Refresh should return you to the start — hanging half-done is waiting for a fire. Delay in destructive work is not luxury — it is insurance."</div>
   <div class="code-block">চক-কালি-শাস্ত্র — usePreviewConfirmFlow (প্রকৃত LP-কোড)
 
 ফেজ-ঘড়ি (ছয়-কাঁটা):
@@ -136,7 +138,9 @@ doors.push({
   <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল পথ</div>সরাসরি-মিউটেশন — ব্যয়বহুল লেখা এক ক্লিকে; ফেরানো কঠিন।</div>
   <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক পথ</div>চক-কালি (preview→confirm) — প্রভাব-সারি দেখে, তারপর কালি; গার্ড দুই-স্তরে।</div>
 </div>
-  <div class="verse">ইস্তিখারাহ — অঙ্গীকারের-আগে-মন্থন: প্রবাদ-শাস্ত্র যেখানে বড়-সিদ্ধান্তে দুই-রাকাত-ভাবনা — কাজটি করব কি-না-জেনে তবে-করা। ওস্তাদ নাজিরের দপ্তর সেই ইস্তিখারার কারিগরি-রূপ: চক-পাতায়-দেখা, তারপর-কালি; যে-লেখা চোখ-ডুবায়নি, সে-লেখা দলিল-নয় — জুয়া। "তোমাদের সম্পদ নিজেদের মধ্যে অযথা খরচ করো না" (২:১৮৮-এর ভাব) — অযথা-লেখা রোধের-ই হুকুমের ছায়া, ডেটার-জগতে।</div>
+  <ul class="checklist"><li>মুছে-ফেলা-ফ্লো বানাও: তালিকা → প্রিভিউ-মডাল (কী কী যাবে) → কনফার্ম-বাটন সেখানেই</li><li>ফেজ-মেশিন আঁকো: idle→preview→confirm→done — অবস্থার-নাম সহ ছক</li><li>রিফ্রেশ-পরীক্ষা: কনফার্ম-অবস্থায় রিলোড — idle-এ ফেরা উচিত</li></ul>
+<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 33 (Loom of Reason — ১০ দরজা) দুই-দফা-সিদ্ধান্তের যুক্তি (আগে ভেবে, তারপর অঙ্গীকার) শেখায় — dry-run-প্রবাহের দার্শনিক ভিত্তি।</div></div>
+<div class="verse">ইস্তিখারাহ — অঙ্গীকারের-আগে-মন্থন: প্রবাদ-শাস্ত্র যেখানে বড়-সিদ্ধান্তে দুই-রাকাত-ভাবনা — কাজটি করব কি-না-জেনে তবে-করা। ওস্তাদ নাজিরের দপ্তর সেই ইস্তিখারার কারিগরি-রূপ: চক-পাতায়-দেখা, তারপর-কালি; যে-লেখা চোখ-ডুবায়নি, সে-লেখা দলিল-নয় — জুয়া। "তোমাদের সম্পদ নিজেদের মধ্যে অযথা খরচ করো না" (২:১৮৮-এর ভাব) — অযথা-লেখা রোধের-ই হুকুমের ছায়া, ডেটার-জগতে।</div>
   <div class="diagram">
     <div class="diag-title">Chalk Before Ink — The Six-Hand Phase Clock</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
@@ -182,7 +186,7 @@ doors.push({
   <div class="secret-box">🖋️ চক-পাতায়-দেখাও (dryRun), পর্যালোচনার-পরে-কালি (confirm) — কালি শুধু preview-থেকে, পার্শ্ব-প্রভাব কমিটের-পরে। / Preview with chalk, commit ink only from review.</div>`,
   senior: {
     title: "Preview-Confirm Card",
-    body: `<p><strong>ফেজ</strong>: idle→previewing→<strong>preview</strong>→committing→done|error। <strong>চুক্তি</strong>: fetch(arg, dryRun) এক-ই-এন্ডপয়েন্ট; rows(res) উদ্ধারক। <strong>পাহারা-দুই-স্তর</strong>: confirm শুধু phase==='preview' (কম্পোজেবল-গার্ড) + বাটন v-if="phase==='preview'"। <strong>শপথ</strong>: onSuccess done-এর-পরে try-বাইরে; টোস্ট fn(res) হলে সার্ভার-বার্তা। <strong>reset()</strong>: পুনঃব্যবহার-পরিচ্ছন্ন। <strong>অ্যাডাপ্টার</strong>: প্রতি-পৃষ্ঠা fetch+rows+successMessage-মাত্র। <strong>উত্তর-আকৃতি</strong>: দুই-ডাকে-একই (rows-নির্যাত্রক)।</p>`
+    body: `<p><strong>ফেজ</strong>: idle→previewing→<strong>preview</strong>→committing→done|error। <strong>চুক্তি</strong>: fetch(arg, dryRun) এক-ই-এন্ডপয়েন্ট; rows(res) উদ্ধারক। <strong>পাহারা-দুই-স্তর</strong>: confirm শুধু phase==='preview' (কম্পোজেবল-গার্ড) + বাটন v-if="phase==='preview'"। <strong>শপথ</strong>: onSuccess done-এর-পরে try-বাইরে; টোস্ট fn(res) হলে সার্ভার-বার্তা। <strong>reset()</strong>: পুনঃব্যবহার-পরিচ্ছন্ন। <strong>অ্যাডাপ্টার</strong>: প্রতি-পৃষ্ঠা fetch+rows+successMessage-মাত্র। <strong>উত্তর-আকৃতি</strong>: দুই-ডাকে-একই (rows-নির্যাত্রক)। <strong>ফাঁদ</strong>: প্রিভিউ-চেক বাদ দিয়ে সরাসরি-মুছে-ফেলা বাটন — দুই-দফার মর্যাদা রক্ষা করো; আর কনফার্ম-অবস্থা রিফ্রেশে টিকে থাকা (ফেজ-মেশিন স্টোরে রাখলে) — idle-এ ফেরাও।</p>`
   }
 });
 
@@ -219,6 +223,8 @@ doors.push({
   data-truth stays in the server's house; and when the guest leaves, the rope is released"</strong> (unmount→close)
   — else stale news rings all night.</p>
   <div class="dialogue">('"ঘণ্টি বাজিয়ে চলে যেয়ো না," রিক্তা বললেন, হাতের ছোট বাটটা ঘুরিয়ে, "বার্তা পৌঁছেছে কি না, দরজায় গিয়ে শোনো। সবচেয়ে বেশি হার আমার সেই দিন — যেদিন ভেবেছিলাম বাজানোই বুঝি পৌঁছানো, আর পুরো গলি ঘুমিয়ে ছিল।"', 'বাটের মৃদু শব্দটা কানে বাজতে থাকে — পৌঁছানোর দায়টা পাঠানোর চেয়ে কম নয়।')</div><div class="dialogue en">"Don't ring the bell and walk away — go to the door and hear whether it landed. My biggest loss was the day the whole lane slept."</div>
+<div class="dialogue">রিক্তা দুই-বাট দেখিয়ে জিজ্ঞেস করলেন, "বলো — সবুজ-বাট কখন, লাল-বাট কখন?" তুমি বললে, "সফল-বার্তায় সবুজ?" রিক্তা নেড়ে বললেন, "আর লাল?" তুমি চুপ। রিক্তা বললেন, "লাল মানে মানুষের-কাজ-দরকার — যে-বার্তা পড়তেই হবে, চুপচাপ মিলিয়ে যাবে না। টোস্ট মানে এক-চোখের-দেখা: ৩-সেকেন্ড, গায়েব; ইনবক্স মানে ডাক-বাক্স: জমা থাকে, খোলা হয়, চিহ্ন-পড়ে। দুই-নদী আলাদা — কেউ কাউকে খায় না। আর সংযোগ-নদী (SSE) মরে-গেলে সবুজ-লাল কেউ-ই নয়: ব্যাজ-দেখাও পুনঃসংযোগের — নদী-মরা খবর গোপন করলে ঘাটের-কাপড় পচা-ডেটায় শুকোবে।"</div>
+<div class="dialogue en">Rikta showed two bowls: "When the green, when the red?" You said: "Green for success?" She shook her head: "And red?" Silence. She said: "Red means human-work-needed — messages that must be read, not quietly vanish. Toast is one-glance news: three seconds, gone; inbox is the letterbox: stored, opened, marked. Two rivers, separate — neither eats the other. And when the connection-river (SSE) dies, it's neither green nor red: show the reconnecting badge — hide a dead river and the quay's cloth dries on rotten data."</div>
   <div class="code-block">ঘণ্টি-শাস্ত্র — টোস্ট + ইনবক্স + SSE (LP-ধারায়)
 
 ① টোস্ট-ভাটি (ক্ষণস্থায়ী-খবর):
@@ -298,7 +304,9 @@ doors.push({
   · show_message_toasts / play_notification_sound —
     প্রোফাইল-পর্দা থেকে PATCH (দরজা ১৬-এর-আত্মীয়)
   · স্টোরে-নয়-দেখালে fetchList-ই-স্কিপ</div>
-  <div class="verse">তাবলিগ — পৌঁছে-দেওয়া: "হে বার্তবাহক, পৌঁছে-দাও যা-তোমার-প্রতি-নাযিল-হলো" (৫:৬৭-এর আদেশ-ছায়া) — বার্তা-পৌঁছানো-অমানত, না-পৌঁছানো-বিশ্বাসঘাতকতা। রিক্তা-জামিলা-নদী-জামালের গলি সেই তাবলিগের তিন-ঘর: ক্ষণিকের-খবর টোস্টে, স্থায়ীর-খবর ইনবক্সে, লাইভ-স্রোত নদীতে — প্রতিটি-বার্তা তার-যোগ্য-ঘরে-পৌঁছে, পড়ার-দাগে, গভীর-লিংকের-ঠিকানায়। যে-গলিতে খবর পৌঁছায়-না-বা-পৌঁছে-পচে-থাকে, সে-গলির ঘণ্টি অলংকার-নয় — প্রতারণা।</div>
+  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ পোলিং-পাগল</div>প্রতি ৫-সেকেন্ডে GET — সার্ভার-ক্লায়েন্ট দুই-পাশে ব্যয়; খবর এলেও দেরি-সম্ভাবনা।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ ঘণ্টি-বাহক</div>SSE — সার্ভার ঘটনা ঘটলেই পাঠায়; ক্লায়েন্ট শোনে — রিয়েলটাইম বিনা-পোলিং।</div></div><ul class="checklist"><li>useSse কম্পোজেবল লেখো: EventSource + রিকানেক্ট-ব্যাকঅফ + onUnmounted-এ close</li><li>নোটিফিকেশন-স্টোর বানাও: unread-গণনা + লিস্ট + markRead-অ্যাকশন</li><li>ট্যাব-বন্ধ করে নেটওয়ার্ক-ট্যাবে সংযোগ-বন্ধ প্রমাণ করো — ক্লিনআপের সাক্ষ্য</li></ul>
+<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 35 (Bridge of Connections — ১০ দরজা) SSE/পুশ-প্রবাহ আর রিকানেক্ট-প্যাটার্নের ডিস্ট্রিবিউটেড-নকশা — ঘণ্টি-বাহকের সমুদ্র-বিজ্ঞান।</div></div>
+<div class="verse">তাবলিগ — পৌঁছে-দেওয়া: "হে বার্তবাহক, পৌঁছে-দাও যা-তোমার-প্রতি-নাযিল-হলো" (৫:৬৭-এর আদেশ-ছায়া) — বার্তা-পৌঁছানো-অমানত, না-পৌঁছানো-বিশ্বাসঘাতকতা। রিক্তা-জামিলা-নদী-জামালের গলি সেই তাবলিগের তিন-ঘর: ক্ষণিকের-খবর টোস্টে, স্থায়ীর-খবর ইনবক্সে, লাইভ-স্রোত নদীতে — প্রতিটি-বার্তা তার-যোগ্য-ঘরে-পৌঁছে, পড়ার-দাগে, গভীর-লিংকের-ঠিকানায়। যে-গলিতে খবর পৌঁছায়-না-বা-পৌঁছে-পচে-থাকে, সে-গলির ঘণ্টি অলংকার-নয় — প্রতারণা।</div>
   <div class="diagram">
     <div class="diag-title">Bell-Carrier's Lane — Toast Tavern, Post Office, River Ghat</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
@@ -340,6 +348,6 @@ doors.push({
   <div class="secret-box">🔔 ক্ষণিক→টোস্ট, স্থায়ী→ইনবক্স+ব্যাজ, লাইভ→SSE-নদী (backoff-পুনঃছোঁয়া, প্রস্থানে-বন্ধ); খবর পৌঁছে-দাগ-হয়, গভীর-লিংক-পায়। / Transient toasts, durable inbox, live river — every message delivered and marked.</div>`,
   senior: {
     title: "Notifications Card",
-    body: `<p><strong>টোস্ট</strong>: useToast (success/error) — প্রেরণ কম্পোজেবল-গলিতে; অটো-মৃত্যু। <strong>ইনবক্স</strong>: notifications-store (items, unread-computed, fetchList/markRead→সার্ভার-রিফেচ); ব্যাজ=unread। <strong>SSE</strong>: EventSource(withCredentials); ইভেন্ট→টোস্ট+fetchList; onerror→close+backoff(1s×2^n, cap 30s)+পুনঃখোলা; onBeforeUnmount→close। <strong>নিয়ম</strong>: নদী=ট্রিগার-মাত্র, সত্য=সার্ভার; reconnect-পরে-রিফেচ। <strong>গভীর-লিংক</strong>: markRead→push(deepLink(n)) — রুট-নাম+টেস্ট-পিন। <strong>পছন্দ</strong>: টোস্ট/শব্দ PATCH।</p>`
+    body: `<p><strong>টোস্ট</strong>: useToast (success/error) — প্রেরণ কম্পোজেবল-গলিতে; অটো-মৃত্যু। <strong>ইনবক্স</strong>: notifications-store (items, unread-computed, fetchList/markRead→সার্ভার-রিফেচ); ব্যাজ=unread। <strong>SSE</strong>: EventSource(withCredentials); ইভেন্ট→টোস্ট+fetchList; onerror→close+backoff(1s×2^n, cap 30s)+পুনঃখোলা; onBeforeUnmount→close। <strong>নিয়ম</strong>: নদী=ট্রিগার-মাত্র, সত্য=সার্ভার; reconnect-পরে-রিফেচ। <strong>গভীর-লিংক</strong>: markRead→push(deepLink(n)) — রুট-নাম+টেস্ট-পিন। <strong>পছন্দ</strong>: টোস্ট/শব্দ PATCH। <strong>ফাঁদ</strong>: SSE-কানেকশন ক্লিনআপ-ছাড়া ছেড়ে দেওয়া — ট্যাব-বন্ধ পর্যন্ত সার্ভার-ঘণ্টি বাজতে থাকে; <code>onUnmounted</code>-এ <code>es.close()</code>; আর রিকানেক্ট-ব্যাকঅফ ছাড়া = সার্ভারে ঝড়।</p>`
   }
 });

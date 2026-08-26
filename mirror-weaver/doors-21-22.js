@@ -31,6 +31,8 @@ doors.push({
   (component_key→loader) — even the server cannot build unknown rooms. And every error in one language (door 15's
   translation-room) — a charter clause too.</p>
   <div class="dialogue">('"আইন পাথরে, কারিগরের মেজাজে নয়," কাজী আনোয়ার ছেনি দিয়ে ফলকে আঘাত করলেন, "স্রোত একমুখ, নাম খাতায়, নীরবতা দণ্ডনীয় — এই তিনটাই শহর টেকায়। আমি দেখেছি উল্টোটা: প্রতিভাবান কারিগরের শহর, পাঁচ বছরে নিজের রাস্তা হারিয়ে ফেলেছে।"', 'ছেনির ঝনঝন শব্দ উঠোন ভরে ওঠে — আইনের স্থায়িত্ব কারিগরের প্রতিভার চেয়ে বেশি টেকে।')</div><div class="dialogue en">"Laws in stone, not in the artisan's mood — one-way flow, registered names, no silence. I saw a talented city lose its own streets in five years."</div>
+<div class="dialogue">তুমি বিধান-ঘরের দেয়ালে সীমানা-রেখা দেখিয়ে জিজ্ঞেস করলে, "এই রেখা কি কাগজের-শোভা?" প্রবীণ আইন-কারিগর বললেন, "রেখা মানে শ্বাস-নেওয়ার-জায়গা। ভিউ থেকে সরাসরি সার্ভিস-ডাক? রেখা-লঙ্ঘন — লিন্ট তখনই লাল-ত্রুটি দেখাবে। কেন এ-কঠোরতা? কারণ স্মৃতি পাহারা দেয় না, যন্ত্র দেয়। দশ-বার লঙ্ঘন-করা-রেখা একাদশতে নিজে-নিজে মুছে যায়। আর নতুন-পর্দা-যাত্রার নিয়ম লেখা আছে রেজিস্ট্রিতে: রেজিস্ট্রি-নাম → ম্যানিফেস্ট-সারি → সার্ভিস-তৈরি → টেস্ট → E2E — যে-পথ প্রশ্নহীন, সে-পথ দ্রুততম। বিধান মানে বাঁধা নয় — প্রতিটি কারিগর একা-নয়-একসাথে-বোনার শপথ।"</div>
+<div class="dialogue en">You pointed at the boundary-lines on the statute wall: "Are these paper-ornaments?" The elder law-craftsman said: "A line is where breathing happens. A view calling a service directly? Line-breached — lint flashes red that instant. Why so strict? Because memory doesn't guard; machines do. A line crossed ten times erases itself by the eleventh. And the new-screen journey's rule lives in the registry: registry-name → manifest-row → service-built → test → E2E — an unquestioned path is the fastest path. Statutes are not shackles — they are the oath that every craftsman weaves together, not alone."</div>
   <div class="code-block">চার্টার-শাস্ত্র — পাঁচ-আইনের-সংহিতা
 
 আইন-১ · স্রোত-একমুখ (লিন্টে-জোর):
@@ -104,7 +106,9 @@ doors.push({
   <li>এরর এক-ভাষায় — getApiErrorMessage</li>
   <li>দুই-খাতা মিলে নতুন ঘর — FE-রিলিজ + BE-ম্যানিফেস্ট</li>
 </ul>
-  <div class="verse">শরীয়তুল-মদীনা — মেয়র-মরে-আইন-বাঁচে: "মানুষের-মধ্যে তোমরা-হিসাব-করো-মিনাড়ে" নয় বরং বিচার-প্রতিষ্ঠার-আয়াত-ধারা (৪:৫৮-এর-সার) — বিশ্বাস প্রতিষ্ঠানে-থাকে, ব্যক্তির-স্মৃতিতে-নয়। কাজী আনোয়ারের-ফলক সেই-সংহিতার-শহর-রূপ: স্রোতের-দিক, নামের-খাতা, নীরবতার-দণ্ড — তিন-আইন কোনো-কারিগরের-মেজাজে-নয়, পাথরে। যে-শহর আইন-ছুঁড়ে-ফেলে-দ্রুত-বাড়ে, সে-শহর পাঁচ-বছরে-নিজের-রাস্তাই-খুঁজে-পায়-না; আর যে-নীরবতা-দণ্ডহীন, সেখানে-ব্যর্থতা-অদৃশ্য-হয়ে-রাতে-ডাকাতি-করে।</div>
+  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ স্তর-মিশ্রণ</div>ভিউ থেকে সরাসরি সার্ভিস-ডাক, ফিচার-ভেতরে অন্য-ফিচার-হাত — বদলালে ভুলে-যাওয়া অশ্রুতলিঙ্গ ভাঙে।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ বিধান-বাঁধা স্তর</div>লিন্ট-জিম্বাব্বে সীমানা + রেজিস্ট্রি-নকশা — নিয়ম যন্ত্রই পাহারা দেয়, স্মৃতি নয়।</div></div>
+<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 4 (City Builder’s Codex) স্তর-সীমানার আর্কিটেকচার-নীতি, আর Book 40 (Codebuilder’s Guild) রেজিস্ট্রি/manifest-প্যাটার্নের SE-নিয়ম — বিধানের দুই স্তম্ভ।</div></div>
+<div class="verse">শরীয়তুল-মদীনা — মেয়র-মরে-আইন-বাঁচে: "মানুষের-মধ্যে তোমরা-হিসাব-করো-মিনাড়ে" নয় বরং বিচার-প্রতিষ্ঠার-আয়াত-ধারা (৪:৫৮-এর-সার) — বিশ্বাস প্রতিষ্ঠানে-থাকে, ব্যক্তির-স্মৃতিতে-নয়। কাজী আনোয়ারের-ফলক সেই-সংহিতার-শহর-রূপ: স্রোতের-দিক, নামের-খাতা, নীরবতার-দণ্ড — তিন-আইন কোনো-কারিগরের-মেজাজে-নয়, পাথরে। যে-শহর আইন-ছুঁড়ে-ফেলে-দ্রুত-বাড়ে, সে-শহর পাঁচ-বছরে-নিজের-রাস্তাই-খুঁজে-পায়-না; আর যে-নীরবতা-দণ্ডহীন, সেখানে-ব্যর্থতা-অদৃশ্য-হয়ে-রাতে-ডাকাতি-করে।</div>
   <div class="diagram">
     <div class="diag-title">City Charter — Three Tablets, One Constitution</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
@@ -142,7 +146,7 @@ doors.push({
   <div class="secret-box">🏛️ তিন-ফলক: স্রোত-একমুখ (লিন্ট), নাম-খাতায় (রেজিস্ট্রি), নীরবতা-দণ্ডনীয় (no-empty-catch) — নকশা-খাতা মিলে-ই নতুন-ঘর। / One-way imports, registered names, no silence.</div>`,
   senior: {
     title: "Architecture Card",
-    body: `<p><strong>আইন</strong>: ① লেয়ার-স্রোত (features✗→features, no-restricted-imports) ② রেজিস্ট্রি (import.meta.glob→frozen key-map; অজানা-কী=লগ+NotFound) ③ no-empty-catch (logger.error/দেখাও; টেস্ট-পিন) ④ এরর-ভাষা getApiErrorMessage ⑤ ম্যানিফেস্ট-নকশা (BE: path/key/roles; buildRouteRecords→addRoute; রুট+মেনু এক-উৎস)। <strong>নতুন-পর্দা</strong>: view→রেজিস্ট্রি→ম্যানিফেস্ট→সার্ভিস/কম্পোজেবল/টেস্ট→E2E।</p>`
+    body: `<p><strong>আইন</strong>: ① লেয়ার-স্রোত (features✗→features, no-restricted-imports) ② রেজিস্ট্রি (import.meta.glob→frozen key-map; অজানা-কী=লগ+NotFound) ③ no-empty-catch (logger.error/দেখাও; টেস্ট-পিন) ④ এরর-ভাষা getApiErrorMessage ⑤ ম্যানিফেস্ট-নকশা (BE: path/key/roles; buildRouteRecords→addRoute; রুট+মেনু এক-উৎস)। <strong>নতুন-পর্দা</strong>: view→রেজিস্ট্রি→ম্যানিফেস্ট→সার্ভিস/কম্পোজেবল/টেস্ট→E2E। <strong>ফাঁদ</strong>: "এদিক-ওদিক একটু" স্তর-লঙ্ঘন করা — ভিউ থেকে সরাসরি সার্ভিস-ডাক; লিন্ট-সীমানা প্রথম লঙ্ঘনেই আটকাও, দশম লঙ্ঘনে নয়।</p>`
   }
 });
 
@@ -172,6 +176,8 @@ doors.push({
   it."</strong> She'll show an empty folder becoming a running loom in ten minutes, and will end: <strong>"keep this
   cloth — the next workshop builds its bigger pattern on exactly this."</strong></p>
   <div class="dialogue">('"ছোট কাপড় ফেলে দিয়ো না," শাগরফা আপা শেখা-কাপড়টা ভাঁজ করে তোমার হাতে দিলেন, "এর ওপরেই পরের বড় নকশা বসবে। একবার ভেবেছিলাম প্রথম কাপড় নষ্ট হয়ে গেছে — পরে বুঝেছি, সেটাই আমার সবচেয়ে দামি খতিয়ান।"', 'কাপড়ের নরম ভাঁজ হাতে রয়ে যায় — প্রথম শেখা কখনোই ব্যর্থতা নয়, ভিত্তি।')</div><div class="dialogue en">"Don't discard the learning cloth — the next big pattern sits on exactly this. I once thought my first cloth wasted; it became my dearest record."</div>
+<div class="dialogue">শাগরফা আপা প্রথম-কাপড় হাতে দিয়ে জিজ্ঞেস করলেন, "বলো — এই কাপড়ে কয়টা সুতো?" তুমি গুনলে: "চার — ref, computed, v-for, v-model।" আপা মাথা নাড়লেন: "চার-ই যথেষ্ট, চার-ই মুখ্য। রাউটার লাগবে না — এক-পর্দার কাপড়; Pinia লাগবে না — মাথার-উপর অন্য-কারিগরের ছাদ নয়; SSE লাগবে না — নদী এখনো দূরে। প্রথম-কাপড়ের কাজ পূর্ণতা নয় — আত্মবিশ্বাস: নিজের-হাতে-বোনা প্রমাণ যে তাঁত চলে। localStorage-সিঙ্ক শিখে নাও — বিদায়ের-সময় কাপড় থাকবে; কিন্তু সত্য-উৎস মেমরিতেই — গুদাম প্রতিফলন, রাজধানী নয়।"</div>
+<div class="dialogue en">Shagrofa Apa handed you the first cloth: "How many threads in it?" You counted: "Four — ref, computed, v-for, v-model." She nodded: "Four suffice, four are the point. No router needed — a one-screen cloth; no Pinia — no stranger's roof over your head yet; no SSE — the river is still far. The first cloth's work is not completeness but confidence: proof woven by your own hands that the loom runs. Learn the localStorage-sync — the cloth survives farewell; but the source of truth stays in memory — the warehouse is a reflection, not the capital."</div>
   <div class="code-block">স্টার্টার-১ · টু-ডু-তাঁত — প্রতিটি-ফাইল (npm থেকে-ব্রাউজার)
 
 স্থাপন (এক-লাইন):
@@ -297,7 +303,9 @@ doors.push({
   <li>v-model + .trim — ইনপুট-সেতু</li>
   <li>watch({deep}) → localStorage — স্মৃতি</li>
 </ul>
-  <div class="verse">প্রথম-রাকাত — ছোট-কিন্তু-পূর্ণ-একক: নামাজ-শাস্ত্রে-যেমন-প্রথম-একাক-ই-শিক্ষা, জমা-পড়ে-না। শাগরফা-আপার-শেখা-কাপড় সেই-প্রথম-এককের-তাঁত-রূপ: পঞ্চাশ-লাইন, কিন্তু-আঙুল-তলে-গিঁট-নেই — যোগ-গোছ-কাট-স্মৃতি চার-অঙ্গ-সম্পূর্ণ। যে-শাগিরদ প্রথম-কাপড়েই-সোনার-বর্ডর-চায়, সে-দ্বিতীয়-সপ্তাহে-তাঁত-ছেড়ে-দেয়; আর-যে-ছোট-পূর্ণ-গাঁথে, তার-দ্বিতীয়-কাপড়-নিজে-নিজেই-বড়-নকশা-দাবি-করে।</div>
+  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ প্রথম-দিনের জাদুঘর</div>টু-ডুতেই রাউটার+Pinia+SSB-সব — প্রথম কাপড় ডুবে যায় বহু-যন্ত্রের ভারে।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ চার-সুতো-কাপড়</div>ref+computed+v-for+v-model একবার হাতে-হাতে — যন্ত্র পরে আসবে, আত্মবিশ্বাস আগে।</div></div>
+<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 5 (Seed of Learning) প্রথম-প্রকল্পের শেখার-মনস্তত্ত্ব, আর Book 53 (Python City) ছোট-প্রজেক্ট-থেকে-বড়-হওয়ার পথ — প্রথম কাপড়ের দুই পথপ্রদর্শক।</div></div>
+<div class="verse">প্রথম-রাকাত — ছোট-কিন্তু-পূর্ণ-একক: নামাজ-শাস্ত্রে-যেমন-প্রথম-একাক-ই-শিক্ষা, জমা-পড়ে-না। শাগরফা-আপার-শেখা-কাপড় সেই-প্রথম-এককের-তাঁত-রূপ: পঞ্চাশ-লাইন, কিন্তু-আঙুল-তলে-গিঁট-নেই — যোগ-গোছ-কাট-স্মৃতি চার-অঙ্গ-সম্পূর্ণ। যে-শাগিরদ প্রথম-কাপড়েই-সোনার-বর্ডর-চায়, সে-দ্বিতীয়-সপ্তাহে-তাঁত-ছেড়ে-দেয়; আর-যে-ছোট-পূর্ণ-গাঁথে, তার-দ্বিতীয়-কাপড়-নিজে-নিজেই-বড়-নকশা-দাবি-করে।</div>
   <div class="diagram">
     <div class="diag-title">Starter 1 — The Todo Loom, One File Whole</div>
     <svg viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg">
@@ -329,6 +337,6 @@ doors.push({
   <div class="secret-box">🌱 প্রথম-কাপড়: টু-ডু-তাঁত — এক-ফাইল, চার-সুতো, সিন্দুক-স্মৃতি; হাতে-গাঁথো, ভেঙে-দেখো, রেখে-দাও। / Type it, break it, keep it — the whole loom in fifty lines.</div>`,
   senior: {
     title: "Starter-1 Card (Todo)",
-    body: `<p><strong>স্থাপন</strong>: create-vite vue-ts। <strong>App.vue</strong>: ref(todos/draft/filter) + computed(shown/remaining) + add/remove/clearDone + watch(todos,{deep})→localStorage। <strong>টেমপ্লেট</strong>: @submit.prevent + v-model.trim; ছাঁকনি-বাটন-নেভ; v-for+:key(আসল-id); checkbox-v-model+strike; footer-remaining। <strong>ব্যায়াম</strong>: এডিট-ইন-প্লেস, ট্যাগ, প্রথম-টেস্ট। <strong>শিক্ষা</strong>: চার-মূল-সুতো-প্রথম-বার-একসাথে।</p>`
+    body: `<p><strong>স্থাপন</strong>: create-vite vue-ts। <strong>App.vue</strong>: ref(todos/draft/filter) + computed(shown/remaining) + add/remove/clearDone + watch(todos,{deep})→localStorage। <strong>টেমপ্লেট</strong>: @submit.prevent + v-model.trim; ছাঁকনি-বাটন-নেভ; v-for+:key(আসল-id); checkbox-v-model+strike; footer-remaining। <strong>ব্যায়াম</strong>: এডিট-ইন-প্লেস, ট্যাগ, প্রথম-টেস্ট। <strong>শিক্ষা</strong>: চার-মূল-সুতো-প্রথম-বার-একসাথে। <strong>ফাঁদ</strong>: প্রথম প্রজেক্টেই সব-ফিচার ঢোকানো — চার-সুতোর বেশি এখন নয়; আর localStorage-কে সত্য-উৎস বানানো (ইনমেমরি-স্টেট + সিঙ্ক-সেভ রাখো)।</p>`
   }
 });

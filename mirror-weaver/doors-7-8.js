@@ -32,6 +32,8 @@ doors.push({
   thread."</strong> In an empty pocket she sets fallback cloth — the card never looks bare even when the parent sends
   nothing.</p>
   <div class="dialogue">('"খোলা খাঁচা ফেরত পাঠাও না খালি হাতে," হাজিরা বিবি বললেন, শূন্য খাঁচার ভেতরে রঙিন কাপড়ের ছাল বিছিয়ে, "ছাল বানিয়ে পাঠাও — পাওয়া মানুষ নিজের পালক বসাবে। আমার ছেলে একবার সব-বোনা খাঁচা পাঠিয়েছিল; ওপারে কেউ নিজের রং বসাতে পারেনি, ফেরত এসেছিল অচেনা।"', 'ছালের নরম ভাঁজে আঙুল রাখতেই বোঝা যায় — শূন্য জায়গাটাই আসল উপহার।')</div><div class="dialogue en">"Send the cage back with a cloth lining — the receiver sets their own feathers. My son once sent a fully-woven cage; it returned unrecognizable."</div>
+<div class="dialogue">হাজিরা বিবি খোপ-কাঠের আলমারি খুলে জিজ্ঞেস করলেন, "বলো — এই ফ্রেম এক, তাহলে ভেতরের সাজেজ কে ঠিক করবে?" তুমি বললে, "যে-কাপড় আনলো সে-তো!" বিবি নেড়ে বললেন, "তাই — খোপ দেয় জায়গা, সাজ দেয় অতিথি। ডিফল্ট-স্লট মানে খালি-তাক: যা-বসাও তাই-দেখায়, না-বসালে ফলব্যাক-কাপড়। নাম-দেওয়া স্লট আলমারির-দরজা: header-তাকে header-ই। স্কোপড-স্লট সবচেয়ে সূক্ষ্ম — খোপ অতিথির হাতে নিজের যন্ত্রের চাবি দেয়: row-ডেটা বাইরে পাঠিয়ে দেয়, সাজ অতিথি বসায়। দিক মনে রেখো — ডেটা খোপ থেকে বাইরে, সাজ বাইরে থেকে ভেতরে।"</div>
+<div class="dialogue en">Hajira Bibi opened the niche-cabinet: "This frame is one — who decides the arrangement inside?" You said: "Whoever brought the cloth!" She shook her head: "So — the niche gives the place, the guest gives the arrangement. Default slot is an empty shelf: whatever you place shows; empty, the fallback-cloth. Named slots are cabinet doors: header on the header-shelf. Scoped slots are finest — the niche hands the guest the key to its own instrument: sends row-data out, the guest arranges. Remember the direction — data flows out of the niche, arrangement comes in from outside."</div>
   <div class="code-block">slot-শাস্ত্র — সম্পূর্ণ (LP-প্রমাণ: PasswordField-এর trailing-খোপ)
 
 ① ডিফল্ট-খোপ — নামহীন ভরাট:
@@ -98,7 +100,9 @@ doors.push({
   <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল পথ</div>খাঁচা নিজে সাজানো — প্রতিটি ব্যবহারকারীর জন্য নতুন করে বোনা; দেরি ও অমিল।</div>
   <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক পথ</div>ছাল (slot) বানিয়ে পাঠানো — প্রত্যেকে নিজের পালক বসায়; এক খাঁচা, শত রূপ।</div>
 </div>
-  <div class="verse">ওয়ারাসা — উত্তরাধিকারের দুই ধারা: পাত্র পূর্বপুরুষের, ভরাট উত্তরসূরির। "মানুষের মর্যাদা তার প্রচেষ্টার" নয় বরং আয়াত-ধারা যেখানে জীবিকা ও দায় বণ্টিত (১৭:৭০-এর আত্মা) — ছাঁচ ধার দেয় গঠন, উত্তরসূরি দেয় প্রাণ। হাজিরা বিবির কার্ড সেই ওয়ারাসার কারিগরি রূপ: খোপ পূর্ব-নির্ধারিত, ভরাট প্রজন্ম-প্রজন্মান্তরে নতুন; খোপহীন কার্ড অর্থহীন, ভরাটহীন খোপ অসম্পূর্ণ — দুই-ই একসাথে মানে জীবন্ত উত্তরাধিকার।</div>
+  <ul class="checklist"><li>Card-কম্পোনেন্ট বানাও — ডিফল্ট স্লট + ফলব্যাক-লেখা; নাম-দেওয়া স্লটে header/footer</li><li>স্কোপড-স্লট: তালিকা-কম্পোনেন্ট থেকে row-ডেটা বাইরের টেমপ্লেটে পাঠাও</li><li>লেজারপাইলট-ড্যাশবোর্ডে একটা স্লট-প্যাটার্ন চিহ্নিত করে খাতায় আঁকো</li></ul>
+<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 4 (City Builder’s Codex) কম্পোজিশন-বনাম-কনফিগারেশনের ট্রেড-অফ দেয়, আর Book 28 (Knowledge Web — ১০ দরজা) স্লট-প্যাটার্নকে জ্ঞান-সংযোগের রূপক করে।</div></div>
+<div class="verse">ওয়ারাসা — উত্তরাধিকারের দুই ধারা: পাত্র পূর্বপুরুষের, ভরাট উত্তরসূরির। "মানুষের মর্যাদা তার প্রচেষ্টার" নয় বরং আয়াত-ধারা যেখানে জীবিকা ও দায় বণ্টিত (১৭:৭০-এর আত্মা) — ছাঁচ ধার দেয় গঠন, উত্তরসূরি দেয় প্রাণ। হাজিরা বিবির কার্ড সেই ওয়ারাসার কারিগরি রূপ: খোপ পূর্ব-নির্ধারিত, ভরাট প্রজন্ম-প্রজন্মান্তরে নতুন; খোপহীন কার্ড অর্থহীন, ভরাটহীন খোপ অসম্পূর্ণ — দুই-ই একসাথে মানে জীবন্ত উত্তরাধিকার।</div>
   <div class="diagram">
     <div class="diag-title">Pockets — Value-Gift vs Cloth-Gift vs Reverse-Gift</div>
     <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
@@ -137,7 +141,7 @@ doors.push({
   <div class="secret-box">🧩 ছাঁচ খোপ খোলে, পিতা ভরাট করে; scoped-খোপ উল্টো-ফিতা দেয় — পুত্রের ডেটা, পিতার কলম; ফলব্যাক খালি-ঘর বাঁচায়। / The mold opens pockets, the parent fills them; scoped slots return the thread.</div>`,
   senior: {
     title: "Slot Card",
-    body: `<p><strong>ডিফল্ট</strong>: <code>&lt;slot&gt;ফলব্যাক&lt;/slot&gt;</code>; পিতা-কনটেন্ট = ভরাট। <strong>নাম-খোপ</strong>: <code>name="x"</code> ↔ <code>#x</code>; ডায়নামিক <code>#[dyn]</code>। <strong>scoped</strong>: <code>&lt;slot :row :index /&gt;</code> → পিতা <code>#default="{ row, index }"</code> — তালিকা-রেন্ডারারের শাস্ত্র; খোপ-প্রপস ন্যূনতম। <strong>useSlots()</strong>: শর্তসাপেক্ষ-ছাঁচ। <strong>শৈলী</strong>: লেআউট = নাম-খোপ; আইটেম-রেন্ডার = scoped; ফিল্ড-সহায়তা = খোপ+ফলব্যাক। <strong>LP-প্রমাণ</strong>: PasswordField <code>trailing</code>-খোপ (EyeToggle-ফলব্যাক)।</p>`
+    body: `<p><strong>ডিফল্ট</strong>: <code>&lt;slot&gt;ফলব্যাক&lt;/slot&gt;</code>; পিতা-কনটেন্ট = ভরাট। <strong>নাম-খোপ</strong>: <code>name="x"</code> ↔ <code>#x</code>; ডায়নামিক <code>#[dyn]</code>। <strong>scoped</strong>: <code>&lt;slot :row :index /&gt;</code> → পিতা <code>#default="{ row, index }"</code> — তালিকা-রেন্ডারারের শাস্ত্র; খোপ-প্রপস ন্যূনতম। <strong>useSlots()</strong>: শর্তসাপেক্ষ-ছাঁচ। <strong>শৈলী</strong>: লেআউট = নাম-খোপ; আইটেম-রেন্ডার = scoped; ফিল্ড-সহায়তা = খোপ+ফলব্যাক। <strong>LP-প্রমাণ</strong>: PasswordField <code>trailing</code>-খোপ (EyeToggle-ফলব্যাক)। <strong>ফাঁদ</strong>: scoped-slot-এর ডেটা উল্টো-দিকে পাঠানো (প্যারেন্ট রেন্ডার করে, সন্তান শুধু সুযোগ দেয়) — দিক উল্টালে কম্পোজিশন ভেঙে প্রপ-কুয়াশা ফেরে।</p>`
   }
 });
 
@@ -172,6 +176,8 @@ doors.push({
   Idris — <strong>"if irrigation continues on an uprooted tree, the pond runs dry. Whatever you tied, untie at exit —
   paired accounting."</strong></p>
   <div class="dialogue">('"বীজ থেকে চারা হতে যত দিন, তত দিন মাটি খোঁড়ো না," হাজিরা বিবি বীজতলার পাশে বালতি নামিয়ে রাখলেন, "গাছ জ্যান্ত থাকতেই দড়ি বাঁধো — শুকিয়ে গেলে বাঁধলে ভাঙে। আমার ভাই গাছ কাটার পরে বাঁধতে গিয়েছিল; খেয়াল করেনি শিকড় আর নেই।"', 'ভেজা মাটির গন্ধে তোমার নাক ভরে যায় — কখন বাঁধতে হয়, কখন খুলতে হয়, তার সময়টা এবার স্পষ্ট।')</div><div class="dialogue en">"Don't dig the soil while the seed sprouts — tie the rope while the tree lives. My brother tied after cutting; the roots were already gone."</div>
+<div class="dialogue">ইদ্রিস ঘড়ির কাঁটা থামিয়ে জিজ্ঞেস করলেন, "বলো — গাছ রোপণ করলাম onMounted-এ, তাহলে সেচ-নল, সার-শক্তি কোথায় হটবে?" তুমি বললে, "গাছ বড় হলে?" ইদ্রিস মাথা নাড়লেন: "জীবন দুই-পাল্লার — যা জন্মায় তার বিদায়ও। onUnmounted-এ নল খোলো, শ্রোতা-সরাও, টাইমার-মেটাও — নাহলে মৃত-গাছের শিকড় মাটিতেই পচে থাকবে (মেমরি-লিক), বাগান অন্ধকারে কথা বলবে। আর setup-শরীরে সরাসরি সেচ-কাজ লিখো না — সে-শরীর দুইবার চালানো হতে পারে; জন্ম-হুকে নাও, মৃত্যু-হুকে বিদাও। জোড়া ছাড়া কোনো হুক নয়।"</div>
+<div class="dialogue en">Idris stopped the clock-hand: "We planted a tree in onMounted — where do the hose and the fertilizer run?" You said: "When the tree grows?" He shook his head: "Life has two pan-scales — what is born must also depart. In onUnmounted, open the hose, remove the listeners, kill the timers — or the dead tree's roots rot in the soil (memory-leak), and the garden talks in the dark. And never write irrigation directly in setup’s body — that body may run twice; take it in the birth-hook, release it in the death-hook. No hook without its pair."</div>
   <div class="code-block">জীবনচক্র-শাস্ত্র — সম্পূর্ণ (LP-নমুনা: useDataFetch)
 
 চক্রের পূর্ণ-সারণি (&lt;script setup&gt;-কম্পাইলার-স্বয়ংক্রিয়):
@@ -233,7 +239,9 @@ LP-নমুনা (useDataFetch.ts — প্রকৃত কোড):
 async-setup নোট:
   · top-level await করলে উপাদানটি async —
     পিতায় &lt;Suspense&gt; লাগে (দরজা ১২)</div>
-  <div class="verse">আজল — নির্ধারিত কাল: "প্রত্যেক জাতির জন্য একটি সময়সীমা আছে" (৭:৩৪, ১০:৪৯-এর সার) — বীজেরও, পাতারও, গাছেরও। ইদ্রিসের ঘড়ি সেই আজলের উদ্যান-রূপ: রোপণের মুহূর্ত আছে, ফুলের মুহূর্ত আছে, উৎপাটনের মুহূর্ত আছে — আর প্রতিটি মুহূর্তের নিজ-নিজ কাজ। যে বীজ নিজের সময়সীমা মানে না — মরার পরেও মাটি থেকে টানতে থাকে — সে নিজে বাঁচে না, উদ্যানকেও মারে। প্রস্থান-পরিচ্ছদই প্রবেশ-পরিচ্ছদের আমানত।</div>
+  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ ঝুলন্ত-শ্রোতা</div>onMounted-এ লিসেনার যোগ, বিদায়ে কেউ সরায় না — মেমরি-লিক, ভূতুড়ে-আচরণ।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ জন্ম-মৃত্যু জোড়া</div>প্রতিটি সেটআপের সাথে ক্লিনআপ-ফেরত (onUnmounted/স্কোপ-অটো) — ঘর ছাড়ার আগে বাতি নেভাও।</div></div><ul class="checklist"><li>টাইমার-কম্পোনেন্ট: onMounted-এ setInterval, onUnmounted-এ clearInterval — মাউন্ট/আনমাউন্ট করে মেমরি-ট্যাব দেখো</li><li>স্ক্রল-শ্রোতা যোগ করে watchEffect-এ onCleanup দিয়ে সরাও</li><li>জীবনচক্রের ছক আঁকো — ৪-জোড়া হুক, কার কাজ কী, এক-শব্দে</li></ul>
+<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 38 (The Machine’s Soul — ১০ দরজা) প্রসেস-জীবনচক্রের অপারেটিং-সিস্টেম সংস্করণ শেখায় — কম্পোনেন্ট-লাইফসাইকেলের বড় ভাই।</div></div>
+<div class="verse">আজল — নির্ধারিত কাল: "প্রত্যেক জাতির জন্য একটি সময়সীমা আছে" (৭:৩৪, ১০:৪৯-এর সার) — বীজেরও, পাতারও, গাছেরও। ইদ্রিসের ঘড়ি সেই আজলের উদ্যান-রূপ: রোপণের মুহূর্ত আছে, ফুলের মুহূর্ত আছে, উৎপাটনের মুহূর্ত আছে — আর প্রতিটি মুহূর্তের নিজ-নিজ কাজ। যে বীজ নিজের সময়সীমা মানে না — মরার পরেও মাটি থেকে টানতে থাকে — সে নিজে বাঁচে না, উদ্যানকেও মারে। প্রস্থান-পরিচ্ছদই প্রবেশ-পরিচ্ছদের আমানত।</div>
   <div class="diagram">
     <div class="diag-title">The Life-Clock — Seed, Leaf, Shadow, Ash</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
@@ -273,6 +281,6 @@ async-setup নোট:
   <div class="secret-box">🌱 প্রথম পাতায় নহর খোলো (onMounted-fetch), ছাইয়ে সব বন্ধ করো (unmounted-clear/close/abort) — বীজের কাল মানা কারিগরের শপথ। / Open channels on mount, close everything on unmount.</div>`,
   senior: {
     title: "Lifecycle Card",
-    body: `<p><strong>ক্রম</strong>: setup (বিশুদ্ধ) → beforeMount → <strong>mounted</strong> (fetch/timer/listener/থার্ড-পার্টি) → beforeUpdate→updated (⚠ state-লেখা-লুপ) → beforeUnmount → <strong>unmounted</strong> (clear/close/abort — জোড়া-হিসাব)। <strong>বিশেষ</strong>: onErrorCaptured (boundary, return false-থামাও), activated/deactivated (keep-alive), renderTracked/Triggered (ডিবাগ)। <strong>নিয়ম</strong>: বাঁধা→খোলা জোড়া; ব্রাউজার-API শুধু mounted-পরে। <strong>LP-নমুনা</strong>: useDataFetch — <code>onMounted(() =&gt; void fetch())</code>, <code>immediate:false</code>-অপশন।</p>`
+    body: `<p><strong>ক্রম</strong>: setup (বিশুদ্ধ) → beforeMount → <strong>mounted</strong> (fetch/timer/listener/থার্ড-পার্টি) → beforeUpdate→updated (⚠ state-লেখা-লুপ) → beforeUnmount → <strong>unmounted</strong> (clear/close/abort — জোড়া-হিসাব)। <strong>বিশেষ</strong>: onErrorCaptured (boundary, return false-থামাও), activated/deactivated (keep-alive), renderTracked/Triggered (ডিবাগ)। <strong>নিয়ম</strong>: বাঁধা→খোলা জোড়া; ব্রাউজার-API শুধু mounted-পরে। <strong>LP-নমুনা</strong>: useDataFetch — <code>onMounted(() =&gt; void fetch())</code>, <code>immediate:false</code>-অপশন। <strong>ফাঁদ</strong>: সাইড-ইফেক্ট setup-শরীরে সরাসরি লেখা (setup = দুইবার চলতে পারে) — <code>onMounted</code>-এ নাও; আর ক্লিনআপ-ছাড়া লিসেনার/টাইমার = মেমরি-লিক।</p>`
   }
 });

@@ -31,6 +31,8 @@ doors.push({
   invisible path — <strong>attrs fallthrough</strong>: undeclared attributes and listeners sink to the root; useful
   magic on single-root components, confusion on multi-root ones.</p>
   <div class="dialogue">('"পাখি ফিরে এলেই দড়ি খোলো," রফিক খাঁচার দরজা খুলে পাখিটাকে আকাশে ছেড়ে দিলেন, "ওরা নিজের সন্দেশ নিজের ঠোঁটে নিয়ে আসে। তুমি শুধু নাম লিখে দাও — কোন পাখি, কী খবর। নাম-ছাড়া পাখি পুরো শহরে গুলশান করে তোলে; কেউ জানে না কার ডাক কী কাজের।"', 'পাখির ডানার ঝাপটানিতে বাতাস এসে লাগে — প্রতিটি ডাকের একটা নাম-ফলক থাকার মানেটা এবার অনুভূত হয়।')</div><div class="dialogue en">"The birds bring their own message in their own beak — you only write the name: which bird, what news. Nameless birds scatter the whole city."</div>
+<div class="dialogue">সালমা একটা পাখির ডাক শুনিয়ে জিজ্ঞেস করলেন, "এই ডাকে কী আছে — নাম, না খবর?" তুমি ভেবে বললে, "দুই-ই?" সালমা হাসলেন: "তাই তো চুক্তি দরকার। defineEmits মানে পাখির পায়ে নাম-রিং আর খবরের-ফিতা দুই-ই লেখা: (close, পেলোড শূন্য) (update, পেলোড নতুন-মান)। শুধু নাম পাঠালে শ্রোতা অনুমানে চলে — অনুমান মানে কাল ভাঙা। আর শ্রোতা-মা যখন ডাক শোনে, সে কি করবে সেটাও তার খাতায় — ডাক শুধু জানায়, আদেশ দেয় না। ইভেন্ট মানে সংবাদ, সন্তান মায়ের হাত ধরে টানে না।"</div>
+<div class="dialogue en">Salma sounded a bird-call: "What’s in this call — the name, or the news?" You thought: "Both?" She laughed: "That’s why the contract. defineEmits writes both the leg-ring and the news-ribbon: (close, empty payload) (update, new value). Name alone, and listeners guess — guessing breaks tomorrow. And when the mother-listener hears, what she does is her own ledger — the call informs, never commands. An event is news; a child doesn’t drag the mother’s hand."</div>
   <div class="code-block">emit-শাস্ত্র — LP-নমুনাসহ (DeleteConfirmationModal.vue, প্রকৃত)
 
 ① ঘোষণা — টাইপড-চুক্তি (&lt;script setup&gt;):
@@ -84,7 +86,9 @@ doors.push({
   · ঘোষণা → ব্যবহার → পিতার-শ্রবণ তিন পাশ
     মিললে তবেই চুক্তি পূর্ণ — টেস্টে emitted()
     দিয়ে পিন করো (দরজা ২৩)</div>
-  <div class="verse">রিসালাত — বার্তবাহনের সততা: "বার্তবাহকের দায় শুধু পৌঁছে দেওয়া" (৫:৯২-এর সার) — সিদ্ধান্ত প্রেরকের, বহন বার্তবাহকের। সালমার পাখি সেই রিসালাতের প্লাবক-রূপ: নাম-রিং ও ওজন-চিরহার বাঁধা পাখি ঠিক খাঁচায় পৌঁছে দেয়, নিজে থেকে সিদ্ধান্ত নেয় না। যে কারখানায় পাখিরা নাম-ছাড়া উড়ে, সেখানে খবর আর গুজবের পার্থক্য থাকে না — আর পার্থক্যহীন খবরই সবচেয়ে বড় গুজব।</div>
+  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ মূক-সন্তান</div>সন্তান নীরবে নিজের কাজ সারে — মা-কম্পোনেন্ট কিছুই জানে না; কাজের হিসাব হারায়।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ ডাক-শৃঙ্খলা</div>টাইপ-করা ইভেন্ট-চুক্তি (defineEmits) — কে কী ডাকে, পেলোড কী, ঘোষণায় লেখা।</div></div><ul class="checklist"><li>ConfirmDialog বানাও — confirm/cancel ইভেন্ট, পেলোড-সহ; মা-পর্দায় শুনে টোস্ট দেখাও</li><li>emit-ঘোষণা ছাড়া বনাম সহ — Vue-ডেভটুলসে ইভেন্ট-ট্রেস তুলনা করো</li><li>লেজারপাইলট-মডাল থেকে একটা ইভেন্ট-চুক্তি খাতায় লেখো</li></ul>
+<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 40 (Codebuilder’s Guild — ১০ দরজা) ইভেন্ট-চালিত ডিজাইন আর ঢিলা-সংযোগনের নিয়ম শেখায় — emitted-ইভেন্টের কারিগরি ভিত্তি।</div></div>
+<div class="verse">রিসালাত — বার্তবাহনের সততা: "বার্তবাহকের দায় শুধু পৌঁছে দেওয়া" (৫:৯২-এর সার) — সিদ্ধান্ত প্রেরকের, বহন বার্তবাহকের। সালমার পাখি সেই রিসালাতের প্লাবক-রূপ: নাম-রিং ও ওজন-চিরহার বাঁধা পাখি ঠিক খাঁচায় পৌঁছে দেয়, নিজে থেকে সিদ্ধান্ত নেয় না। যে কারখানায় পাখিরা নাম-ছাড়া উড়ে, সেখানে খবর আর গুজবের পার্থক্য থাকে না — আর পার্থক্যহীন খবরই সবচেয়ে বড় গুজব।</div>
   <div class="diagram">
     <div class="diag-title">Return-Bird — Declared Event Contract</div>
     <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
@@ -118,7 +122,7 @@ doors.push({
   <div class="secret-box">🕊️ পাখি ঘোষণা করে ছাড়ো (defineEmits), নামে-নামে ঘণ্টি বাঁধো (@close), সিদ্ধান্ত উজানে রেখো — বার্তবাহক বহন করে, শাসন করে না। / Declare the bird, bell the exact name, keep decisions upstream.</div>`,
   senior: {
     title: "Emit Card",
-    body: `<p><strong>ঘোষণা</strong>: <code>defineEmits&lt;{(e:'নাম', v: ধরন): void}&gt;()</code> (টাইপড; অ্যারে/ভ্যালিডেটর-রূপও)। <strong>উড়ানো</strong>: <code>emit('নাম', পে-লোড)</code>; টেমপ্লেটে <code>$emit</code>। <strong>শ্রবণ</strong>: <code>@নাম</code> (kebab/camel-সেতু)। <strong>প্রথা</strong>: <code>update:নাম</code> → v-model-আত্মীয়; পে-লোড এক-অবজেক্ট। <strong>ফলথ্রু</strong>: inheritAttrs:false + <code>v-bind="$attrs"</code> (বহু-শিকড়ে বাধ্যতামূলক)। <strong>টেস্ট</strong>: <code>wrapper.emitted('নাম')</code>। <strong>LP-নমুনা</strong>: DeleteConfirmationModal (close/confirm/update:deleteType)।</p>`
+    body: `<p><strong>ঘোষণা</strong>: <code>defineEmits&lt;{(e:'নাম', v: ধরন): void}&gt;()</code> (টাইপড; অ্যারে/ভ্যালিডেটর-রূপও)। <strong>উড়ানো</strong>: <code>emit('নাম', পে-লোড)</code>; টেমপ্লেটে <code>$emit</code>। <strong>শ্রবণ</strong>: <code>@নাম</code> (kebab/camel-সেতু)। <strong>প্রথা</strong>: <code>update:নাম</code> → v-model-আত্মীয়; পে-লোড এক-অবজেক্ট। <strong>ফলথ্রু</strong>: inheritAttrs:false + <code>v-bind="$attrs"</code> (বহু-শিকড়ে বাধ্যতামূলক)। <strong>টেস্ট</strong>: <code>wrapper.emitted('নাম')</code>। <strong>LP-নমুনা</strong>: DeleteConfirmationModal (close/confirm/update:deleteType)। <strong>ফাঁদ</strong>: ইভেন্টের নামে camelCase/kebab-case মেশানো — টেমপ্লেটে kebab, ঘোষণায় camel; আর পেলোড-ছাড়া ইভেন্ট যখন ডেটা লাগে — আগে চুক্তি লেখো।</p>`
   }
 });
 
@@ -153,6 +157,8 @@ doors.push({
   both directions opened in one line, the props-emit pair tied automatically — "the old hand-built bridge, now
   one-press."</p>
   <div class="dialogue">('"দড়ির দুই মাথা একই হাতে রেখো না," সালমা বললেন, সেতুর মাঝখানে দড়ি টানটান করে দেখিয়ে, "এক মাথা ধরো, আরেক মাথা ওপারের হাতে দাও — টান দিলেই দুই পাড় একসাথে নড়ে। দুই হাতে দুই মাথা টানলে দড়ি কাটা পড়ে, আর স্রোত মাঝখানে সব নিয়ে যায়।"', 'দড়ির কাঁপন তোমার হাত ঘিরে ওপারে পৌঁছায় — দুই-মুখীর ভারসাম্য এবার মাংসে টের হয়।')</div><div class="dialogue en">"Hold one end of the rope, give the other to the far hand — pull, and both banks move together. Pull both ends yourself and the rope snaps."</div>
+<div class="dialogue">মীজানের কারিগর সেতুর দড়ি ধরে জিজ্ঞেস করলেন, "বলো — ফর্মে হর্ন লিখলে সংখ্যা হয় কখন?" তুমি হতভম্ব, "হর্ন তো হর্নই!" কারিগর বললেন, "ইনপুট-বাক্স সব স্ট্রিং-পাত্র — v-model একাই সেটা ভুলে যায়। .number-মডিফায়ার দাও, তবেই ৭ স্ট্রিং-থেকে সংখ্যা হয়; নাহলে বছরের-বয়সে স্ট্রিং-গণিত বসে — ১ আর ২ জোড়া দিলে ফল হয় ১২। আর বড়-ফর্মে .lazy দাও: প্রতি-অক্ষরে নয়, ফোকাস-হারালে একবার — যাচাই-পাহারা দিনে হাজারবার না ছুটে। দুই-মুখী সেতু সস্তা, কিন্তু শর্ত জানা থাকলে।"</div>
+<div class="dialogue en">The bridge-keeper held the rope: "Tell me — when does typing in a form become a number?" You blinked: "Typing is typing!" He said: "Input boxes are string-vessels — v-model alone forgets. Give the .number modifier, or seven stays a string; string-math follows — joining one and two yields twelve. And on heavy forms use .lazy: not every keystroke, once on blur — your validation guards need not sprint a thousand times a day. The two-way bridge is cheap — if you know the terms."</div>
   <div class="code-block">v-model-শাস্ত্র — সম্পূর্ণ (Vue 3.5, LP-প্রমাণসহ)
 
 ① ইনপুটে — প্রকৃত-মান বাঁধন:
@@ -204,7 +210,9 @@ doors.push({
     পুত্রে স্থানীয়-মডেল + সাবমিটে emit (দরজা ১৬)
   · v-model অবজেক্ট-প্রপে: ভেতরের ক্ষেত্র-লেখা
     দুই-বহির-দোষ — অবস্থা শালো-কপি করে খোলো</div>
-  <div class="verse">মীজান — তুলাদণ্ড: "আসমান তিনি সমুচ্চ করেছেন এবং স্থাপন করেছেন মীজান" (৫৫:৭) — দুই পাল্লা, এক দাঁড়ি। নজরুলের সেতু সেই মীজানের কারিগরি রূপ: মান নামে এক পাল্লায়, খবর ওঠে অন্য পাল্লায়, কিন্তু সত্য এক-ই ঘড়িতে। দুই পাশে দুই ঘড়ি বাঁধলে তুলাদণ্ড নয় — দুই রাজত্ব; আর দুই রাজত্বে কাপড়ের হিসাব কখনো মেলে না, কারণ প্রত্যেকে নিজের সুতো নিজেই গোনে।</div>
+  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ হাতে-বাঁধা</div>:value + @input নিজে-নিজে জোড়া — প্রতি ফিল্ডে নতুন চাকা, মডিফায়ার-সুবিধা শূন্য।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ দুই-মুখী সেতু</div>v-model — এক-লাইনে চুক্তি; .number/.lazy/.trim মডিফায়ার বিনামূল্যে।</div></div><ul class="checklist"><li>লগইন-ফর্ম বানাও: টেক্সট + চেকবক্স + সিলেক্ট — তিন v-model-সেতু</li><li>.number-মডিফায়ার ছাড়া/সহ নম্বর-ইনপুট — typeof দিয়ে পার্থক্য প্রমাণ করো</li><li>কম্পোনেন্টে v-model (modelValue + update:modelValue) — নিজের PasswordField বানাও</li></ul>
+<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 6 (Arena of Trials — ৮ দরজা) ফর্ম-ভেলিডেশনের সাক্ষাৎ-প্রশ্ন শেখায়, আর Book 47 (Shields of Craft) টেস্ট-দৃষ্টিতে v-model-এর দুই-মুখী চুক্তি।</div></div>
+<div class="verse">মীজান — তুলাদণ্ড: "আসমান তিনি সমুচ্চ করেছেন এবং স্থাপন করেছেন মীজান" (৫৫:৭) — দুই পাল্লা, এক দাঁড়ি। নজরুলের সেতু সেই মীজানের কারিগরি রূপ: মান নামে এক পাল্লায়, খবর ওঠে অন্য পাল্লায়, কিন্তু সত্য এক-ই ঘড়িতে। দুই পাশে দুই ঘড়ি বাঁধলে তুলাদণ্ড নয় — দুই রাজত্ব; আর দুই রাজত্বে কাপড়ের হিসাব কখনো মেলে না, কারণ প্রত্যেকে নিজের সুতো নিজেই গোনে।</div>
   <div class="diagram">
     <div class="diag-title">Two-Way Bridge — One Lock, Two Currents</div>
     <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
@@ -241,6 +249,6 @@ doors.push({
   <div class="secret-box">🔌 v-model = এক-নামের দুই-স্রোত: ইনপুটে প্রকৃত-মান, কম্পোনেন্টে defineModel; .lazy/.number/.trim স্রোতের বিধি। / One named state, two currents; bind true values, defineModel bridges components.</div>`,
   senior: {
     title: "v-model Card",
-    body: `<p><strong>ইনপুট</strong>: v-model = <code>:value + @input</code>; checkbox (checked/অ্যারে), radio, select (এক/multiple-অ্যারে)। <strong>মডিফায়ার</strong>: .lazy/.number/.trim। <strong>কম্পোনেন্ট</strong>: <code>:modelValue + @update:modelValue</code>; বহু-মডেল <code>v-model:নাম</code>। <strong>3.4+</strong>: <code>defineModel&lt;T&gt;('নাম', {default})</code> — এক-রেফে দুই-মুখ। <strong>সতর্ক</strong>: প্রতি-কীস্ট্রোক পিতা-রিরেন্ডার (বড়-ফর্মে lazy/স্থানীয়+সাবমিট-emit); অবজেক্ট-মডেলে ভেতর-লেখা নিষেধ। <strong>LP-প্রমাণ</strong>: ProfileView (firstName/email/currentPassword — সেতুর-ওপর-সেতু PasswordField)।</p>`
+    body: `<p><strong>ইনপুট</strong>: v-model = <code>:value + @input</code>; checkbox (checked/অ্যারে), radio, select (এক/multiple-অ্যারে)। <strong>মডিফায়ার</strong>: .lazy/.number/.trim। <strong>কম্পোনেন্ট</strong>: <code>:modelValue + @update:modelValue</code>; বহু-মডেল <code>v-model:নাম</code>। <strong>3.4+</strong>: <code>defineModel&lt;T&gt;('নাম', {default})</code> — এক-রেফে দুই-মুখ। <strong>সতর্ক</strong>: প্রতি-কীস্ট্রোক পিতা-রিরেন্ডার (বড়-ফর্মে lazy/স্থানীয়+সাবমিট-emit); অবজেক্ট-মডেলে ভেতর-লেখা নিষেধ। <strong>LP-প্রমাণ</strong>: ProfileView (firstName/email/currentPassword — সেতুর-ওপর-সেতু PasswordField)। <strong>ফাঁদ</strong>: <code>:value</code>+<code>@input</code> হাতে-লিখে v-model-এর ছাঁচ ভাঙা — নিজের হাতে যা বানাবে তাতে .number/.lazy সুবিধা হারাবে; আর বস্তু-ভিত্তিক চেকবক্সে মান-বাঁধাই ভুলে গেলে টগল-ট্রুথি লিক।</p>`
   }
 });

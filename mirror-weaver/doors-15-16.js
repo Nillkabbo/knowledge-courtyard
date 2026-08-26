@@ -31,6 +31,8 @@ doors.push({
   service-warehouse: each feature's own service file (authService, accountService…) — components know only the
   warehouse address, not the art of sailing.</p>
   <div class="dialogue">('"জাহাজের ভাড়া আগে, মাল পরে," ক্যাপ্টেন রুমান হালের কাছে দাঁড়িয়ে বললেন, "আর প্রতিটি জাহাজের নিজের পাসপোর্ট — সিল-ছাড়া মাল বন্দরে ফেরত। সবচেয়ে দামি পাঠ শিখেছিলাম এক ঝড়ের রাতে: কেউ ভুল কাঠামো নামিয়ে দিয়েছিল; এক বাক্সের ভুলে পুরো খেয়া পোড়ার ঝুঁকিতে।"', 'লোহার হালের ঠান্ডা স্পর্শে মনে পড়ে যায় — ছোট এক সিলের অভাবে কত বড় ডুব।')</div><div class="dialogue en">"Fare before cargo, and every ship carries its own passport. One storm night taught me: one box's wrong manifest risked the whole ferry."</div>
+<div class="dialogue">তুমি দূত-ঘরের দরজায় দাঁড়িয়ে জিজ্ঞেস করলে, "এত দূত কেন? প্রতিটি কম্পোনেন্ট নিজে গেলেই তো..." প্রবীণ দূত মাথা নাড়লেন: "তাহলে প্রতিযেক নিজের পথ-রক্ষা, নিজের ভাষা, নিজের পাসপোর্ট নিয়ে সমুদ্রে নামবে — নীতি বদলালে শত-দূত শত-জায়গায় মেরামত। axios-ইনস্ট্যান্স মানে এক-দূত-ঘর: baseURL এক, টাইমআউট এক, ৪০১-দেখলে টোকেন-নবায়ন এক নিয়মে, এরর এক-ভাষায় ফেরে। সার্ভিস-ফাংশন সেই ঘরের বার্তা-বাক্স: getUsers() বলে দেয় কী-চাই, কেউ কাঁচা-সমুদ্র স্পর্শ করে না। কেন্দ্রীভূত নয় — এক-নীতি, শত-বার্তা।"</div>
+<div class="dialogue en">You stood at the courier-house: "Why so many couriers? Each component could just go..." The elder courier shook his head: "Then each carries its own road-guard, its own language, its own passport to the sea — policy changes mean a hundred couriers mended in a hundred places. The axios-instance is one courier-house: one baseURL, one timeout, 401 seen and the token renewed by one rule, errors return in one language. Service functions are that house's letterbox: getUsers() says what's wanted; nobody touches the raw sea. Not centralization for its own sake — one policy, a hundred messages."</div>
   <div class="code-block">API-স্তর-শাস্ত্র — LP-র প্রকৃত apiClient-ছায়া
 
 স্থাপত্য (এক-নজরে):
@@ -114,7 +116,9 @@ doors.push({
 টেস্ট-সুত্র (দরজা ২৩-এর সেতু):
   MSW http.get('\${API}/api/accounts/me/') → মক-জাহাজ;
   কম্পোজেবল-টেস্ট পুরো-বন্দর-না-জেনেই চলে</div>
-  <div class="verse">রিসালতুল-বাহর — সমুদ্র-অভিযানের সততা: "তাদের কল্যাণে তারা সমুদ্রে চলে" নয় বরং বাণিজ্য-আয়াতের ছায়া (২:৩-এর ভাব) — যাত্রা হবেই, নিয়মে হবে। ক্যাপ্টেন রুমানের বন্দর সেই নিয়মের কারিগরি রূপ: চাবি-ছাড়া লেখা-জাহাজ ছাড়ে না, ৪০১-এ যাত্রী-হারানো-নয়-ঘরে-ফেরত, ৪০৩-এ একবারই পুনঃযাত্রা, আর সব-খবর অনুবাদ-ঘরে — কাঁচা সমুদ্রের ভাষা কারিগরের হাতে নয়। যে বন্দরে প্রতি-জাহাজ নিজের-নিয়ম বাঁধে, সেখানে একদিন চাবিহীন-জাহাজই সোনা নামায়।</div>
+  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ বিক্ষিপ্ত-ডাক</div>প্রতি কম্পোনেন্টে axios.get + নিজের এরর-হ্যান্ডলিং — ৪০১-নীতি বদলালে শত-জায়গায় খনি।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ এক-দূত-ঘর</div>ক্লায়েন্ট-স্তর (বেস-ইউআরএল/ইন্টারসেপ্টর/এরর-ভাষা) — নীতি এক জায়গায়, সবাই উত্তরাধিকারী।</div></div><ul class="checklist"><li>axios-ইনস্ট্যান্স বানাও: baseURL + টাইমআউট + ৪০১-ইন্টারসেপ্টর — টোকেন-শেষ পরীক্ষা করো</li><li>সার্ভিস-ফাংশন লেখো: getUsers() কাঁচা axios নয় — এরর normalize করে ফেরত দেয়</li><li>MSW দিয়ে নেটওয়ার্ক-মক — সার্ভিস-টেস্ট একটা লেখো</li></ul>
+<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 37 (Web of Wires — ১০ দরজা) HTTP/TLS-এর পূর্ণ যাত্রা (এই দূতের সমুদ্রের নকশা-নথি), আর Book 4 (City Builder’s Codex) রিট্রাই/সার্কিট-ব্রেকার।</div></div>
+<div class="verse">রিসালতুল-বাহর — সমুদ্র-অভিযানের সততা: "তাদের কল্যাণে তারা সমুদ্রে চলে" নয় বরং বাণিজ্য-আয়াতের ছায়া (২:৩-এর ভাব) — যাত্রা হবেই, নিয়মে হবে। ক্যাপ্টেন রুমানের বন্দর সেই নিয়মের কারিগরি রূপ: চাবি-ছাড়া লেখা-জাহাজ ছাড়ে না, ৪০১-এ যাত্রী-হারানো-নয়-ঘরে-ফেরত, ৪০৩-এ একবারই পুনঃযাত্রা, আর সব-খবর অনুবাদ-ঘরে — কাঁচা সমুদ্রের ভাষা কারিগরের হাতে নয়। যে বন্দরে প্রতি-জাহাজ নিজের-নিয়ম বাঁধে, সেখানে একদিন চাবিহীন-জাহাজই সোনা নামায়।</div>
   <div class="diagram">
     <div class="diag-title">The Harbor — One Client, Three Rules, One Language</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
@@ -154,7 +158,7 @@ doors.push({
   <div class="secret-box">📡 পরিবহন বন্দরে: CSRF-চাবি লেখায়, 401-এ ঘরে, 403-এ একবার-পুনঃযাত্রা; খবর অনুবাদিত-ওঠে, কম্পোনেন্ট অর্থ-জানে। / One harbor, three rules, normalized news.</div>`,
   senior: {
     title: "API Layer Card",
-    body: `<p><strong>স্রোত</strong>: কম্পোনেন্ট→কম্পোজেবল→সার্ভিস(প্রতি-ফিচার)→apiClient→সার্ভার। <strong>ক্লায়েন্ট</strong>: createApiClient (baseURL/timeout/withCredentials; ফ্যাক্টরি-টেস্ট)। <strong>নিয়ম</strong>: ① লেখা-মেথডে ensureCSRFToken→X-CSRFToken (সমান্তরাল-ডাক-এক-প্রমিজ) ② 401→registerUnauthorizedHandler (ঝাঁক-ডিডুপ, /login/-ব্যতিক্রম) ③ 403-লেখা→একবার force-refresh+পুনঃrequest (__hasRetriedCSRF)। <strong>ভাষা</strong>: getApiErrorMessage/parseFormError — কাঁচা-এরর-নিষেধ। <strong>টেস্ট</strong>: MSW এ-স্তরে।</p>`
+    body: `<p><strong>স্রোত</strong>: কম্পোনেন্ট→কম্পোজেবল→সার্ভিস(প্রতি-ফিচার)→apiClient→সার্ভার। <strong>ক্লায়েন্ট</strong>: createApiClient (baseURL/timeout/withCredentials; ফ্যাক্টরি-টেস্ট)। <strong>নিয়ম</strong>: ① লেখা-মেথডে ensureCSRFToken→X-CSRFToken (সমান্তরাল-ডাক-এক-প্রমিজ) ② 401→registerUnauthorizedHandler (ঝাঁক-ডিডুপ, /login/-ব্যতিক্রম) ③ 403-লেখা→একবার force-refresh+পুনঃrequest (__hasRetriedCSRF)। <strong>ভাষা</strong>: getApiErrorMessage/parseFormError — কাঁচা-এরর-নিষেধ। <strong>টেস্ট</strong>: MSW এ-স্তরে। <strong>ফাঁদ</strong>: কম্পোনেন্টে সরাসরি axios-ডাক — ক্লায়েন্ট-স্তরে বেস-ইউআরএল/ইন্টারসেপ্টর বাঁধো, নাহলে ৪০১-হ্যান্ডলিং প্রতি-কলে নকল হবে; আর এরর-বার্তা কাঁচা পাঠানো = ইউজার-আতঙ্ক।</p>`
   }
 });
 
@@ -191,6 +195,8 @@ doors.push({
   (progressive disclosure) — decided by comparison with the <em>original</em> email, so a mere name-change never
   demands re-proof.</p>
   <div class="dialogue">('"কাগজে দাগ থাকলে তা মুছে ফেলো," মুনশি আফসার সবুজ কাগজ মেলে ধরলেন, "নোঙর ফেলে রাখো — ফিরে এসে যা বদলেছে, এক নজরে দেখা যাবে। আমার প্রথম পাণ্ডুলিপি ছিল মুছতে-ভুলে-যাওয়ার দফতর; পাঠক কোথায় বদলেছে, কেউ বলতে পারত না।"', 'সবুজ কাগজের খসখস শব্দে মন থেমে যায় — নোঙর না থাকলে বদলও অদৃশ্য, ফেরাও অসম্ভব।')</div><div class="dialogue en">"Keep the anchor, wipe the marks — my first manuscript was a forgetting-office; no reader could say what changed."</div>
+<div class="dialogue">মুনশি আফসার খসড়ার কোণের সিলমোহর দেখিয়ে জিজ্ঞেস করলেন, "বলো — কোন ফিল্ড ভুল, কে জানবে?" তুমি বললে, "সাবমিট-কারী?" আফসার মাথা নাড়লেন: "সে তো জানবে চিঠি ফিরলে — কিন্তু কোথায়-ভুল সে-খবর না-থাকলে সে অন্ধকারে তড়পাবে। সার্ভার-ত্রুটি ফিল্ড-মানচিত্রে বসাও: { name: ['নাম খালি'], email: ['ইমেইল নেওয়া হয়েছে'] } — প্রতিটি ফিল্ডের পাশে তার-নিজের লাল-মোহর। আর dirty-হিসাব রাখো: যে-ফিল্ড ছোয়া হয়নি তাকে বকা দিও না — প্রথম-দিনেই লাল-সমুদ্র দেখালে কারিগর পালিয়ে যায়। যাচাই ক্লায়েন্টে-ভদ্রতা, সত্য সার্ভারে — দুই-স্তরের শৃঙ্খলা।"</div>
+<div class="dialogue en">Munshi Afsar showed the corner-seal on a draft: "Who learns which field is wrong?" You said: "The submitter?" He shook his head: "He learns when the letter returns — but without a where, he thrashes in the dark. Map server-errors onto fields: { name: ['name empty'], email: ['email taken'] } — each field's own red seal beside it. And keep dirty-accounts: don't scold untouched fields — a red sea on day one sends the craftsman fleeing. Validation is client-courtesy; truth lives on the server — a two-layer discipline."</div>
   <div class="code-block">ফর্ম-শাস্ত্র — ProfileView-এর প্রকৃত-ছায়া
 
 ① অবস্থা-বিন্যাস (স্থানীয় + মূল-নোঙর):
@@ -271,7 +277,9 @@ doors.push({
   <li>saving-তালা — ডাবল-সাবমিট রোধ</li>
   <li>সফলে নোঙর-সিঙ্ক — সেভের পরেও dirty যেন না থাকে</li>
 </ul>
-  <div class="verse">শাহাদাতুল-কিতাব — লিপিবদ্ধ-সাক্ষ্য: "লিখে রাখো, ঋণ এক নির্দিষ্ট মেয়াদ পর্যন্ত" (২:২৮২-এর আদেশ-ছায়া) — লেখা যেন হারায় না, ভুল যেন নীরবে না থাকে। মুনশি আফসারের দপ্তর সেই লিপি-শৃঙ্খলার ফর্ম-রূপ: খসড়া-চিহ্ন, ফিল্ড-সিল, প্রস্থান-প্রশ্ন — তিনটাই এক-উদ্দেশ্যে, ব্যবহারকারীর লেখা রক্ষা। যে দপ্তরে খসড়া নীরবে-হারায়, সেখানে লোকে লেখাই ছেড়ে দেয়; আর যেখানে ভুল-সিল নীরবে-চাপা পড়ে, সে-লেখা সাক্ষ্য নয় — বোঝা।</div>
+  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ এক-গেলা-ফর্ম</div>সব-ফিল্ড এক ref-বস্তুতে — একটা টাইপো মুছলে সব-ভ্যালিডেশন একসাথে চিৎ; ফিল্ড-ত্রুটি আটকায় না।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ ফিল্ড-ভাগা-পাণ্ডুলিপি</div>ফিল্ড-ভিত্তিক state + সার্ভার-ত্রুটি ম্যাপে ফিল্ডে-ফিল্ডে বসানো — ইউজার ঠিক জায়গায় জানে।</div></div>
+<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 6 (Arena of Trials) ফর্ম-কেস সাক্ষাৎ, আর Book 47 (Shields of Craft) ফর্ম-টেস্টের দুর্গ — ভেলিডেশন-চুক্তি দুই দিক থেকে।</div></div>
+<div class="verse">শাহাদাতুল-কিতাব — লিপিবদ্ধ-সাক্ষ্য: "লিখে রাখো, ঋণ এক নির্দিষ্ট মেয়াদ পর্যন্ত" (২:২৮২-এর আদেশ-ছায়া) — লেখা যেন হারায় না, ভুল যেন নীরবে না থাকে। মুনশি আফসারের দপ্তর সেই লিপি-শৃঙ্খলার ফর্ম-রূপ: খসড়া-চিহ্ন, ফিল্ড-সিল, প্রস্থান-প্রশ্ন — তিনটাই এক-উদ্দেশ্যে, ব্যবহারকারীর লেখা রক্ষা। যে দপ্তরে খসড়া নীরবে-হারায়, সেখানে লোকে লেখাই ছেড়ে দেয়; আর যেখানে ভুল-সিল নীরবে-চাপা পড়ে, সে-লেখা সাক্ষ্য নয় — বোঝা।</div>
   <div class="diagram">
     <div class="diag-title">The Manuscript Office — Draft, Courier, Seals, Exit-Gate</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
@@ -310,6 +318,6 @@ doors.push({
   <div class="secret-box">📝 ফর্ম = লিপি-চুক্তি: খসড়া-স্থানীয়, নোঙর-প্রগতিশীল-প্রকাশ, এরর-দুই-ঠিকানায়, প্রস্থান-প্রশ্নে-সুরক্ষিত। / Local draft, anchored disclosure, two-addressed seals, gated exit.</div>`,
   senior: {
     title: "Forms Card",
-    body: `<p><strong>অবস্থা</strong>: স্থানীয়-refs + মূল-নোঙর (originalEmail); emailChanged-computed → progressive disclosure; সফলে নোঙর-পুনঃসিঙ্ক। <strong>সাবমিট</strong>: সার্ভিস-স্তর + saving-তালা + রি-এন্ট্র্যান্সি। <strong>এরর</strong>: parseFormError → _form (ব্যানার) + fields (getFirstError-ফিল্ডে)। <strong>প্রস্থান</strong>: onBeforeRouteLeave(!pristine→confirm) + beforeunload। <strong>বহু-ধাপ</strong>: ধাপ-অবস্থা/KeepAlive, শেষে-এক-সাবমিট। <strong>পারফরম্যান্স</strong>: ফিল্ড-উপাদান-ভাগ বা .lazy। <strong>নিয়ম</strong>: ক্লায়েন্ট-যাচাই UX, সার্ভার-সত্য।</p>`
+    body: `<p><strong>অবস্থা</strong>: স্থানীয়-refs + মূল-নোঙর (originalEmail); emailChanged-computed → progressive disclosure; সফলে নোঙর-পুনঃসিঙ্ক। <strong>সাবমিট</strong>: সার্ভিস-স্তর + saving-তালা + রি-এন্ট্র্যান্সি। <strong>এরর</strong>: parseFormError → _form (ব্যানার) + fields (getFirstError-ফিল্ডে)। <strong>প্রস্থান</strong>: onBeforeRouteLeave(!pristine→confirm) + beforeunload। <strong>বহু-ধাপ</strong>: ধাপ-অবস্থা/KeepAlive, শেষে-এক-সাবমিট। <strong>পারফরম্যান্স</strong>: ফিল্ড-উপাদান-ভাগ বা .lazy। <strong>নিয়ম</strong>: ক্লায়েন্ট-যাচাই UX, সার্ভার-সত্য। <strong>ফাঁদ</strong>: ফর্ম-স্টেট এক-বিশাল ref-বস্তুতে গুঁজে ফেলা — ফিল্ড-ভাগ করো, অন্যথায় dirty-ট্র্যাকিং সব-বা-কিছু-না হয়ে যাবে; আর সার্ভার-ত্রুটি ফিল্ড-মানচিত্রে না-বসানো = ইউজার অন্ধকারে।</p>`
   }
 });
