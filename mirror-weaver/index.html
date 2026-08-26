@@ -76,19 +76,7 @@
 
 <!-- ═══════════ SCREEN 4: STORY ═══════════ -->
 <div id="story-screen" class="screen">
-  <div class="story-topbar">
-    <button class="tb-btn" onclick="goToMap()" title="মানচিত্রে ফিরে যাও">🗺️ মানচিত্র</button>
-    <div class="topbar-info"><span id="topbar-num" class="tb-num"></span><span id="topbar-name" class="tb-name"></span></div>
-    <div class="tb-font">
-      <button class="tb-btn" onclick="fontStep(-1)" title="ছোট করো">A−</button>
-      <button class="tb-btn" onclick="fontStep(1)" title="বড় করো">A+</button>
-    </div>
-    <div class="tb-nav">
-      <button class="tb-btn" onclick="navDoor(-1)" title="আগের দরজা">←</button>
-      <button class="tb-btn" onclick="navDoor(1)" title="পরের দরজা">→</button>
-    </div>
-  </div>
-  <div class="read-progress"><div id="read-progress-fill"></div></div>
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← প্রাঙ্গণে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
   <div id="story-container" class="story-container"></div>
   <div class="continue-area">
     <button id="continue-btn" class="continue-btn" onclick="completeDoor()">দরজা সম্পূর্ণ — তাবিজ নাও ✓</button>
