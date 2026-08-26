@@ -3,113 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>আয়না-বোনার কারখানা — Vue.js-এর পূর্ণ কারুকাজ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<title>আয়না-বোনার কারখানা — The Mirror Weaver's Workshop</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
 </head>
 <body>
 <canvas id="particles"></canvas>
 
-<!-- ═══════════ SCREEN 1: TITLE ═══════════ -->
 <div id="title-screen" class="screen active">
   <div class="title-arabic">وَعَلَّمَ آدَمَ الْأَسْمَاءَ كُلَّهَا</div>
   <h1 class="title-main">আয়না-বোনার কারখানা</h1>
   <div class="title-sub">The Mirror Weaver's Workshop</div>
   <div class="title-desc">
     Vue.js-এর পূর্ণ কারুকাজ — প্রথম সুতো থেকে প্রোডাকশন তাঁত পর্যন্ত।<br>
-    সাতাশটি দরজা — সাত অংশে: ভিত্তি (শপথ, টেমপ্লেট-বর্ণমালা, প্রতিক্রিয়া-শ্বাস), কম্পোনেন্ট-কারুকাজ (props, emit, v-model, slot, জীবনচক্র, কম্পোজেবল),
-    অবস্থার ঘর (Pinia কোষাগার, provide/inject ঝর্ণা, উন্নত-বারান্দা), পথ ও দরজা (রাউটার-নকশা, ফটক-শৃঙ্খল, API-সমুদ্রপথ), ফর্ম-ও-UX কারুকাজ (পাণ্ডুলিপি, চক-কালি, ঘণ্টি-গলি),
-    যন্ত্রপাতি-ঘর (তাঁত-স্থাপন, পরীক্ষা-মিনার, শহর-বিধান) — আর শেষ ছয় দরজায় পাঁচটি পূর্ণ স্টার্টার-প্রজেক্ট (টু-ডু থেকে রিয়েলটাইম) ও এক-ক্লিকের সমাপ্তি।<br><br>
-    <em>The complete craft of Vue.js — first thread to production loom. Twenty-seven doors in seven parts,
-    every pattern proven in the living LedgerPilot codebase and aligned with the official Vue 3.5 guide —
-    closing with five complete starter projects and one click traced through every layer.</em>
+    সাতাশটি দরজা: ভিত্তি, কম্পোনেন্ট-কারুকাজ, অবস্থার ঘর, পথ ও দরজা, ফর্ম-ও-UX কারুকাজ, যন্ত্রপাতি-ঘর — আর শেষ ছয় দরজায় পাঁচটি পূর্ণ স্টার্টার-প্রজেক্ট ও এক-ক্লিকের সমাপ্তি।<br><br>
+    <em>Twenty-seven doors: from the first thread to the production loom. Every pattern proven in the living LedgerPilot codebase and aligned with the official Vue 3.5 guide — closing with five complete starter projects and one click traced through every layer.</em>
   </div>
   <button class="start-btn" onclick="startGame()">🪞 তাঁতে বসো</button>
 </div>
 
-<!-- ═══════════ SCREEN 2: PROLOGUE ═══════════ -->
 <div id="prologue-screen" class="screen">
-  <div class="prologue-container">
-    <div class="prologue-icon">🧶</div>
-    <h2 class="prologue-title">প্রস্তাবনা — তাঁতের শপথ</h2>
-    <div class="prologue-text">
-      <p>শহরের কেন্দ্রে এক কারখানা — <strong>আয়না-বোনার কারখানা</strong>। এখানে ওয়েব-অ্যাপ বানানো হয় না, <strong>বোনা</strong> হয়:
-      প্রতিটি পর্দা এক তাঁতের কাপড়, প্রতিটি ইন্টারঅ্যাকশন সুতোর টান। সাতাশজন কারিগর — জোহরা আপা থেকে নূর হক পর্যন্ত — প্রত্যেকে তোমাকে
-      Vue-র এক একটি স্তর শিখিয়ে দেবেন: কীভাবে অবস্থা (state) প্রবাহিত হয়, কীভাবে কম্পোনেন্ট একে অপরকে চেনে, কীভাবে পথ (route) পাহারা
-      পায়, আর কীভাবে একটি খালি ফোল্ডার থেকে প্রোডাকশন-অ্যাপ দাঁড়ায়।</p>
-      <p>এই বইয়ের সব কোড-নমুনা দুই উৎস থেকে: <strong>LedgerPilot</strong> — একটি জীবন্ত Vue 3.5 + TypeScript প্রোডাকশন কোডবেস
-      (Pinia, vue-router, কম্পোজেবল-শিল্প, ২,৬০০+ টেস্ট), আর <strong>Vue-র অফিশিয়াল গাইড</strong> — 3.5-এর সর্বশেষ রীতি
-      (useId, useTemplateRef, reactive-props-destructure)। শেষ পাঁচটি দরজায় পাঁচটি পূর্ণ স্টার্টার-প্রজেক্ট — প্রতিটি ফাইলসহ,
-      বেসিক থেকে রিয়েলটাইম পর্যন্ত।</p>
-      <p class="prologue-echo">Twenty-seven weavers, one loom. Every pattern shown here runs today in a real
-      production codebase — and every door ends with the same oath: <em>change the thing, not the reflection.</em></p>
-      <hr class="p-divider">
-      <p><strong>কীভাবে পড়বে:</strong> প্রথমবার ক্রমানুসারে পড়ো (১ → ২৭, প্রতিটি দরজা আগেরটার উপর দাঁড়ায়)। ফিরে আসার সময়:
-      <strong>নতুন প্রজেক্ট শুরুর আগে</strong> ২২-২৬ (স্টার্টার-কারখানা) · <strong>কম্পোজেবল লিখতে গিয়ে</strong> ৯, ২১ ·
-      <strong>ফর্ম-ভারী পৃষ্ঠায়</strong> ১৬-১৮ · <strong>রাউটিং-অনুমতি নিয়ে</strong> ১৩-১৫ · <strong>পরীক্ষা লিখতে</strong> ২৩ ·
-      <strong>সব গোপন-একনজরে</strong> ২৭।</p>
-    </div>
+  <div class="prologue-body">
+    <div class="prologue-title">তাঁতের শপথ — The Oath of the Loom</div>
+    <p>শহরের কেন্দ্রে এক কারখানা — <strong>আয়না-বোনার কারখানা</strong>। এখানে ওয়েব-অ্যাপ বানানো হয় না, <strong>বোনা</strong> হয়: প্রতিটি পর্দা এক তাঁতের কাপড়, প্রতিটি ইন্টারঅ্যাকশন সুতোর টান। সাতাশজন কারিগর — জোহরা আপা থেকে নূর হক পর্যন্ত — প্রত্যেকে তোমাকে Vue-র এক একটি স্তর শিখিয়ে দেবেন: কীভাবে অবস্থা (state) প্রবাহিত হয়, কীভাবে কম্পোনেন্ট একে অপরকে চেনে, কীভাবে পথ (route) পাহারা পায়, আর কীভাবে একটি খালি ফোল্ডার থেকে প্রোডাকশন-অ্যাপ দাঁড়ায়।</p>
+    <p class="en">Twenty-seven weavers, one loom. Every pattern shown here runs today in a real production codebase — and every door ends with the same oath: change the thing, not the reflection.</p>
+    <hr class="p-divider">
+    <p>এই বইয়ের সব কোড-নমুনা দুই উৎস থেকে: <strong>LedgerPilot</strong> — একটি জীবন্ত Vue 3.5 + TypeScript প্রোডাকশন কোডবেস (Pinia, vue-router, কম্পোজেবল-শিল্প, ২,৬০০+ টেস্ট), আর <strong>Vue-র অফিশিয়াল গাইড</strong> — 3.5-এর সর্বশেষ রীতি। শেষ পাঁচটি দরজায় পাঁচটি পূর্ণ স্টার্টার-প্রজেক্ট — প্রতিটি ফাইলসহ। <strong>কীভাবে পড়বে:</strong> প্রথমবার ক্রমানুসারে (১ → ২৭); ফিরে আসার সময় — নতুন প্রজেক্টে ২২–২৬, কম্পোজেবলে ৯ ও ২১, ফর্ম-ভারী পৃষ্ঠায় ১৬–১৮, রাউটিং-অনুমতিতে ১৩–১৫, পরীক্ষায় ২৩, সব গোপন একনজরে ২৭।</p>
     <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 দরজা বেছে নাও</button></div>
   </div>
 </div>
 
-<!-- ═══════════ SCREEN 3: MAP ═══════════ -->
 <div id="map-screen" class="screen">
   <div id="hud">
     <div class="hud-rank"><span id="hud-rank-icon">🧵</span><span id="hud-rank-name">নতুন তাঁতি</span></div>
-    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div id="hud-xp-fill"></div></div><span id="hud-xp-text">0 / 2700 XP</span></div>
-    <div id="hud-level">স্তর ১</div>
-    <div class="hud-actions">
-      <button class="hud-btn" onclick="openCheatModal()" title="সম্পূর্ণ হওয়া দরজার তাবিজ">📜 তাবিজ</button>
-      <button class="hud-btn" id="mute-btn" onclick="toggleMute()" title="শব্দ চালু/বন্ধ">🔊</button>
-      <button class="hud-btn" onclick="confirmReset()" title="প্রগতি রিসেট">↺</button>
-    </div>
+    <div class="hud-level" id="hud-level">স্তর 1</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 2700 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
   </div>
-  <div class="map-header">
-    <h2 class="map-title">দরজা বেছে নাও</h2>
-    <p class="map-sub">সাতাশটি কারিগর-দরজা · ক্রমানুসারে খোলে · Choose Your Door</p>
-  </div>
-  <div id="doors-grid" class="doors-grid"></div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>সাতাশটি দরজা — Vue-র শপথ থেকে প্রোডাকশন তাঁত পর্যন্ত।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
 </div>
 
-<!-- ═══════════ SCREEN 4: STORY ═══════════ -->
 <div id="story-screen" class="screen">
   <div class="story-back"><button class="back-btn" onclick="goToMap()">← প্রাঙ্গণে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
-  <div id="story-container" class="story-container"></div>
-  <div class="continue-area">
-    <button id="continue-btn" class="continue-btn" onclick="completeDoor()">দরজা সম্পূর্ণ — তাবিজ নাও ✓</button>
-  </div>
-  <button id="to-top-btn" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="উপরে ফিরে যাও">⬆</button>
+  <div class="story-container" id="story-container"></div>
 </div>
 
-<!-- ═══════════ CHEAT MODAL ═══════════ -->
-<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
-  <div class="cheat-content">
-    <div class="cheat-header">
-      <h3>📜 তাবিজ-বাক্স</h3>
-      <button class="close-btn" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button>
-    </div>
-    <div id="cheat-modal-grid" class="cheat-grid"></div>
-    <div id="cheat-modal-empty" class="cheat-empty"></div>
-  </div>
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🪞</div>
+  <h1 class="complete-title">তুমি এখন পূর্ণ-বোনাকার</h1>
+  <p class="complete-text">সাতাশটি দরজা পেরিয়েছ। Vue-র প্রতিটি স্তর — শপথ থেকে তাঁত-স্থাপন — তোমার হাতের মুঠোয়।<br><br>এখন তুমি জানো: অবস্থা বদলাও, DOM ছোঁয়ো না; প্রতিটি স্তর নিজ-ধর্মে; নীরব-ব্যর্থতা নিষিদ্ধ; আর প্রতিটি নতুন প্রজেক্টের জন্য পাঁচটি পূর্ণ-ছাঁচ তোমার ঝুলিতে — টু-ডু-তাঁত থেকে জীবন্ত-নদী-ঘাট পর্যন্ত।<br><strong>বস্তু বদলাও — প্রতিবিম্ব অনুসরণ করবে। Change the thing, not the reflection.</strong></p>
+  <div class="complete-verse">وَالسَّمَاءَ رَفَعَهَا وَوَضَعَ الْمِيزَانَ</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"আসমান উঁচু করেছেন এবং মীজান স্থাপন করেছেন।" — কুরআন ৫৫:৭</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার তাঁতে বসো</button>
+  <div class="cheat-section-end"><h3>📋 আয়না-বোনার কারখানা চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
 </div>
 
 <div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পূর্ণ!</span></div>
 
-<!-- ═══════════ SCREEN 5: COMPLETE ═══════════ -->
-<div id="complete-screen" class="screen">
-  <div class="complete-crown">🪞</div>
-  <h1 class="complete-title">তুমি এখন পূর্ণ-বোনাকার</h1>
-  <p class="complete-text">সাতাশটি দরজা পেরিয়েছ। Vue-র প্রতিটি স্তর — শপথ থেকে তাঁত-স্থাপন — তোমার হাতের মুঠোয়।<br><br>
-  এখন তুমি জানো: অবস্থা বদলাও, DOM ছোঁয়ো না; প্রতিটি স্তর নিজ-ধর্মে; নীরব-ব্যর্থতা নিষিদ্ধ; আর প্রতিটি নতুন প্রজেক্টের
-  জন্য পাঁচটি পূর্ণ-ছাঁচ তোমার ঝুলিতে — টু-ডু-তাঁত থেকে জীবন্ত-নদী-ঘাট পর্যন্ত।<br><br>
-  <strong>বস্তু বদলাও — প্রতিবিম্ব অনুসরণ করবে। Change the thing, not the reflection.</strong></p>
-  <div class="complete-verse">وَالسَّمَاءَ رَفَعَهَا وَوَضَعَ الْمِيزَانَ</div>
-  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"আসমান উঁচু করেছেন এবং মীজান স্থাপন করেছেন।" — কুরআন ৫৫:৭</div>
-  <button class="start-btn" onclick="resetGame()">↻ আবার তাঁতে বসো</button>
-  <div class="cheat-section-end"><h3>📜 ২৭টি তাবিজ — একনজরে</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 আয়না-বোনার কারখানা চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
 </div>
 
 <script src="doors-1-2.js"></script>
@@ -126,6 +82,9 @@
 <script src="doors-23-24.js"></script>
 <script src="doors-25-26.js"></script>
 <script src="doors-27.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
 <script src="engine.js"></script>
+<script src="../scripts/study-materials.js"></script>
 </body>
 </html>
