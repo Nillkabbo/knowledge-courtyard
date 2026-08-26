@@ -309,6 +309,78 @@ doors.push({
   <div class="verse">আমানত — গৃহস্থের আমানত তার হাতে থাকে, প্রাপ্তের হাতে খরচের অধিকার নয়: "নিশ্চয়ই আল্লাহ তোমাদের আদেশ দেন আমানত তার হকদারকে ফিরিয়ে দিতে" (৪:৫৮)। রফিকের নদী সেই আয়াতের বোনা-রূপ: উপহার উজানের হক — প্রাপ্ত সাজায়, দেখায়, বদলাতে চাইলে খবর পাঠায়; চুরি করে না। যে কারখানায় প্রাপ্ত আমানত নিজের বলে খরচ করে, সেখানে দুই হিসাববহি — আর দুই বহি মানে কোনো বহিই না।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>নদী-ফাঁদ:</strong> (১) অবজেক্ট/অ্যারে-প্রপের ভেতরের ক্ষেত্র বদলানো (<code>props.row.done = true</code>) — রেফারেন্স শেয়ার্ড, পিতার সত্যও নীরবে বদলে যায়; দুই বহির দোষ একই। (২) স্থানীয়-কপিরেফ প্রপ-আপডেট পায় না — দরকার হলে computed বা watch দিয়ে সিঙ্ক করো। (৩) বহু-স্তর প্রপ-পাঠানো (drilling) — ৪-৫ স্তর পার হলে নকশা-গন্ধ; provide/inject (দরজা ১১) বা স্টোর (দরজা ১০) বিবেচনা করো।</div></div>
   <div class="secret-box">🎁 props = আমানত: গ্রহণ করো, সাজাও, দেখাও — বদল চাইলে ফেরত-পাখি (emit) পাঠাও; ধরন-চুক্তি defineProps, ডিফল্ট withDefaults। / Props are trusts: receive, arrange, display; emit the return-bird for change.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ৪-এর উপহার-নদী: পিতা→পুত্র একমুখী প্রবাহ। পুত্র প্রপ ছোঁয় না — খবর পাঠায়। ডেভ-কনসোলে মিউটেশন-সতর্কতা নিজে দেখো। / Door 4's gift-river: parent→child one-way. The child never touches the prop — it reports. Watch the mutation warning yourself in devtools.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/GiftChild.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+// ধরন-চুক্তি (type-only) + ডিফল্ট — দুই পথ:
+// পথ-A (Vue 3.4-ধাঁচ, সর্বত্র চলে):
+import { ref, computed } from 'vue'
+
+const props = withDefaults(defineProps&lt;{
+  label?: string
+  items?: string[]
+}&gt;(), {
+  label: 'উপহার-তালিকা',
+  items: () =&gt; ['সুতো', 'কাপড়']
+})
+// পথ-B (Vue 3.5+): const { label = 'উপহার-তালিকা' } = defineProps&lt;…&gt;()
+
+const emit = defineEmits&lt;{ select: [name: string] }&gt;()
+
+// স্থানীয়-কুয়া (নিজের সত্য): প্রাথমিক-মান কপি — মূলের পরের বদল পায় না
+const note = ref('')
+
+// উদ্ভূত-প্রদর্শন: প্রপ থেকে গণনা — মিউটেশন ছাড়াই
+const count = computed(() =&gt; props.items.length)
+
+function pick(name: string) {
+  emit('select', name)          // ফেরত-পাখি — সিদ্ধান্ত উজানে
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h3&gt;{{ label }} ({{ count }}টি)&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li v-for="item in items" :key="item"&gt;
+        {{ item }}
+        &lt;button @click="pick(item)"&gt;বেছে নাও&lt;/button&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;input v-model="note" placeholder="নিজের নোট (স্থানীয়-কুয়া)"&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/RiverParent.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { ref } from 'vue'
+import GiftChild from './GiftChild.vue'
+
+// উজানের সত্য — বদলের একচ্ছত্র ঘর এখানেই
+const gifts = ref(['রুপোর তালা', 'কাচের পাখি', 'মসলিন'])
+const chosen = ref('')
+
+function onSelect(name: string) {
+  chosen.value = name          // ফেরত-পাখি এসে উজান বদলাল
+  gifts.value = gifts.value.filter(g =&gt; g !== name)
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;!-- kebab-case সেতু: greetingText → greeting-text --&gt;
+    &lt;GiftChild :items="gifts" label="রফিকের উপহার" @select="onSelect" /&gt;
+    &lt;p v-if="chosen"&gt;বেছে নেওয়া: &lt;strong&gt;{{ chosen }}&lt;/strong&gt; — নদী থেকে সরে গেল&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import RiverParent from './RiverParent.vue'
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;RiverParent /&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) GiftChild-এ props.items.length = 0 বসিয়ে দেখো — কনসোলে readonly-সতর্কতা আসে (তারপর মুছে ফেলো!)। (২) "বেছে নাও" চাপো — পুত্র থেকে পাখি উড়ে পিতার তালিকা বদলায়। (৩) label-প্রপ পিতা থেকে বদলে দেখো — পুত্র নিজে কিছু না করেই নতুন উপহার পায়। / Tests: force a readonly warning; watch the return-bird update the parent's list; change label upstream and see the new gift arrive.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">One-Way River — Props Flow &amp; Return-Bird</div>
     <svg viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg">
