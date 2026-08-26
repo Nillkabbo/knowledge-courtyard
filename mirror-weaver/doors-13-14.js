@@ -32,8 +32,9 @@ doors.push({
   door stays light. He opens LedgerPilot's real map-book: a handful of static routes, then server-sent manifest
   routes joining in (that story in door 14).</p>
   <div class="dialogue">('"রাস্তার নাম ঘরের দরজায় লেখো না," বাবর পাথরের ফলকে চক দিয়ে রেখা টানলেন, "রাস্তার নাম রাস্তার মাথায়। ঘরের নাম বদলালে রাস্তার নাম বদলায় না — বরং উল্টোটা হলে পুরো শহরের নকশা ওল্টে যায়। আমি একবার গলির নাম ঘরের নাম দিয়ে বসিয়েছিলাম; দুই বছর পরে কেউ পুরনো খতিয়ান খুঁজে পায়নি।"', 'চকের গুঁড়া হাতে লেগে থাকে — নাম যেখানে থাকবে, সেখানেই থাকবে; এই শৃঙ্খলা এবার হাতে বসে।')</div><div class="dialogue en">"The street's name lives at the street's head, not on the house door. I once set a lane's name by a house's; two years later no one found the old deed."</div>
-<div class="dialogue">ইমরান ভাই ছয়-রঙা মার্কার ঘুরিয়ে জিজ্ঞেস করলেন, "বলো — রাস্তার নাম বদলালে কী হয়?" তুমি বললে, "সাইনবোর্ড বদলাতে হবে?" ইমরান হাসলেন: "শুধু সাইনবোর্ড নয় — যারা ঠিকানা মুখস্থ করেছে তারা সব অন্ধ। এ-ই নাম-দেওয়া রুটের মর্যাদা: path বদলাক, name থাকুক এক — router-link আর router.push সবাই name ধরে ডাকে, পথ নিজে মিলে যায়। আর :id-রাস্তায় হাঁটলে মনে রেখো — প্যারাম-বদল পর্দা নিজে টের পায় না; watch(()=&gt;route.params) না-থাকলে পুরনো-দলিল দেখিয়ে বসে থাকবে। বদলে-যাওয়া রাস্তায় পুরনো-মানচিত্র নিয়ে দাঁড়িয়ে থেকো না।"</div>
+  <div class="dialogue">ইমরান ভাই ছয়-রঙা মার্কার ঘুরিয়ে জিজ্ঞেস করলেন, "বলো — রাস্তার নাম বদলালে কী হয়?" তুমি বললে, "সাইনবোর্ড বদলাতে হবে?" ইমরান হাসলেন: "শুধু সাইনবোর্ড নয় — যারা ঠিকানা মুখস্থ করেছে তারা সব অন্ধ। এ-ই নাম-দেওয়া রুটের মর্যাদা: path বদলাক, name থাকুক এক — router-link আর router.push সবাই name ধরে ডাকে, পথ নিজে মিলে যায়। আর :id-রাস্তায় হাঁটলে মনে রেখো — প্যারাম-বদল পর্দা নিজে টের পায় না; watch(()=&gt;route.params) না-থাকলে পুরনো-দলিল দেখিয়ে বসে থাকবে। বদলে-যাওয়া রাস্তায় পুরনো-মানচিত্র নিয়ে দাঁড়িয়ে থেকো না।"</div>
 <div class="dialogue en">Imran spun his six-color marker: "Say the street's name changes — what happens?" You said: "Change the signboard?" He smiled: "Not just the board — everyone who memorized the address goes blind. That is the named-route's dignity: let paths change, the name stays one — router-link and router.push all call by name, the way finds itself. And walking :id-streets, remember — the screen doesn't feel param-changes itself; without watch(()=&gt;route.params) it sits showing the old document. Don't stand holding an old map on a road that moved."</div>
+  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ হাতে-লেখা রুট</div>URL স্ট্রিং হাতে জোড়া — "/user/" + id; নাম-বদলে চুপচাপ-ভাঙা লিংকের খনি।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ নাম-ডাক</div>নাম-দেওয়া রুট + params — পথ বদলালে সংজ্ঞা-এক জায়গায়, ডাক অটো-মিলে।</div></div>
   <div class="code-block">রাউটার-শাস্ত্র — LP-র প্রকৃত নকশা-ছায়া (router/index.ts)
 
 ① তাঁত-বাঁধা — createRouter:
@@ -105,9 +106,10 @@ doors.push({
   <li>catch-all রুট: /:pathMatch(.*)* → NotFound</li>
   <li>স্ক্রল-আচরণ: scrollBehavior — নতুন রুটে ওপরে ফেরা</li>
 </ul>
-  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ হাতে-লেখা রুট</div>URL স্ট্রিং হাতে জোড়া — "/user/" + id; নাম-বদলে চুপচাপ-ভাঙা লিংকের খনি।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ নাম-ডাক</div>নাম-দেওয়া রুট + params — পথ বদলালে সংজ্ঞা-এক জায়গায়, ডাক অটো-মিলে।</div></div>
-<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 2 (Bazaar of Algorithms) রুট-ম্যাচিংয়ের নিচে গ্রাফ-ট্রাভার্সাল শেখায়; আর Book 4 (City Builder’s Codex) URL-কে সিস্টেম-সীমানা হিসেবে দেখায়।</div></div>
-<div class="verse">সিরাত — সুগম-পথ: "আমাকে সরল পথ দেখাও" (১:৬) — পথ এক, নির্দেশ স্পষ্ট, পথহারা নয়। ইমরান ভাইয়ের নকশা-দপ্তর সেই সিরাতের রাস্তা-রূপ: প্রতিটি পথের নাম-ফলক, প্রতিটি মোড়ে জানালা, আর ধরার-জাল — যে-পথ নকশায় নেই সেখানে পথহারা-পাতা, অন্ধকার নয়। যে শহরে রাস্তা দেয়ালে দেয়ালে লেখা, সে-শহরে প্রতিটি নতুন কারিগর পথ আবিষ্কার করে নিজের জীবন দিয়ে।</div>
+  <div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 2 (Bazaar of Algorithms) রুট-ম্যাচিংয়ের নিচে গ্রাফ-ট্রাভার্সাল শেখায়; আর Book 4 (City Builder’s Codex) URL-কে সিস্টেম-সীমানা হিসেবে দেখায়।</div></div>
+  <div class="verse">সিরাত — সুগম-পথ: "আমাকে সরল পথ দেখাও" (১:৬) — পথ এক, নির্দেশ স্পষ্ট, পথহারা নয়। ইমরান ভাইয়ের নকশা-দপ্তর সেই সিরাতের রাস্তা-রূপ: প্রতিটি পথের নাম-ফলক, প্রতিটি মোড়ে জানালা, আর ধরার-জাল — যে-পথ নকশায় নেই সেখানে পথহারা-পাতা, অন্ধকার নয়। যে শহরে রাস্তা দেয়ালে দেয়ালে লেখা, সে-শহরে প্রতিটি নতুন কারিগর পথ আবিষ্কার করে নিজের জীবন দিয়ে।</div>
+  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>রাস্তা-ফাঁদ:</strong> (১) পথ-স্ট্রিং হার্ডকোড (<code>to="/clients/42"</code>) — পথ-বদলে নীরব-ভাঙা লিংক; name+params ব্যবহার করো। (২) <code>:id</code>-পরিবর্তনে একই উপাদান পুনর্ব্যবহৃত হয়ে পুরনো-ডেটা দেখানো — watch(params) দিয়ে রিফেচ। (৩) সব-ভিউ স্ট্যাটিক-import — প্রথম-বান্ডেল ফুলে-ওঠে; রুটে লেজি-ছাঁচ অভ্যাস করো।</div></div>
+  <div class="secret-box">🗺️ রুট = path+name+component: নামে-ডাকো, খিলিতে-গভীরে-যাও, জানালায়-বসাও, লেজিতে-হালকা-থাকো। / Declare routes once, navigate by name, link deep, load lazily.</div>
   <div class="diagram">
     <div class="diag-title">The Street-Map — Path, Name, Component, Window</div>
     <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
@@ -149,9 +151,7 @@ doors.push({
       <text x="280" y="286" text-anchor="middle" fill="#64748b" font-size="8">পথ নকশায় লেখো, নামে ডাকো, জানালায় বসাও — দেয়ালে লেখা রাস্তা পথহারা শহর বানায়</text>
     </svg>
     <div class="diag-cap">তিন-স্তম্ভের রুট-রেকর্ড + খিলি-পথ + উপ-গলি + লেজি-চালক: শহরের সব-চলাচল এক-নকশা থেকে।</div>
-  </div>
-  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>রাস্তা-ফাঁদ:</strong> (১) পথ-স্ট্রিং হার্ডকোড (<code>to="/clients/42"</code>) — পথ-বদলে নীরব-ভাঙা লিংক; name+params ব্যবহার করো। (২) <code>:id</code>-পরিবর্তনে একই উপাদান পুনর্ব্যবহৃত হয়ে পুরনো-ডেটা দেখানো — watch(params) দিয়ে রিফেচ। (৩) সব-ভিউ স্ট্যাটিক-import — প্রথম-বান্ডেল ফুলে-ওঠে; রুটে লেজি-ছাঁচ অভ্যাস করো।</div></div>
-  <div class="secret-box">🗺️ রুট = path+name+component: নামে-ডাকো, খিলিতে-গভীরে-যাও, জানালায়-বসাও, লেজিতে-হালকা-থাকো। / Declare routes once, navigate by name, link deep, load lazily.</div>`,
+  </div>`,
   senior: {
     title: "Router Card",
     body: `<p><strong>বাঁধা</strong>: createRouter + createWebHistory। <strong>রেকর্ড</strong>: path/name/component(লেজি <code>() =&gt; import</code>)/meta। <strong>ডায়নামিক</strong>: <code>:id</code> (+regex, optional <code>?</code>); প্যারাম-বদলে watch→রিফেচ। <strong>নেস্টেড</strong>: children + প্যারেন্ট <code>&lt;RouterView /&gt;</code>। <strong>জাল</strong>: <code>/:pathMatch(.*)*</code>। <strong>নেভিগেশন</strong>: RouterLink(:to={name,params}) · push/replace/query। <strong>API</strong>: useRoute(পড়া)/useRouter(চালনা)। <strong>LP</strong>: স্ট্যাটিক-বীজ + ম্যানিফেস্ট→addRoute। <strong>ফাঁদ</strong>: রুট-প্যারাম ধরে রাখা প্রথম-লোডের মান — <code>watch(()=&gt;route.params)</code> ছাড়া :id-বদলে পর্দা পুরনো ডেটায় আটকে থাকে; আর নেস্টেড-পথে নাম-ছাড়া নেভিগেট = ভাঙা-লিংকের খনি।</p>`
@@ -190,8 +190,12 @@ doors.push({
   passes the role-bait toward a featureless path — the third arch stops them (defense in depth). And one with no
   permit at all is returned to their own dashboard — the role-map says whose room is where.</p>
   <div class="dialogue">('"ফটকে দাঁড়িয়ে জিজ্ঞেস করো তিনটা — কে, কোথায়, কেন," বাবর তিন আঙুল খাড়া করলেন, "উত্তর না মিললে ভেতরে নয়, ডাক-ঘরে। একবার ফটক-ছাড়া শহর দেখেছিলাম — সুন্দর, তিন মাস টিকেছিল। তারপর আগন্তুকরা সব কোষাগার খালি করে নিয়েছিল।"', 'তিন প্রশ্নের বাঁধন যেন তোমার নিজের কাঁধেও বসে — পথ চাইলে প্রশ্নের উত্তর আগে।')</div><div class="dialogue en">"At the gate, three questions — who, where, why. No match, no entry. I once saw a gate-less city — beautiful, three months."</div>
-<div class="dialogue">বাবর পাস-যন্ত্রের তিন-স্তর দেখিয়ে জিজ্ঞেস করলেন, "বলো — কে আগে যাচাই হবে: পরিচয়, না পোশাক?" তুমি বললে, "পরিচয় তো!" বাবর মাথা নাড়লেন: "আর ভেতরে-ঢুকে পোশাক-যাচাই (রোল)। এ-ই ক্রম: লগইন → রোল → ফিচার — উল্টালে অচেনা-লোক তালার-সামনে দাঁড়িয়ে ভিতরের-খবর জানতে পারে। গার্ডে এ-ক্রম লেখা থাকে meta-ঘোষণা থেকে: requiresAuth: true, roles: ['admin'], feature: 'billing'। আর অ্যাসিঙ্ক-যাচাইয়ে মনে রেখো next()-ডাক — না-ডাকলে পথচারী ফটকেই ঝুলে থাকে, চিরকাল।"</div>
+  <div class="dialogue">বাবর পাস-যন্ত্রের তিন-স্তর দেখিয়ে জিজ্ঞেস করলেন, "বলো — কে আগে যাচাই হবে: পরিচয়, না পোশাক?" তুমি বললে, "পরিচয় তো!" বাবর মাথা নাড়লেন: "আর ভেতরে-ঢুকে পোশাক-যাচাই (রোল)। এ-ই ক্রম: লগইন → রোল → ফিচার — উল্টালে অচেনা-লোক তালার-সামনে দাঁড়িয়ে ভিতরের-খবর জানতে পারে। গার্ডে এ-ক্রম লেখা থাকে meta-ঘোষণা থেকে: requiresAuth: true, roles: ['admin'], feature: 'billing'। আর অ্যাসিঙ্ক-যাচাইয়ে মনে রেখো next()-ডাক — না-ডাকলে পথচারী ফটকেই ঝুলে থাকে, চিরকাল।"</div>
 <div class="dialogue en">Babur showed the pass-machine's three tiers: "Who gets checked first — identity, or costume?" You said: "Identity, of course!" He nodded: "Then inside, the costume-check (role). That is the order: login → role → feature — reversed, a stranger learns interior news standing at the lock. The guard reads this order from the meta declaration: requiresAuth: true, roles: ['admin'], feature: 'billing'. And in async checks, remember the next()-call — uncalled, the traveler hangs at the gate forever."</div>
+  <div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল পথ</div>শুধু ভিউতে বাটন লুকানো — URL সরাসরি ঢুকে পড়ে; পাহারা কেবল রং।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক পথ</div>গার্ড পথে (beforeEach + meta) ও &lt;Can&gt; দেয়ালে — দুই স্তরের পাহারা।</div>
+</div>
   <div class="code-block">গার্ড-শাস্ত্র — LP-র প্রকৃত শৃঙ্খল (router/guards.ts-ছায়া)
 
 মেটা-চাহিদা (নকশায়-লেখা, ফটকে-বিচার):
@@ -276,13 +280,11 @@ doors.push({
   আগেরটার-ওপর-দাঁড়ায়; উল্টালে রোল-বিচার
   ফাঁকা-সেটে, ফিচার-বিচার অজানা-স্টোরে —
   সব-পথ-বন্ধ বা সব-পথ-খোলা, দুই-ই বিপর্যয়</div>
-  <div class="compare">
-  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল পথ</div>শুধু ভিউতে বাটন লুকানো — URL সরাসরি ঢুকে পড়ে; পাহারা কেবল রং।</div>
-  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক পথ</div>গার্ড পথে (beforeEach + meta) ও &lt;Can&gt; দেয়ালে — দুই স্তরের পাহারা।</div>
-</div>
   <ul class="checklist"><li>meta-ট্যাগড রুট সাজাও: public/needs-login/role:admin — গার্ডে ক্রম-যাচাই লেখো</li><li>অথরাইজড-রিডাইরেক্ট পরীক্ষা: লগআউট-অবস্থায় সুরক্ষিত-রুটে গিয়ে redirect-পথ নোট করো</li><li>beforeRouteLeave দিয়ে dirty-ফর্ম-পালানো-প্রতিরোধ — কনফার্ম-ডায়ালগ সহ</li></ul>
-<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 46 (Copper Fortress — ১০ দরজা) প্রমাণীকরণ-প্রবাহ আর সেশন-সুরক্ষার গভীর নকশা দেয় — রুট-গার্ডের নিরাপত্তা-ভিত্তি।</div></div>
-<div class="verse">ফটকের-মীজান: "প্রবেশ করো তার দরজা দিয়ে সিজদাকারী হয়ে" নয় বরং নগর-আয়াতের শৃঙ্খলা (২:৫৮-এর ভাব) — নির্ধারিত-দরজা, নির্ধারিত-ভঙ্গি; অন্য-পথের-লোভ অবাধ্যতা। বাবরের তিন-তোরণ সেই নির্ধারিত-দরজার পাহারা: পরিচিতি-পদমর্যাদা-অনুমতি — প্রতিটি তোরণ এক-আয়াতের মতো স্পষ্ট, কেউ একা যথেষ্ট নয়, সব-মিলে শহরের-মর্যাদা। যে ফটক সবাইকে সব-পথ দেয়, সে ফটক নয় — ফাঁকা-জায়গা; আর যে নিজের-পথভুলে-অন্যের-পথে পাঠায়, সে মানচিত্র নয় — বিভ্রান্তি।</div>
+  <div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 46 (Copper Fortress — ১০ দরজা) প্রমাণীকরণ-প্রবাহ আর সেশন-সুরক্ষার গভীর নকশা দেয় — রুট-গার্ডের নিরাপত্তা-ভিত্তি।</div></div>
+  <div class="verse">ফটকের-মীজান: "প্রবেশ করো তার দরজা দিয়ে সিজদাকারী হয়ে" নয় বরং নগর-আয়াতের শৃঙ্খলা (২:৫৮-এর ভাব) — নির্ধারিত-দরজা, নির্ধারিত-ভঙ্গি; অন্য-পথের-লোভ অবাধ্যতা। বাবরের তিন-তোরণ সেই নির্ধারিত-দরজার পাহারা: পরিচিতি-পদমর্যাদা-অনুমতি — প্রতিটি তোরণ এক-আয়াতের মতো স্পষ্ট, কেউ একা যথেষ্ট নয়, সব-মিলে শহরের-মর্যাদা। যে ফটক সবাইকে সব-পথ দেয়, সে ফটক নয় — ফাঁকা-জায়গা; আর যে নিজের-পথভুলে-অন্যের-পথে পাঠায়, সে মানচিত্র নয় — বিভ্রান্তি।</div>
+  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ফটক-ফাঁদ:</strong> (১) রোল-বিচার auth-স্থির-হওয়ার-আগে — রিফ্রেশে প্রথম-নেভিগেশনে সব-গেট বন্ধ-দেখায় (LP-গার্ডের মন্তব্য-শিক্ষা); restore-প্রথম। (২) ফিচার-গেট আনহাইড্রেটেড-স্টোরে — মিথ্যা-না; hydrate-প্রথম। (৩) গার্ডে পার্শ্ব-প্রভাবের-স্তূপ (টোস্ট-বন্যা) — প্রত্যেক-বিচারে নয়, ফাঁক-রিটার্নে একবার।</div></div>
+  <div class="secret-box">🛡️ চাহিদা meta-তে, বিচার beforeEach-তে, ক্রম অলঙ্ঘনীয়: পরিচয়→রোল→ফিচার; ভুল-পথের-মানুষ নিজ-ড্যাশবোর্ডে। / Requirements in meta, judgment in the guard, order unbroken.</div>
   <div class="diagram">
     <div class="diag-title">Gate-Chain — Three Arches in Order</div>
     <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
@@ -315,9 +317,7 @@ doors.push({
       <text x="280" y="296" text-anchor="middle" fill="#64748b" font-size="8">প্রতিটি তোরণ এক-আয়াতের-মতো স্পষ্ট — একা কেউ যথেষ্ট নয়, সব-মিলে শহরের-মর্যাদা</text>
     </svg>
     <div class="diag-cap">চাহিদা meta-তে, বিচার ফটকে, ক্রম অলঙ্ঘনীয় — পরিচয়, পদমর্যাদা, অনুমতি: তিন তোরণ পার হলে তবেই শহর।</div>
-  </div>
-  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ফটক-ফাঁদ:</strong> (১) রোল-বিচার auth-স্থির-হওয়ার-আগে — রিফ্রেশে প্রথম-নেভিগেশনে সব-গেট বন্ধ-দেখায় (LP-গার্ডের মন্তব্য-শিক্ষা); restore-প্রথম। (২) ফিচার-গেট আনহাইড্রেটেড-স্টোরে — মিথ্যা-না; hydrate-প্রথম। (৩) গার্ডে পার্শ্ব-প্রভাবের-স্তূপ (টোস্ট-বন্যা) — প্রত্যেক-বিচারে নয়, ফাঁক-রিটার্নে একবার।</div></div>
-  <div class="secret-box">🛡️ চাহিদা meta-তে, বিচার beforeEach-তে, ক্রম অলঙ্ঘনীয়: পরিচয়→রোল→ফিচার; ভুল-পথের-মানুষ নিজ-ড্যাশবোর্ডে। / Requirements in meta, judgment in the guard, order unbroken.</div>`,
+  </div>`,
   senior: {
     title: "Guards Card",
     body: `<p><strong>শৃঙ্খল</strong>: beforeEach — ⓪ ম্যানিফেস্ট-রেজিস্টার (auth-স্থিরের-পরে) → ① public?/isAuthenticated (restore-প্রথম; না-হলে login+?next) → ② allowedRoles.some(roles.has) (Set-ইউনিয়ন; forbidden+টোস্ট) → ③ requiresFeature→resolveFeature (hydrate-প্রথম; hydrateFeatures=ভরা-নো-বিচার) → next()। <strong>ভুল-পথ</strong>: roleDashboardMap → নিজ-ড্যাশবোর্ড। <strong>পরিবার</strong>: beforeResolve/beforeEnter/beforeRouteLeave (ফর্ম)/afterEach (শিরোনাম)। <strong>ফাঁদ</strong>: গার্ডের ভেতরে অ্যাসিঙ্ক-কাজ করার সময় <code>next()</code> ডাকতে ভুলে যাওয়া (পর্দা চিরতরে ঝুলন্ত); আর meta-শর্ত যাচাইয়ের ক্রম না-লেখা — প্রথমে লগইন, তারপর রোল, শেষে ফিচার।</p>`

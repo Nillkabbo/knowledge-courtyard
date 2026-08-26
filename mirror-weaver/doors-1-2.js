@@ -37,6 +37,7 @@ doors.push({
   <br>জোহরা আপা: "দুইটা জিনিস — <strong>অবস্থা</strong> (state: ডেটা এখন কেমন আছে) আর <strong>টেমপ্লেট</strong> (template: অবস্থা
   দেখতে কেমন হবে)। এই দুইয়ের মাঝের সেতু Vue পাহারা দেয়। অবস্থা বদলাও — প্রতিবিম্ব নিজে বদলাবে। আর মনে রেখো — বড় অ্যাপে
   আসল যুদ্ধ 'কীভাবে বানাব' নয়, 'কোথায় সত্য থাকবে' — সেটাই এই বইয়ের প্রতিটি দরজার গভীর প্রশ্ন।"</div>
+  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ হাতে-নিয়ন্ত্রণ</div>querySelector দিয়ে ডোম খুঁজে টেক্সট বদলাও — প্রতিটি পরিবর্তনে হাত-সিঙ্ক, ভুল বাড়ে প্রতি-ধাপে।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ ঘোষণা</div>state-বদলাও, পর্দা নিজে নিজে সাজায় — এক-সত্য-উৎস, ডোম কেবল প্রতিফলন।</div></div>
   <div class="code-block">প্রথম তাঁত — সবচেয়ে ছোট Vue অ্যাপ (অফিশিয়াল গাইড-ধাঁচে)
 
 ① index.html — একটাই মাউন্ট-পয়েন্ট:
@@ -91,9 +92,11 @@ SFC-এর তিন ঘর (এক .vue ফাইলে):
   state বদলাও, DOM পর্যবেক্ষণ নাও  | querySelector/textContent
   টেমপ্লেটে ঘোষণা করো              | ম্যানুয়াল আপডেট-ধাপ লিখো
   এক SFC = এক দায়িত্ব             | দশ-মেজাজি দৈত্য-উপাদান</div>
-  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ হাতে-নিয়ন্ত্রণ</div>querySelector দিয়ে ডোম খুঁজে টেক্সট বদলাও — প্রতিটি পরিবর্তনে হাত-সিঙ্ক, ভুল বাড়ে প্রতি-ধাপে।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ ঘোষণা</div>state-বদলাও, পর্দা নিজে নিজে সাজায় — এক-সত্য-উৎস, ডোম কেবল প্রতিফলন।</div></div><ul class="checklist"><li>Vue CDN/স্কাফোল্ড দিয়ে তিন-লাইনের কাউন্টার বানাও — ref + interpolation + @click</li><li>একই কাউন্টার খাঁটি JS-এ (createElement) বানিয়ে দুই সংস্করণের লাইন-গুনো</li><li>লেজারপাইলট-স্ক্রিনে একটা ডোম-ম্যানিপুলেশন খুঁজে নোট করো — কেন ঘোষণা জিতলো</li></ul>
-<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 5 (Seed of Learning — ৯ দরজা) ঘোষণাবদ্ধ-চিন্তার মানসিক ভিত্তি দেয়, আর Book 26 (Knowledge Craftsman) "এক সত্য-উৎস" নোটের অভ্যাস শেখায় — Vue-দর্শনের দুই সহোদর।</div></div>
-<div class="verse">সাক্ষাৎ — প্রত্যক্ষ দর্শনের শৃঙ্খলা: আয়না সদা অনুগামী, কখনো স্বেচ্ছাচারী নয়। "যে দিন কাজের ফল প্রকাশ হবে" (৮২:১৯-এর ভাব) — কর্মের ফল প্রতিবিম্বে ধরা পড়ে, প্রতিবিম্ব নিজে কর্ম করে না। জোহরা আপার কাচ সেই সাক্ষাৎের যন্ত্র: যা দেখায় তা-ই আছে, যা আছে তা-ই দেখায়। যে কারিগর আয়নায় হাত দেয়, সে শেষে দুই সত্যের মাঝে হারিয়ে যায় — কারণ তার প্রতিবিম্ব আর বিশ্বাসের যোগ্য থাকে না।</div>
+  <ul class="checklist"><li>Vue CDN/স্কাফোল্ড দিয়ে তিন-লাইনের কাউন্টার বানাও — ref + interpolation + @click</li><li>একই কাউন্টার খাঁটি JS-এ (createElement) বানিয়ে দুই সংস্করণের লাইন-গুনো</li><li>লেজারপাইলট-স্ক্রিনে একটা ডোম-ম্যানিপুলেশন খুঁজে নোট করো — কেন ঘোষণা জিতলো</li></ul>
+  <div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 5 (Seed of Learning — ৯ দরজা) ঘোষণাবদ্ধ-চিন্তার মানসিক ভিত্তি দেয়, আর Book 26 (Knowledge Craftsman) "এক সত্য-উৎস" নোটের অভ্যাস শেখায় — Vue-দর্শনের দুই সহোদর।</div></div>
+  <div class="verse">সাক্ষাৎ — প্রত্যক্ষ দর্শনের শৃঙ্খলা: আয়না সদা অনুগামী, কখনো স্বেচ্ছাচারী নয়। "যে দিন কাজের ফল প্রকাশ হবে" (৮২:১৯-এর ভাব) — কর্মের ফল প্রতিবিম্বে ধরা পড়ে, প্রতিবিম্ব নিজে কর্ম করে না। জোহরা আপার কাচ সেই সাক্ষাৎের যন্ত্র: যা দেখায় তা-ই আছে, যা আছে তা-ই দেখায়। যে কারিগর আয়নায় হাত দেয়, সে শেষে দুই সত্যের মাঝে হারিয়ে যায় — কারণ তার প্রতিবিম্ব আর বিশ্বাসের যোগ্য থাকে না।</div>
+  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>নতুনদের প্রথম ভুল:</strong> Vue শিখতে গিয়ে টেমপ্লেটে দস্তুর লিখে আবার পাশে <code>document.querySelector</code> চালিয়ে ফেলা — দুই জগতের সত্য একসাথে। ফল: Vue-র পরের রি-রেন্ডারে তোমার হাতের আঁকা মুছে যায় (দরজা ৩-এর আত্মীয় গল্প)। নিয়ম: Vue-র দেয়ালের ভেতরে DOM-কে সরাসরি ছোঁয়া নিষেধ — অবস্থা বদলাও।</div></div>
+  <div class="secret-box">🪞 আয়নার শপথ: DOM-কে আঁতে বলো না — অবস্থা বদলাও, প্রতিবিম্ব নিজে সজ্জিত হবে। / Never command the DOM; change the state and let the mirror follow.</div>
   <div class="diagram">
     <div class="diag-title">The Mirror's Oath — Two Workshops Compared</div>
     <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
@@ -118,9 +121,7 @@ SFC-এর তিন ঘর (এক .vue ফাইলে):
       <text x="280" y="273" text-anchor="middle" fill="#64748b" font-size="8">এই এক বাক্যই আগামী ছাবিশটি দরজার ভিত্তি</text>
     </svg>
     <div class="diag-cap">দুই কারখানার পার্থক্য এক লাইনে: পুরনোটা আয়নাকে আঁতে বলে, নতুনটা বস্তু বদলায় — বাকিটা তাঁত দেখে।</div>
-  </div>
-  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>নতুনদের প্রথম ভুল:</strong> Vue শিখতে গিয়ে টেমপ্লেটে দস্তুর লিখে আবার পাশে <code>document.querySelector</code> চালিয়ে ফেলা — দুই জগতের সত্য একসাথে। ফল: Vue-র পরের রি-রেন্ডারে তোমার হাতের আঁকা মুছে যায় (দরজা ৩-এর আত্মীয় গল্প)। নিয়ম: Vue-র দেয়ালের ভেতরে DOM-কে সরাসরি ছোঁয়া নিষেধ — অবস্থা বদলাও।</div></div>
-  <div class="secret-box">🪞 আয়নার শপথ: DOM-কে আঁতে বলো না — অবস্থা বদলাও, প্রতিবিম্ব নিজে সজ্জিত হবে। / Never command the DOM; change the state and let the mirror follow.</div>`,
+  </div>`,
   senior: {
     title: "Vue Philosophy Card",
     body: `<p><strong>মূল</strong>: declarative রেন্ডারিং — <code>createApp(App).mount('#app')</code>; SFC তিন-ঘর (<code>&lt;script setup&gt;</code>/<code>&lt;template&gt;</code>/<code>&lt;style scoped&gt;</code>)। <strong>নিয়ম</strong>: state এক সত্য-উৎসে, template ঘোষণামূলক, DOM-ম্যানিপুলেশন নিষিদ্ধ। <strong>স্কেল-প্রমাণ</strong>: LedgerPilot = Vue 3.5.30 + TS 5.8.3 + Pinia 3.0.4 + vue-router 4.6.4, ১১৭ ভিউ, শূন্য ম্যানুয়াল-DOM। <strong>প্রথম অ্যাপ</strong>: ref + interpolation + @click — তিন লাইনে তাঁত চালু। <strong>ফাঁদ</strong>: jQuery-মানসিকতা ফিরে আসা — কম্পোনেন্টের ভেতরে ডোম হাতড়ে <code>classList</code> বদলানো; সেটা ঘোষণার বিরুদ্ধে বিদ্রোহ, প্রথম সপ্তাহেই অভ্যাস ভাঙো।</p>`
@@ -159,8 +160,12 @@ doors.push({
   (XSS)."</strong> Finally she shows threads that are <strong>woven once</strong> (<code>v-once</code>) and cloth that itself
   knows which stakes haven't moved (<code>v-memo</code>) — shaking the whole loom for nothing is waste.</p>
   <div class="dialogue">('"মুদ্রার ছাপ দেখেছ?" জোহরা আপা সুতোর ডগায় ছোট্ট একটা গিরা দেখালেন। "এই একটা গিরাই দুই মুখ — এক মুখে ফাঁসা বাঁধে, আরেক মুখে টানে। টেমপ্লেটও তাই: স্থির অংশ কাপড়ে বোনা, বদলানো অংশ ফাঁসায়। নতুন কারিগররা সব কাপড়ে বুনে ফেলে — তারপর এক রং বদলাতে গিয়ে পুরো কাপড় ছিঁড়ে ফেলে।"', 'তুমি ফাঁসাগুলোর সামনে আঙুল ছড়িয়ে দাও — কোথায় সুতো ঢুকবে, কোথায় ঢুকবে না, এবার চোখে পরছে।')</div><div class="dialogue en">"One knot, two faces — one binds the loop, the other pulls. Novices weave everything into cloth, then tear the whole cloth to change one color."</div>
-<div class="dialogue">জোহরা আপা ফাঁসায় আঙুল রেখে জিজ্ঞেস করলেন: "বলো তো, v-if আর v-show — দুই-ই তো লুকায়, পার্থক্য কোথায়?" তুমি ভাবতে ভাবতে বললে, "একটা ছিঁড়ে ফেলে, একটা ভাঁজ করে?" আপা হাসলেন: "ঠিক ধরেছ। v-if = কাপড় থেকে সুতো তুলে নেওয়া (DOM-ই নেই, ব্যয়-ভাঙা-জোড়া); v-show = কাপড় ভাঁজ (DOM আছে, শুধু ঢাকা)। ঘন-টগল হলে ভাঁজ সস্তা, বিরল-টগল হলে তোলা। আর v-for-এ :key মানে প্রতিটি সুতোর নাম-ট্যাগ — নাম ছাড়া তালিকা বদলালে তাঁত পুরনো সুতোকেই নতুন ভেবে বাঁধে, ভুল জায়গায়।"</div>
+  <div class="dialogue">জোহরা আপা ফাঁসায় আঙুল রেখে জিজ্ঞেস করলেন: "বলো তো, v-if আর v-show — দুই-ই তো লুকায়, পার্থক্য কোথায়?" তুমি ভাবতে ভাবতে বললে, "একটা ছিঁড়ে ফেলে, একটা ভাঁজ করে?" আপা হাসলেন: "ঠিক ধরেছ। v-if = কাপড় থেকে সুতো তুলে নেওয়া (DOM-ই নেই, ব্যয়-ভাঙা-জোড়া); v-show = কাপড় ভাঁজ (DOM আছে, শুধু ঢাকা)। ঘন-টগল হলে ভাঁজ সস্তা, বিরল-টগল হলে তোলা। আর v-for-এ :key মানে প্রতিটি সুতোর নাম-ট্যাগ — নাম ছাড়া তালিকা বদলালে তাঁত পুরনো সুতোকেই নতুন ভেবে বাঁধে, ভুল জায়গায়।"</div>
 <div class="dialogue en">Johra touched a loop: "Tell me — v-if and v-show both hide; where is the difference?" You thought: "One tears out, one folds?" She smiled: "Caught it. v-if pulls the thread from the cloth (no DOM, costly re-join); v-show folds the cloth (DOM stays, covered). Fast toggles want folding; rare ones, pulling. And :key in v-for is each thread’s name-tag — unnamed, the loom binds old threads as new when the list shifts, in wrong places."</div>
+  <div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল পথ</div>সবকিছু কাপড়ে বোনা — এক রং বদলাতে গিয়ে পুরো কাপড় ছেঁড়া; মান বদলে রেখা ঢোকানো।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক পথ</div>স্থির অংশ কাপড়ে, বদলানো অংশ ফাঁসায় ({{ }} / v-bind / v-on) — এক মান বদলালে শুধু সেই ফাঁসা পূর।</div>
+</div>
   <div class="code-block">টেমপ্লেট-বর্ণমালা — সম্পূর্ণ ছক (Vue 3.5 অফিশিয়াল)
 
 ① মোস্তাচিল — মান ঢালা (Text interpolation):
@@ -237,13 +242,11 @@ Vue 3.5-নোট:
   · সব শর্টহ্যান্ড আগের মতোই; dynamic-arg:
     :[attrName]="val" · @[eventName]="h"
     (attrName কম্পিউটেড-স্ট্রিং হলে বাঁধে)</div>
-  <div class="compare">
-  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল পথ</div>সবকিছু কাপড়ে বোনা — এক রং বদলাতে গিয়ে পুরো কাপড় ছেঁড়া; মান বদলে রেখা ঢোকানো।</div>
-  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক পথ</div>স্থির অংশ কাপড়ে, বদলানো অংশ ফাঁসায় ({{ }} / v-bind / v-on) — এক মান বদলালে শুধু সেই ফাঁসা পূর।</div>
-</div>
   <ul class="checklist"><li>v-if বনাম v-show — দুই প্যারাগ্রাফে টগল-বাটন বানিয়ে DOM-পরিবর্তন ডেভটুলসে দেখো</li><li>তালিকায় :key ছাড়া ও সহ — ইনপুট-ভ্যালু সহ সারি-সাজানো পরীক্ষা করে পার্থক্য নোট করো</li><li>v-html-এর ঝুঁকি-নোট লেখো: কখন নিষেধ, কেন sanitize</li></ul>
-<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 2 (Bazaar of Algorithms — ১৮ দরজা) ডিরেক্টিভের নিচের লজিক শেখায় (শর্ত/লুপ = অ্যালগরিদমের কাঠামো), আর Book 52 (Code Craftsman — ২১ দরজা) পরিচ্ছন্ন-টেমপ্লেটের কারিগরি নিয়ম।</div></div>
-<div class="verse">বাইয়ান — স্পষ্ট প্রকাশ: "রহমান সৃষ্টি করেছেন, শিখিয়েছেন বয়ন-কলম" নয় বরং প্রকাশের আয়াত-ধারা (৫৫:৩-৪-এর ভাব) — যা ভেতরে আছে তার বাইরে স্পষ্ট রূপ। জোহরা আপার চার চিহ্ন সেই বাইয়ানের হাতিয়ার: মান, বাঁধন, শ্রবণ, খোপ — প্রতিটি চিহ্ন ঠিক যা বোঝায় তা-ই বলে, বাড়তি গোপন অর্থ নেই। যে বর্ণমালায় এক চিহ্নের দুই মানে থাকে, সে কাপড়ে সবসময় একটা সুতো ভুল জায়গায় পড়ে।</div>
+  <div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 2 (Bazaar of Algorithms — ১৮ দরজা) ডিরেক্টিভের নিচের লজিক শেখায় (শর্ত/লুপ = অ্যালগরিদমের কাঠামো), আর Book 52 (Code Craftsman — ২১ দরজা) পরিচ্ছন্ন-টেমপ্লেটের কারিগরি নিয়ম।</div></div>
+  <div class="verse">বাইয়ান — স্পষ্ট প্রকাশ: "রহমান সৃষ্টি করেছেন, শিখিয়েছেন বয়ন-কলম" নয় বরং প্রকাশের আয়াত-ধারা (৫৫:৩-৪-এর ভাব) — যা ভেতরে আছে তার বাইরে স্পষ্ট রূপ। জোহরা আপার চার চিহ্ন সেই বাইয়ানের হাতিয়ার: মান, বাঁধন, শ্রবণ, খোপ — প্রতিটি চিহ্ন ঠিক যা বোঝায় তা-ই বলে, বাড়তি গোপন অর্থ নেই। যে বর্ণমালায় এক চিহ্নের দুই মানে থাকে, সে কাপড়ে সবসময় একটা সুতো ভুল জায়গায় পড়ে।</div>
+  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>দুই চির-ভুল:</strong> (১) <code>v-if</code> আর <code>v-for</code> একই উপাদানে — v-if আগে মূল্যায়ন হয়, লুপ-ভেরিয়েবল পায় না; কম্পিউটেড-তালিকা (দরজা ৩) বা wrapper-এ আলাদা করো। (২) <code>v-html</code>-এ ব্যবহারকারীর লেখা ঢোকানো — XSS-এর সরাসরি দরজা; LedgerPilot এরর-বার্তাও স্যানিটাইজ করে ঢাকে।</div></div>
+  <div class="secret-box">🧵 {{ }} বলে · : বাঁধে · @ শোনে · # খোলে — চার চিহ্নের ব্যাকরণে পুরো পর্দা বোনা; v-html তালাবদ্ধ, কী-শূন্য v-for নিষেধ। / Four glyphs weave any screen; v-html stays locked, v-for never keyless.</div>
   <div class="diagram">
     <div class="diag-title">The Thread Alphabet — Four Glyphs, One Grammar</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
@@ -287,9 +290,7 @@ Vue 3.5-নোট:
       <text x="280" y="298" text-anchor="middle" fill="#64748b" font-size="8.5">চার চিহ্ন + শর্ত + তালিকা + একবার-সুতো = যেকোনো পর্দার পূর্ণ ব্যাকরণ</text>
     </svg>
     <div class="diag-cap">বর্ণমালা মুখস্থ নয় — চিহ্নের কাজ বোঝো: বলে, বাঁধে, শোনে, খোলে; বাকি সব এই চারের বাক্য।</div>
-  </div>
-  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>দুই চির-ভুল:</strong> (১) <code>v-if</code> আর <code>v-for</code> একই উপাদানে — v-if আগে মূল্যায়ন হয়, লুপ-ভেরিয়েবল পায় না; কম্পিউটেড-তালিকা (দরজা ৩) বা wrapper-এ আলাদা করো। (২) <code>v-html</code>-এ ব্যবহারকারীর লেখা ঢোকানো — XSS-এর সরাসরি দরজা; LedgerPilot এরর-বার্তাও স্যানিটাইজ করে ঢাকে।</div></div>
-  <div class="secret-box">🧵 {{ }} বলে · : বাঁধে · @ শোনে · # খোলে — চার চিহ্নের ব্যাকরণে পুরো পর্দা বোনা; v-html তালাবদ্ধ, কী-শূন্য v-for নিষেধ। / Four glyphs weave any screen; v-html stays locked, v-for never keyless.</div>`,
+  </div>`,
   senior: {
     title: "Template Syntax Card",
     body: `<p><strong>বাঁধন</strong>: <code>:</code> (attr/class/style; null→খসে); dynamic <code>:[name]</code>। <strong>ঘটনা</strong>: <code>@</code> + <code>.stop/.prevent/.capture/.self/.once/.passive</code> + key (<code>.enter</code>, <code>.ctrl.exact</code>) + mouse (<code>.left</code>)। <strong>শর্ত</strong>: v-if/else-if/else (মাউন্ট-টগল) বনাম v-show (display-টগল); একই উপাদানে v-if+v-for নিষেধ। <strong>তালিকা</strong>: v-for + <code>:key</code>(আসল id; index-নয়) — অ্যারে/অবজেক্ট/পরিসর/template-র‍্যাপ। <strong>একবার</strong>: v-once/v-memo/v-cloak। <strong>তালা</strong>: v-html কেবল trusted-উৎসে (LP: sanitize)। Vue 3.5: সব-শর্টহ্যান্ড + dynamic-arg বহাল। <strong>ফাঁদ</strong>: <code>v-if</code> আর <code>v-show</code> গুলিয়ে ফেলা — ঘন-টগল <code>v-show</code>, বিরল-টগল <code>v-if</code>; আর বড় তালিকায় কী-ছাড়া <code>v-for</code> = রাষ্ট্র-লিক।</p>`

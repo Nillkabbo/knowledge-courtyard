@@ -30,8 +30,9 @@ doors.push({
   first weave</strong> (dev server, HMR lamp)." He holds up LedgerPilot's real courtyard-plan — standing on exactly
   this division, a 117-view loom.</p>
   <div class="dialogue">('"ছয় ধাপ না গেলে বাজারে নামো না," মোস্তফা মিয়া ছয়টা খুঁটি পুঁতে দিলেন, "কাঠ-মাপ-রেখা-কাটা-ঘষা-জোড়া — একটা বাদ গেলে পুরো তাঁত নড়ে যায়। আমার প্রথম তাঁত কেনেছিলাম পাঁচ ধাপে; প্রথম বড় কাপড়েই সুতো ধরেনি।"', 'ছয় খুঁটির ছায়া লম্বা হয়ে পড়ে — প্রতিটি ধাপ নিজের ভার বইছে, এটাই দেখায়।')</div><div class="dialogue en">"Six stakes before the market — wood, measure, line, cut, polish, join. My first loom skipped one; the first big cloth never held thread."</div>
-<div class="dialogue">মোস্তফা মিয়া তাঁত-খুঁটি পোঁতার-গর্ত দেখিয়ে জিজ্ঞেস করলেন, "প্রথম-খুঁটি কোনটা — কাপড়, না মাটি?" তুমি বললে, "কাপড় তো মুখ্য!" মোস্তফা মিয়া হাসলেন: "কাপড় আসবে-যাবে, মাটি থাকবে। TS-সেটআপ, ESLint-নিয়ম, Prettier-ছাঁচ, ফোল্ডার-নকশা — এ-ই মাটি। প্রথম-সপ্তাহে বসালে শত-কাপড় এক-ছাঁচে; পরে বসালে প্রতিটি নতুন-কারিগর নিজের-মত বুনবে, তারপর একদিন সব-কাপড়ে আলাদা-আলাদা সুতো টেনে ফেটে যাবে। আর env-গোপন: VITE_-প্রিফিক্সবিহীন কিছু ক্লায়েন্টে নামবেই না, আর .local ফাইল গিট-বাইরে — প্রথম-দিনের শৃঙ্খলা, শেষ-দিনের নয়।"</div>
+  <div class="dialogue">মোস্তফা মিয়া তাঁত-খুঁটি পোঁতার-গর্ত দেখিয়ে জিজ্ঞেস করলেন, "প্রথম-খুঁটি কোনটা — কাপড়, না মাটি?" তুমি বললে, "কাপড় তো মুখ্য!" মোস্তফা মিয়া হাসলেন: "কাপড় আসবে-যাবে, মাটি থাকবে। TS-সেটআপ, ESLint-নিয়ম, Prettier-ছাঁচ, ফোল্ডার-নকশা — এ-ই মাটি। প্রথম-সপ্তাহে বসালে শত-কাপড় এক-ছাঁচে; পরে বসালে প্রতিটি নতুন-কারিগর নিজের-মত বুনবে, তারপর একদিন সব-কাপড়ে আলাদা-আলাদা সুতো টেনে ফেটে যাবে। আর env-গোপন: VITE_-প্রিফিক্সবিহীন কিছু ক্লায়েন্টে নামবেই না, আর .local ফাইল গিট-বাইরে — প্রথম-দিনের শৃঙ্খলা, শেষ-দিনের নয়।"</div>
 <div class="dialogue en">Mostafa Mia pointed at the post-hole: "Which is the first post — the cloth, or the soil?" You said: "The cloth is the point!" He smiled: "Cloths come and go; soil stays. TS-setup, ESLint rules, Prettier shape, folder-design — that is the soil. Planted in week one, a hundred cloths share one mold; planted late, every new craftsman weaves their own way — until one day all cloths tear on their different threads. And env-secrets: anything without the VITE_ prefix never reaches the client; .local files stay outside git — first-day discipline, not last-day."</div>
+  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ বুনো-সেটআপ</div>ডিফল্ট-স্কাফোল্ডেই ঢিলে-কোড বসানো — লিন্ট নেই, env-গোপন কমিটে যায়, গঠন বুঝে আসে না।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ তাঁত-স্থাপনা</div>প্রথম-দিনেই TS+ESLint+Prettier+FSD-কাঠামো — শৃঙ্খলা আগে, কাপড় পরে।</div></div>
   <div class="code-block">তাঁত-স্থাপন — ছয়-ধাপ (নতুন-প্রজেক্ট-প্রথম-দিন)
 
 ① কাঠ-আনা (স্ক্যাফোল্ড):
@@ -112,9 +113,10 @@ doors.push({
   <li>ভাগ করা ফোল্ডার-আইন: features/shared/app/ui/core</li>
   <li>env-ভাগ: .env.development / .env.production</li>
 </ul>
-  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ বুনো-সেটআপ</div>ডিফল্ট-স্কাফোল্ডেই ঢিলে-কোড বসানো — লিন্ট নেই, env-গোপন কমিটে যায়, গঠন বুঝে আসে না।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ তাঁত-স্থাপনা</div>প্রথম-দিনেই TS+ESLint+Prettier+FSD-কাঠামো — শৃঙ্খলা আগে, কাপড় পরে।</div></div>
-<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 43 (Sky Fortress — ১০ দরজা) Vite/বিল্ড-টুলিং আর পরিবেশ-ব্যবস্থাপনার DevOps-দৃষ্টি; আর Book 40 (Codebuilder’s Guild) লিন্ট/ফরম্যাট-নীতির কারিগরি নিয়ম।</div></div>
-<div class="verse">বন্না — মজবুত-ভিত: "তারপর তার ভিত কি আল্লাহর-তাকওয়া ও-সন্তুষ্টির-উপর, না-বা ভাঙা-মাটির-ধারে?" (৯:১০৯) — একই-কাঠ, ভিত-ভেদে-জীবন-মৃত্যু। মোস্তফা মিয়ার ছয়-ধাপ সেই বন্নার-উপাসনা: স্ক্যাফোল্ড-কাঠ, টাইপ-মাপ, লিন্ট-রেখা, স্তর-ভাগ, গোপন-কুঠুরি, প্রথম-প্রদীপ — প্রতিটি-ধাপ পরের-ধাপের-ভিত, কোনোটাই-অবহেলার-নয়। যে-তাঁত তাড়ায়-সরাসরি-বুনতে-বসে, তার-কাপড় সুন্দর-হতে-পারে — কিন্তু তৃতীয়-মাসেই হাড়-ভাঙা-তাঁতে-পুনরায়-মাস্টারি।</div>
+  <div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 43 (Sky Fortress — ১০ দরজা) Vite/বিল্ড-টুলিং আর পরিবেশ-ব্যবস্থাপনার DevOps-দৃষ্টি; আর Book 40 (Codebuilder’s Guild) লিন্ট/ফরম্যাট-নীতির কারিগরি নিয়ম।</div></div>
+  <div class="verse">বন্না — মজবুত-ভিত: "তারপর তার ভিত কি আল্লাহর-তাকওয়া ও-সন্তুষ্টির-উপর, না-বা ভাঙা-মাটির-ধারে?" (৯:১০৯) — একই-কাঠ, ভিত-ভেদে-জীবন-মৃত্যু। মোস্তফা মিয়ার ছয়-ধাপ সেই বন্নার-উপাসনা: স্ক্যাফোল্ড-কাঠ, টাইপ-মাপ, লিন্ট-রেখা, স্তর-ভাগ, গোপন-কুঠুরি, প্রথম-প্রদীপ — প্রতিটি-ধাপ পরের-ধাপের-ভিত, কোনোটাই-অবহেলার-নয়। যে-তাঁত তাড়ায়-সরাসরি-বুনতে-বসে, তার-কাপড় সুন্দর-হতে-পারে — কিন্তু তৃতীয়-মাসেই হাড়-ভাঙা-তাঁতে-পুনরায়-মাস্টারি।</div>
+  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>প্রাঙ্গণ-ফাঁদ:</strong> (১) strict:false-এ-শুরু — পরে-চালালে-শত-এররের-জলোচ্ছ্বাস; প্রথম-দিনেই-strict। (২) features পরস্পরে-আমদানি — দ্বিতীয়-ফিচার-বাঁধার-দিনেই-জাল; প্রথম-লিন্ট-নিয়মেই-থামাও। (৩) .env কমিট — গোপন-কুঠুরি চত্বরে-খোলা; .local-প্রথা+নমুনা-কমিট।</div></div>
+  <div class="secret-box">🏗️ তাঁত-স্থাপনের-ছয়-ধাপ: কাঠ → মাপ → রেখা → ভাগ → কুঠুরি → প্রদীপ; স্তরের-স্রোত একমুখ, রাংতার-সীমানায়। / Scaffold, stricten, lint, layer, env-split, ignite.</div>
   <div class="diagram">
     <div class="diag-title">Loom Installation — Six Rites, Five Rooms</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
@@ -155,9 +157,7 @@ doors.push({
       <text x="280" y="298" text-anchor="middle" fill="#64748b" font-size="8">তাঁত আগে-স্থির, কাপড় পরে — ভিত তাকওয়ায়, তাড়ায় নয়</text>
     </svg>
     <div class="diag-cap">ছয়-ধাপে-প্রতিষ্ঠিত-পাঁচ-ঘরের-প্রাঙ্গণ: স্রোত-একমুখ, সীমানা-রাংতায়, গোপন-কুঠুরি-প্রথা-মেনে — ১১৭-ভিউ-ও-একই-ভিতে-দাঁড়ায়।</div>
-  </div>
-  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>প্রাঙ্গণ-ফাঁদ:</strong> (১) strict:false-এ-শুরু — পরে-চালালে-শত-এররের-জলোচ্ছ্বাস; প্রথম-দিনেই-strict। (২) features পরস্পরে-আমদানি — দ্বিতীয়-ফিচার-বাঁধার-দিনেই-জাল; প্রথম-লিন্ট-নিয়মেই-থামাও। (৩) .env কমিট — গোপন-কুঠুরি চত্বরে-খোলা; .local-প্রথা+নমুনা-কমিট।</div></div>
-  <div class="secret-box">🏗️ তাঁত-স্থাপনের-ছয়-ধাপ: কাঠ → মাপ → রেখা → ভাগ → কুঠুরি → প্রদীপ; স্তরের-স্রোত একমুখ, রাংতার-সীমানায়। / Scaffold, stricten, lint, layer, env-split, ignite.</div>`,
+  </div>`,
   senior: {
     title: "Setup Card",
     body: `<p><strong>স্ক্যাফোল্ড</strong>: npm create vite@latest -- --template vue-ts। <strong>TS</strong>: strict + paths @/* + noUncheckedIndexedAccess। <strong>লিন্ট</strong>: eslint.config.js flat + vue/recommended + no-restricted-imports (features-পরস্পরে-নিষেধ); Prettier (semi:false, singleQuote)। <strong>স্তর</strong>: core (কেউ-না) ← shared ← features (পরস্পরে-✗) ← app (জোড়ে); ui-ডোমেইন-অজ্ঞ। <strong>env</strong>: .env.development/.production, VITE_-উপসর্গ, .local-গিট-বাহির। <strong>অনুষ্ঠান</strong>: dev/build/preview/lint/type-check। <strong>ফাঁদ</strong>: env-ভেরিয়েবল <code>VITE_</code>-প্রিফিক্স ছাড়া লেখা (Vite ক্লায়েন্টে পাঠাবেই না); আর ESLint-নিয়ম দলের সম্মতি ছাড়া বন্ধ করা — পরের দিনই স্টাইল-যুদ্ধ।</p>`
@@ -193,8 +193,9 @@ doors.push({
   real paths; the whole city walked in dawn light. Sabur's rule: <strong>"when a claim rises, lower a flag (write the
   test) — else none shall believe."</strong></p>
   <div class="dialogue">('"মিনারের চূড়ায় প্রদীপ," ওস্তাদ নাজির বললেন, "আর প্রতিটি তলায় পাহারা। উপরের আলো নিচের অন্ধকার দেখে না — দেখে নিচের পাহারা। আমি একবার শুধু চূড়ার প্রদীপ বিশ্বাস করেছিলাম; নিচের তলার ফাঁক দিয়ে সব জল ঢুকে গিয়েছিল।"', 'পাথরের সিঁড়ির ঠান্ডা তাপমাত্রা হাতে লাগে — উঁচু আলো আর নিচের পাহারা, দুই-ই চাই।')</div><div class="dialogue en">"A lamp at the tower's crown, a guard on every floor. I once trusted only the crown lamp; water entered through a lower gap."</div>
-<div class="dialogue">ওস্তাদ নাজির মিনারের-সিঁড়ি দেখিয়ে জিজ্ঞেস করলেন, "সব-পরীক্ষা চূড়ায় (E2E) নিলে কী হবে?" তুমি বললে, "তাহলে তো সব-কিছু ধরা পড়বে!" নাজির মাথা নাড়লেন: "ধরা পড়বে — ৪৫-মিনিট পর, প্রতিবার। তৃতীয় দিনে কেউ চালাবে না; যে-পরীক্ষা চালানো হয় না সে পাহারা নয়, শোকের-স্মৃতি। ভিত্তিতে unit — মিলিসেকেন্ডে শত-শত; মাঝে MSW-সমন্বয় — সার্ভিস-সত্য যাচাই; চূড়ায় মাত্র কয়েকটা E2E — প্রকৃত-ব্রাউজারে প্রকৃত-যাত্রা। পিরামিড উল্টালে (আইসক্রিম-পিরামিড) সুইট ভারী, ভঙ্গুর, পরিত্যক্ত। উচ্চতা নয় — প্রশস্ত-ভিত্তি মিনারের মর্যাদা।"</div>
+  <div class="dialogue">ওস্তাদ নাজির মিনারের-সিঁড়ি দেখিয়ে জিজ্ঞেস করলেন, "সব-পরীক্ষা চূড়ায় (E2E) নিলে কী হবে?" তুমি বললে, "তাহলে তো সব-কিছু ধরা পড়বে!" নাজির মাথা নাড়লেন: "ধরা পড়বে — ৪৫-মিনিট পর, প্রতিবার। তৃতীয় দিনে কেউ চালাবে না; যে-পরীক্ষা চালানো হয় না সে পাহারা নয়, শোকের-স্মৃতি। ভিত্তিতে unit — মিলিসেকেন্ডে শত-শত; মাঝে MSW-সমন্বয় — সার্ভিস-সত্য যাচাই; চূড়ায় মাত্র কয়েকটা E2E — প্রকৃত-ব্রাউজারে প্রকৃত-যাত্রা। পিরামিড উল্টালে (আইসক্রিম-পিরামিড) সুইট ভারী, ভঙ্গুর, পরিত্যক্ত। উচ্চতা নয় — প্রশস্ত-ভিত্তি মিনারের মর্যাদা।"</div>
 <div class="dialogue en">Ustad Nazir showed the minaret stairs: "What if every test sits at the crown (E2E)?" You said: "Everything gets caught!" He shook his head: "Caught — after 45 minutes, every time. By day three nobody runs it; a test unrun is not a guard but a mourning-memory. At the base, units — hundreds in milliseconds; mid-height, MSW coordination — service-truth verified; at the crown, only a few E2E — real journeys in real browsers. Invert the pyramid (ice-cream cone) and the suite turns heavy, brittle, abandoned. Not height — a wide base is the minaret's dignity."</div>
+  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ আইস-ক্রিম-পিরামিড</div>সব-টেস্ট E2E — ধীর, ভঙ্গুর; কেউ চালায় না, বাগ ধরা পড়ে দেরিতে।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ পিরামিড-মিনার</div>ভিত্তি unit (দ্রুত-সস্তা), মাঝ-স্তর MSW-সমন্বয়, চূড়া কয়েকটা E2E — প্রতিটি স্তর নিজ-দায়ে।</div></div>
   <div class="code-block">পরীক্ষা-শাস্ত্র — চার-তলা (LP-র প্রকৃত-রীতি)
 
 স্থাপন:
@@ -312,13 +313,15 @@ doors.push({
     দামি — যত-নিচে-সম্ভব-তত-নিচে</div>
   <div class="stat-grid">
   <div class="stat-card"><div class="sc-num">mount</div><div class="sc-label">তলা-১ · প্রাণ</div></div>
+  <ul class="checklist"><li>এক-কম্পোনেন্ট unit-টেস্ট: props-ইনপুট → পর্দা-আউটপুট + emitted-যাচাই</li><li>MSW-হ্যান্ডলার লিখে সার্ভিস-টেস্ট — নেটওয়ার্ক ছাড়াই ৪০০/২০০-পথ</li><li>একটা Playwright-walkthrough — লগইন→তালিকা→বিস্তারিত পথ</li></ul>
+  <div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 47 (Shields of Craft — ১০ দরজা) টেস্টিংয়ের পূর্ণ দুর্গ (unit→E2E, coverage, TDD) — এই পরীক্ষার-মিনারের ভিত্তি-গ্রন্থ।</div></div>
+  <div class="verse">ইমতিহান — প্রমাণ-পরীক্ষা: "আমি তোমাদের পরীক্ষা করব কল্যাণ ও-অকল্যাণে" নয় বরং সূরা-ধারা (২১:৩৫-এর সার) — ঘোষিত-সত্য পরীক্ষা-ছাড়া-মূল্যহীন। হাফেজ সবুরের-মিনার সেই ইমতিহানের-স্থাপত্য: চার-তলায়-চার-ধরনের-আগুন, প্রতিটি-দাবি নিজ-যোগ্য-তলায়-নামে। যে-কারখানা দাবি-করে-পরীক্ষা-ছাড়া, সে বিক্রয়-করে-বিশ্বাস-নয়-কল্পনা; আর যে-পরীক্ষা সব-উপরের-তলায়-চড়ায়, সে ধীর-হয়ে-সকাল-পর্যন্ত-দেরি-করায় — দুই-ই-ব্যর্থ, ভারসাম্য-মিনারের-শর্ত।</div>
+  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>মিনার-ফাঁদ:</strong> (১) ক্লাস-নাম-নির্ভর-সিলেক্টর (<code>.btn-primary</code>) — রং-বদলালেই-পরীক্ষা-ভাঙে; data-test-ফলক-বাঁধো। (২) প্রতি-টেস্টে-নিজস্ব-fetch-মক — আকৃতি-সত্য-ছড়িয়ে-যায়; MSW-বই+override। (৩) সবকিছু-E2E-তলায় — ধীর-মিনার, কেউ-ওঠে-না; নিচের-তলায়-সর্বাধিক। </div></div>
+  <div class="secret-box">🧪 দাবির-তলা-মেনো: mount (props/emitted) → MSW (আকৃতি+বিপদ) → scope (যুক্তি) → E2E (যাত্রা) — data-test-ফলকে, নিচে-যত-পারা-যায়। / Match claim to floor; flag every claim with a test.</div>
   <div class="stat-card"><div class="sc-num">MSW</div><div class="sc-label">তলা-২ · নকল-জাহাজ</div></div>
   <div class="stat-card"><div class="sc-num">E2E</div><div class="sc-label">তলা-৩ · প্রকৃত-পথ</div></div>
   <div class="stat-card"><div class="sc-num">২,৬২২</div><div class="sc-label">LP-টেস্ট · প্রমাণ</div></div>
 </div>
-  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ আইস-ক্রিম-পিরামিড</div>সব-টেস্ট E2E — ধীর, ভঙ্গুর; কেউ চালায় না, বাগ ধরা পড়ে দেরিতে।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ পিরামিড-মিনার</div>ভিত্তি unit (দ্রুত-সস্তা), মাঝ-স্তর MSW-সমন্বয়, চূড়া কয়েকটা E2E — প্রতিটি স্তর নিজ-দায়ে।</div></div><ul class="checklist"><li>এক-কম্পোনেন্ট unit-টেস্ট: props-ইনপুট → পর্দা-আউটপুট + emitted-যাচাই</li><li>MSW-হ্যান্ডলার লিখে সার্ভিস-টেস্ট — নেটওয়ার্ক ছাড়াই ৪০০/২০০-পথ</li><li>একটা Playwright-walkthrough — লগইন→তালিকা→বিস্তারিত পথ</li></ul>
-<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 47 (Shields of Craft — ১০ দরজা) টেস্টিংয়ের পূর্ণ দুর্গ (unit→E2E, coverage, TDD) — এই পরীক্ষার-মিনারের ভিত্তি-গ্রন্থ।</div></div>
-<div class="verse">ইমতিহান — প্রমাণ-পরীক্ষা: "আমি তোমাদের পরীক্ষা করব কল্যাণ ও-অকল্যাণে" নয় বরং সূরা-ধারা (২১:৩৫-এর সার) — ঘোষিত-সত্য পরীক্ষা-ছাড়া-মূল্যহীন। হাফেজ সবুরের-মিনার সেই ইমতিহানের-স্থাপত্য: চার-তলায়-চার-ধরনের-আগুন, প্রতিটি-দাবি নিজ-যোগ্য-তলায়-নামে। যে-কারখানা দাবি-করে-পরীক্ষা-ছাড়া, সে বিক্রয়-করে-বিশ্বাস-নয়-কল্পনা; আর যে-পরীক্ষা সব-উপরের-তলায়-চড়ায়, সে ধীর-হয়ে-সকাল-পর্যন্ত-দেরি-করায় — দুই-ই-ব্যর্থ, ভারসাম্য-মিনারের-শর্ত।</div>
   <div class="diagram">
     <div class="diag-title">The Four-Storey Minaret — Claim → Floor</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
@@ -369,9 +372,7 @@ doors.push({
       <text x="280" y="306" text-anchor="middle" fill="#64748b" font-size="7.5">LP-প্রমাণ: ২,৬০০+ কেস এই-চার-তলায়-সাজানো</text>
     </svg>
     <div class="diag-cap">মিনারের-শৃঙ্খলা: প্রতিটি-দাবি নিজ-যোগ্য-তলায়; নিচে-সস্তা-ঘন, উপরে-দামি-বিরল — ভারসাম্যেই-গতি।</div>
-  </div>
-  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>মিনার-ফাঁদ:</strong> (১) ক্লাস-নাম-নির্ভর-সিলেক্টর (<code>.btn-primary</code>) — রং-বদলালেই-পরীক্ষা-ভাঙে; data-test-ফলক-বাঁধো। (২) প্রতি-টেস্টে-নিজস্ব-fetch-মক — আকৃতি-সত্য-ছড়িয়ে-যায়; MSW-বই+override। (৩) সবকিছু-E2E-তলায় — ধীর-মিনার, কেউ-ওঠে-না; নিচের-তলায়-সর্বাধিক। </div></div>
-  <div class="secret-box">🧪 দাবির-তলা-মেনো: mount (props/emitted) → MSW (আকৃতি+বিপদ) → scope (যুক্তি) → E2E (যাত্রা) — data-test-ফলকে, নিচে-যত-পারা-যায়। / Match claim to floor; flag every claim with a test.</div>`,
+  </div>`,
   senior: {
     title: "Testing Card",
     body: `<p><strong>৪-তলা</strong>: ① mount (@vue/test-utils; props→assert; emitted(); data-test-সিলেক্টর) ② MSW (হ্যান্ডলার-বই প্রকৃত-আকৃতি; server.use override-বিপদ) ③ effectScope-কম্পোজেবল (গার্ড/ফেজ) ④ Playwright E2E (ব্যবহারকারী-যাত্রা)। <strong>নীতি</strong>: দাবি-নিচের-তলায়; নিচে-সস্তা। <strong>স্থাপন</strong>: vitest(jsdom)+setup+msw+playwright। <strong>LP-প্রমাণ</strong>: ২,৬০০+ কেস, walkthrough-প্রতি-ফিচার। <strong>ফাঁদ</strong>: মক-ছাড়া নেটওয়ার্ক-টেস্ট (CI-তে রুলেট); আর সব-কিছু E2E-তে নামানো — ধীর-স্যুট মানে কেউ চালায় না, পিরামিড-আকৃতি রক্ষা করো।</p>`

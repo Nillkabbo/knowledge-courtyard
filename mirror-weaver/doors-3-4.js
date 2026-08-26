@@ -31,8 +31,9 @@ doors.push({
   storeToRefs."</strong> Finally she cautions about <code>watchEffect</code>'s open eye — it discovers its own
   dependencies and may over-run; when dependencies are explicit, <code>watch</code> is the discipline.</p>
   <div class="dialogue">('"শ্বাস থামলে শরীর তো মরে না সাথে সাথে," রফিক তাঁর বাঁশির পাশে বসা পাখির খাঁচার দিকে ইশারা করলেন, "কিছুক্ষণ নড়ে, তারপর থামে। প্রতিক্রিয়াও তাই — যাকে কেউ পড়ে না, সে ধীরে ধীরে নীরব হয়ে যায়। আমি একবার পুরো তালিকা গভীর-পাহারায় রেখেছিলাম — দশ স্তর নিচের এক মান বদলালেও ওপরে কিছুই জানে না।"', 'খাঁচার পাখিটা ঠোঁট খুলে আধ-সুর তুলে থামে — তুমি বুঝলে, না-দেখা নির্ভরতার নীরবতাও এমনই।')</div><div class="dialogue en">"What no one reads slowly falls silent. I once put an entire list under deep watch — ten layers below changed, and the top never knew."</div>
-<div class="dialogue">তুমি খাতা উল্টে জিজ্ঞেস করলে, "আপা, computed আর watch — কার কাজ কী, সবসময় গুলিয়ে যায়।" জোহরা আপা তাঁতের দুই যন্ত্র দেখালেন: "computed = মাপ-কাঠি — ডেটা থেকে বের-করা-মান, মাগলেই দেয়, না-মাগলে বসে থাকে (ক্যাশে); একে লিখতে দিও না, কাঠি পাল্লা নয়। watch = পাহারাদার — একটা মান বদলালে সে অন্য কাজ করে (API-ডাক, টাইমার)। প্রশ্নটা একটাই: আমি কি বের করছি, না করছি? বের-করা → কাঠি; করা → পাহারা। নতুনরা পাহারা বসিয়ে কাঠির কাজ করায় — তাঁত ভারী হয়, কাপড় নয়।"</div>
+  <div class="dialogue">তুমি খাতা উল্টে জিজ্ঞেস করলে, "আপা, computed আর watch — কার কাজ কী, সবসময় গুলিয়ে যায়।" জোহরা আপা তাঁতের দুই যন্ত্র দেখালেন: "computed = মাপ-কাঠি — ডেটা থেকে বের-করা-মান, মাগলেই দেয়, না-মাগলে বসে থাকে (ক্যাশে); একে লিখতে দিও না, কাঠি পাল্লা নয়। watch = পাহারাদার — একটা মান বদলালে সে অন্য কাজ করে (API-ডাক, টাইমার)। প্রশ্নটা একটাই: আমি কি বের করছি, না করছি? বের-করা → কাঠি; করা → পাহারা। নতুনরা পাহারা বসিয়ে কাঠির কাজ করায় — তাঁত ভারী হয়, কাপড় নয়।"</div>
 <div class="dialogue en">You turned the ledger: "Sister, computed vs watch — I always mix them." Johra showed two loom-parts: "computed is the measuring-stick — a value derived from data, given on demand, idle otherwise (cached); never write to it, a stick is not a scale-pan. watch is the guard — when a value changes, it acts (API calls, timers). One question: am I deriving, or doing? Deriving → stick; doing → guard. Novices post guards to do a stick’s work — the loom grows heavy, not the cloth."</div>
+  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ ঘড়ি-পাগল</div>প্রতিটা মানের জন্য watch — কোড ভরা ঘড়ি, অনুমান স্টক-সংখ্যায় রেখে দেয়।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ যন্ত্র-বাছাই</div>বের-করা-মান → computed (ক্যাশে-সুবিধা); প্রতিক্রিয়া-কাজ → watch/watchEffect — প্রশ্নই ছাঁকনি।</div></div>
   <div class="code-block">প্রতিক্রিয়া-তন্ত্র — LedgerPilot-নমুনাসহ (Vue 3.5)
 
 ① স্পর্শ-কাচ — ref (মান-প্রতিক্রিয়া):
@@ -101,13 +102,15 @@ Vue 3.5 স্বাদ:
   · paused: watch-পাহারা সাময়িক থামানো</div>
   <div class="stat-grid">
   <div class="stat-card"><div class="sc-num">ref</div><div class="sc-label">ছোঁয়া যায় · .value</div></div>
+  <ul class="checklist"><li>computed-বনাম-method — একই ফিল্টার দুইভাবে লিখে কনসোল-লগ দিয়ে রি-রান গুনো</li><li>watchEffect-এর অটো-নির্ভরতা দেখো: কোন রেফ ছুঁলে কাজ চলে</li><li>লেজারপাইলট-গেটার একটা computed-এ নামিয়ে আনার খসড়া আঁকো</li></ul>
+  <div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 4 (City Builder’s Codex — ২০ দরজা) reactive-সিস্টেমের আর্কিটেকচার-দৃষ্টি (cache/invalidate) দেয়, আর Book 49 (Dice of Destiny) নির্ভরতা-গ্রাফের গণিত।</div></div>
+  <div class="verse">তাসাররুফ — প্রবাহের শাস্ত্র: শক্তি যায় কেবল নিজ-নিজ পথে। জোহরা আপার তিন কাচ সেই পথের নকশা — স্পর্শ মান বদলায়, স্মৃতি উদ্ভূত-সত্য গণনা করে, পাহারা পার্শ্ব-কাজ চালায়; একজনের কাজ অন্যজনে ঢুকলে তাঁত বিষময় হয়। "প্রত্যেকে সে-ই যা সে অর্জন করে" (৫৩:৩৯-এর ভাব) — যন্ত্র নিজ-নিজ অর্জনে বাঁচে; এক যন্ত্রে সব-কাজ চাপালে কেউ কিছুই ভালো করে না।</div>
+  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>শ্বাস-ফাঁদ:</strong> (১) watch-এ গণনা লেখা — দ্বৈত-গণনা/লুপ-ঝুঁকি; computed-এ নাও। (২) স্টোর-ডিস্ট্রাকচার ভুলে যাওয়া — পর্দা বোবা হয়ে যায়, কোনো এরর ছাড়াই। (৩) <code>onUnmounted</code> বিস্মৃত — মুলতুবি fetch প্রস্থানের পরেও state-এ লেখে (ভুত-আপডেট) আর টাইমার চুপচাপ মেমরি খায়।</div></div>
+  <div class="secret-box">⚡ বস্তু বদলাও প্রতিবিম্ব নয় — ref ছোঁয় (.value), computed মনে রাখে, watch পাহারা দেয়; নদীর সাথে থাকো, গ্লাসে নয়। / Change the thing: ref touches, computed remembers, watch guards — stay with the river, not the glass.</div>
   <div class="stat-card"><div class="sc-num">computed</div><div class="sc-label">মনে রাখে · ক্যাশড</div></div>
   <div class="stat-card"><div class="sc-num">watch</div><div class="sc-label">পাহারা · পার্শ্ব-প্রভাব</div></div>
   <div class="stat-card"><div class="sc-num">watchEffect</div><div class="sc-label">তাৎক্ষণিক · স্বয়ং-সনাক্ত</div></div>
 </div>
-  <div class="compare"><div class="cmp-card cmp-bad"><div class="cmp-label">❌ ঘড়ি-পাগল</div>প্রতিটা মানের জন্য watch — কোড ভরা ঘড়ি, অনুমান স্টক-সংখ্যায় রেখে দেয়।</div><div class="cmp-card cmp-good"><div class="cmp-label">✅ যন্ত্র-বাছাই</div>বের-করা-মান → computed (ক্যাশে-সুবিধা); প্রতিক্রিয়া-কাজ → watch/watchEffect — প্রশ্নই ছাঁকনি।</div></div><ul class="checklist"><li>computed-বনাম-method — একই ফিল্টার দুইভাবে লিখে কনসোল-লগ দিয়ে রি-রান গুনো</li><li>watchEffect-এর অটো-নির্ভরতা দেখো: কোন রেফ ছুঁলে কাজ চলে</li><li>লেজারপাইলট-গেটার একটা computed-এ নামিয়ে আনার খসড়া আঁকো</li></ul>
-<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 4 (City Builder’s Codex — ২০ দরজা) reactive-সিস্টেমের আর্কিটেকচার-দৃষ্টি (cache/invalidate) দেয়, আর Book 49 (Dice of Destiny) নির্ভরতা-গ্রাফের গণিত।</div></div>
-<div class="verse">তাসাররুফ — প্রবাহের শাস্ত্র: শক্তি যায় কেবল নিজ-নিজ পথে। জোহরা আপার তিন কাচ সেই পথের নকশা — স্পর্শ মান বদলায়, স্মৃতি উদ্ভূত-সত্য গণনা করে, পাহারা পার্শ্ব-কাজ চালায়; একজনের কাজ অন্যজনে ঢুকলে তাঁত বিষময় হয়। "প্রত্যেকে সে-ই যা সে অর্জন করে" (৫৩:৩৯-এর ভাব) — যন্ত্র নিজ-নিজ অর্জনে বাঁচে; এক যন্ত্রে সব-কাজ চাপালে কেউ কিছুই ভালো করে না।</div>
   <div class="diagram">
     <div class="diag-title">The Breath — Three Instruments, One River Rule</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
@@ -144,9 +147,7 @@ Vue 3.5 স্বাদ:
       <text x="280" y="290" text-anchor="middle" fill="#64748b" font-size="8.5">বস্তু বদলাও → শ্বাস পড়ে → প্রতিবিম্ব বদলায়; যন্ত্র নিজ-পথে চললে তাঁত নীরবে নিখুঁত</text>
     </svg>
     <div class="diag-cap">তিন যন্ত্র + এক নিয়ম: ref মান ধরে, computed গণনা মনে রাখে, watch পার্শ্ব-কাজ চালায় — আর নদীর সাথে থাকতে হোক, গ্লাসে নয়।</div>
-  </div>
-  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>শ্বাস-ফাঁদ:</strong> (১) watch-এ গণনা লেখা — দ্বৈত-গণনা/লুপ-ঝুঁকি; computed-এ নাও। (২) স্টোর-ডিস্ট্রাকচার ভুলে যাওয়া — পর্দা বোবা হয়ে যায়, কোনো এরর ছাড়াই। (৩) <code>onUnmounted</code> বিস্মৃত — মুলতুবি fetch প্রস্থানের পরেও state-এ লেখে (ভুত-আপডেট) আর টাইমার চুপচাপ মেমরি খায়।</div></div>
-  <div class="secret-box">⚡ বস্তু বদলাও প্রতিবিম্ব নয় — ref ছোঁয় (.value), computed মনে রাখে, watch পাহারা দেয়; নদীর সাথে থাকো, গ্লাসে নয়। / Change the thing: ref touches, computed remembers, watch guards — stay with the river, not the glass.</div>`,
+  </div>`,
   senior: {
     title: "Reactivity Card",
     body: `<p><strong>ref</strong> (.value-স্ক্রিপ্টে) + <strong>shallowRef</strong> (বড়-তালিকা, triggerRef)। <strong>computed</strong> — উদ্ভূত-সত্য, ক্যাশড, পার্শ্ব-প্রভাব-নিষেধ। <strong>watch</strong> — পার্শ্ব-প্রভাব: সূত্র/বহু/গেটার/গভীর; immediate/once/deep/flush; onCleanup→abort। <strong>watchEffect</strong> — স্বয়ংক্রিয়-নির্ভরতা, সাবধানে। <strong>বিচ্ছিন্ন-ফাঁদ</strong>: storeToRefs/computed — সরাসরি ডিস্ট্রাকচার মরে। <strong>লাইফসাইকেল</strong>: onMounted-fetch, onUnmounted-abort। <strong>3.5</strong>: props-destructure, deep:N, paused। LP-প্রমাণ: auth.store — সব-গেটার computed।</p>`
@@ -183,8 +184,12 @@ doors.push({
   current. What is truly yours (local state), dig a well — <code>ref(props.label)</code>; what is upstream's, leave to
   the river."</strong></p>
   <div class="dialogue">('"উপহারের প্যাঁচে হাত দিয়ো না," রফিক মৃদু হেসে মোড়া কাপড়ের ফিতা টানটান করলেন, "খুললে সে আর উপহার থাকে না — নোংরা হাতের ছাপ পড়ে যায়। মা-বাবা যা পাঠালেন, তা-ই দেখাও; নিজের কিছু বানাতে চাইলে নিজের বোতাম বানাও, নিচে থেকে ডাকো।"', 'ফিতার টানে তোমার আঙুল সরে যায় — নিজের জিনিস বদলানোর লোভ থাকলেও নিয়মটা এবার শরীরে বসে গেল।')</div><div class="dialogue en">"Don't touch the gift's wrapping — unopened it stays a gift. Show what the parents sent; build your own button below and call upward."</div>
-<div class="dialogue">রফিক নদীর দিকে ইশারা করে জিজ্ঞেস করলেন, "বলো — সন্তান-কারিগর যদি উপহার নিজে বদলে ফেলে, কী হবে?" তুমি বললে, "উজান জানবে না — হিসাব ভুল হবে।" রফিক মাথা নাড়লেন: "শুধু হিসাব নয় — অন্ধ-সন্তানও। props মানে উপহার: খোলা যায়, ব্যবহার হয়, পাল্টানো যায় না। বদলাতে চাইলে ফেরত-পাখি পাঠাও (emit) — উজান নিজে বদলাবে, নতুন উপহার পাঠাবে। এক-মুখী নদী মানে অবজ্ঞা নয়; মানে — প্রতিটি বদলের এক-দায়িত্ব, এক-জবাবদিহি। দুই-মুখী করলে দুই-পাশ পরস্পরের অন্ধ, বাগ দুই-পাশেই লুকায়।"</div>
+  <div class="dialogue">রফিক নদীর দিকে ইশারা করে জিজ্ঞেস করলেন, "বলো — সন্তান-কারিগর যদি উপহার নিজে বদলে ফেলে, কী হবে?" তুমি বললে, "উজান জানবে না — হিসাব ভুল হবে।" রফিক মাথা নাড়লেন: "শুধু হিসাব নয় — অন্ধ-সন্তানও। props মানে উপহার: খোলা যায়, ব্যবহার হয়, পাল্টানো যায় না। বদলাতে চাইলে ফেরত-পাখি পাঠাও (emit) — উজান নিজে বদলাবে, নতুন উপহার পাঠাবে। এক-মুখী নদী মানে অবজ্ঞা নয়; মানে — প্রতিটি বদলের এক-দায়িত্ব, এক-জবাবদিহি। দুই-মুখী করলে দুই-পাশ পরস্পরের অন্ধ, বাগ দুই-পাশেই লুকায়।"</div>
 <div class="dialogue en">Rafiq gestured at the river: "Say the child-craftsman alters the gift himself — what happens?" You said: "The upstream never knows — accounts go wrong." He nodded: "Not just accounts — a blind child too. props are gifts: open them, use them, never mutate. To change, send the return-bird (emit) — upstream changes it and sends a new gift. One-way river is not disrespect; it means every change has one owner, one accountability. Two-way, and both banks are blind to each other — bugs hide on both."</div>
+  <div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল পথ</div>প্রপ-মিউটেশন: <code>props.item.done = true</code> — উজানে চুপচাপ বদল, রিঅ্যাক্টিভিটি ভাঙে, ওয়ার্নিং।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক পথ</div>লোকাল-কপি বা emit: <code>emit('toggle', id)</code> — সিদ্ধান্ত উজানে, নদী একমুখে বয়।</div>
+</div>
   <div class="code-block">props-শাস্ত্র — LP-নমুনাসহ (LoadingBlock.vue, প্রকৃত কোড)
 
 ① ঘোষণা — ধরন-চুক্তি (type-only, &lt;script setup&gt;):
@@ -235,13 +240,11 @@ doors.push({
   · টেস্ট-সুবিধা: প্পস-ইনজেক্টে mount —
     mount(Panel, { props: { imports: mock, … } })
     (দরজা ২৩-এ পূর্ণ পরীক্ষা-গল্প)</div>
-  <div class="compare">
-  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল পথ</div>প্রপ-মিউটেশন: <code>props.item.done = true</code> — উজানে চুপচাপ বদল, রিঅ্যাক্টিভিটি ভাঙে, ওয়ার্নিং।</div>
-  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক পথ</div>লোকাল-কপি বা emit: <code>emit('toggle', id)</code> — সিদ্ধান্ত উজানে, নদী একমুখে বয়।</div>
-</div>
   <ul class="checklist"><li>PropsCard বানাও: টাইপ-অনলোডী প্রপ + withDefaults — ভুল-টাইপ পাঠিয়ে কনসোল-সতর্কতা দেখো</li><li>প্রপ-বদলের চেষ্টা করে যে-ওয়ার্নিং আসে সেটা নোট করো — চুক্তির প্রমাণ</li><li>লেজারপাইলট-কম্পোনেন্ট থেকে এক-জোড়া props/emits-চুক্তি খাতায় তুলে আনো</li></ul>
-<div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 54 (LedgerPilot Craftsman — ৩৭ দরজা) props→emits-প্যাটার্নের বাস্তব রূপ দেখায়, আর Book 4 (City Builder’s Codex) এক-মুখী-প্রবাহের সিস্টেম-যুক্তি।</div></div>
-<div class="verse">আমানত — গৃহস্থের আমানত তার হাতে থাকে, প্রাপ্তের হাতে খরচের অধিকার নয়: "নিশ্চয়ই আল্লাহ তোমাদের আদেশ দেন আমানত তার হকদারকে ফিরিয়ে দিতে" (৪:৫৮)। রফিকের নদী সেই আয়াতের বোনা-রূপ: উপহার উজানের হক — প্রাপ্ত সাজায়, দেখায়, বদলাতে চাইলে খবর পাঠায়; চুরি করে না। যে কারখানায় প্রাপ্ত আমানত নিজের বলে খরচ করে, সেখানে দুই হিসাববহি — আর দুই বহি মানে কোনো বহিই না।</div>
+  <div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 54 (LedgerPilot Craftsman — ৩৭ দরজা) props→emits-প্যাটার্নের বাস্তব রূপ দেখায়, আর Book 4 (City Builder’s Codex) এক-মুখী-প্রবাহের সিস্টেম-যুক্তি।</div></div>
+  <div class="verse">আমানত — গৃহস্থের আমানত তার হাতে থাকে, প্রাপ্তের হাতে খরচের অধিকার নয়: "নিশ্চয়ই আল্লাহ তোমাদের আদেশ দেন আমানত তার হকদারকে ফিরিয়ে দিতে" (৪:৫৮)। রফিকের নদী সেই আয়াতের বোনা-রূপ: উপহার উজানের হক — প্রাপ্ত সাজায়, দেখায়, বদলাতে চাইলে খবর পাঠায়; চুরি করে না। যে কারখানায় প্রাপ্ত আমানত নিজের বলে খরচ করে, সেখানে দুই হিসাববহি — আর দুই বহি মানে কোনো বহিই না।</div>
+  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>নদী-ফাঁদ:</strong> (১) অবজেক্ট/অ্যারে-প্রপের ভেতরের ক্ষেত্র বদলানো (<code>props.row.done = true</code>) — রেফারেন্স শেয়ার্ড, পিতার সত্যও নীরবে বদলে যায়; দুই বহির দোষ একই। (২) স্থানীয়-কপিরেফ প্রপ-আপডেট পায় না — দরকার হলে computed বা watch দিয়ে সিঙ্ক করো। (৩) বহু-স্তর প্রপ-পাঠানো (drilling) — ৪-৫ স্তর পার হলে নকশা-গন্ধ; provide/inject (দরজা ১১) বা স্টোর (দরজা ১০) বিবেচনা করো।</div></div>
+  <div class="secret-box">🎁 props = আমানত: গ্রহণ করো, সাজাও, দেখাও — বদল চাইলে ফেরত-পাখি (emit) পাঠাও; ধরন-চুক্তি defineProps, ডিফল্ট withDefaults। / Props are trusts: receive, arrange, display; emit the return-bird for change.</div>
   <div class="diagram">
     <div class="diag-title">One-Way River — Props Flow &amp; Return-Bird</div>
     <svg viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg">
@@ -270,9 +273,7 @@ doors.push({
       <text x="280" y="283" text-anchor="middle" fill="#64748b" font-size="8.5">উপহার নদীর স্রোতে নামে, ফেরত-পাখি উড়ে ওঠে — বদলের একচ্ছত্র ঘর উজানেই</text>
     </svg>
     <div class="diag-cap">একমুখী নদী + ফেরত-পাখি = এক-সত্য-নীতি: পিতা পাঠায়, পুত্র দেখায় ও খবর দেয়, কেউই নদীর স্রোত উল্টো করে না।</div>
-  </div>
-  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>নদী-ফাঁদ:</strong> (১) অবজেক্ট/অ্যারে-প্রপের ভেতরের ক্ষেত্র বদলানো (<code>props.row.done = true</code>) — রেফারেন্স শেয়ার্ড, পিতার সত্যও নীরবে বদলে যায়; দুই বহির দোষ একই। (২) স্থানীয়-কপিরেফ প্রপ-আপডেট পায় না — দরকার হলে computed বা watch দিয়ে সিঙ্ক করো। (৩) বহু-স্তর প্রপ-পাঠানো (drilling) — ৪-৫ স্তর পার হলে নকশা-গন্ধ; provide/inject (দরজা ১১) বা স্টোর (দরজা ১০) বিবেচনা করো।</div></div>
-  <div class="secret-box">🎁 props = আমানত: গ্রহণ করো, সাজাও, দেখাও — বদল চাইলে ফেরত-পাখি (emit) পাঠাও; ধরন-চুক্তি defineProps, ডিফল্ট withDefaults। / Props are trusts: receive, arrange, display; emit the return-bird for change.</div>`,
+  </div>`,
   senior: {
     title: "Props Card",
     body: `<p><strong>ঘোষণা</strong>: <code>defineProps&lt;T&gt;()</code> (টাইপ-চুক্তি) + <code>withDefaults</code>; 3.5 ডিস্ট্রাকচার-ডিফল্ট নিরাপদ। <strong>নাম</strong>: camelCase↔kebab; স্ট্রিং-নয় → <code>:</code>। <strong>নিয়ম</strong>: একমুখী — মিউটেট নিষেধ (অবজেক্ট-গভীরও); বদল: emit বা স্থানীয় ref (সচেতন-কপি)। <strong>উদ্ভূত</strong>: computed-প্রপ। <strong>ড্রিলিং-সীমা</strong>: ৪-৫ স্তর → provide/inject বা স্টোর। <strong>LP-নমুনা</strong>: LoadingBlock, RecentImportsPanel (প্পস-ইন, শূন্য-মিউটেশন, টেস্ট-ইনজেক্ট)। <strong>ফাঁদ</strong>: সন্তানের ভেতরে props-বদল — এক-মুখী নদীর লঙ্ঘন; বদলাতে চাইলে emit করো, নাহলে সাইলেন্ট-বাগের খনি।</p>`
