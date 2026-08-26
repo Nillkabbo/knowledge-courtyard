@@ -26,6 +26,7 @@ doors.push({
   — list, search, paginated, create/edit, delete-behind-confirm-modal. He holds up LedgerPilot's slice structure:
   features/notes/ — views, components, services, composables, types. <strong>"Finish this workshop,"</strong> he
   says, <strong>"and you hold the mold for building 90% of work-apps."</strong></p>
+  <div class="dialogue">('"চার স্তর স্যান্ডউইচ এক গিলে নয়," সিরাজ মিয়া স্তরগুলো আলাদা করে সাজালেন, "এক এক করে চাখো — তবেই বোঝবে কোনটা রুটি, কোনটা মাছ। আমি প্রথম দিন সব একসাথে মেখে ফেলেছিলাম; খেতে তো দূর, দেখতেও আর স্যান্ডউইচ ছিল না।"', 'স্তরে স্তরে স্বাদ আলাদা টের হয় — যে নিয়ম খাবারে, সেই নিয়ম কোডেও।')</div><div class="dialogue en">"Taste the four-layer sandwich one layer at a time — my first day I mixed them all; it wasn't even a sandwich to look at."</div>
   <div class="code-block">স্টার্টার-২ · CRUD-সারণি — প্রতিটি-ফাইল (স্তরে-স্তরে)
 
 ফোল্ডার-নকশা:
@@ -206,6 +207,12 @@ doors.push({
 ফাইল-৮ · components/DeleteConfirm.vue:
   (দরজা ৫-এর DeleteConfirmationModal-ছাঁচ —
    props: note, busy; emits: close, confirm)</div>
+  <div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">সার্ভিস</div><div class="sc-label">যায় · apiClient</div></div>
+  <div class="stat-card"><div class="sc-num">স্টোর</div><div class="sc-label">রাখে · শেয়ার্ড</div></div>
+  <div class="stat-card"><div class="sc-num">কম্পোজেবল</div><div class="sc-label">বাঁধে · প্রবাহ</div></div>
+  <div class="stat-card"><div class="sc-num">ভিউ</div><div class="sc-label">দেখায় · শুধু</div></div>
+</div>
   <div class="verse">দ্বিতীয়-রাকাত — প্রথমের-নকশা-পুনরাবৃত্তি, গভীরতায়-বৃদ্ধি: নামাজে-যেমন-দ্বিতীয়-একাক-প্রথমের-ভিত্তি-মেনেই-দীর্ঘ, সিরাজ-মিয়ার-স্যান্ডউইচ-সেই-বৃদ্ধির-স্থাপত্য। চার-স্তর-প্রতিটি-নিজ-ধর্মে-অটল: সার্ভিস-শুধু-যায়, স্টোর-শুধু-রাখে, কম্পোজেবল-শুধু-বাঁধে, ভিউ-শুধু-দেখায় — এক-স্তরের-লোভে-আরেক-স্তরে-ঢুকলে-স্যান্ডউইচ-স্যান্ডউইচ-থাকে-না, খাবার-গলে-হাতে-পড়ে। "প্রত্যেক-কাজের-জন্য-উপযুক্ত-স্থান" — সূরা-সার-যে, প্রত্যেক-প্রাণী-নিজ-চারণে।</div>
   <div class="diagram">
     <div class="diag-title">Starter 2 — Four-Layer Sandwich, Three Screens</div>
@@ -298,6 +305,7 @@ doors.push({
   blind writing and blind entry."</strong> So: the submit button runs two phases (chalk-preview: per-client impact
   rows; ink-confirm), and the panel's route sits behind the role-gate (no admin → forbidden). And three old
   artisans join at one table: Munshi Afsar (field-seals), Ustad Nazir (phase-clock), Babur (three arches).</p>
+  <div class="dialogue">('"দুই চোখে দেখো — খসড়া এক, স্থায়ী দুই," নুরুল হুদা তাঁর দ্বিস্তর চশমা নাকে ঠিক করলেন, "এক চোখে লিখলে সে লেখা অন্ধ। আমি একবার শত ক্লায়েন্টের বিল এক চোখে বসিয়েছিলাম; পরদিন সকালে অফিস ভরে গিয়েছিল অভিযোগে।"', 'দুই স্তরের কাচে আলো ভাঙতে দেখা যায় — যা একবার দেখে লেখা, তা দুইবার দেখে ঠিক করতে হয়।')</div><div class="dialogue en">"See with two eyes — draft one, permanent two. I once set a hundred clients' bills with one eye; morning brought a room of complaints."</div>
   <div class="code-block">স্টার্টার-৩ · ফর্ম-ভারী-অ্যাডমিন — গুরুত্বপূর্ণ-অংশসমূহ
 
 স্থাপত্য (স্টার্টার-২-এর-ওপর):

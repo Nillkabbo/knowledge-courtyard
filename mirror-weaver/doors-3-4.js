@@ -30,6 +30,7 @@ doors.push({
   river — when the river flows, the glass still holds stale water. To stay reactive, stay with the river: computed or
   storeToRefs."</strong> Finally she cautions about <code>watchEffect</code>'s open eye — it discovers its own
   dependencies and may over-run; when dependencies are explicit, <code>watch</code> is the discipline.</p>
+  <div class="dialogue">('"শ্বাস থামলে শরীর তো মরে না সাথে সাথে," রফিক তাঁর বাঁশির পাশে বসা পাখির খাঁচার দিকে ইশারা করলেন, "কিছুক্ষণ নড়ে, তারপর থামে। প্রতিক্রিয়াও তাই — যাকে কেউ পড়ে না, সে ধীরে ধীরে নীরব হয়ে যায়। আমি একবার পুরো তালিকা গভীর-পাহারায় রেখেছিলাম — দশ স্তর নিচের এক মান বদলালেও ওপরে কিছুই জানে না।"', 'খাঁচার পাখিটা ঠোঁট খুলে আধ-সুর তুলে থামে — তুমি বুঝলে, না-দেখা নির্ভরতার নীরবতাও এমনই।')</div><div class="dialogue en">"What no one reads slowly falls silent. I once put an entire list under deep watch — ten layers below changed, and the top never knew."</div>
   <div class="code-block">প্রতিক্রিয়া-তন্ত্র — LedgerPilot-নমুনাসহ (Vue 3.5)
 
 ① স্পর্শ-কাচ — ref (মান-প্রতিক্রিয়া):
@@ -96,6 +97,12 @@ Vue 3.5 স্বাদ:
     = defineProps&lt;…&gt;() — কম্পাইলার-নিরাপদ
   · watch(v, cb, { deep: 1..N }) — গভীরতা-সংখ্যা
   · paused: watch-পাহারা সাময়িক থামানো</div>
+  <div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">ref</div><div class="sc-label">ছোঁয়া যায় · .value</div></div>
+  <div class="stat-card"><div class="sc-num">computed</div><div class="sc-label">মনে রাখে · ক্যাশড</div></div>
+  <div class="stat-card"><div class="sc-num">watch</div><div class="sc-label">পাহারা · পার্শ্ব-প্রভাব</div></div>
+  <div class="stat-card"><div class="sc-num">watchEffect</div><div class="sc-label">তাৎক্ষণিক · স্বয়ং-সনাক্ত</div></div>
+</div>
   <div class="verse">তাসাররুফ — প্রবাহের শাস্ত্র: শক্তি যায় কেবল নিজ-নিজ পথে। জোহরা আপার তিন কাচ সেই পথের নকশা — স্পর্শ মান বদলায়, স্মৃতি উদ্ভূত-সত্য গণনা করে, পাহারা পার্শ্ব-কাজ চালায়; একজনের কাজ অন্যজনে ঢুকলে তাঁত বিষময় হয়। "প্রত্যেকে সে-ই যা সে অর্জন করে" (৫৩:৩৯-এর ভাব) — যন্ত্র নিজ-নিজ অর্জনে বাঁচে; এক যন্ত্রে সব-কাজ চাপালে কেউ কিছুই ভালো করে না।</div>
   <div class="diagram">
     <div class="diag-title">The Breath — Three Instruments, One River Rule</div>
@@ -171,6 +178,7 @@ doors.push({
   and the next render erases it: the parent's pull floats the old gift back. Rafiq smiles — <strong>"don't fight the
   current. What is truly yours (local state), dig a well — <code>ref(props.label)</code>; what is upstream's, leave to
   the river."</strong></p>
+  <div class="dialogue">('"উপহারের প্যাঁচে হাত দিয়ো না," রফিক মৃদু হেসে মোড়া কাপড়ের ফিতা টানটান করলেন, "খুললে সে আর উপহার থাকে না — নোংরা হাতের ছাপ পড়ে যায়। মা-বাবা যা পাঠালেন, তা-ই দেখাও; নিজের কিছু বানাতে চাইলে নিজের বোতাম বানাও, নিচে থেকে ডাকো।"', 'ফিতার টানে তোমার আঙুল সরে যায় — নিজের জিনিস বদলানোর লোভ থাকলেও নিয়মটা এবার শরীরে বসে গেল।')</div><div class="dialogue en">"Don't touch the gift's wrapping — unopened it stays a gift. Show what the parents sent; build your own button below and call upward."</div>
   <div class="code-block">props-শাস্ত্র — LP-নমুনাসহ (LoadingBlock.vue, প্রকৃত কোড)
 
 ① ঘোষণা — ধরন-চুক্তি (type-only, &lt;script setup&gt;):
@@ -221,6 +229,10 @@ doors.push({
   · টেস্ট-সুবিধা: প্পস-ইনজেক্টে mount —
     mount(Panel, { props: { imports: mock, … } })
     (দরজা ২৩-এ পূর্ণ পরীক্ষা-গল্প)</div>
+  <div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল পথ</div>প্রপ-মিউটেশন: <code>props.item.done = true</code> — উজানে চুপচাপ বদল, রিঅ্যাক্টিভিটি ভাঙে, ওয়ার্নিং।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক পথ</div>লোকাল-কপি বা emit: <code>emit('toggle', id)</code> — সিদ্ধান্ত উজানে, নদী একমুখে বয়।</div>
+</div>
   <div class="verse">আমানত — গৃহস্থের আমানত তার হাতে থাকে, প্রাপ্তের হাতে খরচের অধিকার নয়: "নিশ্চয়ই আল্লাহ তোমাদের আদেশ দেন আমানত তার হকদারকে ফিরিয়ে দিতে" (৪:৫৮)। রফিকের নদী সেই আয়াতের বোনা-রূপ: উপহার উজানের হক — প্রাপ্ত সাজায়, দেখায়, বদলাতে চাইলে খবর পাঠায়; চুরি করে না। যে কারখানায় প্রাপ্ত আমানত নিজের বলে খরচ করে, সেখানে দুই হিসাববহি — আর দুই বহি মানে কোনো বহিই না।</div>
   <div class="diagram">
     <div class="diag-title">One-Way River — Props Flow &amp; Return-Bird</div>

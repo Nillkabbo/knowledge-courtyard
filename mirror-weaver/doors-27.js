@@ -28,6 +28,7 @@ doors.push({
   (phase), Rikta's pot rings (toast), the mirror gleams (re-render). One click — the whole workshop. Zohra says:
   <strong>"this scene is the final lesson: each layer stood apart for learning; in the working world all sound
   together. You are a weaver now — here, your own small mirror."</strong></p>
+  <div class="dialogue">('জোহরা আপা বড় বোতামটা তোমার হাতে তুলে দিলেন। "চাপো।" তুমি চাপলে — ছাবিশজন কারিগর একসাথে নড়ে উঠলেন: পাখি উড়ল, পাহারা দাঁড়াল, খাতায় কলম চলল, জাহাজ ছেড়ল, ঘড়ি ঘুরল, বাট বাজল, আয়না ঝলকাল। "দেখলে তো," তিনি মৃদু হাসলেন, "এক ক্লিকেই পুরো কারখানা। স্তরগুলো শেখার জন্য আলাদা ছিল — কাজের জগতে সব একসাথে বাজে।"', 'বোতামের চাপ থেকে ছড়িয়ে পড়া সেই কম্পন — তোমার নিজের ছোট আয়নায় এখন তুমিই মাস্টার।')</div><div class="dialogue en">"Press it." You press — twenty-six artisans move at once. "The layers stood apart for learning; in the working world they sound together."</div>
   <div class="code-block">পূর্ণ-তাঁত — উল্লম্ব-সুতো ('অনুমোদন'-ক্লিকের-যাত্রা)
 
 @click="approve(row)"                    …দরজা ২

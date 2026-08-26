@@ -30,6 +30,7 @@ doors.push({
   harbor-language — <code>getApiErrorMessage</code> — so an artisan reads it like a person from the wall. Finally the
   service-warehouse: each feature's own service file (authService, accountService…) — components know only the
   warehouse address, not the art of sailing.</p>
+  <div class="dialogue">('"জাহাজের ভাড়া আগে, মাল পরে," ক্যাপ্টেন রুমান হালের কাছে দাঁড়িয়ে বললেন, "আর প্রতিটি জাহাজের নিজের পাসপোর্ট — সিল-ছাড়া মাল বন্দরে ফেরত। সবচেয়ে দামি পাঠ শিখেছিলাম এক ঝড়ের রাতে: কেউ ভুল কাঠামো নামিয়ে দিয়েছিল; এক বাক্সের ভুলে পুরো খেয়া পোড়ার ঝুঁকিতে।"', 'লোহার হালের ঠান্ডা স্পর্শে মনে পড়ে যায় — ছোট এক সিলের অভাবে কত বড় ডুব।')</div><div class="dialogue en">"Fare before cargo, and every ship carries its own passport. One storm night taught me: one box's wrong manifest risked the whole ferry."</div>
   <div class="code-block">API-স্তর-শাস্ত্র — LP-র প্রকৃত apiClient-ছায়া
 
 স্থাপত্য (এক-নজরে):
@@ -189,6 +190,7 @@ doors.push({
   LedgerPilot's profile-manuscript to show one cleverness: unless the email changes, the password-room stays hidden
   (progressive disclosure) — decided by comparison with the <em>original</em> email, so a mere name-change never
   demands re-proof.</p>
+  <div class="dialogue">('"কাগজে দাগ থাকলে তা মুছে ফেলো," মুনশি আফসার সবুজ কাগজ মেলে ধরলেন, "নোঙর ফেলে রাখো — ফিরে এসে যা বদলেছে, এক নজরে দেখা যাবে। আমার প্রথম পাণ্ডুলিপি ছিল মুছতে-ভুলে-যাওয়ার দফতর; পাঠক কোথায় বদলেছে, কেউ বলতে পারত না।"', 'সবুজ কাগজের খসখস শব্দে মন থেমে যায় — নোঙর না থাকলে বদলও অদৃশ্য, ফেরাও অসম্ভব।')</div><div class="dialogue en">"Keep the anchor, wipe the marks — my first manuscript was a forgetting-office; no reader could say what changed."</div>
   <div class="code-block">ফর্ম-শাস্ত্র — ProfileView-এর প্রকৃত-ছায়া
 
 ① অবস্থা-বিন্যাস (স্থানীয় + মূল-নোঙর):
@@ -262,6 +264,13 @@ doors.push({
   · প্রতি-কীস্ট্রোকে-পিতা-বড়-রিরেন্ডার এড়াতে:
     প্রতিটি-ফিল্ড-নিজ-উপাদানে (TextInput-জাত),
     অথবা v-model.lazy + সাবমিটে-একত্র-পাঠ</div>
+  <ul class="checklist">
+  <li>নোঙর (anchor) রাখো — খসড়া বনাম সঞ্চিত মানের তুলনা</li>
+  <li>dirty কম্পিউটেড — প্রস্থান-সাবধান শুধু dirty-তে</li>
+  <li>ফিল্ড-এরর খাঁচায় — প্রতিটি ইনপুটের নিজের লাল-বার্তা</li>
+  <li>saving-তালা — ডাবল-সাবমিট রোধ</li>
+  <li>সফলে নোঙর-সিঙ্ক — সেভের পরেও dirty যেন না থাকে</li>
+</ul>
   <div class="verse">শাহাদাতুল-কিতাব — লিপিবদ্ধ-সাক্ষ্য: "লিখে রাখো, ঋণ এক নির্দিষ্ট মেয়াদ পর্যন্ত" (২:২৮২-এর আদেশ-ছায়া) — লেখা যেন হারায় না, ভুল যেন নীরবে না থাকে। মুনশি আফসারের দপ্তর সেই লিপি-শৃঙ্খলার ফর্ম-রূপ: খসড়া-চিহ্ন, ফিল্ড-সিল, প্রস্থান-প্রশ্ন — তিনটাই এক-উদ্দেশ্যে, ব্যবহারকারীর লেখা রক্ষা। যে দপ্তরে খসড়া নীরবে-হারায়, সেখানে লোকে লেখাই ছেড়ে দেয়; আর যেখানে ভুল-সিল নীরবে-চাপা পড়ে, সে-লেখা সাক্ষ্য নয় — বোঝা।</div>
   <div class="diagram">
     <div class="diag-title">The Manuscript Office — Draft, Courier, Seals, Exit-Gate</div>

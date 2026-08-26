@@ -154,6 +154,7 @@ doors.push({
   <strong>"this one thread touches raw meat — never hold it unless the source is trusted, or the needle poisons the cloth
   (XSS)."</strong> Finally she shows threads that are <strong>woven once</strong> (<code>v-once</code>) and cloth that itself
   knows which stakes haven't moved (<code>v-memo</code>) — shaking the whole loom for nothing is waste.</p>
+  <div class="dialogue">('"মুদ্রার ছাপ দেখেছ?" জোহরা আপা সুতোর ডগায় ছোট্ট একটা গিরা দেখালেন। "এই একটা গিরাই দুই মুখ — এক মুখে ফাঁসা বাঁধে, আরেক মুখে টানে। টেমপ্লেটও তাই: স্থির অংশ কাপড়ে বোনা, বদলানো অংশ ফাঁসায়। নতুন কারিগররা সব কাপড়ে বুনে ফেলে — তারপর এক রং বদলাতে গিয়ে পুরো কাপড় ছিঁড়ে ফেলে।"', 'তুমি ফাঁসাগুলোর সামনে আঙুল ছড়িয়ে দাও — কোথায় সুতো ঢুকবে, কোথায় ঢুকবে না, এবার চোখে পরছে।')</div><div class="dialogue en">"One knot, two faces — one binds the loop, the other pulls. Novices weave everything into cloth, then tear the whole cloth to change one color."</div>
   <div class="code-block">টেমপ্লেট-বর্ণমালা — সম্পূর্ণ ছক (Vue 3.5 অফিশিয়াল)
 
 ① মোস্তাচিল — মান ঢালা (Text interpolation):
@@ -230,6 +231,10 @@ Vue 3.5-নোট:
   · সব শর্টহ্যান্ড আগের মতোই; dynamic-arg:
     :[attrName]="val" · @[eventName]="h"
     (attrName কম্পিউটেড-স্ট্রিং হলে বাঁধে)</div>
+  <div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল পথ</div>সবকিছু কাপড়ে বোনা — এক রং বদলাতে গিয়ে পুরো কাপড় ছেঁড়া; মান বদলে রেখা ঢোকানো।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক পথ</div>স্থির অংশ কাপড়ে, বদলানো অংশ ফাঁসায় ({{ }} / v-bind / v-on) — এক মান বদলালে শুধু সেই ফাঁসা পূর।</div>
+</div>
   <div class="verse">বাইয়ান — স্পষ্ট প্রকাশ: "রহমান সৃষ্টি করেছেন, শিখিয়েছেন বয়ন-কলম" নয় বরং প্রকাশের আয়াত-ধারা (৫৫:৩-৪-এর ভাব) — যা ভেতরে আছে তার বাইরে স্পষ্ট রূপ। জোহরা আপার চার চিহ্ন সেই বাইয়ানের হাতিয়ার: মান, বাঁধন, শ্রবণ, খোপ — প্রতিটি চিহ্ন ঠিক যা বোঝায় তা-ই বলে, বাড়তি গোপন অর্থ নেই। যে বর্ণমালায় এক চিহ্নের দুই মানে থাকে, সে কাপড়ে সবসময় একটা সুতো ভুল জায়গায় পড়ে।</div>
   <div class="diagram">
     <div class="diag-title">The Thread Alphabet — Four Glyphs, One Grammar</div>

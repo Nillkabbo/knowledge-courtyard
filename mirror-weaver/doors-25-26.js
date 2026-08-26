@@ -26,6 +26,7 @@ doors.push({
   halls (manifest filter). Wall buttons? The <Can> tablet — no stamp, no button."</strong> He holds up
   LedgerPilot's seven-role palace-plan — each role's own landing room (role→dashboard), each their own menu.
   <strong>"the palace is large, the discipline simple — three ledgers are all."</strong></p>
+  <div class="dialogue">('"এক চাবি-গোছা, তিন খাতা," বদরুল তাঁর বেল্ট থেকে চাবির গোছা খুলে দেখালেন, "পরিচয়, অনুমতি, মেনু — এই তিনটাই। বাকি সব শোভা। একবার শুধু দেয়ালের রং দিয়ে পাহারা দিয়েছিলাম; রং বদলালেই রাজত্ব বদলে গিয়েছিল।"', 'চাবির ধাতব ঠান্ডা তালুয়ে — তিন খাতার শৃঙ্খলা এবার হাতের স্মৃতি।')</div><div class="dialogue en">"One key-ring, three ledgers — identity, permission, menu. The rest is decoration. I once guarded with wall-paint alone; the paint changed, so did the reign."</div>
   <div class="code-block">স্টার্টার-৪ · বহু-রোল-প্রাসাদ — মেরু-অংশসমূহ
 
 ফাইল-১ · রোল-জগৎ (core/auth/roles.ts):
@@ -148,6 +149,12 @@ doors.push({
     বাটন-DOM-এ-নেই
   ③ মেনু-ছাঁকনি: editor-এ-অ্যাডমিন-লিংক-নেই
   ④ লগআউট → মেনু-সর্বনিম্ন+রুট-লগইনে</div>
+  <div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">পরিচয়</div><div class="sc-label">auth.store · প্রবেশ</div></div>
+  <div class="stat-card"><div class="sc-num">অনুমতি</div><div class="sc-label">can() · গার্ড+&lt;Can&gt;</div></div>
+  <div class="stat-card"><div class="sc-num">মেনু</div><div class="sc-label">ছাঁকনি · visibleMenu</div></div>
+  <div class="stat-card"><div class="sc-num">ল্যান্ডিং</div><div class="sc-label">রোল→ঘর · ?next</div></div>
+</div>
   <div class="verse">চতুর্থ-রাকাত — বহু-দরজা, ব্যক্তি-অনুযায়ী-চাবি: "প্রত্যেক-দলকে-চেনা-হবে-তাদের-নিজ-নিশানে" নয় বরং সূরা-ছায়া (৫৫:৪১-এর ভাব) — নিশানভেদে-পথ, বিশৃঙ্খলায়-নয়। বদরুলের-তিন-খাতা সেই-নিশানের-প্রাসাদ-রূপ: পরিচয়-অনুমতি-মেনু — প্রত্যেক-প্রবেশ খাতায়, প্রত্যেক-দরজা ছাপে, প্রত্যেক-দেয়াল ফলকে। যে-প্রাসাদে সবাই-সব-দরজায়-ঢোকে, সে প্রাসাদ-নয়-চত্বর; আর-যেখানে-খাতা-নেই-শুধু-দরজার-রং, সেখানে-রং-বদলালেই-রাজত্ব-বদলায়।</div>
   <div class="diagram">
     <div class="diag-title">Starter 4 — Three Ledgers, Layered Access</div>
@@ -223,6 +230,7 @@ doors.push({
   on return, the first task is reconciling the missed count (refetch)."</strong> One clever touch: at the panel's
   crown an <strong>error-embankment</strong> (an onErrorCaptured room) — if any wave breaks the screen, it reports
   without drowning the whole ghat.</p>
+  <div class="dialogue">('"নদীর রং দেখে অবস্থা বলো," মাজেদা পানিতে আঙুল ডুবিয়ে দেখালেন, "স্রোত থামলে তালিকা মুছো না — শেষ জানা সত্য রাখো। বাবা বলতেন, নদী ফিরে এলে প্রথম কাজ মিস হওয়া খবরের গণনা মেলানো। একবার না-মিলিয়ে বসেছিলাম; তিন দিন পুরনো সংখ্যা দেখিয়েছিলাম সবাইকে।"', 'পানির স্রোতের টান আঙুল ঘিরে ওঠে — জলাধার ছাড়া নদীর ওপর দাঁড়ানো যায় না।')</div><div class="dialogue en">"Read the river's color as state — when the current stops, keep the last-known truth. Father said: on return, first reconcile the missed count."</div>
   <div class="code-block">স্টার্টার-৫ · রিয়েলটাইম-ঘাট — মেরু-ফাইল
 
 ফাইল-১ · ইভেন্ট-জগৎ (features/feed/types.ts):
@@ -339,6 +347,12 @@ doors.push({
   ① ইভেন্ট→সারি+ব্যাজ+টোস্ট
   ② error→connected-মিথ্যা+banner
   ③ পুনঃখোলায়-refetchMissed-কলহ (গণনা)</div>
+  <div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">নদী</div><div class="sc-label">SSE · ট্রিগার</div></div>
+  <div class="stat-card"><div class="sc-num">জলাধার</div><div class="sc-label">store · সত্য</div></div>
+  <div class="stat-card"><div class="sc-num">বাঁধ</div><div class="sc-label">errorCaptured</div></div>
+  <div class="stat-card"><div class="sc-num">পিং</div><div class="sc-label">~২৫সে · প্রক্সি-রোধ</div></div>
+</div>
   <div class="verse">পঞ্চম-রাকাত — চলমান-কাপড়ের-সমাপ্তি: নদী-আয়াত "উভয়-জল-প্রবাহে-তার-প্রাসাদ" নয় বরং-স্রোতের-ছায়া (৫৫:১৯-২০-এর ভাব) — দুই-জল মিশে-না, নিয়মে-বাঁধা-প্রবাহে-পাশাপাশি। মাজেদার-ঘাট সেই-নিয়মের-জীবন্ত-রূপ: নদী (ট্রিগার) আর-জলাধার (সত্য) পাশাপাশি-বয়ে-যায়, মিশে-যায়-না; স্রোত-ছিঁড়লে-নদী-থামে, জলাধার-থাকে — আর-ফিরে-এলে-গণনায়-মিলে। যে-ঘাট নদীর-ই-জলে-সত্য-গড়ে, সে-ঘাটে-ঝড়ে-সব-ভাসে; জলাধার-যার-আছে, তার-ঝড়-শুধু-বিরতি-মাত্র।</div>
   <div class="diagram">
     <div class="diag-title">Starter 5 — The Living Ghat: River + Reservoir + Embankment</div>

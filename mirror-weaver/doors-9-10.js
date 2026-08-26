@@ -32,6 +32,7 @@ doors.push({
   lines of boilerplate — the artisan states only three lines of intent: what to do, what on success, where to show
   failure."</strong> Finally, caution — <strong>"two copies of one charm on two buttons keep separate springs; for
   shared state, the store (door 10)."</strong></p>
+  <div class="dialogue">('"তাবিজ বানালে দুই দিক থেকে সিল করো," মুসা সরকার খাপের ভেতরের মখমল দেখালেন, "নকশা দিক থেকে ঠিক, কাঠ দিক থেকে ঠিক — তবেই ভেতরের জিনিস নড়ে না। নিখুঁত নকশা ভুল কাঠে বসালে যুদ্ধের মাঝে খপর খুলে যায় — আমি নিজে একবার হাড়ের বাটাম কাঠে বসিয়েছিলাম, দুই দিনেই ফেটে গিয়েছিল।"', 'মখমলের নরম ঘর্ষণে তোমার আঙুল থমকে যায় — দুই-দিকের সিল ছাড়া কোনো তাবিজই তাবিজ নয়।')</div><div class="dialogue en">"A talisman is sealed from two sides — design-side and wood-side. I once set bone buttons into wood; they cracked in two days."</div>
   <div class="code-block">কম্পোজেবল-শাস্ত্র — useMutationAction ব্যবচ্ছেদ (প্রকৃত LP-কোড)
 
 ছাঁচের তিন-শপথ (মাজেদ-নিয়ম):
@@ -115,6 +116,12 @@ doors.push({
   ✓ টেস্ট-যোগ্য: নির্ভরতা অপশনে ঢুকিয়ে মক-করো
   ✗ কম্পোজেবলে DOM-সরাসরি · গ্লোবাবল-সিঙ্গলটন-রেফ
      (প্রতি-কলে নতুন, নইলে সব-কনজিউমার একসাথে)</div>
+  <div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">ইনপুট: অপশন</div><div class="sc-label">রেফ-নয় · প্লেইন</div></div>
+  <div class="stat-card"><div class="sc-num">আউটপুট: রেফ</div><div class="sc-label">সবসময় · আনর‍্যাপ-নয়</div></div>
+  <div class="stat-card"><div class="sc-num">রি-এন্ট্র্যান্সি</div><div class="sc-label">ভেতরে · গার্ড</div></div>
+  <div class="stat-card"><div class="sc-num">ক্লিনআপ</div><div class="sc-label">onUnmounted</div></div>
+</div>
   <div class="verse">হিকমাহ — প্রজ্ঞা: "যাকে হিকমাহ দেওয়া হয়েছে তাকে প্রচুর কল্যাণ দেওয়া হয়েছে" (২:২৬৯) — আর হিকমাহ জন্মায় পুনরায়-প্রয়োগে, এক-হাতে নয়। মাজেদ সাহেবের তাবিজ সেই হিকমাহর কারিগরি রূপ: প্রথম কারিগর বারো-লাইন লেখে, দ্বিতীয়জন দশ, তৃতীয়জন বুঝল — সাধারণ-সুতো তাবিজে গেঁথে দিল; এখন শত বাটন একই স্প্রিং-শৃঙ্খলায় চলে। যে কারখানা একই কষ্ট দুইবার সয়, সে হিকমাহ অস্বীকার করেছে; আর যে তাবিজ বানিয়ে দেয়ালে না ঝোলায়, সে প্রজ্ঞা কুপথে ঢেলে দেয়।</div>
   <div class="diagram">
     <div class="diag-title">The Talisman — Composable Anatomy</div>
@@ -187,6 +194,7 @@ doors.push({
   and on leaving —"</strong> he shows a red lever: <strong>"logout = resetAll — every branch ledger emptied.
   Otherwise the next user walks in and finds the previous one's gold, and believes it his own."</strong> In the side
   chamber, a sessionStorage safe — a refresh never loses the ledger.</p>
+  <div class="dialogue">('"কোষাগারের খাতা সবার হাতে এক-ই," মুসা সরকার বড় নথিটা টেবিলে ছড়িয়ে দিলেন, "কেউ নিজের পাতা লুকিয়ে রাখে না। তবে খেয়াল করো — পাতা ওল্টানোর ক্ষমতা যার, খাতার হেফাজত তার। একবার দুই লোক দুই পাতায় দুই দাম লিখেছিল; বাজার সেই দুই দামেই ভেঙে পড়েছিল।"', 'খাতার পাতার খসখস শব্দে কান খাড়া হয় — এক-সত্যের শান্তি আর দুই-সত্যের ঝগড়া, দুই-ই টের পাও।')</div><div class="dialogue en">"One ledger, the same page for all hands. Two men once wrote two prices on two pages — the market broke on both."</div>
   <div class="code-block">Pinia-শাস্ত্র — LP-র auth.store (প্রকৃত কোড-ছায়া)
 
 সেটআপ-স্টোর ছাঁচ (Options-স্টোরের চেয়ে প্রস্তাবিত):
@@ -269,6 +277,10 @@ Options-স্টোর (জ্ঞাতব্য — পুরনো কোড�
 
 SSR-নোট: সেশন-পারসিস্টেন্স প্লাগইনের
 store.replaceState পথ — এই বইয়ের স্কোপ-বাইরের গভীর-জল</div>
+  <div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল পথ</div>প্রতিটি পর্দায় নিজের খাতা — দুই পর্দায় দুই দাম; লগআউটে বাসী-মেমরি।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক পথ</div>এক কোষাগার (store) — সব পর্দা এক সত্য পড়ে; resetAll এক লিভারে সব মুছে দেয়।</div>
+</div>
   <div class="verse">বাইতুল-মাল — পাবলিক কোষাগার: "সম্পদ যেন শুধু ধনীদের মধ্যে ঘুরে না বেড়ায়" (৫৯:৭) — কেন্দ্রীয়-হিসাব শাসনের ন্যায়ের শর্ত। মুসা সরকারের ভবন সেই বাইতুল-মালের তাঁত-রূপ: সত্য এক-খাতায়, প্রবেশাধিকার সবার, প্রস্থানে খাতা-খালি — ন্যায়ের তিন-স্তম্ভ। যে শহরে প্রত্যেকে নিজের খাতা নিজের বুকে বাঁধে, সেখানে হিসাব আছে বটে — কিন্তু শাসন নেই; আর যে কোষাগার প্রস্থানে খালি হয় না, সে চিরকাল আগের-মানুষের দখলে থাকে — এক অন্যায় যা জন্মায় শুধু ভুলে যাওয়া থেকে, ইচ্ছা থেকে নয়।</div>
   <div class="diagram">
     <div class="diag-title">The Treasury — One Ledger, Five Branches, One Red Lever</div>

@@ -30,6 +30,7 @@ doors.push({
   types in <code>defineEmits</code>, then hang the bell of the exact name on the parent's cage. Finally she warned of an
   invisible path — <strong>attrs fallthrough</strong>: undeclared attributes and listeners sink to the root; useful
   magic on single-root components, confusion on multi-root ones.</p>
+  <div class="dialogue">('"পাখি ফিরে এলেই দড়ি খোলো," রফিক খাঁচার দরজা খুলে পাখিটাকে আকাশে ছেড়ে দিলেন, "ওরা নিজের সন্দেশ নিজের ঠোঁটে নিয়ে আসে। তুমি শুধু নাম লিখে দাও — কোন পাখি, কী খবর। নাম-ছাড়া পাখি পুরো শহরে গুলশান করে তোলে; কেউ জানে না কার ডাক কী কাজের।"', 'পাখির ডানার ঝাপটানিতে বাতাস এসে লাগে — প্রতিটি ডাকের একটা নাম-ফলক থাকার মানেটা এবার অনুভূত হয়।')</div><div class="dialogue en">"The birds bring their own message in their own beak — you only write the name: which bird, what news. Nameless birds scatter the whole city."</div>
   <div class="code-block">emit-শাস্ত্র — LP-নমুনাসহ (DeleteConfirmationModal.vue, প্রকৃত)
 
 ① ঘোষণা — টাইপড-চুক্তি (&lt;script setup&gt;):
@@ -151,6 +152,7 @@ doors.push({
   each with different current-rules, one bridge. Finally he shows the Vue 3.4 machine — <code>defineModel()</code>:
   both directions opened in one line, the props-emit pair tied automatically — "the old hand-built bridge, now
   one-press."</p>
+  <div class="dialogue">('"দড়ির দুই মাথা একই হাতে রেখো না," সালমা বললেন, সেতুর মাঝখানে দড়ি টানটান করে দেখিয়ে, "এক মাথা ধরো, আরেক মাথা ওপারের হাতে দাও — টান দিলেই দুই পাড় একসাথে নড়ে। দুই হাতে দুই মাথা টানলে দড়ি কাটা পড়ে, আর স্রোত মাঝখানে সব নিয়ে যায়।"', 'দড়ির কাঁপন তোমার হাত ঘিরে ওপারে পৌঁছায় — দুই-মুখীর ভারসাম্য এবার মাংসে টের হয়।')</div><div class="dialogue en">"Hold one end of the rope, give the other to the far hand — pull, and both banks move together. Pull both ends yourself and the rope snaps."</div>
   <div class="code-block">v-model-শাস্ত্র — সম্পূর্ণ (Vue 3.5, LP-প্রমাণসহ)
 
 ① ইনপুটে — প্রকৃত-মান বাঁধন:

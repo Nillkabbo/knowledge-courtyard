@@ -31,6 +31,7 @@ doors.push({
   Hajira Bibi — <strong>"the list-row is born inside me, but how it looks is the parent's pen — I only hand over the
   thread."</strong> In an empty pocket she sets fallback cloth — the card never looks bare even when the parent sends
   nothing.</p>
+  <div class="dialogue">('"খোলা খাঁচা ফেরত পাঠাও না খালি হাতে," হাজিরা বিবি বললেন, শূন্য খাঁচার ভেতরে রঙিন কাপড়ের ছাল বিছিয়ে, "ছাল বানিয়ে পাঠাও — পাওয়া মানুষ নিজের পালক বসাবে। আমার ছেলে একবার সব-বোনা খাঁচা পাঠিয়েছিল; ওপারে কেউ নিজের রং বসাতে পারেনি, ফেরত এসেছিল অচেনা।"', 'ছালের নরম ভাঁজে আঙুল রাখতেই বোঝা যায় — শূন্য জায়গাটাই আসল উপহার।')</div><div class="dialogue en">"Send the cage back with a cloth lining — the receiver sets their own feathers. My son once sent a fully-woven cage; it returned unrecognizable."</div>
   <div class="code-block">slot-শাস্ত্র — সম্পূর্ণ (LP-প্রমাণ: PasswordField-এর trailing-খোপ)
 
 ① ডিফল্ট-খোপ — নামহীন ভরাট:
@@ -93,6 +94,10 @@ doors.push({
     রাজ্য (v-for ছাঁচের-ভেতরে, পিতার কলম)
   · ফর্ম-ফিল্ড-লেবেল/সহায়তা-টেক্সট =
     খোপ + ফলব্যাক (LP-TextInput-প্রথার আত্মীয়)</div>
+  <div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল পথ</div>খাঁচা নিজে সাজানো — প্রতিটি ব্যবহারকারীর জন্য নতুন করে বোনা; দেরি ও অমিল।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক পথ</div>ছাল (slot) বানিয়ে পাঠানো — প্রত্যেকে নিজের পালক বসায়; এক খাঁচা, শত রূপ।</div>
+</div>
   <div class="verse">ওয়ারাসা — উত্তরাধিকারের দুই ধারা: পাত্র পূর্বপুরুষের, ভরাট উত্তরসূরির। "মানুষের মর্যাদা তার প্রচেষ্টার" নয় বরং আয়াত-ধারা যেখানে জীবিকা ও দায় বণ্টিত (১৭:৭০-এর আত্মা) — ছাঁচ ধার দেয় গঠন, উত্তরসূরি দেয় প্রাণ। হাজিরা বিবির কার্ড সেই ওয়ারাসার কারিগরি রূপ: খোপ পূর্ব-নির্ধারিত, ভরাট প্রজন্ম-প্রজন্মান্তরে নতুন; খোপহীন কার্ড অর্থহীন, ভরাটহীন খোপ অসম্পূর্ণ — দুই-ই একসাথে মানে জীবন্ত উত্তরাধিকার।</div>
   <div class="diagram">
     <div class="diag-title">Pockets — Value-Gift vs Cloth-Gift vs Reverse-Gift</div>
@@ -166,6 +171,7 @@ doors.push({
   apprentice tied a timer but never untied it; long after the screen closed, the count kept rising, memory swelling.
   Idris — <strong>"if irrigation continues on an uprooted tree, the pond runs dry. Whatever you tied, untie at exit —
   paired accounting."</strong></p>
+  <div class="dialogue">('"বীজ থেকে চারা হতে যত দিন, তত দিন মাটি খোঁড়ো না," হাজিরা বিবি বীজতলার পাশে বালতি নামিয়ে রাখলেন, "গাছ জ্যান্ত থাকতেই দড়ি বাঁধো — শুকিয়ে গেলে বাঁধলে ভাঙে। আমার ভাই গাছ কাটার পরে বাঁধতে গিয়েছিল; খেয়াল করেনি শিকড় আর নেই।"', 'ভেজা মাটির গন্ধে তোমার নাক ভরে যায় — কখন বাঁধতে হয়, কখন খুলতে হয়, তার সময়টা এবার স্পষ্ট।')</div><div class="dialogue en">"Don't dig the soil while the seed sprouts — tie the rope while the tree lives. My brother tied after cutting; the roots were already gone."</div>
   <div class="code-block">জীবনচক্র-শাস্ত্র — সম্পূর্ণ (LP-নমুনা: useDataFetch)
 
 চক্রের পূর্ণ-সারণি (&lt;script setup&gt;-কম্পাইলার-স্বয়ংক্রিয়):

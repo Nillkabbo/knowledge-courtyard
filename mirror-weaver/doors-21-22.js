@@ -30,6 +30,7 @@ doors.push({
   city's map in one book; the actual component address in the <strong>frozen registry's</strong> map
   (component_key→loader) — even the server cannot build unknown rooms. And every error in one language (door 15's
   translation-room) — a charter clause too.</p>
+  <div class="dialogue">('"আইন পাথরে, কারিগরের মেজাজে নয়," কাজী আনোয়ার ছেনি দিয়ে ফলকে আঘাত করলেন, "স্রোত একমুখ, নাম খাতায়, নীরবতা দণ্ডনীয় — এই তিনটাই শহর টেকায়। আমি দেখেছি উল্টোটা: প্রতিভাবান কারিগরের শহর, পাঁচ বছরে নিজের রাস্তা হারিয়ে ফেলেছে।"', 'ছেনির ঝনঝন শব্দ উঠোন ভরে ওঠে — আইনের স্থায়িত্ব কারিগরের প্রতিভার চেয়ে বেশি টেকে।')</div><div class="dialogue en">"Laws in stone, not in the artisan's mood — one-way flow, registered names, no silence. I saw a talented city lose its own streets in five years."</div>
   <div class="code-block">চার্টার-শাস্ত্র — পাঁচ-আইনের-সংহিতা
 
 আইন-১ · স্রোত-একমুখ (লিন্টে-জোর):
@@ -96,6 +97,13 @@ doors.push({
   ④ মেনু-সারি (একই-ম্যানিফেস্ট-উৎস)
   ⑤ সার্ভিস+কম্পোজেবল+টেস্ট (তিন-সঙ্গী)
   ⑥ E2E-পথ-পিন</div>
+  <ul class="checklist">
+  <li>স্রোত একমুখ — features ✗→ features (লিন্টে-জোর)</li>
+  <li>নাম খাতায় — নতুন পর্দা = রেজিস্ট্রি + ম্যানিফেস্ট-সারি</li>
+  <li>নীরবতা নিষেধ — catch কখনো খালি নয়</li>
+  <li>এরর এক-ভাষায় — getApiErrorMessage</li>
+  <li>দুই-খাতা মিলে নতুন ঘর — FE-রিলিজ + BE-ম্যানিফেস্ট</li>
+</ul>
   <div class="verse">শরীয়তুল-মদীনা — মেয়র-মরে-আইন-বাঁচে: "মানুষের-মধ্যে তোমরা-হিসাব-করো-মিনাড়ে" নয় বরং বিচার-প্রতিষ্ঠার-আয়াত-ধারা (৪:৫৮-এর-সার) — বিশ্বাস প্রতিষ্ঠানে-থাকে, ব্যক্তির-স্মৃতিতে-নয়। কাজী আনোয়ারের-ফলক সেই-সংহিতার-শহর-রূপ: স্রোতের-দিক, নামের-খাতা, নীরবতার-দণ্ড — তিন-আইন কোনো-কারিগরের-মেজাজে-নয়, পাথরে। যে-শহর আইন-ছুঁড়ে-ফেলে-দ্রুত-বাড়ে, সে-শহর পাঁচ-বছরে-নিজের-রাস্তাই-খুঁজে-পায়-না; আর যে-নীরবতা-দণ্ডহীন, সেখানে-ব্যর্থতা-অদৃশ্য-হয়ে-রাতে-ডাকাতি-করে।</div>
   <div class="diagram">
     <div class="diag-title">City Charter — Three Tablets, One Constitution</div>
@@ -163,6 +171,7 @@ doors.push({
   <strong>"small, but whole: add, filter, remove, persist (localStorage). A todo — yet all four core threads turn in
   it."</strong> She'll show an empty folder becoming a running loom in ten minutes, and will end: <strong>"keep this
   cloth — the next workshop builds its bigger pattern on exactly this."</strong></p>
+  <div class="dialogue">('"ছোট কাপড় ফেলে দিয়ো না," শাগরফা আপা শেখা-কাপড়টা ভাঁজ করে তোমার হাতে দিলেন, "এর ওপরেই পরের বড় নকশা বসবে। একবার ভেবেছিলাম প্রথম কাপড় নষ্ট হয়ে গেছে — পরে বুঝেছি, সেটাই আমার সবচেয়ে দামি খতিয়ান।"', 'কাপড়ের নরম ভাঁজ হাতে রয়ে যায় — প্রথম শেখা কখনোই ব্যর্থতা নয়, ভিত্তি।')</div><div class="dialogue en">"Don't discard the learning cloth — the next big pattern sits on exactly this. I once thought my first cloth wasted; it became my dearest record."</div>
   <div class="code-block">স্টার্টার-১ · টু-ডু-তাঁত — প্রতিটি-ফাইল (npm থেকে-ব্রাউজার)
 
 স্থাপন (এক-লাইন):
@@ -280,6 +289,14 @@ doors.push({
   · ট্যাগ-শ্রেণি (Todo-এ category) — দ্বিতীয়-ছাঁকনি
   · প্রথম-টেস্ট: mount → add() →
     expect(todos).toHaveLength(1) (দরজা ২০-তলা-১)</div>
+  <ul class="checklist">
+  <li>create-vite (vue-ts) → npm install → npm run dev</li>
+  <li>ref: todos/draft/filter — তিন অবস্থা</li>
+  <li>computed: shown/remaining — উদ্ভূত সত্য</li>
+  <li>v-for + :key (আসল id) — তালিকা বোনা</li>
+  <li>v-model + .trim — ইনপুট-সেতু</li>
+  <li>watch({deep}) → localStorage — স্মৃতি</li>
+</ul>
   <div class="verse">প্রথম-রাকাত — ছোট-কিন্তু-পূর্ণ-একক: নামাজ-শাস্ত্রে-যেমন-প্রথম-একাক-ই-শিক্ষা, জমা-পড়ে-না। শাগরফা-আপার-শেখা-কাপড় সেই-প্রথম-এককের-তাঁত-রূপ: পঞ্চাশ-লাইন, কিন্তু-আঙুল-তলে-গিঁট-নেই — যোগ-গোছ-কাট-স্মৃতি চার-অঙ্গ-সম্পূর্ণ। যে-শাগিরদ প্রথম-কাপড়েই-সোনার-বর্ডর-চায়, সে-দ্বিতীয়-সপ্তাহে-তাঁত-ছেড়ে-দেয়; আর-যে-ছোট-পূর্ণ-গাঁথে, তার-দ্বিতীয়-কাপড়-নিজে-নিজেই-বড়-নকশা-দাবি-করে।</div>
   <div class="diagram">
     <div class="diag-title">Starter 1 — The Todo Loom, One File Whole</div>

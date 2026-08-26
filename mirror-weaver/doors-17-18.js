@@ -33,6 +33,7 @@ doors.push({
   the clock silently no-opped; the office survived. Finally, his three apprentices' pages: invoice-push,
   credit-note, payment — all three run the same registrar-clock, only each fetch-thread differs; this is the thin-adapter
   art.</p>
+  <div class="dialogue">('"কালি ঢালার আগে চক দেখাও," ওস্তাদ নাজির চকের গুঁড়া নিজের হাতে মুছলেন, "আর দুই বাটনের কথা মনে রেখো — এক বার প্রিভিউ দেখালে আর ডিগ্রি দেওয়া যায় না। আমি একবার সরাসরি খুদাই করে ফেলেছিলাম; পাথর ফেটে গিয়েছিল, তিন মাসের কাজ এক রাতে।"', 'চকের নরম গুঁড়া আঙুলের ডগায় — প্রথম-দর্শনের শক্তি এবার ত্বকে অনুভূত।')</div><div class="dialogue en">"Chalk before ink — and once previewed, no degree without confirm. I once carved directly; the stone cracked, three months in one night."</div>
   <div class="code-block">চক-কালি-শাস্ত্র — usePreviewConfirmFlow (প্রকৃত LP-কোড)
 
 ফেজ-ঘড়ি (ছয়-কাঁটা):
@@ -131,6 +132,10 @@ doors.push({
     একই-কোড-পথ)
   · ড্রাই-রান-চিহ্ন শুধু অনুরোধে, উত্তরে-নয় —
     উত্তর-আকৃতি দুই-ডাকে-একই (rows-নির্যাত্রক)</div>
+  <div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল পথ</div>সরাসরি-মিউটেশন — ব্যয়বহুল লেখা এক ক্লিকে; ফেরানো কঠিন।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক পথ</div>চক-কালি (preview→confirm) — প্রভাব-সারি দেখে, তারপর কালি; গার্ড দুই-স্তরে।</div>
+</div>
   <div class="verse">ইস্তিখারাহ — অঙ্গীকারের-আগে-মন্থন: প্রবাদ-শাস্ত্র যেখানে বড়-সিদ্ধান্তে দুই-রাকাত-ভাবনা — কাজটি করব কি-না-জেনে তবে-করা। ওস্তাদ নাজিরের দপ্তর সেই ইস্তিখারার কারিগরি-রূপ: চক-পাতায়-দেখা, তারপর-কালি; যে-লেখা চোখ-ডুবায়নি, সে-লেখা দলিল-নয় — জুয়া। "তোমাদের সম্পদ নিজেদের মধ্যে অযথা খরচ করো না" (২:১৮৮-এর ভাব) — অযথা-লেখা রোধের-ই হুকুমের ছায়া, ডেটার-জগতে।</div>
   <div class="diagram">
     <div class="diag-title">Chalk Before Ink — The Six-Hand Phase Clock</div>
@@ -213,6 +218,7 @@ doors.push({
   re-touches with backoff and counts what was missed (refetch). Two oaths: <strong>"the river carries news only —
   data-truth stays in the server's house; and when the guest leaves, the rope is released"</strong> (unmount→close)
   — else stale news rings all night.</p>
+  <div class="dialogue">('"ঘণ্টি বাজিয়ে চলে যেয়ো না," রিক্তা বললেন, হাতের ছোট বাটটা ঘুরিয়ে, "বার্তা পৌঁছেছে কি না, দরজায় গিয়ে শোনো। সবচেয়ে বেশি হার আমার সেই দিন — যেদিন ভেবেছিলাম বাজানোই বুঝি পৌঁছানো, আর পুরো গলি ঘুমিয়ে ছিল।"', 'বাটের মৃদু শব্দটা কানে বাজতে থাকে — পৌঁছানোর দায়টা পাঠানোর চেয়ে কম নয়।')</div><div class="dialogue en">"Don't ring the bell and walk away — go to the door and hear whether it landed. My biggest loss was the day the whole lane slept."</div>
   <div class="code-block">ঘণ্টি-শাস্ত্র — টোস্ট + ইনবক্স + SSE (LP-ধারায়)
 
 ① টোস্ট-ভাটি (ক্ষণস্থায়ী-খবর):

@@ -31,6 +31,7 @@ doors.push({
   screen-car waits in the garage, engine started only at departure (<code>() =&gt; import()</code>) — the city's first
   door stays light. He opens LedgerPilot's real map-book: a handful of static routes, then server-sent manifest
   routes joining in (that story in door 14).</p>
+  <div class="dialogue">('"রাস্তার নাম ঘরের দরজায় লেখো না," বাবর পাথরের ফলকে চক দিয়ে রেখা টানলেন, "রাস্তার নাম রাস্তার মাথায়। ঘরের নাম বদলালে রাস্তার নাম বদলায় না — বরং উল্টোটা হলে পুরো শহরের নকশা ওল্টে যায়। আমি একবার গলির নাম ঘরের নাম দিয়ে বসিয়েছিলাম; দুই বছর পরে কেউ পুরনো খতিয়ান খুঁজে পায়নি।"', 'চকের গুঁড়া হাতে লেগে থাকে — নাম যেখানে থাকবে, সেখানেই থাকবে; এই শৃঙ্খলা এবার হাতে বসে।')</div><div class="dialogue en">"The street's name lives at the street's head, not on the house door. I once set a lane's name by a house's; two years later no one found the old deed."</div>
   <div class="code-block">রাউটার-শাস্ত্র — LP-র প্রকৃত নকশা-ছায়া (router/index.ts)
 
 ① তাঁত-বাঁধা — createRouter:
@@ -95,6 +96,13 @@ doors.push({
   সার্ভার-ম্যনিফেস্ট → router.addRoute(…)
   · ফ্রোজেন-রেজিস্ট্রি: component_key → লেজি-লোডার
     (দরজা ১৪-এ গার্ড+ম্যানিফেস্টের পূর্ণ-গল্প)</div>
+  <ul class="checklist">
+  <li>path + name + lazy component — প্রতিটি রুটের তিন অঙ্গ</li>
+  <li>ডাকবে নামে (router.push({name})) — পাথ-স্ট্রিং নয়, টাইপ-নিরাপদ</li>
+  <li>প্যারাম-বদলে watch(() => route.params.id) → পুনঃআনা</li>
+  <li>catch-all রুট: /:pathMatch(.*)* → NotFound</li>
+  <li>স্ক্রল-আচরণ: scrollBehavior — নতুন রুটে ওপরে ফেরা</li>
+</ul>
   <div class="verse">সিরাত — সুগম-পথ: "আমাকে সরল পথ দেখাও" (১:৬) — পথ এক, নির্দেশ স্পষ্ট, পথহারা নয়। ইমরান ভাইয়ের নকশা-দপ্তর সেই সিরাতের রাস্তা-রূপ: প্রতিটি পথের নাম-ফলক, প্রতিটি মোড়ে জানালা, আর ধরার-জাল — যে-পথ নকশায় নেই সেখানে পথহারা-পাতা, অন্ধকার নয়। যে শহরে রাস্তা দেয়ালে দেয়ালে লেখা, সে-শহরে প্রতিটি নতুন কারিগর পথ আবিষ্কার করে নিজের জীবন দিয়ে।</div>
   <div class="diagram">
     <div class="diag-title">The Street-Map — Path, Name, Component, Window</div>
@@ -177,6 +185,7 @@ doors.push({
   <code>requiresFeature</code> — judgment at the gate, requirements on the map. Then the trick-catching mat: someone
   passes the role-bait toward a featureless path — the third arch stops them (defense in depth). And one with no
   permit at all is returned to their own dashboard — the role-map says whose room is where.</p>
+  <div class="dialogue">('"ফটকে দাঁড়িয়ে জিজ্ঞেস করো তিনটা — কে, কোথায়, কেন," বাবর তিন আঙুল খাড়া করলেন, "উত্তর না মিললে ভেতরে নয়, ডাক-ঘরে। একবার ফটক-ছাড়া শহর দেখেছিলাম — সুন্দর, তিন মাস টিকেছিল। তারপর আগন্তুকরা সব কোষাগার খালি করে নিয়েছিল।"', 'তিন প্রশ্নের বাঁধন যেন তোমার নিজের কাঁধেও বসে — পথ চাইলে প্রশ্নের উত্তর আগে।')</div><div class="dialogue en">"At the gate, three questions — who, where, why. No match, no entry. I once saw a gate-less city — beautiful, three months."</div>
   <div class="code-block">গার্ড-শাস্ত্র — LP-র প্রকৃত শৃঙ্খল (router/guards.ts-ছায়া)
 
 মেটা-চাহিদা (নকশায়-লেখা, ফটকে-বিচার):
@@ -261,6 +270,10 @@ doors.push({
   আগেরটার-ওপর-দাঁড়ায়; উল্টালে রোল-বিচার
   ফাঁকা-সেটে, ফিচার-বিচার অজানা-স্টোরে —
   সব-পথ-বন্ধ বা সব-পথ-খোলা, দুই-ই বিপর্যয়</div>
+  <div class="compare">
+  <div class="cmp-card cmp-bad"><div class="cmp-label">❌ ভুল পথ</div>শুধু ভিউতে বাটন লুকানো — URL সরাসরি ঢুকে পড়ে; পাহারা কেবল রং।</div>
+  <div class="cmp-card cmp-good"><div class="cmp-label">✅ সঠিক পথ</div>গার্ড পথে (beforeEach + meta) ও &lt;Can&gt; দেয়ালে — দুই স্তরের পাহারা।</div>
+</div>
   <div class="verse">ফটকের-মীজান: "প্রবেশ করো তার দরজা দিয়ে সিজদাকারী হয়ে" নয় বরং নগর-আয়াতের শৃঙ্খলা (২:৫৮-এর ভাব) — নির্ধারিত-দরজা, নির্ধারিত-ভঙ্গি; অন্য-পথের-লোভ অবাধ্যতা। বাবরের তিন-তোরণ সেই নির্ধারিত-দরজার পাহারা: পরিচিতি-পদমর্যাদা-অনুমতি — প্রতিটি তোরণ এক-আয়াতের মতো স্পষ্ট, কেউ একা যথেষ্ট নয়, সব-মিলে শহরের-মর্যাদা। যে ফটক সবাইকে সব-পথ দেয়, সে ফটক নয় — ফাঁকা-জায়গা; আর যে নিজের-পথভুলে-অন্যের-পথে পাঠায়, সে মানচিত্র নয় — বিভ্রান্তি।</div>
   <div class="diagram">
     <div class="diag-title">Gate-Chain — Three Arches in Order</div>

@@ -30,6 +30,7 @@ doors.push({
   (typed InjectionKey, or water lands in the wrong jug), <strong>and cap the upstream water readonly</strong> (a lower
   generation wanting change sends word, not unscrews the cap). Beside him, the great form-family — one form, twenty
   inputs: the upper form-courtyard provides the collection+validation pipe; each input-room only injects and opens.</p>
+  <div class="dialogue">('"ঝর্ণার জল ময়দান ভরে না ঢেলো," আব্বা করিম নলের মুখে সরু বাঁশ লাগালেন, "যার গাছ, তার গোড়ায় সরু সরু নালা ছাড়ো। সব কিছু সবার কাছে পাঠালে কেউ পায় না — শুধু কাদা বাড়ে। একবার পুরো পুকুর এক গাছে ঢেলেছিলাম; গাছ ডুবে গিয়েছিল, পাশের সব তেতুল পানিশূন্য হয়ে গিয়েছিল।"', 'সরু নালার ছলাৎ-ছলাৎ শব্দে চোখ বুজতেই দেখা যায় — লক্ষ্যবিহীন দান কেবল ক্ষতি বাড়ায়।')</div><div class="dialogue en">"Don't flood the field — narrow channels to each tree's root. I once poured a whole pond into one tree; it drowned, the tamarinds went dry."</div>
   <div class="code-block">provide/inject-শাস্ত্র — টাইপড-কী ছাঁচে
 
 ① নাম-কী খোদাই (টাইপসহ — ভুল-কলস রোধ):
@@ -150,6 +151,7 @@ doors.push({
   the waiting stage</strong> (<code>Suspense</code>): a fallback curtain hangs until async-setup components are ready,
   then swaps. <strong>Machine five — the sleep-wardrobe</strong> (<code>KeepAlive</code>): on tab-switch the old
   screen isn't destroyed — it sleeps (deactivated) and wakes (activated) with scroll, form, and mind intact.</p>
+  <div class="dialogue">('"এক কাঠে সব ঘর হয় না," শেখ নেয়ামত উঠোনে বাঁকানো তক্তা দেখালেন, "সস্তার ঘর বারান্দায় বসে, ভারী ঘর পাথরের মাথায়। তাই বটল-মেশিনে সবাই সমান — সামনে থাকলে আমি এক প্রশ্নে চিনে ফেলি, কে বানিয়েছে। নাম-না-জানা কাঠ দিয়ে মসজিদের দরজা বানাতে গিয়েছিলাম — দুই বছরে ফাটল ধরেছিল।"', 'তক্তার আঁকাবাঁকা রেখা আঙুলে ঠেকে বোঝা যায় — কোন কাঠ কোন ভার বইতে পারে, তা চেহারায়ই লেখা।')</div><div class="dialogue en">"One wood doesn't make every house — cheap rooms sit on the arcade, heavy rooms on stone. Unknown wood once cracked my mosque door in two years."</div>
   <div class="code-block">উন্নত-পাঁচযন্ত্র — প্রতিটির ছাঁচ (Vue 3.5)
 
 ① রাতের-ফ্রেম — &lt;component :is&gt;:

@@ -29,6 +29,7 @@ doors.push({
   dress-room (ui). <strong>Five — the secret chamber</strong> (.env split dev/prod; never committed). <strong>Six —
   first weave</strong> (dev server, HMR lamp)." He holds up LedgerPilot's real courtyard-plan — standing on exactly
   this division, a 117-view loom.</p>
+  <div class="dialogue">('"ছয় ধাপ না গেলে বাজারে নামো না," মোস্তফা মিয়া ছয়টা খুঁটি পুঁতে দিলেন, "কাঠ-মাপ-রেখা-কাটা-ঘষা-জোড়া — একটা বাদ গেলে পুরো তাঁত নড়ে যায়। আমার প্রথম তাঁত কেনেছিলাম পাঁচ ধাপে; প্রথম বড় কাপড়েই সুতো ধরেনি।"', 'ছয় খুঁটির ছায়া লম্বা হয়ে পড়ে — প্রতিটি ধাপ নিজের ভার বইছে, এটাই দেখায়।')</div><div class="dialogue en">"Six stakes before the market — wood, measure, line, cut, polish, join. My first loom skipped one; the first big cloth never held thread."</div>
   <div class="code-block">তাঁত-স্থাপন — ছয়-ধাপ (নতুন-প্রজেক্ট-প্রথম-দিন)
 
 ① কাঠ-আনা (স্ক্যাফোল্ড):
@@ -102,6 +103,13 @@ doors.push({
   npm run preview    # বান্ডল-স্বাদ
   npm run lint       # রেখা-রাংতা-যাচাই
   npm run type-check # vue-tsc-মাপ-নথি</div>
+  <ul class="checklist">
+  <li>npm create vite → vue-ts ছাঁচ</li>
+  <li>@ alias — tsconfig + vite.config দুই জায়গায়</li>
+  <li>ESLint flat config + prettier</li>
+  <li>ভাগ করা ফোল্ডার-আইন: features/shared/app/ui/core</li>
+  <li>env-ভাগ: .env.development / .env.production</li>
+</ul>
   <div class="verse">বন্না — মজবুত-ভিত: "তারপর তার ভিত কি আল্লাহর-তাকওয়া ও-সন্তুষ্টির-উপর, না-বা ভাঙা-মাটির-ধারে?" (৯:১০৯) — একই-কাঠ, ভিত-ভেদে-জীবন-মৃত্যু। মোস্তফা মিয়ার ছয়-ধাপ সেই বন্নার-উপাসনা: স্ক্যাফোল্ড-কাঠ, টাইপ-মাপ, লিন্ট-রেখা, স্তর-ভাগ, গোপন-কুঠুরি, প্রথম-প্রদীপ — প্রতিটি-ধাপ পরের-ধাপের-ভিত, কোনোটাই-অবহেলার-নয়। যে-তাঁত তাড়ায়-সরাসরি-বুনতে-বসে, তার-কাপড় সুন্দর-হতে-পারে — কিন্তু তৃতীয়-মাসেই হাড়-ভাঙা-তাঁতে-পুনরায়-মাস্টারি।</div>
   <div class="diagram">
     <div class="diag-title">Loom Installation — Six Rites, Five Rooms</div>
@@ -180,6 +188,7 @@ doors.push({
   without walls, spun inside an effectScope-room. <strong>Fourth</strong>: the E2E roof — real browser, real clicks,
   real paths; the whole city walked in dawn light. Sabur's rule: <strong>"when a claim rises, lower a flag (write the
   test) — else none shall believe."</strong></p>
+  <div class="dialogue">('"মিনারের চূড়ায় প্রদীপ," ওস্তাদ নাজির বললেন, "আর প্রতিটি তলায় পাহারা। উপরের আলো নিচের অন্ধকার দেখে না — দেখে নিচের পাহারা। আমি একবার শুধু চূড়ার প্রদীপ বিশ্বাস করেছিলাম; নিচের তলার ফাঁক দিয়ে সব জল ঢুকে গিয়েছিল।"', 'পাথরের সিঁড়ির ঠান্ডা তাপমাত্রা হাতে লাগে — উঁচু আলো আর নিচের পাহারা, দুই-ই চাই।')</div><div class="dialogue en">"A lamp at the tower's crown, a guard on every floor. I once trusted only the crown lamp; water entered through a lower gap."</div>
   <div class="code-block">পরীক্ষা-শাস্ত্র — চার-তলা (LP-র প্রকৃত-রীতি)
 
 স্থাপন:
@@ -295,6 +304,12 @@ doors.push({
   পুরো-ব্যবহারকারী-যাত্রা       | ④ Playwright
   · নিচের-তলায়-সস্তা; উপরে-নামা
     দামি — যত-নিচে-সম্ভব-তত-নিচে</div>
+  <div class="stat-grid">
+  <div class="stat-card"><div class="sc-num">mount</div><div class="sc-label">তলা-১ · প্রাণ</div></div>
+  <div class="stat-card"><div class="sc-num">MSW</div><div class="sc-label">তলা-২ · নকল-জাহাজ</div></div>
+  <div class="stat-card"><div class="sc-num">E2E</div><div class="sc-label">তলা-৩ · প্রকৃত-পথ</div></div>
+  <div class="stat-card"><div class="sc-num">২,৬২২</div><div class="sc-label">LP-টেস্ট · প্রমাণ</div></div>
+</div>
   <div class="verse">ইমতিহান — প্রমাণ-পরীক্ষা: "আমি তোমাদের পরীক্ষা করব কল্যাণ ও-অকল্যাণে" নয় বরং সূরা-ধারা (২১:৩৫-এর সার) — ঘোষিত-সত্য পরীক্ষা-ছাড়া-মূল্যহীন। হাফেজ সবুরের-মিনার সেই ইমতিহানের-স্থাপত্য: চার-তলায়-চার-ধরনের-আগুন, প্রতিটি-দাবি নিজ-যোগ্য-তলায়-নামে। যে-কারখানা দাবি-করে-পরীক্ষা-ছাড়া, সে বিক্রয়-করে-বিশ্বাস-নয়-কল্পনা; আর যে-পরীক্ষা সব-উপরের-তলায়-চড়ায়, সে ধীর-হয়ে-সকাল-পর্যন্ত-দেরি-করায় — দুই-ই-ব্যর্থ, ভারসাম্য-মিনারের-শর্ত।</div>
   <div class="diagram">
     <div class="diag-title">The Four-Storey Minaret — Claim → Floor</div>
