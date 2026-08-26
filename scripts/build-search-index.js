@@ -60,6 +60,10 @@ function extractBookDoors(dir, files) {
     return '';
   });
   const fn = new Function(cleaned + '\nreturn typeof doors!=="undefined"?doors:[];');
+  // Books that use the `var doors = globalThis.doors = globalThis.doors || []`
+  // browser-safe pattern leak their array onto globalThis; reset between books
+  // or the next such book appends to the previous book's doors.
+  globalThis.doors = undefined;
   return fn() || [];
 }
 

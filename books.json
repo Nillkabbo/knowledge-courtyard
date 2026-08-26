@@ -639,6 +639,17 @@
       "color": "game-57",
       "tag": "Book 57 · Trine DIT Doctoral Journey",
       "status": "live"
+    },
+    {
+      "n": 58,
+      "folder": "mirror-weaver",
+      "title_en": "The Mirror Weaver's Workshop",
+      "title_bn": "আয়না-বোনার কারখানা",
+      "icon": "🪞",
+      "category": "cs",
+      "color": "game-58",
+      "tag": "Book 58 · Vue.js Complete Guide",
+      "status": "live"
     }
   ],
   "roadmap": [
@@ -706,7 +717,8 @@
         {
           "book": 54,
           "why": "a complete production codebase end-to-end — domain, patterns, stack internals, and how to ship a feature safely."
-        }
+        },
+        58
       ]
     },
     {

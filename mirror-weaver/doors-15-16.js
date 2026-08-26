@@ -1,0 +1,306 @@
+
+doors.push({
+  num: 15,
+  icon: "📡",
+  color: "#818cf8",
+  name: "দূতের সমুদ্র-পথ",
+  subtitle: "The Envoy's Sea-Route — The API Layer",
+  tech: "axios client, baseURL/timeout, CSRF ensure, 401 handler, 403-retry, error normalization (getApiErrorMessage), service-per-feature",
+  spirit: "রিসালতুল-বাহর — the sea-mission: every ship returns with news, good or bad",
+  secret: "কম্পোনেন্ট fetch-কোড জানে না — সার্ভিস-স্তর জানে; ইন্টারসেপ্টরে চাবি-পাসপোর্ট (CSRF), ৪০১-ঘরে-ফেরত, ৪০৩-একবার-পুনঃচেষ্টা; এরর এক-ভাষায় (নরমালাইজড) ওঠে।",
+  recall: {
+    q: "সব কম্পোনেন্টে axios.get সরাসরি না লিখে সার্ভিস-স্তর কেন?",
+    qen: "Why a service layer over direct axios calls?",
+    a: "এক-জায়গায় baseURL/CSRF/এরর-ভাষা/401-আচরণ বাঁধা যায়; কম্পোনেন্ট শুধু অর্থ জানে (svc.list()), পরিবহন নয়; টেস্টে সার্ভিস-মক এক-জায়গায়; বিশ-কম্পোনেন্টে বিশ-কপি বয়লার নয়।",
+    aen: "Transport concerns (CSRF, 401, error language) bind in one place; components speak meaning, not transport; tests mock one seam."
+  },
+  story: `<p class="scene-setting">পনেরো নম্বর ঘর একটা <strong>বন্দর</strong>। জেটিতে সারি-সারি জাহাজ (HTTP-অনুরোধ), আর বন্দর-কর্মকর্তা <strong>ক্যাপ্টেন রুমান</strong> —
+  কুঁড়িতে দুই-মুখো টেলিস্কোপ (চালু-অনুরোধ/ফেরত-উত্তর)। তাঁর তিন-নিয়মের বোর্ড ঝোলে: <strong>"প্রতিটি লেখা-জাহাজে চাবি-পাসপোর্ট লাগে"</strong>
+  (CSRF-টোকেন নিশ্চিত-করে-হেডারে), <strong>"৪০১-খবরে যাত্রী ঘরে-ফেরত"</strong> (অনুমোদিত-নয় → লগইন-হ্যান্ডলার, একবারই — ঝাঁকের-সব-জাহাজ মিলে দুইবার
+  নয়), <strong>"৪০৩-চাবি-পুরনো শুনে একবার নতুন-চাবিতে পুনঃযাত্রা"</strong> (একবারই, লুপ-নয়)। তারপর তিনি ফেরত-খবরের অনুবাদ-ঘর দেখান: সার্ভারের
+  নানা-ভাষার এরর (নেটওয়ার্ক, টাইমআউট, {field:[…]}) এক-বন্দর-ভাষায় নামে — <code>getApiErrorMessage</code> — যেন কারিগর দেয়ালে বসেই মানুষের-মতো
+  পড়তে পারে। শেষে তিনি সার্ভিস-গুদাম দেখান: প্রতি-ফিচারের নিজের সার্ভিস-ফাইল (authService, accountService…) — কম্পোনেন্ট কেবল গুদামের-ঠিকানা
+  জানে, সমুদ্র-চলার-শিল্প নয়।</p>
+  <p class="scene-setting en">Room fifteen is a <strong>harbor</strong>. Ships (HTTP requests) in queues on the jetty,
+  and harbor-master <strong>Captain Roman</strong> — a two-eyed telescope on the bridge (outgoing/returning). His
+  three-rule board hangs: <strong>"every writing-ship needs the key-passport"</strong> (CSRF token ensured into the
+  header), <strong>"on 401-news the passenger goes home"</strong> (unauthorized → login handler, exactly once per
+  burst), <strong>"on 403-stale-key, one retry with a fresh key"</strong> (once, never a loop). Then the
+  translation-room for returning news: the server's many error tongues (network, timeout, {field:[…]}) land in one
+  harbor-language — <code>getApiErrorMessage</code> — so an artisan reads it like a person from the wall. Finally the
+  service-warehouse: each feature's own service file (authService, accountService…) — components know only the
+  warehouse address, not the art of sailing.</p>
+  <div class="code-block">API-স্তর-শাস্ত্র — LP-র প্রকৃত apiClient-ছায়া
+
+স্থাপত্য (এক-নজরে):
+  কম্পোনেন্ট → কম্পোজেবল (useDataFetch/useMutationAction)
+           → সার্ভিস (authService.list() …)
+           → apiClient (ইন্টারসেপ্টর: CSRF/401/403)
+           → সার্ভার
+  · প্রতি-ফিচারের সার্ভিস-ফাইল; apiClient এক;
+    কম্পোনেন্টে axios-আমদানি নিষেধ-গন্ধ
+
+ক্লায়েন্ট-জন্ম (createApiClient):
+  const apiClient = createApiClient({
+    baseURL: import.meta.env.VITE_API_URL
+              ?? 'http://localhost:8000',
+    timeout: 10_000,
+    withCredentials: true,   // সেশন-কুকি প্রতি-জাহাজে
+  })
+  · ইনজেক্টেবল-অপশন: টেস্টে নিজের csrf/401-হ্যান্ডলার
+    (LP-প্যাটার্ন: createApiClient(options) — ফ্যাক্টরি)
+
+নিয়ম-এক — লেখা-জাহাজে চাবি (অনুরোধ-ইন্টারসেপ্টর):
+  const WRITE = ['post', 'put', 'patch', 'delete']
+  api.interceptors.request.use(async (config) =&gt; {
+    if (WRITE.includes(config.method ?? '')) {
+      config.headers.set('X-CSRFToken',
+        await ensureCSRFToken())      // কুকি↔হেডার-মিল
+    }
+    return config
+  })
+  · ensureCSRFToken: কুকি-থাকলে-ফেরত, নইলে
+    /api/accounts/csrf/ থেকে-বসানো; সমান্তরাল-ডাক
+    এক-প্রমিজে-বাঁধা (ডুপ্লিকেট-রোধ)
+
+নিয়ম-দুই — ৪০১-ঘরে-ফেরত (উত্তর-ইন্টারসেপ্টর):
+  if (status === 401 &amp;&amp; !url.includes('/login/')) {
+    // ঝাঁকের-সব-401 এক-হ্যান্ডলারে (শেয়ার্ড-প্রমিজ):
+    return unauthorizedHandlingPromise ??= (async () =&gt; {
+      onUnauthorized({ status, detail })
+      // → অ্যাপ: auth.logout() + login-নেভিগেশন
+    })().finally(() =&gt; unauthorizedHandlingPromise = null)
+  }
+  · registerUnauthorizedHandler(cb) — অ্যাপ-স্তরে-একবার
+
+নিয়ম-তিন — ৪০৩-পুরনো-চাবি, একবার-পুনঃযাত্রা:
+  if (status === 403 &amp;&amp; WRITE.includes(method)
+      &amp;&amp; !config.__hasRetriedCSRF) {
+    config.__hasRetriedCSRF = true          // লুপ-রোধ
+    config.__csrfTokenOverride =
+      await ensureCSRFToken(/* force */ true)
+    return apiClient.request(config)        // একবারই
+  }
+
+অনুবাদ-ঘর — এরর-নরমালাইজেশন:
+  catch (e) {
+    // কাঁচা-নয়, বন্দর-ভাষায়:
+    error.value = getApiErrorMessage(e,
+      'সার্ভার-ত্রুটি: একটু পরে চেষ্টা করুন')
+  }
+  · getApiErrorMessage(e, fallback):
+    – AxiosError?.response?.data?.detail
+    – অথবা {field:[msg]} → প্রথম-বার্তা
+    – নেটওয়ার্ক/টাইমআউট → মানব-বার্তা
+    – শেষে-fallback
+  · parseFormError(e) → ফিল্ড-নামে-বিভাজিত
+    (ফর্ম-দরজা ১৬-এর খাবার)
+  ⚠ এরর-স্ট্রিং v-html-এ নয় — টেক্সট-ই (XSS)
+
+সার্ভিস-ফাইল (প্রতি-ফিচার-একটি):
+  // features/account/services.ts
+  export const accountService = {
+    getNotificationPrefs: () =&gt;
+      apiClient.get&lt;Prefs&gt;('/api/accounts/me/prefs/')
+      .then(r =&gt; r.data),
+    patchNotificationPrefs: (patch) =&gt;
+      apiClient.patch&lt;Prefs&gt;('/api/accounts/me/prefs/',
+        patch).then(r =&gt; r.data),
+  }
+  · জেনারেটেড-টাইপ ব্যবহার (drf-spectacular →
+    api.generated.ts) — হাতে-লিখলে টিকা-বাধ্য
+
+টেস্ট-সুত্র (দরজা ২৩-এর সেতু):
+  MSW http.get('\${API}/api/accounts/me/') → মক-জাহাজ;
+  কম্পোজেবল-টেস্ট পুরো-বন্দর-না-জেনেই চলে</div>
+  <div class="verse">রিসালতুল-বাহর — সমুদ্র-অভিযানের সততা: "তাদের কল্যাণে তারা সমুদ্রে চলে" নয় বরং বাণিজ্য-আয়াতের ছায়া (২:৩-এর ভাব) — যাত্রা হবেই, নিয়মে হবে। ক্যাপ্টেন রুমানের বন্দর সেই নিয়মের কারিগরি রূপ: চাবি-ছাড়া লেখা-জাহাজ ছাড়ে না, ৪০১-এ যাত্রী-হারানো-নয়-ঘরে-ফেরত, ৪০৩-এ একবারই পুনঃযাত্রা, আর সব-খবর অনুবাদ-ঘরে — কাঁচা সমুদ্রের ভাষা কারিগরের হাতে নয়। যে বন্দরে প্রতি-জাহাজ নিজের-নিয়ম বাঁধে, সেখানে একদিন চাবিহীন-জাহাজই সোনা নামায়।</div>
+  <div class="diagram">
+    <div class="diag-title">The Harbor — One Client, Three Rules, One Language</div>
+    <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="arrowH15" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/></marker></defs>
+      <rect x="15" y="14" width="530" height="64" rx="10" fill="rgba(129,140,248,0.10)" stroke="#818cf8" stroke-width="1.5"/>
+      <text x="280" y="35" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">🏗️ স্তর-স্রোত: কম্পোনেন্ট → কম্পোজেবল → সার্ভিস → apiClient → সার্ভার</text>
+      <text x="280" y="51" text-anchor="middle" fill="#94a3b8" font-size="7">সার্ভিস-প্রতি-ফিচার · কম্পোনেন্টে axios-আমদানি নিষেধ · টেস্টে এক-সীমায়-মক</text>
+      <text x="280" y="67" text-anchor="middle" fill="#64748b" font-size="6.5">createApiClient({ baseURL, timeout:10s, withCredentials:true }) — ফ্যাক্টরি-অপশন-ইনজেক্ট</text>
+      <rect x="15" y="96" width="165" height="90" rx="10" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.4"/>
+      <text x="97" y="116" text-anchor="middle" fill="#7ee0b0" font-size="8" font-weight="700">🔑 নিয়ম-১: CSRF</text>
+      <text x="97" y="131" text-anchor="middle" fill="#94a3b8" font-size="6.5">লেখা-জাহাজে X-CSRFToken</text>
+      <text x="97" y="145" text-anchor="middle" fill="#64748b" font-size="6">ensureCSRFToken() — কুকি↔হেডার</text>
+      <text x="97" y="160" text-anchor="middle" fill="#7ee0b0" font-size="6.5">সমান্তরাল-ডাক এক-প্রমিজে</text>
+      <text x="97" y="178" text-anchor="middle" fill="#64748b" font-size="6">অনুরোধ-ইন্টারসেপ্টর</text>
+      <rect x="197" y="96" width="165" height="90" rx="10" fill="rgba(248,113,113,0.07)" stroke="#f87171" stroke-width="1.4"/>
+      <text x="279" y="116" text-anchor="middle" fill="#f87171" font-size="8" font-weight="700">🚪 নিয়ম-২: 401</text>
+      <text x="279" y="131" text-anchor="middle" fill="#94a3b8" font-size="6.5">ঘরে-ফেরত (login-হ্যান্ডলার)</text>
+      <text x="279" y="145" text-anchor="middle" fill="#64748b" font-size="6">registerUnauthorizedHandler — একবার</text>
+      <text x="279" y="160" text-anchor="middle" fill="#f87171" font-size="6.5">ঝাঁকের-সব-জাহাজ → এক-প্রমিজ</text>
+      <text x="279" y="178" text-anchor="middle" fill="#64748b" font-size="6">/login/-নিজে ব্যতিক্রম</text>
+      <rect x="379" y="96" width="166" height="90" rx="10" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1.4"/>
+      <text x="462" y="116" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">🔁 নিয়ম-৩: 403-পুনঃযাত্রা</text>
+      <text x="462" y="131" text-anchor="middle" fill="#94a3b8" font-size="6.5">পুরনো-চাবি → নতুন-বাধাই-একবার</text>
+      <text x="462" y="145" text-anchor="middle" fill="#64748b" font-size="6">__hasRetriedCSRF লুপ-রোধ</text>
+      <text x="462" y="160" text-anchor="middle" fill="#fcd34d" font-size="6.5">শুধু লেখা-মেথডে</text>
+      <text x="462" y="178" text-anchor="middle" fill="#64748b" font-size="6">force-refresh + পুনঃrequest</text>
+      <rect x="15" y="202" width="530" height="68" rx="10" fill="rgba(100,116,139,0.08)" stroke="#94a3b8" stroke-width="1.3"/>
+      <text x="280" y="223" text-anchor="middle" fill="#cbd5e1" font-size="8" font-weight="600">🔤 অনুবাদ-ঘর: getApiErrorMessage(e, fallback) + parseFormError(e)</text>
+      <text x="280" y="238" text-anchor="middle" fill="#94a3b8" font-size="7">detail → {field:[msg]}-প্রথম → নেটওয়ার্ক/টাইমআউট-মানবীয় → fallback — কাঁচা-AxiosError কখনো-ই দেয়ালে নয়</text>
+      <text x="280" y="254" text-anchor="middle" fill="#64748b" font-size="6.5">⚠ এরর-টেক্সট v-html-এ নিষেধ · MSW-মক এই-স্তরেই-বসে (দরজা ২৩)</text>
+      <line x1="280" y1="78" x2="280" y2="94" stroke="#a5b4fc" stroke-width="1.6" marker-end="url(#arrowH15)"/>
+      <text x="280" y="290" text-anchor="middle" fill="#64748b" font-size="8">সমুদ্র-চলা বন্দরের-নিয়মে: চাবি, ঘরে-ফেরত, একবার-পুনঃযাত্রা, অনুবাদিত-খবর</text>
+    </svg>
+    <div class="diag-cap">এক ক্লায়েন্ট-স্রোতে তিন-নিয়ম + এক-ভাষা: কম্পোনেন্ট অর্থ বলে, বন্দর পরিবহন সামলায়।</div>
+  </div>
+  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>বন্দর-ফাঁদ:</strong> (১) কম্পোনেন্টে সরাসরি axios — কোন-দেয়ালে কোন-চাবি-নিয়ম চলছে তা অজানা, টেস্টে বন্দর-নকল করা যায় না; সার্ভিস-স্তর ছাড়বে না। (২) ৪০৩-রিট্রাই চিহ্ন-ছাড়া — চাবি-তাজা-করার-লুপে জাহাজ অনন্তকাল ঘোরে; <code>__hasRetriedCSRF</code>-জাত পতাকা বাধ্যতামূলক। (৩) কাঁচা এরর-স্ট্রিং দেয়ালে (<code>e.message</code>) — ব্যবহারকারী ডেভ-ভাষা পড়ে; getApiErrorMessage-ই দরজা।</div></div>
+  <div class="secret-box">📡 পরিবহন বন্দরে: CSRF-চাবি লেখায়, 401-এ ঘরে, 403-এ একবার-পুনঃযাত্রা; খবর অনুবাদিত-ওঠে, কম্পোনেন্ট অর্থ-জানে। / One harbor, three rules, normalized news.</div>`,
+  senior: {
+    title: "API Layer Card",
+    body: `<p><strong>স্রোত</strong>: কম্পোনেন্ট→কম্পোজেবল→সার্ভিস(প্রতি-ফিচার)→apiClient→সার্ভার। <strong>ক্লায়েন্ট</strong>: createApiClient (baseURL/timeout/withCredentials; ফ্যাক্টরি-টেস্ট)। <strong>নিয়ম</strong>: ① লেখা-মেথডে ensureCSRFToken→X-CSRFToken (সমান্তরাল-ডাক-এক-প্রমিজ) ② 401→registerUnauthorizedHandler (ঝাঁক-ডিডুপ, /login/-ব্যতিক্রম) ③ 403-লেখা→একবার force-refresh+পুনঃrequest (__hasRetriedCSRF)। <strong>ভাষা</strong>: getApiErrorMessage/parseFormError — কাঁচা-এরর-নিষেধ। <strong>টেস্ট</strong>: MSW এ-স্তরে।</p>`
+  }
+});
+
+doors.push({
+  num: 16,
+  icon: "📝",
+  color: "#818cf8",
+  name: "পাণ্ডুলিপির দপ্তর",
+  subtitle: "The Manuscript Office — Forms that Survive",
+  tech: "form state patterns, field errors from parseFormError, dirty-tracking, beforeRouteLeave guard, progressive disclosure, multi-step",
+  spirit: "শাহাদাতুল-কিতাব — the attested document: nothing lost, nothing silent",
+  secret: "ফর্মের-সত্য স্থানীয়, জমা-মুহূর্তে যাত্রা; ফিল্ড-এরর parseFormError-এর-খাঁচায়, অসংরক্ষিত-প্রস্থান beforeRouteLeave-এ সাবধান — কাঁচা-submit নয়।",
+  recall: {
+    q: "সার্ভারের {email:['এই ফিল্ড লাগবে']} — দেয়ালে কীভাবে পৌঁছাবে?",
+    qen: "How do server field errors reach the wall?",
+    a: "parseFormError(e) → Record&lt;field,string[]&gt;-খাঁচা; টেমপ্লেটে ফিল্ড-পাশে getFirstError(errors,'email')-ধরা; _form-কীতে ফর্ম-স্তরের-বার্তা। কাঁচা-JSON কখনো সরাসরি নয়।",
+    aen: "parseFormError shapes it into a per-field record; the template reads getFirstError(errors,'email'); _form carries the form-level message."
+  },
+  story: `<p class="scene-setting">ষোলো নম্বর ঘর <strong>পাণ্ডুলিপির দপ্তর</strong> — লম্বা টেবিলে ফর্মের খসড়া, দেয়ালে লাল-সবুজ সিলমোহরের সারি। দপ্তরি <strong>মুনশি
+  আফসার</strong> — তাঁর কানের-পাশে পেন্সিল-গোছা, প্রতিটি খসড়ার কোণে ছোট্ট 'খ-চিহ্ন' (dirty)। তিনি ব্যাখ্যা করেন — <strong>"খসড়া লেখকের টেবিলেই
+  থাকে (স্থানীয়-অবস্থা), চূড়ান্ত-হলেই কোরিয়ার (সাবমিট)। কোরিয়ার-ফেরত দুই-রকম খবর আনে: ফর্ম-জুড়ের (ভুল-পাসওয়ার্ড) আর ফিল্ড-ধরা (এই-ঘরের
+  লেখা ভুল) — দুটো আলাদা-আলাদা জায়গায় বসবে।"</strong> তারপর তিনি একটা অর্ধেক-লেখা খসড়া তুলে ধরে জানালার-দিকে যাওয়া-যাওয়া শাগিরদকে থামান —
+  <strong>"অসংরক্ষিত-খসড়া নিয়ে দপ্তর-ছাড়া? একবার জিজ্ঞেস তো করো।"</strong> (<code>beforeRouteLeave</code> + dirty-চিহ্ন = প্রস্থান-সাবধান)। শেষে
+  তিনি LedgerPilot-এর প্রোফাইল-পাণ্ডুলিপি খুলে দেখান চালাকি-এক: ইমেইল না-বদলালে পাসওয়ার্ড-ঘর দেখাই হয় না (progressive disclosure) —
+  <em>মূল-ইমেইলের</em> সাথে তুলনায় সিদ্ধান্ত, মানে শুধু-নাম-বদল কখনো পুনঃপ্রমাণ চায় না।</p>
+  <p class="scene-setting en">Room sixteen is the <strong>manuscript office</strong> — form drafts on a long table,
+  rows of red-green seals on the wall. Registrar <strong>Munshi Afsar</strong> — a pencil-bunch at his ear, a small
+  'draft-mark' (dirty) in each draft's corner. He explains — <strong>"drafts stay on the writer's table (local
+  state); only when final does the courier go (submit). Courier-back brings two kinds of news: form-wide (wrong
+  password) and field-caught (this room's writing is wrong) — each lands in its own place."</strong> Then he lifts a
+  half-written draft and stops an apprentice drifting toward the window — <strong>"leaving the office with an unsaved
+  draft? Ask once, at least."</strong> (<code>beforeRouteLeave</code> + dirty-mark = exit-caution). Finally he opens
+  LedgerPilot's profile-manuscript to show one cleverness: unless the email changes, the password-room stays hidden
+  (progressive disclosure) — decided by comparison with the <em>original</em> email, so a mere name-change never
+  demands re-proof.</p>
+  <div class="code-block">ফর্ম-শাস্ত্র — ProfileView-এর প্রকৃত-ছায়া
+
+① অবস্থা-বিন্যাস (স্থানীয় + মূল-নোঙর):
+  const firstName = ref(auth.user?.first_name ?? '')
+  const originalEmail = ref(auth.user?.email ?? '')
+  const email = ref(originalEmail.value)   // নোঙর-সেট
+  const currentPassword = ref('')
+  const emailChanged = computed(() =&gt;
+    email.value.trim() !== originalEmail.value)
+  · progressive disclosure:
+    &lt;PasswordField v-if="emailChanged"
+      v-model="currentPassword" /&gt;
+  · সফল-সাবমিটে নোঙর-পুনঃসিঙ্ক:
+    originalEmail.value = email.value
+    (নইলে পাসওয়ার্ড-ঘর আটকে-থাকে-খোলা)
+
+② এরর-খাঁচা (সার্ভার-ভাষা → ফিল্ড-ভাষা):
+  const fieldErrors = ref&lt;
+    Record&lt;string, FieldError&gt;&gt;({})
+  const formError = ref&lt;string&gt;('')
+  async function onSubmit() {
+    saving.value = true; formError.value = ''
+    try {
+      await accountService.updateProfile({
+        first_name: firstName.value, … })
+      toast.success('সংরক্ষিত')
+    } catch (e) {
+      const parsed = parseFormError(e)
+      formError.value = parsed._form ?? ''
+      fieldErrors.value = parsed.fields ?? {}
+      // টেমপ্লেটে:
+      // &lt;TextInput :error="getFirstError(
+      //    fieldErrors, 'email')" … /&gt;
+    } finally { saving.value = false }
+  }
+  · বোতাম-তালা: :disabled="saving" +
+    useMutationAction-এর রি-এন্ট্র্যান্সি (দরজা ৯)
+
+③ dirty-চিহ্ন (অসংরক্ষিত-ট্র্যাক):
+  const pristine = () =&gt;
+    firstName.value === (auth.user?.first_name ?? '')
+    &amp;&amp; email.value === originalEmail.value
+    &amp;&amp; currentPassword.value === ''
+  · অথবা শুরুর-স্ন্যাপশট রেখে JSON-তুলনা
+
+④ প্রস্থান-সাবধান (রুট-উপাদানে):
+  onBeforeRouteLeave(() =&gt; {
+    if (pristine()) return true
+    return window.confirm(
+      'অসংরক্ষিত পরিবর্তন — তবু যাবে?')
+  })
+  · ব্রাউজার-ট্যাব-বন্ধও ধরতে: onBeforeRouteLeave+
+    beforeunload (উইন্ডো-স্তর)
+
+⑤ ধরন-যাচাই (ক্লায়েন্ট-পাহারা, সার্ভার-চূড়ান্ত):
+  · হালকা-নিয়ম: required/ইমেইল-ছাঁচ — HTML5+
+    ছোট-কম্পিউটেড; জটিল হলে vee-validate-
+    জাতীয় লাইব্রেরি (নতুন-নির্ভরতা বিবেচনায়)
+  · সার্ভার-ই-সত্য: ক্লায়েন্ট-যাচাই UX-এর-জন্য,
+    নিরাপত্তার-নয়
+
+⑥ বহু-ধাপ-ফর্ম (উইজার্ড):
+  · ধাপ = স্থানীয়-রুট বা ধাপ-অবস্থা;
+    প্রতি-ধাপে আংশিক-যাচাই, শেষে-এক-সাবমিট
+  · ধাপ-জুড়ে-অবস্থা: এক-উপাদানে রাখো
+    (উপাদান-ত্যাগে-মৃত্যু), বা স্টোর (দরজা ১০)
+  · KeepAlive (দরজা ১২) — ধাপ-পেছনে-গেলে
+    পূর্বের-ভরাট-বাঁচে
+
+⑦ বড়-ফর্মের-পারফরম্যান্স:
+  · প্রতি-কীস্ট্রোকে-পিতা-বড়-রিরেন্ডার এড়াতে:
+    প্রতিটি-ফিল্ড-নিজ-উপাদানে (TextInput-জাত),
+    অথবা v-model.lazy + সাবমিটে-একত্র-পাঠ</div>
+  <div class="verse">শাহাদাতুল-কিতাব — লিপিবদ্ধ-সাক্ষ্য: "লিখে রাখো, ঋণ এক নির্দিষ্ট মেয়াদ পর্যন্ত" (২:২৮২-এর আদেশ-ছায়া) — লেখা যেন হারায় না, ভুল যেন নীরবে না থাকে। মুনশি আফসারের দপ্তর সেই লিপি-শৃঙ্খলার ফর্ম-রূপ: খসড়া-চিহ্ন, ফিল্ড-সিল, প্রস্থান-প্রশ্ন — তিনটাই এক-উদ্দেশ্যে, ব্যবহারকারীর লেখা রক্ষা। যে দপ্তরে খসড়া নীরবে-হারায়, সেখানে লোকে লেখাই ছেড়ে দেয়; আর যেখানে ভুল-সিল নীরবে-চাপা পড়ে, সে-লেখা সাক্ষ্য নয় — বোঝা।</div>
+  <div class="diagram">
+    <div class="diag-title">The Manuscript Office — Draft, Courier, Seals, Exit-Gate</div>
+    <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="arrowF16" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/></marker></defs>
+      <rect x="15" y="14" width="253" height="96" rx="10" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.4"/>
+      <text x="141" y="34" text-anchor="middle" fill="#7ee0b0" font-size="8.5" font-weight="700">📝 খসড়া-টেবিল (স্থানীয়-অবস্থা)</text>
+      <text x="141" y="49" text-anchor="middle" fill="#94a3b8" font-size="6.5">refs: fields + originalEmail-নোঙর + currentPassword</text>
+      <text x="141" y="63" text-anchor="middle" fill="#64748b" font-size="6.5">emailChanged-কম্পিউটেড → পাসওয়ার্ড-ঘর v-if</text>
+      <text x="141" y="80" text-anchor="middle" fill="#7ee0b0" font-size="6.5">progressive disclosure — চাহিদা-মাত্র-দেখাও</text>
+      <text x="141" y="98" text-anchor="middle" fill="#64748b" font-size="6">সফলে নোঙর-পুনঃসিঙ্ক, নইলে ঘর-আটকে-খোলা</text>
+      <rect x="292" y="14" width="253" height="96" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.4"/>
+      <text x="418" y="34" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">📦 কোরিয়ার (সাবমিট)</text>
+      <text x="418" y="49" text-anchor="middle" fill="#94a3b8" font-size="6.5">service.updateProfile(payload) — সার্ভিস-স্তরে</text>
+      <text x="418" y="63" text-anchor="middle" fill="#64748b" font-size="6.5">saving-তালা + রি-এন্ট্র্যান্সি (দরজা ৯-গার্ড)</text>
+      <text x="418" y="80" text-anchor="middle" fill="#a5b4fc" font-size="6.5">সফল → টোস্ট + রিফেচ + নোঙর-সিঙ্ক</text>
+      <text x="418" y="98" text-anchor="middle" fill="#64748b" font-size="6">ব্যর্থ → parseFormError-খাঁচায় নামে</text>
+      <line x1="268" y1="60" x2="290" y2="60" stroke="#a5b4fc" stroke-width="1.8" marker-end="url(#arrowF16)"/>
+      <rect x="15" y="128" width="530" height="76" rx="10" fill="rgba(248,113,113,0.06)" stroke="#f87171" stroke-width="1.4"/>
+      <text x="280" y="149" text-anchor="middle" fill="#f87171" font-size="8.5" font-weight="700">🔴 সিলমোহর — ফেরত-খবরের দুই-ঠিকানা</text>
+      <text x="280" y="165" text-anchor="middle" fill="#94a3b8" font-size="7">ফর্ম-জুড়ে: parsed._form → শিরো-ব্যানার ('বর্তমান পাসওয়ার্ড ভুল')</text>
+      <text x="280" y="180" text-anchor="middle" fill="#94a3b8" font-size="7">ফিল্ড-ধরা: parsed.fields → getFirstError(errors,'email') → ঘরের-পাশে-লাল</text>
+      <text x="280" y="196" text-anchor="middle" fill="#64748b" font-size="6.5">কাঁচা-JSON/আক্সিওস-বার্তা কখনো-সরাসরি-নয় · v-html-নিষেধ</text>
+      <rect x="15" y="220" width="253" height="66" rx="10" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1.4"/>
+      <text x="141" y="241" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">🚪 প্রস্থান-ফটক</text>
+      <text x="141" y="256" text-anchor="middle" fill="#94a3b8" font-size="6.5">onBeforeRouteLeave: !pristine() → confirm</text>
+      <text x="141" y="270" text-anchor="middle" fill="#64748b" font-size="6">+ beforeunload — ট্যাব-বন্ধও-ধরা</text>
+      <rect x="292" y="220" width="253" height="66" rx="10" fill="rgba(100,116,139,0.08)" stroke="#94a3b8" stroke-width="1.3"/>
+      <text x="418" y="241" text-anchor="middle" fill="#cbd5e1" font-size="8" font-weight="600">🪜 বহু-ধাপ ও পারফরম্যান্স</text>
+      <text x="418" y="256" text-anchor="middle" fill="#94a3b8" font-size="6.5">উইজার্ড: ধাপ-অবস্থা/KeepAlive · শেষে-এক-সাবমিট</text>
+      <text x="418" y="270" text-anchor="middle" fill="#64748b" font-size="6">বড়-ফর্ম: ফিল্ড-নিজ-উপাদানে বা .lazy — পিতা-রিরেন্ডার-হালকা</text>
+      <text x="280" y="302" text-anchor="middle" fill="#64748b" font-size="8">খসড়া টেবিলে, খবর সিলে, প্রস্থান প্রশ্নে — ব্যবহারকারীর-লেখা তিন-স্তরে-রক্ষিত</text>
+    </svg>
+    <div class="diag-cap">স্থানীয়-খসড়া → কোরিয়ার → দুই-ঠিকানার-সিল → প্রস্থান-ফটক: ফর্ম একটি লিপি-চুক্তি, ঘটনার-স্রোত নয়।</div>
+  </div>
+  <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>দপ্তর-ফাঁদ:</strong> (১) সফল-সাবমিটে নোঙর (originalEmail) পুনঃসিঙ্ক-না-করা — পাসওয়ার্ড-ঘর 'আটকে-খোলা' থাকে, LP-কমেন্টের-ই শিক্ষা। (২) সব-এরর এক-ব্যানারে ঢেলে-ফিল্ড-সিল-বাদ — ব্যবহারকারী খুঁজে-বেড়ায় কোন-ঘর ভুল; খাঁচা-ভাগ করো। (৩) dirty-ট্র্যাক-ছাড়া রুট-ছাড়া — দুই-ক্লিকে দুই-ঘণ্টার-লেখা উধাও; প্রস্থান-ফটক বাধ্যতামূলক-অভ্যাস।</div></div>
+  <div class="secret-box">📝 ফর্ম = লিপি-চুক্তি: খসড়া-স্থানীয়, নোঙর-প্রগতিশীল-প্রকাশ, এরর-দুই-ঠিকানায়, প্রস্থান-প্রশ্নে-সুরক্ষিত। / Local draft, anchored disclosure, two-addressed seals, gated exit.</div>`,
+  senior: {
+    title: "Forms Card",
+    body: `<p><strong>অবস্থা</strong>: স্থানীয়-refs + মূল-নোঙর (originalEmail); emailChanged-computed → progressive disclosure; সফলে নোঙর-পুনঃসিঙ্ক। <strong>সাবমিট</strong>: সার্ভিস-স্তর + saving-তালা + রি-এন্ট্র্যান্সি। <strong>এরর</strong>: parseFormError → _form (ব্যানার) + fields (getFirstError-ফিল্ডে)। <strong>প্রস্থান</strong>: onBeforeRouteLeave(!pristine→confirm) + beforeunload। <strong>বহু-ধাপ</strong>: ধাপ-অবস্থা/KeepAlive, শেষে-এক-সাবমিট। <strong>পারফরম্যান্স</strong>: ফিল্ড-উপাদান-ভাগ বা .lazy। <strong>নিয়ম</strong>: ক্লায়েন্ট-যাচাই UX, সার্ভার-সত্য।</p>`
+  }
+});

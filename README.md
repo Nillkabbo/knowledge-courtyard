@@ -1,6 +1,6 @@
 # জ্ঞানের প্রাঙ্গণ — The Learning Courtyard
 
-An interactive bilingual (Bengali/English) learning library built with the Seven Doors Method. **54 books, 646 chapters, 64,600 XP** — covering AI engineering, CS fundamentals, software engineering, math, statistics, research craft, career mindset, and more.
+An interactive bilingual (Bengali/English) learning library built with the Seven Doors Method. **58 books, 731 chapters, 73,100 XP** — covering AI engineering, CS fundamentals, software engineering, math, statistics, research craft, career mindset, and more.
 
 ## 📚 The 54 Books — 5 Categories
 
@@ -33,7 +33,7 @@ An interactive bilingual (Bengali/English) learning library built with the Seven
 | 📐 18 | **The Geometry of Meaning** | Embeddings (vector search, Matryoshka) |
 | 🔌 19 | **The Tool Forge** | Tools & MCP (function calling, Model Context Protocol) |
 
-### ⚙️ CS & Systems (Books 22, 30–31, 35–41, 42–54) — 23 books
+### ⚙️ CS & Systems (Books 22, 30–31, 35–41, 42–56, 58) — 26 books
 
 | # | Book | Topic | Chapters |
 |---|------|-------|----------|
@@ -60,8 +60,12 @@ An interactive bilingual (Bengali/English) learning library built with the Seven
 | 💻 52 | **The Code Craftsman** | Code quality & refactoring mastery | 21 |
 | 🐍 53 | **The Python City** | Python A to Z — 22 guilds, problem-first | 22 |
 | ⚖️ 54 | **The Ledger Craftsman** | Real-project deep-dive: LedgerPilot (Django+Vue) — domain → deep stack → feature recipe | 37 |
+| 🎰 55 | **The Gambler's Garden** | Reinforcement Learning: agents, rewards, environments, exploration |
+| ⚡ 56 | **Talking to Silicon** | Electronics to IoT: from transistors to connected devices |
+| 🐪 57 | **The Sixty-Credit Rihla** | Trine DIT doctoral journey — 60 credits as Ibn Battuta stations |
+| 🪞 58 | **The Mirror Weaver's Workshop** | Vue.js complete guide — LedgerPilot patterns + Vue 3.5 official; 5 starter projects basic→realtime |
 
-### 🔬 Research & Mind (Books 20–21, 23–28, 32–34) — 11 books
+### 🔬 Research & Mind (Books 20–21, 23–28, 32–34, 57) — 12 books
 
 | # | Book | Topic |
 |---|------|-------|
@@ -98,7 +102,7 @@ python3 -m http.server 8740
 
 - **Category filter tabs** — filter by Core / AI & ML / CS & Systems / Research & Mind / Extras
 - **Reading Road** — 11-phase learning roadmap from meta-learning to research synthesis
-- **Search** — chapter-level search across all 40 books
+- **Search** — chapter-level search across all 58 books
 - **Seven Doors Method** — each concept taught through story, metaphor, sacred analogue, and recall challenge
 - **Bilingual** — Bengali primary, English secondary throughout
 - **Progressive unlocking** — chapters unlock sequentially with XP and rank progression
@@ -118,7 +122,7 @@ book-folder/
 └── doors-N-M.js    ← More story content
 ```
 
-The root `index.html` is the hub — the courtyard with filter tabs that connects all 40 books.
+The root `index.html` is the hub — the courtyard with filter tabs that connects all 58 books.
 
 ## 📖 Pedagogy — the Seven Doors Method
 
