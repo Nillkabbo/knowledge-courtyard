@@ -4,7 +4,7 @@ var doors = globalThis.doors = globalThis.doors || [];
 doors.push({
   num: 1,
   icon: "🪞",
-  color: "#42b883",
+  color: "#6366f1",
   name: "আয়নার শপথ",
   subtitle: "The Mirror's Oath — Vue's Declarative Philosophy",
   tech: "Imperative vs declarative DOM, createApp, mounting, why Vue exists",
@@ -100,23 +100,23 @@ SFC-এর তিন ঘর (এক .vue ফাইলে):
   <div class="diagram">
     <div class="diag-title">The Mirror's Oath — Two Workshops Compared</div>
     <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
-      <defs><marker id="arrowO1" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7ee0b0"/></marker></defs>
+      <defs><marker id="arrowO1" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/></marker></defs>
       <rect x="15" y="15" width="250" height="130" rx="11" fill="rgba(248,113,113,0.07)" stroke="#f87171" stroke-width="1.5"/>
       <text x="140" y="38" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">🏛️ পুরনো কারখানা (Imperative)</text>
       <text x="140" y="58" text-anchor="middle" fill="#94a3b8" font-size="7.5">ঘটনা → খোঁজো → হাতে আঁকো → আবার খোঁজো…</text>
       <text x="140" y="76" text-anchor="middle" fill="#94a3b8" font-size="7.5">querySelector · textContent · classList</text>
       <text x="140" y="98" text-anchor="middle" fill="#f87171" font-size="7">প্রতিটি পর্দায় নতুন আঁকো-আঁকি</text>
       <text x="140" y="118" text-anchor="middle" fill="#64748b" font-size="7">বড় কাপড়ে: দশ জায়গায় ভুল, সত্য অজানা</text>
-      <rect x="295" y="15" width="250" height="130" rx="11" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="420" y="38" text-anchor="middle" fill="#7ee0b0" font-size="10" font-weight="700">🪞 আয়না-কারখানা (Declarative)</text>
+      <rect x="295" y="15" width="250" height="130" rx="11" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="420" y="38" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="700">🪞 আয়না-কারখানা (Declarative)</text>
       <text x="420" y="58" text-anchor="middle" fill="#94a3b8" font-size="7.5">অবস্থা বদলাও → আয়না অনুসরণ করে</text>
       <text x="420" y="76" text-anchor="middle" fill="#94a3b8" font-size="7.5">ref + {{ }} + :binding + @event</text>
-      <text x="420" y="98" text-anchor="middle" fill="#7ee0b0" font-size="7">এক জায়গায় সত্য, সর্বত্র সংযোগ</text>
+      <text x="420" y="98" text-anchor="middle" fill="#a5b4fc" font-size="7">এক জায়গায় সত্য, সর্বত্র সংযোগ</text>
       <text x="420" y="118" text-anchor="middle" fill="#64748b" font-size="7">LedgerPilot: ১১৭ ভিউ, শূন্য DOM-ম্যানিপুলেশন</text>
-      <rect x="60" y="175" width="440" height="46" rx="10" fill="rgba(66,184,131,0.07)" stroke="#42b883" stroke-width="1.3"/>
-      <text x="280" y="194" text-anchor="middle" fill="#7ee0b0" font-size="8.5" font-weight="600">ধাপ: createApp(App) → mount('#app') → state ⇄ template</text>
+      <rect x="60" y="175" width="440" height="46" rx="10" fill="rgba(66,184,131,0.07)" stroke="#6366f1" stroke-width="1.3"/>
+      <text x="280" y="194" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="600">ধাপ: createApp(App) → mount('#app') → state ⇄ template</text>
       <text x="280" y="210" text-anchor="middle" fill="#94a3b8" font-size="7.5">SFC-এর তিন ঘর: script-setup (যুক্তি) · template (প্রতিবিম্ব) · style-scoped (পোশাক)</text>
-      <line x1="265" y1="80" x2="293" y2="80" stroke="#7ee0b0" stroke-width="1.6" marker-end="url(#arrowO1)"/>
+      <line x1="265" y1="80" x2="293" y2="80" stroke="#a5b4fc" stroke-width="1.6" marker-end="url(#arrowO1)"/>
       <text x="280" y="255" text-anchor="middle" fill="#64748b" font-size="8.5">শপথ: আয়না নিজে কিছু আঁকে না — বস্তু বদলাও, প্রতিবিম্ব বদলাবে</text>
       <text x="280" y="273" text-anchor="middle" fill="#64748b" font-size="8">এই এক বাক্যই আগামী ছাবিশটি দরজার ভিত্তি</text>
     </svg>
@@ -131,7 +131,7 @@ SFC-এর তিন ঘর (এক .vue ফাইলে):
 doors.push({
   num: 2,
   icon: "🧵",
-  color: "#42b883",
+  color: "#818cf8",
   name: "সুতোর বর্ণমালা",
   subtitle: "The Thread Alphabet — Template Syntax Complete",
   tech: "Interpolation, directives (v-if/v-for/v-show/v-once/v-memo/v-html/v-text/v-cloak), all bindings (:class/:style/:attr), all event modifiers",
@@ -250,24 +250,24 @@ Vue 3.5-নোট:
   <div class="diagram">
     <div class="diag-title">The Thread Alphabet — Four Glyphs, One Grammar</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
-      <defs><marker id="arrowT2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7ee0b0"/></marker></defs>
-      <rect x="15" y="12" width="122" height="96" rx="10" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="76" y="36" text-anchor="middle" fill="#7ee0b0" font-size="11" font-weight="700">{{ }}</text>
+      <defs><marker id="arrowT2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/></marker></defs>
+      <rect x="15" y="12" width="122" height="96" rx="10" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="76" y="36" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="700">{{ }}</text>
       <text x="76" y="54" text-anchor="middle" fill="#94a3b8" font-size="7.5">মোস্তাচিল — বলে</text>
       <text x="76" y="68" text-anchor="middle" fill="#64748b" font-size="7">{{ name }} · অভিব্যক্তি</text>
       <text x="76" y="84" text-anchor="middle" fill="#64748b" font-size="7">টেক্সটে মান ঢালে</text>
-      <rect x="152" y="12" width="122" height="96" rx="10" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="213" y="36" text-anchor="middle" fill="#7ee0b0" font-size="12" font-weight="700">:</text>
+      <rect x="152" y="12" width="122" height="96" rx="10" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="213" y="36" text-anchor="middle" fill="#a5b4fc" font-size="12" font-weight="700">:</text>
       <text x="213" y="54" text-anchor="middle" fill="#94a3b8" font-size="7.5">কোলন — বাঁধে</text>
       <text x="213" y="68" text-anchor="middle" fill="#64748b" font-size="7">:class · :style · :href</text>
       <text x="213" y="84" text-anchor="middle" fill="#64748b" font-size="7">গুণে মান জোড়ে</text>
-      <rect x="289" y="12" width="122" height="96" rx="10" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="350" y="36" text-anchor="middle" fill="#7ee0b0" font-size="12" font-weight="700">@</text>
+      <rect x="289" y="12" width="122" height="96" rx="10" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="350" y="36" text-anchor="middle" fill="#a5b4fc" font-size="12" font-weight="700">@</text>
       <text x="350" y="54" text-anchor="middle" fill="#94a3b8" font-size="7.5">ওঁতার — শোনে</text>
       <text x="350" y="68" text-anchor="middle" fill="#64748b" font-size="7">@click.prevent</text>
       <text x="350" y="84" text-anchor="middle" fill="#64748b" font-size="7">ঘটনা ধরে + মডিফায়ার</text>
-      <rect x="426" y="12" width="119" height="96" rx="10" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="485" y="36" text-anchor="middle" fill="#7ee0b0" font-size="12" font-weight="700">#</text>
+      <rect x="426" y="12" width="119" height="96" rx="10" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="485" y="36" text-anchor="middle" fill="#a5b4fc" font-size="12" font-weight="700">#</text>
       <text x="485" y="54" text-anchor="middle" fill="#94a3b8" font-size="7.5">হ্যাশ — খোপ খোলে</text>
       <text x="485" y="68" text-anchor="middle" fill="#64748b" font-size="7">#header · scoped-slot</text>
       <text x="485" y="84" text-anchor="middle" fill="#64748b" font-size="7">উত্তরাধিকার-দরজা</text>
@@ -283,10 +283,10 @@ Vue 3.5-নোট:
       <text x="280" y="232" text-anchor="middle" fill="#cbd5e1" font-size="8" font-weight="600">একবার-সুতো: v-once (জমে-যায়) · v-memo="[deps]" (নির্ভরতা-স্কিপ) · v-cloak (লোড-লুকানো)</text>
       <text x="280" y="248" text-anchor="middle" fill="#94a3b8" font-size="7.5">🔒 v-html — শুধু বিশ্বাসী-উৎস: ব্যবহারকারীর ইনপুট = সুই-বিষ (XSS) · LP-প্রমাণ: sanitizeErrorMessage</text>
       <text x="280" y="266" text-anchor="middle" fill="#64748b" font-size="7">ডায়নামিক-আর্গ: :[name] · @[evt] — নাম নিজেই স্ট্রিং-অবস্থা</text>
-      <line x1="76" y1="108" x2="76" y2="126" stroke="#7ee0b0" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#arrowT2)"/>
-      <line x1="213" y1="108" x2="213" y2="126" stroke="#7ee0b0" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#arrowT2)"/>
-      <line x1="350" y1="108" x2="350" y2="126" stroke="#7ee0b0" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#arrowT2)"/>
-      <line x1="485" y1="108" x2="485" y2="126" stroke="#7ee0b0" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#arrowT2)"/>
+      <line x1="76" y1="108" x2="76" y2="126" stroke="#a5b4fc" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#arrowT2)"/>
+      <line x1="213" y1="108" x2="213" y2="126" stroke="#a5b4fc" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#arrowT2)"/>
+      <line x1="350" y1="108" x2="350" y2="126" stroke="#a5b4fc" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#arrowT2)"/>
+      <line x1="485" y1="108" x2="485" y2="126" stroke="#a5b4fc" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#arrowT2)"/>
       <text x="280" y="298" text-anchor="middle" fill="#64748b" font-size="8.5">চার চিহ্ন + শর্ত + তালিকা + একবার-সুতো = যেকোনো পর্দার পূর্ণ ব্যাকরণ</text>
     </svg>
     <div class="diag-cap">বর্ণমালা মুখস্থ নয় — চিহ্নের কাজ বোঝো: বলে, বাঁধে, শোনে, খোলে; বাকি সব এই চারের বাক্য।</div>

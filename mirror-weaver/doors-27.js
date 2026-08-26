@@ -4,7 +4,7 @@ var doors = globalThis.doors = globalThis.doors || [];
 doors.push({
   num: 27,
   icon: "🪞",
-  color: "#7ee0b0",
+  color: "#f59e0b",
   name: "পূর্ণ-তাঁত: এক-ক্লিকের-শপথ",
   subtitle: "The Whole Loom — Synthesis & Senior Reference",
   tech: "vertical thread: one click through every layer; all 26 secrets in one view; the unifying principle",
@@ -118,12 +118,12 @@ const { running, run } = useMutationAction({  …দরজা ৯
   <div class="diagram">
     <div class="diag-title">One Click — Twenty-Six Doors Turning Together</div>
     <svg viewBox="0 0 560 330" xmlns="http://www.w3.org/2000/svg">
-      <defs><marker id="arrowF27" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7ee0b0"/></marker></defs>
-      <rect x="205" y="12" width="150" height="52" rx="26" fill="rgba(66,184,131,0.16)" stroke="#42b883" stroke-width="1.8"/>
-      <text x="280" y="36" text-anchor="middle" fill="#7ee0b0" font-size="10" font-weight="700">👆 অনুমোদন</text>
+      <defs><marker id="arrowF27" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/></marker></defs>
+      <rect x="205" y="12" width="150" height="52" rx="26" fill="rgba(66,184,131,0.16)" stroke="#6366f1" stroke-width="1.8"/>
+      <text x="280" y="36" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="700">👆 অনুমোদন</text>
       <text x="280" y="50" text-anchor="middle" fill="#94a3b8" font-size="6.5">@click — দরজা ২</text>
-      <rect x="15" y="86" width="100" height="40" rx="8" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.2"/>
-      <text x="65" y="103" text-anchor="middle" fill="#7ee0b0" font-size="6.5" font-weight="600">গার্ড ৯</text>
+      <rect x="15" y="86" width="100" height="40" rx="8" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.2"/>
+      <text x="65" y="103" text-anchor="middle" fill="#a5b4fc" font-size="6.5" font-weight="600">গার্ড ৯</text>
       <text x="65" y="115" text-anchor="middle" fill="#64748b" font-size="6.5">রি-এন্ট্র্যান্সি</text>
       <rect x="130" y="86" width="100" height="40" rx="8" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.2"/>
       <text x="180" y="103" text-anchor="middle" fill="#a5b4fc" font-size="6.5" font-weight="600">স্টোর ১০</text>
@@ -131,23 +131,23 @@ const { running, run } = useMutationAction({  …দরজা ৯
       <rect x="245" y="86" width="100" height="40" rx="8" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1.2"/>
       <text x="295" y="103" text-anchor="middle" fill="#fcd34d" font-size="6.5" font-weight="600">সার্ভিস ১৫</text>
       <text x="295" y="115" text-anchor="middle" fill="#64748b" font-size="6.5">CSRF+401/403</text>
-      <rect x="360" y="86" width="100" height="40" rx="8" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.2"/>
-      <text x="410" y="103" text-anchor="middle" fill="#7ee0b0" font-size="6.5" font-weight="600">ফেজ ১৭?</text>
+      <rect x="360" y="86" width="100" height="40" rx="8" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.2"/>
+      <text x="410" y="103" text-anchor="middle" fill="#a5b4fc" font-size="6.5" font-weight="600">ফেজ ১৭?</text>
       <text x="410" y="115" text-anchor="middle" fill="#64748b" font-size="6.5">ব্যয়বহুল→চক-কালি</text>
       <rect x="475" y="86" width="70" height="40" rx="8" fill="rgba(248,113,113,0.06)" stroke="#f87171" stroke-width="1.2"/>
       <text x="510" y="103" text-anchor="middle" fill="#f87171" font-size="6.5" font-weight="600">টোস্ট ১৮</text>
       <text x="510" y="115" text-anchor="middle" fill="#64748b" font-size="6.5">সাফল্য-বার্তা</text>
-      <line x1="280" y1="64" x2="280" y2="84" stroke="#7ee0b0" stroke-width="1.6" marker-end="url(#arrowF27)"/>
-      <line x1="65" y1="106" x2="128" y2="106" stroke="#7ee0b0" stroke-width="1" stroke-dasharray="2 2"/>
-      <line x1="180" y1="106" x2="243" y2="106" stroke="#7ee0b0" stroke-width="1" stroke-dasharray="2 2"/>
-      <line x1="295" y1="106" x2="358" y2="106" stroke="#7ee0b0" stroke-width="1" stroke-dasharray="2 2"/>
-      <line x1="410" y1="106" x2="473" y2="106" stroke="#7ee0b0" stroke-width="1" stroke-dasharray="2 2"/>
-      <rect x="15" y="146" width="530" height="106" rx="11" fill="rgba(66,184,131,0.06)" stroke="#42b883" stroke-width="1.3"/>
-      <text x="280" y="168" text-anchor="middle" fill="#7ee0b0" font-size="8.5" font-weight="700">📜 ২৬-তাবিজ — ছয়-গুচ্ছে (সিনিয়র-দেয়াল)</text>
+      <line x1="280" y1="64" x2="280" y2="84" stroke="#a5b4fc" stroke-width="1.6" marker-end="url(#arrowF27)"/>
+      <line x1="65" y1="106" x2="128" y2="106" stroke="#a5b4fc" stroke-width="1" stroke-dasharray="2 2"/>
+      <line x1="180" y1="106" x2="243" y2="106" stroke="#a5b4fc" stroke-width="1" stroke-dasharray="2 2"/>
+      <line x1="295" y1="106" x2="358" y2="106" stroke="#a5b4fc" stroke-width="1" stroke-dasharray="2 2"/>
+      <line x1="410" y1="106" x2="473" y2="106" stroke="#a5b4fc" stroke-width="1" stroke-dasharray="2 2"/>
+      <rect x="15" y="146" width="530" height="106" rx="11" fill="rgba(66,184,131,0.06)" stroke="#6366f1" stroke-width="1.3"/>
+      <text x="280" y="168" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">📜 ২৬-তাবিজ — ছয়-গুচ্ছে (সিনিয়র-দেয়াল)</text>
       <text x="280" y="186" text-anchor="middle" fill="#94a3b8" font-size="7">ভিত্তি ১-৩ (শপথ·বর্ণমালা·শ্বাস) · কম্পোনেন্ট ৪-৯ (নদী·পাখি·সেতু·খোপ·চক্র·তাবিজ)</text>
       <text x="280" y="202" text-anchor="middle" fill="#94a3b8" font-size="7">অবস্থা ১০-১২ (কোষাগার·ঝর্ণা·বারান্দা) · পথ ১৩-১৫ (নকশা·ফটক·সমুদ্র)</text>
       <text x="280" y="218" text-anchor="middle" fill="#94a3b8" font-size="7">ফর্ম ১৬-১৮ (পাণ্ডুলিপি·চক-কালি·ঘণ্টি) · যন্ত্র ১৯-২১ (স্থাপন·মিনার·বিধান) · কারখানা ২২-২৬</text>
-      <text x="280" y="238" text-anchor="middle" fill="#7ee0b0" font-size="7">প্রথম-সপ্তাহ-মানচিত্র: দিন-১→১৯ · ২→১৫+১০ · ৩→১৩+১৪ · ৪→২৩ · ৫→২০+২১ · ৬→২৪+১৮ · ৭→বিশ্রাম</text>
+      <text x="280" y="238" text-anchor="middle" fill="#a5b4fc" font-size="7">প্রথম-সপ্তাহ-মানচিত্র: দিন-১→১৯ · ২→১৫+১০ · ৩→১৩+১৪ · ৪→২৩ · ৫→২০+২১ · ৬→২৪+১৮ · ৭→বিশ্রাম</text>
       <rect x="15" y="266" width="530" height="38" rx="10" fill="rgba(100,116,139,0.08)" stroke="#94a3b8" stroke-width="1.2"/>
       <text x="280" y="283" text-anchor="middle" fill="#cbd5e1" font-size="7.5" font-weight="600">স্থাপত্য-স্মৃতি: features/{views,components,composables,services,types} · shared/app/ui/core — স্রোত-একমুখ</text>
       <text x="280" y="297" text-anchor="middle" fill="#64748b" font-size="7">LP-মিরর: ১১৭-ভিউ-প্রোডাকশন — এই-বইয়ের-প্রতিটি-ছাঁচ সেখানে-দাঁড়িয়ে-আছে</text>

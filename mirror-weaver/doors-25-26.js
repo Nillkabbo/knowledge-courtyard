@@ -2,7 +2,7 @@
 doors.push({
   num: 25,
   icon: "🔐",
-  color: "#34d399",
+  color: "#14b8a6",
   name: "চতুর্থ-কাপড়: বহু-মহল-প্রাসাদ",
   subtitle: "Starter 4 — Multi-Role App (RBAC + Manifest Nav)",
   tech: "complete project: auth store + login, role/feature guards, permission component &lt;Can&gt;, dynamic menu from manifest, per-role landing",
@@ -167,14 +167,14 @@ doors.push({
     <div class="diag-title">Starter 4 — Three Ledgers, Layered Access</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
       <defs><marker id="arrowV25" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#6ee7b7"/></marker></defs>
-      <rect x="15" y="14" width="530" height="54" rx="10" fill="rgba(52,211,153,0.07)" stroke="#34d399" stroke-width="1.4"/>
+      <rect x="15" y="14" width="530" height="54" rx="10" fill="rgba(52,211,153,0.07)" stroke="#22d3ee" stroke-width="1.4"/>
       <text x="280" y="34" text-anchor="middle" fill="#6ee7b7" font-size="8.5" font-weight="700">🗝️ এক-ব্যবহারকারী-এক-চাবি-গোছা: পরিচয় + অনুমতি + মেনু</text>
       <text x="280" y="50" text-anchor="middle" fill="#94a3b8" font-size="7">restore→login (auth.store) · roles∩feature (can()) · ম্যানিফেস্ট-ছাঁকনি (visibleMenu)</text>
-      <rect x="15" y="84" width="165" height="110" rx="10" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="97" y="104" text-anchor="middle" fill="#7ee0b0" font-size="7.5" font-weight="700">📕 পরিচয়-খাতা</text>
+      <rect x="15" y="84" width="165" height="110" rx="10" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="97" y="104" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">📕 পরিচয়-খাতা</text>
       <text x="97" y="119" text-anchor="middle" fill="#94a3b8" font-size="6">auth.store: user/roles</text>
       <text x="97" y="132" text-anchor="middle" fill="#94a3b8" font-size="6">login/logout/restore</text>
-      <text x="97" y="146" text-anchor="middle" fill="#7ee0b0" font-size="6">sessionStorage-সিন্দুক</text>
+      <text x="97" y="146" text-anchor="middle" fill="#a5b4fc" font-size="6">sessionStorage-সিন্দুক</text>
       <text x="97" y="160" text-anchor="middle" fill="#64748b" font-size="6.5">গার্ড-প্রথম-স্তর: public?.isAuthenticated</text>
       <text x="97" y="176" text-anchor="middle" fill="#64748b" font-size="6.5">logout = resetAll (বাসী-রোল-মুক্তি)</text>
       <rect x="197" y="84" width="165" height="110" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.4"/>
@@ -210,7 +210,7 @@ doors.push({
 doors.push({
   num: 26,
   icon: "⚡",
-  color: "#34d399",
+  color: "#10b981",
   name: "পঞ্চম-কাপড়: জীবন্ত-নদী-ঘাট",
   subtitle: "Starter 5 — Realtime App (SSE + Live Notifications)",
   tech: "complete project: notification store, SSE composable (reconnect/backoff), live feed view, unread badge, toast bridge, error boundary",
@@ -370,14 +370,14 @@ doors.push({
     <div class="diag-title">Starter 5 — The Living Ghat: River + Reservoir + Embankment</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
       <defs><marker id="arrowW26" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#6ee7b7"/></marker></defs>
-      <rect x="15" y="14" width="530" height="52" rx="10" fill="rgba(52,211,153,0.08)" stroke="#34d399" stroke-width="1.4"/>
+      <rect x="15" y="14" width="530" height="52" rx="10" fill="rgba(52,211,153,0.08)" stroke="#22d3ee" stroke-width="1.4"/>
       <text x="280" y="34" text-anchor="middle" fill="#6ee7b7" font-size="8.5" font-weight="700">🌊 দুই-জল-নিয়ম: নদী = ট্রিগার (SSE) · জলাধার = সত্য (সার্ভার-ডেটা+refetch)</text>
       <text x="280" y="50" text-anchor="middle" fill="#94a3b8" font-size="7">server: text/event-stream + ~২৫সে-পিং · client: EventSource(withCredentials) + নামকরা-ইভেন্ট</text>
-      <rect x="15" y="82" width="165" height="112" rx="10" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="97" y="102" text-anchor="middle" fill="#7ee0b0" font-size="7.5" font-weight="700">🌊 ঘাট-কম্পোজেবল</text>
+      <rect x="15" y="82" width="165" height="112" rx="10" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="97" y="102" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">🌊 ঘাট-কম্পোজেবল</text>
       <text x="97" y="117" text-anchor="middle" fill="#94a3b8" font-size="6">useFeedStream()</text>
       <text x="97" y="130" text-anchor="middle" fill="#94a3b8" font-size="6">onopen: retry=0+মিলন</text>
-      <text x="97" y="144" text-anchor="middle" fill="#7ee0b0" font-size="6">onerror→close+backoff</text>
+      <text x="97" y="144" text-anchor="middle" fill="#a5b4fc" font-size="6">onerror→close+backoff</text>
       <text x="97" y="157" text-anchor="middle" fill="#94a3b8" font-size="6">1s×2^n → cap 30s</text>
       <text x="97" y="171" text-anchor="middle" fill="#64748b" font-size="6.5">onBeforeUnmount: close+clear</text>
       <text x="97" y="184" text-anchor="middle" fill="#64748b" font-size="6.5">events-শীর্ষ-১০০-ক্যাপ</text>

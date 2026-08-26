@@ -2,7 +2,7 @@
 doors.push({
   num: 21,
   icon: "🏛️",
-  color: "#f59e0b",
+  color: "#6366f1",
   name: "শহরের-বিধান",
   subtitle: "The City Charter — Architecture Laws",
   tech: "layer boundaries lint-enforced, registry pattern, BE-driven nav (manifest), error normalization as law, silent-failure ban",
@@ -114,11 +114,11 @@ doors.push({
   <div class="diagram">
     <div class="diag-title">City Charter — Three Tablets, One Constitution</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
-      <rect x="15" y="14" width="164" height="106" rx="10" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="97" y="36" text-anchor="middle" fill="#7ee0b0" font-size="8.5" font-weight="700">📜 আইন-১: একমুখ-স্রোত</text>
+      <rect x="15" y="14" width="164" height="106" rx="10" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="97" y="36" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">📜 আইন-১: একমুখ-স্রোত</text>
       <text x="97" y="52" text-anchor="middle" fill="#94a3b8" font-size="6.5">features ✗→ features</text>
       <text x="97" y="66" text-anchor="middle" fill="#64748b" font-size="6.5">no-restricted-imports</text>
-      <text x="97" y="84" text-anchor="middle" fill="#7ee0b0" font-size="6.5">লিন্ট-লাল-দাগ — বিল্ড-অপেক্ষা-নয়</text>
+      <text x="97" y="84" text-anchor="middle" fill="#a5b4fc" font-size="6.5">লিন্ট-লাল-দাগ — বিল্ড-অপেক্ষা-নয়</text>
       <text x="97" y="104" text-anchor="middle" fill="#64748b" font-size="6">ui/core-ডোমেইন-অজ্ঞ</text>
       <rect x="197" y="14" width="164" height="106" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="279" y="36" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">📖 আইন-২: নাম-খাতা</text>
@@ -153,7 +153,7 @@ doors.push({
 doors.push({
   num: 22,
   icon: "🌱",
-  color: "#34d399",
+  color: "#818cf8",
   name: "প্রথম-কাপড়: টু-ডু-তাঁত",
   subtitle: "Starter 1 — The Todo Loom (Basic)",
   tech: "complete beginner project: scaffold, one component, ref+computed+v-for+v-model, localStorage persistence — every file shown",
@@ -280,7 +280,7 @@ doors.push({
   .strike { text-decoration: line-through;
     opacity: .55; }
   .on { font-weight: 700;
-    border-color: #42b883; }
+    border-color: #6366f1; }
   &lt;/style&gt;
 
 কোন-সুতো-কোথায় (স্ব-পরীক্ষা):
@@ -311,22 +311,22 @@ doors.push({
   <div class="diagram">
     <div class="diag-title">Starter 1 — The Todo Loom, One File Whole</div>
     <svg viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg">
-      <rect x="15" y="14" width="530" height="46" rx="10" fill="rgba(52,211,153,0.09)" stroke="#34d399" stroke-width="1.4"/>
+      <rect x="15" y="14" width="530" height="46" rx="10" fill="rgba(52,211,153,0.09)" stroke="#22d3ee" stroke-width="1.4"/>
       <text x="280" y="34" text-anchor="middle" fill="#6ee7b7" font-size="8.5" font-weight="700">🌱 npm create vite todo-loom -- --template vue-ts → dev → প্রদীপ</text>
       <text x="280" y="50" text-anchor="middle" fill="#94a3b8" font-size="7">দুই-ফাইল: main.ts (ছাঁচ) + App.vue (সম্পূর্ণ-কাপড়) — ৫০-লাইন, শূন্য-বাড়তি-নির্ভরতা</text>
-      <rect x="15" y="78" width="253" height="120" rx="10" fill="rgba(66,184,131,0.07)" stroke="#42b883" stroke-width="1.3"/>
-      <text x="141" y="98" text-anchor="middle" fill="#7ee0b0" font-size="8" font-weight="700">script-setup-ঘর</text>
+      <rect x="15" y="78" width="253" height="120" rx="10" fill="rgba(66,184,131,0.07)" stroke="#6366f1" stroke-width="1.3"/>
+      <text x="141" y="98" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="700">script-setup-ঘর</text>
       <text x="141" y="114" text-anchor="middle" fill="#94a3b8" font-size="6.5">ref: todos · draft · filter</text>
       <text x="141" y="128" text-anchor="middle" fill="#94a3b8" font-size="6.5">computed: shown · remaining</text>
       <text x="141" y="142" text-anchor="middle" fill="#94a3b8" font-size="6.5">add/remove/clearDone ক্রিয়া</text>
-      <text x="141" y="158" text-anchor="middle" fill="#7ee0b0" font-size="6.5">watch(todos, {deep}) → localStorage</text>
+      <text x="141" y="158" text-anchor="middle" fill="#a5b4fc" font-size="6.5">watch(todos, {deep}) → localStorage</text>
       <text x="141" y="174" text-anchor="middle" fill="#64748b" font-size="6">স্মৃতি-রিফ্রেশেও-টিকে</text>
-      <rect x="292" y="78" width="253" height="120" rx="10" fill="rgba(66,184,131,0.07)" stroke="#42b883" stroke-width="1.3"/>
-      <text x="418" y="98" text-anchor="middle" fill="#7ee0b0" font-size="8" font-weight="700">template-ঘর</text>
+      <rect x="292" y="78" width="253" height="120" rx="10" fill="rgba(66,184,131,0.07)" stroke="#6366f1" stroke-width="1.3"/>
+      <text x="418" y="98" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="700">template-ঘর</text>
       <text x="418" y="114" text-anchor="middle" fill="#94a3b8" font-size="6.5">form @submit.prevent + v-model.trim</text>
       <text x="418" y="128" text-anchor="middle" fill="#94a3b8" font-size="6.5">nav-ছাঁকনি-বাটন (:class-on)</text>
       <text x="418" y="142" text-anchor="middle" fill="#94a3b8" font-size="6.5">li v-for="t in shown" :key="t.id"</text>
-      <text x="418" y="158" text-anchor="middle" fill="#7ee0b0" font-size="6.5">checkbox v-model="t.done" + strike</text>
+      <text x="418" y="158" text-anchor="middle" fill="#a5b4fc" font-size="6.5">checkbox v-model="t.done" + strike</text>
       <text x="418" y="174" text-anchor="middle" fill="#64748b" font-size="6">footer: remaining + clearDone</text>
       <rect x="15" y="214" width="530" height="52" rx="10" fill="rgba(100,116,139,0.08)" stroke="#94a3b8" stroke-width="1.2"/>
       <text x="280" y="233" text-anchor="middle" fill="#cbd5e1" font-size="7.5" font-weight="600">চার-মূল-সুতো-এক-কাপড়ে: ref · computed · v-for+:key · v-model (+watch-সিন্দুক)</text>

@@ -2,7 +2,7 @@
 doors.push({
   num: 23,
   icon: "📊",
-  color: "#34d399",
+  color: "#a78bfa",
   name: "দ্বিতীয়-কাপড়: সারণি-দপতর",
   subtitle: "Starter 2 — CRUD Dashboard (API + Store + Router)",
   tech: "complete project: feature-slice structure, service layer, Pinia store, list/detail routes, pagination, filters, delete-confirm modal",
@@ -225,14 +225,14 @@ doors.push({
     <div class="diag-title">Starter 2 — Four-Layer Sandwich, Three Screens</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
       <defs><marker id="arrowX23" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#6ee7b7"/></marker></defs>
-      <rect x="15" y="14" width="530" height="104" rx="11" fill="rgba(52,211,153,0.06)" stroke="#34d399" stroke-width="1.4"/>
+      <rect x="15" y="14" width="530" height="104" rx="11" fill="rgba(52,211,153,0.06)" stroke="#22d3ee" stroke-width="1.4"/>
       <text x="280" y="34" text-anchor="middle" fill="#6ee7b7" font-size="8.5" font-weight="700">🥪 স্যান্ডউইচ: ভিউ → কম্পোজেবল → স্টোর → সার্ভিস</text>
-      <rect x="35" y="46" width="110" height="56" rx="8" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.2"/>
-      <text x="90" y="64" text-anchor="middle" fill="#7ee0b0" font-size="7" font-weight="600">ভিউ</text>
+      <rect x="35" y="46" width="110" height="56" rx="8" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.2"/>
+      <text x="90" y="64" text-anchor="middle" fill="#a5b4fc" font-size="7" font-weight="600">ভিউ</text>
       <text x="90" y="76" text-anchor="middle" fill="#94a3b8" font-size="6">দেখাও-শুধু</text>
       <text x="90" y="90" text-anchor="middle" fill="#64748b" font-size="6.5">৩ পর্দা + ২ কম্পোনেন্ট</text>
-      <rect x="157" y="46" width="110" height="56" rx="8" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.2"/>
-      <text x="212" y="64" text-anchor="middle" fill="#7ee0b0" font-size="7" font-weight="600">কম্পোজেবল</text>
+      <rect x="157" y="46" width="110" height="56" rx="8" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.2"/>
+      <text x="212" y="64" text-anchor="middle" fill="#a5b4fc" font-size="7" font-weight="600">কম্পোজেবল</text>
       <text x="212" y="76" text-anchor="middle" fill="#94a3b8" font-size="6">useNotesList/Delete</text>
       <text x="212" y="90" text-anchor="middle" fill="#64748b" font-size="6.5">watch+immediate-প্রবাহ</text>
       <rect x="279" y="46" width="110" height="56" rx="8" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.2"/>
@@ -246,20 +246,20 @@ doors.push({
       <line x1="145" y1="74" x2="155" y2="74" stroke="#6ee7b7" stroke-width="1.4" marker-end="url(#arrowX23)"/>
       <line x1="267" y1="74" x2="277" y2="74" stroke="#6ee7b7" stroke-width="1.4" marker-end="url(#arrowX23)"/>
       <line x1="389" y1="74" x2="399" y2="74" stroke="#6ee7b7" stroke-width="1.4" marker-end="url(#arrowX23)"/>
-      <rect x="15" y="134" width="166" height="118" rx="10" fill="rgba(66,184,131,0.07)" stroke="#42b883" stroke-width="1.3"/>
-      <text x="98" y="154" text-anchor="middle" fill="#7ee0b0" font-size="7.5" font-weight="700">📋 / — তালিকা</text>
+      <rect x="15" y="134" width="166" height="118" rx="10" fill="rgba(66,184,131,0.07)" stroke="#6366f1" stroke-width="1.3"/>
+      <text x="98" y="154" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">📋 / — তালিকা</text>
       <text x="98" y="169" text-anchor="middle" fill="#94a3b8" font-size="6">search-v-model+trim</text>
       <text x="98" y="182" text-anchor="middle" fill="#94a3b8" font-size="6">তিন-অবস্থা: লোড/এরর/সারি</text>
       <text x="98" y="196" text-anchor="middle" fill="#94a3b8" font-size="6">v-for+:key → NoteCard</text>
-      <text x="98" y="212" text-anchor="middle" fill="#7ee0b0" font-size="6">পাতা-নেভ ←/→ :disabled</text>
+      <text x="98" y="212" text-anchor="middle" fill="#a5b4fc" font-size="6">পাতা-নেভ ←/→ :disabled</text>
       <text x="98" y="228" text-anchor="middle" fill="#64748b" font-size="6.5">🗑 → DeleteConfirm-মোডাল</text>
       <text x="98" y="243" text-anchor="middle" fill="#64748b" font-size="6.5">→ detail-নামে-RouterLink</text>
-      <rect x="197" y="134" width="166" height="118" rx="10" fill="rgba(66,184,131,0.07)" stroke="#42b883" stroke-width="1.3"/>
-      <text x="280" y="154" text-anchor="middle" fill="#7ee0b0" font-size="7.5" font-weight="700">📄 /notes/:id — বিস্তারিত</text>
+      <rect x="197" y="134" width="166" height="118" rx="10" fill="rgba(66,184,131,0.07)" stroke="#6366f1" stroke-width="1.3"/>
+      <text x="280" y="154" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">📄 /notes/:id — বিস্তারিত</text>
       <text x="280" y="169" text-anchor="middle" fill="#94a3b8" font-size="6">নিজ-ডেটা: get(id)</text>
       <text x="280" y="182" text-anchor="middle" fill="#94a3b8" font-size="6">watch(params.id)→রিফেচ</text>
       <text x="280" y="196" text-anchor="middle" fill="#94a3b8" font-size="6">গভীর-লিংক-যোগ্য</text>
-      <text x="280" y="212" text-anchor="middle" fill="#7ee0b0" font-size="6">✎ → edit-রুট</text>
+      <text x="280" y="212" text-anchor="middle" fill="#a5b4fc" font-size="6">✎ → edit-রুট</text>
       <text x="280" y="228" text-anchor="middle" fill="#64748b" font-size="6.5">তালিকার-স্মৃতি-নিরপেক্ষ</text>
       <text x="280" y="243" text-anchor="middle" fill="#64748b" font-size="6.5">ব্রাউজার-পিছন-প্রাকৃতিক</text>
       <rect x="379" y="134" width="166" height="118" rx="10" fill="rgba(129,140,248,0.07)" stroke="#818cf8" stroke-width="1.3"/>
@@ -286,7 +286,7 @@ doors.push({
 doors.push({
   num: 24,
   icon: "🏢",
-  color: "#34d399",
+  color: "#22d3ee",
   name: "তৃতীয়-কাপড়: ফর্ম-ভারী-দপতর",
   subtitle: "Starter 3 — Form-Heavy Admin (Preview-Confirm + Guards)",
   tech: "complete project: multi-section admin form, preview-confirm submit, role-guarded routes, field-error matrix, dirty-exit guard",
@@ -438,14 +438,14 @@ doors.push({
     <div class="diag-title">Starter 3 — Form-Heavy Admin: Three Artisans at One Table</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
       <defs><marker id="arrowZ24" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#6ee7b7"/></marker></defs>
-      <rect x="15" y="14" width="530" height="58" rx="10" fill="rgba(52,211,153,0.07)" stroke="#34d399" stroke-width="1.4"/>
+      <rect x="15" y="14" width="530" height="58" rx="10" fill="rgba(52,211,153,0.07)" stroke="#22d3ee" stroke-width="1.4"/>
       <text x="280" y="34" text-anchor="middle" fill="#6ee7b7" font-size="8.5" font-weight="700">🏢 /admin/billing-cycle — meta.allowedRoles=['admin'] (দরজা ১৪-ফটক)</text>
       <text x="280" y="51" text-anchor="middle" fill="#94a3b8" font-size="7">বহু-অংশ-ফর্ম: PeriodSection + FloorSection + ExceptionsTable — প্রতিটি v-model (defineModel-দরজা ৬)</text>
-      <rect x="15" y="88" width="165" height="104" rx="10" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="97" y="108" text-anchor="middle" fill="#7ee0b0" font-size="7.5" font-weight="700">📝 আফসার: ফর্ম-নোঙর</text>
+      <rect x="15" y="88" width="165" height="104" rx="10" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="97" y="108" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">📝 আফসার: ফর্ম-নোঙর</text>
       <text x="97" y="123" text-anchor="middle" fill="#94a3b8" font-size="6">form-reactive + anchor-ক্লোন</text>
       <text x="97" y="136" text-anchor="middle" fill="#94a3b8" font-size="6">dirty-কম্পিউটেড (JSON-তুলনা)</text>
-      <text x="97" y="150" text-anchor="middle" fill="#7ee0b0" font-size="6">resetAll — এক-ক্লিকে-খসড়া-ফেরত</text>
+      <text x="97" y="150" text-anchor="middle" fill="#a5b4fc" font-size="6">resetAll — এক-ক্লিকে-খসড়া-ফেরত</text>
       <text x="97" y="164" text-anchor="middle" fill="#64748b" font-size="6.5">fieldErrors-খাঁচা: প্রতি-অংশে-নিজ-সিল</text>
       <text x="97" y="182" text-anchor="middle" fill="#64748b" font-size="6.5">beforeRouteLeave: dirty→confirm</text>
       <rect x="197" y="88" width="165" height="104" rx="10" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1.4"/>

@@ -2,7 +2,7 @@
 doors.push({
   num: 3,
   icon: "⚡",
-  color: "#42b883",
+  color: "#a78bfa",
   name: "প্রতিবিম্বের শ্বাস",
   subtitle: "The Mirror's Breath — Reactivity in Depth",
   tech: "ref vs reactive, shallowRef, computed (cached), watch vs watchEffect, side-effects, lifecycle hooks",
@@ -114,24 +114,24 @@ Vue 3.5 স্বাদ:
   <div class="diagram">
     <div class="diag-title">The Breath — Three Instruments, One River Rule</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
-      <defs><marker id="arrowR3" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7ee0b0"/></marker></defs>
-      <rect x="15" y="12" width="165" height="104" rx="10" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="97" y="34" text-anchor="middle" fill="#7ee0b0" font-size="9" font-weight="700">🖐️ স্পর্শ-কাচ</text>
+      <defs><marker id="arrowR3" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/></marker></defs>
+      <rect x="15" y="12" width="165" height="104" rx="10" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="97" y="34" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">🖐️ স্পর্শ-কাচ</text>
       <text x="97" y="50" text-anchor="middle" fill="#94a3b8" font-size="7">ref — মান; .value (স্ক্রিপ্টে)</text>
       <text x="97" y="66" text-anchor="middle" fill="#94a3b8" font-size="7">shallowRef — উপরের-স্তর</text>
-      <text x="97" y="84" text-anchor="middle" fill="#7ee0b0" font-size="6.8">যেকোনো-ধরন গভীর-প্রতিক্রিয়া</text>
+      <text x="97" y="84" text-anchor="middle" fill="#a5b4fc" font-size="6.8">যেকোনো-ধরন গভীর-প্রতিক্রিয়া</text>
       <text x="97" y="104" text-anchor="middle" fill="#64748b" font-size="6.5">বড়-তালিকায় shallowRef+triggerRef</text>
-      <rect x="200" y="12" width="160" height="104" rx="10" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="280" y="34" text-anchor="middle" fill="#7ee0b0" font-size="9" font-weight="700">🧠 স্মৃতি-কাচ</text>
+      <rect x="200" y="12" width="160" height="104" rx="10" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="280" y="34" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">🧠 স্মৃতি-কাচ</text>
       <text x="280" y="50" text-anchor="middle" fill="#94a3b8" font-size="7">computed — গণনা+ক্যাশ</text>
       <text x="280" y="66" text-anchor="middle" fill="#94a3b8" font-size="7">নির্ভরতা অপরিবর্তিত → পুরনো</text>
-      <text x="280" y="84" text-anchor="middle" fill="#7ee0b0" font-size="6.8">উদ্ভূত-সত্যের একমাত্র ঘর</text>
+      <text x="280" y="84" text-anchor="middle" fill="#a5b4fc" font-size="6.8">উদ্ভূত-সত্যের একমাত্র ঘর</text>
       <text x="280" y="104" text-anchor="middle" fill="#64748b" font-size="6.5">⚠ পার্শ্ব-প্রভাব নিষেধ</text>
-      <rect x="380" y="12" width="165" height="104" rx="10" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="462" y="34" text-anchor="middle" fill="#7ee0b0" font-size="9" font-weight="700">👁️ পাহারা-কাচ</text>
+      <rect x="380" y="12" width="165" height="104" rx="10" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="462" y="34" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">👁️ পাহারা-কাচ</text>
       <text x="462" y="50" text-anchor="middle" fill="#94a3b8" font-size="7">watch — পার্শ্ব-প্রভাব</text>
       <text x="462" y="66" text-anchor="middle" fill="#94a3b8" font-size="7">immediate/once/deep/flush</text>
-      <text x="462" y="84" text-anchor="middle" fill="#7ee0b0" font-size="6.8">onCleanup → abort/ডিবাউন্স</text>
+      <text x="462" y="84" text-anchor="middle" fill="#a5b4fc" font-size="6.8">onCleanup → abort/ডিবাউন্স</text>
       <text x="462" y="104" text-anchor="middle" fill="#64748b" font-size="6.5">watchEffect: খোলা-চোখ, সাবধানে</text>
       <rect x="15" y="136" width="530" height="58" rx="10" fill="rgba(248,113,113,0.07)" stroke="#f87171" stroke-width="1.4"/>
       <text x="280" y="157" text-anchor="middle" fill="#f87171" font-size="8.5" font-weight="700">🏞️ নদীর শিক্ষা — বিচ্ছিন্ন-করণ-ফাঁদ</text>
@@ -141,9 +141,9 @@ Vue 3.5 স্বাদ:
       <text x="280" y="230" text-anchor="middle" fill="#cbd5e1" font-size="8" font-weight="600">শ্বাসের ছন্দ: onMounted-প্রথম-fetch · onUnmounted-এ abort+শ্রোতা+টাইমার-বন্ধ</text>
       <text x="280" y="246" text-anchor="middle" fill="#94a3b8" font-size="7.5">Vue 3.5: props-destructure (ডিফল্টসহ, কম্পাইলার-নিরাপদ) · deep: N সংখ্যা · paused-watch</text>
       <text x="280" y="262" text-anchor="middle" fill="#64748b" font-size="7">LP-প্রমাণ: auth.store-এ userRoles/featureGrants-সব computed — উদ্ভূত-সত্য কখনো স্ক্র্যাচ-নয়</text>
-      <line x1="97" y1="116" x2="97" y2="134" stroke="#7ee0b0" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#arrowR3)"/>
-      <line x1="280" y1="116" x2="280" y2="134" stroke="#7ee0b0" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#arrowR3)"/>
-      <line x1="462" y1="116" x2="462" y2="134" stroke="#7ee0b0" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#arrowR3)"/>
+      <line x1="97" y1="116" x2="97" y2="134" stroke="#a5b4fc" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#arrowR3)"/>
+      <line x1="280" y1="116" x2="280" y2="134" stroke="#a5b4fc" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#arrowR3)"/>
+      <line x1="462" y1="116" x2="462" y2="134" stroke="#a5b4fc" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#arrowR3)"/>
       <text x="280" y="290" text-anchor="middle" fill="#64748b" font-size="8.5">বস্তু বদলাও → শ্বাস পড়ে → প্রতিবিম্ব বদলায়; যন্ত্র নিজ-পথে চললে তাঁত নীরবে নিখুঁত</text>
     </svg>
     <div class="diag-cap">তিন যন্ত্র + এক নিয়ম: ref মান ধরে, computed গণনা মনে রাখে, watch পার্শ্ব-কাজ চালায় — আর নদীর সাথে থাকতে হোক, গ্লাসে নয়।</div>
@@ -157,7 +157,7 @@ Vue 3.5 স্বাদ:
 doors.push({
   num: 4,
   icon: "🎁",
-  color: "#7ee0b0",
+  color: "#22d3ee",
   name: "উপহারের একমুখী নদী",
   subtitle: "One-Way River of Gifts — Props in Depth",
   tech: "defineProps, type-only props, withDefaults, prop validation, one-way data flow, props → emit contract",
@@ -248,19 +248,19 @@ doors.push({
   <div class="diagram">
     <div class="diag-title">One-Way River — Props Flow &amp; Return-Bird</div>
     <svg viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg">
-      <defs><marker id="arrowP4" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7ee0b0"/></marker><marker id="arrowE4" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker></defs>
-      <rect x="15" y="30" width="200" height="86" rx="11" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="115" y="53" text-anchor="middle" fill="#7ee0b0" font-size="9" font-weight="700">🏭 পিতা (উজান)</text>
+      <defs><marker id="arrowP4" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/></marker><marker id="arrowE4" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker></defs>
+      <rect x="15" y="30" width="200" height="86" rx="11" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="115" y="53" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">🏭 পিতা (উজান)</text>
       <text x="115" y="70" text-anchor="middle" fill="#94a3b8" font-size="7">সত্যের মালিক · state + বদল-ক্রিয়া</text>
       <text x="115" y="86" text-anchor="middle" fill="#64748b" font-size="7">&lt;Panel :imports="rows" /&gt;</text>
       <text x="115" y="104" text-anchor="middle" fill="#64748b" font-size="7">:prop = v-bind — মান-বাঁধন</text>
-      <rect x="345" y="30" width="200" height="86" rx="11" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="445" y="53" text-anchor="middle" fill="#7ee0b0" font-size="9" font-weight="700">🪞 পুত্র (ভাটি)</text>
+      <rect x="345" y="30" width="200" height="86" rx="11" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="445" y="53" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">🪞 পুত্র (ভাটি)</text>
       <text x="445" y="70" text-anchor="middle" fill="#94a3b8" font-size="7">গ্রহণ+সাজানো · defineProps&lt;T&gt;()</text>
       <text x="445" y="86" text-anchor="middle" fill="#64748b" font-size="7">computed-উদ্ভূত · স্থানীয় ref</text>
       <text x="445" y="104" text-anchor="middle" fill="#64748b" font-size="7">⚠ props.x = লেখা নিষেধ</text>
-      <path d="M225,60 C270,45 315,45 340,58" fill="none" stroke="#7ee0b0" stroke-width="2" marker-end="url(#arrowP4)"/>
-      <text x="283" y="40" text-anchor="middle" fill="#7ee0b0" font-size="7.5" font-weight="600">props প্রবাহ (একমুখী)</text>
+      <path d="M225,60 C270,45 315,45 340,58" fill="none" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrowP4)"/>
+      <text x="283" y="40" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="600">props প্রবাহ (একমুখী)</text>
       <path d="M340,96 C300,115 260,115 228,98" fill="none" stroke="#fbbf24" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#arrowE4)"/>
       <text x="283" y="128" text-anchor="middle" fill="#fbbf24" font-size="7.5" font-weight="600">emit('update:…') — ফেরত-পাখি</text>
       <rect x="15" y="150" width="530" height="62" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.4"/>

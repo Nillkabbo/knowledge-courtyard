@@ -2,7 +2,7 @@
 doors.push({
   num: 11,
   icon: "🫗",
-  color: "#7ee0b0",
+  color: "#6366f1",
   name: "বংশধারার ঝর্ণা",
   subtitle: "The Ancestral Spring — provide / inject",
   tech: "provide(), inject(), typed injection keys, default values, reactivity through provide, readonly guard",
@@ -91,25 +91,25 @@ doors.push({
   <div class="diagram">
     <div class="diag-title">Ancestral Spring — One provide, Any-Depth inject</div>
     <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
-      <defs><marker id="arrowJ11" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7ee0b0"/></marker></defs>
-      <rect x="185" y="12" width="190" height="64" rx="11" fill="rgba(66,184,131,0.12)" stroke="#42b883" stroke-width="1.6"/>
-      <text x="280" y="33" text-anchor="middle" fill="#7ee0b0" font-size="9" font-weight="700">🫗 ঊর্ধ্বতন-উঠান</text>
+      <defs><marker id="arrowJ11" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/></marker></defs>
+      <rect x="185" y="12" width="190" height="64" rx="11" fill="rgba(66,184,131,0.12)" stroke="#6366f1" stroke-width="1.6"/>
+      <text x="280" y="33" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">🫗 ঊর্ধ্বতন-উঠান</text>
       <text x="280" y="48" text-anchor="middle" fill="#94a3b8" font-size="7">provide(ThemeCtx, readonly(theme))</text>
       <text x="280" y="62" text-anchor="middle" fill="#64748b" font-size="6.5">+ setTheme ক্রিয়া — বদল-খবরের পথ</text>
       <rect x="185" y="104" width="190" height="46" rx="10" fill="rgba(100,116,139,0.10)" stroke="#94a3b8" stroke-width="1.3"/>
       <text x="280" y="123" text-anchor="middle" fill="#cbd5e1" font-size="7.5" font-weight="600">মাঝের-উঠান × N</text>
       <text x="280" y="138" text-anchor="middle" fill="#64748b" font-size="6.5">বালতি-ধরে-না — প্রপ-বইবে-না</text>
-      <rect x="100" y="182" width="160" height="56" rx="10" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="180" y="201" text-anchor="middle" fill="#7ee0b0" font-size="7.5" font-weight="700">প্রজন্ম-৪: InputLabel</text>
+      <rect x="100" y="182" width="160" height="56" rx="10" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="180" y="201" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">প্রজন্ম-৪: InputLabel</text>
       <text x="180" y="215" text-anchor="middle" fill="#94a3b8" font-size="6.5">inject(ThemeCtx) — সরাসরি</text>
       <text x="180" y="228" text-anchor="middle" fill="#64748b" font-size="6">ডিফল্ট-সহ নিরাপদ</text>
-      <rect x="300" y="182" width="160" height="56" rx="10" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="380" y="201" text-anchor="middle" fill="#7ee0b0" font-size="7.5" font-weight="700">প্রজন্ম-৬: DeepField</text>
+      <rect x="300" y="182" width="160" height="56" rx="10" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="380" y="201" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">প্রজন্ম-৬: DeepField</text>
       <text x="380" y="215" text-anchor="middle" fill="#94a3b8" font-size="6.5">inject(ThemeCtx) — যত-গভীরেই</text>
       <text x="380" y="228" text-anchor="middle" fill="#64748b" font-size="6">হাতবদল-শূন্য</text>
-      <line x1="280" y1="76" x2="280" y2="102" stroke="#7ee0b0" stroke-width="1.8" marker-end="url(#arrowJ11)"/>
-      <line x1="280" y1="150" x2="200" y2="180" stroke="#7ee0b0" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrowJ11)"/>
-      <line x1="290" y1="150" x2="368" y2="180" stroke="#7ee0b0" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrowJ11)"/>
+      <line x1="280" y1="76" x2="280" y2="102" stroke="#a5b4fc" stroke-width="1.8" marker-end="url(#arrowJ11)"/>
+      <line x1="280" y1="150" x2="200" y2="180" stroke="#a5b4fc" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrowJ11)"/>
+      <line x1="290" y1="150" x2="368" y2="180" stroke="#a5b4fc" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrowJ11)"/>
       <rect x="15" y="258" width="530" height="30" rx="9" fill="rgba(129,140,248,0.07)" stroke="#818cf8" stroke-width="1.2"/>
       <text x="280" y="277" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="600">কী = InjectionKey&lt;T&gt; খোদাই · বদল = ক্রিয়া-পথ · ১-২ স্তরে props-ই · ক্রস-পর্দা-সত্য = স্টোর</text>
       <text x="280" y="298" text-anchor="middle" fill="#64748b" font-size="8">দান ঊর্ধ্ব থেকে অবিচ্ছিন্ন নামে — প্রজন্ম শুধু পাত্র ধরে, মালিক হয় না</text>
@@ -125,7 +125,7 @@ doors.push({
 doors.push({
   num: 12,
   icon: "🌀",
-  color: "#7ee0b0",
+  color: "#818cf8",
   name: "উন্নত যন্ত্রের বারান্দা",
   subtitle: "The Advanced Balcony — Dynamic/Async, Teleport, Suspense, keep-alive",
   tech: "component :is, markRaw, defineAsyncComponent, Teleport (defer), Suspense, KeepAlive (include/activate)",
@@ -235,23 +235,23 @@ doors.push({
   <div class="diagram">
     <div class="diag-title">The Advanced Balcony — Five Machines</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
-      <rect x="15" y="12" width="164" height="104" rx="10" fill="rgba(66,184,131,0.09)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="97" y="33" text-anchor="middle" fill="#7ee0b0" font-size="8" font-weight="700">🖼️ :is + markRaw</text>
+      <rect x="15" y="12" width="164" height="104" rx="10" fill="rgba(66,184,131,0.09)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="97" y="33" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="700">🖼️ :is + markRaw</text>
       <text x="97" y="48" text-anchor="middle" fill="#94a3b8" font-size="6.5">রাতে-ফ্রেম-বদল</text>
       <text x="97" y="62" text-anchor="middle" fill="#64748b" font-size="6.5">shallowRef + markRaw(Comp)</text>
-      <text x="97" y="78" text-anchor="middle" fill="#7ee0b0" font-size="6.5">⚠ raw-বাঁধা = reactive-অপচয়</text>
+      <text x="97" y="78" text-anchor="middle" fill="#a5b4fc" font-size="6.5">⚠ raw-বাঁধা = reactive-অপচয়</text>
       <text x="97" y="98" text-anchor="middle" fill="#64748b" font-size="6">ট্যাব-বদলের মূল-যন্ত্র</text>
-      <rect x="196" y="12" width="164" height="104" rx="10" fill="rgba(66,184,131,0.09)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="278" y="33" text-anchor="middle" fill="#7ee0b0" font-size="8" font-weight="700">🚚 async component</text>
+      <rect x="196" y="12" width="164" height="104" rx="10" fill="rgba(66,184,131,0.09)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="278" y="33" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="700">🚚 async component</text>
       <text x="278" y="48" text-anchor="middle" fill="#94a3b8" font-size="6.5">দেরিতে-আসা-ভারী-মাল</text>
       <text x="278" y="62" text-anchor="middle" fill="#64748b" font-size="6.5">loading/error + delay/timeout</text>
-      <text x="278" y="78" text-anchor="middle" fill="#7ee0b0" font-size="6.5">বান্ডেল-ভাগ + স্কেলটন</text>
+      <text x="278" y="78" text-anchor="middle" fill="#a5b4fc" font-size="6.5">বান্ডেল-ভাগ + স্কেলটন</text>
       <text x="278" y="98" text-anchor="middle" fill="#64748b" font-size="6">রাউট-লেজির আত্মীয় (দরজা ১৩)</text>
-      <rect x="377" y="12" width="168" height="104" rx="10" fill="rgba(66,184,131,0.09)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="461" y="33" text-anchor="middle" fill="#7ee0b0" font-size="8" font-weight="700">🌀 Teleport (defer)</text>
+      <rect x="377" y="12" width="168" height="104" rx="10" fill="rgba(66,184,131,0.09)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="461" y="33" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="700">🌀 Teleport (defer)</text>
       <text x="461" y="48" text-anchor="middle" fill="#94a3b8" font-size="6.5">অন্য-দেয়ালে-ফুটা</text>
       <text x="461" y="62" text-anchor="middle" fill="#64748b" font-size="6.5">to="#modal-root" · :disabled</text>
-      <text x="461" y="78" text-anchor="middle" fill="#7ee0b0" font-size="6.5">3.5: defer — লেট-টার্গেট ও চলে</text>
+      <text x="461" y="78" text-anchor="middle" fill="#a5b4fc" font-size="6.5">3.5: defer — লেট-টার্গেট ও চলে</text>
       <text x="461" y="98" text-anchor="middle" fill="#64748b" font-size="6">z-index/ওভারফ্লো-ফাঁদ-মুক্তি</text>
       <rect x="105" y="136" width="164" height="104" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.4"/>
       <text x="187" y="157" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="700">🎭 Suspense</text>

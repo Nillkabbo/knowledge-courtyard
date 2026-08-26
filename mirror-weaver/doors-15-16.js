@@ -2,7 +2,7 @@
 doors.push({
   num: 15,
   icon: "📡",
-  color: "#818cf8",
+  color: "#14b8a6",
   name: "দূতের সমুদ্র-পথ",
   subtitle: "The Envoy's Sea-Route — The API Layer",
   tech: "axios client, baseURL/timeout, CSRF ensure, 401 handler, 403-retry, error normalization (getApiErrorMessage), service-per-feature",
@@ -130,11 +130,11 @@ doors.push({
       <text x="280" y="35" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">🏗️ স্তর-স্রোত: কম্পোনেন্ট → কম্পোজেবল → সার্ভিস → apiClient → সার্ভার</text>
       <text x="280" y="51" text-anchor="middle" fill="#94a3b8" font-size="7">সার্ভিস-প্রতি-ফিচার · কম্পোনেন্টে axios-আমদানি নিষেধ · টেস্টে এক-সীমায়-মক</text>
       <text x="280" y="67" text-anchor="middle" fill="#64748b" font-size="6.5">createApiClient({ baseURL, timeout:10s, withCredentials:true }) — ফ্যাক্টরি-অপশন-ইনজেক্ট</text>
-      <rect x="15" y="96" width="165" height="90" rx="10" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="97" y="116" text-anchor="middle" fill="#7ee0b0" font-size="8" font-weight="700">🔑 নিয়ম-১: CSRF</text>
+      <rect x="15" y="96" width="165" height="90" rx="10" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="97" y="116" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="700">🔑 নিয়ম-১: CSRF</text>
       <text x="97" y="131" text-anchor="middle" fill="#94a3b8" font-size="6.5">লেখা-জাহাজে X-CSRFToken</text>
       <text x="97" y="145" text-anchor="middle" fill="#64748b" font-size="6">ensureCSRFToken() — কুকি↔হেডার</text>
-      <text x="97" y="160" text-anchor="middle" fill="#7ee0b0" font-size="6.5">সমান্তরাল-ডাক এক-প্রমিজে</text>
+      <text x="97" y="160" text-anchor="middle" fill="#a5b4fc" font-size="6.5">সমান্তরাল-ডাক এক-প্রমিজে</text>
       <text x="97" y="178" text-anchor="middle" fill="#64748b" font-size="6">অনুরোধ-ইন্টারসেপ্টর</text>
       <rect x="197" y="96" width="165" height="90" rx="10" fill="rgba(248,113,113,0.07)" stroke="#f87171" stroke-width="1.4"/>
       <text x="279" y="116" text-anchor="middle" fill="#f87171" font-size="8" font-weight="700">🚪 নিয়ম-২: 401</text>
@@ -166,7 +166,7 @@ doors.push({
 doors.push({
   num: 16,
   icon: "📝",
-  color: "#818cf8",
+  color: "#10b981",
   name: "পাণ্ডুলিপির দপ্তর",
   subtitle: "The Manuscript Office — Forms that Survive",
   tech: "form state patterns, field errors from parseFormError, dirty-tracking, beforeRouteLeave guard, progressive disclosure, multi-step",
@@ -287,11 +287,11 @@ doors.push({
     <div class="diag-title">The Manuscript Office — Draft, Courier, Seals, Exit-Gate</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
       <defs><marker id="arrowF16" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/></marker></defs>
-      <rect x="15" y="14" width="253" height="96" rx="10" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="141" y="34" text-anchor="middle" fill="#7ee0b0" font-size="8.5" font-weight="700">📝 খসড়া-টেবিল (স্থানীয়-অবস্থা)</text>
+      <rect x="15" y="14" width="253" height="96" rx="10" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="141" y="34" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">📝 খসড়া-টেবিল (স্থানীয়-অবস্থা)</text>
       <text x="141" y="49" text-anchor="middle" fill="#94a3b8" font-size="6.5">refs: fields + originalEmail-নোঙর + currentPassword</text>
       <text x="141" y="63" text-anchor="middle" fill="#64748b" font-size="6.5">emailChanged-কম্পিউটেড → পাসওয়ার্ড-ঘর v-if</text>
-      <text x="141" y="80" text-anchor="middle" fill="#7ee0b0" font-size="6.5">progressive disclosure — চাহিদা-মাত্র-দেখাও</text>
+      <text x="141" y="80" text-anchor="middle" fill="#a5b4fc" font-size="6.5">progressive disclosure — চাহিদা-মাত্র-দেখাও</text>
       <text x="141" y="98" text-anchor="middle" fill="#64748b" font-size="6">সফলে নোঙর-পুনঃসিঙ্ক, নইলে ঘর-আটকে-খোলা</text>
       <rect x="292" y="14" width="253" height="96" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.4"/>
       <text x="418" y="34" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">📦 কোরিয়ার (সাবমিট)</text>

@@ -2,7 +2,7 @@
 doors.push({
   num: 5,
   icon: "🕊️",
-  color: "#7ee0b0",
+  color: "#14b8a6",
   name: "ফেরত-পাখির ডাক",
   subtitle: "The Return-Bird's Call — Custom Events (emit)",
   tech: "defineEmits, typed event payloads, emits declaration, event validation, fallthrough attributes",
@@ -95,19 +95,19 @@ doors.push({
   <div class="diagram">
     <div class="diag-title">Return-Bird — Declared Event Contract</div>
     <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
-      <defs><marker id="arrowB5" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker><marker id="arrowP5" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7ee0b0"/></marker></defs>
-      <rect x="15" y="18" width="200" height="80" rx="11" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="115" y="40" text-anchor="middle" fill="#7ee0b0" font-size="9" font-weight="700">🏭 পিতার খাঁচা</text>
+      <defs><marker id="arrowB5" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker><marker id="arrowP5" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/></marker></defs>
+      <rect x="15" y="18" width="200" height="80" rx="11" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="115" y="40" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">🏭 পিতার খাঁচা</text>
       <text x="115" y="56" text-anchor="middle" fill="#94a3b8" font-size="7">&lt;Modal @close="…" @confirm="…" /&gt;</text>
       <text x="115" y="70" text-anchor="middle" fill="#64748b" font-size="7">ঘণ্টি = ঠিক-নামের শ্রোতা</text>
       <text x="115" y="86" text-anchor="middle" fill="#64748b" font-size="7">সিদ্ধান্ত এখানেই হয় (state-বদল)</text>
-      <rect x="345" y="18" width="200" height="80" rx="11" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="445" y="40" text-anchor="middle" fill="#7ee0b0" font-size="9" font-weight="700">🕊️ পুত্রের বাসা</text>
+      <rect x="345" y="18" width="200" height="80" rx="11" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="445" y="40" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">🕊️ পুত্রের বাসা</text>
       <text x="445" y="56" text-anchor="middle" fill="#94a3b8" font-size="7">defineEmits&lt;{(e:'close'):void …}&gt;()</text>
       <text x="445" y="70" text-anchor="middle" fill="#64748b" font-size="7">নাম-রিং + ওজন-চিরহার (টাইপ)</text>
       <text x="445" y="86" text-anchor="middle" fill="#64748b" font-size="7">emit('close') — কেবল খবর</text>
-      <path d="M225,45 C265,32 305,32 340,44" fill="none" stroke="#7ee0b0" stroke-width="1.8" marker-end="url(#arrowP5)"/>
-      <text x="283" y="28" text-anchor="middle" fill="#7ee0b0" font-size="7.5">props (মান নামে)</text>
+      <path d="M225,45 C265,32 305,32 340,44" fill="none" stroke="#a5b4fc" stroke-width="1.8" marker-end="url(#arrowP5)"/>
+      <text x="283" y="28" text-anchor="middle" fill="#a5b4fc" font-size="7.5">props (মান নামে)</text>
       <path d="M340,72 C300,86 260,86 228,74" fill="none" stroke="#fbbf24" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrowB5)"/>
       <text x="283" y="99" text-anchor="middle" fill="#fbbf24" font-size="7.5" font-weight="600">emit (খবর ওঠে) — পে-লোডসহ</text>
       <rect x="15" y="118" width="530" height="64" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.4"/>
@@ -130,7 +130,7 @@ doors.push({
 doors.push({
   num: 6,
   icon: "🔌",
-  color: "#7ee0b0",
+  color: "#10b981",
   name: "দুই-মুখী বাঁধনের সেতু",
   subtitle: "Two-Way Bridge — v-model Complete",
   tech: "v-model on inputs, checkboxes/radios/selects, modifiers (.lazy/.number/.trim), component v-model, multiple models, defineModel",
@@ -220,14 +220,14 @@ doors.push({
   <div class="diagram">
     <div class="diag-title">Two-Way Bridge — One Lock, Two Currents</div>
     <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
-      <defs><marker id="arrowD6" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7ee0b0"/></marker><marker id="arrowU6" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker></defs>
-      <rect x="15" y="14" width="170" height="88" rx="11" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="100" y="36" text-anchor="middle" fill="#7ee0b0" font-size="9" font-weight="700">🏭 পিতা-প্রান্ত</text>
+      <defs><marker id="arrowD6" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/></marker><marker id="arrowU6" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker></defs>
+      <rect x="15" y="14" width="170" height="88" rx="11" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="100" y="36" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">🏭 পিতা-প্রান্ত</text>
       <text x="100" y="52" text-anchor="middle" fill="#94a3b8" font-size="7">const x = ref('…')</text>
       <text x="100" y="66" text-anchor="middle" fill="#64748b" font-size="7">&lt;Comp v-model="x" /&gt;</text>
       <text x="100" y="82" text-anchor="middle" fill="#64748b" font-size="7">v-model:title + v-model:page — বহু</text>
-      <rect x="375" y="14" width="170" height="88" rx="11" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="460" y="36" text-anchor="middle" fill="#7ee0b0" font-size="9" font-weight="700">🪞 পুত্র-প্রান্ত</text>
+      <rect x="375" y="14" width="170" height="88" rx="11" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="460" y="36" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">🪞 পুত্র-প্রান্ত</text>
       <text x="460" y="52" text-anchor="middle" fill="#94a3b8" font-size="7">defineModel&lt;string&gt;('title')</text>
       <text x="460" y="66" text-anchor="middle" fill="#64748b" font-size="7">&lt;input v-model="title" /&gt;</text>
       <text x="460" y="82" text-anchor="middle" fill="#64748b" font-size="7">default-অপশনসহ</text>
@@ -235,7 +235,7 @@ doors.push({
       <text x="280" y="47" text-anchor="middle" fill="#fcd34d" font-size="8.5" font-weight="700">⏱️ এক তালা-ঘড়ি</text>
       <text x="280" y="62" text-anchor="middle" fill="#94a3b8" font-size="7">:modelValue ↓</text>
       <text x="280" y="76" text-anchor="middle" fill="#94a3b8" font-size="7">@update:modelValue ↑</text>
-      <line x1="185" y1="50" x2="213" y2="50" stroke="#7ee0b0" stroke-width="1.8" marker-end="url(#arrowD6)"/>
+      <line x1="185" y1="50" x2="213" y2="50" stroke="#a5b4fc" stroke-width="1.8" marker-end="url(#arrowD6)"/>
       <line x1="345" y1="66" x2="217" y2="66" stroke="#fbbf24" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#arrowU6)"/>
       <rect x="15" y="122" width="530" height="66" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.4"/>
       <text x="280" y="143" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">ফানুস-তিনটির স্রোত-নিয়ম (ইনপুটে)</text>

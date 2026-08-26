@@ -150,26 +150,26 @@ doors.push({
       <rect x="15" y="18" width="80" height="52" rx="9" fill="rgba(100,116,139,0.10)" stroke="#94a3b8" stroke-width="1.3"/>
       <text x="55" y="40" text-anchor="middle" fill="#cbd5e1" font-size="7.5" font-weight="700">idle</text>
       <text x="55" y="54" text-anchor="middle" fill="#64748b" font-size="6">বিশ্রাম</text>
-      <rect x="130" y="18" width="96" height="52" rx="9" fill="rgba(66,184,131,0.09)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="178" y="40" text-anchor="middle" fill="#7ee0b0" font-size="7.5" font-weight="700">previewing</text>
+      <rect x="130" y="18" width="96" height="52" rx="9" fill="rgba(66,184,131,0.09)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="178" y="40" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">previewing</text>
       <text x="178" y="54" text-anchor="middle" fill="#64748b" font-size="6">fetch(dryRun=true)</text>
-      <rect x="260" y="18" width="90" height="52" rx="9" fill="rgba(66,184,131,0.13)" stroke="#42b883" stroke-width="1.6"/>
-      <text x="305" y="40" text-anchor="middle" fill="#7ee0b0" font-size="7.5" font-weight="700">preview 📋</text>
+      <rect x="260" y="18" width="90" height="52" rx="9" fill="rgba(66,184,131,0.13)" stroke="#6366f1" stroke-width="1.6"/>
+      <text x="305" y="40" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">preview 📋</text>
       <text x="305" y="54" text-anchor="middle" fill="#94a3b8" font-size="6">পাতা-১ খোলা</text>
       <rect x="384" y="18" width="96" height="52" rx="9" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.6"/>
       <text x="432" y="40" text-anchor="middle" fill="#fcd34d" font-size="7.5" font-weight="700">committing</text>
       <text x="432" y="54" text-anchor="middle" fill="#94a3b8" font-size="6">fetch(dryRun=false)</text>
-      <rect x="508" y="18" width="37" height="52" rx="8" fill="rgba(66,184,131,0.13)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="526" y="40" text-anchor="middle" fill="#7ee0b0" font-size="7" font-weight="700">done</text>
+      <rect x="508" y="18" width="37" height="52" rx="8" fill="rgba(66,184,131,0.13)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="526" y="40" text-anchor="middle" fill="#a5b4fc" font-size="7" font-weight="700">done</text>
       <text x="526" y="53" text-anchor="middle" fill="#94a3b8" font-size="6.5">✓</text>
       <rect x="384" y="96" width="96" height="46" rx="9" fill="rgba(248,113,113,0.08)" stroke="#f87171" stroke-width="1.4"/>
       <text x="432" y="116" text-anchor="middle" fill="#f87171" font-size="7.5" font-weight="700">error</text>
       <text x="432" y="130" text-anchor="middle" fill="#94a3b8" font-size="6">→ সংশোধ-পুনঃপ্রিভিউ</text>
-      <line x1="95" y1="44" x2="128" y2="44" stroke="#7ee0b0" stroke-width="1.7" marker-end="url(#arrowQ17)"/>
-      <line x1="226" y1="44" x2="258" y2="44" stroke="#7ee0b0" stroke-width="1.7" marker-end="url(#arrowQ17)"/>
+      <line x1="95" y1="44" x2="128" y2="44" stroke="#a5b4fc" stroke-width="1.7" marker-end="url(#arrowQ17)"/>
+      <line x1="226" y1="44" x2="258" y2="44" stroke="#a5b4fc" stroke-width="1.7" marker-end="url(#arrowQ17)"/>
       <line x1="350" y1="44" x2="382" y2="44" stroke="#fbbf24" stroke-width="1.9" marker-end="url(#arrowQ17)"/>
       <text x="366" y="34" text-anchor="middle" fill="#fbbf24" font-size="6" font-weight="700">🛡️ preview-থেকেই</text>
-      <line x1="480" y1="44" x2="506" y2="44" stroke="#7ee0b0" stroke-width="1.7" marker-end="url(#arrowQ17)"/>
+      <line x1="480" y1="44" x2="506" y2="44" stroke="#a5b4fc" stroke-width="1.7" marker-end="url(#arrowQ17)"/>
       <line x1="432" y1="70" x2="432" y2="94" stroke="#f87171" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#arrowQ17)"/>
       <rect x="15" y="118" width="340" height="24" rx="8" fill="rgba(248,113,113,0.05)" stroke="#f87171" stroke-width="1"/>
       <text x="185" y="134" text-anchor="middle" fill="#f87171" font-size="6.5" font-weight="600">অন্য-যেকোনো-অবস্থা থেকে confirm → no-op (অন্ধ-কালি-রোধ)</text>
@@ -193,7 +193,7 @@ doors.push({
 doors.push({
   num: 18,
   icon: "🔔",
-  color: "#f59e0b",
+  color: "#f97316",
   name: "ঘণ্টি-বাহকের গলি",
   subtitle: "The Bell-Carrier's Lane — Notifications & Live Updates",
   tech: "toast system (useToast), notification store + inbox, SSE/EventSource pattern, unread badge, deep-links from notifications",
@@ -314,11 +314,11 @@ doors.push({
     <div class="diag-title">Bell-Carrier's Lane — Toast Tavern, Post Office, River Ghat</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
       <defs><marker id="arrowN18" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker></defs>
-      <rect x="15" y="16" width="165" height="104" rx="10" fill="rgba(66,184,131,0.09)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="97" y="37" text-anchor="middle" fill="#7ee0b0" font-size="8.5" font-weight="700">🍞 টোস্ট-ভাটি</text>
+      <rect x="15" y="16" width="165" height="104" rx="10" fill="rgba(66,184,131,0.09)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="97" y="37" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">🍞 টোস্ট-ভাটি</text>
       <text x="97" y="52" text-anchor="middle" fill="#94a3b8" font-size="6.5">useToast() — ক্ষণস্থায়ী</text>
       <text x="97" y="66" text-anchor="middle" fill="#64748b" font-size="6.5">toast.success/error(msg)</text>
-      <text x="97" y="82" text-anchor="middle" fill="#7ee0b0" font-size="6.5">অটো-মৃত্যু · প্রেরণ: কম্পোজেবল-গলি</text>
+      <text x="97" y="82" text-anchor="middle" fill="#a5b4fc" font-size="6.5">অটো-মৃত্যু · প্রেরণ: কম্পোজেবল-গলি</text>
       <text x="97" y="102" text-anchor="middle" fill="#64748b" font-size="6">কম্পোনেন্ট জানে-না</text>
       <rect x="197" y="16" width="165" height="104" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="279" y="37" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">📮 ডাক-ঘর (ইনবক্স)</text>
@@ -326,11 +326,11 @@ doors.push({
       <text x="279" y="66" text-anchor="middle" fill="#64748b" font-size="6.5">items + unread-কম্পিউটেড</text>
       <text x="279" y="82" text-anchor="middle" fill="#a5b4fc" font-size="6.5">markRead → সার্ভার → রিফেচ</text>
       <text x="279" y="102" text-anchor="middle" fill="#64748b" font-size="6">লাল-ব্যাজ = unread-গণনা</text>
-      <rect x="379" y="16" width="166" height="104" rx="10" fill="rgba(66,184,131,0.09)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="462" y="37" text-anchor="middle" fill="#7ee0b0" font-size="8.5" font-weight="700">🌊 নদী-ঘাট (SSE)</text>
+      <rect x="379" y="16" width="166" height="104" rx="10" fill="rgba(66,184,131,0.09)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="462" y="37" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">🌊 নদী-ঘাট (SSE)</text>
       <text x="462" y="52" text-anchor="middle" fill="#94a3b8" font-size="6.5">EventSource + withCredentials</text>
       <text x="462" y="66" text-anchor="middle" fill="#64748b" font-size="6.5">onmessage → তিন-ঢাল</text>
-      <text x="462" y="82" text-anchor="middle" fill="#7ee0b0" font-size="6.5">onerror → backoff-পুনঃছোঁয়া</text>
+      <text x="462" y="82" text-anchor="middle" fill="#a5b4fc" font-size="6.5">onerror → backoff-পুনঃছোঁয়া</text>
       <text x="462" y="102" text-anchor="middle" fill="#64748b" font-size="6">onBeforeUnmount → close()</text>
       <line x1="182" y1="68" x2="195" y2="68" stroke="#fbbf24" stroke-width="1.6" marker-end="url(#arrowN18)"/>
       <line x1="362" y1="68" x2="377" y2="68" stroke="#fbbf24" stroke-width="1.6" marker-end="url(#arrowN18)"/>

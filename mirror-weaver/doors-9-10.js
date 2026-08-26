@@ -2,7 +2,7 @@
 doors.push({
   num: 9,
   icon: "🧰",
-  color: "#7ee0b0",
+  color: "#ef4444",
   name: "যন্ত্রপাতির তাবিজ-ঘর",
   subtitle: "The Composable Forge — Reusable Logic",
   tech: "composable anatomy (state+actions returned), naming (use*), input=options-object, single vs multi-instance, useMutationAction dissected",
@@ -133,27 +133,27 @@ doors.push({
   <div class="diagram">
     <div class="diag-title">The Talisman — Composable Anatomy</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
-      <defs><marker id="arrowC9" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7ee0b0"/></marker></defs>
-      <rect x="15" y="14" width="200" height="118" rx="11" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="115" y="36" text-anchor="middle" fill="#7ee0b0" font-size="9" font-weight="700">📥 ইন: অপশন-অবজেক্ট</text>
+      <defs><marker id="arrowC9" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/></marker></defs>
+      <rect x="15" y="14" width="200" height="118" rx="11" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="115" y="36" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">📥 ইন: অপশন-অবজেক্ট</text>
       <text x="115" y="52" text-anchor="middle" fill="#94a3b8" font-size="7">mutate(arg) — কী করবে</text>
       <text x="115" y="66" text-anchor="middle" fill="#94a3b8" font-size="7">successMessage / onSuccess</text>
       <text x="115" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">errorMode / errorMessage</text>
-      <text x="115" y="98" text-anchor="middle" fill="#7ee0b0" font-size="6.8">নতুন-ক্ষেত্র যোগে কলার ভাঙে না</text>
+      <text x="115" y="98" text-anchor="middle" fill="#a5b4fc" font-size="6.8">নতুন-ক্ষেত্র যোগে কলার ভাঙে না</text>
       <text x="115" y="118" text-anchor="middle" fill="#64748b" font-size="6.5">use*: (options) =&gt; …</text>
-      <rect x="345" y="14" width="200" height="118" rx="11" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="445" y="36" text-anchor="middle" fill="#7ee0b0" font-size="9" font-weight="700">📤 আউট: রেফ-বান্ডেল</text>
+      <rect x="345" y="14" width="200" height="118" rx="11" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="445" y="36" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">📤 আউট: রেফ-বান্ডেল</text>
       <text x="445" y="52" text-anchor="middle" fill="#94a3b8" font-size="7">running · pending · error (refs)</text>
       <text x="445" y="66" text-anchor="middle" fill="#94a3b8" font-size="7">run(arg) · reset() (ক্রিয়া)</text>
-      <text x="445" y="84" text-anchor="middle" fill="#7ee0b0" font-size="6.8">ডিস্ট্রাকচার-নিরাপদ — প্রতিটি সদস্য স্বয়ং-প্রতিক্রিয়</text>
+      <text x="445" y="84" text-anchor="middle" fill="#a5b4fc" font-size="6.8">ডিস্ট্রাকচার-নিরাপদ — প্রতিটি সদস্য স্বয়ং-প্রতিক্রিয়</text>
       <text x="445" y="104" text-anchor="middle" fill="#64748b" font-size="6.5">:loading="running" @click="run(id)"</text>
       <rect x="90" y="156" width="380" height="84" rx="11" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="280" y="178" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="700">🧰 ভেতরের যন্ত্র (useMutationAction)</text>
       <text x="280" y="194" text-anchor="middle" fill="#94a3b8" font-size="7">পাহারা-দাঁড়ি: if (running.value) return — দ্বিতীয় ক্লিক no-op</text>
       <text x="280" y="208" text-anchor="middle" fill="#94a3b8" font-size="7">try { mutate } catch { এরর-মোড: toast|inline }</text>
-      <text x="280" y="222" text-anchor="middle" fill="#7ee0b0" font-size="7">✓ onSuccess try-এর বাইরে — রিফেচ-ব্যর্থতা মিউটেশন-সাফল্য মুছবে না</text>
+      <text x="280" y="222" text-anchor="middle" fill="#a5b4fc" font-size="7">✓ onSuccess try-এর বাইরে — রিফেচ-ব্যর্থতা মিউটেশন-সাফল্য মুছবে না</text>
       <text x="280" y="236" text-anchor="middle" fill="#64748b" font-size="6.5">reset() — মোডাল-পুনরায়-খোলায় বাসী-এরর মুছে</text>
-      <line x1="217" y1="72" x2="343" y2="72" stroke="#7ee0b0" stroke-width="1.8" marker-end="url(#arrowC9)"/>
+      <line x1="217" y1="72" x2="343" y2="72" stroke="#a5b4fc" stroke-width="1.8" marker-end="url(#arrowC9)"/>
       <text x="280" y="62" text-anchor="middle" fill="#64748b" font-size="7">তাবিজের প্রবাহ</text>
       <rect x="15" y="256" width="530" height="40" rx="10" fill="rgba(100,116,139,0.08)" stroke="#94a3b8" stroke-width="1.2"/>
       <text x="280" y="273" text-anchor="middle" fill="#cbd5e1" font-size="7.5" font-weight="600">পরিবার: usePreviewConfirmFlow (দুই-পর্ব) · useDataFetch (অটো-ফেচ) · ফিচার-তাবিজ (Nacha/Reconcile/Xero…)</text>
@@ -171,7 +171,7 @@ doors.push({
 doors.push({
   num: 10,
   icon: "🏛️",
-  color: "#7ee0b0",
+  color: "#ec4899",
   name: "শহরের কোষাগার",
   subtitle: "The City Treasury — Pinia State Management",
   tech: "defineStore, setup-store syntax, state/getters/actions, storeToRefs, session-scoped reset, persistence, when NOT to use a store",
@@ -296,27 +296,27 @@ store.replaceState পথ — এই বইয়ের স্কোপ-বা�
   <div class="diagram">
     <div class="diag-title">The Treasury — One Ledger, Five Branches, One Red Lever</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
-      <defs><marker id="arrowT10" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7ee0b0"/></marker></defs>
-      <rect x="170" y="12" width="220" height="60" rx="11" fill="rgba(66,184,131,0.12)" stroke="#42b883" stroke-width="1.6"/>
-      <text x="280" y="34" text-anchor="middle" fill="#7ee0b0" font-size="9.5" font-weight="700">🏛️ মূল-খাতা (Pinia)</text>
+      <defs><marker id="arrowT10" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/></marker></defs>
+      <rect x="170" y="12" width="220" height="60" rx="11" fill="rgba(66,184,131,0.12)" stroke="#6366f1" stroke-width="1.6"/>
+      <text x="280" y="34" text-anchor="middle" fill="#a5b4fc" font-size="9.5" font-weight="700">🏛️ মূল-খাতা (Pinia)</text>
       <text x="280" y="50" text-anchor="middle" fill="#94a3b8" font-size="7">defineStore('auth', () =&gt; {…}) — সেটআপ-স্টোর</text>
       <text x="280" y="64" text-anchor="middle" fill="#64748b" font-size="6.5">state=ref · getters=computed · actions=ফাংশন</text>
-      <rect x="15" y="96" width="160" height="52" rx="9" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.3"/>
-      <text x="95" y="115" text-anchor="middle" fill="#7ee0b0" font-size="7.5" font-weight="700">auth.store</text>
+      <rect x="15" y="96" width="160" height="52" rx="9" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.3"/>
+      <text x="95" y="115" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">auth.store</text>
       <text x="95" y="128" text-anchor="middle" fill="#94a3b8" font-size="6.5">পরিচয় · লগইন/আউট · সিন্দুক</text>
-      <rect x="185" y="96" width="95" height="52" rx="9" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.3"/>
-      <text x="232" y="115" text-anchor="middle" fill="#7ee0b0" font-size="7.5" font-weight="700">navMenu</text>
+      <rect x="185" y="96" width="95" height="52" rx="9" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.3"/>
+      <text x="232" y="115" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">navMenu</text>
       <text x="232" y="128" text-anchor="middle" fill="#94a3b8" font-size="6.5">মেনু-ম্যানিফেস্ট</text>
-      <rect x="290" y="96" width="95" height="52" rx="9" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.3"/>
-      <text x="337" y="115" text-anchor="middle" fill="#7ee0b0" font-size="7.5" font-weight="700">capabilities</text>
+      <rect x="290" y="96" width="95" height="52" rx="9" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.3"/>
+      <text x="337" y="115" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">capabilities</text>
       <text x="337" y="128" text-anchor="middle" fill="#94a3b8" font-size="6.5">কী-পারে</text>
-      <rect x="395" y="96" width="150" height="52" rx="9" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.3"/>
-      <text x="470" y="115" text-anchor="middle" fill="#7ee0b0" font-size="7.5" font-weight="700">features + defaults</text>
+      <rect x="395" y="96" width="150" height="52" rx="9" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.3"/>
+      <text x="470" y="115" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">features + defaults</text>
       <text x="470" y="128" text-anchor="middle" fill="#94a3b8" font-size="6.5">গ্রান্ট · ডিফল্ট</text>
-      <line x1="230" y1="72" x2="105" y2="94" stroke="#7ee0b0" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowT10)"/>
-      <line x1="265" y1="72" x2="232" y2="94" stroke="#7ee0b0" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowT10)"/>
-      <line x1="300" y1="72" x2="335" y2="94" stroke="#7ee0b0" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowT10)"/>
-      <line x1="335" y1="72" x2="465" y2="94" stroke="#7ee0b0" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowT10)"/>
+      <line x1="230" y1="72" x2="105" y2="94" stroke="#a5b4fc" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowT10)"/>
+      <line x1="265" y1="72" x2="232" y2="94" stroke="#a5b4fc" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowT10)"/>
+      <line x1="300" y1="72" x2="335" y2="94" stroke="#a5b4fc" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowT10)"/>
+      <line x1="335" y1="72" x2="465" y2="94" stroke="#a5b4fc" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowT10)"/>
       <rect x="15" y="172" width="530" height="66" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.4"/>
       <text x="280" y="193" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">দুই-হাত নিয়ম</text>
       <text x="280" y="209" text-anchor="middle" fill="#94a3b8" font-size="7.5">পড়া: const { user, isAuthenticated } = storeToRefs(auth) — প্রতিক্রিয়া-জীবিত</text>

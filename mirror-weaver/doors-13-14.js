@@ -2,7 +2,7 @@
 doors.push({
   num: 13,
   icon: "🗺️",
-  color: "#818cf8",
+  color: "#a78bfa",
   name: "শহরের রাস্তার-নকশা",
   subtitle: "The City Street-Map — vue-router Fundamentals",
   tech: "createRouter, createWebHistory, route records, dynamic segments (:id), nested routes, named routes, lazy loading",
@@ -117,11 +117,11 @@ doors.push({
       <rect x="15" y="14" width="530" height="56" rx="10" fill="rgba(129,140,248,0.10)" stroke="#818cf8" stroke-width="1.5"/>
       <text x="280" y="36" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700">🗺️ createRouter({ history: createWebHistory(), routes: […] })</text>
       <text x="280" y="52" text-anchor="middle" fill="#94a3b8" font-size="7">নকশা এক-স্থানে — পথ-নাম-উপাদান তিন-স্তম্ভ · name-ভিত্তিক RouterLink (পথ-বদলে লিংক-অক্ষত)</text>
-      <rect x="15" y="88" width="165" height="84" rx="10" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="97" y="108" text-anchor="middle" fill="#7ee0b0" font-size="8" font-weight="700">🏷️ স্ট্যাটিক-বীজ</text>
+      <rect x="15" y="88" width="165" height="84" rx="10" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="97" y="108" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="700">🏷️ স্ট্যাটিক-বীজ</text>
       <text x="97" y="123" text-anchor="middle" fill="#94a3b8" font-size="6.5">/login · /404 · redirect</text>
       <text x="97" y="137" text-anchor="middle" fill="#64748b" font-size="6">path+name+meta(public)</text>
-      <text x="97" y="154" text-anchor="middle" fill="#7ee0b0" font-size="6.5">LP: হাতে-গোনা কয়েকটি</text>
+      <text x="97" y="154" text-anchor="middle" fill="#a5b4fc" font-size="6.5">LP: হাতে-গোনা কয়েকটি</text>
       <text x="97" y="166" text-anchor="middle" fill="#64748b" font-size="6">(নকশা-বইয়ের প্রথম-পাতা)</text>
       <rect x="197" y="88" width="165" height="84" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.4"/>
       <text x="279" y="108" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="700">🔍 গভীর-লিংক</text>
@@ -129,11 +129,11 @@ doors.push({
       <text x="279" y="137" text-anchor="middle" fill="#64748b" font-size="6">useRoute().params · :id(\\d+)</text>
       <text x="279" y="154" text-anchor="middle" fill="#fbbf24" font-size="6.5">⚠ প্যারাম-বদলে রিফেচ-নিজে-করো</text>
       <text x="279" y="166" text-anchor="middle" fill="#64748b" font-size="6">watch(params.id)</text>
-      <rect x="379" y="88" width="166" height="84" rx="10" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="462" y="108" text-anchor="middle" fill="#7ee0b0" font-size="8" font-weight="700">🚚 লেজি-চালক</text>
+      <rect x="379" y="88" width="166" height="84" rx="10" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="462" y="108" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="700">🚚 লেজি-চালক</text>
       <text x="462" y="123" text-anchor="middle" fill="#94a3b8" font-size="6.5">component: () =&gt; import(…)</text>
       <text x="462" y="137" text-anchor="middle" fill="#64748b" font-size="6">প্রতি-ভিউ এক-চাংক</text>
-      <text x="462" y="154" text-anchor="middle" fill="#7ee0b0" font-size="6.5">প্রথম-লোড হালকা</text>
+      <text x="462" y="154" text-anchor="middle" fill="#a5b4fc" font-size="6.5">প্রথম-লোড হালকা</text>
       <text x="462" y="166" text-anchor="middle" fill="#64748b" font-size="6">গুদাম→যাত্রায়-ইঞ্জিন</text>
       <rect x="15" y="188" width="253" height="76" rx="10" fill="rgba(100,116,139,0.08)" stroke="#94a3b8" stroke-width="1.3"/>
       <text x="141" y="208" text-anchor="middle" fill="#cbd5e1" font-size="7.5" font-weight="600">🏠 নেস্টেড-গলি</text>
@@ -144,7 +144,7 @@ doors.push({
       <text x="417" y="208" text-anchor="middle" fill="#fcd34d" font-size="7.5" font-weight="600">🧭 নেভিগেশন-যন্ত্র</text>
       <text x="417" y="222" text-anchor="middle" fill="#94a3b8" font-size="6.5">&lt;RouterLink :to="{name, params}"&gt; · router.push/replace</text>
       <text x="417" y="236" text-anchor="middle" fill="#64748b" font-size="6">query-সহ · useRoute() = পড়া · useRouter() = চালনা</text>
-      <text x="417" y="252" text-anchor="middle" fill="#7ee0b0" font-size="6.5">LP: ম্যানিফেস্ট → addRoute (দরজা ১৪)</text>
+      <text x="417" y="252" text-anchor="middle" fill="#a5b4fc" font-size="6.5">LP: ম্যানিফেস্ট → addRoute (দরজা ১৪)</text>
       <line x1="97" y1="172" x2="140" y2="186" stroke="#a5b4fc" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowR13)"/>
       <line x1="279" y1="172" x2="260" y2="186" stroke="#a5b4fc" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowR13)"/>
       <line x1="462" y1="172" x2="417" y2="186" stroke="#a5b4fc" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowR13)"/>
@@ -161,7 +161,7 @@ doors.push({
 doors.push({
   num: 14,
   icon: "🛡️",
-  color: "#818cf8",
+  color: "#22d3ee",
   name: "পথরক্ষকের শৃঙ্খল",
   subtitle: "The Gate-Chain — Navigation Guards",
   tech: "beforeEach global guard, meta-driven gating (public/roles/feature), order of checks, lazy hydration, role→dashboard map",
@@ -290,8 +290,8 @@ doors.push({
     <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
       <defs><marker id="arrowG14" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/></marker></defs>
       <path d="M20,180 C120,60 440,60 540,180" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 4"/>
-      <rect x="25" y="120" width="150" height="88" rx="11" fill="rgba(66,184,131,0.09)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="100" y="142" text-anchor="middle" fill="#7ee0b0" font-size="8.5" font-weight="700">① পরিচয়-তোরণ</text>
+      <rect x="25" y="120" width="150" height="88" rx="11" fill="rgba(66,184,131,0.09)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="100" y="142" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">① পরিচয়-তোরণ</text>
       <text x="100" y="157" text-anchor="middle" fill="#94a3b8" font-size="6.5">meta.public? · isAuthenticated</text>
       <text x="100" y="170" text-anchor="middle" fill="#64748b" font-size="6">restore() প্রথমে — রোল-ফাঁকা-রোধ</text>
       <text x="100" y="184" text-anchor="middle" fill="#fbbf24" font-size="6.5">না-হলে → login (?next=পথ)</text>
@@ -310,7 +310,7 @@ doors.push({
       <text x="460" y="200" text-anchor="middle" fill="#64748b" font-size="6">hydrateFeatures: বিচার-নেই, ভরা-আছে</text>
       <line x1="175" y1="150" x2="203" y2="150" stroke="#a5b4fc" stroke-width="1.8" marker-end="url(#arrowG14)"/>
       <line x1="355" y1="150" x2="383" y2="150" stroke="#a5b4fc" stroke-width="1.8" marker-end="url(#arrowG14)"/>
-      <text x="280" y="232" text-anchor="middle" fill="#7ee0b0" font-size="8.5" font-weight="700">✓ তিন-তোরণ পার → next() — ভুল-পথের-মানুষ roleDashboardMap-এ নিজ-ঘরে</text>
+      <text x="280" y="232" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">✓ তিন-তোরণ পার → next() — ভুল-পথের-মানুষ roleDashboardMap-এ নিজ-ঘরে</text>
       <rect x="15" y="248" width="530" height="36" rx="9" fill="rgba(100,116,139,0.08)" stroke="#94a3b8" stroke-width="1.2"/>
       <text x="280" y="263" text-anchor="middle" fill="#cbd5e1" font-size="7">গার্ড-পরিবার: beforeEach (বিশ্ব) · beforeResolve (চূড়ান্ত) · beforeEnter (এক-পথ) · beforeRouteLeave (ফর্ম-সাবধান — দরজা ১৬)</text>
       <text x="280" y="277" text-anchor="middle" fill="#64748b" font-size="6.5">ক্রমের-শপথ: auth → roles → feature — উল্টালে ফাঁকা-সেটে-বিচার, দুই-ই বিপর্যয়</text>

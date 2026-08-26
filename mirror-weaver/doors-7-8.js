@@ -2,7 +2,7 @@
 doors.push({
   num: 7,
   icon: "🧩",
-  color: "#7ee0b0",
+  color: "#f59e0b",
   name: "উত্তরাধিকারের খোপ",
   subtitle: "Pockets of Inheritance — Slots in Depth",
   tech: "default slot, named slots, scoped slots, slot props, useSlots, fallback content",
@@ -108,18 +108,18 @@ doors.push({
   <div class="diagram">
     <div class="diag-title">Pockets — Value-Gift vs Cloth-Gift vs Reverse-Gift</div>
     <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
-      <defs><marker id="arrowS7" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7ee0b0"/></marker></defs>
-      <rect x="15" y="14" width="165" height="92" rx="11" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="97" y="36" text-anchor="middle" fill="#7ee0b0" font-size="8.5" font-weight="700">📦 props-উপহার</text>
+      <defs><marker id="arrowS7" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/></marker></defs>
+      <rect x="15" y="14" width="165" height="92" rx="11" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="97" y="36" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">📦 props-উপহার</text>
       <text x="97" y="52" text-anchor="middle" fill="#94a3b8" font-size="7">মান পাঠায় (string/অবজেক্ট)</text>
       <text x="97" y="66" text-anchor="middle" fill="#64748b" font-size="7">:title="t" · :rows="list"</text>
-      <text x="97" y="84" text-anchor="middle" fill="#7ee0b0" font-size="6.8">ছাঁচ নিজে সাজায়</text>
+      <text x="97" y="84" text-anchor="middle" fill="#a5b4fc" font-size="6.8">ছাঁচ নিজে সাজায়</text>
       <text x="97" y="98" text-anchor="middle" fill="#64748b" font-size="6.5">সাধারণ-কার্ডের পথ</text>
-      <rect x="197" y="14" width="165" height="92" rx="11" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.5"/>
-      <text x="279" y="36" text-anchor="middle" fill="#7ee0b0" font-size="8.5" font-weight="700">🧵 slot-উপহার</text>
+      <rect x="197" y="14" width="165" height="92" rx="11" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="279" y="36" text-anchor="middle" fill="#a5b4fc" font-size="8.5" font-weight="700">🧵 slot-উপহার</text>
       <text x="279" y="52" text-anchor="middle" fill="#94a3b8" font-size="7">টেমপ্লেট-কাপড় পাঠায়</text>
       <text x="279" y="66" text-anchor="middle" fill="#64748b" font-size="7">#header · #footer · ডিফল্ট</text>
-      <text x="279" y="84" text-anchor="middle" fill="#7ee0b0" font-size="6.8">ভরাট পিতার হাতে</text>
+      <text x="279" y="84" text-anchor="middle" fill="#a5b4fc" font-size="6.8">ভরাট পিতার হাতে</text>
       <text x="279" y="98" text-anchor="middle" fill="#64748b" font-size="6.5">ফলব্যাক-কাপড়সহ</text>
       <rect x="379" y="14" width="166" height="92" rx="11" fill="rgba(251,191,36,0.10)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="462" y="36" text-anchor="middle" fill="#fcd34d" font-size="8.5" font-weight="700">🔁 scoped-খোপ</text>
@@ -148,7 +148,7 @@ doors.push({
 doors.push({
   num: 8,
   icon: "🌱",
-  color: "#7ee0b0",
+  color: "#f97316",
   name: "বীজ থেকে ছাই — জীবনচক্র",
   subtitle: "Seed to Ash — Lifecycle Hooks Complete",
   tech: "onBeforeMount/onMounted, onBeforeUpdate/onUpdated, onBeforeUnmount/onUnmounted, errorCaptured, activated/deactivated, keep-alive interplay",
@@ -248,17 +248,17 @@ async-setup নোট:
   <div class="diagram">
     <div class="diag-title">The Life-Clock — Seed, Leaf, Shadow, Ash</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
-      <defs><marker id="arrowL8" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7ee0b0"/></marker></defs>
-      <circle cx="280" cy="160" r="118" fill="rgba(66,184,131,0.05)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="280" y="150" text-anchor="middle" fill="#7ee0b0" font-size="10" font-weight="700">⏳ জীবন-ঘড়ি</text>
+      <defs><marker id="arrowL8" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/></marker></defs>
+      <circle cx="280" cy="160" r="118" fill="rgba(66,184,131,0.05)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="280" y="150" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="700">⏳ জীবন-ঘড়ি</text>
       <text x="280" y="166" text-anchor="middle" fill="#94a3b8" font-size="7">প্রতিটি উপাদান এক বীজ</text>
       <text x="280" y="180" text-anchor="middle" fill="#64748b" font-size="6.5">ঘড়ির কাঁটায় সাত-মুহূর্ত</text>
-      <rect x="15" y="14" width="165" height="66" rx="10" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="97" y="34" text-anchor="middle" fill="#7ee0b0" font-size="8" font-weight="700">① setup()</text>
+      <rect x="15" y="14" width="165" height="66" rx="10" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="97" y="34" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="700">① setup()</text>
       <text x="97" y="48" text-anchor="middle" fill="#94a3b8" font-size="7">refs · computed · কম্পোজেবল</text>
       <text x="97" y="62" text-anchor="middle" fill="#64748b" font-size="6.5">DOM-নেই · বিশুদ্ধ রাখো</text>
-      <rect x="380" y="14" width="165" height="66" rx="10" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="462" y="34" text-anchor="middle" fill="#7ee0b0" font-size="8" font-weight="700">③ onMounted 🌱</text>
+      <rect x="380" y="14" width="165" height="66" rx="10" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="462" y="34" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="700">③ onMounted 🌱</text>
       <text x="462" y="48" text-anchor="middle" fill="#94a3b8" font-size="7">fetch · টাইমার · শ্রোতা-বাঁধা</text>
       <text x="462" y="62" text-anchor="middle" fill="#64748b" font-size="6.5">DOM প্রস্তুত — LP: useDataFetch</text>
       <rect x="380" y="248" width="165" height="66" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.4"/>
@@ -270,7 +270,7 @@ async-setup নোট:
       <text x="97" y="282" text-anchor="middle" fill="#94a3b8" font-size="7">beforeUnmount → unmounted</text>
       <text x="97" y="296" text-anchor="middle" fill="#64748b" font-size="6.5">clear · close · abort — জোড়া-হিসাব</text>
       <rect x="185" y="14" width="180" height="0" fill="none"/>
-      <path d="M180,47 C230,30 330,30 378,45" fill="none" stroke="#7ee0b0" stroke-width="1.6" marker-end="url(#arrowL8)"/>
+      <path d="M180,47 C230,30 330,30 378,45" fill="none" stroke="#a5b4fc" stroke-width="1.6" marker-end="url(#arrowL8)"/>
       <path d="M462,80 C462,140 462,190 462,246" fill="none" stroke="#818cf8" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#arrowL8)"/>
       <path d="M378,281 C300,300 180,300 182,282" fill="none" stroke="#f87171" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#arrowL8)"/>
       <path d="M97,246 C97,190 97,140 97,82" fill="none" stroke="#64748b" stroke-width="1.2" stroke-dasharray="2 3" marker-end="url(#arrowL8)"/>

@@ -2,7 +2,7 @@
 doors.push({
   num: 19,
   icon: "🏗️",
-  color: "#f59e0b",
+  color: "#ef4444",
   name: "তাঁত-স্থাপনের আঙিনা",
   subtitle: "The Loom-Courtyard — Project Setup & Tooling",
   tech: "Vite scaffold, TS config, ESLint flat config, Prettier, directory structure (FSD), env vars, dev workflow",
@@ -124,16 +124,16 @@ doors.push({
       <rect x="15" y="14" width="530" height="56" rx="10" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1.5"/>
       <text x="280" y="35" text-anchor="middle" fill="#fcd34d" font-size="8.5" font-weight="700">🪚 ছয়-ধাপ: scaffold → TS-strict → lint+prettier → স্তর-ভাগ → env-ভাগ → dev</text>
       <text x="280" y="51" text-anchor="middle" fill="#94a3b8" font-size="7">create-vite vue-ts · মাপ-নথি · রেখা-রাংতা · প্রাঙ্গণ · গোপন-কুঠুরি · প্রথম-প্রদীপ (HMR)</text>
-      <rect x="15" y="88" width="96" height="88" rx="10" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="63" y="109" text-anchor="middle" fill="#7ee0b0" font-size="8" font-weight="700">core/</text>
+      <rect x="15" y="88" width="96" height="88" rx="10" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="63" y="109" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="700">core/</text>
       <text x="63" y="124" text-anchor="middle" fill="#94a3b8" font-size="6">http · types · utils</text>
       <text x="63" y="138" text-anchor="middle" fill="#64748b" font-size="6">auth-মূল · logger</text>
-      <text x="63" y="158" text-anchor="middle" fill="#7ee0b0" font-size="6">কাউকে-জানে-না</text>
-      <rect x="126" y="88" width="96" height="88" rx="10" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="174" y="109" text-anchor="middle" fill="#7ee0b0" font-size="8" font-weight="700">shared/</text>
+      <text x="63" y="158" text-anchor="middle" fill="#a5b4fc" font-size="6">কাউকে-জানে-না</text>
+      <rect x="126" y="88" width="96" height="88" rx="10" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="174" y="109" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="700">shared/</text>
       <text x="174" y="124" text-anchor="middle" fill="#94a3b8" font-size="6">কম্পোজেবল-ভিত্তি</text>
       <text x="174" y="138" text-anchor="middle" fill="#64748b" font-size="6">useMutation… · Modal</text>
-      <text x="174" y="158" text-anchor="middle" fill="#7ee0b0" font-size="6">সবাই-ভাগে-শুধু</text>
+      <text x="174" y="158" text-anchor="middle" fill="#a5b4fc" font-size="6">সবাই-ভাগে-শুধু</text>
       <rect x="237" y="88" width="96" height="88" rx="10" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.4"/>
       <text x="285" y="109" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="700">app/</text>
       <text x="285" y="124" text-anchor="middle" fill="#94a3b8" font-size="6">router+guards</text>
@@ -144,11 +144,11 @@ doors.push({
       <text x="396" y="124" text-anchor="middle" fill="#94a3b8" font-size="6">auth · account · …</text>
       <text x="396" y="138" text-anchor="middle" fill="#64748b" font-size="6">views/services/composables</text>
       <text x="396" y="158" text-anchor="middle" fill="#f87171" font-size="6">পরস্পরে ✗</text>
-      <rect x="459" y="88" width="86" height="88" rx="10" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="502" y="109" text-anchor="middle" fill="#7ee0b0" font-size="8" font-weight="700">ui/</text>
+      <rect x="459" y="88" width="86" height="88" rx="10" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="502" y="109" text-anchor="middle" fill="#a5b4fc" font-size="8" font-weight="700">ui/</text>
       <text x="502" y="124" text-anchor="middle" fill="#94a3b8" font-size="6">primitives</text>
       <text x="502" y="138" text-anchor="middle" fill="#64748b" font-size="6">Button · TextInput</text>
-      <text x="502" y="158" text-anchor="middle" fill="#7ee0b0" font-size="6">ডোমেইন-অজ্ঞ</text>
+      <text x="502" y="158" text-anchor="middle" fill="#a5b4fc" font-size="6">ডোমেইন-অজ্ঞ</text>
       <path d="M63,190 C63,220 396,220 396,178" fill="none" stroke="#fbbf24" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowS19)"/>
       <text x="230" y="216" text-anchor="middle" fill="#64748b" font-size="6.5">নির্ভরতার-স্রোত: features → shared → core · app-জোড়ে-সব · ✗-পথ লিন্টে-থামে</text>
       <rect x="15" y="234" width="530" height="52" rx="10" fill="rgba(100,116,139,0.08)" stroke="#94a3b8" stroke-width="1.2"/>
@@ -167,7 +167,7 @@ doors.push({
 doors.push({
   num: 20,
   icon: "🧪",
-  color: "#f59e0b",
+  color: "#ec4899",
   name: "পরীক্ষার-মিনার",
   subtitle: "The Testing Minaret — Vitest, MSW, Playwright",
   tech: "unit tests (mount, props/emitted), MSW network mocking, composable testing, E2E with Playwright, coverage discipline",
@@ -334,12 +334,12 @@ doors.push({
       <text x="280" y="100" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">৩) কম্পোজেবল-তলা</text>
       <text x="280" y="113" text-anchor="middle" fill="#94a3b8" font-size="6">effectScope · যুক্তি-নির্জন</text>
       <text x="280" y="122" text-anchor="middle" fill="#64748b" font-size="6.5">গার্ড/ফেজ/এরর-পথ</text>
-      <rect x="215" y="136" width="130" height="48" rx="8" fill="rgba(66,184,131,0.08)" stroke="#42b883" stroke-width="1.3"/>
-      <text x="280" y="156" text-anchor="middle" fill="#7ee0b0" font-size="7.5" font-weight="700">২) MSW-নকল-তলা</text>
+      <rect x="215" y="136" width="130" height="48" rx="8" fill="rgba(66,184,131,0.08)" stroke="#6366f1" stroke-width="1.3"/>
+      <text x="280" y="156" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">২) MSW-নকল-তলা</text>
       <text x="280" y="169" text-anchor="middle" fill="#94a3b8" font-size="6">হ্যান্ডলার-বই + worker.use</text>
       <text x="280" y="178" text-anchor="middle" fill="#64748b" font-size="6.5">আকৃতি-সত্য এক-জায়গায়</text>
-      <rect x="215" y="192" width="130" height="48" rx="8" fill="rgba(66,184,131,0.10)" stroke="#42b883" stroke-width="1.4"/>
-      <text x="280" y="212" text-anchor="middle" fill="#7ee0b0" font-size="7.5" font-weight="700">১) mount-ভিত্তি-তলা</text>
+      <rect x="215" y="192" width="130" height="48" rx="8" fill="rgba(66,184,131,0.10)" stroke="#6366f1" stroke-width="1.4"/>
+      <text x="280" y="212" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">১) mount-ভিত্তি-তলা</text>
       <text x="280" y="225" text-anchor="middle" fill="#94a3b8" font-size="6">props → assert · emitted()</text>
       <text x="280" y="234" text-anchor="middle" fill="#64748b" font-size="6.5">সবচেয়ে-সস্তা — সর্বাধিক</text>
       <rect x="15" y="24" width="160" height="56" rx="9" fill="rgba(100,116,139,0.08)" stroke="#94a3b8" stroke-width="1.2"/>
@@ -358,11 +358,11 @@ doors.push({
       <text x="95" y="248" text-anchor="middle" fill="#cbd5e1" font-size="7" font-weight="600">"ভুল-পাসে-লগইন-ফেরত"</text>
       <text x="95" y="261" text-anchor="middle" fill="#94a3b8" font-size="6">→ ৪র্থ-তলা (E2E)</text>
       <text x="95" y="274" text-anchor="middle" fill="#64748b" font-size="6.5">ব্যবহারকারীর-চোখে</text>
-      <rect x="385" y="24" width="160" height="90" rx="9" fill="rgba(66,184,131,0.07)" stroke="#42b883" stroke-width="1.2"/>
-      <text x="465" y="44" text-anchor="middle" fill="#7ee0b0" font-size="7" font-weight="600">MSW-হ্যান্ডলার-বই</text>
+      <rect x="385" y="24" width="160" height="90" rx="9" fill="rgba(66,184,131,0.07)" stroke="#6366f1" stroke-width="1.2"/>
+      <text x="465" y="44" text-anchor="middle" fill="#a5b4fc" font-size="7" font-weight="600">MSW-হ্যান্ডলার-বই</text>
       <text x="465" y="58" text-anchor="middle" fill="#94a3b8" font-size="6">auth.ts: me/ · csrf/ · login/</text>
       <text x="465" y="70" text-anchor="middle" fill="#64748b" font-size="6.5">প্রকৃত-আকৃতি-এক-সত্যে</text>
-      <text x="465" y="84" text-anchor="middle" fill="#7ee0b0" font-size="6.5">BE-ফিল্ড-বদল → এক-জায়গায়-জ্বলে</text>
+      <text x="465" y="84" text-anchor="middle" fill="#a5b4fc" font-size="6.5">BE-ফিল্ড-বদল → এক-জায়গায়-জ্বলে</text>
       <text x="465" y="98" text-anchor="middle" fill="#64748b" font-size="6.5">server.use() — চাহিদা-override</text>
       <rect x="385" y="126" width="160" height="60" rx="9" fill="rgba(129,140,248,0.07)" stroke="#818cf8" stroke-width="1.2"/>
       <text x="465" y="146" text-anchor="middle" fill="#a5b4fc" font-size="7" font-weight="600">data-test-প্রথা</text>
