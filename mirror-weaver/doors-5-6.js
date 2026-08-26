@@ -92,6 +92,78 @@ doors.push({
   <div class="verse">রিসালাত — বার্তবাহনের সততা: "বার্তবাহকের দায় শুধু পৌঁছে দেওয়া" (৫:৯২-এর সার) — সিদ্ধান্ত প্রেরকের, বহন বার্তবাহকের। সালমার পাখি সেই রিসালাতের প্লাবক-রূপ: নাম-রিং ও ওজন-চিরহার বাঁধা পাখি ঠিক খাঁচায় পৌঁছে দেয়, নিজে থেকে সিদ্ধান্ত নেয় না। যে কারখানায় পাখিরা নাম-ছাড়া উড়ে, সেখানে খবর আর গুজবের পার্থক্য থাকে না — আর পার্থক্যহীন খবরই সবচেয়ে বড় গুজব।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>পাখি-ফাঁদ:</strong> (১) নাম-বানান-অমিল (<code>update:modelValue</code> বনাম <code>@update:model-value</code>-এর মতো সূক্ষ্ম কেস) — টাইপড defineEmits না থাকলে ধরার উপায় নেই। (২) পে-লোডে বহু-আর্গুমেন্ট (<code>emit('x', a, b, c)</code>) — শ্রোতার সাইনবোর্ড দীর্ঘ হয়; এক-অবজেক্ট পাঠাও, পরে ক্ষেত্র বাড়লে ভাঙে না। (৩) বহু-শিকড় উপাদানে <code>$attrs</code> না-বাঁধা — Vue সতর্ক করে, শ্রোতা নীরবে হারায়।</div></div>
   <div class="secret-box">🕊️ পাখি ঘোষণা করে ছাড়ো (defineEmits), নামে-নামে ঘণ্টি বাঁধো (@close), সিদ্ধান্ত উজানে রেখো — বার্তবাহক বহন করে, শাসন করে না। / Declare the bird, bell the exact name, keep decisions upstream.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ৫-এর পাখি-বাসা: টাইপড ইভেন্ট-চুক্তি দিয়ে ConfirmDialog বানাও — ঘোষণা → উড়ানো → শ্রবণ, তিন পাখাই নমুনায় বাঁধা। / Door 5's bird-nest: build a ConfirmDialog on a typed event contract — declaration, flight, and listening all wired.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/ConfirmDialog.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+// ① ঘোষণা — নাম-রিং + ওজন-চিরহার (টাইপড-চুক্তি)
+const props = defineProps&lt;{
+  title: string
+  danger?: boolean
+}&gt;()
+
+const emit = defineEmits&lt;{
+  (e: 'confirm', payload: { source: string; at: number }): void
+  (e: 'cancel'): void
+}&gt;()
+// অ-টাইপ বিকল্প: const emit = defineEmits(['confirm', 'cancel'])
+
+// ② উড়ানো — পে-লোড এক-অবজেক্ট (পরে ক্ষেত্র বাড়লে ভাঙে না)
+function onConfirm() {
+  emit('confirm', { source: 'dialog', at: Date.now() })
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div class="mask" @click.self="emit('cancel')"&gt;
+    &lt;div class="box" :class="{ danger }"&gt;
+      &lt;h3&gt;{{ title }}&lt;/h3&gt;
+      &lt;button @click="onConfirm"&gt;নিশ্চিত করো&lt;/button&gt;
+      &lt;button @click="emit('cancel')"&gt;বাতিল&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+.mask { position: fixed; inset: 0; background: rgba(0,0,0,.45); display: grid; place-items: center; }
+.box { background: #fff; color: #111; padding: 1.2rem 1.6rem; border-radius: 12px; text-align: center; }
+.box.danger { outline: 2px solid #ef4444; }
+button { margin: .25rem; padding: .4rem 1rem; border-radius: 8px; cursor: pointer; }
+&lt;/style&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/CageParent.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { ref } from 'vue'
+import ConfirmDialog from './ConfirmDialog.vue'
+
+const show = ref(false)
+const log = ref&lt;string[]&gt;([])
+
+// ③ শ্রবণ — ঘণ্টি ঠিক-নামে; সিদ্ধান্ত এখানেই
+function onConfirm(p: { source: string; at: number }) {
+  log.value.push(\`নিশ্চিত (\${p.source}, \${new Date(p.at).toLocaleTimeString()})\`)
+  show.value = false
+}
+function onCancel() {
+  log.value.push('বাতিল')
+  show.value = false
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;button @click="show = true"&gt;মুছে ফেলো? — খাঁচা খোলো&lt;/button&gt;
+    &lt;ConfirmDialog v-if="show" title="নিশ্চিত?" danger @confirm="onConfirm" @cancel="onCancel" /&gt;
+    &lt;ul&gt;&lt;li v-for="(l, i) in log" :key="i"&gt;{{ l }}&lt;/li&gt;&lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import CageParent from './CageParent.vue'
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;CageParent /&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) ConfirmDialog-এ ঘোষণা-বাদ দিয়ে শুধু emit('confirm') করে দেখো — পিতার @confirm-বেল বেজে ওঠে কি না (ফলথ্রু-পার্থক্য ডেভটুলসে)। (২) পে-লোড বদলে দুই-আর্গুমেন্ট পাঠাও — শ্রোতার সাইন কেমন জটিল হয়। (৩) mask-এ @click.self — cancel-পাখি ছাড়ে শুধু বাইরে-ক্লিকে। / Tests: try emitting without declaration; try two-argument payloads; note @click.self on the mask.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">Return-Bird — Declared Event Contract</div>
     <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
