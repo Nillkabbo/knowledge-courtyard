@@ -14,27 +14,19 @@
 
 <!-- ═══════════ SCREEN 1: TITLE ═══════════ -->
 <div id="title-screen" class="screen active">
-  <div class="title-inner">
-    <div class="title-icon">🪞</div>
-    <h1 class="game-title">আয়না-বোনার কারখানা</h1>
-    <div class="game-title-en">The Mirror Weaver's Workshop</div>
-    <div class="title-desc">
-      Vue.js-এর পূর্ণ কারুকাজ — প্রথম সুতো থেকে প্রোডাকশন তাঁত পর্যন্ত।<br>
-      সাতাশটি দরজা — সাত অংশে: ভিত্তি (দর্শন, টেমপ্লেট, প্রতিক্রিয়া), কম্পোনেন্ট-কারুকাজ (props, emit, v-model, slot, lifecycle, composable),
-      অবস্থার ঘর (Pinia, provide/inject, উন্নত-উপাদান), পথ ও দরজা (router, গার্ড, API-স্তর), ফর্ম-ও-UX কারুকাজ (ফর্ম, preview-confirm, নোটিফিকেশন),
-      যন্ত্রপাতি-ঘর (সেটআপ, পরীক্ষা, আর্কিটেকচার), স্টার্টার-কারখানা (৫টি পূর্ণ প্রজেক্ট: বেসিক → রিয়েলটাইম) — LedgerPilot-এর জীবন্ত কোড আর Vue 3.5-এর সর্বশেষ শিক্ষা এক তাঁতে।<br><br>
-      <em>The complete craft of Vue.js — first thread to production loom. Twenty-seven doors in seven parts,
-      every pattern proven in the living LedgerPilot codebase and aligned with the official Vue 3.5 guide.</em>
-    </div>
-    <div class="title-meta">
-      <span>🪞 ২৭টি দরজা</span>
-      <span>⚡ ২৭০০ XP</span>
-      <span>🧵 ৭ অংশ</span>
-      <span>📦 ৫টি স্টার্টার-প্রজেক্ট</span>
-    </div>
-    <button class="title-btn" onclick="startGame()">🧵 তাঁতে বসো</button>
-    <div class="title-hint">প্রগতি এই ব্রাউজারে সঞ্চিত থাকে · Progress saved locally</div>
+  <div class="title-arabic">وَعَلَّمَ آدَمَ الْأَسْمَاءَ كُلَّهَا</div>
+  <h1 class="title-main">আয়না-বোনার কারখানা</h1>
+  <div class="title-sub">The Mirror Weaver's Workshop</div>
+  <div class="title-desc">
+    Vue.js-এর পূর্ণ কারুকাজ — প্রথম সুতো থেকে প্রোডাকশন তাঁত পর্যন্ত।<br>
+    সাতাশটি দরজা — সাত অংশে: ভিত্তি (শপথ, টেমপ্লেট-বর্ণমালা, প্রতিক্রিয়া-শ্বাস), কম্পোনেন্ট-কারুকাজ (props, emit, v-model, slot, জীবনচক্র, কম্পোজেবল),
+    অবস্থার ঘর (Pinia কোষাগার, provide/inject ঝর্ণা, উন্নত-বারান্দা), পথ ও দরজা (রাউটার-নকশা, ফটক-শৃঙ্খল, API-সমুদ্রপথ), ফর্ম-ও-UX কারুকাজ (পাণ্ডুলিপি, চক-কালি, ঘণ্টি-গলি),
+    যন্ত্রপাতি-ঘর (তাঁত-স্থাপন, পরীক্ষা-মিনার, শহর-বিধান) — আর শেষ ছয় দরজায় পাঁচটি পূর্ণ স্টার্টার-প্রজেক্ট (টু-ডু থেকে রিয়েলটাইম) ও এক-ক্লিকের সমাপ্তি।<br><br>
+    <em>The complete craft of Vue.js — first thread to production loom. Twenty-seven doors in seven parts,
+    every pattern proven in the living LedgerPilot codebase and aligned with the official Vue 3.5 guide —
+    closing with five complete starter projects and one click traced through every layer.</em>
   </div>
+  <button class="start-btn" onclick="startGame()">🪞 তাঁতে বসো</button>
 </div>
 
 <!-- ═══════════ SCREEN 2: PROLOGUE ═══════════ -->
@@ -59,7 +51,7 @@
       <strong>ফর্ম-ভারী পৃষ্ঠায়</strong> ১৬-১৮ · <strong>রাউটিং-অনুমতি নিয়ে</strong> ১৩-১৫ · <strong>পরীক্ষা লিখতে</strong> ২৩ ·
       <strong>সব গোপন-একনজরে</strong> ২৭।</p>
     </div>
-    <button class="prologue-btn" onclick="startMap()">🚪 দরজা বেছে নাও</button>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 দরজা বেছে নাও</button></div>
   </div>
 </div>
 
