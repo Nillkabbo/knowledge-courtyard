@@ -303,6 +303,95 @@ doors.push({
   <div class="verse">তাহরীফ — স্থানান্তর অবিকৃতির সাথে: সত্তা স্থান বদলায়, ধাতু বদলায় না। "পাহাড়কে সে দেখবে ভ্রমে চলমান" (২৭:৮৮-এর ভাব) — চলমানতার দৃষ্টিনন্দন, কিন্তু পাহাড়ের সত্য অক্ষত। নাইমা খালার পাঁচযন্ত্র সেই তাহরীফের কারিগরি পাঠশালা: ফ্রেম বদলায় ছবি নয়, দেয়াল বদলায় মূর্তি নয়, ঘুম আসে মৃত্যু নয় — স্থান-কাল-অবস্থার স্থানান্তর, সারাংশের নয়। যে কারিগর স্থানান্তরকে ধ্বংস ভাবে, সে হয় সব-কিছু পুনর্নির্মাণ করে ক্লান্ত, নয় সব-কিছু ধরে রাখে ফুলিয়ে।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>বারান্দা-ফাঁদ:</strong> (১) <code>:is</code>-এ markRaw-বিহীন কম্পোনেন্ট-অবজেক্ট — গভীর-প্রতিক্রিয়ার অপচয়+সতর্কতা। (২) Teleport-লক্ষ্য মাউন্ট-পূর্বে থাকা — পুরনো বিধিতে ব্যর্থ; 3.5-এ <code>defer</code> দাও বা লক্ষ্য-এলিমেন্ট index.html-এ আগে-রাখো। (৩) KeepAlive-এ সাইড-এফেক্ট-ভারী উপাদান <code>include</code>-বিহীন — মেমরি ফুলবে; নাম-তালিকা সচেতন রাখো আর <code>:max</code> বাঁধো।</div></div>
   <div class="secret-box">🌀 উন্নত-পাঁচ: :is+markRaw বদলায়, async বিলম্বিত-আনে, Teleport defer-সহ স্থানান্তরে, Suspense অপেক্ষা-সাজায়, KeepAlive ঘুম-জাগায় — সারাংশ অক্ষত। / Five machines move place and time, never essence.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ১২-এর বারান্দা: পাঁচযন্ত্র এক-অ্যাপে — ট্যাব-বদল (:is+markRaw), ভারী-মাল (async+স্কেলটন), মোডাল (Teleport), অপেক্ষা (Suspense), ঘুম-আলমারি (KeepAlive)। index.html-এর body-র শেষে &lt;div id="modal-root"&gt;&lt;/div&gt; যোগ করতে ভুলো না। / Door 12's balcony: all five machines in one app. Don't forget &lt;div id="modal-root"&gt; at the end of index.html's body.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/tabs/CounterTab.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { ref, onActivated, onDeactivated } from 'vue'
+
+// KeepAlive-পরীক্ষার জন্য: অবস্থা ধরে রাখো
+const count = ref(0)
+onActivated(() =&gt; console.log('🟢 CounterTab জাগল'))
+onDeactivated(() =&gt; console.log('😴 CounterTab ঘুমাল (ভাঙল না)'))
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;গুনি: {{ count }} — ট্যাব বদলেও মনে থাকবে&lt;/p&gt;
+    &lt;button @click="count++"&gt;+১&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/tabs/HeavyTab.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+// top-level await — Suspense-এর অপেক্ষা-মঞ্চ এটিকেই দেখে
+const goods = await new Promise&lt;string[]&gt;((resolve) =&gt;
+  setTimeout(() =&gt; resolve(['ভারী-তাঁত', 'রুপোর-কাঁচি', 'রেশম-গাঁথনি']), 1500))
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;ul&gt;&lt;li v-for="g in goods" :key="g"&gt;📦 {{ g }}&lt;/li&gt;&lt;/ul&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/BalconyApp.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { shallowRef, markRaw, defineAsyncComponent, ref } from 'vue'
+import CounterTab from './tabs/CounterTab.vue'
+
+// ① রাতের-ফ্রেম: markRaw-মোহর + shallowRef
+const HeavyTab = markRaw(defineAsyncComponent(
+  () =&gt; import('./tabs/HeavyTab.vue')))
+const tabs = {
+  counter: markRaw(CounterTab),
+  heavy: HeavyTab,
+}
+const current = shallowRef(tabs.counter)
+const currentName = ref('counter')
+function switchTab(name: 'counter' | 'heavy') {
+  currentName.value = name
+  current.value = tabs[name]
+}
+
+// ③ Teleport-মোডাল
+const showModal = ref(false)
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h3&gt;🌀 বারান্দা — পাঁচযন্ত্র&lt;/h3&gt;
+
+    &lt;button @click="switchTab('counter')"&gt;🧮 কাউন্টার-ট্যাব&lt;/button&gt;
+    &lt;button @click="switchTab('heavy')"&gt;📦 ভারী-ট্যাব (async)&lt;/button&gt;
+    &lt;button @click="showModal = true"&gt;🌀 মোডাল খোলো (Teleport)&lt;/button&gt;
+
+    &lt;!-- ⑤+④+①: ঘুমের-আলমারি ⊃ অপেক্ষার-মঞ্চ ⊃ ফ্রেম --&gt;
+    &lt;KeepAlive include="CounterTab"&gt;
+      &lt;Suspense&gt;
+        &lt;component :is="current" /&gt;
+        &lt;template #fallback&gt;
+          &lt;p&gt;⏳ ভারী-মাল আসছে… (স্কেলটন-কাপড়)&lt;/p&gt;
+        &lt;/template&gt;
+      &lt;/Suspense&gt;
+    &lt;/KeepAlive&gt;
+
+    &lt;!-- ③: বংশে জন্ম, body-র শেষ-দেয়ালে প্রদর্শন --&gt;
+    &lt;Teleport to="#modal-root"&gt;
+      &lt;div v-if="showModal" class="mask" @click.self="showModal = false"&gt;
+        &lt;div class="box"&gt;মিনারের ঘণ্টি — DOM শহরের চূড়ায়, যুক্তি বংশের গভীরে&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/Teleport&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+.mask { position: fixed; inset: 0; background: rgba(0,0,0,.45); display: grid; place-items: center; }
+.box { background: #fff; color: #111; padding: 1rem 1.4rem; border-radius: 12px; }
+&lt;/style&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import BalconyApp from './BalconyApp.vue'
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;BalconyApp /&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) কাউন্টারে গুনো, ভারী-ট্যাবে যাও, ফেরো — **গুনি রয়ে গেছে** (KeepAlive-ঘুম; কনসোলে 😴→🟢)। (২) ভারী-ট্যাবে প্রথম-গেলে ১.৫ সেকেন্ড স্কেলটন (Suspense #fallback; দ্বিতীয়বার তাৎক্ষণিক — চাংক ক্যাশে)। (৩) মোডাল খোলো — ডেভটুলসে দেখো সে #modal-root-এ বসে (Teleport); বাবার z-index-জট নেই। (৪) নেটওয়ার্ক-ট্যাব: ভারী-ট্যাব প্রথম-ক্লিকেই HeavyTab-চাংক লোড হয়। Context7-নোট: KeepAlive-এর include কম্পোনেন্টের name-এর সাথে মিলতে হয় — script-setup-এ সে-নাম defineOptions({ name: 'CounterTab' }) বা ফাইল-নাম থেকে আসে; না-মিললে নীরব-নো-অপ। / Tests: the counter survives tab switches (sleep/wake logs); the heavy tab shows the skeleton once then caches; the modal sits in #modal-root; the chunk loads on first click only.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">The Advanced Balcony — Five Machines</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
