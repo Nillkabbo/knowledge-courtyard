@@ -300,6 +300,17 @@ doors.push({
   import App from './App.vue'
   createApp(App).mount('#app')
 
+খাতা-ফাংশন · পচা-সিন্দুক-রক্ষা (App.vue-র-উপরে-রাখো):
+  function readTodosSafe(): Todo[] {
+    try {
+      const raw = localStorage.getItem('todos')
+      const parsed = raw ? JSON.parse(raw) : []
+      return Array.isArray(parsed) ? parsed : []
+    } catch {
+      return []   // পচা-JSON → খালি-কাপড়; ক্র্যাশ-নয় (স্টুডিওর-loadTodos-নীতি)
+    }
+  }
+
 ফাইল-২ · src/App.vue (পুরো-কাপড় — এটাই-মূল):
   &lt;script setup lang="ts"&gt;
   import { computed, onMounted, ref,
@@ -310,7 +321,7 @@ doors.push({
     id: number; text: string; done: boolean
   }
   const todos = ref&lt;Todo[]&gt;(
-    JSON.parse(localStorage.getItem('todos') ?? '[]'))
+    readTodosSafe())   // পচা-সিন্দুক-রক্ষা: নিচের-খাতা-ফাংশন
   const draft = ref('')
   const filter = ref&lt;'all'|'active'|'done'&gt;('all')
 
@@ -328,6 +339,8 @@ doors.push({
     if (!text) return
     todos.value.push(
       { id: Date.now(), text, done: false })
+    // দ্রুত-জোড়া-যোগে Date.now()-সংঘর্ষ-সম্ভব — শেখার-কাপড়ে চলে;
+    // বড়-অ্যাপে crypto.randomUUID() বা ক্রমবর্ধমান-নম্বর
     draft.value = ''
   }
   function remove(id: number) {

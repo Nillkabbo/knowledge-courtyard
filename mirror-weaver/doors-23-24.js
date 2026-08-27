@@ -160,7 +160,7 @@ doors.push({
     &lt;input v-model.trim="search"
       placeholder="খুঁজো…" data-test="search" /&gt;
     &lt;p v-if="loading"&gt;লোড হচ্ছে…&lt;/p&gt;
-    &p v-else-if="error"&gt;{{ error }}&lt;/p&gt;
+    &lt;p v-else-if="error"&gt;{{ error }}&lt;/p&gt;
     &lt;ul v-else&gt;
       &lt;li v-for="n in items" :key="n.id"&gt;
         &lt;RouterLink :to="{ name: 'note-detail',

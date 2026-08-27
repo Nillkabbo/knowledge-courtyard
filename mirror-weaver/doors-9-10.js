@@ -142,6 +142,7 @@ export function useFetch&lt;T&gt;(url: string | (() =&gt; string)) {
   const data = ref&lt;T | null&gt;(null)
   const error = ref&lt;string | null&gt;(null)
   const loading = ref(false)
+  let epoch = 0                                 // 🪪 রেস-গার্ড: সর্বশেষ-ডাকের-নম্বর
 
   // নকল-fetch — সত্যিকারে এখানে window.fetch বসবে
   function fakeFetch(u: string): Promise&lt;T&gt; {
@@ -152,13 +153,14 @@ export function useFetch&lt;T&gt;(url: string | (() =&gt; string)) {
   }
 
   const fetchData = () =&gt; {
+    const my = ++epoch                           // 🪪 এই-ডাকের-পাসপোর্ট
     data.value = null
     error.value = null
     loading.value = true
     fakeFetch(toValue(url))                     // ← নরমালাইজড-ইনপুট
-      .then((json) =&gt; { data.value = json })
-      .catch((err) =&gt; { error.value = String(err) })
-      .finally(() =&gt; { loading.value = false })
+      .then((json) =&gt; { if (my === epoch) data.value = json })        // বাসি-ডাক ফেলে-দাও
+      .catch((err) =&gt; { if (my === epoch) error.value = err instanceof Error ? err.message : String(err) })
+      .finally(() =&gt; { if (my === epoch) loading.value = false })
   }
 
   watchEffect(() =&gt; { fetchData() })            // url-বদলালে আপনা-আপনি পুনরায়
@@ -211,7 +213,7 @@ import CharmScreenB from './CharmScreenB.vue'
   &lt;hr&gt;
   &lt;CharmScreenB /&gt;
 &lt;/template&gt;</code></pre></div>
-    <div class="studio-note">পরীক্ষা: (১) "এন্ডপয়েন্ট বদলাও" চাপো — পর্দা-A ত্রুটিতে যায়, **পর্দা-B অক্ষত** (আলাদা স্প্রিং — এটাই per-instance)। (২) url-getter বদলালেই অটো-পুনরায়-আনার জাদু দেখো (watchEffect)। (৩) দুই পর্দার loading-গুলো আলাদা টিপে টিপে ওঠে — শেয়ার্ড-অবস্থা চাইলে স্টোর (দরজা ১০)। / Tests: break screen A and watch B stay untouched (per-instance springs); change the getter to see auto-refetch; separate loading states prove non-shared.</div>
+    <div class="studio-note">পরীক্ষা: (১) "এন্ডপয়েন্ট বদলাও" চাপো — পর্দা-A ত্রুটিতে যায়, **পর্দা-B অক্ষত** (আলাদা স্প্রিং — এটাই per-instance)। (২) url-getter বদলালেই অটো-পুনরায়-আনার জাদু দেখো (watchEffect)। (৩) দুই পর্দার loading-গুলো আলাদা টিপে টিপে ওঠে — শেয়ার্ড-অবস্থা চাইলে স্টোর (দরজা ১০)। (৪) **রেস-পরীক্ষা:** এন্ডপয়েন্ট-বাটন দ্রুত-দুইবার টিপো — epoch-গার্ড বাসি-উত্তর ফেলে-দেয়, সর্বশেষ-ডাকের-সত্যই পর্দায়; গার্ড-ছাড়া সংস্করণে পুরনো-ডেটা নতুনকে মুছে-ফেলত (stale-write)। / Tests: break screen A and watch B stay untouched (per-instance springs); change the getter to see auto-refetch; separate loading states prove non-shared; rapid-double-click proves the epoch race-guard.</div>
   </div>
   <div class="diagram">
     <div class="diag-title">The Talisman — Composable Anatomy</div>

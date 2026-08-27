@@ -153,6 +153,8 @@ function onCancel() {
     &lt;button @click="show = true"&gt;মুছে ফেলো? — খাঁচা খোলো&lt;/button&gt;
     &lt;ConfirmDialog v-if="show" title="নিশ্চিত?" danger @confirm="onConfirm" @cancel="onCancel" /&gt;
     &lt;ul&gt;&lt;li v-for="(l, i) in log" :key="i"&gt;{{ l }}&lt;/li&gt;&lt;/ul&gt;
+    &lt;!-- :key="i" কেবল-এইখানে-চলে: লগ append-only — মাঝ-থেকে-মুছলে
+         নাম-উল্টানো-ঝুঁকি; মুছুন-তালিকায় সর্বদা আসল-id (দরজা ২২-শিক্ষা) --&gt;
   &lt;/div&gt;
 &lt;/template&gt;</code></pre></div>
     <div class="studio-file"><div class="studio-file-head"><span>src/App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;

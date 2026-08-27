@@ -382,7 +382,7 @@ const caught = ref('')
 
 // বিশেষ-হুক: পুত্রের এরর ধরা (errorBoundary-আত্মীয়)
 onErrorCaptured((err) =&gt; {
-  caught.value = String(err)
+  caught.value = err instanceof Error ? err.message : String(err)   // D15-নীতি: ইংরেজি-প্রিফিক্স-নয়
   return false   // প্রচার থামাও
 })
 &lt;/script&gt;
