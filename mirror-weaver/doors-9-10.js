@@ -376,6 +376,89 @@ store.replaceState পথ — এই বইয়ের স্কোপ-বা�
   <div class="verse">বাইতুল-মাল — পাবলিক কোষাগার: "সম্পদ যেন শুধু ধনীদের মধ্যে ঘুরে না বেড়ায়" (৫৯:৭) — কেন্দ্রীয়-হিসাব শাসনের ন্যায়ের শর্ত। মুসা সরকারের ভবন সেই বাইতুল-মালের তাঁত-রূপ: সত্য এক-খাতায়, প্রবেশাধিকার সবার, প্রস্থানে খাতা-খালি — ন্যায়ের তিন-স্তম্ভ। যে শহরে প্রত্যেকে নিজের খাতা নিজের বুকে বাঁধে, সেখানে হিসাব আছে বটে — কিন্তু শাসন নেই; আর যে কোষাগার প্রস্থানে খালি হয় না, সে চিরকাল আগের-মানুষের দখলে থাকে — এক অন্যায় যা জন্মায় শুধু ভুলে যাওয়া থেকে, ইচ্ছা থেকে নয়।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>কোষাগার-ফাঁদ:</strong> (১) সরাসরি-ডিস্ট্রাকচার (<code>const { user } = store</code>) — রিফ্রেশ-পরে বোবা-পর্দা; storeToRefs ছাড়া কেবল ক্রিয়া। (২) লগআউটে শুধু auth খালি করা — navMenu/capabilities-এ পুরনো-ব্যবহারকারীর ছায়া থাকে পরের লগইনে; resetAll-লিভার একবারই লেখো। (৩) সব-কিছু স্টোরে — টোস্ট-টিক পর্যন্ত কোষাগারে তোলা; স্থানীয়-সত্য ঘরেই থাকুক।</div></div>
   <div class="secret-box">🏛️ শেয়ার্ড-সত্য কোষাগারে: সেটআপ-স্টোর (ref+computed+ফাংশন), পড়া storeToRefs, ক্রিয়া সরাসরি, লগআউট লাল-লিভারে সব-খালি। / One ledger for shared truth; read through storeToRefs, act directly, reset everything on exit.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ১০-এর কোষাগার: নিজের setup-স্টোর বাঁধো, দুই পর্দা এক খাতা পড়ে, লাল-লিভারে সব-খালি। আগে npm install pinia + main.ts-এ app.use(createPinia())। / Door 10's treasury: build your own setup-store, two screens reading one ledger, one red lever. First: npm install pinia and app.use(createPinia()).</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/stores/threads.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { ref, computed } from 'vue'
+import { defineStore } from 'pinia'
+
+// সেটআপ-স্টোর: state=ref · getters=computed · actions=ফাংশন
+export const useThreadsStore = defineStore('threads', () =&gt; {
+  // ── অবস্থা ──
+  const threads = ref&lt;string[]&gt;(['সুতো', 'রেশম'])
+  const currentUser = ref&lt;string | null&gt;(null)
+
+  // ── উদ্ভূত (computed-খাত: মাগলে মিলবে) ──
+  const count = computed(() =&gt; threads.value.length)
+  const greeting = computed(() =&gt;
+    currentUser.value ? \`স্বাগতম, \${currentUser.value}\` : 'অতিথি')
+
+  // ── ক্রিয়া (খাতায়-লেখা এক-জায়গায়) ──
+  function add(t: string) {
+    threads.value.push(t)
+  }
+  function remove(t: string) {
+    threads.value = threads.value.filter(x =&gt; x !== t)
+  }
+  function login(name: string) { currentUser.value = name }
+  // 🔴 লাল-লিভার — প্রস্থানে সব-খালি
+  function resetAll() {
+    threads.value = []
+    currentUser.value = null
+  }
+
+  return { threads, currentUser, count, greeting, add, remove, login, resetAll }
+})</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/TreasuryScreenA.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { storeToRefs } from 'pinia'
+import { useThreadsStore } from './stores/threads'
+
+const store = useThreadsStore()
+// দুই-হাত নিয়ম: পড়া → storeToRefs (প্রতিক্রিয়া-জীবিত)
+const { threads, count } = storeToRefs(store)
+// ক্রিয়া → সরাসরি ডিস্ট্রাকচার (ফাংশন, ছেঁড়ে না)
+const { add } = store
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h3&gt;পর্দা A — কোষাগার-পাঠ&lt;/h3&gt;
+    &lt;p&gt;মোট সুতো: {{ count }}&lt;/p&gt;
+    &lt;input @keyup.enter="add(($event.target as HTMLInputElement).value); ($event.target as HTMLInputElement).value = ''" placeholder="নতুন সুতো + Enter"&gt;
+    &lt;ul&gt;&lt;li v-for="t in threads" :key="t"&gt;{{ t }}&lt;/li&gt;&lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/TreasuryScreenB.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { storeToRefs } from 'pinia'
+import { useThreadsStore } from './stores/threads'
+
+const store = useThreadsStore()
+const { greeting, currentUser } = storeToRefs(store)
+const { login, remove, resetAll } = store
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h3&gt;পর্দা B — {{ greeting }}&lt;/h3&gt;
+    &lt;button v-if="!currentUser" @click="login('রফিক')"&gt;প্রবেশ করো&lt;/button&gt;
+    &lt;template v-else&gt;
+      &lt;button @click="remove('সুতো')"&gt;সুতো সরাও&lt;/button&gt;
+      &lt;button @click="resetAll" style="color:#ef4444"&gt;🔴 লগআউট-লিভার&lt;/button&gt;
+    &lt;/template&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import TreasuryScreenA from './TreasuryScreenA.vue'
+import TreasuryScreenB from './TreasuryScreenB.vue'
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;TreasuryScreenA /&gt;
+  &lt;hr&gt;
+  &lt;TreasuryScreenB /&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) A-তে সুতো যোগ করো — **B-র count-পাঠ একই মুহূর্তে বদলায়** (এক-খাতা!)। (২) B-তে প্রবেশ করো — A-এর কোথাও ছোঁয়া লাগেনি, তবু greeting জেগে ওঠে। (৩) লাল-লিভার টানো — দুই পর্দাই খালি; নতুন ব্যবহারকারী আগের সোনা পায় না। (৪) প্রমাণ-ফাঁদ: TreasuryScreenA-তে storeToRefs-এর বদলে const { threads } = store লিখে দেখো — যোগ-করা সুতো পর্দায় আসে না (রিঅ্যাক্টিভিটি-ছেঁড়া, Pinia-গাইডের নিজের সতর্কতা)। / Tests: add in A and watch B sync; pull the red lever; then break storeToRefs on purpose and watch the screen go deaf.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">The Treasury — One Ledger, Five Branches, One Red Lever</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
