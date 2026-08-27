@@ -503,6 +503,142 @@ doors.push({
   <div class="verse">পঞ্চম-রাকাত — চলমান-কাপড়ের-সমাপ্তি: নদী-আয়াত "উভয়-জল-প্রবাহে-তার-প্রাসাদ" নয় বরং-স্রোতের-ছায়া (৫৫:১৯-২০-এর ভাব) — দুই-জল মিশে-না, নিয়মে-বাঁধা-প্রবাহে-পাশাপাশি। মাজেদার-ঘাট সেই-নিয়মের-জীবন্ত-রূপ: নদী (ট্রিগার) আর-জলাধার (সত্য) পাশাপাশি-বয়ে-যায়, মিশে-যায়-না; স্রোত-ছিঁড়লে-নদী-থামে, জলাধার-থাকে — আর-ফিরে-এলে-গণনায়-মিলে। যে-ঘাট নদীর-ই-জলে-সত্য-গড়ে, সে-ঘাটে-ঝড়ে-সব-ভাসে; জলাধার-যার-আছে, তার-ঝড়-শুধু-বিরতি-মাত্র।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ঘাট-ফাঁদ:</strong> (১) পিং-বিহীন-স্রোত — মধ্যবর্তী-প্রক্সি ~৩০-৬০সে-তে নীরবে-কেটে-দেয়; ~২৫সে-হৃদস্পন্দন। (২) ছিঁড়ায়-তালিকা-খালি-করা — ব্যবহারকারী-মনে-করে-সব-হারা; শেষ-জানা-রাখো+ফলক। (৩) unmount-এ-close-বিস্মৃত — প্রস্থানের-পরেও-ইভেন্ট-জমা+মেমরি; দড়ি-ছাড়া-অপরিহার্য।</div></div>
   <div class="secret-box">⚡ রিয়েলটাইম-ঘাট: নদী (SSE+পিং+backoff) ট্রিগার-বয়ে, জলাধার (store+refetch) সত্য-রাখে, বাঁধ (errorCaptured) ঘাট-বাঁচায় — খবর জীবন্ত, ডেটা-নোয়ানো নয়। / River triggers, reservoir holds truth, embankment guards.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ২৬-এর জীবন্ত-ঘাট: অধ্যায়ের ৫-ফাইল বাঁধো, তারপর টেস্ট-বীজ **নথিভুত-পথে** পিন-করো — MSW-র ডেডিকেটেড sse() হ্যান্ডলার (client.send — http.get+raw-body নয়) দিয়ে নকল-নদী; তিন-টেস্ট: ইভেন্ট→সারি+ব্যাজ, error→সংযোগ-মিথ্যা, পুনঃখোলায়-মিলন-কল। ⚠ jsdom-এ EventSource-নেই — setup-এ পলিফিল বাঁধো (নিচে-দেখানো)। / Door 26's living ghat: build the chapter's 5 files, then pin the seeds the documented way — MSW's dedicated sse() handler; three tests. jsdom lacks EventSource — polyfill shown.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/tests/setup.ts (EventSource-পলিফিল)</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>// npm i -D event-source-polyfill
+import { EventSourcePolyfill } from 'event-source-polyfill'
+
+// jsdom-এ EventSource-বিল্ট-ইন-নয় — পলিফিল-সুতো বাঁধো,
+// তবেই MSW-র sse()-হ্যান্ডলার ধরা-দেবে
+globalThis.EventSource = EventSourcePolyfill as unknown as typeof EventSource
+
+// (setup.ts-এ MSW-জীবনচক্রও: listen/resetHandlers/close)
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/tests/msw-feed.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { setupServer } from 'msw/node'
+import { sse, http, HttpResponse } from 'msw'
+
+// নকল-নদী: sse()-হ্যান্ডলার — client.send দিয়ে ঘটনা-পাঠাও (mswjs.io-নথি-পথ)
+export const feedState = { sent: 0, refetches: 0 }
+export function resetFeedState() { feedState.sent = 0; feedState.refetches = 0 }
+
+type SendFn = (e: { id: string; event: string; data: string }) =&gt; void
+let pushToClient: SendFn | null = null
+
+export const feedHandlers = [
+  sse('*/api/feed/stream', ({ client }) =&gt; {
+    client.send({ id: 'hi-1', event: 'ping', data: JSON.stringify({ kind: 'ping', title: 'ঘাট-চালু' }) })
+    pushToClient = (e) => { feedState.sent++; client.send(e) }   // টেস্ট-হাতে-ঢেউ
+  }),
+  http.get('*/api/feed/events/', () =&gt; {
+    feedState.refetches++                      // মিলন-কল-গণনা (জলাধার-সত্য)
+    return HttpResponse.json({ results: [], unread_count: 2 })
+  }),
+]
+
+// টেস্ট-থেকে-ঢেউ-পাঠাও: নদীতে-ই-ঘটনা-ফেলার-ছায়া
+export function emitFeed(id: string, title: string) {
+  pushToClient?.({ id, event: 'order.new', data: JSON.stringify({ id, kind: 'order.new', title, at: new Date().toISOString() }) })
+}
+
+export const server = setupServer(...feedHandlers)
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/features/feed/useFeedStream.ts (অধ্যায়ের-ফাইল-৩-ছায়া)</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+export interface FeedEvent { id: string; kind: string; title: string; at: string }
+
+// জলাধার-ছায়া: আসল-প্রজেক্টে Pinia-feedStore (items+unread+refetchMissed)
+export function useFeedStream() {
+  const connected = ref(false)
+  const events = ref&lt;FeedEvent[]&gt;([])
+  const unread = ref(0)
+  const toastLog: string[] = []                  // টোস্ট-সেতুর-ছায়া
+  let es: EventSource | null = null
+  let retry = 0
+  let timer: number | undefined
+
+  async function refetchMissed() {               // মিলন-প্রথম — সার্ভার-সত্য
+    const res = await fetch('/api/feed/events/')
+    const page = await res.json()
+    unread.value = page.unread_count
+  }
+
+  function onEvent(kind: string) {
+    return (ev: MessageEvent) =&gt; {
+      const e = JSON.parse(ev.data) as FeedEvent
+      events.value = [e, ...events.value].slice(0, 100)   // শীর্ষ-১০০-ক্যাপ
+      toastLog.push(e.title)                     // toast.info(e.title)-ছায়া
+      unread.value++
+    }
+  }
+
+  function open() {
+    es = new EventSource('/api/feed/stream', { withCredentials: true })
+    es.onopen = () =&gt; { connected.value = true; retry = 0; void refetchMissed() }
+    es.addEventListener('ping', onEvent('ping'))
+    es.addEventListener('order.new', onEvent('order.new'))
+    es.addEventListener('order.status', onEvent('order.status'))
+    es.onerror = () =&gt; {                         // স্রোত-ছিঁড়লে
+      connected.value = false
+      es?.close()
+      timer = setTimeout(open, Math.min(30_000, 1000 * 2 ** retry++))
+    }
+  }
+
+  onMounted(open)
+  onBeforeUnmount(() =&gt; { clearTimeout(timer); es?.close() })   // দড়ি-ছাড়া
+
+  return { connected, events, unread, toastLog, refetchMissed }
+}
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/features/feed/feed.test.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { describe, it, expect, beforeAll, afterEach, afterAll, vi } from 'vitest'
+import { effectScope, nextTick } from 'vue'
+import { server, emitFeed, feedState, resetFeedState } from '../../tests/msw-feed'
+import { useFeedStream } from './useFeedStream'
+
+beforeAll(() =&gt; server.listen())
+afterEach(() =&gt; { server.resetHandlers(); resetFeedState() })
+afterAll(() =&gt; server.close())
+
+// onMounted-কে-ছাড়িয়ে-সরাসরি-খোলা: scope-run-ই-যথেষ্ট (open-কে-পরীক্ষার-হাতে)
+async function boot() {
+  const scope = effectScope()
+  const api = scope.run(() =&gt; useFeedStream())!
+  await new Promise(r =&gt; setTimeout(r, 50))      // নদী-খোলার-শ্বাস
+  return { api, scope }
+}
+
+describe('পঞ্চম-কাপড় · জীবন্ত-নদী-ঘাট', () =&gt; {
+  it('① ইভেন্ট→সারি+ব্যাজ+টোস্ট-সেতু', async () =&gt; {
+    const { api, scope } = await boot()
+    expect(api.connected.value).toBe(true)       // নদী-বাঁচা (onopen)
+    emitFeed('e-1', 'নতুন-অর্ডার #১০১')
+    await new Promise(r =&gt; setTimeout(r, 50))
+    expect(api.events.value).toHaveLength(1)     // সারি-জমা
+    expect(api.events.value[0]!.title).toContain('অর্ডার')
+    expect(api.toastLog).toContain('নতুন-অর্ডার #১০১')
+    scope.stop()                                  // দড়ি-ছাড়া
+  })
+
+  it('② পুনঃখোলায়-মিলন: onopen→refetchMissed-কল', async () =&gt; {
+    const { api, scope } = await boot()
+    expect(feedState.refetches).toBeGreaterThanOrEqual(1)   // সার্ভার-সত্য-গণনা
+    expect(api.unread.value).toBe(2)              // জলাধার-মিলন
+    scope.stop()
+  })
+
+  it('③ দড়ি-ছাড়া: scope.stop()-এর-পরে-ঢেউ-নিষ্ফল', async () =&gt; {
+    const { api, scope } = await boot()
+    scope.stop()                                  // unmount-ছায়া
+    const before = api.events.value.length
+    emitFeed('e-2', 'পরের-ঢেউ')
+    await new Promise(r =&gt; setTimeout(r, 50))
+    expect(api.events.value.length).toBe(before)  // মৃত-ঘাটে-জমা-নয়
+  })
+})
+</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) npx vitest run — তিন-টেস্ট সবুজ (setup.ts-পলিফিল-ছাড়া-প্রথম-রান-ই-শিখাবে কেন)। (২) **নথি-পথ-বনাম-ছায়া:** অধ্যায়ের-বীজ http.get+raw-body দেখালেও mswjs.io-র নথিভুত-পথ = sse() হ্যান্ডলার + client.send({event, data, id}) — স্টুডিও সেটাই; ছায়া-পথ প্রায়ই EventSource-কে ধরে-না। (৩) **ভাঙো:** onBeforeUnmount-এর es?.close() তুলে-দাও → টেস্ট-③-এর-গণনা বদলে-যেতে-পারে (পলিফিল-ভেদে) — আসল-প্রমাণ ব্রাউজারে: ট্যাব-বন্ধের-পরেও নেটওয়ার্ক-ট্যাবে stream-লাল-না-হওয়া = দড়ি-ছাড়া-বিস্মৃত। (৪) আসল-প্রজেক্টে: Pinia-feedStore + toast.info + onErrorCaptured-বাঁধ (অধ্যায়ের ফাইল-৪/৫)। Context7-নোট: mswjs.io — sse(url, resolver) + client.send({event, data, id}) নথিভুত; নামকরা-ইভেন্ট addEventListener-এ-ধরা। / Tests: three green; the documented sse() handler over the raw-body sketch; break the rope-release and watch.</div>
+  </div>
   <div class="stat-card"><div class="sc-num">জলাধার</div><div class="sc-label">store · সত্য</div></div>
   <div class="stat-card"><div class="sc-num">বাঁধ</div><div class="sc-label">errorCaptured</div></div>
   <div class="stat-card"><div class="sc-num">পিং</div><div class="sc-label">~২৫সে · প্রক্সি-রোধ</div></div>
