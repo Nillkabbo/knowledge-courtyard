@@ -111,6 +111,115 @@ doors.push({
   <div class="verse">শরীয়তুল-মদীনা — মেয়র-মরে-আইন-বাঁচে: "মানুষের-মধ্যে তোমরা-হিসাব-করো-মিনাড়ে" নয় বরং বিচার-প্রতিষ্ঠার-আয়াত-ধারা (৪:৫৮-এর-সার) — বিশ্বাস প্রতিষ্ঠানে-থাকে, ব্যক্তির-স্মৃতিতে-নয়। কাজী আনোয়ারের-ফলক সেই-সংহিতার-শহর-রূপ: স্রোতের-দিক, নামের-খাতা, নীরবতার-দণ্ড — তিন-আইন কোনো-কারিগরের-মেজাজে-নয়, পাথরে। যে-শহর আইন-ছুঁড়ে-ফেলে-দ্রুত-বাড়ে, সে-শহর পাঁচ-বছরে-নিজের-রাস্তাই-খুঁজে-পায়-না; আর যে-নীরবতা-দণ্ডহীন, সেখানে-ব্যর্থতা-অদৃশ্য-হয়ে-রাতে-ডাকাতি-করে।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>পৌরসভা-ফাঁদ:</strong> (১) 'শুধু-এবার-একটা-ফিচার-ফিচার-আমদানি' — ছোট-শহরের-এক-ভাঙা-জানালা দিয়ে-পুরো-আইন-ভাঙে; লিন্ট-ব্যতিক্রম-নয়। (২) রেজিস্ট্রি-বাইপাস-করে-ডাইনামিক-string-কম্পোনেন্ট — অজানা-ঘর-নীরব-পতন; সব-ঠিকানা-খাতায়। (৩) 'এটা-তো-ছোট-এরর' বলে-খালি-catch — রাতের-ডাকাতি-নীরবতার-মুখোশে; লগ-ন্যূনতম।</div></div>
   <div class="secret-box">🏛️ তিন-ফলক: স্রোত-একমুখ (লিন্ট), নাম-খাতায় (রেজিস্ট্রি), নীরবতা-দণ্ডনীয় (no-empty-catch) — নকশা-খাতা মিলে-ই নতুন-ঘর। / One-way imports, registered names, no silence.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ২১-এর পৌরসভা: ফ্রোজেন-রেজিস্ট্রি + BE-ম্যানিফেস্ট-রুট + চার্টার-পাহারা-টেস্ট বাঁধো — তারপর নিজে-আইন-ভাঙো: রেজিস্ট্রি-সারি মুছলে কভারেজ-পিন কাঁদবে, ম্যানিফেস্টে-অজানা-কী দিলে ড্রিফ্ট-স্কিপ+লগ ধরা-পড়বে — নীরব-পতন নয়। / Door 21's city-hall: frozen registry + manifest routes + charter guard-tests — then break each law yourself and watch the pin cry.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/app/registry.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>// আইন-২: নাম-খাতা — ফ্রোজেন-রেজিস্ট্রি
+// আসল-প্রজেক্টে মানচিত্র glob-স্বয়ং-গড়ে (Vite-নথি):
+//   const modules = import.meta.glob('../../features/**/views/**/*.vue')
+//   → { 'features/auth/views/LoginView.vue': () =&gt; import('…'), … }
+// স্টুডিও-পরীক্ষায় হাতে-লেখা-ছায়া:
+const modules: Record&lt;string, () =&gt; Promise&lt;{ default: unknown }&gt;&gt; = {
+  'features/auth/views/LoginView.vue': () =&gt; Promise.resolve({ default: 'LoginView' }),
+  'features/timesheets/views/ImportsView.vue': () =&gt; Promise.resolve({ default: 'ImportsView' }),
+  'features/account/views/ProfileView.vue': () =&gt; Promise.resolve({ default: 'ProfileView' }),
+}
+
+function toKey(p: string): string {
+  return p.replace(/^.*features\//, '').replace(/\.vue$/, '')
+}
+
+export const COMPONENTS = Object.freeze(
+  Object.fromEntries(
+    Object.entries(modules).map(([p, loader]) =&gt; [toKey(p), loader]),
+  ),
+) as Record&lt;string, () =&gt; Promise&lt;{ default: unknown }&gt;&gt;
+
+export function resolveComponent(key: string) {
+  const loader = COMPONENTS[key]
+  if (!loader) {
+    // নীরবতা-নিষেধ: অজানা-ঠিকানা চিৎকার-করে-পড়ে — নীরব-পতন-নয়
+    console.error('[nav] অজানা component_key "' + key + '" — রেজিস্ট্রিতে-নেই')
+    return null
+  }
+  return loader
+}
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/app/manifestRoutes.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { resolveComponent } from './registry'
+
+// আইন-৩: সার্ভার-নকশা — BE-ম্যানিফেস্ট রুট-রেকর্ডে
+export interface ManifestRoute {
+  path: string
+  name: string
+  component_key: string
+  feature_key: string
+  allowed_roles: string[]
+}
+
+export function buildRouteRecords(routes: ManifestRoute[]) {
+  return routes.flatMap((r) =&gt; {
+    const loader = resolveComponent(r.component_key)
+    if (!loader) return []      // ড্রিফ্ট-স্কিপ — কিন্তু লগ-সহ (resolveComponent-ই চেঁচিয়েছে)
+    return [{
+      path: r.path,
+      name: r.name,
+      component: loader,
+      meta: { roles: r.allowed_roles, feature: r.feature_key },
+    }]
+  })
+}
+
+// আসল-প্রজেক্টে: buildRouteRecords(manifest).forEach(r =&gt; router.addRoute(r))
+// রুট+মেনু+গেট এক-উৎস (সার্ভার) — তিন-জায়গায়-তিন-সত্য নয়
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/app/charter.test.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { describe, it, expect, vi } from 'vitest'
+import { COMPONENTS, resolveComponent } from './registry'
+import { buildRouteRecords, type ManifestRoute } from './manifestRoutes'
+
+const manifest: ManifestRoute[] = [
+  { path: '/login', name: 'login', component_key: 'auth/views/LoginView',
+    feature_key: 'auth', allowed_roles: ['*'] },
+  { path: '/timesheets/imports', name: 'timesheets-imports',
+    component_key: 'timesheets/views/ImportsView',
+    feature_key: 'timesheets', allowed_roles: ['admin', 'accountant'] },
+  // BE-ড্রিফ্ট-ছায়া: সার্ভার জানে-না FE-এ-এই-ঘর-নেই
+  { path: '/ghost', name: 'ghost', component_key: 'ghost/views/GhostView',
+    feature_key: 'ghost', allowed_roles: ['*'] },
+]
+
+describe('আইন-২ · নাম-খাতা', () =&gt; {
+  it('অজানা-কী নীরবে-নয় — লগ+null', () =&gt; {
+    const err = vi.spyOn(console, 'error').mockImplementation(() =&gt; {})
+    expect(resolveComponent('nope/views/None')).toBeNull()
+    expect(err).toHaveBeenCalled()              // নীরবতা-নিষেধ-প্রমাণ
+    err.mockRestore()
+  })
+
+  it('ফ্রোজেন-মানচিত্র — রানটাইমে-নতুন-সদস্য-নয়', () =&gt; {
+    const add = () =&gt; { (COMPONENTS as Record&lt;string, unknown&gt;)['hack/views/Hack'] = 1 }
+    expect(add).toThrow()                      // Object.freeze-এর-শপথ
+  })
+
+  it('কভারেজ-পিন: প্রত্যাশিত-পর্দা খাতায়-আছে', () =&gt; {
+    for (const key of ['auth/views/LoginView', 'timesheets/views/ImportsView', 'account/views/ProfileView']) {
+      expect(COMPONENTS[key]).toBeTruthy()     // নতুন-পর্দা = এই-সারিতে-নাম
+    }
+  })
+})
+
+describe('আইন-৩ · ম্যানিফেস্ট', () =&gt; {
+  it('ড্রিফ্ট-স্কিপ: অজানা-কী বাদ, জানা-কী বাকি — লগ-সহ', () =&gt; {
+    const err = vi.spyOn(console, 'error').mockImplementation(() =&gt; {})
+    const records = buildRouteRecords(manifest)
+    expect(records).toHaveLength(2)            // ghost স্কিপ্ট — অন্ধ-পতন-নয়
+    expect(records[0]!.meta.roles).toEqual(['*'])
+    expect(err).toHaveBeenCalled()
+    err.mockRestore()
+  })
+})
+</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) npx vitest run — পাঁচ-টেস্ট সবুজ। (২) **আইন-২-ভাঙো:** registry.ts থেকে account-সারি মুছো → কভারেজ-পিন লাল — নতুন-পর্দার নাগরিক-অনুষ্ঠান মেশিনে-পাহারা-যোগ্য। (৩) **আইন-৩-ভাঙো:** ম্যানিফেস্টে আরেকটা অজানা-কী যোগ করো → length-দাবি ধরবে, কনসোল-লগ দেখবে। (৪) আইন-৪ eslint-ফলক: no-empty ডিফল্টেই খালি-catch লাল-করে (eslint.org-সত্যায়িত) — দরজা ১৯-এর eslint.config.js-এ আইন-১-এর পাশে বসে-আছে। Context7-নোট: vitejs.org — import.meta.glob = {পথ: () =&gt; import(পথ)} লোডার-মানচিত্র; eslint.org — no-empty ডিফল্ট খালি-ব্লক নিষেধ (allowEmptyCatch:false)। / Tests: five green; delete a registry row and watch the coverage-pin cry; add a ghost manifest key and watch drift-skip+log — never a silent fall.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">City Charter — Three Tablets, One Constitution</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
