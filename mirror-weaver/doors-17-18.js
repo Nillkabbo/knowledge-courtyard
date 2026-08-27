@@ -143,6 +143,142 @@ doors.push({
   <div class="verse">ইস্তিখারাহ — অঙ্গীকারের-আগে-মন্থন: প্রবাদ-শাস্ত্র যেখানে বড়-সিদ্ধান্তে দুই-রাকাত-ভাবনা — কাজটি করব কি-না-জেনে তবে-করা। ওস্তাদ নাজিরের দপ্তর সেই ইস্তিখারার কারিগরি-রূপ: চক-পাতায়-দেখা, তারপর-কালি; যে-লেখা চোখ-ডুবায়নি, সে-লেখা দলিল-নয় — জুয়া। "তোমাদের সম্পদ নিজেদের মধ্যে অযথা খরচ করো না" (২:১৮৮-এর ভাব) — অযথা-লেখা রোধের-ই হুকুমের ছায়া, ডেটার-জগতে।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>দপ্তর-ফাঁদ:</strong> (১) confirm-গার্ড-ছাড়া ফেজ-কম্পোজেবল — v-if-তালা কেটে গেলেই অন্ধ-কালির-দরজা খোলা; দুই-স্তর-পাহারা (ঘড়ি+দেয়াল) বাধ্যতামূলক। (২) onSuccess-কে try-ভেতরে রাখা — রিফেচ-ব্যর্থ হলে 'ঠেলা-সফল'-কে error-দেখায়, ব্যবহারকারী দুইবার-ঠেলে ডাবল-লেখা; কমিটেড-পরে-বাইরে-ই। (৩) প্রতি-পৃষ্ঠে ঘড়ি-কোড হাতে-নকল — কম্পোজেবল-একবার, অ্যাডাপ্টার-পাতলা।</div></div>
   <div class="secret-box">🖋️ চক-পাতায়-দেখাও (dryRun), পর্যালোচনার-পরে-কালি (confirm) — কালি শুধু preview-থেকে, পার্শ্ব-প্রভাব কমিটের-পরে। / Preview with chalk, commit ink only from review.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ১৭-এর অনুলিপি-দপ্তর: usePreviewConfirmFlow-কম্পোজেবল বাঁধো — ছয়-কাঁটার ফেজ-ঘড়ি, কালি-পাহারা, পাতলা-অ্যাডাপ্টার; নকল-সার্ভারে সম্পূর্ণ দুই-পর্ব নিজের চোখে দেখো। / Door 17's transcription-office: build the usePreviewConfirmFlow composable — the six-hand phase clock, the ink-guard, thin adapters; watch both phases run against a fake server.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/composables/usePreviewConfirmFlow.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { ref } from 'vue'
+
+// ফেজ-ঘড়ি (ছয়-কাঁটা)
+export type PreviewConfirmPhase =
+  'idle' | 'previewing' | 'preview' | 'committing' | 'done' | 'error'
+
+export interface PreviewConfirmOptions&lt;TArg, TRes, TRow&gt; {
+  fetch: (arg: TArg, dryRun: boolean) =&gt; Promise&lt;TRes&gt;
+  rows: (res: TRes) =&gt; TRow[]
+  successMessage?: string | ((res: TRes) =&gt; string)
+  onSuccess?: () =&gt; Promise&lt;void&gt; | void
+}
+
+export function usePreviewConfirmFlow&lt;TArg, TRes, TRow&gt;(
+  options: PreviewConfirmOptions&lt;TArg, TRes, TRow&gt;) {
+  const phase = ref&lt;PreviewConfirmPhase&gt;('idle')
+  const rows = ref&lt;TRow[]&gt;([])
+  const result = ref&lt;TRes | null&gt;(null)
+  const error = ref&lt;string | null&gt;(null)
+
+  async function preview(arg: TArg) {
+    phase.value = 'previewing'; error.value = null
+    try {
+      const res = await options.fetch(arg, true)   // চক
+      result.value = res
+      rows.value = options.rows(res)
+      phase.value = 'preview'                       // ✓ পাতা-১-খোলা
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : String(e)
+      phase.value = 'error'
+    }
+  }
+
+  async function confirm(arg: TArg) {
+    // 🛡️ কালি-পাহারা: শুধু পর্যালোচিত-preview থেকে
+    if (phase.value !== 'preview') {
+      console.warn('🛑 কালি-পাহারা: confirm ডাকা হলো', phase.value, 'থেকে — no-op')
+      return
+    }
+    phase.value = 'committing'; error.value = null
+    let res: TRes
+    try {
+      res = await options.fetch(arg, false)          // কালি
+      result.value = res
+      rows.value = options.rows(res)
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : String(e)
+      phase.value = 'error'
+      return
+    }
+    // ✓ কমিটেড — পার্শ্ব-প্রভাব try-বাইরে
+    phase.value = 'done'
+    console.log('🖋️ কালি-কমিট:', typeof options.successMessage === 'function'
+      ? options.successMessage(res) : (options.successMessage ?? 'সম্পন্ন'))
+    await options.onSuccess?.()
+  }
+
+  function reset() {
+    phase.value = 'idle'; rows.value = []
+    result.value = null; error.value = null
+  }
+
+  return { phase, rows, result, error, preview, confirm, reset }
+}</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/ChalkInkScreen.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { usePreviewConfirmFlow } from './composables/usePreviewConfirmFlow'
+
+interface Row { key: string; action: string; amount: number }
+
+// নকল-সার্ভার: এক-fetch, দুই-ডাক (dryRun-চিহ্নে ভিন্ন)
+async function fakeFetch(arg: string, dryRun: boolean) {
+  await new Promise(r =&gt; setTimeout(r, 600))
+  const rows: Row[] = [
+    { key: 'inv-1', action: 'Xero-তে চালান', amount: 1200 },
+    { key: 'inv-2', action: 'Xero-তে চালান', amount: 850 },
+    { key: 'inv-3', action: 'বাদ (ইতিমধ্যে-ঠেলা)', amount: 0 },
+  ]
+  return { dryRun, rows, inked: !dryRun }
+}
+
+// পাতলা-অ্যাডাপ্টার: শুধু fetch+rows-সুতো
+const { phase, rows, error, preview, confirm, reset } =
+  usePreviewConfirmFlow&lt;string, { dryRun: boolean; rows: Row[]; inked: boolean }, Row&gt;({
+    fetch: fakeFetch,
+    rows: (r) =&gt; r.rows,
+    successMessage: (r) =&gt; r.inked ? 'কালি-দলিল লেখা হলো ✓' : '',
+    onSuccess: () =&gt; { console.log('রিফেচ-হবে (onSuccess)') },
+  })
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h3&gt;🖋️ কালির-আগে-চক&lt;/h3&gt;
+    &lt;p&gt;ফেজ: &lt;strong&gt;{{ phase }}&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;button :disabled="phase !== 'idle' &amp;&amp; phase !== 'error' &amp;&amp; phase !== 'done'"
+            @click="preview('period-42')"&gt;
+      {{ phase === 'previewing' ? '⏳ চক-আঁকা হচ্ছে…' : '📋 প্রিভিউ দেখাও (চক)' }}
+    &lt;/button&gt;
+
+    &lt;!-- পাতা-১: চক-নকশা — কী-কী-লেখা-হবে --&gt;
+    &lt;table v-if="phase === 'preview' || phase === 'committing'" border="1" cellpadding="4"&gt;
+      &lt;tr&gt;&lt;th&gt;দলিল&lt;/th&gt;&lt;th&gt;কাজ&lt;/th&gt;&lt;th&gt;টাকা&lt;/th&gt;&lt;/tr&gt;
+      &lt;tr v-for="row in rows" :key="row.key"&gt;
+        &lt;td&gt;{{ row.key }}&lt;/td&gt;&lt;td&gt;{{ row.action }}&lt;/td&gt;&lt;td&gt;{{ row.amount }}&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+
+    &lt;!-- পাতা-২: কালি — শুধু preview-পাতায়-ই-জন্মায় (দেয়ালের-পাহারা) --&gt;
+    &lt;button v-if="phase === 'preview'"
+            @click="confirm('period-42')"&gt;
+      {{ phase === 'committing' ? '⏳ কালি-চলছে…' : '🖋️ নিশ্চিত-করে-লেখো (কালি)' }}
+    &lt;/button&gt;
+
+    &lt;button v-if="phase === 'done'" @click="reset()"&gt;↺ নতুন-দপ্তর&lt;/button&gt;
+    &lt;p v-if="error" style="color:#ef4444"&gt;❌ {{ error }}&lt;/p&gt;
+
+    &lt;!-- পাহারা-প্রমাণ: idle থেকে সরাসরি কালি-ডাক --&gt;
+    &lt;button @click="confirm('period-42')"
+            style="display:block; margin-top:.6rem; opacity:.6"&gt;
+      🕵️ অন্ধ-কালি-চেষ্টা (idle থেকে confirm — no-op হওয়ার কথা)
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import ChalkInkScreen from './ChalkInkScreen.vue'
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;ChalkInkScreen /&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) প্রিভিউ-চাপো → ৬০০ms-এ চক-সারি + ফেজ 'preview'। (২) কনফার্ম-চাপো → 'committing' → 'done' + কনসোলে 🖋️। (৩) **অন্ধ-কালি-বোতাম** idle-অবস্থায় চাপো — কনসোলে 🛑-সতর্কতা, কিছু হয় না (ঘড়ির-পাহারা; বোতাম দেয়ালেও নেই — দুই-স্তর)। (৪) reset → নতুন দপ্তর। Context7-নোট: দুই-ডাকে এক-ই-এন্ডপয়েন্ট (dryRun-চিহ্ন শুধু অনুরোধে) — সার্ভার-পরিকল্পনা ক্লায়েন্ট-অনুমান নয়। / Tests: watch both phases; the blind-ink button no-ops with a console warning — the clock-guard proven live.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">Chalk Before Ink — The Six-Hand Phase Clock</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
