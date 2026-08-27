@@ -68,7 +68,7 @@ doors.push({
     <li>যদি ফজরের নামাজ পড়ো — মসজিদে যাও, সেটাই আলো</li>
   </div>
   <div class="diagram">
-    <div class="diag-title">সারকেডিয়ান ঘড়ি · Circadian Master Clock</div></div>
+    <div class="diag-title">সারকেডিয়ান ঘড়ি · Circadian Master Clock</div>
     <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrowD6" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c4b5fd"/></marker>
@@ -95,6 +95,7 @@ doors.push({
       <text class="lbl-sm" x="460" y="169" text-anchor="middle">ডিম আলো · স্ক্রিন বন্ধ</text>
     </svg>
     <div class="diag-cap">সকালের আলো ঘড়ি সেট করে; রাতের অন্ধকার ঘুম ডাকে।</div>
+  </div>
   
   <div class="secret-box">
     <div class="secret-icon">☀️</div>
@@ -172,7 +173,7 @@ doors.push({
     <li>নামাজে খুশু অনুশীলন করো — সেটাই ফোকাস প্রশিক্ষণ</li>
   </div>
   <div class="diagram">
-    <div class="diag-title">ফোকাস পেশী · The 90-Minute Ultradian Block</div></div>
+    <div class="diag-title">ফোকাস পেশী · The 90-Minute Ultradian Block</div>
     <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrowD7" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#3dd6c4"/></marker>
@@ -193,6 +194,7 @@ doors.push({
       <text class="lbl-amber" x="290" y="205" text-anchor="middle">মন গেলে ধরো, বিনা রাগে ফিরিয়ে আনো — এটাই পেশীর ব্যায়াম</text>
     </svg>
     <div class="diag-cap">ফোকাস মানে মন না যাওয়া নয় — গেলে ফিরিয়ে আনা। প্রতিবার = একটা পুশআপ।</div>
+  </div>
   
   <div class="secret-box">
     <div class="secret-icon">🛡️</div>
@@ -270,7 +272,7 @@ doors.push({
     <li>সকালে ফজরের আজানে উঠো — সারকেডিয়ান শিখর</li>
   </div>
   <div class="diagram">
-    <div class="diag-title">ঘুমের স্থাপত্য · Memory Consolidation</div></div>
+    <div class="diag-title">ঘুমের স্থাপত্য · Memory Consolidation</div>
     <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrowD8" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c4b5fd"/></marker>
@@ -295,6 +297,7 @@ doors.push({
       <text class="lbl-amber" x="280" y="215" text-anchor="middle">ঘুম হলো সেভ বাটন — না ঘুমালে পড়াই মুছে যায় (Marshall &amp; Born 2006)</text>
     </svg>
     <div class="diag-cap">তুমি জেগে শেখো না — ঘুমে শেখো। ঘুম সেভ করে।</div>
+  </div>
   
   <div class="secret-box">
     <div class="secret-icon">😴</div>
@@ -379,7 +382,7 @@ doors.push({
     <li>২১ দিনের মিথ ভুল — ধৈর্য রাখো, মধ্যমা ৬৬ দিন</li>
   </div>
   <div class="diagram">
-    <div class="diag-title">অভ্যাস লুপ · Cue → Routine → Reward</div></div>
+    <div class="diag-title">অভ্যাস লুপ · Cue → Routine → Reward</div>
     <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrowD9a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ff6b35"/></marker>
@@ -403,6 +406,7 @@ doors.push({
       <text class="lbl-sm" x="280" y="208" text-anchor="middle">৬৬ দিন (Lally 2010) · বেসাল গ্যাংলিয়া অটোপাইলট</text>
     </svg>
     <div class="diag-cap">তিনে মিলে অভ্যাস — একটা বাদ দিলে ভাঙে।</div>
+  </div>
   
   <div class="secret-box">
     <div class="secret-icon">🔄</div>
@@ -483,7 +487,7 @@ doors.push({
     <li>'আমি কে?' — এই প্রশ্নটা প্রতিদিন নিজেকে করো</li>
   </div>
   <div class="diagram">
-    <div class="diag-title">পরিচয়ের নোঙর · 3 Levels of Change</div></div>
+    <div class="diag-title">পরিচয়ের নোঙর · 3 Levels of Change</div>
     <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrowD10" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c4b5fd"/></marker>
@@ -504,6 +508,7 @@ doors.push({
       <text class="lbl-amber" x="280" y="222" text-anchor="middle">পরিচয় আগে, আচরণ পরে · প্রতিটা কাজ একটা ভোট (Bem 1972)</text>
     </svg>
     <div class="diag-cap">লক্ষ্য শেষ হয়, পরিচয় শেষ হয় না।</div>
+  </div>
   
   <div class="secret-box">
     <div class="secret-icon">🧭</div>

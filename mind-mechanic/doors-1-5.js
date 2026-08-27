@@ -64,7 +64,7 @@ doors.push({
     <li>প্রতিদিন একটা ক্যালেন্ডারে দাগ দাও (✓)</li>
   </div>
   <div class="diagram">
-    <div class="diag-title">২-মিনিট নিয়ম · The First Thread</div></div>
+    <div class="diag-title">২-মিনিট নিয়ম · The First Thread</div>
     <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrowD1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c4b5fd"/></marker>
@@ -86,6 +86,7 @@ doors.push({
       <text class="lbl-sm" x="280" y="195" text-anchor="middle">৬৬ দিন = ৬৬ সুতো → কার্পেট (Lally 2010)</text>
     </svg>
     <div class="diag-cap">বড় কাজ মস্তিষ্ককে ভয় দেখায়; ছোট কাজ হাসায়। হাসলেই শুরু।</div>
+  </div>
   
   <div class="secret-box">
     <div class="secret-icon">🧵</div>
@@ -172,7 +173,7 @@ doors.push({
     <li>অ্যালার্ম ঘড়ি অন্য ঘরে রাখো (ফোন নয়)</li>
   </div>
   <div class="diagram">
-    <div class="diag-title">ফ্রিকশন ইঞ্জিনিয়ারিং · Choice Architecture</div></div>
+    <div class="diag-title">ফ্রিকশন ইঞ্জিনিয়ারিং · Choice Architecture</div>
     <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrowD2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#52c41a"/></marker>
@@ -202,6 +203,7 @@ doors.push({
       <text class="lbl-sm" x="280" y="215" text-anchor="middle">হোম স্ক্রিন খালি · সাবস্ক্রিপশন বন্ধ</text>
     </svg>
     <div class="diag-cap">ইচ্ছাশক্তি লড়াই করো না — পথ সাজাও, মস্তিষ্ক নিজে চলে।</div>
+  </div>
   
   <div class="secret-box">
     <div class="secret-icon">🏠</div>
@@ -271,7 +273,7 @@ doors.push({
     <li>মনে রাখো: এটা হরমোন জাদু নয় — শরীর মনকে বলছে 'আমি প্রস্তুত'</li>
   </div>
   <div class="diagram">
-    <div class="diag-title">৯০-সেকেন্ড কনফিডেন্স রিচুয়াল · 3 Switches</div></div>
+    <div class="diag-title">৯০-সেকেন্ড কনফিডেন্স রিচুয়াল · 3 Switches</div>
     <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrowD3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c4b5fd"/></marker>
@@ -297,6 +299,7 @@ doors.push({
       <text class="lbl-amber" x="280" y="185" text-anchor="middle">হরমোন জাদু নয় — অনুভূতির সত্যতা (Ranehill 2015)</text>
     </svg>
     <div class="diag-cap">তিন সুইচ · ৯০ সেকেন্ড · শরীর মনকে বলে কে তুমি।</div>
+  </div>
   
   <div class="secret-box">
     <div class="secret-icon">⚡</div>
@@ -374,7 +377,7 @@ doors.push({
     <li>'পড়ার পর সিরিজ' বন্ধ করো — সিরিজকে পড়ার সাথে বাঁধো</li>
   </div>
   <div class="diagram">
-    <div class="diag-title">ডোপামিন কার্ভ · Reward Prediction Error</div></div>
+    <div class="diag-title">ডোপামিন কার্ভ · Reward Prediction Error</div>
     <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrowD4" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c4b5fd"/></marker>
@@ -399,6 +402,7 @@ doors.push({
       <text class="lbl-sm" x="450" y="185" text-anchor="middle">→ ব্যায়াম ৫১% ↑</text>
     </svg>
     <div class="diag-cap">ডোপামিন পুরস্কারে আসে না — প্রত্যাশায় আসে (Schultz 1997)।</div>
+  </div>
   
   <div class="secret-box">
     <div class="secret-icon">🧪</div>
@@ -477,7 +481,7 @@ doors.push({
     <li>ভয়/রাগ/ক্লান্তি আসলে শ্বাস দিয়ে শুরু করো — কথা দিয়ে নয়</li>
   </div>
   <div class="diagram">
-    <div class="diag-title">শ্বাস-সুইচ · Physiological Sigh</div></div>
+    <div class="diag-title">শ্বাস-সুইচ · Physiological Sigh</div>
     <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrowD5" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#5b9eff"/></marker>
@@ -505,6 +509,7 @@ doors.push({
       <text class="lbl-amber" x="280" y="160" text-anchor="middle">*৩-৫ চক্র · ৩০ সেকেন্ড · মেডিটেশনের চেয়ে দ্রুত (Balban 2023)</text>
     </svg>
     <div class="diag-cap">দুই ভরো, এক ছাড়ো — স্নায়ুতন্ত্র শান্ত মোডে যায়।</div>
+  </div>
   
   <div class="secret-box">
     <div class="secret-icon">🌬️</div>

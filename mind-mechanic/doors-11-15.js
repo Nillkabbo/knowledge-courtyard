@@ -425,7 +425,7 @@ doors.push({
   </div></div>
   <div class="callout tip"><span class="co-icon">🎯</span><div><strong>এক দিনের ব্লুপ্রিন্ট — One-Day Blueprint:</strong></div></div>
   <div class="diagram">
-    <div class="diag-title">দৈনিক অপারেটিং সিস্টেম · Daily OS</div></div>
+    <div class="diag-title">দৈনিক অপারেটিং সিস্টেম · Daily OS</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrowFinal" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c4b5fd"/></marker>
@@ -476,6 +476,7 @@ doors.push({
       <text class="lbl-amber" x="280" y="305" text-anchor="middle" style="font-size:.7rem">প্রতিদিন ১% → এক বছরে ৩৭ গুণ</text>
     </svg>
     <div class="diag-cap">চৌদ্দ কারিগর — এক দিন। এক ব্যবস্থা।</div>
+  </div>
   
   <div class="callout info"><span class="co-icon">🧠</span><div><strong>সব কারিগরের এক কথা — The Unifying Principle:</strong> বখতিয়ার বলেছেন ছোট শুরু। নাফিসা বলেছেন পরিবেশ। জাফর বলেছেন ভঙ্গি। ফারহান বলেছেন আনন্দ বাঁধাই। সুমাইয়া বলেছেন শ্বাস। ইব্রাহিম বলেছেন আলো। রিদওয়ান বলেছেন ফোকাসের পেশী। জাকারিয়া বলেছেন ঘুম। ইসহাক বলেছেন লুপ। আমিনা বলেছেন পরিচয়। ইউসুফ বলেছেন ঢেউ সার্ফ। রুকাইয়া বলেছেন ১%। তামিম বলেছেন স্থাপত্য। লুৎফু বলেছেন কাদামাটি। চৌদ্দ জন, চৌদ্দ উপায় — কিন্তু সবাই এক কথা বলেছেন:</div></div>
   <div class="secret-box" style="margin:1.5rem 0;padding:1.5rem;border:2px solid var(--amber)">
