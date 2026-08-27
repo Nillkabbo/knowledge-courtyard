@@ -422,6 +422,123 @@ doors.push({
   <div class="verse">শাহাদাতুল-কিতাব — লিপিবদ্ধ-সাক্ষ্য: "লিখে রাখো, ঋণ এক নির্দিষ্ট মেয়াদ পর্যন্ত" (২:২৮২-এর আদেশ-ছায়া) — লেখা যেন হারায় না, ভুল যেন নীরবে না থাকে। মুনশি আফসারের দপ্তর সেই লিপি-শৃঙ্খলার ফর্ম-রূপ: খসড়া-চিহ্ন, ফিল্ড-সিল, প্রস্থান-প্রশ্ন — তিনটাই এক-উদ্দেশ্যে, ব্যবহারকারীর লেখা রক্ষা। যে দপ্তরে খসড়া নীরবে-হারায়, সেখানে লোকে লেখাই ছেড়ে দেয়; আর যেখানে ভুল-সিল নীরবে-চাপা পড়ে, সে-লেখা সাক্ষ্য নয় — বোঝা।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>দপ্তর-ফাঁদ:</strong> (১) সফল-সাবমিটে নোঙর (originalEmail) পুনঃসিঙ্ক-না-করা — পাসওয়ার্ড-ঘর 'আটকে-খোলা' থাকে, LP-কমেন্টের-ই শিক্ষা। (২) সব-এরর এক-ব্যানারে ঢেলে-ফিল্ড-সিল-বাদ — ব্যবহারকারী খুঁজে-বেড়ায় কোন-ঘর ভুল; খাঁচা-ভাগ করো। (৩) dirty-ট্র্যাক-ছাড়া রুট-ছাড়া — দুই-ক্লিকে দুই-ঘণ্টার-লেখা উধাও; প্রস্থান-ফটক বাধ্যতামূলক-অভ্যাস।</div></div>
   <div class="secret-box">📝 ফর্ম = লিপি-চুক্তি: খসড়া-স্থানীয়, নোঙর-প্রগতিশীল-প্রকাশ, এরর-দুই-ঠিকানায়, প্রস্থান-প্রশ্নে-সুরক্ষিত। / Local draft, anchored disclosure, two-addressed seals, gated exit.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ১৬-এর পাণ্ডুলিপি-দপ্তর: প্রোফাইল-ফর্ম বাঁধো — নোঙর + প্রগতিশীল-প্রকাশ (ইমেইল-বদলে পাসওয়ার্ড-ঘর), ফিল্ড-এরর-খাঁচা, dirty-প্রস্থান-ফটক। / Door 16's manuscript office: build a profile form — anchor, progressive disclosure, per-field error cage, dirty exit-gate.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/ManuscriptForm.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { ref, computed } from 'vue'
+import { onBeforeRouteLeave } from 'vue-router'
+
+// ① অবস্থা-বিন্যাস: খসড়া-টেবিল + মূল-নোঙর
+const firstName = ref('রফিক')
+const originalEmail = ref('rafik@loom.city')
+const email = ref(originalEmail.value)
+const currentPassword = ref('')
+const saving = ref(false)
+
+// প্রগতিশীল-প্রকাশ: ইমেইল-বদলালেই পাসওয়ার্ড-ঘর
+const emailChanged = computed(() =&gt;
+  email.value.trim() !== originalEmail.value)
+
+// dirty-চিহ্ন: খসড়া নাকি নোঙর?
+const pristine = () =&gt;
+  firstName.value === 'রফিক'
+  &amp;&amp; email.value === originalEmail.value
+  &amp;&amp; currentPassword.value === ''
+const isDirty = computed(() =&gt; !pristine())
+
+// ② এরর-খাঁচা: দুই-ঠিকানা
+const formError = ref('')
+const fieldErrors = ref&lt;Record&lt;string, string[]&gt;&gt;({})
+function getFirstError(field: string): string {
+  return fieldErrors.value[field]?.[0] ?? ''
+}
+
+// নকল-সার্ভার: ফিল্ড-এরর-ফাঁদ
+async function fakeSubmit(): Promise&lt;void&gt; {
+  await new Promise(r =&gt; setTimeout(r, 700))
+  if (email.value === 'taken@loom.city') {
+    throw Object.assign(new Error(), {
+      response: { data: { email: ['এই ইমেইল নেওয়া হয়েছে'],
+                           _form: 'সংরক্ষণ ব্যর্থ' } } })
+  }
+}
+
+async function onSubmit() {
+  saving.value = true
+  formError.value = ''
+  fieldErrors.value = {}
+  try {
+    await fakeSubmit()
+    // ✓ সফল — নোঙর-পুনঃসিঙ্ক (নইলে পাসওয়ার্ড-ঘর আটকে-খোলা!)
+    originalEmail.value = email.value
+    currentPassword.value = ''
+    console.log('✓ সংরক্ষিত, নোঙর-সিঙ্কড')
+  } catch (e: any) {
+    const data = e?.response?.data ?? {}
+    formError.value = data._form ?? 'সার্ভার-ত্রুটি'
+    const { _form, ...fields } = data
+    fieldErrors.value = fields as Record&lt;string, string[]&gt;
+  } finally {
+    saving.value = false
+  }
+}
+
+// ④ প্রস্থান-ফটক: অসংরক্ষিত-খসড়ায় একবার-জিজ্ঞাসা
+onBeforeRouteLeave(() =&gt; {
+  if (pristine()) return true
+  return window.confirm('অসংরক্ষিত পরিবর্তন — তবু যাবে?')
+})
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;form @submit.prevent="onSubmit"&gt;
+    &lt;h3&gt;📝 পাণ্ডুলিপি — প্রোফাইল&lt;/h3&gt;
+
+    &lt;p v-if="formError" style="color:#ef4444"&gt;⚠️ {{ formError }}&lt;/p&gt;
+    &lt;p v-if="isDirty" style="color:#fbbf24"&gt;✏️ খ-চিহ্ন: অসংরক্ষিত খসড়া&lt;/p&gt;
+
+    &lt;label&gt;নাম:
+      &lt;input v-model.trim="firstName"&gt;
+      &lt;span v-if="getFirstError('first_name')" style="color:#ef4444"&gt;{{ getFirstError('first_name') }}&lt;/span&gt;
+    &lt;/label&gt;&lt;br&gt;
+
+    &lt;label&gt;ইমেইল:
+      &lt;input v-model.trim="email" placeholder="taken@loom.city লিখে পরীক্ষা করো"&gt;
+      &lt;span v-if="getFirstError('email')" style="color:#ef4444"&gt;{{ getFirstError('email') }}&lt;/span&gt;
+    &lt;/label&gt;&lt;br&gt;
+
+    &lt;!-- প্রগতিশীল-প্রকাশ: শুধু ইমেইল-বদলে --&gt;
+    &lt;label v-if="emailChanged"&gt;বর্তমান পাসওয়ার্ড (পুনঃপ্রমাণ):
+      &lt;input type="password" v-model="currentPassword"&gt;
+    &lt;/label&gt;&lt;br v-if="emailChanged"&gt;
+
+    &lt;button type="submit" :disabled="saving"&gt;
+      {{ saving ? '⏳ পাঠানো হচ্ছে…' : '📦 কোরিয়ারে পাঠাও' }}
+    &lt;/button&gt;
+  &lt;/form&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.vue + প্রস্থান-ফটক-পরীক্ষা</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>// App.vue — দরজা ১৩-১৪-এর রাউটার থাকলে সেটি ব্যবহারো;
+// নিম্ন-রুট-সেটআপ (App.vue সরাসরি):
+&lt;script setup lang="ts"&gt;
+import { ref } from 'vue'
+import ManuscriptForm from './ManuscriptForm.vue'
+import { useRouter } from 'vue-router'
+
+const showForm = ref(true)
+&lt;/script&gt;
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;ManuscriptForm v-if="showForm" /&gt;
+    &lt;button @click="showForm = false"&gt;অন্য-পর্দায় যাও (v-if-আনমাউন্ট)&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+// প্রস্থান-ফটক পুরোদমে দেখতে: দরজা ১৩-এর router/index.ts-এ
+// ManuscriptForm-কে একটি রুটে বসাও — তারপর নেভিগেশনে-চেষ্টা করো।
+// onBeforeRouteLeave কেবল রুট-উপাদানেই কাজ করে (গাইড-নোট)।</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) নাম বদলাও — "খ-চিহ্ন" জ্বলে ওঠে (dirty)। (২) ইমেইল বদলাও — **পাসওয়ার্ড-ঘর আবির্ভূত** (প্রগতিশীল-প্রকাশ); ফিরিয়ে দাও — ঘর মিলিয়ে যায়। (৩) taken@loom.city বসিয়ে সাবমিট — ফর্ম-ব্যানার + **ইমেইল-ঘরের পাশে লাল-সিল** (দুই-ঠিকানা)। (৪) সফল-সাবমিটে ইমেইল-ফিরিয়ে-না-দিলে পাসওয়ার্ড-ঘর খোলাই থাকত — নোঙর-সিঙ্ক-লাইন মন্তব্য-করে দেখো। (৫) dirty-অবস্থায় রুট-নেভিগেশন — confirm-জিজ্ঞাসা। Context7-নোট: onBeforeRouteLeave রুট-উপাদানে-সীমাবদ্ধ; window-confirm-ব্যতিক্রম ছাড়া dirty-ফর্ম নীরবে-হারে। / Tests: dirty mark, appearing password room, two-address seals, anchor-resync proof, exit confirm.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">The Manuscript Office — Draft, Courier, Seals, Exit-Gate</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
