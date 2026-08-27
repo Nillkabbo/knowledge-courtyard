@@ -159,6 +159,147 @@ doors.push({
   <div class="verse">চতুর্থ-রাকাত — বহু-দরজা, ব্যক্তি-অনুযায়ী-চাবি: "প্রত্যেক-দলকে-চেনা-হবে-তাদের-নিজ-নিশানে" নয় বরং সূরা-ছায়া (৫৫:৪১-এর ভাব) — নিশানভেদে-পথ, বিশৃঙ্খলায়-নয়। বদরুলের-তিন-খাতা সেই-নিশানের-প্রাসাদ-রূপ: পরিচয়-অনুমতি-মেনু — প্রত্যেক-প্রবেশ খাতায়, প্রত্যেক-দরজা ছাপে, প্রত্যেক-দেয়াল ফলকে। যে-প্রাসাদে সবাই-সব-দরজায়-ঢোকে, সে প্রাসাদ-নয়-চত্বর; আর-যেখানে-খাতা-নেই-শুধু-দরজার-রং, সেখানে-রং-বদলালেই-রাজত্ব-বদলায়।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>প্রাসাদ-ফাঁদ:</strong> (১) শুধু-দেয়ালে-লুকানো (&lt;Can&gt;-এ-ই-সন্তুষ্ট) — URL-এ-সরাসরি-ঢুকে-পড়ে; গার্ড-স্তর-অনুপস্থিত-অমার্জনীয়। (২) রোল-তালিকা কম্পোনেন্টে-হার্ডকোড — নতুন-রোলে-শত-ফাইল-খোলা; খাতায়-রাখো, ফলকে-নয়। (৩) লগআউটে-মেনু/অনুমতি-বাসী-থাকা — পরের-লগইনে-পুরনো-মহল-দেখা; resetAll-লিভার।</div></div>
   <div class="secret-box">🔐 তিন-খাতার-প্রাসাদ: পরিচয় (auth) → অনুমতি (can/গার্ড/&lt;Can&gt;) → মেনু (ছাঁকনি); পথ ও-দেয়াল দুই-স্তরে-পাহারা, ল্যান্ডিং রোলের-ঘরে। / Identity, permission, menu — layered guard on route and wall.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ২৫-এর বহু-মহল-প্রাসাদ: অধ্যায়ের ৭-ফাইল বাঁধো, তারপর চার-টেস্ট-বীজ এই-দড়িতে পিন-করো — গার্ড-৪০৩ (ভুল-রোল-পথ-বন্ধ), &lt;Can&gt;-দেয়াল (viewer-এ-প্রকাশ-বাটন-নেই), মেনু-ছাঁকনি (editor-এ-অ্যাডমিন-লিংক-নেই), লগআউট-লিভার (মেনু-সর্বনিম্ন+রুট-লগইনে)। ছায়া-স্টোর খাটো-রূপে — আসল-প্রজেক্টে Pinia-টাইপসেফ-রূপ। / Door 25's palace: build the chapter's 7 files, then pin the four test-seeds — guard-403, Can-wall, menu-filter, logout-lever.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/core/auth/rbac.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>// তিন-খাতার-খাটো-ছায়া: পরিচয়+অনুমতি (অধ্যায়ের ফাইল-১/২)
+export const ROLES = ['admin', 'manager', 'editor', 'viewer'] as const
+export type Role = typeof ROLES[number]
+
+export const ROLE_FEATURES: Record&lt;Role, Set&lt;string&gt;&gt; = {
+  admin:   new Set(['*']),
+  manager: new Set(['notes.edit', 'notes.publish', 'reports.view']),
+  editor:  new Set(['notes.edit']),
+  viewer:  new Set(['reports.view']),
+}
+
+export interface User { name: string; roles: Role[]; primary_role: Role }
+
+// ছায়া-auth-স্টোর: আসল-প্রজেক্টে Pinia defineStore (login/logout/restore)
+export function createAuthShadow() {
+  let user: User | null = null
+  return {
+    get user() { return user },
+    get isAuthenticated() { return !!user },
+    get roles(): Set&lt;Role&gt; { return new Set(user?.roles ?? []) },
+    can(feature: string): boolean {
+      if (this.roles.has('admin')) return true
+      for (const r of this.roles)
+        if (ROLE_FEATURES[r]?.has(feature)) return true
+      return false
+    },
+    login(u: User) { user = u },
+    logout() { user = null },              // resetAll-লিভার — বাসী-মহল-মুক্তি
+  }
+}
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/app/guard.ts + nav.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import type { Role } from '../core/auth/rbac'
+
+// ── গার্ড (অধ্যায়ের ফাইল-৩) — vue-router-নথির return-ছাঁচ:
+// redirect-location ফেরাও, false-এ-বাতিল, কিছু-না-ফেরালে যাওয়া-মঞ্জুর
+export interface RouteLike {
+  path: string
+  meta: { public?: boolean; roles?: Role[] }
+}
+
+export function decideGuard(
+  to: RouteLike,
+  auth: { isAuthenticated: boolean; roles: Set&lt;Role&gt; },
+): boolean | { name: string; query?: Record&lt;string, string&gt; } {
+  if (!to.meta.public &amp;&amp; !auth.isAuthenticated) {
+    return { name: 'login', query: { next: to.path } }   // ?next-সংরক্ষণ
+  }
+  if (to.meta.roles?.length) {
+    const ok = to.meta.roles.some(r =&gt; auth.roles.has(r))
+    if (!ok) return { name: 'forbidden' }                 // ৪০৩-পথ
+  }
+  return true
+}
+
+// ── মেনু-খাতা (অধ্যায়ের ফাইল-৪) + ছাঁকনি
+export interface MenuRoute {
+  path: string; label: string
+  roles?: Role[]
+  feature?: string
+}
+export const MENU: MenuRoute[] = [
+  { path: '/', label: '🏠 হোম' },
+  { path: '/notes', label: '📋 নোট', feature: 'notes.edit' },
+  { path: '/reports', label: '📊 রিপোর্ট', feature: 'reports.view' },
+  { path: '/admin', label: '⚙️ অ্যাডমিন', roles: ['admin'] },
+]
+export function visibleMenu(auth: { roles: Set&lt;Role&gt;; can(f: string): boolean }) {
+  return MENU.filter(m =&gt;
+    (!m.roles || m.roles.some(r =&gt; auth.roles.has(r)))
+    &amp;&amp; (!m.feature || auth.can(m.feature)))
+}
+
+// ── Can-ফলক-নীতি (অধ্যায়ের ফাইল-৫): বাটন নিজে-জিজ্ঞেস-করে
+export function canShow(
+  auth: { roles: Set&lt;Role&gt;; can(f: string): boolean },
+  props: { feature?: string; roles?: Role[] },
+): boolean {
+  return (props.roles ? props.roles.some(r =&gt; auth.roles.has(r)) : true)
+    &amp;&amp; (!props.feature || auth.can(props.feature))
+}
+
+// ── রোল→অবতরণ-ঘর (অধ্যায়ের ফাইল-৬)
+export const LANDING: Record&lt;string, string&gt; = {
+  admin: 'admin-home', manager: 'reports', editor: 'notes', viewer: 'reports',
+}
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/features/rbac/rbac.test.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { describe, it, expect } from 'vitest'
+import { createAuthShadow, type Role } from '../../core/auth/rbac'
+import { decideGuard, visibleMenu, canShow, LANDING } from '../../app/guard'
+
+describe('চতুর্থ-কাপড় · বহু-মহল-প্রাসাদ', () =&gt; {
+  it('① গার্ড-৪০৩: viewer→/notes পথ-বন্ধ, অন্য-রোল-খোলা', () =&gt; {
+    const auth = createAuthShadow()
+    auth.login({ name: 'ভি', roles: ['viewer'], primary_role: 'viewer' })
+    const r = decideGuard({ path: '/notes', meta: { roles: ['editor', 'manager'] } }, auth)
+    expect(r).toEqual({ name: 'forbidden' })          // পথ-স্তরে-ই-বন্ধ
+    const ok = decideGuard({ path: '/reports', meta: { roles: ['viewer'] } }, auth)
+    expect(ok).toBe(true)
+  })
+
+  it('② &lt;Can&gt;-দেয়াল: viewer-এ notes.publish-বাটন-নেই', () =&gt; {
+    const auth = createAuthShadow()
+    auth.login({ name: 'ভি', roles: ['viewer'], primary_role: 'viewer' })
+    expect(canShow(auth, { feature: 'notes.publish' })).toBe(false)   // দেয়াল-স্তর
+    const ed = createAuthShadow()
+    ed.login({ name: 'এ', roles: ['editor'], primary_role: 'editor' })
+    expect(canShow(ed, { feature: 'notes.edit' })).toBe(true)
+    expect(canShow(ed, { feature: 'notes.publish' })).toBe(false)     // editor-ও-প্রকাশ-নয়
+  })
+
+  it('③ মেনু-ছাঁকনি: editor-এ অ্যাডমিন-লিংক-নেই', () =&gt; {
+    const auth = createAuthShadow()
+    auth.login({ name: 'এ', roles: ['editor'], primary_role: 'editor' })
+    const paths = visibleMenu(auth).map(m =&gt; m.path)
+    expect(paths).toContain('/')
+    expect(paths).toContain('/notes')
+    expect(paths).not.toContain('/admin')             // চোখ-স্তরে-ও-বন্ধ
+  })
+
+  it('④ লগআউট-লিভার: মেনু-সর্বনিম্ন + রুট-লগইনে', () =&gt; {
+    const auth = createAuthShadow()
+    auth.login({ name: 'এ', roles: ['editor'], primary_role: 'editor' })
+    expect(visibleMenu(auth).length).toBeGreaterThan(2)
+    auth.logout()                                     // resetAll
+    expect(visibleMenu(auth)).toHaveLength(1)         // শুধু-হোম
+    const r = decideGuard({ path: '/notes', meta: {} }, auth)
+    expect(r).toEqual({ name: 'login', query: { next: '/notes' } })   // লগইন-ফেরত
+  })
+
+  it('⑤ ল্যান্ডিং: রোল→নিজ-ঘর, ?next-প্রাধান্য', () =&gt; {
+    expect(LANDING['editor']).toBe('notes')
+    expect(LANDING['admin']).toBe('admin-home')
+    // লগইন-সফলে: router.push(route.query.next ?? { name: LANDING[primary] })
+  })
+})
+</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) npx vitest run — পাঁচ-টেস্ট সবুজ। (২) **তিন-তালা-প্রমাণ:** টেস্ট-① পথ (গার্ড), ② দেয়াল (&lt;Can&gt;), মেনু-ছাঁকনি ③ চোখ — তিন-স্তরেই viewer-এর /notes-বন্ধ; সার্ভার-যাচাই চতুর্থ-তালা (অধ্যায়ের-কথা)। (৩) **ভাঙো:** decideGuard-এর roles-ব্লক মুছো → টেস্ট-① লাল — ডিপ-লিংক-ঢোকা নিজের-চোখে। (৪) আসল-প্রজেক্টে: Pinia auth-store (login/logout/restore), &lt;Can&gt;-SFC (slot v-if), beforeEach-তে decideGuard (vue-router-রিটার্ন-ছাঁচ: location/false/মঞ্জুর)। Context7-নোট: vuejs.org/router — গার্ড রিডাইরেক্ট-location ফেরায়, query.next-প্যাটার্ন নথিভুত। / Tests: five green; viewer blocked at path, wall, and eye — three locks; delete the guard's roles-block and watch test 1 cry.</div>
+  </div>
   <div class="stat-card"><div class="sc-num">অনুমতি</div><div class="sc-label">can() · গার্ড+&lt;Can&gt;</div></div>
   <div class="stat-card"><div class="sc-num">মেনু</div><div class="sc-label">ছাঁকনি · visibleMenu</div></div>
   <div class="stat-card"><div class="sc-num">ল্যান্ডিং</div><div class="sc-label">রোল→ঘর · ?next</div></div>
