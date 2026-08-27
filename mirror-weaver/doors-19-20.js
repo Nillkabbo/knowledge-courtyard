@@ -389,6 +389,135 @@ doors.push({
   <div class="verse">ইমতিহান — প্রমাণ-পরীক্ষা: "আমি তোমাদের পরীক্ষা করব কল্যাণ ও-অকল্যাণে" নয় বরং সূরা-ধারা (২১:৩৫-এর সার) — ঘোষিত-সত্য পরীক্ষা-ছাড়া-মূল্যহীন। হাফেজ সবুরের-মিনার সেই ইমতিহানের-স্থাপত্য: চার-তলায়-চার-ধরনের-আগুন, প্রতিটি-দাবি নিজ-যোগ্য-তলায়-নামে। যে-কারখানা দাবি-করে-পরীক্ষা-ছাড়া, সে বিক্রয়-করে-বিশ্বাস-নয়-কল্পনা; আর যে-পরীক্ষা সব-উপরের-তলায়-চড়ায়, সে ধীর-হয়ে-সকাল-পর্যন্ত-দেরি-করায় — দুই-ই-ব্যর্থ, ভারসাম্য-মিনারের-শর্ত।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>মিনার-ফাঁদ:</strong> (১) ক্লাস-নাম-নির্ভর-সিলেক্টর (<code>.btn-primary</code>) — রং-বদলালেই-পরীক্ষা-ভাঙে; data-test-ফলক-বাঁধো। (২) প্রতি-টেস্টে-নিজস্ব-fetch-মক — আকৃতি-সত্য-ছড়িয়ে-যায়; MSW-বই+override। (৩) সবকিছু-E2E-তলায় — ধীর-মিনার, কেউ-ওঠে-না; নিচের-তলায়-সর্বাধিক। </div></div>
   <div class="secret-box">🧪 দাবির-তলা-মেনো: mount (props/emitted) → MSW (আকৃতি+বিপদ) → scope (যুক্তি) → E2E (যাত্রা) — data-test-ফলকে, নিচে-যত-পারা-যায়। / Match claim to floor; flag every claim with a test.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ২০-এর মিনার: npm i -D vitest @vue/test-utils msw @playwright/test করে চার-তলা নিজে-ওঠা — ভিত্তি-তলায় inline-কার্ড mount+emitted, দ্বিতীয়-তলায় MSW-হ্যান্ডলার-বই + server.use-বিপদ-দৃশ্য (৫০০), তৃতীয়-তলায় effectScope-ঘরে কম্পোজেবল-গার্ড, চতুর্থ-তলায় Playwright-যাত্রা; npx vitest run আর npx playwright test দিয়ে প্রমাণ দেখো। / Door 20's minaret: install the four, then climb all four floors — inline-card mount+emitted, MSW handler-book + 500-danger override, effectScope composable guard, Playwright journey; prove with vitest run + playwright test.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/tests/msw.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { setupServer } from 'msw/node'
+import { http, HttpResponse } from 'msw'
+
+// হ্যান্ডলার-বই: প্রকৃত-API-আকৃতির-এক-সত্য (২য়-তলার-ভিত্তি)
+export const handlers = [
+  http.get('*/api/timesheets/imports/', () =&gt;
+    HttpResponse.json({
+      results: [
+        { id: '1', filename: 'week_1.xlsx', status: 'completed', rejectedRows: 0 },
+        { id: '3', filename: 'bad.xlsx', status: 'failed', rejectedRows: 7 },
+      ],
+    })),
+  http.get('*/api/accounts/me/', () =&gt;
+    HttpResponse.json({ id: 1, email: 'admin@ledgerpilot.test', role: 'admin' })),
+]
+
+export const server = setupServer(...handlers)
+
+// vitest.setupFiles-এ বাঁধো (src/tests/setup.ts):
+//   beforeAll(() =&gt; server.listen())
+//   afterEach(() =&gt; server.resetHandlers())   // runtime-override ধুয়ে-মুছে-বই-ফেরত
+//   afterAll(() =&gt; server.close())
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/features/timesheets/useImportsList.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { ref } from 'vue'
+
+export interface ImportRow {
+  id: string; filename: string; status: string; rejectedRows: number
+}
+
+// ৩য়-তলার-প্রার্থী: যুক্তি-মাত্র — দেয়াল-ছাড়া, গার্ড-সহ
+export function useImportsList() {
+  const rows = ref&lt;ImportRow[]&gt;([])
+  const loading = ref(false)
+  const error = ref&lt;string | null&gt;(null)
+  let inFlight = false                       // রি-এন্ট্র্যান্সি-গার্ড
+
+  async function fetchList() {
+    if (inFlight) return                     // দ্বিতীয়-ডাক: no-op
+    inFlight = true
+    loading.value = true; error.value = null
+    try {
+      const res = await fetch('/api/timesheets/imports/')
+      if (!res.ok) throw new Error('HTTP ' + res.status)
+      const data = await res.json()
+      rows.value = data.results
+    } catch {
+      error.value = 'সার্ভার-পাতা পড়েছে — পরে আবার চেষ্টা'
+    } finally {
+      loading.value = false
+      inFlight = false
+    }
+  }
+
+  return { rows, loading, error, fetchList }
+}
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/features/timesheets/imports.test.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { describe, it, expect, beforeAll, afterEach, afterAll } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { defineComponent } from 'vue'
+import { effectScope } from 'vue'
+import { http, HttpResponse } from 'msw'
+import { server } from '../../tests/msw'
+import { useImportsList } from './useImportsList'
+
+// ── মিনারের-পাহারা-চক্র (setup.ts-থেকে-এসেছে-ধরে-নাও) ──
+beforeAll(() =&gt; server.listen())
+afterEach(() =&gt; server.resetHandlers())
+afterAll(() =&gt; server.close())
+
+// ১ম-তলা: inline-কার্ড — প্রপস→পর্দা, ক্লিক→emitted (data-test-ফলক)
+const RetryCard = defineComponent({
+  props: { note: { type: String, required: true } },
+  emits: ['retry'],
+  template: '&lt;div class="card"&gt;&lt;span&gt;{{ note }}&lt;/span&gt;&lt;button data-test="retry" @click="$emit(\'retry\', note)"&gt;আবার&lt;/button&gt;&lt;/div&gt;',
+})
+
+describe('১ল-তলা · mount', () =&gt {
+  it('প্রপস পর্দায় লেখে', () =&gt; {
+    const w = mount(RetryCard, { props: { note: 'bad.xlsx ব্যর্থ' } })
+    expect(w.text()).toContain('bad.xlsx')
+  })
+  it('ক্লিকে retry-ঘণ্টি বাজে (emitted)', async () =&gt; {
+    const w = mount(RetryCard, { props: { note: 'x' } })
+    await w.find('[data-test=retry]').trigger('click')
+    expect(w.emitted('retry')).toHaveLength(1)
+    expect(w.emitted('retry')![0]).toEqual(['x'])
+  })
+})
+
+describe('২য়+৩য় তলা · MSW + effectScope', () =&gt {
+  it('হ্যান্ডলার-বই থেকে সারি-আসে', async () =&gt; {
+    const scope = effectScope()
+    const api = scope.run(() =&gt; useImportsList())!
+    await api.fetchList()
+    expect(api.rows.value).toHaveLength(2)
+    expect(api.error.value).toBeNull()
+    scope.stop()                              // পরিচ্ছন্ন-প্রস্থান
+  })
+
+  it('বিপদ-দৃশ্য: server.use ৫০০-override → এরর-বার্তা', async () =&gt; {
+    server.use(                               // runtime-override — বই-নষ্ট-না-করে
+      http.get('*/api/timesheets/imports/',
+        () =&gt; new HttpResponse(null, { status: 500 })))
+    const scope = effectScope()
+    const api = scope.run(() =&gt; useImportsList())!
+    await api.fetchList()
+    expect(api.rows.value).toHaveLength(0)
+    expect(api.error.value).toContain('সার্ভার')
+    scope.stop()
+  })                                          // afterEach: বই-আবার-ন্যায্য
+})
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>e2e/login.spec.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { test, expect } from '@playwright/test'
+
+// ৪র্থ-তলা: আসল-ব্রাউজার, আসল-ক্লিক — MSW-বিহীন, স্টেজিং-সত্যে
+test('ভুল-পাসওয়ার্ড → ইনলাইন-এরর', async ({ page }) =&gt; {
+  await page.goto('/login')
+  await page.fill('[data-test=email]', 'admin@ledgerpilot.test')
+  await page.fill('[data-test=password]', 'wrong')
+  await page.click('[data-test=submit]')
+  await expect(page.locator('[data-test=form-err]')).toBeVisible()
+})
+// playwright.config.ts: baseURL + webServer: { command: 'npm run dev' }
+</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) npx vitest run — চার-টেস্টই সবুজ: প্রপস-লেখা, emitted-ঘণ্টি, হ্যান্ডলার-বইয়ের-সারি, ৫০০-বিপদে-এরর-বার্তা। (২) ৫০০-টেস্টের-পরে-ও প্রথম-টেস্ট পুনরায়-চালাও — resetHandlers-এর-গুণে বই-ফিরেছে (আদৌ-না-দেখার-পরীক্ষা)। (৩) vitest.config.ts-এ environment:'jsdom' + setupFiles-এ lifecycle-বাঁধো (msw.ts-মন্তব্য)। (৪) npx playwright test --headed — ব্রাউজারে-চোখে-দেখা-যাত্রা। Context7-নোট: mswjs.io — setupServer(msw/node) + listen/resetHandlers/close + server.use runtime-override সব-নথিভুত; vuejs.org — mount/props/emitted test-utils-এর-নীতি-পথ। / Tests: vitest run green ×4; rerun the happy test after the danger test (the book returned); then watch Playwright walk.</div>
+  </div>
   <div class="stat-card"><div class="sc-num">MSW</div><div class="sc-label">তলা-২ · নকল-জাহাজ</div></div>
   <div class="stat-card"><div class="sc-num">E2E</div><div class="sc-label">তলা-৩ · প্রকৃত-পথ</div></div>
   <div class="stat-card"><div class="sc-num">২,৬২২</div><div class="sc-label">LP-টেস্ট · প্রমাণ</div></div>
