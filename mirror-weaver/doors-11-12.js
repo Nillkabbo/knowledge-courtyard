@@ -88,6 +88,77 @@ doors.push({
   <div class="verse">সিলসিলা — ধারাবাহিকতার শৃঙ্খল: জ্ঞান ঊর্ধ্ব থেকে নিচে নামে, প্রতিটি প্রজন্ম পাত্র ধরে — কিন্তু পাত্র বহনকারী নয়, প্রাপক। "তাদের পর এলো উত্তরসূরিরা" (২:১৩৪-এর সার) — প্রত্যেকে নিজ-হিসাবে গ্রহণ করে, ধারাটি এক থাকে। আব্বা করিমের ঝর্ণা সেই সিলসিলার নল-রূপ: উজানের দান প্রজন্ম-প্রজন্মান্তরে অবিচ্ছিন্ন, মাঝের কেউ দানের মালিক হয়ে বসে না — শুধু বয়ে রাখে, প্রয়োজনে readonly-ঢাকনায় সযত্নে।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ঝর্ণা-ফাঁদ:</strong> (১) স্ট্রিং-কী (<code>inject('theme')</code>) — বানান-সংঘর্ষে ভুল-কলসে নীরব-অনির্ধারিত; সবসময় Symbol-টাইপড-কী। (২) নিচে <code>theme.value = 'dark'</code> — readonly-ঢাকনায় ব্যর্থ/সতর্কতা; বদল-ক্রিয়া পথ করো। (৩) অ্যাপ-জুড়ে-সত্য inject দিয়ে ছড়ানো — স্টোরের কাজ ইনজেক্টে চাপানো; সীমা মেনে চলো।</div></div>
   <div class="secret-box">🫗 গভীর-বংশে ঝর্ণা খোলো: provide টাইপড-কীতে, inject ডিফল্টসহ, বদল ক্রিয়া-পথে — বালতি-বাহক বংশ বিদায়। / Provide once with typed keys; inject anywhere with defaults; change via action.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ১১-এর ঝর্ণা: দাদা-উঠান থেকে নাতি-উঠানে সরাসরি পানি — মাঝের তিন প্রজন্ম খালি-হাতে। টাইপড-কী + readonly-ঢাকনা + বদল-ক্রিয়া। / Door 11's spring: water from grandfather's courtyard straight to the grandson's — three middle generations passing empty-handed. Typed key, readonly cap, change-action.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/keys.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import type { InjectionKey, Ref } from 'vue'
+
+// ① নাম-কী খোদাই — টাইপসহ (ভুল-কলস রোধ)
+export const ThemeCtx: InjectionKey&lt;{
+  theme: Ref&lt;'light' | 'dark'&gt;   // readonly-ঢাকনায়
+  setTheme: (v: 'light' | 'dark') =&gt; void
+}&gt; = Symbol('ThemeCtx')</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/CourtyardRoot.vue (প্রজন্ম-১)</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { ref, provide, readonly } from 'vue'
+import { ThemeCtx } from './keys'
+import MiddleLayer from './MiddleLayer.vue'
+
+// ② উজান: state + ক্রিয়া — ঢাকনায়-সত্য, খবরে-বদল
+const theme = ref&lt;'light' | 'dark'&gt;('light')
+provide(ThemeCtx, {
+  theme: readonly(theme),
+  setTheme: (v) =&gt; { theme.value = v },   // সিদ্ধান্ত উজানে
+})
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div :style="{ background: theme === 'dark' ? '#1e1b2e' : '#f5f3e7', padding: '1rem' }"&gt;
+    &lt;h3&gt;🏡 দাদা-উঠান (প্রজন্ম-১)&lt;/h3&gt;
+    &lt;MiddleLayer /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/MiddleLayer.vue (প্রজন্ম-২,৩ একসাথে)</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+// মাঝের-বাহক: কোনো প্রপ-বই নেই, কোনো inject-ও নেই — খালি-হাতে পার
+import DeepField from './DeepField.vue'
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div style="padding: .8rem; border: 1px dashed #818cf8"&gt;
+    &lt;em&gt;প্রজন্ম-২ (বালতি-ধরে-না)&lt;/em&gt;
+    &lt;div style="padding: .8rem"&gt;
+      &lt;em&gt;প্রজন্ম-৩ (এও-না)&lt;/em&gt;
+      &lt;DeepField /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/DeepField.vue (প্রজন্ম-৪)</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { inject } from 'vue'
+import { ThemeCtx } from './keys'
+
+// ③ ভাটি: ডিফল্ট-সহ নিরাপদ inject (কী-না-থাকলেও পর্দা বাঁচে)
+const ctx = inject(ThemeCtx, {
+  theme: { value: 'light' } as const,
+  setTheme: () =&gt; {},
+})
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;থিম (প্রজন্ম-৪ পড়ছে): &lt;strong&gt;{{ ctx.theme.value }}&lt;/strong&gt;&lt;/p&gt;
+    &lt;button @click="ctx.setTheme(ctx.theme.value === 'dark' ? 'light' : 'dark')"&gt;
+      🌓 বদলাও (খবর উজানে যায়)
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import CourtyardRoot from './CourtyardRoot.vue'
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;CourtyardRoot /&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) নাতি-বোতাম চাপো — গোটা গাছের রং বদলায় (দাদার ref, readonly-ঢাকনায়, খবর-পথে)। (২) MiddleLayer-খুলে দেখো — থিম-শব্দটিই নেই (বালতি-বাহক বিদায়)। (৩) প্রমাণ-ফাঁদ: DeepField-এ ctx.theme.value = 'dark' সরাসরি লেখার চেষ্টা করো — readonly-ঢাকনা সতর্ক করে (গাইডের নিজের নমুনা)। / Tests: the grandson's button recolors the whole tree; the middle layers never mention theme; try writing through the readonly cap and get warned.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">Ancestral Spring — One provide, Any-Depth inject</div>
     <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
