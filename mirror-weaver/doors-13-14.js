@@ -393,6 +393,116 @@ doors.push({
   <div class="verse">ফটকের-মীজান: "প্রবেশ করো তার দরজা দিয়ে সিজদাকারী হয়ে" নয় বরং নগর-আয়াতের শৃঙ্খলা (২:৫৮-এর ভাব) — নির্ধারিত-দরজা, নির্ধারিত-ভঙ্গি; অন্য-পথের-লোভ অবাধ্যতা। বাবরের তিন-তোরণ সেই নির্ধারিত-দরজার পাহারা: পরিচিতি-পদমর্যাদা-অনুমতি — প্রতিটি তোরণ এক-আয়াতের মতো স্পষ্ট, কেউ একা যথেষ্ট নয়, সব-মিলে শহরের-মর্যাদা। যে ফটক সবাইকে সব-পথ দেয়, সে ফটক নয় — ফাঁকা-জায়গা; আর যে নিজের-পথভুলে-অন্যের-পথে পাঠায়, সে মানচিত্র নয় — বিভ্রান্তি।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ফটক-ফাঁদ:</strong> (১) রোল-বিচার auth-স্থির-হওয়ার-আগে — রিফ্রেশে প্রথম-নেভিগেশনে সব-গেট বন্ধ-দেখায় (LP-গার্ডের মন্তব্য-শিক্ষা); restore-প্রথম। (২) ফিচার-গেট আনহাইড্রেটেড-স্টোরে — মিথ্যা-না; hydrate-প্রথম। (৩) গার্ডে পার্শ্ব-প্রভাবের-স্তূপ (টোস্ট-বন্যা) — প্রত্যেক-বিচারে নয়, ফাঁক-রিটার্নে একবার।</div></div>
   <div class="secret-box">🛡️ চাহিদা meta-তে, বিচার beforeEach-তে, ক্রম অলঙ্ঘনীয়: পরিচয়→রোল→ফিচার; ভুল-পথের-মানুষ নিজ-ড্যাশবোর্ডে। / Requirements in meta, judgment in the guard, order unbroken.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ১৪-এর ফটক: তিন-তোরণের গার্ড-শৃঙ্খল বাঁধো — পরিচয় → রোল → ফিচার; ভুল-পথের-মানুষ নিজ-ঘরে। দরজা ১৩-এর রাউটার-ফাইলের ওপর বসাও। / Door 14's gate: build the three-arch guard chain — identity → role → feature; the lost traveler returns to their own room. Layer onto Door 13's router files.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/router/guards.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import type { Router } from 'vue-router'
+
+// নকল-অথ-স্টোর (দরজা ১০-এর threads-স্টোরের আত্মীয়)
+const session = {
+  user: null as { name: string; roles: string[] } | null,
+  async restore() {
+    await new Promise(r =&gt; setTimeout(r, 300))   // fetchUser-ছায়া
+    // মন্তব্য-সারি বদলে ভিন্ন-রোল পরীক্ষা করো:
+    this.user = { name: 'রফিক', roles: ['weaver'] }
+    // this.user = { name: 'আব্বা', roles: ['admin'] }
+  },
+  get isAuthenticated() { return this.user !== null },
+}
+
+// রোল→ঘর-মানচিত্র (ভুল-পথের-মানুষ ফেরত)
+const roleDashboardMap: Record&lt;string, string&gt; = {
+  admin: 'admin-home',
+  weaver: 'market',
+}
+
+export function setupGuards(router: Router): void {
+  router.beforeEach(async (to) =&gt; {
+    // ① তোরণ-এক — পরিচয় (restore-প্রথম: রোল-ফাঁকা-রোধ)
+    if (!to.meta.public &amp;&amp; !session.isAuthenticated) {
+      await session.restore()
+      if (!session.isAuthenticated)
+        return { name: 'login', query: { next: to.fullPath } }
+    }
+
+    // ② তোরণ-দুই — পদমর্যাদা (ইউনিয়ন-বিচার)
+    const allowed = (to.meta.allowedRoles as string[] | undefined)?.length
+    if (allowed &amp;&amp; session.user) {
+      const passes = (to.meta.allowedRoles as string[])
+        .some(r =&gt; session.user!.roles.includes(r))
+      if (!passes) {
+        console.warn('🛑 তোরণ-২: রোল-ফাঁক', to.meta.allowedRoles)
+        return { name: 'not-found' }   // forbidden-পথ
+      }
+    }
+    // ③ তোরণ-তিন — ফিচার-পত্র (গভীর-প্রতিরক্ষা)
+    if (to.meta.requiresFeature) {
+      const granted = ['billing', 'reports']   // নকল-ফিচার-স্টোর
+      if (!granted.includes(to.meta.requiresFeature as string)) {
+        console.warn('🛑 তোরণ-৩: ফিচার-নেই', to.meta.requiresFeature)
+        return { name: 'not-found' }
+      }
+    }
+    return true   // ✓ তিন-তোরণ পার (গাইডের রিটার্ন-ছাঁচ)
+  })
+
+  router.afterEach((to) =&gt; {
+    if (typeof to.meta.title === 'string')
+      document.title = to.meta.title   // গাইডের নিজের নমুনা
+  })
+}</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/router/index.ts (গার্ডসহ-সংস্করণ)</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { createRouter, createWebHistory } from 'vue-router'
+import { setupGuards } from './guards'
+
+declare module 'vue-router' {
+  interface RouteMeta {
+    public?: boolean
+    allowedRoles?: string[]
+    requiresFeature?: string
+    title?: string
+  }
+}
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    { path: '/login', name: 'login', meta: { public: true, title: 'প্রবেশ' },
+      component: () =&gt; import('../views/LoginGate.vue') },
+    { path: '/market', name: 'market', meta: { title: 'বাজার' },
+      component: () =&gt; import('../views/MarketView.vue') },
+    { path: '/admin', meta: { allowedRoles: ['admin'], title: 'অ্যাডমিন' },
+      children: [
+        { path: '', name: 'admin-home', component: () =&gt; import('../views/AdminHome.vue') },
+        { path: 'users', name: 'admin-users', component: () =&gt; import('../views/AdminUsers.vue') },
+      ],
+      component: () =&gt; import('../layouts/AdminLayout.vue') },
+    { path: '/billing', name: 'billing', meta: { requiresFeature: 'billing', title: 'বিল' },
+      component: () =&gt; import('../views/MarketView.vue') },
+    { path: '/vault', name: 'vault', meta: { requiresFeature: 'vault' },   // অনুমোদিত-নয়!
+      component: () =&gt; import('../views/MarketView.vue') },
+    { path: '/:pathMatch(.*)*', name: 'not-found',
+      component: () =&gt; import('../views/NotFoundView.vue') },
+  ],
+})
+
+setupGuards(router)
+export default router</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/views/LoginGate.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { useRoute, useRouter } from 'vue-router'
+
+const route = useRoute()
+const router = useRouter()
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h3&gt;🔑 প্রবেশ-দরজা&lt;/h3&gt;
+    &lt;p&gt;ফিরে-যাওয়ার-পথ: {{ route.query.next || '(নেই)' }}&lt;/p&gt;
+    &lt;RouterLink :to="{ name: 'market' }"&gt;বাজারে যাও&lt;/RouterLink&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) সরাসরি /admin-এ যাও — প্রথমে restore (৩০০ms অপেক্ষা), তারপর weaver-রোল তোরণ-২-তে থামে (কনসোলে 🛑)। (২) guards.ts-এ রোল admin করে /admin-এ যাও — তোরণ-পার। (৩) /billing-এ যাও — ফিচার-পত্র আছে, ঢুকবে; /vault-এ যাও — তোরণ-৩ থামায় (গভীর-প্রতিরক্ষা: রোল-ঠিক, ফিচার-নেই)। (৪) ট্যাব-শিরোনাম বদলায় (afterEach+meta.title — গাইডের নমুনা)। Context7-নোট: গাইডের গার্ড-ছাঁচ এখন next-এর বদলে **রিটার্ন-ভ্যালু** (true/বিকল্প-লোকেশন/false) — দুই-স্টাইলই চলে, রিটার্ন-ছাঁচ আধুনিক; আর beforeRouteLeave-এ return false = নেভিগেশন-বাতিল (dirty-ফর্ম-পাহারা, দরজা ১৬-এ পূর্ণ)। / Tests: watch restore-then-judge on /admin; swap roles to pass; /vault proves arch-3; titles change per route.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">Gate-Chain — Three Arches in Order</div>
     <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
