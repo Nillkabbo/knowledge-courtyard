@@ -122,6 +122,145 @@ doors.push({
   <div class="verse">রিসালতুল-বাহর — সমুদ্র-অভিযানের সততা: "তাদের কল্যাণে তারা সমুদ্রে চলে" নয় বরং বাণিজ্য-আয়াতের ছায়া (২:৩-এর ভাব) — যাত্রা হবেই, নিয়মে হবে। ক্যাপ্টেন রুমানের বন্দর সেই নিয়মের কারিগরি রূপ: চাবি-ছাড়া লেখা-জাহাজ ছাড়ে না, ৪০১-এ যাত্রী-হারানো-নয়-ঘরে-ফেরত, ৪০৩-এ একবারই পুনঃযাত্রা, আর সব-খবর অনুবাদ-ঘরে — কাঁচা সমুদ্রের ভাষা কারিগরের হাতে নয়। যে বন্দরে প্রতি-জাহাজ নিজের-নিয়ম বাঁধে, সেখানে একদিন চাবিহীন-জাহাজই সোনা নামায়।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>বন্দর-ফাঁদ:</strong> (১) কম্পোনেন্টে সরাসরি axios — কোন-দেয়ালে কোন-চাবি-নিয়ম চলছে তা অজানা, টেস্টে বন্দর-নকল করা যায় না; সার্ভিস-স্তর ছাড়বে না। (২) ৪০৩-রিট্রাই চিহ্ন-ছাড়া — চাবি-তাজা-করার-লুপে জাহাজ অনন্তকাল ঘোরে; <code>__hasRetriedCSRF</code>-জাত পতাকা বাধ্যতামূলক। (৩) কাঁচা এরর-স্ট্রিং দেয়ালে (<code>e.message</code>) — ব্যবহারকারী ডেভ-ভাষা পড়ে; getApiErrorMessage-ই দরজা।</div></div>
   <div class="secret-box">📡 পরিবহন বন্দরে: CSRF-চাবি লেখায়, 401-এ ঘরে, 403-এ একবার-পুনঃযাত্রা; খবর অনুবাদিত-ওঠে, কম্পোনেন্ট অর্থ-জানে। / One harbor, three rules, normalized news.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ১৫-এর বন্দর: নিজের দূত-ঘর বাঁধো — এক axios-ইনস্ট্যান্স, তিন নিয়মের ইন্টারসেপ্টর, অনুবাদ-ঘর। আগে npm install axios। / Door 15's harbor: build your own courier-house — one axios instance, three interceptor rules, the translation room. First: npm install axios.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/services/apiClient.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import axios, { AxiosError } from 'axios'
+
+// বন্দর-জন্ম (গাইড-ছাঁচ: axios.create + baseURL/timeout)
+export const apiClient = axios.create({
+  baseURL: import.meta.env.VITE_API_URL ?? 'http://localhost:8000',
+  timeout: 10_000,
+  withCredentials: true,   // সেশন-কুকি প্রতি-জাহাজে
+})
+
+// ── নিয়ম-১: লেখা-জাহাজে চাবি-পাসপোর্ট (অনুরোধ-ইন্টারসেপ্টর) ──
+const WRITE = ['post', 'put', 'patch', 'delete']
+let csrfPromise: Promise&lt;string&gt; | null = null   // সমান্তরাল-ডাক এক-প্রমিজে
+
+async function ensureCSRFToken(force = false): Promise&lt;string&gt; {
+  if (force || !csrfPromise) {
+    csrfPromise = fetch('http://localhost:8000/api/csrf/', {
+      credentials: 'include',
+    }).then(() =&gt; 'নতুন-চাবি-' + Date.now())
+      .catch(() =&gt; 'ফলব্যাক-চাবি')
+  }
+  return csrfPromise
+}
+
+apiClient.interceptors.request.use(async (config) =&gt; {
+  if (WRITE.includes(config.method ?? '')) {
+    config.headers.set('X-CSRFToken', await ensureCSRFToken())
+  }
+  return config
+})
+
+// ── নিয়ম-২+৩: উত্তর-ইন্টারসেপ্টর (401-ঘরে / 403-একবার-পুনঃযাত্রা) ──
+let unauthorizedPromise: Promise&lt;void&gt; | null = null
+
+apiClient.interceptors.response.use(
+  (res) =&gt; res,
+  async (err: AxiosError) =&gt; {
+    const status = err.response?.status
+    const url = err.config?.url ?? ''
+
+    // নিয়ম-২: ৪০১ — ঝাঁকের-সব-জাহাজ এক-হ্যান্ডলারে
+    if (status === 401 &amp;&amp; !url.includes('/login/')) {
+      unauthorizedPromise ??= (async () =&gt; {
+        console.warn('🚪 401 — যাত্রী ঘরে-ফেরত (একবারই)')
+        // অ্যাপ-স্তরে: auth.logout() + login-নেভিগেশন
+      })().finally(() =&gt; { unauthorizedPromise = null })
+      return unauthorizedPromise.then(() =&gt; Promise.reject(err))
+    }
+
+    // নিয়ম-৩: ৪০৩-পুরনো-চাবি — একবার পুনঃযাত্রা (লুপ-রোধ-পতাকা)
+    if (status === 403 &amp;&amp; err.config
+        &amp;&amp; WRITE.includes(err.config.method ?? '')
+        &amp;&amp; !(err.config as any).__hasRetriedCSRF) {
+      ;(err.config as any).__hasRetriedCSRF = true
+      console.warn('🔁 403 — নতুন-চাবিতে একবার-পুনঃযাত্রা')
+      await ensureCSRFToken(/* force */ true)
+      return apiClient.request(err.config)
+    }
+
+    return Promise.reject(err)
+  }
+)
+
+// ── অনুবাদ-ঘর: এরর-নরমালাইজেশন ──
+export function getApiErrorMessage(
+  e: unknown, fallback = 'সার্ভার-ত্রুটি: একটু পরে চেষ্টা করুন'): string {
+  if (e instanceof AxiosError) {
+    const data = e.response?.data as any
+    if (typeof data?.detail === 'string') return data.detail
+    if (data &amp;&amp; typeof data === 'object') {
+      const first = Object.values(data)[0]
+      if (Array.isArray(first) &amp;&amp; first[0]) return String(first[0])  // {field:[msg]}
+    }
+    if (e.code === 'ECONNABORTED') return 'নেটওয়ার্ক ধীর — আবার চেষ্টা করুন'
+  }
+  return fallback
+}</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/services/threadsService.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { apiClient } from './apiClient'
+
+// সার্ভিস-প্রতি-ফিচার: কম্পোনেন্ট কেবল গুদামের-ঠিকানা জানে
+export const threadsService = {
+  list: () =&gt;
+    apiClient.get&lt;string[]&gt;('/api/threads/').then(r =&gt; r.data),
+  create: (name: string) =&gt;
+    apiClient.post&lt;string[]&gt;('/api/threads/', { name }).then(r =&gt; r.data),
+}</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/HarborScreen.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { ref } from 'vue'
+import { threadsService } from './services/threadsService'
+import { getApiErrorMessage } from './services/apiClient'
+
+const threads = ref&lt;string[]&gt;([])
+const error = ref('')
+const loading = ref(false)
+
+async function load() {
+  loading.value = true
+  error.value = ''
+  try {
+    threads.value = await threadsService.list()
+  } catch (e) {
+    // কাঁচা-নয় — বন্দর-ভাষায় (অনুবাদ-ঘর)
+    error.value = getApiErrorMessage(e)
+  } finally {
+    loading.value = false
+  }
+}
+
+async function add() {
+  try {
+    await threadsService.create('নতুন-সুতো-' + Date.now())
+    await load()
+  } catch (e) {
+    error.value = getApiErrorMessage(e)
+  }
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h3&gt;📡 বন্দর-পর্দা&lt;/h3&gt;
+    &lt;button @click="load"&gt;জাহাজ পাঠাও (GET)&lt;/button&gt;
+    &lt;button @click="add"&gt;লেখা-জাহাজ (POST — CSRF-চাবি লাগবে)&lt;/button&gt;
+    &lt;p v-if="loading"&gt;⏳ …&lt;/p&gt;
+    &lt;p v-else-if="error" style="color:#ef4444"&gt;❌ {{ error }}&lt;/p&gt;
+    &lt;ul v-else&gt;&lt;li v-for="t in threads" :key="t"&gt;{{ t }}&lt;/li&gt;&lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import HarborScreen from './HarborScreen.vue'
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;HarborScreen /&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) "জাহাজ পাঠাও" চাপো — সার্ভার না-থাকলে নেটওয়ার্ক-এরর **অনুবাদিত-বাংলায়** আসে (getApiErrorMessage-এর ECONNABORTED/ফলব্যাক-পথ), কাঁচা AxiosError-স্ট্রিং নয়। (২) নেটওয়ার্ক-ট্যাব দেখো — POST-এ X-CSRFToken-হেডার বসেছে (নিয়ম-১)। (৩) baseURL-এর পোর্টে কোনো নকল-সার্ভার (json-server ইত্যাদি) চালালে পূর্ণ-প্রবাহ দেখা যায়। Context7-নোট: AxiosError **কাঠামোবদ্ধ** — status/code/response বহন করে (গাইডের settle-নোট); ইন্টারসেপ্টর রিটার্ন-পথ reject না-করলে প্রমিজ-চেইন থামে না। / Tests: a dead server still yields a translated Bengali message; the CSRF header rides POSTs; a fake server shows the full flow.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">The Harbor — One Client, Three Rules, One Language</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
