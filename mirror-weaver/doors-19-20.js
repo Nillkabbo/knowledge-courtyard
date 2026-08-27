@@ -117,6 +117,77 @@ doors.push({
   <div class="verse">বন্না — মজবুত-ভিত: "তারপর তার ভিত কি আল্লাহর-তাকওয়া ও-সন্তুষ্টির-উপর, না-বা ভাঙা-মাটির-ধারে?" (৯:১০৯) — একই-কাঠ, ভিত-ভেদে-জীবন-মৃত্যু। মোস্তফা মিয়ার ছয়-ধাপ সেই বন্নার-উপাসনা: স্ক্যাফোল্ড-কাঠ, টাইপ-মাপ, লিন্ট-রেখা, স্তর-ভাগ, গোপন-কুঠুরি, প্রথম-প্রদীপ — প্রতিটি-ধাপ পরের-ধাপের-ভিত, কোনোটাই-অবহেলার-নয়। যে-তাঁত তাড়ায়-সরাসরি-বুনতে-বসে, তার-কাপড় সুন্দর-হতে-পারে — কিন্তু তৃতীয়-মাসেই হাড়-ভাঙা-তাঁতে-পুনরায়-মাস্টারি।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>প্রাঙ্গণ-ফাঁদ:</strong> (১) strict:false-এ-শুরু — পরে-চালালে-শত-এররের-জলোচ্ছ্বাস; প্রথম-দিনেই-strict। (২) features পরস্পরে-আমদানি — দ্বিতীয়-ফিচার-বাঁধার-দিনেই-জাল; প্রথম-লিন্ট-নিয়মেই-থামাও। (৩) .env কমিট — গোপন-কুঠুরি চত্বরে-খোলা; .local-প্রথা+নমুনা-কমিট।</div></div>
   <div class="secret-box">🏗️ তাঁত-স্থাপনের-ছয়-ধাপ: কাঠ → মাপ → রেখা → ভাগ → কুঠুরি → প্রদীপ; স্তরের-স্রোত একমুখ, রাংতার-সীমানায়। / Scaffold, stricten, lint, layer, env-split, ignite.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ১৯-এর তাঁত-আঙিনা: নতুন-প্রজেক্ট বসাও (npm create vite@latest loom-app -- --template vue-ts) তারপর এই-চার-দলিল ভেতরে-বসাও — রেখা-রাংতার-আইন (eslint flat), দুই-জায়গার-@-উপনাম (vite.config + tsconfig), মাপ-নথি (strict), গোপন-কুঠুরির-নমুনা; শেষে নিয়ম-ভাঙা-প্রমাণ: features→features আমদানি করে রাংতার-লাল-দাগ নিজের-চোখে-দেখো। / Door 19's loom-yard: scaffold fresh, drop in the four documents — chalk-law, alias-in-both-places, strict measure-book, chamber sample; then break the layer-law on purpose and watch ESLint catch it.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>eslint.config.js</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import pluginVue from 'eslint-plugin-vue'
+
+// রেখা-রাংতা: flat-config — কে-কোথায়-ঢুকতে-পারবে
+export default [
+  ...pluginVue.configs['flat/recommended'],
+
+  {
+    rules: {
+      'vue/multi-word-component-names': 'off',
+    },
+  },
+
+  // স্তর-আইন (FSD): features-ভেতরে-থাকা-ফাইল অন্য-feature-কে-দেখলেই-লাল-দাগ
+  {
+    files: ['src/features/**/*.ts', 'src/features/**/*.vue'],
+    rules: {
+      'no-restricted-imports': ['error', {
+        patterns: [{
+          group: ['@/features/*'],
+          message: 'features পরস্পরকে-দেখে-না — ভাগ-করা-জিনিস shared/-এ-উঠুক, নতুন-সুতো app/-এর-সেতুতে',
+        }],
+      }],
+    },
+  },
+]
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>vite.config.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+// @-উপনাম জায়গা-১: Vite-নিজে-যেন-পথ-চেনে
+export default defineConfig({
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+})
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>tsconfig.app.json</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    // @-উপনাম জায়গা-২: tsconfig-ও-পথ-চিনবে — নইলে type-check আপেক্ষিক-জঙ্গলে-হারায়
+    "paths": { "@/*": ["./src/*"] }
+  },
+  "include": ["src/**/*.ts", "src/**/*.vue"]
+}
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>.env.example</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code># গোপন-কুঠুরির-নমুনা — কমিটে-শুধু-এটাই; আসল-ফাইল .local-প্রথায়
+# .env.development → উন্নয়ন-মোড, .env.production → উৎপাদন-মোড
+# নিয়ম: VITE_-উপসর্গ-বিহীন ভেরি ক্লায়েন্টে-পৌঁছাবে-ই-না
+
+VITE_API_URL=http://localhost:8000
+VITE_APP_NAME=LedgerPilot
+
+# খাস-কুঠুরি (.env.development.local) — গিট-বাইরে:
+# VITE_API_URL=http://localhost:9000
+</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) scaffold করে চার-দলিল বসাও → npm run lint — সবুজ। (২) **নিয়ম-ভাঙা:** src/features/account/-এর কোনো-ফাইলে লেখো import x from '@/features/auth' → আবার lint — রাংতার-লাল-দাগ + নিজের-message। (৩) মাপ-ভাঙা: কোনো-টাইপ ভুল-করে লেখো → npm run type-check (vue-tsc) ধরবে। (৪) কুঠুরি-প্রমাণ: .env-এ VITE_ছাড়া-নাম দাও, কোডে import.meta.env-এ লগ-করো — undefined; VITE_-দিলে মান-আসবে (dev-সার্ভার রিস্টার্ট-লাগবে)। Context7-নোট: eslint.org flat-config — files-গ্লব-ভিত্তিক-ওভাররাইড + patterns/group/message সব-সমর্থিত; vitejs.org — .env.[mode] শুধু-সেই-মোডে, .local গিট-ইগনর, মোড-ফাইল সাধারণ-ফাইলের-উপরে-প্রাধান্য-পায়। / Tests: lint green; then break the layer-law, the type-book, and the prefix-rule — watch each wall catch its own violation.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">Loom Installation — Six Rites, Five Rooms</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
