@@ -115,6 +115,140 @@ const { running, run } = useMutationAction({  …দরজা ৯
   <div class="verse">মীজান — তুলাদণ্ডের-সমাপ্তি: "আমি-আসমান-সমুচ্চ-করেছি মীজান-সহ" নয় বরং-সূরা-সার (৫৫:৭-৯): ওজনে-ন্যায়, পাল্লায়-কমতি-নয়। এই-বইয়ের-ছাবিশ-দরজা ছিল-ওজন-বাঁটা — প্রতিটি-ধারণা নিজ-পাল্লায়, না-বেশি-না-কম; আজ-শেষ-পাল্লায় সব-একসাথে-বসে-ভার-নিল: এক-ক্লিকের-শপথ। জোহরা-আপার-ছোট-আয়না সেই-মীজানের-ব্যক্তিগত-রূপ: আয়নার-শপথ-ই থাক তোমার-হাতে — বস্তু-বদলাও, প্রতিবিম্ব-অনুসরণ-করবে; আর-যখন-নতুন-কারখানায়-হারিয়ে-যাবে, এই-বইয়ের-দরজা-নাম্বারগুলোই-তোমার-ফেরার-ঠিকানা।</div>
   <div class="callout tip"><span class="co-icon">🎓</span><div><strong>জোহরা-আপার-বিদায়-উপহার:</strong> এই-বইয়ের-প্রতিটি-কোড-নমুনা দুই-সত্য থেকে-নেওয়া — Vue 3.5-অফিশিয়াল-গাইড-এর-সর্বশেষ-রীতি, আর LedgerPilot-এর-জীবন্ত-প্রোডাকশন-প্যাটার্ন (Vue 3.5.30 · Pinia 3 · vue-router 4.6 · TS 5.8 · ১১৭-ভিউ · ২,৬০০+-টেস্ট)। নতুন-সংস্করণে-এসে-সন্দেহ-হলে আগে-অফিশিয়াল-গাইড-দেখো, তারপর-এই-বইয়ের-দরজা-নম্বর-মিলিয়ো — ছাঁচ-থাকবে, সংস্করণ-বিবরণ-বদলাবে।</div></div>
   <div class="secret-box">🪞 পূর্ণ-তাঁত: এক-ক্লিকে-সব-স্তর, ছাবিশ-তাবিজ-ছয়-গুচ্ছে, স্থাপত্য-স্মৃতি-মানচিত্রে — আর-শপথ-একটাই: অবস্থা-বদলাও, প্রতিবিম্ব অনুসরণ করবে। / The whole loom turns on one click; the oath is one line.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ২৭-এর পূর্ণ-তাঁত: জোহরা-আপার বড়-বোতামের-দৃশ্য কোডে-বাঁধো — 'অনুমোদন'-ক্লিকের উল্লম্ব-সুতো: @click(২)→রি-এন্ট্র্যান্সি-গার্ড(৯)→স্টোর-ক্রিয়া(১০)→সার্ভিস+CSRF(১৫)→টোস্ট(১৮)→রিফেচ — এক-টেস্টে পুরো-যাত্রা প্রমাণ। এটাই বিদায়-পরীক্ষা: প্রতিটি স্তর আগের-দরজায় শেখা, আজ সব-একসাথে-বাজে। / Door 27's whole loom: bind the one-click vertical thread in code and prove the entire journey in a single test — the farewell exam.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/features/approvals/service.ts (দরজা ১৫-ছায়া)</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>// সমুদ্র-পথের-ছায়া: আসল-প্রজেক্টে apiClient (axios.create + CSRF-ইন্টারসেপ্টর)
+export interface ApprovalRow { id: number; client: string; status: 'pending' | 'approved' }
+
+let csrfToken: string | null = null
+
+export const approvalService = {
+  async fetchCsrf(): Promise&lt;string&gt; {
+    const res = await fetch('/api/csrf/')
+    csrfToken = res.headers.get('X-CSRFToken')
+    return csrfToken ?? ''
+  },
+  async approve(id: number): Promise&lt;ApprovalRow&gt; {
+    const res = await fetch('/api/approvals/' + id + '/approve/', {
+      method: 'POST',
+      headers: csrfToken ? { 'X-CSRFToken': csrfToken } : {},
+    })
+    if (!res.ok) throw new Error('HTTP ' + res.status)
+    return (await res.json()) as ApprovalRow
+  },
+}
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/features/approvals/useApproveAction.ts (দরজা ৯+১০+১৮-এক-সুতোয়)</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { ref } from 'vue'
+import { approvalService, type ApprovalRow } from './service'
+
+// স্টোর-ছায়া (দরজা ১০): আসলে Pinia defineStore + storeToRefs
+export function useApprovals() {
+  const rows = ref&lt;ApprovalRow[]&gt;([])
+  async function load() {
+    const res = await fetch('/api/approvals/')
+    rows.value = (await res.json()).results
+  }
+  return { rows, load }
+}
+
+// এক-ক্লিকের-যাত্রা: গার্ড → সার্ভিস → টোস্ট → রিফেচ (সব-স্তর-এক-সুতোয়)
+export function useApproveAction(deps: {
+  rows: ReturnType&lt;typeof useApprovals&gt;['rows']
+  load: () =&gt; Promise&lt;void&gt;
+}) {
+  const running = ref(false)                  // দরজা ৯: রি-এন্ট্র্যান্সি-গার্ড
+  const toastLog: string[] = []               // দরজা ১৮: টোস্ট-সেতুর-ছায়া
+
+  async function approve(id: number) {
+    if (running.value) return                 // দ্বিতীয়-ক্লিক: no-op
+    running.value = true
+    try {
+      const row = await approvalService.approve(id)      // দরজা ১৫
+      toastLog.push('অনুমোদিত: ' + row.client)            // দরজা ১৮
+      await deps.load()                                   // দরজা ১০: সার্ভার-সত্যে-ফেরত
+    } finally {
+      running.value = false
+    }
+  }
+
+  return { running, approve, toastLog }
+}
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/features/approvals/approval.test.ts (পূর্ণ-যাত্রা-প্রমাণ)</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { describe, it, expect, beforeAll, afterEach, afterAll } from 'vitest'
+import { effectScope } from 'vue'
+import { setupServer } from 'msw/node'
+import { http, HttpResponse } from 'msw'
+import { useApprovals, useApproveAction } from './useApproveAction'
+import { approvalService } from './service'
+
+const calls = { approve: 0, list: 0 }
+const reset = () => { calls.approve = 0; calls.list = 0 }
+
+let db = [
+  { id: 1, client: 'করিম-স্টোর', status: 'pending' as const },
+]
+
+const server = setupServer(
+  http.get('*/api/approvals/', () =&gt; {
+    calls.list++
+    return HttpResponse.json({ results: [...db] })
+  }),
+  http.post('*/api/approvals/:id/approve/', ({ request }) =&gt; {
+    if (!request.headers.get('X-CSRFToken')) {
+      return new HttpResponse(null, { status: 403 })   // CSRF-বিহীন-ঢোকা-নয়
+    }
+    calls.approve++
+    db = db.map(r =&gt; r.id === 1 ? { ...r, status: 'approved' as const } : r)
+    return HttpResponse.json(db[0])
+  }),
+  http.get('*/api/csrf/', () =&gt; new HttpResponse(null, { headers: { 'X-CSRFToken': 'tok-42' } })),
+)
+beforeAll(() =&gt; server.listen())
+afterEach(() =&gt; { server.resetHandlers(); reset(); db = [{ id: 1, client: 'করিম-স্টোর', status: 'pending' }] })
+afterAll(() =&gt; server.close())
+
+describe('পূর্ণ-তাঁত · এক-ক্লিকের-যাত্রা', () =&gt; {
+  it('বোতাম→গার্ড→সার্ভিস→টোস্ট→রিফেচ — পুরো-কারখানা এক-সুতোয়', async () =&gt; {
+    await approvalService.fetchCsrf()          // দরজা ১৫: CSRF-বীজ
+    const scope = effectScope()
+    const store = scope.run(() =&gt; useApprovals())!
+    const act = scope.run(() =&gt; useApproveAction({ rows: store.rows, load: store.load }))!
+    await store.load()
+    expect(store.rows.value[0]!.status).toBe('pending')
+
+    await act.approve(1)                        // 👆 এক-ক্লিক
+
+    expect(calls.approve).toBe(1)               // সার্ভিস-গত
+    expect(store.rows.value[0]!.status).toBe('approved')   // রিফেচ-সত্যে
+    expect(act.toastLog).toContain('অনুমোদিত: করিম-স্টোর') // টোস্ট-বাজল
+    expect(act.running.value).toBe(false)       // গার্ড-মুক্ত
+    scope.stop()
+  })
+
+  it('দ্বিতীয়-ক্লিক-জোড়া গার্ডে-থামে (রি-এন্ট্র্যান্সি)', async () =&gt; {
+    await approvalService.fetchCsrf()
+    const scope = effectScope()
+    const store = scope.run(() =&gt; useApprovals())!
+    const act = scope.run(() =&gt; useApproveAction({ rows: store.rows, load: store.load }))!
+    await store.load()
+
+    const first = act.approve(1)                // প্রথম-চাপ চলছে…
+    act.approve(1)                              // দ্বিতীয়-চাপ: no-op
+    await first
+
+    expect(calls.approve).toBe(1)               // এক-ই-কল — ডাবল-অনুমোদন-নয়
+    scope.stop()
+  })
+
+  it('CSRF-বিহীন-ডাক ৪০৩-পায় (ফটক-শৃঙ্খল)', async () =&gt; {
+    const res = await fetch('/api/approvals/1/approve/', { method: 'POST' })
+    expect(res.status).toBe(403)
+  })
+})
+</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) npx vitest run — তিন-টেস্ট সবুজ; প্রথম-টেস্টই বইয়ের-সার — এক-ক্লিকে ছয়-দরজার-শিক্ষা ঘুরে-গেল, প্রতিটি স্তরে expect-পিন। (২) **ভাঙো-পরীক্ষা (জোহরা-আপার শপথ):** গার্ডের if(running)-রিটার্ন তুলে-দাও → টেস্ট-② লাল; CSRF-হেডার বাদ-দাও → টেস্ট-③+① লাল — প্রতিটি তালার-মূল্য নিজের-চোখে। (৩) **বিনা-নোট-চ্যালেঞ্জ:** এই-ফাইল-তিনটি বন্ধ-করে আবার-লেখো — তালিকা-মুখস্থ নয়, হাতে-ধরা। (৪) আসল-প্রজেক্টে: apiClient-axios + Pinia-store + toast.info + গার্ডড-রুট (দরজা ১৪) — একই-সুতো, শক্ত-খুঁটি। Context7-নোট: স্তর-দাবিগুলো আগের-দরজায়-ই নথিভুত — D9 (vuejs.org composables-গার্ড), D15 (axios-ইন্টারসেপ্টর), D18 (mswjs.io) — আজ শুধু-বুনন। / Tests: three green; test 1 is the whole book in one click; then the no-notes challenge — rewrite these three files closed.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">One Click — Twenty-Six Doors Turning Together</div>
     <svg viewBox="0 0 560 330" xmlns="http://www.w3.org/2000/svg">
