@@ -217,6 +217,114 @@ doors.push({
   <div class="verse">দ্বিতীয়-রাকাত — প্রথমের-নকশা-পুনরাবৃত্তি, গভীরতায়-বৃদ্ধি: নামাজে-যেমন-দ্বিতীয়-একাক-প্রথমের-ভিত্তি-মেনেই-দীর্ঘ, সিরাজ-মিয়ার-স্যান্ডউইচ-সেই-বৃদ্ধির-স্থাপত্য। চার-স্তর-প্রতিটি-নিজ-ধর্মে-অটল: সার্ভিস-শুধু-যায়, স্টোর-শুধু-রাখে, কম্পোজেবল-শুধু-বাঁধে, ভিউ-শুধু-দেখায় — এক-স্তরের-লোভে-আরেক-স্তরে-ঢুকলে-স্যান্ডউইচ-স্যান্ডউইচ-থাকে-না, খাবার-গলে-হাতে-পড়ে। "প্রত্যেক-কাজের-জন্য-উপযুক্ত-স্থান" — সূরা-সার-যে, প্রত্যেক-প্রাণী-নিজ-চারণে।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>দপতর-ফাঁদ:</strong> (১) ভিউতে-সরাসরি-সার্ভিস-কল — স্তর-লোভ; কম্পোজেবল/স্টোর-পথ-ছাড়বে-না (সিরাজ-মিয়ার-নিয়ম)। (২) বিস্তারিত-পর্দায়-তালিকার-স্মৃতি-থেকে-পড়া — সরাসরি-ঢুকলে/রিফ্রেশে-খালি; নিজ-id-থেকে-নিজ-ডেটা। (৩) মুছা-বাটনে-সরাসরি-API — দুই-ক্লিকে-দুই-মুছা; নিশ্চিত-মোডাল+useMutationAction-গার্ড।</div></div>
   <div class="secret-box">📊 CRUD = চার-স্তর-স্যান্ডউইচ + তিন-পর্দা: সার্ভিস-যায়, স্টোর-রাখে, কম্পোজেবল-বাঁধে, ভিউ-দেখায়; রুট-গভীর-লিংকযোগ্য, মুছা-নিশ্চিত-মোডালে। / Transport, truth, flow, display — four layers, three screens.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ২৩-এর সারণি-দপতর: অধ্যায়ের ৮-ফাইল নিজে-বাঁধো, তারপর চেকলিস্টের-দাবি পূরণ করো — MSW-হ্যান্ডলার-বই (তালিকা+মুছা+৫০০-বিপদ) + তিন-টেস্ট (তালিকা-লোড, মুছা-সফল-সারি-ফেরত, মুছা-ব্যর্থ-rollback) — অপ্টিমিস্টিক-মুছা নিজের-চোখে: সারি আগে-মুছে, ব্যর্থে-জায়গায়-ফেরে। / Door 23's ledger-office: build the chapter's 8 files, then fulfill the checklist — MSW handler-book + three tests proving list-load, optimistic delete with rollback on failure.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/tests/msw.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { setupServer } from 'msw/node'
+import { http, HttpResponse } from 'msw'
+
+// হ্যান্ডলার-বই: notes-API-আকৃতির-এক-সত্য + মুছা-বিপদ-দৃশ্যের-বীজ
+let db = [
+  { id: 1, title: 'জুন-বিল', body: '…', created_at: '2026-06-01', updated_at: '2026-06-01' },
+  { id: 2, title: 'জুলাই-বিল', body: '…', created_at: '2026-07-01', updated_at: '2026-07-01' },
+]
+let failNextDelete = false
+
+export function seedNotes(rows: Array&lt;{ id: number; title: string }&gt;) { db = rows as typeof db }
+export function breakNextDelete() { failNextDelete = true }   // বিপদ-দৃশ্যের-ছায়া
+
+export const handlers = [
+  http.get('*/api/notes/', ({ request }) =&gt; {
+    const search = new URL(request.url).searchParams.get('search') ?? ''
+    const rows = db.filter(n =&gt; n.title.includes(search))
+    return HttpResponse.json({ results: rows, total: rows.length, page: 1, page_size: 10 })
+  }),
+  http.delete('*/api/notes/:id/', ({ params }) =&gt; {
+    if (failNextDelete) { failNextDelete = false; return new HttpResponse(null, { status: 500 }) }
+    db = db.filter(n =&gt; n.id !== Number(params.id))
+    return new HttpResponse(null, { status: 204 })
+  }),
+]
+
+export const server = setupServer(...handlers)
+// setup.ts-এ: beforeAll listen · afterEach resetHandlers · afterAll close
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/features/notes/composables/useNotes.ts (ছায়া-অংশ)</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { ref } from 'vue'
+
+// স্টুডিও-পরীক্ষার-ছায়া: আসল-প্রজেক্টে Pinia-store + storeToRefs (pinia.vuejs.org:
+// state/getter → storeToRefs, action → সরাসরি)। এখানে খাটো-রূপ —
+// অপ্টিমিস্টিক-মুছার-নীতি-প্রমাণে:
+export function useOptimisticNotes() {
+  const items = ref&lt;Array&lt;{ id: number; title: string }&gt;&gt;([])
+  const error = ref&lt;string | null&gt;(null)
+
+  async function load() {
+    error.value = null
+    const res = await fetch('/api/notes/')
+    items.value = (await res.json()).results
+  }
+
+  async function remove(id: number) {
+    const snapshot = [...items.value]              // ফিরে-আসার-দড়ি
+    items.value = items.value.filter(n =&gt; n.id !== id)   // ① আগে-মুছো (আশাবাদী)
+    try {
+      const res = await fetch('/api/notes/' + id + '/', { method: 'DELETE' })
+      if (!res.ok) throw new Error('HTTP ' + res.status)
+    } catch {
+      items.value = snapshot                        // ② ব্যর্থে-rollback — জায়গায়-ফেরত
+      error.value = 'মুছা-ব্যর্থ — সারি ফিরিয়ে-আনা-হলো'
+    }
+  }
+
+  return { items, error, load, remove }
+}
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/features/notes/notes.test.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { describe, it, expect, beforeAll, afterEach, afterAll } from 'vitest'
+import { effectScope } from 'vue'
+import { server, seedNotes, breakNextDelete } from '../../../tests/msw'
+import { useOptimisticNotes } from './composables/useNotes'
+
+beforeAll(() =&gt; server.listen())
+afterEach(() =&gt; server.resetHandlers())
+afterAll(() =&gt; server.close())
+
+describe('সারণি-দপতর · চার-স্তর', () =&gt; {
+  it('① তালিকা-লোড: হ্যান্ডলার-বই থেকে সারি', async () =&gt; {
+    seedNotes([{ id: 1, title: 'জুন-বিল' }, { id: 2, title: 'জুলাই-বিল' }])
+    const scope = effectScope()
+    const api = scope.run(() =&gt; useOptimisticNotes())!
+    await api.load()
+    expect(api.items.value).toHaveLength(2)
+    scope.stop()
+  })
+
+  it('② মুছা-সফল: সারি-ফেরত, এরর-নয়', async () =&gt; {
+    seedNotes([{ id: 1, title: 'জুন-বিল' }])
+    const scope = effectScope()
+    const api = scope.run(() =&gt; useOptimisticNotes())!
+    await api.load()
+    await api.remove(1)
+    expect(api.items.value).toHaveLength(0)      // আশাবাদী-মুছা স্থায়ী-হলো
+    expect(api.error.value).toBeNull()
+    scope.stop()
+  })
+
+  it('③ মুছা-ব্যর্থ: rollback — সারি জায়গায়-ফেরে', async () =&gt; {
+    seedNotes([{ id: 1, title: 'জুন-বিল' }])
+    breakNextDelete()                             // বিপদ-দৃশ্য: পরের-DELETE-ই ৫০০
+    const scope = effectScope()
+    const api = scope.run(() =&gt; useOptimisticNotes())!
+    await api.load()
+    await api.remove(1)
+    expect(api.items.value).toHaveLength(1)      // rollback — কাপড় অক্ষত
+    expect(api.error.value).toContain('মুছা-ব্যর্থ')
+    scope.stop()
+  })
+})
+</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) npx vitest run — তিন-টেস্ট সবুজ। (২) **স্তর-স্যান্ডউইচ-প্রমাণ:** টেস্ট-২ আর ৩-এর-মাঝে পার্থক্য-দেখো — সফল-পথে আশাবাদী-মুছা স্থায়ী, ব্যর্থ-পথে snapshot-rollback; এই-দুই-লাইনই অপ্টিমিস্টিক-নীতির-সার। (৩) আসল-প্রজেক্টে remove-এর-জায়গায় store.removeLocal + useMutationAction-onSuccess (অধ্যায়ের ফাইল-৩/৪), আর rollback মানে load()-পুনঃডাক বা snapshot-ফেরত — দুই-ই-পথ। (৪) **ভাঙো:** rollback-লাইন মুছো → টেস্ট-③ লাল — ব্যর্থ-মুছায় সারি-হারানো নিজের-চোখে। Context7-নোট: pinia.vuejs.org — state/getter-এর-জন্য storeToRefs (প্রতিক্রিয়া-সংরক্ষণ), action সরাসরি-store-থেকে; mswjs.io — resetHandlers-এ বিপদ-বীজ-ধুয়ে-ফেরে। / Tests: three green; the delta between test 2 and 3 IS the optimistic principle; remove the rollback line and watch 3 cry.</div>
+  </div>
+  <div class="stat-card"><div class="sc-num">সার্ভিস</div><div class="sc-label">যায় · apiClient</div></div>
   <div class="stat-card"><div class="sc-num">স্টোর</div><div class="sc-label">রাখে · শেয়ার্ড</div></div>
   <div class="stat-card"><div class="sc-num">কম্পোজেবল</div><div class="sc-label">বাঁধে · প্রবাহ</div></div>
   <div class="stat-card"><div class="sc-num">ভিউ</div><div class="sc-label">দেখায় · শুধু</div></div>
