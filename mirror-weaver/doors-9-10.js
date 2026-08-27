@@ -121,14 +121,97 @@ doors.push({
      (প্রতি-কলে নতুন, নইলে সব-কনজিউমার একসাথে)</div>
   <div class="stat-grid">
   <div class="stat-card"><div class="sc-num">ইনপুট: অপশন</div><div class="sc-label">রেফ-নয় · প্লেইন</div></div>
+  <div class="stat-card"><div class="sc-num">আউটপুট: রেফ</div><div class="sc-label">সবসময় · আনর‍্যাপ-নয়</div></div>
+  <div class="stat-card"><div class="sc-num">রি-এন্ট্র্যান্সি</div><div class="sc-label">ভেতরে · গার্ড</div></div>
+  <div class="stat-card"><div class="sc-num">ক্লিনআপ</div><div class="sc-label">onUnmounted</div></div>
   <ul class="checklist"><li>useFetch লেখো: loading/error/data + অপশন-ইনপুট; দুই পর্দায় পুনর্ব্যবহার</li><li>নামকরণ-নিয়ম প্রয়োগ: use* প্রিফিক্স, রিটার্ন-অবজেক্ট — নিজের তাবিজ-তালিকা শুরু করো</li><li>লেজারপাইলট-কোড থেকে একটা পুনরাবৃত্ত-যুক্তি খুঁজে composable-খসড়া লেখো</li></ul>
   <div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 40 (Codebuilder’s Guild) SOLID-নীতি শেখায় — কম্পোজেবল = এক-দায়িত্ব ও নির্ভরতা-উল্টানোর বাস্তব রূপ। আর Book 54 (LedgerPilot Craftsman)-এ প্রতিটি প্যাটার্নের প্রোডাকশন-প্রমাণ।</div></div>
   <div class="verse">হিকমাহ — প্রজ্ঞা: "যাকে হিকমাহ দেওয়া হয়েছে তাকে প্রচুর কল্যাণ দেওয়া হয়েছে" (২:২৬৯) — আর হিকমাহ জন্মায় পুনরায়-প্রয়োগে, এক-হাতে নয়। মাজেদ সাহেবের তাবিজ সেই হিকমাহর কারিগরি রূপ: প্রথম কারিগর বারো-লাইন লেখে, দ্বিতীয়জন দশ, তৃতীয়জন বুঝল — সাধারণ-সুতো তাবিজে গেঁথে দিল; এখন শত বাটন একই স্প্রিং-শৃঙ্খলায় চলে। যে কারখানা একই কষ্ট দুইবার সয়, সে হিকমাহ অস্বীকার করেছে; আর যে তাবিজ বানিয়ে দেয়ালে না ঝোলায়, সে প্রজ্ঞা কুপথে ঢেলে দেয়।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>তাবিজ-ফাঁদ:</strong> (১) মডিউল-স্কোপে <code>const x = ref()</code> কম্পোজেবল-বাইরে — সব কনজিউমার একই স্প্রিং ভাগ করে নেয়, নীরব ডেটা-মিশ্রণ; রেফ ফাংশনের ভেতরে। (২) কম্পোজেবল কল শর্তের-ভেতরে/লুপে — lifecycle-সংযুক্তি ভাঙে (setup-সিঙ্ক্রোনাস-কল)। (৩) সবকিছু এক তাবিজে ঢোকানো — useEverything-গন্ধ; ভাগ করো, নামে-ই সীমা বোঝা যাক।</div></div>
   <div class="secret-box">🧰 কম্পোজেবল = পুনর্ব্যবহারযোগ্য-জীবন্ত-যুক্তি: use*-নাম, অপশন-ইন, রেফ-আউট, পাহারা-ভেতরে — বারো-লাইন তিন-লাইনে। / Name it use*, take options, return refs, guard inside.</div>
-  <div class="stat-card"><div class="sc-num">আউটপুট: রেফ</div><div class="sc-label">সবসময় · আনর‍্যাপ-নয়</div></div>
-  <div class="stat-card"><div class="sc-num">রি-এন্ট্র্যান্সি</div><div class="sc-label">ভেতরে · গার্ড</div></div>
-  <div class="stat-card"><div class="sc-num">ক্লিনআপ</div><div class="sc-label">onUnmounted</div></div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ৯-এর তাবিজ-কারখানা: নিজের useFetch-তাবিজ গেঁথে দুই পর্দায় ঝুলাও — একই যুক্তি, আলাদা স্প্রিং; Context7-যাচাইকৃত watchEffect+toValue-ছাঁচে। / Door 9's charm forge: forge your own useFetch and hang it on two screens — same logic, separate springs, on the guide's own watchEffect+toValue pattern.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/composables/useFetch.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { ref, watchEffect, toValue } from 'vue'
+
+// তাবিজ-তিন-শপথ (মাজেদ-নিয়ম, Context7-যাচাইকৃত):
+// ① use*-নাম ② ইনপুট নরমালাইজ (toValue: ref/getter/raw সব চলে)
+// ③ রিটার্ন রেফ-বান্ডেল (ডিস্ট্রাকচারে প্রতিক্রিয়া বাঁচে)
+export function useFetch&lt;T&gt;(url: string | (() =&gt; string)) {
+  const data = ref&lt;T | null&gt;(null)
+  const error = ref&lt;string | null&gt;(null)
+  const loading = ref(false)
+
+  // নকল-fetch — সত্যিকারে এখানে window.fetch বসবে
+  function fakeFetch(u: string): Promise&lt;T&gt; {
+    return new Promise((resolve, reject) =&gt;
+      setTimeout(() =&gt; u.includes('bad')
+        ? reject(new Error('নেটওয়ার্ক-ফাঁদ'))
+        : resolve({ items: [u, 'সুতো', 'কাপড়'] } as T), 600))
+  }
+
+  const fetchData = () =&gt; {
+    data.value = null
+    error.value = null
+    loading.value = true
+    fakeFetch(toValue(url))                     // ← নরমালাইজড-ইনপুট
+      .then((json) =&gt; { data.value = json })
+      .catch((err) =&gt; { error.value = String(err) })
+      .finally(() =&gt; { loading.value = false })
+  }
+
+  watchEffect(() =&gt; { fetchData() })            // url-বদলালে আপনা-আপনি পুনরায়
+
+  return { data, error, loading, refetch: fetchData }
+}</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/CharmScreenA.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { ref } from 'vue'
+import { useFetch } from './composables/useFetch'
+
+// পর্দা-A-র নিজের তাবিজ-কপি — নিজের স্প্রিং
+const endpoint = ref('threads')
+const { data, loading, error, refetch } = useFetch(
+  () =&gt; \`/api/\${endpoint.value}\`            // getter-ইনপুট — বদলালে অটো-রি-ফেচ
+)
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h3&gt;পর্দা A — সুতো-তাক&lt;/h3&gt;
+    &lt;button @click="endpoint = endpoint === 'threads' ? 'bad-url' : 'threads'"&gt;
+      এন্ডপয়েন্ট বদলাও (error-পরীক্ষা)
+    &lt;/button&gt;
+    &lt;p v-if="loading"&gt;⏳ লোড হচ্ছে…&lt;/p&gt;
+    &lt;p v-else-if="error" style="color:#ef4444"&gt;❌ {{ error }}&lt;/p&gt;
+    &lt;pre v-else&gt;{{ data }}&lt;/pre&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/CharmScreenB.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { useFetch } from './composables/useFetch'
+
+// পর্দা-B — একই তাবিজ, আলাদা কপি (শেয়ার্ড নয়!)
+const { data, loading } = useFetch('/api/cloths')
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h3&gt;পর্দা B — কাপড়-তাক&lt;/h3&gt;
+    &lt;p v-if="loading"&gt;⏳ …&lt;/p&gt;
+    &lt;pre v-else&gt;{{ data }}&lt;/pre&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import CharmScreenA from './CharmScreenA.vue'
+import CharmScreenB from './CharmScreenB.vue'
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;CharmScreenA /&gt;
+  &lt;hr&gt;
+  &lt;CharmScreenB /&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) "এন্ডপয়েন্ট বদলাও" চাপো — পর্দা-A ত্রুটিতে যায়, **পর্দা-B অক্ষত** (আলাদা স্প্রিং — এটাই per-instance)। (২) url-getter বদলালেই অটো-পুনরায়-আনার জাদু দেখো (watchEffect)। (৩) দুই পর্দার loading-গুলো আলাদা টিপে টিপে ওঠে — শেয়ার্ড-অবস্থা চাইলে স্টোর (দরজা ১০)। / Tests: break screen A and watch B stay untouched (per-instance springs); change the getter to see auto-refetch; separate loading states prove non-shared.</div>
+  </div>
 </div>
   <div class="diagram">
     <div class="diag-title">The Talisman — Composable Anatomy</div>
