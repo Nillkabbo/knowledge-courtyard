@@ -124,6 +124,7 @@ doors.push({
   <div class="stat-card"><div class="sc-num">আউটপুট: রেফ</div><div class="sc-label">সবসময় · আনর‍্যাপ-নয়</div></div>
   <div class="stat-card"><div class="sc-num">রি-এন্ট্র্যান্সি</div><div class="sc-label">ভেতরে · গার্ড</div></div>
   <div class="stat-card"><div class="sc-num">ক্লিনআপ</div><div class="sc-label">onUnmounted</div></div>
+</div>
   <ul class="checklist"><li>useFetch লেখো: loading/error/data + অপশন-ইনপুট; দুই পর্দায় পুনর্ব্যবহার</li><li>নামকরণ-নিয়ম প্রয়োগ: use* প্রিফিক্স, রিটার্ন-অবজেক্ট — নিজের তাবিজ-তালিকা শুরু করো</li><li>লেজারপাইলট-কোড থেকে একটা পুনরাবৃত্ত-যুক্তি খুঁজে composable-খসড়া লেখো</li></ul>
   <div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 40 (Codebuilder’s Guild) SOLID-নীতি শেখায় — কম্পোজেবল = এক-দায়িত্ব ও নির্ভরতা-উল্টানোর বাস্তব রূপ। আর Book 54 (LedgerPilot Craftsman)-এ প্রতিটি প্যাটার্নের প্রোডাকশন-প্রমাণ।</div></div>
   <div class="verse">হিকমাহ — প্রজ্ঞা: "যাকে হিকমাহ দেওয়া হয়েছে তাকে প্রচুর কল্যাণ দেওয়া হয়েছে" (২:২৬৯) — আর হিকমাহ জন্মায় পুনরায়-প্রয়োগে, এক-হাতে নয়। মাজেদ সাহেবের তাবিজ সেই হিকমাহর কারিগরি রূপ: প্রথম কারিগর বারো-লাইন লেখে, দ্বিতীয়জন দশ, তৃতীয়জন বুঝল — সাধারণ-সুতো তাবিজে গেঁথে দিল; এখন শত বাটন একই স্প্রিং-শৃঙ্খলায় চলে। যে কারখানা একই কষ্ট দুইবার সয়, সে হিকমাহ অস্বীকার করেছে; আর যে তাবিজ বানিয়ে দেয়ালে না ঝোলায়, সে প্রজ্ঞা কুপথে ঢেলে দেয়।</div>
@@ -212,7 +213,6 @@ import CharmScreenB from './CharmScreenB.vue'
 &lt;/template&gt;</code></pre></div>
     <div class="studio-note">পরীক্ষা: (১) "এন্ডপয়েন্ট বদলাও" চাপো — পর্দা-A ত্রুটিতে যায়, **পর্দা-B অক্ষত** (আলাদা স্প্রিং — এটাই per-instance)। (২) url-getter বদলালেই অটো-পুনরায়-আনার জাদু দেখো (watchEffect)। (৩) দুই পর্দার loading-গুলো আলাদা টিপে টিপে ওঠে — শেয়ার্ড-অবস্থা চাইলে স্টোর (দরজা ১০)। / Tests: break screen A and watch B stay untouched (per-instance springs); change the getter to see auto-refetch; separate loading states prove non-shared.</div>
   </div>
-</div>
   <div class="diagram">
     <div class="diag-title">The Talisman — Composable Anatomy</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">

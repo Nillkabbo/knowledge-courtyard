@@ -384,6 +384,10 @@ doors.push({
     দামি — যত-নিচে-সম্ভব-তত-নিচে</div>
   <div class="stat-grid">
   <div class="stat-card"><div class="sc-num">mount</div><div class="sc-label">তলা-১ · প্রাণ</div></div>
+  <div class="stat-card"><div class="sc-num">MSW</div><div class="sc-label">তলা-২ · নকল-জাহাজ</div></div>
+  <div class="stat-card"><div class="sc-num">E2E</div><div class="sc-label">তলা-৩ · প্রকৃত-পথ</div></div>
+  <div class="stat-card"><div class="sc-num">২,৬২২</div><div class="sc-label">LP-টেস্ট · প্রমাণ</div></div>
+</div>
   <ul class="checklist"><li>এক-কম্পোনেন্ট unit-টেস্ট: props-ইনপুট → পর্দা-আউটপুট + emitted-যাচাই</li><li>MSW-হ্যান্ডলার লিখে সার্ভিস-টেস্ট — নেটওয়ার্ক ছাড়াই ৪০০/২০০-পথ</li><li>একটা Playwright-walkthrough — লগইন→তালিকা→বিস্তারিত পথ</li></ul>
   <div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 47 (Shields of Craft — ১০ দরজা) টেস্টিংয়ের পূর্ণ দুর্গ (unit→E2E, coverage, TDD) — এই পরীক্ষার-মিনারের ভিত্তি-গ্রন্থ।</div></div>
   <div class="verse">ইমতিহান — প্রমাণ-পরীক্ষা: "আমি তোমাদের পরীক্ষা করব কল্যাণ ও-অকল্যাণে" নয় বরং সূরা-ধারা (২১:৩৫-এর সার) — ঘোষিত-সত্য পরীক্ষা-ছাড়া-মূল্যহীন। হাফেজ সবুরের-মিনার সেই ইমতিহানের-স্থাপত্য: চার-তলায়-চার-ধরনের-আগুন, প্রতিটি-দাবি নিজ-যোগ্য-তলায়-নামে। যে-কারখানা দাবি-করে-পরীক্ষা-ছাড়া, সে বিক্রয়-করে-বিশ্বাস-নয়-কল্পনা; আর যে-পরীক্ষা সব-উপরের-তলায়-চড়ায়, সে ধীর-হয়ে-সকাল-পর্যন্ত-দেরি-করায় — দুই-ই-ব্যর্থ, ভারসাম্য-মিনারের-শর্ত।</div>
@@ -518,10 +522,6 @@ test('ভুল-পাসওয়ার্ড → ইনলাইন-এরর'
 </code></pre></div>
     <div class="studio-note">পরীক্ষা: (১) npx vitest run — চার-টেস্টই সবুজ: প্রপস-লেখা, emitted-ঘণ্টি, হ্যান্ডলার-বইয়ের-সারি, ৫০০-বিপদে-এরর-বার্তা। (২) ৫০০-টেস্টের-পরে-ও প্রথম-টেস্ট পুনরায়-চালাও — resetHandlers-এর-গুণে বই-ফিরেছে (আদৌ-না-দেখার-পরীক্ষা)। (৩) vitest.config.ts-এ environment:'jsdom' + setupFiles-এ lifecycle-বাঁধো (msw.ts-মন্তব্য)। (৪) npx playwright test --headed — ব্রাউজারে-চোখে-দেখা-যাত্রা। Context7-নোট: mswjs.io — setupServer(msw/node) + listen/resetHandlers/close + server.use runtime-override সব-নথিভুত; vuejs.org — mount/props/emitted test-utils-এর-নীতি-পথ। / Tests: vitest run green ×4; rerun the happy test after the danger test (the book returned); then watch Playwright walk.</div>
   </div>
-  <div class="stat-card"><div class="sc-num">MSW</div><div class="sc-label">তলা-২ · নকল-জাহাজ</div></div>
-  <div class="stat-card"><div class="sc-num">E2E</div><div class="sc-label">তলা-৩ · প্রকৃত-পথ</div></div>
-  <div class="stat-card"><div class="sc-num">২,৬২২</div><div class="sc-label">LP-টেস্ট · প্রমাণ</div></div>
-</div>
   <div class="diagram">
     <div class="diag-title">The Four-Storey Minaret — Claim → Floor</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">

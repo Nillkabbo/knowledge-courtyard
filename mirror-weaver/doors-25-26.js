@@ -154,6 +154,10 @@ doors.push({
   ④ লগআউট → মেনু-সর্বনিম্ন+রুট-লগইনে</div>
   <div class="stat-grid">
   <div class="stat-card"><div class="sc-num">পরিচয়</div><div class="sc-label">auth.store · প্রবেশ</div></div>
+  <div class="stat-card"><div class="sc-num">অনুমতি</div><div class="sc-label">can() · গার্ড+&lt;Can&gt;</div></div>
+  <div class="stat-card"><div class="sc-num">মেনু</div><div class="sc-label">ছাঁকনি · visibleMenu</div></div>
+  <div class="stat-card"><div class="sc-num">ল্যান্ডিং</div><div class="sc-label">রোল→ঘর · ?next</div></div>
+</div>
   <ul class="checklist"><li>auth-স্টোর বানাও: লগইন/রোল/ফিচার-ফ্ল্যাগ; Can-কম্পোনেন্ট দিয়ে বাটন-নিয়ন্ত্রণ</li><li>৪০৩-পথ E2E: রোল-ছাড়া ব্যবহারকারী রুট+বাটন দুই-জায়গায় আটকায় — প্রমাণ করো</li><li>ডিপ-লিংক-পরীক্ষা: সুরক্ষিত-URL সরাসরি খুলে লগইন-ফেরত দেখো</li></ul>
   <div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 46 (Copper Fortress — ১০ দরজা) auth/রোল/পারমিশনের গভীর নকশা — বহু-মহল প্রাসাদের নিরাপত্তা-গ্রন্থ; আর Book 54 এর LedgerPilot-বাস্তব।</div></div>
   <div class="verse">চতুর্থ-রাকাত — বহু-দরজা, ব্যক্তি-অনুযায়ী-চাবি: "প্রত্যেক-দলকে-চেনা-হবে-তাদের-নিজ-নিশানে" নয় বরং সূরা-ছায়া (৫৫:৪১-এর ভাব) — নিশানভেদে-পথ, বিশৃঙ্খলায়-নয়। বদরুলের-তিন-খাতা সেই-নিশানের-প্রাসাদ-রূপ: পরিচয়-অনুমতি-মেনু — প্রত্যেক-প্রবেশ খাতায়, প্রত্যেক-দরজা ছাপে, প্রত্যেক-দেয়াল ফলকে। যে-প্রাসাদে সবাই-সব-দরজায়-ঢোকে, সে প্রাসাদ-নয়-চত্বর; আর-যেখানে-খাতা-নেই-শুধু-দরজার-রং, সেখানে-রং-বদলালেই-রাজত্ব-বদলায়।</div>
@@ -300,10 +304,6 @@ describe('চতুর্থ-কাপড় · বহু-মহল-প্রা
 </code></pre></div>
     <div class="studio-note">পরীক্ষা: (১) npx vitest run — পাঁচ-টেস্ট সবুজ। (২) **তিন-তালা-প্রমাণ:** টেস্ট-① পথ (গার্ড), ② দেয়াল (&lt;Can&gt;), মেনু-ছাঁকনি ③ চোখ — তিন-স্তরেই viewer-এর /notes-বন্ধ; সার্ভার-যাচাই চতুর্থ-তালা (অধ্যায়ের-কথা)। (৩) **ভাঙো:** decideGuard-এর roles-ব্লক মুছো → টেস্ট-① লাল — ডিপ-লিংক-ঢোকা নিজের-চোখে। (৪) আসল-প্রজেক্টে: Pinia auth-store (login/logout/restore), &lt;Can&gt;-SFC (slot v-if), beforeEach-তে decideGuard (vue-router-রিটার্ন-ছাঁচ: location/false/মঞ্জুর)। Context7-নোট: vuejs.org/router — গার্ড রিডাইরেক্ট-location ফেরায়, query.next-প্যাটার্ন নথিভুত। / Tests: five green; viewer blocked at path, wall, and eye — three locks; delete the guard's roles-block and watch test 1 cry.</div>
   </div>
-  <div class="stat-card"><div class="sc-num">অনুমতি</div><div class="sc-label">can() · গার্ড+&lt;Can&gt;</div></div>
-  <div class="stat-card"><div class="sc-num">মেনু</div><div class="sc-label">ছাঁকনি · visibleMenu</div></div>
-  <div class="stat-card"><div class="sc-num">ল্যান্ডিং</div><div class="sc-label">রোল→ঘর · ?next</div></div>
-</div>
   <div class="diagram">
     <div class="diag-title">Starter 4 — Three Ledgers, Layered Access</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
@@ -498,6 +498,10 @@ doors.push({
   ③ পুনঃখোলায়-refetchMissed-কলহ (গণনা)</div>
   <div class="stat-grid">
   <div class="stat-card"><div class="sc-num">নদী</div><div class="sc-label">SSE · ট্রিগার</div></div>
+  <div class="stat-card"><div class="sc-num">জলাধার</div><div class="sc-label">store · সত্য</div></div>
+  <div class="stat-card"><div class="sc-num">বাঁধ</div><div class="sc-label">errorCaptured</div></div>
+  <div class="stat-card"><div class="sc-num">পিং</div><div class="sc-label">~২৫সে · প্রক্সি-রোধ</div></div>
+</div>
   <ul class="checklist"><li>useSse+রিকানেক্ট-ব্যাকঅফ শেষ করো; সার্ভার-বন্ধ করে পুনঃসংযোগ-প্রচেষ্টা গুনো</li><li>লাইভ-ফিড-পর্দা + সংযোগ-ব্যাজ বানাও — অবস্থা-দৃশ্যমানতা</li><li>MSW-SSE-নকল দিয়ে টেস্ট: ইভেন্ট-এলে স্টোর-আপডেট + ব্যাজ-বদল</li></ul>
   <div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 35 (Bridge of Connections) SSE-প্রবাহ ও পুনঃসংযোগের ডিস্ট্রিবিউটেড-বিজ্ঞান, আর Book 37 (Web of Wires) HTTP-স্ট্রিমিং — জীবন্ত নদীর দুই তীর।</div></div>
   <div class="verse">পঞ্চম-রাকাত — চলমান-কাপড়ের-সমাপ্তি: নদী-আয়াত "উভয়-জল-প্রবাহে-তার-প্রাসাদ" নয় বরং-স্রোতের-ছায়া (৫৫:১৯-২০-এর ভাব) — দুই-জল মিশে-না, নিয়মে-বাঁধা-প্রবাহে-পাশাপাশি। মাজেদার-ঘাট সেই-নিয়মের-জীবন্ত-রূপ: নদী (ট্রিগার) আর-জলাধার (সত্য) পাশাপাশি-বয়ে-যায়, মিশে-যায়-না; স্রোত-ছিঁড়লে-নদী-থামে, জলাধার-থাকে — আর-ফিরে-এলে-গণনায়-মিলে। যে-ঘাট নদীর-ই-জলে-সত্য-গড়ে, সে-ঘাটে-ঝড়ে-সব-ভাসে; জলাধার-যার-আছে, তার-ঝড়-শুধু-বিরতি-মাত্র।</div>
@@ -639,10 +643,6 @@ describe('পঞ্চম-কাপড় · জীবন্ত-নদী-ঘা
 </code></pre></div>
     <div class="studio-note">পরীক্ষা: (১) npx vitest run — তিন-টেস্ট সবুজ (setup.ts-পলিফিল-ছাড়া-প্রথম-রান-ই-শিখাবে কেন)। (২) **নথি-পথ-বনাম-ছায়া:** অধ্যায়ের-বীজ http.get+raw-body দেখালেও mswjs.io-র নথিভুত-পথ = sse() হ্যান্ডলার + client.send({event, data, id}) — স্টুডিও সেটাই; ছায়া-পথ প্রায়ই EventSource-কে ধরে-না। (৩) **ভাঙো:** onBeforeUnmount-এর es?.close() তুলে-দাও → টেস্ট-③-এর-গণনা বদলে-যেতে-পারে (পলিফিল-ভেদে) — আসল-প্রমাণ ব্রাউজারে: ট্যাব-বন্ধের-পরেও নেটওয়ার্ক-ট্যাবে stream-লাল-না-হওয়া = দড়ি-ছাড়া-বিস্মৃত। (৪) আসল-প্রজেক্টে: Pinia-feedStore + toast.info + onErrorCaptured-বাঁধ (অধ্যায়ের ফাইল-৪/৫)। Context7-নোট: mswjs.io — sse(url, resolver) + client.send({event, data, id}) নথিভুত; নামকরা-ইভেন্ট addEventListener-এ-ধরা। / Tests: three green; the documented sse() handler over the raw-body sketch; break the rope-release and watch.</div>
   </div>
-  <div class="stat-card"><div class="sc-num">জলাধার</div><div class="sc-label">store · সত্য</div></div>
-  <div class="stat-card"><div class="sc-num">বাঁধ</div><div class="sc-label">errorCaptured</div></div>
-  <div class="stat-card"><div class="sc-num">পিং</div><div class="sc-label">~২৫সে · প্রক্সি-রোধ</div></div>
-</div>
   <div class="diagram">
     <div class="diag-title">Starter 5 — The Living Ghat: River + Reservoir + Embankment</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">

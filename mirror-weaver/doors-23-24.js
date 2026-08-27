@@ -212,6 +212,10 @@ doors.push({
    props: note, busy; emits: close, confirm)</div>
   <div class="stat-grid">
   <div class="stat-card"><div class="sc-num">সার্ভিস</div><div class="sc-label">যায় · apiClient</div></div>
+  <div class="stat-card"><div class="sc-num">স্টোর</div><div class="sc-label">রাখে · শেয়ার্ড</div></div>
+  <div class="stat-card"><div class="sc-num">কম্পোজেবল</div><div class="sc-label">বাঁধে · প্রবাহ</div></div>
+  <div class="stat-card"><div class="sc-num">ভিউ</div><div class="sc-label">দেখায় · শুধু</div></div>
+</div>
   <ul class="checklist"><li>CRUD-দপতর শেষ করো: তালিকা+বিস্তারিত+যোগ-সম্পাদনা — স্লাইস-গঠনে</li><li>MSW+৩-টেস্ট: তালিকা-লোড, যোগ-সফল, যোগ-ব্যর্থ — প্রতিটি স্তর স্পর্শ</li><li>অপ্টিমিস্টিক-মুছা+rollback অনুশীলন — ব্যর্থতায় তালিকা ফিরে আসে কি দেখো</li></ul>
   <div class="callout tip"><span class="co-icon">📚</span><div><strong>আরও পড়া:</strong> Book 54 (LedgerPilot Craftsman — ৩৭ দরজা) ঠিক এই স্তর-বিন্যাসের (feature-slice + service + store) প্রোডাকশন-প্রমাণ — দ্বিতীয় কাপড়ের আসল মডেল।</div></div>
   <div class="verse">দ্বিতীয়-রাকাত — প্রথমের-নকশা-পুনরাবৃত্তি, গভীরতায়-বৃদ্ধি: নামাজে-যেমন-দ্বিতীয়-একাক-প্রথমের-ভিত্তি-মেনেই-দীর্ঘ, সিরাজ-মিয়ার-স্যান্ডউইচ-সেই-বৃদ্ধির-স্থাপত্য। চার-স্তর-প্রতিটি-নিজ-ধর্মে-অটল: সার্ভিস-শুধু-যায়, স্টোর-শুধু-রাখে, কম্পোজেবল-শুধু-বাঁধে, ভিউ-শুধু-দেখায় — এক-স্তরের-লোভে-আরেক-স্তরে-ঢুকলে-স্যান্ডউইচ-স্যান্ডউইচ-থাকে-না, খাবার-গলে-হাতে-পড়ে। "প্রত্যেক-কাজের-জন্য-উপযুক্ত-স্থান" — সূরা-সার-যে, প্রত্যেক-প্রাণী-নিজ-চারণে।</div>
@@ -324,11 +328,6 @@ describe('সারণি-দপতর · চার-স্তর', () =&gt; {
 </code></pre></div>
     <div class="studio-note">পরীক্ষা: (১) npx vitest run — তিন-টেস্ট সবুজ। (২) **স্তর-স্যান্ডউইচ-প্রমাণ:** টেস্ট-২ আর ৩-এর-মাঝে পার্থক্য-দেখো — সফল-পথে আশাবাদী-মুছা স্থায়ী, ব্যর্থ-পথে snapshot-rollback; এই-দুই-লাইনই অপ্টিমিস্টিক-নীতির-সার। (৩) আসল-প্রজেক্টে remove-এর-জায়গায় store.removeLocal + useMutationAction-onSuccess (অধ্যায়ের ফাইল-৩/৪), আর rollback মানে load()-পুনঃডাক বা snapshot-ফেরত — দুই-ই-পথ। (৪) **ভাঙো:** rollback-লাইন মুছো → টেস্ট-③ লাল — ব্যর্থ-মুছায় সারি-হারানো নিজের-চোখে। Context7-নোট: pinia.vuejs.org — state/getter-এর-জন্য storeToRefs (প্রতিক্রিয়া-সংরক্ষণ), action সরাসরি-store-থেকে; mswjs.io — resetHandlers-এ বিপদ-বীজ-ধুয়ে-ফেরে। / Tests: three green; the delta between test 2 and 3 IS the optimistic principle; remove the rollback line and watch 3 cry.</div>
   </div>
-  <div class="stat-card"><div class="sc-num">সার্ভিস</div><div class="sc-label">যায় · apiClient</div></div>
-  <div class="stat-card"><div class="sc-num">স্টোর</div><div class="sc-label">রাখে · শেয়ার্ড</div></div>
-  <div class="stat-card"><div class="sc-num">কম্পোজেবল</div><div class="sc-label">বাঁধে · প্রবাহ</div></div>
-  <div class="stat-card"><div class="sc-num">ভিউ</div><div class="sc-label">দেখায় · শুধু</div></div>
-</div>
   <div class="diagram">
     <div class="diag-title">Starter 2 — Four-Layer Sandwich, Three Screens</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
