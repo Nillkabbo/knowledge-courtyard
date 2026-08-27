@@ -446,6 +446,245 @@ doors.push({
   <div class="verse">তাবলিগ — পৌঁছে-দেওয়া: "হে বার্তবাহক, পৌঁছে-দাও যা-তোমার-প্রতি-নাযিল-হলো" (৫:৬৭-এর আদেশ-ছায়া) — বার্তা-পৌঁছানো-অমানত, না-পৌঁছানো-বিশ্বাসঘাতকতা। রিক্তা-জামিলা-নদী-জামালের গলি সেই তাবলিগের তিন-ঘর: ক্ষণিকের-খবর টোস্টে, স্থায়ীর-খবর ইনবক্সে, লাইভ-স্রোত নদীতে — প্রতিটি-বার্তা তার-যোগ্য-ঘরে-পৌঁছে, পড়ার-দাগে, গভীর-লিংকের-ঠিকানায়। যে-গলিতে খবর পৌঁছায়-না-বা-পৌঁছে-পচে-থাকে, সে-গলির ঘণ্টি অলংকার-নয় — প্রতারণা।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>গলি-ফাঁদ:</strong> (১) SSE-কে ডেটা-উৎস ভাবা — স্রোত-মিস হলে ইনবক্স-অবস্থা পুরনো-থাকবে; reconnect-এ fetchList-ই সত্যে-ফেরার-পথ। (২) reconnect-বিহীন বা বিনা-backoff পুনঃছোঁয়া — সার্ভার-ঝড় বা চির-নীরবতা দুই-ই; 2^n-পশ্চাত-ছোঁয়া। (৩) unmount-এ close() না-করা — প্রস্থানের-পরেও টোস্ট-বাজা আর মেমরি-ফাঁদ; দড়ি-ছাড়া বাধ্যতামূলক।</div></div>
   <div class="secret-box">🔔 ক্ষণিক→টোস্ট, স্থায়ী→ইনবক্স+ব্যাজ, লাইভ→SSE-নদী (backoff-পুনঃছোঁয়া, প্রস্থানে-বন্ধ); খবর পৌঁছে-দাগ-হয়, গভীর-লিংক-পায়। / Transient toasts, durable inbox, live river — every message delivered and marked.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ১৮-এর ঘণ্টি-গলি: টোস্ট-ভাটি + ডাক-ঘর + নদী-ঘাট এক-উঠানে বাঁধো — useToast-এর অটো-মৃত্যু, unread-লাল-ব্যাজ, SSE-স্রোতের backoff-পুনঃছোঁয়া; নকল-নদীতে ছিঁড়ন-পুনঃসংযোগ নিজের চোখে দেখো, unmount-এ দড়ি-ছাড়া প্রমাণ করো। / Door 18's bell-lane: tavern + post-office + river in one yard — auto-dying toasts, unread badge, SSE backoff-reconnect on a fake river; prove the rope-release on unmount.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/composables/useToast.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { ref } from 'vue'
+
+export interface Toast {
+  id: number
+  kind: 'success' | 'error' | 'info'
+  text: string
+}
+
+// টোস্ট-ভাটি: মডিউল-স্তরে-একটাই-ভাটি (স্টোরের-মতো) — সব-পর্দা একই-বাট-দেখে
+const toasts = ref&lt;Toast[]&gt;([])
+let nextId = 1
+
+function push(kind: Toast['kind'], text: string, ttl: number) {
+  const t: Toast = { id: nextId++, kind, text }
+  toasts.value.push(t)
+  setTimeout(() =&gt; dismiss(t.id), ttl)      // অটো-মৃত্যু — বাট-নিজে-নিভে-যায়
+}
+
+function dismiss(id: number) {
+  toasts.value = toasts.value.filter(t =&gt; t.id !== id)   // চাইলে-হাতে-তাড়াও
+}
+
+export function useToast() {
+  return {
+    toasts,
+    success: (msg: string) =&gt; push('success', msg, 3000),  // সবুজ-বাট: ৩-সেকেন্ড
+    error:   (msg: string) =&gt; push('error',   msg, 6000),  // লাল-বাট: পড়তে-হবে — দ্বিগুণ-সময়
+    info:    (msg: string) =&gt; push('info',    msg, 4000),
+    dismiss,
+  }
+}</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/composables/useNotificationStream.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+// ঘাটকের-চুক্তি: EventSource-এর-ছায়া — আসল-প্রজেক্টে এই-সুতোয় বাঁধো:
+//   () =&gt; new EventSource('/api/notifications/stream/', { withCredentials: true })
+export interface StreamLike {
+  close(): void
+  onopen: (() =&gt; void) | null
+  onerror: (() =&gt; void) | null
+  addEventListener(name: string, fn: (ev: { data: string }) =&gt; void): void
+}
+
+export function useNotificationStream(
+  connect: () =&gt; StreamLike,
+  handlers: {
+    onNotification: (n: any) =&gt; void   // খবর-এলে: তিন-ঢাল (টোস্ট+ব্যাজ-রিফেচ)
+    onOpen?: () =&gt; void               // প্রথম-খোলা ও reconnect — উভয়েই fetchList
+  },
+) {
+  const connected = ref(false)
+  let es: StreamLike | null = null
+  let retry = 0
+  let retryTimer: number | undefined
+
+  function open() {
+    es = connect()
+    es.onopen = () =&gt; {
+      connected.value = true
+      retry = 0                        // ঘড়ি-শূন্য — পরের-ছিঁড়ন আবার ১s-থেকে
+      handlers.onOpen?.()              // মিসড-খবর: নদী=ট্রিগার, সত্য=সার্ভার
+    }
+    es.addEventListener('notification', (ev) =&gt; {
+      handlers.onNotification(JSON.parse(ev.data))
+    })
+    es.onerror = () =&gt; {               // স্রোত-ছিঁড়লে
+      connected.value = false
+      es?.close()
+      const backoff = Math.min(30_000, 1000 * 2 ** retry++)  // পশ্চাৎ-পশ্চাত 1s→2s→4s…
+      console.log('🌊 স্রোত-ছিঁড়লে — ' + (backoff / 1000) + 's-পরে পুনঃছোঁয়া')
+      retryTimer = setTimeout(open, backoff)
+    }
+  }
+
+  onMounted(open)
+  onBeforeUnmount(() =&gt; {
+    clearTimeout(retryTimer)           // অপেক্ষমাণ-পুনঃছোঁয়া-বাতিও-নেভাও
+    es?.close()                        // দড়ি-ছাড়া — বাধ্যতামূলক
+    console.log('🪢 দড়ি-ছাড়া — ঘাট-বন্ধ ✓')
+  })
+
+  return { connected }
+}</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/BellLaneScreen.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { ref, computed } from 'vue'
+import { useToast } from './composables/useToast'
+import { useNotificationStream, type StreamLike } from './composables/useNotificationStream'
+
+const { toasts, success, error, info, dismiss } = useToast()
+
+// ── ডাক-ঘর: নোটিফিকেশন-স্টোরের-ছায়া (আসল-প্রজেক্টে Pinia defineStore) ──
+interface Notification { id: number; title: string; kind: string; read_at: string | null }
+
+const serverMail: Notification[] = [
+  { id: 1, title: 'চালান inv-42 পেমেন্ট-পেল', kind: 'invoice.paid', read_at: null },
+  { id: 2, title: 'Xero-সিঙ্ক শেষ — ১২টি মিলল', kind: 'sync.done', read_at: '2026-08-26T10:00:00Z' },
+  { id: 3, title: 'ব্যাচ batch-7 ব্যর্থ — দেখো', kind: 'batch.failed', read_at: null },
+]
+
+const items = ref&lt;Notification[]&gt;([])
+const unread = computed(() =&gt; items.value.filter(n =&gt; !n.read_at).length)   // লাল-ব্যাজ
+
+function wait(ms: number) { return new Promise(r =&gt; setTimeout(r, ms)) }
+
+// নকল-সার্ভার: দাগ-সার্ভারে, তালিকা-রিফেচে (সার্ভার-ই-সত্য)
+const notifService = {
+  async list() { await wait(300); return [...serverMail] },
+  async markRead(id: number) {
+    await wait(200)
+    const n = serverMail.find(x =&gt; x.id === id)
+    if (n) n.read_at = new Date().toISOString()
+  },
+  async markAllRead() {
+    await wait(250)
+    serverMail.forEach(n =&gt; { n.read_at = new Date().toISOString() })
+  },
+}
+
+async function fetchList() { items.value = await notifService.list() }
+async function markRead(n: Notification) { await notifService.markRead(n.id); await fetchList() }
+async function markAll()   { await notifService.markAllRead();   await fetchList() }
+
+// ── গভীর-লিংক: চিঠি→ঘর — রুট-নাম/পথের-মানচিত্র, ভাঙা-পথ-রোধ ──
+const deepLinkMap: Record&lt;string, string&gt; = {
+  'invoice.paid': '/invoices/42',
+  'sync.done': '/sync/logs',
+  'batch.failed': '/invoices/batch-7',
+}
+function notificationDeepLink(n: Notification) {
+  return deepLinkMap[n.kind] ?? '/inbox'
+}
+function openLetter(n: Notification) {
+  void markRead(n)                                  // দাগ-আগে
+  info('যাওয়া-হচ্ছে: ' + notificationDeepLink(n))    // আসলে: router.push(notificationDeepLink(n))
+}
+
+// ── নদী-ঘাট: নকল-স্রোত (ঘরে-পরীক্ষার; সার্ভারে EventSource-আসল) ──
+class FakeRiver implements StreamLike {
+  onopen: (() =&gt; void) | null = null
+  onerror: (() =&gt; void) | null = null
+  private listeners: Record&lt;string, ((ev: { data: string }) =&gt; void)[]&gt; = {}
+  private ticks = 0
+  private timer = 0
+  private dead = false
+
+  constructor() {
+    setTimeout(() =&gt; { if (!this.dead) this.onopen?.() }, 400)    // ~৪০০ms-এ স্রোত-চালু
+    this.timer = setInterval(() =&gt; {
+      if (this.dead) return
+      this.ticks++
+      if (this.ticks % 4 === 0) { this.onerror?.(); return }      // ৪-খবরে-একবার ছিঁড়ে
+      const letter: Notification = {
+        id: 100 + this.ticks,
+        title: '🌊 নদীর-চিঠি ' + this.ticks,
+        kind: 'sync.done', read_at: null,
+      }
+      serverMail.unshift(letter)                                   // ডাক-ঘরে-জমা-আগে
+      const fns = this.listeners['notification'] || []
+      fns.forEach(fn =&gt; fn({ data: JSON.stringify(letter) }))      // তারপর-ঘাটে-ঘোষণা
+    }, 2500)
+  }
+
+  addEventListener(name: string, fn: (ev: { data: string }) =&gt; void) {
+    if (!this.listeners[name]) this.listeners[name] = []
+    this.listeners[name].push(fn)
+  }
+
+  close() {                                   // দড়ি-ছাড়া: সব-টিক-টিক-মৃত
+    if (this.dead) return
+    this.dead = true
+    clearInterval(this.timer)
+    console.log('🔒 নকল-নদী-বন্ধ — টিক-টিক থামল ✓')
+  }
+}
+
+// ঘাট-বাঁধা: তিন-ঢাল এখানে — ① টোস্ট ② ব্যাজ-সত্যে ③ মিসড-খবর
+const { connected } = useNotificationStream(
+  () =&gt; new FakeRiver(),
+  {
+    onNotification: (n) =&gt; { info(n.title); void fetchList() },
+    onOpen: () =&gt; void fetchList(),
+  },
+)
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div style="max-width: 620px; margin: 1rem auto; font-family: sans-serif"&gt;
+    &lt;h3&gt;🔔 ঘণ্টি-বাহকদের-গলি&lt;/h3&gt;
+
+    &lt;!-- নদীর-দশা + লাল-ব্যাজ --&gt;
+    &lt;p&gt;
+      &lt;span v-if="connected" style="color:#16a34a"&gt;🌊 নদী-বাঁচা&lt;/span&gt;
+      &lt;span v-else style="color:#d97706"&gt;🔄 পুনঃসংযোগ… (backoff-ঘড়ি চলছে)&lt;/span&gt;
+      · না-পড়া: &lt;strong&gt;{{ unread }}&lt;/strong&gt;
+    &lt;/p&gt;
+
+    &lt;!-- টোস্ট-ভাটির-বাট --&gt;
+    &lt;div v-for="t in toasts" :key="t.id" @click="dismiss(t.id)"
+         :style="{ padding: '.35rem .7rem', marginBottom: '.3rem', borderRadius: '6px',
+                   color: t.kind === 'error' ? '#dc2626' : t.kind === 'success' ? '#16a34a' : '#2563eb' }"&gt;
+      {{ t.kind === 'error' ? '🔴' : t.kind === 'success' ? '✅' : '🔵' }} {{ t.text }}
+      &lt;small&gt;(নিজে-মিলবে — ক্লিকে-তাড়াও)&lt;/small&gt;
+    &lt;/div&gt;
+
+    &lt;!-- ডাক-ঘর: ইনবক্স — ক্লিক = দাগ + গভীর-লিংক --&gt;
+    &lt;ul style="list-style:none; padding:0"&gt;
+      &lt;li v-for="n in items" :key="n.id" @click="openLetter(n)"
+          :style="{ cursor: 'pointer', padding: '.4rem .6rem', borderRadius: '6px',
+                    background: n.read_at ? 'transparent' : 'rgba(239,68,68,.10)' }"&gt;
+        &lt;strong v-if="!n.read_at" style="color:#dc2626"&gt;●&lt;/strong&gt;
+        {{ n.title }}
+        &lt;small v-if="n.read_at"&gt;— পড়া ✓&lt;/small&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;!-- ভাটার-দুই-বাট + ডাক-ঘরের-ঝাড়ু --&gt;
+    &lt;button @click="success('সংরক্ষিত হলো')"&gt;✅ সবুজ-বাট&lt;/button&gt;
+    &lt;button @click="error('ব্যর্থ — মানুষের-কাজ-দরকার')"&gt;🔴 লাল-বাট&lt;/button&gt;
+    &lt;button @click="markAll()"&gt;📖 সব-পড়া-দাগ&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { ref } from 'vue'
+import BellLaneScreen from './BellLaneScreen.vue'
+
+// প্রস্থান-প্রমাণ: v-if-নামা = আসল-আনমাউন্ট → ঘাটকের-দড়ি-ছাড়া
+const laneOpen = ref(true)
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;button @click="laneOpen = !laneOpen"&gt;
+    {{ laneOpen ? '🚪 গলি-ছেড়ে-যাও (unmount)' : '🔔 গলিতে-ফিরো (remount)' }}
+  &lt;/button&gt;
+  &lt;BellLaneScreen v-if="laneOpen" /&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) খুললেই ~৪০০ms-এ 🌊 বাঁচা-ব্যাজ + fetchList-সত্যে ইনবক্স। (২) ২.৫s-পরপর নদীর-চিঠি: টোস্ট-টানে + ডাক-ঘরে-জমা + ব্যাজ +১। (৩) ৪-খবরে-একবার স্রোত-ছিঁড়ে → কনসোলে backoff ১s→২s… তারপর পুনঃবাঁচা + মিসড-fetchList। (৪) চিঠি-ক্লিক → পড়া-দাগ + গভীর-লিংক-ঘোষণা। (৫) 🚪 unmount-বোতাম → কনসোলে 'দড়ি-ছাড়া ✓' — আর-কোনো-টিক-টিক/টোস্ট নেই; ফিরলে নতুন-নদী। Context7-নোট: vuejs.org composables-নির্দেশ — পার্শ্ব-প্রভাব onMounted-এ-বাঁধো, onUnmounted-এ-পরিষ্কার-করো; আসল-প্রজেক্টে connect = new EventSource(url, { withCredentials: true })। / Tests: watch the river live, break it, watch backoff, then unmount and watch everything die.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">Bell-Carrier's Lane — Toast Tavern, Post Office, River Ghat</div>
     <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">

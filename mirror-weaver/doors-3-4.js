@@ -136,7 +136,7 @@ watch(query, (q) =&gt; {
   clearTimeout(searchTimer)
   searchTimer = setTimeout(() =&gt; {
     // নকল-API — সত্যিকারে এখানে fetch বসত
-    results.value = q ? [\`${q} — সুতো\`, \`${q} — কাপড়\`] : []
+    results.value = q ? [\`\${q} — সুতো\`, \`\${q} — কাপড়\`] : []
   }, 300)
 })
 
