@@ -417,6 +417,79 @@ doors.push({
   <div class="verse">প্রথম-রাকাত — ছোট-কিন্তু-পূর্ণ-একক: নামাজ-শাস্ত্রে-যেমন-প্রথম-একাক-ই-শিক্ষা, জমা-পড়ে-না। শাগরফা-আপার-শেখা-কাপড় সেই-প্রথম-এককের-তাঁত-রূপ: পঞ্চাশ-লাইন, কিন্তু-আঙুল-তলে-গিঁট-নেই — যোগ-গোছ-কাট-স্মৃতি চার-অঙ্গ-সম্পূর্ণ। যে-শাগিরদ প্রথম-কাপড়েই-সোনার-বর্ডর-চায়, সে-দ্বিতীয়-সপ্তাহে-তাঁত-ছেড়ে-দেয়; আর-যে-ছোট-পূর্ণ-গাঁথে, তার-দ্বিতীয়-কাপড়-নিজে-নিজেই-বড়-নকশা-দাবি-করে।</div>
   <div class="callout tip"><span class="co-icon">🎯</span><div><strong>শাগরফা-আপার-নোট:</strong> (১) প্রতিটি-লাইন-নিজে-হাতে-টাইপ-করো — কপি-পেস্টে-আঙুল-শেখে-না। (২) এক-বার-চালিয়ে-তারপর-ভাঙো: filter-লজিক-মুছে-দেখো-কী-ভাঙে, computed-এর-জায়গায়-মেথড-বসাও — পার্থক্য-চোখে-পড়বে। (৩) :key-এর-জায়গায় index-দিয়ে-দেখো মুছতে-কী-অদ্ভুত-হয় — তারপর-আসল-id-ফেরাও; এই-এক-ভাঙা-ই :key-এর-শিক্ষা।</div></div>
   <div class="secret-box">🌱 প্রথম-কাপড়: টু-ডু-তাঁত — এক-ফাইল, চার-সুতো, সিন্দুক-স্মৃতি; হাতে-গাঁথো, ভেঙে-দেখো, রেখে-দাও। / Type it, break it, keep it — the whole loom in fifty lines.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ২২-এর টু-ডু-তাঁত: অধ্যায়ের App.vue নিজে-টাইপ-করো (ওপরের ফাইল-২), তারপর এই তিন-পরীক্ষার-দড়ি বাঁধো — প্রথম-টেস্ট (দরজা ২০-এর তলা-১: mount → add → সারি-১), :key-শিক্ষার-পিন (index-key ঢুকলেই কাঁদে), সিন্দুক-স্মৃতি-পিন (watch-deep-এ লেখা, রিফ্রেশে টিকে)। তারপর ভাঙো — শাগরফা-আপার নোট-হুবহু: computed→মেথড, :key→index — কোন-পিন কাঁদে দেখো। / Door 22's todo-loom: type the chapter's App.vue yourself, then pin it with three tests — the first mount-test, the :key-lesson pin, the localStorage-memory pin; then break it exactly as Apa's note says.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/App.test.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { describe, it, expect, beforeEach } from 'vitest'
+import { mount } from '@vue/test-utils'
+import App from './App.vue'
+
+// শাগরফা-আপার প্রথম-টেস্ট: mount → add → সারি-১ (দরজা ২০, তলা-১)
+beforeEach(() =&gt; localStorage.clear())
+
+describe('টু-ডু-তাঁত · প্রথম-কাপড়', () =&gt; {
+  it('ফর্ম-লেখা → যোগ → তালিকায় সুতো', async () =&gt; {
+    const w = mount(App)
+    await w.find('[data-test=draft]').setValue('চালান-মিলাও')
+    await w.find('form').trigger('submit.prevent')
+    expect(w.findAll('li')).toHaveLength(1)
+    expect(w.text()).toContain('চালান-মিলাও')
+  })
+
+  it('ফাঁকা-লেখা যোগ-হয়-না (.trim + খালি-রক্ষী)', async () =&gt; {
+    const w = mount(App)
+    await w.find('[data-test=draft]').setValue('   ')
+    await w.find('form').trigger('submit.prevent')
+    expect(w.findAll('li')).toHaveLength(0)
+  })
+
+  it('কাটা-সুতো বাকিদের-হাতে-লাগে-না (:key-শিক্ষা)', async () =&gt; {
+    const w = mount(App)
+    // তিন-সুতো গাঁথো
+    for (const t of ['এক', 'দুই', 'তিন']) {
+      await w.find('[data-test=draft]').setValue(t)
+      await w.find('form').trigger('submit.prevent')
+    }
+    expect(w.findAll('li')).toHaveLength(3)
+    // প্রথমটা কাটো — বাকি দুই-ই নিজের-নাম ধরে-রাখবে (:key = আসল-id)
+    await w.findAll('li')[0]!.find('button').trigger('click')
+    const texts = w.findAll('li').map(li =&gt; li.text())
+    expect(texts).toEqual(['দুই', 'তিন'])
+  })
+
+  it('সিন্দুক-স্মৃতি: watch-deep লেখে, নতুন-mount পড়ে', async () =&gt; {
+    const w = mount(App)
+    await w.find('[data-test=draft]').setValue('স্থায়ী-খতিয়ান')
+    await w.find('form').trigger('submit.prevent')
+    expect(JSON.parse(localStorage.getItem('todos') ?? '[]')).toHaveLength(1)
+    const w2 = mount(App)                    // রিফ্রেশের-ছায়া — নতুন-জগৎ
+    expect(w2.findAll('li')).toHaveLength(1) // কাপড় টিকে-আছে
+  })
+})
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/looms/extractTodos.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>// টু-ডু-তাঁতের প্রস্তুত-রশ্মি: App.vue-এর সত্য-উৎস-থেকে খালি-ফোল্ডারে পরীক্ষা-কারখানা
+// (এই-ফাইলটি ব্যায়ামের-সহায়ক: পরের-স্টার্টারগুলোতে একই-ছাঁচ ফেরবে)
+export interface Todo { id: number; text: string; done: boolean }
+
+export function loadTodos(storage: Storage): Todo[] {
+  try {
+    const raw = storage.getItem('todos')
+    if (!raw) return []
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed)
+      ? parsed.filter(t =&gt; t &amp;&amp; typeof t.id === 'number' &amp;&amp; typeof t.text === 'string')
+      : []
+  } catch {
+    return []                                  // পচা-সিন্দুক → খালি-কাপড় (নীরব-নয়: ডিফল্ট-নিরাপদ)
+  }
+}
+
+export function saveTodos(storage: Storage, todos: Todo[]): void {
+  storage.setItem('todos', JSON.stringify(todos))
+}
+</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) npx vitest run — চার-টেস্ট সবুজ। (২) **ভাঙো-১ (:key-শিক্ষা):** App.vue-এ :key="t.id" → :key="index" করো (v-for-এ index যোগ) → কাটা-সুতো-টেস্ট লাল — নাম-উল্টে-যাওয়া নিজের-চোখে। (৩) **ভাঙো-২ (স্মৃতি):** watch-এর {deep:true} তুলে-দাও → সিন্দুক-টেস্ট লাল। (৪) **ভাঙো-৩ (উদ্ভূদ-সত্য):** computed-এর-জায়গায় মেথড বসাও → দেখো shown আর রিয়েক্ট-করে-না যখন filter বদলায় (নতুন-প্রশ্ন: কেন?)। Context7-নোট: vuejs.org — v-model.trim ফর্ম-মডিফায়ার নথিভুত; watch-এ {deep:true} অ্যারে-গভীর-পরিবর্তনে বাধ্য — সিন্দুক-লেখার-আইন। / Tests: four green; then break :key, deep, and computed in turn — each pin cries its own lesson.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">Starter 1 — The Todo Loom, One File Whole</div>
     <svg viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg">
