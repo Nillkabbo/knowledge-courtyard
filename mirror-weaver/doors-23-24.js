@@ -542,6 +542,137 @@ doors.push({
   <div class="verse">তৃতীয়-রাকাত — নকশা-একই, দায়-বাড়ে: প্রথম-একাকে-শেখা, দ্বিতীয়য়-গঠন, তৃতীয়য়-হুকুম। নুরুল-হুদার-দ্বিস্তর-চশমা সেই-দায়ের-প্রতীক: এক-চোখ-খসড়ায় (প্রিভিউ), এক-চোখ-স্থায়ীতে (কমিট) — দুই-ই-একসাথে-খোলা, কোনোটা-বন্ধ-নয়। "হে-ঈমানদারগণ, তোমরা-দৃঢ়ভাবে-স্থির-থাকো-ন্যায়ের-ওপর, আল্লাহর-সাক্ষী-হিসেবে" (৪:১৩৫) — বড়-লেখার-সাক্ষী-দুই-চোখের: এক-দেখা, এক-স্বীকৃতি। যে-দপতরে-এক-চোখেই-সব-লেখা-হয়, সেখানে-ভুল-লেখাও-এক-চোখের-ই মুখ-চেয়ে-থাকে।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>দপতর-ফাঁদ:</strong> (১) সফল-প্রয়োগের-পরে-নোঙর-সিঙ্ক-না-করা — dirty সত্য-থেকে-যায়, প্রস্থান-সাবধান-প্রশ্ন-আটকে-থাকে। (২) কনফার্ম-বাটন সবসময়-দেখানো — ফেজ-ঘড়ির-পাহারা-থাকলেও দেয়াল-পাহারা (v-if) বাদ-দিও-না; দুই-স্তর। (৩) ব্যতিক্রম-সারির-ভেতরের-যাচাই এক-জায়গায়-না-করে-সাবমিটে-জমিয়ে — সারি-যোগার-সময়েই-সিল, শেষে-নয়।</div></div>
   <div class="secret-box">🏢 ফর্ম-ভারী-অ্যাডমিন: নোঙর+dirty (আফসার), চক-কালি-সাবমিট (নাজির), রোল-ফটক (বাবর) — বহু-অংশ-ফর্মও দুই-অন্ধতা-মুক্ত। / Anchor, preview-clock, role-gate — three artisans, one safe office.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ২৪-এর ফর্ম-দপতর: অধ্যায়ের তিন-টেস্ট-বীজ বাঁধো — রোল-ফটক (canEnter-ইউনিয়ন), চক-কালি-ক্রম (দরজা ১৭-এর usePreviewConfirmFlow পুনঃব্যবহার — নকশা-পুনরাবৃত্তি!), কালি-পাহারার শূন্য-কল-প্রমাণ (MSW-গণনা) + বোনাস: ফিল্ড-সিল-৪০০ আর নোঙর-dirty। প্রয়োজন: দরজা ১৭-এর src/composables/usePreviewConfirmFlow.ts আর দরজা ১৯-এর @-উপনাম তোমার-প্রজেক্টে-আছে। / Door 24's office: bind the chapter's three test-seeds — role-gate, chalk-ink sequence reusing Door 17's composable (pattern repetition!), ink-guard zero-call proof, plus field-seal-400 and anchor-dirty pins.</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/tests/msw-billing.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { setupServer } from 'msw/node'
+import { http, HttpResponse } from 'msw'
+
+// হ্যান্ডলার-বই: এক-এন্ডপয়েন্ট-দুই-ডাক (dry_run-চিহ্নে ভিন্ন)
+export const applyCalls = { dry: 0, ink: 0 }        // গণনা-ঘর (msw-runbook-ছায়া)
+export function resetCalls() { applyCalls.dry = 0; applyCalls.ink = 0 }
+
+export const billingHandlers = [
+  http.post('*/api/billing/cycle/apply/', async ({ request }) =&gt; {
+    const body = (await request.json()) as { dry_run?: boolean; floor?: number }
+    if (typeof body.floor !== 'number' || body.floor &lt; 0) {
+      return HttpResponse.json(
+        { floor: ['সংখ্যা দাও — ঋণাত্মক নয়'] }, { status: 400 })   // ফিল্ড-সিল
+    }
+    if (body.dry_run) {                              // চক-পর্ব
+      applyCalls.dry++
+      return HttpResponse.json({ dry_run: true, affected: [
+        { client: 'করিম-স্টোর', now: 500, next: body.floor },
+        { client: 'রহিম-ট্রেডার্স', now: 800, next: body.floor },
+      ] })
+    }
+    applyCalls.ink++                                 // কালি-পর্ব
+    return HttpResponse.json({ dry_run: false, affected: [
+      { client: 'করিম-স্টোর', now: 500, next: body.floor },
+    ] })
+  }),
+]
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/features/billing/guard.ts + composables/useCycleForm.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>// ── guard.ts — দরজা ১৪-এর রোল-ইউনিয়ন-বিচারের খাটো-রূপ ──
+export function canEnter(allowed: string[], userRoles: string[]): boolean {
+  if (allowed.includes('*')) return true
+  return userRoles.some(r =&gt; allowed.includes(r))
+}
+
+// ── composables/useCycleForm.ts — অধ্যায়ের ফাইল-২ (নোঙর-নীতি) ──
+import { reactive, computed, ref } from 'vue'
+
+export function useCycleForm&lt;T extends object&gt;(seed: T) {
+  const form = reactive(structuredClone(seed)) as T
+  const anchor = structuredClone(seed)          // নোঙর — dirty-র-মানদণ্ড
+  const dirty = computed(() =&gt;
+    JSON.stringify(form) !== JSON.stringify(anchor))
+  const fieldErrors = ref&lt;Record&lt;string, string[]&gt;&gt;({})
+  function resetAll() {
+    Object.assign(form, structuredClone(anchor))
+    fieldErrors.value = {}
+  }
+  return { form, dirty, fieldErrors, resetAll }
+}
+</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/features/billing/cycle.test.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { describe, it, expect, beforeAll, afterEach, afterAll } from 'vitest'
+import { setupServer } from 'msw/node'
+import { billingHandlers, applyCalls, resetCalls } from '../../tests/msw-billing'
+import { canEnter } from '../guard'
+import { useCycleForm } from '../composables/useCycleForm'
+import { usePreviewConfirmFlow } from '@/composables/usePreviewConfirmFlow'   // দরজা ১৭
+
+const server = setupServer(...billingHandlers)
+beforeAll(() =&gt; server.listen())
+afterEach(() =&gt; { server.resetHandlers(); resetCalls() })
+afterAll(() =&gt; server.close())
+
+interface Row { client: string; now: number; next: number }
+
+// সার্ভিস-ছায়া: এক-এন্ডপয়েন্ট, দুই-ডাক (অধ্যায়ের ফাইল-১)
+async function apply(p: { floor: number }, dryRun: boolean) {
+  const res = await fetch('/api/billing/cycle/apply/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ...p, dry_run: dryRun }),
+  })
+  const data = await res.json()
+  if (!res.ok) throw new Error(data.floor ? data.floor[0] : 'প্রয়োগ ব্যর্থ')
+  return data as { dry_run: boolean; affected: Row[] }
+}
+
+function makeFlow() {
+  return usePreviewConfirmFlow&lt;{ floor: number }, { dry_run: boolean; affected: Row[] }, Row&gt;({
+    fetch: apply,
+    rows: (r) =&gt; r.affected,
+  })
+}
+
+describe('তৃতীয়-কাপড় · ফর্ম-ভারী-দপতর', () =&gt; {
+  it('① রোল-ফটক: ইউনিয়নে-নেই → প্রবেশ-নয়', () =&gt; {
+    expect(canEnter(['admin'], ['viewer'])).toBe(false)          // ৪০৩-পথ
+    expect(canEnter(['admin'], ['admin', 'viewer'])).toBe(true)  // ইউনিয়ন-মিল
+  })
+
+  it('② চক-কালি-ক্রম: preview→সারি, confirm→কালি', async () =&gt; {
+    const flow = makeFlow()
+    await flow.preview({ floor: 600 })
+    expect(flow.phase.value).toBe('preview')
+    expect(flow.rows.value).toHaveLength(2)      // প্রতি-ক্লায়েন্ট-প্রভাব
+    expect(applyCalls.dry).toBe(1)
+    await flow.confirm({ floor: 600 })
+    expect(flow.phase.value).toBe('done')
+    expect(applyCalls.ink).toBe(1)
+  })
+
+  it('③ কালি-পাহারা: idle থেকে-সরাসরি confirm → শূন্য-কল', async () =&gt; {
+    const flow = makeFlow()
+    await flow.confirm({ floor: 600 })           // অন্ধ-কালি-চেষ্টা
+    expect(flow.phase.value).toBe('idle')        // ঘড়ি-নড়েইনি (আচরণ-দাবি)
+    expect(flow.rows.value).toHaveLength(0)
+    expect(applyCalls.dry + applyCalls.ink).toBe(0)   // গণনা-পিন: শূন্য
+  })
+
+  it('④ ফিল্ড-সিল: 400+floor-বার্তা → এরর-প্রবাহ', async () =&gt; {
+    const flow = makeFlow()
+    await flow.preview({ floor: -5 })            // ঋণাত্মক-মেঝে → সার্ভার-৪০০
+    expect(flow.phase.value).toBe('error')
+    expect(flow.error.value).toContain('সংখ্যা')
+  })
+
+  it('⑤ নোঙর: ছোঁয়ায় dirty, resetAll-এ ফেরত', () =&gt; {
+    const seed = { period: 'monthly', floor: 500, exceptions: [] }
+    const { form, dirty, resetAll } = useCycleForm(seed)
+    expect(dirty.value).toBe(false)
+    form.floor = 600
+    expect(dirty.value).toBe(true)
+    resetAll()
+    expect(dirty.value).toBe(false)              // খসড়া-ফেরত
+  })
+})
+</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) npx vitest run — পাঁচ-টেস্ট সবুজ। (২) **দুই-স্তর-পাহারা-প্রমাণ:** টেস্ট-③-এ ঘড়ি-না-নড়া (phase='idle') আচরণ-দাবি, গণনা-শূন্য গৌণ-পিন — mswjs.io-র best-practice: অনুরোধ-গণনা-দাবি একা-ভঙ্গুর; আচরণ-আগে, গণনা-পরে। (৩) **ভাঙো:** দরজা ১৭-এর কালি-পাহারা (phase!=='preview'-র early-return) তুলে-দাও → টেস্ট-③ লাল — পাহারার-মূল্য নিজের-চোখে। (৪) আসল-প্রজেক্টে: রুটে meta.allowedRoles+গার্ড-চেইন (দরজা ১৪), প্রিভিউতে সিলমোহর-ইনপুট, সফলে নোঙর-পুনঃসিঙ্ক (onSuccess-এ Object.assign)। Context7-নোট: mswjs.io — হ্যান্ডলারের-ভেতরে-গণনা/লগ (runbook-প্যাটার্ন) সমর্থিত; avoid-request-assertions-নীতি মেনে আচরণ-দাবি-প্রধান। / Tests: five green; test 3 proves the guard behavior-first with the zero-count as secondary pin; remove Door 17's ink-guard early-return and watch it cry.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">Starter 3 — Form-Heavy Admin: Three Artisans at One Table</div>
     <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
