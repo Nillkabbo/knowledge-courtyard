@@ -110,6 +110,114 @@ doors.push({
   <div class="verse">সিরাত — সুগম-পথ: "আমাকে সরল পথ দেখাও" (১:৬) — পথ এক, নির্দেশ স্পষ্ট, পথহারা নয়। ইমরান ভাইয়ের নকশা-দপ্তর সেই সিরাতের রাস্তা-রূপ: প্রতিটি পথের নাম-ফলক, প্রতিটি মোড়ে জানালা, আর ধরার-জাল — যে-পথ নকশায় নেই সেখানে পথহারা-পাতা, অন্ধকার নয়। যে শহরে রাস্তা দেয়ালে দেয়ালে লেখা, সে-শহরে প্রতিটি নতুন কারিগর পথ আবিষ্কার করে নিজের জীবন দিয়ে।</div>
   <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>রাস্তা-ফাঁদ:</strong> (১) পথ-স্ট্রিং হার্ডকোড (<code>to="/clients/42"</code>) — পথ-বদলে নীরব-ভাঙা লিংক; name+params ব্যবহার করো। (২) <code>:id</code>-পরিবর্তনে একই উপাদান পুনর্ব্যবহৃত হয়ে পুরনো-ডেটা দেখানো — watch(params) দিয়ে রিফেচ। (৩) সব-ভিউ স্ট্যাটিক-import — প্রথম-বান্ডেল ফুলে-ওঠে; রুটে লেজি-ছাঁচ অভ্যাস করো।</div></div>
   <div class="secret-box">🗺️ রুট = path+name+component: নামে-ডাকো, খিলিতে-গভীরে-যাও, জানালায়-বসাও, লেজিতে-হালকা-থাকো। / Declare routes once, navigate by name, link deep, load lazily.</div>
+  <div class="studio">
+    <div class="studio-title">🧵 কারিগরের কার্যশালা — Try in Your IDE</div>
+    <div class="studio-note">দরজা ১৩-এর নকশা-দপ্তর: নিজের শহর-মানচিত্র আঁকো — নাম-দেওয়া রুট, :id-গভীর-লিংক, নেস্টেড-গলি, লেজি-চালক, ধরার-জাল। আগে npm install vue-router@4 + main.ts-এ app.use(router)। / Door 13's mapping-office: draw your own city map — named routes, :id deep-links, nested alleys, lazy drivers, catch-all net. First: npm install vue-router@4 and app.use(router).</div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/router/index.ts</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>import { createRouter, createWebHistory } from 'vue-router'
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    // ① স্থানান্তর-পথ + স্ট্যাটিক-বীজ
+    { path: '/', redirect: { name: 'market' } },
+    { path: '/market', name: 'market',
+      component: () =&gt; import('../views/MarketView.vue') },
+
+    // ③ গভীর-লিংক — :id (রেগেক্স-সীমাসহ)
+    { path: '/clients/:id(\\d+)', name: 'client-detail',
+      component: () =&gt; import('../views/ClientDetailView.vue') },
+
+    // ④ নেস্টেড-গলি — Layout-এ &lt;RouterView /&gt;-জানালা
+    { path: '/admin', component: () =&gt; import('../layouts/AdminLayout.vue'),
+      children: [
+        { path: '', name: 'admin-home',      // '' = নিজ-পথ
+          component: () =&gt; import('../views/AdminHome.vue') },
+        { path: 'users', name: 'admin-users',
+          component: () =&gt; import('../views/AdminUsers.vue') },
+      ] },
+
+    // ⑤ ধরার-জাল
+    { path: '/:pathMatch(.*)*', name: 'not-found',
+      component: () =&gt; import('../views/NotFoundView.vue') },
+  ],
+})
+
+// নতুন-রুটে ওপরে ফেরা
+router.scrollBehavior = undefined  // (ছোট-নোট: scrollBehavior অপশন-আর্গে যায়)
+export default router</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/views/ClientDetailView.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>&lt;script setup lang="ts"&gt;
+import { computed, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+
+const route = useRoute()
+const router = useRouter()
+
+const id = computed(() =&gt; route.params.id)
+
+// ⚠ প্যারাম-বদলে একই উপাদান পুনর্ব্যবহৃত — নিজে পাহারা দাও!
+watch(id, (newId) =&gt; {
+  console.log('রুট-বদল → পুনর্বার ডেটা-আনা, id =', newId)
+}, { immediate: true })
+
+function next() {
+  // নামে-ডাক — পথ-স্ট্রিং নয় (পথ বদলালেও লিংক বাঁচে)
+  router.push({ name: 'client-detail', params: { id: Number(id.value) + 1 } })
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h3&gt;ক্লায়েন্ট-দলিল #{{ id }}&lt;/h3&gt;
+    &lt;button @click="next"&gt;পরের ক্লায়েন্ট (নামে-ডাক)&lt;/button&gt;
+    &lt;RouterLink :to="{ name: 'market' }"&gt;← বাজারে ফেরো&lt;/RouterLink&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/layouts/AdminLayout.vue + views</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>// layouts/AdminLayout.vue
+&lt;script setup lang="ts"&gt;&lt;/script&gt;
+&lt;template&gt;
+  &lt;div style="border:2px solid #6366f1; padding:.8rem; border-radius:10px"&gt;
+    &lt;nav&gt;
+      &lt;RouterLink :to="{ name: 'admin-home' }"&gt;ঘর&lt;/RouterLink&gt; ·
+      &lt;RouterLink :to="{ name: 'admin-users' }"&gt;ব্যবহারকারী&lt;/RouterLink&gt;
+    &lt;/nav&gt;
+    &lt;hr&gt;
+    &lt;RouterView /&gt;   &lt;!-- জানালা: চিলড্রেন এখানে বসে --&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+// views/MarketView.vue
+&lt;template&gt;&lt;div&gt;🧵 বাজার-পর্দা — লেজি-চালকে এসেছে (নেটওয়ার্ক-ট্যাব দেখো)&lt;/div&gt;&lt;/template&gt;
+
+// views/AdminHome.vue
+&lt;template&gt;&lt;div&gt;🏠 অ্যাডমিন-ঘর&lt;/div&gt;&lt;/template&gt;
+
+// views/AdminUsers.vue
+&lt;template&gt;&lt;div&gt;👥 ব্যবহারকারী-গলি&lt;/div&gt;&lt;/template&gt;
+
+// views/NotFoundView.vue
+&lt;script setup lang="ts"&gt;
+import { useRoute } from 'vue-router'
+const route = useRoute()
+&lt;/script&gt;
+&lt;template&gt;&lt;div&gt;🧭 পথহারা-পাতা: {{ route.path }} নকশায় নেই&lt;/div&gt;&lt;/template&gt;</code></pre></div>
+    <div class="studio-file"><div class="studio-file-head"><span>src/main.ts + App.vue</span><button class="copy-btn" onclick="copyStudio(this)">📋 কপি</button></div><pre><code>// main.ts
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+createApp(App).use(router).mount('#app')
+
+// App.vue
+&lt;template&gt;
+  &lt;nav&gt;
+    &lt;RouterLink :to="{ name: 'market' }"&gt;বাজার&lt;/RouterLink&gt; ·
+    &lt;RouterLink :to="{ name: 'client-detail', params: { id: 7 } }"&gt;ক্লায়েন্ট #৭&lt;/RouterLink&gt; ·
+    &lt;RouterLink :to="{ name: 'admin-home' }"&gt;অ্যাডমিন&lt;/RouterLink&gt;
+  &lt;/nav&gt;
+  &lt;hr&gt;
+  &lt;RouterView /&gt;
+&lt;/template&gt;</code></pre></div>
+    <div class="studio-note">পরীক্ষা: (১) নেভিগেট করো — নেটওয়ার্ক-ট্যাবে প্রতি-ভিউ আলাদা-চাংক লোড হতে দেখো (লেজি-চালক)। (২) ক্লায়েন্ট-পর্দায় "পরের ক্লায়েন্ট" চাপো — কনসোলে watch-পাহারার লগ (প্যারাম-বদল, একই-উপাদান)। (৩) URL-এ /clients/abc লিখো — রেগেক্স-সীমার কারণে ধরার-জালে (NotFound)। (৪) অ্যাডমিন-গলিতে ঢুকে ঘর/ব্যবহারকারী বদলাও — Layout-বর্ডার অক্ষত (জানালায় শুধু চিলড্রেন বদলায়)। Context7-নোট: গাইডের নেস্টেড-নমুনায় **শুধু child-এর নাম** — parent-নামহীন-রাখাই প্রকৃত-পথ-দেখানোর নিয়ম (admin-home-এর মতো)। / Tests: watch per-view chunks load; the param-watch logs; the regex net catches /clients/abc; the layout border stays while children swap.</div>
+  </div>
   <div class="diagram">
     <div class="diag-title">The Street-Map — Path, Name, Component, Window</div>
     <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
