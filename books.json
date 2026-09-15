@@ -672,6 +672,17 @@
       "color": "game-60",
       "tag": "Book 60 · Terminal Mastery",
       "status": "live"
+    },
+    {
+      "n": 61,
+      "folder": "git-mastery",
+      "title_en": "The Studio of Time",
+      "title_bn": "সময়ের স্টুডিও",
+      "icon": "📸",
+      "category": "cs",
+      "color": "game-61",
+      "tag": "Book 61 · Git Mastery",
+      "status": "live"
     }
   ],
   "roadmap": [
@@ -866,6 +877,10 @@
         {
           "book": 60,
           "why": "bash/terminal mastery — the river every DevOps and Claude Code workflow sails on (companion to B59)."
+        },
+        {
+          "book": 61,
+          "why": "Git mastery — the photo-studio model (snapshots + pointers) beneath every branch, PR, and deploy; companion to B59/B60."
         }
       ]
     },
