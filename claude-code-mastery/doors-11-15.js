@@ -204,7 +204,7 @@ chmod +x ~/.claude/statusline.sh
 <li>দলের কমান্ড .claude/commands/ (git-এ), ব্যক্তিগত ~/.claude/commands/ — দুই স্তর, রাহেলার খাতার মতোই (দরজা ২)।</li>
 <li>$ARGUMENTS + argument-hint — কমান্ডের হাতে তর্জনী দাও; !\`cmd\` দিয়ে শেল-আউটপুট টেনে নাও।</li>
 <li>Output style বানানোর সময় keep-coding-instructions ভেবে সেট করো — না হলে কোডিং-আচরণও বদলে যায়।</li>
-<li>Statusline একই stdin-JSON চুক্তি (দরজা ১১) — jq-ই তোমার সেরা বন্ধু; /statusline দিয়ে অটো-জেনারেটও হয়।</li>
+<li>Statusline একই stdin-JSON চুক্তি (দরজা ১১) — jq-ই তোমার সেরা বন্ধু; /statusline দিয়ে অটো-জেনারেটও হয়। টার্মিনালও সাজানো যায়: Shift+Enter নতুন লাইন, Vim মোড, বেল — /config আর terminal-config পাতায়।</li>
 <li>প্লাগইনের ভেতরেও এই তিনটাই যায় (commands/, output-styles/) — দরজা ১৪-এর বাক্সে দেখবে।</li>
 </ul>`
   }
@@ -441,132 +441,87 @@ my-marketplace/
   }
 });
 
-// ── DOOR 15 · স্থপতির সিংহাসন — The Architect's Throne ──
+// ── DOOR 15 · বহু রান্নাঘর — The Many Kitchens ──
 doors.push({
   num: 15,
-  icon: "🏛️",
-  color: "#fbbf24",
-  name: "স্থপতির সিংহাসন",
-  subtitle: "The Architect's Throne — Full Circle",
-  tech: "SDK Deep Mastery · Sandbox · Precedence · Synthesis",
-  spirit: "আমানতুল-ফিতরাত — প্রকৃতির ওপর অর্পিত আমানত",
-  secret: "দরজা ১-১০ শেখায় চালাতে, ১১-১৪ শেখায় বানাতে — ১৫ শেখায় স্থাপত্য: পুরো ইঞ্জিন নিজের কোডে, ঘেরা প্রাচীরে, নিজের আইনে।",
+  icon: "🍽️",
+  color: "#3dd6c4",
+  name: "বহু রান্নাঘর",
+  subtitle: "The Many Kitchens",
+  tech: "Parallel Worktrees · Agent View · Teams · /loop · /goal",
+  spirit: "জামাত — একসাথে, একই কিবলায়",
+  secret: "এক রান্নাঘরে দশ বাবুচি ঝগড়া করে — কাজ বাড়লে রান্নাঘর বাড়াও: worktree, /bg, agent view; আর নজর রাখার জন্য /loop আর /goal।",
   recall: {
-    q: "তুমি SDK দিয়ে নিজের প্রোডাক্টে এজেন্ট বসাচ্ছো। টুল-অনুমতি নিজের হাতে নিতে, সিস্টেম প্রম্পট নিজের মতো করতে, আর সবচেয়ে শক্ত বিচ্ছিন্নতা চাও — তিনটা হাতিয়ার কী?",
-    qen: "You're embedding the agent in your own product via SDK. You want tool permissions in your hand, a custom system prompt, and the hardest isolation — name the three tools.",
-    a: "① can_use_tool কলব্যাক (Python: PermissionResultAllow/Deny; TS: behavior allow/deny, updatedInput দিয়ে ইনপুট বদলানোও যায়)। ② system_prompt preset claude_code + append, বা পুরো কাস্টম স্ট্রিং। ③ sandbox: settings-এ enabled:true + filesystem allowWrite/denyRead + network allowedDomains — বিচ্ছিন্ন ঘেরা উঠান। আর settings-এর ঊর্ধ্বতন শৃঙ্খলা: local > project > user, প্রোগ্রামেটিক সবার উপরে, managed সবার আগে।",
-    aen: "① the can_use_tool callback (Python: PermissionResultAllow/Deny; TS: behavior allow/deny — even updatedInput to rewrite inputs). ② system_prompt with the claude_code preset + append, or a full custom string. ③ sandbox: enabled:true with filesystem allowWrite/denyRead and network allowedDomains — a fenced yard. And the precedence chain: local > project > user, programmatic above all, managed first."
+    q: "তিনটা ফিচার একসাথে এগোতে হবে, একই রিপোতে — এডিট যেন সংঘর্ষ না করে। তিনটা উপায় বলো, ছোট থেকে বড়।",
+    qen: "Three features must progress at once in one repo — without edit collisions. Name three ways, small to large.",
+    a: "① claude --worktree <নাম> — প্রতিটা সেশন আলাদা git worktree-তে, আলাদা ব্রাঞ্চে (রিপোতে অন্তত এক কমিট লাগে)। ② /bg বা claude --bg — ব্যাকগ্রাউন্ড সেশন, এডিটের আগে Claude নিজেই .claude/worktrees/-এ সরে যায়। ③ agent view — এক পর্দায় সব সেশন দেখা, কোনটা কী করছে, কোনটা ইনপুট চাইছে; বড় হলে agent teams আর dynamic workflows। আর নজরে: /loop 5m <প্রম্পট> নির্দিষ্ট সময়ে, /goal <শর্ত> শর্ত পূরণ পর্যন্ত।",
+    aen: "① claude --worktree <name> — each session in its own git worktree and branch (repo needs one commit). ② /bg or claude --bg — background sessions; before editing, Claude moves itself into .claude/worktrees/. ③ agent view — watch every session from one screen, what it's doing, which needs input; scale further with agent teams and dynamic workflows. And to keep watch: /loop 5m <prompt> on an interval, /goal <condition> until it holds."
   },
-  story: `<p class="scene-setting">পনেরোটা দরজার শেষে তুমি আর কারখানার মালিক নও — শহরের স্থপতি। রাহাত মিয়া তোমাকে ডাকলেন নদীর ধারে তার স্টুডিওতে, যেখানে টেবিলের উপর শহরের পুরো মডেল: কারখানা, বাজার, ঘড়ির টাওয়ার, প্রাচীর। বললেন — দেখো, এই প্রতিটা ঘর তুমি এক এক করে বানিয়েছ (দরজা ১-১৪)। এখন শেষ প্রশ্ন: এই শহরটা কার আইনে চলবে? কে কার উপরে বসবে? কোথায় প্রাচীর, কোথায় ফাটক?</p>
-<p class="scene-setting en">At the end of fifteen doors you are no longer a workshop owner — you are the city's architect. Rahat mia calls you to his riverside studio, where the whole city sits modelled on the table: factories, markets, the clock tower, the wall. He says — see, you built each of these rooms one by one (Doors 1-14). Now the last question: under whose law does this city run? Who sits above whom? Where the wall, where the gate?</p>
+  story: `<p class="scene-setting">বিয়ের মৌসুমে শিরিন আপার কেটারিংয়ের খ্যাতি এক লাফে বাড়ল — আর সেই সাথে সমস্যাও। এক রান্নাঘরে তিন জন বাবুচি: একজন কাচ্চির বিরিয়ানি মাখছে, একজন রুমালি রুটি টানছে, একজন ক্ষীর ফুটাচ্ছে। পাত্র ধাক্কা খেল, চামচ খুঁজে পাওয়া গেল না, আর মশলার ডিব্বা একবারই উল্টে গেল। শিরিন সেই রাতেই নকশা আঁকলেন: উঠানের চার কোণে চার ছোট রান্নাঘর — প্রতিটার নিজের চুলা, নিজের পাত্র, নিজের মশলার তাক। বাজার থেকে একবার সব কেনে তিনি, ভাগ করে ঘরে ঘরে পৌঁছে দেন — আর সন্ধ্যায় মাঝ-উঠানের টেবিলে বসে চার ঘরের হিসাব এক নজরে দেখেন।</p>
+<p class="scene-setting en">In wedding season, Shirin apa's catering fame leapt — and so did the trouble. Three cooks in one kitchen: one kneading kacchi biryani, one stretching rumali roti, one simmering payesh. Pots bumped, spoons went missing, and the spice box tipped over entirely. That night Shirin drew a plan: four small kitchens at four corners of the yard — each with its own stove, its own pots, its own spice shelf. She alone buys from the market once, divides, and delivers kitchen to kitchen — and at dusk she sits at the centre table and reads all four kitchens' accounts at one glance.</p>
 
-<div class="dialogue">রাহাত তিনটা জিনিস দেখালেন। প্রথমে একটা ঘরের খাতা — প্রতিটা টুল-কলের আগে তোমার কলম লাগবে (can_use_tool): মঞ্জুর, নাকচ, বা মঞ্জুর-করে-শর্ত-বদলে। তারপর শহরের সংবিধান (system_prompt): ডিফল্ট আইনগ্রন্থ রেখে নিজের ধারা যোগ (preset + append), নয়তো পুরো নতুন সংবিধান। তারপর প্রাচীর (sandbox): কোথায় লেখা যাবে, কোথানো পড়াই যাবে না, কোন দরজা দিয়ে বাইরের সঙ্গে কথা — সব লেখা থাকবে। আর শেষ পাতায় আইনের ঊর্ধ্বতন ক্রম: স্থানীয় আইন প্রজেক্টকে টাপে, প্রজেক্ট ব্যবহারকারীকে, আর সংস্থার নীতি সবার আগে পড়া হয়।</div>
-<div class="dialogue en">Rahat shows three things. First, a room's ledger — before every tool call your pen falls (can_use_tool): allow, deny, or allow-with-rewritten-terms. Then the city's constitution (system_prompt): keep the default law-book and append your own clauses (preset + append), or write a whole new one. Then the wall (sandbox): where writing is allowed, where even reading is forbidden, which gate may speak outside — all written down. And on the last page, the order of law: local rules tap the project, the project taps the user, and the organization's policy is read before all.</div>
+<div class="dialogue">তুমি শিরিনের মাঝ-উঠানের টেবিলে বসে বললে — আমার কারখানায় এখন তিনটা কাজ একসাথে চালাতে হবে: লগইন-ফিচার, পেমেন্ট-বাগ, ডক-সাফাই। এক সেশনে তিনটা ঢুকিয়েছিলাম — এডিট ধাক্কা খেল। শিরিন বললেন — তোমার দরকার তিন রান্নাঘর, এক বাজার, এক হিসাবের টেবিল। তিনটা টার্মিনাল খোলো, প্রতিটায় claude --worktree login-feature, claude --worktree payment-bug — প্রতিটা ঘরের নিজের ফাইল, নিজের ব্রাঞ্চ। হাত গুটিয়ে বসতে চাও? /bg দিয়ে পেছনে ছেড়ে দাও — এডিটের আগে শাগরেদ নিজেই নিজের ঘরে সরে যাবে। আর সব ঘর এক পর্দায় দেখতে — agent view; বড় বিয়ে হলে দল বাঁধো (agent teams), আর রেসিপি-লিপি লিখে রাখো যেন আবার চালানো যায় (dynamic workflows)।</div>
+<div class="dialogue en">You sit at Shirin's centre table — my workshop now needs three jobs at once: login feature, payment bug, docs cleanup. I put all three in one session — the edits collided. Shirin says — you need three kitchens, one market, one account table. Open three terminals, in each claude --worktree login-feature, claude --worktree payment-bug — each room with its own files, its own branch. Want to sit hands-free? Release them with /bg — before editing, the apprentice moves to its own room by itself. And to watch every room on one screen — agent view; for a big wedding, bind a team (agent teams) and write the recipe-script so it can rerun (dynamic workflows).</div>
 
-<div class="code-block"># ① টুল-অনুমতি নিজের কলমে — can_use_tool (Python):
-from claude_agent_sdk.types import (
-    PermissionResultAllow, PermissionResultDeny, ToolPermissionContext
-)
+<p>রফিকের ঠিকাদাররা (দরজা ৬) ছিল <strong>এক সেশনের ভেতরের</strong> সাহায্যকারী; শিরিনের রান্নাঘর <strong>আলাদা আলাদা পূর্ণ সেশন</strong> — এই তফাতটা মনে রাখো। ডকের হিসাবে: <strong>worktree</strong> মানে একই রিপোর আলাদা চেকআউট, আলাদা ব্রাঞ্চ — সংঘর্ষের জায়গাই নেই (gitignored ফাইল .worktreeinclude-এ নাম লিখলে কপি হয়ে যায়)। <strong>/bg</strong> মানে ব্যাকগ্রাউন্ড সেশন — এডিট শুরুর আগে Claude নিজেকে .claude/worktrees/-এ সরিয়ে নেয়। <strong>agent view</strong> মানে মাঝ-উঠানের টেবিল — কোন ঘরে কী চলছে, কোনটা তোমার মুখ খুঁজছে। আর স্বয়ংক্রিয় নজরের দুই হাত: <strong>/loop</strong> (সময় মেপে বার বার — /loop 5m check CI; সময় না দিলে Claude নিজেই তাল মেলে) আর <strong>/goal</strong> (শর্ত পূরণ না হোয়া পর্যন্ত — /goal all tests in test/auth pass)।</p>
+<p class="en">Rafiq's contractors (Door 6) were helpers <strong>inside one session</strong>; Shirin's kitchens are <strong>separate full sessions</strong> — hold on to that distinction. In the docs' account: a <strong>worktree</strong> is a separate checkout of the same repo, on its own branch — no collision possible (gitignored files listed in .worktreeinclude get copied over). <strong>/bg</strong> means a background session — before editing, Claude moves itself into .claude/worktrees/. <strong>agent view</strong> is the centre table — which room runs what, which one awaits your face. And two hands of automatic watching: <strong>/loop</strong> (on a cadence — /loop 5m check CI; with no interval, Claude self-paces) and <strong>/goal</strong> (until a condition holds — /goal all tests in test/auth pass).</p>
 
-async def can_use_tool(tool_name, input_data, context):
-    if tool_name == "Bash" and "rm" in input_data.get("command", ""):
-        return PermissionResultDeny(message="User denied this action")
-    return PermissionResultAllow(updated_input=input_data)  # শর্ত-বদলও সম্ভব
+<div class="code-block"># তিন রান্নাঘর, এক বাজার:
+claude --worktree login-feature   # টার্মিনাল ১
+claude --worktree payment-bug     # টার্মিনাল ২
+claude --worktree docs-cleanup    # টার্মিনাল ৩
+# (রিপোতে অন্তত একটা কমিট থাকতে হবে, নাহলে
+#  git rev-parse ব্যর্থ হয়ে তাড়া দেবে)
 
-options = ClaudeAgentOptions(can_use_tool=can_use_tool)
+# gitignored জিনিস ঘরে ঘরে লাগবে? .worktreeinclude:
+#   .env
+#   .env.local
 
-# ⚠️ Python স্ট্রিমিং মোডে (finite message stream) একটা
-# dummy PreToolUse হুক লাগে স্ট্রিম খোলা রাখতে:
-#   async def keep_open(input_data, tool_use_id, context):
-#       return {"continue_": True}
-#   hooks={"PreToolUse": [HookMatcher(matcher=None, hooks=[keep_open])]}
+# হাত খালি রাখতে:
+claude --bg "fix the flaky test"  # পেছনের সেশন
+> /bg                             # চলতি সেশনকেই পেছনে পাঠাও
 
-# ② সংবিধান — system_prompt:
-options = ClaudeAgentOptions(
-    system_prompt={
-        "type": "preset", "preset": "claude_code",   # ডিফল্ট আইন
-        "append": "Always include detailed docstrings.",  # নিজের ধারা
-    }
-)
-# নতুন সংবিধান চাইলে: system_prompt="You are ..."
-# (v0.1.0+ ডিফল্ট এখন minimal — পুরনো আচরণ চাইলে preset বলে দাও)</div>
+# মাঝ-উঠানের টেবিল + নজরের হাত:
+> agent view খোলো                  # সব ঘর এক পর্দায়
+> /loop 5m check CI on my PR      # ৫ মিনিট পর পর
+> /loop check CI on my PR         # তাল Claude নিজে মেলে
+> /goal all tests in test/auth pass and the lint step is clean
 
-<div class="code-block">// ③ প্রাচীর — sandbox (settings.json):
-{
-  "sandbox": {
-    "enabled": true,
-    "autoAllowBashIfSandboxed": true,
-    "excludedCommands": ["docker *"],
-    "filesystem": {
-      "allowWrite": ["/tmp/build", "~/.kube"],
-      "denyRead": ["~/.aws/credentials"]
-    },
-    "network": {
-      "allowedDomains": ["github.com", "*.npmjs.org"]
-    }
-  }
-}
-
-# আইনের ক্রম — কে কাকে টাপে:
-#   local (.claude/settings.local.json)
-#     > project (.claude/settings.json)
-#       > user (~/.claude/settings.json)
-# প্রোগ্রামেটিক অপশন (agents, allowed_tools) সব ফাইলের উপরে;
-# managed/সংস্থা নীতি সবার আগে পড়া হয়।
-# কোনো সেটিং কাজ না করলে: /status দেখো কোন স্তর সক্রিয়,
-# claude doctor (টার্মিনাল) বা /doctor (সেশনে) ভাঙা ফাইল ধরে।</div>
-
-<p>এখন পনেরোটা দরজা এক শহরে বসাও। নিচের দশটা ছিল কারখানা: হাসুর হাতুড়ি (১), রাহেলার খাতা (২), ভাইদের মাপ (৩), ফরিদার নদী (৪), বেলালের তালা (৫), রফিকের ঠিকাদার (৬), মাহমুদের ঘণ্টা (৭), আয়েশার আংটি (৮), নাদিরের রাতের কারখানা (৯), প্রথম সিংহাসন (১০)। উঁচু তলায় পাঁচটা নতুন ঘর: সিরাজের ঘড়ির ইঞ্জিন (১১), নুসরাতের সিল-ছাঁচ-ফলক (১২), কামরুলের নিজে গড়া যন্ত্র (১৩), মোস্তফার পাইকারি বাক্স (১৪) — আর এই স্থপতির টেবিল (১৫), যেখানে পুরো শহরের আইন লেখা হয়।</p>
-<p class="en">Now set all fifteen doors in one city. The lower ten were the workshop: Hasu's hammer (1), Rahela's ledger (2), the brothers' measure (3), Farida's river (4), Belal's locks (5), Rafiq's contractors (6), Mahmud's bells (7), Ayesha's ring (8), Nadir's night factory (9), the first throne (10). The advanced floors added five rooms: Siraj's clock engine (11), Nusrat's seals-moulds-plaques (12), Kamrul's self-built machines (13), Mostafa's wholesale crates (14) — and this architect's table (15), where the whole city's law is written.</p>
+# কাজ শেষে ঘর ভাঙো:
+git worktree remove ../project-login-feature</div>
 
 <div class="diagram">
-<div class="diag-title">শহরের স্তম্ভ — পনেরো দরজার স্থাপত্য</div>
-<svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
-<rect class="node-hot" x="190" y="128" width="180" height="46" rx="12"/><text class="lbl-hot" x="280" y="146">স্থপতির সিংহাসন (১৫)</text><text class="lbl-sm" x="280" y="163">সংবিধান · প্রাচীর · ঊর্ধ্বতন ক্রম</text>
-<rect class="node" x="15" y="30" width="150" height="34" rx="8"/><text class="lbl-sm" x="90" y="51">১ হাতুড়ি · ৪ নদী</text>
-<rect class="node" x="15" y="80" width="150" height="34" rx="8"/><text class="lbl-sm" x="90" y="101">২ খাতা · ৬ ঠিকাদার</text>
-<rect class="node" x="15" y="130" width="150" height="34" rx="8"/><text class="lbl-sm" x="90" y="151">৩ মাপ · ৭ ঘণ্টা</text>
-<rect class="node" x="15" y="180" width="150" height="34" rx="8"/><text class="lbl-sm" x="90" y="201">৫ তালা · ৮ আংটি</text>
-<rect class="node" x="15" y="230" width="150" height="34" rx="8"/><text class="lbl-sm" x="90" y="251">৯ রাত · ১০ সিংহাসন</text>
-<rect class="node-purple" x="395" y="30" width="150" height="34" rx="8"/><text class="lbl-sm" x="470" y="51">১১ ঘড়ির ইঞ্জিন</text>
-<rect class="node-purple" x="395" y="80" width="150" height="34" rx="8"/><text class="lbl-sm" x="470" y="101">১২ সিল · ছাঁচ · ফলক</text>
-<rect class="node-purple" x="395" y="130" width="150" height="34" rx="8"/><text class="lbl-sm" x="470" y="151">১৩ নিজে গড়া যন্ত্র</text>
-<rect class="node-purple" x="395" y="180" width="150" height="34" rx="8"/><text class="lbl-sm" x="470" y="201">১৪ পাইকারি বাক্স</text>
-<rect class="node-cyan" x="395" y="230" width="150" height="34" rx="8"/><text class="lbl-sm" x="470" y="251">১-১৪ = যন্ত্র, ১৫ = আইন</text>
-<line class="edge" x1="165" y1="47" x2="230" y2="130"/>
-<line class="edge" x1="165" y1="97" x2="235" y2="135"/>
-<line class="edge" x1="165" y1="147" x2="188" y2="150"/>
-<line class="edge" x1="165" y1="197" x2="235" y2="168"/>
-<line class="edge" x1="165" y1="247" x2="235" y2="175"/>
-<line x1="395" y1="47" x2="330" y2="130" stroke="#b37feb" stroke-width="1.5"/>
-<line x1="395" y1="97" x2="325" y2="135" stroke="#b37feb" stroke-width="1.5"/>
-<line x1="395" y1="147" x2="375" y2="150" stroke="#b37feb" stroke-width="1.5"/>
-<line x1="395" y1="197" x2="325" y2="168" stroke="#b37feb" stroke-width="1.5"/>
-<line x1="395" y1="247" x2="330" y2="175" stroke="#b37feb" stroke-width="1.5"/>
+<div class="diag-title">উঠানের চার রান্নাঘর — The Yard of Many Kitchens</div>
+<svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+<rect class="cell-cyan" x="240" y="88" width="80" height="40" rx="10"/><text class="lbl-cyan" x="280" y="112">শিরিন</text>
+<rect class="node" x="30" y="20" width="140" height="40" rx="10"/><text class="lbl-sm" x="100" y="40">worktree login</text>
+<rect class="node" x="30" y="90" width="140" height="40" rx="10"/><text class="lbl-sm" x="100" y="110">worktree payment</text>
+<rect class="node" x="30" y="160" width="140" height="40" rx="10"/><text class="lbl-sm" x="100" y="180">worktree docs</text>
+<rect class="node-leaf" x="390" y="20" width="140" height="40" rx="10"/><text class="lbl-leaf" x="460" y="40">/loop — সময় মেপে</text>
+<rect class="node-leaf" x="390" y="90" width="140" height="40" rx="10"/><text class="lbl-leaf" x="460" y="110">/goal — শর্ত মেপে</text>
+<rect class="node-purple" x="390" y="160" width="140" height="40" rx="10"/><text class="lbl-sm" x="460" y="180">agent view — এক পর্দায়</text>
+<line class="edge-cyan" x1="170" y1="40" x2="236" y2="100"/>
+<line class="edge-cyan" x1="170" y1="110" x2="236" y2="110"/>
+<line class="edge-cyan" x1="170" y1="180" x2="236" y2="120"/>
+<line x1="390" y1="40" x2="324" y2="100" stroke="#52c41a" stroke-width="1.5"/>
+<line x1="390" y1="110" x2="324" y2="110" stroke="#52c41a" stroke-width="1.5"/>
+<line x1="390" y1="180" x2="324" y2="120" stroke="#b37feb" stroke-width="1.5"/>
 </svg>
-<div class="diag-cap">বাঁ দিকে কারখানার দশ ঘর, ডানে উঁচু তলার চার ঘর — সব উঠে যায় স্থপতির টেবিলে, যেখানে আইন লেখা হয়।</div>
+<div class="diag-cap">বাঁয়ে তিন স্বতন্ত্র রান্নাঘর (worktree), মাঝে শিরিনের হিসাবের টেবিল, ডানে নজরের হাত — Book ১২ (Autonomous Mind)-এর বহু-এজেন্ট দর্শনের রান্নাঘর-রূপ।</div>
 </div>
 
-<div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">❌ যন্ত্রের ক্রেতা</div>টুল চালায়, কনফিগ কপি-পেস্ট করে · সেটিং কাজ না করলে আন্দাজে নাড়ে · এজেন্টকে সব অনুমতি দিয়ে ঘুমায় · নিজের প্রোডাক্টে ঢোকাতে গিয়ে ডকুমেন্টেড পথ ছেড়ে ঘুরপথে যায়</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ স্থপতি</div>আইনের ক্রম জানে: local > project > user, managed আগে · প্রতিটা টুল-কল তার কলম ছাড়া চলে না (can_use_tool) · প্রাচীর আঁকে (sandbox: denyRead ~/.aws) · সংবিধান নিজের (preset + append)</div>
-</div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>শিরিনের হিসাব-নিয়ম:</strong> যত রান্নাঘর, তত খরচ — প্রতিটা সেশন নিজের নদী (দরজা ৪) আর নিজের খাতা (দরজা ২) নিয়ে চলে; পরিকল্পনা (দরজা ১০) ছাড়া ঘর বাড়িও লাভ নেই। আর মনে রেখো — worktree বাঁধে ফাইলের হাত, মানুষের সিদ্ধান্ত নয়: কোন কাজ কোন ঘরে, সেটা এখনও তোমার মাঝ-উঠানের টেবিল থেকে ঠিক হয়।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Shirin's account rule:</strong> every kitchen costs — each session runs its own river (Door 4) and its own ledger (Door 2); more rooms without planning (Door 10) is no gain. And remember — worktrees fence files, not decisions: which job goes to which room is still settled at your centre table.</div></div>
 
-<div class="callout tip"><span class="co-icon">🔌</span><div><strong>স্থপতির শপথ:</strong> শক্তি বাড়ার সাথে সাথে আমানতও বাড়ে। sandbox চালু করলেও অন্ধ বিশ্বাস নয় — প্রাচীরের ভেতরেও নদীর হিসাব (দরজা ৪) আর শেষ সই (দরজা ১০-এর যাচাই) চলবেই। আর মনে রেখো: সংস্থার managed নীতি তোমার প্রোগ্রামেটিক অপশনকেও ছাড়িয়ে যায় — শহরের সীমানার বাইরে স্থপতিও নয়।</div></div>
-<div class="callout tip"><span class="co-icon">🔌</span><div><strong>The architect's oath:</strong> power grows, and the trust grows with it. Even with sandbox on, no blind faith — inside the wall too, the river's account (Door 4) and the final signature (Door 10's verification) keep running. And remember: managed org policy outranks even your programmatic options — beyond the city's border, not even the architect.</div></div>
-
-<p class="verse">স্থাপত্যের শেষ কথা আমানতের — "নিশ্চয়ই আল্লাহ তোমাদের আদেশ দেন আমানত তার হকদারকে ফিরিয়ে দিতে" (কুরআন ৪:৫৮)। প্রতিটা টুল, প্রতিটা সংযোগ, প্রতিটা প্রাচীর একটা আমানত: কার হাতে কতটুকু শক্তি, সেটা স্থপতির টেবিলে লেখা থাকে। কলম তোমার, শহর কারিগরদের — হিসাব কারও সামনে খোলা।</p>
-
-<div class="secret-box"><div class="label">শেষ তালিসমান — The Final Talisman</div><div class="text">🏛️ মাস্টারির তিন তলা: চালাও (১-১০) → বানাও (১১-১৪) → আইন লেখো (১৫) — SDK-তে ইঞ্জিন, sandbox-এ প্রাচীর, precedence-এ শৃঙ্খলা।<br>কারণ: যে শুধু চালায় সে চাকর, যে বানায় সে কারিগর, যে আইন লেখে সে স্থপতি।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🍽️ কাজ বাড়লে রান্নাঘর বাড়াও — --worktree ঘর, /bg হাত-খালি, agent view এক-পর্দা; /loop সময় মাপে, /goal শর্ত মাপে।<br>কারণ: এক পাত্রে দশ বাবুচি নয় — সংঘর্ষ ঠেকায় না, শুধু স্থাপত্য ঠেকায়।</div></div>`,
   senior: {
-    title: "স্থপতির পরের শহর — The Next City",
-    body: `<p>এই বই শেষ — পথ নয়:</p>
-<ul class="checklist">
-<li><strong>Book ১৯ (Tool Forge)</strong> — MCP সার্ভার নির্মাণের পূর্ণ শিল্প; দরজা ১৩-এর যন্ত্রশালা সেখানে কারখানা।</li>
-<li><strong>Book ১২ (Autonomous Mind)</strong> — এজেন্ট-স্থাপত্যের তত্ত্ব; দরজা ১৫-এর সংবিধানের দর্শন।</li>
-<li><strong>Book ১ (Twenty-Seven Doors)</strong> — পুরো AI ইঞ্জিনিয়ারিং শহরের মানচিত্র; এই বই তার এক মহল্লা।</li>
-<li>প্রথম আসল কাজ: নিজের কারখানায় একটা ছোট স্কিল → একটা প্লাগইন → নিজের মার্কেটপ্লেস — মোস্তফার সিঁড়ি নিজে ভাঙো।</li>
-<li>মাসে একবার অফিসিয়াল ডক + changelog — শহরের আইন বদলায়, স্থপতিকেও খবর রাখতে হয়।</li>
+    title: "বহু-রান্নাঘরের খাতা — The Many-Kitchens Notes",
+    body: `<ul class="checklist">
+<li>প্রথম সংঘর্ষ দেখামাত্র কাজ ভাগো: প্রতি ফিচার/বাগে একটা <strong>claude --worktree <নাম></strong> — পরে git worktree remove দিয়ে ঘর ভাঙো।</li>
+<li>.env-এর মতো gitignored ফাইল দরকার? রিপো-রুটে <strong>.worktreeinclude</strong>-এ নাম লেখো।</li>
+<li>নজর রাখো মাঝ-উঠান থেকে: <strong>agent view</strong> এক পর্দায় সব সেশন — কে চলছে, কে অপেক্ষায়।</li>
+<li>পুনরাবৃত্ত প্রহরী: <strong>/loop 5m ...</strong> নির্দিষ্ট তালে, /loop ... স্ব-তালে; শর্ত-প্রহরী: <strong>/goal <শর্ত></strong>।</li>
+<li>আরও বড় অর্কেস্ট্রেশন: dynamic workflows (লিপি লিখে অনেক সাব-এজেন্ট চালানো, আবার চালানো যায়) — Book ১২-এর গভীর ডুব।</li>
 </ul>`
   }
 });

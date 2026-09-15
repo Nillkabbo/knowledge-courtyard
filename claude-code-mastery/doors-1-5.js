@@ -105,7 +105,7 @@ doors.push({
 <tr><td class="hl">প্রজেক্ট (সবার)</td><td>./CLAUDE.md বা ./.claude/CLAUDE.md</td><td>বিল্ড কমান্ড, কোড স্টাইল, টেস্ট রানার, রিপো রীতি — git-এ কমিট করো, দলের সবাই পায়</td></tr>
 <tr><td class="hl">প্রজেক্ট (নিজের)</td><td>./CLAUDE.local.md</td><td>শুধু তোমার নিজের অভ্যাস — git-এ দেবে না</td></tr>
 <tr><td class="hl">ইউজার (সব প্রজেক্ট)</td><td>~/.claude/CLAUDE.md</td><td>তোমার সব কাজের সাধারণ পছন্দ</td></tr>
-<tr><td class="hl">উপ-ফোল্ডার</td><td>সাব-ডিরেক্টরির CLAUDE.md</td><td>ওই অংশের নিয়ম — দরকারের সময় লোড হয়</td></tr>
+<tr><td class="hl">উপ-ফোল্ডার</td><td>সাব-ডিরেক্টরির CLAUDE.md</td><td>ওই অংশের নিয়ম — দরকারের সময় লোড হয় (মনোরিপোতে প্যাকেজ-প্রতি খাতা এভাবেই)</td></tr>
 <tr><td class="hl">রুলস</td><td>.claude/rules/*.md</td><td>ছোট ছোট আলাদা নিয়ম-ফাইল</td></tr>
 </table>
 
