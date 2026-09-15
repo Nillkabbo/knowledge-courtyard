@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>নহরের নগরী — The City of Canals</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">اقْرَأْ وَرَبُّكَ الْأَكْرَمُ</div>
+  <h1 class="title-main">নহরের নগরী</h1>
+  <div class="title-sub">The City of Canals · Terminal Mastery</div>
+  <div class="title-desc">
+    নদীই রাস্তা — টার্মিনাল-মাস্টারি দশটি দরজায়।<br>
+    ঘাটে প্রথম পা, খাল ও প্রবাহ (pipes · redirection), শহরের ভাষা (expansion · quoting), পানির কারিগর (grep · sed · awk · find), নৌকা ও মাঝি (processes · signals), সকালের আচার (.bashrc · alias), স্রোতের স্মৃতি (readline · history), দূরের ঘাট (ssh · tmux · rsync), নিরাপদ জাহাজ (set -euo pipefail · trap), শেষে স্রোতের সিংহাসন — Unix দর্শনের প্রকাশ।<br><br>
+    <em>The river is the road — terminal mastery in ten doors: first commands, pipes and redirection, expansions and quoting, text craftsmanship (grep, sed, awk, find), processes and signals, shell startup rituals, readline memory, remote ghats (ssh, tmux, rsync), safe scripting, and the final throne — the Unix philosophy revealed. Grounded in the GNU Bash manual and The Art of Command Line; the waterway beneath Book 59's workshop.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🛶 যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">নদীই রাস্তা — The River Is the Road</div>
+    <p>বাংলাদেশের মানচিত্র খুললে শহরের আগে নদী চোখে পড়ে — পদ্মা, মেঘনা, যমুনা। শতাব্দী ধরে এই দেশের বাজার বসেছে ঘাটে: মাল এসেছে পানিপথে, হিসাব গেছে পানিপথে। সদরঘাটে দুই ব্যবসায়ীর কথা মনে করো। একজন প্রতিটা বস্তা নিজের পিঠে করে দোকান থেকে গুদামে নেয় — দশবার দৌড়াল, ঘামল, একটা বস্তা পুকুরে পড়ল। পাশের লোকটা মাঝিকে এক লাইন বলল — কোথায় থেকে কোথায়, কী যাবে — তারপর চায়ের কাপ ধরল। সন্ধ্যায় দুজনের মাল সমান, কিন্তু একজনের দিন শেষ, আরেকজনের সারাজীবন।</p>
+    <p class="en">Open a map of Bangladesh and the rivers appear before the cities — Padma, Meghna, Jamuna. For centuries this country's markets sat on ghats: goods arrived by water, accounts travelled by water. Remember two merchants at Sadarghat. One carries every sack on his own back from shop to godown — ten runs, soaked in sweat, one sack dropped in the pond. The man beside him tells the boatman a single line — from where, to where, what cargo — then lifts his tea. By dusk both have moved equal goods, but one is spent for the day, the other for a lifetime of days.</p>
+    <hr class="p-divider">
+    <p>টার্মিনাল সেই নদী। মাউসে ক্লিক করা মানে বস্তা পিঠে করা; এক লাইনের কমান্ড মানে মাঝিকে বলা — আর নদী বহে। এই বইয়ের দশটি দরজায় তুমি শিখবে পানিপথের নগরীটা চেনা: ঘাট (terminal), নৌকা (commands), খাল (pipes), ভাষা (expansion-quoting), কারিগর (text tools), মাঝি (processes), আচার (.bashrc), স্মৃতি (history), দূরের ঘাট (ssh), আর নিরাপদ জাহাজ (scripting)। Book ৫৯-এর কারখানা এই নদীর তীরেই দাঁড়িয়ে — hooks, jq, শেল-মোড সব এখানকার পানি খায়।</p>
+    <p class="en">The terminal is that river. Mouse-clicking is carrying sacks on your back; a one-line command is telling the boatman — and the river flows. In these ten doors you learn the canal city: the ghat (terminal), the boats (commands), the canals (pipes), the language (expansions and quoting), the craftsmen (text tools), the boatmen (processes), the rituals (.bashrc), the memory (history), the distant ghats (ssh), and safe ships (scripting). Book 59's workshop stands on this very riverbank — its hooks, jq, and shell mode all drink this water.</p>
+    <hr class="p-divider">
+    <p style="font-size:.82rem;color:var(--ink-mute)">⚠️ এই বই GNU Bash 5.x ও প্রচলিত Unix টুলসের ভিত্তিতে — GNU Bash ম্যানুয়াল ও The Art of Command Line থেকে যাচাইকৃত। macOS-এ ডিফল্ট শেল এখন zsh এবং /bin/bash পুরনো (3.2) — শেখাটা একই, তবে নিজের মেশিনের সংস্করণ দেখে নাও; সার্ভারে যা চলে, এই বই তার পানিতে।</p>
+    <p class="en" style="font-size:.78rem">⚠️ This book is grounded in GNU Bash 5.x and standard Unix tools, verified against the GNU Bash manual and The Art of Command Line. macOS defaults to zsh and ships an old /bin/bash (3.2) — the craft is the same, but check your machine's version; this book swims in the water your servers swim in.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🚶</span><span id="hud-rank-name">তীরের পথিক</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 1000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>দশটি দরজা, ক্রম মেনে। প্রতিটি দরজা নগরীর এক একটি স্তর — ঘাট থেকে সিংহাসন।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← নগরীর মানচিত্রে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">👑</div>
+  <h1 class="complete-title">তুমি এখন নহরের স্থপতি</h1>
+  <p class="complete-text">দশটি দরজা পেরিয়েছ।<br><br>কালু মিয়ার ঘাট, নসরত মিস্ত্রির খাল, মুন্সীর ভাষা, জালিম মিয়ার জাল, হারুনের নৌকা-ঘাট, ফুলজান খালার আচার, বাবুলের স্মৃতি, আয়েশা সিদ্দিকার দূরের ঘাট, নূর আহমেদের নিরাপদ জাহাজ — সব এখন এক নগরী।<br><br>আর তুমি জানো শেষ সত্যটা — Thompson-Ritchie-McIlroy যে নগরী বানিয়েছিলেন, তার আইন: প্রতিটা নৌকা এক কাজ করুক, নদীতে মিলে চলুক, আর সব কথা পানির ভাষায় — টেক্সটে — হোক।<br><strong>কলম তোমার, নদী নগরীর — প্রবাহ এক।</strong></p>
+  <div class="complete-verse">اقْرَأْ وَرَبُّكَ الْأَكْرَمُ ۝ الَّذِي عَلَّمَ بِالْقَلَمِ</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"পড়ো, এবং তোমার রব সর্বাধিক মর্যাদাবান — যিনি কলমের মাধ্যমে শিখিয়েছেন।" — কুরআন ৯৬:৩-৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 নহরের নগরী চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 নহরের নগরী চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-1-5.js"></script>
+<script src="doors-6-10.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+<script src="engine.js"></script>
+  <script src="../scripts/study-materials.js"></script>
+</body>
+</html>

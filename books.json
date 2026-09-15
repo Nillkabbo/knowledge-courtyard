@@ -661,6 +661,17 @@
       "color": "game-59",
       "tag": "Book 59 · Claude Code Mastery",
       "status": "live"
+    },
+    {
+      "n": 60,
+      "folder": "terminal-mastery",
+      "title_en": "The City of Canals",
+      "title_bn": "নহরের নগরী",
+      "icon": "🌊",
+      "category": "cs",
+      "color": "game-60",
+      "tag": "Book 60 · Terminal Mastery",
+      "status": "live"
     }
   ],
   "roadmap": [
@@ -851,6 +862,10 @@
         {
           "book": 55,
           "why": "MDP→Bellman→TD→Q→DQN→PPO→RLHF/DPO/GRPO — the decision-science spine beneath B11 fine-tuning and every agent."
+        },
+        {
+          "book": 60,
+          "why": "bash/terminal mastery — the river every DevOps and Claude Code workflow sails on (companion to B59)."
         }
       ]
     },
