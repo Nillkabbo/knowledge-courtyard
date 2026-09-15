@@ -355,15 +355,15 @@ doors.push({
   subtitle: "The Throne — Synthesis",
   tech: "The Master's Workflow — All Ten as One",
   spirit: "খিলাফত — মালিক নয়, কর্মচারী-অভিভাবক",
-  secret: "নয়টা দরজায় নয়টা হাতিয়ার পেয়েছিলে; দশম দরজা বলে — হাতিয়ার একটাই: প্রসঙ্গ দাও, আস্থা মাপো, ফল যাচাই করো।",
+  secret: "দশ দরজায় যা শিখলে তার সারমর্ম: প্রসঙ্গ দাও, আস্থা মাপো, ফল যাচাই করো — এই তিন স্তম্ভেই দাঁড়িয়ে আছে কারখানা।",
   recall: {
     q: "দশটি দরজার সারমর্ম এক বাক্যে — মাস্টারি আসলে কী?",
     qen: "The essence of all ten doors in one sentence — what is mastery, really?",
     a: "Claude Code-এর মাস্টারি মানে টাইপ করা শেখা নয় — কারখানা ডিজাইন করা: প্রসঙ্গ (CLAUDE.md, /clear, সাব-এজেন্ট), আস্থার মাপ (permissions, modes, ঘেরা পরিবেশ), আর যাচাই (হুক, রিভিউ, লগ)। এই তিনের ঘুরে সব দরজা।",
     aen: "Mastery of Claude Code is not learning to type — it is designing the workshop: context (CLAUDE.md, /clear, subagents), measured trust (permissions, modes, fenced environments), and verification (hooks, review, logs). Every door circles these three."
   },
-  story: `<p class="scene-setting">দশ বছর পরের এক শীতের সকাল। তুমি আর শাগরেদ নও — হাসু মিস্ত্রি তোমাকে ডাকলেন কারখানার ভেতরের ঘরে, যেখানে একটাই আসন, আর দেয়ালে নয়টা ছবি। হাসু বললেন — আজ থেকে এই আসন তোমার। কিন্তু বসার আগে নয়টা নাম একবার বলে যাও, যারা তোমাকে এনেছে।</p>
-<p class="scene-setting en">A winter morning, ten years later. You are no apprentice now — Hasu calls you into the inner room, where a single seat stands and nine pictures hang on the wall. Hasu says — from today this seat is yours. But before you sit, name once the nine who brought you here.</p>
+  story: `<p class="scene-setting">দশ বছর পরের এক শীতের সকাল। তুমি আর শাগরেদ নও — হাসু মিস্ত্রি তোমাকে ডাকলেন কারখানার ভেতরের ঘরে, যেখানে একটাই আসন, আর দেয়ালে নয়টা ছবি। হাসু বললেন — আজ থেকে এই আসন তোমার, কারখানার প্রথম সিংহাসন। কিন্তু বসার আগে নয়টা নাম একবার বলে যাও, যারা তোমাকে এনেছে।</p>
+<p class="scene-setting en">A winter morning, ten years later. You are no apprentice now — Hasu calls you into the inner room, where a single seat stands and nine pictures hang on the wall. Hasu says — from today this seat is yours — the workshop's first throne. But before you sit, name once the nine who brought you here.</p>
 
 <div class="dialogue">তুমি বললে — হাসু মিস্ত্রি শিখিয়েছেন প্রথম হাতুড়ি: claude লিখে শুরু, -p দিয়ে এক লাইনের কাজ (দরজা ১)। রাহেলা খাতুন শিখিয়েছেন বাহির খাতা: CLAUDE.md — প্রতিটা নতুন সেশন যেন নিয়ম জেনে আসে (দরজা ২)। করিম-সেলিম-টিটু-দাদা শিখিয়েছে কাজ দেখে মডেল বাছাই: Sonnet রোজকার, Opus জরুরি, Haiku দ্রুত, Fable গভীর (দরজা ৩)। ফরিদা শিখিয়েছে নদীর হিসাব: কনটেক্সট ভরলে /compact, /clear — নৌকা হালকা রাখো (দরজা ৪)। বেলাল শিখিয়েছে হিসাবি আস্থা: allow, deny, আর চার মোডের চাবি (দরজা ৫)। রফিক শিখিয়েছে ঠিকাদারি: ভারী ঘাঁটাঘাঁটি সাব-এজেন্টে, বাড়িতে শুধু রিপোর্ট (দরজা ৬)। মাহমুদ শিখিয়েছে ঘণ্টা বাঁধা: কাজের আগে-পরে হুক — নিয়ম মাঠে নয়, বাঁধনে (দরজা ৭)। আয়েশা শিখিয়েছে সংযোগ: MCP-আংটি, স্কিল-পুঁথি, প্লাগইন-বাক্স (দরজা ৮)। আর নাদির ভাই শিখিয়েছেন রাতের কারখানা: claude -p, JSON, @claude — ঘুমের ঘণ্টায় কাজ (দরজা ৯)।</div>
 <div class="dialogue en">You say — Hasu mistri taught the first hammer: start with claude, one-line jobs with -p (Door 1). Rahela Khatoon taught the ledger: CLAUDE.md, so every new session arrives knowing the rules (Door 2). Karim-Selim-Titu-and-grandfather taught model selection by task: Sonnet daily, Opus high-stakes, Haiku fast, Fable deep (Door 3). Farida taught the river's account: as context fills, /compact, /clear — keep the boat light (Door 4). Belal taught measured trust: allow, deny, and the four-mode keys (Door 5). Rafiq taught contracting: heavy digging to subagents, only reports home (Door 6). Mahmud taught binding bells: hooks before and after — rules live in bindings, not memory (Door 7). Ayesha taught connection: the MCP ring, the skill chapbook, the plugin box (Door 8). And Nadir bhai taught the night factory: claude -p, JSON, @claude — work through sleeping hours (Door 9).</div>
@@ -427,7 +427,7 @@ claude                                  # ১ শুরু
 
 <p class="verse">আসন আসলে সিংহাসন নয় — আমানত। "আর স্মরণ করো, যখন তোমার রব ফেরেশতাদের বললেন — আমি জমিনে এক খলিফা স্থাপন করছি" (কুরআন ২:৩০)। খলিফা মানে প্রতিনিধি-অভিভাবক: কারখানা তোমার নয়, কাজের; তুমি শুধু সেই দিনটার হিসাবদার। নয়জন শিক্ষক তোমাকে হাতিয়ার দিলেন — এখন হিসাব তোমার।</p>
 
-<div class="secret-box"><div class="label">শেষ তালিসমান — The Last Talisman</div><div class="text">👑 মাস্টারি = প্রসঙ্গ দাও + আস্থা মাপো + ফল যাচাই করো — দশটা দরজা এই তিন স্তম্ভের তিন রকম ইট।<br>কারণ: টাইপিস্ট টুল চালায়, কারিগর কারখানা ডিজাইন করে — আর ফল দুটোর আকাশ-পাতাল তফাত।</div></div>`,
+<div class="secret-box"><div class="label">দশ দরজার তালিসমান — The First Throne</div><div class="text">👑 মাস্টারি = প্রসঙ্গ দাও + আস্থা মাপো + ফল যাচাই করো — দশটা দরজা এই তিন স্তম্ভের তিন রকম ইট।<br>কারণ: টাইপিস্ট টুল চালায়, কারিগর কারখানা ডিজাইন করে — আর ফল দুটোর আকাশ-পাতাল তফাত।</div></div>`,
   senior: {
     title: "সিংহাসন থেকে পরের পথ — From the Throne, the Road Ahead",
     body: `<p>এই বই তোমার ভিত — এখন গভীরে যাওয়ার পথ:</p>
