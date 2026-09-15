@@ -650,6 +650,17 @@
       "color": "game-58",
       "tag": "Book 58 · Vue.js Complete Guide",
       "status": "live"
+    },
+    {
+      "n": 59,
+      "folder": "claude-code-mastery",
+      "title_en": "The Terminal Craftsman",
+      "title_bn": "টার্মিনাল কারিগর",
+      "icon": "🔨",
+      "category": "ai",
+      "color": "game-59",
+      "tag": "Book 59 · Claude Code Mastery",
+      "status": "live"
     }
   ],
   "roadmap": [
@@ -809,6 +820,10 @@
         {
           "book": 12,
           "why": "ReAct, planning, multi-agent — built on tools."
+        },
+        {
+          "book": 59,
+          "why": "Claude Code end-to-end: CLAUDE.md, models, context, permissions, subagents, hooks, MCP/skills, headless CI — the agent tool you actually drive daily."
         }
       ]
     },
