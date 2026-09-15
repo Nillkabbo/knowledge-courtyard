@@ -1,0 +1,235 @@
+{
+  "title": "Git Quiz",
+  "questions": [
+    {
+      "type": "multiple_choice",
+      "question": "An engineer has modified several lines in a configuration file but only wants to include the performance-related optimizations in the next commit, leaving the experimental debug logs in the working directory. Which Git procedure correctly facilitates this partial inclusion?",
+      "answerOptions": [
+        {
+          "text": "Execute git add -p to interactively select specific 'hunks' of the file.",
+          "isCorrect": true,
+          "rationale": "The -p (patch) flag allows the user to break down file changes into smaller chunks, choosing 'y' to stage specific segments while leaving others as unstaged."
+        },
+        {
+          "text": "Use git commit -a to automatically stage all changes in tracked files.",
+          "isCorrect": false,
+          "rationale": "This command stages every modification in tracked files, which would include the debug logs the engineer intended to keep out of the commit."
+        },
+        {
+          "text": "Apply git stash to hide the debug logs before running a standard git add.",
+          "isCorrect": false,
+          "rationale": "Stashing typically works on a file-level basis unless advanced flags are used, and it would remove the debug logs from the working directory entirely rather than just keeping them unstaged."
+        },
+        {
+          "text": "Run git checkout -- <file> to discard the debug logs before staging.",
+          "isCorrect": false,
+          "rationale": "This action permanently deletes the unstaged changes from the file, meaning the experimental debug logs would be lost forever."
+        }
+      ],
+      "hint": "Consider the command that allows you to review individual changes within a single file."
+    },
+    {
+      "type": "multiple_select",
+      "question": "A developer is preparing a Pull Request and notices that their local branch history contains eight small, disorganized commits. According to the principles of 'Reprinting' and 'Islah,' which actions would be appropriate to clean up this history before sharing it with the team?",
+      "answerOptions": [
+        {
+          "text": "Using interactive rebase to 'fixup' redundant commits into a single logical change.",
+          "isCorrect": true,
+          "rationale": "Interactive rebase with the 'fixup' or 'squash' commands allows multiple commits to be combined into one, resulting in a cleaner and more readable history."
+        },
+        {
+          "text": "Running git rebase -i to 'reword' vague commit messages for clarity.",
+          "isCorrect": true,
+          "rationale": "Clear commit messages are essential for maintaining a ledger that is readable years later, and interactive rebase allows for message editing."
+        },
+        {
+          "text": "Performing a git reset --hard to the start of the branch to delete the messy work.",
+          "isCorrect": false,
+          "rationale": "A hard reset would delete all the actual code changes, failing to preserve the work while cleaning up the history."
+        },
+        {
+          "text": "Executing git rebase on a branch that has already been pushed and is being used by others.",
+          "isCorrect": false,
+          "rationale": "Rebasing public history breaks the 'Golden Rule' because it rewrites SHA-1 hashes, causing synchronization conflicts for every other team member."
+        }
+      ],
+      "hint": "Focus on methods that refine existing work into a professional presentation without losing the progress.",
+      "hasAllOfTheAbove": false,
+      "hasNoneOfTheAbove": false
+    },
+    {
+      "type": "fill_in_the_blank",
+      "question": "When searching for the origin of a specific bug across hundreds of commits, Git can automate the process using the ___ command, which utilizes a binary search algorithm to identify the first 'bad' commit.",
+      "bestAnswer": "bisect",
+      "acceptableAnswers": [
+        "git bisect",
+        "bisect run"
+      ],
+      "rationale": "Bisect is a specialized debugging tool that repeatedly splits the commit history in half to quickly narrow down which specific change introduced a regression.",
+      "hint": "This command relates to Inspector Nadim's 'halving trick'."
+    },
+    {
+      "type": "short_answer",
+      "question": "Explain the architectural difference between how Git stores data in a commit versus how an 'apprentice's change-list' (a delta-based system) would store it, and why this distinction matters for project recovery.",
+      "grading": {
+        "modelAnswer": "Git stores each commit as a full snapshot (a complete picture of the entire project at that moment), whereas a delta-based system only stores the list of changes between versions. This distinction is critical because snapshots allow the project to be perfectly reconstructed from any single commit without needing to recalculate a long chain of potentially missing or corrupted change-logs.",
+        "rationale": "The core design of Git relies on snapshots rather than diff-chains to ensure data integrity and speed when moving between different points in time.",
+        "requiredAttributes": [
+          "Defines a Git commit as a full snapshot or complete picture.",
+          "Defines the alternative as a list of changes or deltas.",
+          "Explains that snapshots allow for easier/more reliable reconstruction of the project."
+        ],
+        "errors": {
+          "misconceptions": [
+            "Stating that Git only stores the lines that were changed to save space."
+          ],
+          "bluffs": [
+            "Saying snapshots are just 'faster' without explaining that they represent the whole project state."
+          ]
+        }
+      },
+      "hint": "Recall Rahmat Ali's lesson about the difference between a 'full room photograph' and a 'ledger of changes'."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "A team member has mistakenly committed a secret API key to a public repository. What is the safest and most 'honest' way to rectify this in a shared history environment, according to the 'Ledger of Records' philosophy?",
+      "answerOptions": [
+        {
+          "text": "Use git revert to create a new commit that removes the key while keeping the history intact.",
+          "isCorrect": true,
+          "rationale": "Reverting is the public-friendly way to undo changes; it adds a new 'cancellation' entry to the ledger without rewriting the past, which preserves synchronization for the team."
+        },
+        {
+          "text": "Perform a git reset --hard to the commit before the secret was added and force-push.",
+          "isCorrect": false,
+          "rationale": "While this deletes the key, it rewrites history (breaking the Golden Rule) and can be extremely disruptive to others who have already pulled the 'bad' commit."
+        },
+        {
+          "text": "Simply delete the key in a new commit and perform a standard push.",
+          "isCorrect": false,
+          "rationale": "Although the key is gone from the current files, it remains fully visible and retrievable in the project's history/previous snapshots."
+        },
+        {
+          "text": "Use git commit --amend to remove the key from the last commit and push normally.",
+          "isCorrect": false,
+          "rationale": "Amending a pushed commit creates a new hash, leading to a 'rejected' status upon pushing because the remote history no longer matches the local one."
+        }
+      ],
+      "hint": "Identify the command that adds a 'cancellation' entry to the ledger rather than attempting to erase the past."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "You are currently in a 'detached HEAD' state to inspect an old version of the project. You realize you need to make a quick fix. What is the necessary first step to ensure your new work is not 'orphaned' or lost?",
+      "answerOptions": [
+        {
+          "text": "Create a new branch using git switch -c <name> to give the HEAD pointer a named reference.",
+          "isCorrect": true,
+          "rationale": "In a detached HEAD state, there is no branch pointer to keep your new commits reachable; creating a branch provides a named sticker (pointer) that will track your progress."
+        },
+        {
+          "text": "Run git commit immediately to save the changes to the current snapshot.",
+          "isCorrect": false,
+          "rationale": "Committing while detached works, but as soon as you switch away, those commits become difficult to find because no branch name points to them."
+        },
+        {
+          "text": "Use git merge main to bring the detached work back into the official timeline.",
+          "isCorrect": false,
+          "rationale": "You cannot merge 'into' main while you are not on the main branch; you must first secure your work on a branch before it can be merged elsewhere."
+        },
+        {
+          "text": "Execute git fetch to update the pointers and re-attach the HEAD automatically.",
+          "isCorrect": false,
+          "rationale": "Fetching only downloads data from the remote; it does not change your local HEAD state or move you back onto a branch."
+        }
+      ],
+      "hint": "Think about Shahina Begum's sticky-notes and what happens when the bookmark isn't attached to one."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the significant technical difference between a 'Fast-forward' merge and a 'Three-way' merge in Miya Basir's Union Hall?",
+      "answerOptions": [
+        {
+          "text": "A fast-forward merge simply moves the branch pointer, whereas a three-way merge creates a new dedicated 'merge commit'.",
+          "isCorrect": true,
+          "rationale": "Fast-forwarding is possible when the history is linear; Git just slides the pointer forward. A three-way merge is required when histories have diverged, necessitating a new snapshot to join them."
+        },
+        {
+          "text": "A three-way merge is only used when there are conflicts, while fast-forward is for clean merges.",
+          "isCorrect": false,
+          "rationale": "Three-way merges are used whenever branches have diverged, even if there are no overlapping line conflicts."
+        },
+        {
+          "text": "Fast-forward merges are safer because they allow you to 'abort' if the code fails tests.",
+          "isCorrect": false,
+          "rationale": "Both types of merges can be problematic if the code is broken, but fast-forwarding actually makes it harder to 'undo' the merge as a single unit since there is no merge commit."
+        },
+        {
+          "text": "A three-way merge ignores the common ancestor to prioritize the most recent changes.",
+          "isCorrect": false,
+          "rationale": "The 'three-way' name comes from using the two branch tips AND their common ancestor to determine how to combine changes."
+        }
+      ],
+      "hint": "Consider which method results in the creation of a new snapshot and which just moves a 'sticky-note'."
+    },
+    {
+      "type": "fill_in_the_blank",
+      "question": "To work on a critical 'hotfix' without disturbing your current experimental branch—and without the 'dance' of stashing—you can use the command git ___ add to create a separate physical folder that shares the same .git repository.",
+      "bestAnswer": "worktree",
+      "acceptableAnswers": [
+        "git worktree",
+        "worktree add"
+      ],
+      "rationale": "Worktrees allow for multiple working directories to be attached to a single repository, enabling simultaneous work on different branches without switching or stashing.",
+      "hint": "This relates to Rubela Khatun's 'twin rooms' arrangement."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "A developer runs git pull and receives a 'rejected' error because the remote branch contains work they do not have locally. Following the 'Mirror Room' etiquette, what is the most organized way to incorporate the remote changes while keeping a linear history?",
+      "answerOptions": [
+        {
+          "text": "Execute git pull --rebase to fetch remote changes and replay local commits on top of them.",
+          "isCorrect": true,
+          "rationale": "Rebasing during a pull avoids unnecessary merge commits and keeps the project history as a straight line, as if the developer's work happened after the remote changes."
+        },
+        {
+          "text": "Use git push --force-with-lease to overwrite the remote history with the local version.",
+          "isCorrect": false,
+          "rationale": "This is dangerous as it erases the remote work of others, violating the principle of 'Amanat' (trust)."
+        },
+        {
+          "text": "Run git fetch followed by git merge to create a three-way merge commit.",
+          "isCorrect": false,
+          "rationale": "While functional, this creates a 'merge bubble' in the history which can make the graph harder to read compared to a linear rebase."
+        },
+        {
+          "text": "Delete the local branch and clone the repository again to get a fresh start.",
+          "isCorrect": false,
+          "rationale": "This is highly inefficient and results in the loss of all local commits that haven't been pushed yet."
+        }
+      ],
+      "hint": "Search for the option that combines fetching with a 'Reprinting Shop' technique."
+    },
+    {
+      "type": "short_answer",
+      "question": "You mistakenly ran git reset --hard HEAD~1 and lost a day's worth of commits. Describe the 'secret door' you would use to find those missing snapshots and how you would recover them.",
+      "grading": {
+        "modelAnswer": "I would use 'git reflog' to view the log of every move the HEAD pointer has made over the last 90 days. Once I identify the SHA-1 hash of the commit I accidentally deleted, I would run 'git branch rescue <hash>' or 'git reset --hard <hash>' to bring that snapshot back into a visible branch.",
+        "rationale": "The reflog acts as a safety net that records almost every action in Git, ensuring that snapshots are rarely 'lost' even if their branch pointers are moved or deleted.",
+        "requiredAttributes": [
+          "Mentions 'git reflog' as the tool to see the history of HEAD movements.",
+          "Explains identifying the hash or commit ID of the lost work.",
+          "Mentions using 'reset' or 'branch' with that hash to restore the work."
+        ],
+        "errors": {
+          "misconceptions": [
+            "Trying to use 'git log' to find deleted commits (deleted commits don't show up in standard logs)."
+          ],
+          "bluffs": [
+            "Saying that once you hard reset, the work is gone forever."
+          ]
+        }
+      },
+      "hint": "Think of Moazzamel Hoda's hidden ledger that remembers every step for 90 days."
+    }
+  ]
+}
