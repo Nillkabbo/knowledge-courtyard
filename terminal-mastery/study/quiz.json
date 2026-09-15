@@ -1,0 +1,241 @@
+{
+  "title": "Bash Quiz",
+  "questions": [
+    {
+      "type": "multiple_choice",
+      "question": "A developer runs the following command to log both standard output and errors to a file: `command 2>&1 > output.log`. Why does this fail to capture errors in the log file, and how is it corrected?",
+      "answerOptions": [
+        {
+          "text": "The shell evaluates redirection from left to right; `2>&1` points to the current stdout (the screen) before stdout is redirected to the file. It is corrected by using `> output.log 2>&1`.",
+          "isCorrect": true,
+          "rationale": "Redirection is processed sequentially; at the moment `2>&1` is encountered, standard output still points to the terminal, so the error stream is locked to the terminal rather than the later-defined file destination."
+        },
+        {
+          "text": "The pipe operator `|` is missing between the error redirection and the file redirection. It is corrected by using `command 2>&1 | > output.log`.",
+          "isCorrect": false,
+          "rationale": "The pipe operator is used to connect the output of one command to the input of another, not for internal file redirection logic."
+        },
+        {
+          "text": "Bash requires the use of the `&>` operator for all combined redirections. It is corrected by using `command &> 2>&1 output.log`.",
+          "isCorrect": false,
+          "rationale": "While `&>` is a shorthand in Bash, it does not require the `2>&1` suffix, and the specific failure in the original command is due to evaluation order."
+        },
+        {
+          "text": "The standard error stream (stderr) cannot be redirected to a file that is already receiving standard output (stdout). It is corrected by using two separate files.",
+          "isCorrect": false,
+          "rationale": "A single file can receive both streams; the issue is not a limitation of the file system but the timing of the file descriptor assignment."
+        }
+      ],
+      "hint": "Consider the sequential order in which the shell interprets file descriptor assignments."
+    },
+    {
+      "type": "multiple_select",
+      "question": "Which of the following scenarios demonstrate the danger of failing to double-quote variables in a shell script?",
+      "answerOptions": [
+        {
+          "text": "A variable containing a file path with spaces, such as `DIR='my docs'`, causes `rm $DIR/*` to attempt deleting files in non-existent directories named 'my' and 'docs'.",
+          "isCorrect": true,
+          "rationale": "Without quotes, the shell performs word-splitting on the space character, treating the single path as two distinct arguments."
+        },
+        {
+          "text": "A variable containing a wildcard, such as `PATTERN='*'`, expands to a list of every file in the current directory when used as `echo $PATTERN`.",
+          "isCorrect": true,
+          "rationale": "Unquoted variables undergo glob expansion (pathname expansion) after word-splitting, allowing the shell to interpret special characters like the asterisk."
+        },
+        {
+          "text": "A variable intended for arithmetic expansion, such as `VAL=5`, fails to calculate `$(( $VAL + 1 ))` because the value is treated as a string.",
+          "isCorrect": false,
+          "rationale": "Arithmetic expansion handles the variable's value internally; double-quoting is not the primary factor for arithmetic logic to function."
+        },
+        {
+          "text": "A variable containing a command, such as `CMD='ls -l'`, fails to execute when invoked as `$CMD` because the shell cannot find the command name.",
+          "isCorrect": false,
+          "rationale": "Actually, unquoted variables are *needed* here if you want the shell to split the command from its flags, though this is generally considered a poor scripting practice."
+        }
+      ],
+      "hint": "Focus on the two main translation layers the shell applies to unquoted text: word-splitting and globbing.",
+      "hasAllOfTheAbove": false,
+      "hasNoneOfTheAbove": false
+    },
+    {
+      "type": "fill_in_the_blank",
+      "question": "In parameter expansion, if the variable `FILE` is set to `archive.tar.gz`, the syntax `echo \"${FILE___}\"` would result in the output `archive.tar` by removing the smallest matching suffix from the end.",
+      "bestAnswer": "%.gz",
+      "acceptableAnswers": [
+        "%.gz",
+        "%.*"
+      ],
+      "rationale": "The `%` operator is used in parameter expansion to remove the shortest match of a pattern from the end of a string.",
+      "hint": "Think of the operator used to 'shave' a specific extension from the end of a filename."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "When a background process becomes unresponsive, what is the recommended 'ladder of signals' to follow for a safe termination?",
+      "answerOptions": [
+        {
+          "text": "SIGINT (Ctrl+C) → SIGTERM (kill) → SIGKILL (kill -9).",
+          "isCorrect": true,
+          "rationale": "This sequence allows the process a chance to perform cleanup and close files gracefully before resorting to an unblockable, forced termination."
+        },
+        {
+          "text": "SIGKILL (kill -9) → SIGTERM (kill) → SIGHUP.",
+          "isCorrect": false,
+          "rationale": "Starting with SIGKILL is dangerous because it prevents the process from cleaning up temporary files or releasing locks, potentially leaving the system in an inconsistent state."
+        },
+        {
+          "text": "SIGSTOP → SIGCONT → SIGKILL (kill -9).",
+          "isCorrect": false,
+          "rationale": "SIGSTOP and SIGCONT only pause and resume execution; they do not attempt to terminate the process."
+        },
+        {
+          "text": "SIGTERM (kill) → SIGHUP → SIGINT (Ctrl+C).",
+          "isCorrect": false,
+          "rationale": "SIGINT is generally the most 'gentle' request for a foreground process, and SIGHUP is typically used for terminal hang-ups or reloading configurations, not as a standard termination escalation step."
+        }
+      ],
+      "hint": "Start with the most polite request and end with the 'last resort' that the process cannot ignore."
+    },
+    {
+      "type": "short_answer",
+      "question": "Explain the combined effect of including `set -euo pipefail` at the start of a Bash script.",
+      "grading": {
+        "modelAnswer": "This command acts as a safety 'anchor' for the script. `-e` ensures the script exits immediately if any command fails, `-u` treats unset variables as errors to prevent logic bugs, and `pipefail` ensures that if any command within a pipe fails, the entire pipe returns a non-zero exit status rather than just the final command.",
+        "rationale": "These flags collectively enforce strict error handling, ensuring that failures are not silently ignored and that the script stops as soon as something goes wrong.",
+        "requiredAttributes": [
+          "Mentions that -e stops the script on command failure.",
+          "Mentions that -u stops the script if an undefined variable is used.",
+          "Explains that pipefail captures errors that occur early in a sequence of piped commands."
+        ],
+        "errors": {
+          "misconceptions": [
+            "Thinking -e works inside 'if' statements or logical OR chains.",
+            "Believing these flags optimize script performance rather than safety."
+          ],
+          "bluffs": [
+            "General statements about making the script 'better' or 'more professional' without defining the specific technical behaviors of the flags."
+          ]
+        }
+      },
+      "hint": "Analyze how each flag handles command failures, undefined variables, and errors hidden within pipes."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "Why is the combination of `find . -print0 | xargs -0` preferred over standard `find` and `xargs` when processing files in a complex directory structure?",
+      "answerOptions": [
+        {
+          "text": "It uses null characters as delimiters instead of spaces or newlines, preventing filenames with spaces from being incorrectly split into multiple arguments.",
+          "isCorrect": true,
+          "rationale": "Filenames can contain spaces which standard xargs interprets as separators; the null character is the only character guaranteed not to be in a filename, ensuring perfect safety."
+        },
+        {
+          "text": "It forces `xargs` to run in parallel mode, significantly increasing the speed of the operation across multiple CPU cores.",
+          "isCorrect": false,
+          "rationale": "Parallel execution is controlled by the `-P` flag in xargs, not the `-0` delimiter flag."
+        },
+        {
+          "text": "The `-print0` flag automatically performs a 'dry run' to show which files will be affected before any actions are taken.",
+          "isCorrect": false,
+          "rationale": "The `-print0` flag is solely about the format of the output (using null terminators), not about simulating command execution."
+        },
+        {
+          "text": "It ensures that only text files are passed to `xargs`, filtering out binary files and directories by default.",
+          "isCorrect": false,
+          "rationale": "Filtering by file type is done using the `-type` flag in `find`, not through the delimiter selection."
+        }
+      ],
+      "hint": "Think about how names like 'Holiday Photos 2024.jpg' might be misinterpreted by the shell."
+    },
+    {
+      "type": "multiple_select",
+      "question": "Which of the following are essential security or safety practices when working with remote servers via SSH and transferring data with rsync?",
+      "answerOptions": [
+        {
+          "text": "Using the `-n` or `--dry-run` flag with `rsync` before performing a synchronization that includes the `--delete` flag.",
+          "isCorrect": true,
+          "rationale": "The `--delete` flag can irreversibly remove files on the destination; a dry run allows the user to verify which files will be deleted before they are actually lost."
+        },
+        {
+          "text": "Keeping a single SSH private key and copying it to every server you need to access for easy management.",
+          "isCorrect": false,
+          "rationale": "Best practice involves having separate keys for different security domains to minimize the impact if one key is compromised."
+        },
+        {
+          "text": "Configuring `~/.ssh/config` with host aliases to avoid typing long IP addresses and manual identity file paths.",
+          "isCorrect": true,
+          "rationale": "This centralizes management and reduces the likelihood of errors when connecting to multiple specific environments."
+        },
+        {
+          "text": "Enabling SSH agent-forwarding (`-A`) by default on all remote servers to ensure seamless transitions between nodes.",
+          "isCorrect": false,
+          "rationale": "Agent-forwarding should be avoided on untrusted servers because it allows the remote root user to use your local keys to authenticate elsewhere."
+        }
+      ],
+      "hint": "Consider the balance between convenience and the principle of least privilege, especially regarding key management and deletion operations.",
+      "hasAllOfTheAbove": false,
+      "hasNoneOfTheAbove": false
+    },
+    {
+      "type": "fill_in_the_blank",
+      "question": "To execute the last command that started with 'docker' but with the ability to review and edit it before running, the user should use the keyboard shortcut ___ followed by the word 'docker' and then pressing Esc.",
+      "bestAnswer": "Ctrl+R",
+      "acceptableAnswers": [
+        "Ctrl+R",
+        "Control+R"
+      ],
+      "rationale": "Ctrl+R initiates a reverse-i-search in Bash history, and pressing Esc brings the found command onto the current prompt line for editing without immediate execution.",
+      "hint": "This shortcut acts as the 'radar' for your command history."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "In a macOS environment, why might a user find that their aliases defined in `.bashrc` do not work when they open a new terminal window, and what is the standard fix?",
+      "answerOptions": [
+        {
+          "text": "macOS terminals launch as login shells and look for `.bash_profile` instead of `.bashrc`. The fix is to add a command in `.bash_profile` that sources `.bashrc`.",
+          "isCorrect": true,
+          "rationale": "By default, macOS Terminal.app treats every new window as a login shell, ignoring `.bashrc` unless it is manually called from `.bash_profile`."
+        },
+        {
+          "text": "The `.bashrc` file is restricted to server environments and is not compatible with local macOS file permissions.",
+          "isCorrect": false,
+          "rationale": "Bash functions the same way on macOS as on Linux; the issue is which configuration file is triggered by the shell startup type."
+        },
+        {
+          "text": "macOS uses Zsh by default, which does not support the `alias` command. The fix is to use functions instead.",
+          "isCorrect": false,
+          "rationale": "While macOS uses Zsh by default in newer versions, Zsh supports aliases; the prompt specifically references Bash mastery and its initialization files."
+        },
+        {
+          "text": "The `PATH` variable in macOS is overwritten by system defaults. The fix is to define all aliases in `/etc/profile`.",
+          "isCorrect": false,
+          "rationale": "Modifying `/etc/profile` is a system-wide change and is not the standard way to fix individual user configuration issues."
+        }
+      ],
+      "hint": "Recall the 'bridge' concept described in the 'Fuljan Khala' section regarding login vs. non-login shells."
+    },
+    {
+      "type": "short_answer",
+      "question": "Analyze the components of the 'five-net chain' logic used by Jalim Mia: `grep \"error\" app.log | sort | uniq -c | sort -rn | head -5`. What is the specific purpose of each step in this flow?",
+      "grading": {
+        "modelAnswer": "The chain filters the log for 'error' lines, sorts them to group duplicates, uses `uniq -c` to count occurrences of each error, sorts those results numerically in descending order (`-rn`), and finally displays the top 5 most frequent errors.",
+        "rationale": "This sequence transforms a raw stream of data into a prioritized summary by combining specialized tools for filtering, sorting, counting, and limiting output.",
+        "requiredAttributes": [
+          "Identifies grep as the filter for specific content.",
+          "Explains that sort is necessary before uniq to ensure duplicates are adjacent.",
+          "Identifies uniq -c as the counting mechanism.",
+          "Explains that the second sort (sort -rn) orders the counts from highest to lowest.",
+          "Identifies head -5 as the tool to limit the final result set."
+        ],
+        "errors": {
+          "misconceptions": [
+            "Thinking uniq -c works correctly without a preceding sort.",
+            "Confusing the purpose of the first sort with the second sort."
+          ],
+          "bluffs": [
+            "Simply stating it 'looks for errors' without explaining the transformation of the data through the pipeline."
+          ]
+        }
+      },
+      "hint": "Walk through the pipeline step-by-step: filter, organize, count, rank, and limit."
+    }
+  ]
+}

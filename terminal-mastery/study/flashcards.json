@@ -1,0 +1,365 @@
+{
+  "title": "Bash Flashcards",
+  "cards": [
+    {
+      "front": "In the 'City of Canals' metaphor, what does a 'boat' represent?",
+      "back": "A process or a program."
+    },
+    {
+      "front": "What is the purpose of the bash command `pwd`?",
+      "back": "It prints the working directory (shows your current location)."
+    },
+    {
+      "front": "Which command is used to list the contents of the current directory?",
+      "back": "`ls`"
+    },
+    {
+      "front": "In the terminal, what does the symbol `~` (tilde) represent?",
+      "back": "The user's home directory."
+    },
+    {
+      "front": "How do you navigate one level up in the directory tree?",
+      "back": "By using the command `cd ..`"
+    },
+    {
+      "front": "Which command allows you to return to the previous directory you were in?",
+      "back": "`cd -`"
+    },
+    {
+      "front": "What command provides the full manual or directory for a specific tool?",
+      "back": "`man`"
+    },
+    {
+      "front": "Which command is used to search the manual page descriptions for a specific keyword?",
+      "back": "`apropos`"
+    },
+    {
+      "front": "What is the function of the `--help` flag when appended to a command?",
+      "back": "It provides a brief, one-page summary of the command's usage."
+    },
+    {
+      "front": "What does the `Tab` key do when typing a command or file name?",
+      "back": "It triggers auto-completion."
+    },
+    {
+      "front": "How can you cycle through previously used commands in the terminal?",
+      "back": "Use the up ($\\uparrow$) and down ($\\downarrow$) arrow keys."
+    },
+    {
+      "front": "Every program is born with three standard 'pipes'. What are they?",
+      "back": "stdin (0), stdout (1), and stderr (2)."
+    },
+    {
+      "front": "What does the `|` (pipe) operator do?",
+      "back": "It sends the stdout of one command to the stdin of the next."
+    },
+    {
+      "front": "What is the difference between `>` and `>>` redirection operators?",
+      "back": "`>` overwrites the file, while `>>` appends to the file."
+    },
+    {
+      "front": "Which operator is used to redirect only the error stream (stderr) to a file?",
+      "back": "`2>`"
+    },
+    {
+      "front": "What is the correct order to redirect both stdout and stderr to the same file?",
+      "back": "`> file 2>&1`"
+    },
+    {
+      "front": "In Bash, what is the shorthand operator to redirect both stdout and stderr to a file?",
+      "back": "`&>`"
+    },
+    {
+      "front": "What is the purpose of the `/dev/null` file?",
+      "back": "It acts as a 'black hole' to discard unwanted output."
+    },
+    {
+      "front": "Which command allows you to view output on the screen while simultaneously saving it to a file?",
+      "back": "`tee`"
+    },
+    {
+      "front": "In Bash expansion, what does the expression `{1..3}` expand to?",
+      "back": "1 2 3"
+    },
+    {
+      "front": "What is the primary difference between single quotes (`'`) and double quotes (`\"`) in Bash?",
+      "back": "Single quotes preserve all characters verbatim; double quotes allow variable expansion ($) but prevent word-splitting."
+    },
+    {
+      "front": "How do you correctly reference a variable to prevent word-splitting if the value contains spaces?",
+      "back": "Enclose the variable in double quotes (e.g., `\"$var\"`)."
+    },
+    {
+      "front": "In parameter expansion, what does `${FILE%.gz}` do?",
+      "back": "It removes the `.gz` suffix from the variable's value."
+    },
+    {
+      "front": "What expansion syntax is used to provide a default value if a variable is empty?",
+      "back": "`${VAR:-default}`"
+    },
+    {
+      "front": "Which command is the primary tool for filtering lines based on a pattern?",
+      "back": "`grep`"
+    },
+    {
+      "front": "What does the `grep -v` flag do?",
+      "back": "It performs an inverted search (shows lines that do NOT match the pattern)."
+    },
+    {
+      "front": "Which tool is best suited for line-by-line text transformations and replacements?",
+      "back": "`sed`"
+    },
+    {
+      "front": "What does the `g` flag do in a `sed` command like `sed 's/old/new/g'`?",
+      "back": "It applies the replacement globally across the entire line."
+    },
+    {
+      "front": "Why is it recommended to use `sed -i.bak` instead of just `sed -i`?",
+      "back": "It creates a backup file before performing the in-place edit."
+    },
+    {
+      "front": "Which command is optimized for processing text organized into columns or fields?",
+      "back": "`awk`"
+    },
+    {
+      "front": "What is the default field separator for `awk`?",
+      "back": "Whitespace (spaces or tabs)."
+    },
+    {
+      "front": "Which command is used to find files in a directory hierarchy based on criteria like name or time?",
+      "back": "`find`"
+    },
+    {
+      "front": "When using `find` with `xargs`, why should you use `-print0` and `-0`?",
+      "back": "To safely handle filenames that contain spaces."
+    },
+    {
+      "front": "Which command is used to count the occurrences of unique lines in a sorted file?",
+      "back": "`uniq -c`"
+    },
+    {
+      "front": "What tool is used to parse and filter JSON data in the terminal?",
+      "back": "`jq`"
+    },
+    {
+      "front": "How do you run a command in the background?",
+      "back": "Append an ampersand (`&`) to the end of the command."
+    },
+    {
+      "front": "What is the function of the `jobs` command?",
+      "back": "It lists the background processes currently running in the shell."
+    },
+    {
+      "front": "Which command brings a background job to the foreground?",
+      "back": "`fg`"
+    },
+    {
+      "front": "What keyboard shortcut is used to suspend a running foreground process?",
+      "back": "`Ctrl+Z`"
+    },
+    {
+      "front": "What does the special variable `$?` represent?",
+      "back": "The exit status of the most recently executed command."
+    },
+    {
+      "front": "In shell scripting, what exit status code indicates success?",
+      "back": "0"
+    },
+    {
+      "front": "What is the difference between the `&&` and `||` operators when chaining commands?",
+      "back": "`&&` executes the next command only if the first succeeds; `||` executes it only if the first fails."
+    },
+    {
+      "front": "Which signal is sent by the command `kill -9`?",
+      "back": "SIGKILL (immediate termination without cleanup)."
+    },
+    {
+      "front": "Why should `SIGTERM` be attempted before `SIGKILL`?",
+      "back": "SIGTERM allows the process to clean up resources before closing."
+    },
+    {
+      "front": "What tool keeps processes running even after you disconnect from a server?",
+      "back": "`tmux` (or `nohup`)."
+    },
+    {
+      "front": "Which file is read by every new interactive, non-login terminal shell to set up aliases and functions?",
+      "back": "`~/.bashrc`"
+    },
+    {
+      "front": "What is the purpose of the `~/.bash_profile` file (especially on macOS)?",
+      "back": "It is read by login shells; it often acts as a bridge to load `~/.bashrc`."
+    },
+    {
+      "front": "How do you create a command shortcut in Bash?",
+      "back": "By using the `alias` command."
+    },
+    {
+      "front": "Which environment variable determines which directories the shell searches for executable commands?",
+      "back": "PATH"
+    },
+    {
+      "front": "What command is used to apply changes made to `~/.bashrc` without restarting the terminal?",
+      "back": "`source ~/.bashrc` (or `. ~/.bashrc`)."
+    },
+    {
+      "front": "Which keyboard shortcut triggers a reverse-search through your command history?",
+      "back": "`Ctrl+R`"
+    },
+    {
+      "front": "In the terminal, what does the command `!!` do?",
+      "back": "It repeats the entire previous command."
+    },
+    {
+      "front": "What does the expression `!$` expand to?",
+      "back": "The last argument of the previous command."
+    },
+    {
+      "front": "Which `HISTCONTROL` setting prevents the history from recording commands that start with a space?",
+      "back": "`ignorespace` (or `ignoreboth`)."
+    },
+    {
+      "front": "What is the Readline shortcut to move the cursor to the beginning of the line?",
+      "back": "`Ctrl+A`"
+    },
+    {
+      "front": "What is the Readline shortcut to move the cursor to the end of the line?",
+      "back": "`Ctrl+E`"
+    },
+    {
+      "front": "Which Readline shortcut deletes everything from the cursor to the end of the line?",
+      "back": "`Ctrl+K`"
+    },
+    {
+      "front": "How do you paste (yank) text that was previously cut using Readline shortcuts?",
+      "back": "`Ctrl+Y`"
+    },
+    {
+      "front": "What is the modern, recommended algorithm for generating SSH keys according to the text?",
+      "back": "`ed25519`"
+    },
+    {
+      "front": "Which command is used to transfer your public SSH key to a remote server?",
+      "back": "`ssh-copy-id`"
+    },
+    {
+      "front": "Where should you store SSH server aliases and connection settings locally?",
+      "back": "`~/.ssh/config`"
+    },
+    {
+      "front": "In `tmux`, what is the default prefix used for commands?",
+      "back": "`Ctrl+B`"
+    },
+    {
+      "front": "How do you 'detach' from a `tmux` session to keep it running in the background?",
+      "back": "`Ctrl+B` followed by `D`."
+    },
+    {
+      "front": "Which command efficiently synchronizes files by only transferring the differences?",
+      "back": "`rsync`"
+    },
+    {
+      "front": "Why should you use the `-n` flag with `rsync` before a final transfer?",
+      "back": "It performs a 'dry run' to show what would happen without actually making changes."
+    },
+    {
+      "front": "What does the `set -e` option do in a Bash script?",
+      "back": "It causes the script to exit immediately if any command fails."
+    },
+    {
+      "front": "What does the `set -u` option do in a Bash script?",
+      "back": "It treats unset variables as an error and exits immediately."
+    },
+    {
+      "front": "What does the `set -o pipefail` option ensure?",
+      "back": "The return value of a pipeline is the status of the last command to exit with a non-zero status."
+    },
+    {
+      "front": "Which command is used to create a unique temporary file safely?",
+      "back": "`mktemp`"
+    },
+    {
+      "front": "How do you ensure a temporary file is deleted when a script exits, regardless of how it finishes?",
+      "back": "Use the `trap` command (e.g., `trap 'rm -f \"$tmp\"' EXIT`)."
+    },
+    {
+      "front": "Which Bash builtin is used to parse command-line options and flags?",
+      "back": "`getopts`"
+    },
+    {
+      "front": "How do you debug a script by seeing every command printed before it is executed?",
+      "back": "Run the script with `bash -x script.sh`."
+    },
+    {
+      "front": "What does `bash -n script.sh` do?",
+      "back": "It checks the script for syntax errors without actually running it."
+    },
+    {
+      "front": "What is the 'universal interface' in the Unix philosophy?",
+      "back": "Text streams."
+    },
+    {
+      "front": "According to the Unix philosophy, should programs be large and all-encompassing or small and focused?",
+      "back": "Small and focused (doing one thing well)."
+    },
+    {
+      "front": "In the context of SSH security, where should your private key never be placed?",
+      "back": "In a Git repository or on a remote server (it should never leave your machine)."
+    },
+    {
+      "front": "What shortcut is used to clear the terminal screen?",
+      "back": "`Ctrl+L`"
+    },
+    {
+      "front": "How do you search for a process ID (PID) using common tools?",
+      "back": "`ps aux | grep [process_name]`"
+    },
+    {
+      "front": "What command allows you to edit the most recent commands in a text editor before running them?",
+      "back": "`fc`"
+    },
+    {
+      "front": "In `awk`, which variable represents the first column/field?",
+      "back": "`$1`"
+    },
+    {
+      "front": "How do you make a shell variable available to child processes?",
+      "back": "Use the `export` command."
+    },
+    {
+      "front": "Which `grep` flag displays the line numbers of matches?",
+      "back": "`-n`"
+    },
+    {
+      "front": "What does `sort -rn` do?",
+      "back": "It sorts numerically in reverse order."
+    },
+    {
+      "front": "Which expansion allows for arithmetic calculations in Bash?",
+      "back": "`$(( ... ))`"
+    },
+    {
+      "front": "What is the effect of `cd -`?",
+      "back": "It toggles back to the previous working directory."
+    },
+    {
+      "front": "What is the 'Throne of Streams' core lesson regarding tools?",
+      "back": "Tools are temporary and may change, but the concept of text streams remains constant."
+    },
+    {
+      "front": "In Door 9, why is `set -e` considered imperfect for critical steps?",
+      "back": "It does not catch failures inside `if` conditions or on the left side of `||`."
+    },
+    {
+      "front": "Which Readline command allows you to search for the last argument of the previous command?",
+      "back": "`Alt+.`"
+    },
+    {
+      "front": "What does `shopt -s histappend` do?",
+      "back": "It ensures that multiple terminal sessions append to the history file rather than overwriting it."
+    },
+    {
+      "front": "In `ssh-keygen`, what does the `-C` flag provide?",
+      "back": "A comment (often used to identify the key's owner or host)."
+    }
+  ]
+}
