@@ -43,7 +43,11 @@ claude            # ← ইন্টারঅ্যাক্টিভ সেশ�
 claude -p "এই প্রজেক্ট কী করে, এক লাইনে বলো"
 
 # শুরুতেই একটা কাজ দিয়ে সেশন খোলা:
-claude "fix the build error"</div>
+claude "fix the build error"
+
+# কালকের কথা হারায় না — প্রতিটা সেশন সেভ থাকে:
+claude --continue    # এই ফোল্ডারের সর্বশেষ সেশনে ফেরো
+claude --resume      # তালিকা থেকে বেছে নিয়ে ফেরো</div>
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>হাসুর সতর্কতা:</strong> হাতুড়ি হাতে পাওয়া মানেই ঘর ভাঙা শেখা নয়। প্রথম দিনেই প্রোডাকশন রিপোজিটরিতে ঢুকে বড় রিফ্যাক্টর শুরু করো না। একটা ছোট, নিরীহ প্রজেক্টে হাতুড়ির শব্দ চিনো।</div></div>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Hasu's warning:</strong> Holding the hammer does not mean you know demolition. Do not open a production repo and start a big refactor on day one. Learn the sound of the strike on a small, harmless project first.</div></div>
@@ -283,11 +287,25 @@ doors.push({
 
 <div class="code-block"># নদীর হিসাব নিজের হাতে:
 > /context     # কনটেক্সটে এখন কী কী জমে আছে
+> /usage       # টোকেন, সময়, খরচ — মডেল ধরে ভাগ করা হিসাব
 > /compact     # পুরনো কথা সংক্ষেপে ঠেলে জায়গা করো
 > /clear       # নদী একদম খালি — নতুন কাজে নতুন শুরু
 
+# নৌকা উজানে ফেরানো — প্রতিটা প্রম্পটই একটা চেকপয়েন্ট:
+> /rewind       # বা Esc দুইবার (ইনপুট খালি থাকলে)
+# মেনু থেকে বেছে নাও: কোড+কথা ফেরাও · শুধু কথা · শুধু কোড
+# কিংবা এই পয়েন্ট পর্যন্ত সংক্ষেপ করে নদী হালকা করো
+
+# দীর্ঘ চলা কাজ (dev server, build) — পেছনের স্রোতে:
+# চলতি কমান্ড Ctrl+B চাপলে পেছনে চলে যায় (tmux-এ দুইবার),
+# আউটপুট ফাইলে জমে — দরকার হলে Claude পড়ে নেয়।
+# আর ! দিয়ে শুরু করলে শেল-মোড: ! npm test — Claude ছাড়াই চলে।
+
 # ভাসানোর আগেই খালাস:
 # ছোট ছোট কাজ শেষ করে /clear দাও, লম্বা অনুসন্ধান সাব-এজেন্টে পাঠাও</div>
+
+<div class="callout info"><span class="co-icon">🎯</span><div><strong>ফেরার সীমা:</strong> চেকপয়েন্ট ধরে রাখে শুধু Claude-এর নিজের হাতে করা ফাইল-এডিট — Bash কমান্ডের কাজ বা রিমোট ঘটনা (ডাটাবেস, ডিপ্লয়) ফেরানো যায় না। এটা git-এর বিকল্প নয়, সঙ্গী। সেশন বন্ধ করে --resume করলেও চেকপয়েন্টগুলো থাকে।</div></div>
+<div class="callout info"><span class="co-icon">🎯</span><div><strong>The limit of return:</strong> checkpoints capture only file edits made by Claude's own tools — Bash-command changes and remote events (databases, deploys) cannot be rewound. It is not a replacement for git, but its companion. Checkpoints survive closing the session and resuming with --resume.</div></div>
 
 <div class="callout tip"><span class="co-icon">🔌</span><div><strong>ফরিদার টিপ:</strong> বড় কাজ ভাঙো ছোট নৌকায়-ছোট যাত্রায়। এক সেশনে পুরো মাসের কাজ চালাতে যেয়ো না — প্রতিটা ফিচার বা বাগের জন্য তাজা /clear, আর প্রয়োজনে ব্যাকগ্রাউন্ড এজেন্ট। নদী সবসময় তাজা থাকে।</div></div>
 <div class="callout tip"><span class="co-icon">🔌</span><div><strong>Farida's tip:</strong> Break big work into small boats, small voyages. Don't run a whole month's work in one session — fresh /clear per feature or bug, background agents when needed. The river stays fresh.</div></div>
