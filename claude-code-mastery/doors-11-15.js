@@ -97,7 +97,7 @@ exit 0</div>
     body: `<ul class="checklist">
 <li>ইনপুট সবসময় <strong>jq</strong> দিয়ে পড়ো — <code>tool_input.command</code>, <code>tool_name</code>, <code>session_id</code>, <code>cwd</code> হাতে আসে।</li>
 <li>শুধু থামাতে হলে exit 2 + stderr; নিয়ন্ত্রণ দরকার হলে exit 0 + JSON (<code>permissionDecision</code>)।</li>
-<li>UserPromptSubmit হুক exit 0-এর stdout প্রসঙ্গে যোগ হয় — <code>additionalContext</code> দিয়ে প্রম্পটে গোপন নোট ঢোকানো যায়।</li>
+<li>UserPromptSubmit হুক exit 0-এর stdout প্রসঙ্গে যোগ হয় — প্রম্পটে গোপন নোট: exit 0 + stdout-এ JSON, যেখানে <code>additionalContext</code> থাকবে <code>hookSpecificOutput</code>-এর ভেতরে বসানো (top-level-এ দিলে নীরবে উপেক্ষা হয়)।</li>
 <li>ডিবাগ: <code>claude --debug</code> বা সেশনে <code>/debug</code> — হুকের ভাঙা আউটপুট সেখানেই দেখা যায়।</li>
 <li>ব্লক করার আগে ভেবে দেখো — প্রতিটা exit 2 মানে Claude-এর হাতে একটা ফিরে-আসা কারণ, সে পড়ে পথ বদলায়।</li>
 </ul>`
@@ -156,7 +156,10 @@ keep-coding-instructions: true
 When explaining code, architecture, or data flow, start with a
 Mermaid diagram showing the structure, then explain in prose.
 
-# চালু: /output-style → Diagrams first
+# চালু: /config → outputStyle: Diagrams first
+# (বা settings-এ "outputStyle": "Diagrams first" —
+#  সেশনের মাঝে বদলালে পরের মেসেজ থেকে কার্যকর)
+# বিল্ট-ইন ছাঁচও আছে: Explanatory, Learning
 # keep-coding-instructions: true রাখলে কোডিং-আচরণ
 # অক্ষুণ্ণ থাকে, শুধু ব্যাখ্যার ঢং বদলায়।</div>
 
@@ -180,7 +183,7 @@ chmod +x ~/.claude/statusline.sh
 <table class="kv-table">
 <tr><th>দরকার</th><th>সিল / ছাঁচ</th><th>জায়গা</th></tr>
 <tr><td class="hl">বার বারের দীর্ঘ নির্দেশ → এক চাপ</td><td>Slash command (.md)</td><td>.claude/commands/ (দল) · ~/.claude/commands/ (নিজে)</td></tr>
-<tr><td class="hl">উত্তরের ঢং বদল</td><td>Output style (.md)</td><td>~/.claude/output-styles/ → /output-style</td></tr>
+<tr><td class="hl">উত্তরের ঢং বদল</td><td>Output style (.md)</td><td>~/.claude/output-styles/ → /config (outputStyle)</td></tr>
 <tr><td class="hl">সবসময় চোখের সামনে হিসাব</td><td>Statusline (sh + jq)</td><td>~/.claude/statusline.sh + settings.json</td></tr>
 </table>
 
@@ -414,7 +417,10 @@ my-marketplace/
 
 # দরজা খোলা:
 /plugin marketplace add <github-org>/<repo>
-/plugin install my-plugin@my-marketplace</div>
+/plugin install my-plugin@my-marketplace
+
+# লোকাল টেস্টে পথও চলে:
+/plugin marketplace add ./my-marketplace</div>
 
 <p>লক্ষ করো বাক্সটা কী কী জিনিস একসাথে করে: দরজা ৬-এর ঠিকাদার, ৭-এর ঘণ্টা, ৮-এর পুঁথি-আংটি, ১২-এর সিল-ছাঁচ — প্লাগইন মানে নতুন কোনো যন্ত্র নয়, <strong>আগের সব যন্ত্রের বিতরণ-একক</strong>। তাই এটা উঁচু তলার শেষ প্রায় দরজা: নিচের দরজাগুলোতে তুমি প্রতিটা যন্ত্র আলাদা করে শিখলে, এখানে শিখলে সেগুলো কীভাবে <strong>এক বিতরণ-এককে বাঁধা যায়</strong>।</p>
 <p class="en">Notice what the crate gathers: Door 6's contractors, 7's bells, 8's chapbooks and rings, 12's seals and moulds — a plugin is not a new machine but <strong>the distribution unit of every machine you already built</strong>. That is why this is the last door of the advanced floors: below, you learned each machine; here, you learn to bundle them into <strong>one shippable unit</strong>.</p>
@@ -468,6 +474,12 @@ async def can_use_tool(tool_name, input_data, context):
     return PermissionResultAllow(updated_input=input_data)  # শর্ত-বদলও সম্ভব
 
 options = ClaudeAgentOptions(can_use_tool=can_use_tool)
+
+# ⚠️ Python স্ট্রিমিং মোডে (finite message stream) একটা
+# dummy PreToolUse হুক লাগে স্ট্রিম খোলা রাখতে:
+#   async def keep_open(input_data, tool_use_id, context):
+#       return {"continue_": True}
+#   hooks={"PreToolUse": [HookMatcher(matcher=None, hooks=[keep_open])]}
 
 # ② সংবিধান — system_prompt:
 options = ClaudeAgentOptions(
