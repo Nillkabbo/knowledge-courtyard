@@ -31,12 +31,14 @@ doors.push({
 <p class="en">Claude Code's hammer is the terminal. The docs call it Anthropic's <strong>agentic coding tool</strong>: it understands your codebase, writes code, explains, runs git — all in natural language. It installs in several places — the terminal CLI on your machine, VS Code / JetBrains IDEs, or the web and desktop apps. Today, the first terminal journey.</p>
 
 <div class="code-block">npm install -g @anthropic-ai/claude-code
+# (Node.js ২২ বা তার বেশি লাগবে; sudo দিয়ে নয়)
 
 # ইনস্টলের পর, প্রজেক্ট ফোল্ডারে গিয়ে:
 cd ~/my-project
 claude            # ← ইন্টারঅ্যাক্টিভ সেশন শুরু
 
-# প্রথম বার চালু করলে লগইন ও থিম বেছে নিতে বলবে।
+# প্রথম বার চালু করলে লগইন করতে বলবে (ANTHROPIC_API_KEY
+# সেট করা থাকলে সেটিকে অনুমোদন করতে বলে)।
 # এক লাইনের কাজ, উত্তর শুধু দরকার:
 claude -p "এই প্রজেক্ট কী করে, এক লাইনে বলো"
 
@@ -109,6 +111,9 @@ doors.push({
 <div class="code-block"># নতুন প্রজেক্টে খাতার শুরু Claude-কে দিয়েই বানাও:
 claude
 > /init          # কোডবেস দেখে স্টার্টার CLAUDE.md লিখে দেয়
+
+# খাতার ফাইলগুলো দেখো, খুলো, সম্পাদনা করো:
+> /memory        # সব স্তরের খাতা-ফাইল তালিকা দেখায়, এডিটরে খোলে
 
 # খাতা আসলে লোড হয়েছে কি না দেখো:
 > /context       # কনটেক্সটে কী কী ঢুকেছে, সেই হিসাব
