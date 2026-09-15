@@ -1,0 +1,281 @@
+{
+  "title": "Agent Quiz",
+  "questions": [
+    {
+      "type": "multiple_choice",
+      "question": "When configuring rule precedence, which level of configuration will override all others, including programmatic options provided via the Agent SDK?",
+      "answerOptions": [
+        {
+          "text": "Organization-managed policy",
+          "isCorrect": true,
+          "rationale": "In the hierarchy of authority, managed organizational policies represent the highest level of control and supersede local, project, user, and programmatic settings."
+        },
+        {
+          "text": "Programmatic Agent SDK options",
+          "isCorrect": false,
+          "rationale": "While programmatic options override local, project, and user-level configuration files, they remain subject to the constraints of the managed organization policy."
+        },
+        {
+          "text": "Local settings (settings.local.json)",
+          "isCorrect": false,
+          "rationale": "Local settings are highly specific but sit at the bottom of the precedence chain, being overwritten by project, user, and programmatic levels."
+        },
+        {
+          "text": "Global user settings (~/.claude/settings.json)",
+          "isCorrect": false,
+          "rationale": "Global user settings provide defaults across all projects but are overridden by project-specific settings and higher-level programmatic or managed policies."
+        }
+      ],
+      "hint": "Consider the highest tier of administrative oversight in the 'Architect’s Throne' hierarchy."
+    },
+    {
+      "type": "multiple_select",
+      "question": "Which of the following statements accurately describe the behavior and characteristics of subagents compared to the main session agent?",
+      "answerOptions": [
+        {
+          "text": "They operate within an independent context window to avoid 'flooding' the main session.",
+          "isCorrect": true,
+          "rationale": "Subagents maintain their own memory and history, ensuring that large volumes of data from tasks like searching do not displace critical context in the main session."
+        },
+        {
+          "text": "They return only a summary of their findings to the main session upon completion.",
+          "isCorrect": true,
+          "rationale": "The delegation pattern is designed to reduce noise, meaning the main agent receives high-level reports rather than every intermediate tool output from the subagent."
+        },
+        {
+          "text": "They automatically inherit all project-level rules from CLAUDE.md by default.",
+          "isCorrect": false,
+          "rationale": "While the main session loads CLAUDE.md, subagents are defined by their specific system prompts, tools, and models in their respective configuration files."
+        },
+        {
+          "text": "They can be chained such that the output of one becomes the input for another.",
+          "isCorrect": true,
+          "rationale": "As representatives of delegated tasks, the summary report from one contractor agent can serve as the prompt or directive for a subsequent agent's work."
+        }
+      ],
+      "hint": "Focus on how delegation preserves the 'river' of the main context.",
+      "hasAllOfTheAbove": false,
+      "hasNoneOfTheAbove": false
+    },
+    {
+      "type": "fill_in_the_blank",
+      "question": "In the event of context window 'compaction,' the system ensures that project rules remain active because the ___ file is re-read fresh from the disk and appended to the summary.",
+      "bestAnswer": "CLAUDE.md",
+      "acceptableAnswers": [
+        "CLAUDE.md",
+        ".claude/CLAUDE.md",
+        "CLAUDE.local.md"
+      ],
+      "rationale": "The system prompt logic treats CLAUDE.md as persistent project memory that must survive the summarization of older conversational history.",
+      "hint": "This file is often referred to as the 'Workshop Ledger' that keeps project-specific instructions alive."
+    },
+    {
+      "type": "short_answer",
+      "question": "Explain the technical distinction between using the 'exit 2' code versus a JSON-formatted 'permissionDecision' of 'deny' within a PreToolUse hook.",
+      "grading": {
+        "modelAnswer": "An 'exit 2' code provides a hard block at the process level, where the script terminates and sends the stderr content as the reason for the block. In contrast, using a JSON 'permissionDecision' of 'deny' with 'exit 0' allows the script to finish successfully while providing structured feedback to the agent, though any 'exit 2' in the hook chain will always take precedence and block the action regardless of JSON values.",
+        "rationale": "Understanding the difference involves knowing how the shell signal (exit code) interacts with the protocol's structured output (JSON).",
+        "requiredAttributes": [
+          "Identifies that exit 2 is a hard block at the process/shell level.",
+          "Explains that JSON permissionDecision provides structured control via stdout.",
+          "Notes that exit 2 overrides JSON 'allow' decisions."
+        ],
+        "errors": {
+          "misconceptions": [
+            "Thinking that JSON 'allow' can override an exit 2 code.",
+            "Believing the agent cannot see the reason for a hard block."
+          ],
+          "bluffs": [
+            "Stating that JSON is only for success and exit codes are only for failures without explaining the protocol contract."
+          ]
+        }
+      },
+      "hint": "One is a shell signal of failure, while the other is a structured communication within a success signal."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "To enable the agent to automatically perform file edits while still requiring manual approval for shell commands like 'npm test', which permission mode should be selected?",
+      "answerOptions": [
+        {
+          "text": "acceptEdits",
+          "isCorrect": true,
+          "rationale": "The 'acceptEdits' mode specifically automates file modifications and basic file commands while maintaining the standard permission flow for sensitive shell operations."
+        },
+        {
+          "text": "bypassPermissions",
+          "isCorrect": false,
+          "rationale": "This mode removes all human oversight, allowing all commands (including dangerous shell commands) to run without any prompts, which is unsafe for general use."
+        },
+        {
+          "text": "plan",
+          "isCorrect": false,
+          "rationale": "Plan mode is restricted to outlining intended actions without executing them, meaning it would not automate the edits even if they were safe."
+        },
+        {
+          "text": "default",
+          "isCorrect": false,
+          "rationale": "The default mode is conservative and will prompt for permissions on sensitive tasks, including major file edits, until learned or configured otherwise."
+        }
+      ],
+      "hint": "This mode acts like a 'verandah key' for routine file-based tasks."
+    },
+    {
+      "type": "multiple_select",
+      "question": "When developing a custom MCP server as a standalone stdio process, which schemas must the server implement to be recognized and utilized by the agent?",
+      "answerOptions": [
+        {
+          "text": "ListToolsRequestSchema",
+          "isCorrect": true,
+          "rationale": "This schema allows the agent to discover which tools the server provides, essentially acting as the server's catalogue."
+        },
+        {
+          "text": "CallToolRequestSchema",
+          "isCorrect": true,
+          "rationale": "This schema handles the actual execution logic when the agent decides to invoke a specific tool from the server."
+        },
+        {
+          "text": "CreateAgentRequestSchema",
+          "isCorrect": false,
+          "rationale": "Agents are managed by the core SDK; MCP servers provide tools to agents rather than creating the agents themselves."
+        },
+        {
+          "text": "ContextCompactionSchema",
+          "isCorrect": false,
+          "rationale": "Compaction is a core context management feature of the agent's main loop and is not an implemented schema for individual MCP tool servers."
+        }
+      ],
+      "hint": "Think of the two-step process: seeing what tools are available and then executing a chosen tool.",
+      "hasAllOfTheAbove": false,
+      "hasNoneOfTheAbove": false
+    },
+    {
+      "type": "fill_in_the_blank",
+      "question": "To prevent 'prompt fatigue' and increase security when dealing with untrusted content, safe and repetitive commands should be added to the ___ list within the permissions configuration.",
+      "bestAnswer": "allow",
+      "acceptableAnswers": [
+        "allow",
+        "allowlist",
+        "allow list"
+      ],
+      "rationale": "Explicitly listing safe commands in the 'allow' configuration prevents the user from becoming habituated to clicking 'approve' for every single action, which could lead to accidentally approving a malicious command.",
+      "hint": "It is the opposite of the 'deny' list used for dangerous commands like 'rm -rf'."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the primary technical function of the `${CLAUDE_PLUGIN_ROOT}` variable when defining paths in a `hooks.json` or `mcpServers` configuration within a plugin?",
+      "answerOptions": [
+        {
+          "text": "It ensures paths remain relative to the plugin's installation directory across different user environments.",
+          "isCorrect": true,
+          "rationale": "Because plugins can be installed in various locations (local vs global), using a dynamic root variable prevents broken paths when scripts or binaries are moved between machines."
+        },
+        {
+          "text": "It restricts the agent's filesystem access solely to the internal folders of the plugin.",
+          "isCorrect": false,
+          "rationale": "Filesystem restrictions are handled by the sandbox configuration, not by the path environment variables used for locating plugin assets."
+        },
+        {
+          "text": "It automatically elevates the execution permissions of any script located within that directory.",
+          "isCorrect": false,
+          "rationale": "Permission elevation is a system-level or shell-level concern; the variable only provides the string path to the directory."
+        },
+        {
+          "text": "It triggers a recursive search for all `.md` files to be used as subagents.",
+          "isCorrect": false,
+          "rationale": "Subagents are loaded based on their location in the `agents/` folder and their presence in the `plugin.json`, not by the root path variable alone."
+        }
+      ],
+      "hint": "This variable is described as the 'internal key' that makes the 'wholesale box' portable."
+    },
+    {
+      "type": "short_answer",
+      "question": "Describe the function and safety implications of the 'sandbox.credentials' setting in the security architecture.",
+      "grading": {
+        "modelAnswer": "The 'sandbox.credentials' setting allows users to explicitly hide sensitive environment variables and files (such as `.aws/credentials` or `GITHUB_TOKEN`) from the agent. This is critical because even if an agent has read access to the filesystem, these specific paths are blocked at the sandbox level, preventing potentially malicious untrusted content from tricking the agent into leaking secrets.",
+        "rationale": "The credentials setting acts as a specialized vault within the broader sandbox to protect identity and access tokens.",
+        "requiredAttributes": [
+          "Mentions hiding environment variables or specific credential files.",
+          "Explains the goal is to prevent data leakage of secrets.",
+          "Notes that it operates as a specific 'deny' rule within the sandbox."
+        ],
+        "errors": {
+          "misconceptions": [
+            "Thinking it automatically encrypts the files on disk.",
+            "Believing it is only for network-based attacks."
+          ],
+          "bluffs": [
+            "General statements about the sandbox without naming the specific protection of tokens and env vars."
+          ]
+        }
+      },
+      "hint": "This is Rubina’s 'key-room' inside the vault, focusing on tokens and secret files."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "When utilizing the Agent SDK, what is the significance of the `can_use_tool` callback in the `ClaudeAgentOptions`?",
+      "answerOptions": [
+        {
+          "text": "It allows the developer to intercept, inspect, and potentially rewrite the tool inputs before execution.",
+          "isCorrect": true,
+          "rationale": "This programmatic hook provides fine-grained control, allowing the hosting application to approve, deny, or modify the data the agent is attempting to send to a tool."
+        },
+        {
+          "text": "It is used to define the visual appearance of the tool in the terminal output.",
+          "isCorrect": false,
+          "rationale": "Visual appearance and status lines are handled by output styles and formatting configurations, not by tool-use logic callbacks."
+        },
+        {
+          "text": "It determines the model's 'reasoning effort' for that specific tool call.",
+          "isCorrect": false,
+          "rationale": "Reasoning effort is a separate parameter (set via `/effort`) that dictates the computational depth, not the permission to use a tool."
+        },
+        {
+          "text": "It serves as the primary mechanism for loading third-party MCP servers.",
+          "isCorrect": false,
+          "rationale": "MCP servers are registered via the `mcp_servers` configuration object, while `can_use_tool` is for managing permissions for those tools."
+        }
+      ],
+      "hint": "Think of it as the 'Architect's' final pen-stroke that can even 'change the terms' of a request."
+    },
+    {
+      "type": "multiple_select",
+      "question": "Which commands or flags can be used to manage the 'Context River' to prevent the loss of critical information due to automatic compaction?",
+      "answerOptions": [
+        {
+          "text": "Executing `/compact` to manually trigger summarization at a strategic moment.",
+          "isCorrect": true,
+          "rationale": "By manually compacting when the current context is understood, the user ensures the summary captures the right essence before the river overflows naturally."
+        },
+        {
+          "text": "Using `/clear` to reset the context entirely for a fresh task.",
+          "isCorrect": true,
+          "rationale": "Resetting the session prevents old, irrelevant 'cargo' from a previous task from influencing or bloating the current work."
+        },
+        {
+          "text": "Invoking `/rewind` to return to a previous checkpoint.",
+          "isCorrect": true,
+          "rationale": "Rewinding allows the user to undo a series of steps that flooded the context with errors or irrelevant data, effectively moving the 'boat' upstream."
+        },
+        {
+          "text": "Applying the `--no-compact` flag during installation to disable the feature.",
+          "isCorrect": false,
+          "rationale": "Compaction is a physical necessity of the LLM's context window; it cannot be disabled, only managed through tools and strategy."
+        }
+      ],
+      "hint": "Look for commands that help the 'Ferrywoman' maintain the safety and clarity of the voyage.",
+      "hasAllOfTheAbove": false,
+      "hasNoneOfTheAbove": false
+    },
+    {
+      "type": "fill_in_the_blank",
+      "question": "To run a long-running command in the background while continuing the interactive session, you can press ___ (or twice in tmux) to move the process to the background.",
+      "bestAnswer": "Ctrl+B",
+      "acceptableAnswers": [
+        "Ctrl+B",
+        "Control+B"
+      ],
+      "rationale": "The system includes a specific shortcut to manage background tasks so that the user can continue conversing while a build or test runs in the 'current' of the river.",
+      "hint": "This key combination is the same as the default prefix for the tmux terminal multiplexer."
+    }
+  ]
+}
