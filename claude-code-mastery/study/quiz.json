@@ -1,281 +1,355 @@
 {
-  "title": "Agent Quiz",
+  "title": "Claude Quiz",
   "questions": [
     {
       "type": "multiple_choice",
-      "question": "When configuring rule precedence, which level of configuration will override all others, including programmatic options provided via the Agent SDK?",
+      "question": "When working in a large project with frequent repetitive tasks, which command variation would be most appropriate for a script intended to simply output a one-line summary without opening an interactive session?",
       "answerOptions": [
         {
-          "text": "Organization-managed policy",
+          "text": "claude -p",
           "isCorrect": true,
-          "rationale": "In the hierarchy of authority, managed organizational policies represent the highest level of control and supersede local, project, user, and programmatic settings."
+          "rationale": "The -p flag activates 'print mode,' which prints the result directly to the terminal and exits, making it suitable for pipes and automation."
         },
         {
-          "text": "Programmatic Agent SDK options",
+          "text": "claude --resume",
           "isCorrect": false,
-          "rationale": "While programmatic options override local, project, and user-level configuration files, they remain subject to the constraints of the managed organization policy."
+          "rationale": "This flag is used to continue a previous interactive session from a list, which maintains an active conversation rather than a one-off print."
         },
         {
-          "text": "Local settings (settings.local.json)",
+          "text": "claude -i",
           "isCorrect": false,
-          "rationale": "Local settings are highly specific but sit at the bottom of the precedence chain, being overwritten by project, user, and programmatic levels."
+          "rationale": "An interactive session is the default behavior when no flags are provided; the specific flag for non-interactive output is different."
         },
         {
-          "text": "Global user settings (~/.claude/settings.json)",
+          "text": "claude --continue",
           "isCorrect": false,
-          "rationale": "Global user settings provide defaults across all projects but are overridden by project-specific settings and higher-level programmatic or managed policies."
+          "rationale": "This command returns the user to the very last session in the current folder, keeping the interactive loop open."
         }
       ],
-      "hint": "Consider the highest tier of administrative oversight in the 'Architect’s Throne' hierarchy."
+      "hint": "Consider the distinction between conversing with the tool and simply asking it for a result."
+    },
+    {
+      "type": "fill_in_the_blank",
+      "question": "To ensure that Claude follows the same personal preferences across every project on your local machine, you should place a configuration file at ___.",
+      "bestAnswer": "~/.claude/CLAUDE.md",
+      "acceptableAnswers": [
+        "home/.claude/CLAUDE.md",
+        "the user home directory .claude CLAUDE.md"
+      ],
+      "rationale": "The memory hierarchy loads files from the broadest level (user home) down to the most specific (sub-folders), allowing global rules to persist across all local repositories.",
+      "hint": "Think about where global user configurations are typically stored on a Unix-based system."
     },
     {
       "type": "multiple_select",
-      "question": "Which of the following statements accurately describe the behavior and characteristics of subagents compared to the main session agent?",
+      "question": "Which of the following are true regarding the behavior and hierarchy of memory files like CLAUDE.md?",
       "answerOptions": [
         {
-          "text": "They operate within an independent context window to avoid 'flooding' the main session.",
+          "text": "Memory levels are additive and concatenated together at the start of a session.",
           "isCorrect": true,
-          "rationale": "Subagents maintain their own memory and history, ensuring that large volumes of data from tasks like searching do not displace critical context in the main session."
+          "rationale": "The system aggregates rules from the user home, project root, and sub-directories to create a comprehensive prompt."
         },
         {
-          "text": "They return only a summary of their findings to the main session upon completion.",
+          "text": "The project-level CLAUDE.md is re-read fresh from the disk after a context compaction occurs.",
           "isCorrect": true,
-          "rationale": "The delegation pattern is designed to reduce noise, meaning the main agent receives high-level reports rather than every intermediate tool output from the subagent."
+          "rationale": "Even when the conversation history is summarized to save space, the core project instructions survive by being re-loaded."
         },
         {
-          "text": "They automatically inherit all project-level rules from CLAUDE.md by default.",
+          "text": "Local modifications intended only for one machine should be kept in CLAUDE.local.md.",
+          "isCorrect": true,
+          "rationale": "This specific file naming convention allows for machine-specific overrides that are generally ignored by version control."
+        },
+        {
+          "text": "A more specific CLAUDE.md in a sub-folder will completely overwrite the rules in the project root.",
           "isCorrect": false,
-          "rationale": "While the main session loads CLAUDE.md, subagents are defined by their specific system prompts, tools, and models in their respective configuration files."
-        },
-        {
-          "text": "They can be chained such that the output of one becomes the input for another.",
-          "isCorrect": true,
-          "rationale": "As representatives of delegated tasks, the summary report from one contractor agent can serve as the prompt or directive for a subsequent agent's work."
+          "rationale": "The files are additive rather than subtractive, meaning specific rules complement broader project rules instead of deleting them."
         }
       ],
-      "hint": "Focus on how delegation preserves the 'river' of the main context.",
+      "hint": "Recall the analogy of the workshop ledger where new rules are added rather than replacing the old ones.",
       "hasAllOfTheAbove": false,
       "hasNoneOfTheAbove": false
     },
     {
-      "type": "fill_in_the_blank",
-      "question": "In the event of context window 'compaction,' the system ensures that project rules remain active because the ___ file is re-read fresh from the disk and appended to the summary.",
-      "bestAnswer": "CLAUDE.md",
-      "acceptableAnswers": [
-        "CLAUDE.md",
-        ".claude/CLAUDE.md",
-        "CLAUDE.local.md"
+      "type": "multiple_choice",
+      "question": "You are tasked with a high-stakes, large-scale refactor of a legacy codebase where precision is more important than speed. Which model should you select for this specific session?",
+      "answerOptions": [
+        {
+          "text": "Opus",
+          "isCorrect": true,
+          "rationale": "This model is designated for high-stakes tasks, complex debugging, and large-scale architectural changes where maximum capability is required."
+        },
+        {
+          "text": "Haiku",
+          "isCorrect": false,
+          "rationale": "This model is optimized for speed and mechanical tasks like formatting or fixing simple typos rather than deep architectural reasoning."
+        },
+        {
+          "text": "Sonnet",
+          "isCorrect": false,
+          "rationale": "While it is the dependable default for everyday features, it is not the top-tier choice for the most gnarly, high-risk refactoring scenarios."
+        },
+        {
+          "text": "Fable",
+          "isCorrect": false,
+          "rationale": "While highly capable for long-running tasks, the specific model recommended for gnarly debugging and high-risk refactors is often associated with the 'bull-strong' Karim analogy."
+        }
       ],
-      "rationale": "The system prompt logic treats CLAUDE.md as persistent project memory that must survive the summarization of older conversational history.",
-      "hint": "This file is often referred to as the 'Workshop Ledger' that keeps project-specific instructions alive."
+      "hint": "Think of the 'grandfather' or the 'strongest brother' in the workshop analogy."
     },
     {
       "type": "short_answer",
-      "question": "Explain the technical distinction between using the 'exit 2' code versus a JSON-formatted 'permissionDecision' of 'deny' within a PreToolUse hook.",
+      "question": "Explain the concept of 'compaction' within an interactive session and how a user can manually trigger it.",
       "grading": {
-        "modelAnswer": "An 'exit 2' code provides a hard block at the process level, where the script terminates and sends the stderr content as the reason for the block. In contrast, using a JSON 'permissionDecision' of 'deny' with 'exit 0' allows the script to finish successfully while providing structured feedback to the agent, though any 'exit 2' in the hook chain will always take precedence and block the action regardless of JSON values.",
-        "rationale": "Understanding the difference involves knowing how the shell signal (exit code) interacts with the protocol's structured output (JSON).",
+        "modelAnswer": "Compaction is the process where the context window summarizes older tool results, file contents, and conversations into a concise summary to free up token space. A user can manually trigger this using the /compact command, potentially specifying a focus area to ensure relevant details are preserved.",
+        "rationale": "Compaction manages the limited context window (the 'river') by moving older data into 'storeroom' summaries to maintain performance.",
         "requiredAttributes": [
-          "Identifies that exit 2 is a hard block at the process/shell level.",
-          "Explains that JSON permissionDecision provides structured control via stdout.",
-          "Notes that exit 2 overrides JSON 'allow' decisions."
+          "Defines compaction as summarizing or condensing old conversation/context.",
+          "Mentions that it helps stay within token limits or context window limits.",
+          "Identifies /compact as the command to trigger it manually."
         ],
         "errors": {
           "misconceptions": [
-            "Thinking that JSON 'allow' can override an exit 2 code.",
-            "Believing the agent cannot see the reason for a hard block."
+            "Believing compaction deletes history entirely rather than summarizing it.",
+            "Confusing /compact with /clear, which wipes the session entirely."
           ],
           "bluffs": [
-            "Stating that JSON is only for success and exit codes are only for failures without explaining the protocol contract."
+            "Suggesting that compaction is only done by the system and cannot be controlled by the user."
           ]
         }
       },
-      "hint": "One is a shell signal of failure, while the other is a structured communication within a success signal."
+      "hint": "Recall the analogy of the ferrywoman's boat sinking if it holds too much cargo."
     },
     {
       "type": "multiple_choice",
-      "question": "To enable the agent to automatically perform file edits while still requiring manual approval for shell commands like 'npm test', which permission mode should be selected?",
+      "question": "Which permission mode allows Claude to edit files without asking but still requires user confirmation for running shell commands?",
       "answerOptions": [
         {
           "text": "acceptEdits",
           "isCorrect": true,
-          "rationale": "The 'acceptEdits' mode specifically automates file modifications and basic file commands while maintaining the standard permission flow for sensitive shell operations."
-        },
-        {
-          "text": "bypassPermissions",
-          "isCorrect": false,
-          "rationale": "This mode removes all human oversight, allowing all commands (including dangerous shell commands) to run without any prompts, which is unsafe for general use."
+          "rationale": "This mode creates a balance where mechanical file edits are silent, but potentially dangerous shell executions still require oversight."
         },
         {
           "text": "plan",
           "isCorrect": false,
-          "rationale": "Plan mode is restricted to outlining intended actions without executing them, meaning it would not automate the edits even if they were safe."
+          "rationale": "In this mode, the agent stays in a read-only state, only proposing changes without executing any edits or commands."
+        },
+        {
+          "text": "bypassPermissions",
+          "isCorrect": false,
+          "rationale": "This mode removes all barriers, allowing both file edits and shell commands to run without any user intervention."
         },
         {
           "text": "default",
           "isCorrect": false,
-          "rationale": "The default mode is conservative and will prompt for permissions on sensitive tasks, including major file edits, until learned or configured otherwise."
+          "rationale": "This is the most secure mode, requiring a 'yes/no' confirmation for every edit and every command execution."
         }
       ],
-      "hint": "This mode acts like a 'verandah key' for routine file-based tasks."
+      "hint": "Look for the mode that distinguishes between the 'verandah' (edits) and the 'storeroom' (commands)."
+    },
+    {
+      "type": "fill_in_the_blank",
+      "question": "To perform a heavy codebase search without flooding your main session's context, you should delegate the task to a ___, which operates in its own separate context window.",
+      "bestAnswer": "subagent",
+      "acceptableAnswers": [
+        "sub-agent",
+        "contractor"
+      ],
+      "rationale": "Subagents act as independent entities that process large amounts of data elsewhere and return only a summary to the main session.",
+      "hint": "Consider the role of 'Rafiq the Contractor' who works in a separate shed."
     },
     {
       "type": "multiple_select",
-      "question": "When developing a custom MCP server as a standalone stdio process, which schemas must the server implement to be recognized and utilized by the agent?",
+      "question": "Which of the following are valid lifecycle hooks available in the settings configuration for automating tasks?",
       "answerOptions": [
         {
-          "text": "ListToolsRequestSchema",
+          "text": "PreToolUse",
           "isCorrect": true,
-          "rationale": "This schema allows the agent to discover which tools the server provides, essentially acting as the server's catalogue."
+          "rationale": "This hook fires before a tool is executed, allowing for custom validation or even blocking the call."
         },
         {
-          "text": "CallToolRequestSchema",
+          "text": "PostToolUse",
           "isCorrect": true,
-          "rationale": "This schema handles the actual execution logic when the agent decides to invoke a specific tool from the server."
+          "rationale": "This hook allows for cleanup or formatting tasks, like running Prettier, immediately after a file is written."
         },
         {
-          "text": "CreateAgentRequestSchema",
-          "isCorrect": false,
-          "rationale": "Agents are managed by the core SDK; MCP servers provide tools to agents rather than creating the agents themselves."
+          "text": "UserPromptSubmit",
+          "isCorrect": true,
+          "rationale": "This hook triggers when a user sends a message, allowing for context injection before the agent processes it."
         },
         {
-          "text": "ContextCompactionSchema",
+          "text": "PreCommitHook",
           "isCorrect": false,
-          "rationale": "Compaction is a core context management feature of the agent's main loop and is not an implemented schema for individual MCP tool servers."
+          "rationale": "While similar in name to Git concepts, this is not a built-in Claude Code lifecycle hook; automation focuses on tool and prompt events."
         }
       ],
-      "hint": "Think of the two-step process: seeing what tools are available and then executing a chosen tool.",
+      "hint": "These triggers correspond to 'Mahmud's bells' that ring before or after specific actions.",
       "hasAllOfTheAbove": false,
       "hasNoneOfTheAbove": false
     },
     {
-      "type": "fill_in_the_blank",
-      "question": "To prevent 'prompt fatigue' and increase security when dealing with untrusted content, safe and repetitive commands should be added to the ___ list within the permissions configuration.",
-      "bestAnswer": "allow",
-      "acceptableAnswers": [
-        "allow",
-        "allowlist",
-        "allow list"
-      ],
-      "rationale": "Explicitly listing safe commands in the 'allow' configuration prevents the user from becoming habituated to clicking 'approve' for every single action, which could lead to accidentally approving a malicious command.",
-      "hint": "It is the opposite of the 'deny' list used for dangerous commands like 'rm -rf'."
-    },
-    {
       "type": "multiple_choice",
-      "question": "What is the primary technical function of the `${CLAUDE_PLUGIN_ROOT}` variable when defining paths in a `hooks.json` or `mcpServers` configuration within a plugin?",
+      "question": "How can you prevent a custom skill defined in SKILL.md from being automatically suggested or invoked by the model?",
       "answerOptions": [
         {
-          "text": "It ensures paths remain relative to the plugin's installation directory across different user environments.",
+          "text": "Set disable-model-invocation: true in the frontmatter.",
           "isCorrect": true,
-          "rationale": "Because plugins can be installed in various locations (local vs global), using a dynamic root variable prevents broken paths when scripts or binaries are moved between machines."
+          "rationale": "This setting hides the skill from the model's auto-suggestion list, requiring the user to call it explicitly by name."
         },
         {
-          "text": "It restricts the agent's filesystem access solely to the internal folders of the plugin.",
+          "text": "Omit the description field from the frontmatter.",
           "isCorrect": false,
-          "rationale": "Filesystem restrictions are handled by the sandbox configuration, not by the path environment variables used for locating plugin assets."
+          "rationale": "The description is required for the system to understand the skill; omitting it might break the skill rather than just disabling auto-invocation."
         },
         {
-          "text": "It automatically elevates the execution permissions of any script located within that directory.",
+          "text": "Place the file in ~/.claude/skills/ instead of the project folder.",
           "isCorrect": false,
-          "rationale": "Permission elevation is a system-level or shell-level concern; the variable only provides the string path to the directory."
+          "rationale": "Moving the file only changes its scope (global vs project) but does not affect whether the model can auto-invoke it."
         },
         {
-          "text": "It triggers a recursive search for all `.md` files to be used as subagents.",
+          "text": "Add a ! before the skill name in the folder path.",
           "isCorrect": false,
-          "rationale": "Subagents are loaded based on their location in the `agents/` folder and their presence in the `plugin.json`, not by the root path variable alone."
+          "rationale": "Folder naming does not control model invocation permissions; those are handled within the file's metadata."
         }
       ],
-      "hint": "This variable is described as the 'internal key' that makes the 'wholesale box' portable."
+      "hint": "Look for a specific boolean flag in the YAML frontmatter of the skill file."
     },
     {
       "type": "short_answer",
-      "question": "Describe the function and safety implications of the 'sandbox.credentials' setting in the security architecture.",
+      "question": "What is the primary difference between a 'Skill' and a 'Plugin' within the Claude Code ecosystem?",
       "grading": {
-        "modelAnswer": "The 'sandbox.credentials' setting allows users to explicitly hide sensitive environment variables and files (such as `.aws/credentials` or `GITHUB_TOKEN`) from the agent. This is critical because even if an agent has read access to the filesystem, these specific paths are blocked at the sandbox level, preventing potentially malicious untrusted content from tricking the agent into leaking secrets.",
-        "rationale": "The credentials setting acts as a specialized vault within the broader sandbox to protect identity and access tokens.",
+        "modelAnswer": "A Skill is a specific set of instructions or a 'chapbook' of knowledge loaded on demand to handle a recurring task. A Plugin is a distribution package that can bundle multiple skills, subagents, hooks, MCP servers, and themes into a single installable unit.",
+        "rationale": "Skills provide specific know-how, while Plugins act as the 'wholesale box' that aggregates various extension types for easier sharing and installation.",
         "requiredAttributes": [
-          "Mentions hiding environment variables or specific credential files.",
-          "Explains the goal is to prevent data leakage of secrets.",
-          "Notes that it operates as a specific 'deny' rule within the sandbox."
+          "Defines a Skill as instructions or knowledge for a specific task.",
+          "Defines a Plugin as a package or bundle of multiple components (skills, agents, hooks, etc.).",
+          "Mentions that plugins are the unit of distribution/installation."
         ],
         "errors": {
           "misconceptions": [
-            "Thinking it automatically encrypts the files on disk.",
-            "Believing it is only for network-based attacks."
+            "Thinking skills and plugins are the same thing.",
+            "Stating that skills can contain MCP servers (only plugins or direct config can)."
           ],
           "bluffs": [
-            "General statements about the sandbox without naming the specific protection of tokens and env vars."
+            "Vague statements about 'capabilities' without defining the structural difference."
           ]
         }
       },
-      "hint": "This is Rubina’s 'key-room' inside the vault, focusing on tokens and secret files."
+      "hint": "Compare 'Ayesha's chapbook' to 'Mostafa's wholesale crate'."
     },
     {
       "type": "multiple_choice",
-      "question": "When utilizing the Agent SDK, what is the significance of the `can_use_tool` callback in the `ClaudeAgentOptions`?",
+      "question": "When creating a custom slash command in .claude/commands/, how do you allow the user to pass input (like an issue number) into the command's logic?",
       "answerOptions": [
         {
-          "text": "It allows the developer to intercept, inspect, and potentially rewrite the tool inputs before execution.",
+          "text": "Use the $ARGUMENTS variable within the markdown body.",
           "isCorrect": true,
-          "rationale": "This programmatic hook provides fine-grained control, allowing the hosting application to approve, deny, or modify the data the agent is attempting to send to a tool."
+          "rationale": "This placeholder acts as a capture point for any text typed after the slash command in the terminal."
         },
         {
-          "text": "It is used to define the visual appearance of the tool in the terminal output.",
+          "text": "Define an input_schema in the YAML frontmatter.",
           "isCorrect": false,
-          "rationale": "Visual appearance and status lines are handled by output styles and formatting configurations, not by tool-use logic callbacks."
+          "rationale": "While MCP tools use input schemas, simple slash commands rely on a more direct string substitution method."
         },
         {
-          "text": "It determines the model's 'reasoning effort' for that specific tool call.",
+          "text": "Use the !`prompt-input` syntax.",
           "isCorrect": false,
-          "rationale": "Reasoning effort is a separate parameter (set via `/effort`) that dictates the computational depth, not the permission to use a tool."
+          "rationale": "The exclamation-backtick syntax is used to inject shell command output into the prompt, not for parsing user arguments."
         },
         {
-          "text": "It serves as the primary mechanism for loading third-party MCP servers.",
+          "text": "Slash commands do not support dynamic arguments.",
           "isCorrect": false,
-          "rationale": "MCP servers are registered via the `mcp_servers` configuration object, while `can_use_tool` is for managing permissions for those tools."
+          "rationale": "Slash commands are designed specifically to be flexible, supporting dynamic arguments via a specific variable placeholder."
         }
       ],
-      "hint": "Think of it as the 'Architect's' final pen-stroke that can even 'change the terms' of a request."
+      "hint": "This variable represents the 'seal's' dynamic data that changes with each press."
+    },
+    {
+      "type": "fill_in_the_blank",
+      "question": "Checkpoints created before every turn allow you to undo changes; however, they cannot track or revert changes made via ___ commands.",
+      "bestAnswer": "bash",
+      "acceptableAnswers": [
+        "shell",
+        "terminal",
+        "bash script"
+      ],
+      "rationale": "Checkpoints only track edits made by Claude's internal tools; direct system-level file movements or deletions (like 'rm' or 'mv') are outside its tracking capability.",
+      "hint": "Think about tools that modify files without using Claude's internal 'Edit' or 'Write' functions."
     },
     {
       "type": "multiple_select",
-      "question": "Which commands or flags can be used to manage the 'Context River' to prevent the loss of critical information due to automatic compaction?",
+      "question": "Which of the following are essential components when building a custom in-process MCP server using the Agent SDK?",
       "answerOptions": [
         {
-          "text": "Executing `/compact` to manually trigger summarization at a strategic moment.",
+          "text": "The @tool decorator to engrave the tool name and purpose.",
           "isCorrect": true,
-          "rationale": "By manually compacting when the current context is understood, the user ensures the summary captures the right essence before the river overflows naturally."
+          "rationale": "This metadata tells the agent what the tool does and what inputs it requires."
         },
         {
-          "text": "Using `/clear` to reset the context entirely for a fresh task.",
+          "text": "The create_sdk_mcp_server function to house all handles in one 'building'.",
           "isCorrect": true,
-          "rationale": "Resetting the session prevents old, irrelevant 'cargo' from a previous task from influencing or bloating the current work."
+          "rationale": "This function aggregates individual tool functions into a single server object for the SDK."
         },
         {
-          "text": "Invoking `/rewind` to return to a previous checkpoint.",
+          "text": "An input schema to define the types of arguments the tool accepts.",
           "isCorrect": true,
-          "rationale": "Rewinding allows the user to undo a series of steps that flooded the context with errors or irrelevant data, effectively moving the 'boat' upstream."
+          "rationale": "Defining the schema ensures that the model provides correctly formatted data when calling the tool."
         },
         {
-          "text": "Applying the `--no-compact` flag during installation to disable the feature.",
+          "text": "A .claude-plugin/plugin.json file in the root directory.",
           "isCorrect": false,
-          "rationale": "Compaction is a physical necessity of the LLM's context window; it cannot be disabled, only managed through tools and strategy."
+          "rationale": "This file is for distributing plugins, not for the internal logic of an in-process SDK-based MCP server."
         }
       ],
-      "hint": "Look for commands that help the 'Ferrywoman' maintain the safety and clarity of the voyage.",
+      "hint": "Think of Kamrul's shop and the three things he laid on the table for building machines.",
       "hasAllOfTheAbove": false,
       "hasNoneOfTheAbove": false
     },
     {
-      "type": "fill_in_the_blank",
-      "question": "To run a long-running command in the background while continuing the interactive session, you can press ___ (or twice in tmux) to move the process to the background.",
-      "bestAnswer": "Ctrl+B",
-      "acceptableAnswers": [
-        "Ctrl+B",
-        "Control+B"
+      "type": "multiple_choice",
+      "question": "What is the purpose of the --worktree flag when starting a new Claude session?",
+      "answerOptions": [
+        {
+          "text": "To prevent edit collisions by running a feature in a separate Git branch and folder.",
+          "isCorrect": true,
+          "rationale": "Worktrees allow multiple independent sessions to run on the same repository without interfering with each other's file states."
+        },
+        {
+          "text": "To visualize the project's file structure as a tree diagram.",
+          "isCorrect": false,
+          "rationale": "Visualizing file structure is typically a 'Read' or 'Glob' tool function, not the purpose of a worktree environment."
+        },
+        {
+          "text": "To automatically commit and push changes at the end of a session.",
+          "isCorrect": false,
+          "rationale": "Committing and pushing are handled by git tools or the 'gh' command integration, not by the worktree setup itself."
+        },
+        {
+          "text": "To increase the context window size for large monorepos.",
+          "isCorrect": false,
+          "rationale": "Context window size is determined by the model and the /compact settings, while worktrees manage filesystem isolation."
+        }
       ],
-      "rationale": "The system includes a specific shortcut to manage background tasks so that the user can continue conversing while a build or test runs in the 'current' of the river.",
-      "hint": "This key combination is the same as the default prefix for the tmux terminal multiplexer."
+      "hint": "Recall Shirin's many kitchens used to prevent cooks from bumping into each other."
+    },
+    {
+      "type": "short_answer",
+      "question": "Describe the 'Three Pillars' of Claude Code mastery and provide a brief example of one.",
+      "grading": {
+        "modelAnswer": "The three pillars are Context, Trust, and Verification. Context involves managing what Claude knows (e.g., using CLAUDE.md). Trust involves setting appropriate permissions and modes (e.g., using plan mode for big changes). Verification involves checking results (e.g., reading git diffs or running tests).",
+        "rationale": "Mastery is not just about typing prompts but designing a workshop environment that balances knowledge, safety, and accuracy.",
+        "requiredAttributes": [
+          "Identifies the three pillars as Context, Trust, and Verification.",
+          "Provides an example for at least one of the pillars (e.g., CLAUDE.md for context, permissions for trust, or testing for verification)."
+        ],
+        "errors": {
+          "misconceptions": [
+            "Listing tools (like /loop) as pillars rather than the underlying principles."
+          ],
+          "bluffs": [
+            "Vague statements about 'AI efficiency' without naming the specific pillars mentioned in the text."
+          ]
+        }
+      },
+      "hint": "These pillars are the 'throne' upon which a senior craftsman sits."
     }
   ]
 }
