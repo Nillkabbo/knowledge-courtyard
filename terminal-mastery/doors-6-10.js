@@ -383,7 +383,7 @@ exit 0</div>
 <rect class="node-leaf" x="315" y="105" width="230" height="52" rx="10"/><text class="lbl-leaf" x="430" y="127">trap ... EXIT</text><text class="lbl-sm" x="430" y="145">যেভাবেই যাও, ঝাড়ু হবে</text>
 <rect class="cell" x="15" y="170" width="530" height="24" rx="6"/><text class="lbl-sm" x="280" y="186">set -euo pipefail + mktemp + trap EXIT — সিরিয়াস স্ক্রিপ্টের প্রথম পাঁচ লাইন, এই ক্রমেই</text>
 <line x1="95" y1="67" x2="115" y2="103" stroke="#fb923c" stroke-width="2" fill="none" marker-end="url(#arrowM)"/>
-<line x1="280" y1="67" x2="265" y2="103" stroke="#fb923c" stroke-width="2" fill="none" marker-end="url(#arrowM)"/>
+<line x1="280" y1="67" x2="243" y2="100" stroke="#fb923c" stroke-width="2" fill="none" marker-end="url(#arrowM)"/>
 <line x1="465" y1="67" x2="440" y2="103" stroke="#fb923c" stroke-width="2" marker-end="url(#arrowM)"/>
 </svg>
 <div class="diag-cap">তিন নোঙর থামায়, ঝাড়ু-নিয়ম পরিষ্কার রাখে — জাহাজ সৎ হয় দুই দিক থেকেই।</div>
@@ -479,13 +479,13 @@ alias top5='journalctl -u ledgerpilot --since today | grep -i error | awk "{prin
 <circle cx="280" cy="210" r="30" fill="rgba(251,191,36,.14)" stroke="#fbbf24"/><text class="lbl-sm" x="280" y="207" text-anchor="middle">৭ স্মৃতি</text><text class="lbl-sm" x="280" y="221" text-anchor="middle">Ctrl+R</text>
 <circle cx="470" cy="195" r="30" fill="rgba(251,191,36,.14)" stroke="#fbbf24"/><text class="lbl-sm" x="490" y="192" text-anchor="middle">৮ দূরের ঘাট</text><text class="lbl-sm" x="470" y="206" text-anchor="middle">ssh · tmux</text>
 <circle cx="175" cy="165" r="0"/><circle cx="405" cy="165" r="0"/>
-<line x1="115" y1="70" x2="245" y2="105" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
+<line x1="115" y1="70" x2="234" y2="110" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
 <line x1="280" y1="70" x2="280" y2="76" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
-<line x1="445" y1="70" x2="315" y2="105" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
-<line x1="90" y1="85" x2="165" y2="165" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
-<line x1="500" y1="85" x2="405" y2="165" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
+<line x1="445" y1="70" x2="326" y2="110" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
+<line x1="90" y1="85" x2="233" y2="115" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
+<line x1="500" y1="85" x2="327" y2="116" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
 <line x1="120" y1="195" x2="250" y2="210" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
-<line x1="440" y1="195" x2="310" y2="125" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
+<line x1="440" y1="195" x2="324" y2="144" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
 </svg>
 <div class="diag-cap">ন-দরজা এক নদীকে ঘিরে — সব জ্ঞান স্রোতের শাখা; সিংহাসন থেকেই দেখা যায়, সিংহাসনেই বসে যে বুঝল।</div>
 </div>
