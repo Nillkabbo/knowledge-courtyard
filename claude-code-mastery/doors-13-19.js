@@ -369,8 +369,8 @@ server.setRequestHandler(CallToolRequestSchema, async req => {
 <rect class="node-leaf" x="20" y="75" width="140" height="46" rx="10"/><text class="lbl-leaf" x="90" y="93">@tool</text><text class="lbl-sm" x="90" y="109">নাম+কাজ খোদাই</text>
 <rect class="node" x="210" y="75" width="170" height="46" rx="10"/><text class="lbl" x="295" y="93">create_sdk_mcp_server</text><text class="lbl-sm" x="295" y="109">সব হাতল এক বাড়িতে</text>
 <rect class="node-cyan" x="430" y="75" width="110" height="46" rx="10"/><text class="lbl-cyan" x="485" y="93">mcp_servers</text><text class="lbl-sm" x="485" y="109">Claude-র হাতে</text>
-<line x1="160" y1="98" x2="205" y2="98" stroke="#52c41a" stroke-width="2.5" fill="none" marker-end="url(#arrowK)"/>
-<line x1="380" y1="98" x2="425" y2="98" stroke="#52c41a" stroke-width="2.5" fill="none" marker-end="url(#arrowK)"/>
+<line x1="160.0" y1="98.0" x2="210.0" y2="98.0" stroke="#52c41a" stroke-width="2.5" fill="none" marker-end="url(#arrowK)"/>
+<line x1="380.0" y1="98.0" x2="430.0" y2="98.0" stroke="#52c41a" stroke-width="2.5" fill="none" marker-end="url(#arrowK)"/>
 <rect class="cell" x="20" y="15" width="520" height="30" rx="8"/><text class="lbl-sm" x="280" y="34">input schema = কন্ট্রাক্ট বই: কোন হাতলে কোন মাপের কাঠ · টুলের ডাক mcp__সার্ভার__টুল প্যাটার্নে</text>
 </svg>
 <div class="diag-cap">সহজ পথ (in-process) আর বড় পথ (stdio সার্ভার) — দুটোই একই তিন অঙ্গে গড়া।</div>

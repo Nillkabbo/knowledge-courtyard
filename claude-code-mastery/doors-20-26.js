@@ -651,7 +651,7 @@ options = ClaudeAgentOptions(
 <line class="edge" x1="165" y1="247" x2="200" y2="173"/>
 <line x1="395" y1="47" x2="330" y2="130" stroke="#b37feb" stroke-width="1.5"/>
 <line x1="395" y1="97" x2="364" y2="131" stroke="#b37feb" stroke-width="1.5"/>
-<line x1="395" y1="147" x2="375" y2="150" stroke="#b37feb" stroke-width="1.5"/>
+<line x1="395.0" y1="147.0" x2="370.0" y2="150.8" stroke="#b37feb" stroke-width="1.5"/>
 <line x1="395" y1="197" x2="364" y2="171" stroke="#b37feb" stroke-width="1.5"/>
 <line x1="395" y1="247" x2="360" y2="173" stroke="#b37feb" stroke-width="1.5"/>
 </svg>

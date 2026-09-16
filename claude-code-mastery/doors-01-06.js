@@ -349,8 +349,8 @@ doors.push({
 <rect class="node-hot" x="355" y="80" width="120" height="46" rx="12"/><text class="lbl-hot" x="415" y="103">টুল চালাও</text><text class="lbl-sm" x="415" y="118">act (Read · Bash · Edit)</text>
 <rect class="node-leaf" x="185" y="15" width="120" height="40" rx="12"/><text class="lbl-leaf" x="245" y="35">ফল দেখো</text><text class="lbl-sm" x="245" y="48">observe result</text>
 <rect class="cell-good" x="355" y="15" width="120" height="40" rx="12"/><text class="lbl-leaf" x="415" y="35">কাজ শেষ?</text><text class="lbl-sm" x="415" y="48">done?</text>
-<line x1="135" y1="103" x2="180" y2="103" stroke="#9290a8" stroke-width="1.5" marker-end="url(#arrowLoop)"/>
-<line x1="305" y1="103" x2="350" y2="103" stroke="#9290a8" stroke-width="1.5" marker-end="url(#arrowLoop)"/>
+<line x1="135.0" y1="103.0" x2="185.0" y2="103.0" stroke="#9290a8" stroke-width="1.5" marker-end="url(#arrowLoop)"/>
+<line x1="305.0" y1="103.0" x2="355.0" y2="103.0" stroke="#9290a8" stroke-width="1.5" marker-end="url(#arrowLoop)"/>
 <line x1="410" y1="80" x2="410" y2="55" stroke="#9290a8" stroke-width="1.5" marker-end="url(#arrowLoop)"/>
 <line x1="355" y1="35" x2="305" y2="35" stroke="#9290a8" stroke-width="1.5" marker-end="url(#arrowLoop)"/>
 <path class="edge-cyan" d="M 245 58 L 245 75" marker-end="url(#arrowLoopTeal)"/>

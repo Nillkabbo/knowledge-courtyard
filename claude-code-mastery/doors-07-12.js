@@ -164,10 +164,10 @@ doors.push({
 <rect class="node-hot" x="215" y="15" width="140" height="36" rx="10"/><text class="lbl-hot" x="285" y="33">PreToolUse ঘণ্টা</text>
 <rect class="node" x="215" y="95" width="140" height="36" rx="10"/><text class="lbl" x="285" y="113">PostToolUse ঘণ্টা</text>
 <rect class="node-cyan" x="415" y="55" width="130" height="40" rx="10"/><text class="lbl-cyan" x="480" y="75">টুল চলল</text>
-<line x1="145" y1="65" x2="210" y2="38" stroke="#ff6b35" stroke-width="2" fill="none" marker-end="url(#arrowBell)"/>
-<line x1="145" y1="85" x2="210" y2="108" stroke="#fbbf24" stroke-width="2" fill="none" marker-end="url(#arrowBell)"/>
-<line x1="355" y1="38" x2="410" y2="65" stroke="#fbbf24" stroke-width="2" fill="none" marker-end="url(#arrowBell)"/>
-<line x1="355" y1="108" x2="410" y2="85" stroke="#fbbf24" stroke-width="2" fill="none" marker-end="url(#arrowBell)"/>
+<line x1="145.0" y1="65.0" x2="215.0" y2="35.9" stroke="#ff6b35" stroke-width="2" fill="none" marker-end="url(#arrowBell)"/>
+<line x1="145.0" y1="85.0" x2="215.0" y2="109.8" stroke="#fbbf24" stroke-width="2" fill="none" marker-end="url(#arrowBell)"/>
+<line x1="355.0" y1="38.0" x2="415.0" y2="67.5" stroke="#fbbf24" stroke-width="2" fill="none" marker-end="url(#arrowBell)"/>
+<line x1="355.0" y1="108.0" x2="415.0" y2="82.9" stroke="#fbbf24" stroke-width="2" fill="none" marker-end="url(#arrowBell)"/>
 <text class="lbl-sm" x="285" y="62">মঞ্জুর → চলবে · নাকচ → থামবে</text>
 </svg>
 <div class="diag-cap">প্রহরের ঘণ্টা কনটেক্সটে নয়, তোমার প্রসেসে বাজে — তাই নদীও পরিষ্কার, নিয়মও অটুট।</div>
@@ -599,9 +599,9 @@ exit 0</div>
 </defs>
 <rect class="node" x="30" y="88" width="150" height="46" rx="10"/><text class="lbl" x="105" y="106">Claude Code</text><text class="lbl-sm" x="105" y="122">ঘড়ির বাড়ি</text>
 <rect class="node-hot" x="380" y="88" width="150" height="46" rx="10"/><text class="lbl-hot" x="455" y="106">তোমার স্ক্রিপ্ট</text><text class="lbl-sm" x="455" y="122">ঘড়ির ইঞ্জিন</text>
-<line x1="180" y1="96" x2="375" y2="96" stroke="#3dd6c4" stroke-width="2.5" fill="none" marker-end="url(#arrowC)"/>
+<line x1="180.0" y1="96.0" x2="380.0" y2="96.0" stroke="#3dd6c4" stroke-width="2.5" fill="none" marker-end="url(#arrowC)"/>
 <text class="lbl-cyan" x="278" y="86">stdin → JSON (session_id, tool_name, tool_input)</text>
-<line x1="375" y1="126" x2="180" y2="126" stroke="#fbbf24" stroke-width="2.5" fill="none" marker-end="url(#arrowC)"/>
+<line x1="380.0" y1="126.0" x2="180.0" y2="126.0" stroke="#fbbf24" stroke-width="2.5" fill="none" marker-end="url(#arrowC)"/>
 <text class="lbl-amber" x="278" y="145">← exit code + stdout (নীরব · লাল সিল · JSON)</text>
 <rect class="cell-cyan" x="30" y="14" width="500" height="28" rx="8"/><text class="lbl-sm" x="280" y="28">exit 0 = আপত্তি নেই · exit 2 = ব্লক (stderr-এ কারণ) · exit 0 + JSON = নিয়ন্ত্রণ</text>
 <rect class="cell" x="30" y="180" width="500" height="36" rx="8"/><text class="lbl-sm" x="280" y="195">মিশ্রণ নিষেধ: এক হুকে exit-2 থাকলে JSON-এর allow-ও তাকে বদলাতে পারে না — এক হুকে এক ভাষা।</text>
