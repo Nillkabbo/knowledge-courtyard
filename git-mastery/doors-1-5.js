@@ -58,7 +58,7 @@ git config --global user.email "you@example.com"</div>
 <div class="diag-title">তিন-অবস্থার ঘর — The Three Rooms</div>
 <svg viewBox="0 0 560 170" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowR1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#fcd34d"/></marker>
+<marker id="arrowR1" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#fcd34d"/></marker>
 </defs>
 <rect class="node" x="15" y="60" width="150" height="52" rx="10"/><text class="lbl" x="90" y="82">কাজের ঘর</text><text class="lbl-sm" x="90" y="100">working directory</text>
 <rect class="node-hot" x="205" y="60" width="150" height="52" rx="10"/><text class="lbl-hot" x="280" y="82">ফ্রেম-টেবিল</text><text class="lbl-sm" x="280" y="100">staging area (index)</text>
@@ -234,7 +234,7 @@ git log --oneline --graph --all # সব শাখার নকশা — গা
 <div class="diag-title">পোস্টার ও বুকমার্ক — Sticky-Notes and the Bookmark</div>
 <svg viewBox="0 0 560 190" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowS3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#86efac"/></marker>
+<marker id="arrowS3" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#86efac"/></marker>
 </defs>
 <rect class="cell" x="15" y="130" width="530" height="40" rx="8"/>
 <text class="lbl-sm" x="280" y="148">আলবাম (ছবির শৃঙ্খল): c1 ← c2 ← c3 ← c4</text>

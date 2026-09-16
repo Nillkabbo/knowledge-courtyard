@@ -33,7 +33,7 @@ doors.push({
 <div class="diag-title">দুই ঘর, এক রিপোর্ট — Two Rooms, One Report</div>
 <svg viewBox="0 0 560 170" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowRep" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#3dd6c4"/></marker>
+<marker id="arrowRep" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#3dd6c4"/></marker>
 </defs>
 <rect class="node" x="15" y="30" width="200" height="60" rx="12"/><text class="lbl" x="115" y="52">তোমার অফিস</text><text class="lbl-sm" x="115" y="70">main context — পরিষ্কার</text>
 <rect class="node-hot" x="345" y="30" width="200" height="60" rx="12"/><text class="lbl-hot" x="445" y="52">রফিকের শেড</text><text class="lbl-sm" x="445" y="70">subagent context — ধুলোমাখা</text>
@@ -157,7 +157,7 @@ doors.push({
 <div class="diag-title">এক ঘর, দুই ঘণ্টা — One Tool, Two Bells</div>
 <svg viewBox="0 0 560 150" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowBell" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker>
+<marker id="arrowBell" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker>
 </defs>
 <rect class="node-leaf" x="15" y="55" width="130" height="40" rx="10"/><text class="lbl-leaf" x="80" y="75">Claude টুল চাইল</text>
 <rect class="node-hot" x="215" y="15" width="140" height="36" rx="10"/><text class="lbl-hot" x="285" y="33">PreToolUse ঘণ্টা</text>
@@ -255,7 +255,7 @@ description: Extract text and tables from PDF files. Use when
 <div class="diag-title">তিন উৎসের নকশা — MCP vs Skills vs Plugins</div>
 <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="ar59d8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
+<marker id="ar59d8" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
 </defs>
 <circle cx="280" cy="90" r="40" class="ring"/><text class="lbl" x="280" y="86" text-anchor="middle">Claude</text><text class="lbl-sm" x="280" y="102" text-anchor="middle">সেশন</text>
 <rect class="node-cyan" x="15" y="150" width="160" height="40" rx="9"/><text class="lbl-cyan" x="95" y="168">MCP সার্ভার</text><text class="lbl-sm" x="95" y="183">নতুন হাত (tool)</text>
@@ -380,7 +380,7 @@ asyncio.run(main())</div>
 <div class="diag-title">রাতের কারখানার লাইন — The Headless Pipeline</div>
 <svg viewBox="0 0 560 170" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="ar59d9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
+<marker id="ar59d9" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
 </defs>
 <rect class="node" x="10" y="60" width="120" height="46" rx="10"/><text class="lbl" x="70" y="78">push রাতে</text><text class="lbl-sm" x="70" y="95">GitHub Actions</text>
 <rect class="node-hot" x="160" y="60" width="140" height="46" rx="10"/><text class="lbl-hot" x="230" y="78">claude -p</text><text class="lbl-sm" x="230" y="95">যন্ত্র-মোড, কেউ জাগে না</text>
@@ -468,7 +468,7 @@ doors.push({
 <div class="diag-title">নয় দরজা, তিন স্তম্ভ — Nine Doors, Three Pillars</div>
 <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowSyn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker>
+<marker id="arrowSyn" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker>
 </defs>
 <circle class="node-hot" cx="280" cy="150" r="0"/>
 <rect class="node-hot" x="200" y="128" width="160" height="44" rx="12"/><text class="lbl-hot" x="280" y="146">সিংহাসন — মাস্টার</text><text class="lbl-sm" x="280" y="162">design the workshop</text>

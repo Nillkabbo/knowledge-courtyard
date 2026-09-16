@@ -123,7 +123,7 @@ make 2>&1 | tee build.log</div>
 <div class="diag-title">নসরতের খাল-নকশা — The Canal Blueprint</div>
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowW" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#7dd3fc"/></marker>
+<marker id="arrowW" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#7dd3fc"/></marker>
 </defs>
 <rect class="node" x="15" y="90" width="120" height="46" rx="10"/><text class="lbl" x="75" y="108">cat</text><text class="lbl-sm" x="75" y="124">পড়ার নৌকা</text>
 <rect class="node" x="220" y="90" width="120" height="46" rx="10"/><text class="lbl" x="280" y="108">grep</text><text class="lbl-sm" x="280" y="124">ছাঁকনি</text>
@@ -308,7 +308,7 @@ jq '.[] | select(.status == "fail")' data.json</div>
 <div class="diag-title">পাঁচ-জালের সারি — The Five-Net Chain</div>
 <svg viewBox="0 0 560 150" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowJ" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#22d3ee"/></marker>
+<marker id="arrowJ" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#22d3ee"/></marker>
 </defs>
 <rect class="node-cyan" x="10" y="55" width="86" height="42" rx="10"/><text class="lbl-cyan" x="53" y="80">grep</text>
 <rect class="node" x="114" y="55" width="86" height="42" rx="10"/><text class="lbl" x="157" y="80">sort</text>
@@ -403,7 +403,7 @@ make || exit 1             # স্ক্রিপ্টে লাল প্য�
 <div class="diag-title">নৌকার জীবনচক্র — A Boat's Life</div>
 <svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowH" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#5eead4"/></marker>
+<marker id="arrowH" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#5eead4"/></marker>
 </defs>
 <rect class="node" x="15" y="85" width="120" height="44" rx="10"/><text class="lbl" x="75" y="103">foreground</text><text class="lbl-sm" x="75" y="119">চোখের সামনে</text>
 <rect class="node-cyan" x="220" y="85" width="120" height="44" rx="10"/><text class="lbl-cyan" x="280" y="103">background &</text><text class="lbl-sm" x="280" y="119">পেছনের ঘাট</text>

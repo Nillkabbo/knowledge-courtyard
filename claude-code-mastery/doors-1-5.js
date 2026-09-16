@@ -68,7 +68,7 @@ claude --resume      # তালিকা থেকে বেছে নিয়
 <div class="diag-title">প্রথম সেশনের জীবনচক্র — First Session Lifecycle</div>
 <svg viewBox="0 0 560 150" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="ar59d1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
+<marker id="ar59d1" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
 </defs>
 <rect class="node" x="10" y="55" width="98" height="44" rx="10"/><text class="lbl" x="59" y="73">npm i -g</text><text class="lbl-sm" x="59" y="89">ইনস্টল</text>
 <rect class="node-cyan" x="128" y="55" width="98" height="44" rx="10"/><text class="lbl-cyan" x="177" y="73">claude</text><text class="lbl-sm" x="177" y="89">প্রথম চালু</text>
@@ -249,10 +249,10 @@ doors.push({
 <div class="diag-title">কাজ দেখে ভাই বাছো — Match the Task to the Model</div>
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowTeal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#3dd6c4"/></marker>
-<marker id="arrowAmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker>
-<marker id="arrowFire" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#ff6b35"/></marker>
-<marker id="arrowPurple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#b37feb"/></marker>
+<marker id="arrowTeal" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#3dd6c4"/></marker>
+<marker id="arrowAmber" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker>
+<marker id="arrowFire" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#ff6b35"/></marker>
+<marker id="arrowPurple" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#b37feb"/></marker>
 </defs>
 <rect class="cell" x="15" y="20" width="180" height="36" rx="8"/><text class="lbl-sm" x="105" y="38">টাইপো · ফরম্যাট · দ্রুত প্রশ্ন</text>
 <rect class="cell" x="15" y="75" width="180" height="36" rx="8"/><text class="lbl-sm" x="105" y="93">রোজকার ফিচার · বাগ · রিভিউ</text>
@@ -341,8 +341,8 @@ doors.push({
 <div class="diag-title">এজেন্ট লুপ — The Agentic Loop</div>
 <svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowLoop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#9290a8"/></marker>
-<marker id="arrowLoopTeal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#3dd6c4"/></marker>
+<marker id="arrowLoop" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#9290a8"/></marker>
+<marker id="arrowLoopTeal" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#3dd6c4"/></marker>
 </defs>
 <rect class="node-cyan" x="15" y="80" width="120" height="46" rx="12"/><text class="lbl-cyan" x="75" y="103">তোমার কথা</text><text class="lbl-sm" x="75" y="118">your prompt</text>
 <rect class="node" x="185" y="80" width="120" height="46" rx="12"/><text class="lbl" x="245" y="103">চিন্তা</text><text class="lbl-sm" x="245" y="118">think</text>

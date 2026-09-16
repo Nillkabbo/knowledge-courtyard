@@ -64,7 +64,7 @@ git fetch upstream && git rebase upstream/main</div>
 <div class="diag-title">তিন দরজার আয়না-ঘর — The Three Doors of the Mirror Room</div>
 <svg viewBox="0 0 560 190" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowF6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#93c5fd"/></marker>
+<marker id="arrowF6" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#93c5fd"/></marker>
 </defs>
 <rect class="node" x="15" y="70" width="170" height="56" rx="10"/><text class="lbl" x="100" y="92">তোমার স্টুডিও</text><text class="lbl-sm" x="100" y="110">local album + HEAD</text>
 <rect class="node-cyan" x="375" y="70" width="170" height="56" rx="10"/><text class="lbl-cyan" x="460" y="92">আয়না-ঘর (origin)</text><text class="lbl-sm" x="460" y="110">remote mirror</text>
@@ -167,7 +167,7 @@ git fsck --lost-found           # ঝুড়ির অনাথ ছবির �
 <div class="diag-title">ওষুধের মই — The Ladder of Remedies</div>
 <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowM7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#fca5a5"/></marker>
+<marker id="arrowM7" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#fca5a5"/></marker>
 </defs>
 <rect class="node-leaf" x="15" y="12" width="120" height="34" rx="9"/><text class="lbl-leaf" x="75" y="34">amend — কালি শুকায়নি</text>
 <rect class="node-leaf" x="155" y="12" width="120" height="34" rx="9"/><text class="lbl-leaf" x="215" y="34">revert — প্রকাশ্য বাতিল</text>
@@ -257,7 +257,7 @@ git worktree remove ../hotfix         # কাজ শেষে ঘর জমা 
 <div class="diag-title">ঝুলি ও যমজ ঘর — The Shelf and the Twin Rooms</div>
 <svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowR8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#c4b5fd"/></marker>
+<marker id="arrowR8" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#c4b5fd"/></marker>
 </defs>
 <rect class="node" x="15" y="80" width="150" height="52" rx="10"/><text class="lbl" x="90" y="102">feature ঘর</text><text class="lbl-sm" x="90" y="120">অর্ধ-কাজ চলছে</text>
 <rect class="node-hot" x="205" y="80" width="150" height="52" rx="10"/><text class="lbl-hot" x="280" y="102">ঝুলি-তাক (stash)</text><text class="lbl-sm" x="280" y="120">push -u -m নাম</text>
@@ -458,7 +458,7 @@ alias gp='git pull --rebase'
 <div class="diag-title">সিংহাসনের মানচিত্র — The Throne's Map of the Nine</div>
 <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowT10" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker>
+<marker id="arrowT10" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker>
 </defs>
 <circle cx="280" cy="125" r="46" class="ring"/><text class="lbl" x="280" y="118" text-anchor="middle">দুই সত্য</text><text class="lbl-sm" x="280" y="138" text-anchor="middle">ছবি + পয়েন্টার</text>
 <circle cx="90" cy="55" r="30" fill="rgba(251,191,36,.14)" stroke="#fbbf24"/><text class="lbl-sm" x="90" y="52" text-anchor="middle">১ ছবি</text><text class="lbl-sm" x="90" y="66" text-anchor="middle">init · commit</text>

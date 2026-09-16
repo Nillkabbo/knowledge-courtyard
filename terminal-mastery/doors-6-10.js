@@ -154,7 +154,7 @@ shopt -s histappend        # একাধিক টার্মিনালে�
 <div class="diag-title">স্মৃতির ঘরের নিয়ম — Rules of the Memory Room</div>
 <svg viewBox="0 0 560 120" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#c084fc"/></marker>
+<marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#c084fc"/></marker>
 </defs>
 <rect class="node" x="10" y="40" width="110" height="40" rx="9"/><text class="lbl-sm" x="65" y="64">প্রম্পটে টাইপ</text>
 <rect class="node-cyan" x="150" y="40" width="120" height="40" rx="9"/><text class="lbl-sm" x="210" y="64">Ctrl+R খোঁজো</text>
@@ -374,7 +374,7 @@ exit 0</div>
 <div class="diag-title">তিন নোঙর ও ঝাড়ু-নিয়ম — The Three Anchors and the Sweeping Rule</div>
 <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#fb923c"/></marker>
+<marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#fb923c"/></marker>
 </defs>
 <rect class="node-hot" x="15" y="15" width="160" height="52" rx="10"/><text class="lbl-hot" x="95" y="37">set -e</text><text class="lbl-sm" x="95" y="55">গলদ হলে থামো</text>
 <rect class="node-hot" x="200" y="15" width="160" height="52" rx="10"/><text class="lbl-hot" x="280" y="37">set -u</text><text class="lbl-sm" x="280" y="55">নাম-নেই চলক নিষেধ</text>
@@ -467,7 +467,7 @@ alias top5='journalctl -u ledgerpilot --since today | grep -i error | awk "{prin
 <div class="diag-title">সিংহাসনের মানচিত্র — The Throne's Map of the Nine</div>
 <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker>
+<marker id="arrowT" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker>
 </defs>
 <circle cx="280" cy="125" r="46" class="ring"/><text class="lbl" x="280" y="118" text-anchor="middle">এক নদী</text><text class="lbl-sm" x="280" y="138" text-anchor="middle">সবকিছু স্রোত</text>
 <circle cx="90" cy="55" r="30" fill="rgba(251,191,36,.14)" stroke="#fbbf24"/><text class="lbl-sm" x="90" y="52" text-anchor="middle">১ ঘাট</text><text class="lbl-sm" x="90" y="66" text-anchor="middle">man · cd</text>

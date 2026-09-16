@@ -74,7 +74,7 @@ exit 0</div>
 <div class="diag-title">ঘড়ির চুক্তি — The Clock's Contract</div>
 <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
+<marker id="arrowC" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
 </defs>
 <rect class="node" x="30" y="88" width="150" height="46" rx="10"/><text class="lbl" x="105" y="106">Claude Code</text><text class="lbl-sm" x="105" y="122">ঘড়ির বাড়ি</text>
 <rect class="node-hot" x="380" y="88" width="150" height="46" rx="10"/><text class="lbl-hot" x="455" y="106">তোমার স্ক্রিপ্ট</text><text class="lbl-sm" x="455" y="122">ঘড়ির ইঞ্জিন</text>
@@ -352,7 +352,7 @@ server.setRequestHandler(CallToolRequestSchema, async req => {
 <div class="diag-title">যন্ত্রের তিন অঙ্গ — Three Organs of a Machine</div>
 <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="arrowK" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#52c41a"/></marker>
+<marker id="arrowK" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#52c41a"/></marker>
 </defs>
 <rect class="node-leaf" x="20" y="75" width="140" height="46" rx="10"/><text class="lbl-leaf" x="90" y="93">@tool</text><text class="lbl-sm" x="90" y="109">নাম+কাজ খোদাই</text>
 <rect class="node" x="210" y="75" width="170" height="46" rx="10"/><text class="lbl" x="295" y="93">create_sdk_mcp_server</text><text class="lbl-sm" x="295" y="109">সব হাতল এক বাড়িতে</text>
@@ -477,7 +477,7 @@ my-marketplace/
 <div class="diag-title">পাইকারের বাজার-পথ — The Marketplace Flow</div>
 <svg viewBox="0 0 560 170" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="ar59d14" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
+<marker id="ar59d14" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
 </defs>
 <rect class="node" x="10" y="60" width="120" height="46" rx="10"/><text class="lbl" x="70" y="78">marketplace</text><text class="lbl-sm" x="70" y="95">add</text>
 <rect class="node-cyan" x="160" y="60" width="120" height="46" rx="10"/><text class="lbl-cyan" x="220" y="78">install</text><text class="lbl-sm" x="220" y="95">প্লাগইন-বাছাই</text>
