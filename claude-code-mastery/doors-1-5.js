@@ -75,10 +75,10 @@ claude --resume      # তালিকা থেকে বেছে নিয়
 <rect class="node-hot" x="246" y="55" width="104" height="44" rx="10"/><text class="lbl-hot" x="298" y="73">theme/login</text><text class="lbl-sm" x="298" y="89">একবারই</text>
 <rect class="node-purple" x="370" y="55" width="98" height="44" rx="10"/><text class="lbl" x="419" y="73">prompt</text><text class="lbl-sm" x="419" y="89">কাজের আদেশ</text>
 <rect class="node-leaf" x="488" y="55" width="62" height="44" rx="10"/><text class="lbl-leaf" x="519" y="73">↻</text><text class="lbl-sm" x="519" y="89">লুপ</text>
-<line x1="108" y1="77" x2="124" y2="77" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d1)"/>
-<line x1="226" y1="77" x2="242" y2="77" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d1)"/>
-<line x1="350" y1="77" x2="366" y2="77" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d1)"/>
-<line x1="468" y1="77" x2="484" y2="77" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d1)"/>
+<line x1="108" y1="77" x2="127" y2="77" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d1)"/>
+<line x1="226" y1="77" x2="245" y2="77" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d1)"/>
+<line x1="350" y1="77" x2="369" y2="77" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d1)"/>
+<line x1="468" y1="77" x2="487" y2="77" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d1)"/>
 <rect class="cell" x="10" y="8" width="540" height="28" rx="8"/><text class="lbl-sm" x="280" y="26">প্রতিটা প্রম্পট = এক কাজ; শেষে ফাইল দেখো, তারপর পরের আদেশ — চক্রটাই দিনের কাজ</text>
 </svg>
 <div class="diag-cap">ইনস্টল → চালু → পরিচয় → কাজ → পুনরাবৃত্তি — প্রথম দিনের পুরো যাত্রা এই পাঁচ বাক্সে।</div>
