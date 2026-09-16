@@ -1,9 +1,9 @@
 // ════════════════════════════════════════
-// Book 59 · The Terminal Craftsman — Doors 1-5
-// Every command verified against the official
-// Claude Code docs (code.claude.com)
+// Book 59 v4 · The Terminal Craftsman — Complete Reference
+// DOORS – 01 – 06 · doc-grounded (code.claude.com via context7)
 // ════════════════════════════════════════
 const doors = [];
+
 
 // ── DOOR 1 · প্রথম হাতুড়ি — The First Hammer ──
 doors.push({
@@ -280,8 +280,8 @@ claude --model opus
 # চিন্তার গভীরতা বাড়ানো (reasoning effort):
 > /effort xhigh</div>
 
-<p>দলের কারখানায় (settings.json) মডেলও বাঁধা রাখা যায় — কে কোন মডেল ব্যবহার করবে, তার তালাও মালিকের হাতে। অনুমতি-তালার দরজায় (দরজা ৫) এই ফাইলের আরও চাবি দেখবে।</p>
-<p class="en">In a team workshop (settings.json) the model itself can be pinned — who may use which model is the owner's lock too. More keys to this file await at the permissions door (Door 5).</p>
+<p>দলের কারখানায় (settings.json) মডেলও বাঁধা রাখা যায় — কে কোন মডেল ব্যবহার করবে, তার তালাও মালিকের হাতে। অনুমতি-তালার দরজায় (দরজা ৬) এই ফাইলের আরও চাবি দেখবে।</p>
+<p class="en">In a team workshop (settings.json) the model itself can be pinned — who may use which model is the owner's lock too. More keys to this file await at the permissions door (Door 6).</p>
 
 <div class="code-block">// settings.json — কারখানার মডেল-নীতি
 {
@@ -325,8 +325,8 @@ doors.push({
   recall: {
     q: "লম্বা সেশনে Claude হঠাৎ আগের কথা ভুলে যাচ্ছে — কারণ কী, আর দুটো ব্যবস্থা কী?",
     qen: "In a long session Claude starts forgetting earlier parts — why, and what two remedies?",
-    a: "কারণ: প্রতিটা টুল রেজাল্ট, ফাইল, আউটপুট কনটেক্সট নদীতে জমে — নদী ভরে গেলে পুরনো কথা কম্প্যাক্ট হয়ে সংক্ষেপে পরিণত হয়। ব্যবস্থা: (১) কম্প্যাকশনের আগে-পরে নিয়ন্ত্রণ — /compact, /clear; (২) বাইরে রাখা — ভারী অনুসন্ধান সাব-এজেন্টে (দরজা ৬)।",
-    aen: "Because every tool result, file, and output settles into the context river — when the river fills, old talk is compacted into summary. Remedies: (1) control compaction timing with /compact and /clear; (2) keep heaviness out — delegate bulky exploration to subagents (Door 6)."
+    a: "কারণ: প্রতিটা টুল রেজাল্ট, ফাইল, আউটপুট কনটেক্সট নদীতে জমে — নদী ভরে গেলে পুরনো কথা কম্প্যাক্ট হয়ে সংক্ষেপে পরিণত হয়। ব্যবস্থা: (১) কম্প্যাকশনের আগে-পরে নিয়ন্ত্রণ — /compact, /clear; (২) বাইরে রাখা — ভারী অনুসন্ধান সাব-এজেন্টে (দরজা ৭)।",
+    aen: "Because every tool result, file, and output settles into the context river — when the river fills, old talk is compacted into summary. Remedies: (1) control compaction timing with /compact and /clear; (2) keep heaviness out — delegate bulky exploration to subagents (Door 7)."
   },
   story: `<p class="scene-setting">বুড়িগঙ্গা। সকালের কুয়াশা কাটছে না এমন এক বেলায় তুমি ফরিদার নৌকায় উঠলে। ফরিদা তিন যুগ ধরে এই নদীর মাঝি — হাতে বাঁশের খুঁটি, চোখে পানির রঙ বুঝে নেওয়ার অভ্যাস। নৌকায় যত মাল তোলা হয়, তল তত ডুবে যায় — এই চালাকি নয়, এই পদার্থবিদ্যা। এক যাত্রায় যা যা ঘটে — কাঠ, বালি, ঝামেলা, কথা, ঝগড়া — সবই নৌকায় থেকে যায়; নদী মনে রাখে না, নৌকা মনে রাখে।</p>
 <p class="scene-setting en">The Buriganga river. On a morning the fog refuses to lift, you step into Farida's boat. Farida has poled this river for three decades — a bamboo pole in hand, the habit of reading the water's colour. The more cargo you load, the lower the gunwale sinks — not cunning, physics. Everything that happens on a voyage — timber, sand, quarrels, talk — stays in the boat; the river forgets, the boat remembers.</p>
@@ -395,15 +395,127 @@ doors.push({
 <li>লম্বা সেশনে মাঝে মাঝে <strong>/context</strong> চালাও — নদী কতটা ভরেছে দেখো।</li>
 <li>এক ফিচার শেষ → <strong>/clear</strong> → পরের ফিচার। নৌকা হালকা, মাঝি সজাগ।</li>
 <li>কম্প্যাকশন দরকার হলে নিজের ইচ্ছায় <strong>/compact</strong> — জোর করে ডুবার আগেই খালাস।</li>
-<li>পুরো কোডবেস ঘেঁটে বের করার মতো ভারী কাজ মূল সেশনে টানো না — দরজা ৬-এর সাব-এজেন্ট ওদের নিজস্ব নৌকায় করে শুধু সারমর্ম পাঠায়।</li>
+<li>পুরো কোডবেস ঘেঁটে বের করার মতো ভারী কাজ মূল সেশনে টানো না — দরজা ৭-এর সাব-এজেন্ট ওদের নিজস্ব নৌকায় করে শুধু সারমর্ম পাঠায়।</li>
 <li>প্রতিটা বড় সেশনের শুরুতে থাকবে রাহেলার খাতা (CLAUDE.md) — কম্প্যাকশনের পরেও সে ডিস্ক থেকে ফিরে আসে।</li>
 </ul>`
   }
 });
 
-// ── DOOR 5 · তালার কারিগর — The Locksmith ──
+// ── DOOR 5 · জাহানারার স্মৃতি-জাদুঘর — Jahanaara's Museum of Memory ──
 doors.push({
   num: 5,
+  icon: "🫙",
+  color: "#7dd3fc",
+  name: "জাহানারার স্মৃতি-জাদুঘর",
+  subtitle: "Jahaanara's Museum of Memory",
+  tech: "Context window · /compact · /rewind · /autocompact · /context · checkpoints",
+  spirit: "কসর — সফরে নামাজ সংক্ষিপ্ত, ফরজ অক্ষত",
+  secret: "কনটেক্সট একটা জাদুঘর-ঘর — জায়গা সীমিত, তাই কিউরেটরের কাজ কী রাখবে তা নয়, কী গুদামে যাবে তা; ঘর ভরলে স্বয়ংক্রিয় সংক্ষপ্তি (autocompact) আসে — কিন্তু কারিগর অপেক্ষা করে না: /compact ফোকাসসহ, /rewind দিয়ে অর্ধেক-সারাংশ, আর বড় পড়া subagent-এর ঘরে।",
+  recall: {
+    q: "লম্বা সেশনে Claude হঠাৎ আগের কথা ভুলতে শুরু করল; /context দেখাল জানালা প্রায় ভরা। এখন থেকে কোন চার অভ্যাস ঘর চিরকাল ফাঁকা রাখবে — আর ভুলে যাওয়ার আগে ফেরার দরজা কোনটা?",
+    qen: "Mid-session Claude starts forgetting; /context shows the window nearly full. Which four habits keep the room airy — and which door undoes a wrong turn?",
+    a: "চার অভ্যাস: ① নতুন বড় কাজের আগে /compact focus on X — সারাংশে রাখতে চাও তুমি ঠিক করো; ② /rewind (বা খালি প্রম্পটে Esc-Esc) → Summarize from here / up to here — কথা থাকে, ভার যায়; ③ /autocompact 500k — কত ভরা জানালায় স্বয়ংক্রিয়-সংক্ষপ্তি বসবে তার সীমা নিজের হাতে; ④ গবেষণা-ভারী পড়া subagent-কে দাও — সে ৬,১০০ টোকেন পড়ুক, তুমি পাও ৪২০ টোকেনের ফল। ফেরার দরজা: /rewind → Restore code (বা code+conversation) — প্রতিটা প্রম্পটের আগে checkpoint নেওয়া থাকে (১০০টা পর্যন্ত), তাই ভুল মোড়ে ফিরে যাওয়া যায়।",
+    aen: "Four habits: ① /compact with focus before a big new task; ② /rewind (or Esc-Esc on empty prompt) → Summarize from/up to here; ③ /autocompact 500k to set when the automatic pass triggers; ④ delegate heavy reads to a subagent — it reads 6,100 tokens, you receive a 420-token result. The undo door: /rewind → Restore code (or code+conversation) — a checkpoint precedes every turn (up to 100 kept), so wrong turns are reversible."
+  },
+  story: `<p class="scene-setting">জাহানারা শহরের স্মৃতি-জাদুঘরের কিউরেটর — আর তাঁর জাদুঘরের একটাই নিয়ম সবাই জানে: ঘর ছোট, স্মৃতি অসীম। তাই প্রদর্শনী-ঘরে যা রাখা হয় তা আজকের প্রশ্নের উত্তর দিতে পারে এমন জিনিস; বাকি সব যায় গুদামে — ফেলে নয়, সারাংশ-টিকিটে: প্রতিটা বাক্সে এক লাইনে লেখা ভেতরে কী আছে। নতুন প্রদর্শনী আসলে পুরোনো কিছু গুদামে যায় — জাহানারা বলেন এটা ঘরের দোষ নয়, ঘরের ধর্ম। মাঝে মাঝে দর্শক এসে বলে: ওই তো ভুল পথে ঢুকে গেছি, শুরু থেকে দেখব। জাহানারা তখন তাঁর বুকমার্ক-খাতা খোলেন — প্রতিটা ধাপে একটা করে চিহ্ন পড়ে আছে; যেকোনো চিহ্নে ফিরে যাওয়া যায়, কথাবার্তা রেখে জিনিস ফেরত, বা জিনিস রেখে কথা ফেরত — যেমনটা দরকার। আর সবচেয়ে বড় কথা তাঁর: যে জাদুঘর সব রাখতে চায়, সে জাদুঘরে কেউ হাঁটতে পারে না।</p>
+<p class="scene-setting en">Jahaanara curates the city's museum of memory — and everyone knows its one rule: the room is small, memory is infinite. The gallery holds only what answers today's question; the rest goes to the storeroom — not discarded, but with a summary-ticket: one line on each box saying what is inside. When new exhibits arrive, older ones move out — the room's nature, not its fault. Sometimes a visitor says: I took a wrong turn; I want to restart from the middle. Jahaanara opens her bookmark ledger — every step has a mark; any mark can be returned to, restoring the objects but keeping the conversation, or the conversation but keeping the objects — whichever is needed. And her greatest saying: a museum that tries to keep everything becomes a museum no one can walk through.</p>
+
+<div class="dialogue">তুমি জিজ্ঞেস করলে — জাদুঘর-ঘর তো নিজে থেকেই ভরে যায়, তখন কী হয়? জাহানারা হাসলেন: তখন ঘর নিজেই ঝাড়পদ্ধতি চালায় — স্বয়ংক্রিয়-সংক্ষপ্তি; তবে সে অন্ধভাবে অনুমান করে কী দরকার। কারিগর তার আগেই নিজে হাত দেয়: নতুন কাজের শুরুতে বলে দাও কী রাখতে হবে (/compact focus on the auth bug)। আরেকটা কৌশল: কথার নদীর মাঝখান থেকে গুদামে পাঠাও (/rewind → Summarize from here) — শুরুর নির্দেশ থাকবে, ভার যাবে। দরজা বদলানো কাজে /clear — পুরোনো ভিড় নতুন কাজের জায়গা খেয়ে ফেলে। আর সবচেয়ে বড় অস্ত্র: পড়ার ভার বাইরের গবেষকের ঘরে — subagent যেন জাদুঘরের বাইরের লাইব্রেরি: সে হাজার পাতা পড়ুক, তোমার ঘরে আসে এক পাতার রিপোর্ট।</div>
+<div class="dialogue en">You ask — the room fills by itself; then what? She smiles: then the room runs its own sweeping — automatic compaction; but it guesses blindly what matters. The craftsman acts earlier: at the start of a new task, say what to keep (/compact focus on the auth bug). Another trick: send the middle of the conversation river to the storeroom (/rewind → Summarize from here) — initial instructions stay, weight goes. Between unrelated tasks, /clear — old crowds eat the space your next work needs. And the biggest weapon: put reading weight in the researcher's outer room — a subagent is the museum's external library: let it read a thousand pages; your room receives a one-page report.</div>
+
+<div class="code-block"># ঘরের হিসাব নাও:
+/context        # লাইভ ভাঙন: কোন অংশে কত টোকেন — CLAUDE.md, ফাইল, টুল-আউটপুট
+/memory         # কোন স্মৃতি-ফাইলগুলো লোড হলো, সেখানেই সম্পাদনা
+
+# সংক্ষপ্তি — নিজের হাতে, ঘরের হাতে নয়:
+/compact focus on the auth bug fix     # সারাংশে যা রাখবে তুমি ঠিক করলে
+/rewind          # বা খালি প্রম্পটে Esc Esc — মেনু:
+#   • Restore code and conversation   • Restore conversation
+#   • Restore code                    • Summarize from here
+#   • Summarize up to here            • Never mind
+/autocompact 500k     # স্বয়ংক্রিয়-সংক্ষপ্তি কোথায় বসবে (টোকেন-সংখ্যায়)
+/clear                # নতুন অসম্পর্ক কাজে পুরোনো ভিড় বিদায়
+
+# বড় জানালা চাইলে (১M টোকেন):
+#   Fable, Sonnet 5, Opus 4.6+ — [1m] ভ্যারিয়েন্ট (Sonnet 5-এ ডিফল্টই 1M)
+#   /model দিয়ে বাছাই; সংক্ষপ্তি-নিয়ম বড় জানালাতেও একই
+
+# ভার-হ্রাসের গণিত (docs-এর উদাহরণ):
+#   subagent পড়ল ৬,১০০ টোকেন ফাইল → তোমার ঘরে এলো ৪২০ টোকেনের সারাংশ
+#   সাশ্রয়: ~৯৪% — গবেষণা মানেই subagent, প্রধান-ঘর পরিষ্কার
+
+# চেকপয়েন্টের নিয়ম-খাতা:
+#   • প্রতি টার্ন-শুরুর আগে একটা checkpoint; সেশনে ১০০টা পর্যন্ত থাকে
+#   • স্ন্যাপশট ~৩০ দিন পরে পরিষ্কার (cleanupPeriodDays দিয়ে বাড়াও)
+#   • bash-এ বদলানো ফাইল (rm/mv/cp) checkpoint-এ নেই — শুধু টুল-এডিট ট্র্যাক হয়
+#   • বেশিরভাগ subagent-এর এডিট ফেরে না — ওদের ফেরাও git দিয়ে (B61)</div>
+
+<table class="kv-table">
+<tr><th>উপকরণ</th><th>কী করে</th><th>কখন</th></tr>
+<tr><td class="hl">/context</td><td>লাইভ টোকেন-ভাঙনা</td><td>ঘর ভারী লাগলেই প্রথম কমান্ড</td></tr>
+<tr><td class="hl">/compact ফোকাসসহ</td><td>নির্দেশিত সারাংশ-সংক্ষপ্তি</td><td>নতুন বড় কাজের শুরুতে</td></tr>
+<tr><td class="hl">/rewind (Esc Esc)</td><td>৬-অপশন মেনু: কোড/কথা ফেরত, অর্ধ-সারাংশ</td><td>ভুল মোড়; মাঝপথের ভার ফেলতে</td></tr>
+<tr><td class="hl">/autocompact N</td><td>স্বয়ংক্রিয়-সংক্ষপ্তির সীমা সেট</td><td>দীর্ঘ সেশনে আগে থেকেই</td></tr>
+<tr><td class="hl">subagent</td><td>পড়া-ভার আলাদা ঘরে</td><td>গবেষণা/বড় রিফ্যাক্টর</td></tr>
+<tr><td class="hl">/clear</td><td>ঘর সম্পূর্ণ খালি</td><td>অসম্পর্ক নতুন কাজ</td></tr>
+</table>
+
+<div class="diagram">
+<div class="diag-title">স্মৃতি-জাদুঘরের নকশা — The Museum Floor-Plan</div>
+<svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar59d5" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
+</defs>
+<rect class="node" x="15" y="15" width="150" height="44" rx="10"/><text class="lbl" x="90" y="33">স্টার্টআপ</text><text class="lbl-sm" x="90" y="49">system + CLAUDE.md + MEMORY</text>
+<rect class="node-cyan" x="205" y="15" width="150" height="44" rx="10"/><text class="lbl-cyan" x="280" y="33">কাজের স্রোত</text><text class="lbl-sm" x="280" y="49">ফাইল-পড়া · এডিট · টেস্ট</text>
+<rect class="node-hot" x="395" y="15" width="150" height="44" rx="10"/><text class="lbl-hot" x="470" y="33">ঘর ভরা</text><text class="lbl-sm" x="470" y="49">autocompact সীমা</text>
+<line x1="165.0" y1="37.0" x2="205.0" y2="37.0" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d5)"/>
+<line x1="355.0" y1="37.0" x2="395.0" y2="37.0" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d5)"/>
+<rect class="node-leaf" x="205" y="95" width="150" height="44" rx="10"/><text class="lbl-leaf" x="280" y="113">সারাংশ-টিকিট</text><text class="lbl-sm" x="280" y="129">compact — গুদামে সারাংশ</text>
+<rect class="node-purple" x="395" y="95" width="150" height="44" rx="10"/><text class="lbl" x="470" y="113">নতুন কাজ</text><text class="lbl-sm" x="470" y="129">ফাঁকা ঘরে পরের ধাপ</text>
+<line x1="470.0" y1="59.0" x2="274.1" y2="95.0" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d5)"/>
+<line x1="355.0" y1="117.0" x2="395.0" y2="117.0" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d5)"/>
+<rect class="cell" x="15" y="160" width="530" height="40" rx="8"/>
+<text class="lbl-sm" x="280" y="176">checkpoint-বুকমার্ক: প্রতি টার্নের আগে চিহ্ন — /rewind-এ যেকোনো চিহ্নে ফেরা (কোড/কথা/সারাংশ)</text>
+<text class="lbl-sm" x="280" y="192">⚠ bash-এ বদলানো ফাইল আর বেশিরভাগ subagent-এডিট চিহ্নের নাগালে নয় — ওগুলোর ফেরা git-এ (B61)</text>
+</svg>
+<div class="diag-cap">ঘর ভরা → সারাংশ-টিকিট → নতুন কাজ; আর প্রতি ধাপে ফেরার বুকমার্ক — এই তিনেই স্মৃতির শাসন।</div>
+</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>কিউরেটরের সতর্কতা:</strong> checkpoint সব-ফেরানোর জাদু নয় — bash-কমান্ডে বদলানো ফাইল (rm, mv, cp) ট্র্যাক হয় না, আর ব্যাকগ্রাউন্ড subagent-এর এডিটও সাধারণত ফেরে না; ওদের জন্য git (B61)। symlink/hardlink-ফাইল রিস্টোরে স্কিপ হয়। আর /compact-এর পর স্কিল-তালিকা আবার ঢোকে না — শুধু যেসব স্কিল সত্যিই ব্যবহার হয়েছিল সেগুলোই থাকে। স্মৃতি-ফাইল (MEMORY.md) এর প্রথম ২০০ লাইন/২৫KB ঢোকে — বাকিটা গুদাম।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>The curator's caution:</strong> checkpoints are not an undo-everything spell — bash-modified files (rm, mv, cp) are not tracked, and background-subagent edits usually do not rewind; for those, git (B61). Symlinked/hard-linked files are skipped on restore. After /compact the skill listing is not re-injected — only skills actually used survive. Auto-memory loads its first 200 lines/25KB — the rest stays in the storeroom.</div></div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ জমাট-জাদুঘর</div>ঘর ভরা পর্যন্ত অপেক্ষা · স্বয়ংক্রিয়-সংক্ষপ্তি অন্ধভাবে যা চায় তা ফেলে · সব পড়া নিজের ঘরে · ভুল পথে এগিয়ে যেতেই থাকে · /clear না জেনে পুরোনো ভিড়ে নতুন কাজ</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ কিউরেটর-শাসিত ঘর</div>/context দিয়ে নজর · ফোকাসসহ compact · ভার subagent-ঘরে · ভুল মোড়ে /rewind-চিহ্ন · নতুন কাজে /clear</div>
+</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৬১০০→৪২০</div><div class="sc-label">subagent-সাঞ্চয় (docs-উদাহরণ)</div></div>
+<div class="stat-card"><div class="sc-num">১০০</div><div class="sc-label">checkpoint-স্মৃতি প্রতি সেশন</div></div>
+<div class="stat-card"><div class="sc-num">২০০ লাইন</div><div class="sc-label">MEMORY.md-র ঘরে-ঢোকা সীমা</div></div>
+<div class="stat-card"><div class="sc-num">1M</div><div class="sc-label">Fable/Sonnet 5/Opus 4.6+ জানালা</div></div>
+</div>
+
+<p class="verse">কসর — সফরে নামাজ সংক্ষিপ্ত হয়, ফরজ কমে না: মুসাফিরের শরীর যেমন সীমিত, ঘরও তেমন — তাই মূল ঠিক রেখে আনুষঙ্গিক গুদামে যায়। সংক্ষপ্তিও তাই: কাজের মেরুদণ্ড (ফরজ) সারাংশে বাঁচে, বাহুল্য যায় — আর এটাও ইবাদতের মতোই নিয়মে চলে, ইচ্ছেমতো নয়।</p>
+
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🫙 /context দেখো, ফোকাসসহ compact করো, ভার subagent-কে; ভুল মোড়ে /rewind-চিহ্নে ফেরো।<br>কারণ: যে জাদুঘর সব রাখতে চায়, সেখানে কেউ হাঁটতে পারে না।</div></div>`,
+  senior: {
+    title: "কিউরেটরের খাতা — The Curator's Ledger",
+    body: `<ul class="checklist">
+<li>ঘর ভারী লাগলেই <strong>/context</strong> — কোথায় ভার, সে নিজেই পরামর্শ দেয়।</li>
+<li>নতুন বড় কাজের আগে <strong>/compact focus on …</strong> — সারাংশ তোমার হাতে।</li>
+<li>মাঝপথের ভার ফেলতে <strong>/rewind → Summarize from here</strong>; ভুল কাজ ফেরত <strong>Restore code</strong>।</li>
+<li>গবেষণা-কাজ সবসময় <strong>subagent</strong>-কে — প্রধান ঘর হালকা (দরজা ৭)।</li>
+<li>দীর্ঘ সেশনে <strong>/autocompact</strong>-সীমা আগেই বসাও; নতুন অসম্পর্ক কাজে <strong>/clear</strong>।</li>
+<li>মনে রেখো checkpoint-এর সীমা: bash-ফাইল নয়, subagent-এডিট প্রায় নয় — ওরা git-এর জমি (B61)।</li>
+</ul>`
+  }
+});
+
+// ── DOOR 6 · তালার কারিগর — The Locksmith ──
+doors.push({
+  num: 6,
   icon: "🔐",
   color: "#52c41a",
   name: "তালার কারিগর",
@@ -504,7 +616,7 @@ claude --permission-mode bypassPermissions
 > টেস্ট ফিক্স করে দাও, যা লাগে করো
 #   → সব নিঃশব্দে — এজন্যই ঘর (sandbox) আগে, অস্ত্র পরে
 
-# settings-এ স্থায়ী তালা (বেলালের খাতা, দরজা ৫-এর মূল উদাহরণ):
+# settings-এ স্থায়ী তালা (বেলালের খাতা, দরজা ৬-এর মূল উদাহরণ):
 # .claude/settings.json → permissions.allow / deny তালিকা</div>
 
 <div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🔐 অনুমতি তিন তালা: নিরাপদ allow, ভয়ংকর deny, বাকি সব জিজ্ঞেস — আর লাল খাম শুধু ঘেরা উঠানে।<br>কারণ: ক্ষমতা হিসাব না করে দিলে একদিন হিসাব ক্ষমতাকে দেয়।</div></div>`,

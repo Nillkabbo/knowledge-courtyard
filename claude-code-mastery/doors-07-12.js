@@ -1,12 +1,13 @@
 // ════════════════════════════════════════
-// Book 59 · The Terminal Craftsman — Doors 6-10
-// Every command verified against the official
-// Claude Code docs (code.claude.com)
+// Book 59 v4 · The Terminal Craftsman — Complete Reference
+// DOORS – 07 – 12 · doc-grounded (code.claude.com via context7)
 // ════════════════════════════════════════
 
-// ── DOOR 6 · ঠিকাদার রফিক — Rafiq the Contractor ──
+
+
+// ── DOOR 7 · ঠিকাদার রফিক — Rafiq the Contractor ──
 doors.push({
-  num: 6,
+  num: 7,
   icon: "🎖️",
   color: "#b37feb",
   name: "ঠিকাদার রফিক",
@@ -100,9 +101,9 @@ claude --agents '{
   }
 });
 
-// ── DOOR 7 · রাতের প্রহরীর ঘণ্টা — The Night Watchman's Bell ──
+// ── DOOR 8 · রাতের প্রহরীর ঘণ্টা — The Night Watchman's Bell ──
 doors.push({
-  num: 7,
+  num: 8,
   icon: "🔔",
   color: "#fbbf24",
   name: "রাতের প্রহরীর ঘণ্টা",
@@ -150,7 +151,7 @@ doors.push({
 # PostToolUse       → টুল ফিরে আসার পরে
 # UserPromptSubmit  → তুমি প্রম্পট পাঠালে
 # Stop              → এজেন্ট কাজ শেষ করলে
-# SubagentStart/Stop → ঠিকাদার (দরজা ৬) ছাড়লে-ফিরলে
+# SubagentStart/Stop → ঠিকাদার (দরজা ৭) ছাড়লে-ফিরলে
 # PreCompact        → নদী সংকুচিত হওয়ার আগে</div>
 
 <div class="diagram">
@@ -183,14 +184,14 @@ doors.push({
 <li>বিপজ্জনক কমান্ড আটকানো → <strong>PreToolUse</strong> matcher Bash — deny সিদ্ধান্ত ফেরত দিলে কল চলেই না।</li>
 <li>প্রম্পটে প্রসঙ্গ ঢোকানো → <strong>UserPromptSubmit</strong>।</li>
 <li>কাজ শেষে যাচাই/লগ → <strong>Stop</strong>; কম্প্যাকশনের আগে ট্রান্সক্রিপ্ট সরাতে <strong>PreCompact</strong>।</li>
-<li>প্লাগইন থেকেও ঘণ্টা আসে (hooks.json) — দরজা ৮-এর বাজারে দেখবে।</li>
+<li>প্লাগইন থেকেও ঘণ্টা আসে (hooks.json) — দরজা ৯-এর বাজারে দেখবে।</li>
 </ul>`
   }
 });
 
-// ── DOOR 8 · উত্তরাধিকারের আংটি — The Heirloom Ring ──
+// ── DOOR 9 · উত্তরাধিকারের আংটি — The Heirloom Ring ──
 doors.push({
-  num: 8,
+  num: 9,
   icon: "💍",
   color: "#3dd6c4",
   name: "উত্তরাধিকারের আংটি",
@@ -207,8 +208,8 @@ doors.push({
   story: `<p class="scene-setting">আয়েশা গলির গয়নার দোকান চালায় — নিজের হাতে গড়ে না, সংযোগে বিশ্বাসী। তার দেয়ালে একটা আংটি ঝুলছে, পাশে ছোট্ট তামার পাত: দাদির বিয়ের আংটি — যে পরলে তার সাথে আসে দাদির সম্পূর্ণ সিলসিলা: তার দাদির কথা, তার সব হিসাব, তার খরিদ্দারের নাম। কেউ জিজ্ঞেস করে — আংটিটা সোনার নয় তো? আয়েশা হাসে — সোনা কারখানায় পোড়ে, সিলসিলা কারখানায় পোড়ে না।</p>
 <p class="scene-setting en">Ayesha runs the lane's jewellery shop — she crafts nothing herself; she believes in connections. On her wall hangs a ring with a small copper plaque: grandmother's wedding ring — whoever wears it inherits the grandmother's whole chain: her grandmother's story, all her accounts, her customers' names. Someone asks — the ring isn't gold, is it? Ayesha smiles — gold burns in a fire; a chain of connection doesn't burn in any fire.</p>
 
-<div class="dialogue">তুমি আয়েশার দোকানে হাজির — বলো, আমার কারখানার শাগরেদের Notion-এর খাতা, GitHub-এর গুদাম, আর ডাটাবেসের পাথর-খনি দরকার। আয়েশা তিনটা জিনিস টেবিলে রাখল। প্রথমে আংটি — এটা MCP: বাইরের প্রতিটা জগতের সাথে খোলা প্রোটোকলের সংযোগ; পরলেই শাগরেদ ওই জগতের হাত ধরে ঢোকে। তারপর একটা পুঁথি — এটা স্কিল: তোমার কারিগরি অভ্যাস, লেখা আকারে, যেটা দরকারের মুহূর্তে খুলে পড়া হয়। আর শেষে একটা গাঢ় কাঠের বাক্স — এটা প্লাগইন: আংটি-পুঁথি-ঘণ্টা (দরজা ৭)-ঠিকাদারের চেহারা (দরজা ৬) সব একসাথে, বাজার থেকে নামিয়ে এক লাইনে চালু।</div>
-<div class="dialogue en">You arrive at Ayesha's counter — my workshop's apprentice needs the Notion ledger, the GitHub warehouse, and the database quarry. Ayesha lays three things on the table. First the ring — this is MCP: an open-protocol connection to each outer world; wearing it, the apprentice holds that world's hand and enters. Then a chapbook — this is a Skill: your craft habits, written down, opened at the moment of need. And last a dark wooden box — this is a Plugin: ring + chapbook + bells (Door 7) + contractor faces (Door 6) all together, downloaded from a marketplace and enabled in one line.</div>
+<div class="dialogue">তুমি আয়েশার দোকানে হাজির — বলো, আমার কারখানার শাগরেদের Notion-এর খাতা, GitHub-এর গুদাম, আর ডাটাবেসের পাথর-খনি দরকার। আয়েশা তিনটা জিনিস টেবিলে রাখল। প্রথমে আংটি — এটা MCP: বাইরের প্রতিটা জগতের সাথে খোলা প্রোটোকলের সংযোগ; পরলেই শাগরেদ ওই জগতের হাত ধরে ঢোকে। তারপর একটা পুঁথি — এটা স্কিল: তোমার কারিগরি অভ্যাস, লেখা আকারে, যেটা দরকারের মুহূর্তে খুলে পড়া হয়। আর শেষে একটা গাঢ় কাঠের বাক্স — এটা প্লাগইন: আংটি-পুঁথি-ঘণ্টা (দরজা ৮)-ঠিকাদারের চেহারা (দরজা ৭) সব একসাথে, বাজার থেকে নামিয়ে এক লাইনে চালু।</div>
+<div class="dialogue en">You arrive at Ayesha's counter — my workshop's apprentice needs the Notion ledger, the GitHub warehouse, and the database quarry. Ayesha lays three things on the table. First the ring — this is MCP: an open-protocol connection to each outer world; wearing it, the apprentice holds that world's hand and enters. Then a chapbook — this is a Skill: your craft habits, written down, opened at the moment of need. And last a dark wooden box — this is a Plugin: ring + chapbook + bells (Door 8) + contractor faces (Door 7) all together, downloaded from a marketplace and enabled in one line.</div>
 
 <p>ডকের হিসাবে তিনটে জিনিস আলাদা: <strong>MCP</strong> দেয় নতুন টুল (Slack, Jira, ডাটাবেস, ব্রাউজার — শত শত সংযোগ), <strong>Skills</strong> দেয় নতুন জ্ঞান-পদ্ধতি (দরকারের সময় লোড হয়, প্রতিটা সেশন মোটা করে না), <strong>Plugins</strong> হলো প্যাকেজ — স্কিল, ঠিকাদার, ঘণ্টা, MCP, থিম সব এক বাক্সে, মার্কেটপ্লেস থেকে। রাহেলার খাতা (দরজা ২) প্রতিটা সেশনে যায়; আয়েশার পুঁথি শুধু দরকারের মুহূর্তে খোলে — এই তফাতটাই স্কিলের আসল শক্তি।</p>
 <p class="en">In the docs' account these three are distinct: <strong>MCP</strong> grants new tools (Slack, Jira, databases, browsers — hundreds of integrations); <strong>Skills</strong> grant new know-how, loaded on demand without fattening every session; <strong>Plugins</strong> are the package — skills, agents, hooks, MCP servers, themes in one box, from a marketplace. Rahela's ledger (Door 2) travels every session; Ayesha's chapbook opens only at the moment of need — that difference is a skill's real power.</p>
@@ -245,8 +246,8 @@ description: Extract text and tables from PDF files. Use when
 <tr><td class="hl">সব একসাথে, এক লাইনে</td><td>Plugin</td><td>/plugin marketplace → /plugin install</td></tr>
 </table>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>আংটির সতর্কতা:</strong> প্রতিটা সংযোগ একটা খোলা দরজা। টোকেন কখনো ফাইলে সরাসরি লিখো না — \${ENV_VAR} আকারে দাও, যেন শেল থেকে উঠে আসে; আর কোন সার্ভার কোন টুল দেয়, দরজা ৫-এর তালার খাতায় হিসাব রাখো। সংযোগ যত বাড়ে, হিসাব তত জরুরি।</div></div>
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>The ring's caution:</strong> every connection is an open door. Never write tokens inline in the file — give them as \${ENV_VAR} so they rise from the shell; and keep account, in Door 5's keyring, of which server grants which tools. The more connections, the more the account matters.</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>আংটির সতর্কতা:</strong> প্রতিটা সংযোগ একটা খোলা দরজা। টোকেন কখনো ফাইলে সরাসরি লিখো না — \${ENV_VAR} আকারে দাও, যেন শেল থেকে উঠে আসে; আর কোন সার্ভার কোন টুল দেয়, দরজা ৬-এর তালার খাতায় হিসাব রাখো। সংযোগ যত বাড়ে, হিসাব তত জরুরি।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>The ring's caution:</strong> every connection is an open door. Never write tokens inline in the file — give them as \${ENV_VAR} so they rise from the shell; and keep account, in Door 6's keyring, of which server grants which tools. The more connections, the more the account matters.</div></div>
 
 <p class="verse">সিলসিলার শিক্ষা — মূল্য জিনিসে নয়, সংযোগে। জ্ঞানের নবীদের পরম্পরা এভাবেই হাত থেকে হাতে এসেছে: এক প্রজন্ম শেখায়, পরের প্রজন্ম বহন করে, কেউ বিচ্ছিন্ন হয় না। "নিশ্চয়ই আল্লাহ তোমাদের আদেশ দেন আমানত তার হকদারকে ফিরিয়ে দিতে" (কুরআন ৪:৫৮) — প্রতিটা সংযোগ একটা আমানত, প্রতিটা পুঁথি একটা আমানত।</p>
 
@@ -267,7 +268,7 @@ description: Extract text and tables from PDF files. Use when
 <rect class="cell" x="15" y="10" width="530" height="26" rx="8"/><text class="lbl-sm" x="280" y="27">হাত চাই? MCP · বিদ্যা চাই? Skill · হাত+বিদ্যা+আদেশ+ঘর সব একসাথে চাই? Plugin</text>
 <rect class="cell" x="15" y="44" width="530" height="26" rx="8"/><text class="lbl-sm" x="280" y="61">সব ক্ষেত্রেই চুক্তি এক: তালিকা .mcp.json / skills/ / plugin.json — ফাইল দিয়ে ঘোষণা, মুখে নয়</text>
 </svg>
-<div class="diag-cap">এক শরীরে তিন ধরনের সম্প্রসারণ — কোনটা কখন: আংটির ঠিকাদার (দরজা ৮-এর মূল পাঠ) এই নকশাতেই বসে।</div>
+<div class="diag-cap">এক শরীরে তিন ধরনের সম্প্রসারণ — কোনটা কখন: আংটির ঠিকাদার (দরজা ৯-এর মূল পাঠ) এই নকশাতেই বসে।</div>
 </div>
 
 <div class="code-block"># তিন উৎসের হাতে-হাতে ফাইল-গঠন:
@@ -281,7 +282,7 @@ myproject/
 │   │   └── deploy-lp/
 │   │       └── SKILL.md       # Skill: বিদ্যার বই — কখন-কীভাবে
 │   │           (# frontmatter: name, description; শরীরে ধাপ)
-│   └── settings.json          # অনুমতির খাতা (দরজা ৫)
+│   └── settings.json          # অনুমতির খাতা (দরজা ৬)
 └── .claude-plugin/
     └── plugin.json            # Plugin: দোকানের জন্মনামা
                                     # { "name": "lp-tools" }
@@ -306,142 +307,133 @@ claude
   }
 });
 
-// ── DOOR 9 · রাতের কারখানা — The Night Factory ──
+// ── DOOR 10 · মরিয়মের রেসিপি-বাক্স — Maryam's Recipe Box ──
 doors.push({
-  num: 9,
-  icon: "🌙",
-  color: "#5b9eff",
-  name: "রাতের কারখানা",
-  subtitle: "The Night Factory",
-  tech: "Headless · CI · Agent SDK",
-  spirit: "তাহাজ্জুদের বরকত — ঘুমের ঘণ্টায় কাজ, ফজরে ফল",
-  secret: "দিনের কারখানায় তুমি কথা বলো, রাতের কারখানায় কথা লেখা থাকে — claude -p আর JSON-ই সেই লেখা।",
+  num: 10,
+  icon: "📔",
+  color: "#fbbf24",
+  name: "মরিয়মের রেসিপি-বাক্স",
+  subtitle: "Maryam's Recipe Box",
+  tech: "SKILL.md · progressive disclosure · invocation control · dynamic context",
+  spirit: "ওয়াক্ত-ইলম — দরকারের ঘড়িতে ইলম তলব",
+  secret: "CLAUDE.md সবসময় ঘরে থাকে; স্কিল তাকে থাকে — রান্নার সময়ই খাতা নামে: SKILL.md-র বিবরণ সবসময় লোড হয়, পুরো পাতা নামে শুধু কাজের মুহূর্তে — এজন্যই বিশ পৃষ্ঠার রেফারেন্সও প্রায় বিনামূল্যে, যতক্ষণ না ডাক পড়ে।",
   recall: {
-    q: "প্রতি PR-এ যাচাই, প্রতি কমিটে লিন্ট — মানুষের চোখ ছাড়া কীভাবে চলবে?",
-    qen: "Review on every PR, lint on every commit — how does it run with no human eyes?",
-    a: "claude -p (print mode) + --output-format json|stream-json: পাইপলাইনে ঢোকাও, আউটপুট মেশিন পড়ে। CI-তে --permission-mode acceptEdits, ঘেরা রানারে। GitHub-এ @claude মেনশন দিলে claude-code-action নিজেই PR বানায়। আরও গভীর অটোমেশন চাইলে Agent SDK — একই ইঞ্জিন, তোমার কোডের ভেতরে; SDK-তে output_format দিয়ে JSON Schema বসালে শেষে structured_output ফিল্ডে যাচাইকৃত JSON পাও — Zod/Pydantic দিয়ে টাইপ-নিরাপদ।",
-    aen: "claude -p (print mode) + --output-format json|stream-json: put it in the pipeline, machines read the output. In CI use --permission-mode acceptEdits inside a fenced runner. On GitHub, mention @claude and claude-code-action builds the PR itself. Deeper automation: the Agent SDK — same engine, inside your code; with output_format set to a JSON Schema the SDK returns validated JSON in structured_output — type-safe via Zod/Pydantic."
+    q: "তুমি প্রতি সপ্তাহে একই ডিপ্লয়-নির্দেশনা চ্যাটে পেস্ট করো। একে স্কিল বানাতে চাও যেন শুধু /deploy লিখলেই চলে, Claude নিজে থেকে না নেয়। ফাইলটা কোথায়, ভেতরে কী, আর নিজে-না-নেওয়ার চাবিটা কী?",
+    qen: "You paste the same deploy instructions weekly. Make it a skill that runs only on /deploy, never auto-invoked. Where does the file live, what is inside, and which key prevents auto-invocation?",
+    a: "ফাইল: .claude/skills/deploy/SKILL.md (প্রজেক্ট — দলের সবাই পায়; ~/.claude/skills/ হলে শুধু তুমি, সব প্রজেক্টে)। ভেতরে দুই স্তর: --- এর ভেতর frontmatter (description — কখন কাজে লাগে, এক লাইনে), তারপর markdown শরীর — আসল নির্দেশনা। নিজে-না-নেওয়ার চাবি: disable-model-invocation: true — তখন তালিকাতেও নাম ওঠে না, শুধু তোমার /deploy-ই দরজা খোলে। বিপরীত চাইলে description-ই যথেষ্ট: মানানসই প্রশ্ন এলে Claude নিজেই ডাকে। বোনাস: শরীরে !\`git diff HEAD\` লাইন দিলে স্কিল খোলার মুহূর্তে কমান্ডের তাজা আউটপুট ভেতরে বসে যায় — নির্দেশ আসে তাজা তথ্যসহ।",
+    aen: "File: .claude/skills/deploy/SKILL.md (project — the whole team gets it; ~/.claude/skills/ for personal, all projects). Inside, two layers: frontmatter between --- (description — when it helps, one line), then the markdown body — the actual instructions. The no-auto key: disable-model-invocation: true — then it never even lists, only your /deploy opens the door. For auto-invocation, the description alone suffices: matching questions make Claude call it. Bonus: a !\`git diff HEAD\` line in the body inlines fresh command output the moment the skill opens — instructions arrive with live data."
   },
-  story: `<p class="scene-setting">নাদির ভাই শহরের সবচেয়ে শান্ত কারখানার মালিক — কারণ তার কারখানা দিনে ঘুমায়। সন্ধ্যায় সে একটা লম্বা কাগজ দরজার ফাঁকে গেঁথে যায়: বিছানা আনার অর্ডার, চেয়ারের হাতল বাঁকানো, রং তিন কোট শুকানো। রাতে যন্ত্রগুলো নিজে থেকেই চলে — কেউ কথা বলে না, কাগজের লেখাই আদেশ। ভোরে নাদির এসে দেখে: কাজ শেষ, একটা ছোট্ট ডায়েরিতে লেখা — কোনটা হলো, কোনটা আটকাল, কোনটায় মানুষের চোখ দরকার। সে শুধু আটকে-থাকা গুছিটা তুলে নিয়ে যায়।</p>
-<p class="scene-setting en">Nadir bhai owns the city's quietest workshop — because his factory sleeps through the day. Each evening he threads a long paper into the door slot: twenty bed frames, chair handles bent, three coats of lacquer dried. At night the machines run themselves — no one speaks; the writing on the paper is the order. At dawn Nadir finds the work done and a small diary filled in — which finished, which stalled, which needs human eyes. He picks up only the stalled bundle.</p>
+  story: `<p class="scene-setting">মরিয়মের রান্নাঘরে ঢুকলেই দেয়ালে টাঙানো কাঠের রেসিপি-বাক্স — শ'খানেক কার্ড, প্রতিটার গায়ে এক লাইনে নাম: কাচ্চি, রোস্ট, পায়েস। মরিয়মের নিয়ম বিখ্যাত: বাক্সের তালিকা মুখস্থ থাকে, পাতা নামে শুধু রান্নার দিন। অর্থাৎ কাচ্চির কার্ডের তিন পৃষ্ঠার হিসাব মাথায় বইতে হয় না — গায়ের ওই এক লাইনই বলে দেয় কখন কোনটা লাগবে; বিরিয়ানির দিন বিরিয়ানির পাতা নামে, বাকি আটান্নটা তাকেই থাকে। পাশের বাড়ির নববধূ সব রেসিপি এক খাতায় বেঁধে রান্নাঘরের টেবিলে রাখে — প্রতিদিন সব পাতা সব কাজে সামলাতে হয়, আর খাতাটা ভারী হয়ে টেবিলের অর্ধেক জায়গা খেয়ে ফেলে। মরিয়মের আরেকটা কৌশল আছে: কিছু কার্ডের গায়ে নাম লেখাই নেই — দরকারের সময় সে-ই খুঁজে বের করে; এগুলো তাঁর গোপন রেসিপি, যা সে নিজে না চাইলে কেউ জানেও না। আর কাচ্চির কার্ডের প্রথম লাইনে লেখা: ধান ভিজানোর তাজা হিসাব !বাজার-খাতা দেখে নাও — পাতা নামার মুহূর্তে আজকের বাজারদর বসে যায় রেসিপির ভেতরেই।</p>
+<p class="scene-setting en">Enter Maryam's kitchen and you see the wooden recipe box on the wall — a hundred cards, each named in one line: kacchi, roast, payesh. Her famous rule: the box's index is memorized, pages come down only on cooking day. You never carry kacchi's three pages of arithmetic in your head — the one line on the card says when it applies; on biryani day the biryani page descends, the other fifty-eight stay shelved. The neighbour's new bride binds every recipe into one ledger kept on the kitchen table — every day all pages crowd every task, and the heavy ledger eats half the table. Maryam has another trick: some cards bear no name at all — she pulls them herself when needed; her secret recipes, unknown unless she offers. And kacchi's card begins: for today's rice-soak count !check the market ledger — the moment the page comes down, today's market prices slip inside the recipe.</p>
 
-<div class="dialogue">তুমি জিজ্ঞেস করলে — রাতে কেউ তো পাহারা দেয় না, ভয় করো না? নাদির বলল — ভয় করি, তাই রাতের কারখানায় দিনের সব আস্থা নেই। ভঙ্গুর জিনিস রাতে ছোঁয়া হয় না, আগুনের কাজ রাতে নয়, আর যা কাজ হয় তার প্রতিটা ধাপ ডায়েরিতে। দিনের কারখানা কথায় চলে, রাতের কারখানা লেখায় চলে — লেখা ভুল হলে সকালে ধরা পড়ে, কথা না হলে ধোঁয়া।</div>
-<div class="dialogue en">You ask — no one guards it at night, aren't you afraid? Nadir says — I am, so the night factory holds none of the day's full trust. Nothing fragile is touched at night, no fire-work at night, and every step that does run is written in the diary. The day factory runs on speech; the night factory runs on writing — a wrong line is caught by morning, a missing word would be smoke.</div>
+<div class="code-block"># প্রথম স্কিল — তিন মিনিটে:
+mkdir -p .claude/skills/deploy
+cat > .claude/skills/deploy/SKILL.md << 'EOF'
+---
+description: লেজারপাইলট ডিপ্লয় — চেকলিস্টসহ। Use when
+  the user says deploy, ship, or রিলিজ.
+disable-model-invocation: true
+---
 
-<p>দিনের কারখানা তোমার ইন্টারঅ্যাক্টিভ সেশন (দরজা ১)। রাতের কারখানা হলো <strong>headless মোড</strong>: claude -p — প্রশ্ন পাঠাও, উত্তর ছাপা হয়ে আসে, কেউ বসে থাকে না। ডক বলছে, এটাই CI পাইপলাইন, প্রি-কমিট হুক, যেকোনো অটোমেশনের দরজা — আর আউটপুট মেশিনের ভাষায় চাইলে <strong>--output-format json</strong> (একটা JSON অবজেক্ট, result ফিল্ডসহ) বা <strong>stream-json</strong> (লাইন প্রতি ইভেন্ট, শুরুতে init ইভেন্ট)।</p>
-<p class="en">The day factory is your interactive session (Door 1). The night factory is <strong>headless mode</strong>: claude -p — send the question, the answer prints, nobody sits around. The docs call this the door to CI pipelines, pre-commit hooks, any automation — with machine-readable output via <strong>--output-format json</strong> (a single JSON object with a result field) or <strong>stream-json</strong> (one event per line, starting with an init event).</p>
+## আজকের অবস্থা
+!\`git log --oneline -3\`
 
-<div class="code-block"># এক লাইনের জিজ্ঞাসা, সাধারণ উত্তর:
-claude -p "Explain what this project does"
+## ধাপ
+১. টেস্ট: npm test --silent
+২. বিল্ড: npm run build
+৩. ডিপ্লয়-স্ক্রিপ্ট: ./scripts/deploy.sh
+৪. ফের যাচাই: curl -sf https://app.example/health
+ব্যর্থ হলে থেমে যাও, কারণ বলো — অনুমানে এগোবে না।
+EOF
+claude
+> /deploy
+#   !\`...\` লাইনটা স্কিল খোলার মুহূর্তে চলে — নির্দেশ
+#   আসে git log-এর তাজা আউটপুটসহ
 
-# স্ক্রিপ্টে ঢোকানোর মতো গোছানো উত্তর:
-claude -p "List all API endpoints" --output-format json
+# কোথায় রাখলে কে পাবে (location স্কেল):
+~/.claude/skills/x/SKILL.md     # ব্যক্তিগত — তোমার সব প্রজেক্ট
+.claude/skills/x/SKILL.md       # প্রজেক্ট — git-এ দিলে পুরো দল
+<sub>/.claude/skills/x/SKILL.md # নেস্টেড — মনোরিপোর সেই সাব-ডিরে
+plugin/skills/x/SKILL.md        # প্লাগইনভুক্ত — /plugin-name:x
+# পুরোনো .claude/commands/deploy.md-ও এখন /deploy-ই — commands স্কিলে মিশেছে
 
-# লাইভ প্রসেসিং — ইভেন্ট ধরে ধরে:
-claude -p "Analyze this log file" --output-format stream-json --verbose
+# কে ডাকবে — তিন মোড:
+# ① বর্ণনা-মিলে স্বয়ংক্রিয়: description-ই যথেষ্ট ("Use when ...")
+# ② শুধু তুমি: disable-model-invocation: true → নাম-তালিকাতেও নেই
+# ③ আলাদা ঘরে: context: fork → subagent-এ চলে, ফল ফিরে আসে
 
-# CI-তে: ঘেরা রানার + সীমিত আস্থা (দরজা ৫-এর লাল খাম):
-claude -p "Apply the lint fixes" --permission-mode acceptEdits</div>
+# বান্ডিল-স্কিল (রেডিমেড, চালুই থাকে):
+/run       # অ্যাপ চালিয়ে দেখাও
+/verify    # টেস্টে ভরসা নয় — অ্যাপ বানিয়ে চালিয়ে যাচাই
+/code-review · /debug · /loop · /batch · /doctor
+# বন্ধ করতে: settings-এ disableBundledSkills
 
-<p>রাতের তিনটা ঘর: পাইপলাইনে <strong>claude -p</strong>; GitHub-এ <strong>claude-code-action</strong> — PR বা ইস্যুতে @claude লিখলেই সে কোড দেখে, ঠিক করে, কমিট ঠেলে দেয়, ইস্যু থেকে PR বানায়; আর সবচেয়ে গভীর ঘর — <strong>Agent SDK</strong>: সেই একই ইঞ্জিন তুমি নিজের প্রোগ্রামের ভেতরে বসাও, query() লুপ ঘুরিয়ে নিজের হুক-সাব-এজেন্ট-কনটেক্সট-নিয়ম সহ। দরজা ৪-এর লুপ, ৫-এর তালা, ৬-এর ঠিকাদার, ৭-এর ঘণ্টা — সব এক কোডে।</p>
-<p class="en">Three rooms of the night: <strong>claude -p</strong> in pipelines; <strong>claude-code-action</strong> on GitHub — mention @claude on a PR or issue and it analyzes, fixes, pushes commits, turns issues into PRs; and the deepest room — the <strong>Agent SDK</strong>: the same engine embedded in your own program, driving query() with your own hooks, subagents, context, and rules. Door 4's loop, Door 5's locks, Door 6's contractors, Door 7's bells — all in one codebase.</p>
+# স্বাস্থ্য-পরীক্ষা:
+claude plugin validate .claude/skills   # frontmatter ঠিক কি না
+/context        # Skills-সারি — তালিকার টোকেন-দাম
+/doctor         # তালিকার খরচ + কারা ভারী</div>
 
-<div class="code-block">// Agent SDK — নাদিরের রাতের ডায়েরি নিজের হাতে (Python)
-import asyncio
-from claude_agent_sdk import query, ClaudeAgentOptions
-
-async def main():
-    options = ClaudeAgentOptions(
-        permission_mode="acceptEdits",   # দরজা ৫-এর সীমিত আস্থা
-        cwd="/repo"                      # দরজা ১-এর দুনিয়া
-    )
-    async for message in query(
-        prompt="Fix the failing tests and summarize what broke",
-        options=options
-    ):
-        print(message)                   # ডায়েরির লাইনগুলো
-
-asyncio.run(main())</div>
-
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>নাদিরের রাতের নিয়ম:</strong> রাতে ভঙ্গুর কাজ নয়। Headless মোড মানেই অনুমতির প্রশ্নের কেউ বসে নেই — তাই ঘেরা রানার, সীমিত permission mode, আর যা চলল সব ডায়েরিতে (লগে)। প্রোডাকশন সিক্রেট রাতের কারখানার দরজায় ঝুলিয়ে রাখো না — টোকেন সিক্রেট-স্টোরে, দরজা ৮-এর \${VAR} নিয়মে।</div></div>
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Nadir's night rule:</strong> nothing fragile at night. Headless means nobody sits at the permission prompt — so fenced runners, limited permission modes, and everything that runs goes into the diary (logs). Never hang production secrets at the night factory's door — tokens in a secret store, under Door 8's \${VAR} rule.</div></div>
-
-<div class="stat-grid">
-<div class="stat-card"><div class="sc-num">-p</div><div class="sc-label">এক প্রশ্ন, এক উত্তর — পাইপের জন্য</div></div>
-<div class="stat-card"><div class="sc-num">json</div><div class="sc-label">মেশিনের ভাষায় উত্তর</div></div>
-<div class="stat-card"><div class="sc-num">@claude</div><div class="sc-label">PR-এ ডাকলেই কাজ শুরু</div></div>
-<div class="stat-card"><div class="sc-num">SDK</div><div class="sc-label">ইঞ্জিনটা নিজের কোডে</div></div>
-</div>
-
-<p class="verse">রাতের কাজের বরকত তাহাজ্জুদের মতো — কঠিন, নীরব, ফল ফজরে। "রাত্রি যখন শান্ত হয়ে আসে" (কুরআন ৯৩:২) তখন যে কাজ চলতে থাকে লেখার আস্থায়, সকালে তার হিসাব পরিষ্কার থাকে। অটোমেশনের নৈতিকতাও তাই: যত কম চোখ, তত বেশি লেখা হিসাব।</p>
-
+<table class="kv-table">
+<tr><th>স্তর</th><th>কখন লোড</th><th>খরচ</th></tr>
+<tr><td class="hl">নাম + description</td><td>সেশন-শুরুতেই তালিকায়</td><td>সবসময় (বাজেট ১% জানালার)</td></tr>
+<tr><td class="hl">SKILL.md শরীর</td><td>ডাক পড়লে — /name বা মানানসই প্রশ্নে</td><td>ব্যবহারের আগে শূন্য</td></tr>
+<tr><td class="hl">সহায়ক ফাইল (ফোল্ডারে)</td><td>শরীর নির্দেশ করলে</td><td>ধাপে ধাপে — progressive disclosure</td></tr>
+</table>
 
 <div class="diagram">
-<div class="diag-title">রাতের কারখানার লাইন — The Headless Pipeline</div>
-<svg viewBox="0 0 560 170" xmlns="http://www.w3.org/2000/svg">
+<div class="diag-title">রেসিপি-বাক্সের স্তর — The Recipe-Box Layers</div>
+<svg viewBox="0 0 560 180" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<marker id="ar59d9" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
+<marker id="ar59d10" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
 </defs>
-<rect class="node" x="10" y="60" width="120" height="46" rx="10"/><text class="lbl" x="70" y="78">push রাতে</text><text class="lbl-sm" x="70" y="95">GitHub Actions</text>
-<rect class="node-hot" x="160" y="60" width="140" height="46" rx="10"/><text class="lbl-hot" x="230" y="78">claude -p</text><text class="lbl-sm" x="230" y="95">যন্ত্র-মোড, কেউ জাগে না</text>
-<rect class="node-cyan" x="330" y="60" width="100" height="46" rx="10"/><text class="lbl-cyan" x="380" y="78">review</text><text class="lbl-sm" x="380" y="95">--output-format json</text>
-<rect class="node-leaf" x="460" y="60" width="90" height="46" rx="10"/><text class="lbl-leaf" x="505" y="78">PR</text><text class="lbl-sm" x="505" y="95">মানুষ সকালে দেখে</text>
-<line x1="130" y1="83" x2="156" y2="83" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d9)"/>
-<line x1="300" y1="83" x2="326" y2="83" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d9)"/>
-<line x1="430" y1="83" x2="456" y2="83" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d9)"/>
-<rect class="cell" x="10" y="12" width="540" height="28" rx="8"/><text class="lbl-sm" x="280" y="30">কেউ টার্মিনালে বসে নেই — তবু কারখানা চলে: যন্ত্র দেখে, যন্ত্র লেখে, মানুষ বিচার করে</text>
-<rect class="cell" x="10" y="124" width="540" height="30" rx="8"/><text class="lbl-sm" x="280" y="143">নীতি: --permission-mode acceptEdits + তালা-খাতা (allow-list); রাতের হাত সবসময় সংকীর্ণ</text>
+<rect class="node" x="15" y="55" width="160" height="46" rx="10"/><text class="lbl" x="95" y="73">তাক — তালিকা</text><text class="lbl-sm" x="95" y="90">নাম+বর্ণনা (সবসময়)</text>
+<rect class="node-cyan" x="205" y="55" width="160" height="46" rx="10"/><text class="lbl-cyan" x="285" y="73">পাতা — শরীর</text><text class="lbl-sm" x="285" y="90">ডাক পড়লেই SKILL.md</text>
+<rect class="node-leaf" x="395" y="55" width="150" height="46" rx="10"/><text class="lbl-leaf" x="470" y="73">খাতা — সহায়ক</text><text class="lbl-sm" x="470" y="90">reference.md, scripts/</text>
+<line x1="175.0" y1="78.0" x2="205.0" y2="78.0" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d10)"/>
+<line x1="365.0" y1="78.0" x2="395.0" y2="78.0" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d10)"/>
+<text class="lbl-sm" x="188" y="68">/deploy</text>
+<text class="lbl-sm" x="378" y="68">শরীর বললে</text>
+<rect class="cell-hot" x="15" y="120" width="530" height="44" rx="8"/>
+<text class="lbl-sm" x="280" y="136">disable-model-invocation: true → তাক-তালিকাতেও নেই — দরজা শুধু তোমার হাতে</text>
+<text class="lbl-sm" x="280" y="154">!\`কমান্ড\` → পাতা নামার মুহূর্তে তাজা আউটপুট ভেতরে — রেসিপি আসে বাজারদরসহ</text>
 </svg>
-<div class="diag-cap">CI-র ঘরে claude: push → যন্ত্র-রিভিউ → সকালে মানুষের চোখ — দরজা ৯-এর লাইন-নকশা।</div>
+<div class="diag-cap">তাক → পাতা → খাতা — প্রতিটা স্তর আগেরটার চেয়ে ভারী; ডাক পড়লে তবেই নিচে নামে।</div>
 </div>
 
-<div class="code-block"># .github/workflows/claude-review.yml — পূর্ণ ফাইল:
-name: claude-review
-on: [pull_request]
-jobs:
-  review:
-    runs-on: ubuntu-latest
-    permissions: { pull-requests: write }
-    steps:
-      - uses: actions/checkout@v4
-      - name: যন্ত্র-রিভিউ
-        run: |
-          npx -y @anthropic-ai/claude-code@latest -p \
-            "এই PR-এর diff পড়ে বাংলায় প্রতিক্রিয়া লেখো: \
-             বাগ-ঝুঁকি, নাম-স্টাইল, টেস্ট-ফাঁক" \
-            --permission-mode acceptEdits \
-            --output-format json > review.json
-          jq -r '.result' review.json > body.md
-      - name: PR-এ প্রতিক্রিয়া টানো
-        env: { GH_TOKEN: "\${{ secrets.GITHUB_TOKEN }}" }
-        run: gh pr comment "\${{ github.event.pull_request.number }}" --body-file body.md
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>রেসিপি-বাক্সের সতর্কতা:</strong> তালিকার দাম আছে — জানালার ~১% বাজেট; description লম্বা হলে ছোট হয়ে যায় (ক্যাপ ১৫৩৬ অক্ষর), কম-ব্যবহৃত স্কিলের বর্ণনা আগে কাটে। বর্ণনা লিখো কাব্য নয় — "Use when ..." ধাঁচে, মূল শব্দ আগে। বেশি স্কিল জমলে /doctor দেখাবে কারা ভারী; skillOverrides-এ "name-only" দিয়ে হালকা করো। আর synced নামের ফোল্ডার নিষিদ্ধ — সে claude.ai-সিঙ্কের রাস্তা।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>The recipe-box caution:</strong> the listing costs — ~1% of the window; long descriptions shrink (cap 1,536 chars), least-used ones get cut first. Write descriptions as "Use when ...", keywords first, not poetry. Too many skills? /doctor shows the heavy ones; set "name-only" in skillOverrides to lighten. And never name a folder synced — that path belongs to claude.ai sync.</div></div>
 
-# SDK পথ — Python থেকে সেশন (দরজা ৯-এর দ্বিতীয় হাত):
-# pip install claude-agent-sdk
-from claude_agent_sdk import ClaudeAgentSDK
-agent = ClaudeAgentSDK()
-result = agent.process_prompt(
-    prompt="টেস্ট-ফাইলগুলোর coverage-রিপোর্ট বানাও",
-    permission_mode="acceptEdits",
-)
-print(result)</div>
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ টেবিলের মোটা খাতা</div>সব নির্দেশনা CLAUDE.md-এ চাপা · প্রতি সেশনে সবই লোড, চাই বা না চাই · একই পেস্ট রোজ · বর্ণনা ছাড়া স্কিল — Claude জানেই না কখন নেবে</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ মরিয়মের বাক্স</div>ঘন ঘন পেস্ট → SKILL.md · তালিকায় নাম, পাতা নামে কাজের দিন · গোপন রেসিপি = disable-model-invocation · !কমান্ড-এ তাজা উপাত্ত</div>
+</div>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🌙 claude -p + JSON দিয়ে রাতের কারখানা বানাও — ঘেরা উঠানে, ডায়েরিসহ, ভঙ্গুর কাজ বাদে।<br>কারণ: দিনের সময় মূল্যবান; যা লেখা যায়, তা রাতে চলা উচিত।</div></div>`,
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">১%</div><div class="sc-label">জানালার — তালিকার বাজেট</div></div>
+<div class="stat-card"><div class="sc-num">১৫৩৬</div><div class="sc-label">অক্ষর-ক্যাপ প্রতি বর্ণনা</div></div>
+<div class="stat-card"><div class="sc-num">!\`cmd\`</div><div class="sc-label">খোলার-মুহূর্তে তাজা ইনজেকশন</div></div>
+<div class="stat-card"><div class="sc-num">fork</div><div class="sc-label">স্কিল আলাদা ঘরে (subagent)</div></div>
+</div>
+
+<p class="verse">ওয়াক্ত-ইলম: ইলম চাওয়া ফরজ — কিন্তু সব ইলম সব সময় নয়; ফকীহরা বলেন প্রত্যেক জ্ঞান তার ওয়াক্তে ফরজ হয় (ওয়াক্তে যা লাগবে না শেখা তার উপরে সওয়াব নয়, বিলাস)। মরিয়মের বাক্সও তাই: তালিকা মুখস্থ — দায়িত্ব; পাতা ওয়াক্তে — হিকমাহ; আর অপ্রয়োজনের ভার বহন নয়।</p>
+
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">📔 রোজের পেস্ট আজই SKILL.md; নাম+বর্ণনা তাকে, পাতা নামে কাজের দিন, তাজা উপাত্ত !কমান্ডে।<br>কারণ: যে খাতা সব পাতা মুখস্থ রাখে, তার রান্নাঘরে জায়গা থাকে না।</div></div>`,
   senior: {
-    title: "রাতের কারখানা বসানো — Setting Up the Night Shift",
+    title: "রেসিপি-বাক্সের খাতা — The Recipe-Box Ledger",
     body: `<ul class="checklist">
-<li>শুরু করো ছোট: প্রি-কমিট বা CI-তে claude -p দিয়ে লিন্ট-ফিক্স/সামারি — এক কাজ, এক আউটপুট।</li>
-<li>স্ক্রিপ্টে উত্তর পার্স করতে <strong>--output-format json</strong>; লাইভ দেখতে stream-json --verbose।</li>
-<li>GitHub-এ claude-code-action: ইস্যু লিখো → <strong>@claude</strong> ডাকো → PR নিজেই আসে।</li>
-<li>নিজের প্রোডাক্টে এজেন্ট চাইলে Agent SDK — permission mode আর cwd দিয়ে সাবধানে শুরু।</li>
-<li>সব রাতের কাজের লগ রাখো — সকালে যাচাই, নাদিরের ডায়েরির মতো।</li>
+<li>আজই একটা বানাও: <strong>.claude/skills/deploy/SKILL.md</strong> — তিন মিনিটের কাজ, প্রতি সপ্তাহের পেস্ট রেহাই।</li>
+<li>বর্ণনা লেখো <strong>Use when …</strong> ধাঁচে — মূল শব্দ আগে, ১৫৩৬-অক্ষরের নিচে।</li>
+<li>শুধু-নিজের হলে <strong>disable-model-invocation: true</strong>; ভারী রেফারেন্স সহায়ক-ফাইলে, শরীর ছোট।</li>
+<li>তাজা তথ্য লাগলে শরীরে <strong>!\`কমান্ড\`</strong> — খোলার মুহূর্তে ইনজেক্ট হবে।</li>
+<li>মাসে একবার <strong>/doctor</strong> + <strong>/context</strong> — কারা ভারী, তালিকার দাম কত।</li>
+<li>বান্ডিল-স্কিল চেনো: <strong>/verify · /run · /code-review</strong> — চাকরির আগে নিজের বাক্সে আগে দেখো।</li>
 </ul>`
   }
 });
 
-// ── DOOR 10 · সিংহাসন — The Throne ──
+// ── DOOR 11 · সিংহাসন — The Throne ──
 doors.push({
-  num: 10,
+  num: 11,
   icon: "👑",
   color: "#fbbf24",
   name: "সিংহাসন",
@@ -458,8 +450,8 @@ doors.push({
   story: `<p class="scene-setting">দশ বছর পরের এক শীতের সকাল। তুমি আর শাগরেদ নও — হাসু মিস্ত্রি তোমাকে ডাকলেন কারখানার ভেতরের ঘরে, যেখানে একটাই আসন, আর দেয়ালে নয়টা ছবি। হাসু বললেন — আজ থেকে এই আসন তোমার, কারখানার প্রথম সিংহাসন। কিন্তু বসার আগে নয়টা নাম একবার বলে যাও, যারা তোমাকে এনেছে।</p>
 <p class="scene-setting en">A winter morning, ten years later. You are no apprentice now — Hasu calls you into the inner room, where a single seat stands and nine pictures hang on the wall. Hasu says — from today this seat is yours — the workshop's first throne. But before you sit, name once the nine who brought you here.</p>
 
-<div class="dialogue">তুমি বললে — হাসু মিস্ত্রি শিখিয়েছেন প্রথম হাতুড়ি: claude লিখে শুরু, -p দিয়ে এক লাইনের কাজ (দরজা ১)। রাহেলা খাতুন শিখিয়েছেন বাহির খাতা: CLAUDE.md — প্রতিটা নতুন সেশন যেন নিয়ম জেনে আসে (দরজা ২)। করিম-সেলিম-টিটু-দাদা শিখিয়েছে কাজ দেখে মডেল বাছাই: Sonnet রোজকার, Opus জরুরি, Haiku দ্রুত, Fable গভীর (দরজা ৩)। ফরিদা শিখিয়েছে নদীর হিসাব: কনটেক্সট ভরলে /compact, /clear — নৌকা হালকা রাখো (দরজা ৪)। বেলাল শিখিয়েছে হিসাবি আস্থা: allow, deny, আর চার মোডের চাবি (দরজা ৫)। রফিক শিখিয়েছে ঠিকাদারি: ভারী ঘাঁটাঘাঁটি সাব-এজেন্টে, বাড়িতে শুধু রিপোর্ট (দরজা ৬)। মাহমুদ শিখিয়েছে ঘণ্টা বাঁধা: কাজের আগে-পরে হুক — নিয়ম মাঠে নয়, বাঁধনে (দরজা ৭)। আয়েশা শিখিয়েছে সংযোগ: MCP-আংটি, স্কিল-পুঁথি, প্লাগইন-বাক্স (দরজা ৮)। আর নাদির ভাই শিখিয়েছেন রাতের কারখানা: claude -p, JSON, @claude — ঘুমের ঘণ্টায় কাজ (দরজা ৯)।</div>
-<div class="dialogue en">You say — Hasu mistri taught the first hammer: start with claude, one-line jobs with -p (Door 1). Rahela Khatoon taught the ledger: CLAUDE.md, so every new session arrives knowing the rules (Door 2). Karim-Selim-Titu-and-grandfather taught model selection by task: Sonnet daily, Opus high-stakes, Haiku fast, Fable deep (Door 3). Farida taught the river's account: as context fills, /compact, /clear — keep the boat light (Door 4). Belal taught measured trust: allow, deny, and the four-mode keys (Door 5). Rafiq taught contracting: heavy digging to subagents, only reports home (Door 6). Mahmud taught binding bells: hooks before and after — rules live in bindings, not memory (Door 7). Ayesha taught connection: the MCP ring, the skill chapbook, the plugin box (Door 8). And Nadir bhai taught the night factory: claude -p, JSON, @claude — work through sleeping hours (Door 9).</div>
+<div class="dialogue">তুমি বললে — হাসু মিস্ত্রি শিখিয়েছেন প্রথম হাতুড়ি: claude লিখে শুরু, -p দিয়ে এক লাইনের কাজ (দরজা ১)। রাহেলা খাতুন শিখিয়েছেন বাহির খাতা: CLAUDE.md — প্রতিটা নতুন সেশন যেন নিয়ম জেনে আসে (দরজা ২)। করিম-সেলিম-টিটু-দাদা শিখিয়েছে কাজ দেখে মডেল বাছাই: Sonnet রোজকার, Opus জরুরি, Haiku দ্রুত, Fable গভীর (দরজা ৩)। ফরিদা শিখিয়েছে নদীর হিসাব: কনটেক্সট ভরলে /compact, /clear — নৌকা হালকা রাখো (দরজা ৪)। বেলাল শিখিয়েছে হিসাবি আস্থা: allow, deny, আর চার মোডের চাবি (দরজা ৬)। রফিক শিখিয়েছে ঠিকাদারি: ভারী ঘাঁটাঘাঁটি সাব-এজেন্টে, বাড়িতে শুধু রিপোর্ট (দরজা ৭)। মাহমুদ শিখিয়েছে ঘণ্টা বাঁধা: কাজের আগে-পরে হুক — নিয়ম মাঠে নয়, বাঁধনে (দরজা ৮)। আয়েশা শিখিয়েছে সংযোগ: MCP-আংটি, স্কিল-পুঁথি, প্লাগইন-বাক্স (দরজা ৯)। আর নাদির ভাই শিখিয়েছেন রাতের কারখানা: claude -p, JSON, @claude — ঘুমের ঘণ্টায় কাজ (দরজা ২১)।</div>
+<div class="dialogue en">You say — Hasu mistri taught the first hammer: start with claude, one-line jobs with -p (Door 1). Rahela Khatoon taught the ledger: CLAUDE.md, so every new session arrives knowing the rules (Door 2). Karim-Selim-Titu-and-grandfather taught model selection by task: Sonnet daily, Opus high-stakes, Haiku fast, Fable deep (Door 3). Farida taught the river's account: as context fills, /compact, /clear — keep the boat light (Door 4). Belal taught measured trust: allow, deny, and the four-mode keys (Door 6). Rafiq taught contracting: heavy digging to subagents, only reports home (Door 7). Mahmud taught binding bells: hooks before and after — rules live in bindings, not memory (Door 8). Ayesha taught connection: the MCP ring, the skill chapbook, the plugin box (Door 9). And Nadir bhai taught the night factory: claude -p, JSON, @claude — work through sleeping hours (Door 21).</div>
 
 <div class="dialogue">হাসু মাথা নাড়লেন। তারপর জিজ্ঞেস করলেন — নয়টা শিক্ষা, একটাও কি আলাদা? তুমি ভাবলে। খাতাও তো প্রসঙ্গ, নদীও প্রসঙ্গ, ঠিকাদারও প্রসঙ্গ বাঁচায়। চাবিও আস্থা, ঘণ্টাও আস্থা, রাতের ঘেরা উঠানও আস্থা। আর সব শেষে — ভোরের ডায়েরি, পাতার রিভিউ, ফরম্যাটের ঘণ্টা — সব যাচাই। হাসু হাসলেন: নয়টা দরজা, তিনটা স্তম্ভ, একটা সিংহাসন।</div>
 <div class="dialogue en">Hasu nods. Then asks — nine lessons; is a single one separate? You think. The ledger is context; the river is context; the contractor saves context. The keys are trust; the bells are trust; the night's fenced yard is trust. And at the end of everything — the dawn diary, the page review, the formatting bell — all verification. Hasu smiles: nine doors, three pillars, one throne.</div>
@@ -527,12 +519,108 @@ claude                                  # ১ শুরু
 <ul class="checklist">
 <li><strong>Book ৭ (Word Weaver's Forge)</strong> — প্রম্পট ও প্রসঙ্গ ইঞ্জিনিয়ারিংয়ের গভীর শিল্প; এই বইয়ের দরজা ৪-এর নদী সেখানে সমুদ্র।</li>
 <li><strong>Book ৮ (LLM Anatomy)</strong> — মডেল পরিবারের (দরজা ৩) ভেতরের ইঞ্জিন: attention, KV cache, quantization।</li>
-<li><strong>Book ১২ (Autonomous Mind)</strong> — এজেন্ট ডিজাইনের তত্ত্ব; দরজা ৬ ও ৯-এর ঠিকাদার আর রাতের কারখানার দর্শন।</li>
-<li><strong>Book ১৯ (Tool Forge)</strong> — নিজের MCP সার্ভার বানানো; দরজা ৮-এর আংটি নিজে গড়া।</li>
+<li><strong>Book ১২ (Autonomous Mind)</strong> — এজেন্ট ডিজাইনের তত্ত্ব; দরজা ৭ ও ৯-এর ঠিকাদার আর রাতের কারখানার দর্শন।</li>
+<li><strong>Book ১৯ (Tool Forge)</strong> — নিজের MCP সার্ভার বানানো; দরজা ৯-এর আংটি নিজে গড়া।</li>
 <li>মাসে একবার: অফিসিয়াল ডক + changelog — কারিগরের ভাণ্ডার তাজা রাখো।</li>
 </ul>`
   }
 });
 
+// ── DOOR 12 · ঘড়ির ভেতরের ইঞ্জিন — Inside the Clock ──
+doors.push({
+  num: 12,
+  icon: "⚙️",
+  color: "#f97316",
+  name: "ঘড়ির ভেতরের ইঞ্জিন",
+  subtitle: "Inside the Clock — Hook Internals",
+  tech: "Hook Protocol: stdin · exit codes · JSON",
+  spirit: "ইহসান — যিনি ঘড়ির ভেতরেও নিখুঁত",
+  secret: "মাহমুদ (দরজা ৮) ঘণ্টা বাজায়, সিরাজ ঘড়ি বানায় — হুক মানে শুধু কমান্ড নয়, একটা চুক্তি: stdin-এ JSON ঢুকে, exit code আর stdout দিয়ে উত্তর বেরোয়।",
+  recall: {
+    q: "একটা PreToolUse হুক থেকে টুল কল আটকে দিয়ে Claude-কে কারণও জানাতে চাও — দুই রকম উপায় কী?",
+    qen: "From a PreToolUse hook you want to block a tool call AND tell Claude why — what are the two ways?",
+    a: "পথ ১: exit 2 করে stderr-এ কারণ লেখো — ব্লক হবেই। পথ ২: exit 0 করে stdout-এ JSON ছাপো — hookSpecificOutput.permissionDecision: \"deny\" (বা \"allow\"/\"ask\"), সাথে permissionDecisionReason। এক হুকে একটাই পথ বেছে নাও; exit 2 থাকলে জোর তারই।",
+    aen: "Way 1: exit 2 with the reason on stderr — always blocks. Way 2: exit 0 and print JSON — hookSpecificOutput.permissionDecision: \"deny\" (or \"allow\"/\"ask\") plus permissionDecisionReason. Pick ONE path per hook; with exit 2 present, it wins."
+  },
+  story: `<p class="scene-setting">মাহমুদ চৌকিদারের ঘণ্টা যে রাতের পর রাত নির্ভুল বাজে, তার পেছনে একজন আছে যাকে কেউ দেখে না — সিরাজ ঘড়ির মিস্ত্রি। শহরের কেন্দ্রে তার টেবিল, চোখে আংটি-কাচের চশমা, সামনে খোলা ঘড়ির পেট: স্প্রিং, চাকা, লিভার। লোকে বলে — ঘড়ি মানে মুখ আর কাঁটা। সিরাজ হাসে — মুখ আর কাঁটা দেখায়, কিন্তু ঘড়ি চলে ভেতরের চুক্তিতে: কোন চাকা কত ঘুরবে, কোন লিভার কখন ধরবে, কোন শব্দ বাইরে যাবে, কোনটা ভেতরে থাকবে।</p>
+<p class="scene-setting en">The reason watchman Mahmud's bell rings true night after night is a man nobody sees — Siraj, the clockmaker. His desk sits at the city's centre, a jeweller's loupe on his eye, an open clock's belly before him: springs, wheels, levers. People say — a clock is its face and hands. Siraj smiles — the face and hands display, but the clock runs on the contract inside: which wheel turns how far, which lever catches when, which sound goes out, which stays in.</p>
 
+<div class="dialogue">তুমি সিরাজের টেবিলে বসে জিজ্ঞেস করলে — আমি তো ঘণ্টা পেয়েছি (দরজা ৮), এখন কী দরকার? সিরাজ খোলা ঘড়িটা তোমার দিকে ঘুরিয়ে দিলেন। দেখো এই লিভার — এটা একটা চুক্তি। ঘড়ির ভেতর থেকে একটা ছোট খাম বেরোয় (stdin), তুমি পড়ো; তোমার উত্তর দুই রকম হয় — হয় চুপ (exit 0 — আপত্তি নেই, প্রবাহ চলবে), নয় লাল সিল (exit 2 — থামাও, কারণ এই)। আর ধনী ঘড়িগুলোতে তৃতীয় ভাষা আছে — গোছানো পাতা (JSON stdout) — যেখানে শুধু থামা-না-থামা নয়, কী করতে হবে সেটাও লেখা যায়।</div>
+<div class="dialogue en">You sit at Siraj's desk and ask — I already have the bell (Door 8); what more do I need? He turns the open clock toward you. See this lever — it is a contract. A small envelope emerges from inside the clock (stdin); you read it. Your answer takes two shapes — silence (exit 0 — no objection, the flow continues), or a red seal (exit 2 — stop, and here is why). And the rich clocks speak a third language — a structured page (JSON on stdout) — where you write not only stop-or-go, but exactly what should happen.</div>
 
+<p>দরজা ৮-এ তুমি হুক <strong>বাঁধতে</strong> শিখেছিলে। এই দরজায় হুক <strong>লিখতে</strong> শিখবে। চুক্তিটা ডক থেকে: হুক চালু হলে Claude Code প্রসঙ্গটা JSON আকারে <strong>stdin</strong> দিয়ে পাঠায়; তোমার স্ক্রিপ্ট পড়ে, বুঝে, উত্তর দেয় <strong>exit code</strong> আর <strong>stdout</strong> দিয়ে। তিন রকম উত্তর: exit 0 (নীরবতা/JSON), exit 2 (ব্লক, stderr-এ কারণ), বা exit 0 + JSON (সূক্ষ্ম নিয়ন্ত্রণ)।</p>
+<p class="en">Door 8 taught you to <strong>bind</strong> hooks. This door teaches you to <strong>write</strong> them. The contract, from the docs: when a hook fires, Claude Code sends the context as JSON over <strong>stdin</strong>; your script reads, decides, and answers via <strong>exit code</strong> and <strong>stdout</strong>. Three kinds of answer: exit 0 (silence/JSON), exit 2 (block, reason on stderr), or exit 0 + JSON (fine-grained control).</p>
+
+<div class="code-block"># হুকের খামে কী আসে — stdin-এর JSON:
+{
+  "session_id": "abc123",
+  "cwd": "/Users/sarah/myproject",
+  "hook_event_name": "PreToolUse",
+  "tool_name": "Bash",
+  "tool_input": { "command": "npm test" }
+}
+
+# লিখো এমন স্ক্রিপ্ট — jq দিয়ে পড়ো, মন মতো সিদ্ধান্ত দাও:
+#!/bin/bash
+input=$(cat)                       # খামটা হাতে নাও
+cmd=$(echo "$input" | jq -r '.tool_input.command')
+if [[ "$cmd" == rm* ]]; then
+  echo "ভাঙা কমান্ড: $cmd" >&2     # কারণ stderr-এ
+  exit 2                            # লাল সিল — থামাও
+fi
+exit 0                              # নীরবতা — চলতে দাও</div>
+
+<p>এখন ধনী ঘড়ির ভাষা — exit 2 শুধু থামায়, কিন্তু JSON উত্তর <strong>নিয়ন্ত্রণ দেয়</strong>: exit 0 করে stdout-এ একটা JSON ছাপলে PreToolUse-এ <code>permissionDecision</code> বলে দাও কী হবে — <code>"deny"</code> (কল বাতিল, কারণ Claude পায়), <code>"allow"</code> (প্রম্পট স্কিপ, তবে deny-নিয়ম তবু খাটে), <code>"ask"</code> (মানুষকে জিজ্ঞেস করো)। প্রতিটা ইভেন্টের নিজস্ব প্যাটার্ন আছে — PostToolUse আর Stop হুক <code>decision: "block"</code> ব্যবহার করে।</p>
+<p class="en">Now the rich clock's language — exit 2 merely stops, but a JSON answer <strong>controls</strong>: exit 0 and print a JSON object to stdout; on PreToolUse its <code>permissionDecision</code> decides — <code>"deny"</code> (call cancelled, reason fed to Claude), <code>"allow"</code> (prompt skipped, though deny-rules still apply), <code>"ask"</code> (ask the human). Each event has its own pattern — PostToolUse and Stop hooks use <code>decision: "block"</code>.</p>
+
+<div class="code-block"># ধনী ঘড়ির পাতা — JSON দিয়ে সূক্ষ্ম নিয়ন্ত্রণ:
+#!/bin/bash
+input=$(cat)
+cmd=$(echo "$input" | jq -r '.tool_input.command')
+if [[ "$cmd" == *"production"* ]]; then
+  cat <<'EOF'
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PreToolUse",
+    "permissionDecision": "deny",
+    "permissionDecisionReason": "production টাচ করা নিষিদ্ধ — মালিকের আদেশ"
+  }
+}
+EOF
+  exit 0
+fi
+exit 0</div>
+
+<div class="diagram">
+<div class="diag-title">ঘড়ির চুক্তি — The Clock's Contract</div>
+<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arrowC" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
+</defs>
+<rect class="node" x="30" y="88" width="150" height="46" rx="10"/><text class="lbl" x="105" y="106">Claude Code</text><text class="lbl-sm" x="105" y="122">ঘড়ির বাড়ি</text>
+<rect class="node-hot" x="380" y="88" width="150" height="46" rx="10"/><text class="lbl-hot" x="455" y="106">তোমার স্ক্রিপ্ট</text><text class="lbl-sm" x="455" y="122">ঘড়ির ইঞ্জিন</text>
+<line x1="180" y1="96" x2="375" y2="96" stroke="#3dd6c4" stroke-width="2.5" fill="none" marker-end="url(#arrowC)"/>
+<text class="lbl-cyan" x="278" y="86">stdin → JSON (session_id, tool_name, tool_input)</text>
+<line x1="375" y1="126" x2="180" y2="126" stroke="#fbbf24" stroke-width="2.5" fill="none" marker-end="url(#arrowC)"/>
+<text class="lbl-amber" x="278" y="145">← exit code + stdout (নীরব · লাল সিল · JSON)</text>
+<rect class="cell-cyan" x="30" y="14" width="500" height="28" rx="8"/><text class="lbl-sm" x="280" y="28">exit 0 = আপত্তি নেই · exit 2 = ব্লক (stderr-এ কারণ) · exit 0 + JSON = নিয়ন্ত্রণ</text>
+<rect class="cell" x="30" y="180" width="500" height="36" rx="8"/><text class="lbl-sm" x="280" y="195">মিশ্রণ নিষেধ: এক হুকে exit-2 থাকলে JSON-এর allow-ও তাকে বদলাতে পারে না — এক হুকে এক ভাষা।</text>
+</svg>
+<div class="diag-cap">চুক্তিটা সরল, কিন্তু মিশ্রণ করলে ভাঙে — docs: exit 2 blocks regardless of JSON allow.</div>
+</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সিরাজের শ্রম-নিয়ম:</strong> হুকের stdout-এ JSON ছাড়া আর কিছু থাকবে না — শেল-প্রোফাইলের বিড়বিড়নি পার্সিং ভাঙে। সব উত্তর-স্ট্রিং ১০,০০০ অক্ষরে ক্যাপড (বেশি হলে ফাইলে গিয়ে প্রিভিউ আসে)। আর exit 0 মানে অনুমতি নয় — PreToolUse-এ exit 0 শুধু বলে আপত্তি নেই, অনুমতির স্বাভাবিক প্রবাহ (দরজা ৬) তবু চলে।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Siraj's workshop rules:</strong> a hook's stdout must hold nothing but JSON — shell-profile chatter breaks parsing. All output strings cap at 10,000 characters (overflow goes to a file as a preview). And exit 0 is not approval — on PreToolUse, exit 0 only says no objection; the normal permission flow (Door 6) still runs.</div></div>
+
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">⚙️ হুক = চুক্তি: stdin-এ JSON পড়ো, exit 2 থামায়, JSON stdout নিয়ন্ত্রণ দেয় — এক হুকে এক ভাষা।<br>কারণ: ঘণ্টা বাজানো সহজ, ঘড়ি বানানোর স্তরেই তুমি যন্ত্রের মালিক হও।</div></div>`,
+  senior: {
+    title: "ঘড়ির খাতা — The Clockmaker's Notes",
+    body: `<ul class="checklist">
+<li>ইনপুট সবসময় <strong>jq</strong> দিয়ে পড়ো — <code>tool_input.command</code>, <code>tool_name</code>, <code>session_id</code>, <code>cwd</code> হাতে আসে।</li>
+<li>শুধু থামাতে হলে exit 2 + stderr; নিয়ন্ত্রণ দরকার হলে exit 0 + JSON (<code>permissionDecision</code>)।</li>
+<li>UserPromptSubmit হুক exit 0-এর stdout প্রসঙ্গে যোগ হয় — প্রম্পটে গোপন নোট: exit 0 + stdout-এ JSON, যেখানে <code>additionalContext</code> থাকবে <code>hookSpecificOutput</code>-এর ভেতরে বসানো (top-level-এ দিলে নীরবে উপেক্ষা হয়)।</li>
+<li>ডিবাগ: <code>claude --debug</code> বা সেশনে <code>/debug</code> — হুকের ভাঙা আউটপুট সেখানেই দেখা যায়।</li>
+<li>ব্লক করার আগে ভেবে দেখো — প্রতিটা exit 2 মানে Claude-এর হাতে একটা ফিরে-আসা কারণ, সে পড়ে পথ বদলায়।</li>
+</ul>`
+  }
+});

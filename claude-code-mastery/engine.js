@@ -3,25 +3,25 @@
 // ════════════════════════════════════════
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
-const SAVE_KEY = 'claudeCodeMastery_v3';
-const MAX_XP = 1700;
+const SAVE_KEY = 'claudeCodeMastery_v4';
+const MAX_XP = 2600;
 const RANKS = [
-  {min:0,    name:'কীবোর্ড শিক্ষানবিশ', icon:'⌨️'},
-  {min:100,  name:'টার্মিনাল পথিক',   icon:'🚶'},
-  {min:200,  name:'প্রসঙ্গ রক্ষক',     icon:'📜'},
-  {min:300,  name:'মডেল বাছাইকারী',   icon:'⚖️'},
-  {min:400,  name:'নদীর মাঝি',      icon:'⛵'},
-  {min:500,  name:'তালার কারিগর',     icon:'🔐'},
-  {min:600,  name:'দলের সেনাপতি',     icon:'🎖️'},
-  {min:700,  name:'রাতের কারিগর',     icon:'🌙'},
-  {min:800,  name:'কারখানার মালিক',   icon:'🏭'},
-  {min:1000, name:'যন্ত্র-নির্মাতা',    icon:'⚙️'},
-  {min:1100, name:'নকশাকার',        icon:'📐'},
-  {min:1200, name:'বাজার-পাইকার',     icon:'📦'},
-  {min:1300, name:'প্রকৌশলী',        icon:'🏛️'},
-  {min:1400, name:'বহু-ঘরের মালিক',   icon:'🍽️'},
-  {min:1500, name:'ভল্ট-রক্ষী',       icon:'🛡️'},
-  {min:1700, name:'স্থপতি-কারিগর',    icon:'👑'}
+  {min:0,    name:'নতুন শাগরেদ',        icon:'🔨'},
+  {min:100,  name:'প্রথম হাতুড়ি',       icon:'🪝'},
+  {min:300,  name:'ঘরের কারিগর',       icon:'🧰'},
+  {min:500,  name:'কারখানার শ্রমী',      icon:'⚙️'},
+  {min:700,  name:'যন্ত্র-চালক',        icon:'🎛️'},
+  {min:900,  name:'রাতের প্রহরী',        icon:'🔔'},
+  {min:1100, name:'হুক-মিস্ত্রি',        icon:'🪝'},
+  {min:1300, name:'নিজের হাতের লেখা',    icon:'✍️'},
+  {min:1500, name:'যন্ত্র-নির্মাতা',      icon:'🏗️'},
+  {min:1700, name:'বহু-বাহু ঠিকাদার',     icon:'🤖'},
+  {min:1900, name:'রাতের কারখানার মালিক', icon:'🌙'},
+  {min:2100, name:'ভল্টের রক্ষক',        icon:'🛡️'},
+  {min:2300, name:'স্থপতির উত্তরসূরি',    icon:'📐'},
+  {min:2500, name:'কারিগরদের কারিগর',    icon:'👑'},
+  {min:2590, name:'সময়ের সাক্ষী',       icon:'⏳'},
+  {min:2600, name:'টার্মিনালের সম্রাট',   icon:'🏆'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}
 function loadState(){try{const r=localStorage.getItem(SAVE_KEY);if(!r)return;const s=JSON.parse(r);state.xp=s.xp||0;state.completedDoors=s.completedDoors||[];state.prologueSeen=s.prologueSeen||false}catch(e){}}
