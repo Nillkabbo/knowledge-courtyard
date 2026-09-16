@@ -474,11 +474,11 @@ alias gp='git pull --rebase'
 <circle cx="280" cy="210" r="30" fill="rgba(251,191,36,.14)" stroke="#fbbf24"/><text class="lbl-sm" x="280" y="207" text-anchor="middle">৭ খাতা</text><text class="lbl-sm" x="280" y="221" text-anchor="middle">amend · reflog</text>
 <circle cx="470" cy="195" r="30" fill="rgba(251,191,36,.14)" stroke="#fbbf24"/><text class="lbl-sm" x="470" y="192" text-anchor="middle">৮ ঝুলি</text><text class="lbl-sm" x="470" y="206" text-anchor="middle">stash · worktree</text>
 <circle cx="175" cy="82" r="0"/><circle cx="405" cy="82" r="0"/>
-<line x1="115" y1="70" x2="245" y2="105" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT10)"/>
+<line x1="115" y1="70" x2="235.4" y2="115.3" stroke="#fbbf24" stroke-width="3" fill="none" marker-end="url(#arrowT10)"/>
 <line x1="280" y1="70" x2="280" y2="76" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT10)"/>
-<line x1="445" y1="70" x2="315" y2="105" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT10)"/>
-<line x1="90" y1="85" x2="160" y2="163" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT10)"/>
-<line x1="500" y1="85" x2="430" y2="163" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT10)"/>
+<line x1="445" y1="70" x2="324.6" y2="115.3" stroke="#fbbf24" stroke-width="3" fill="none" marker-end="url(#arrowT10)"/>
+<line x1="90" y1="125" x2="230" y2="125" stroke="#fbbf24" stroke-width="3" fill="none" marker-end="url(#arrowT10)"/>
+<line x1="470" y1="125" x2="330" y2="125" stroke="#fbbf24" stroke-width="3" fill="none" marker-end="url(#arrowT10)"/>
 <line x1="120" y1="195" x2="250" y2="210" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT10)"/>
 <line x1="440" y1="195" x2="310" y2="210" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT10)"/>
 <text class="lbl-sm" x="280" y="246" text-anchor="middle">৯ম যন্ত্র (নাদিমের দালান) সব দরজা পড়ে — আর ১০ম এই সিংহাসন সব দেখে</text>
