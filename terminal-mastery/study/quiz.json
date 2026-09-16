@@ -1,241 +1,256 @@
 {
-  "title": "Bash Quiz",
+  "title": "Linux Quiz",
   "questions": [
     {
       "type": "multiple_choice",
-      "question": "A developer runs the following command to log both standard output and errors to a file: `command 2>&1 > output.log`. Why does this fail to capture errors in the log file, and how is it corrected?",
+      "question": "A user attempts to redirect both standard output and standard error to a file named 'output.log' using the command: `command 2>&1 > output.log`. Why does this fail to capture errors in the file?",
       "answerOptions": [
         {
-          "text": "The shell evaluates redirection from left to right; `2>&1` points to the current stdout (the screen) before stdout is redirected to the file. It is corrected by using `> output.log 2>&1`.",
+          "text": "The shell evaluates redirection from left to right, so standard error was redirected to the terminal before the file was opened.",
           "isCorrect": true,
-          "rationale": "Redirection is processed sequentially; at the moment `2>&1` is encountered, standard output still points to the terminal, so the error stream is locked to the terminal rather than the later-defined file destination."
+          "rationale": "Redirection is processed left to right; `2>&1` initially points `stderr` to where `stdout` is currently going (the screen), then `stdout` is redirected to the file, leaving `stderr` behind."
         },
         {
-          "text": "The pipe operator `|` is missing between the error redirection and the file redirection. It is corrected by using `command 2>&1 | > output.log`.",
+          "text": "Standard error cannot be redirected to a file that is already being used for standard output.",
           "isCorrect": false,
-          "rationale": "The pipe operator is used to connect the output of one command to the input of another, not for internal file redirection logic."
+          "rationale": "One file can handle both streams; the issue is the order of the redirection instructions, not a limitation of the file system."
         },
         {
-          "text": "Bash requires the use of the `&>` operator for all combined redirections. It is corrected by using `command &> 2>&1 output.log`.",
+          "text": "The file 'output.log' must be created using the 'touch' command before standard error can be redirected to it.",
           "isCorrect": false,
-          "rationale": "While `&>` is a shorthand in Bash, it does not require the `2>&1` suffix, and the specific failure in the original command is due to evaluation order."
+          "rationale": "Redirection using `>` will create the file automatically if it does not exist; pre-creation is not required."
         },
         {
-          "text": "The standard error stream (stderr) cannot be redirected to a file that is already receiving standard output (stdout). It is corrected by using two separate files.",
+          "text": "The pipe character '|' must be used instead of the redirection operator for error handling.",
           "isCorrect": false,
-          "rationale": "A single file can receive both streams; the issue is not a limitation of the file system but the timing of the file descriptor assignment."
+          "rationale": "Pipes connect stdout to stdin; redirection operators are the correct tools for sending output to files."
         }
       ],
-      "hint": "Consider the sequential order in which the shell interprets file descriptor assignments."
+      "hint": "Consider the sequence in which the shell interprets redirection symbols."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "A system administrator creates two entries for a single file: a hard link named 'link_h' and a symbolic link named 'link_s'. If the original source file is deleted, what is the status of the data accessed through these links?",
+      "answerOptions": [
+        {
+          "text": "The data is still accessible via 'link_h' because it shares the same inode as the original, but 'link_s' becomes a broken path.",
+          "isCorrect": true,
+          "rationale": "Hard links are direct references to the same inode (ledger number), while symbolic links are just path pointers that break if the destination is moved or deleted."
+        },
+        {
+          "text": "Both links will become invalid because the underlying data is erased once the primary file name is removed.",
+          "isCorrect": false,
+          "rationale": "Data remains as long as at least one hard link (reference count > 0) exists for that inode."
+        },
+        {
+          "text": "Only 'link_s' remains valid because it is an independent file with its own unique inode number.",
+          "isCorrect": false,
+          "rationale": "While a symlink has its own inode, its content is just the path to another file; it cannot access data if the target is gone."
+        },
+        {
+          "text": "The system will prevent the deletion of the source file until both 'link_h' and 'link_s' are removed.",
+          "isCorrect": false,
+          "rationale": "Linux allows deleting files even if links exist; it simply decrements the link count for the inode."
+        }
+      ],
+      "hint": "Think about which link type acts as a 'brother' sharing the same record and which acts as a 'signboard'."
+    },
+    {
+      "type": "fill_in_the_blank",
+      "question": "To determine the actual permissions of a newly created file when the system's default base is $666$ and the mask is $022$, the shell performs a bitwise ___ operation between the base and the bitwise-NOT of the mask.",
+      "bestAnswer": "AND",
+      "acceptableAnswers": [
+        "AND",
+        "bitwise AND"
+      ],
+      "rationale": "The umask does not perform simple subtraction; it clears bits from the base permissions using an AND-NOT logic to determine the final state.",
+      "hint": "This logical operator is used to 'mask out' or clear specific bits in a binary sequence."
     },
     {
       "type": "multiple_select",
-      "question": "Which of the following scenarios demonstrate the danger of failing to double-quote variables in a shell script?",
+      "question": "Which of the following actions are necessary to ensure a long-running process on a remote server survives a network disconnection?",
       "answerOptions": [
         {
-          "text": "A variable containing a file path with spaces, such as `DIR='my docs'`, causes `rm $DIR/*` to attempt deleting files in non-existent directories named 'my' and 'docs'.",
+          "text": "Running the command inside a 'tmux' session.",
           "isCorrect": true,
-          "rationale": "Without quotes, the shell performs word-splitting on the space character, treating the single path as two distinct arguments."
+          "rationale": "tmux creates a persistent session on the server side that continues even if the client SSH connection is lost."
         },
         {
-          "text": "A variable containing a wildcard, such as `PATTERN='*'`, expands to a list of every file in the current directory when used as `echo $PATTERN`.",
+          "text": "Using the 'nohup' utility before the command.",
           "isCorrect": true,
-          "rationale": "Unquoted variables undergo glob expansion (pathname expansion) after word-splitting, allowing the shell to interpret special characters like the asterisk."
+          "rationale": "nohup instructs the process to ignore the SIGHUP (hangup) signal that is sent when a terminal session closes."
         },
         {
-          "text": "A variable intended for arithmetic expansion, such as `VAL=5`, fails to calculate `$(( $VAL + 1 ))` because the value is treated as a string.",
-          "isCorrect": false,
-          "rationale": "Arithmetic expansion handles the variable's value internally; double-quoting is not the primary factor for arithmetic logic to function."
+          "text": "Sending the process to the background using the '&' symbol and then running 'disown'.",
+          "isCorrect": true,
+          "rationale": "Disowning a background job removes it from the shell's job table, preventing it from receiving the hangup signal when the shell exits."
         },
         {
-          "text": "A variable containing a command, such as `CMD='ls -l'`, fails to execute when invoked as `$CMD` because the shell cannot find the command name.",
+          "text": "Increasing the 'HISTSIZE' variable in the local .bashrc file.",
           "isCorrect": false,
-          "rationale": "Actually, unquoted variables are *needed* here if you want the shell to split the command from its flags, though this is generally considered a poor scripting practice."
+          "rationale": "HISTSIZE only controls how many previous commands the shell remembers in its history log and has no effect on active process persistence."
         }
       ],
-      "hint": "Focus on the two main translation layers the shell applies to unquoted text: word-splitting and globbing.",
+      "hint": "Look for tools that shield a process from the 'hangup' signal sent during logout.",
       "hasAllOfTheAbove": false,
       "hasNoneOfTheAbove": false
     },
     {
-      "type": "fill_in_the_blank",
-      "question": "In parameter expansion, if the variable `FILE` is set to `archive.tar.gz`, the syntax `echo \"${FILE___}\"` would result in the output `archive.tar` by removing the smallest matching suffix from the end.",
-      "bestAnswer": "%.gz",
-      "acceptableAnswers": [
-        "%.gz",
-        "%.*"
-      ],
-      "rationale": "The `%` operator is used in parameter expansion to remove the shortest match of a pattern from the end of a string.",
-      "hint": "Think of the operator used to 'shave' a specific extension from the end of a filename."
-    },
-    {
-      "type": "multiple_choice",
-      "question": "When a background process becomes unresponsive, what is the recommended 'ladder of signals' to follow for a safe termination?",
-      "answerOptions": [
-        {
-          "text": "SIGINT (Ctrl+C) → SIGTERM (kill) → SIGKILL (kill -9).",
-          "isCorrect": true,
-          "rationale": "This sequence allows the process a chance to perform cleanup and close files gracefully before resorting to an unblockable, forced termination."
-        },
-        {
-          "text": "SIGKILL (kill -9) → SIGTERM (kill) → SIGHUP.",
-          "isCorrect": false,
-          "rationale": "Starting with SIGKILL is dangerous because it prevents the process from cleaning up temporary files or releasing locks, potentially leaving the system in an inconsistent state."
-        },
-        {
-          "text": "SIGSTOP → SIGCONT → SIGKILL (kill -9).",
-          "isCorrect": false,
-          "rationale": "SIGSTOP and SIGCONT only pause and resume execution; they do not attempt to terminate the process."
-        },
-        {
-          "text": "SIGTERM (kill) → SIGHUP → SIGINT (Ctrl+C).",
-          "isCorrect": false,
-          "rationale": "SIGINT is generally the most 'gentle' request for a foreground process, and SIGHUP is typically used for terminal hang-ups or reloading configurations, not as a standard termination escalation step."
-        }
-      ],
-      "hint": "Start with the most polite request and end with the 'last resort' that the process cannot ignore."
-    },
-    {
       "type": "short_answer",
-      "question": "Explain the combined effect of including `set -euo pipefail` at the start of a Bash script.",
+      "question": "Explain the significance of using the combination `-print0 | xargs -0` when processing files found with the 'find' command.",
       "grading": {
-        "modelAnswer": "This command acts as a safety 'anchor' for the script. `-e` ensures the script exits immediately if any command fails, `-u` treats unset variables as errors to prevent logic bugs, and `pipefail` ensures that if any command within a pipe fails, the entire pipe returns a non-zero exit status rather than just the final command.",
-        "rationale": "These flags collectively enforce strict error handling, ensuring that failures are not silently ignored and that the script stops as soon as something goes wrong.",
+        "modelAnswer": "By default, 'xargs' splits input by whitespace or newlines, which causes filenames containing spaces or newlines to be broken into multiple arguments. The `-print0` flag tells 'find' to separate results with a NUL character (\\0), and `xargs -0` tells xargs to use that NUL character as the only delimiter, ensuring filenames are treated as single, unfragmented units.",
+        "rationale": "Using NUL characters as delimiters is the only safe way to handle filenames because NUL is the only character that cannot legally appear inside a filename.",
         "requiredAttributes": [
-          "Mentions that -e stops the script on command failure.",
-          "Mentions that -u stops the script if an undefined variable is used.",
-          "Explains that pipefail captures errors that occur early in a sequence of piped commands."
+          "Mentions that filenames can contain spaces or newlines.",
+          "Explains that standard xargs splits on whitespace/newlines.",
+          "States that -print0 uses NUL (\\0) as a separator.",
+          "Explains that xargs -0 expects NUL as the separator."
         ],
         "errors": {
           "misconceptions": [
-            "Thinking -e works inside 'if' statements or logical OR chains.",
-            "Believing these flags optimize script performance rather than safety."
+            "Thinking -print0 is just for making the output look cleaner.",
+            "Believing that single quotes around filenames in find results are enough for xargs safety."
           ],
           "bluffs": [
-            "General statements about making the script 'better' or 'more professional' without defining the specific technical behaviors of the flags."
+            "General statements about pipes being dangerous without explaining the delimiter issue."
           ]
         }
       },
-      "hint": "Analyze how each flag handles command failures, undefined variables, and errors hidden within pipes."
+      "hint": "Think about what happens if a filename like 'my file.txt' is passed through a pipe that splits by spaces."
     },
     {
       "type": "multiple_choice",
-      "question": "Why is the combination of `find . -print0 | xargs -0` preferred over standard `find` and `xargs` when processing files in a complex directory structure?",
+      "question": "A developer wants to calculate the total size of files listed in a log where the file size is always the last column of each line. Which 'awk' command correctly performs this summation?",
       "answerOptions": [
         {
-          "text": "It uses null characters as delimiters instead of spaces or newlines, preventing filenames with spaces from being incorrectly split into multiple arguments.",
+          "text": "awk '{sum += $NF} END {print sum}' logfile",
           "isCorrect": true,
-          "rationale": "Filenames can contain spaces which standard xargs interprets as separators; the null character is the only character guaranteed not to be in a filename, ensuring perfect safety."
+          "rationale": "$NF is a built-in variable in awk representing the Number of Fields (the index of the last column), allowing the script to work regardless of how many columns exist."
         },
         {
-          "text": "It forces `xargs` to run in parallel mode, significantly increasing the speed of the operation across multiple CPU cores.",
+          "text": "awk '{sum += $last} END {print sum}' logfile",
           "isCorrect": false,
-          "rationale": "Parallel execution is controlled by the `-P` flag in xargs, not the `-0` delimiter flag."
+          "rationale": "There is no built-in variable named '$last' in awk; column variables must be numeric or use the NF variable."
         },
         {
-          "text": "The `-print0` flag automatically performs a 'dry run' to show which files will be affected before any actions are taken.",
+          "text": "awk 'BEGIN {sum=0} {sum += $1} {print sum}' logfile",
           "isCorrect": false,
-          "rationale": "The `-print0` flag is solely about the format of the output (using null terminators), not about simulating command execution."
+          "rationale": "This adds the first column ($1) and prints the running total for every single line rather than just the final total at the end."
         },
         {
-          "text": "It ensures that only text files are passed to `xargs`, filtering out binary files and directories by default.",
+          "text": "awk '/size/ {sum += $5} END {print sum}' logfile",
           "isCorrect": false,
-          "rationale": "Filtering by file type is done using the `-type` flag in `find`, not through the delimiter selection."
+          "rationale": "This only sums the 5th column and only for lines containing the word 'size', making it too specific and potentially inaccurate if the column count varies."
         }
       ],
-      "hint": "Think about how names like 'Holiday Photos 2024.jpg' might be misinterpreted by the shell."
+      "hint": "Identify the built-in variable that points to the final column regardless of the total number of columns."
     },
     {
-      "type": "multiple_select",
-      "question": "Which of the following are essential security or safety practices when working with remote servers via SSH and transferring data with rsync?",
+      "type": "multiple_choice",
+      "question": "When writing a critical automation script, why is it recommended to include the command `set -o pipefail` at the beginning?",
       "answerOptions": [
         {
-          "text": "Using the `-n` or `--dry-run` flag with `rsync` before performing a synchronization that includes the `--delete` flag.",
+          "text": "It ensures that if any command in a pipeline fails, the entire pipeline returns a non-zero exit status.",
           "isCorrect": true,
-          "rationale": "The `--delete` flag can irreversibly remove files on the destination; a dry run allows the user to verify which files will be deleted before they are actually lost."
+          "rationale": "By default, a pipeline's exit status is that of the last command; `pipefail` ensures errors early in the chain (like a failed 'grep') are not ignored."
         },
         {
-          "text": "Keeping a single SSH private key and copying it to every server you need to access for easy management.",
+          "text": "It prevents the shell from expanding glob patterns like '*' if no matching files are found.",
           "isCorrect": false,
-          "rationale": "Best practice involves having separate keys for different security domains to minimize the impact if one key is compromised."
+          "rationale": "Glob expansion is controlled by other shell options (like 'nullglob' or 'failglob'), not by pipefail."
         },
         {
-          "text": "Configuring `~/.ssh/config` with host aliases to avoid typing long IP addresses and manual identity file paths.",
-          "isCorrect": true,
-          "rationale": "This centralizes management and reduces the likelihood of errors when connecting to multiple specific environments."
-        },
-        {
-          "text": "Enabling SSH agent-forwarding (`-A`) by default on all remote servers to ensure seamless transitions between nodes.",
+          "text": "It automatically redirects standard error to /dev/null for all piped commands.",
           "isCorrect": false,
-          "rationale": "Agent-forwarding should be avoided on untrusted servers because it allows the remote root user to use your local keys to authenticate elsewhere."
+          "rationale": "Pipefail does not change where output or errors go; it only changes how the exit status of a chain is calculated."
+        },
+        {
+          "text": "It increases the buffer size of the pipe to allow faster data transfer between processes.",
+          "isCorrect": false,
+          "rationale": "Pipefail is a logic setting for error reporting and does not affect the physical performance or buffer of the underlying pipe mechanism."
         }
       ],
-      "hint": "Consider the balance between convenience and the principle of least privilege, especially regarding key management and deletion operations.",
+      "hint": "Think about what the exit status of `command_that_fails | command_that_succeeds` would be without this setting."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "Which command would you use to find the specific process or service that is currently listening on port $8000$?",
+      "answerOptions": [
+        {
+          "text": "lsof -i :8000",
+          "isCorrect": true,
+          "rationale": "The 'lsof' (list open files) command with the '-i' flag specifically filters for internet-related files/sockets, including specific ports."
+        },
+        {
+          "text": "df -h :8000",
+          "isCorrect": false,
+          "rationale": "The 'df' command is used to report file system disk space usage and has no capability to monitor network ports."
+        },
+        {
+          "text": "ps aux | grep 8000",
+          "isCorrect": false,
+          "rationale": "This only searches for the text '8000' in the process command line; it does not verify if that process is actually bound to that network port."
+        },
+        {
+          "text": "ss -tulpn | grep 8000",
+          "isCorrect": true,
+          "rationale": "The 'ss' command lists socket statistics, and the flags tulpn provide detailed process information for listening ports."
+        }
+      ],
+      "hint": "You are looking for a tool that links 'open files' or 'sockets' to specific process IDs.",
       "hasAllOfTheAbove": false,
       "hasNoneOfTheAbove": false
     },
     {
-      "type": "fill_in_the_blank",
-      "question": "To execute the last command that started with 'docker' but with the ability to review and edit it before running, the user should use the keyboard shortcut ___ followed by the word 'docker' and then pressing Esc.",
-      "bestAnswer": "Ctrl+R",
-      "acceptableAnswers": [
-        "Ctrl+R",
-        "Control+R"
-      ],
-      "rationale": "Ctrl+R initiates a reverse-i-search in Bash history, and pressing Esc brings the found command onto the current prompt line for editing without immediate execution.",
-      "hint": "This shortcut acts as the 'radar' for your command history."
-    },
-    {
       "type": "multiple_choice",
-      "question": "In a macOS environment, why might a user find that their aliases defined in `.bashrc` do not work when they open a new terminal window, and what is the standard fix?",
+      "question": "A user wants to change all occurrences of the string 'localhost' to '127.0.0.1' in a configuration file, but wants to keep the original file unchanged as a backup. Which 'sed' syntax is appropriate?",
       "answerOptions": [
         {
-          "text": "macOS terminals launch as login shells and look for `.bash_profile` instead of `.bashrc`. The fix is to add a command in `.bash_profile` that sources `.bashrc`.",
+          "text": "sed -i.bak 's/localhost/127.0.0.1/g' config.yaml",
           "isCorrect": true,
-          "rationale": "By default, macOS Terminal.app treats every new window as a login shell, ignoring `.bashrc` unless it is manually called from `.bash_profile`."
+          "rationale": "The '-i.bak' flag performs an in-place edit on the file while simultaneously creating a backup with the '.bak' extension."
         },
         {
-          "text": "The `.bashrc` file is restricted to server environments and is not compatible with local macOS file permissions.",
+          "text": "sed 's/localhost/127.0.0.1/g' config.yaml > config.yaml",
           "isCorrect": false,
-          "rationale": "Bash functions the same way on macOS as on Linux; the issue is which configuration file is triggered by the shell startup type."
+          "rationale": "Redirecting output to the same input file will truncate the file to zero bytes before 'sed' can read it, resulting in data loss."
         },
         {
-          "text": "macOS uses Zsh by default, which does not support the `alias` command. The fix is to use functions instead.",
+          "text": "sed -p 's/localhost/127.0.0.1/g' config.yaml",
           "isCorrect": false,
-          "rationale": "While macOS uses Zsh by default in newer versions, Zsh supports aliases; the prompt specifically references Bash mastery and its initialization files."
+          "rationale": "The '-p' flag is for printing; it does not save changes to the file or create backups."
         },
         {
-          "text": "The `PATH` variable in macOS is overwritten by system defaults. The fix is to define all aliases in `/etc/profile`.",
+          "text": "sed --backup 's/localhost/127.0.0.1/g' config.yaml",
           "isCorrect": false,
-          "rationale": "Modifying `/etc/profile` is a system-wide change and is not the standard way to fix individual user configuration issues."
+          "rationale": "While descriptive, '--backup' is not a standard flag for the 'sed' utility; '-i' is the standard way to modify files."
         }
       ],
-      "hint": "Recall the 'bridge' concept described in the 'Fuljan Khala' section regarding login vs. non-login shells."
+      "hint": "Recall the flag that signifies 'in-place' editing with a specified suffix."
     },
     {
       "type": "short_answer",
-      "question": "Analyze the components of the 'five-net chain' logic used by Jalim Mia: `grep \"error\" app.log | sort | uniq -c | sort -rn | head -5`. What is the specific purpose of each step in this flow?",
+      "question": "What is the primary difference between how a login shell (like a macOS Terminal session) and a non-login shell (like a typical Linux sub-shell) treat configuration files like .bashrc and .bash_profile?",
       "grading": {
-        "modelAnswer": "The chain filters the log for 'error' lines, sorts them to group duplicates, uses `uniq -c` to count occurrences of each error, sorts those results numerically in descending order (`-rn`), and finally displays the top 5 most frequent errors.",
-        "rationale": "This sequence transforms a raw stream of data into a prioritized summary by combining specialized tools for filtering, sorting, counting, and limiting output.",
+        "modelAnswer": "A login shell typically reads .bash_profile (or .profile) but ignores .bashrc. A non-login shell reads .bashrc but ignores .bash_profile. To ensure consistency, developers often add a 'bridge' in .bash_profile that manually sources .bashrc if it exists.",
+        "rationale": "Shells distinguish between these environments to allow for different setups (like environment variables vs. aliases) depending on how the session was started.",
         "requiredAttributes": [
-          "Identifies grep as the filter for specific content.",
-          "Explains that sort is necessary before uniq to ensure duplicates are adjacent.",
-          "Identifies uniq -c as the counting mechanism.",
-          "Explains that the second sort (sort -rn) orders the counts from highest to lowest.",
-          "Identifies head -5 as the tool to limit the final result set."
+          "Identifies that login shells read .bash_profile.",
+          "Identifies that non-login shells read .bashrc.",
+          "Mentions the 'bridge' or sourcing mechanism used to link the two."
         ],
         "errors": {
           "misconceptions": [
-            "Thinking uniq -c works correctly without a preceding sort.",
-            "Confusing the purpose of the first sort with the second sort."
+            "Thinking .bashrc is always read by every shell session automatically.",
+            "Confusing .bashrc with the system-wide /etc/profile."
           ],
           "bluffs": [
-            "Simply stating it 'looks for errors' without explaining the transformation of the data through the pipeline."
+            "Vague statements about one being for 'settings' and the other for 'commands'."
           ]
         }
       },
-      "hint": "Walk through the pipeline step-by-step: filter, organize, count, rank, and limit."
+      "hint": "Focus on which file is read when you first log in versus when you just open a new tab."
     }
   ]
 }
