@@ -73,7 +73,7 @@ claude --resume      # তালিকা থেকে বেছে নিয়
 <rect class="node" x="10" y="55" width="98" height="44" rx="10"/><text class="lbl" x="59" y="73">npm i -g</text><text class="lbl-sm" x="59" y="89">ইনস্টল</text>
 <rect class="node-cyan" x="128" y="55" width="98" height="44" rx="10"/><text class="lbl-cyan" x="177" y="73">claude</text><text class="lbl-sm" x="177" y="89">প্রথম চালু</text>
 <rect class="node-hot" x="246" y="55" width="104" height="44" rx="10"/><text class="lbl-hot" x="298" y="73">theme/login</text><text class="lbl-sm" x="298" y="89">একবারই</text>
-<text class="lbl" x="419" y="73">prompt</text><text class="lbl-sm" x="419" y="89">কাজের আদেশ</text>
+<rect class="node-purple" x="370" y="55" width="98" height="44" rx="10"/><text class="lbl" x="419" y="73">prompt</text><text class="lbl-sm" x="419" y="89">কাজের আদেশ</text>
 <rect class="node-leaf" x="488" y="55" width="62" height="44" rx="10"/><text class="lbl-leaf" x="519" y="73">↻</text><text class="lbl-sm" x="519" y="89">লুপ</text>
 <line x1="108" y1="77" x2="124" y2="77" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d1)"/>
 <line x1="226" y1="77" x2="242" y2="77" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d1)"/>

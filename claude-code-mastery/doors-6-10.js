@@ -261,9 +261,9 @@ description: Extract text and tables from PDF files. Use when
 <rect class="node-cyan" x="15" y="150" width="160" height="40" rx="9"/><text class="lbl-cyan" x="95" y="168">MCP সার্ভার</text><text class="lbl-sm" x="95" y="183">নতুন হাত (tool)</text>
 <rect class="node-leaf" x="200" y="150" width="160" height="40" rx="9"/><text class="lbl-leaf" x="280" y="168">Skills</text><text class="lbl-sm" x="280" y="183">নতুন বিদ্যা (জ্ঞান+প্রসিদ্ধি)</text>
 <rect class="node-purple" x="385" y="150" width="160" height="40" rx="9"/><text class="lbl" x="465" y="168">Plugins</text><text class="lbl-sm" x="465" y="183">পুরো দোকান (সবই এক প্যাকেটে)</text>
-<line x1="150" y1="118" x2="110" y2="148" stroke="#f97316" stroke-width="1.6" fill="none" marker-end="url(#ar59d8)"/>
+<line x1="243" y1="106" x2="110" y2="148" stroke="#f97316" stroke-width="1.6" fill="none" marker-end="url(#ar59d8)"/>
 <line x1="280" y1="130" x2="280" y2="148" stroke="#f97316" stroke-width="1.6" fill="none" marker-end="url(#ar59d8)"/>
-<line x1="410" y1="118" x2="450" y2="148" stroke="#f97316" stroke-width="1.6" fill="none" marker-end="url(#ar59d8)"/>
+<line x1="317" y1="106" x2="450" y2="148" stroke="#f97316" stroke-width="1.6" fill="none" marker-end="url(#ar59d8)"/>
 <rect class="cell" x="15" y="10" width="530" height="26" rx="8"/><text class="lbl-sm" x="280" y="27">হাত চাই? MCP · বিদ্যা চাই? Skill · হাত+বিদ্যা+আদেশ+ঘর সব একসাথে চাই? Plugin</text>
 <rect class="cell" x="15" y="44" width="530" height="26" rx="8"/><text class="lbl-sm" x="280" y="61">সব ক্ষেত্রেই চুক্তি এক: তালিকা .mcp.json / skills/ / plugin.json — ফাইল দিয়ে ঘোষণা, মুখে নয়</text>
 </svg>
@@ -482,13 +482,13 @@ doors.push({
 <rect class="node" x="370" y="186" width="140" height="36" rx="10"/><text class="lbl-sm" x="440" y="208">৯ রাত · headless</text>
 <rect class="node-leaf" x="215" y="252" width="130" height="36" rx="10"/><text class="lbl-leaf" x="280" y="274">৫ তালা · পারমিশন</text>
 <line class="edge" x1="190" y1="48" x2="230" y2="130"/>
-<line class="edge" x1="190" y1="100" x2="235" y2="135"/>
+<line class="edge" x1="190" y1="100" x2="200" y2="131"/>
 <line class="edge" x1="190" y1="152" x2="200" y2="150"/>
-<line class="edge" x1="190" y1="204" x2="235" y2="165"/>
+<line class="edge" x1="190" y1="204" x2="200" y2="169"/>
 <line class="edge" x1="370" y1="48" x2="330" y2="130"/>
-<line class="edge" x1="370" y1="100" x2="325" y2="135"/>
+<line class="edge" x1="370" y1="100" x2="360" y2="131"/>
 <line class="edge" x1="370" y1="152" x2="360" y2="150"/>
-<line class="edge" x1="370" y1="204" x2="325" y2="165"/>
+<line class="edge" x1="370" y1="204" x2="360" y2="169"/>
 <line class="edge-cyan" x1="280" y1="252" x2="280" y2="176"/>
 </svg>
 <div class="diag-cap">বাঁ দিকে প্রসঙ্গ-ঘর, ডান দিকে আস্থা-ঘর, নিচে তালা — সব দরজা তিন স্তম্ভে উঠে যায়: প্রসঙ্গ, আস্থা, যাচাই।</div>

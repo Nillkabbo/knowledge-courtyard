@@ -200,15 +200,15 @@ options = ClaudeAgentOptions(
 <rect class="node-purple" x="395" y="180" width="150" height="34" rx="8"/><text class="lbl-sm" x="470" y="201">১৪ পাইকারি বাক্স</text>
 <rect class="node-purple" x="395" y="230" width="150" height="34" rx="8"/><text class="lbl-sm" x="470" y="251">১৫ বহু হাত · ১৬ ভল্ট</text>
 <line class="edge" x1="165" y1="47" x2="230" y2="130"/>
-<line class="edge" x1="165" y1="97" x2="235" y2="135"/>
+<line class="edge" x1="165" y1="97" x2="196" y2="131"/>
 <line class="edge" x1="165" y1="147" x2="188" y2="150"/>
-<line class="edge" x1="165" y1="197" x2="235" y2="168"/>
-<line class="edge" x1="165" y1="247" x2="235" y2="175"/>
+<line class="edge" x1="165" y1="197" x2="196" y2="171"/>
+<line class="edge" x1="165" y1="247" x2="200" y2="173"/>
 <line x1="395" y1="47" x2="330" y2="130" stroke="#b37feb" stroke-width="1.5"/>
-<line x1="395" y1="97" x2="325" y2="135" stroke="#b37feb" stroke-width="1.5"/>
+<line x1="395" y1="97" x2="364" y2="131" stroke="#b37feb" stroke-width="1.5"/>
 <line x1="395" y1="147" x2="375" y2="150" stroke="#b37feb" stroke-width="1.5"/>
-<line x1="395" y1="197" x2="325" y2="168" stroke="#b37feb" stroke-width="1.5"/>
-<line x1="395" y1="247" x2="330" y2="175" stroke="#b37feb" stroke-width="1.5"/>
+<line x1="395" y1="197" x2="364" y2="171" stroke="#b37feb" stroke-width="1.5"/>
+<line x1="395" y1="247" x2="360" y2="173" stroke="#b37feb" stroke-width="1.5"/>
 </svg>
 <div class="diag-cap">বাঁ দিকে কারখানার দশ ঘর, ডানে উঁচু তলার চার ঘর — সব উঠে যায় স্থপতির টেবিলে, যেখানে আইন লেখা হয়।</div>
 </div>
