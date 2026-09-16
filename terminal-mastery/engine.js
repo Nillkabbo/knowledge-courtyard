@@ -3,8 +3,8 @@
 // ════════════════════════════════════════
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
-const SAVE_KEY = 'terminalMastery_v1';
-const MAX_XP = 1000;
+const SAVE_KEY = 'terminalMastery_v2';
+const MAX_XP = 2000;
 const RANKS = [
   {min:0,    name:'তীরের পথিক',      icon:'🚶'},
   {min:100,  name:'খাল-চেনা শাগরেদ', icon:'🛶'},
@@ -15,7 +15,15 @@ const RANKS = [
   {min:600,  name:'নহর-নির্মাতা',    icon:'🏗️'},
   {min:700,  name:'প্রবাহ-রক্ষক',    icon:'🛡️'},
   {min:800,  name:'জাহাজের মালিক',   icon:'🚢'},
-  {min:1000, name:'নহরের স্থপতি',    icon:'👑'}
+  {min:900,  name:'গভীর-স্রোত নাবিক', icon:'🌊'},
+  {min:1000, name:'খালের কারিগর',    icon:'🛠️'},
+  {min:1100, name:'তালা-চাবির উস্তাদ', icon:'🗝️'},
+  {min:1200, name:'সময়-নিয়ন্ত্রক',   icon:'⏱️'},
+  {min:1300, name:'দূর-স্রোতের কাপ্তান', icon:'🛰️'},
+  {min:1400, name:'নগর-প্রকৌশলী',    icon:'📐'},
+  {min:1600, name:'প্রবাহের রহস্যবিদ', icon:'🔮'},
+  {min:1800, name:'নহরের অধিপতি',    icon:'🏆'},
+  {min:2000, name:'নহরের স্থপতি',    icon:'👑'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}
 function loadState(){try{const r=localStorage.getItem(SAVE_KEY);if(!r)return;const s=JSON.parse(r);state.xp=s.xp||0;state.completedDoors=s.completedDoors||[];state.prologueSeen=s.prologueSeen||false}catch(e){}}

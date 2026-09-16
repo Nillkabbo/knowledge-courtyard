@@ -1,12 +1,228 @@
 // ════════════════════════════════════════
-// Book 60 · The City of Canals — Doors 6-10
-// Every command verified against the GNU Bash
-// manual and The Art of Command Line
+// Book 60 · The City of Canals — v2 Complete Reference (20 doors)
+// নহরের নগরী · terminal-mastery · hue 195
 // ════════════════════════════════════════
+// Door containers loaded by index.html; engine gates on num order.
+
+// ── DOOR 12 · চাঁদ-ঘড়ির ঘর — The Moon-Clock Room ──
+doors.push({
+  num: 12,
+  icon: "⏱️",
+  color: "#22d3ee",
+  name: "চাঁদ-ঘড়ির ঘর",
+  subtitle: "The Moon-Clock Room",
+  tech: "date · sleep · at · crontab ৫-ঘর · anacron",
+  spirit: "ওয়াক্ত — সময়ের নামায় কাজ",
+  secret: "কাজের সময় হলে সে নিজে থেকেই দরজায় কড়া নাড়ে: crontab-এর পাঁচ ঘর (মিনিট ঘণ্টা দিন মাস সপ্তাহ) লিখে দাও, বাকিটা cron-এর হিসাব; একবারের কাজ at দিয়ে, পুনরাবৃত্তির কাজ cron-এ; আর ল্যাপটপ ঘুমালে anacron ঘুম ভেঙে হিসাব মেলায় — প্রতিটা সময়ের এক নাম, এক কাজ।",
+  recall: {
+    q: "প্রতি সোমবার সকাল ৫টায় ব্যাকআপ-স্ক্রিপ্ট চালাতে হবে, আর আজ রাত ১১টায় একবারের জন্য রিপোর্ট। crontab-লাইন আর at-আদেশ কী হবে?",
+    qen: "Backup script every Monday 5am; one-time report tonight at 11. The crontab line and the at command?",
+    a: "সাপ্তাহিক: crontab -e খুলে — 0 5 * * 1 /home/me/backup.sh — পাঁচ ঘর: মিনিট(0) ঘণ্টা(5) দিন(*) মাস(*) সপ্তাহ(1=সোম); তারাচিহ্ন মানে প্রতিটা। একবারের: echo '/home/me/report.sh' | at 23:00 — at-এর ভাঁজে কাজ জমা, নির্দিষ্ট সময়ে চালু। দুই সতর্কতা: ① cron-এর ঘর সব সত্য বলে না — ল্যাপটপ বন্ধ থাকলে সেই ওয়াক্ত পাস (anacron / systemd-timer ওষুধ); ② আউটপুট হাওয়ায় যায় — স্ক্রিপ্টে লগ-ফাইলে লেখা (>> /home/me/cron.log 2>&1), নইলে ব্যর্থতা নীরব।",
+    aen: "Weekly: crontab -e → 0 5 * * 1 /home/me/backup.sh — five fields: minute(0) hour(5) dom(*) month(*) dow(1=Mon); asterisk = every. One-time: echo '/home/me/report.sh' | at 23:00 — at holds the job till the clock strikes. Two cautions: ① cron assumes the machine is awake — a sleeping laptop misses the waqt (anacron / systemd timers are the cure); ② output evaporates — write to a log inside the script (>> /home/me/cron.log 2>&1), else failure is silent.",
+    you: "crontab -l; (crontab -l; echo '*/2 * * * * date >> /tmp/tick.log') | crontab -; sleep 130; tail -3 /tmp/tick.log; crontab -l | sed '\\$d' | crontab -"
+  },
+  story: `<p class="scene-setting">চাঁদ-ঘড়ির ঘরের রক্ষক বদরুল আলম সাহেব সময় মাপেন চাঁদ-ঘড়িতে — কিন্তু তাঁর আসল শক্তি ওয়াক্তের খাতা। প্রতিটা কাজের নিজস্ব সময়-ঘর আছে: পাঁচটা ঘরে লেখা যায় কখন (মিনিট, ঘণ্টা, দিন, মাস, সপ্তাহ), শেষে কী (আদেশ)। তাঁর দুই ফর্মান: প্রতিদিন ফিরে আসা কাজ খাতার মূল ঘরে (cron), আর কাল-রাতের মতো একবারের কাজ পাশের ট্রে-তে (at)। সাগরেদদের সবচেয়ে বড় শিক্ষা দুটো: প্রথমত, ওয়াক্ত পাস হলে কাজ ফেরে না — ঘড়ি-ঘুমানো ল্যাপটপের জন্য তিনি রাখেন anacron-নামের জাগ্রত-হিসাবি, যে জেগে দেখে কোন ওয়াক্ত বাদ পড়েছে তা পূরণ করে; দ্বিতীয়ত, প্রতিটা কাজের খবর লগ-খাতায় লেখো — নীরব কাজ মানে হারানো কাজ।</p>
+<p class="scene-setting en">Badrul Alam keeps the Moon-Clock Room — his real power is the waqt (time) ledger. Every job gets its own five-room time address: minute, hour, day-of-month, month, day-of-week, then the command. Two filing rules: recurring work in the main ledger (cron), one-time work in the side tray (at). Two lessons for apprentices: first, a missed waqt does not return — for sleep-prone laptops he keeps anacron, the waking accountant who catches up missed runs; second, every job writes to the log-ledger — silent work is lost work.</p>
+
+<div class="code-block"># এখনকার সময়:
+date                          # মঙ্গলবার ১৬ সেপ্টেম্বর ২০২৬ ...
+date +%F_%T                   # 2026-09-16_14:23:05 (ফাইলনামের জন্য)
+date -d "yesterday" +%F       # গতকাল (GNU)
+date -v-1d +%F                # গতকাল (macOS/BSD)
+
+# পাঁচ ঘরের খাতা — crontab -e:
+#  মিনিট ঘণ্টা দিন মাস সপ্তাহ  আদেশ
+#  ─────────────────────────────────────
+   0  5  *  *  1   /home/me/backup.sh    # সোম ৫টা
+  */10 *  *  *  *   /home/me/ping.sh     # প্রতি ১০ মিনিটে
+  30 2  1  *  *   /home/me/cleanup.sh   # ১ তারিখ রাত ২:৩০
+#   */N = প্রতি N ধাপে; 1 = সোমবার (0/7=রবি)
+
+# একবারের কাজ — at:
+echo '/home/me/report.sh' | at 23:00
+echo 'reboot' | at 02:00 tomorrow
+atq                          # জমা-তালিকা; atrm 1 = বাতিল
+
+# লগ-না-থাকলে নীরব মৃত্যু:
+0 5 * * 1 /home/me/backup.sh >> /home/me/cron.log 2>&1
+
+# ঘুমন্ত-মেশিনের ওষুধ:
+#   ল্যাপটপ বন্ধ থাকলে cron-ওয়াক্ত পাস — anacron
+#   (দিন-ভিত্তিক হিসাব, জেগে উঠে পূরণ করে) বা
+#   systemd-run --on-calendar=Mon..Fri 09:00 cmd
+
+# পরীক্ষা-ছল: প্রতি ২ মিনিটে টিক — দেখো, তারপর মুছো:
+(crontab -l 2>/dev/null; echo '*/2 * * * * date >> /tmp/tick.log') | crontab -
+tail -f /tmp/tick.log        # Ctrl+C থামাও; শেষে crontab -e থেকে বাদ</div>
+
+<table class="kv-table">
+<tr><th>ঘর</th><th>মানে</th><th>উদাহরণ</th></tr>
+<tr><td class="hl">মিনিট</td><td>০–৫৯</td><td>0 = ঘণ্টার ঠিক শুরু</td></tr>
+<tr><td class="hll">ঘণ্টা</td><td>০–২৩</td><td>5 = ভোর ৫টা</td></tr>
+<tr><td class="hl">দিন / মাস</td><td>তারিখ / মাস</td><td>* = প্রতিটা</td></tr>
+<tr><td class="hll">সপ্তাহ</td><td>০–৬ (রবি=০)</td><td>1 = সোমবার</td></tr>
+<tr><td class="hl">*/N</td><td>প্রতি N ধাপ</td><td>*/10 = প্রতি ১০ মিনিট</td></tr>
+</table>
+
+<div class="diagram">
+<div class="diag-title">পাঁচ ঘরের খাতা — The Five-Field Ledger</div>
+<svg viewBox="0 0 560 185" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar60d12" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
+</defs>
+<rect class="node" x="15" y="60" width="110" height="44" rx="10"/><text class="lbl" x="70" y="78">খাতা</text><text class="lbl-sm" x="70" y="94">crontab -e</text>
+<rect class="node-cyan" x="155" y="20" width="90" height="36" rx="8"/><text class="lbl-sm" x="200" y="42">মিনিট 0</text>
+<rect class="node-cyan" x="255" y="20" width="90" height="36" rx="8"/><text class="lbl-sm" x="300" y="42">ঘণ্টা 5</text>
+<rect class="node-cyan" x="355" y="20" width="70" height="36" rx="8"/><text class="lbl-sm" x="390" y="42">দিন *</text>
+<rect class="node-cyan" x="435" y="20" width="60" height="36" rx="8"/><text class="lbl-sm" x="465" y="42">মাস *</text>
+<rect class="node-cyan" x="505" y="20" width="45" height="36" rx="8"/><text class="lbl-sm" x="527" y="42">সপ্তাহ 1</text>
+<rect class="node-hot" x="155" y="95" width="395" height="36" rx="8"/><text class="lbl-sm" x="352" y="117">0 5 * * 1 /home/me/backup.sh — সোম ভোর ৫টা</text>
+<line x1="70.0" y1="104.0" x2="155.0" y2="46.6" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d12)"/>
+<line x1="125" y1="82" x2="151" y2="82" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d12)"/>
+<line x1="200" y1="56" x2="199" y2="91" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d12)"/>
+<rect class="cell" x="15" y="145" width="530" height="30" rx="7"/><text class="lbl-sm" x="280" y="164">at 23:00 = একবারের ট্রে · ল্যাপটপ-ঘুমে anacron বাদ-ওয়াক্ত পূরণ করে · প্রতি কাজে লগ (>> log 2>&1)</text>
+</svg>
+<div class="diag-cap">পাঁচ ঘরে সময়, শেষে আদেশ — বদরুল সাহেবের খাতা নিজে থেকেই কড়া নাড়ে।</div>
+</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সময়-রক্ষকের সতর্কতা:</strong> cron কাজ চালায় কিন্তু খবর রাখে না — আউটপুট-লগ না লিখলে ব্যর্থতা নীরব (মেইল-বাক্সে সঞ্চিত হয় বলে অনেকে খেয়ালই করে না); প্রতিটা স্ক্রিপ্টে >> log 2>&1 বাধ্যতামূলক করো। ঘর-লেখার ভুল বিপজ্জনক: 0 5 * * 1 (সোম ৫টা) লেখার বদলে 5 0 * * 1 লিখলে রাত ১২:০৫-এ চলবে — পাঁচ ঘরের ক্রম মুখস্থ নয়, পড়ে লেখো। % চিহ্ন cron-লাইনে বিশেষ (নতুন-লাইন) — এস্কেপ \\%। আর সার্ভারের timezone (TZ) ল্যাপটপের সাথে নাও মিলবে — date দিয়ে যাচাই করে নাও।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>The time-keeper's caution:</strong> cron runs jobs but keeps no news — without an output log, failure is silent (output piles in the mail spool unnoticed); make >> log 2>&1 mandatory in every script. Field-order typos are dangerous: 5 0 * * 1 fires at 00:05, not 05:00 — read the five fields, never guess. % is special in cron lines (newline) — escape as \\%. And server TZ may differ from your laptop — verify with date first.</div></div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">date +%F_%T</div><div class="sc-label">ফাইলনাম-স্বাস্থ্য টাইমস্ট্যাম্প</div></div>
+<div class="stat-card"><div class="sc-num">0 5 * * 1</div><div class="sc-label">সোম ভোর ৫টা — পাঁচ ঘর</div></div>
+<div class="stat-card"><div class="sc-num">at 23:00</div><div class="sc-label">একবারের ট্রে</div></div>
+<div class="stat-card"><div class="sc-num">>> log 2>&1</div><div class="sc-label">নীরব-মৃত্যু রোধ</div></div>
+</div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ নীরব ঘড়ি</div>লগ-ছাড়া কাজ · ঘর-ক্রম অনুমান · ঘুমন্ত ল্যাপটপে ওয়াক্ত পাস · % এস্কেপ-অজানা</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ বদরুল সাহেবের রীতি</div>পাঁচ ঘর পড়ে লেখা · প্রতি কাজে লগ · anacron ঘুম-হিসাব · atq/atrm জমা-তালিকায় চোখ</div>
+</div>
+
+<p class="verse">ওয়াক্তের পাঠ: নামাজের সময় নির্ধারণ সূর্য-চাঁদের হিসাবে — নিজের ইচ্ছায় নয়; কাজের সময়ও তাই: খাতায় লেখা সময়ই সত্য, মনের নয়। আর যে ওয়াক্ত পাস হলো, তার হিসাব রাখো — anacron-এর মতো পূরণের ব্যবস্থা।</p>
+
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">⏱️ পাঁচ ঘর: মিনিট-ঘণ্টা-দিন-মাস-সপ্তাহ; একবারের কাজ at-এ; প্রতি কাজে লগ বাধ্যতামূলক।<br>কারণ: নীরব ঘড়ি হারানো ঘড়ি — খাতায় না লেখা কাজ কেউ দেখে না।</div></div>`,
+  senior: {
+    title: "চাঁদ-ঘড়ির খাতা — The Moon-Clock Ledger",
+    body: `<ul class="checklist">
+<li>টাইমস্ট্যাম্প: <strong>date +%F_%T</strong> — ব্যাকআপ-নামে স্বাস্থ্য।</li>
+<li>পুনরাবৃত্ত কাজ <strong>crontab</strong>-এর পাঁচ ঘরে; একবারের <strong>at 23:00</strong>।</li>
+<li>প্রতি কাজে <strong>>> log 2>&1</strong> — নীরব ব্যর্থতা রোধ; পরে <strong>atq/atrm</strong>।</li>
+<li>ঘুমন্ত মেশিনে <strong>anacron</strong> / systemd-timer — বাদ-পড়া ওয়াক্ত পূরণ।</li>
+<li>ঘর-ক্রম পড়ে লেখো; <strong>% → \\%</strong>; TZ যাচাই।</li>
+</ul>`
+  }
+});
+
+// ── DOOR 13 · রসদ-বাক্সের গুদাম — The Supply-Box Warehouse ──
+doors.push({
+  num: 13,
+  icon: "📦",
+  color: "#38bdf8",
+  name: "রসদ-বাক্সের গুদাম",
+  subtitle: "The Supply-Box Warehouse",
+  tech: "tar czf/xzf · gzip · zip · curl -O · wget",
+  spirit: "রিজক — রসদ জমানোর নিয়ম",
+  secret: "মোটা কাপড়ে জিনিস জড়ানোর দুই কথা: tar এক বান্ডিল বাঁধে (c=create, x=extract, f=ফাইল), z-পতাকা গুঁটিয়ে ছোট করে (gzip); আর নেটওয়ার্ক-বাজার থেকে মাল আনতে curl -O (নাম-অক্ষুণ্ণ) বা wget — দুই শিল্প, এক গুদাম: বাঁধা আর আনা।",
+  recall: {
+    q: "প্রজেক্ট-ফোল্ডার ব্যাকআপ করতে হবে gzip-চাপানো tar হিসেবে, ৩ দিন পরে ফিরিয়ে আনতে হবে। দুই আদেশ? আর wget vs curl কখন কোনটা?",
+    qen: "Archive a project folder as gzip-compressed tar; restore it 3 days later. The two commands? And wget vs curl — when which?",
+    a: "বাঁধা: tar czf project-$(date +%F).tar.gz project/ — c=নতুন আর্কাইভ, z=gzip-চাপ, f=ফাইলনাম (ঘরের ক্রম c-z-f মনে রাখো: Create-Zip-File)। খোলা: tar xzf project-2026-09-16.tar.gz — x=extract; কোথায় খুলবে তা আগে cd করে ঠিক করো (tar যেখানে দাঁড়িয়ে সেখানে খোলে!)। ডাউনলোড: curl -O URL ফাইলনাম রেখে নামায় (রিজিউম-সহ বড় ফাইলে curl -C -; wget এক-লাইনে রিকার্সিভ/রিজিউম-বান্ধন পাল্লায় সহজ — দুটোই চলে, অভ্যাসের প্রশ্ন; curl তারকাঁটা হালকা যেখানে আছে, সেখানেই)। যাচাই: tar tzf f.tar.gz ভেতরের তালিকা খোলা ছাড়াই।",
+    aen: "Bundle: tar czf project-$(date +%F).tar.gz project/ — c=create, z=gzip, f=file (remember c-z-f: Create-Zip-File). Restore: tar xzf project-2026-09-16.tar.gz — x=extract; cd to the target dir FIRST (tar extracts where you stand!). Download: curl -O URL keeps the name (resume big files with curl -C -; wget wins on one-line recursive/resume habits — both work, a matter of habit; curl travels light wherever installed). Verify: tar tzf f.tar.gz lists contents without extracting.",
+    you: "tar czf /tmp/p-$(date +%F).tar.gz ~/practices 2>/dev/null; tar tzf /tmp/p-*.tar.gz | head -3; mkdir -p /tmp/restore && cd /tmp/restore && tar xzf /tmp/p-*.tar.gz && ls"
+  },
+  story: `<p class="scene-setting">রসদ-বাক্সের গুদাম-রক্ষক হাজি সাহেবের দুই কাজ: মাল বাঁধা আর মাল আনা। বাঁধার নিয়ম তাঁর তিন অক্ষরে: c — নতুন বান্ডিল শুরু, z — বাতাস-বের করে ছোট করা (gzip), f — নাম দেওয়া; খোলার এক অক্ষর: x। তাঁর সবচেয়ে বড় শিক্ষা সাগরেদদের: বাক্স খুলবে কোথায় আগে দাঁড়াও — গুদাম-রক্ষক যেখানে দাঁড়িয়ে সেখানেই খুলে দেয়, পরে অনুশোচনা লাভ নেই (tar যে-ডিরেক্টরিতে চালানো হয় সেখানেই extract)। আনার কাজে তাঁর দুই বাহক: curl — হালকা পায়ের বাহক, নাম-অক্ষুণ্ণ রেখে নামায় (-O); আর wget — গ্রাম-থেকে-শহর টানা ভারী মালের বাহক, পথ কেটে গেলে যেখান থেকে ছেড়েছিল সেখান থেকেই আবার শুরু (রিজিউম)। বাক্সের গায়ে তারিখ-সিল: $(date +%F) — কোন বাক্স কোন দিনের, এক নজরে।</p>
+<p class="scene-setting en">Haji Sahib the warehouse-keeper does two things: bundle and fetch. Bundling is three letters: c — start a new bundle, z — squeeze the air out (gzip), f — name it; opening is one: x. His biggest lesson: STAND where you want the box opened — the keeper unpacks exactly where you stand (tar extracts into the working directory), regret comes later. For fetching he keeps two carriers: curl — the light-footed one, keeps the name intact (-O); and wget — the heavy carrier for long hauls that resumes from where the road broke. Every box wears a date-seal: $(date +%F) — which box from which day, at a glance.</p>
+
+<div class="code-block"># বাঁধা (Create-Zip-File):
+tar czf project-$(date +%F).tar.gz project/
+#   c=নতুন আর্কাইভ z=gzip f=ফাইলনাম
+tar czf backup.tar.gz dir1 dir2 file1   # বহু জিনিস এক বাক্সে
+zip -r archive.zip dir/                  # zip-জগতের বাক্স (Windows-বন্ধু)
+
+# খোলার আগে দেখো — কোথায় দাঁড়িয়ে, ভেতরে কী:
+tar tzf backup.tar.gz | head            # তালিকা খোলা ছাড়াই
+cd /tmp/restore && tar xzf ~/backup.tar.gz   # আগে দাঁড়াও, পরে খোলো
+tar xzf backup.tar.gz path/to/one        # শুধু একটা জিনিস বের করা
+unzip archive.zip                        # zip-খোলা
+
+# gzip একা (এক ফাইল, বান্ডিল নয়):
+gzip big.log                # big.log.gz (মূল হাওয়া!)
+gunzip big.log.gz           # ফেরানো
+zcat big.log.gz | head      # না-খুলেই পড়া
+
+# নেটওয়ার্ক-বাজার থেকে আনা:
+curl -O https://example.com/file.iso      # নাম-অক্ষুণ্ণ
+curl -L -O https://.../latest            # -L: রিডাইরেক্ট অনুসরণ
+curl -C - -O https://.../huge.iso        # কাটা-পথ থেকে শুরু
+wget https://example.com/file.iso        # স্বয়ংক্রিয়-রিজিউম বাহক
+
+# বাক্সের স্বাস্থ্য-পরীক্ষা:
+tar tzf backup.tar.gz >/dev/null && echo "বাক্স ঠিক" || echo "বাক্স ভাঙা"
+gzip -t file.gz && echo OK               # gzip-অখণ্ডতা</div>
+
+<table class="kv-table">
+<tr><th>কাজ</th><th>আদেশ</th><th>মনে রাখার ছল</th></tr>
+<tr><td class="hl">বাঁধা</td><td>tar czf out.tar.gz src/</td><td>Create-Zip-File</td></tr>
+<tr><td class="hll">খোলা</td><td>tar xzf in.tar.gz</td><td>x=extract; আগে cd!</td></tr>
+<tr><td class="hl">তালিকা</td><td>tar tzf in.tar.gz</td><td>t=table — না-খুলে দেখা</td></tr>
+<tr><td class="hll">আনা</td><td>curl -O / wget</td><td>-O নাম রাখে; -C - রিজিউম</td></tr>
+<tr><td class="hl">সিল</td><td>$(date +%F)</td><td>বাক্সের গায়ে তারিখ</td></tr>
+</table>
+
+<div class="diagram">
+<div class="diag-title">গুদামের দুই দরজা — The Warehouse's Two Doors</div>
+<svg viewBox="0 0 560 175" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar60d13" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
+</defs>
+<rect class="node" x="15" y="63" width="120" height="44" rx="10"/><text class="lbl" x="75" y="81">ফোল্ডার-মাল</text><text class="lbl-sm" x="75" y="97">project/</text>
+<rect class="node-cyan" x="185" y="63" width="120" height="44" rx="10"/><text class="lbl-cyan" x="245" y="81">tar czf</text><text class="lbl-sm" x="245" y="97">বাঁধা + চাপা</text>
+<rect class="node-leaf" x="355" y="63" width="190" height="44" rx="10"/><text class="lbl-leaf" x="450" y="81">project-2026-09-16.tar.gz</text><text class="lbl-sm" x="450" y="97">তারিখ-সিলসহ বাক্স</text>
+<line x1="135" y1="85" x2="181" y2="85" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d13)"/>
+<line x1="305" y1="85" x2="351" y2="85" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d13)"/>
+<rect class="cell" x="15" y="125" width="530" height="36" rx="8"/>
+<text class="lbl-sm" x="280" y="141">খোলা: আগে cd গন্তব্যে → tar xzf — বাক্স যেখানে দাঁড়িয়ে সেখানেই খোলে; আনা: curl -O / wget (রিজিউম -C -)</text>
+<text class="lbl-sm" x="280" y="157">tar tzf = না-খুলে তালিকা · gzip -t = অখণ্ডতা · বড় বাক্স বিভক্ত: split -b 500M</text>
+</svg>
+<div class="diag-cap">বাঁধো (czf) → সিল দাও (তারিখ) → আনো (curl/wget) → সেখানে দাঁড়িয়ে খোলো (xzf)।</div>
+</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>গুদাম-রক্ষকের সতর্কতা:</strong> সবচেয়ে ভয়ের ছল: tar xzf রুট-ডিরেক্টরিতে দাঁড়িয়ে চালানো — বাক্স ভেতরের গুছানো ছাড়া থাকলে শত ফাইল এলোমেলো ছড়িয়ে যায় (tarbomb); আগে tar tzf দেখো পথ-উপসর্গ আছে কি না। gzip মূল ফাইল মুছে ফেলে — দুই কপি চাইলে gzip -k। curl/wget-এ পাইপ-ইনস্টল (curl … | sh) অবিশ্বস্ত উৎসে কখনো নয় (B59 দরজা ১৬-র প্রাচীর)। বড় বাক্স পুরনো ফাইল-তৈরিতে দ্বিগুণ স্পেস লাগে — ডিস্ক-হিসাব আগে করো।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>The keeper's caution:</strong> the scariest trap: tar xzf run from the root directory — if the box lacks a path prefix, hundreds of files scatter everywhere (tarbomb); check with tar tzf for a path prefix first. gzip deletes the original — use gzip -k to keep both. Never pipe-install (curl … | sh) from untrusted sources (B59 Door 16's wall). Big boxes need temporary space equal to their size — do the disk math first.</div></div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ এলোমেলো গুদাম</div>রুটে tar xzf (tarbomb!) · তারিখ-নাম নয় · না দেখে curl|sh · gzip-এ মূল হারানো
+</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ হাজি সাহেবের রীতি</div>tar tzf আগে, xzf গন্তব্যে দাঁড়িয়ে · $(date +%F)-সিল · curl -O / -C - · gzip -k দ্বৈত-কপি</div>
+</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">czf / xzf</div><div class="sc-label">বাঁধা / খোলা</div></div>
+<div class="stat-card"><div class="sc-num">tar tzf</div><div class="sc-label">না-খুলে তালিকা</div></div>
+<div class="stat-card"><div class="sc-num">curl -C -</div><div class="sc-label">কাটা-পথ রিজিউম</div></div>
+<div class="stat-card"><div class="sc-num">$(date +%F)</div><div class="sc-label">বাক্সের তারিখ-সিল</div></div>
+</div>
+
+<p class="verse">রিজকের পাঠ: ইউসুফ (আ.)-এর দীর্ঘ পরিকল্পনা — সাত বছরের ফসল সংরক্ষণ (কুরআন ১২:৪৭-৪৯): জমা রাখা, গুছিয়ে রাখা, দরকারের দিনে খোলা। হাজি সাহেবের গুদামও: আজকের কাজ তারিখ-সিলে বাঁধো — কালকের দুর্দিনে খোলো।</p>
+
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">📦 tar czf বাঁধো, xzf খোলো (আগে cd!); তালিকা tzf, আনা curl -O; সিলে তারিখ $(date +%F)।<br>কারণ: যেখানে দাঁড়িয়ে খোলো সেটাই গুদাম — না দেখে খুললে tarbomb।</div></div>`,
+  senior: {
+    title: "রসদ-বাক্সের খাতা — The Supply-Box Ledger",
+    body: `<ul class="checklist">
+<li>বাঁধা: <strong>tar czf name-$(date +%F).tar.gz src/</strong> — Create-Zip-File।</li>
+<li>খোলা: <strong>আগে cd</strong>, পরে <strong>tar xzf</strong>; তালিকা <strong>tar tzf</strong>।</li>
+<li>আনা: <strong>curl -O</strong> (নাম-রক্ষা), <strong>-C -</strong> রিজিউম; <strong>wget</strong> স্বয়ংক্রিয়।</li>
+<li><strong>gzip -k</strong> মূল-রক্ষা; <strong>gzip -t</strong> অখণ্ডতা।</li>
+<li>অবিশ্বস্ত curl|sh <strong>নিষেধ</strong> — B59-১৬ প্রাচীর মনে রাখো।</li>
+</ul>`
+  }
+});
 
 // ── DOOR 6 · ফুলজান খালার আচার — Fuljan Khala's Rituals ──
 doors.push({
-  num: 6,
+  num: 14,
   icon: "🫙",
   color: "#a3e635",
   name: "ফুলজান খালার আচার",
@@ -72,8 +288,8 @@ exec bash               # পুরো শেল নতুন করে</div>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ফুলজান খালার জার-সতর্কতা:</strong> সেতুটা (.bash_profile → .bashrc) না থাকলে macOS-এ আচার কাজ করবে না — login শেল .bashrc পড়বেই না, আর তুমি ভাববে alias নষ্ট। আর PATH-এ ভুল করে খালি লাইন বসালে (PATH=) সব নৌকা হারাবে — সেতু নয়, শুধু যোগ করো: PATH="\$PATH:নতুন"। লেবেল ছাড়া জার যেমন বিষ, কমেন্ট ছাড়া alias তেমনি — কেন রেখেছ লিখে রাখো।</div></div>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>The jar caution:</strong> without the bridge (.bash_profile → .bashrc), rituals won't run on macOS — the login shell simply never reads .bashrc, and you'll think the aliases broke. And a careless empty assignment (PATH=) loses every boat — never replace, only append: PATH="\$PATH:new". An unlabelled jar is poison; an uncommented alias likewise — write down why you kept it.</div></div>
 
-<div class="callout tip"><span class="co-icon">🔌</span><div><strong>খালার প্রথম তিন আচার (আজই বাঁধো):</strong> ① alias ll='ls -la' ② alias gs='git status' ③ mkcd() ফাংশন — এই তিনটা .bashrc-এ বসালেই শহর তোমার অভ্যাস শিখে ফেলেছে। তারপর রোজ যা টাইপ করো, তৃতীয়বার জারে তুলে নাও — দরজা ৪-এর পাঁচ-জাল সারি দিয়ে শুরু করো।</div></div>
-<div class="callout tip"><span class="co-icon">🔌</span><div><strong>Khala's first three rituals (bind today):</strong> ① alias ll='ls -la' ② alias gs='git status' ③ the mkcd() function — with these three in .bashrc the city has learned your habits. Thereafter, the third time you type anything, jar it — start with Door 4's five-net chain.</div></div>
+<div class="callout tip"><span class="co-icon">🔌</span><div><strong>খালার প্রথম তিন আচার (আজই বাঁধো):</strong> ① alias ll='ls -la' ② alias gs='git status' ③ mkcd() ফাংশন — এই তিনটা .bashrc-এ বসালেই শহর তোমার অভ্যাস শিখে ফেলেছে। তারপর রোজ যা টাইপ করো, তৃতীয়বার জারে তুলে নাও — দরজা 7-এর পাঁচ-জাল সারি দিয়ে শুরু করো।</div></div>
+<div class="callout tip"><span class="co-icon">🔌</span><div><strong>Khala's first three rituals (bind today):</strong> ① alias ll='ls -la' ② alias gs='git status' ③ the mkcd() function — with these three in .bashrc the city has learned your habits. Thereafter, the third time you type anything, jar it — start with Door 7's five-net chain.</div></div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ রাস্তায় রান্না</div>প্রতিদিন একই পতাকা-সারি টাইপ করে · .bashrc-র অস্তিত্বই জানে না · PATH-এ টুল ইনস্টল করে "command not found"-এ অবাক হয়</div>
@@ -97,7 +313,7 @@ exec bash               # পুরো শেল নতুন করে</div>
 
 // ── DOOR 7 · বাবুল স্মৃতিশীলের ঘর — Babul's Memory Room ──
 doors.push({
-  num: 7,
+  num: 15,
   icon: "🧠",
   color: "#c084fc",
   name: "বাবুল স্মৃতিশীলের ঘর",
@@ -116,7 +332,7 @@ doors.push({
 
 <div class="code-block"># স্মৃতির ঘরে ঢোকো:
 history                   # সব দেখো
-history | grep docker     # জাল দিয়ে ছেঁকে (দরজা ৪)
+history | grep docker     # জাল দিয়ে ছেঁকে (দরজা 7)
 !123                      # ১২৩ নং কমান্ড আবার চালাও (না দেখে — সাবধান!)
 !!                        # আগের কমান্ডই আবার (sudo !! মাস্টারির প্রথম সিঁড়ি)
 !docker                   # 'docker' দিয়ে শুরু শেষ কমান্ডটা
@@ -200,7 +416,7 @@ shopt -s histappend        # একাধিক টার্মিনালে�
 
 // ── DOOR 8 · আয়েশা সিদ্দিকার দূরের ঘাট — Ayesha Siddiqa's Far Ghat ──
 doors.push({
-  num: 8,
+  num: 16,
   icon: "🌍",
   color: "#f472b6",
   name: "আয়েশা সিদ্দিকার দূরের ঘাট",
@@ -211,8 +427,8 @@ doors.push({
   recall: {
     q: "লঞ্চের আগে রাতে সার্ভারে দীর্ঘ প্রোভিশনিং চালাতে হবে; নেট ছিঁড়লে বা ল্যাপটপ বন্ধ করলেও কাজ বাঁচতে হবে — কোন যুগল ব্যবহার করবে, কেন?",
     qen: "A long provisioning job must survive your net dropping or laptop closing overnight. Which pair do you use, and why?",
-    a: "tmux + ssh: সার্ভারে ssh করে tmux new -s launch চালাও — টার্মিনালটা tmux-এর ভেতরে, সার্ভারেই বাঁচে; ssh-সংযোগ ছিঁড়লেও কিছু হয় না। ফিরে এসে tmux attach -t launch দিয়ে হুবহু সেই পর্দায়। Ctrl+B D মানে detach — বিচ্ছিন্ন, মৃত্যু নয়। এটাই দরজা ৫-এর nohup-এর আধুনিক ভিজ্যুয়াল রূপ: কাজ ঘাটে থাকে, তুমি চলে যাও।",
-    aen: "tmux + ssh: ssh in, run tmux new -s launch — the terminal lives inside tmux on the server; a dropped ssh link kills nothing. On return, tmux attach -t launch restores the exact screen. Ctrl+B D is detach — not death. This is Door 5's nohup made modern and visual: the work stays at the ghat while you leave."
+    a: "tmux + ssh: সার্ভারে ssh করে tmux new -s launch চালাও — টার্মিনালটা tmux-এর ভেতরে, সার্ভারেই বাঁচে; ssh-সংযোগ ছিঁড়লেও কিছু হয় না। ফিরে এসে tmux attach -t launch দিয়ে হুবহু সেই পর্দায়। Ctrl+B D মানে detach — বিচ্ছিন্ন, মৃত্যু নয়। এটাই দরজা 11-এর nohup-এর আধুনিক ভিজ্যুয়াল রূপ: কাজ ঘাটে থাকে, তুমি চলে যাও।",
+    aen: "tmux + ssh: ssh in, run tmux new -s launch — the terminal lives inside tmux on the server; a dropped ssh link kills nothing. On return, tmux attach -t launch restores the exact screen. Ctrl+B D is detach — not death. This is Door 11's nohup made modern and visual: the work stays at the ghat while you leave."
   },
   story: `<p class="scene-setting">আয়েশা সিদ্দিকা নদীর ওপারের শহরগুলোর সাথে বাণিজ্য চালান — তাঁর কারবার তিনটা জিনিসে দাঁড়িয়ে: পরিচয়পত্র, থাকার ঘর, আর মালবাহী গরু-গাড়ি। পরিচয়পত্র ছাড়া ওপারের ঘাটে পা দেওয়া যায় না — আর সেটা মুখস্থ পাসওয়ার্ড নয়, দুই টুকরোর সিলমোহর: এক টুকরো তাঁর কাছে (private key), এক টুকরো ওপারের ঘাটে (public key)। দুই মিললে দরজা খোলে; কেউ কাউকে পাসওয়ার্ড বলে না। বছরের বেশি দিন তিনি ওপারে থাকেন — তাই থাকার ঘর ভাড়া করেন যেটা তাঁর অনুপস্থিতিতেও চালু থাকে (tmux): সন্ধ্যায় কাজ মাঝপথে রেখে ঘুমোতে যান, ভোরে ফিরে দেখেন আগুন নেভায়নি। আর মাল পাঠাতে গেলে গরু-গাড়ি ভর্তি করে নয় — rsync: যা বদলেছে শুধু সেটাই যায়।</p>
 <p class="scene-setting en">Ayesha Siddiqa trades with the cities across the river — her house runs on three things: a passport, a room that stays, and a cargo cart. The passport is no memorised password but a two-piece seal: one piece she keeps (the private key), one sits at the far ghat (the public key); when the two match, the gate opens. She stays across most of the year — so she rents a room that survives her absence (tmux): leaving work mid-way at night, she returns at dawn to find the fire unextinguished. And cargo moves by rsync: only what changed crosses the river.</p>
@@ -306,9 +522,114 @@ tmux kill-session -t launch    # কাজ শেষে ঘর ছাড়ো
   }
 });
 
+// ── DOOR 17 · প্যানেল-বাড়ির কর্মশালা — The Panel-House Workshop ──
+doors.push({
+  num: 17,
+  icon: "🪟",
+  color: "#22d3ee",
+  name: "প্যানেল-বাড়ির কর্মশালা",
+  subtitle: "The Panel-House Workshop",
+  tech: "tmux · session/window/pane · prefix · detach · scrollback",
+  spirit: "সাহায্য — কাজ হাওয়ায় নয়, হাতে হাতে",
+  secret: "tmux-এর ঘরে কাজ মরে না — SSH ছিঁড়লেও ঘর বেঁচে থাকে: এক বাড়িতে অনেক কামরা (session), কামরায় জানালা (window), জানালায় ফলক (pane); সব আদেশের আগে দরজার ঘণ্টা Ctrl-b — ঘণ্টা বাজিয়ে তারপর কথা বলো; আর d-চাবিতে বাড়ি থেকে বেরিয়ে এসো, কাজ চলতেই থাকে।",
+  recall: {
+    q: "রাতের ডিপ্লয় SSH-সেশনে চালাচ্ছিলে, নেট কেটে গেল — কাজটা কি মরে গেল? tmux দিয়ে এমন অবস্থা থেকে নিজেকে বাঁচানোর রীতি কী — শুরু, বেরোনো, ফেরা?",
+    qen: "A night deploy is running over SSH and the net drops — is the job dead? The tmux ritual that saves you — start, leave, return?",
+    a: "না, tmux-ঘরে কাজ মরে না — ঘরটা সার্ভারে বেঁচে থাকে। রীতি: ① শুরুতেই tmux new -s deploy — নাম-দেওয়া ঘর; ② ভেতরে কাজ চালাও; ③ দরজার ঘণ্টা Ctrl-b তারপর d — detach: বাড়ি থেকে বেরিয়ে এসো, SSH কেটে গেলেও ঘরের ভেতরে কাজ চলছেই; ④ ফিরে: tmux attach -t deploy — পর্দায় সব যেমন ছিল তেমন: লগ, কার্সর, চলমান আউটপুট। ব্যবস্থাপনা: tmux ls (ঘরের তালিকা), Ctrl-b $ (নাম-বদল), Ctrl-b c (নতুন জানালা), Ctrl-b %% / নিচ-ভাগ (ফলক-ভাগ), Ctrl-b [ (স্ক্রল-প্রাচীর — q দিয়ে বেরোনো)। মনে রেখো: tmux-এ কাজ চালানোর অভ্যাসটাই SSH-যুগের বিমা।",
+    aen: "No — inside tmux the job lives on; the room survives on the server. Ritual: ① start with tmux new -s deploy — a named room; ② run the work inside; ③ doorbell Ctrl-b then d — detach: step out, even if SSH dies the room keeps working; ④ return with tmux attach -t deploy — screen exactly as left: logs, cursor, running output. Management: tmux ls (list rooms), Ctrl-b $ (rename), Ctrl-b c (new window), Ctrl-b %% (side split), Ctrl-b \" (below split), Ctrl-b [ (scrollback — q to exit). Remember: the habit of running work inside tmux is the insurance of the SSH era.",
+    you: "tmux new -s lab; ভেতরে: top চালাও; Ctrl-b d; tmux ls; tmux attach -t lab; q দিয়ে বেরোনো; exit দিয়ে ঘর ভাঙো"
+  },
+  story: `<p class="scene-setting">প্যানেল-বাড়ির মালিক কামাল উদ্দিন সাহেবের বাড়ি অন্যরকম — ঢুকলেই বোঝা যায়: এক হলঘরে অনেকগুলো পর্দা-কামরা, প্রতিটা কামরায় আলাদা কাজ চলছে, আর কেউ বাইরে গেলেও কামরার কাজ থামে না। তাঁর সিস্টেম তিন তলায়: বাড়ির ভেতর কামরা (session), কামরার ভেতর জানালা (window), জানালার ভেতর ফলক (pane)। সব আদেশের আগে একটাই নিয়ম — দরজার ঘণ্টা টিপে তারপর কথা বলা (Ctrl-b, তারপর অক্ষর)। কামাল সাহেবের বিখ্যাত ঘটনা: এক ঝড়ের রাতে তাঁর সংযোগ কেটে গিয়েছিল — লোকে ভাবল কাজ মারা গেছে; সকালে তিনি শুধু দরজা খুললেন (attach) — রাতের ডিপ্লয়-লগ পর্দায় জ্বলজ্বল করছে, কাজ শেষ! সেদিন থেকে শহরে প্রবাদ: যে কাজ গুরুত্বপূর্ণ, সে কাজ প্যানেল-বাড়ির কামরায় হয়।</p>
+<p class="scene-setting en">Kamal Uddin's panel-house is different — one hall with many screened rooms, each running its own work, and nobody stepping out stops the work. Three floors: rooms inside the house (sessions), windows inside rooms (windows), panes inside windows (panes). One rule before every command — ring the doorbell first, then speak (Ctrl-b, then a letter). His famous night: a storm cut his connection — everyone assumed the work died; in the morning he simply opened the door (attach) — the night's deploy log glowing on screen, job finished! Since then the town says: important work happens in the panel-house.</p>
+
+<div class="code-block"># ঘর বানাও / দেখো / ঢুকো:
+tmux new -s deploy          # নাম-দেওয়া কামরা
+tmux ls                     # কামরার তালিকা
+tmux attach -t deploy       # ফিরে ঢুকো (দরজা খোলো)
+
+# দরজার ঘণ্টা = Ctrl-b, তারপর:
+#   d        → বেরিয়ে এসো (detach) — কাজ চলবে!
+#   c        → নতুন জানালা · n/p → পরের/আগের জানালা
+#   %        → ডানে ফলক-ভাগ · " → নিচে ফলক-ভাগ
+#   o        → ফলক-প্রদক্ষিণ · x → ফলক বন্ধ
+#   [        → স্ক্রল-প্রাচীর (↑↓ দেখো; q বেরোনো)
+#   $        → ঘরের নাম-বদল · , → জানালার নাম
+#   z        → ফলক পূর্ণ-পর্দা (আবার z = ফেরত)
+
+# টিকে-থাকার রীতি (SSH-যুগের বিমা):
+ssh server
+tmux new -s nightwork       # ঘরে ঢুকে কাজ চালাও
+./long-deploy.sh            # ঘরের ভেতরে চলছে
+#   ...নেট কাটুক — ঘর সার্ভারে বেঁচে!
+ssh server && tmux attach -t nightwork   # ফিরে এসো
+
+# কামরা-জীবন:
+tmux kill-session -t old    # ঘর ভাঙো
+tmux new -s work -d         # পেছনে ঘর বানাও (detach-অবস্থায়)
+tmux send-keys -t lab 'make test' Enter   # দূর থেকে ঘরে আদেশ!</div>
+
+<table class="kv-table">
+<tr><th>ঘণ্টা + চাবি</th><th>কাজ</th><th>মনে রাখার ছল</th></tr>
+<tr><td class="hl">Ctrl-b d</td><td>বেরোনো (detach)</td><td>কাজ চলবে, তুমি মুক্ত</td></tr>
+<tr><td class="hll">Ctrl-b % / "</td><td>ফলক-ভাগ</td><td>পাশে / নিচে</td></tr>
+<tr><td class="hl">Ctrl-b [</td><td>স্ক্রল-প্রাচীর</td><td>q দিয়ে বেরোনো</td></tr>
+<tr><td class="hll">Ctrl-b z</td><td>পূর্ণ-পর্দা টগল</td><td>জুম-ইন/আউট</td></tr>
+<tr><td class="hl">tmux attach -t</td><td>ঘরে ফেরা</td><td>দরজা খোলা</td></tr>
+</table>
+
+<div class="diagram">
+<div class="diag-title">প্যানেল-বাড়ির তিন তলা — The Three Floors</div>
+<svg viewBox="0 0 560 185" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar60d17" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
+</defs>
+<rect class="node" x="15" y="65" width="130" height="44" rx="10"/><text class="lbl" x="80" y="83">বাড়ি (server)</text><text class="lbl-sm" x="80" y="99">tmux সার্ভার-প্রক্রিয়া</text>
+<rect class="node-cyan" x="185" y="65" width="130" height="44" rx="10"/><text class="lbl-cyan" x="250" y="83">কামরা (session)</text><text class="lbl-sm" x="250" y="99">deploy · lab · editor</text>
+<rect class="node-hot" x="355" y="40" width="90" height="36" rx="8"/><text class="lbl-sm" x="400" y="62">জানালা (window)</text>
+<rect class="node-hot" x="355" y="95" width="90" height="36" rx="8"/><text class="lbl-sm" x="400" y="117">ফলক (pane)</text>
+<rect class="node-leaf" x="475" y="65" width="70" height="44" rx="10"/><text class="lbl-leaf" x="510" y="83">তুমি</text><text class="lbl-sm" x="510" y="99">attach/detach</text>
+<line x1="145" y1="87" x2="181" y2="87" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d17)"/>
+<line x1="315" y1="80" x2="351" y2="62" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d17)"/>
+<line x1="315" y1="95" x2="351" y2="110" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d17)"/>
+<line x1="445" y1="87" x2="471" y2="87" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d17)"/>
+<rect class="cell" x="15" y="145" width="530" height="30" rx="7"/><text class="lbl-sm" x="280" y="164">সব আদেশের আগে ঘণ্টা Ctrl-b · detach (d) = কাজ চলবে · ফিরো attach -t দিয়ে — SSH-কাটা মানে মৃত্যু নয়</text>
+</svg>
+<div class="diag-cap">বাড়ি → কামরা → জানালা → ফলক; তুমি শুধু দরজা খুলে ঢুকো-বেরোও — কাজ কখনো মরে না।</div>
+</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>প্যানেল-বাড়ির সতর্কতা:</strong> ঘরের কাজ সার্ভারে বাঁচে — কিন্তু সার্ভার রিবুট হলে সব ঘর মরে; সত্যিকারের দীর্ঘ-কাজের বিমা nohup/disown (দরজা ৫) বা systemd/tmux-উভয়ই নয়, পরিকল্পনা আলাদা। মোবাইল-SSH-ক্লায়েন্টে Ctrl-b নাও পাঠানো যায় — tmux-এর প্রেফিক্স বদলে ফেলো (set -g prefix C-a)। আর স্ক্রল-প্রাচীরে ([) ঢুকে pgup/pgdn-এ আটকে যাওয়া নতুনদের ক্লাসিক — q মনে রেখো। শেষ-কথা: পুরোনো ঘরের স্তূপ (tmux ls-এ দশটা পুরোনো) মাঝে মাঝে পরিষ্কার করো — kill-session।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>The panel-house caution:</strong> rooms live on the server — a reboot kills them all; for truly long work the insurance is nohup/disown (Door 5) or systemd, planned separately. Mobile SSH clients may not send Ctrl-b — remap the prefix (set -g prefix C-a). The scrollback ([) pgup-trap is the newbie classic — remember q. Finally: clear old room piles with kill-session now and then.</div></div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ অরক্ষিত SSH</div>নেট-কাটা = কাজ-মৃত্যু · এক পর্দায় সব গুলিয়ে · স্ক্রলে মাউস-হতাশা · দশটা পুরোনো ঘর-স্তূপ</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ কামাল সাহেবের রীতি</div>গুরুত্বপূর্ণ কাজ ঘরে (new -s নাম) · detach-মুক্তি, attach-প্রত্যাবর্তন · ফলকে সমান্তরাল-চোখ · [ … q স্ক্রল-শৃঙ্খলা</div>
+</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">Ctrl-b d</div><div class="sc-label">detach — কাজ চলবে</div></div>
+<div class="stat-card"><div class="sc-num">attach -t</div><div class="sc-label">ঘরে ফেরা</div></div>
+<div class="stat-card"><div class="sc-num">% / "</div><div class="sc-label">ফলক-ভাগ: পাশে/নিচে</div></div>
+<div class="stat-card"><div class="sc-num">[ … q</div><div class="sc-label">স্ক্রল-প্রাচীর খোলো/বন্ধ</div></div>
+</div>
+
+<p class="verse">সাহায্যের পাঠ: কাজে অবিরামতা এক নিয়ামত — কুরআন বলে মানুষের হিসাব রক্ষণাবেক্ষণ করার জন্য লেখনী ব্যবহার করো; প্র্যানেল-বাড়িও তাই: তোমার অনুপস্থিতিতেও কাজের হিসাব অটুট। যে কাজ থামতে নেই, সে কাজ ঘরে রাখো।</p>
+
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🪟 ঘণ্টা Ctrl-b, তারপর কথা; d-বেরোনো (কাজ বেঁচে), attach-t ফেরা; %/" ফলক, [ … q স্ক্রল।<br>কারণ: SSH কাটা মানে কাজের মৃত্যু নয় — ঘর সার্ভারে বেঁচে।</div></div>`,
+  senior: {
+    title: "প্যানেল-বাড়ির খাতা — The Panel-House Ledger",
+    body: `<ul class="checklist">
+<li>গুরুত্বপূর্ণ কাজ সবসময় <strong>tmux new -s নাম</strong>-এ শুরু।</li>
+<li><strong>Ctrl-b d</strong> বেরোনো, <strong>tmux attach -t</strong> ফেরা; <strong>tmux ls</strong> তালিকা।</li>
+<li>ফলক: <strong>% / "</strong>; পূর্ণ-পর্দা <strong>z</strong>; স্ক্রল <strong>[ … q</strong>।</li>
+<li>মোবাইল-ক্লায়েন্টে প্রেফিক্স বদল (<strong>set -g prefix C-a</strong>)।</li>
+<li>রিবুটে ঘর মরে — দীর্ঘ-কাজের আসল বিমা nohup/systemd (দরজা ৫)।</li>
+</ul>`
+  }
+});
+
 // ── DOOR 9 · মোসাররফ কামারের জাহাজ-গোদাম — Mosarrof Kamar's Shipyard ──
 doors.push({
-  num: 9,
+  num: 18,
   icon: "🚢",
   color: "#fb923c",
   name: "মোসাররফ কামারের জাহাজ-গোদাম",
@@ -392,8 +713,8 @@ exit 0</div>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>গোদাম-সতর্কতা:</strong> set -e সব ডুব আটকায় না — if শর্তের ভেতরে বা || এর ডানে বসা কমান্ড "পরীক্ষা" গণ্য হয়, সে ফেল দিলেও স্ক্রিপ্ট চলে। এজন্যই গুরুত্বপূর্ণ ধাপে স্পষ্ট লেখো: cmd || { echo "কারণ" >&2; exit 1; }। আর trap বিহীন mktemp মানে ব্যর্থ স্ক্রিপ্টের পেছনে সারি সারি পরিত্যক্ত ঘর — প্রতিটা mktemp-এর সঙ্গে trap লেখো, একই কলমে।</div></div>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Shipyard caution:</strong> set -e is not omniscient — a command inside an if condition or on the right of || counts as a "test" and its failure flows past. So write critical steps explicitly: cmd || { echo "reason" >&2; exit 1; }. And mktemp without trap means a trail of abandoned rooms behind failed runs — write the trap in the same breath as the mktemp.</div></div>
 
-<div class="callout tip"><span class="co-icon">🔌</span><div><strong>কামার সাহেবের ছাঁচনামা (কপি-পেস্ট করো):</strong> প্রতিটা নতুন সিরিয়াস স্ক্রিপ্টের চূড়ায় — #!/usr/bin/env bash, তারপর set -euo pipefail, তারপর tmp=\$(mktemp) + trap 'rm -f "\$tmp"' EXIT। এই পাঁচ লাইনেই তোমার স্ক্রিপ্ট অনেকাংশে প্রোডাকশন-প্রস্তুত; বাকিটা দরজা ৪-এর জাল আর দরজা ৫-এর হিসাব।</div></div>
-<div class="callout tip"><span class="co-icon">🔌</span><div><strong>Kamar's template (copy-paste):</strong> at the top of every serious script — #!/usr/bin/env bash, then set -euo pipefail, then tmp=\$(mktemp) + trap 'rm -f "\$tmp"' EXIT. These five lines make a script production-ready in large part; the rest is Door 4's nets and Door 5's accounting.</div></div>
+<div class="callout tip"><span class="co-icon">🔌</span><div><strong>কামার সাহেবের ছাঁচনামা (কপি-পেস্ট করো):</strong> প্রতিটা নতুন সিরিয়াস স্ক্রিপ্টের চূড়ায় — #!/usr/bin/env bash, তারপর set -euo pipefail, তারপর tmp=\$(mktemp) + trap 'rm -f "\$tmp"' EXIT। এই পাঁচ লাইনেই তোমার স্ক্রিপ্ট অনেকাংশে প্রোডাকশন-প্রস্তুত; বাকিটা দরজা 7-এর জাল আর দরজা 11-এর হিসাব।</div></div>
+<div class="callout tip"><span class="co-icon">🔌</span><div><strong>Kamar's template (copy-paste):</strong> at the top of every serious script — #!/usr/bin/env bash, then set -euo pipefail, then tmp=\$(mktemp) + trap 'rm -f "\$tmp"' EXIT. These five lines make a script production-ready in large part; the rest is Door 7's nets and Door 11's accounting.</div></div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ নোঙরহীন জাহাজ</div>এক ধাপ ডুবলেও পরের ধাপ · শেষে exit 0 · /tmp/myfile হাতে-নাম ঘর · ব্যর্থ রানের পরেও অস্বাভাবিক শান্ত আউটপুট</div>
@@ -422,9 +743,113 @@ exit 0</div>
   }
 });
 
+// ── DOOR 19 · নগর-নাড়ির দরবার — The City-Pulse Court ──
+doors.push({
+  num: 19,
+  icon: "🫀",
+  color: "#22d3ee",
+  name: "নগর-নাড়ির দরবার",
+  subtitle: "The City-Pulse Court",
+  tech: "df/du · free · uptime · ps aux · lsof · ss -tulpn",
+  spirit: "মুতাআলা — অবস্থা পড়ে সিদ্ধান্ত",
+  secret: "মেশিন এক নগরী: ডাক্তারের চার প্রশ্নই যথেষ্ট — জায়গা আছে? (df/du), শক্তি আছে? (free), কে ব্যস্ত? (top/ps), কোন দরজা খোলা? (ss/lsof); প্রতিটা উত্তর এক আদেশে, আর লক্ষণগুলো একসাথে পড়লেই রোগ ধরা যায় — একা কোনো সংখ্যা রোগ নয়, প্রবণতা রোগ।",
+  recall: {
+    q: "সার্ভার হঠাৎ ধীর — 'ডিস্ক ফুল' নাকি 'মেমরি ফুল' নাকি 'কেউ সিপিইউ খেয়ে ফেলেছে' — তিন সন্দেহের তিনটা প্রথম আদেশ, আর কোন ফোল্ডার মেশিন ভরাট করছে তা বের করার এক-লাইন?",
+    qen: "Server suddenly slow — disk full, memory full, or a CPU eater? First command per suspicion, and the one-liner to find which folder is eating the machine?",
+    a: "① ডিস্ক: df -h — প্রতি ফাইলসিস্টেমের ব্যবহার%; 100% দেখলেই অপরাধী-খোঁজা: du -xh --max-depth=1 / 2>/dev/null | sort -rh | head — কোন ফোল্ডার সবচেয়ে ভারী, তার র‍্যাঙ্ক। ② মেমরি: free -h — available-লাইনই আসল সূচক (cached মেমরি ভয় নয়, ওটা সস্তা-ক্যাশ); swap-ব্যবহার বাড়লে বিপদ। ③ সিপিইউ: top (P-চাবিতে সিপিইউ-ক্রম) বা ps aux --sort=-%cpu | head — শীর্ষ-ভক্ষকের তালিকা। বোনাস-দরজা: ss -tulpn — কোন পোর্টে কে শোনে; lsof -i :8000 — নির্দিষ্ট পোর্টের মালিক। চার আদেশে নগরীর নাড়ি হাতে: জায়গা, শক্তি, ব্যস্ততা, দরজা।",
+    aen: "① Disk: df -h — per-filesystem use%; at 100% hunt the culprit: du -xh --max-depth=1 / 2>/dev/null | sort -rh | head — rank the heaviest folders. ② Memory: free -h — the available line is the real indicator (cached memory is cheap, not danger); rising swap is the alarm. ③ CPU: top (press P) or ps aux --sort=-%cpu | head — list the eaters. Bonus doors: ss -tulpn — who listens where; lsof -i :8000 — port owner. Four commands hold the city's pulse: space, power, busyness, doors.",
+    you: "df -h | head -5; du -xh --max-depth=1 ~ 2>/dev/null | sort -rh | head -5; free -h; ps aux --sort=-%cpu | head -4; ss -tulpn 2>/dev/null | head -5 || netstat -tulpn 2>/dev/null | head -5"
+  },
+  story: `<p class="scene-setting">নগর-নাড়ির দরবারে বসেন ডাক্তার জাফর — শহরের লোক তাঁকে ডাকে "মেশিন-ডাক্তার"। তাঁর পদ্ধতি অদ্ভুত সহজ: রোগী এলেই চারটা প্রশ্ন, কোনো যন্ত্র ছাড়াই। প্রথম: শহরে জায়গা আছে? (df -h — ভরা শহরে নতুন বাড়ি ওঠে না, লগও লেখা যায় না)। দ্বিতীয়: গুদামে জ্বালানি আছে? (free -h — মেমরি; তবে ক্যাশে-ভরা গুদাম ভয়ের নয়, ওটা সস্তা-মজুত)। তৃতীয়: কারা সবচেয়ে ব্যস্ত? (top/ps — এক কারিগর সব শক্তি খেয়ে ফেললে শহর থমকে যায়)। চতুর্থ: কোন দরজায় কে পাহারা? (ss -tulpn — খোলা দরজার তালিকা; অচেনা দরজা = চোরের সন্দেহ)। তাঁর বিখ্যাত উক্তি: একটা সংখ্যা রোগ নয় — প্রবণতা রোগ; আজ ৯০%, কাল ৯০%, পরশু ৯৩% — এই ধারা দেখো, তারপর ভয় পাও। আর ওষুধের আগে রোগ-নির্ণয়: কোন ফোল্ডার শহর ভরাট করছে (du -xh --max-depth=1) — সেটাই তাঁর স্টেথোস্কোপ।</p>
+<p class="scene-setting en">Dr. Jafar holds the city-pulse court — people call him the machine-doctor. His method is strangely simple: four questions, no machines. One: is there space? (df -h — a full city builds no new houses, writes no logs). Two: fuel in the store? (free -h — memory; but a cache-filled store is not danger, that is cheap stock). Three: who is busiest? (top/ps — one craftsman eating all the power stalls the city). Four: who guards which door? (ss -tulpn — the open-door list; an unknown door smells of thieves). His famous line: one number is not a disease — a TREND is; 90% today, 90% tomorrow, 93% the day after — watch the slope, then worry. And diagnosis before medicine: which folder fills the city (du -xh --max-depth=1) — that is his stethoscope.</p>
+
+<div class="code-block"># চার প্রশ্ন — নগরীর নাড়ি:
+df -h                      # জায়গা: প্রতি ফাইলসিস্টেম %; 100% = বিপদ
+free -h                    # জ্বালানি: available-লাইন দেখো (cached≠বিপদ)
+uptime                     # লোড-গড়: 1.5 1.2 0.9 (১/৫/১৫ মিনিট; কোর-সংখ্যার সাথে তুলো)
+ps aux --sort=-%cpu | head # কে শক্তি খাচ্ছে — শীর্ষ তালিকা
+top                        # জীবন্ত দর্শন; P=সিপিইউ-ক্রম, M=মেমরি-ক্রম, q=বেরোনো
+
+# অপরাধী-খোঁজা (ডিস্ক ভরাট কে?):
+du -xh --max-depth=1 / 2>/dev/null | sort -rh | head
+#   -x: এক ফাইলসিস্টেমে থাকো (মাউন্ট-লাফ নয়)
+du -sh ~/.cache ~/Downloads/* | sort -rh | head
+df -h / && du -xh --max-depth=1 /var 2>/dev/null | sort -rh | head -3
+
+# খোলা দরজা (কে কোথায় শোনে?):
+ss -tulpn                  # t=tcp u=udp l=listen p=process n=numeric
+lsof -i :8000              # নির্দিষ্ট পোর্টের মালিক কে?
+lsof +D /var/log           # এই ফোল্ডারের ফাইল কারা খুলে রেখেছে
+
+# লক্ষণ-জোড়া (একসাথে পড়ো):
+#   df 100% + লগ-লেখা ব্যর্থ        → লগ-রোটেশন/পুরোনো বাক্স মুছো
+#   free available কম + swap ব্যস্ত → মেমরি-লিক সন্দেহ (top M)
+#   load বাড়ছে + এক প্রসেস শীর্ষে   → সেই প্রসেসের খাতা পরো
+#   পোর্ট খোলা কিন্তু অচেনা          → lsof -i :পোর্ট — মালিক যাচাই</div>
+
+<table class="kv-table">
+<tr><th>প্রশ্ন</th><th>আদেশ</th><th>সূচক</th></tr>
+<tr><td class="hl">জায়গা?</td><td>df -h / du -xh</td><td>% ও ভারী-ফোল্ডার</td></tr>
+<tr><td class="hll">জ্বালানি?</td><td>free -h</td><td>available (cached নয়)</td></tr>
+<tr><td class="hl">ব্যস্ত কে?</td><td>top / ps --sort=-%cpu</td><td>শীর্ষ-প্রসেস, load</td></tr>
+<tr><td class="hll">দরজা কার?</td><td>ss -tulpn / lsof -i</td><td>পোর্ট↔মালিক মিল</td></tr>
+<tr><td class="hl">প্রবণতা?</td><td>বারবার মাপা</td><td>এক সংখ্যা নয়, ধারা</td></tr>
+</table>
+
+<div class="diagram">
+<div class="diag-title">ডাক্তারের চার প্রশ্ন — The Doctor's Four Questions</div>
+<svg viewBox="0 0 560 185" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar60d19" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
+</defs>
+<rect class="node" x="15" y="70" width="120" height="44" rx="10"/><text class="lbl" x="75" y="88">রোগী (মেশিন)</text><text class="lbl-sm" x="75" y="104">ধীর, থমকানো</text>
+<rect class="node-cyan" x="175" y="18" width="110" height="36" rx="8"/><text class="lbl-sm" x="230" y="40">df -h জায়গা</text>
+<rect class="node-cyan" x="175" y="60" width="110" height="36" rx="8"/><text class="lbl-sm" x="230" y="82">free -h জ্বালানি</text>
+<rect class="node-cyan" x="175" y="102" width="110" height="36" rx="8"/><text class="lbl-sm" x="230" y="124">top/ps ব্যস্ততা</text>
+<rect class="node-cyan" x="175" y="144" width="110" height="36" rx="8"/><text class="lbl-sm" x="230" y="166">ss -tulpn দরজা</text>
+<rect class="node-leaf" x="335" y="70" width="210" height="44" rx="10"/><text class="lbl-leaf" x="440" y="88">রোগ-নির্ণয়</text><text class="lbl-sm" x="440" y="104">লক্ষণ-জোড়া + প্রবণতা পড়ে</text>
+<line x1="135" y1="80" x2="171" y2="40" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d19)"/>
+<line x1="135" y1="88" x2="171" y2="78" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d19)"/>
+<line x1="135" y1="96" x2="171" y2="120" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d19)"/>
+<line x1="135" y1="104" x2="171" y2="160" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d19)"/>
+<line x1="285" y1="92" x2="331" y2="92" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d19)"/>
+</svg>
+<div class="diag-cap">চার প্রশ্নের উত্তর জোড়া দিলেই ছবি — একটা সংখ্যা নয়, প্রবণতাই রোগ।</div>
+</div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>মেশিন-ডাক্তারের সতর্কতা:</strong> free-র 'free' কলাম একা দেখে আতঙ্ক নয় — লিনাক্স cached-মেমরি সস্তা-মজুত হিসেবে রাখে; আসল সূচক available। ডিস্ক ভরা মানে অদ্ভুত রোগের জন্ম — লগ লেখা ব্যর্থ, ডাটাবেস লক, এমনকি ssh-লগইনও ব্যর্থ; তাই df প্রথম প্রশ্ন। du রুটে চালালে -x দাও (মাউন্ট-পয়েন্ট লাফ না করে) আর 2>/dev/null অনুমতি-গোলমাল ঢাকে। ss না থাকলে netstat -tulpn পুরোনো জগতে; lsof ভারী মেশিনে ধীর — ধৈর্য বা নির্দিষ্ট পোর্টে -i দাও।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>The machine-doctor's caution:</strong> never panic at the 'free' column alone — Linux keeps cached memory as cheap stock; the real indicator is available. A full disk breeds strange diseases — failed log writes, database locks, even failed ssh logins; hence df first. When running du from root: use -x (no mount-point jumps) and 2>/dev/null to silence permission noise. No ss? netstat -tulpn is the old world; lsof is slow on loaded machines — scope it with -i :port.</div></div>
+
+<div class="compare">
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ এক-সংখ্যার আতঙ্ক</div>free কম দেখে রিস্টার্ট · df একবার দেখে মুছামুছি · top-এ দাঁড়িয়ে শুধু প্রথম প্রসেস · পোর্ট-তালিকা কখনো দেখে না</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ জাফর ডাক্তারের রীতি</div>চার প্রশ্ন ক্রমে · available-সূচক · প্রবণতা-পাঠ · অপরাধী-খোঁজা du -xh · দরজায় ss -tulpn</div>
+</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">df -h</div><div class="sc-label">জায়গা আছে?</div></div>
+<div class="stat-card"><div class="sc-num">free -h</div><div class="sc-label">available দেখো</div></div>
+<div class="stat-card"><div class="sc-num">ps --sort=-%cpu</div><div class="sc-label">শীর্ষ-ভক্ষক</div></div>
+<div class="stat-card"><div class="sc-num">ss -tulpn</div><div class="sc-label">দরজা↔মালিক</div></div>
+</div>
+
+<p class="verse">মুতাআলার পাঠ: কুরআন বারবার বলে আকাশ-জমিনের অবস্থা পর্যবেক্ষণ করো; হাদিসে রোগ নির্ণয়ের আগে ওষুধ নয়। মেশিন-ডাক্তারও: প্রথমে প্রশ্ন (df/free/top/ss), তারপর ছুরি — এবং এক সংখ্যা নয়, ধারা দেখো।</p>
+
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🫀 নাড়ি-চার প্রশ্ন: df -h জায়গা, free -h জ্বালানি (available!), top/ps ব্যস্ততা, ss -tulpn দরজা; প্রবণতাই রোগ।<br>কারণ: ওষুধের আগে রোগ-নির্ণয় — আর রোগ ধরা যায় লক্ষণ-জোড়ায়।</div></div>`,
+  senior: {
+    title: "নগর-নাড়ির খাতা — The City-Pulse Ledger",
+    body: `<ul class="checklist">
+<li>প্রথম প্রশ্ন <strong>df -h</strong>; ভরা দেখলে <strong>du -xh --max-depth=1 … | sort -rh</strong>।</li>
+<li>মেমরি: <strong>free -h</strong>-র <strong>available</strong> লাইন; swap-প্রবণতা দেখো।</li>
+<li>সিপিইউ: <strong>top</strong> (P/M) বা <strong>ps aux --sort=-%cpu | head</strong>; load vs কোর-সংখ্যা।</li>
+<li>পোর্ট: <strong>ss -tulpn</strong>; নির্দিষ্ট পোর্টে <strong>lsof -i :N</strong>।</li>
+<li>সিদ্ধান্ত এক সংখ্যায় নয় — <strong>প্রবণতায়</strong>; লক্ষণ-জোড়া পড়ে রোগ নির্ণয়।</li>
+</ul>`
+  }
+});
+
 // ── DOOR 10 · স্রোতের সিংহাসন — The Throne of Streams (Synthesis) ──
 doors.push({
-  num: 10,
+  num: 20,
   icon: "👑",
   color: "#fbbf24",
   name: "স্রোতের সিংহাসন",
@@ -447,10 +872,10 @@ doors.push({
 
 <div class="code-block"># সিংহাসনের দৃষ্টি — এক লাইনে পুরো শহর (ন-দরজার সব কৌশল):
 journalctl -u ledgerpilot --since today | grep -i error | awk '{print \$5}' | sort | uniq -c | sort -rn | head -5 | tee /tmp/top.txt | mail -s "আজকের গলদ" admin@x
-#   দরজা ৫: journalctl সেবা-নৌকার কাঠামো    দরজা ৪: grep-awk-sort-uniq জাল-সারি
-#   দরজা ২: | খালে খালে প্রবাহ                দরজা ৩: awk-এর ভেতরে expansion
-#   দরজা ৬: mail-এর PATH, alias করে রাখো     দরজা ৭: লাইনটা Ctrl+R-এ পাবে
-#   দরজা ৮: দূরের ঘাটে rsync/tmux-এ চালাও    দরজা ৯: পুরোটা এক স্ক্রিপ্টে set -euo pipefail
+#   দরজা 11: journalctl সেবা-নৌকার কাঠামো    দরজা 7: grep-awk-sort-uniq জাল-সারি
+#   দরজা 3: | খালে খালে প্রবাহ                দরজা 4: awk-এর ভেতরে expansion
+#   দরজা 14: mail-এর PATH, alias করে রাখো     দরজা 15: লাইনটা Ctrl+R-এ পাবে
+#   দরজা 16: দূরের ঘাটে rsync/tmux-এ চালাও    দরজা 18: পুরোটা এক স্ক্রিপ্টে set -euo pipefail
 
 # McIlroy-র নির্দেশ (ভাবানুবাদ) — সিংহাসনের শিলালিপি:
 #   ১. এমন প্রোগ্রাম লেখো যে একটাই কাজ ভালো করে।
