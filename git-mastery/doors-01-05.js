@@ -1,8 +1,8 @@
 // ════════════════════════════════════════
-// Book 61 · The Studio of Time — Doors 1-5
-// Every command verified against git-scm.com
-// docs (Pro Git book + user manual + command refs)
+// Book 61 · The Studio of Time — v2 Complete Reference (20 doors)
+// সময়ের স্টুডিও · git-mastery · hue 38
 // ════════════════════════════════════════
+
 const doors = [];
 
 // ── DOOR 1 · রহমত আলীর প্রথম ছবি — Rahmat Ali's First Photograph ──
@@ -157,8 +157,8 @@ git add .gitignore && git commit -m "জঞ্জাল বাদ"</div>
 <tr><td class="hl">git diff --cached</td><td>ক্লিকে যাচ্ছে কী</td><td>ছবির আগের শেষ পরীক্ষা</td></tr>
 </table>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>জামাল উদ্দিনের টেবিল-সতর্কতা:</strong> টেবিল ভুল সাজলে ছবি ভুল হয় — ক্লিকের আগে <strong>git diff --cached</strong> একবার চোখ বুলাও, এই এক অভ্যাসই লজ্জা বাঁচায়। আর .gitignore ফাইল আগে থেকেই ট্র্যাক হলে পরে লেখা নিয়ম তার পেছনে চাপে না — আগে git rm --cached, তারপর ignore। গোপন ফাইল (.env) একবার ছবিতে গেলে ইতিহাসে থাকে — সে ছবি মুছে ফেলাও নতুন ছবি, পুরোনোটা আলবামের গভীরেই থাকে (দরজা ৭-এ ইতিহাস লেখার বিধি)।</div></div>
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>The table's caution:</strong> a mislaid table makes a wrong photograph — run <strong>git diff --cached</strong> before every click; this one habit saves shame. And .gitignore rules do not chase already-tracked files — first git rm --cached, then ignore. A secret file (.env) that has entered one photograph stays in history — deleting it later is a new photograph, the old one remains deep in the album (history-rewriting law in Door 7).</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>জামাল উদ্দিনের টেবিল-সতর্কতা:</strong> টেবিল ভুল সাজলে ছবি ভুল হয় — ক্লিকের আগে <strong>git diff --cached</strong> একবার চোখ বুলাও, এই এক অভ্যাসই লজ্জা বাঁচায়। আর .gitignore ফাইল আগে থেকেই ট্র্যাক হলে পরে লেখা নিয়ম তার পেছনে চাপে না — আগে git rm --cached, তারপর ignore। গোপন ফাইল (.env) একবার ছবিতে গেলে ইতিহাসে থাকে — সে ছবি মুছে ফেলাও নতুন ছবি, পুরোনোটা আলবামের গভীরেই থাকে (দরজা 9-এ ইতিহাস লেখার বিধি)।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>The table's caution:</strong> a mislaid table makes a wrong photograph — run <strong>git diff --cached</strong> before every click; this one habit saves shame. And .gitignore rules do not chase already-tracked files — first git rm --cached, then ignore. A secret file (.env) that has entered one photograph stays in history — deleting it later is a new photograph, the old one remains deep in the album (history-rewriting law in Door 9).</div></div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ গুদাম-ছবি</div>git add . আর ক্লিক — প্রতিবার সব ঢুকে যায় · বাগ-ফিক্স আর ফিচার এক ছবিতে · ক্লিকের আগে দেখে না কী যাচ্ছে · node_modules আলবামে</div>
@@ -244,7 +244,7 @@ git log --oneline --graph --all # সব শাখার নকশা — গা
 <rect class="node-cyan" x="390" y="40" width="140" height="40" rx="9"/><text class="lbl-cyan" x="460" y="64">feature → c2</text>
 <line x1="180" y1="60" x2="216" y2="60" stroke="#86efac" stroke-width="2" fill="none" marker-end="url(#arrowS3)"/>
 <line x1="350" y1="60" x2="386" y2="60" stroke="#86efac" stroke-width="2" fill="none" marker-end="url(#arrowS3)"/>
-<rect class="node-hot" x="15" y="8" width="270" height="24" rx="6"/><text class="lbl-sm" x="150" y="24">⚠ বুকমার্ক ছবিতে সরাসরি বসলে = detached (দরজা ৭-এ উদ্ধার)</text>
+<rect class="node-hot" x="15" y="8" width="270" height="24" rx="6"/><text class="lbl-sm" x="150" y="24">⚠ বুকমার্ক ছবিতে সরাসরি বসলে = detached (দরজা 9-এ উদ্ধার)</text>
 </svg>
 <div class="diag-cap">শাখা সস্তা কারণ সে শুধু নাম-ধরা পোস্টার; HEAD সস্তা কারণ সে শুধু বুকমার্ক — আলবাম একটাই।</div>
 </div>

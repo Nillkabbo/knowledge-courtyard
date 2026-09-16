@@ -3,8 +3,8 @@
 // ════════════════════════════════════════
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
-const SAVE_KEY = 'gitMastery_v1';
-const MAX_XP = 1000;
+const SAVE_KEY = 'gitMastery_v2';
+const MAX_XP = 2000;
 const RANKS = [
   {min:0,    name:'নতুন শাগরেদ',       icon:'🪞'},
   {min:100,  name:'ফ্রেম-সাজানো কারিগর', icon:'🖼️'},
@@ -14,8 +14,13 @@ const RANKS = [
   {min:500,  name:'সারি-সাজানো মাস্টার',  icon:'🎞️'},
   {min:600,  name:'আয়না-ঘরের ঠিকাদার',  icon:'🪟'},
   {min:700,  name:'হিসাবখাতার রক্ষক',   icon:'📕'},
-  {min:800,  name:'সময়ের কারিগর',      icon:'⏳'},
-  {min:1000, name:'সময়ের স্থপতি',      icon:'👑'}
+  {min:800, name:'সময়ের কারিগর', icon:'⏳'},
+  {min:1000, name:'চেরি-বাগানের মালিক', icon:'🍒'},
+  {min:1200, name:'ফিতা-শিল্পী', icon:'🏷️'},
+  {min:1400, name:'স্মৃতি-কিউরেটর', icon:'📜'},
+  {min:1600, name:'হুক-মিস্ত্রি', icon:'🪝'},
+  {min:1800, name:'ভেতর-ঘরের রহস্যবিদ', icon:'🗿'},
+  {min:2000, name:'সময়ের স্থপতি', icon:'👑'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}
 function loadState(){try{const r=localStorage.getItem(SAVE_KEY);if(!r)return;const s=JSON.parse(r);state.xp=s.xp||0;state.completedDoors=s.completedDoors||[];state.prologueSeen=s.prologueSeen||false}catch(e){}}
