@@ -250,6 +250,48 @@ description: Extract text and tables from PDF files. Use when
 
 <p class="verse">সিলসিলার শিক্ষা — মূল্য জিনিসে নয়, সংযোগে। জ্ঞানের নবীদের পরম্পরা এভাবেই হাত থেকে হাতে এসেছে: এক প্রজন্ম শেখায়, পরের প্রজন্ম বহন করে, কেউ বিচ্ছিন্ন হয় না। "নিশ্চয়ই আল্লাহ তোমাদের আদেশ দেন আমানত তার হকদারকে ফিরিয়ে দিতে" (কুরআন ৪:৫৮) — প্রতিটা সংযোগ একটা আমানত, প্রতিটা পুঁথি একটা আমানত।</p>
 
+
+<div class="diagram">
+<div class="diag-title">তিন উৎসের নকশা — MCP vs Skills vs Plugins</div>
+<svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar59d8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
+</defs>
+<circle cx="280" cy="90" r="40" class="ring"/><text class="lbl" x="280" y="86" text-anchor="middle">Claude</text><text class="lbl-sm" x="280" y="102" text-anchor="middle">সেশন</text>
+<rect class="node-cyan" x="15" y="150" width="160" height="40" rx="9"/><text class="lbl-cyan" x="95" y="168">MCP সার্ভার</text><text class="lbl-sm" x="95" y="183">নতুন হাত (tool)</text>
+<rect class="node-leaf" x="200" y="150" width="160" height="40" rx="9"/><text class="lbl-leaf" x="280" y="168">Skills</text><text class="lbl-sm" x="280" y="183">নতুন বিদ্যা (জ্ঞান+প্রসিদ্ধি)</text>
+<rect class="node-purple" x="385" y="150" width="160" height="40" rx="9"/><text class="lbl" x="465" y="168">Plugins</text><text class="lbl-sm" x="465" y="183">পুরো দোকান (সবই এক প্যাকেটে)</text>
+<line x1="150" y1="118" x2="110" y2="148" stroke="#f97316" stroke-width="1.6" fill="none" marker-end="url(#ar59d8)"/>
+<line x1="280" y1="130" x2="280" y2="148" stroke="#f97316" stroke-width="1.6" fill="none" marker-end="url(#ar59d8)"/>
+<line x1="410" y1="118" x2="450" y2="148" stroke="#f97316" stroke-width="1.6" fill="none" marker-end="url(#ar59d8)"/>
+<rect class="cell" x="15" y="10" width="530" height="26" rx="8"/><text class="lbl-sm" x="280" y="27">হাত চাই? MCP · বিদ্যা চাই? Skill · হাত+বিদ্যা+আদেশ+ঘর সব একসাথে চাই? Plugin</text>
+<rect class="cell" x="15" y="44" width="530" height="26" rx="8"/><text class="lbl-sm" x="280" y="61">সব ক্ষেত্রেই চুক্তি এক: তালিকা .mcp.json / skills/ / plugin.json — ফাইল দিয়ে ঘোষণা, মুখে নয়</text>
+</svg>
+<div class="diag-cap">এক শরীরে তিন ধরনের সম্প্রসারণ — কোনটা কখন: আংটির ঠিকাদার (দরজা ৮-এর মূল পাঠ) এই নকশাতেই বসে।</div>
+</div>
+
+<div class="code-block"># তিন উৎসের হাতে-হাতে ফাইল-গঠন:
+myproject/
+├── .mcp.json                  # MCP: ঠিকাদারের তালিকা
+│   { "mcpServers": {
+│       "github": { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-github"] }
+│   }}
+├── .claude/
+│   ├── skills/
+│   │   └── deploy-lp/
+│   │       └── SKILL.md       # Skill: বিদ্যার বই — কখন-কীভাবে
+│   │           (# frontmatter: name, description; শরীরে ধাপ)
+│   └── settings.json          # অনুমতির খাতা (দরজা ৫)
+└── .claude-plugin/
+    └── plugin.json            # Plugin: দোকানের জন্মনামা
+                                    # { "name": "lp-tools" }
+
+# সেশনে দেখো কী কী হাত এসেছে:
+claude
+> /mcp          # সার্ভার-তালিকা + তাদের tool
+> আমার কী কী skill আছে?
+# সে নিজের skills/ ফোল্ডার পড়ে বলে — SKILL.md-র description-ই তার স্মৃতি</div>
+
 <div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">💍 বাইরের জগত আংটি দিয়ে (MCP), কারিগরি স্মৃতি পুঁথিতে (Skills), সব মিলিয়ে বাক্সে (Plugins)।<br>কারণ: বিচ্ছিন্ন কারিগর ছোট থাকে, সংযুক্ত কারিগর দিগন্ত পায়।</div></div>`,
   senior: {
     title: "সংযোগ সাজানো — Arranging Connections",
@@ -332,6 +374,57 @@ asyncio.run(main())</div>
 </div>
 
 <p class="verse">রাতের কাজের বরকত তাহাজ্জুদের মতো — কঠিন, নীরব, ফল ফজরে। "রাত্রি যখন শান্ত হয়ে আসে" (কুরআন ৯৩:২) তখন যে কাজ চলতে থাকে লেখার আস্থায়, সকালে তার হিসাব পরিষ্কার থাকে। অটোমেশনের নৈতিকতাও তাই: যত কম চোখ, তত বেশি লেখা হিসাব।</p>
+
+
+<div class="diagram">
+<div class="diag-title">রাতের কারখানার লাইন — The Headless Pipeline</div>
+<svg viewBox="0 0 560 170" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar59d9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
+</defs>
+<rect class="node" x="10" y="60" width="120" height="46" rx="10"/><text class="lbl" x="70" y="78">push রাতে</text><text class="lbl-sm" x="70" y="95">GitHub Actions</text>
+<rect class="node-hot" x="160" y="60" width="140" height="46" rx="10"/><text class="lbl-hot" x="230" y="78">claude -p</text><text class="lbl-sm" x="230" y="95">যন্ত্র-মোড, কেউ জাগে না</text>
+<rect class="node-cyan" x="330" y="60" width="100" height="46" rx="10"/><text class="lbl-cyan" x="380" y="78">review</text><text class="lbl-sm" x="380" y="95">--output-format json</text>
+<rect class="node-leaf" x="460" y="60" width="90" height="46" rx="10"/><text class="lbl-leaf" x="505" y="78">PR</text><text class="lbl-sm" x="505" y="95">মানুষ সকালে দেখে</text>
+<line x1="130" y1="83" x2="156" y2="83" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d9)"/>
+<line x1="300" y1="83" x2="326" y2="83" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d9)"/>
+<line x1="430" y1="83" x2="456" y2="83" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d9)"/>
+<rect class="cell" x="10" y="12" width="540" height="28" rx="8"/><text class="lbl-sm" x="280" y="30">কেউ টার্মিনালে বসে নেই — তবু কারখানা চলে: যন্ত্র দেখে, যন্ত্র লেখে, মানুষ বিচার করে</text>
+<rect class="cell" x="10" y="124" width="540" height="30" rx="8"/><text class="lbl-sm" x="280" y="143">নীতি: --permission-mode acceptEdits + তালা-খাতা (allow-list); রাতের হাত সবসময় সংকীর্ণ</text>
+</svg>
+<div class="diag-cap">CI-র ঘরে claude: push → যন্ত্র-রিভিউ → সকালে মানুষের চোখ — দরজা ৯-এর লাইন-নকশা।</div>
+</div>
+
+<div class="code-block"># .github/workflows/claude-review.yml — পূর্ণ ফাইল:
+name: claude-review
+on: [pull_request]
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions: { pull-requests: write }
+    steps:
+      - uses: actions/checkout@v4
+      - name: যন্ত্র-রিভিউ
+        run: |
+          npx -y @anthropic-ai/claude-code@latest -p \
+            "এই PR-এর diff পড়ে বাংলায় প্রতিক্রিয়া লেখো: \
+             বাগ-ঝুঁকি, নাম-স্টাইল, টেস্ট-ফাঁক" \
+            --permission-mode acceptEdits \
+            --output-format json > review.json
+          jq -r '.result' review.json > body.md
+      - name: PR-এ প্রতিক্রিয়া টানো
+        env: { GH_TOKEN: "\${{ secrets.GITHUB_TOKEN }}" }
+        run: gh pr comment "\${{ github.event.pull_request.number }}" --body-file body.md
+
+# SDK পথ — Python থেকে সেশন (দরজা ৯-এর দ্বিতীয় হাত):
+# pip install claude-agent-sdk
+from claude_agent_sdk import ClaudeAgentSDK
+agent = ClaudeAgentSDK()
+result = agent.process_prompt(
+    prompt="টেস্ট-ফাইলগুলোর coverage-রিপোর্ট বানাও",
+    permission_mode="acceptEdits",
+)
+print(result)</div>
 
 <div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🌙 claude -p + JSON দিয়ে রাতের কারখানা বানাও — ঘেরা উঠানে, ডায়েরিসহ, ভঙ্গুর কাজ বাদে।<br>কারণ: দিনের সময় মূল্যবান; যা লেখা যায়, তা রাতে চলা উচিত।</div></div>`,
   senior: {

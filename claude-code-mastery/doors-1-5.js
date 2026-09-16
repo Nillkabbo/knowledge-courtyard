@@ -63,6 +63,45 @@ claude --resume      # তালিকা থেকে বেছে নিয়
 
 <p class="verse">শুরুর আয়াত মনে করো — পড়ো, তোমার রবের নামে, যিনি সৃষ্টি করেছেন। যে নিয়তে হাতুড়ি ধরা হয়, সেই নিয়তেই ঘর তৈরি হয়। প্রথম টোকাটা ছোট, কিন্তু দিকটা সেখানেই ঠিক হয়ে যায়।</p>
 
+
+<div class="diagram">
+<div class="diag-title">প্রথম সেশনের জীবনচক্র — First Session Lifecycle</div>
+<svg viewBox="0 0 560 150" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar59d1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
+</defs>
+<rect class="node" x="10" y="55" width="98" height="44" rx="10"/><text class="lbl" x="59" y="73">npm i -g</text><text class="lbl-sm" x="59" y="89">ইনস্টল</text>
+<rect class="node-cyan" x="128" y="55" width="98" height="44" rx="10"/><text class="lbl-cyan" x="177" y="73">claude</text><text class="lbl-sm" x="177" y="89">প্রথম চালু</text>
+<rect class="node-hot" x="246" y="55" width="104" height="44" rx="10"/><text class="lbl-hot" x="298" y="73">theme/login</text><text class="lbl-sm" x="298" y="89">একবারই</text>
+<text class="lbl" x="419" y="73">prompt</text><text class="lbl-sm" x="419" y="89">কাজের আদেশ</text>
+<rect class="node-leaf" x="488" y="55" width="62" height="44" rx="10"/><text class="lbl-leaf" x="519" y="73">↻</text><text class="lbl-sm" x="519" y="89">লুপ</text>
+<line x1="108" y1="77" x2="124" y2="77" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d1)"/>
+<line x1="226" y1="77" x2="242" y2="77" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d1)"/>
+<line x1="350" y1="77" x2="366" y2="77" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d1)"/>
+<line x1="468" y1="77" x2="484" y2="77" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d1)"/>
+<rect class="cell" x="10" y="8" width="540" height="28" rx="8"/><text class="lbl-sm" x="280" y="26">প্রতিটা প্রম্পট = এক কাজ; শেষে ফাইল দেখো, তারপর পরের আদেশ — চক্রটাই দিনের কাজ</text>
+</svg>
+<div class="diag-cap">ইনস্টল → চালু → পরিচয় → কাজ → পুনরাবৃত্তি — প্রথম দিনের পুরো যাত্রা এই পাঁচ বাক্সে।</div>
+</div>
+
+<div class="code-block"># প্রথম সেশন — হুবহু এই ক্রমে চালাও (ট্রান্সক্রিপ্ট-ধাঁচ):
+cd ~/my-project
+claude
+# ╭──────────────────────────────────────────╮
+# │ ✻ Welcome to Claude Code!                 │
+# │   theme › terminal / vim / prompt-স্টাইল  │
+# ╰──────────────────────────────────────────╯
+# > প্রথম প্রম্পট — ছোট রাখো:
+> এই রিপোর প্রজেক্ট-কাঠামো বুঝিয়ে দাও, কোন ফাইলে কী আছে
+#   Claude ফাইল পড়ে উত্তর দেয় — কোনো এডিট নয়, শুধু বোঝা
+# > দ্বিতীয় প্রম্পট — এক কাজ:
+> src/utils/date.ts-এ একটা বাংলা-তারিখ formatter যোগ করো
+#   এডিটের আগে অনুমতি-প্রশ্ন আসবে → দেখো → y
+# > শেষে ফাইল নিজে চোখে দেখো — Claude-কে নয়, কোডকে বিশ্বাস করো
+git diff                       # B61: কী বদলাল আগে নিজে দেখো
+git add -p                     # ভালো টুকরা বাছাই (B61 দরজা ২)
+# শেষ: /quit বা Ctrl+D — সেশন মেমোরিতে থাকে (দরজা ১-এর ব্যবহার)</div>
+
 <div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🔨 টার্মিনালে <strong>claude</strong> লিখো — হাতুড়ি হাতে ওঠার আগে হাতটা চেনো।<br>কারণ: টুল চেনা আর টুল চালানো এক কথা নয় — প্রথমটা ছাড়া দ্বিতীয়টা বিপদ।</div></div>`,
   senior: {
     title: "প্রথম সপ্তাহে করণীয় — First Week Moves",
@@ -134,6 +173,45 @@ claude
 </div>
 
 <p class="verse">রাহেলার খাতার মতোই — জ্ঞান যখন সম্মানিত পাতায় লেখা হয়, তখন লেখক বদলালেও জ্ঞান বদলায় না। "সম্মানিত সুহুফে — উন্নত ও পবিত্র" (কুরআন ৮০:১৩-১৪)। মুখের কথা বাতাস, খাতার কথা কারখানা।</p>
+
+
+<div class="diagram">
+<div class="diag-title">CLAUDE.md-র স্তরবিন্যাস — The Memory Hierarchy</div>
+<svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg">
+<rect class="node-hot" x="15" y="12" width="250" height="40" rx="9"/><text class="lbl-hot" x="140" y="30">~/CLAUDE.md</text><text class="lbl-sm" x="140" y="46">সব প্রজেক্টে তোমার ব্যক্তিগত স্বভাব</text>
+<rect class="node-purple" x="295" y="12" width="250" height="40" rx="9"/><text class="lbl" x="420" y="30">প্রজেক্ট-রুট /CLAUDE.md</text><text class="lbl-sm" x="420" y="46">দলের চুক্তি — git-এ থাকে</text>
+<rect class="node-cyan" x="155" y="76" width="250" height="40" rx="9"/><text class="lbl-cyan" x="280" y="94">CLAUDE.local.md</text><text class="lbl-sm" x="280" y="110">শুধু তোমার মেশিন — gitignore!</text>
+<rect class="node-leaf" x="155" y="140" width="250" height="40" rx="9"/><text class="lbl-leaf" x="280" y="158">সাব-ডিরেক্টরির CLAUDE.md</text><text class="lbl-sm" x="280" y="174">monorepo-র ডালে ডালে স্থানীয় নিয়ম</text>
+<line x1="140" y1="52" x2="240" y2="74" stroke="#f97316" stroke-width="1.6" fill="none"/>
+<line x1="420" y1="52" x2="320" y2="74" stroke="#f97316" stroke-width="1.6" fill="none"/>
+<line x1="280" y1="116" x2="280" y2="138" stroke="#f97316" stroke-width="1.6" fill="none"/>
+<rect class="cell" x="15" y="190" width="530" height="16" rx="6"/><text class="lbl-sm" x="280" y="202">উপর থেকে নিচে মিলে যায়: ব্যক্তি → দল → স্থানীয় → ডাল — সবই প্রতিটা সেশনে পড়া হয়</text>
+</svg>
+<div class="diag-cap">চার স্তরের স্মৃতি — সবচেয়ে কাছের ডালের নিয়ম সবচেয়ে নির্দিষ্ট; /memory দিয়ে এক নজরে দেখো।</div>
+</div>
+
+<div class="code-block"># প্রজেক্ট-রুট CLAUDE.md — কার্যকর ছাঁচ (৪ বিভাগ, ছোট রাখো):
+## প্রজেক্ট
+LedgerPilot — Django+MySQL ব্যাকএন্ড, Vue ফ্রন্ট। Python 3.12, Node 20।
+## কমান্ড
+- চালাও: docker compose up && python manage.py runserver
+- টেস্ট: pytest -x -q  (মাঝখানে -x: প্রথম ব্যর্থতাতেই থামো)
+- লিন্ট: ruff check . && npm run lint
+## স্টাইল
+- ফাংশন ≤ ৩০ লাইন; কমেন্ট বাংলা-ট্রিগার নয়, ইংরেজি
+- ডাটাবেস মাইগ্রেশন ছাড়া স্কিমা-স্পর্শ নিষেধ
+## প্রেক্ষাপট
+- payments/ মডিউল লেগেসি — নতুন কিছু যোগ করার আগে আলাদা কথা বলো
+- ENV: LP_DB_HOST (prod-এ ভিন্ন) — কখনো হার্ডকোড নয়
+
+# স্তর মিলিয়ে দেখো / সম্পাদনা:
+claude
+> /memory
+#   → চার ফাইলের যুক্ত দৃশ্য খুলবে; এখানেই বদলাও
+
+# দ্রুত স্মৃতি-যোগ (নতুন ফাইল ছাড়া):
+> # প্রজেক্টে coverage 80% ফ্লোর — নিচে নামলে টেস্ট লিখো
+#   '#' দিয়ে শুরু করলে সে লাইন CLAUDE.md-এ জমা হয়</div>
 
 <div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">📜 বার বার বলতে হয় এমন কথা CLAUDE.md-তে ওঠাও — মুখ নয়, খাতা বলে।<br>কারণ: প্রতিটা সেশন নতুন শাগরেদ — খাতা না পড়ে সে কাজে নামলে দোষ তোমার।</div></div>`,
   senior: {
@@ -383,6 +461,51 @@ claude -p "Apply the lint fixes" --permission-mode acceptEdits
 </div>
 
 <p class="verse">চাবি আমানত — কার হাতে কতটুকু ক্ষমতা, সেটা নিজের সুবিধার প্রশ্ন নয়, হিসাবের প্রশ্ন। "নিশ্চয়ই আল্লাহ তোমাদের আদেশ দেন আমানত তার হকদারকে ফিরিয়ে দিতে" (কুরআন ৪:৫৮)। প্রতিটা allow নিয়ম একটা চাবি — ভাবো, তারপর বাঁধো।</p>
+
+
+<div class="diagram">
+<div class="diag-title">অনুমতির স্কেল — The Permission Gauge</div>
+<svg viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg">
+<rect class="node-hot" x="15" y="60" width="120" height="46" rx="10"/><text class="lbl-hot" x="75" y="80">plan</text><text class="lbl-sm" x="75" y="97">শুধু পড়ো — হাত পেছনে</text>
+<rect class="node" x="152" y="60" width="120" height="46" rx="10"/><text class="lbl" x="212" y="80">default</text><text class="lbl-sm" x="212" y="97">জিজ্ঞেস করে তবেই ছোঁয়</text>
+<rect class="node-cyan" x="289" y="60" width="120" height="46" rx="10"/><text class="lbl-cyan" x="349" y="80">acceptEdits</text><text class="lbl-sm" x="349" y="97">এডিট মুক্ত, কমান্ড জিজ্ঞেস</text>
+<rect class="node-leaf" x="426" y="60" width="120" height="46" rx="10"/><text class="lbl-leaf" x="486" y="80">bypass</text><text class="lbl-sm" x="486" y="97">সব মুক্ত — নিজি দায়িত্বে</text>
+<line x1="135" y1="83" x2="148" y2="83" stroke="#f97316" stroke-width="2"/>
+<line x1="272" y1="83" x2="285" y2="83" stroke="#f97316" stroke-width="2"/>
+<line x1="409" y1="83" x2="422" y2="83" stroke="#f97316" stroke-width="2"/>
+<text class="lbl-sm" x="280" y="40" text-anchor="middle">কম বিশ্বাস ──────────────────────────────── বেশি বিশ্বাস</text>
+<rect class="cell" x="15" y="120" width="530" height="30" rx="8"/><text class="lbl-sm" x="280" y="139">Tab/Shift+Tab দিয়ে সেশনের মাঝেই স্কেল বদলাও; /permissions-এ খাতা খুলে দেখো কোন তালা আছে</text>
+</svg>
+<div class="diag-cap">চার স্তরের বিশ্বাস — কাজের ধরন বদলালে স্কেলও বদলাও; bypass শুধু স্যান্ডবক্স/থ্রোঅ্যাওয়ে ঘরে।</div>
+</div>
+
+<table class="kv-table">
+<tr><th>মোড</th><th>এডিট</th><th>কমান্ড</th><th>কখন</th></tr>
+<tr><td class="hl">plan</td><td>না</td><td>না (read-only ব্যতীত)</td><td>বড় কাজের আগে নকশা দেখতে</td></tr>
+<tr><td class="hl">default</td><td>জিজ্ঞেস</td><td>জিজ্ঞেস</td><td>রোজকার — নিরাপদ ভারসাম্য</td></tr>
+<tr><td class="hl">acceptEdits</td><td>মুক্ত</td><td>জিজ্ঞেস</td><td>টানাটানি এডিট-সেশনে</td></tr>
+<tr><td class="hl">bypassPermissions</td><td>মুক্ত</td><td>মুক্ত</td><td>স্যান্ডবক্স/থ্রোঅ্যাওয়ে ঘরে, চোখের নজরে</td></tr>
+</table>
+
+<div class="code-block"># একই কাজ, চার স্কেলে — পার্থক্য চোখে পড়ে:
+# ① plan মোডে:
+claude --permission-mode plan
+> লগইন-ফ্লো রিফ্যাক্টর করার প্ল্যান দাও
+#   → শুধু পড়ে প্ল্যান লেখে; কোনো ফাইল ছোঁয় না
+# ② default:
+> src/auth/login.ts-এ rate-limit যোগ করো
+#   → এডিটের আগে: "Edit file? (y/n)" — দেখে তবেই y
+# ③ acceptEdits:
+claude --permission-mode acceptEdits
+> একই কাজ
+#   → এডিট নিঃশব্দে; npm install চাইলে তবেই জিজ্ঞেস
+# ④ bypassPermissions (⚠ থ্রোঅ্যাওয়ে রিপোতেই):
+claude --permission-mode bypassPermissions
+> টেস্ট ফিক্স করে দাও, যা লাগে করো
+#   → সব নিঃশব্দে — এজন্যই ঘর (sandbox) আগে, অস্ত্র পরে
+
+# settings-এ স্থায়ী তালা (বেলালের খাতা, দরজা ৫-এর মূল উদাহরণ):
+# .claude/settings.json → permissions.allow / deny তালিকা</div>
 
 <div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🔐 অনুমতি তিন তালা: নিরাপদ allow, ভয়ংকর deny, বাকি সব জিজ্ঞেস — আর লাল খাম শুধু ঘেরা উঠানে।<br>কারণ: ক্ষমতা হিসাব না করে দিলে একদিন হিসাব ক্ষমতাকে দেয়।</div></div>`,
   senior: {

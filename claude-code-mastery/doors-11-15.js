@@ -197,6 +197,50 @@ chmod +x ~/.claude/statusline.sh
 
 <p class="verse">খাতুতের সম্মান — একই কলম, নতুন হাত। সুন্দর অক্ষর সৌন্দর্যের জন্য নয়, পাঠযোগ্যতার জন্য: দলিল যেন একবার পড়েই বোঝা যায়। "য়া কলমু" — কলম যা লেখে তা সম্মানের সাথে লেখা হোক, আর বার বার নয়, একবার লিখে সিলে বাঁধা হোক।</p>
 
+
+<div class="diagram">
+<div class="diag-title">নিজের হাতের লেখার অঙ্গসংস্থান — Custom Command Anatomy</div>
+<svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg">
+<rect class="cell" x="15" y="12" width="530" height="34" rx="8"/>
+<text class="lbl-sm" x="280" y="33">.claude/commands/review.md — ফাইলের নামই আদেশের নাম: /review</text>
+<rect class="node-hot" x="15" y="66" width="250" height="46" rx="9"/><text class="lbl-hot" x="140" y="84">frontmatter</text><text class="lbl-sm" x="140" y="100">description, allowed-tools, argument-hint</text>
+<rect class="node-cyan" x="295" y="66" width="250" height="46" rx="9"/><text class="lbl-cyan" x="420" y="84">$ARGUMENTS ধাঁধা</text><text class="lbl-sm" x="420" y="100">/review src/auth — যুক্তিটা এখানে বসে</text>
+<rect class="node-leaf" x="155" y="136" width="250" height="46" rx="9"/><text class="lbl-leaf" x="280" y="154">শরীর = প্রম্পট-ছাঁচ</text><text class="lbl-sm" x="280" y="170">allowed-tools-এ সীমাবদ্ধ হাত দিয়ে নির্দিষ্ট কাজ</text>
+<line x1="140" y1="112" x2="230" y2="134" stroke="#f97316" stroke-width="1.6" fill="none"/>
+<line x1="420" y1="112" x2="330" y2="134" stroke="#f97316" stroke-width="1.6" fill="none"/>
+<rect class="cell" x="15" y="188" width="530" height="16" rx="6"/><text class="lbl-sm" x="280" y="200">output-style একই রকম এক ফাইলে: .claude/output-styles/ — সে বদলায় কীভাবে বলে, আদেশ বদলায় কী করে</text>
+</svg>
+<div class="diag-cap">ফাইল = আদেশ; নাম = ডাক; frontmatter = নিয়ম; শরীর = কাজ — চার সত্য মিলে নিজের হাতের লেখা।</div>
+</div>
+
+<div class="code-block"># .claude/commands/review.md — পূর্ণ ফাইল, হাতে-হাতে:
+---
+description: কোড-রিভিউ (বাংলা, সংক্ষিপ্ত)
+argument-hint: [ফাইল-বা-ফোল্ডার]
+allowed-tools: Read, Grep, Glob
+---
+$ARGUMENTS ফাইল/ফোল্ডারটা পড়ে প্রতিক্রিয়া লেখো:
+১. বাগ-ঝুঁকি (গুরুত্ব ক্রমে, লাইন-নম্বরসহ)
+২. নাম-স্টাইল ভাঙা জায়গা
+৩. টেস্ট-ফাঁক — কোন শাখা ঢাকা পড়েনি
+৪. এক-লাইনের রায়: merge / fix-first
+সর্বোচ্চ ২০ লাইন; প্রশংসা বাদ, কাজ বলো।
+
+# চালাও:
+claude
+> /review src/payments
+#   → $ARGUMENTS-এর জায়গায় src/payments বসে যায়
+
+# প্রজেক্ট-নয়, ব্যক্তিগত আদেশ: ~/.claude/commands/ — সব রিপোতে পাও
+
+# statusline — নিচের স্টিকার (.claude/statusline.sh):
+#!/bin/bash
+input=\$(cat)   # JSON stdin: {model, workspace, ...}
+model=\$(echo "\$input" | jq -r '.model.display_name')
+branch=\$(git branch --show-current 2>/dev/null)
+echo "🤖 \$model · 🌿 \$branch"
+# settings.json: { "statusLine": { "type": "command", "command": ".claude/statusline.sh" } }</div>
+
 <div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">✒️ তৃতীয়বার টাইপ করার আগে থামো — সিল কাটো (commands), ছাঁচ বদলাও (styles), ফলক পরাও (statusline)।<br>কারণ: যন্ত্র তোমার অভ্যাস শিখুক — তোমার আঙুল নয়।</div></div>`,
   senior: {
     title: "সিল-ছাঁচ-ফলক খাতা — Seals, Moulds, Plaques",
@@ -427,6 +471,48 @@ my-marketplace/
 
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>পাইকারের সতর্কতা:</strong> বাক্সের ভেতরের প্রতিটা জিনিসই ক্রেতার কারখানায় চলবে — তাই বাক্স বাঁধার আগে প্রতিটা ঘণ্টা-তালা নিজের কারখানায় পরীক্ষা করো। আর \${CLAUDE_PLUGIN_ROOT} ছাড়া পথ লিখলে বাক্স অন্যের ঘরে গিয়ে খুলবে না — সেটা বাক্সের ভেতরের চাবি, সব পথ এর ভাষায়।</div></div>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>The wholesaler's caution:</strong> everything in the crate will run in the buyer's workshop — test every bell and lock in yours before sealing the box. And without \${CLAUDE_PLUGIN_ROOT}, paths written inside will not open in another's house — it is the crate's internal key; write all paths in its language.</div></div>
+
+
+<div class="diagram">
+<div class="diag-title">পাইকারের বাজার-পথ — The Marketplace Flow</div>
+<svg viewBox="0 0 560 170" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar59d14" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
+</defs>
+<rect class="node" x="10" y="60" width="120" height="46" rx="10"/><text class="lbl" x="70" y="78">marketplace</text><text class="lbl-sm" x="70" y="95">add</text>
+<rect class="node-cyan" x="160" y="60" width="120" height="46" rx="10"/><text class="lbl-cyan" x="220" y="78">install</text><text class="lbl-sm" x="220" y="95">প্লাগইন-বাছাই</text>
+<rect class="node-hot" x="310" y="60" width="120" height="46" rx="10"/><text class="lbl-hot" x="370" y="78">update</text><text class="lbl-sm" x="370" y="95">টানা-হালনাগাদ</text>
+<rect class="node-leaf" x="460" y="60" width="90" height="46" rx="10"/><text class="lbl-leaf" x="505" y="78">enable</text><text class="lbl-sm" x="505" y="95">চালু/বন্ধ</text>
+<line x1="130" y1="83" x2="156" y2="83" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d14)"/>
+<line x1="280" y1="83" x2="306" y2="83" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d14)"/>
+<line x1="430" y1="83" x2="456" y2="83" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d14)"/>
+<rect class="cell" x="10" y="12" width="540" height="28" rx="8"/><text class="lbl-sm" x="280" y="30">বাজার যোগ → প্লাগইন বসাও → হালনাগাদ টানো → প্রয়োজনে বন্ধ — সবই /plugin দিয়ে</text>
+<rect class="cell" x="10" y="124" width="540" height="30" rx="8"/><text class="lbl-sm" x="280" y="143">নীতি: অচেনা পাইকারের পণ্যে হাত দেওয়ার আগে দরজা ১৬-এর বিশ্বাস-প্রশ্ন — উৎস কে?</text>
+</svg>
+<div class="diag-cap">এক আদেশের জীবনচক্র: বাজার → ঘর → হালনাগাদ → ব্যবহার; বিশ্বাস প্রতিবার নবায়ন করতে হয়।</div>
+</div>
+
+<div class="code-block"># বাজার-যাত্রা — হুবহু ধারা:
+claude
+> /plugin marketplace add anthropics/claude-code
+#   → বাজার তালিকাভুক্ত (রিপো-উৎস; লোকালও যায়:
+#     /plugin marketplace add ./my-marketplace)
+> /plugin install lint-tools@anthropics
+#   → প্লাগইন বসল: commands+skills+agents এক প্যাকেটে
+> /plugin update lint-tools
+#   → টেনে হালনাগাদ
+> /plugin disable lint-tools
+#   → খুলে রাখা, ব্যবহার বন্ধ — মুছলে uninstall
+
+# নিজের প্লাগইন বানানোর ন্যূনতম গঠন:
+my-plugin/
+├── .claude-plugin/plugin.json   # { "name": "lint-tools" }
+├── commands/                    # /আদেশ সমূহ
+├── skills/                      # বিদ্যা-সমূহ
+└── agents/                      # ঠিকাদার-সমূহ (দরজা ৬-এর ভাই)
+
+# ⚠ ইনস্টলের আগে চোখ: প্লাগইন কী কী allowed-tools চায়,
+#   hooks কী চালায় — দরজা ১১+১৬ মিলিয়ে পড়ো</div>
 
 <div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">📦 প্লাগইন = সব যন্ত্রের বিতরণ-বাক্স: plugin.json সিল, \${CLAUDE_PLUGIN_ROOT} চাবি, মার্কেটপ্লেস দুনিয়ার পাইকারি দোকান।<br>কারণ: যা বাঁধা যায় না, তা শুধু তোমার; যা বাঁধা যায়, তা সবার।</div></div>`,
   senior: {
