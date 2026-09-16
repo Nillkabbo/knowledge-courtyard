@@ -38,8 +38,8 @@ doors.push({
 <rect class="node" x="15" y="30" width="200" height="60" rx="12"/><text class="lbl" x="115" y="52">তোমার অফিস</text><text class="lbl-sm" x="115" y="70">main context — পরিষ্কার</text>
 <rect class="node-hot" x="345" y="30" width="200" height="60" rx="12"/><text class="lbl-hot" x="445" y="52">রফিকের শেড</text><text class="lbl-sm" x="445" y="70">subagent context — ধুলোমাখা</text>
 <rect class="cell-cyan" x="215" y="120" width="130" height="34" rx="10"/><text class="lbl-cyan" x="280" y="137">১ পাতার রিপোর্ট</text>
-<line x1="345" y1="60" x2="280" y2="118" stroke="#3dd6c4" stroke-width="2" fill="none" marker-end="url(#arrowRep)"/>
-<line x1="280" y1="118" x2="212" y2="66" stroke="#3dd6c4" stroke-width="2" fill="none" marker-end="url(#arrowRep)"/>
+<line x1="345" y1="60" x2="280" y2="120" stroke="#3dd6c4" stroke-width="2" fill="none" marker-end="url(#arrowRep)"/>
+<line x1="280" y1="120" x2="212" y2="66" stroke="#3dd6c4" stroke-width="2" fill="none" marker-end="url(#arrowRep)"/>
 <text class="lbl-sm" x="445" y="108">নিজের টুল · নিজের হিসাব · নিজের দায়</text>
 </svg>
 <div class="diag-cap">সাব-এজেন্ট ঘাঁটে নিজের ঘরে, ফেরত আসে সারমর্ম — মূল সেশন পরিষ্কার থাকে। Book ১২ (The Autonomous Mind) এই এজেন্টদের গভীরে চেনায়; এখানে তাদের কারখানায় নিয়োগ।</div>

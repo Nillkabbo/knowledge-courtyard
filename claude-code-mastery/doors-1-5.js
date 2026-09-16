@@ -262,10 +262,10 @@ doors.push({
 <rect class="node" x="395" y="75" width="150" height="36" rx="18"/><text class="lbl" x="470" y="93">Sonnet 🔨</text>
 <rect class="node-hot" x="395" y="130" width="150" height="36" rx="18"/><text class="lbl-hot" x="470" y="148">Opus 🐂</text>
 <rect class="node-purple" x="395" y="185" width="150" height="36" rx="18"/><text class="lbl" x="470" y="203">Fable 🧓</text>
-<line class="edge-cyan" x1="195" y1="38" x2="390" y2="38"/>
-<line class="edge-amber" x1="195" y1="93" x2="390" y2="93"/>
-<line class="edge-hot" x1="195" y1="148" x2="390" y2="148"/>
-<line x1="195" y1="203" x2="390" y2="203" stroke="#b37feb" stroke-width="2" fill="none" marker-end="url(#arrowPurple)"/>
+<line class="edge-cyan" x1="195" y1="38" x2="395" y2="38"/>
+<line class="edge-amber" x1="195" y1="93" x2="395" y2="93"/>
+<line class="edge-hot" x1="195" y1="148" x2="395" y2="148"/>
+<line x1="195" y1="203" x2="395" y2="203" stroke="#b37feb" stroke-width="2" fill="none" marker-end="url(#arrowPurple)"/>
 </svg>
 <div class="diag-cap">Book ৮ (LLM Anatomy) তোমাকে দেখিয়েছে Transformer-এর ভেতরটা — এখানে সেই একই পরিবারের বাইরের চেহারা: কে কোন কাজে।</div>
 </div>
@@ -351,12 +351,12 @@ doors.push({
 <rect class="cell-good" x="355" y="15" width="120" height="40" rx="12"/><text class="lbl-leaf" x="415" y="35">কাজ শেষ?</text><text class="lbl-sm" x="415" y="48">done?</text>
 <line x1="135" y1="103" x2="180" y2="103" stroke="#9290a8" stroke-width="1.5" marker-end="url(#arrowLoop)"/>
 <line x1="305" y1="103" x2="350" y2="103" stroke="#9290a8" stroke-width="1.5" marker-end="url(#arrowLoop)"/>
-<line x1="415" y1="78" x2="415" y2="60" stroke="#9290a8" stroke-width="1.5" marker-end="url(#arrowLoop)"/>
-<line x1="350" y1="35" x2="310" y2="35" stroke="#9290a8" stroke-width="1.5" marker-end="url(#arrowLoop)"/>
+<line x1="410" y1="80" x2="410" y2="55" stroke="#9290a8" stroke-width="1.5" marker-end="url(#arrowLoop)"/>
+<line x1="355" y1="35" x2="305" y2="35" stroke="#9290a8" stroke-width="1.5" marker-end="url(#arrowLoop)"/>
 <path class="edge-cyan" d="M 245 58 L 245 75" marker-end="url(#arrowLoopTeal)"/>
 <text class="lbl-sm" x="285" y="150">না → আবার চিন্তা</text>
 <text class="lbl-sm" x="285" y="166">no → think again</text>
-<line x1="415" y1="60" x2="415" y2="78" stroke="rgba(82,196,26,.7)" stroke-width="1.5"/>
+<line x1="425" y1="55" x2="425" y2="80" stroke="rgba(82,196,26,.7)" stroke-width="1.5"/>
 </svg>
 <div class="diag-cap">প্রতিটা ঘোরার প্রতিটা শব্দ নদীতে জমে — তাই মাঝির প্রথম কাজ নদীর হিসাব রাখা। Every turn's every word settles into the river — so the ferrywoman's first job is the river's account.</div>
 </div>

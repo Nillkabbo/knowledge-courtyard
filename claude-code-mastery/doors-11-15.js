@@ -586,12 +586,12 @@ git worktree remove ../project-login-feature</div>
 <rect class="node-leaf" x="390" y="20" width="140" height="40" rx="10"/><text class="lbl-leaf" x="460" y="40">/loop — সময় মেপে</text>
 <rect class="node-leaf" x="390" y="90" width="140" height="40" rx="10"/><text class="lbl-leaf" x="460" y="110">/goal — শর্ত মেপে</text>
 <rect class="node-purple" x="390" y="160" width="140" height="40" rx="10"/><text class="lbl-sm" x="460" y="180">agent view — এক পর্দায়</text>
-<line class="edge-cyan" x1="170" y1="40" x2="236" y2="100"/>
-<line class="edge-cyan" x1="170" y1="110" x2="236" y2="110"/>
-<line class="edge-cyan" x1="170" y1="180" x2="236" y2="120"/>
-<line x1="390" y1="40" x2="324" y2="100" stroke="#52c41a" stroke-width="1.5"/>
-<line x1="390" y1="110" x2="324" y2="110" stroke="#52c41a" stroke-width="1.5"/>
-<line x1="390" y1="180" x2="324" y2="120" stroke="#b37feb" stroke-width="1.5"/>
+<line class="edge-cyan" x1="170" y1="40" x2="240" y2="100"/>
+<line class="edge-cyan" x1="170" y1="110" x2="240" y2="110"/>
+<line class="edge-cyan" x1="170" y1="180" x2="240" y2="120"/>
+<line x1="390" y1="40" x2="320" y2="100" stroke="#52c41a" stroke-width="1.5"/>
+<line x1="390" y1="110" x2="320" y2="110" stroke="#52c41a" stroke-width="1.5"/>
+<line x1="390" y1="180" x2="320" y2="120" stroke="#b37feb" stroke-width="1.5"/>
 </svg>
 <div class="diag-cap">বাঁয়ে তিন স্বতন্ত্র রান্নাঘর (worktree), মাঝে শিরিনের হিসাবের টেবিল, ডানে নজরের হাত — Book ১২ (Autonomous Mind)-এর বহু-এজেন্ট দর্শনের রান্নাঘর-রূপ।</div>
 </div>
