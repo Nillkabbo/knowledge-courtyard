@@ -2,224 +2,260 @@
   "title": "Git Flashcards",
   "cards": [
     {
-      "front": "In the Git photo studio metaphor, what does a \"commit\" represent?",
-      "back": "A full snapshot of the entire project at a specific moment, not just a list of changes."
+      "front": "Git is described as a _____ filesystem because it uses a simple key-value data store at its core.",
+      "back": "content-addressable"
     },
     {
-      "front": "What is the primary difference between `git init` and `git clone`?",
-      "back": "`git init` creates a new empty studio in a folder, while `git clone` copies an existing studio including its entire history."
+      "front": "In Git's key-value store, what does the 'unique key' represent?",
+      "back": "The SHA-1 hash of the content and its header."
     },
     {
-      "front": "What is the function of the staging area (also known as the index or framing table)?",
-      "back": "It is an intermediate area where you prepare and organize specific changes before they are captured in a commit."
+      "front": "Which Git plumbing command takes data and stores it in the object database, returning its unique key?",
+      "back": "git hash-object"
     },
     {
-      "front": "Which command is used to see the status of the \"three rooms\" (working directory, staging area, and repository)?",
-      "back": "`git status`"
+      "front": "Where is the Git object database located within the repository?",
+      "back": ".git/objects"
     },
     {
-      "front": "How does `git add .` differ from `git add <file>`?",
-      "back": "`git add .` stages all new and modified files in the current directory, while `git add <file>` stages only the specified file."
+      "front": "How does Git organize object files on disk to prevent having thousands of files in a single directory?",
+      "back": "It uses the first two characters of the SHA-1 as a subdirectory and the remaining 38 as the filename."
     },
     {
-      "front": "Why must you run `git add` again if you modify a file after staging it but before committing?",
-      "back": "Git stages the file's state at the exact moment the add command is run; subsequent changes remain unstaged."
+      "front": "Which command is used to inspect the content, type, or size of a Git object?",
+      "back": "git cat-file"
     },
     {
-      "front": "What is the purpose of the `.gitignore` file?",
-      "back": "To list files and patterns (like `node_modules/` or `.env`) that Git should never track or include in snapshots."
+      "front": "What flag for 'git cat-file' instructs Git to pretty-print the content of an object based on its type?",
+      "back": "-p"
     },
     {
-      "front": "What command is used to configure your identity for every commit you make?",
-      "back": "`git config --global user.name \"Name\"` and `git config --global user.email \"email@example.com\"`"
+      "front": "What flag for 'git cat-file' is used to identify the type of a Git object?",
+      "back": "-t"
     },
     {
-      "front": "Which Git command shows the difference between the working directory and the staging area?",
-      "back": "`git diff`"
+      "front": "Git object type: Blob",
+      "back": "Definition: An object that stores file content but does not store the filename or mode."
     },
     {
-      "front": "Which Git command shows the difference between the staging area and the last commit?",
-      "back": "`git diff --cached`"
+      "front": "Git object type: Tree",
+      "back": "Definition: An object that maps filenames to blobs or other trees, acting similarly to a UNIX directory."
     },
     {
-      "front": "What does the command `git add -p` allow a developer to do?",
-      "back": "It allows staging changes in small chunks (hunks) rather than staging an entire file at once."
+      "front": "A single entry in a Git tree object consists of the SHA-1 hash, the filename, and the _____.",
+      "back": "mode (and type)"
     },
     {
-      "front": "How do you remove a file from the staging area without losing the changes in your working directory?",
-      "back": "Use the command `git restore --staged <file>`."
+      "front": "Git object type: Commit",
+      "back": "Definition: An object that points to a snapshot tree and includes author, committer, date, and parent information."
     },
     {
-      "front": "What is the effect of `git rm --cached <file>`?",
-      "back": "It removes the file from Git's tracking (the next commit) but keeps the physical file in the working directory."
+      "front": "How does Git create a tree object from the current state of the staging area?",
+      "back": "By using the 'git write-tree' command."
     },
     {
-      "front": "In Git's architecture, what is a \"branch\"?",
-      "back": "A lightweight, movable pointer (or \"sticky note\") that identifies a specific commit in the project's history."
+      "front": "The standard Git object header consists of the object type, a space, the _____ of the content, and a null byte.",
+      "back": "size (in bytes)"
     },
     {
-      "front": "What is the role of the \"HEAD\" pointer in Git?",
-      "back": "It is a bookmark that indicates which branch or commit you are currently working on."
+      "front": "Git compresses object content using which library before writing it to disk?",
+      "back": "zlib"
     },
     {
-      "front": "The command to create a new branch and switch to it in one step is _____.",
-      "back": "`git switch -c <branch-name>`"
+      "front": "Files that were in the last snapshot or have been staged are known as _____ files.",
+      "back": "tracked"
     },
     {
-      "front": "What defines a \"detached HEAD\" state?",
-      "back": "A state where the HEAD pointer is attached directly to a specific commit hash instead of a named branch."
+      "front": "Files in the working directory that were not in the previous snapshot and have not been staged are called _____ files.",
+      "back": "untracked"
     },
     {
-      "front": "Why is it discouraged to commit work while in a \"detached HEAD\" state?",
-      "back": "The commits are not associated with any branch and can easily become \"orphans\" that are difficult to find later."
+      "front": "What are the three main lifecycle states of a tracked file in Git?",
+      "back": "Unmodified, modified, and staged."
     },
     {
-      "front": "What command allows you to see a visual graph of all branches and their commit history?",
-      "back": "`git log --oneline --graph --all`"
+      "front": "What command is used to move an untracked file into the staging area for the first time?",
+      "back": "git add"
     },
     {
-      "front": "Under what condition does Git perform a \"fast-forward\" merge?",
-      "back": "When the target branch's history is a direct linear descendant of the current branch, requiring only a pointer move."
+      "front": "If a tracked file is modified after it has been staged with 'git add', what must you do to ensure the latest changes are committed?",
+      "back": "Run 'git add' again to stage the new version of the file."
     },
     {
-      "front": "What is a \"three-way merge\"?",
-      "back": "A merge that creates a new \"union\" commit to join two branches that have diverged from a common ancestor."
+      "front": "Which 'git status' flag provides a compact output showing the status of both the staging area and the working tree?",
+      "back": "-s (or --short)"
     },
     {
-      "front": "What occurs when two branches have different changes on the exact same line of a file during a merge?",
-      "back": "A merge conflict, which requires the user to manually decide which changes to keep."
+      "front": "In 'git status -s', what does '??' indicate?",
+      "back": "An untracked file."
     },
     {
-      "front": "To cancel a merge and return the repository to its state before the merge started, use the command _____.",
-      "back": "`git merge --abort`"
+      "front": "What is the purpose of a '.gitignore' file?",
+      "back": "To list patterns for files or directories that Git should ignore and not show as untracked."
     },
     {
-      "front": "What is the core conceptual goal of `git rebase`?",
-      "back": "To \"reprint\" or move a sequence of commits from one branch onto the tip of another to maintain a linear history."
+      "front": "In a '.gitignore' file, what does a pattern starting with a forward slash (e.g., '/TODO') signify?",
+      "back": "The pattern only matches files in the current directory, not subdirectories."
     },
     {
-      "front": "What is the \"Golden Rule\" of Git rebasing?",
-      "back": "Never rebase commits that have already been pushed to a public or shared repository."
+      "front": "Which command allows you to view specifically what has been changed but not yet staged?",
+      "back": "git diff"
     },
     {
-      "front": "In an interactive rebase (`git rebase -i`), what does the `fixup` command do?",
-      "back": "It merges the commit into the previous one and discards the commit message of the fixed-up commit."
+      "front": "Which command compares your staged changes to your last commit?",
+      "back": "git diff --staged (or git diff --cached)"
     },
     {
-      "front": "Why is `git push --force-with-lease` considered safer than `git push --force`?",
-      "back": "It refuses to overwrite the remote branch if someone else has pushed new commits that you haven't yet fetched."
+      "front": "What is the result of running 'git diff' if all changes in the working directory have already been staged?",
+      "back": "It will produce no output."
     },
     {
-      "front": "What is the difference between `git fetch` and `git pull`?",
-      "back": "`fetch` only downloads remote data to your local database; `pull` performs a `fetch` followed by a `merge`."
+      "front": "How can you commit all changes to tracked files while skipping the staging area step?",
+      "back": "By using the 'git commit -a' command."
     },
     {
-      "front": "The command to link a local branch to a remote branch for the first time is _____.",
-      "back": "`git push -u origin <branch-name>`"
+      "front": "Which command removes a file from tracking and the working directory, then stages that removal?",
+      "back": "git rm"
     },
     {
-      "front": "In remote collaboration, what is a \"Fork\"?",
-      "back": "A personal copy of another user's repository on a remote server, allowing you to make changes without affecting the original."
+      "front": "How do you stop tracking a file in Git while keeping the physical file on your hard drive?",
+      "back": "git rm --cached <file>"
     },
     {
-      "front": "What is a \"Pull Request\" (PR)?",
-      "back": "A formal proposal sent to a repository owner to merge changes from your branch or fork into their project."
+      "front": "What is the main difference between a lightweight tag and an annotated tag in Git?",
+      "back": "Annotated tags are full objects with metadata (tagger, date, message), while lightweight tags are simple pointers to commits."
     },
     {
-      "front": "How do you fix a mistake or add a forgotten file to the very last commit (if it hasn't been pushed yet)?",
-      "back": "Use the command `git commit --amend`."
+      "front": "Command to create an annotated tag named 'v1.4' with the message 'my version 1.4'.",
+      "back": "git tag -a v1.4 -m \"my version 1.4\""
     },
     {
-      "front": "What is the purpose of `git revert <commit-hash>`?",
-      "back": "To undo the changes of a specific commit by creating a new, inverse commit, preserving the integrity of the project history."
+      "front": "By default, does 'git push' transfer tags to a remote server?",
+      "back": "No, tags must be explicitly pushed."
     },
     {
-      "front": "Which Git command moves the branch pointer backward to a previous commit and discards all changes in the staging area and working directory?",
-      "back": "`git reset --hard <commit-hash>`"
+      "front": "Which flag for 'git push' transfers all local tags that are not already on the remote server?",
+      "back": "--tags"
     },
     {
-      "front": "How does `git reset --soft` differ from `git reset --mixed`?",
-      "back": "`--soft` keeps your changes in the staging area (staged), while `--mixed` keeps them only in the working directory (unstaged)."
+      "front": "What flag for 'git push' only transfers annotated tags alongside your commits?",
+      "back": "--follow-tags"
     },
     {
-      "front": "What is the Git `reflog`?",
-      "back": "A local record that tracks every change to the HEAD pointer, allowing for the recovery of seemingly lost commits for up to 90 days."
+      "front": "Which command allows you to add a tag to a specific historical commit using its checksum?",
+      "back": "git tag -a <tagname> <checksum>"
     },
     {
-      "front": "When should you use `git stash push`?",
-      "back": "When you need to switch branches but have uncommitted work that is not yet ready for a commit."
+      "front": "What command applies the change from exactly one specific commit onto your current branch, creating a new commit with a new hash?",
+      "back": "git cherry-pick"
     },
     {
-      "front": "To apply stashed changes and simultaneously remove them from the stash list, use the command _____.",
-      "back": "`git stash pop`"
+      "front": "When cherry-picking, which flag appends a line indicating the original commit's hash to the commit message?",
+      "back": "-x"
     },
     {
-      "front": "What is the primary benefit of using `git worktree`?",
-      "back": "It allows you to have multiple working directories for the same repository, enabling you to work on different branches simultaneously."
+      "front": "When using a cherry-pick range 'A..B', which commit is excluded from the operation?",
+      "back": "Commit A is excluded."
     },
     {
-      "front": "Which command allows you to search the entire commit history for a specific string of text (the \"pickaxe\" command)?",
-      "back": "`git log -S \"string\"`"
+      "front": "How do you specify a cherry-pick range that includes both commit A and commit B?",
+      "back": "git cherry-pick A^..B"
     },
     {
-      "front": "What information does `git blame <file>` provide?",
-      "back": "It shows which user modified each line of a file and in which commit the change occurred."
+      "front": "What command resets the working directory and aborts a cherry-pick that encountered conflicts?",
+      "back": "git cherry-pick --abort"
     },
     {
-      "front": "What is the purpose of the `git bisect` command?",
-      "back": "To find the specific commit that introduced a bug using a binary search algorithm between a known \"good\" and \"bad\" commit."
+      "front": "After resolving conflicts and staging the changes, what command do you use to complete a cherry-pick?",
+      "back": "git cherry-pick --continue"
     },
     {
-      "front": "How do you view the contents of a specific file from a previous commit without checking out that commit?",
-      "back": "`git show <commit-hash>:<file-path>`"
+      "front": "Git configuration scope: Global",
+      "back": "Location: ~/.gitconfig (or $XDG_CONFIG_HOME/git/config). Purpose: User-specific settings."
     },
     {
-      "front": "In `.gitignore` patterns, what does the `*` character represent?",
-      "back": "A wildcard that matches zero or more characters in a filename (e.g., `*.log` matches all files ending in `.log`)."
+      "front": "Git configuration scope: Local",
+      "back": "Location: .git/config. Purpose: Repository-specific settings that take precedence over global settings."
     },
     {
-      "front": "What is the command to delete a branch that has already been merged?",
-      "back": "`git branch -d <branch-name>`"
+      "front": "Which Git command manages multiple working trees attached to the same repository, allowing you to check out multiple branches at once?",
+      "back": "git worktree"
     },
     {
-      "front": "What is the Git \"Golden Truth\" regarding snapshots?",
-      "back": "Every commit is a full snapshot of the whole project, not just a list of differences or changes."
+      "front": "A repository has one _____ worktree and zero or more linked worktrees.",
+      "back": "main"
     },
     {
-      "front": "What command displays the last three commits in a one-line format?",
-      "back": "`git log -3 --oneline`"
+      "front": "What is the purpose of the 'git reflog' command?",
+      "back": "To track when the tips of branches and other references were updated in the local repository."
     },
     {
-      "front": "How does Git's distributed nature ensure project safety?",
-      "back": "Every clone is a complete backup of the entire studio (repository), so the project can be reconstructed from any contributor's copy."
+      "front": "What is the default expiration period for reachable reflog entries?",
+      "back": "90 days (defined by gc.reflogExpire)."
     },
     {
-      "front": "What command helps you identify the commit hash of a \"lost\" branch or state using the HEAD history?",
-      "back": "`git reflog`"
+      "front": "What is the default expiration period for unreachable reflog entries, such as those from 'git commit --amend'?",
+      "back": "30 days (defined by gc.reflogExpireUnreachable)."
     },
     {
-      "front": "In an interactive rebase, which command is used to combine a commit with the previous one while keeping both commit messages?",
-      "back": "`squash`"
+      "front": "Where are Git hook scripts stored by default?",
+      "back": ".git/hooks"
     },
     {
-      "front": "What command should always be run after finishing a `git bisect` session?",
-      "back": "`git bisect reset`"
+      "front": "What must be done to a hook file to ensure Git executes it?",
+      "back": "The file must be made executable (e.g., using 'chmod +x')."
     },
     {
-      "front": "What does the `git shortlog -sn` command show?",
-      "back": "A summary of contributors and the number of commits each has made, sorted by frequency."
+      "front": "Which Git hook is commonly used to run a linter and can cancel a commit if it exits with a non-zero status?",
+      "back": "pre-commit"
     },
     {
-      "front": "Which command is used to remove a worktree directory and clean up its administrative files in `.git`?",
-      "back": "`git worktree remove <path>`"
+      "front": "Which Git hook receives the proposed commit message file and can be used to enforce specific message formats?",
+      "back": "commit-msg"
     },
     {
-      "front": "If you modify a file after running `git add`, which command shows the changes that are *not* yet staged for the next commit?",
-      "back": "`git diff`"
+      "front": "How can you bypass all commit-related hooks during a commit operation?",
+      "back": "By using the '--no-verify' flag with 'git commit'."
     },
     {
-      "front": "What is the command to create an unannotated, lightweight tag?",
-      "back": "`git tag <tag-name>`"
+      "front": "In Javascript-based projects, which tool is often used to manage and share Git hooks across the team?",
+      "back": "husky"
+    },
+    {
+      "front": "Which command allows you to run a specific Git command, such as 'git status', recursively across all submodules?",
+      "back": "git submodule foreach"
+    },
+    {
+      "front": "What Git command reduces the working tree to only a subset of tracked files to handle large repositories?",
+      "back": "git sparse-checkout"
+    },
+    {
+      "front": "The experimental Git feature used to record and automatically reuse conflict resolutions is called _____.",
+      "back": "rerere (Reuse Recorded Resolution)"
+    },
+    {
+      "front": "In Semantic Versioning (SemVer), which part of the version 'v2.1.3' is incremented for backwards-compatible bug fixes?",
+      "back": "PATCH (the 3)."
+    },
+    {
+      "front": "In SemVer, when is the MINOR version number incremented?",
+      "back": "When new functionality is added in a backwards-compatible manner."
+    },
+    {
+      "front": "In SemVer, when is the MAJOR version number incremented?",
+      "back": "When you make incompatible API changes."
+    },
+    {
+      "front": "What does 'git describe --tags' show you besides the name of the most recent tag?",
+      "back": "The number of commits past that tag and the abbreviated hash of the current commit."
+    },
+    {
+      "front": "If 'git status' lists a file as both staged and unstaged, what has occurred?",
+      "back": "The file was modified and staged, then modified again without being re-staged."
+    },
+    {
+      "front": "Which Git configuration variable allows you to change the directory where Git looks for hooks?",
+      "back": "core.hooksPath"
     }
   ]
 }

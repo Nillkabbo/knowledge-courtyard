@@ -3,233 +3,236 @@
   "questions": [
     {
       "type": "multiple_choice",
-      "question": "An engineer has modified several lines in a configuration file but only wants to include the performance-related optimizations in the next commit, leaving the experimental debug logs in the working directory. Which Git procedure correctly facilitates this partial inclusion?",
+      "question": "If a developer modifies a tracked file, executes `git add`, and then makes further changes to the same file before committing, what content will be recorded in the resulting commit?",
       "answerOptions": [
         {
-          "text": "Execute git add -p to interactively select specific 'hunks' of the file.",
+          "text": "Only the changes made before the `git add` command was executed.",
           "isCorrect": true,
-          "rationale": "The -p (patch) flag allows the user to break down file changes into smaller chunks, choosing 'y' to stage specific segments while leaving others as unstaged."
+          "rationale": "Git stages a file exactly as it is at the moment the `git add` command is run; subsequent changes remain in the working directory and are considered unstaged."
         },
         {
-          "text": "Use git commit -a to automatically stage all changes in tracked files.",
+          "text": "The version of the file as it exists in the working directory at the time of the commit.",
           "isCorrect": false,
-          "rationale": "This command stages every modification in tracked files, which would include the debug logs the engineer intended to keep out of the commit."
+          "rationale": "This assumes Git automatically tracks all live changes, but Git requires explicit staging of content for it to be included in a snapshot."
         },
         {
-          "text": "Apply git stash to hide the debug logs before running a standard git add.",
+          "text": "A merged version containing both the staged changes and the newer unstaged edits.",
           "isCorrect": false,
-          "rationale": "Stashing typically works on a file-level basis unless advanced flags are used, and it would remove the debug logs from the working directory entirely rather than just keeping them unstaged."
+          "rationale": "Git does not automatically merge working tree changes into the index during a standard commit operation."
         },
         {
-          "text": "Run git checkout -- <file> to discard the debug logs before staging.",
+          "text": "The commit will fail because the file is in an inconsistent state between the index and working tree.",
           "isCorrect": false,
-          "rationale": "This action permanently deletes the unstaged changes from the file, meaning the experimental debug logs would be lost forever."
+          "rationale": "Git allows files to be simultaneously staged and modified; it does not block commits but simply ignores the unstaged portion."
         }
       ],
-      "hint": "Consider the command that allows you to review individual changes within a single file."
+      "hint": "Consider how the staging area (index) acts as a middle step between the working directory and the permanent history."
+    },
+    {
+      "type": "fill_in_the_blank",
+      "question": "When examining a Git tree object, a submodule entry is distinguished by a specific file mode of ___.",
+      "bestAnswer": "160000",
+      "acceptableAnswers": [
+        "160000",
+        "mode 160000"
+      ],
+      "rationale": "Git uses the 160000 mode to indicate that a directory entry is a submodule (a commit in another repository) rather than a standard directory (040000) or blob (100644).",
+      "hint": "This unique mode identifies the entry as a 'Commit' type within the tree structure of the parent repository."
     },
     {
       "type": "multiple_select",
-      "question": "A developer is preparing a Pull Request and notices that their local branch history contains eight small, disorganized commits. According to the principles of 'Reprinting' and 'Islah,' which actions would be appropriate to clean up this history before sharing it with the team?",
+      "question": "Which of the following components are part of the header Git constructs before calculating the SHA-1 hash for a blob object?",
       "answerOptions": [
         {
-          "text": "Using interactive rebase to 'fixup' redundant commits into a single logical change.",
+          "text": "The object type (e.g., 'blob').",
           "isCorrect": true,
-          "rationale": "Interactive rebase with the 'fixup' or 'squash' commands allows multiple commits to be combined into one, resulting in a cleaner and more readable history."
+          "rationale": "Every Git object header must begin by identifying its internal type to ensure proper retrieval and processing."
         },
         {
-          "text": "Running git rebase -i to 'reword' vague commit messages for clarity.",
+          "text": "The size of the content in bytes.",
           "isCorrect": true,
-          "rationale": "Clear commit messages are essential for maintaining a ledger that is readable years later, and interactive rebase allows for message editing."
+          "rationale": "The header includes a space-delimited size value to define the length of the data following the header."
         },
         {
-          "text": "Performing a git reset --hard to the start of the branch to delete the messy work.",
-          "isCorrect": false,
-          "rationale": "A hard reset would delete all the actual code changes, failing to preserve the work while cleaning up the history."
+          "text": "A null byte character (represented as $\\0$).",
+          "isCorrect": true,
+          "rationale": "Git uses a null byte to terminate the header and separate it from the actual file content."
         },
         {
-          "text": "Executing git rebase on a branch that has already been pushed and is being used by others.",
+          "text": "The filename of the original file.",
           "isCorrect": false,
-          "rationale": "Rebasing public history breaks the 'Golden Rule' because it rewrites SHA-1 hashes, causing synchronization conflicts for every other team member."
+          "rationale": "Blobs are content-addressable and do not store filenames; filenames are instead stored within tree objects."
         }
       ],
-      "hint": "Focus on methods that refine existing work into a professional presentation without losing the progress.",
+      "hint": "Think about the metadata required to define a generic data object before its actual content begins.",
       "hasAllOfTheAbove": false,
       "hasNoneOfTheAbove": false
     },
     {
-      "type": "fill_in_the_blank",
-      "question": "When searching for the origin of a specific bug across hundreds of commits, Git can automate the process using the ___ command, which utilizes a binary search algorithm to identify the first 'bad' commit.",
-      "bestAnswer": "bisect",
-      "acceptableAnswers": [
-        "git bisect",
-        "bisect run"
-      ],
-      "rationale": "Bisect is a specialized debugging tool that repeatedly splits the commit history in half to quickly narrow down which specific change introduced a regression.",
-      "hint": "This command relates to Inspector Nadim's 'halving trick'."
-    },
-    {
       "type": "short_answer",
-      "question": "Explain the architectural difference between how Git stores data in a commit versus how an 'apprentice's change-list' (a delta-based system) would store it, and why this distinction matters for project recovery.",
+      "question": "Explain why it is considered a 'Golden Rule' to avoid rebasing commits that have already been pushed to a public repository.",
       "grading": {
-        "modelAnswer": "Git stores each commit as a full snapshot (a complete picture of the entire project at that moment), whereas a delta-based system only stores the list of changes between versions. This distinction is critical because snapshots allow the project to be perfectly reconstructed from any single commit without needing to recalculate a long chain of potentially missing or corrupted change-logs.",
-        "rationale": "The core design of Git relies on snapshots rather than diff-chains to ensure data integrity and speed when moving between different points in time.",
+        "modelAnswer": "Rebasing rewrites history by creating new commits with different SHA-1 hashes for the same changes. If these commits were already pushed, other collaborators who have based their work on the original commits will face major integration conflicts, as their history will no longer match the rewritten history on the server.",
+        "rationale": "Rebasing creates entirely new object identities (hashes); doing this to public history breaks the continuity of work for everyone else using that repository.",
         "requiredAttributes": [
-          "Defines a Git commit as a full snapshot or complete picture.",
-          "Defines the alternative as a list of changes or deltas.",
-          "Explains that snapshots allow for easier/more reliable reconstruction of the project."
+          "Mentions that rebasing rewrites history or changes commit hashes.",
+          "Explains that other collaborators have already based work on the original hashes.",
+          "States that this leads to conflicts or breaks history for others."
         ],
         "errors": {
           "misconceptions": [
-            "Stating that Git only stores the lines that were changed to save space."
+            "Believing rebasing only moves a pointer without changing the commit's identity."
           ],
           "bluffs": [
-            "Saying snapshots are just 'faster' without explaining that they represent the whole project state."
+            "Vague statements about 'breaking the code' without mentioning the history/hash mismatch."
           ]
         }
       },
-      "hint": "Recall Rahmat Ali's lesson about the difference between a 'full room photograph' and a 'ledger of changes'."
+      "hint": "Focus on how commit identities (SHA-1) change during a rebase and how that impacts other people's clones."
     },
     {
       "type": "multiple_choice",
-      "question": "A team member has mistakenly committed a secret API key to a public repository. What is the safest and most 'honest' way to rectify this in a shared history environment, according to the 'Ledger of Records' philosophy?",
+      "question": "When using the command `git cherry-pick A..B`, which commits are actually applied to the current branch?",
       "answerOptions": [
         {
-          "text": "Use git revert to create a new commit that removes the key while keeping the history intact.",
+          "text": "Every commit from the one immediately following A up to and including B.",
           "isCorrect": true,
-          "rationale": "Reverting is the public-friendly way to undo changes; it adds a new 'cancellation' entry to the ledger without rewriting the past, which preserves synchronization for the team."
+          "rationale": "In Git revision ranges, the start of the range (A) is exclusive, while the end (B) is inclusive."
         },
         {
-          "text": "Perform a git reset --hard to the commit before the secret was added and force-push.",
+          "text": "Every commit starting from A and ending at B.",
           "isCorrect": false,
-          "rationale": "While this deletes the key, it rewrites history (breaking the Golden Rule) and can be extremely disruptive to others who have already pulled the 'bad' commit."
+          "rationale": "This misconception fails to account for the exclusive nature of the starting point in standard Git range syntax."
         },
         {
-          "text": "Simply delete the key in a new commit and perform a standard push.",
+          "text": "Only commits A and B, skipping all intermediate history.",
           "isCorrect": false,
-          "rationale": "Although the key is gone from the current files, it remains fully visible and retrievable in the project's history/previous snapshots."
+          "rationale": "The double-dot syntax indicates a continuous range walk, not a discrete list of specific commits."
         },
         {
-          "text": "Use git commit --amend to remove the key from the last commit and push normally.",
+          "text": "Only commit A, as B is considered the parent of the range.",
           "isCorrect": false,
-          "rationale": "Amending a pushed commit creates a new hash, leading to a 'rejected' status upon pushing because the remote history no longer matches the local one."
+          "rationale": "This incorrectly reverses the parent/child relationship and the inclusive/exclusive logic of the command."
         }
       ],
-      "hint": "Identify the command that adds a 'cancellation' entry to the ledger rather than attempting to erase the past."
-    },
-    {
-      "type": "multiple_choice",
-      "question": "You are currently in a 'detached HEAD' state to inspect an old version of the project. You realize you need to make a quick fix. What is the necessary first step to ensure your new work is not 'orphaned' or lost?",
-      "answerOptions": [
-        {
-          "text": "Create a new branch using git switch -c <name> to give the HEAD pointer a named reference.",
-          "isCorrect": true,
-          "rationale": "In a detached HEAD state, there is no branch pointer to keep your new commits reachable; creating a branch provides a named sticker (pointer) that will track your progress."
-        },
-        {
-          "text": "Run git commit immediately to save the changes to the current snapshot.",
-          "isCorrect": false,
-          "rationale": "Committing while detached works, but as soon as you switch away, those commits become difficult to find because no branch name points to them."
-        },
-        {
-          "text": "Use git merge main to bring the detached work back into the official timeline.",
-          "isCorrect": false,
-          "rationale": "You cannot merge 'into' main while you are not on the main branch; you must first secure your work on a branch before it can be merged elsewhere."
-        },
-        {
-          "text": "Execute git fetch to update the pointers and re-attach the HEAD automatically.",
-          "isCorrect": false,
-          "rationale": "Fetching only downloads data from the remote; it does not change your local HEAD state or move you back onto a branch."
-        }
-      ],
-      "hint": "Think about Shahina Begum's sticky-notes and what happens when the bookmark isn't attached to one."
-    },
-    {
-      "type": "multiple_choice",
-      "question": "What is the significant technical difference between a 'Fast-forward' merge and a 'Three-way' merge in Miya Basir's Union Hall?",
-      "answerOptions": [
-        {
-          "text": "A fast-forward merge simply moves the branch pointer, whereas a three-way merge creates a new dedicated 'merge commit'.",
-          "isCorrect": true,
-          "rationale": "Fast-forwarding is possible when the history is linear; Git just slides the pointer forward. A three-way merge is required when histories have diverged, necessitating a new snapshot to join them."
-        },
-        {
-          "text": "A three-way merge is only used when there are conflicts, while fast-forward is for clean merges.",
-          "isCorrect": false,
-          "rationale": "Three-way merges are used whenever branches have diverged, even if there are no overlapping line conflicts."
-        },
-        {
-          "text": "Fast-forward merges are safer because they allow you to 'abort' if the code fails tests.",
-          "isCorrect": false,
-          "rationale": "Both types of merges can be problematic if the code is broken, but fast-forwarding actually makes it harder to 'undo' the merge as a single unit since there is no merge commit."
-        },
-        {
-          "text": "A three-way merge ignores the common ancestor to prioritize the most recent changes.",
-          "isCorrect": false,
-          "rationale": "The 'three-way' name comes from using the two branch tips AND their common ancestor to determine how to combine changes."
-        }
-      ],
-      "hint": "Consider which method results in the creation of a new snapshot and which just moves a 'sticky-note'."
+      "hint": "Recall how Git interprets the double-dot range syntax regarding the inclusivity of the start and end points."
     },
     {
       "type": "fill_in_the_blank",
-      "question": "To work on a critical 'hotfix' without disturbing your current experimental branch—and without the 'dance' of stashing—you can use the command git ___ add to create a separate physical folder that shares the same .git repository.",
-      "bestAnswer": "worktree",
+      "question": "The feature that allows Git to automatically record and reuse the resolution of a merge conflict, so it does not have to be solved manually a second time, is called ___.",
+      "bestAnswer": "rerere",
       "acceptableAnswers": [
-        "git worktree",
-        "worktree add"
+        "rerere",
+        "git rerere",
+        "reuse recorded resolution"
       ],
-      "rationale": "Worktrees allow for multiple working directories to be attached to a single repository, enabling simultaneous work on different branches without switching or stashing.",
-      "hint": "This relates to Rubela Khatun's 'twin rooms' arrangement."
+      "rationale": "Rerere stands for 'reuse recorded resolution,' a tool that tracks how you resolve conflict hunks and applies those same fixes if the same conflict appears again.",
+      "hint": "The name of this tool is a shorthand for its primary function of reusing recorded conflict solutions."
     },
     {
       "type": "multiple_choice",
-      "question": "A developer runs git pull and receives a 'rejected' error because the remote branch contains work they do not have locally. Following the 'Mirror Room' etiquette, what is the most organized way to incorporate the remote changes while keeping a linear history?",
+      "question": "What happens to new commits created while a repository is in a 'detached HEAD' state?",
       "answerOptions": [
         {
-          "text": "Execute git pull --rebase to fetch remote changes and replay local commits on top of them.",
+          "text": "They are created successfully but do not belong to any branch and may eventually be garbage collected.",
           "isCorrect": true,
-          "rationale": "Rebasing during a pull avoids unnecessary merge commits and keeps the project history as a straight line, as if the developer's work happened after the remote changes."
+          "rationale": "Commits in detached HEAD are reachable only by their hash; without a branch pointer to track them, they are 'orphaned' and prone to being cleaned up by Git."
         },
         {
-          "text": "Use git push --force-with-lease to overwrite the remote history with the local version.",
+          "text": "They are automatically added to the master branch once the user switches back.",
           "isCorrect": false,
-          "rationale": "This is dangerous as it erases the remote work of others, violating the principle of 'Amanat' (trust)."
+          "rationale": "Git does not automatically merge detached commits; the user must manually create a branch to preserve them."
         },
         {
-          "text": "Run git fetch followed by git merge to create a three-way merge commit.",
+          "text": "Git prevents the user from making any commits until a branch is checked out.",
           "isCorrect": false,
-          "rationale": "While functional, this creates a 'merge bubble' in the history which can make the graph harder to read compared to a linear rebase."
+          "rationale": "Git allows experimental commits in detached HEAD, but warns the user that they are not attached to a branch."
         },
         {
-          "text": "Delete the local branch and clone the repository again to get a fresh start.",
+          "text": "They update the tag that was originally checked out to point to the new work.",
           "isCorrect": false,
-          "rationale": "This is highly inefficient and results in the loss of all local commits that haven't been pushed yet."
+          "rationale": "Tags are intended to be fixed points in history; they do not move forward with new commits like branch pointers do."
         }
       ],
-      "hint": "Search for the option that combines fetching with a 'Reprinting Shop' technique."
+      "hint": "Think about the role of branch pointers as anchors for the reachability of commits."
+    },
+    {
+      "type": "multiple_select",
+      "question": "Which of the following are shared among all linked worktrees when using `git worktree`?",
+      "answerOptions": [
+        {
+          "text": "The main object database.",
+          "isCorrect": true,
+          "rationale": "All worktrees share the same underlying data store within the `.git` directory."
+        },
+        {
+          "text": "The commit history and all references starting with `refs/`.",
+          "isCorrect": true,
+          "rationale": "Branches and tags are shared across all worktrees to ensure a consistent view of the project history."
+        },
+        {
+          "text": "The `HEAD` pointer.",
+          "isCorrect": false,
+          "rationale": "Each worktree must have its own unique `HEAD` to allow checking out different branches simultaneously."
+        },
+        {
+          "text": "The index (staging area).",
+          "isCorrect": false,
+          "rationale": "Because each worktree has its own working directory, each requires its own index to stage changes independently."
+        }
+      ],
+      "hint": "Distinguish between the global project data (objects/refs) and the local state required for a specific working copy.",
+      "hasAllOfTheAbove": false,
+      "hasNoneOfTheAbove": false
+    },
+    {
+      "type": "multiple_choice",
+      "question": "If a push is rejected with a message to 'fetch first,' what does this typically indicate about the state of the remote repository?",
+      "answerOptions": [
+        {
+          "text": "The remote branch contains commits that do not exist in the local history.",
+          "isCorrect": true,
+          "rationale": "Git prevents pushes that are not fast-forwards to protect against overwriting other people's work that has been added to the server since the last local fetch."
+        },
+        {
+          "text": "The local user lacks the necessary permissions to write to the repository.",
+          "isCorrect": false,
+          "rationale": "Permission issues usually result in an 'Access Denied' or 'Forbidden' error rather than a 'fetch first' hint."
+        },
+        {
+          "text": "The server's disk space is full, preventing new objects from being stored.",
+          "isCorrect": false,
+          "rationale": "Server resource issues produce specific technical errors, whereas 'fetch first' is a standard version control synchronization warning."
+        },
+        {
+          "text": "The local configuration file has an incorrect URL for the 'origin' remote.",
+          "isCorrect": false,
+          "rationale": "An incorrect URL would prevent any connection to the server, resulting in a 'remote not found' or 'could not resolve host' error."
+        }
+      ],
+      "hint": "This error occurs because the server's history has advanced in a way the local machine is not yet aware of."
     },
     {
       "type": "short_answer",
-      "question": "You mistakenly ran git reset --hard HEAD~1 and lost a day's worth of commits. Describe the 'secret door' you would use to find those missing snapshots and how you would recover them.",
+      "question": "What is the primary purpose of the `git sparse-checkout` command, and in what scenario would it be most beneficial?",
       "grading": {
-        "modelAnswer": "I would use 'git reflog' to view the log of every move the HEAD pointer has made over the last 90 days. Once I identify the SHA-1 hash of the commit I accidentally deleted, I would run 'git branch rescue <hash>' or 'git reset --hard <hash>' to bring that snapshot back into a visible branch.",
-        "rationale": "The reflog acts as a safety net that records almost every action in Git, ensuring that snapshots are rarely 'lost' even if their branch pointers are moved or deleted.",
+        "modelAnswer": "The command reduces the working tree to only a subset of the tracked files, based on specific patterns or directories. This is most beneficial in massive 'monorepos' where a developer only needs to work on a small part of the project, significantly improving performance and reducing local disk usage.",
+        "rationale": "Sparse-checkout allows for a partial view of the project files while maintaining a full history, solving performance issues in extremely large repositories.",
         "requiredAttributes": [
-          "Mentions 'git reflog' as the tool to see the history of HEAD movements.",
-          "Explains identifying the hash or commit ID of the lost work.",
-          "Mentions using 'reset' or 'branch' with that hash to restore the work."
+          "Mentions reducing the working tree to a subset of files.",
+          "Identifies that it is used for large repositories/monorepos.",
+          "Mentions a benefit such as performance or saved disk space."
         ],
         "errors": {
           "misconceptions": [
-            "Trying to use 'git log' to find deleted commits (deleted commits don't show up in standard logs)."
+            "Confusing sparse-checkout with a shallow clone (which limits history, not files)."
           ],
           "bluffs": [
-            "Saying that once you hard reset, the work is gone forever."
+            "Stating it deletes files from the repository permanently."
           ]
         }
       },
-      "hint": "Think of Moazzamel Hoda's hidden ledger that remembers every step for 90 days."
+      "hint": "Focus on the difference between the full set of tracked files and what is actually visible on the user's hard drive."
     }
   ]
 }
