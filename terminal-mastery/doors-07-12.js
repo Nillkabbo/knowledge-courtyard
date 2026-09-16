@@ -480,11 +480,11 @@ make || exit 1             # স্ক্রিপ্টে লাল প্য�
 <rect class="node" x="15" y="85" width="120" height="44" rx="10"/><text class="lbl" x="75" y="103">foreground</text><text class="lbl-sm" x="75" y="119">চোখের সামনে</text>
 <rect class="node-cyan" x="220" y="85" width="120" height="44" rx="10"/><text class="lbl-cyan" x="280" y="103">background &</text><text class="lbl-sm" x="280" y="119">পেছনের ঘাট</text>
 <rect class="node-leaf" x="425" y="85" width="120" height="44" rx="10"/><text class="lbl-leaf" x="485" y="103">ফেরা → \$?</text><text class="lbl-sm" x="485" y="119">০=সবুজ · ≠০=লাল</text>
-<line x1="135" y1="96" x2="215" y2="96" stroke="#5eead4" stroke-width="2" fill="none" marker-end="url(#arrowH)"/>
+<line x1="135.0" y1="96.0" x2="220.0" y2="96.0" stroke="#5eead4" stroke-width="2" fill="none" marker-end="url(#arrowH)"/>
 <text class="lbl-sm" x="175" y="86">Ctrl+Z → bg</text>
-<line x1="135" y1="118" x2="215" y2="118" stroke="#5eead4" stroke-width="2" fill="none" marker-end="url(#arrowH)"/>
+<line x1="135.0" y1="118.0" x2="220.0" y2="118.0" stroke="#5eead4" stroke-width="2" fill="none" marker-end="url(#arrowH)"/>
 <text class="lbl-sm" x="175" y="136">fg %N ডাকে</text>
-<line x1="340" y1="107" x2="420" y2="107" stroke="#5eead4" stroke-width="2" fill="none" marker-end="url(#arrowH)"/>
+<line x1="340.0" y1="107.0" x2="425.0" y2="107.0" stroke="#5eead4" stroke-width="2" fill="none" marker-end="url(#arrowH)"/>
 <rect class="cell-hot" x="15" y="15" width="530" height="30" rx="8"/><text class="lbl-sm" x="280" y="34">থামানোর সিঁড়ি: Ctrl+C (SIGINT) → kill (SIGTERM) → kill -9 (SIGKILL — ধরা যায় না)</text>
 <rect class="cell" x="15" y="160" width="530" height="36" rx="8"/><text class="lbl-sm" x="280" y="176">টার্মিনাল বন্ধ = SIGHUP: nohup / disown / tmux দিয়ে বাঁচাও; Book ৫৯-এর /bg-র পেছনে এই হারুনই</text>
 </svg>

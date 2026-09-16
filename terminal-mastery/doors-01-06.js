@@ -235,8 +235,8 @@ make 2>&1 | tee build.log</div>
 <rect class="node" x="15" y="90" width="120" height="46" rx="10"/><text class="lbl" x="75" y="108">cat</text><text class="lbl-sm" x="75" y="124">পড়ার নৌকা</text>
 <rect class="node" x="220" y="90" width="120" height="46" rx="10"/><text class="lbl" x="280" y="108">grep</text><text class="lbl-sm" x="280" y="124">ছাঁকনি</text>
 <rect class="node" x="425" y="90" width="120" height="46" rx="10"/><text class="lbl" x="485" y="108">sort · uniq</text><text class="lbl-sm" x="485" y="124">সাজানো ও গণনা</text>
-<line x1="135" y1="113" x2="215" y2="113" stroke="#7dd3fc" stroke-width="3" fill="none" marker-end="url(#arrowW)"/>
-<line x1="340" y1="113" x2="420" y2="113" stroke="#7dd3fc" stroke-width="3" fill="none" marker-end="url(#arrowW)"/>
+<line x1="135.0" y1="113.0" x2="220.0" y2="113.0" stroke="#7dd3fc" stroke-width="3" fill="none" marker-end="url(#arrowW)"/>
+<line x1="340.0" y1="113.0" x2="425.0" y2="113.0" stroke="#7dd3fc" stroke-width="3" fill="none" marker-end="url(#arrowW)"/>
 <text class="lbl-cyan" x="175" y="100">| stdout→stdin</text>
 <text class="lbl-cyan" x="380" y="100">| আবার</text>
 <rect class="cell-cyan" x="15" y="15" width="250" height="30" rx="8"/><text class="lbl-sm" x="140" y="34">উপরের দরজা: stdin ← কীবোর্ড / ফাইল (&lt;)</text>

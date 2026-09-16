@@ -78,7 +78,7 @@ tail -f /tmp/tick.log        # Ctrl+C থামাও; শেষে crontab -e �
 <rect class="node-cyan" x="505" y="20" width="45" height="36" rx="8"/><text class="lbl-sm" x="527" y="42">সপ্তাহ 1</text>
 <rect class="node-hot" x="155" y="95" width="395" height="36" rx="8"/><text class="lbl-sm" x="352" y="117">0 5 * * 1 /home/me/backup.sh — সোম ভোর ৫টা</text>
 <line x1="70.0" y1="104.0" x2="155.0" y2="46.6" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d12)"/>
-<line x1="125" y1="82" x2="151" y2="82" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d12)"/>
+<line x1="125" y1="82" x2="151.6" y2="56" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d12)"/>
 <line x1="200" y1="56" x2="199" y2="91" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d12)"/>
 <rect class="cell" x="15" y="145" width="530" height="30" rx="7"/><text class="lbl-sm" x="280" y="164">at 23:00 = একবারের ট্রে · ল্যাপটপ-ঘুমে anacron বাদ-ওয়াক্ত পূরণ করে · প্রতি কাজে লগ (>> log 2>&1)</text>
 </svg>
@@ -591,7 +591,7 @@ tmux send-keys -t lab 'make test' Enter   # দূর থেকে ঘরে আ
 <line x1="145" y1="87" x2="181" y2="87" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d17)"/>
 <line x1="315" y1="80" x2="351" y2="62" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d17)"/>
 <line x1="315" y1="95" x2="351" y2="110" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d17)"/>
-<line x1="445" y1="87" x2="471" y2="87" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d17)"/>
+<line x1="445" y1="70" x2="475" y2="87" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar60d17)"/>
 <rect class="cell" x="15" y="145" width="530" height="30" rx="7"/><text class="lbl-sm" x="280" y="164">সব আদেশের আগে ঘণ্টা Ctrl-b · detach (d) = কাজ চলবে · ফিরো attach -t দিয়ে — SSH-কাটা মানে মৃত্যু নয়</text>
 </svg>
 <div class="diag-cap">বাড়ি → কামরা → জানালা → ফলক; তুমি শুধু দরজা খুলে ঢুকো-বেরোও — কাজ কখনো মরে না।</div>
@@ -704,7 +704,7 @@ exit 0</div>
 <rect class="node-leaf" x="315" y="105" width="230" height="52" rx="10"/><text class="lbl-leaf" x="430" y="127">trap ... EXIT</text><text class="lbl-sm" x="430" y="145">যেভাবেই যাও, ঝাড়ু হবে</text>
 <rect class="cell" x="15" y="170" width="530" height="24" rx="6"/><text class="lbl-sm" x="280" y="186">set -euo pipefail + mktemp + trap EXIT — সিরিয়াস স্ক্রিপ্টের প্রথম পাঁচ লাইন, এই ক্রমেই</text>
 <line x1="95" y1="67" x2="115" y2="103" stroke="#fb923c" stroke-width="2" fill="none" marker-end="url(#arrowM)"/>
-<line x1="280" y1="67" x2="243" y2="100" stroke="#fb923c" stroke-width="2" fill="none" marker-end="url(#arrowM)"/>
+<line x1="280" y1="67" x2="243" y2="105" stroke="#fb923c" stroke-width="2" fill="none" marker-end="url(#arrowM)"/>
 <line x1="465" y1="67" x2="440" y2="103" stroke="#fb923c" stroke-width="2" marker-end="url(#arrowM)"/>
 </svg>
 <div class="diag-cap">তিন নোঙর থামায়, ঝাড়ু-নিয়ম পরিষ্কার রাখে — জাহাজ সৎ হয় দুই দিক থেকেই।</div>
@@ -908,7 +908,7 @@ alias top5='journalctl -u ledgerpilot --since today | grep -i error | awk "{prin
 <line x1="280" y1="70" x2="280" y2="76" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
 <line x1="445" y1="70" x2="326" y2="110" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
 <line x1="90" y1="85" x2="233" y2="115" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
-<line x1="500" y1="85" x2="327" y2="116" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
+<line x1="470" y1="125" x2="326" y2="125" stroke="#fbbf24" stroke-width="3" fill="none" marker-end="url(#arrowT)"/>
 <line x1="120" y1="195" x2="250" y2="210" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
 <line x1="440" y1="195" x2="324" y2="144" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#arrowT)"/>
 </svg>
