@@ -1,281 +1,265 @@
 {
-  "title": "Programming Flashcards",
+  "title": "Claude Flashcards",
   "cards": [
     {
-      "front": "What are the four measures of a high-quality Capstone project according to the 'Bridge-keeper'?",
-      "back": "Real need, weekend-size, testable heart, and book-touching."
+      "front": "What one-word command starts an interactive Claude Code session in a project folder?",
+      "back": "claude"
     },
     {
-      "front": "When shortlisting Capstone projects, which measure should be prioritized above all others?",
-      "back": "Real need (utility to the user)."
+      "front": "Which command-line flag is used to execute a one-off task without opening an interactive session?",
+      "back": "-p (print mode)"
     },
     {
-      "front": "Why are 'magic projects' (learning three new technologies simultaneously) discouraged for Capstones?",
-      "back": "They lead to project failure and frustration rather than mastery."
+      "front": "According to the Day One steps, which command prints the version number followed by '(Claude Code)'?",
+      "back": "claude --version"
     },
     {
-      "front": "In the SmritiBox project, what serves as the 'Testable heart'?",
-      "back": "The SM-2 algorithm's pure mathematical formulas."
+      "front": "Which command generates the initial CLAUDE.md file to define project rules and conventions?",
+      "back": "/init"
     },
     {
-      "front": "What is the 'Question-Machine' rule for brainstorming with Claude?",
-      "back": "Claude must only ask questions (Constraint, Alternative, Risk) while the user provides all decisions."
+      "front": "What are the four components displayed in the header when starting a new Claude session?",
+      "back": "Version, model, and working directory."
     },
     {
-      "front": "Which Claude Code mode is used to draft the PRD (Product Requirements Document) without editing files?",
-      "back": "Plan mode (using --permission-mode plan or Shift+Tab)."
+      "front": "Why should a developer perform a 'git init' and first commit before building features with Claude Code?",
+      "back": "Claude Code requires a base branch/commit to resolve and use worktree features correctly."
     },
     {
-      "front": "Why is running `/init` on a completely empty repository avoided?",
-      "back": "There is no code for Claude to read, resulting in a poor-quality draft compared to a hand-written CLAUDE.md."
+      "front": "Which file serves as the primary 'Project Memory' for Claude Code, containing build commands and style guides?",
+      "back": "CLAUDE.md"
     },
     {
-      "front": "In TDD (Test-Driven Development), what is the first step of the cycle?",
-      "back": "Write a small behavior test and watch it fail (Red)."
+      "front": "Where should project-specific rules that are meant to be shared with the team via Git be placed?",
+      "back": "At the project root in CLAUDE.md (or .claude/CLAUDE.md)."
     },
     {
-      "front": "True or False: In the 'Red' phase of TDD, an ImportError is considered a valid failure.",
-      "back": "True."
+      "front": "Which file path is used for global user-level rules that apply to all projects on a machine?",
+      "back": "~/.claude/CLAUDE.md"
     },
     {
-      "front": "What is the primary objective of the 'Green' phase in TDD?",
-      "back": "Write the absolute minimum code required to pass the test, avoiding future-proofing."
+      "front": "How does Claude Code handle multiple levels of CLAUDE.md files (e.g., user, project, and sub-folder)?",
+      "back": "All levels are loaded together and concatenated from broadest to most specific."
     },
     {
-      "front": "According to the SM-2 algorithm, what is the interval ($I$) for the first review?",
-      "back": "$I(1) = 1$ day."
+      "front": "Which internal command lists all loaded memory files and opens them in an editor?",
+      "back": "/memory"
     },
     {
-      "front": "According to the SM-2 algorithm, what is the interval ($I$) for the second review?",
-      "back": "$I(2) = 6$ days."
+      "front": "How can one CLAUDE.md file import the contents of another external documentation file?",
+      "back": "By using the @path/to/file syntax."
     },
     {
-      "front": "What is the formula for calculating the new Easiness Factor ($EF'$) in SM-2 based on quality $q$?",
-      "back": "$EF' = EF + (0.1 - (5 - q) \\times (0.08 + (5 - q) \\times 0.02))$"
+      "front": "Which command-line shortcut allows you to resume the very last session in the current directory?",
+      "back": "claude -c"
     },
     {
-      "front": "What is the minimum value (floor) for the Easiness Factor ($EF$) in the SM-2 algorithm?",
-      "back": "$1.3$"
+      "front": "The _____ command displays a list of previous sessions to allow the user to select one to resume.",
+      "back": "claude --resume"
     },
     {
-      "front": "In the SM-2 algorithm, what happens to the card's progress if the quality $q$ is less than $3$?",
-      "back": "The repetitions count is reset to $0$ and the interval is reset to $1$."
+      "front": "Which model is the dependable default for everyday tasks like feature work, bug fixes, and reviews?",
+      "back": "Sonnet"
     },
     {
-      "front": "Which SmritiBox module is responsible for implementing the SRS mathematical logic?",
-      "back": "`sm2.py`"
+      "front": "Which model should be selected for high-stakes, large-scale refactors or extremely difficult debugging?",
+      "back": "Opus"
     },
     {
-      "front": "What data storage format is used by SmritiBox to ensure files are human-readable and git-friendly?",
-      "back": "JSON-lines (JSONL)."
+      "front": "Which model is optimized for quick formatting, mechanical edits, and simple questions?",
+      "back": "Haiku"
     },
     {
-      "front": "In the 'Grand Opening' phase, moving project rituals into a file creates a _____.",
-      "back": "Skill (`SKILL.md`)."
+      "front": "What is the purpose of the /effort command within a session?",
+      "back": "It sets the reasoning depth or 'thought' level for the model."
     },
     {
-      "front": "What mechanism acts as a 'Door Guard' to prevent broken code from being committed?",
-      "back": "A git pre-commit hook running `pytest`."
+      "front": "The process of summarizing old conversation history to free up space in the limited context window is called _____.",
+      "back": "Compaction"
     },
     {
-      "front": "Which Claude Code feature provides a 'Second Opinion' or 'Judgment' during development?",
-      "back": "A custom Agent (e.g., `reviewer.md`)."
+      "front": "Which command is used to manually trigger a summary of the current session to save tokens?",
+      "back": "/compact"
     },
     {
-      "front": "What is the 'Oath Wall' that ensures tests run on every push regardless of the developer's machine?",
-      "back": "CI (Continuous Integration) such as GitHub Actions."
+      "front": "How can a user target compaction on a specific topic to ensure relevant details are preserved?",
+      "back": "Use the command /compact focus on [topic]."
     },
     {
-      "front": "What specific git command is used to create a version 1.0.0 release with a certificate/message?",
-      "back": "`git tag -a v1.0.0 -m \"message\"`"
+      "front": "Which command completely clears the session context, starting a fresh 'river' for a new task?",
+      "back": "/clear"
     },
     {
-      "front": "Under the Semantic Versioning (SemVer) contract, what does version 1.0.0 signify?",
-      "back": "A stable public API promise."
+      "front": "How does a 'subagent' help prevent context window overflow during heavy research or large file scans?",
+      "back": "It runs in its own separate context window and returns only a summary to the main session."
     },
     {
-      "front": "How do you ensure a git pre-commit hook script is executable?",
-      "back": "`chmod +x .git/hooks/pre-commit`"
+      "front": "Which hotkey or command opens the rewind menu to restore previous states of code or conversation?",
+      "back": "Esc Esc (on an empty prompt) or /rewind."
     },
     {
-      "front": "What is the purpose of the `disable-model-invocation: true` flag in a `SKILL.md` file?",
-      "back": "It prevents Claude from automatically using the skill, requiring the user to invoke it manually."
+      "front": "Why can file deletions performed via the '!' bash prefix not be undone by the /rewind command?",
+      "back": "Checkpoints only capture file edits made by Claude's internal tools, not external shell commands."
     },
     {
-      "front": "In a `SKILL.md` body, what syntax allows inlining the live output of a shell command?",
-      "back": "`!command` (e.g., `!git diff HEAD`)."
+      "front": "Where are custom subagent definitions stored to make them available across all projects?",
+      "back": "~/.claude/agents/*.md"
     },
     {
-      "front": "Mastery of Claude Code is defined by designing a workshop based on three pillars: Context, _____, and Verification.",
-      "back": "Measured Trust."
+      "front": "What metadata format is used at the top of a .claude/agents/*.md file to define its name and tools?",
+      "back": "YAML frontmatter."
     },
     {
-      "front": "The 'Mixed Brain' configuration `/model opusplan` uses which model for the planning phase?",
-      "back": "Opus."
+      "front": "Which permission mode restricts Claude to reading and thinking only, preventing all file edits and commands?",
+      "back": "Plan mode"
     },
     {
-      "front": "The 'Mixed Brain' configuration `/model opusplan` switches to which model for task execution?",
-      "back": "Sonnet."
+      "front": "What is the status bar indicator for an active Plan mode session?",
+      "back": "⏸ plan mode on"
     },
     {
-      "front": "What command allows you to view the current token usage and costs for a session?",
-      "back": "`/usage`"
+      "front": "How do you transition from a drafted plan to actual implementation work in Plan mode?",
+      "back": "Review and edit the plan if needed, then press Enter to approve and start the work."
     },
     {
-      "front": "Which command is used to manually compress the conversation history to free up context space?",
-      "back": "`/compact`"
+      "front": "Which hotkey toggles the visibility of the internal TODO checklist during a multi-step task?",
+      "back": "Ctrl+T"
     },
     {
-      "front": "What is the default limit for the number of checkpoints Claude Code keeps in a session?",
-      "back": "100."
+      "front": "In the 'question-machine' brainstorming technique, what is Claude specifically forbidden from doing?",
+      "back": "Providing answers or solutions (it must only ask critical questions)."
     },
     {
-      "front": "True or False: Checkpoints in Claude Code can revert changes made via `bash` commands like `rm`.",
-      "back": "False (they only track file edits made by Claude's own tools)."
+      "front": "What three foundational questions should be written before starting a new project (e.g. a small CLI tool)?",
+      "back": "Why (the pain point), What (one-sentence claim), and Not (non-goals for v1)."
     },
     {
-      "front": "What is the purpose of the `@` sign when chatting with Claude Code?",
-      "back": "To explicitly reference specific files, folders, or MCP resources."
+      "front": "What are the three essential components of a high-quality 'ticket-prompt' used in the Factory Rhythm?",
+      "back": "Context (where we are), Goal (what to do), and Verification (how to prove it is done)."
     },
     {
-      "front": "Which file is used to configure MCP servers for a specific project?",
-      "back": "`.mcp.json` (located at the project root)."
+      "front": "Which permission mode allows file edits without asking but still prompts for permission before running commands?",
+      "back": "acceptEdits"
     },
     {
-      "front": "What is the 'Refactor' step in the TDD cycle intended for?",
-      "back": "Cleaning up the code's structure and names while keeping behavior unchanged."
+      "front": "Where are permanent allow/deny rules for specific bash commands defined?",
+      "back": "In the 'permissions' block of settings.json."
     },
     {
-      "front": "Which permission mode provides the safest balance by asking for approval on sensitive actions?",
-      "back": "`default`"
+      "front": "Which permission mode should only be used in isolated environments like sandboxes or CI runners?",
+      "back": "bypassPermissions"
     },
     {
-      "front": "What is the purpose of the `availableModels` setting in `settings.json`?",
-      "back": "To restrict the models that can be used within a specific environment or organization."
+      "front": "Which hook type executes a local script immediately after Claude finishes using a tool?",
+      "back": "PostToolUse"
     },
     {
-      "front": "How can you resume a specific session from a list of past sessions?",
-      "back": "`claude --resume`"
+      "front": "What is the purpose of a 'PreToolUse' hook with a 'deny' decision?",
+      "back": "It allows a local script to intercept and stop a command or edit before it occurs."
     },
     {
-      "front": "What is the function of the `CLAUDE.md` file in the project memory hierarchy?",
-      "back": "It acts as a 'Workshop Ledger' containing persistent build, test, and style rules."
+      "front": "Which configuration file is used to connect Claude Code to external services like Notion or GitHub via MCP?",
+      "back": ".mcp.json"
     },
     {
-      "front": "Which command allows you to edit all levels of the project memory (User, Project, Local) in your editor?",
-      "back": "`/memory`"
+      "front": "How should sensitive API keys be referenced in .mcp.json to prevent hardcoding secrets?",
+      "back": "Using the ${ENV_VAR} syntax."
     },
     {
-      "front": "What is the recommended maximum line length for a `SKILL.md` description to ensure it fits in context?",
-      "back": "1536 characters."
+      "front": "What is the primary difference between a CLAUDE.md file and a Skill (SKILL.md)?",
+      "back": "CLAUDE.md is loaded in every session; a Skill is loaded only when specifically needed or invoked."
     },
     {
-      "front": "Which tool would you use to fetch fresh data from a specific URL if Claude's internal knowledge is stale?",
-      "back": "`WebFetch`"
+      "front": "Which frontmatter key in SKILL.md ensures a skill is only triggered by a manual slash command?",
+      "back": "disable-model-invocation: true"
     },
     {
-      "front": "What is the 'Sub-Registrar's' first rule regarding maps?",
-      "back": "Never hunt new roads on old maps (always use WebSearch for current information)."
+      "front": "What is the benefit of including a line like !`git diff` inside a SKILL.md file?",
+      "back": "It dynamically injects the live command output into the skill's instructions when opened."
     },
     {
-      "front": "What flag is used to run Claude Code in a mode that only outputs the answer without starting a session?",
-      "back": "`-p` (Print mode)."
+      "front": "Which command-line tool is used to troubleshoot and verify which settings, hooks, and skills are active?",
+      "back": "/doctor"
     },
     {
-      "front": "In MCP configuration, how should sensitive API tokens be provided to avoid hardcoding them in files?",
-      "back": "Using environment variable placeholders like `${ENV_VAR}`."
+      "front": "What is the 'River Crossing' stage of the expert workflow?",
+      "back": "The process of moving code from a local branch to PR, CI check, and final merge."
     },
     {
-      "front": "What is the 'Fable' model best suited for in the Claude family?",
-      "back": "The most difficult, longest-running, and deepest reasoning tasks."
+      "front": "According to the final release workflow, what is the recommended version tag for a finished v1 product?",
+      "back": "v1.0.0"
     },
     {
-      "front": "Which file path is used for global Claude Code settings across all projects?",
-      "back": "`~/.claude/settings.json`"
+      "front": "In the Agent SDK, which callback function is used to programmatically permit or block individual tool calls?",
+      "back": "can_use_tool"
     },
     {
-      "front": "What does the `PostToolUse` hook allow you to do?",
-      "back": "Automatically trigger a command (like linting or formatting) after Claude uses an edit or write tool."
+      "front": "Which parameter in the Agent SDK allows a Python app to receive tool calls and text chunks live as they happen?",
+      "back": "streaming=True"
     },
     {
-      "front": "What character is used at the start of a line in an interactive session to run a command directly in the shell?",
-      "back": "`!` (e.g., `!ls`)."
+      "front": "How can a developer force Claude to summarize the conversation only 'up to this point'?",
+      "back": "/rewind -> Summarize up to here (or Esc Esc menu)."
     },
     {
-      "front": "How do you focus a compaction to ensure a specific bug remains in Claude's summary?",
-      "back": "`/compact focus on [topic]`"
+      "front": "Which command lists the currently loaded MCP servers and their available tools?",
+      "back": "/mcp"
     },
     {
-      "front": "Which command completely clears the session history for a fresh start?",
-      "back": "`/clear`"
+      "front": "What happens to the project's CLAUDE.md file during context compaction?",
+      "back": "It is re-read fresh from disk to ensure rules are never lost in the summary."
     },
     {
-      "front": "What is the 'Deed-Room' ritual for managing project history?",
-      "back": "Work in branches, use small commits, and submit PRs for review."
+      "front": "The /autocompact command allows you to set a _____ threshold for automatic context reduction.",
+      "back": "Token count (e.g., 500k)"
     },
     {
-      "front": "What command allows you to resume a session associated with a specific Pull Request?",
-      "back": "`claude --from-pr [number]`"
+      "front": "Which slash command is used to verify an application by building and running it, rather than just relying on tests?",
+      "back": "/verify"
     },
     {
-      "front": "In the 'Machine-Shop' (SDK) context, what does `can_use_tool` provide?",
-      "back": "A callback for fine-grained inspection and permission control of tool inputs."
+      "front": "In the 'Locksmith' story, what does a 'master-key' represent in terms of security risks?",
+      "back": "Bypassing permissions (bypassPermissions), which should be avoided on local machines."
     },
     {
-      "front": "What is the significance of the `1m` variant in models like `sonnet[1m]`?",
-      "back": "It indicates a 1-million-token context window."
+      "front": "Which file path is used to define custom slash commands that take arguments via $ARGUMENTS?",
+      "back": ".claude/commands/[name].md"
     },
     {
-      "front": "In the TDD workflow for SmritiBox, which module is built immediately after `sm2.py`?",
-      "back": "`card.py` (data structures)."
+      "front": "How many turns/checkpoints does Claude Code keep in memory for a single session to allow for /rewind?",
+      "back": "Up to 100 turns."
     },
     {
-      "front": "What is the purpose of the `matcher` field in a Claude Code hook configuration?",
-      "back": "It defines which tools (e.g., Bash, Edit) trigger the associated hook."
+      "front": "What is the character limit or line limit for content automatically loaded from MEMORY.md?",
+      "back": "200 lines or 25KB."
     },
     {
-      "front": "Which SmritiBox module handles the command-line interface logic?",
-      "back": "`cli.py`"
+      "front": "Which command-line argument sets the reasoning effort level to the maximum depth for a new session?",
+      "back": "--effort xhigh"
     },
     {
-      "front": "True or False: The project-level `CLAUDE.md` should be committed to git.",
-      "back": "True."
+      "front": "In the 'Drafting Table' workflow, what does the 'green seal' represent?",
+      "back": "User approval of a plan before any code is modified."
     },
     {
-      "front": "What happens if a `deny` rule in `settings.json` matches a command Claude attempts to run?",
-      "back": "The command is blocked entirely without asking the user."
+      "front": "Which specific command is used to add a new MCP server to the user-level configuration via the CLI?",
+      "back": "claude mcp add --scope user"
     },
     {
-      "front": "Which command provides a breakdown of how many tokens are being consumed by files, tools, and the system prompt?",
-      "back": "`/context`"
+      "front": "What is the recommended practice when a specific rule in CLAUDE.md is consistently ignored by the agent?",
+      "back": "Add an 'IMPORTANT' emphasis tag to that specific line only."
     },
     {
-      "front": "What is the 'Contractor's' rule for heavy research tasks?",
-      "back": "Delegate them to a subagent to keep the main session context clean."
+      "front": "Which SDK function call is used to send a prompt and receive a full response in one go?",
+      "back": "agent.process_prompt(prompt=...)"
     },
     {
-      "front": "Which Claude model is the recommended default for everyday features, bugs, and reviews?",
-      "back": "Sonnet."
+      "front": "What is the primary danger of running a month's worth of work in a single interactive session?",
+      "back": "Context window saturation (the 'river' becomes heavy and Claude starts forgetting earlier steps)."
     },
     {
-      "front": "What is the 'Night Watchman's Bell' analogous to in technical terms?",
-      "back": "Lifecycle automation hooks (PreToolUse/PostToolUse)."
-    },
-    {
-      "front": "How can you bypass all permission prompts in a controlled environment like a sandbox?",
-      "back": "`--permission-mode bypassPermissions`"
-    },
-    {
-      "front": "In a `SKILL.md` file, where is the description used by Claude to decide when to load the skill located?",
-      "back": "In the YAML frontmatter (between `---` lines)."
-    },
-    {
-      "front": "What is the 'Heirloom Ring' analogous to in the Claude Code ecosystem?",
-      "back": "The Model Context Protocol (MCP)."
-    },
-    {
-      "front": "What is the core difference between a Skill and a Plugin?",
-      "back": "A Skill is a single method/guide; a Plugin is a package of skills, agents, hooks, and MCP servers."
+      "front": "Which command is used to select and switch between different available AI models mid-session?",
+      "back": "/model"
     }
   ]
 }

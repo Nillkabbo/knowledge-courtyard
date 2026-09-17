@@ -1,332 +1,221 @@
 {
-  "title": "Capstone Quiz",
+  "title": "Claude Quiz",
   "questions": [
     {
       "type": "multiple_choice",
-      "question": "A developer is scoring potential Capstone projects. They choose a 'Personal Finance Dashboard' because they need it daily, it has modular logic, and it utilizes all learned Claude Code tools. However, the project requires learning three new React frameworks and a new database system from scratch. Which selection criterion does this project most significantly violate?",
+      "question": "When performing a system check on a newly installed environment, you execute the command `claude --version`. According to the expert documentation, what specific output should you expect to see confirmed?",
       "answerOptions": [
         {
-          "text": "Weekend-size",
+          "text": "A version number followed by (Claude Code)",
           "isCorrect": true,
-          "rationale": "The source warns against 'Magic Projects' that require learning multiple new technologies at once, as they often lead to unfinished work and frustration."
+          "rationale": "The documentation explicitly states that the version command prints the numerical version followed by the identifier '(Claude Code)' in parentheses."
         },
         {
-          "text": "Real Need",
+          "text": "A version number followed by [Anthropic CLI]",
           "isCorrect": false,
-          "rationale": "The developer explicitly stated they need the tool daily, which actually satisfies this specific high-weight criterion."
+          "rationale": "While Claude is an Anthropic tool, the specific branding used in the version string is '(Claude Code)', not '[Anthropic CLI]'."
         },
         {
-          "text": "Testable Heart",
+          "text": "The version number and the current active model name",
           "isCorrect": false,
-          "rationale": "Modular logic usually supports testability; the primary issue here is the scope and complexity of the external technologies involved."
+          "rationale": "The model name is displayed in the header when starting an interactive session, but the version command specifically identifies the software version and name."
         },
         {
-          "text": "Book-touching",
+          "text": "Only the semantic version number (e.g., 0.1.25)",
           "isCorrect": false,
-          "rationale": "The developer mentioned the project uses all learned Claude Code tools, indicating it aligns well with the technical skills taught in the course."
+          "rationale": "The output is more descriptive than a raw number, including the product name to distinguish it from other tools."
         }
       ],
-      "hint": "Consider the time-frame and technological overhead mentioned in the 'Bridge-Keeper's Caution'."
-    },
-    {
-      "type": "multiple_choice",
-      "question": "During the 'Design Garden' phase, you are instructed to turn Claude into a 'Question-Machine' for brainstorming. What is the primary purpose of this specific ritual?",
-      "answerOptions": [
-        {
-          "text": "To prevent Claude's ideas from drowning out the user's original 'Why'.",
-          "isCorrect": true,
-          "rationale": "Brainstorming is intended to refine the user's vision; the question-machine rule ensures the thinking remains the user's while Claude provides the 'wind' through inquiry."
-        },
-        {
-          "text": "To reduce the token cost of the session by limiting Claude's output.",
-          "isCorrect": false,
-          "rationale": "While it may save tokens, the primary goal is cognitive focus and ownership of the design decisions rather than cost management."
-        },
-        {
-          "text": "To force Claude to generate a PRD automatically without user input.",
-          "isCorrect": false,
-          "rationale": "The PRD is generated later in plan mode; the brainstorm is a dialogue where the user provides the answers to Claude's constraints and risk questions."
-        },
-        {
-          "text": "To bypass the need for a CLAUDE.md file in the initial repository setup.",
-          "isCorrect": false,
-          "rationale": "The brainstorm is part of the planning process, and CLAUDE.md is still required as the 'ledger' once the repo is initialized."
-        }
-      ],
-      "hint": "Focus on the relationship between the human's intent and the AI's tendency to suggest dazzling but distracting ideas."
+      "hint": "The output includes both the numerical version and the specific name of the tool in parentheses."
     },
     {
       "type": "fill_in_the_blank",
-      "question": "In the SM-2 algorithm used for the SmritiBox capstone, the interval for the second successful review of a card ($I(2)$) is always exactly ___ days, regardless of the Easiness Factor.",
-      "bestAnswer": "6",
+      "question": "To establish the 'rules-wall' of a project and ensure the AI understands local build commands and conventions before writing any code, the expert workflow requires running the ___ command.",
+      "bestAnswer": "/init",
       "acceptableAnswers": [
-        "six",
-        "6 days"
+        "init",
+        "/initialize"
       ],
-      "rationale": "The SM-2 formula defines specific constants for the first two intervals: $I(1) = 1$ and $I(2) = 6$, before transitioning to multiplication by the Easiness Factor ($EF$) for subsequent reviews.",
-      "hint": "Recall the proven mathematical constants provided for the first few steps of the SuperMemo-2 ritual."
-    },
-    {
-      "type": "multiple_select",
-      "question": "Which of the following are considered mandatory 'Handovers' for the Grand-Opening Day of a project like SmritiBox?",
-      "answerOptions": [
-        {
-          "text": "Ritual to Skill: Encoding build habits in a .claude/skills/ markdown file.",
-          "isCorrect": true,
-          "rationale": "Packaging rituals into skills ensures that future Claude sessions inherit the project's specific development rules immediately."
-        },
-        {
-          "text": "Guard to Hook: Implementing a git pre-commit hook that runs tests.",
-          "isCorrect": true,
-          "rationale": "Automating tests via git hooks prevents 'broken bricks' (failing code) from being committed to the repository's history."
-        },
-        {
-          "text": "Oath to CI: Setting up a GitHub Action to run pytest on every push.",
-          "isCorrect": true,
-          "rationale": "Continuous Integration serves as the final 'oath,' ensuring the shop's discipline remains awake even when the developer is away."
-        },
-        {
-          "text": "Scale to Mode: Locking the session permanently into bypassPermissions mode.",
-          "isCorrect": false,
-          "rationale": "Bypassing permissions is a security risk and should only be used in fenced environments like CI, not as a standard handover for general development."
-        }
-      ],
-      "hint": "Think about the four 'Guards' that keep the shop running in your absence.",
-      "hasAllOfTheAbove": false,
-      "hasNoneOfTheAbove": false
+      "rationale": "The /init command is used to generate the CLAUDE.md file, which serves as the project's foundational memory and rule set.",
+      "hint": "This slash command is used once at the start of a project to create the primary configuration ledger."
     },
     {
       "type": "short_answer",
-      "question": "Explain why the 'Real Need' criterion is assigned a double weight (x2) in the Capstone project selection process.",
+      "question": "In the 'Drafting Table' phase, what is the 'question-machine' ritual, and why is it used before generating a PRD?",
       "grading": {
-        "modelAnswer": "Real Need is weighted double because if a project is not useful to the developer, it will likely be abandoned, rendering all other virtues (like size or testability) meaningless. A project you use daily creates the drive to finish the construction journey and provides the best environment for genuine learning.",
-        "rationale": "Unused projects are likely to end up in the 'demo-graveyard,' making the learning process incomplete and demoralizing.",
+        "modelAnswer": "The 'question-machine' ritual involves prompting Claude to ask 10 hard questions about an idea without providing any answers or solutions. This is used to identify design gaps and critical unknowns that must be addressed before the construction of the PRD or code begins.",
+        "rationale": "This technique forces the developer to confront missing details in their plan, ensuring the foundation is solid before the planning mode or implementation takes over.",
         "requiredAttributes": [
-          "States that unused projects negate the value of other criteria.",
-          "Mentions the risk of project abandonment (the 'demo-graveyard').",
-          "Connects daily usage to the drive to finish the project."
+          "Mentions asking approximately 10 questions.",
+          "Specifies that the AI should not provide answers/solutions yet.",
+          "Identifies the purpose as finding gaps or design flaws in the idea."
         ],
         "errors": {
           "misconceptions": [
-            "Suggesting it is weighted higher because it is more difficult to code."
+            "Thinking the question-machine is for the AI to answer the user's questions.",
+            "Believing it is used after the code is already written."
           ],
           "bluffs": [
-            "Vague statements about 'real-world applications' without explaining the developer's personal motivation."
+            "Generic statements about AI helping with brainstorming without mentioning the 'no answers' constraint."
           ]
         }
       },
-      "hint": "What happens to a 'brilliant idea' that no one actually uses?"
+      "hint": "Consider who is asking the questions and what the restriction is on the responses during this specific brainstorm step."
     },
     {
       "type": "multiple_choice",
-      "question": "When applying TDD in the 'Brick-Kiln' phase, what is the correct action to take immediately after writing a 'Red' test that fails with an `ImportError`?",
+      "question": "While working in an interactive session, you want to switch to a mode where the agent can read the codebase and draft a proposal without actually modifying any files or executing commands. Which keyboard shortcut or command allows this transition?",
       "answerOptions": [
         {
-          "text": "Write the minimum amount of code possible to resolve the error and pass the test.",
+          "text": "Pressing Shift+Tab to toggle 'plan mode on'",
           "isCorrect": true,
-          "rationale": "The 'Green' step in TDD mandates writing only enough code to pass the current failure, ensuring every line of production code is strictly necessary."
+          "rationale": "The documentation identifies Shift+Tab as the interactive toggle for plan mode, which is visually confirmed by a pause icon and 'plan mode on' in the status bar."
         },
         {
-          "text": "Refactor the test file to include more assertions for future functionality.",
+          "text": "Typing /dry-run within the current session",
           "isCorrect": false,
-          "rationale": "Adding future functionality in the Green step is described as 'pure sin'; you must wait for the next Red test to define that behavior."
+          "rationale": "/dry-run is not a standard command for this workflow; the specific term used for safe drafting is 'plan mode'."
         },
         {
-          "text": "Immediately move to the Refactor step to improve the naming and structure of the code.",
+          "text": "Using Ctrl+T to open the drafting toggle",
           "isCorrect": false,
-          "rationale": "You cannot refactor code that hasn't reached the Green (passing) state yet; the primary goal is to reach stability first."
+          "rationale": "Ctrl+T is used to toggle the visibility of the todo list (step-ledger), not to enter the planning-only permission state."
         },
         {
-          "text": "Skip to the next module since an `ImportError` is considered a configuration issue rather than a logic failure.",
+          "text": "Typing /compact focus on design",
           "isCorrect": false,
-          "rationale": "The source explicitly states that an `ImportError` is an 'honest Red' and counts as progress in the TDD cycle."
+          "rationale": "/compact is used for context management and summarizing, whereas plan mode is a specific permission state."
         }
       ],
-      "hint": "Follow the 'Three-Step Ritual' described by Bauri Mistri."
-    },
-    {
-      "type": "fill_in_the_blank",
-      "question": "To start a major refactor safely, you should enter the ___ mode by using the command flag `claude --permission-mode plan` or by using the `Shift+Tab` cycle during an active session.",
-      "bestAnswer": "plan",
-      "acceptableAnswers": [
-        "planning",
-        "plan mode"
-      ],
-      "rationale": "Plan mode allows Claude to think and draft a design without the ability to edit files or run commands until the user approves the strategy.",
-      "hint": "This mode sits at the far left of the permission scale and is likened to the 'Drafting Table'."
-    },
-    {
-      "type": "multiple_choice",
-      "question": "Calculate the updated Easiness Factor ($EF'$) if a user provides a quality rating of $q=3$ for a card that currently has an $EF$ of $2.5$. Use the SM-2 formula: $$EF' = EF + 0.1 - (5 - q) \\cdot (0.08 + (5 - q) \\cdot 0.02)$$ (Note: The floor for $EF$ is $1.3$)",
-      "answerOptions": [
-        {
-          "text": "$2.36$",
-          "isCorrect": true,
-          "rationale": "Plugging $q=3$ into the formula: $EF' = 2.5 + 0.1 - (2) \\cdot (0.08 + (2) \\cdot 0.02) = 2.6 - (2) \\cdot (0.12) = 2.6 - 0.24 = 2.36$."
-        },
-        {
-          "text": "$2.50$",
-          "isCorrect": false,
-          "rationale": "This would result from a quality rating of $q=4$, where the adjustment factor becomes zero."
-        },
-        {
-          "text": "$2.60$",
-          "isCorrect": false,
-          "rationale": "This would result from a perfect quality rating of $q=5$, which increases the $EF$ by $0.1$."
-        },
-        {
-          "text": "$1.30$",
-          "isCorrect": false,
-          "rationale": "This is the absolute floor for the Easiness Factor; a single $q=3$ rating is not enough to drop a $2.5$ factor to the floor."
-        }
-      ],
-      "hint": "Substitute $(5-q)$ with $2$ in the formula and perform the calculation."
+      "hint": "This shortcut cycles through permission modes and is indicated by a 'pause' symbol in the status bar."
     },
     {
       "type": "multiple_select",
-      "question": "According to Rahela's 'First Rule' for a lean `CLAUDE.md`, which of the following items should be excluded from the file?",
+      "question": "The 'Factory Rhythm' suggests structuring ticket prompts into three specific parts to ensure clarity and success. Which of the following are the required components of an expert-level ticket prompt?",
       "answerOptions": [
         {
-          "text": "Standard language conventions that are obvious from reading the code.",
+          "text": "Context: Explaining which module or file is being worked on and the current state.",
           "isCorrect": true,
-          "rationale": "The docs warn that a bloated file causes Claude to ignore specific instructions; general knowledge should be left out."
+          "rationale": "Context is essential so the agent knows the starting point and the relationship to previous steps."
         },
         {
-          "text": "Full API documentation for external libraries.",
+          "text": "Goal: A single sentence defining exactly what the ticket should accomplish.",
           "isCorrect": true,
-          "rationale": "Extensive external docs 'fatten the ledger' unnecessarily; Claude should use tools to read docs only when needed."
+          "rationale": "A clear, concise goal prevents scope creep and keeps the agent focused on a single logical change."
         },
         {
-          "text": "Architectural decisions and non-obvious environment variables (env vars).",
-          "isCorrect": false,
-          "rationale": "These are 'unpredictable' details that are essential for Claude to know in every session."
+          "text": "Verification: A specific command or output that proves the task is finished.",
+          "isCorrect": true,
+          "rationale": "Verification ensures that the work meets the 'definition of done' through testing or CLI output checks."
         },
         {
-          "text": "Custom build and test commands like `pytest -x -q`.",
+          "text": "History: A full list of every git commit made since the start of the project.",
           "isCorrect": false,
-          "rationale": "These project-specific commands are the primary reason for a `CLAUDE.md` to exist."
+          "rationale": "While history is in the repo, the ticket prompt focuses on immediate context, not an exhaustive project history."
         }
       ],
-      "hint": "Identify items that are 'unpredictable' versus items that are 'common knowledge' or 'redundant'.",
+      "hint": "Think of the 'where', the 'what', and the 'proof' of the work being performed.",
       "hasAllOfTheAbove": false,
       "hasNoneOfTheAbove": false
+    },
+    {
+      "type": "multiple_choice",
+      "question": "If you make a mistake during a development session and decide to use the `Esc Esc` (Rewind) menu, which of the following changes will the system be UNABLE to undo?",
+      "answerOptions": [
+        {
+          "text": "A file deleted using the bash command `rm src/utils/temp.ts`",
+          "isCorrect": true,
+          "rationale": "Rewind checkpoints only capture file edits made by Claude's own internal tools; manual or external bash-command changes like rm, mv, or cp are not tracked."
+        },
+        {
+          "text": "A line of code added to a file using the internal edit tool",
+          "isCorrect": false,
+          "rationale": "Edits made through the agent's built-in tools are specifically what the checkpoint system is designed to track and revert."
+        },
+        {
+          "text": "The content of the conversation summary generated by /compact",
+          "isCorrect": false,
+          "rationale": "The rewind menu allows you to restore the conversation itself, even if it has been summarized or altered during the session."
+        },
+        {
+          "text": "A modification to a file performed inside a subagent session",
+          "isCorrect": false,
+          "rationale": "The source material notes that while subagent edits *usually* don't rewind, it highlights bash commands as the primary excluded destructive action."
+        }
+      ],
+      "hint": "Consider the difference between actions performed by the AI's editing tools versus direct terminal shell commands."
+    },
+    {
+      "type": "fill_in_the_blank",
+      "question": "When you are ready to resume work on a project the next morning, running the ___ command will take you back to the very last session you had open in that specific directory.",
+      "bestAnswer": "claude -c",
+      "acceptableAnswers": [
+        "claude --continue",
+        "claude -continue"
+      ],
+      "rationale": "The -c or --continue flag is the primary way to bypass the session picker and immediately resume the most recent context.",
+      "hint": "This flag is a single letter shortcut for 'continue' used when launching the tool."
     },
     {
       "type": "short_answer",
-      "question": "Why is the use of `git tag -a` specifically recommended over a simple `git tag` when releasing version `v1.0.0`?",
+      "question": "What is the 'SemVer promise' associated with releasing a project as v1.0.0, as described in the 'River Crossing' phase?",
       "grading": {
-        "modelAnswer": "The `-a` flag creates an 'annotated' tag, which functions as a certified record or 'deed' for the release. It stores metadata such as the tagger's name, date, and a message, making it a formal contract of the public API version rather than just a pointer to a commit.",
-        "rationale": "Annotated tags provide a historical record and commitment to Semantic Versioning (SemVer) that simple tags lack.",
+        "modelAnswer": "The v1.0.0 tag represents a promise of a stable public API. Under Semantic Versioning (SemVer), any subsequent 'breaking' changes that are not backwards compatible require incrementing the major version to 2.0.0, while new features increment the minor version (1.1.0) and fixes increment the patch (1.0.1).",
+        "rationale": "Versioning is a contract with the user; v1.0.0 signals that the software is ready for production and follows strict rules for future updates.",
         "requiredAttributes": [
-          "Mentions that `-a` creates an annotated tag.",
-          "Explains that it stores metadata (date, tagger, or message).",
-          "Connects the tag to a formal contract or promise (SemVer/Public API)."
+          "Identifies v1.0.0 as a stable/public API promise.",
+          "Explains that breaking changes require a major version bump (2.0.0).",
+          "Mentions that the version numbers represent different types of updates (features vs. fixes)."
         ],
         "errors": {
           "misconceptions": [
-            "Claiming that a simple tag cannot be pushed to a remote repository."
+            "Thinking v1.0.0 is just a decorative label with no technical meaning.",
+            "Assuming you can change the API without changing the major version number."
           ],
           "bluffs": [
-            "Saying it makes the code run faster or more securely."
+            "Saying it's 'the first version' without explaining the rules of semantic versioning."
           ]
         }
       },
-      "hint": "Think about the difference between a 'bookmark' and a 'signed certificate'."
+      "hint": "Think of versioning as a contract regarding the stability of the public API and how breaking changes are handled."
     },
     {
       "type": "multiple_choice",
-      "question": "When utilizing the Claude Code SDK for a custom 'Night Factory' application, which tool provides the finest granular control over whether a specific tool call should be allowed or denied based on the AI's input?",
+      "question": "In the expert workflow for a 'River Crossing' (release), what is the recommended procedure for handling a Pull Request (PR) that fails its CI (Continuous Integration) tests?",
       "answerOptions": [
         {
-          "text": "The `can_use_tool` callback.",
+          "text": "Ask Claude to 'run the failing workflow and fix the error' within the session.",
           "isCorrect": true,
-          "rationale": "This callback allows the developer to inspect tool inputs deeply (e.g., checking for malicious `rm` paths) before execution."
+          "rationale": "The expert workflow emphasizes using Claude to analyze the specific failure in the CI runner and address it before proceeding to the merge."
         },
         {
-          "text": "The `allowed_tools` list.",
+          "text": "Manually merge the PR into main and fix the bugs there to save time.",
           "isCorrect": false,
-          "rationale": "This list only restricts which tools are *available* to the agent, not how those tools are used once permitted."
+          "rationale": "Merging a 'red' (failing) PR is described as a dangerous habit that violates the 'CI green gate' rule."
         },
         {
-          "text": "The `system_prompt` preset.",
+          "text": "Delete the feature branch and restart the task from scratch to ensure a clean state.",
           "isCorrect": false,
-          "rationale": "System prompts define behavior and persona but do not provide a functional 'gate' for individual tool transactions."
+          "rationale": "It is more efficient to fix the existing branch than to lose all work; branching is meant to isolate work, not act as a reason for total disposal."
         },
         {
-          "text": "Streaming output logs.",
+          "text": "Ignore the CI results if the local tests pass on the developer's machine.",
           "isCorrect": false,
-          "rationale": "Streaming allows the developer to *watch* the process in real-time but does not inherently provide a mechanism to block a specific action."
+          "rationale": "The 'River Crossing' metaphor requires 'Meghna Ghat' (CI) approval as a safety signal that the water is safe for the boat."
         }
       ],
-      "hint": "Look for the mechanism that acts as a 'gatekeeper' at the moment a tool is invoked."
+      "hint": "The agent can interact with tools like GitHub to see logs and resolve issues autonomously."
     },
     {
       "type": "fill_in_the_blank",
-      "question": "In the hierarchy of project settings, a value defined in a programmatic SDK call will take precedence over a value defined in the ___ file, which in turn overrides the global user settings.",
-      "bestAnswer": "local",
+      "question": "To create a formal release that persists in history with a specific message, you should use an annotated tag by executing the command `git tag -a ___ -m 'Message'`.",
+      "bestAnswer": "v1.0.0",
       "acceptableAnswers": [
-        "CLAUDE.local.md",
-        "settings.local",
-        ".claude.local.md"
+        "v1.0.0",
+        "v1.0"
       ],
-      "rationale": "The precedence chain follows a 'closest to the action' logic: programmatic > local > project > user, ensuring the most specific settings always win.",
-      "hint": "Consider the 'Staircase of the Sub-Registrar' where the higher floor always wins."
-    },
-    {
-      "type": "multiple_choice",
-      "question": "You need to perform a massive search across a 1000-file repository to map out a legacy payment system. Which strategy is most consistent with the 'Ferrywoman's' advice on context management?",
-      "answerOptions": [
-        {
-          "text": "Delegate the search to a subagent and receive only a summary report.",
-          "isCorrect": true,
-          "rationale": "Subagents use their own context windows, preventing search results from 'flooding the river' of the main session."
-        },
-        {
-          "text": "Increase the context window by switching to the Opus[1m] model.",
-          "isCorrect": false,
-          "rationale": "While a larger window helps, the goal is to keep the 'boat' light; filling it with search results still leads to compaction issues later."
-        },
-        {
-          "text": "Run the search in the main session but use `/compact` immediately after.",
-          "isCorrect": false,
-          "rationale": "Compaction loses detail; it is better to never flood the main context with temporary 'dust' (search results) in the first place."
-        },
-        {
-          "text": "Use the `-p` print mode to run individual grep commands from the shell.",
-          "isCorrect": false,
-          "rationale": "This doesn't allow Claude to synthesize the information effectively across the entire repository to 'map' the system."
-        }
-      ],
-      "hint": "Think about how to keep the 'main office' clean while 'digging in the ruins'."
-    },
-    {
-      "type": "multiple_select",
-      "question": "What are the characteristics of a 'Testable Heart' when selecting a Capstone project?",
-      "answerOptions": [
-        {
-          "text": "The core logic is based on verifiable math or clear behavioral rules.",
-          "isCorrect": true,
-          "rationale": "Projects like SM-2 (math-based) allow for unambiguous tests, making them ideal for practicing TDD."
-        },
-        {
-          "text": "The project avoids heavy reliance on UI/UX components for its primary function.",
-          "isCorrect": true,
-          "rationale": "UI/UX is harder to test; focusing on CLI logic or back-end math keeps the 'heart' easily measurable."
-        },
-        {
-          "text": "The project requires complex database schemas and multiple external APIs.",
-          "isCorrect": false,
-          "rationale": "External dependencies and complex schemas make the 'heart' harder to test in isolation, violating the 'testable heart' preference for simplicity."
-        },
-        {
-          "text": "Success can be defined by a single green 'all tests passed' status.",
-          "isCorrect": true,
-          "rationale": "A testable heart provides a clear finish line where success is proven by code, not just by subjective appearance."
-        }
-      ],
-      "hint": "Consider what makes the SM-2 algorithm a better 'heart' than a complex CSS layout.",
-      "hasAllOfTheAbove": false,
-      "hasNoneOfTheAbove": false
+      "rationale": "The -a flag creates an annotated tag, and v1.0.0 is the standard semantic version for a first stable release.",
+      "hint": "This corresponds to the 'release ribbon' mentioned in the expert workflow summary."
     }
   ]
 }

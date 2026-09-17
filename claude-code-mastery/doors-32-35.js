@@ -1,6 +1,6 @@
 // ════════════════════════════════════════
 // Book 59 v6 · The Terminal Craftsman — Capstone Floor (32-35)
-// SmritiBox: idea → brainstorm → plan → build → release
+// Expert workflow floor: idea → plan → build loop → ship (follow-along guide)
 // ════════════════════════════════════════
 
 // ── DOOR 32 · নকশা-টেবিলের আলো — The Drafting Table: From Idea to Plan ──
