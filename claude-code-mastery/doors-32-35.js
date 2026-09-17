@@ -102,7 +102,26 @@ git add -A && git commit -m "বীজ: রিপো + রীতি-খাতা
 
 <p class="verse">নিয়তের পাঠ: হাদিসে কুদসি-সুলভ বাণী — কাজ নিয়তের ওপর দাঁড়ানো; আর সাহাবায়ে কেরাম প্রশ্ন করতেন, মাথা নত করে শুনতেন না। নকশা-বাগানও: প্রথম প্রশ্ন 'কেন', শেষ পরীক্ষা 'আমার সত্যি দরকার কি না' — নিয়ত স্পষ্ট হলে বাগান নিজেই ফোটে।</p>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🌱 কেন/কী/নেই লেখো → Claude-কে প্রশ্ন-মেশিন বানাও → plan-মোডে নকশা, Enter-এ নিজ-সম্পাদনা → git+CLAUDE.md।<br>কারণ: কোড দিয়ে নয়, প্রশ্ন দিয়ে শুরু — চারা তখনই শক্ত।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🌱 কেন/কী/নেই লেখো → Claude-কে প্রশ্ন-মেশিন বানাও → plan-মোডে নকশা, Enter-এ নিজ-সম্পাদনা → git+CLAUDE.md।<br>কারণ: কোড দিয়ে নয়, প্রশ্ন দিয়ে শুরু — চারা তখনই শক্ত।</div></div>
+<div class="callout"><b>📋 ফলাফল-পাতা ৩২ — পরিকল্পনা থেকে রিপো-জন্মের আসল ফল</b> — <span class="en">Actual outcome (verified 2026-09-16)</span><pre class="code-block">$ git init && git add -A && git commit -m "SmritiBox v1.0.0: ..."
+→ প্রথম commit a4594ec ✓
+
+রিপো-গঠন (এই পথেই তোমারটা দেখতে হবে):
+smritibox/
+├── src/smritibox/
+│   ├── __init__.py
+│   ├── card.py      ← মডিউল ১: ডেটা
+│   ├── sm2.py       ← মডিউল ২: গণিত
+│   ├── store.py     ← মডিউল ৩: সংরক্ষণ
+│   └── cli.py       ← মডিউল ৪: দরজা
+├── tests/
+│   ├── test_sm2.py           (৭ টেস্ট)
+│   ├── test_store_cli.py     (৪ টেস্ট)
+│   └── test_review_session.py(১ টেস্ট)
+├── pytest.ini        ← pythonpath = src
+├── .gitignore        ← .venv/, __pycache__/, *.jsonl
+└── README.md</pre></div>
+`,
   senior: {
     title: "নকশা-বাগানের পাঠ — The Design-Garden Lesson",
     body: `<ul class="checklist">
@@ -216,7 +235,28 @@ pytest --cov=smritibox --cov-report=term  # সংখ্যা দেখো
 
 <p class="verse">পদ্ধতির পাঠ: রাসূল (সা.)-এর নির্মাণ-সুন্নাহ — ভিত্তি আগে, দেয়াল পরে; মসজিদ-নির্মাণেও আগে ভিত-রেখা। বাউরির ভাটাও: টেস্ট-রেখা ভিত্তি, কোড-ইট তার উপরে — পদ্ধতির সুন্নাহ প্রকৌশলে।</p>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🧱 রেখা আগে (লাল দেখো), ন্যূনতম ইট (সবুজ), ঘষামাজা, কমিট; সূত্র SM-2-র মূল — নিজে বানানো নয়।<br>কারণ: পরীক্ষিত ইটের দেয়াল রাতারাতি দাঁড়ায়, চিরদিন দাঁড়ায়।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🧱 রেখা আগে (লাল দেখো), ন্যূনতম ইট (সবুজ), ঘষামাজা, কমিট; সূত্র SM-2-র মূল — নিজে বানানো নয়।<br>কারণ: পরীক্ষিত ইটের দেয়াল রাতারাতি দাঁড়ায়, চিরদিন দাঁড়ায়।</div></div>
+<div class="callout"><b>📋 ফলাফল-পাতা ৩৩ — TDD-নির্মাণের আসল ফল</b> — <span class="en">Actual outcome (verified 2026-09-16)</span><pre class="code-block">$ .venv/bin/python -m pytest tests -q --no-header
+..........  [100%]
+11 passed in 0.02s
+
+$ python -m smritibox.cli --file demo.jsonl list    (2 কার্ড যোগের পরে)
+1. ঢাকার পুরনো নাম? -> জাহাঙ্গীরনগর  (due 2026-09-16, I=0, EF=2.50)
+2. SM-2 প্রথম ব্যবধান? -> 1 দিন  (due 2026-09-16, I=0, EF=2.50)
+
+$ python -m smritibox.cli --file demo.jsonl review    (রেটিং: 4, তারপর 5)
+প্রশ্ন: ঢাকার পুরনো নাম?   উত্তর: জাহাঙ্গীরনগর   রেটিং: 4
+প্রশ্ন: SM-2 প্রথম ব্যবধান?   উত্তর: 1 দিন   রেটিং: 5
+রিভিউ সেশন শেষ ✓
+
+রিভিউর পরে list:
+1. ঢাকার পুরনো নাম? -> জাহাঙ্গীরনগর  (due 2026-09-17, I=1, EF=2.50)
+2. SM-2 প্রথম ব্যবধান? -> 1 দিন  (due 2026-09-17, I=1, EF=2.60)
+
+গণিত-প্রমাণ: q=4 → EF অপরিবর্তিত 2.50  [2.5+0.1−1×(0.08+0.02)=2.5]
+           q=5 → EF 2.50→2.60 (+0.1); I: 0→1; due +১ দিন
+টেস্ট-যাত্রা: প্রথম লাল 10/11 (EF ভাসমান-বিন্দু + প্রত্যাশা-ভুল) → সবুজ 12/12</pre></div>
+`,
   senior: {
     title: "ইট-ভাটার পাঠ — The Brick-Kiln Lesson",
     body: `<ul class="checklist">
@@ -342,7 +382,27 @@ git describe --tags           # v1.0.0 — দূরত্ব-মাপ এখ�
 
 <p class="verse">হস্তান্তরের পাঠ: হযরত উসমান (রা.)-এর কুরআন-মুসহাফ সংকলন — এক প্রজন্মের আমানত পরের প্রজন্মের হাতে নিয়ম-সহ পৌঁছানো; একা পড়ার জিনিস জাতির সম্পদ। SmritiBox-এর উদ্বোধনও: ব্যক্তির প্রজেক্ট চার-পাহারায় জন-সম্পদ — আর v1.0.0 তার লিখিত আমানতনামা।</p>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🎉 চার হস্তান্তর: রীতি→স্কিল, পাহারা→হুক(+x), চোখ→এজেন্ট, শপথ→CI; সবুজের পরে v1.0.0 ফিতা।<br>কারণ: দোকান তখনই খোলে যখন পাহারা তোমার অনুপস্থিতিতেও জাগে।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🎉 চার হস্তান্তর: রীতি→স্কিল, পাহারা→হুক(+x), চোখ→এজেন্ট, শপথ→CI; সবুজের পরে v1.0.0 ফিতা।<br>কারণ: দোকান তখনই খোলে যখন পাহারা তোমার অনুপস্থিতিতেও জাগে।</div></div>
+<div class="callout"><b>📋 ফলাফল-পাতা ৩৪ — চার হস্তান্তরের আসল ফল</b> — <span class="en">Actual outcome (verified 2026-09-16)</span><pre class="code-block">$ git commit -m "bad commit"    (১টা লাল টেস্ট রেখে)
+F............  [100%]   1 failed, 12 passed
+✗ টেস্ট লাল — আগে সবুজ করো, তারপর commit
+exit 1 — commit blocked ✓ (হুক কাজ করেছে)
+
+$ git commit -m "docs: README"    (সবুজ গাছ)
+............  [100%]   12 passed in 0.02s
+→ commit 9a94844 ✓
+
+$ git tag -a v1.0.0 -m "SmritiBox 1.0.0: stable CLI — add/list/review/export"
+$ git tag -n1
+v1.0.0   SmritiBox 1.0.0: stable CLI — add/list/review/export
+$ git cat-file -t v1.0.0
+tag    ← annotated (tag-object, শুধু পয়েন্টার নয়)
+$ git cat-file -p v1.0.0 | head -4
+object 9a94844caefc8ab1eafd35ded43d5f25b8f2d782
+type commit
+tag v1.0.0
+tagger Learner <learner@example.com> 1789609931 -0400</pre></div>
+`,
   senior: {
     title: "উদ্বোধন-উৎসবের পাঠ — The Grand-Opening Lesson",
     body: `<ul class="checklist">
