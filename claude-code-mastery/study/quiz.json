@@ -3,353 +3,354 @@
   "questions": [
     {
       "type": "multiple_choice",
-      "question": "When working in a large project with frequent repetitive tasks, which command variation would be most appropriate for a script intended to simply output a one-line summary without opening an interactive session?",
+      "question": "You are starting a session in a new project folder and need to perform a series of complex, multi-step code edits. Which command is appropriate for starting this interactive environment?",
       "answerOptions": [
         {
-          "text": "claude -p",
+          "text": "claude",
           "isCorrect": true,
-          "rationale": "The -p flag activates 'print mode,' which prints the result directly to the terminal and exits, making it suitable for pipes and automation."
+          "rationale": "Typing just the command name starts the interactive session where Claude can perform an agentic loop of reading, thinking, and acting until a task is complete."
+        },
+        {
+          "text": "claude -p",
+          "isCorrect": false,
+          "rationale": "This flag is used for 'print mode,' which is intended for one-off tasks or piping output to the terminal without maintaining an open session."
         },
         {
           "text": "claude --resume",
           "isCorrect": false,
-          "rationale": "This flag is used to continue a previous interactive session from a list, which maintains an active conversation rather than a one-off print."
-        },
-        {
-          "text": "claude -i",
-          "isCorrect": false,
-          "rationale": "An interactive session is the default behavior when no flags are provided; the specific flag for non-interactive output is different."
+          "rationale": "This command is used to pick an existing session from a list rather than starting a fresh interactive environment in a new project."
         },
         {
           "text": "claude --continue",
           "isCorrect": false,
-          "rationale": "This command returns the user to the very last session in the current folder, keeping the interactive loop open."
+          "rationale": "This command returns the user to the very last session in the folder rather than initiating a new interactive session."
         }
       ],
-      "hint": "Consider the distinction between conversing with the tool and simply asking it for a result."
-    },
-    {
-      "type": "fill_in_the_blank",
-      "question": "To ensure that Claude follows the same personal preferences across every project on your local machine, you should place a configuration file at ___.",
-      "bestAnswer": "~/.claude/CLAUDE.md",
-      "acceptableAnswers": [
-        "home/.claude/CLAUDE.md",
-        "the user home directory .claude CLAUDE.md"
-      ],
-      "rationale": "The memory hierarchy loads files from the broadest level (user home) down to the most specific (sub-folders), allowing global rules to persist across all local repositories.",
-      "hint": "Think about where global user configurations are typically stored on a Unix-based system."
+      "hint": "Distinguish between starting a conversation and just asking a one-line question."
     },
     {
       "type": "multiple_select",
-      "question": "Which of the following are true regarding the behavior and hierarchy of memory files like CLAUDE.md?",
+      "question": "According to the hierarchy of memory files, which locations are valid for storing a CLAUDE.md ledger to be loaded by the tool?",
       "answerOptions": [
         {
-          "text": "Memory levels are additive and concatenated together at the start of a session.",
+          "text": "The project root directory as ./CLAUDE.md",
           "isCorrect": true,
-          "rationale": "The system aggregates rules from the user home, project root, and sub-directories to create a comprehensive prompt."
+          "rationale": "This is the primary location for project-wide rules, build commands, and coding styles shared by the team."
         },
         {
-          "text": "The project-level CLAUDE.md is re-read fresh from the disk after a context compaction occurs.",
+          "text": "The user's home directory as ~/.claude/CLAUDE.md",
           "isCorrect": true,
-          "rationale": "Even when the conversation history is summarized to save space, the core project instructions survive by being re-loaded."
+          "rationale": "This file stores global preferences and personal habits that apply across all projects on the machine."
         },
         {
-          "text": "Local modifications intended only for one machine should be kept in CLAUDE.local.md.",
+          "text": "A specific package folder in a monorepo as ./packages/api/CLAUDE.md",
           "isCorrect": true,
-          "rationale": "This specific file naming convention allows for machine-specific overrides that are generally ignored by version control."
+          "rationale": "Sub-directory ledgers allow for localized rules that apply only to specific parts of a larger codebase."
         },
         {
-          "text": "A more specific CLAUDE.md in a sub-folder will completely overwrite the rules in the project root.",
+          "text": "The global system configuration as /etc/claude/CLAUDE.md",
           "isCorrect": false,
-          "rationale": "The files are additive rather than subtractive, meaning specific rules complement broader project rules instead of deleting them."
+          "rationale": "The hierarchy levels are limited to the specific project root, sub-directories, and the user's home directory (~/)."
         }
       ],
-      "hint": "Recall the analogy of the workshop ledger where new rules are added rather than replacing the old ones.",
+      "hint": "Consider the different 'shelves' of memory ranging from personal to team-wide to sub-directory specific.",
       "hasAllOfTheAbove": false,
       "hasNoneOfTheAbove": false
     },
     {
+      "type": "fill_in_the_blank",
+      "question": "To prevent a custom skill from being automatically triggered by Claude's reasoning and ensure it only runs when explicitly called by a user command, you must set ___ to true in the SKILL.md frontmatter.",
+      "bestAnswer": "disable-model-invocation",
+      "acceptableAnswers": [
+        "disable-model-invocation: true",
+        "disable model invocation"
+      ],
+      "rationale": "The disable-model-invocation key removes the skill from the model's automatic selection list, requiring the user to manually trigger it via the slash command.",
+      "hint": "This setting refers to the model's ability to 'invoke' or call the skill on its own."
+    },
+    {
       "type": "multiple_choice",
-      "question": "You are tasked with a high-stakes, large-scale refactor of a legacy codebase where precision is more important than speed. Which model should you select for this specific session?",
+      "question": "A developer needs to perform a high-risk, large-scale architectural refactor that requires maximum reasoning depth and caution. Which model should be selected for this task?",
       "answerOptions": [
         {
           "text": "Opus",
           "isCorrect": true,
-          "rationale": "This model is designated for high-stakes tasks, complex debugging, and large-scale architectural changes where maximum capability is required."
+          "rationale": "Opus is described as the model for large refactors, gnarly debugging, and high-stakes tasks where maximum capability is needed."
         },
         {
           "text": "Haiku",
           "isCorrect": false,
-          "rationale": "This model is optimized for speed and mechanical tasks like formatting or fixing simple typos rather than deep architectural reasoning."
+          "rationale": "Haiku is optimized for speed, quick questions, and mechanical edits rather than deep reasoning for complex refactors."
         },
         {
           "text": "Sonnet",
           "isCorrect": false,
-          "rationale": "While it is the dependable default for everyday features, it is not the top-tier choice for the most gnarly, high-risk refactoring scenarios."
+          "rationale": "While Sonnet is the dependable default for daily features and bugs, Opus is specifically recommended for 'high-risk' and 'large' tasks."
         },
         {
           "text": "Fable",
           "isCorrect": false,
-          "rationale": "While highly capable for long-running tasks, the specific model recommended for gnarly debugging and high-risk refactors is often associated with the 'bull-strong' Karim analogy."
+          "rationale": "Fable is used for the hardest, longest-running tasks, but the source specifically pairs high-risk refactors with Opus."
         }
       ],
-      "hint": "Think of the 'grandfather' or the 'strongest brother' in the workshop analogy."
-    },
-    {
-      "type": "short_answer",
-      "question": "Explain the concept of 'compaction' within an interactive session and how a user can manually trigger it.",
-      "grading": {
-        "modelAnswer": "Compaction is the process where the context window summarizes older tool results, file contents, and conversations into a concise summary to free up token space. A user can manually trigger this using the /compact command, potentially specifying a focus area to ensure relevant details are preserved.",
-        "rationale": "Compaction manages the limited context window (the 'river') by moving older data into 'storeroom' summaries to maintain performance.",
-        "requiredAttributes": [
-          "Defines compaction as summarizing or condensing old conversation/context.",
-          "Mentions that it helps stay within token limits or context window limits.",
-          "Identifies /compact as the command to trigger it manually."
-        ],
-        "errors": {
-          "misconceptions": [
-            "Believing compaction deletes history entirely rather than summarizing it.",
-            "Confusing /compact with /clear, which wipes the session entirely."
-          ],
-          "bluffs": [
-            "Suggesting that compaction is only done by the system and cannot be controlled by the user."
-          ]
-        }
-      },
-      "hint": "Recall the analogy of the ferrywoman's boat sinking if it holds too much cargo."
+      "hint": "Match the 'bull-strong' model to the most difficult architectural work."
     },
     {
       "type": "multiple_choice",
-      "question": "Which permission mode allows Claude to edit files without asking but still requires user confirmation for running shell commands?",
+      "question": "What occurs when the 'context river' becomes full during a long session, and how is the CLAUDE.md file treated during this process?",
       "answerOptions": [
         {
-          "text": "acceptEdits",
+          "text": "Automatic compaction summarizes old conversation, but CLAUDE.md is re-read fresh from the disk.",
           "isCorrect": true,
-          "rationale": "This mode creates a balance where mechanical file edits are silent, but potentially dangerous shell executions still require oversight."
+          "rationale": "Compaction summarizes context to save space, but the project ledger is a priority that is re-loaded from the source to ensure instructions remain intact."
         },
+        {
+          "text": "The session automatically terminates, and CLAUDE.md must be manually re-imported using /memory.",
+          "isCorrect": false,
+          "rationale": "The session does not terminate; instead, it uses compaction to manage token limits while keeping the ledger available."
+        },
+        {
+          "text": "Old messages are deleted permanently, including the initial loading of CLAUDE.md.",
+          "isCorrect": false,
+          "rationale": "Messages are summarized rather than deleted, and CLAUDE.md is specifically protected by being re-read from disk."
+        },
+        {
+          "text": "Claude asks the user to manually delete files from the context window to make room.",
+          "isCorrect": false,
+          "rationale": "The tool manages this automatically through compaction, although users can use /compact or /clear manually."
+        }
+      ],
+      "hint": "Consider the difference between summarizing a conversation and preserving core instructions."
+    },
+    {
+      "type": "short_answer",
+      "question": "Explain the primary technical benefit of delegating a heavy codebase search to a 'subagent' rather than performing it in the main interactive session.",
+      "grading": {
+        "modelAnswer": "Delegating to a subagent allows heavy tasks like searching logs or large file structures to occur in a separate context window. This prevents the main session's context from being flooded with temporary search results, keeping the primary 'river' clear and avoiding premature compaction of the main conversation.",
+        "rationale": "Subagents operate in their own context windows to minimize token usage in the main session, returning only a summary to the user.",
+        "requiredAttributes": [
+          "Mentions separate context windows or keeping the main context clear.",
+          "Explains that the subagent returns only a summary or report.",
+          "Identifies that this prevents flooding the main conversation with results."
+        ],
+        "errors": {
+          "misconceptions": [
+            "Believing subagents have access to more powerful models than the main session."
+          ],
+          "bluffs": [
+            "Stating that subagents are just for multitasking without mentioning context window benefits."
+          ]
+        }
+      },
+      "hint": "Think about the 'ferrywoman' metaphor and what happens when a boat is overloaded with cargo."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "When configuring a PreToolUse hook, what is the effect of having the script return an 'exit 2' status code?",
+      "answerOptions": [
+        {
+          "text": "It blocks the tool call and feeds the reason provided on stderr back to Claude.",
+          "isCorrect": true,
+          "rationale": "An exit 2 code acts as a 'red seal' that cancels the execution of the tool and allows the agent to understand why it was blocked via stderr."
+        },
+        {
+          "text": "It allows the tool call but marks it as 'risky' in the session log.",
+          "isCorrect": false,
+          "rationale": "Exit 2 is a hard block, not a warning or metadata tag."
+        },
+        {
+          "text": "It bypasses the permission prompt and executes the tool immediately.",
+          "isCorrect": false,
+          "rationale": "Bypassing permissions is handled by specific modes or the 'allow' list, not by an exit 2 code."
+        },
+        {
+          "text": "It triggers an automatic retry of the tool with modified arguments.",
+          "isCorrect": false,
+          "rationale": "Exit codes do not trigger retries; they signal completion (0) or a block (2)."
+        }
+      ],
+      "hint": "Think of this as the 'red seal' that stops the clock's lever."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "You want to work on three different features simultaneously in the same repository without their file edits clashing. Which command-line flag allows you to isolate these sessions into distinct git environments?",
+      "answerOptions": [
+        {
+          "text": "--worktree",
+          "isCorrect": true,
+          "rationale": "Using --worktree creates a separate git worktree and branch for the session, ensuring file edits are isolated from other concurrent work."
+        },
+        {
+          "text": "--bg",
+          "isCorrect": false,
+          "rationale": "While --bg runs a session in the background, it still uses a shared worktree unless a specific name is provided; the primary tool for repository isolation is the worktree flag."
+        },
+        {
+          "text": "--permission-mode plan",
+          "isCorrect": false,
+          "rationale": "Plan mode affects how Claude proposes changes, not how the repository files are isolated on the disk."
+        },
+        {
+          "text": "--model opus",
+          "isCorrect": false,
+          "rationale": "Model selection determines the AI's reasoning capabilities, not the local file management strategy."
+        }
+      ],
+      "hint": "This flag shares a name with a standard Git feature for managing multiple branches at once."
+    },
+    {
+      "type": "fill_in_the_blank",
+      "question": "To return to a specific point in a session and restore only the code changes while keeping the subsequent conversation history intact, you would use the ___ menu and select 'Restore code'.",
+      "bestAnswer": "/rewind",
+      "acceptableAnswers": [
+        "rewind",
+        "the rewind command"
+      ],
+      "rationale": "The /rewind command accesses checkpoints (up to 100 per session), allowing users to undo file edits or conversation steps selectively.",
+      "hint": "This command allows you to move backward through the session's 'checkpoints'."
+    },
+    {
+      "type": "multiple_select",
+      "question": "When defining a custom subagent in a .md file, which fields are required or commonly found in the YAML frontmatter to define its behavior?",
+      "answerOptions": [
+        {
+          "text": "name: The identifier used to call the agent.",
+          "isCorrect": true,
+          "rationale": "The name field gives the 'contractor' a face and an identity within the session."
+        },
+        {
+          "text": "tools: A list of capabilities like Read, Grep, or Bash.",
+          "isCorrect": true,
+          "rationale": "Defining specific tools limits the agent's scope and ensures it only has the 'hands' necessary for its specialized task."
+        },
+        {
+          "text": "description: An explanation of when Claude should delegate to this agent.",
+          "isCorrect": true,
+          "rationale": "The description helps the main agent decide which 'contractor' is appropriate for a specific side-task."
+        },
+        {
+          "text": "max_tokens: The hard limit of the subagent's output length.",
+          "isCorrect": false,
+          "rationale": "While models have token limits, 'max_tokens' is not listed as a standard frontmatter field for defining subagent identities in the source."
+        }
+      ],
+      "hint": "Recall the 'Contractor Rafiq' metaphor and what information he needs to be hired.",
+      "hasAllOfTheAbove": false,
+      "hasNoneOfTheAbove": false
+    },
+    {
+      "type": "multiple_choice",
+      "question": "Which permission mode should be used when you want Claude to propose a solution and allow you to edit the proposed steps before any files are actually touched?",
+      "answerOptions": [
         {
           "text": "plan",
-          "isCorrect": false,
-          "rationale": "In this mode, the agent stays in a read-only state, only proposing changes without executing any edits or commands."
+          "isCorrect": true,
+          "rationale": "Plan mode forces Claude to draft a proposal that the user can edit (via Enter) and approve before any actual tool execution or file modification occurs."
         },
         {
-          "text": "bypassPermissions",
+          "text": "acceptEdits",
           "isCorrect": false,
-          "rationale": "This mode removes all barriers, allowing both file edits and shell commands to run without any user intervention."
+          "rationale": "This mode allows file edits to happen without asking, which is the opposite of the cautious planning approach."
         },
         {
           "text": "default",
           "isCorrect": false,
-          "rationale": "This is the most secure mode, requiring a 'yes/no' confirmation for every edit and every command execution."
+          "rationale": "Default mode asks for permission before each edit but doesn't necessarily generate a holistic, editable plan for review first."
+        },
+        {
+          "text": "bypassPermissions",
+          "isCorrect": false,
+          "rationale": "This mode removes all barriers, making it dangerous for large-scale planning as it executes everything silently."
         }
       ],
-      "hint": "Look for the mode that distinguishes between the 'verandah' (edits) and the 'storeroom' (commands)."
-    },
-    {
-      "type": "fill_in_the_blank",
-      "question": "To perform a heavy codebase search without flooding your main session's context, you should delegate the task to a ___, which operates in its own separate context window.",
-      "bestAnswer": "subagent",
-      "acceptableAnswers": [
-        "sub-agent",
-        "contractor"
-      ],
-      "rationale": "Subagents act as independent entities that process large amounts of data elsewhere and return only a summary to the main session.",
-      "hint": "Consider the role of 'Rafiq the Contractor' who works in a separate shed."
-    },
-    {
-      "type": "multiple_select",
-      "question": "Which of the following are valid lifecycle hooks available in the settings configuration for automating tasks?",
-      "answerOptions": [
-        {
-          "text": "PreToolUse",
-          "isCorrect": true,
-          "rationale": "This hook fires before a tool is executed, allowing for custom validation or even blocking the call."
-        },
-        {
-          "text": "PostToolUse",
-          "isCorrect": true,
-          "rationale": "This hook allows for cleanup or formatting tasks, like running Prettier, immediately after a file is written."
-        },
-        {
-          "text": "UserPromptSubmit",
-          "isCorrect": true,
-          "rationale": "This hook triggers when a user sends a message, allowing for context injection before the agent processes it."
-        },
-        {
-          "text": "PreCommitHook",
-          "isCorrect": false,
-          "rationale": "While similar in name to Git concepts, this is not a built-in Claude Code lifecycle hook; automation focuses on tool and prompt events."
-        }
-      ],
-      "hint": "These triggers correspond to 'Mahmud's bells' that ring before or after specific actions.",
-      "hasAllOfTheAbove": false,
-      "hasNoneOfTheAbove": false
-    },
-    {
-      "type": "multiple_choice",
-      "question": "How can you prevent a custom skill defined in SKILL.md from being automatically suggested or invoked by the model?",
-      "answerOptions": [
-        {
-          "text": "Set disable-model-invocation: true in the frontmatter.",
-          "isCorrect": true,
-          "rationale": "This setting hides the skill from the model's auto-suggestion list, requiring the user to call it explicitly by name."
-        },
-        {
-          "text": "Omit the description field from the frontmatter.",
-          "isCorrect": false,
-          "rationale": "The description is required for the system to understand the skill; omitting it might break the skill rather than just disabling auto-invocation."
-        },
-        {
-          "text": "Place the file in ~/.claude/skills/ instead of the project folder.",
-          "isCorrect": false,
-          "rationale": "Moving the file only changes its scope (global vs project) but does not affect whether the model can auto-invoke it."
-        },
-        {
-          "text": "Add a ! before the skill name in the folder path.",
-          "isCorrect": false,
-          "rationale": "Folder naming does not control model invocation permissions; those are handled within the file's metadata."
-        }
-      ],
-      "hint": "Look for a specific boolean flag in the YAML frontmatter of the skill file."
+      "hint": "This mode relates to the 'Planner's Drafting Table' where you review the blueprint first."
     },
     {
       "type": "short_answer",
-      "question": "What is the primary difference between a 'Skill' and a 'Plugin' within the Claude Code ecosystem?",
+      "question": "Why does the source material recommend using '!`command`' syntax within a Skill's body?",
       "grading": {
-        "modelAnswer": "A Skill is a specific set of instructions or a 'chapbook' of knowledge loaded on demand to handle a recurring task. A Plugin is a distribution package that can bundle multiple skills, subagents, hooks, MCP servers, and themes into a single installable unit.",
-        "rationale": "Skills provide specific know-how, while Plugins act as the 'wholesale box' that aggregates various extension types for easier sharing and installation.",
+        "modelAnswer": "Using the exclamation mark with backticks allows the skill to execute a shell command and inject its live output directly into the instructions at the moment the skill is invoked. This ensures that the instructions Claude receives are based on fresh, real-time data, such as current git logs or market prices.",
+        "rationale": "This syntax enables dynamic context injection, ensuring the AI works with the most current project state.",
         "requiredAttributes": [
-          "Defines a Skill as instructions or knowledge for a specific task.",
-          "Defines a Plugin as a package or bundle of multiple components (skills, agents, hooks, etc.).",
-          "Mentions that plugins are the unit of distribution/installation."
+          "Mentions executing shell/bash commands.",
+          "Explains that it injects live/fresh/real-time output into the skill.",
+          "Connects it to the moment the skill is opened or invoked."
         ],
         "errors": {
           "misconceptions": [
-            "Thinking skills and plugins are the same thing.",
-            "Stating that skills can contain MCP servers (only plugins or direct config can)."
+            "Thinking it permanently changes the SKILL.md file on disk."
           ],
           "bluffs": [
-            "Vague statements about 'capabilities' without defining the structural difference."
+            "Saying it is just a way to run tests within a skill."
           ]
         }
       },
-      "hint": "Compare 'Ayesha's chapbook' to 'Mostafa's wholesale crate'."
+      "hint": "Think about Maryam's recipe box and how she gets the 'current market prices' into her recipe."
     },
     {
       "type": "multiple_choice",
-      "question": "When creating a custom slash command in .claude/commands/, how do you allow the user to pass input (like an issue number) into the command's logic?",
+      "question": "What is the key difference between a 'Skill' and the 'CLAUDE.md' ledger regarding token usage and session start?",
       "answerOptions": [
         {
-          "text": "Use the $ARGUMENTS variable within the markdown body.",
+          "text": "CLAUDE.md is loaded in every session start, while a Skill is only loaded when explicitly needed.",
           "isCorrect": true,
-          "rationale": "This placeholder acts as a capture point for any text typed after the slash command in the terminal."
+          "rationale": "Skills follow 'progressive disclosure,' meaning their full body is only added to context when triggered, saving tokens compared to the ledger which is always present."
         },
         {
-          "text": "Define an input_schema in the YAML frontmatter.",
+          "text": "Skills are stored in the cloud, whereas CLAUDE.md is stored locally in the project root.",
           "isCorrect": false,
-          "rationale": "While MCP tools use input schemas, simple slash commands rely on a more direct string substitution method."
+          "rationale": "Both are stored locally, though Skills can be distributed via plugins."
         },
         {
-          "text": "Use the !`prompt-input` syntax.",
+          "text": "CLAUDE.md can only contain text, while Skills must contain executable shell scripts.",
           "isCorrect": false,
-          "rationale": "The exclamation-backtick syntax is used to inject shell command output into the prompt, not for parsing user arguments."
+          "rationale": "Both are Markdown-based; while Skills can use shell command injection, their primary content is instructional text."
         },
         {
-          "text": "Slash commands do not support dynamic arguments.",
+          "text": "A Skill can only be accessed by the user, while CLAUDE.md is only for the AI agent.",
           "isCorrect": false,
-          "rationale": "Slash commands are designed specifically to be flexible, supporting dynamic arguments via a specific variable placeholder."
+          "rationale": "Both are instructions meant to guide the AI's behavior in the codebase."
         }
       ],
-      "hint": "This variable represents the 'seal's' dynamic data that changes with each press."
+      "hint": "Consider which one 'travels with the chef' every day and which one stays in the 'recipe box' until biryani day."
     },
     {
       "type": "fill_in_the_blank",
-      "question": "Checkpoints created before every turn allow you to undo changes; however, they cannot track or revert changes made via ___ commands.",
-      "bestAnswer": "bash",
+      "question": "When using the Agent SDK to build your own tools, the ___ decorator is used to engrave a function with its name, description, and input schema for Claude to recognize.",
+      "bestAnswer": "@tool",
       "acceptableAnswers": [
-        "shell",
-        "terminal",
-        "bash script"
+        "tool",
+        "the tool decorator"
       ],
-      "rationale": "Checkpoints only track edits made by Claude's internal tools; direct system-level file movements or deletions (like 'rm' or 'mv') are outside its tracking capability.",
-      "hint": "Think about tools that modify files without using Claude's internal 'Edit' or 'Write' functions."
-    },
-    {
-      "type": "multiple_select",
-      "question": "Which of the following are essential components when building a custom in-process MCP server using the Agent SDK?",
-      "answerOptions": [
-        {
-          "text": "The @tool decorator to engrave the tool name and purpose.",
-          "isCorrect": true,
-          "rationale": "This metadata tells the agent what the tool does and what inputs it requires."
-        },
-        {
-          "text": "The create_sdk_mcp_server function to house all handles in one 'building'.",
-          "isCorrect": true,
-          "rationale": "This function aggregates individual tool functions into a single server object for the SDK."
-        },
-        {
-          "text": "An input schema to define the types of arguments the tool accepts.",
-          "isCorrect": true,
-          "rationale": "Defining the schema ensures that the model provides correctly formatted data when calling the tool."
-        },
-        {
-          "text": "A .claude-plugin/plugin.json file in the root directory.",
-          "isCorrect": false,
-          "rationale": "This file is for distributing plugins, not for the internal logic of an in-process SDK-based MCP server."
-        }
-      ],
-      "hint": "Think of Kamrul's shop and the three things he laid on the table for building machines.",
-      "hasAllOfTheAbove": false,
-      "hasNoneOfTheAbove": false
+      "rationale": "The @tool decorator is the primary way to define the interface of a function so that the Claude Agent SDK can expose it as a capability to the model.",
+      "hint": "This Python/TypeScript decorator is described as 'engraving' the tool's handle."
     },
     {
       "type": "multiple_choice",
-      "question": "What is the purpose of the --worktree flag when starting a new Claude session?",
+      "question": "You need to ensure a specific CI check passes before finishing a task. Which command allows you to set a condition that Claude will monitor and work toward until satisfied?",
       "answerOptions": [
         {
-          "text": "To prevent edit collisions by running a feature in a separate Git branch and folder.",
+          "text": "/goal",
           "isCorrect": true,
-          "rationale": "Worktrees allow multiple independent sessions to run on the same repository without interfering with each other's file states."
+          "rationale": "/goal sets a standing objective that persists across steps, allowing the agent to continuously verify its progress against the specified outcome."
         },
         {
-          "text": "To visualize the project's file structure as a tree diagram.",
+          "text": "/loop",
           "isCorrect": false,
-          "rationale": "Visualizing file structure is typically a 'Read' or 'Glob' tool function, not the purpose of a worktree environment."
+          "rationale": "/loop repeats a specific prompt at an interval or until a condition is met, but /goal is the specialized command for tracking a session-wide target."
         },
         {
-          "text": "To automatically commit and push changes at the end of a session.",
+          "text": "/compact",
           "isCorrect": false,
-          "rationale": "Committing and pushing are handled by git tools or the 'gh' command integration, not by the worktree setup itself."
+          "rationale": "/compact manages context window size by summarizing history and does not track task completion."
         },
         {
-          "text": "To increase the context window size for large monorepos.",
+          "text": "/verify",
           "isCorrect": false,
-          "rationale": "Context window size is determined by the model and the /compact settings, while worktrees manage filesystem isolation."
+          "rationale": "/verify is a specific skill for running and validating an application, rather than a general goal-tracking mechanism."
         }
       ],
-      "hint": "Recall Shirin's many kitchens used to prevent cooks from bumping into each other."
-    },
-    {
-      "type": "short_answer",
-      "question": "Describe the 'Three Pillars' of Claude Code mastery and provide a brief example of one.",
-      "grading": {
-        "modelAnswer": "The three pillars are Context, Trust, and Verification. Context involves managing what Claude knows (e.g., using CLAUDE.md). Trust involves setting appropriate permissions and modes (e.g., using plan mode for big changes). Verification involves checking results (e.g., reading git diffs or running tests).",
-        "rationale": "Mastery is not just about typing prompts but designing a workshop environment that balances knowledge, safety, and accuracy.",
-        "requiredAttributes": [
-          "Identifies the three pillars as Context, Trust, and Verification.",
-          "Provides an example for at least one of the pillars (e.g., CLAUDE.md for context, permissions for trust, or testing for verification)."
-        ],
-        "errors": {
-          "misconceptions": [
-            "Listing tools (like /loop) as pillars rather than the underlying principles."
-          ],
-          "bluffs": [
-            "Vague statements about 'AI efficiency' without naming the specific pillars mentioned in the text."
-          ]
-        }
-      },
-      "hint": "These pillars are the 'throne' upon which a senior craftsman sits."
+      "hint": "This command acts as a 'direction-compass' that stays in memory even ten steps later."
     }
   ]
 }

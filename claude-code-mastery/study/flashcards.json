@@ -2,284 +2,396 @@
   "title": "Claude Flashcards",
   "cards": [
     {
-      "front": "What is the one-word command to start an interactive Claude Code session in a project folder?",
+      "front": "What is the one-word command to initiate an interactive Claude Code session in a project folder?",
       "back": "claude"
     },
     {
-      "front": "Which command-line flag is used to run Claude Code for a one-off task without opening a full session?",
-      "back": "-p"
+      "front": "Which command allows the execution of one-off tasks in 'print mode' without opening a full session?",
+      "back": "claude -p"
     },
     {
-      "front": "Claude Code installation via npm requires Node.js version _____ or higher.",
-      "back": "22"
+      "front": "What CLI flag is used to continue the most recent session in a folder?",
+      "back": "--continue"
     },
     {
-      "front": "To resume the most recent session in the current folder, which command should be used?",
-      "back": "claude --continue"
+      "front": "Which CLI flag opens a list of previous sessions for the user to choose from?",
+      "back": "--resume"
     },
     {
-      "front": "What is the purpose of the `claude --resume` command?",
-      "back": "It allows the user to select and resume a session from a list."
+      "front": "What file acts as the 'Project Memory' or ledger to store project-specific rules and instructions?",
+      "back": "CLAUDE.md"
     },
     {
-      "front": "Where should the primary `CLAUDE.md` file be located to provide project-wide rules to the agent?",
-      "back": "The project root."
-    },
-    {
-      "front": "Which file path is used for a global `CLAUDE.md` that applies to all projects on a machine?",
+      "front": "Where is the global memory file located for instructions that apply to all projects on a machine?",
       "back": "~/.claude/CLAUDE.md"
     },
     {
-      "front": "How does Claude Code handle multiple levels of `CLAUDE.md` files (Global, Project, Local, Sub-directory)?",
-      "back": "They are concatenated and loaded together at the start of the session."
-    },
-    {
-      "front": "What is the naming convention for a project-specific `CLAUDE.md` file intended for personal use and excluded from git?",
+      "front": "Which file path is used for instructions that apply only to a specific user on a specific project and should be git-ignored?",
       "back": "CLAUDE.local.md"
     },
     {
-      "front": "Which internal command initializes a starter `CLAUDE.md` file by analyzing the codebase?",
+      "front": "How can one CLAUDE.md file import another instruction file?",
+      "back": "By using the syntax @path/to/file."
+    },
+    {
+      "front": "Which command displays the list of memory files currently loaded and allows their editing?",
+      "back": "/memory"
+    },
+    {
+      "front": "What command generates a starter CLAUDE.md file by analyzing the existing codebase?",
       "back": "/init"
     },
     {
-      "front": "The command `/memory` is used to open and edit _____.",
-      "back": "All active project memory files (CLAUDE.md levels)."
+      "front": "In CLAUDE.md, what is the effect of adding 'IMPORTANT' to a specific instruction?",
+      "back": "It adds emphasis to that specific line to prevent Claude from skipping it."
     },
     {
-      "front": "In the Claude model family, which model is the dependable default for everyday features, bugs, and reviews?",
+      "front": "Which model is the dependable default for everyday features, bugs, and reviews?",
       "back": "Sonnet"
     },
     {
-      "front": "Which model should be selected for large-scale refactors, gnarly debugging, or high-stakes tasks?",
+      "front": "Which model is optimized for high-stakes, complex debugging and large-scale refactors?",
       "back": "Opus"
     },
     {
-      "front": "What is the primary use case for the Haiku model in Claude Code?",
-      "back": "Quick questions, formatting, and mechanical edits."
+      "front": "Which model is designed for rapid execution of small, mechanical tasks like typos or formatting?",
+      "back": "Haiku"
     },
     {
-      "front": "Which model is described as the most capable for the hardest, longest-running tasks?",
+      "front": "Which model is the most capable for the hardest and longest-running tasks?",
       "back": "Fable"
     },
     {
-      "front": "What command is used to switch the active model during an interactive session?",
+      "front": "What command is used to switch the active model during an ongoing session?",
       "back": "/model"
     },
     {
-      "front": "The command `/effort` is used to adjust the _____ of the reasoning models.",
-      "back": "Reasoning depth"
+      "front": "Which command adjusts the reasoning depth or intensity for model processing?",
+      "back": "/effort"
     },
     {
-      "front": "What happens to the project's `CLAUDE.md` file after a context compaction event?",
-      "back": "It is re-read fresh from the disk to ensure rules are preserved."
+      "front": "How can the model be pinned project-wide for all team members?",
+      "back": "By setting the 'model' key in settings.json."
     },
     {
-      "front": "What information does the `/context` command provide?",
-      "back": "A breakdown of current context window usage in tokens."
+      "front": "What command provides a breakdown of token usage, time, and costs for the current session?",
+      "back": "/usage"
     },
     {
-      "front": "Which command manually summarizes old conversation history to free up context window space?",
+      "front": "What command provides a live view of the current context window contents?",
+      "back": "/context"
+    },
+    {
+      "front": "Which command manually summarizes older parts of the conversation to free up context space?",
       "back": "/compact"
     },
     {
-      "front": "What is the effect of the `/clear` command in a Claude Code session?",
-      "back": "It empties the context river for a fresh start on a new task."
+      "front": "What command completely clears the session context for a fresh start?",
+      "back": "/clear"
     },
     {
-      "front": "The `/rewind` command allows a user to return to a previous _____ taken before any prompt.",
-      "back": "Checkpoint"
+      "front": "Which command allows the user to return to a previous turn or 'checkpoint' in the session?",
+      "back": "/rewind"
     },
     {
-      "front": "Which permission mode allows Claude to edit files but still asks for permission before running bash commands?",
-      "back": "acceptEdits"
+      "front": "How can the context compaction threshold be manually configured?",
+      "back": "By setting the autocompact value in tokens (e.g., /autocompact 500k)."
     },
     {
-      "front": "What is the 'plan' permission mode used for?",
-      "back": "Drafting architectural designs and plans without modifying any files."
+      "front": "In the Agentic Loop, what does Claude do after observing the result of a tool execution?",
+      "back": "It thinks again to determine the next step toward the goal."
     },
     {
-      "front": "Which permission mode disables all confirmation prompts and is recommended only for sandboxed environments?",
+      "front": "Which file stores 'allow' or 'deny' rules for specific shell commands?",
+      "back": "settings.json (or .claude/settings.json)."
+    },
+    {
+      "front": "What is the function of the 'plan' permission mode?",
+      "back": "Claude reads files and drafts a plan without making edits or running commands."
+    },
+    {
+      "front": "What is the function of the 'acceptEdits' permission mode?",
+      "back": "Claude edits files automatically but asks for permission before running bash commands."
+    },
+    {
+      "front": "Which permission mode should only be used in fenced environments like CI because it allows all actions without prompting?",
       "back": "bypassPermissions"
     },
     {
-      "front": "In `settings.json`, which configuration section allows you to define permanent 'allow' or 'deny' rules for commands?",
-      "back": "permissions"
+      "front": "What keyboard shortcut cycles through the different permission modes within a session?",
+      "back": "Tab or Shift+Tab."
     },
     {
-      "front": "How many checkpoints does Claude Code typically keep per session for the `/rewind` feature?",
-      "back": "Up to 100."
+      "front": "Where are project-specific subagent definition files stored?",
+      "back": ".claude/agents/"
     },
     {
-      "front": "Why is it recommended to delegate heavy code searches to a 'subagent'?",
-      "back": "To prevent search results from bloating the main session's context window."
+      "front": "What YAML frontmatter key in a subagent file defines the specific LLM it uses?",
+      "back": "model"
     },
     {
-      "front": "Where are project-specific subagent definitions stored?",
-      "back": ".claude/agents/*.md"
+      "front": "Which YAML frontmatter key in a subagent file defines the tools it is permitted to use?",
+      "back": "tools"
     },
     {
-      "front": "Which lifecycle hook runs immediately before Claude executes a tool?",
+      "front": "What is the primary context-saving benefit of using a subagent for heavy searches?",
+      "back": "The subagent uses its own context window and returns only a summary to the main session."
+    },
+    {
+      "front": "Which hook type allows a script to run and potentially block a tool before it executes?",
       "back": "PreToolUse"
     },
     {
-      "front": "Which lifecycle hook is typically used for automating tasks like code formatting after a file is modified?",
+      "front": "Which hook type is used to execute cleanup or formatting tasks after a tool finishes?",
       "back": "PostToolUse"
     },
     {
-      "front": "What is the 'Model Context Protocol' (MCP) used for in Claude Code?",
-      "back": "Connecting Claude to external tools like Notion, GitHub, or databases."
-    },
-    {
-      "front": "Where should MCP server configurations be placed in a project?",
-      "back": ".mcp.json at the project root."
-    },
-    {
-      "front": "What is the difference between a `CLAUDE.md` file and a 'Skill' in Claude Code?",
-      "back": "CLAUDE.md loads every session, while Skills load only when needed (on-demand)."
-    },
-    {
-      "front": "Where are custom project skills stored?",
-      "back": ".claude/skills/<name>/SKILL.md"
-    },
-    {
-      "front": "Which Skill frontmatter key prevents Claude from automatically invoking the skill?",
-      "back": "disable-model-invocation: true"
-    },
-    {
-      "front": "What does the code block syntax `!\"command\"` do when placed inside a `SKILL.md` file?",
-      "back": "It injects the live output of that shell command into the skill when it opens."
-    },
-    {
-      "front": "How can you run multiple Claude sessions in the same repository without file edit collisions?",
-      "back": "Using `claude --worktree <name>`."
-    },
-    {
-      "front": "Which command provides a single-screen view of all background and parallel sessions?",
-      "back": "agent view"
-    },
-    {
-      "front": "What is the purpose of the `/loop` command?",
-      "back": "It repeats a prompt at specific intervals or until a condition is met."
-    },
-    {
-      "front": "Which command keeps a specific objective in Claude's memory across an entire session?",
-      "back": "/goal"
-    },
-    {
-      "front": "To allow a machine to read Claude's output in a headless environment, which flag should be added to `claude -p`?",
-      "back": "--output-format json"
-    },
-    {
-      "front": "What is the 'Agent SDK'?",
-      "back": "A development kit used to embed the Claude Code engine into custom applications."
-    },
-    {
-      "front": "Which Python decorator is used to define a custom tool within an Agent SDK script?",
-      "back": "@tool"
-    },
-    {
-      "front": "What is the naming pattern used to invoke a specific tool from an MCP server in permissions settings?",
-      "back": "mcp__<server_name>__<tool_name>"
-    },
-    {
-      "front": "In the context of hooks, what does an `exit 2` code from a script signify to Claude?",
-      "back": "It blocks the tool call and reports the stderr reason to Claude."
-    },
-    {
-      "front": "Which specific JSON field in a `PreToolUse` hook's output can bypass the human permission prompt?",
-      "back": "hookSpecificOutput.permissionDecision"
-    },
-    {
-      "front": "What is a 'Plugin' in Claude Code?",
-      "back": "A bundle containing skills, agents, hooks, and MCP servers for easy distribution."
-    },
-    {
-      "front": "Which environment variable is used inside plugin configuration files to reference the plugin's own directory?",
-      "back": "${CLAUDE_PLUGIN_ROOT}"
-    },
-    {
-      "front": "How do you add a custom marketplace to your Claude Code configuration?",
-      "back": "/plugin marketplace add <repository_url>"
-    },
-    {
-      "front": "What is the shortcut key to toggle Claude's active todo list on the terminal?",
-      "back": "Ctrl+T"
-    },
-    {
-      "front": "How do you cycle through permission modes (default, acceptEdits, plan) using the keyboard?",
-      "back": "Shift+Tab"
-    },
-    {
-      "front": "What is the location for project-specific custom slash commands?",
-      "back": ".claude/commands/<command_name>.md"
-    },
-    {
-      "front": "In a custom slash command file, what placeholder is used to insert user-provided arguments?",
-      "back": "$ARGUMENTS"
-    },
-    {
-      "front": "What does the `gh pr create --fill` command do when used by Claude?",
-      "back": "It creates a GitHub Pull Request using automated titles and descriptions based on commits."
-    },
-    {
-      "front": "Which command is used to resume a specific session associated with a Pull Request?",
-      "back": "claude --from-pr <number>"
-    },
-    {
-      "front": "What is the maximum character limit for an individual skill's description in the frontmatter?",
-      "back": "1,536 characters."
-    },
-    {
-      "front": "In `settings.json`, what property allows you to define a custom script for the terminal status line?",
-      "back": "statusLine"
-    },
-    {
-      "front": "Which flag is used to enable Vim keybindings in a Claude Code session?",
-      "back": "--vim"
-    },
-    {
-      "front": "What does the `/doctor` command help with regarding Skills?",
-      "back": "It identifies bloated or redundant skills that can be removed from context."
-    },
-    {
-      "front": "When writing a hook script, how is the session context (tool name, input, etc.) passed to the script?",
-      "back": "As a JSON object through stdin."
-    },
-    {
-      "front": "What is the purpose of the `.worktreeinclude` file?",
-      "back": "It lists gitignored files that should be copied into new worktrees."
-    },
-    {
-      "front": "Which hook event fires when a user submits a prompt but before the agent processes it?",
+      "front": "What hook is triggered specifically when a user sends a prompt but before Claude processes it?",
       "back": "UserPromptSubmit"
     },
     {
-      "front": "Which hook event fires when the agent finishes its current task and stops?",
-      "back": "Stop"
+      "front": "In a PreToolUse hook script, what exit code indicates a request to block the tool and provide a reason?",
+      "back": "exit 2"
     },
     {
-      "front": "To use MCP servers, how should tokens or secrets be handled in the `.mcp.json` file?",
-      "back": "Reference them as environment variables using ${VAR} syntax."
+      "front": "Which JSON key in a hook's stdout is used for fine-grained control of tool permissions?",
+      "back": "hookSpecificOutput.permissionDecision"
     },
     {
-      "front": "What happens if a hook script exits with `exit 0` but provides no stdout?",
-      "back": "Claude proceeds with the tool execution normally without interruption."
+      "front": "What are the three possible values for the 'permissionDecision' in a hook's JSON response?",
+      "back": "allow, deny, and ask."
     },
     {
-      "front": "What is the role of the `can_use_tool` callback in the Agent SDK?",
-      "back": "It acts as a gatekeeper to approve or deny every tool call programmatically."
+      "front": "Where is the .mcp.json file located to enable MCP servers for a project team?",
+      "back": "In the project root directory."
     },
     {
-      "front": "Which built-in Skill is used to verify an application's functionality by actually building and running it?",
+      "front": "Which directory stores 'Skills' (reusable instruction sets) for a project?",
+      "back": ".claude/skills/"
+    },
+    {
+      "front": "In a Skill's SKILL.md frontmatter, what key prevents Claude from auto-invoking that skill?",
+      "back": "disable-model-invocation: true"
+    },
+    {
+      "front": "What syntax in a SKILL.md file allows injecting live shell command output into the instructions?",
+      "back": "A command preceded by an exclamation mark and enclosed in backticks (e.g., !`git status`)."
+    },
+    {
+      "front": "Setting 'context: fork' in a Skill's frontmatter has what effect?",
+      "back": "It executes the skill inside a subagent to preserve the main context."
+    },
+    {
+      "front": "What is the character cap for Skill descriptions before they are truncated in the context window?",
+      "back": "1536 characters."
+    },
+    {
+      "front": "What command helps identify if any loaded Skills are consuming excessive context window space?",
+      "back": "/doctor"
+    },
+    {
+      "front": "Which directory is used for custom slash command definitions?",
+      "back": ".claude/commands/"
+    },
+    {
+      "front": "What placeholder variable is used in a custom command file to represent the user's input after the command?",
+      "back": "$ARGUMENTS"
+    },
+    {
+      "front": "What frontmatter key provides a usage hint for custom command arguments in the terminal?",
+      "back": "argument-hint"
+    },
+    {
+      "front": "Which file is used to define the logic for a custom terminal status line?",
+      "back": ".claude/statusline.sh"
+    },
+    {
+      "front": "Which JSON key in a plugin.json file defines the unique name of the plugin?",
+      "back": "name"
+    },
+    {
+      "front": "What variable is used in plugin configuration files to dynamically reference the plugin's installation path?",
+      "back": "${CLAUDE_PLUGIN_ROOT}"
+    },
+    {
+      "front": "Which command refreshes and reloads all currently installed plugins?",
+      "back": "/reload-plugins"
+    },
+    {
+      "front": "What CLI flag creates a temporary git worktree and branch for the session?",
+      "back": "--worktree"
+    },
+    {
+      "front": "Which file is used to specify git-ignored files that should be copied into every new worktree?",
+      "back": ".worktreeinclude"
+    },
+    {
+      "front": "What command opens a dashboard to monitor multiple active background sessions?",
+      "back": "agent view"
+    },
+    {
+      "front": "Which command repeatedly executes a prompt at intervals or until stopped?",
+      "back": "/loop"
+    },
+    {
+      "front": "Which command tracks a long-term objective throughout a session, checking progress at each turn?",
+      "back": "/goal"
+    },
+    {
+      "front": "What flag for the 'gh pr create' command allows Claude to auto-generate the PR title and description?",
+      "back": "--fill"
+    },
+    {
+      "front": "How can a specific session associated with a Pull Request be resumed?",
+      "back": "By using the flag --from-pr followed by the PR number."
+    },
+    {
+      "front": "In Plan mode, what keyboard action allows you to edit the drafted plan in a text editor?",
+      "back": "Pressing Enter."
+    },
+    {
+      "front": "Which keyboard shortcut toggles the visibility of the internal todo checklist?",
+      "back": "Ctrl+T"
+    },
+    {
+      "front": "What bundle skill is used to build and run the application to verify a task's success?",
       "back": "/verify"
     },
     {
-      "front": "In the `PostToolUse` hook, what does the `block` decision do?",
-      "back": "It prevents the tool's output from being added to the conversation context."
+      "front": "What is the purpose of the --output-format json flag in print mode?",
+      "back": "It provides a machine-readable JSON object for shell scripting or CI pipelines."
     },
     {
-      "front": "What command forces a refresh of installed plugins without restarting the session?",
-      "back": "/reload-plugins"
+      "front": "Which SDK function is used to initiate a full request-response cycle in one call?",
+      "back": "process_prompt"
+    },
+    {
+      "front": "Which SDK callback function is used to programmatically intercept and approve tool use requests?",
+      "back": "can_use_tool"
+    },
+    {
+      "front": "What SDK parameter ensures Claude returns structured, type-safe data (e.g., via Zod or Pydantic)?",
+      "back": "output_format"
+    },
+    {
+      "front": "Which setting in settings.json allows you to hide the user's home directory from Claude's view?",
+      "back": "sandbox.hideHome"
+    },
+    {
+      "front": "Which settings key is used to specifically block access to sensitive credential files like ~/.aws/credentials?",
+      "back": "sandbox.credentials"
+    },
+    {
+      "front": "Where are project-specific local settings that should not be committed to git stored?",
+      "back": ".claude/settings.local.json"
+    },
+    {
+      "front": "How can you prevent a subagent from seeing any files outside of the project root?",
+      "back": "By configuring path-scoping rules in .claude/rules/*.md."
+    },
+    {
+      "front": "What setting key is used to restrict the session to a specific subset of available models?",
+      "back": "availableModels"
+    },
+    {
+      "front": "Which command is used to add a remote GitHub repository as a plugin marketplace?",
+      "back": "/plugin marketplace add"
+    },
+    {
+      "front": "In a Python Agent SDK script, what decorator is used to mark a function as a Claude-accessible tool?",
+      "back": "@tool"
+    },
+    {
+      "front": "What is the required structure for the return value of a custom tool function in the SDK?",
+      "back": "{\"content\": [{\"type\": \"text\", \"text\": \"...\"}]}"
+    },
+    {
+      "front": "Which SDK class is passed to a query to configure permission modes and working directories?",
+      "back": "ClaudeAgentOptions"
+    },
+    {
+      "front": "What happens to old conversation turns when the context window reaches its limit?",
+      "back": "They are summarized through a process called compaction."
+    },
+    {
+      "front": "Which CLI flag is used to enable Vim-style keybindings for the prompt?",
+      "back": "--vim"
+    },
+    {
+      "front": "What built-in output style is designed for users who want to learn from Claude's explanations?",
+      "back": "Learning"
+    },
+    {
+      "front": "Which hook event is used to run logic right before the agent stops its current task cycle?",
+      "back": "Stop"
+    },
+    {
+      "front": "Where is the primary settings file for a project located within the project root?",
+      "back": ".claude/settings.json"
+    },
+    {
+      "front": "What is the default duration in days before local checkpoints are cleaned up?",
+      "back": "30 days."
+    },
+    {
+      "front": "Which command is used to validate the syntax of a plugin's configuration files?",
+      "back": "claude plugin validate"
+    },
+    {
+      "front": "What is the maximum number of checkpoints stored per session?",
+      "back": "100"
+    },
+    {
+      "front": "Which CLI flag enables verbose logging including internal event streams?",
+      "back": "--verbose"
+    },
+    {
+      "front": "Which MCP setting key is used to pass environment variables to an MCP server?",
+      "back": "env"
+    },
+    {
+      "front": "How should sensitive tokens be referenced in .mcp.json to avoid hardcoding?",
+      "back": "As shell environment variables using the syntax ${VAR_NAME}."
+    },
+    {
+      "front": "In the SDK, what is the 'query' function compared to 'process_prompt'?",
+      "back": "An async generator that streams real-time events and messages."
+    },
+    {
+      "front": "Which settings key defines the default model for all sessions on a machine?",
+      "back": "ANTHROPIC_DEFAULT_SONNET_MODEL"
+    },
+    {
+      "front": "What directory is used for globally shared custom slash commands?",
+      "back": "~/.claude/commands/"
+    },
+    {
+      "front": "What is the standard name pattern for referencing MCP tools in the SDK allowed-tools list?",
+      "back": "mcp__servername__toolname"
+    },
+    {
+      "front": "Which bundle skill performs a health check on the project environment and memory usage?",
+      "back": "/doctor"
+    },
+    {
+      "front": "Which hook type allows providing additional context to the prompt before it is sent?",
+      "back": "UserPromptSubmit"
+    },
+    {
+      "front": "What is the effect of setting 'enforceAvailableModels: true' in settings.json?",
+      "back": "It prevents the session from using any model not listed in 'availableModels'."
+    },
+    {
+      "front": "Where should project-wide rules be stored in a monorepo to apply only to a specific package?",
+      "back": "In a CLAUDE.md file within that package's subdirectory."
+    },
+    {
+      "front": "Which tool provides a GUI-like dashboard for managing concurrent agent tasks?",
+      "back": "agent view"
+    },
+    {
+      "front": "What is the default behavior when a 'deny' rule in settings.json matches a command Claude wants to run?",
+      "back": "The command is blocked without asking the user."
     }
   ]
 }
