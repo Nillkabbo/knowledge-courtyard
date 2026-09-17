@@ -149,6 +149,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .tl-step .tl-title{font-weight:700;font-size:.9rem;color:var(--ink);margin:.08rem 0}
 .story-text .tl-step .tl-body{font-size:0.875rem;color:var(--ink-dim);line-height:1.55}
 .story-text .callout{display:flex;gap:.6rem;border-radius:12px;padding:.7rem .9rem;margin:.9rem 0;font-size:0.9rem;line-height:1.6}
+.story-text .callout>div{flex:1;min-width:0}
 .story-text .callout .co-icon{font-size:1.05rem;flex-shrink:0;line-height:1.5}
 .story-text .callout.info{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.24)}
 .story-text .callout.warn{background:rgba(240,98,146,.08);border:1px solid rgba(240,98,146,.24)}
