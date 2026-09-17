@@ -9,7 +9,69 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
 </head>
 <body>
-<div id="app"></div>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">اقْرَأْ وَرَبُّكَ الْأَكْرَمُ</div>
+  <h1 class="title-main">সময়ের স্টুডিও</h1>
+  <div class="title-sub">The Studio of Time · Git Mastery</div>
+  <div class="title-desc">
+    প্রতিটা মুহূর্তের একটা ছবি — গিট-মাস্টারি বিশটি দরজায়।<br>
+    প্রথম স্ন্যাপশট (init · commit), ফ্রেম-টেবিল (staging), গল্পের শাখা (branch), মিলন-আসর (merge · rebase · cherry-pick), আয়না-ঘর (remote · PR), ফিতা-ঘর (tag · semver), হিসাবখাতা (amend · revert · reset), রাতের নোটবুক (reflog), দরজা-ঘণ্টা (hooks), ভেতর-ঘর (.git internals), নিয়মনামা (config), ভাড়া-ঘর (submodules), বাছাই-কক্ষ (sparse · LFS), হাব-গুদাম (bare · mirror), পরীক্ষা-মাঠ (rerere · worktree) — শেষে আল-কালামের সিংহাসন: গিটের নকশা-দর্শন।<br><br>
+    <em>Every moment has a snapshot — Git mastery in twenty doors: first snapshot and staging, branches, merge/rebase/cherry-pick, remotes and PRs, annotated tags and semver, the undo ladder (amend·revert·reset), the reflog notebook, hooks, the .git interior, config levels, submodules, sparse-checkout and LFS, bare mirrors, rerere and worktrees — ending at the Throne: the design philosophy of Git. Grounded in the official git-scm.com Book and reference.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🐴 স্টুডিওতে ঢোকো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">সময় যাকে ধরে রাখে — The Studio That Keeps Time</div>
+    <p>পুরনো ঢাকার এক ফটো-স্টুডিওতে দুই আলোকশিল্পীর কথা মনে করো। প্রথমজন প্রতিটা ছবি পুড়িয়ে নেগেটিভ ফেলে দিত — ভুল হলে আর ফেরা নেই; পঞ্চাশ বছর পরে কেউ চাইলে বলত, ছিল না। পাশের স্টুডিওতে রহমত আলী — প্রতিটা নেগেটিভ নম্বর-দিয়ে আলমারিতে, প্রতিটা ছবির পেছনে তারিখ-নাম, আর ভুল ছবি সামনে এলে পুরনোটা না-মুছে নতুন পাতার সাথে জুড়ে দিত। পঞ্চাশ বছর পরেও তাঁর স্টুডিওতে যেকোনো দিনের যেকোনো মুহূর্ত ফিরে পাওয়া যেত।</p>
+    <p class="en">In an Old Dhaka photo studio, remember two photographers. The first burned every negative after printing — a mistake was forever; fifty years later, "it no longer exists." Next door, Rahmat Ali — every negative numbered in the almirah, every print dated on its back, and a flawed print wasn't destroyed but pasted together with a correction leaf. Fifty years on, any day, any moment could be brought back in his studio.</p>
+    <hr class="p-divider">
+    <p>Git সেই দ্বিতীয় স্টুডিও। প্রতিটা commit একটা নেগেটিভ — মুছে নয়, জুড়ে সংশোধন; শাখা মানে একই মুহূর্তের একাধিক সম্ভাবনার ফ্রেম; আর reflog স্টুডিওর রাতের নোটবুক — ভুল করে ফেললেও কোন আলমারি-তাকে ছিল সব লেখা। এই বইয়ের বিশটি দরজায় তুমি সেই স্টুডিওর মালিক হবে — শুধু কমান্ড নয়, নকশাটাও বুঝে: কেন গিট স্ন্যাপশট ধরে রাখে, কেন সবকিছু হ্যাশ।</p>
+    <p class="en">Git is that second studio. Every commit a negative — corrected by joining, not erasing; a branch is one moment's many possible frames; and the reflog is the studio's night notebook — even a mistake has its shelf recorded. In this book's twenty doors you become the studio's owner — not just the commands, the design too: why Git keeps snapshots, why everything is a hash.</p>
+    <hr class="p-divider">
+    <p style="font-size:.82rem;color:var(--ink-mute)">⚠️ এই বই গিটের অফিসিয়াল বই ও রেফারেন্স (git-scm.com) থেকে যাচাইকৃত। গিটের সংস্করণভেদে আচরণে সূক্ষ্ম পার্থক্য থাকতে পারে — গুরুত্বপূর্ণ কাজের আগে <code>git --version</code> দেখে নাও।</p>
+    <p class="en" style="font-size:.78rem">⚠️ This book is verified against the official Git Book and reference (git-scm.com). Behavior can differ subtly across versions — check <code>git --version</code> before critical work.</p>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🪞</span><span id="hud-rank-name">নতুন শাগরেদ</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 2000 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>বিশটি দরজা, ক্রম মেনে। দরজা ১-১৯ স্টুডিওর কারিগরি — প্রথম স্ন্যাপশট থেকে rerere-পরীক্ষা; দরজা ২০ আল-কালামের সিংহাসন: পুরো নকশা এক নজরে।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← স্টুডিওর মানচিত্রে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">👑</div>
+  <h1 class="complete-title">তুমি এখন সময়ের স্থপতি</h1>
+  <p class="complete-text">বিশটি দরজা পেরিয়েছ।<br><br>রহমত আলীর প্রথম ছবি, জামাল উদ্দিনের ফ্রেম-টেবিল, শাহিনা বেগমের শাখা, মিয়া বসিরের মিলন-আসর, কামরুল হালিমের সারি-কারখানা, চন্দনার চেরি-বাগান, ফারিহার আয়না-ঘর, নাজমুল হুদার ফিতা-ঘর, মোজাম্মেল হোদার হিসাবখাতা, রেহানার রাতের নোটবুক, রুবেলার ঝুলি-তাক, ইদ্রিস মিস্ত্রির দরজা-ঘণ্টা, ইন্সপেক্টর নাদিমের গোয়েন্দা-দালান, সোনালী বেগমের ভেতর-ঘর, রুস্তম আলীর নিয়মনামা, ঠিকাদার হাবিবুরের ভাড়া-ঘর, ড. রাফিদার বাছাই-কক্ষ, ক্যাপ্টেন রশেদের হাব-গুদাম, মাস্টার-ক্যামেরার পরীক্ষা-মাঠ — সব এখন এক স্টুডিও।<br><br>আর তুমি জানো শেষ সত্যটা — Linus Torvalds যে যন্ত্র বানিয়েছিলেন, তার আইন: প্রতিটা মুহূর্ত একটা স্ন্যাপশট, প্রতিটা বস্তুর একটা নাম (হ্যাশ), আর ইতিহাস অটল — লেখা হলে বদলায় জুড়ে, মুছে নয়।<br><strong>কলম তোমার, স্টুডিও তোমার — সময় এখন ধরা দেয়।</strong></p>
+  <div class="complete-verse">اقْرَأْ وَرَبُّكَ الْأَكْرَمُ ۝ الَّذِي عَلَّمَ بِالْقَلَمِ</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"পড়ো, এবং তোমার রব সর্বাধিক মর্যাদাবান — যিনি কলমের মাধ্যমে শিখিয়েছেন।" — কুরআন ৯৬:৩-৪</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 সময়ের স্টুডিও চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 সময়ের স্টুডিও চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
 <script src="doors-01-05.js"></script>
 <script src="doors-06-10.js"></script>
 <script src="doors-11-15.js"></script>
