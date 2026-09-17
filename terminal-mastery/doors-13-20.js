@@ -597,7 +597,7 @@ tmux send-keys -t lab 'make test' Enter   # দূর থেকে ঘরে আ
 <div class="diag-cap">বাড়ি → কামরা → জানালা → ফলক; তুমি শুধু দরজা খুলে ঢুকো-বেরোও — কাজ কখনো মরে না।</div>
 </div>
 
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>প্যানেল-বাড়ির সতর্কতা:</strong> ঘরের কাজ সার্ভারে বাঁচে — কিন্তু সার্ভার রিবুট হলে সব ঘর মরে; সত্যিকারের দীর্ঘ-কাজের বিমা nohup/disown (দরজা ৫) বা systemd/tmux-উভয়ই নয়, পরিকল্পনা আলাদা। মোবাইল-SSH-ক্লায়েন্টে Ctrl-b নাও পাঠানো যায় — tmux-এর প্রেফিক্স বদলে ফেলো (set -g prefix C-a)। আর স্ক্রল-প্রাচীরে ([) ঢুকে pgup/pgdn-এ আটকে যাওয়া নতুনদের ক্লাসিক — q মনে রেখো। শেষ-কথা: পুরোনো ঘরের স্তূপ (tmux ls-এ দশটা পুরোনো) মাঝে মাঝে পরিষ্কার করো — kill-session।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>প্যানেল-বাড়ির সতর্কতা:</strong> ঘরের কাজ সার্ভারে বাঁচে — কিন্তু সার্ভার রিবুট হলে সব ঘর মরে; সত্যিকারের দীর্ঘ-কাজের বিমা nohup/disown (দরজা ১১) বা systemd/tmux-উভয়ই নয়, পরিকল্পনা আলাদা। মোবাইল-SSH-ক্লায়েন্টে Ctrl-b নাও পাঠানো যায় — tmux-এর প্রেফিক্স বদলে ফেলো (set -g prefix C-a)। আর স্ক্রল-প্রাচীরে ([) ঢুকে pgup/pgdn-এ আটকে যাওয়া নতুনদের ক্লাসিক — q মনে রেখো। শেষ-কথা: পুরোনো ঘরের স্তূপ (tmux ls-এ দশটা পুরোনো) মাঝে মাঝে পরিষ্কার করো — kill-session।</div></div>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>The panel-house caution:</strong> rooms live on the server — a reboot kills them all; for truly long work the insurance is nohup/disown (Door 5) or systemd, planned separately. Mobile SSH clients may not send Ctrl-b — remap the prefix (set -g prefix C-a). The scrollback ([) pgup-trap is the newbie classic — remember q. Finally: clear old room piles with kill-session now and then.</div></div>
 
 <div class="compare">
@@ -856,21 +856,21 @@ doors.push({
   subtitle: "The Throne of Streams",
   tech: "Unix philosophy · McIlroy's vision · synthesis",
   spirit: "তাওহীদ — বহুতে এক দেখা",
-  secret: "ন-দরজার ন-উস্তাদ নয়টা যন্ত্র শেখালেন; কিন্তু সিংহাসনে বসলে দেখো — সবাই একটাই কথা বলে: সবকিছু পানি, সবকিছু স্রোত, ছোট ধার জোড়া দাও — এটাই McIlroy-র দর্শন, এটাই পুরো শহরের আইন।",
+  secret: "বিশ দরজার উস্তাদরা নানা যন্ত্র শেখালেন; কিন্তু সিংহাসনে বসলে দেখো — সবাই একটাই কথা বলে: সবকিছু পানি, সবকিছু স্রোত, ছোট ধার জোড়া দাও — এটাই McIlroy-র দর্শন, এটাই পুরো শহরের আইন।",
   recall: {
-    q: "ন-দরজার ন-উস্তাদ কারা, আর তাঁদের সবার নিচে ধরে রাখা একটাই নীতি কী?",
+    q: "বিশ দরজার উস্তাদদের সবার নিচে ধরে রাখা একটাই নীতি কী?",
     qen: "Who are the nine masters of the nine doors, and what single principle underlies them all?",
-    a: "কালু মিয়া (ঘাট-পরিচয়), নসরত মিস্ত্রি (খাল/pipe), মুন্সী (ভাষা/expansion), জালিম মিয়া (জাল/filters), হারুন মাঝি (নৌকা/process), ফুলজান খালা (আচার/.bashrc), বাবুল (স্মৃতি/history), আয়েশা সিদ্দিকা (দূরের ঘাট/ssh-tmux-rsync), মোসাররফ কামার (জাহাজ-গোদাম/script safety)। সবার নিচে একটাই নীতি: সবকিছু টেক্সট-স্রোত, যন্ত্র ছোট ও ধারালো, জোড়া দিয়ে বড় কাজ — McIlroy-র বিখ্যাত নির্দেশ: এমন প্রোগ্রাম লেখো যে একটাই কাজ ভালো করে, এবং টেক্সট-স্রোতকে সর্বজনীন ইন্টারফেস ধরে চলো।",
+    a: "কালু মিয়া (ঘাট-পরিচয়), দলিল-দালান (inode/লিংক), নসরত মিস্ত্রি (খাল/pipe), মুন্সী (ভাষা/expansion), নকশা-সন্ধানী (find/xargs), চাবি-ঘর (permissions/umask), জালিম মিয়া (জাল/filters), সুতা-শিল্পী (sed), হিসাবি পাখি (awk), গুদাম-টেবিল (join/jq), হারুন মাঝি (নৌকা/process), চাঁদ-ঘড়ি (cron/at), রসদ-বাক্স (tar/curl), ফুলজান খালা (আচার/.bashrc), বাবুল (স্মৃতি/history), আয়েশা সিদ্দিকা (দূরের ঘাট/ssh-rsync), প্যানেল-বাড়ি (tmux), মোসাররফ কামার (জাহাজ-গোদাম/script safety), নগর-নাড়ি (df/free/ss), আর সিংহাসনে সবাই এক হয়ে যায়। সবার নিচে একটাই নীতি: সবকিছু টেক্সট-স্রোত, যন্ত্র ছোট ও ধারালো, জোড়া দিয়ে বড় কাজ — McIlroy-র বিখ্যাত নির্দেশ: এমন প্রোগ্রাম লেখো যে একটাই কাজ ভালো করে, এবং টেক্সট-স্রোতকে সর্বজনীন ইন্টারফেস ধরে চলো।",
     aen: "Kalu mia (the ghat), Nasrat the mason (canals/pipes), the Munshi (language/expansions), Jalim mia (nets/filters), Harun the boatman (processes), Fuljan khala (rituals/.bashrc), Babul (memory/history), Ayesha Siddiqa (the far ghat/ssh-tmux-rsync), Mosarrof Kamar (shipyard/script safety). Under all nine, one principle: everything is a text stream, tools are small and sharp, composition builds big work — McIlroy's famous directive: write programs that do one thing well, and treat the text stream as the universal interface."
   },
-  story: `<p class="scene-setting">শহরের কেন্দ্রে একটাই সিংহাসন — স্রোতের সিংহাসন। ন-দরজার ন-উস্তাদ তোমাকে একে একে তাঁদের কারিগরি শিখিয়ে পাঠালেন; আজ তুমি সিংহাসনের সিঁড়িতে। উপরে উঠে দেখো — পুরো শহর এক নজরে: কালু মিয়ার ঘাটে নৌকা ভেড়ছে, নসরত মিস্ত্রির খালে পানি চলছে, জালিম মিয়ার জাল ঝাড়া দিচ্ছে, হারুন মাঝির খাতায় প্যাঁচি জমছে, ফুলজান খালার জার রোজ ভরছে, বাবুলের খাতায় সব লেখা, আয়েশা সিদ্দিকার গরু-গাড়ি ওপারে যাচ্ছে, মোসাররফ কামারের গোদাম থেকে নতুন জাহাজ নামছে। কিন্তু উচ্চতা থেকে চোখ মুছলে দেখো — ন-টা কারিগরখানা আলাদা নয়। সবাই একটাই নদীর ধারে: ঘাটও পানি, খালও পানি, জালও পানি ছাঁকে, নৌকাও পানি বেয়ে যায়। সবকিছু পানি — এবং পানি জোড়া দেওয়াই শহর।</p>
+  story: `<p class="scene-setting">শহরের কেন্দ্রে একটাই সিংহাসন — স্রোতের সিংহাসন। বিশ দরজার উস্তাদরা তোমাকে একে একে তাঁদের কারিগরি শিখিয়ে পাঠালেন; আজ তুমি সিংহাসনের সিঁড়িতে। উপরে উঠে দেখো — পুরো শহর এক নজরে: কালু মিয়ার ঘাটে নৌকা ভেড়ছে, নসরত মিস্ত্রির খালে পানি চলছে, জালিম মিয়ার জাল ঝাড়া দিচ্ছে, হারুন মাঝির খাতায় প্যাঁচি জমছে, ফুলজান খালার জার রোজ ভরছে, বাবুলের খাতায় সব লেখা, আয়েশা সিদ্দিকার গরু-গাড়ি ওপারে যাচ্ছে, মোসাররফ কামারের গোদাম থেকে নতুন জাহাজ নামছে। কিন্তু উচ্চতা থেকে চোখ মুছলে দেখো — ন-টা কারিগরখানা আলাদা নয়। সবাই একটাই নদীর ধারে: ঘাটও পানি, খালও পানি, জালও পানি ছাঁকে, নৌকাও পানি বেয়ে যায়। সবকিছু পানি — এবং পানি জোড়া দেওয়াই শহর।</p>
 <p class="scene-setting en">At the city's heart stands one throne — the Throne of Streams. The nine masters taught you their crafts door by door; today you climb its stair. From the top the whole city appears at once: boats docking at Kalu's ghat, water flowing in Nasrat's canals, Jalim's nets shaking, tokens accumulating in Harun's ledger, Fuljan's jars filling daily, Babul's ledger written, Ayesha's carts crossing, new ships leaving Mosarrof's yard. But rub your eyes at that height — the nine workshops are not separate. All stand on one river: the ghat is water, the canal is water, the net strains water, the boat rides water. Everything is water — and joining water is the city.</p>
 
-<div class="dialogue">সিংহাসনের ধারে বসে তুমি জিজ্ঞেস করো — এত যন্ত্র, এত নিয়ম, নিচে কী আছে? ন-উস্তাদ একসাথে উত্তর দেন, যেন এক মুখ: নিচে কেউ নেই — নিচে পানি আছে। কালু মিয়া বলেন: আমার ঘাট শুধু পানির সাথে দেখা। নসরত মিস্ত্রি বলেন: আমার খাল শুধু পানি চালায়। মুন্সী বলেন: আমার ভাষা পানির নাম বদলায়, পানি নয়। জালিম মিয়া বলেন: আমার জাল পানি ছাঁকে। হারুন মাঝি বলেন: আমার নৌকা পানিতে চলে, হিসাব পানির বইতে। ফুলজান খালা বলেন: আমার আচার প্রতিদিনের পানির গতিপথ। বাবুল বলেন: আমার খাতায় পানির কথা লেখা। আয়েশা সিদ্দিকা বলেন: ওপারের শহরও এই পানিরই ধারায়। মোসাররফ কামার বলেন: আমার জাহাজ পানি বাঁচাতে শেখায়। ন-জন ন-কথা — একটাই অর্থ: সবকিছু স্রোত, আর স্রোত জোড়া দেওয়াই সব।</div>
+<div class="dialogue">সিংহাসনের ধারে বসে তুমি জিজ্ঞেস করো — এত যন্ত্র, এত নিয়ম, নিচে কী আছে? উস্তাদরা একসাথে উত্তর দেন, যেন এক মুখ: নিচে কেউ নেই — নিচে পানি আছে। কালু মিয়া বলেন: আমার ঘাট শুধু পানির সাথে দেখা। নসরত মিস্ত্রি বলেন: আমার খাল শুধু পানি চালায়। মুন্সী বলেন: আমার ভাষা পানির নাম বদলায়, পানি নয়। জালিম মিয়া বলেন: আমার জাল পানি ছাঁকে। হারুন মাঝি বলেন: আমার নৌকা পানিতে চলে, হিসাব পানির বইতে। ফুলজান খালা বলেন: আমার আচার প্রতিদিনের পানির গতিপথ। বাবুল বলেন: আমার খাতায় পানির কথা লেখা। আয়েশা সিদ্দিকা বলেন: ওপারের শহরও এই পানিরই ধারায়। মোসাররফ কামার বলেন: আমার জাহাজ পানি বাঁচাতে শেখায়। ন-জন ন-কথা — একটাই অর্থ: সবকিছু স্রোত, আর স্রোত জোড়া দেওয়াই সব।</div>
 <div class="dialogue en">Seated at the throne's edge you ask — so many tools, so many rules; what lies underneath? The nine masters answer as one voice: nothing lies underneath — water lies underneath. Kalu: my ghat only meets the water. Nasrat: my canal only moves water. The Munshi: my language renames the water, never replaces it. Jalim: my nets strain water. Harun: my boats ride water, their accounts are written in water. Fuljan khala: my rituals shape the daily current. Babul: my ledger records what the water said. Ayesha: the far city drinks from this same stream. Mosarrof: my shipyard teaches the water to be survived. Nine voices — one meaning: everything is a stream, and joining streams is everything.</p>
 </div>
 
-<div class="code-block"># সিংহাসনের দৃষ্টি — এক লাইনে পুরো শহর (ন-দরজার সব কৌশল):
+<div class="code-block"># সিংহাসনের দৃষ্টি — এক লাইনে পুরো শহর (বিশ দরজার সব কৌশল):
 journalctl -u ledgerpilot --since today | grep -i error | awk '{print \$5}' | sort | uniq -c | sort -rn | head -5 | tee /tmp/top.txt | mail -s "আজকের গলদ" admin@x
 #   দরজা 11: journalctl সেবা-নৌকার কাঠামো    দরজা 7: grep-awk-sort-uniq জাল-সারি
 #   দরজা 3: | খালে খালে প্রবাহ                দরজা 4: awk-এর ভেতরে expansion
@@ -886,7 +886,7 @@ journalctl -u ledgerpilot --since today | grep -i error | awk '{print \$5}' | so
 
 # তোমার জাহাজের নামকরণ-চাবি (আজই বাঁধো):
 alias top5='journalctl -u ledgerpilot --since today | grep -i error | awk "{print \$5}" | sort | uniq -c | sort -rn | head -5'
-# এক লাইনে ন-দরজা: সেবা (৫) → ছাঁকনি (৪) → খাল (২) → ভাষা (৩) → আচার (৬) → স্মৃতি (৭)</div>
+# এক লাইনে পুরো নগরী: সেবা-লগ (১১) → ছাঁকনি (৭) → খাল (৩) → ভাষা (৪) → আচার (১৪) → স্মৃতি (১৫)</div>
 
 <div class="diagram">
 <div class="diag-title">সিংহাসনের মানচিত্র — The Throne's Map of the Nine</div>
@@ -929,13 +929,13 @@ alias top5='journalctl -u ledgerpilot --since today | grep -i error | awk "{prin
 <div class="stat-card"><div class="sc-num">১০০০</div><div class="sc-label">XP — নগরীর নাগরিক</div></div>
 </div>
 
-<p class="verse">তাওহীদের দৃষ্টি: বহুতে এক দেখা। ন-দরজার ন-জগৎ এক নদীতে মিলেছে — যেমন সৃষ্টিজগতের বহু নিদর্শনে এক স্রষ্টার হাত চেনা যায় (কুরআন ৪১:৫৩-এর ভাবানুবাদ: আমার নিদর্শন দেখো)। স্রোতের সিংহাসনে বসে যে দেখে সব জ্ঞান এক ধারার শাখা, তার কাছে নতুন যন্ত্র নতুন ভাষা নয় — পুরোনো নদীর নতুন নাম।</p>
+<p class="verse">তাওহীদের দৃষ্টি: বহুতে এক দেখা। বিশ দরজার বিশ জগৎ এক নদীতে মিলেছে — যেমন সৃষ্টিজগতের বহু নিদর্শনে এক স্রষ্টার হাত চেনা যায় (কুরআন ৪১:৫৩-এর ভাবানুবাদ: আমার নিদর্শন দেখো)। স্রোতের সিংহাসনে বসে যে দেখে সব জ্ঞান এক ধারার শাখা, তার কাছে নতুন যন্ত্র নতুন ভাষা নয় — পুরোনো নদীর নতুন নাম।</p>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">👑 ন-উস্তাদ, এক নদী: সবকিছু টেক্সট-স্রোত — ছোট ধার জোড়া দাও, বড় কাজ দাঁড়ায়।<br>কারণ: যন্ত্র বিকল হয়, নদী থাকে — নদীর জন্য যন্ত্র শেখো।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">👑 বিশ উস্তাদ, এক নদী: সবকিছু টেক্সট-স্রোত — ছোট ধার জোড়া দাও, বড় কাজ দাঁড়ায়।<br>কারণ: যন্ত্র বিকল হয়, নদী থাকে — নদীর জন্য যন্ত্র শেখো।</div></div>`,
   senior: {
     title: "সিংহাসনের খাতা — The Throne Ledger",
     body: `<ul class="checklist">
-<li>আজই <strong>top5 alias</strong> বাঁধো — এক লাইনে ন-দরজার মিলন তোমার রোজকার হোক।</li>
+<li>আজই <strong>top5 alias</strong> বাঁধো — এক লাইনে পুরো নগরীর মিলন তোমার রোজকার হোক।</li>
 <li>McIlroy-র চার নির্দেশ মুখস্থ নয় — <strong>প্রতিটা নতুন স্ক্রিপ্টে প্রশ্ন করো</strong>: এ কি এক কাজ করে? স্রোত ধরে চলে?</li>
 <li>কোন দরজা হালকা লাগছে সেটা <strong>আবার খোলো</strong> — দ্বিতীয়বার পড়াই গভীরে যাওয়া।</li>
 <li>Book ৫৯-এর সাথে সেতু: claude-র হুক stdin/stdout চুক্তি, স্ক্রিপ্ট = স্রোত — <strong>দুই বই এক নদীতে</strong>।</li>
