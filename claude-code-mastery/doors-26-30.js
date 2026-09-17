@@ -565,106 +565,82 @@ export ANTHROPIC_SMALL_FAST_MODEL=haiku   # ছোট-কাজ আলাদা 
 
 
 
-// ── DOOR 31 · সেতু-দরজার প্রহরী — The Bridge-Door's Keeper ──
+// ── DOOR 31 · ফটিক চাচার প্রথম-দিনের কার্যশালা — Day One: From Empty Room to First Commit ──
 doors.push({
   num: 31,
-  icon: "🌉",
+  icon: "🛠️",
   color: "#22c55e",
-  name: "সেতু-দরজার প্রহরী",
-  subtitle: "The Bridge-Door's Keeper",
-  tech: "Capstone ভূমিকা · শেখা→নির্মাণ উত্তরণ · প্রজেক্ট-নির্বাচনের মাপকাঠি",
-  spirit: "উত্তরণ — জানা থেকে করা-যাওয়া",
-  secret: "এই দরজা দুই জগতের সেতু: পেছনে ৩০টা দরজায় শেখা হাতের কলকব্জা, সামনে একটা প্রজেক্ট — শুরু থেকে শেষ, তোমার হাতে; ভালো capstone-এর চার মাপ: সত্যিকার দরকার (রোজ ব্যবহার হবে), বই-ছোঁয়া (প্রায় প্রতিটা দরজার হাত লাগবে), সপ্তাহান্তে-সাইজ (শেষ করা সম্ভব), আর পরীক্ষাযোগ্য হৃদয় (গণিত/আচরণ — TDD-র খোরাক)।",
+  name: "প্রথম-দিনের কার্যশালা",
+  subtitle: "Day One: From Empty Room to First Commit",
+  tech: "install → প্রथম সেশন → /init → CLAUF.md → প্রথম commit",
+  spirit: "আচার — কোডের আগে কার্যশালা-আচার",
+  secret: "এক্সপার্ট নতুন প্রজেক্টে প্রথমে কোড লেখে না — ঘর গোছায়: Claude Code বসায়, প্রথম সেশনে লগ-ইন করে, /init দিয়ে CLAUDE.md-জন্ম দেয় (প্রজেক্টের বিধি-দেওয়াল), তারপর প্রথম git-commit। এই আচারই পরের প্রতিটা সেশনের বিচার-শক্তি বহন করে।",
   recall: {
-    q: "কেন SmritiBox-ই capstone — চার মাপকাঠিতে যাচাই করো; আর প্রজেক্ট-তালিকা থেকে বাছাইয়ের সময় কোন মাপটা সবচেয়ে আগে?",
-    qen: "Why is SmritiBox THE capstone — test it against the four measures; and which measure leads when shortlisting projects?",
-    a: "① সত্যিকার দরকার: তুমি রোজ NotebookLM-কার্ডে পড়ো — নিজের SRS টুল প্রতিদিন খোলা হবে, ডেমো-কবরস্থানে যাবে না। ② বই-ছোঁয়া: plan-মোড (২০), CLAUDE.md (২), TDD-মন (৩৩-এ পূর্ণ), settings/hooks (২৬/২৯), স্কিল (১০/৩৪), এজেন্ট (২৮), CI (২১/৩৪), ট্যাগ-রিলিজ (৩৪) — প্রায় প্রতিটা দরজার হাত একবার লাগে। ③ সপ্তাহান্তে-সাইজ: চার ছোট মডিউল (sm2/card/store/cli), কোনো ফ্রেমওয়ার্ক নেই — শেষ-করা সম্ভব। ④ পরীক্ষাযোগ্য হৃদয়: SM-2 বিশুদ্ধ গণিত — প্রতিটা সূত্র টেস্ট লেখা যায়; TDD-র জন্য আদর্শ। বাছাইয়ের ক্রম: সত্যিকার দরকার আগে — কারণ অব্যবহৃত প্রজেক্টে বাকি তিন গুণ মরে যায়; তারপর সাইজ (শেষ-না-হওয়া প্রজেক্ট শেখায় হতাশা), তারপর পরীক্ষাযোগ্যতা, সবশেষে বই-ছোঁয়া (যা প্রায় স্বয়ংক্রিয়ভাবে আসে)।",
-    aen: "① Real need: you study on NotebookLM cards daily — your own SRS tool gets opened every day, never lands in the demo-graveyard. ② Book-touching: plan mode (20), CLAUDE.md (2), TDD mind (full in 33), settings/hooks (26/29), skills (10/34), agents (28), CI (21/34), tag-release (34) — nearly every door's hand gets used once. ③ Weekend-size: four small modules (sm2/card/store/cli), no frameworks — finishable. ④ Testable heart: SM-2 is pure math — every formula testable; ideal TDD fuel. Selection order: real need FIRST — unused projects kill the other three virtues; then size (unfinished projects teach despair), then testability, and book-touching comes almost automatically.",
-    you: "নিজের প্রজেক্ট-তালিকা লেখো আর চার মাপে ১-৫ নাম্বার দাও: দরকার · সাইজ · পরীক্ষাযোগ্যতা · বই-ছোঁয়া; সর্বোচ্চ-ভারযুক্ত দরকার-স্কোরই পরের প্রজেক্ট"
+    q: "প্রথম দিনের ৫ ধাপ কী কী, কেন বিধি-দেওয়াল (CLAUDE.md) কোডের আগে? আর claude --version কী ছাপাবে বলে ডক বলে?",
+    qen: "What are the five day-one steps, why does the rules-wall (CLAUDE.md) come before code, and what does the docs say claude --version prints?",
+    a: "① install: curl -fsSL https://claude.ai/install.sh | bash (বা brew install --cask claude-code) ② verify: claude --version — ডক বলে সংখ্যা + (Claude Code) ছাপাবে ③ প্রজেক্ট-ফোল্ডারে claude — প্রথমবার লগ-ইন-প্রম্পট (ব্রাউজারে), উপরে version + model + working directory ④ /init — CLAUDE.md-জন্ম: প্রজেক্টের বিধি, কমান্ড, রীতি ⑤ প্রথম commit: git init + \\\"commit my changes with a descriptive message\\\"। বিধি আগে, কারণ ভবিষ্যতের প্রতিটা সেশন এই দেওয়াল পড়ে বিচার করে — কোড বদলায়, বিধি-চরিত্র বহন করে।",
+    aen: "① install: curl -fsSH https://claude.ai/install.sh | bash (or brew install --cask claude-code) ② verify: claude --version — docs say it prints a version number followed by (Claude Corde) ③ run claude in the project folder — first use shows a login prompt (browser), header shows version + model + working directory ④ /init — CLAUDE.md is born: the project's rules, commands, conventions ⑤ first commit: git init + \\\"commit my changes with a descriptive message\\\". Rules before code because every future session reads that wall to judge — code changes, the wall carries character.",
+    you: "নিজের আইডিয়া-ফোল্ডারে এই ৫ ধাপ এখনই চালাও; শেষে git log --oneline দিয়ে প্রথম commit নিজের চোখে দেখো"
   },
-  story: `<p class="scene-setting">দুই শহরের মাঝে নদী, আর নদীর ওপর সেতু-দরজার প্রহরী করিম বখশ — তাঁর কাজ শুধু রক্ষা নয়, বাছাই: কোন যাত্রী পার হবে, কে এখনো তীরে থাকবে। তাঁর চার প্রশ্ন বিখ্যাত: ① যাত্রার কাজ সত্যি কি? (সত্যিকার দরকার — ঘুরে আসার নয়, ওপারে তোমাকে বাস করতে হবে) ② বোঝা কত ভারী? (সপ্তাহান্তে-সাইজ — অর্ধেক রাস্তায় ক্লান্ত যাত্রী নদীতে পড়ে) ③ সঙ্গী কি গোনা যায়? (পরীক্ষাযোগ্যতা — যা মাপা যায় না, তার পথ হারায়) ④ রসদ কি শেখা কারিগরির সাথে মেলে? (বই-ছোঁয়া — যন্ত্রপাতি যা জানো, সেগুলোই লাগবে)। আজ সেতুতে SmritiBox-এর যাত্রী এসেছে — করিম বখশ চার প্রশ্ন করলেন, চার উত্তরও ঝলমলে; প্রহরী দরজা খুলে দিলেন: যাও, পরের তিন দরজা তোমার নির্মাণ-যাত্রা — নকশা-বাগান (৩২), ইট-ভাটা (৩৩), উদ্বোধন (৩৪) — শেষে সিংহাসন (৩৫) তোমারই অপেক্ষায়।</p>
-<p class="scene-setting en">Between two cities runs a river, and on its bridge stands keeper Karim Bakhsh — his job not just guarding but SELECTING: which traveler crosses, who stays on this bank. His four questions are famous: ① Is the journey's purpose real? (genuine need — not a stroll; you must LIVE on the far side) ② How heavy is the load? (weekend-size — travelers exhausted mid-bridge fall into the river) ③ Can the provisions be counted? (testability — what can't be measured loses its way) ④ Does the cargo match the crafts you've learned? (book-touching — the tools you know are the ones you'll use). Today the traveler SmritiBox arrived — four questions asked, four answers bright; the keeper opened the door: go — the next three doors are your construction journey: Design Garden (32), Brick Kiln (33), Grand Opening (34) — and the Throne (35) awaits you at the end.</p>
+  story: `<p class="scene-setting">নতুন শহরে ফটিক চাচা যখন কার্যশালা খোলেন, প্রথম দিন কোনো কাঠ কাটেন না। ঘর ঝাঁটেন, যন্ত্র গুছিয়ে ঝোলান, দেওয়ালে শহরের বিধি লেখেন — তারপর প্রথম কাট। তাঁর কথা: \\\"যে ঘর গোছানো নয়, সেখানে প্রতিটা ভুল দ্বিগুণ খরচ।\\\" এক্সপার্ট-ইঞ্জিনিয়ারের প্রথম দিনও তাই: Claude Code বসানো → লগ-ইন → /init দিয়ে বিধি-দেওয়াল → প্রথম commit। এই দরজা থেকে তিনটে দরজায় একটাই সূত্র — নকশা-টেবিল (৩২: আইডিয়া→পরিকল্পনা), কারখানা-ছন্দ (৩৩: নির্মাণ-চক্র), নদী-পারাপার (৩৪: রিলিজ) — শেষে সিংহাসন (৩৫)।</p>
+<p class="scene-setting en">When old master Fazlik Chacha opens a workshop in a new town, day one cuts no wood. He sweeps, hangs the tools, paints the town's rules on the wall — then makes the first cut. His saying: \\\"an unsorted room doubles the cost of every mistake.\\\" An expert engineer's day one is the same: install Claude Code → log in → /init writes the rules-wall → first commit. From this door a single thread runs through three more — the Drafting Table (32: idea→plan), the Factory Rhythm (33: build loop), the River Crossing (34: ship it) — ending at the Throne (35).</p>
 
-<div class="code-block"># ── চার মাপকাঠি — নিজের প্রজেক্ট-পরীক্ষা ──
-# প্রতিটা মাপে ১-৫; দরকার-স্কোর ×২ (দ্বিগুণ ভার)
-মাপ                 SmritiBox   ব্যাখ্যা
-─────────────────────────────────────────────────
-সত্যিকার দরকার      ৫         রোজ NotebookLM-কার্ডে পড়ো
-সপ্তাহান্তে-সাইজ    ৫         ৪ ছোট মডিউল, ফ্রেমওয়ার্ক নেই
-পরীক্ষাযোগ্য হৃদয়   ৫         SM-2 = বিশুদ্ধ গণিত
-বই-ছোঁয়া           ৫         plan/CLAUDE.md/TDD/hooks/skill/
-                              agent/CI/tag — সব দরজা লাগবে
+<div class="code-block"># ── ধাপ ১ · ইনস্টল (macOS/Linux/WESL) ──
+curl -fsSL https://claude.ai/install.sh | bash
+# বিকল্প: brew install --cask claude-code
 
-# বাছাই-ক্রম (গুরুত্ব অনুসারে):
-#   ১. দরকার — অব্যবহৃত প্রজেক্টে বাকি সব গুণ মৃত
-#   ২. সাইজ — অর্ধসমাপ্তি শেখায় হতাশা, আত্মবিশ্বাস নয়
-#   ৩. পরীক্ষাযোগ্যতা — TDD-র খোরাক
-#   ৪. বই-ছোঁয়া — প্রায় স্বয়ংক্রিয়; জোর করে ঢোকাও না
+# ── ধাপ ২ · যাচাই ──
+claude --version
+# তুমি যা দেখবে (ডক-বর্ণিত): সংখ্যা + (Claude Code)
 
-# পালানো-তালিকা (capstone-এ যা নয়):
-#   ✗ ফ্রেমওয়ার্ক-শেখা-প্রজেক্ট (দুই শিখা একসাথে = দুইই অর্ধেক)
-#   ✗ ডাটাবেস-স্কিমা-প্রজেক্ট (টেস্ট-হৃদয় কঠিন)
-#   ✗ 'সবাই ব্যবহার করবে' ভাবনা (v1-এর ব্যবহারকারী = তুমি)
+# ── ধাপ ৩ · প্রজেক্ট-ঘরে প্রথম সেশন ──
+mkdir my-idea && cd my-idea
+claude
+# প্রথমবার: লগ-ইন-প্রম্পট → ব্রাউজারে অনুমোদন
+# প্রম্পটের উপরে (ডক-বর্ণিত): version · model · working directory
+# সাহায্য দরকার হলে: /help
 
-# SmritiBox যা ধরবে (৩২-৩৪ পথের মানচিত্র):
-python 3.12 · pytest · argparse · JSON-লাইন ফাইল
-#   SM-2 সূত্র · কার্ড-ডেটা · ফাইল-স্টোর · CLI-দরজা
-#   + স্কিল · হুক · এজেন্ট · CI · ট্যাগ (৩৪-এ)</div>
+# ── ধাপ ৪ · বিধি-দেওয়ালের জন্ম ──
+/init
+# তুমি যা দেখবে: প্রজেক্ট-রুটে CLAUDE.md তৈরি —
+#   প্রজেক্ট কী, কোন কমান্ড চলে, কোন রীতি মানতে হবে
+# খালি ঘরেও চালাও — আইডিয়া-সারাংশ হাতে থাকলে দেওয়াল লেখায়
+
+# ── ধাপ 5 · প্রথম commit (ইতিহাসের জন্ম) ──
+git init
+# Claude-কে বলো (ডক-প্রম্পট-রেসিপি):
+#   commit my changes with a descriptive message
+# তুমি যা দেখবে: Claude নিজেই diff-পড়ে বার্তা-লেখে, তুমি অনুমোদন করো
+
+# ── বোনাস · স্বাস্থ্য-পরীক্ষা ──
+/doctor
+# কী কী আসলে লোড হয়েছে (settings/hooks/skills) — চোখে দেখে নাও</div>
 
 <table class="kv-table">
-<tr><th>মাপ</th><th>প্রশ্ন</th><th>SmritiBox</th></tr>
-<tr><td class="hl">দরকার</td><td>রোজ খুলব?</td><td>৫ — নিজের পড়ার যন্ত্র</td></tr>
-<tr><td class="hll">সাইজ</td><td>সপ্তাহান্তে শেষ?</td><td>৫ — ৪ মডিউল, শূন্য ফ্রেমওয়ার্ক</td></tr>
-<tr><td class="hl">পরীক্ষাযোগ্যতা</td><td>গণিত/আচরণ গোনা যায়?</td><td>৫ — SM-2 সূত্র</td></tr>
-<tr><td class="hll">বই-ছোঁয়া</td><td>দরজাগুলো লাগবে?</td><td>৫ — ৩০ দরজার হাত</td></tr>
+<tr><th>ধাপ</th><th>কমান্ড</th><th>তুমি কী দেখবে (প্রত্যাশিত)</th></tr>
+<tr><td class="hl">১ ইনস্টল</td><td>curl … install.sh | bash</td><td>ইনস্টল-লগ, শেষে সফল-বার্তা</td></tr>
+<tr><td class="hll">২ যাচাই</td><td>claude --version</td><td>সংখ্যা + (Claude Code)</td></tr>
+<tr><td class="hl">৩ সেশন</td><td>claude</td><td>লগ-ইন → header: version · model · dir</td></tr>
+<tr><td class="hll">৪ বিধি</td><td>/init</td><td>CLAUDE.md প্রজেক্ট-রুটে</td></tr>
+<tr><td class="hl">৫ ইতিহাস</td><td>git init + commit-প্রম্পট</td><td>প্রথম commit-হ্যাশ</td></tr>
 </table>
 
 <div class="diagram">
-<div class="diag-title">সেতু ও চার প্রশ্ন — The Bridge and Four Questions</div>
-<svg viewBox="0 0 560 185" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<marker id="ar59d31" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#22c55e"/></marker>
-</defs>
-<rect class="node" x="15" y="70" width="120" height="44" rx="10"/><text class="lbl" x="75" y="88">শেখার তীর</text><text class="lbl-sm" x="75" y="104">দরজা ১–৩০</text>
-<rect class="node-cyan" x="205" y="70" width="150" height="44" rx="10"/><text class="lbl-cyan" x="280" y="88">সেতু-দরজা</text><text class="lbl-sm" x="280" y="104">চার প্রশ্নে বাছাই</text>
-<rect class="node-hot" x="425" y="70" width="120" height="44" rx="10"/><text class="lbl-hot" x="485" y="88">নির্মাণ-তীর</text><text class="lbl-sm" x="485" y="104">দরজা ৩২–৩৫</text>
-<line x1="135" y1="92" x2="201" y2="92" stroke="#22c55e" stroke-width="3" fill="none" marker-end="url(#ar59d31)"/>
-<line x1="355" y1="92" x2="421" y2="92" stroke="#22c55e" stroke-width="3" fill="none" marker-end="url(#ar59d31)"/>
-<rect class="cell" x="15" y="20" width="530" height="30" rx="8"/><text class="lbl-sm" x="280" y="39">প্রহরীর চার প্রশ্ন: সত্যি কাজ? · বোঝা হালকা? · রসদ গোনা যায়? · কারিগরি মেলে?</text>
-<rect class="cell" x="15" y="135" width="530" height="40" rx="8"/>
-<text class="lbl-sm" x="280" y="151">বাছাই-ক্রম: দরকার ×২ ভার → সাইজ → পরীক্ষাযোগ্যতা → বই-ছোঁয়া; পালাও: ফ্রেমওয়ার্ক-শেখা, স্কিমা-প্রজেক্ট, 'সবাই-ব্যবহার-করবে'</text>
-<text class="lbl-sm" x="280" y="168">SmritiBox = ৪×৫ স্কোর — নিজের পড়ার যন্ত্র, নিজের হাতের ইট</text>
+<div class="diag-title">প্রথম-দিনের শৃঙ্খল</div>
+<svg viewBox="0 0 640 130" role="img" aria-label="Day one chain: install, first session, init, first commit">
+<defs><marker id="ar59d31" markerWidth="10" markerHeight="8" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3" fill="#22c55e"/></marker></defs>
+<rect x="20" y="45" width="120" height="44" rx="8" class="node node-leaf"/><text x="80" y="64" text-anchor="middle" class="sc-label">ইনস্টল</text><text x="80" y="80" text-anchor="middle" class="sc-num">install.sh</text>
+<rect x="180" y="45" width="120" height="44" rx="8" class="node node-cyan"/><text x="240" y="64" text-anchor="middle" class="sc-label">প্রথম সেশন</text><text x="240" y="80" text-anchor="middle" class="sc-num">claude → লগ-ইন</text>
+<rect x="340" y="45" width="120" height="44" rx="8" class="node node-hot"/><text x="400" y="64" text-anchor="middle" class="sc-label">বিধি-দেওয়াল</text><text x="400" y="80" text-anchor="middle" class="sc-num">/init → CLAUDE.md</text>
+<rect x="500" y="45" width="120" height="44" rx="8" class="node"/><text x="560" y="64" text-anchor="middle" class="sc-label">প্রথম ইতিহাস</text><text x="560" y="80" text-anchor="middle" class="sc-num">git commit</text>
+<line x1="140" y1="67" x2="180" y2="67" stroke="#22c55e" stroke-width="3" marker-end="url(#ar59d31)"/>
+<line x1="300" y1="67" x2="340" y2="67" stroke="#22c55e" stroke-width="3" marker-end="url(#ar59d31)"/>
+<line x1="460" y1="67" x2="500" y2="67" stroke="#22c55e" stroke-width="3" marker-end="url(#ar59d31)"/>
 </svg>
-<div class="diag-cap">তীর থেকে তীরে সেতু একটাই — চার প্রশ্নে উত্তীর্ণ যাত্রীই নির্মাণ-তীরে; পরের দরজায় বাগান রোপণ।</div>
-</div>
-
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সেতু-প্রহরীর সতর্কতা:</strong> capstone-বাছাইয়ের প্রধান মৃত্যু দুটো — 'চমৎকার-আইডিয়া' (চমক আছে, দরকার নেই: কবরস্থানে যাবে) আর 'জাদু-প্রজেক্ট' (একসাথে তিনটা নতুন প্রযুক্তি শেখা: নদীতে পড়বে)। বই-ছোঁয়াকে জোর করে ঢোকাও না — সত্যিকার প্রজেক্টে হাতগুলো নিজেই আসে। আর স্কোর-খাতা লিখে রাখো: তিন মাস পরে পরের প্রজেক্ট বাছাইয়ে এই খাতাই মানদণ্ড। শেষ কথা: যে যাত্রা শেষ হয়নি, তার শিক্ষাও অর্ধেক — সাইজ-মাপ কখনো অবহেলা কোরো না।</div></div>
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>The bridge-keeper's caution:</strong> two chief deaths in capstone selection — 'brilliant-idea' ( dazzle without need: graveyard-bound) and 'magic-project' (three new technologies at once: river-bound). Never force book-touching — real projects summon the hands themselves. And keep the score-sheet: three months later it becomes the yardstick for your next choice. Final word: an unfinished journey teaches half a lesson — never neglect the size measure.</div></div>
-
-<div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">❌ অন্ধ যাত্রী</div>চমক-আইডিয়া তাড়া · তিন নতুন প্রযুক্তি একসাথে · 'সবাই-ব্যবহার-করবে' বাস্তব-বিভ্রম · অর্ধ-শেষ গর্ব</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ করিম বখশের বাছাই</div>চার-প্রশ্ন স্কোর-খাতা · দরকার ×২ ভার · সপ্তাহান্তে-সাইজ শপথ · SmritiBox = ৪×৫ উত্তীর্ণ</div>
-</div>
-
-<div class="stat-grid">
-<div class="stat-card"><div class="sc-num">৪ প্রশ্ন</div><div class="sc-label">দরকার · সাইজ · গণনীয়তা · ছোঁয়া</div></div>
-<div class="stat-card"><div class="sc-num">দরকার ×২</div><div class="sc-label">প্রথম ও ভারী মাপ</div></div>
-<div class="stat-card"><div class="sc-num">৪×৫</div><div class="sc-label">SmritiBox-এর স্কোর</div></div>
-<div class="stat-card"><div class="sc-num">৩২→৩৫</div><div class="sc-label">নির্মাণ-তীরের পথ</div></div>
-</div>
-
-<p class="verse">উত্তরণের পাঠ: কুরআনে ঈমানের পর আমলের ঘোষণা — 'যারা ঈমান আনে ও সৎকাজ করে' (১০৩:৩): জানা আর করা পাশাপাশি, একাকী নয়; সাহাবায়ে কেরাম শিখেছেন যুদ্ধে দাঁড়িয়ে, বাণিজ্যে বসে। সেতু-দরজাও তাই: ৩০ দরজার জানা এখন কাজের ময়দানে নামবে — যা হাতে ধরা যায়, সেটাই সত্যিকার জ্ঞান।</p>
-
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🌉 চার প্রশ্নে বাছাই: দরকার(×২) → সাইজ → গণনীয়তা → ছোঁয়া; অর্ধ-শেষ নয়, শেষ-করা প্রজেক্টই শিক্ষা।<br>কারণ: সেতু শেখার তীরে নয় — পার হওয়ার জন্য; যে পার হলো, সে-ই কারিগর।</div></div>`,
+<div class="diag-cap">কোডের আগে ঘর-গোছানো — প্রতিটা তীর ডক-যাচাইকৃত কমান্ড</div>
+</div>`,
   senior: {
-    title: "সেতু-দরজার পাঠ — The Bridge-Door Lesson",
-    body: `<ul class="checklist">
-<li>চার মাপে স্কোর-খাতা: <strong>দরকার(×২) · সাইজ · পরীক্ষাযোগ্যতা · বই-ছোঁয়া</strong>।</li>
-<li>বাছাই-ক্রম: <strong>দরকার আগে</strong> — অব্যবহৃত প্রজেক্ট সব গুণ মারে; তারপর সাইজ।</li>
-<li>পালাও: ফ্রেমওয়ার্ক-শেখা · স্কিমা-প্রজেক্ট · 'সবাই-ব্যবহার-করবে'।</li>
-<li>SmritiBox পথের মানচিত্র: <strong>python · pytest · argparse · JSON-লাইন · SM-2</strong>।</li>
-<li>স্কোর-খাতা সংরক্ষণ — পরের প্রজেক্টের মানদণ্ড এটাই।</li>
-</ul>`
+    title: "অভিজ্ঞের চোখে — প্রথম দিনে যে ভুলগুলো ঘটে",
+    body: `<p><b>ভুল ১ — বিধি-দেওয়াল ছাড়া কোড।</b> নতুনরা সরাসরি \\\"একটা ফিচার বানাও\\\" বলে ফেলে; তিন সপ্তাহ পরে প্রতিটা সেশনে একই রীতি-ব্যাখ্যা দিতে হয়। <b>ভুল ২ — CLAUDE.md-এ সব ঢোকানো।</b> দেওয়াল যত বড়, তত পড়া হয় না; যা প্রতিদিন লাগে শুধু তাই লেখো — বাকি @import-চেইনে (দরজা ২৭)। <b>ভুল ৩ — প্রথম commit দেরি।</b> প্রথম commit-এর আগে worktree-বৈশিষ্ট্যও অচল (ডক: কমিট-না-থাকলে বেস-ব্রাঞ্চ রেজলভ করতে ব্যর্থ) — ইতিহাস শুরু না করলে সার্কাস শুরুই হয় না। আর লগ-ইন নিয়ে দ্বিধা নেই: অ্যাকাউন্ট-টাইপ যাই হোক, প্রথমবারই ব্রাউজার-অনুমোদন, তারপর আর চাই না — /login দিয়ে বদলাও যখন দরকার।</p>`
   }
 });
-
