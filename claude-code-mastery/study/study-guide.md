@@ -1,108 +1,95 @@
-# Claude Code: Comprehensive Study Guide
+# Claude Code Mastery: A Comprehensive Study Guide
 
-This study guide synthesizes the technical framework, operational strategies, and architectural principles of Claude Code, as detailed in the "Terminal Craftsman" series. It covers the system's foundational tools, memory management, security protocols, and advanced automation features.
+This study guide provides a structured overview of Claude Code, an agentic coding tool developed by Anthropic. It synthesizes technical references, narrative analogies, and operational protocols to facilitate a deep understanding of terminal-based AI development.
 
 ---
 
-## Part 1: Core Concepts and Architectures
+## Part 1: Core Concepts and Themes
 
-### The Three Pillars of Mastery
-The effectiveness of Claude Code relies on three central pillars:
-1.  **Context:** Managing what the agent "knows" through documentation (CLAUDE.md), session management (`/clear`), and delegation (Subagents).
-2.  **Trust:** Calibrating the agent's autonomy through permissions, operational modes (`plan`, `acceptEdits`), and environment isolation (sandboxing).
-3.  **Verification:** Validating every output through diff reviews, test execution, and final proofs (hooks and `/verify`).
+The study of Claude Code is centered on the transition from being a "typist" to becoming a "terminal craftsman." This mastery is built upon three pillars: **Context, Trust, and Verification.**
 
-### The Model Hierarchy
-Different tasks require different levels of intelligence and speed. Claude Code allows users to switch between models mid-session using the `/model` command.
+### I. The Three Pillars of the Workshop
+1.  **Context (The Ledger and the River):** Managing what Claude knows at any given moment. This includes the persistent memory of `CLAUDE.md` and the ephemeral flow of the "context river" within a session.
+2.  **Trust (The Keyring):** Determining the level of autonomy granted to the agent. This is managed through permission modes (`plan`, `default`, `acceptEdits`, `bypassPermissions`) and explicit allow/deny rules in `settings.json`.
+3.  **Verification (The Proof):** Ensuring the accuracy of the agent's output through manual diff reviews, automated testing (`/verify`), and lifecycle hooks that enforce standards like linting.
 
-| Model | Primary Use Case | Key Characteristics |
+### II. Model Selection (The Four Brothers)
+Selecting the right tool for the task is essential for efficiency and cost-management.
+
+| Model | Persona | Best Use Case |
 | :--- | :--- | :--- |
-| **Sonnet** | Daily operations | Default model; reliable for features, bugs, and reviews. |
-| **Opus** | High-stakes tasks | Powerful; used for large refactors and complex debugging. |
-| **Haiku** | Speed and efficiency | Fastest; ideal for typos, formatting, and quick questions. |
-| **Fable** | Deep reasoning | Most capable for hardest, long-running architectural tasks. |
+| **Haiku** | The Sprinter | Typos, formatting, quick one-off questions. |
+| **Sonnet** | The Reliable Default | Everyday features, bug fixes, code reviews. |
+| **Opus** | The Heavy Lifter | Large-scale refactors, complex debugging, high-stakes changes. |
+| **Fable** | The Philosopher | Hardest, longest-running tasks requiring deep reasoning. |
 
-### Memory and Context Management
-Claude Code operates in an **Agentic Loop** (Think → Act → Observe → Think). Every word in this loop consumes the context window. 
-*   **CLAUDE.md:** The "Workshop Ledger." Located at the project root, it stores persistent rules (build commands, code styles). It is re-read from disk even after context compaction.
-*   **Compaction:** When the context "river" fills, Claude summarizes older parts of the conversation to save space. 
-*   **Checkpoints:** The system takes snapshots before every turn (up to 100). Users can return to these using `/rewind`.
-
----
-
-## Part 2: Configuration and Customization
-
-### Operational Modes
-Modes determine the level of permission Claude has to execute commands and edit files.
-
-*   **Plan Mode:** (Toggle via `Shift+Tab`) Claude only reads and proposes a plan; it cannot edit or run commands.
-*   **Default Mode:** Claude asks for permission before sensitive actions.
-*   **AcceptEdits Mode:** Claude edits files freely but asks before running terminal commands.
-*   **BypassPermissions Mode:** Full autonomy. Strictly recommended for fenced environments (CI/sandboxes).
-
-### Hooks and Automation
-Hooks are callbacks triggered at specific points in the agentic loop, allowing for process-level automation.
-*   **PreToolUse:** Can block a tool call (e.g., preventing `rm -rf`).
-*   **PostToolUse:** Runs after a tool completes (e.g., automatically running a linter after a file write).
-*   **UserPromptSubmit:** Injects context or notes before the prompt is processed.
-
-### Skills and Plugins
-*   **Skills (`SKILL.md`):** Reusable instructions for specific workflows (e.g., a deployment guide). Unlike `CLAUDE.md`, the full body of a skill is only loaded into context when explicitly invoked.
-*   **MCP (Model Context Protocol):** Allows Claude to connect to external services like Notion, GitHub, or Postgres databases.
-*   **Plugins:** Bundles that package skills, agents, hooks, and MCP servers into a single distributable unit.
+### III. The Memory Hierarchy
+Claude Code utilizes a layered memory system to maintain project standards across sessions.
+*   **Global (`~/.claude/CLAUDE.md`):** Personal preferences for all projects.
+*   **Project (`./CLAUDE.md`):** Team-wide rules, build commands, and coding styles.
+*   **Local (`CLAUDE.local.md`):** Machine-specific habits; typically git-ignored.
+*   **Sub-folder:** Specific rules for monorepo packages or directories.
 
 ---
 
-## Part 3: Short-Answer Practice Questions
+## Part 2: Short-Answer Practice Questions
 
-**Q1: What is the primary difference between a "one-off task" and an "interactive session" in Claude Code?**
-**A:** An interactive session is started with the `claude` command, allowing for a continuous conversation. A one-off task uses `claude -p "prompt"`, which prints the answer to the terminal and closes the session immediately.
+**Q1: What is the specific command to start a Claude Code session for a one-off task without opening an interactive loop?**
+**A:** Use `claude -p "your prompt"`. This is known as "print mode."
 
-**Q2: Where should project-specific build and test commands be stored so Claude remembers them in every session?**
-**A:** They should be stored in a `CLAUDE.md` file at the project root (or within a `.claude/` directory).
+**Q2: Which file serves as the "Workshop Ledger" and is re-read from the disk even after a context compaction?**
+**A:** `CLAUDE.md`.
 
-**Q3: How does the `/compact` command assist in long-running sessions?**
-**A:** It manually triggers the summarization of the current conversation history to free up space in the context window, preventing the "forgetting" of earlier instructions.
+**Q3: How many checkpoints does Claude Code keep in its session memory, and what is the command to return to a previous state?**
+**A:** It keeps up to 100 checkpoints. Use the `/rewind` command (or press `Esc` twice on an empty prompt) to access the restore menu.
 
-**Q4: In the context of security, what is the "red envelope" or `bypassPermissions` mode?**
-**A:** It is a mode that allows Claude to skip all permission prompts. It should only be used in controlled, fenced environments like CI runners or sandboxes, as it poses a high risk to the local system if used improperly.
+**Q4: What is the difference between `acceptEdits` mode and `bypassPermissions` mode?**
+**A:** `acceptEdits` allows Claude to edit files without asking but still prompts for bash commands. `bypassPermissions` allows all actions (edits and commands) without prompts and should only be used in fenced environments like CI or sandboxes.
 
-**Q5: What is the purpose of a "Subagent" (e.g., using `.claude/agents/*.md`)?**
-**A:** Subagents handle heavy exploration or research tasks in separate context windows. They return only a summary to the main session, keeping the primary conversation "river" clean and focused.
+**Q5: In a `SKILL.md` file, what key-value pair in the YAML frontmatter prevents Claude from automatically invoking the skill?**
+**A:** `disable-model-invocation: true`.
 
-**Q6: What command is used to see the current token usage and cost for a session?**
-**A:** The `/usage` command.
+**Q6: What is the primary purpose of a "Subagent" in Claude Code?**
+**A:** To perform heavy exploration or research in a separate context window, returning only a summary to the main session to prevent "flooding the river" (context exhaustion).
 
-**Q7: How can you inject live data (like the output of a shell command) into a Skill?**
-**A:** By using the `!command` syntax (e.g., `!`git diff HEAD``) within the `SKILL.md` file.
+**Q7: Which command allows a user to watch all active background sessions on a single screen?**
+**A:** `agent view`.
 
-**Q8: What is the purpose of the `claude --worktree` command?**
-**A:** It allows for parallel work by opening a Claude session in a separate Git worktree and branch, preventing file edit collisions when working on multiple features simultaneously.
+**Q8: How does a `PreToolUse` hook signal that a tool call should be blocked while providing a reason to the agent?**
+**A:** The hook script should `exit 2` and write the reason to `stderr`. Alternatively, it can `exit 0` and return a JSON object with `permissionDecision: "deny"`.
 
----
+**Q9: What syntax is used within a custom command or skill to inject the live output of a shell command into the prompt?**
+**A:** Use the `!` prefix followed by the command in backticks, e.g., `!`git diff HEAD``.
 
-## Part 4: Essay Prompts for Deeper Exploration
-
-1.  **The Evolution of the Developer-Agent Relationship:** Analyze the transition from "Typist" to "Architect" when using Claude Code. How do tools like `Plan Mode`, `CLAUDE.md`, and `Subagents` redefine the developer's role from writing code to designing the constraints and verification steps of a workshop?
-2.  **Context as a Finite Resource:** Discuss the "River and Boat" metaphor for context management. Evaluate the trade-offs between a "bloated" `CLAUDE.md` and the use of "on-demand" `SKILL.md` files. Why is progressive disclosure essential for maintaining agent performance in large codebases?
-3.  **Security in Agentic Systems:** Explore the implications of the "Throne" and "Keyring" concepts. How do the permission levels and the `can_use_tool` callback in the Agent SDK provide a framework for "measured trust"? Discuss the necessity of sandboxing when using `headless` modes in CI/CD pipelines.
-4.  **The Lifecycle of a Professional Feature:** Outline the ideal workflow for developing a feature using Claude Code, from the initial `/init` of the ledger to the use of `gh pr create --fill` and the final `/verify`. How does this workflow ensure "Git history as the ultimate archive"?
+**Q10: What is the function of the `--worktree` flag?**
+**A:** It allows the user to start a Claude session in a separate git worktree and branch, enabling parallel feature development without file collisions.
 
 ---
 
-## Part 5: Glossary of Important Terms
+## Part 3: Essay Prompts for Deeper Exploration
 
-| Term | Definition |
-| :--- | :--- |
-| **Agentic Loop** | The repetitive cycle where the AI reads context, thinks, acts using a tool, observes the result, and repeats until the goal is met. |
-| **Compaction** | The process of summarizing old dialogue in a session to fit within the model's context window limits. |
-| **Context Window** | The total amount of information (tokens) the model can "see" and process at one time. |
-| **Headless Mode** | Running Claude Code without an interactive UI, typically via `claude -p` for automation and CI/CD. |
-| **Hook** | An automated callback (script or command) triggered by specific agent events like `PreToolUse` or `Stop`. |
-| **MCP (Model Context Protocol)** | A standardized protocol allowing the agent to interface with external databases and applications. |
-| **Permission Mode** | A setting (`plan`, `default`, `acceptEdits`, `bypass`) that dictates the level of human intervention required for agent actions. |
-| **Print Mode (`-p`)** | A non-interactive execution of Claude that outputs the result directly to the terminal. |
-| **Skill** | A markdown file (`SKILL.md`) containing specialized instructions and patterns that Claude loads only when needed. |
-| **Statusline** | A customizable information bar at the bottom of the terminal session that can display model type, branch name, or context usage. |
-| **Subagent** | A delegated Claude instance that runs in its own context window to perform side-tasks or research. |
-| **Worktree** | A Git feature used by Claude to create separate physical directories for different branches, enabling collision-free parallel development. |
+**Prompt 1: The Evolution of Context Management**
+Discuss the "Context River" analogy. Explain the process of "compaction" and why it is necessary for long-running sessions. In your essay, contrast the roles of `CLAUDE.md`, `/compact`, and `/clear` in maintaining an efficient "Museum of Memory."
+
+**Prompt 2: Designing the Automated Workshop**
+Analyze the integration of Claude Code into a CI/CD pipeline using the "Night Factory" framework. Detail how headless mode (`claude -p`), JSON output formats, and limited permission modes create a secure yet autonomous environment for code auditing and linting.
+
+**Prompt 3: The Ethics of Agency and the "Iron Vault"**
+Claude Code is described as an "agentic" tool. Explore the security implications of granting an AI the ability to run bash commands and edit files. Evaluate the safeguards provided by `settings.json`, sandbox environments, and the "human-in-the-loop" verification requirement.
+
+---
+
+## Part 4: Glossary of Important Terms
+
+*   **Agentic Loop:** The cycle where Claude reads, thinks, runs a tool, observes the result, and thinks again until a goal is met.
+*   **Checkpoints:** Snapshots taken before every tool use (up to 100) that allow a user to restore code or conversation states.
+*   **Compaction:** The automatic or manual process of summarizing old conversation history to free up space in the context window.
+*   **Headless Mode:** Running Claude Code without an interactive UI, typically in scripts or CI/CD pipelines using `claude -p`.
+*   **Hooks:** Automated callbacks (like `PreToolUse` or `PostToolUse`) that run local scripts at specific points in the agentic loop.
+*   **MCP (Model Context Protocol):** An open protocol used to connect Claude to external tools and data sources like GitHub, Notion, or Slack.
+*   **Output Style:** A customizable instruction set (stored in `.claude/output-styles/`) that dictates how Claude should frame its responses (e.g., "terse," "learning," or "diagrams-first").
+*   **Plan Mode:** A non-destructive mode where Claude drafts a proposed set of changes for user review before any files are modified or commands are run.
+*   **Plugin:** A distribution package containing a bundle of skills, agents, hooks, and MCP servers.
+*   **Skill:** A specific set of instructions or "chapbook" stored in a `SKILL.md` file that Claude loads into memory only when relevant to the task.
+*   **Statusline:** A customizable information strip at the bottom of the terminal that displays real-time data like current model, branch, or context usage.
+*   **Worktree:** A git feature utilized by Claude Code to create isolated environments for concurrent tasks on different branches.
