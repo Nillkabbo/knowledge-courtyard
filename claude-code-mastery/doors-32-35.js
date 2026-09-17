@@ -66,7 +66,7 @@ claude --permission-mode plan     # বা সেশনে Shift+Tab → ⏸ pla
 <rect x="545" y="55" width="80" height="46" rx="8" class="node"/><text x="585" y="74" text-anchor="middle" class="sc-label">plan</text><text x="585" y="91" text-anchor="middle" class="sc-num">⏸ on</text>
 <line x1="150" y1="43" x2="200" y2="43" stroke="#38bdf8" stroke-width="3" marker-end="url(#ar59d32)"/>
 <line x1="330" y1="43" x2="380" y2="43" stroke="#38bdf8" stroke-width="3" marker-end="url(#ar59d32)"/>
-<line x1="510" y1="43" x2="545" y2="43" stroke="#38bdf8" stroke-width="3" marker-end="url(#ar59d32)"/>
+<line x1="510" y1="43" x2="545" y2="78" stroke="#38bdf8" stroke-width="3" marker-end="url(#ar59d32)"/>
 <line x1="510" y1="123" x2="560" y2="101" stroke="#38bdf8" stroke-width="3" marker-end="url(#ar59d32)"/>
 </svg>
 <div class="diag-cap">তিন খাতার নিয়ম — প্রশ্ন আগে, উত্তর পরে; পরিকল্পনা মাপা হয়, কাঠ নয়</div>
