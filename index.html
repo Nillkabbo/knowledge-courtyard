@@ -391,7 +391,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
     const BN=['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
     const bn=n=>String(n).replace(/\d/g,d=>BN[d]);
     const setStat=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val;};
-    fetch('books.json',{cache:'force-cache'})
+    fetch('books.json',{cache:'no-cache'}) 
       .then(r=>r.json())
       .then(m=>{
         const live=m.books.filter(b=>b.status!=='hidden');
@@ -399,7 +399,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         const jl=document.getElementById('journeysLabel');
         if(jl) jl.textContent='📚 '+bn(live.length)+' যাত্রা — '+live.length+' Journeys';
       }).catch(()=>{});
-    fetch('search-index.json',{cache:'force-cache'})
+    fetch('search-index.json',{cache:'no-cache'})
       .then(r=>r.json())
       .then(idx=>{
         setStat('statChapters',bn(idx.chapters));
@@ -408,7 +408,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   })();
   </script>
 
-  <!-- ══ SEARCH BAR ── finds any topic across all 50 books ══ -->
+  <!-- ══ SEARCH BAR ── finds any topic across all 61 books ══ -->
   <div class="search-bar" id="searchBar">
     <div class="search-row">
       <span class="search-icon">🔍</span>
@@ -430,12 +430,12 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 
   <!-- ══ FILTER TABS ══ -->
   <div class="filter-bar" id="filterBar">
-    <button class="filter-tab active" data-filter="all">📚 সব · All <span class="count">৫৯</span></button>
+    <button class="filter-tab active" data-filter="all">📚 সব · All <span class="count">৬১</span></button>
     <button class="filter-tab" data-filter="road">🛣️ Reading Road <span class="count">✦</span></button>
     <button class="filter-tab" data-filter="core">🏛️ Core <span class="count">৬</span></button>
     <button class="filter-tab" data-filter="ai">🧬 AI &amp; ML <span class="count">১৪</span></button>
-    <button class="filter-tab" data-filter="cs">⚙️ CS &amp; Systems <span class="count">২৭</span></button>
-    <button class="filter-tab" data-filter="research">🔬 Research &amp; Mind <span class="count">১১</span></button>
+    <button class="filter-tab" data-filter="cs">⚙️ CS &amp; Systems <span class="count">২৮</span></button>
+    <button class="filter-tab" data-filter="research">🔬 Research &amp; Mind <span class="count">১২</span></button>
     <button class="filter-tab" data-filter="extras">🚗 Extras <span class="count">১</span></button>
   </div>
 
@@ -2046,7 +2046,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
         </div>
       </div>
       <div class="game-desc">
-        Git একটা ফটো-স্টুডিও — প্রতিটা commit পুরো ঘরের পূর্ণ ছবি (বদলের তালিকা নয়)। দশ দরজায় মাস্টারি: প্রথম ছবি (init/commit), ফ্রেম-টেবিল (staging/add -p), গল্পের শাখা (branch/HEAD), মিলন-আসর (merge/conflict), ছাপাঘর (rebase/সোনার নিয়ম), আয়না-ঘর (fetch/pull/push/fork+PR), হিসাবখাতা (amend/revert/reset/reflog), ঝুলি-তাক (stash/worktree), গোয়েন্দা-দালান (log/blame/bisect), সিংহাসন (দুই নকশা-সত্য)। প্রতিটা কমান্ড git-scm.com ডক থেকে।
+        Git একটা ফটো-স্টুডিও — প্রতিটা commit পুরো ঘরের পূর্ণ ছবি (বদলের তালিকা নয়)। বিশ দরজায় মাস্টারি: প্রথম ছবি (init/commit), ফ্রেম-টেবিল (staging/add -p), গল্পের শাখা (branch/HEAD), মিলন-আসর (merge/conflict), ছাপাঘর (rebase/সোনার নিয়ম), চেরি-বাগান (cherry-pick), আয়না-ঘর (fetch/pull/push/fork+PR), ফিতা-ঘর (tag/semver), হিসাবখাতা (amend/revert/reset), রাতের নোটবুক (reflog), ঝুলি-তাক (stash), দরজা-ঘণ্টা (hooks), গোয়েন্দা-দালান (log/blame/bisect), ভেতর-ঘর (.git internals), নিয়মনামা (config), ভাড়া-ঘর (submodule), বাছাই-কক্ষ (sparse/LFS), হাব-গুদাম (bare/mirror), পরীক্ষা-মাঠ (rerere/worktree), সিংহাসন (দুই নকশা-সত্য)। প্রতিটা কমান্ড git-scm.com ডক থেকে।
         <span class="en">Git is a photo studio — every commit a full snapshot of the whole room (not a list of changes). Ten doors: the first photograph (init/commit), the framing table (staging/add -p), story branches (branch/HEAD), the union hall (merge/conflicts), the reprinting shop (rebase/golden rule), the mirror room (fetch/pull/push/fork+PR), the ledger of records (amend/revert/reset/reflog), the shelf (stash/worktree), the detective bureau (log/blame/bisect), and the throne (two design-truths). Every command grounded in git-scm.com docs.</span>
       </div>
       <div class="game-topics">
@@ -2606,7 +2606,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   const HOST = document.getElementById('roadmap-render');
   if(!HOST) return;
   // Expose a promise so the search module can await the loaded manifest.
-  window.__booksManifest = fetch('books.json', {cache:'force-cache'})
+  window.__booksManifest = fetch('books.json', {cache:'no-cache'})
     .then(r => r.json())
     .then(manifest => { window.__books = manifest; return manifest; })
     .catch(e => { console.warn('books.json failed', e); return null; });
@@ -2687,7 +2687,7 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
   async function loadIndex(){
     if(INDEX) return INDEX;
     try{
-      const r = await fetch('search-index.json', {cache:'force-cache'});
+      const r = await fetch('search-index.json', {cache:'no-cache'});
       INDEX = await r.json();
       DOCS = [];
       for(const book of INDEX.index){
