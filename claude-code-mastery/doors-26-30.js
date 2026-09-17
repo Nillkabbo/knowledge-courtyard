@@ -638,7 +638,47 @@ git init
 <line x1="460" y1="67" x2="500" y2="67" stroke="#22c55e" stroke-width="3" marker-end="url(#ar59d31)"/>
 </svg>
 <div class="diag-cap">কোডের আগে ঘর-গোছানো — প্রতিটা তীর ডক-যাচাইকৃত কমান্ড</div>
-</div>`,
+</div>
+<div class="callout"><b>🧪 বাস্তব উদাহরণ — BazarBiti (বাজারবই), ধাপ ১-৫ হাতে-কলমে</b> — <span class="en">A real worked example, start to finish</span><pre class="code-block"># আইডিয়া: রোজকার বাজার-খরচের খাতা, টার্মিনালে — খরচ যোগ করো, সপ্তাহের হিসাব দেখো
+# প্রজেক্টের নাম: bazarbiti
+
+# ── ধাপ ১-২ · ইনস্টল-যাচাই (একবারই) ──
+$ curl -fsSL https://claude.ai/install.sh | bash
+$ claude --version
+2.5.47 (Claude Code)          ← সংখ্যা বদলাবে; শেষে (Claude Code) থাকবে
+
+# ── ধাপ ৩ · ঘর বানিয়ে প্রথম সেশন ──
+$ mkdir bazarbiti && cd bazarbiti
+$ git init
+$ claude
+# প্রথমবার: ব্রাউজারে লগ-ইন-প্রম্পট → Approve
+# সেশন-হেডার (আকার): Claude Code v2.5.47 · Sonnet · ~/bazarbiti
+
+# ── ধাপ ৪ · বিধি-দেওয়াল ──
+&gt; /init
+✓ Created CLAUDE.md
+$ cat CLAUDE.md
+# খালি ঘরে আনুমানিক আকার: "This is an empty project…"
+# আইডিয়া আগে বললে আরও নির্দিষ্ট লেখে — তাই আগে বলি:
+&gt; এই প্রজেক্ট একটা বাংলা বাজার-খরচের টার্মিনাল CLI হবে:
+&gt; Python 3.12, pytest, argparse, JSONL ফাইল, বাংলা আউটপুট।
+&gt; CLAUDE.md এই তথ্যে হালনাগাদ করো।
+$ cat CLAUDE.md
+# BazarBiti — বাজার-খরচের টার্মিনাল খাতা
+# - Python 3.12 · pytest · argparse · JSONL ফাইল-স্টোর
+# - সব আউটপুট বাংলায়; সংখ্যা ইংরেজি-অঙ্কে
+# - টেস্ট: pytest tests/ -q
+
+# ── ধাপ ৫ · প্রথম commit ──
+&gt; commit my changes with a descriptive message
+# Claude নিজে diff পড়ে বার্তা লেখে; তুমি অনুমোদন করো
+$ git log --oneline
+a1b2c3d Add CLAUDE.md: project rules for BazarBiti   ← হ্যাশ তোমারটা আলাদা হবে
+
+# ── বোনাস · কী লোড হলো ──
+&gt; /doctor
+# settings/hooks/skills — কী কী সত্যিই লোড হয়েছে তার হিসাব</pre></div>
+`,
   senior: {
     title: "অভিজ্ঞের চোখে — প্রথম দিনে যে ভুলগুলো ঘটে",
     body: `<p><b>ভুল ১ — বিধি-দেওয়াল ছাড়া কোড।</b> নতুনরা সরাসরি \\\"একটা ফিচার বানাও\\\" বলে ফেলে; তিন সপ্তাহ পরে প্রতিটা সেশনে একই রীতি-ব্যাখ্যা দিতে হয়। <b>ভুল ২ — CLAUDE.md-এ সব ঢোকানো।</b> দেওয়াল যত বড়, তত পড়া হয় না; যা প্রতিদিন লাগে শুধু তাই লেখো — বাকি @import-চেইনে (দরজা ২৭)। <b>ভুল ৩ — প্রথম commit দেরি।</b> প্রথম commit-এর আগে worktree-বৈশিষ্ট্যও অচল (ডক: কমিট-না-থাকলে বেস-ব্রাঞ্চ রেজলভ করতে ব্যর্থ) — ইতিহাস শুরু না করলে সার্কাস শুরুই হয় না। আর লগ-ইন নিয়ে দ্বিধা নেই: অ্যাকাউন্ট-টাইপ যাই হোক, প্রথমবারই ব্রাউজার-অনুমোদন, তারপর আর চাই না — /login দিয়ে বদলাও যখন দরকার।</p>`
