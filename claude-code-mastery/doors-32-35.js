@@ -127,7 +127,7 @@ claude -c        # এই ডিরেক্টরির সর্বশেষ �
 <tr><th>সংকেত</th><th>মানে</th><th>কাজ</th></tr>
 <tr><td class="hl">টিকিট শেষ</td><td>যাচাই-কমান্ড সবুজ</td><td>commit → পরের টিকিট</td></tr>
 <tr><td class="hll">পথ ভুল</td><td>দিক পছন্দ নয়</td><td>Esc Esc → কোড+কথোপকথন ফেরাও</td></tr>
-<tr><td class="hl">প্রসঙ্গ ভারী</td><td>মডels ভুলতে শুরু করেছে</td><td>/compact (বা এখান-পর্যন্ত-সারসংক্ষেপ)</td></tr>
+<tr><td class="hl">প্রসঙ্গ ভারী</td><td>মডেল ভুলতে শুরু করেছে</td><td>/compact (বা এখান-পর্যন্ত-সারসংক্ষেপ)</td></tr>
 <tr><td class="hll">দিন শেষ</td><td>মাথা ভরে গেছে</td><td>বন্ধ; পরদিন claude -c</td></tr>
 </table>
 
