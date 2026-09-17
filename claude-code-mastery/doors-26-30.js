@@ -564,132 +564,107 @@ export ANTHROPIC_SMALL_FAST_MODEL=haiku   # ছোট-কাজ আলাদা 
 });
 
 
-// ── DOOR 26 · স্থপতির সিংহাসন — The Architect's Throne ──
+
+// ── DOOR 31 · সেতু-দরজার প্রহরী — The Bridge-Door's Keeper ──
 doors.push({
   num: 31,
-  icon: "🏛️",
-  color: "#fbbf24",
-  name: "স্থপতির সিংহাসন",
-  subtitle: "The Architect's Throne — Full Circle",
-  tech: "SDK Deep Mastery · Sandbox · Precedence · Synthesis",
-  spirit: "আমানতুল-ফিতরাত — প্রকৃতির ওপর অর্পিত আমানত",
-  secret: "দরজা ১-১০ শেখায় চালাতে, ১১-১৪ শেখায় বানাতে — ১৭ শেখায় স্থাপত্য: পুরো ইঞ্জিন নিজের কোডে, ঘেরা প্রাচীরে, নিজের আইনে।",
+  icon: "🌉",
+  color: "#22c55e",
+  name: "সেতু-দরজার প্রহরী",
+  subtitle: "The Bridge-Door's Keeper",
+  tech: "Capstone ভূমিকা · শেখা→নির্মাণ উত্তরণ · প্রজেক্ট-নির্বাচনের মাপকাঠি",
+  spirit: "উত্তরণ — জানা থেকে করা-যাওয়া",
+  secret: "এই দরজা দুই জগতের সেতু: পেছনে ৩০টা দরজায় শেখা হাতের কলকব্জা, সামনে একটা প্রজেক্ট — শুরু থেকে শেষ, তোমার হাতে; ভালো capstone-এর চার মাপ: সত্যিকার দরকার (রোজ ব্যবহার হবে), বই-ছোঁয়া (প্রায় প্রতিটা দরজার হাত লাগবে), সপ্তাহান্তে-সাইজ (শেষ করা সম্ভব), আর পরীক্ষাযোগ্য হৃদয় (গণিত/আচরণ — TDD-র খোরাক)।",
   recall: {
-    q: "তুমি SDK দিয়ে নিজের প্রোডাক্টে এজেন্ট বসাচ্ছো। টুল-অনুমতি নিজের হাতে নিতে, সিস্টেম প্রম্পট নিজের মতো করতে, আর সবচেয়ে শক্ত বিচ্ছিন্নতা চাও — তিনটা হাতিয়ার কী?",
-    qen: "You're embedding the agent in your own product via SDK. You want tool permissions in your hand, a custom system prompt, and the hardest isolation — name the three tools.",
-    a: "① can_use_tool কলব্যাক (Python: PermissionResultAllow/Deny; TS: behavior allow/deny, updatedInput দিয়ে ইনপুট বদলানোও যায়)। ② system_prompt preset claude_code + append, বা পুরো কাস্টম স্ট্রিং। ③ sandbox: settings-এ enabled:true + filesystem allowWrite/denyRead + network allowedDomains — বিচ্ছিন্ন ঘেরা উঠান। আর settings-এর ঊর্ধ্বতন শৃঙ্খলা: local > project > user, প্রোগ্রামেটিক সবার উপরে, managed সবার আগে।",
-    aen: "① the can_use_tool callback (Python: PermissionResultAllow/Deny; TS: behavior allow/deny — even updatedInput to rewrite inputs). ② system_prompt with the claude_code preset + append, or a full custom string. ③ sandbox: enabled:true with filesystem allowWrite/denyRead and network allowedDomains — a fenced yard. And the precedence chain: local > project > user, programmatic above all, managed first."
+    q: "কেন SmritiBox-ই capstone — চার মাপকাঠিতে যাচাই করো; আর প্রজেক্ট-তালিকা থেকে বাছাইয়ের সময় কোন মাপটা সবচেয়ে আগে?",
+    qen: "Why is SmritiBox THE capstone — test it against the four measures; and which measure leads when shortlisting projects?",
+    a: "① সত্যিকার দরকার: তুমি রোজ NotebookLM-কার্ডে পড়ো — নিজের SRS টুল প্রতিদিন খোলা হবে, ডেমো-কবরস্থানে যাবে না। ② বই-ছোঁয়া: plan-মোড (২০), CLAUDE.md (২), TDD-মন (৩৩-এ পূর্ণ), settings/hooks (২৬/২৯), স্কিল (১০/৩৪), এজেন্ট (২৮), CI (২১/৩৪), ট্যাগ-রিলিজ (৩৪) — প্রায় প্রতিটা দরজার হাত একবার লাগে। ③ সপ্তাহান্তে-সাইজ: চার ছোট মডিউল (sm2/card/store/cli), কোনো ফ্রেমওয়ার্ক নেই — শেষ-করা সম্ভব। ④ পরীক্ষাযোগ্য হৃদয়: SM-2 বিশুদ্ধ গণিত — প্রতিটা সূত্র টেস্ট লেখা যায়; TDD-র জন্য আদর্শ। বাছাইয়ের ক্রম: সত্যিকার দরকার আগে — কারণ অব্যবহৃত প্রজেক্টে বাকি তিন গুণ মরে যায়; তারপর সাইজ (শেষ-না-হওয়া প্রজেক্ট শেখায় হতাশা), তারপর পরীক্ষাযোগ্যতা, সবশেষে বই-ছোঁয়া (যা প্রায় স্বয়ংক্রিয়ভাবে আসে)।",
+    aen: "① Real need: you study on NotebookLM cards daily — your own SRS tool gets opened every day, never lands in the demo-graveyard. ② Book-touching: plan mode (20), CLAUDE.md (2), TDD mind (full in 33), settings/hooks (26/29), skills (10/34), agents (28), CI (21/34), tag-release (34) — nearly every door's hand gets used once. ③ Weekend-size: four small modules (sm2/card/store/cli), no frameworks — finishable. ④ Testable heart: SM-2 is pure math — every formula testable; ideal TDD fuel. Selection order: real need FIRST — unused projects kill the other three virtues; then size (unfinished projects teach despair), then testability, and book-touching comes almost automatically.",
+    you: "নিজের প্রজেক্ট-তালিকা লেখো আর চার মাপে ১-৫ নাম্বার দাও: দরকার · সাইজ · পরীক্ষাযোগ্যতা · বই-ছোঁয়া; সর্বোচ্চ-ভারযুক্ত দরকার-স্কোরই পরের প্রজেক্ট"
   },
-  story: `<p class="scene-setting">পনেরোটা দরজার শেষে তুমি আর কারখানার মালিক নও — শহরের স্থপতি। রাহাত মিয়া তোমাকে ডাকলেন নদীর ধারে তার স্টুডিওতে, যেখানে টেবিলের উপর শহরের পুরো মডেল: কারখানা, বাজার, ঘড়ির টাওয়ার, প্রাচীর। বললেন — দেখো, এই প্রতিটা ঘর তুমি এক এক করে বানিয়েছ (দরজা ১-১৪)। এখন শেষ প্রশ্ন: এই শহরটা কার আইনে চলবে? কে কার উপরে বসবে? কোথায় প্রাচীর, কোথায় ফাটক?</p>
-<p class="scene-setting en">At the end of seventeen doors you are no longer a workshop owner — you are the city's architect. Rahat mia calls you to his riverside studio, where the whole city sits modelled on the table: factories, markets, the clock tower, the wall. He says — see, you built each of these rooms one by one (Doors 1-14). Now the last question: under whose law does this city run? Who sits above whom? Where the wall, where the gate?</p>
+  story: `<p class="scene-setting">দুই শহরের মাঝে নদী, আর নদীর ওপর সেতু-দরজার প্রহরী করিম বখশ — তাঁর কাজ শুধু রক্ষা নয়, বাছাই: কোন যাত্রী পার হবে, কে এখনো তীরে থাকবে। তাঁর চার প্রশ্ন বিখ্যাত: ① যাত্রার কাজ সত্যি কি? (সত্যিকার দরকার — ঘুরে আসার নয়, ওপারে তোমাকে বাস করতে হবে) ② বোঝা কত ভারী? (সপ্তাহান্তে-সাইজ — অর্ধেক রাস্তায় ক্লান্ত যাত্রী নদীতে পড়ে) ③ সঙ্গী কি গোনা যায়? (পরীক্ষাযোগ্যতা — যা মাপা যায় না, তার পথ হারায়) ④ রসদ কি শেখা কারিগরির সাথে মেলে? (বই-ছোঁয়া — যন্ত্রপাতি যা জানো, সেগুলোই লাগবে)। আজ সেতুতে SmritiBox-এর যাত্রী এসেছে — করিম বখশ চার প্রশ্ন করলেন, চার উত্তরও ঝলমলে; প্রহরী দরজা খুলে দিলেন: যাও, পরের তিন দরজা তোমার নির্মাণ-যাত্রা — নকশা-বাগান (৩২), ইট-ভাটা (৩৩), উদ্বোধন (৩৪) — শেষে সিংহাসন (৩৫) তোমারই অপেক্ষায়।</p>
+<p class="scene-setting en">Between two cities runs a river, and on its bridge stands keeper Karim Bakhsh — his job not just guarding but SELECTING: which traveler crosses, who stays on this bank. His four questions are famous: ① Is the journey's purpose real? (genuine need — not a stroll; you must LIVE on the far side) ② How heavy is the load? (weekend-size — travelers exhausted mid-bridge fall into the river) ③ Can the provisions be counted? (testability — what can't be measured loses its way) ④ Does the cargo match the crafts you've learned? (book-touching — the tools you know are the ones you'll use). Today the traveler SmritiBox arrived — four questions asked, four answers bright; the keeper opened the door: go — the next three doors are your construction journey: Design Garden (32), Brick Kiln (33), Grand Opening (34) — and the Throne (35) awaits you at the end.</p>
 
-<div class="dialogue">রাহাত তিনটা জিনিস দেখালেন। প্রথমে একটা ঘরের খাতা — প্রতিটা টুল-কলের আগে তোমার কলম লাগবে (can_use_tool): মঞ্জুর, নাকচ, বা মঞ্জুর-করে-শর্ত-বদলে। তারপর শহরের সংবিধান (system_prompt): ডিফল্ট আইনগ্রন্থ রেখে নিজের ধারা যোগ (preset + append), নয়তো পুরো নতুন সংবিধান। তারপর প্রাচীর (sandbox): কোথায় লেখা যাবে, কোথানো পড়াই যাবে না, কোন দরজা দিয়ে বাইরের সঙ্গে কথা — সব লেখা থাকবে। আর শেষ পাতায় আইনের ঊর্ধ্বতন ক্রম: স্থানীয় আইন প্রজেক্টকে টাপে, প্রজেক্ট ব্যবহারকারীকে, আর সংস্থার নীতি সবার আগে পড়া হয়।</div>
-<div class="dialogue en">Rahat shows three things. First, a room's ledger — before every tool call your pen falls (can_use_tool): allow, deny, or allow-with-rewritten-terms. Then the city's constitution (system_prompt): keep the default law-book and append your own clauses (preset + append), or write a whole new one. Then the wall (sandbox): where writing is allowed, where even reading is forbidden, which gate may speak outside — all written down. And on the last page, the order of law: local rules tap the project, the project taps the user, and the organization's policy is read before all.</div>
+<div class="code-block"># ── চার মাপকাঠি — নিজের প্রজেক্ট-পরীক্ষা ──
+# প্রতিটা মাপে ১-৫; দরকার-স্কোর ×২ (দ্বিগুণ ভার)
+মাপ                 SmritiBox   ব্যাখ্যা
+─────────────────────────────────────────────────
+সত্যিকার দরকার      ৫         রোজ NotebookLM-কার্ডে পড়ো
+সপ্তাহান্তে-সাইজ    ৫         ৪ ছোট মডিউল, ফ্রেমওয়ার্ক নেই
+পরীক্ষাযোগ্য হৃদয়   ৫         SM-2 = বিশুদ্ধ গণিত
+বই-ছোঁয়া           ৫         plan/CLAUDE.md/TDD/hooks/skill/
+                              agent/CI/tag — সব দরজা লাগবে
 
-<div class="code-block"># ① টুল-অনুমতি নিজের কলমে — can_use_tool (Python):
-from claude_agent_sdk.types import (
-    PermissionResultAllow, PermissionResultDeny, ToolPermissionContext
-)
+# বাছাই-ক্রম (গুরুত্ব অনুসারে):
+#   ১. দরকার — অব্যবহৃত প্রজেক্টে বাকি সব গুণ মৃত
+#   ২. সাইজ — অর্ধসমাপ্তি শেখায় হতাশা, আত্মবিশ্বাস নয়
+#   ৩. পরীক্ষাযোগ্যতা — TDD-র খোরাক
+#   ৪. বই-ছোঁয়া — প্রায় স্বয়ংক্রিয়; জোর করে ঢোকাও না
 
-async def can_use_tool(tool_name, input_data, context):
-    if tool_name == "Bash" and "rm" in input_data.get("command", ""):
-        return PermissionResultDeny(message="User denied this action")
-    return PermissionResultAllow(updated_input=input_data)  # শর্ত-বদলও সম্ভব
+# পালানো-তালিকা (capstone-এ যা নয়):
+#   ✗ ফ্রেমওয়ার্ক-শেখা-প্রজেক্ট (দুই শিখা একসাথে = দুইই অর্ধেক)
+#   ✗ ডাটাবেস-স্কিমা-প্রজেক্ট (টেস্ট-হৃদয় কঠিন)
+#   ✗ 'সবাই ব্যবহার করবে' ভাবনা (v1-এর ব্যবহারকারী = তুমি)
 
-options = ClaudeAgentOptions(can_use_tool=can_use_tool)
+# SmritiBox যা ধরবে (৩২-৩৪ পথের মানচিত্র):
+python 3.12 · pytest · argparse · JSON-লাইন ফাইল
+#   SM-2 সূত্র · কার্ড-ডেটা · ফাইল-স্টোর · CLI-দরজা
+#   + স্কিল · হুক · এজেন্ট · CI · ট্যাগ (৩৪-এ)</div>
 
-# ⚠️ Python স্ট্রিমিং মোডে (finite message stream) একটা
-# dummy PreToolUse হুক লাগে স্ট্রিম খোলা রাখতে:
-#   async def keep_open(input_data, tool_use_id, context):
-#       return {"continue_": True}
-#   hooks={"PreToolUse": [HookMatcher(matcher=None, hooks=[keep_open])]}
-
-# ② সংবিধান — system_prompt:
-options = ClaudeAgentOptions(
-    system_prompt={
-        "type": "preset", "preset": "claude_code",   # ডিফল্ট আইন
-        "append": "Always include detailed docstrings.",  # নিজের ধারা
-    }
-)
-# নতুন সংবিধান চাইলে: system_prompt="You are ..."
-# (v0.1.0+ ডিফল্ট এখন minimal — পুরনো আচরণ চাইলে preset বলে দাও)</div>
-
-<div class="code-block">// ③ প্রাচীর — sandbox (settings.json):
-{
-  "sandbox": {
-    "enabled": true,
-    "autoAllowBashIfSandboxed": true,
-    "excludedCommands": ["docker *"],
-    "filesystem": {
-      "allowWrite": ["/tmp/build", "~/.kube"],
-      "denyRead": ["~/.aws/credentials"]
-    },
-    "network": {
-      "allowedDomains": ["github.com", "*.npmjs.org"]
-    }
-  }
-}
-
-# আইনের ক্রম — কে কাকে টাপে:
-#   local (.claude/settings.local.json)
-#     > project (.claude/settings.json)
-#       > user (~/.claude/settings.json)
-# প্রোগ্রামেটিক অপশন (agents, allowed_tools) সব ফাইলের উপরে;
-# managed/সংস্থা নীতি সবার আগে পড়া হয়।
-# কোনো সেটিং কাজ না করলে: /status দেখো কোন স্তর সক্রিয়,
-# claude doctor (টার্মিনাল) বা /doctor (সেশনে) ভাঙা ফাইল ধরে।</div>
-
-<p>এখন পনেরোটা দরজা এক শহরে বসাও। নিচের দশটা ছিল কারখানা: হাসুর হাতুড়ি (১), রাহেলার খাতা (২), ভাইদের মাপ (৩), ফরিদার নদী (৪), বেলালের তালা (৫), রফিকের ঠিকাদার (৬), মাহমুদের ঘণ্টা (৭), আয়েশার আংটি (৮), নাদিরের রাতের কারখানা (৯), প্রথম সিংহাসন (১০)। উঁচু তলায় পাঁচটা নতুন ঘর: সিরাজের ঘড়ির ইঞ্জিন (১১), নুসরাতের সিল-ছাঁচ-ফলক (১২), কামরুলের নিজে গড়া যন্ত্র (১৩), মোস্তফার পাইকারি বাক্স (১৪) — আর এই স্থপতির টেবিল (১৫), যেখানে পুরো শহরের আইন লেখা হয়।</p>
-<p class="en">Now set all seventeen doors in one city. The lower ten were the workshop: Hasu's hammer (1), Rahela's ledger (2), the brothers' measure (3), Farida's river (4), Belal's locks (5), Rafiq's contractors (6), Mahmud's bells (7), Ayesha's ring (8), Nadir's night factory (9), the first throne (10). The advanced floors added six rooms: Siraj's clock engine (11), Nusrat's seals-moulds-plaques (12), Kamrul's self-built machines (13), Mostafa's wholesale crates (14), Shirin's many kitchens (15), Rubina's vault (16) — and this architect's table (17), where the whole city's law is written.</p>
+<table class="kv-table">
+<tr><th>মাপ</th><th>প্রশ্ন</th><th>SmritiBox</th></tr>
+<tr><td class="hl">দরকার</td><td>রোজ খুলব?</td><td>৫ — নিজের পড়ার যন্ত্র</td></tr>
+<tr><td class="hll">সাইজ</td><td>সপ্তাহান্তে শেষ?</td><td>৫ — ৪ মডিউল, শূন্য ফ্রেমওয়ার্ক</td></tr>
+<tr><td class="hl">পরীক্ষাযোগ্যতা</td><td>গণিত/আচরণ গোনা যায়?</td><td>৫ — SM-2 সূত্র</td></tr>
+<tr><td class="hll">বই-ছোঁয়া</td><td>দরজাগুলো লাগবে?</td><td>৫ — ৩০ দরজার হাত</td></tr>
+</table>
 
 <div class="diagram">
-<div class="diag-title">শহরের স্তম্ভ — পনেরো দরজার স্থাপত্য</div>
-<svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
-<rect class="node-hot" x="190" y="128" width="180" height="46" rx="12"/><text class="lbl-hot" x="280" y="146">স্থপতির সিংহাসন (১৫)</text><text class="lbl-sm" x="280" y="163">সংবিধান · প্রাচীর · ঊর্ধ্বতন ক্রম</text>
-<rect class="node" x="15" y="30" width="150" height="34" rx="8"/><text class="lbl-sm" x="90" y="51">১ হাতুড়ি · ৪ নদী</text>
-<rect class="node" x="15" y="80" width="150" height="34" rx="8"/><text class="lbl-sm" x="90" y="101">২ খাতা · ৬ ঠিকাদার</text>
-<rect class="node" x="15" y="130" width="150" height="34" rx="8"/><text class="lbl-sm" x="90" y="151">৩ মাপ · ৭ ঘণ্টা</text>
-<rect class="node" x="15" y="180" width="150" height="34" rx="8"/><text class="lbl-sm" x="90" y="201">৫ তালা · ৮ আংটি</text>
-<rect class="node" x="15" y="230" width="150" height="34" rx="8"/><text class="lbl-sm" x="90" y="251">৯ রাত · ১০ সিংহাসন</text>
-<rect class="node-purple" x="395" y="30" width="150" height="34" rx="8"/><text class="lbl-sm" x="470" y="51">১১ ঘড়ির ইঞ্জিন</text>
-<rect class="node-purple" x="395" y="80" width="150" height="34" rx="8"/><text class="lbl-sm" x="470" y="101">১২ সিল · ছাঁচ · ফলক</text>
-<rect class="node-purple" x="395" y="130" width="150" height="34" rx="8"/><text class="lbl-sm" x="470" y="151">১৩ নিজে গড়া যন্ত্র</text>
-<rect class="node-purple" x="395" y="180" width="150" height="34" rx="8"/><text class="lbl-sm" x="470" y="201">১৪ পাইকারি বাক্স</text>
-<rect class="node-purple" x="395" y="230" width="150" height="34" rx="8"/><text class="lbl-sm" x="470" y="251">১৫ বহু হাত · ১৬ ভল্ট</text>
-<line class="edge" x1="165" y1="47" x2="230" y2="130"/>
-<line class="edge" x1="165" y1="97" x2="196" y2="131"/>
-<line class="edge" x1="165" y1="147" x2="188" y2="150"/>
-<line class="edge" x1="165" y1="197" x2="196" y2="171"/>
-<line class="edge" x1="165" y1="247" x2="200" y2="173"/>
-<line x1="395" y1="47" x2="330" y2="130" stroke="#b37feb" stroke-width="1.5"/>
-<line x1="395" y1="97" x2="364" y2="131" stroke="#b37feb" stroke-width="1.5"/>
-<line x1="395.0" y1="147.0" x2="370.0" y2="150.8" stroke="#b37feb" stroke-width="1.5"/>
-<line x1="395" y1="197" x2="364" y2="171" stroke="#b37feb" stroke-width="1.5"/>
-<line x1="395" y1="247" x2="360" y2="173" stroke="#b37feb" stroke-width="1.5"/>
+<div class="diag-title">সেতু ও চার প্রশ্ন — The Bridge and Four Questions</div>
+<svg viewBox="0 0 560 185" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar59d31" viewBox="0 0 10 10" refX="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#22c55e"/></marker>
+</defs>
+<rect class="node" x="15" y="70" width="120" height="44" rx="10"/><text class="lbl" x="75" y="88">শেখার তীর</text><text class="lbl-sm" x="75" y="104">দরজা ১–৩০</text>
+<rect class="node-cyan" x="205" y="70" width="150" height="44" rx="10"/><text class="lbl-cyan" x="280" y="88">সেতু-দরজা</text><text class="lbl-sm" x="280" y="104">চার প্রশ্নে বাছাই</text>
+<rect class="node-hot" x="425" y="70" width="120" height="44" rx="10"/><text class="lbl-hot" x="485" y="88">নির্মাণ-তীর</text><text class="lbl-sm" x="485" y="104">দরজা ৩২–৩৫</text>
+<line x1="135" y1="92" x2="201" y2="92" stroke="#22c55e" stroke-width="3" fill="none" marker-end="url(#ar59d31)"/>
+<line x1="355" y1="92" x2="421" y2="92" stroke="#22c55e" stroke-width="3" fill="none" marker-end="url(#ar59d31)"/>
+<rect class="cell" x="15" y="20" width="530" height="30" rx="8"/><text class="lbl-sm" x="280" y="39">প্রহরীর চার প্রশ্ন: সত্যি কাজ? · বোঝা হালকা? · রসদ গোনা যায়? · কারিগরি মেলে?</text>
+<rect class="cell" x="15" y="135" width="530" height="40" rx="8"/>
+<text class="lbl-sm" x="280" y="151">বাছাই-ক্রম: দরকার ×২ ভার → সাইজ → পরীক্ষাযোগ্যতা → বই-ছোঁয়া; পালাও: ফ্রেমওয়ার্ক-শেখা, স্কিমা-প্রজেক্ট, 'সবাই-ব্যবহার-করবে'</text>
+<text class="lbl-sm" x="280" y="168">SmritiBox = ৪×৫ স্কোর — নিজের পড়ার যন্ত্র, নিজের হাতের ইট</text>
 </svg>
-<div class="diag-cap">বাঁ দিকে কারখানার দশ ঘর, ডানে উঁচু তলার চার ঘর — সব উঠে যায় স্থপতির টেবিলে, যেখানে আইন লেখা হয়।</div>
+<div class="diag-cap">তীর থেকে তীরে সেতু একটাই — চার প্রশ্নে উত্তীর্ণ যাত্রীই নির্মাণ-তীরে; পরের দরজায় বাগান রোপণ।</div>
 </div>
+
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সেতু-প্রহরীর সতর্কতা:</strong> capstone-বাছাইয়ের প্রধান মৃত্যু দুটো — 'চমৎকার-আইডিয়া' (চমক আছে, দরকার নেই: কবরস্থানে যাবে) আর 'জাদু-প্রজেক্ট' (একসাথে তিনটা নতুন প্রযুক্তি শেখা: নদীতে পড়বে)। বই-ছোঁয়াকে জোর করে ঢোকাও না — সত্যিকার প্রজেক্টে হাতগুলো নিজেই আসে। আর স্কোর-খাতা লিখে রাখো: তিন মাস পরে পরের প্রজেক্ট বাছাইয়ে এই খাতাই মানদণ্ড। শেষ কথা: যে যাত্রা শেষ হয়নি, তার শিক্ষাও অর্ধেক — সাইজ-মাপ কখনো অবহেলা কোরো না।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>The bridge-keeper's caution:</strong> two chief deaths in capstone selection — 'brilliant-idea' ( dazzle without need: graveyard-bound) and 'magic-project' (three new technologies at once: river-bound). Never force book-touching — real projects summon the hands themselves. And keep the score-sheet: three months later it becomes the yardstick for your next choice. Final word: an unfinished journey teaches half a lesson — never neglect the size measure.</div></div>
 
 <div class="compare">
-<div class="cmp-card cmp-bad"><div class="cmp-label">❌ যন্ত্রের ক্রেতা</div>টুল চালায়, কনফিগ কপি-পেস্ট করে · সেটিং কাজ না করলে আন্দাজে নাড়ে · এজেন্টকে সব অনুমতি দিয়ে ঘুমায় · নিজের প্রোডাক্টে ঢোকাতে গিয়ে ডকুমেন্টেড পথ ছেড়ে ঘুরপথে যায়</div>
-<div class="cmp-card cmp-good"><div class="cmp-label">✅ স্থপতি</div>আইনের ক্রম জানে: local > project > user, managed আগে · প্রতিটা টুল-কল তার কলম ছাড়া চলে না (can_use_tool) · প্রাচীর আঁকে (sandbox: denyRead ~/.aws) · সংবিধান নিজের (preset + append)</div>
+<div class="cmp-card cmp-bad"><div class="cmp-label">❌ অন্ধ যাত্রী</div>চমক-আইডিয়া তাড়া · তিন নতুন প্রযুক্তি একসাথে · 'সবাই-ব্যবহার-করবে' বাস্তব-বিভ্রম · অর্ধ-শেষ গর্ব</div>
+<div class="cmp-card cmp-good"><div class="cmp-label">✅ করিম বখশের বাছাই</div>চার-প্রশ্ন স্কোর-খাতা · দরকার ×২ ভার · সপ্তাহান্তে-সাইজ শপথ · SmritiBox = ৪×৫ উত্তীর্ণ</div>
 </div>
 
-<div class="callout tip"><span class="co-icon">🔌</span><div><strong>স্থপতির শপথ:</strong> শক্তি বাড়ার সাথে সাথে আমানতও বাড়ে। sandbox চালু করলেও অন্ধ বিশ্বাস নয় — প্রাচীরের ভেতরেও নদীর হিসাব (দরজা ৪) আর শেষ সই (দরজা ১১-এর যাচাই) চলবেই। আর মনে রেখো: সংস্থার managed নীতি তোমার প্রোগ্রামেটিক অপশনকেও ছাড়িয়ে যায় — শহরের সীমানার বাইরে স্থপতিও নয়।</div></div>
-<div class="callout tip"><span class="co-icon">🔌</span><div><strong>The architect's oath:</strong> power grows, and the trust grows with it. Even with sandbox on, no blind faith — inside the wall too, the river's account (Door 4) and the final signature (Door 11's verification) keep running. And remember: managed org policy outranks even your programmatic options — beyond the city's border, not even the architect.</div></div>
+<div class="stat-grid">
+<div class="stat-card"><div class="sc-num">৪ প্রশ্ন</div><div class="sc-label">দরকার · সাইজ · গণনীয়তা · ছোঁয়া</div></div>
+<div class="stat-card"><div class="sc-num">দরকার ×২</div><div class="sc-label">প্রথম ও ভারী মাপ</div></div>
+<div class="stat-card"><div class="sc-num">৪×৫</div><div class="sc-label">SmritiBox-এর স্কোর</div></div>
+<div class="stat-card"><div class="sc-num">৩২→৩৫</div><div class="sc-label">নির্মাণ-তীরের পথ</div></div>
+</div>
 
-<p class="verse">স্থাপত্যের শেষ কথা আমানতের — "নিশ্চয়ই আল্লাহ তোমাদের আদেশ দেন আমানত তার হকদারকে ফিরিয়ে দিতে" (কুরআন ৪:৫৮)। প্রতিটা টুল, প্রতিটা সংযোগ, প্রতিটা প্রাচীর একটা আমানত: কার হাতে কতটুকু শক্তি, সেটা স্থপতির টেবিলে লেখা থাকে। কলম তোমার, শহর কারিগরদের — হিসাব কারও সামনে খোলা।</p>
+<p class="verse">উত্তরণের পাঠ: কুরআনে ঈমানের পর আমলের ঘোষণা — 'যারা ঈমান আনে ও সৎকাজ করে' (১০৩:৩): জানা আর করা পাশাপাশি, একাকী নয়; সাহাবায়ে কেরাম শিখেছেন যুদ্ধে দাঁড়িয়ে, বাণিজ্যে বসে। সেতু-দরজাও তাই: ৩০ দরজার জানা এখন কাজের ময়দানে নামবে — যা হাতে ধরা যায়, সেটাই সত্যিকার জ্ঞান।</p>
 
-<div class="secret-box"><div class="label">শেষ তালিসমান — The Final Talisman</div><div class="text">🏛️ মাস্টারির তিন তলা: চালাও (১-১০) → বানাও (১১-১৪) → বাড়াও (১৫-১৬) → আইন লেখো (১৭) — SDK-তে ইঞ্জিন, sandbox-এ প্রাচীর, precedence-এ শৃঙ্খলা।<br>কারণ: যে শুধু চালায় সে চাকর, যে বানায় সে কারিগর, যে আইন লেখে সে স্থপতি।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🌉 চার প্রশ্নে বাছাই: দরকার(×২) → সাইজ → গণনীয়তা → ছোঁয়া; অর্ধ-শেষ নয়, শেষ-করা প্রজেক্টই শিক্ষা।<br>কারণ: সেতু শেখার তীরে নয় — পার হওয়ার জন্য; যে পার হলো, সে-ই কারিগর।</div></div>`,
   senior: {
-    title: "স্থপতির পরের শহর — The Next City",
-    body: `<p>এই বই শেষ — পথ নয়:</p>
-<ul class="checklist">
-<li><strong>Book ১৯ (Tool Forge)</strong> — MCP সার্ভার নির্মাণের পূর্ণ শিল্প; দরজা ১৫-এর যন্ত্রশালা সেখানে কারখানা।</li>
-<li><strong>Book ১২ (Autonomous Mind)</strong> — এজেন্ট-স্থাপত্যের তত্ত্ব; দরজা ১৭-এর সংবিধানের দর্শন।</li>
-<li><strong>Book ১ (Twenty-Seven Doors)</strong> — পুরো AI ইঞ্জিনিয়ারিং শহরের মানচিত্র; এই বই তার এক মহল্লা।</li>
-<li>প্রথম আসল কাজ: নিজের কারখানায় একটা ছোট স্কিল → একটা প্লাগইন → নিজের মার্কেটপ্লেস — মোস্তফার সিঁড়ি নিজে ভাঙো।</li>
-<li>মাসে একবার অফিসিয়াল ডক + changelog — শহরের আইন বদলায়, স্থপতিকেও খবর রাখতে হয়।</li>
+    title: "সেতু-দরজার পাঠ — The Bridge-Door Lesson",
+    body: `<ul class="checklist">
+<li>চার মাপে স্কোর-খাতা: <strong>দরকার(×২) · সাইজ · পরীক্ষাযোগ্যতা · বই-ছোঁয়া</strong>।</li>
+<li>বাছাই-ক্রম: <strong>দরকার আগে</strong> — অব্যবহৃত প্রজেক্ট সব গুণ মারে; তারপর সাইজ।</li>
+<li>পালাও: ফ্রেমওয়ার্ক-শেখা · স্কিমা-প্রজেক্ট · 'সবাই-ব্যবহার-করবে'।</li>
+<li>SmritiBox পথের মানচিত্র: <strong>python · pytest · argparse · JSON-লাইন · SM-2</strong>।</li>
+<li>স্কোর-খাতা সংরক্ষণ — পরের প্রজেক্টের মানদণ্ড এটাই।</li>
 </ul>`
   }
 });
+
