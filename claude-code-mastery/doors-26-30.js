@@ -639,7 +639,7 @@ git init
 </svg>
 <div class="diag-cap">কোডের আগে ঘর-গোছানো — প্রতিটা তীর ডক-যাচাইকৃত কমান্ড</div>
 </div>
-<div class="callout"><b>🧪 বাস্তব উদাহরণ — BazarBiti (বাজারবই), ধাপ ১-৫ হাতে-কলমে</b> — <span class="en">A real worked example, start to finish</span><pre class="code-block"># আইডিয়া: রোজকার বাজার-খরচের খাতা, টার্মিনালে — খরচ যোগ করো, সপ্তাহের হিসাব দেখো
+<div class="callout info"><span class="co-icon">🧪</span><div><b>বাস্তব উদাহরণ — BazarBiti (বাজারবই), ধাপ ১-৫ হাতে-কলমে</b> — <span class="en">A real worked example, start to finish</span><pre class="code-block"># আইডিয়া: রোজকার বাজার-খরচের খাতা, টার্মিনালে — খরচ যোগ করো, সপ্তাহের হিসাব দেখো
 # প্রজেক্টের নাম: bazarbiti
 
 # ── ধাপ ১-২ · ইনস্টল-যাচাই (একবারই) ──
@@ -677,7 +677,7 @@ a1b2c3d Add CLAUDE.md: project rules for BazarBiti   ← হ্যাশ তো�
 
 # ── বোনাস · কী লোড হলো ──
 &gt; /doctor
-# settings/hooks/skills — কী কী সত্যিই লোড হয়েছে তার হিসাব</pre></div>
+# settings/hooks/skills — কী কী সত্যিই লোড হয়েছে তার হিসাব</pre></div></div>
 `,
   senior: {
     title: "অভিজ্ঞের চোখে — প্রথম দিনে যে ভুলগুলো ঘটে",

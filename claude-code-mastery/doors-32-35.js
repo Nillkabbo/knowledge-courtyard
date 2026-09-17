@@ -71,7 +71,7 @@ claude --permission-mode plan     # বা সেশনে Shift+Tab → ⏸ pla
 </svg>
 <div class="diag-cap">তিন খাতার নিয়ম — প্রশ্ন আগে, উত্তর পরে; পরিকল্পনা মাপা হয়, কাঠ নয়</div>
 </div>
-<div class="callout"><b>🧪 বাস্তব উদাহরণ — BazarBiti, আইডিয়া থেকে পরিকল্পনা</b> — <span class="en">The exact prompts, as actually sent</span><pre class="code-block"># ── খাতা ১ · কেন/কী/নেই (নিজে লেখা) ──
+<div class="callout info"><span class="co-icon">🧪</span><div><b>বাস্তব উদাহরণ — BazarBiti, আইডিয়া থেকে পরিকল্পনা</b> — <span class="en">The exact prompts, as actually sent</span><pre class="code-block"># ── খাতা ১ · কেন/কী/নেই (নিজে লেখা) ──
 কেন: আমি (রাকিব) রোজ বাজার করি, খরচ মনে থাকে না, মাস শেষে হিসাব মেলে না
 কী:  v1 = কমান্ডে খরচ-লেখা + সপ্তাহের মোট দেখা
 নেই: ক্যাটাগরি-চার্ট · বাংলা-সংখ্যা · ওয়েব UI · মাল্টি-ইউজার · ক্লাউড-সিঙ্ক
@@ -106,7 +106,7 @@ claude --permission-mode plan     # বা সেশনে Shift+Tab → ⏸ pla
 # Shift+Tab চেপে ⏸ plan mode on করো, তারপর:
 &gt; @docs/PRD.md পড়ে ধাপে-ধাপে বাস্তবায়ন-পরিকল্পনা দাও:
 &gt; মডিউল-ক্রম, প্রতিটা ধাপের যাচাই-কমান্ড, প্রথম টেস্ট কী হবে।
-# Claude শুধু পড়ে-ভাবে; নকশা এলে Enter-এ সম্পাদনা করে অনুমোদন</pre></div>
+# Claude শুধু পড়ে-ভাবে; নকশা এলে Enter-এ সম্পাদনা করে অনুমোদন</pre></div></div>
 `,
   senior: {
     title: "অভিজ্ঞের চোখে — নকশা-ঘরে সত্যিকারের পতন",
@@ -186,7 +186,7 @@ claude -c        # এই ডিরেক্টরির সর্বশেষ �
 </svg>
 <div class="diag-cap">এক টিকিট = এক চক্র = এক commit; বাঁচার-দরজা তিনটে — রিওয়াইন্ড, কমপ্যাক্ট, রিজিউম</div>
 </div>
-<div class="callout"><b>🧪 বাস্তব উদাহরণ — BazarBiti, নির্মাণ-চক্র (প্রথম তিন টিকিট)</b> — <span class="en">Ticket prompts as sent, with verification</span><pre class="code-block"># ── টিকিট ১ · এন্ট্রি-মডিউল (TDD: লাল আগে) ──
+<div class="callout info"><span class="co-icon">🧪</span><div><b>বাস্তব উদাহরণ — BazarBiti, নির্মাণ-চক্র (প্রথম তিন টিকিট)</b> — <span class="en">Ticket prompts as sent, with verification</span><pre class="code-block"># ── টিকিট ১ · এন্ট্রি-মডিউল (TDD: লাল আগে) ──
 &gt; প্রসঙ্গ: খালি প্রজেক্ট, docs/PRD.md পড়ে নাও।
 &gt; লক্ষ্য: expense মডিউল — add(amount, item) এন্ট্রি বানায়
 &gt;        (তারিখ আজকের, amount ধনাত্মক সংখ্যা)।
@@ -231,7 +231,7 @@ $ python -m bazarbiti week
 $ exit
 # পরদিন:
 $ claude -c
-# সর্বশেষ সেশন ফেরে — টিকিট-সূত্র হাতে</pre></div>
+# সর্বশেষ সেশন ফেরে — টিকিট-সূত্র হাতে</pre></div></div>
 `,
   senior: {
     title: "অভিজ্ঞের চোখে — চক্র ভাঙার তিন উপায়",
@@ -318,7 +318,7 @@ claude --from-pr 1234
 </svg>
 <div class="diag-cap">ছয় পা-র নিয়ম — যে নৌকা ঘাট ছাড়ায় না, তার যাত্রা হিসাবে আসে না</div>
 </div>
-<div class="callout"><b>🧪 বাস্তব উদাহরণ — BazarBiti, রিলিজ (হুবহু কমান্ড-সিকোয়েন্স)</b> — <span class="en">From branch to v1.0.0</span><pre class="code-block"># ── পা ① · শাখা ──
+<div class="callout info"><span class="co-icon">🧪</span><div><b>বাস্তব উদাহরণ — BazarBiti, রিলিজ (হুবহু কমান্ড-সিকোয়েন্স)</b> — <span class="en">From branch to v1.0.0</span><pre class="code-block"># ── পা ① · শাখা ──
 &gt; create a new branch called feature/first-release
 $ git branch --show-current
 feature/first-release
@@ -358,7 +358,7 @@ tag
 
 # ── পরে ফিরে আসা ──
 $ claude --from-pr 1
-# ওই PR-এর সেশন-পিকার — পুরনো প্রসঙ্গ হাতে</pre></div>
+# ওই PR-এর সেশন-পিকার — পুরনো প্রসঙ্গ হাতে</pre></div></div>
 `,
   senior: {
     title: "অভিজ্ঞের চোখে — নদী পার হওয়ার আগে যা জানা দরকার",
