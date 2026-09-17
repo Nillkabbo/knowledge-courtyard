@@ -99,7 +99,36 @@ claude --vim          # বা চালু থাকলে /vim — vim-কী 
 
 <p class="verse">জোহর — ভেতরের সৌন্দর্য বাইরে ফোটে: ইসলামে পরিচ্ছদ দুই কাজ করে — সম্মান ঢাকে, পরিচয় বলে; আর অন্যায় পোশাক নিন্দিত। Claude-এর সাজও তাই: সৎ কাজকে স্পষ্ট পোশাক দাও — সাজ নিজে কখনো কাজ নয়, কিন্তু ভালো কাজের হক আদায়ে সাজের ভূমিকা আছে।</p>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🎭 ঢঙ output-style-এ, অবস্থান statusline-এ, অভ্যাস vim/theme-এ — একবার লেখো, রোজ রেহাই।<br>কারণ: মঞ্চ ড্রয়িংরুম নয় — কথার পোশাকও কাজের অংশ।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🎭 ঢঙ output-style-এ, অবস্থান statusline-এ, অভ্যাস vim/theme-এ — একবার লেখো, রোজ রেহাই।<br>কারণ: মঞ্চ ড্রয়িংরুম নয় — কথার পোশাকও কাজের অংশ।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 13</span><pre class="code-block"># ── প্রম্পট ১ · কথার পোশাক বদল (এক সেশনের জন্য) ──
+&gt; /output-styles
+&gt; ছবি-আগে ব্যাখ্যা-পরে ধাঁচে যাও — প্রতিটা উত্তর কোড/ছক দিয়ে
+&gt; শুরু হবে, গদ্য পরে
+# ← সাজ বদলায়, কাজ বদলায় না — ফল তৎক্ষণাৎ
+
+# ── প্রম্পট ২ · নিজের পোশাক সিলাই ──
+&gt; .claude/output-styles/terse.md বানাও। frontmatter-এ name: terse,
+&gt; শরীরে: উত্তর তিন-লাইনের মধ্যে; কোড-ব্লক প্রথমে; ব্যাখ্যা শুধু
+&gt; জিজ্ঞেস করলে; অনুমান নিষেধ — না জানলে প্রশ্ন করো
+&gt; তারপর চালু করে দাও
+# ← নিজের দর্জির কাট — একবার লেখা, সবসময় পরা
+
+# ── প্রম্পট ৩ · নাম-ফলক (statusline) ──
+&gt; .claude/statusline.sh লেখো: stdin-এর JSON থেকে jq দিয়ে
+&gt; মডেলের নাম আর বর্তমান ফোল্ডারের শেষ অংশ নিয়ে
+&gt; echo "🤖 মডেল · 📁 ফোল্ডার" — settings-এ statusLine-এ বসাও
+# ← প্রতি টার্নে নিচে তাজা ফলক — কোথায় কে কাজ করছে
+
+# ── প্রম্পট ৪ · বিল্ট-ইন পোশাক দেখা ──
+&gt; /output-styles-এ বিল্ট-ইন তালিকা কী কী? Explanatory আর
+&gt; Learning-এর তফাত এক লাইনে বলো
+# ← প্রস্তুত পোশাকও আছে — সেলাইয়ের আগে বাজার দেখা
+
+# ── প্রম্পট ৫ · স্থায়ী পোশাক (নকশায়) ──
+&gt; settings.json-এ outputStyle: terse লিখে দাও — আর প্রতি
+&gt; সেশনে বলতে হবে না
+# ← সেশনের ছাঁচ নয়, ঘরের নিয়ম হলো</pre></div></div>
+`,
   senior: {
     title: "সাজ-ঘরের খাতা — The Dressing-Room Ledger",
     body: `<ul class="checklist">
@@ -253,7 +282,35 @@ branch=\$(git branch --show-current 2>/dev/null)
 echo "🤖 \$model · 🌿 \$branch"
 # settings.json: { "statusLine": { "type": "command", "command": ".claude/statusline.sh" } }</div>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">✒️ তৃতীয়বার টাইপ করার আগে থামো — সিল কাটো (commands), ছাঁচ বদলাও (styles), ফলক পরাও (statusline)।<br>কারণ: যন্ত্র তোমার অভ্যাস শিখুক — তোমার আঙুল নয়।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">✒️ তৃতীয়বার টাইপ করার আগে থামো — সিল কাটো (commands), ছাঁচ বদলাও (styles), ফলক পরাও (statusline)।<br>কারণ: যন্ত্র তোমার অভ্যাস শিখুক — তোমার আঙুল নয়।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 14</span><pre class="code-block"># ── প্রম্পট ১ · নিজের সিল কাটা (কমান্ড বানানো) ──
+&gt; .claude/commands/fix-issue.md লেখো। frontmatter-এ
+&gt; argument-hint: [issue-number], বডির শুরুতে
+&gt; !\`gh issue view $ARGUMENTS\` — তারপর নির্দেশ:
+&gt; ইস্যুটা পড়ে কারণ খোঁজো, ছোট commit-এ ঠিক করো, টেস্ট সবুজ দেখাও
+&gt; সেভ করার পর /fix-issue 42 চালাও
+# ← $ARGUMENTS-এর জায়গায় 42 বসে যাবে; ঘণ্টা-কমান্ড তৈরি
+
+# ── প্রম্পট ২ · রোজকার-সিল (ওয়ার্কফ্লো-কমান্ড) ──
+&gt; .claude/commands/ship.md: টেস্ট → বিল্ড → ট্যাগ → পুশ →
+&gt; রিলিজ-নোট খসড়া — প্রতিটা ধাপ লাল হলে থামার নিয়মসহ
+&gt; ব্যবহার দেখাও: /ship
+# ← 'শিপ করো' এক শব্দে পুরো রীতি
+
+# ── প্রম্পট ৩ · দলের সিল বনাম নিজের সিল ──
+&gt; তফাত বুঝিয়ে দাও এক লাইনে: .claude/commands/ বনাম
+&gt; ~/.claude/commands/ — কে পাবে, git-এ যাবে কি?
+# ← রিপো-সিল দলের সবাই পায় (কমিট করো); ঘরের-সিল শুধু তুমি
+
+# ── প্রম্পট ৪ · সিলের ভেতরে যুক্তি ($ARGUMENTS ছাড়াও) ──
+&gt; fix-issue.md-র বডিতে যোগ করো: ইস্যু-লেবেল 'urgent' হলে
+&gt; প্রথমে রিপ্রোডিউস করো, তারপর ঠিক করো
+# ← কমান্ডের ভেতরে শর্ত-নির্দেশ — সিল-ডিজাইনের শিল্প
+
+# ── প্রম্পট ৫ · সিল-তালিকা দেখা ──
+&gt; / চাপো — কী কী কমান্ড-স্কিল আছে তালিকা দাও
+# ← স্ল্যাশ-মেনুই সিল-র‌্যাক; নতুনটা সঙ্গে সঙ্গে দেখা যায়</pre></div></div>
+`,
   senior: {
     title: "সিল-ছাঁচ-ফলক খাতা — Seals, Moulds, Plaques",
     body: `<ul class="checklist">
@@ -379,7 +436,35 @@ server.setRequestHandler(CallToolRequestSchema, async req => {
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>কামরুলের নিরাপত্তা-নিয়ম:</strong> যন্ত্র বানানো মানেই দরজা খোলা নয় — প্রতিটা টুলের আগে ভাবো সে কী ভাঙতে পারে। ইনভেন্টরি পড়া নিরাপদ; অর্ডার বসানো টাকার ব্যাপার — সেই টুলের নাম allowed_tools-এ আলাদা করে বিবেচনা করো, দরজা ৬-এর তালার খাতায় লিখে রাখো। আর টোকেন কখনো কোডে নয়, env থেকে।</div></div>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Kamrul's safety rule:</strong> building a machine does not mean opening every door — before each tool, ask what it can break. Reading inventory is safe; placing orders moves money — weigh that tool's name in allowed_tools separately, and record it in Door 6's keyring. And tokens never in code; from env.</div></div>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🛠️ @tool দিয়ে হাতল খোদাই, create_sdk_mcp_server-এ বাড়ি, mcp_servers-এ পরো — নিজের যন্ত্র নিজের মাপে।<br>কারণ: বাজারের যন্ত্র বাজারের মতো চলে; তোমার কারখানার যন্ত্র তোমার মতো।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🛠️ @tool দিয়ে হাতল খোদাই, create_sdk_mcp_server-এ বাড়ি, mcp_servers-এ পরো — নিজের যন্ত্র নিজের মাপে।<br>কারণ: বাজারের যন্ত্র বাজারের মতো চলে; তোমার কারখানার যন্ত্র তোমার মতো।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 15</span><pre class="code-block"># ── প্রম্পট ১ · সহজ পথ — SDK-র ভেতরে টুল ──
+&gt; আমার Python-প্রজেক্টে claude_agent_sdk দিয়ে একটা টুল বসাও:
+&gt; @tool check_stock — ইনভেন্টরি API কাউন্ট করে টেক্সট ফেরায়;
+&gt; নাম-প্যাটার্ন mcp__workshop__check_stock-এ allowed_tools-এ দাও
+&gt; সম্পূর্ণ কোড-ফাইল লিখে দাও
+# ← এজেন্ট SDK-র create_sdk_mcp_server + @tool — নিজের যন্ত্র
+
+# ── প্রম্পট ২ · টুল-চুক্তি পরীক্ষা ──
+&gt; এখন সেই টুল ডেকে দেখাও: part_id='BRG-042' দিয়ে —
+&gt; আউটপুট কী আকারে আসে?
+# ← {"content":[{"type":"text","text":"BRG-042: 14 টি মজুদ"}]} — JSON-চুক্তি
+
+# ── প্রম্পট ৩ · বড় পথ — stdio সার্ভারের ছক ──
+&gt; TypeScript-এ @modelcontextprotocol/sdk দিয়ে stdio-সার্ভারের
+&gt; কঙ্কাল লেখো — ListTools/CallTools হ্যান্ডলার, একটা echo-টুলসহ;
+&gt; কোথায় কী বসাতে হবে কমেন্টে বাংলায় বুঝিয়ে দাও
+# ← আলাদা প্রসেস, যেকোনো MCP-ক্লায়েন্ট ব্যবহার করতে পারবে
+
+# ── প্রম্পট ৪ · সার্ভার সংযোগ (CLI-পাশে) ──
+&gt; claude mcp add --scope user -- node /path/to/my-server.js
+&gt; — এরপর /mcp দিয়ে যাচাই করবে দেখাও
+# ← আংটি পরানো (দরজা ৯) — এবার নিজের গড়া আংটি
+
+# ── প্রম্পট ৫ · নামকরণ-নিয়ম ──
+&gt; mcp__সার্ভার__টুল নাম-প্যাটার্নটা এক লাইনে ব্যাখ্যা করো,
+&gt; আর বলো দুটো সার্ভারে একই টুল-নাম হলে কী হয়
+# ← উপাধি-সংঘর্ষ নিয়ম — বাজারে যাওয়ার আগে জানা</pre></div></div>
+`,
   senior: {
     title: "যন্ত্রশালার খাতা — The Machine-Shop Notes",
     body: `<ul class="checklist">
@@ -526,7 +611,35 @@ my-plugin/
 # ⚠ ইনস্টলের আগে চোখ: প্লাগইন কী কী allowed-tools চায়,
 #   hooks কী চালায় — দরজা ১২+১৬ মিলিয়ে পড়ো</div>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">📦 প্লাগইন = সব যন্ত্রের বিতরণ-বাক্স: plugin.json সিল, \${CLAUDE_PLUGIN_ROOT} চাবি, মার্কেটপ্লেস দুনিয়ার পাইকারি দোকান।<br>কারণ: যা বাঁধা যায় না, তা শুধু তোমার; যা বাঁধা যায়, তা সবার।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">📦 প্লাগইন = সব যন্ত্রের বিতরণ-বাক্স: plugin.json সিল, \${CLAUDE_PLUGIN_ROOT} চাবি, মার্কেটপ্লেস দুনিয়ার পাইকারি দোকান।<br>কারণ: যা বাঁধা যায় না, তা শুধু তোমার; যা বাঁধা যায়, তা সবার।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 16</span><pre class="code-block"># ── প্রম্পট ১ · প্রথম বাক্স বাঁধা ──
+&gt; my-plugin/ ফোল্ডারে একটা প্লাগইন বানাও: .claude-plugin/plugin.json
+&gt; (name: lp-tools, version 1.0.0), ভেতরে skills/deploy-check/
+&gt; SKILL.md — টাইপ-চেক আর টেস্ট-গেট-সহ ডিপ্লয়-স্কিল; গঠন দেখাও
+# ← স্কিল+এজেন্ট+হুক এক বাক্সে — বিতরণযোগ্য একক
+
+# ── প্রম্পট ২ · বাক্সে ঘণ্টা ও ঠিকাদার ভরা ──
+&gt; একই প্লাগইনে যোগ করো: hooks/hooks.json (PostToolUse ফরম্যাটার,
+&gt; পথ \${CLAUDE_PLUGIN_ROOT}/scripts/format.sh) আর agents/
+&gt; security-reviewer.md (শুধু-পড়া হাত) — scripts/format.sh-ও লেখো
+# ← পথ-চিহ্ন \${CLAUDE_PLUGIN_ROOT} — বাক্স যেখানেই বসুক, পথ মেলে
+
+# ── প্রম্পট ৩ · বাজার সাজানো (মার্কেটপ্লেস) ──
+&gt; my-marketplace/.claude-plugin/marketplace.json বানাও —
+&gt; ভেতরে plugins/my-plugin এন্ট্রি: source github → আমার-রিপো;
+&gt; গঠন-গাছ দেখাও
+# ← নিজের পাইকারি-দোকান — দল/দুনিয়া যাকে টানবে
+
+# ── প্রম্পট ৪ · বাজার থেকে বসানো ──
+&gt; /plugin marketplace add owner/my-marketplace-repo
+&gt; /plugin install lp-tools@my-marketplace
+&gt; /reload-plugins
+# ← ইনস্টলের পর রিলোড — নতুন বাক্সের যন্ত্র সচল
+
+# ── প্রম্পট ৫ · বাক্সের সিল-পরীক্ষা ──
+&gt; claude plugin validate my-plugin — চালাও; কী বলছে?
+# ← সিল ভাঙা হলে এখনই ধরা — বাজারে যাওয়ার আগের দরজা</pre></div></div>
+`,
   senior: {
     title: "পাইকারি খাতা — The Wholesaler's Notes",
     body: `<ul class="checklist">
@@ -611,7 +724,32 @@ git worktree remove ../project-login-feature</div>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>শিরিনের হিসাব-নিয়ম:</strong> যত রান্নাঘর, তত খরচ — প্রতিটা সেশন নিজের নদী (দরজা ৪) আর নিজের খাতা (দরজা ২) নিয়ে চলে; পরিকল্পনা (দরজা ১১) ছাড়া ঘর বাড়িও লাভ নেই। আর মনে রেখো — worktree বাঁধে ফাইলের হাত, মানুষের সিদ্ধান্ত নয়: কোন কাজ কোন ঘরে, সেটা এখনও তোমার মাঝ-উঠানের টেবিল থেকে ঠিক হয়।</div></div>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Shirin's account rule:</strong> every kitchen costs — each session runs its own river (Door 4) and its own ledger (Door 2); more rooms without planning (Door 11) is no gain. And remember — worktrees fence files, not decisions: which job goes to which room is still settled at your centre table.</div></div>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🍽️ কাজ বাড়লে রান্নাঘর বাড়াও — --worktree ঘর, /bg হাত-খালি, agent view এক-পর্দা; /loop সময় মাপে, /goal শর্ত মাপে।<br>কারণ: এক পাত্রে দশ বাবুচি নয় — সংঘর্ষ ঠেকায় না, শুধু স্থাপত্য ঠেকায়।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🍽️ কাজ বাড়লে রান্নাঘর বাড়াও — --worktree ঘর, /bg হাত-খালি, agent view এক-পর্দা; /loop সময় মাপে, /goal শর্ত মাপে।<br>কারণ: এক পাত্রে দশ বাবুচি নয় — সংঘর্ষ ঠেকায় না, শুধু স্থাপত্য ঠেকায়।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 17</span><pre class="code-block"># ── প্রম্পট ১ · তিন রান্নাঘর খোলা ──
+$ claude --worktree login-feature    # টার্মিনাল ১
+$ claude --worktree payment-bug      # টার্মিনাল ২
+# ← প্রতিটা আলাদা চেকআউট+ব্রাঞ্চ — এডিট-সংঘর্ষ অসম্ভব
+#   (রিপোতে অন্তত একটা কমিট লাগবে — খালি রিপোতে ব্যর্থ)
+
+# ── প্রম্পট ২ · ঘরে-ঘরে গোপন-ফাইল (worktreeinclude) ──
+&gt; .worktreeinclude বানাও: .env আর .env.local — ব্যাখ্যা করো
+&gt; কেন দরকার (gitignored জিনিস ঘরে-ঘরে লাগে কীভাবে)
+# ← প্রতিটা নতুন ঘরে পরিবেশ-ফাইল নিজে থেকেই বসে যায়
+
+# ── প্রম্পট ৩ · হাত-খালি রাখা (ব্যাকগ্রাউন্ড-সেশন) ──
+$ claude --bg "fix the flaky test in auth"
+# ← সেশন পেছনে; আসল এডিটের আগে সে নিজেই .claude/worktrees/-এ সরে যায়
+
+# ── প্রম্পট ৪ · সব ঘর এক পর্দায় ──
+&gt; agent view খোলো — কোন সেশন কী করছে, কে ইনপুট চাইছে
+&gt; তালিকা করো
+# ← বহু-রান্নাঘরের ম্যানেজার-টেবিল — ছুটে না ঘুরে নজর
+
+# ── প্রম্পট ৫ · কাজ শেষে ঘর ভাঙা ──
+$ git worktree remove ../project-login-feature
+&gt; আর বাকি worktree-তালিকা দেখাও
+# ← শেষ হওয়া ঘর নয় ফেলে — উঠান পরিষ্কার রাখো</pre></div></div>
+`,
   senior: {
     title: "বহু-রান্নাঘরের খাতা — The Many-Kitchens Notes",
     body: `<ul class="checklist">
@@ -700,7 +838,30 @@ doors.push({
 
 <p class="verse">তাওয়াক্কুলের মতোই: আমল বাঁধা থাকে নিয়মে (ঘড়ি বাঁধো), ফলের তাগিদ হাতছাড়া নয় — থামার ঘণ্টাটাও তুমিই বাজাবে; যে বাঁধে শুধু ঘূর্ণন, থামা বাঁধে না, তার তাওয়াক্কুল নয় — অলসতা।</p>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🔁 /loop ছোট চক্র + থামা-শর্ত যাচাইযোগ্য; /goal দিক; রুটিন ঘড়িতে; ব্রেক Esc-এ।<br>কারণ: যে যন্ত্র থামতে জানে না, সে যন্ত্র একদিন নিজেকেই ভাঙে।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🔁 /loop ছোট চক্র + থামা-শর্ত যাচাইযোগ্য; /goal দিক; রুটিন ঘড়িতে; ব্রেক Esc-এ।<br>কারণ: যে যন্ত্র থামতে জানে না, সে যন্ত্র একদিন নিজেকেই ভাঙে।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 18</span><pre class="code-block"># ── প্রম্পট ১ · ঘুরন্ত-কাঁটা (লুপ চালানো) ──
+&gt; /loop "npm test চালাও; যে টেস্ট ফেইল করে শুধু তা ঠিক করো;
+&gt;        আবার চালাও — সব পাস হলে থেমে যাও আর রিপোর্ট দাও"
+# ← প্রতি রাউন্ডে টেস্টই মাপকাঠি; সবুজ = থামার ঘণ্টা
+
+# ── প্রম্পট ২ · লক্ষ্য-দিকশিলা ──
+&gt; /goal "মাইগ্রেশন শেষ: সব মডেল Postgres-এ, টেস্ট সবুজ, ডক আপডেটেড"
+&gt; — এবার প্রথম তিন ধাপ শুরু করো
+# ← সেশনজুড়ে লক্ষ্য-স্মৃতি; দশ ধাপ পরেও প্রথম প্রশ্নে ফেরে
+
+# ── প্রম্পট ৩ · ঘড়ির সাথে বাঁধা (নির্দিষ্ট সময়) ──
+&gt; /loop 5m check CI on my PR — সবুজ হলে থামো
+# ← পাঁচ মিনিট পর পর নজর; শর্ত পূরণ = স্বয়ং-বিদায়
+
+# ── প্রম্পট ৪ · থামার-শর্ত ছাড়া লুপের বিপদ ──
+&gt; এই লুপ-প্রম্পটটা কী ভুল: /loop "কোড ভালো করো" — ব্যাখ্যা করো
+&gt; আর ঠিক-করা সংস্করণ লিখে দাও
+# ← থামার মাপকাঠি নেই = অসীম ঘূর্ণন; শর্ত লেখা জরুরি
+
+# ── প্রম্পট ৫ · হাত-ব্রেক ──
+# লুপ চলাকালে Esc — মাঝপথেও থামানো যায়
+# ← স্বয়ংক্রিয় মানেই অযত্ন নয়; মানুষের চোখ সবার উপরে</pre></div></div>
+`,
   senior: {
     title: "ঘড়ি-মিস্ত্রির খাতা — The Clock-Winder's Ledger",
     body: `<ul class="checklist">
@@ -805,7 +966,33 @@ claude --worktree fix-login   # আলাদা চেকআউট, আলাদ
 
 <p class="verse">শাহাদত: লিখিত থাকলে সাক্ষী দেয় — কুরআনের দালিলিক নির্দেশ: লিখে রাখো, সাক্ষী রাখো (২:২৮২-এর ভাবানুবাদ)। দলিল-ঘরও: প্রতিটা কাজের লিখিত দলিল (commit), মালিকের চোখ (review), সিল (CI/PR-অবস্থা) — বিশ্বাস ব্যক্তির মুখে নয়, রীতির খাতায়।</p>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🐙 শাখায় কাজ, ছোট দলিলে জমা, PR-এ চোখ, তারপর মিলন; ফেরা --from-pr, প্যারালাল --worktree।<br>কারণ: টেবিলের খসড়া ফেরানো যায় — আলমারির দলিল ইতিহাস।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🐙 শাখায় কাজ, ছোট দলিলে জমা, PR-এ চোখ, তারপর মিলন; ফেরা --from-pr, প্যারালাল --worktree।<br>কারণ: টেবিলের খসড়া ফেরানো যায় — আলমারির দলিল ইতিহাস।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 19</span><pre class="code-block"># ── প্রম্পট ১ · এক কাজ এক দলিল ──
+&gt; এই ফিচারটা ৩-৪টা ছোট commit-এ করো; প্রতিটার বার্তায়
+&gt; কী বদলাল আর কেন — আলাদা আলাদা
+# ← মিশ্র-দলিল নিষেধ — বিক্রয়-কাগজে বিয়ের খবর নয়
+
+# ── প্রম্পট ২ · শাখা + PR এক লাইনে ──
+&gt; feature/payment-v2 শাখা বানাও, কাজ শেষে gh pr create --fill
+&gt; করো — শিরোনাম-বিবরণ তুমিই লেখো, আমি চোখ বুলাব
+# ← --fill: commit-বার্তা থেকে শিরোনাম-বিবরণ Claude-ই সাজায়
+
+# ── প্রম্পট ৩ · রিভিউ-মন্তব্য ধরা ──
+&gt; PR ১২-এর review মন্তব্যগুলো একে একে ধরো — ছোট ছোট
+&gt; commit-এ ঠিক করো, প্রতিটার উত্তর কমেন্টে লিখো
+&gt; শেষে claude --from-pr 12 দিয়ে প্রসঙ্গ ফিরে পাওয়া যায় দেখাও
+# ← প্রতিক্রিয়া-চক্র: মন্তব্য→ঠিক→উত্তর→মিলন
+
+# ── প্রম্পট ৪ · পুশের আগের চোখ ──
+&gt; push করার আগে পুরো diff দেখাও — শুধু পরিবর্তিত অংশ,
+&gt; প্রতিটার এক-লাইনের ব্যাখ্যা
+# ← দলিল একবার গেলে ইতিহাস — শেষ নজর সস্তা বীমা
+
+# ── প্রম্পট ৫ · প্রতিদ্বন্দ্বী-মুক্ত প্যারালাল ──
+&gt; claude --worktree fix-login — চালাও আর ব্যাখ্যা করো কেন
+&gt; এটা একই রিপোতে দুই কাজকে সংঘর্ষ-মুক্ত রাখে
+# ← আলাদা চেকআউট, আলাদা শাখা (দরজা ১৭-এর সেতু)</pre></div></div>
+`,
   senior: {
     title: "দলিল-ঘরের খাতা — The Deed-Room Ledger",
     body: `<ul class="checklist">
@@ -898,7 +1085,34 @@ claude --permission-mode plan     # বা সেশনে Shift+Tab → "⏸ pl
 
 <p class="verse">ইস্তিখারার শিক্ষা: বড় সিদ্ধান্তের আগে থামা, পরামর্শ, তারপর পথ — রাসূল নিজে শিখিয়েছেন প্রতিটি গুরুত্বপূর্ণ কাজে সালাতুল-ইস্তিখারা (বুখারি)। প্ল্যানার সাহেবের টেবিলও: পড়া, নকশা, মালিকের চোখ — তারপর ইট; ছোট কাজে যেমন জটিলতা নয়, বড় কাজে তেমন তাড়াহুড়ো নয়।</p>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">📐 বড় কাজে আগে ⏸ plan, নকশা Enter-এ নিজের হাতে, অনুমোদন পরে ইট; পথে Ctrl+T-টিক, শেষে প্রমাণ।<br>কারণ: নকশা-হীন কাজ ইট খায়; টিক-হীন তালিকা বিশ্বাস।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">📐 বড় কাজে আগে ⏸ plan, নকশা Enter-এ নিজের হাতে, অনুমোদন পরে ইট; পথে Ctrl+T-টিক, শেষে প্রমাণ।<br>কারণ: নকশা-হীন কাজ ইট খায়; টিক-হীন তালিকা বিশ্বাস।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 20</span><pre class="code-block"># ── প্রম্পট ১ · নকশা-মোডে বড় কাজ শুরু ──
+&gt; (Shift+Tab → ⏸ plan mode on)
+&gt; পেমেন্ট-মডিউল Postgres-এ মাইগ্রেট করার পূর্ণ পরিকল্পনা দাও:
+&gt; মডেল, মাইগ্রেশন-ক্রম, ঝুঁকি, রোলব্যাক-পথ
+# ← Claude শুধু পড়ে-ভাবে; নকশা এলে Enter-এ নিজের হাতে ঘষামাজা
+
+# ── প্রম্পট ২ · নকশা সম্পাদনার রীতি ──
+&gt; (নকশা এলে) Enter চেপে এডিটরে খোলো — ধাপ ৩ আর ৪ একসাথে
+&gt; করে দাও, আর 'কাস্কেড-রোলব্যাক' ধাপ যোগ করো → সেভ → অনুমোদন
+# ← নকশা প্রস্তাব, দস্তখত তোমার — সম্পাদনার অধিকার সংরক্ষিত
+
+# ── প্রম্পট ৩ · todo-হিসাব চলাকালীন ──
+&gt; কাজ শুরু করো — প্রতি ধাপ শেষে todo-তালিকা আপডেট করে রাখো
+&gt; (Ctrl+T-তে আমি দেখব)
+# ← কোন ধাপ সেরা, কোনটা বাকি — পথ-হারানো রোধের সাদা-বোর্ড
+
+# ── প্রম্পট ৪ · প্রতি-দাবি-যাচাই ──
+&gt; টেস্ট চালাও, সবুজ দেখাও — প্রতিটা দাবির পরে এই প্রম্পট
+&gt; চালাব, মনে রেখো
+&gt; চূড়ান্ত: /verify জাতীয় বান্ডিল-যাচাই — অ্যাপ বানিয়ে-চালিয়ে
+# ← শুধু-বিশ্বাস নয়, প্রমাণ-শৃঙ্খলা — নকশা থেকে শেষ পর্যন্ত
+
+# ── প্রম্পট ৫ · ছোট-বড় সিদ্ধান্ত-ছক ──
+&gt; এই কাজটা কোন মোডে করব: typo-ফিক্স বনাম স্কিমা-মাইগ্রেশন —
+&gt; এক লাইনে নিয়ম বলো
+# ← ছোট = সরাসরি হাত; বড়/অপরিবর্তনীয় = আগে নকশা</pre></div></div>
+`,
   senior: {
     title: "নকশা-টেবিলের খাতা — The Drafting-Table Ledger",
     body: `<ul class="checklist">

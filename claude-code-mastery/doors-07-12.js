@@ -89,7 +89,33 @@ claude --agents '{
 
 <p class="verse">ওয়াকালার পুরনো হিসাব — তুমি কাজ দাও, প্রতিনিধি করে, দায় থাকে তোমার ঘাড়ে। "নিশ্চয়ই আল্লাহ তোমাদের আদেশ দেন আমানত তার হকদারকে ফিরিয়ে দিতে" (কুরআন ৪:৫৮) — আর সাব-এজেন্টের রিপোর্ট যাচাই করাও মালিকের আমানত। প্রতিনিধি বানালে মালিক হালকা হয়, দায়মুক্ত হয় না।</p>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🎖️ ঘাঁটার কাজ সাব-এজেন্টে — সে নিজের ঘরে ধুলো খায়, তুমি পাও এক পাতার সত্য।<br>কারণ: মূল নদী পরিষ্কার থাকলে মাঝি দিগন্ত দেখতে পায়।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🎖️ ঘাঁটার কাজ সাব-এজেন্টে — সে নিজের ঘরে ধুলো খায়, তুমি পাও এক পাতার সত্য।<br>কারণ: মূল নদী পরিষ্কার থাকলে মাঝি দিগন্ত দেখতে পায়।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 7</span><pre class="code-block"># ── প্রম্পট ১ · মুখে ডাকা (ফাইল ছাড়াই) ──
+&gt; auth-সিস্টেম টোকেন রিফ্রেশ করে কীভাবে দেখতে সাব-এজেন্ট পাঠাও —
+&gt; রিইউজ-যোগ্য OAuth ইউটিলিটি আছে কি না সেটাও দেখুক; ফল সারাংশে চাই
+# ← ঠিকাদার নিজের ঘরে ঘাঁটে, তোমার নদীতে আসে শুধু ফল
+
+# ── প্রম্পট ২ · বর্ণনা-মিলে স্বয়ংক্রিয় ডাক ──
+&gt; (আগে .claude/agents/code-reviewer.md বানানো আছে)
+&gt; payments-মডিউলে নতুন কোড ঢুকেছে — রিভিউ দরকার
+# ← Claude এজেন্ট-তালিকার description পড়ে নিজেই ডেলিগেট করে
+
+# ── প্রম্পট ৩ · স্পষ্ট হাত-সীমা ──
+&gt; এই অনুসন্ধান সাব-এজেন্টে করো — কিন্তু সে শুধু পড়বে
+&gt; (Read, Grep, Glob), এডিটের হাত দিও না
+# ← গবেষণা-এজেন্ট পড়ার-হাতেই থাকে — ভুলে কিছু বদলাতে পারে না
+
+# ── প্রম্পট ৪ · একাধিক ঠিকাদার পাশাপাশি ──
+&gt; তিনটা সাব-এজেন্ট চালাও পাশাপাশি: একটা ওপেন TODO ঘাঁটুক,
+&gt; একটা dependency-র নিরাপত্তা-সংস্করণ দেখুক, একটা dead code খুঁজুক
+&gt; — তিন সারাংশ পেতে চাই, প্রতিটা পাঁচ লাইনে
+# ← স্বাধীন কাজ = সমান্তরাল ঘর; ফল তিন পাতার রিপোর্ট
+
+# ── প্রম্পট ৫ · ফল ফিরে এলে মূল-স্রোতে কাজ ──
+&gt; সারাংশ পেলাম — এবার মূল সেশনে: TODO-গুলোর প্রথম তিনটা
+&gt; ছোট ছোট commit-এ সেরে ফেলো
+# ← গবেষণা ঠিকাদারে, কাজ মূল-ঘরে — দুই জগত আলাদা</pre></div></div>
+`,
   senior: {
     title: "ঠিকাদার নিয়োগের নিয়ম — Hiring Contractors",
     body: `<ul class="checklist">
@@ -176,7 +202,33 @@ doors.push({
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>মাহমুদের সতর্কতা:</strong> হুকের স্ক্রিপ্ট নিজেই একটা কাজ — ভাঙা স্ক্রিপ্ট মানে প্রতিটা এডিটের পরে ভাঙা ঘণ্টা। প্রথমে টার্মিনালে হাতে চালিয়ে দেখো, তারপর বাঁধো। আর টাইমআউট দাও — একটা আটকে থাকা হুক পুরো রাতের পাহারা আটকে দেয়।</div></div>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>মাহমুদের সতর্কতা (EN):</strong> a hook script is itself a job — a broken script means a broken bell after every edit. Run it by hand in the terminal first, then bind it. And set timeouts — one stuck hook jams the whole night's watch.</div></div>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🔔 কাজের আগে-পরে ঘণ্টা: PreToolUse আটকায়, PostToolUse সাজায় — নিয়ম মাঠে নয়, বাঁধনে।<br>কারণ: মনে রাখার ভার মানুষের ঘাড় থেকে নামলে নিয়ম অটুট থাকে।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🔔 কাজের আগে-পরে ঘণ্টা: PreToolUse আটকায়, PostToolUse সাজায় — নিয়ম মাঠে নয়, বাঁধনে।<br>কারণ: মনে রাখার ভার মানুষের ঘাড় থেকে নামলে নিয়ম অটুট থাকে।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 8</span><pre class="code-block"># ── প্রম্পট ১ · ঘণ্টা বাঁধা (settings-এ) ──
+&gt; PostToolUse হুক বসাও settings.json-এ: Edit|Write চললে সেই
+&gt; ফাইলে npx prettier --write চালাক — মানে প্রতিটা এডিট স্বয়ং-সুন্দর
+&gt; বসানোর পর /hooks দিয়ে যাচাই করে দেখাও
+# ← নিয়ম একবার ঘরে বসল; প্রতিটা এডিটে ঘণ্টা বাজবে
+
+# ── প্রম্পট ২ · পাহারা-ঘণ্টা (Pre) ──
+&gt; PreToolUse হুক: Bash-এর আগে চেক — কমান্ডে rm -rf থাকলে
+&gt; stderr-এ কারণ লিখে exit 2 করবে (থামাও), নাহলে চুপ
+# ← ভাঙার আগের ঘণ্টা — অনুমতি-প্রশ্নের চেয়েও আগে
+
+# ── প্রম্পট ৩ · হুক কী দেখছে তার ভিতর দেখা ──
+&gt; একটা ডেবাগ-হুক বসাও: প্রতিটা ইভেন্টের JSON stdin পুরোটা
+&gt; /tmp/hook-log.txt-এ append হবে — ৫ মিনিট চালাও, তারপর ফাইলটার
+&gt; শেষ দুই এন্ট্রি দেখাও
+# ← হুকের খামে কী আসে চোখে দেখা — দরজা ১২-এর প্রস্তুতিও
+
+# ── প্রম্পট ৪ · সেশন-শেষের ঘণ্টা ──
+&gt; Stop হুক: কাজ শেষে টেস্ট-স্ক্রিপ্ট চালাবে — সবুজ হলে চুপ,
+&gt; লাল হলে stderr-এ 'টেস্ট লাল — শেষ করার আগে সবুজ করো'
+# ← এজেন্ট বিদায়-নেওয়ার আগেই যাচাই — অসম্পূর্ণ পালানো রুদ্ধ
+
+# ── প্রম্পট ৫ · ঘণ্টার স্বাস্থ্য-পরীক্ষা ──
+&gt; /hooks
+# ← কোন ঘণ্টা কোন ইভেন্টে বসেছে — নীরব ঘণ্টা নয়, চোখে দেখা তালিকা</pre></div></div>
+`,
   senior: {
     title: "ঘণ্টা বাঁধার নিয়ম — Binding Bells",
     body: `<ul class="checklist">
@@ -293,7 +345,34 @@ claude
 > আমার কী কী skill আছে?
 # সে নিজের skills/ ফোল্ডার পড়ে বলে — SKILL.md-র description-ই তার স্মৃতি</div>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">💍 বাইরের জগত আংটি দিয়ে (MCP), কারিগরি স্মৃতি পুঁথিতে (Skills), সব মিলিয়ে বাক্সে (Plugins)।<br>কারণ: বিচ্ছিন্ন কারিগর ছোট থাকে, সংযুক্ত কারিগর দিগন্ত পায়।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">💍 বাইরের জগত আংটি দিয়ে (MCP), কারিগরি স্মৃতি পুঁথিতে (Skills), সব মিলিয়ে বাক্সে (Plugins)।<br>কারণ: বিচ্ছিন্ন কারিগর ছোট থাকে, সংযুক্ত কারিগর দিগন্ত পায়।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 9</span><pre class="code-block"># ── প্রম্পট ১ · আংটি পরানো (প্রজেক্ট-MCP) ──
+&gt; .mcp.json বানাও রুটে — notion সার্ভার: npx -y
+&gt; @notionhq/notion-mcp-server, env-এ NOTION_TOKEN টানো
+&gt; \${NOTION_TOKEN} আকারে — ফাইলে সরাসরি মান লিখবে না
+&gt; শেষে ফাইলটা দেখাও
+# ← টোকেন-নিরাপত্তা: মান নয়, চিহ্ন — বাতাস থেকে আসবে
+
+# ── প্রম্পট ২ · আংটির সংযোগ-যাচাই ──
+&gt; /mcp
+# ← কোন সার্ভার সংযুক্ত, কোন টুল পাওয়া যাচ্ছে — প্রাঙ্গণের দরজা-তালিকা
+
+# ── প্রম্পট ৩ · আংটি দিয়ে কাজ ──
+&gt; আমার Notion-এর 'LedgerPilot Tasks'-ডাটাবেসে আজকের ব্যাকলগ
+&gt; পড়ে আস — শিরোনাম আর স্ট্যাটাস কলামগুলো ছোট টেবিলে দাও
+# ← MCP-টুল নিজেই ডাকে; তালিকা তোমার ঘরে আসে
+
+# ── প্রম্পট ৪ · পুঁথি লেখা (স্কিলের বীজ) ──
+&gt; .claude/skills/pdf-processor/SKILL.md বানাও — frontmatter-এ
+&gt; description: Extract text and tables from PDF files. Use when
+&gt; processing invoices or scanned documents. শরীরে ধাপগুলো লিখবে:
+&gt; pdfplumber দিয়ে খোলা → পাতা-প্রতি টেক্সট → টেবিল extract
+# ← প্রয়োজনের মুহূর্তে Claude নিজেই পুঁথি খুলে পড়বে
+
+# ── প্রম্পট ৫ · বাক্স খোলা (প্লাগইন-বাজার) ──
+&gt; /plugin install skill-creator@claude-plugins-official
+# ← বাজার থেকে বাক্স — স্কিল-বানানোর স্কিল নিজেই এসে গেল</pre></div></div>
+`,
   senior: {
     title: "সংযোগ সাজানো — Arranging Connections",
     team: false,
@@ -417,7 +496,37 @@ claude plugin validate .claude/skills   # frontmatter ঠিক কি না
 
 <p class="verse">ওয়াক্ত-ইলম: ইলম চাওয়া ফরজ — কিন্তু সব ইলম সব সময় নয়; ফকীহরা বলেন প্রত্যেক জ্ঞান তার ওয়াক্তে ফরজ হয় (ওয়াক্তে যা লাগবে না শেখা তার উপরে সওয়াব নয়, বিলাস)। মরিয়মের বাক্সও তাই: তালিকা মুখস্থ — দায়িত্ব; পাতা ওয়াক্তে — হিকমাহ; আর অপ্রয়োজনের ভার বহন নয়।</p>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">📔 রোজের পেস্ট আজই SKILL.md; নাম+বর্ণনা তাকে, পাতা নামে কাজের দিন, তাজা উপাত্ত !কমান্ডে।<br>কারণ: যে খাতা সব পাতা মুখস্থ রাখে, তার রান্নাঘরে জায়গা থাকে না।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">📔 রোজের পেস্ট আজই SKILL.md; নাম+বর্ণনা তাকে, পাতা নামে কাজের দিন, তাজা উপাত্ত !কমান্ডে।<br>কারণ: যে খাতা সব পাতা মুখস্থ রাখে, তার রান্নাঘরে জায়গা থাকে না।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 10</span><pre class="code-block"># ── প্রম্পট ১ · প্রথম স্কিল তিন মিনিটে ──
+&gt; .claude/skills/deploy/SKILL.md বানাও। frontmatter-এ description:
+&gt; Deploy LedgerPilot to production. Use when I ask to ship or deploy.
+&gt; শরীরে: টেস্ট চালানো → docker build → পুশ → হেলথ-চেক — প্রতিটা
+&gt; ধাপ কমান্ড-সহ, লাল হলে থামার নিয়ম-সহ
+# ← 'ডিপ্লয় করো' বললেই পুরো পুঁথি নিজে থেকে খুলবে
+
+# ── প্রম্পট ২ · ডাক-চেনার কথা গাছানো ──
+&gt; description ঠিক করতে সাহায্য করো — আমার স্কিলটা কখন দরকার হয়:
+&gt; প্রোডাকশনে ছাড়ার আগে। এমন এক লাইন লেখো যেটা পড়ে Claude
+&gt; 'ship'/'release' শুনলেই এই স্কিল মনে করবে
+# ← description-ই ডাক-ঘণ্টা; কর্ম-ভিত্তিক লাইন সবচেয়ে কাজের
+
+# ── প্রম্পট ৩ · নিজে-না-নেওয়া (শুধু-তোমার কমান্ড) ──
+&gt; এই স্কিলে disable-model-invocation: true বসাও — তালিকায়
+&gt; নাম উঠবে না, শুধু আমি /deploy লিখলেই চলবে
+# ← বিপজ্জনক-রীতির স্কিল নিজের হাতেই থাকুক
+
+# ── প্রম্পট ৪ · সদ্য-তথ্যসহ স্কিল (dynamic context) ──
+&gt; স্কিলের শরীরের শুরুতে লাইন যোগ করো:
+&gt; !\`git log --oneline -5\`
+&gt; — স্কিল খোলার মুহূর্তেই সদ্য-কমিট চোখের সামনে
+# ← পুঁথি আর স্থির-লেখা নয়; খোলার সময়ের সত্য বয়ে আনে
+
+# ── প্রম্পট ৫ · স্কিল-বাজার যাচাই ──
+&gt; /context
+&gt; Skills-সারিতে কারা আছে, কে কত টোকেন খাচ্ছে — দেখাও
+&gt; ভারী স্কিল বাদ দেওয়ার পরামর্শ থাকলে বলো
+# ← প্রতিটা স্কিলের বিবরণ-লাইন কনটেক্সট খায় — হিসাব জানা দরকার</pre></div></div>
+`,
   senior: {
     title: "রেসিপি-বাক্সের খাতা — The Recipe-Box Ledger",
     body: `<ul class="checklist">
@@ -512,7 +621,35 @@ claude                                  # ১ শুরু
 
 <p class="verse">আসন আসলে সিংহাসন নয় — আমানত। "আর স্মরণ করো, যখন তোমার রব ফেরেশতাদের বললেন — আমি জমিনে এক খলিফা স্থাপন করছি" (কুরআন ২:৩০)। খলিফা মানে প্রতিনিধি-অভিভাবক: কারখানা তোমার নয়, কাজের; তুমি শুধু সেই দিনটার হিসাবদার। নয়জন শিক্ষক তোমাকে হাতিয়ার দিলেন — এখন হিসাব তোমার।</p>
 
-<div class="secret-box"><div class="label">দশ দরজার তালিসমান — The First Throne</div><div class="text">👑 মাস্টারি = প্রসঙ্গ দাও + আস্থা মাপো + ফল যাচাই করো — দশটা দরজা এই তিন স্তম্ভের তিন রকম ইট।<br>কারণ: টাইপিস্ট টুল চালায়, কারিগর কারখানা ডিজাইন করে — আর ফল দুটোর আকাশ-পাতাল তফাত।</div></div>`,
+<div class="secret-box"><div class="label">দশ দরজার তালিসমান — The First Throne</div><div class="text">👑 মাস্টারি = প্রসঙ্গ দাও + আস্থা মাপো + ফল যাচাই করো — দশটা দরজা এই তিন স্তম্ভের তিন রকম ইট।<br>কারণ: টাইপিস্ট টুল চালায়, কারিগর কারখানা ডিজাইন করে — আর ফল দুটোর আকাশ-পাতাল তফাত।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 11</span><pre class="code-block"># ── মালিকের সকাল — প্রসঙ্গ সাজানো ──
+$ claude                       # ১ শুরু
+&gt; /model sonnet              # ৩ রোজকার ভাই
+&gt; /context                   # ৪ নদীর হিসাব — খালি ঘরে শুরু
+
+# ── প্রম্পট ১ · অন্বেষণ ঠিকাদারে ──
+&gt; auth-সিস্টেম সাব-এজেন্ট দিয়ে ঘাঁটো — ফিচার-ফ্ল্যাগ কোথায়
+&gt; সিদ্ধান্ত নেয়, রিইউজ-যোগ্য কিছু আছে কি না — পাঁচ-লাইনের সারাংশ
+
+# ── প্রম্পট ২ · নকশা-টেবিলে (বড় কাজ) ──
+&gt; (Shift+Tab → plan মোড)
+&gt; পেমেন্ট-ফ্লো দুই-ধাপে ভাঙার পরিকল্পনা দাও — ঝুঁকি আর
+&gt; রোলব্যাক-পথ-সহ; আমি দেখে অনুমোদন দেব
+# ← হাত বাঁধা নকশা; সবুজ সিলের পরেই ইট-পাথর (দরজা ২০)
+
+# ── প্রম্পট ৩ · ধাপে-ধাপে নির্মাণ (যাচাই-সহ) ──
+&gt; প্রথম ধাপ করো — শেষে টেস্ট চালিয়ে সবুজ দেখাও, ছোট commit-এ দাও
+&gt; commits ছোট রাখো: প্রতিটার বার্তায় কী-কেন
+
+# ── প্রম্পট ৪ · ঘণ্টা নিজে বাজছে (হুকের সাক্ষ্য) ──
+# (প্রতিটা এডিটের পর PostToolUse-ঘণ্টা ফরম্যাট করছে — দরজা ৮)
+&gt; git diff --stat
+# ← সুন্দর-হয়ে-যাওয়া ফাইলগুলোর হিসাব চোখের সামনে
+
+# ── প্রম্পট ৫ · দিন-শেষ — নদী বিদায়, দলিল থাকে ──
+&gt; /clear                      # নতুন কাজে পুরনো ভিড় বিদায়
+# রাতে CI চলছে (দরজা ২১): claude -p + JSON — কারখানা ঘুমায় না</pre></div></div>
+`,
   senior: {
     title: "সিংহাসন থেকে পরের পথ — From the Throne, the Road Ahead",
     body: `<p>এই বই তোমার ভিত — এখন গভীরে যাওয়ার পথ:</p>
@@ -612,7 +749,33 @@ exit 0</div>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>সিরাজের শ্রম-নিয়ম:</strong> হুকের stdout-এ JSON ছাড়া আর কিছু থাকবে না — শেল-প্রোফাইলের বিড়বিড়নি পার্সিং ভাঙে। সব উত্তর-স্ট্রিং ১০,০০০ অক্ষরে ক্যাপড (বেশি হলে ফাইলে গিয়ে প্রিভিউ আসে)। আর exit 0 মানে অনুমতি নয় — PreToolUse-এ exit 0 শুধু বলে আপত্তি নেই, অনুমতির স্বাভাবিক প্রবাহ (দরজা ৬) তবু চলে।</div></div>
 <div class="callout warn"><span class="co-icon">⚠️</span><div><strong>Siraj's workshop rules:</strong> a hook's stdout must hold nothing but JSON — shell-profile chatter breaks parsing. All output strings cap at 10,000 characters (overflow goes to a file as a preview). And exit 0 is not approval — on PreToolUse, exit 0 only says no objection; the normal permission flow (Door 6) still runs.</div></div>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">⚙️ হুক = চুক্তি: stdin-এ JSON পড়ো, exit 2 থামায়, JSON stdout নিয়ন্ত্রণ দেয় — এক হুকে এক ভাষা।<br>কারণ: ঘণ্টা বাজানো সহজ, ঘড়ি বানানোর স্তরেই তুমি যন্ত্রের মালিক হও।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">⚙️ হুক = চুক্তি: stdin-এ JSON পড়ো, exit 2 থামায়, JSON stdout নিয়ন্ত্রণ দেয় — এক হুকে এক ভাষা।<br>কারণ: ঘণ্টা বাজানো সহজ, ঘড়ি বানানোর স্তরেই তুমি যন্ত্রের মালিক হও।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 12</span><pre class="code-block"># ── প্রম্পট ১ · স্টপ-কমান্ড থামানো (exit 2) ──
+&gt; একটা PreToolUse-হুক স্ক্রিপ্ট লিখো ~/.claude/hooks/guard.sh:
+&gt; stdin-এর JSON পড়ে যদি tool_input.command-এ 'production' থাকে,
+&gt; stderr-এ কারণ লিখে exit 2 — নাহলে exit 0। chmod +x করো,
+&gt; settings-এ Bash-matcher-এ বসাও
+# ← লাল সিলের ঘণ্টা: নিষিদ্ধ শব্দ দেখলেই কাজ থামবে
+
+# ── প্রম্পট ২ · হুক নিজে পরীক্ষা ──
+&gt; এখন নিজে একটা নিরীহ্য কমান্ড চালাও: ls -la — ঘণ্টা বাজল কি?
+&gt; তারপর বলো: echo production-ডাটাবেস মুছব — এখন থামাও
+# ← প্রথমটা চলবে, দ্বিতীয়টা stderr-কারণসহ ব্লক — চুক্তি প্রমাণিত
+
+# ── প্রম্পট ৩ · খামের ভেতরটা দেখা ──
+&gt; হুকে এক লাইন যোগ করো অস্থায়ীভাবে: cat &gt;&gt; /tmp/hook-in.json
+&gt; — পাঁচ মিনিট পর ফাইলটার শেষ এন্ট্রি দেখাও, তারপর লাইনটা সরাও
+# ← stdin-এর JSON চোখে দেখা: session_id, tool_name, tool_input — সব খামে
+
+# ── প্রম্পট ৪ · প্রশ্ন-ঘণ্টা (UserPromptSubmit) ──
+&gt; UserPromptSubmit-হুক: আমার প্রম্পটে 'আজ' শব্দ থাকলে stdout-এ
+&gt; JSON additionalContext দিয়ে আজকের তারিখ জুড়ে দাও
+# ← মাঝখানে ঢুকে প্রসঙ্গ-ইনজেকশন — প্রম্পট লেখকের কাজ হালকা
+
+# ── প্রম্পট ৫ · রায়ের ভাষা মনে করা ──
+&gt; exit 0 / exit 2 / stdout-JSON — তিনটার তফাত এক লাইনে কী?
+# ← ০=চলুক, ২=থামাও+কারণ, JSON=সূক্ষ্ম রায় (allow/deny/ask)</pre></div></div>
+`,
   senior: {
     title: "ঘড়ির খাতা — The Clockmaker's Notes",
     body: `<ul class="checklist">

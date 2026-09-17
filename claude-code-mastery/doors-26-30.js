@@ -112,7 +112,37 @@ doors.push({
 
 <p class="verse">নিজামের পাঠ: উমর (রা.)-এর প্রশাসন কথিত আছে — রাতে ঘুরে দেখতেন নিয়ম মানা হচ্ছে কি না; লিখিত নিয়ম + নজরদারি = ন্যায়। সালমার মহাফেজখানাও: খাতায় লেখো, আর /status দিয়ে নজর রাখো — নইলে নিয়ম কাগজে কাগজেই থাকে।</p>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🗂️ settings-ঘর: model·env·permissions·hooks·statusLine·outputStyle·apiKeyHelper; সন্দেহে /status, গোপনে helper।<br>কারণ: প্রতিটা ঘরের নিয়ম লেখা থাকলে স্টুডিও নিজেই চলে — তুমি শুধু নকশা দেখো।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🗂️ settings-ঘর: model·env·permissions·hooks·statusLine·outputStyle·apiKeyHelper; সন্দেহে /status, গোপনে helper।<br>কারণ: প্রতিটা ঘরের নিয়ম লেখা থাকলে স্টুডিও নিজেই চলে — তুমি শুধু নকশা দেখো।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 26</span><pre class="code-block"># ── প্রম্পট ১ · সম্পূর্ণ খাতা একবারে লেখানো ──
+&gt; আমার কারখানার settings.json লেখো: model opus, env-এ
+&gt; TEST_ENV=b57, permissions (allow: npm test; deny: curl),
+&gt; PostToolUse-হুক, statusLine-স্ক্রিপ্ট, outputStyle Explanatory,
+&gt; apiKeyHelper ~/.claude/fetch-key.sh — প্রতিটা কী-র পাশে
+&gt; এক-লাইন বাংলা কমেন্ট
+# ← মহাফেজখানার পূর্ণ নকশা — এক প্রম্পটে, ব্যাখ্যা-সহ
+
+# ── প্রম্পট ২ · চাবি-রক্ষক ──
+&gt; ~/.claude/fetch-key.sh লেখো: 1Password/vault CLI থেকে কী
+&gt; টেনে ছাপে — stdout-এ শুধু কী, কিছু নয়; chmod +x
+&gt; settings-এ apiKeyHelper-এর পথ বসাও
+# ← কী কোডে/ফাইলে নয়, ভল্টে — স্ক্রিপ্ট মাত্র বাহক
+
+# ── প্রম্পট ৩ · সমস্যা-নির্ণয় যাত্রা ──
+&gt; আমার statusLine দেখা যাচ্ছে না — ধাপে ধাপে পরো:
+&gt; স্ক্রিপ্ট চলে? jq আউটপুট আসে? settings-এ পথ ঠিক?
+&gt; /status দিয়ে লোড-সত্য দেখো
+# ← প্রতিটা ঘর পরীক্ষা — অনুমানে নয়, প্রমাণে রোগ-ধরা
+
+# ── প্রম্পট ৪ · স্কোপ-চেনা ──
+&gt; এই নিয়মটা কোন ফাইলে লিখব বলো: দলের সবাই যেন কমিটে
+&gt; সহ-লেখক-লাইন না পায় — আর কেন সেখানে, এক লাইনে
+# ← includeCoAuthoredBy: false → .claude/settings.json (দলের তলা)
+
+# ── প্রম্পট ৫ · নকশা-খাতার স্বাস্থ্য ──
+&gt; /doctor চালাও — আমার settings/hooks/skills কী কী আসলে
+&gt; লোড হয়েছে, কোনটা ব্যর্থ — তালিকা দাও
+# ← লেখা নয়, লোড-হওয়াই সত্য — মহাফেজখানার হিসাব</pre></div></div>
+`,
   senior: {
     title: "নকশা-খাতার পাঠ — The Blueprint Ledger's Lesson",
     body: `<ul class="checklist">
@@ -221,7 +251,36 @@ doors.push({
 
 <p class="verse">স্মৃতির পাঠ: কুরআন বারবার 'যারা মনে রাখে' দিয়ে শুরু করে প্রতিজ্ঞার কথা — স্মরণ নিছক ভাণ্ডার নয়, আমলের চাবি; আর হাদিসে জ্ঞান সংক্ষেপে বরকতময়। আরশিয়ার স্থাপত্যও: কম নিয়ম, গভীর মানা — এই স্মৃতির বরকত।</p>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🏛️ চার তলা (সংস্থা→ব্যক্তি→প্রজেক্ট→লোকাল), @import ৪-লাফ, rules/-শর্তে কক্ষ; কারিগরের খাতা /memory।<br>কারণ: ভালো স্মৃতি বড় গুদাম নয় — বুদ্ধিমান বাড়ি, প্রতিটা কক্ষ দরকারে জাগে।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🏛️ চার তলা (সংস্থা→ব্যক্তি→প্রজেক্ট→লোকাল), @import ৪-লাফ, rules/-শর্তে কক্ষ; কারিগরের খাতা /memory।<br>কারণ: ভালো স্মৃতি বড় গুদাম নয় — বুদ্ধিমান বাড়ি, প্রতিটা কক্ষ দরকারে জাগে।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 27</span><pre class="code-block"># ── প্রম্পট ১ · চার-তলা স্থাপত্য দাঁড় করানো ──
+&gt; আমার মেমরি-স্থাপত্য সাজাও: সংস্থার নীতি managed CLAUDE.md-এ
+&gt; (পথ বলে দেব), প্রজেক্টের মূল ./CLAUDE.md (২০০ লাইনের নিচে),
+&gt; আমার-একা ./CLAUDE.local.md (gitignore করে দাও), আর বিস্তারিত
+&gt; নিয়ম @import দিয়ে টানো — নমুনা চার ফাইল লেখো
+# ← additive স্তর — কেউ কাউকে মুছে নয়, সব জমে লোড হয়
+
+# ── প্রম্পট ২ · @import-চেইন ──
+&gt; মূল CLAUDE.md-এ লেখো: স্ট্যান্ডার্ড: @docs/standards.md —
+&gt; তারপর docs/standards.md-এ বড় নিয়ম-খাতা বানাও; চেইন
+&gt; ৪ লাফ পর্যন্ত যায় — একটা দুই-লাফের উদাহরণ দেখাও
+# ← মূল খাতা হালকা, গভীরতা লাফে-লাফে — দরকারে লোড
+
+# ── প্রম্পট ৩ · পথ-শর্ত-কক্ষ ──
+&gt; .claude/rules/frontend.md বানাও — frontmatter-এ paths:
+&gt; ["src/frontend/**"], ভেতরে frontend-নিয়ম। আরেকটা
+&gt; backend.md — api/** পথে। /context দিয়ে দেখাও কখন কোনটা লোড হয়
+# ← নিয়ম প্রাসঙ্গিক-মুহূর্তেই জাগে — প্রতিটা সেশন হালকা
+
+# ── প্রম্পট ৪ · কারিগরের নিজ-খাতা (auto-memory) ──
+&gt; /memory খোলো — Claude নিজে কী কী শিখে নোট করেছে দেখাও;
+&gt; ভুল-প্রবণতার নোট থাকলে পড়ে শোনাও
+# ← তোমার তিরস্কার থেকে জন্মা শেখা — প্রতি-রিপো আলাদা
+
+# ── প্রম্পট ৫ · খাতা-শুদ্ধি ──
+&gt; মূল CLAUDE.md পড়ে দ্বন্দ্ব-নিয়ম খোঁজো (দুই জায়গায় উল্টো কথা)
+&gt; আর ২০০-লাইন ছাড়িয়ে গেলে কাটার পরামর্শ — মুছবে না, তালিকা দাও
+# ← ফোলা খাতা নির্দেশ-অবহেলা ডাকে — ছাঁটাই ঋতু দরকার</pre></div></div>
+`,
   senior: {
     title: "স্মৃতি-স্থাপত্যের পাঠ — The Memory-Architecture Lesson",
     body: `<ul class="checklist">
@@ -330,7 +389,38 @@ model: haiku                  # সস্তা-দ্রুত (inherit = ম�
 
 <p class="verse">তাকসিমের পাঠ: উমর (রা.) বলেছেন — প্রত্যেক কাজ তার যোগ্যের হাতে দাও; মদিনার প্রশাসনে বিশেষজ্ঞ-নিয়োগের ঐতিহ্য ওই। কারিগর-কারখানাও: প্রতিটা কাজের নিজস্ব যোগ্য কারিগর — বর্ণনা-চাবিতে ডাকা, নিজ-ঘরে নিযুক্ত।</p>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🏭 কারিগর-পাতা: name+description(ডাক-চাবি)+tools+model; /agents-এ বানাও-দেখো; নিজ-ঘরে কাজ, ফল ফেরে।<br>কারণ: বারবারের নির্দেশনা এক পাতায় পাকা হলে কারখানা নিজেই চলে।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🏭 কারিগর-পাতা: name+description(ডাক-চাবি)+tools+model; /agents-এ বানাও-দেখো; নিজ-ঘরে কাজ, ফল ফেরে।<br>কারণ: বারবারের নির্দেশনা এক পাতায় পাকা হলে কারখানা নিজেই চলে।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 28</span><pre class="code-block"># ── প্রম্পট ১ · প্রথম নিজস্ব কারিগর ──
+&gt; .claude/agents/reviewer.md লেখো — frontmatter: name reviewer,
+&gt; description: Use for reviewing code changes before commit.
+&gt; Checks style, security, test coverage., tools: Read, Grep, Glob,
+&gt; model: haiku। শরীরে: কঠোর রিভিউয়ারের সিস্টেম-প্রম্পট —
+&gt; আউটপুট টেবিলে, ফাইল:লাইন ঠিকানাসহ
+# ← description-ই ডাক-ঘণ্টা — কর্ম-ভিত্তিক লাইন লেখো
+
+# ── প্রম্পট ২ · সহজ রাস্তায় বানানো ──
+&gt; /agents — Library ট্যাব দেখাও; Create new agent →
+&gt; Generate with Claude কীভাবে কাজ করে বলো — আমি মুখে
+&gt; বর্ণনা দিলে ফাইল হয়ে যায়?
+# ← হাতে-লেখা নয়, কথায়-বোনা কারিগর — মেনুর রাস্তা
+
+# ── প্রম্পট ৩ · ডেলিগেশন-পরীক্ষা ──
+&gt; (এজেন্ট বানানোর পর) src/api পরীক্ষা করতে হবে — বলো,
+&gt; দেখো reviewer নিজে ডাক পায় কি না; না পেলে description
+&gt; কীভাবে শাণিত করব বলো
+# ← বর্ণনা-মিল যত স্পষ্ট, স্বয়ংক্রিয় ডাক তত নিশ্চিত
+
+# ── প্রম্পট ৪ · স্কোপ-সিঁড়ি বসানো ──
+&gt; দুই ধরনের reviewer চাই: প্রজেক্টের সবাই পাবে (.claude/agents/),
+&gt; আর শুধু আমি সব-প্রজেক্টে (~/.claude/agents/) — দুই ফাইলে
+&gt; বসাও, নাম আলাদা রাখো (reviewer, my-reviewer)
+# ← নাম সব তলায় ইউনিক — সিঁড়ির নিয়ম (দরজা ২৩-এর ভাই)
+
+# ── প্রম্পট ৫ · স্মৃতিবান কারিগর ──
+&gt; persistent memory কীভাবে চালু হয় — ~/.claude/agent-memory/
+&gt; কী জমে, কখন কাজে লাগে? এক প্যারায় বলো
+# ← আলাপ জুড়ে শেখা জমে — পরের ডাকে কারিগর মনে রাখে</pre></div></div>
+`,
   senior: {
     title: "কারিগর-কারখানার পাঠ — The Artisan-Factory Lesson",
     body: `<ul class="checklist">
@@ -454,7 +544,36 @@ doors.push({
 
 <p class="verse">নজরের পাঠ: ইসলামে হিসাব-নিকাশের ফেরেশতা লেখে-লেখে চলে — ঘটনার সাথে সাথে, বিলম্ব নয়; আর ন্যায়বিচার মানে কারণ-জ্ঞাপন — রায়ের সাথে ব্যাখ্যা। ইমরান সাহেবের কেন্দ্রও: প্রতিটা ঘটনায় সাড়া, প্রতিটা ব্লকে কারণ।</p>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🔔 পাঁচ ব্যাটালিয়ন, এক JSON-খাম; রায় hookSpecificOutput-এ কারণসহ; ধীর-কাজ Stop-এ; --debug-এ পরীক্ষা।<br>কারণ: কারণ-জ্ঞাপিত ব্লক শাস্তি নয় — শিক্ষা; কারিগর পথ শেখে।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">🔔 পাঁচ ব্যাটালিয়ন, এক JSON-খাম; রায় hookSpecificOutput-এ কারণসহ; ধীর-কাজ Stop-এ; --debug-এ পরীক্ষা।<br>কারণ: কারণ-জ্ঞাপিত ব্লক শাস্তি নয় — শিক্ষা; কারিগর পথ শেখে।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 29</span><pre class="code-block"># ── প্রম্পট ১ · রায়-ঘণ্টা (permission-injection) ──
+&gt; PreToolUse হুক লেখো settings-এ: Bash-কমান্ডে 'production'
+&gt; থাকলে stdout-এ JSON রায় — permissionDecision: deny +
+&gt; permissionDecisionReason: "production টাচ নিষিদ্ধ — মালিকের আদেশ"
+&gt; — jq-পাইপসহ এক লাইনের কমান্ড-হুক হিসেবে
+# ← exit 2-এর সূক্ষ্ম ভাই: রায় দেখায়, মূল-প্রসঙ্গে কারণসহ
+
+# ── প্রম্পট ২ · পাঁচ জাতের বাহিনী ──
+&gt; command বনাম http হুক কখন কার — আমার দলের নীতি-সার্ভারে
+&gt; POST করতে চাই; http-হুকের সেটআপ দেখাও (URL + timeout)
+# ← লোকাল-ঘণ্টা বনাম দূরের টেলিগ্রাম — কেন্দ্রীয় নীতির রাস্তা
+
+# ── প্রম্পট ৩ · প্রম্পট-জাতের বিচারক ──
+&gt; prompt-হুক কী দেয়? একটা উদাহরণ: PostToolUse-এ এডিট হওয়া
+&gt; ফাইলটা 'প্রোডাকশন-কনফিগ' কি না মডেলকে জিজ্ঞেস করে
+&gt; হ্যাঁ হলে কারণ ফেরত — সেটআপ লেখো
+# ← মডেল-বিচারক এক-প্রসঙ্গে — নিয়মের নরম বুদ্ধি
+
+# ── প্রম্পট ৪ · ইভেন্ট-মানচিত্র চেনা ──
+&gt; PreToolUse, PostToolUse, UserPromptSubmit, Stop, PreCompact —
+&gt; প্রতিটার এক-লাইন কাজ বলো; আমার 'টেস্ট-লাল হলে জানাও' চাহিদাটা
+&gt; কোন ইভেন্টে বসাব?
+# ← ঘটনার পাহারা বুঝলে নিজের ঘণ্টা নিজেই বসানো যায়
+
+# ── প্রম্পট ৫ · প্রসঙ্গ-ইনজেকশন ──
+&gt; PostToolUse-এ additionalContext দিয়ে এডিট-হওয়া ফাইলের
+&gt; টেস্ট-স্ট্যাটাস প্রসঙ্গে জুড়ে দেওয়া যায়? ছোট উদাহরণ দাও
+# ← হুক শুধু পাহারা নয় — কারিগরের হাতে তাজা খবরও তুলে দেয়</pre></div></div>
+`,
   senior: {
     title: "ঘটনা-নাজিরের পাঠ — The Event-Observer's Lesson",
     body: `<ul class="checklist">
@@ -550,7 +669,34 @@ export ANTHROPIC_SMALL_FAST_MODEL=haiku   # ছোট-কাজ আলাদা 
 
 <p class="verse">মাপের পাঠ: কুরআনে মিজান — প্রতিটা জিনিসের মাপ; বাড়তি-ঘাটতি দুটোই ধ্বংস। ইঞ্জিন-ঘরও: ভারী-কাজে ভারী-ইঞ্জিন, হালকা-কাজে হালকা — মাপের সম্মানই সঞ্চয়।</p>
 
-<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">⚙️ চার তালা: /model > --model > env > settings; সমান্তরালে প্রতি-চালু পতাকা; জাদু opusplan।<br>কারণ: কোন ইঞ্জিন কোন কাজে — এই মাপ-জ্ঞানই খরচের সুদ।</div></div>`,
+<div class="secret-box"><div class="label">তালিসমান — Talisman</div><div class="text">⚙️ চার তালা: /model > --model > env > settings; সমান্তরালে প্রতি-চালু পতাকা; জাদু opusplan।<br>কারণ: কোন ইঞ্জিন কোন কাজে — এই মাপ-জ্ঞানই খরচের সুদ।</div></div>
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 30</span><pre class="code-block"># ── প্রম্পট ১ · সমান্তরাল বয়লার-ঘর ──
+$ claude --model opus &amp; claude --model sonnet &amp; claude --model haiku &amp;
+# ← তিন টার্মিনাল, তিন পতাকা — সেভ-করা ডিফল্ট টানে না,
+#   প্রতি-সেশন পতাকা জেতে
+
+# ── প্রম্পট ২ · জাদু-মিশ্রণ চালানো ──
+&gt; /model opusplan
+&gt; এবার ওই বড় রিফ্যাক্টরের নকশাটা ভেবে দাও
+# ← প্ল্যানে opus (গভীর ভাবনা), এক্সিকিউশনে নিজে sonnet-এ নামে —
+#   খরচ-বুদ্ধি দুটোই
+
+# ── প্রম্পট ৩ · সহায়ক-ইঞ্জিন আলাদা করা ──
+&gt; ANTHROPIC_SMALL_FAST_MODEL=haiku সেট করলে কী বদলায় —
+&gt; এক লাইনে; আর আমার শেল-প্রোফাইলে বসিয়ে দাও স্থায়ীভাবে
+# ← ছোট-কাজের বয়লার আলাদা — প্রধান ইঞ্জিন মূল কাজে ফাঁকা
+
+# ── প্রম্পট ৪ · সংস্থার পাল্লা-তালা ──
+&gt; managed-settings-এ availableModels: [sonnet, haiku] +
+&gt; enforceAvailableModels: true — মানে কী, কে টেলে পারবে?
+&gt; আমার ডিফল্ট opus হলে কী হবে?
+# ← পাল্লা সংকুচিত; তালিকার বাইরের কেউ নয় — ডিফল্টও ভেতরে থাকবে
+
+# ── প্রম্পট ৫ · ভার্সন-পিন (ড্রিফ্ট-রোধ) ──
+&gt; settings-এ কেন পুরো নাম claude-opus-4-8 লিখব এলিয়াসের বদলে —
+&gt; এক লাইনে ব্যাখ্যা করো; ANTHROPIC_DEFAULT_OPUS_MODEL-এর উদাহরণ দাও
+# ← এলিয়াস পাল্টায়, পিন নয় — প্রোডাকশনে নির্ভরযোগ্যতার চাবি</pre></div></div>
+`,
   senior: {
     title: "ইঞ্জিন-ঘরের পাঠ — The Engine-Room Lesson",
     body: `<ul class="checklist">
