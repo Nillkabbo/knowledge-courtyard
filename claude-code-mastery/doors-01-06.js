@@ -30,7 +30,8 @@ doors.push({
 <p>Claude Code-এর হাতুড়ি হলো টার্মিনাল। ডকুমেন্টেশন বলছে — Claude Code হলো Anthropic-এর <strong>agentic coding tool</strong>: তোমার কোডবেস বুঝে কাজ করে, কোড লেখে, ব্যাখ্যা করে, git চালায় — সব স্বাভাবিক ভাষায়। ইনস্টল তিন রকমের যায়গায় হতে পারে — নিজের মেশিনের টার্মিনালে (CLI), VS Code / JetBrains IDE-তে, অথবা ওয়েব ও ডেস্কটপ অ্যাপে। আজ আমরা সবার আগে সেই প্রথম টার্মিনাল যাত্রা।</p>
 <p class="en">Claude Code's hammer is the terminal. The docs call it Anthropic's <strong>agentic coding tool</strong>: it understands your codebase, writes code, explains, runs git — all in natural language. It installs in several places — the terminal CLI on your machine, VS Code / JetBrains IDEs, or the web and desktop apps. Today, the first terminal journey.</p>
 
-<div class="code-block">npm install -g @anthropic-ai/claude-code
+<div class="code-block"># নতুন পথ (ডক-প্রস্তাবিত): curl -fsSL https://claude.ai/install.sh | bash
+# বিকল্প পথ: npm install -g @anthropic-ai/claude-code
 # (Node.js ২২ বা তার বেশি লাগবে; sudo দিয়ে নয়)
 
 # ইনস্টলের পর, প্রজেক্ট ফোল্ডারে গিয়ে:

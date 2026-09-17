@@ -494,13 +494,13 @@ claude                                  # ১ শুরু
 > /model sonnet                         # ৩ রোজকার ভাই (কঠিন হলে opus)
 > /context                              # ৪ নদীর হিসাব
 # (CLAUDE.md আগেই লেখা — ২ খাতা)
-> অথ সিস্টেম ঘাঁটো — সাব-এজেন্ট দিয়ে    # ৬ ঠিকাদার
-> /plan                                 # ৫ নকশা আগে দেখাও
-# (PostToolUse ঘণ্টা ফরম্যাট করছে — ৭)
-# (.mcp.json-এর আংটিতে Notion-খাতা — ৮)
+> অথ সিস্টেম ঘাঁটো — সাব-এজেন্ট দিয়ে    # ৭ ঠিকাদার
+> (Shift+Tab → plan মোড)               # ২০ নকশা আগে দেখাও
+# (PostToolUse ঘণ্টা ফরম্যাট করছে — ৮)
+# (.mcp.json-এর আংটিতে Notion-খাতা — ৯)
 > টেস্ট চালাও, diff দেখাও               # যাচাই
 > /clear                                # ৪ নতুন যাত্রা
-# রাতে: CI claude -p --output-format json # ৯ রাতের কারখানা</div>
+# রাতে: CI claude -p --output-format json # ২১ রাতের কারখানা</div>
 
 <div class="compare">
 <div class="cmp-card cmp-bad"><div class="cmp-label">❌ টাইপিস্ট</div>প্রম্পট লেখে, অপেক্ষা করে, কপি-পেস্ট করে · প্রতিটা সেশনে একই কথা বলে · যা এলো তাই নেয় · এক সেশনে সারা মাস ঢোকায়</div>

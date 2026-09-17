@@ -375,7 +375,7 @@ doors.push({
   subtitle: "The Architect's Throne — Full Circle",
   tech: "SDK Deep Mastery · Sandbox · Precedence · Synthesis",
   spirit: "আমানতুল-ফিতরাত — প্রকৃতির ওপর অর্পিত আমানত",
-  secret: "দরজা ১-১০ শেখায় চালাতে, ১১-১৪ শেখায় বানাতে — ১৭ শেখায় স্থাপত্য: পুরো ইঞ্জিন নিজের কোডে, ঘেরা প্রাচীরে, নিজের আইনে।",
+  secret: "দরজা ১-১০ শেখায় চালাতে, ১১-২৫ শেখায় বানাতে ও জোড়াতে, ২৬-৩০ শেখায় গভীর কাস্টমাইজ, ৩১-৩৪ শেখায় আইডিয়া→প্রোডাক্ট — সিংহাসন সব স্রোত এক করে: প্রসঙ্গ, আস্থা, যাচাই — তিন স্তম্ভেই দাঁড়িয়ে আছে কারখানা।",
   recall: {
     q: "তুমি SDK দিয়ে নিজের প্রোডাক্টে এজেন্ট বসাচ্ছো। টুল-অনুমতি নিজের হাতে নিতে, সিস্টেম প্রম্পট নিজের মতো করতে, আর সবচেয়ে শক্ত বিচ্ছিন্নতা চাও — তিনটা হাতিয়ার কী?",
     qen: "You're embedding the agent in your own product via SDK. You want tool permissions in your hand, a custom system prompt, and the hardest isolation — name the three tools.",

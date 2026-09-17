@@ -572,7 +572,7 @@ doors.push({
   color: "#22c55e",
   name: "প্রথম-দিনের কার্যশালা",
   subtitle: "Day One: From Empty Room to First Commit",
-  tech: "install → প্রथম সেশন → /init → CLAUF.md → প্রথম commit",
+  tech: "install → প্রथম সেশন → /init → CLAUDE.md → প্রথম commit",
   spirit: "আচার — কোডের আগে কার্যশালা-আচার",
   secret: "এক্সপার্ট নতুন প্রজেক্টে প্রথমে কোড লেখে না — ঘর গোছায়: Claude Code বসায়, প্রথম সেশনে লগ-ইন করে, /init দিয়ে CLAUDE.md-জন্ম দেয় (প্রজেক্টের বিধি-দেওয়াল), তারপর প্রথম git-commit। এই আচারই পরের প্রতিটা সেশনের বিচার-শক্তি বহন করে।",
   recall: {

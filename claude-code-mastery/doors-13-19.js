@@ -421,12 +421,12 @@ my-plugin/
 ├── agents/
 │   └── security-reviewer.md  # দরজা ৭-এর ঠিকাদার
 ├── commands/
-│   └── audit.md           # দরজা ১৩-এর সিল
+│   └── audit.md           # দরজা ১৪-এর সিল
 ├── output-styles/
 │   └── terse.md           # দরজা ১৩-এর ছাঁচ
 ├── hooks/
 │   └── hooks.json         # দরজা ৮-এর ঘণ্টা
-├── .mcp.json              # দরজা ৯/১৩-এর আংটি
+├── .mcp.json              # দরজা ৯-এর আংটি
 └── scripts/
     └── format-code.sh
 
