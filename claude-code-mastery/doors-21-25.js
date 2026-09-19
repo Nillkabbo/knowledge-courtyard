@@ -158,7 +158,8 @@ $ git log --oneline -20 | claude -p "summarize these recent commits"
 <li>GitHub-এ claude-code-action: ইস্যু লিখো → <strong>@claude</strong> ডাকো → PR নিজেই আসে।</li>
 <li>নিজের প্রোডাক্টে এজেন্ট চাইলে Agent SDK — permission mode আর cwd দিয়ে সাবধানে শুরু।</li>
 <li>সব রাতের কাজের লগ রাখো — সকালে যাচাই, নাদিরের ডায়েরির মতো।</li>
-</ul>`
+</ul>
+<p class="en">Book 62's Nasiman's Engine (Door 24) shows the SDK as a library — the night factory's tools in code.</p><p><strong>পাশের বই:</strong> Book 62-এর নছিমনের ইঞ্জিন (দরজা ২৪) SDK-টা লাইব্রেরি-রূপে দেখায় — রাতের কারখানার সব সরঞ্জাম কোডে। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 
@@ -298,7 +299,8 @@ async def guard(tool_name, tool_input, context):
 <li>লাইভ দেখতে <strong>streaming=True</strong>; হুক-সহ স্ট্রিমে ডামি PreToolUse (continue_)।</li>
 <li><strong>system_prompt</strong>-এ কারিগরের চরিত্র নিজে লেখো — প্রতি কলে একই নিয়ম।</li>
 <li>খরচ ও সংস্করণ: টোকেন-হিসাব পাশে, আপগ্রেডের আগে changelog।</li>
-</ul>`
+</ul>
+<p class="en">Book 62's Nasiman's Engine (Door 24) shows the road to building the SDK harness yourself.</p><p><strong>পাশের বই:</strong> Book 62-এর নছিমনের ইঞ্জিন (দরজা ২৪) SDK-হারনেস নিজে বানানোর রাস্তা দেখায়। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 
@@ -423,7 +425,8 @@ doors.push({
 <li>গোপন কখনো সেটিংস-ফাইলে নয় — <strong>env-ভেরিয়েবল</strong>; settings.local গিট-বাদ নিশ্চিত করো।</li>
 <li>রাতের/স্বয়ংক্রিয় কাজে <strong>sandbox</strong> (network বিবেচিত, credentials false)।</li>
 <li>মানাচ্ছে না? উপরের সিঁড়ি সন্দেহ করো — CLI ফ্ল্যাগ আর local-ই সাধারণ কারিগর।</li>
-</ul>`
+</ul>
+<p class="en">Book 62's Iron Wall (Door 17) shows why each rung of the settings ladder wins.</p><p><strong>পাশের বই:</strong> Book 62-এর লোহার প্রাচীর (দরজা ১৭) settings-সিঁড়ির প্রতিটা ধাপ কেন জেতে তার ভেতরটা দেখায়। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 
@@ -682,7 +685,8 @@ claude --permission-mode plan
 <li>অবিশ্বস্ত রিপো অডিট করলে: ঘেরা ঘর (VM/devcontainer), পড়ার অনুমতি আলাদা, লেখার তালা বন্ধ।</li>
 <li>প্রম্পট-ক্লান্তির বিষ স্বীকার করো — নিরাপদ কমান্ড allowlist-এ তুলে দাও, যাতে জিজ্ঞেসগুলো শুধু আসল ঝুঁকিতে আসে।</li>
 <li>সন্দেহজনক আচরণ: /feedback — রিপোর্ট করাও ভল্ট-রক্ষীর কাজ।</li>
-</ul>`
+</ul>
+<p class="en">Book 62's Editor's Seal (Door 21) shows injection as the model sees it — data and orders alike.</p><p><strong>পাশের বই:</strong> Book 62-এর সম্পাদকের যাচাই-সিল (দরজা ২১) দেখায় ইনজেকশন মডেলের চোখে কেমন দেখায় — ডেটা আর আদেশ একই। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 

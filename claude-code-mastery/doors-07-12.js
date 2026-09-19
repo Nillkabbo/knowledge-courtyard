@@ -123,7 +123,8 @@ claude --agents '{
 <li>টুল সংকীর্ণ রাখো — যে শুধু পড়বে তার হাতে লেখার কলম দিয়ো না (Read, Grep, Glob)।</li>
 <li>বার বার একই ধরনের কাজে একই নির্দেশ দিচ্ছো? সেটা .claude/agents/ ফাইল হওয়ার সংবাদ।</li>
 <li>বড় অনুসন্ধান মূল সেশনে নয় — ঠিকাদারে; শৃঙ্খল দরকার হলে পরপর সাজাও।</li>
-</ul>`
+</ul>
+<p class="en">Book 62's Broker (Door 18) shows a subagent is the same loop with a fresh ledger.</p><p><strong>পাশের বই:</strong> Book 62-এর আড়তদারের দালাল (দরজা ১৮) দেখায় subagent আসলে একই loop-এর নতুন-খাতা রূপ। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 
@@ -382,7 +383,8 @@ claude
 <li>প্লাগইন ইনস্টলের পর ইনস্টল-সারমর্মে রিলোড বললে <strong>/reload-plugins</strong> চালাও।</li>
 <li>টুল বেশি হলে ডকের পথ: tool search — স্কিমাগুলো জমা থাকে, দরকারে লোড হয় (নদীর হিসাব, দরজা ৪)।</li>
 <li>বাজার না পেলে: /plugin marketplace add anthropics/claude-plugins-official</li>
-</ul>`
+</ul>
+<p class="en">Book 62's Electrician's Socket (Door 6) and Bearer's Chit (Door 16) show the inside of the ring and the tool contract — the JSON exchange.</p><p><strong>পাশের বই:</strong> Book 62-এর বিদ্যুৎ-মিস্ত্রির সকেট (দরজা ৬) আর বেয়ারার চিরকুট (দরজা ১৬) দেখায় আংটি আর টুল-চুক্তির ভেতরটা — JSON যাওয়া-আসা। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 
@@ -536,7 +538,8 @@ claude plugin validate .claude/skills   # frontmatter ঠিক কি না
 <li>তাজা তথ্য লাগলে শরীরে <strong>!\`কমান্ড\`</strong> — খোলার মুহূর্তে ইনজেক্ট হবে।</li>
 <li>মাসে একবার <strong>/doctor</strong> + <strong>/context</strong> — কারা ভারী, তালিকার দাম কত।</li>
 <li>বান্ডিল-স্কিল চেনো: <strong>/verify · /run · /code-review</strong> — চাকরির আগে নিজের বাক্সে আগে দেখো।</li>
-</ul>`
+</ul>
+<p class="en">Book 62's Letter-Nook (Door 10) unpacks tokenization — why skill budgets count in tokens.</p><p><strong>পাশের বই:</strong> Book 62-এর হরফের খোপ (দরজা ১০) টোকেনাইজেশন খুলে দেখায় — স্কিল-বাজেট কেন টোকেনে হিসেব হয়। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 

@@ -705,7 +705,8 @@ $ claude --model opus &amp; claude --model sonnet &amp; claude --model haiku &am
 <li><strong>opusplan</strong> — প্ল্যান opus, এক্সিকিউশন sonnet; [1m] দরকারমতো।</li>
 <li><strong>ANTHROPIC_SMALL_FAST_MODEL</strong> — সহায়ক কাজের আলাদা ইঞ্জিন।</li>
 <li>সংস্থার <strong>availableModels</strong> — পাল্লা-সীমা; বাইরে গেলে প্রতিস্থাপন।</li>
-</ul>`
+</ul>
+<p class="en">Book 62's Sorting-House Address (Door 20) shows the road to other backends — the machinery behind the env levers.</p><p><strong>পাশের বই:</strong> Book 62-এর বাছাইঘরের ঠিকানা (দরজা ২০) অন্য backend-এর পথ দেখায় — env-লিভারের পেছনের যন্ত্র। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 

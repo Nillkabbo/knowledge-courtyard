@@ -522,6 +522,7 @@ options = ClaudeAgentOptions(
 <li><strong>Book ১ (Twenty-Seven Doors)</strong> — পুরো AI ইঞ্জিনিয়ারিং শহরের মানচিত্র; এই বই তার এক মহল্লা।</li>
 <li>প্রথম আসল কাজ: নিজের কারখানায় একটা ছোট স্কিল → একটা প্লাগইন → নিজের মার্কেটপ্লেস — মোস্তফার সিঁড়ি নিজে ভাঙো।</li>
 <li>মাসে একবার অফিসিয়াল ডক + changelog — শহরের আইন বদলায়, স্থপতিকেও খবর রাখতে হয়।</li>
-</ul>`
+</ul>
+<p class="en">Book 62's Twelve-Line Engine (Door 28) fits this whole throne into one twelve-line loop — and teaches you to build it yourself.</p><p><strong>পাশের বই:</strong> Book 62-এর বারো লাইনের ইঞ্জিন (দরজা ২৮) তোমার এই সিংহাসনের সব যন্ত্র বারো লাইনের loop-এ মেলে — আর সেটা নিজে বানানো শেখায়। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>বারো লাইনের ইঞ্জিন — The Twelve-Line Engine: The Claude Code Journey</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&family=Cinzel:wght@400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
+  <h1 class="title-main">বারো লাইনের ইঞ্জিন</h1>
+  <div class="title-sub">The Twelve-Line Engine · The Claude Code Journey</div>
+  <div class="title-desc">
+    প্রথম prompt থেকে নিজের agent পর্যন্ত — আটাশটি দরজা, চার পর্বে। প্রথমে Claude Code প্রতিদিন নিরাপদে, দক্ষভাবে চালাতে শিখবে; তারপর ঢাকনা খুলে দেখবে টার্মিনালে তোমার একটা keystroke কীভাবে token হয়, model-এর কাছে যায়, tool চেয়ে ফেরত আসে; তারপর বিশেষজ্ঞের বিচারবুদ্ধি। শেষ দরজায় দেখবে, পুরো জিনিসটা আসলে বারো লাইনের একটা loop — আর নিজেই সেটা বানাবে।<br><br>
+    <em>From your first prompt to your own agent — twenty-eight doors in four parts. Part 1 (Use it): first session, the core loop, CLAUDE.md, permissions, commands and skills, MCP, headless and CI, team rollout. Part 2 (Under the hood): model vs harness, tokens, next-token generation, training, the context window, the stateless API, prompt caching, tool use. Part 3 (Control and other roads): harness-enforced safety, subagents, provider adapters, other backends. Part 4 (Trust, proof, judgement): prompt injection, evals, any-tool transfer, the Agent SDK, extended thinking, prompt craft, model and pattern choice. Door 28 reveals the twelve-line loop and you build your own agent. Book 59 (The Terminal Craftsman) is the deep feature reference alongside.</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">⚙️ যাত্রা শুরু করো</button>
+</div>
+
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">কপি-পেস্টের এক ঘণ্টা — The Copy-Paste Hour</div>
+    <p>ঢাকার এক গুমোট দুপুর। তোমার সামনে ticket: কোনো customer-এর billing address না থাকলে Invoices API 500 দেয়। তুমি stack trace কপি করো, chat-এ পেস্ট করো, একটা fix পাও, editor-এ পেস্ট করো, test চালাও। দুটো অন্য test ভাঙে। আবার কপি, আবার পেস্ট। এক ঘণ্টা পর আঙুলে ব্যথা, মাথায় ধোঁয়া। তারপর কেউ terminal-এ শুধু <strong>claude</strong> লেখে, আর একই কাজ আট মিনিটে শেষ হয় — file খোলা, test চালানো, ভুল পড়া, আবার চেষ্টা — তুমি শুধু দেখো।</p>
+    <p class="en">A humid Dhaka afternoon. The ticket: the Invoices API returns 500 when a customer has no billing address. You copy a stack trace into a chat, get a fix, paste it into the editor, run the tests; two others break. Copy, paste, repeat. An hour later someone types <strong>claude</strong> in a terminal and the same job finishes in eight minutes while you only watch.</p>
+    <hr class="p-divider">
+    <p>সেই মুহূর্তে জিনিসটাকে জাদু মনে হয়। এই বই তোমাকে দুই ধাপে নিয়ে যাবে। প্রথমে জাদুটা ঠিকভাবে চালাতে — আটজন ওস্তাদ: এক আমিন, এক নৌকার কারিগর, এক ট্রেনচালক, এক ওটি-নার্স, এক ময়রা, এক বিদ্যুৎ-মিস্ত্রি, এক দই-কারিগর, এক হেডমাস্টার। তারপর জাদু ভেঙে দিতে — আরও উনিশজন: মুনশি, কম্পোজিটর, তাঁতি, সেতারি, পেশকার, ওয়ার্ড-বয়… যেদিন দেখবে ভেতরে কী ঘোরে, সেদিন তুমি নিজেই বানাতে পারবে, অন্য যেকোনো model-এর সঙ্গে, অন্য যেকোনো tool-এ। শেষ ছাদে মীরা দেখাবেন, আটাশজনের সবাই আসলে একটাই যন্ত্রের একেকটা লাইন শেখাচ্ছিলেন।</p>
+    <p class="en">In that moment it feels like magic. This book takes you in two steps. First, to drive the magic well — eight masters: a surveyor, a boatbuilder, a train driver, a theatre nurse, a sweet-maker, an electrician, a doi-maker, a headmaster. Then to break the magic — nineteen more: a munshi, a compositor, a weaver, a sitar master, a court clerk, a ward-boy… The day you see what turns inside, you can build it yourself, for any model, in any tool. On the last rooftop Mira shows that all of them were teaching lines of one machine.</p>
+    <div class="callout info"><span class="co-icon">🧭</span><div><strong>সঙ্গী বই:</strong> Book 59 (টার্মিনাল কারিগর) Claude Code-এর প্রতিটা বৈশিষ্ট্যের গভীর reference — এই বইয়ের প্রায় প্রতিটা দরজায় তার সেতু আছে। Book 7, 8, 9, 12, 13, 16, 17, 19-এর সঙ্গেও সেতু।<br><em>Companion: Book 59 is the deep feature reference; most doors here link to it and to Books 7, 8, 9, 12, 13, 16, 17 and 19.</em></div></div>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 প্রথম দরজায় ঢোকো</button></div>
+  </div>
+</div>
+
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">📏</span><span id="hud-rank-name">জমি-হাঁটা শাগরেদ</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 2800 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
+  </div>
+  <div class="map-header"><h2>দরজা বেছে নাও</h2><p>আটাশটি দরজা, চার পর্বে — ব্যবহার করো (১–৮) · ঢাকনার নিচে (৯–১৬) · শাসন ও অন্য পথ (১৭–২০) · বিশ্বাস, প্রমাণ ও বিচারবুদ্ধি (২১–২৭) · আর ইঞ্জিন (২৮)।</p></div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← ইঞ্জিন-ঘরে ফিরে যাও</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
+</div>
+
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">⚙️</div>
+  <h1 class="complete-title">তুমি এখন ইঞ্জিন-নির্মাতা</h1>
+  <p class="complete-text">আটাশটি দরজা পেরিয়েছ। জহুরুল শিখিয়েছেন আগে পড়তে, মনির পাঁজর আর পানি-পরীক্ষা, আজিজ রুট-খাতা, রোকসানা গণনা, গোপাল রেসিপি-কার্ড, জামাল সকেট, আলমগীর হাঁড়ি, নিজাম স্যার সিলেবাস। তারপর মুনশি আবদুল করিম দেখিয়েছেন model শুধু লেখে; হারাধন বসাক টুকরো; রহমত আলী এক সুতো; মেহের আলী খান চার সবক; নুরুন্নাহার টেবিল; মতিন ফাইল; ইউসুফ সীসার পাত; শফিক চিরকুট; জরিনা দেয়াল; সিরাজ মিয়া দালাল; ফাতেমা তিন কলম; হাবিবুর ঠিকানা; শিরিন যাচাই-সিল; রেহানা রুপোর চামচ; বাবুল চেইন; আক্কাস আলী তৈরি ইঞ্জিন; নূর হোসেন চকের দাগ; সালেহা প্রশ্নপত্র; মোস্তফা সঠিক শ্রমিক — আর মীরা দেখিয়েছেন, এরা সবাই একটাই loop-এর একেকটা লাইন।<br><br><em>Twenty-eight doors, twenty-seven instruments, one loop. The tool will change next month. The loop will not.</em><br><strong>Model লেখে, harness করে, context-ই সব।</strong></p>
+  <div class="complete-verse">ثُمَّ ارْجِعِ الْبَصَرَ كَرَّتَيْنِ</div>
+  <div style="font-size:.92rem;color:var(--ink-dim);margin-bottom:1.3rem">"তারপর আবার দৃষ্টি ফেরাও, বারবার।" — কুরআন ৬৭:৪ (ভাবানুবাদ)</div>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 ইঞ্জিনের চিটশিট</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
+</div>
+
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 ইঞ্জিনের চিটশিট</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
+</div>
+
+<script src="doors-01-04.js"></script>
+<script src="doors-05-08.js"></script>
+<script src="doors-09-12.js"></script>
+<script src="doors-13-16.js"></script>
+<script src="doors-17-20.js"></script>
+<script src="doors-21-24.js"></script>
+<script src="doors-25-28.js"></script>
+<script src="engine.js"></script>
+<script src="../scripts/study-materials.js"></script>
+</body>
+</html>

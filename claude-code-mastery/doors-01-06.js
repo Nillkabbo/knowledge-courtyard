@@ -133,7 +133,8 @@ $ claude --continue
 <li><strong>claude -p</strong> দিয়ে এক লাইনের কাজ করো: লগ বিশ্লেষণ, কমিট মেসেজ, দ্রুত ব্যাখ্যা।</li>
 <li>থিম, লগইন, টার্মিনালের বেসিক নেভিগেশন — এগুলো প্রথম দিনেই শেষ করো, পরে আর ফিরে দেখতে হবে না।</li>
 <li>ডক: quickstart আর terminal-guide পাতা বুকমার্ক করো — হাতুড়ির ব্যবহারবিধি।</li>
-</ul>`
+</ul>
+<p class="en">In Book 62, the Surveyor's Chain (Door 1) teaches walking the land before the hammer — a question-notebook for code archaeology.</p><p><strong>পাশের বই:</strong> Book 62-এর আমিনের শিকল (দরজা ১) শেখায় হাতুড়ির আগে জমি হাঁটা — code archaeology-র প্রশ্ন-খাতা। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 
@@ -264,7 +265,8 @@ claude
 `,
   senior: {
     title: "কার্যকর বাহির খাতা লেখার নিয়ম — Writing the Ledger",
-    body: `<p>শুরু করো <strong>/init</strong> দিয়ে, তারপর নিজে ছাঁটো। মাসে একবার খাতা পুনরায় পড়ো — ডকের পরামর্শ: <strong>/doctor</strong> চালালে Claude নিজেই বলে দেবে কোন লাইনগুলো কোডবেস থেকে অনুমান করা যায়, সেগুলো কেটে দাও। আর মনে রেখো: কোনো নিয়ম বার বার ভাঙা মানে লাইনটা হয় হারিয়ে গেছে, নয়তো অস্পষ্ট — দুই ক্ষেত্রেই সমাধান ছোট করা, বড় নয়।</p>`
+    body: `<p>শুরু করো <strong>/init</strong> দিয়ে, তারপর নিজে ছাঁটো। মাসে একবার খাতা পুনরায় পড়ো — ডকের পরামর্শ: <strong>/doctor</strong> চালালে Claude নিজেই বলে দেবে কোন লাইনগুলো কোডবেস থেকে অনুমান করা যায়, সেগুলো কেটে দাও। আর মনে রেখো: কোনো নিয়ম বার বার ভাঙা মানে লাইনটা হয় হারিয়ে গেছে, নয়তো অস্পষ্ট — দুই ক্ষেত্রেই সমাধান ছোট করা, বড় নয়।</p>
+<p class="en">Book 62's Driver's Route-Book (Door 3) and Word-Boy's File (Door 14) show where the ledger truly lives — memory in a stateless API.</p><p><strong>পাশের বই:</strong> Book 62-এর চালকের রুট-খাতা (দরজা ৩) আর ওয়ার্ড-বয়ের ফাইল (দরজা ১৪) দেখায় খাতাটা আসলে কোথায় বসে — stateless Messages API-র স্মৃতি। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 
@@ -382,7 +384,8 @@ claude --model opus
 <tr><td>বড় রিফ্যাক্টর, কঠিন ডিবাগ, উঁচু ঝুঁকি</td><td class="hl">Opus</td><td>সবচেয়ে বেশি সতর্ক শক্তি</td></tr>
 <tr><td>সবচেয়ে কঠিন, দীর্ঘ চলা কাজ</td><td class="hl">Fable</td><td>দীর্ঘ কাজে সর্বোচ্চ সক্ষমতা</td></tr>
 </table>
-<p>সেশনের মাঝে কাজের ধরন বদলালে লজ্জা পেয়ো না — /model এক সেকেন্ডের কাজ। আর গভীর সমস্যায় /effort xhigh দিয়ে চিন্তার ঘণ্টা বাড়াও।</p>`
+<p>সেশনের মাঝে কাজের ধরন বদলালে লজ্জা পেয়ো না — /model এক সেকেন্ডের কাজ। আর গভীর সমস্যায় /effort xhigh দিয়ে চিন্তার ঘণ্টা বাড়াও।</p>
+<p class="en">Book 62's Tailor's Chalk (Door 25) explains sizing effort to the job — where deep thinking pays and where it wastes.</p><p><strong>পাশের বই:</strong> Book 62-এর দর্জির চক-দাগ (দরজা ২৫) ব্যাখ্যা করে effort-এর কাজে-কাজে মাপ — কোথায় গভীর ভাবনা, কোথায় অপচয়। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 
@@ -496,7 +499,8 @@ doors.push({
 <li>কম্প্যাকশন দরকার হলে নিজের ইচ্ছায় <strong>/compact</strong> — জোর করে ডুবার আগেই খালাস।</li>
 <li>পুরো কোডবেস ঘেঁটে বের করার মতো ভারী কাজ মূল সেশনে টানো না — দরজা ৭-এর সাব-এজেন্ট ওদের নিজস্ব নৌকায় করে শুধু সারমর্ম পাঠায়।</li>
 <li>প্রতিটা বড় সেশনের শুরুতে থাকবে রাহেলার খাতা (CLAUDE.md) — কম্প্যাকশনের পরেও সে ডিস্ক থেকে ফিরে আসে।</li>
-</ul>`
+</ul>
+<p class="en">Book 62's Clerk's Desk (Door 13) shows the context window itself — why /compact exists.</p><p><strong>পাশের বই:</strong> Book 62-এর পেশকারের টেবিল (দরজা ১৩) context window-টা নিজেই দেখায় — /compact-এর পেছনের কারণ। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 
@@ -775,6 +779,7 @@ claude --permission-mode bypassPermissions
 <li>বড় কাজের আগে <strong>plan মোড</strong> দিয়ে শুরু করো — নকশা দেখো, তারপর হাত।</li>
 <li>স্ক্রিপ্ট/CI-তে <strong>--permission-mode acceptEdits</strong> বা bypassPermissions — কিন্তু শুধু ঘেরা পরিবেশে।</li>
 <li>দলের কারখানায় নিয়ম .claude/settings.json-এ রেখে git-এ দাও — সবার তালা একই খাতায়।</li>
-</ul>`
+</ul>
+<p class="en">Book 62's Iron Wall (Door 17) shows who truly enforces rules — the harness, not the instructions.</p><p><strong>পাশের বই:</strong> Book 62-এর লোহার প্রাচীর (দরজা ১৭) দেখায় নিয়ম আসলে কে জারি করে — instructions নয়, harness। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });

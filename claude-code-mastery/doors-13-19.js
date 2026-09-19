@@ -473,7 +473,8 @@ server.setRequestHandler(CallToolRequestSchema, async req => {
 <li>স্ক্রিপ্টের ভেতরে দ্রুত দরকার → in-process (@tool); সব সেশনে দরকার → stdio সার্ভার + .mcp.json।</li>
 <li>টুলের ডাকের নাম প্যাটার্ন: <strong>mcp__সার্ভার__টুল</strong> — allowed_tools-এ এই নামেই লিখবে।</li>
 <li>লেখার টুল (অর্ডার, ডিলিট) আর পড়ার টুল আলাদা করে গণনা করো — আস্থার স্তর আলাদা (দরজা ৬)।</li>
-</ul>`
+</ul>
+<p class="en">Book 62's Interpreter's Three Pens (Door 19) shows one neutral format mapped to many providers' wires.</p><p><strong>পাশের বই:</strong> Book 62-এর দোভাষীর তিন কলম (দরজা ১৯) দেখায় নিরপেক্ষ ফরম্যাট থেকে বহু provider-এর তারে-বার্তা। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 
@@ -648,7 +649,8 @@ my-plugin/
 <li>skills/ ব্যবহার করো নতুন প্লাগইনের জন্য; commands/ (ফ্ল্যাট .md) পুরনো স্টাইল — মিশ্রিও না।</li>
 <li>ইনস্টল-সারমর্মে <strong>/reload-plugins</strong> বললে চালাও — নইলে সেশন পুনরায় চালু না হলে নতুন কিছু লোড হয় না।</li>
 <li>দলের ভেতরে ছড়াতে মার্কেটপ্লেস repo বানাও — /plugin marketplace add org/repo এক লাইনে সবার কারখানায় বাক্স।</li>
-</ul>`
+</ul>
+<p class="en">Book 62's Headmaster's Syllabus (Door 8) shows the plugin as the team's curriculum.</p><p><strong>পাশের বই:</strong> Book 62-এর হেডমাস্টারের সিলেবাস (দরজা ৮) দেখায় plugin কীভাবে দলের কারিকুলাম হয়। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 
@@ -758,7 +760,8 @@ $ git worktree remove ../project-login-feature
 <li>নজর রাখো মাঝ-উঠান থেকে: <strong>agent view</strong> এক পর্দায় সব সেশন — কে চলছে, কে অপেক্ষায়।</li>
 <li>পুনরাবৃত্ত প্রহরী: <strong>/loop 5m ...</strong> নির্দিষ্ট তালে, /loop ... স্ব-তালে; শর্ত-প্রহরী: <strong>/goal <শর্ত></strong>।</li>
 <li>আরও বড় অর্কেস্ট্রেশন: dynamic workflows (লিপি লিখে অনেক সাব-এজেন্ট চালানো, আবার চালানো যায়) — Book ১২-এর গভীর ডুব।</li>
-</ul>`
+</ul>
+<p class="en">Book 62's Yogurt-Pot (Door 7) covers fan-out and worktrees end to end.</p><p><strong>পাশের বই:</strong> Book 62-এর দইয়ের হাঁড়ি (দরজা ৭) fan-out আর worktree-এর ওপর থেকে নিচ পর্যন্ত দেখায়। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 // ── DOOR 18 · রহিমা ঘরের ঘড়ি-মিস্ত্রি — Rahima's Clock-Winder ──
@@ -1121,7 +1124,8 @@ claude --permission-mode plan     # বা সেশনে Shift+Tab → "⏸ pl
 <li>কাজ চলাকালে <strong>Ctrl+T</strong> — Claude-র todo-তালিকা চোখে রাখো; বড় কাজে "প্রতি ধাপে todo আপডেট করো"।</li>
 <li>প্রতিটা দাবির পর <strong>যাচাই-আদেশ</strong>; শেষে <strong>/verify</strong> — অ্যাপ চালিয়ে প্রমাণ।</li>
 <li>ছোট ফিক্সে নকশা-টেবিল বাদ — সরাসরি হাত; নিয়মের বোঝা কাজের সমানুপাতিক।</li>
-</ul>`
+</ul>
+<p class="en">Book 62's Tailor's Chalk (Door 25) reveals the thinking budget behind plan mode.</p><p><strong>পাশের বই:</strong> Book 62-এর দর্জির চক-দাগ (দরজা ২৫) জানায় plan mode-এর পেছনে thinking-বাজেট কী করে। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 
