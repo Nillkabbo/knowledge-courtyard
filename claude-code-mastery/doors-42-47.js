@@ -3,9 +3,129 @@
 // Expert workflow floor: idea → plan → build loop → ship (follow-along guide)
 // ════════════════════════════════════════
 
-// ── DOOR 32 · নকশা-টেবিলের আলো — The Drafting Table: From Idea to Plan ──
+// ── DOOR 42 · ফটিক চাচার প্রথম-দিনের কার্যশালা — Day One: From Empty Room to First Commit ──
 doors.push({
-  num: 32,
+  num: 42,
+  icon: "🛠️",
+  color: "#22c55e",
+  name: "প্রথম-দিনের কার্যশালা",
+  subtitle: "Day One: From Empty Room to First Commit",
+  tech: "install → প্রथম সেশন → /init → CLAUDE.md → প্রথম commit",
+  spirit: "আচার — কোডের আগে কার্যশালা-আচার",
+  secret: "এক্সপার্ট নতুন প্রজেক্টে প্রথমে কোড লেখে না — ঘর গোছায়: Claude Code বসায়, প্রথম সেশনে লগ-ইন করে, /init দিয়ে CLAUDE.md-জন্ম দেয় (প্রজেক্টের বিধি-দেওয়াল), তারপর প্রথম git-commit। এই আচারই পরের প্রতিটা সেশনের বিচার-শক্তি বহন করে।",
+  recall: {
+    q: "প্রথম দিনের ৫ ধাপ কী কী, কেন বিধি-দেওয়াল (CLAUDE.md) কোডের আগে? আর claude --version কী ছাপাবে বলে ডক বলে?",
+    qen: "What are the five day-one steps, why does the rules-wall (CLAUDE.md) come before code, and what does the docs say claude --version prints?",
+    a: "① install: curl -fsSL https://claude.ai/install.sh | bash (বা brew install --cask claude-code) ② verify: claude --version — ডক বলে সংখ্যা + (Claude Code) ছাপাবে ③ প্রজেক্ট-ফোল্ডারে claude — প্রথমবার লগ-ইন-প্রম্পট (ব্রাউজারে), উপরে version + model + working directory ④ /init — CLAUDE.md-জন্ম: প্রজেক্টের বিধি, কমান্ড, রীতি ⑤ প্রথম commit: git init + \\\"commit my changes with a descriptive message\\\"। বিধি আগে, কারণ ভবিষ্যতের প্রতিটা সেশন এই দেওয়াল পড়ে বিচার করে — কোড বদলায়, বিধি-চরিত্র বহন করে।",
+    aen: "① install: curl -fsSL https://claude.ai/install.sh | bash (or brew install --cask claude-code) ② verify: claude --version — docs say it prints a version number followed by (Claude Code) ③ run claude in the project folder — first use shows a login prompt (browser), header shows version + model + working directory ④ /init — CLAUDE.md is born: the project's rules, commands, conventions ⑤ first commit: git init + \\\"commit my changes with a descriptive message\\\". Rules before code because every future session reads that wall to judge — code changes, the wall carries character.",
+    you: "নিজের আইডিয়া-ফোল্ডারে এই ৫ ধাপ এখনই চালাও; শেষে git log --oneline দিয়ে প্রথম commit নিজের চোখে দেখো"
+  },
+  story: `<p class="scene-setting">নতুন শহরে ফটিক চাচা যখন কার্যশালা খোলেন, প্রথম দিন কোনো কাঠ কাটেন না। ঘর ঝাঁটেন, যন্ত্র গুছিয়ে ঝোলান, দেওয়ালে শহরের বিধি লেখেন — তারপর প্রথম কাট। তাঁর কথা: \\\"যে ঘর গোছানো নয়, সেখানে প্রতিটা ভুল দ্বিগুণ খরচ।\\\" এক্সপার্ট-ইঞ্জিনিয়ারের প্রথম দিনও তাই: Claude Code বসানো → লগ-ইন → /init দিয়ে বিধি-দেওয়াল → প্রথম commit। এই দরজা থেকে তিনটে দরজায় একটাই সূত্র — নকশা-টেবিল (৩২: আইডিয়া→পরিকল্পনা), কারখানা-ছন্দ (৩৩: নির্মাণ-চক্র), নদী-পারাপার (৩৪: রিলিজ) — শেষে সিংহাসন (৩৫)।</p>
+<p class="scene-setting en">When old master Fazlik Chacha opens a workshop in a new town, day one cuts no wood. He sweeps, hangs the tools, paints the town's rules on the wall — then makes the first cut. His saying: \\\"an unsorted room doubles the cost of every mistake.\\\" An expert engineer's day one is the same: install Claude Code → log in → /init writes the rules-wall → first commit. From this door a single thread runs through three more — the Drafting Table (32: idea→plan), the Factory Rhythm (33: build loop), the River Crossing (34: ship it) — ending at the Throne (35).</p>
+
+<div class="code-block"># ── ধাপ ১ · ইনস্টল (macOS/Linux/WSL) ──
+curl -fsSL https://claude.ai/install.sh | bash
+# বিকল্প: brew install --cask claude-code
+
+# ── ধাপ ২ · যাচাই ──
+claude --version
+# তুমি যা দেখবে (ডক-বর্ণিত): সংখ্যা + (Claude Code)
+
+# ── ধাপ ৩ · প্রজেক্ট-ঘরে প্রথম সেশন ──
+mkdir my-idea && cd my-idea
+claude
+# প্রথমবার: লগ-ইন-প্রম্পট → ব্রাউজারে অনুমোদন
+# প্রম্পটের উপরে (ডক-বর্ণিত): version · model · working directory
+# সাহায্য দরকার হলে: /help
+
+# ── ধাপ ৪ · বিধি-দেওয়ালের জন্ম ──
+/init
+# তুমি যা দেখবে: প্রজেক্ট-রুটে CLAUDE.md তৈরি —
+#   প্রজেক্ট কী, কোন কমান্ড চলে, কোন রীতি মানতে হবে
+# খালি ঘরেও চালাও — আইডিয়া-সারাংশ হাতে থাকলে দেওয়াল লেখায়
+
+# ── ধাপ 5 · প্রথম commit (ইতিহাসের জন্ম) ──
+git init
+# Claude-কে বলো (ডক-প্রম্পট-রেসিপি):
+#   commit my changes with a descriptive message
+# তুমি যা দেখবে: Claude নিজেই diff-পড়ে বার্তা-লেখে, তুমি অনুমোদন করো
+
+# ── বোনাস · স্বাস্থ্য-পরীক্ষা ──
+/doctor
+# কী কী আসলে লোড হয়েছে (settings/hooks/skills) — চোখে দেখে নাও</div>
+
+<table class="kv-table">
+<tr><th>ধাপ</th><th>কমান্ড</th><th>তুমি কী দেখবে (প্রত্যাশিত)</th></tr>
+<tr><td class="hl">১ ইনস্টল</td><td>curl … install.sh | bash</td><td>ইনস্টল-লগ, শেষে সফল-বার্তা</td></tr>
+<tr><td class="hll">২ যাচাই</td><td>claude --version</td><td>সংখ্যা + (Claude Code)</td></tr>
+<tr><td class="hl">৩ সেশন</td><td>claude</td><td>লগ-ইন → header: version · model · dir</td></tr>
+<tr><td class="hll">৪ বিধি</td><td>/init</td><td>CLAUDE.md প্রজেক্ট-রুটে</td></tr>
+<tr><td class="hl">৫ ইতিহাস</td><td>git init + commit-প্রম্পট</td><td>প্রথম commit-হ্যাশ</td></tr>
+</table>
+
+<div class="diagram">
+<div class="diag-title">প্রথম-দিনের শৃঙ্খল</div>
+<svg viewBox="0 0 640 130" role="img" aria-label="Day one chain: install, first session, init, first commit">
+<defs><marker id="ar59d31" markerWidth="10" markerHeight="8" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3" fill="#22c55e"/></marker></defs>
+<rect x="20" y="45" width="120" height="44" rx="8" class="node node-leaf"/><text x="80" y="64" text-anchor="middle" class="sc-label">ইনস্টল</text><text x="80" y="80" text-anchor="middle" class="sc-num">install.sh</text>
+<rect x="180" y="45" width="120" height="44" rx="8" class="node node-cyan"/><text x="240" y="64" text-anchor="middle" class="sc-label">প্রথম সেশন</text><text x="240" y="80" text-anchor="middle" class="sc-num">claude → লগ-ইন</text>
+<rect x="340" y="45" width="120" height="44" rx="8" class="node node-hot"/><text x="400" y="64" text-anchor="middle" class="sc-label">বিধি-দেওয়াল</text><text x="400" y="80" text-anchor="middle" class="sc-num">/init → CLAUDE.md</text>
+<rect x="500" y="45" width="120" height="44" rx="8" class="node"/><text x="560" y="64" text-anchor="middle" class="sc-label">প্রথম ইতিহাস</text><text x="560" y="80" text-anchor="middle" class="sc-num">git commit</text>
+<line x1="140" y1="67" x2="180" y2="67" stroke="#22c55e" stroke-width="3" marker-end="url(#ar59d31)"/>
+<line x1="300" y1="67" x2="340" y2="67" stroke="#22c55e" stroke-width="3" marker-end="url(#ar59d31)"/>
+<line x1="460" y1="67" x2="500" y2="67" stroke="#22c55e" stroke-width="3" marker-end="url(#ar59d31)"/>
+</svg>
+<div class="diag-cap">কোডের আগে ঘর-গোছানো — প্রতিটা তীর ডক-যাচাইকৃত কমান্ড</div>
+</div>
+<div class="callout info"><span class="co-icon">🧪</span><div><b>বাস্তব উদাহরণ — BazarBiti (বাজারবই), ধাপ ১-৫ হাতে-কলমে</b> — <span class="en">A real worked example, start to finish</span><pre class="code-block"># আইডিয়া: রোজকার বাজার-খরচের খাতা, টার্মিনালে — খরচ যোগ করো, সপ্তাহের হিসাব দেখো
+# প্রজেক্টের নাম: bazarbiti
+
+# ── ধাপ ১-২ · ইনস্টল-যাচাই (একবারই) ──
+$ curl -fsSL https://claude.ai/install.sh | bash
+$ claude --version
+2.5.47 (Claude Code)          ← সংখ্যা বদলাবে; শেষে (Claude Code) থাকবে
+
+# ── ধাপ ৩ · ঘর বানিয়ে প্রথম সেশন ──
+$ mkdir bazarbiti && cd bazarbiti
+$ git init
+$ claude
+# প্রথমবার: ব্রাউজারে লগ-ইন-প্রম্পট → Approve
+# সেশন-হেডার (আকার): Claude Code v2.5.47 · Sonnet · ~/bazarbiti
+
+# ── ধাপ ৪ · বিধি-দেওয়াল ──
+&gt; /init
+✓ Created CLAUDE.md
+$ cat CLAUDE.md
+# খালি ঘরে আনুমানিক আকার: "This is an empty project…"
+# আইডিয়া আগে বললে আরও নির্দিষ্ট লেখে — তাই আগে বলি:
+&gt; এই প্রজেক্ট একটা বাংলা বাজার-খরচের টার্মিনাল CLI হবে:
+&gt; Python 3.12, pytest, argparse, JSONL ফাইল, বাংলা আউটপুট।
+&gt; CLAUDE.md এই তথ্যে হালনাগাদ করো।
+$ cat CLAUDE.md
+# BazarBiti — বাজার-খরচের টার্মিনাল খাতা
+# - Python 3.12 · pytest · argparse · JSONL ফাইল-স্টোর
+# - সব আউটপুট বাংলায়; সংখ্যা ইংরেজি-অঙ্কে
+# - টেস্ট: pytest tests/ -q
+
+# ── ধাপ ৫ · প্রথম commit ──
+&gt; commit my changes with a descriptive message
+# Claude নিজে diff পড়ে বার্তা লেখে; তুমি অনুমোদন করো
+$ git log --oneline
+a1b2c3d Add CLAUDE.md: project rules for BazarBiti   ← হ্যাশ তোমারটা আলাদা হবে
+
+# ── বোনাস · কী লোড হলো ──
+&gt; /doctor
+# settings/hooks/skills — কী কী সত্যিই লোড হয়েছে তার হিসাব</pre></div></div>
+`,
+  senior: {
+    title: "অভিজ্ঞের চোখে — প্রথম দিনে যে ভুলগুলো ঘটে",
+    body: `<p><b>ভুল ১ — বিধি-দেওয়াল ছাড়া কোড।</b> নতুনরা সরাসরি \\\"একটা ফিচার বানাও\\\" বলে ফেলে; তিন সপ্তাহ পরে প্রতিটা সেশনে একই রীতি-ব্যাখ্যা দিতে হয়। <b>ভুল ২ — CLAUDE.md-এ সব ঢোকানো।</b> দেওয়াল যত বড়, তত পড়া হয় না; যা প্রতিদিন লাগে শুধু তাই লেখো — বাকি @import-চেইনে (দরজা ৩৫)। <b>ভুল ৩ — প্রথম commit দেরি।</b> প্রথম commit-এর আগে worktree-বৈশিষ্ট্যও অচল (ডক: কমিট-না-থাকলে বেস-ব্রাঞ্চ রেজলভ করতে ব্যর্থ) — ইতিহাস শুরু না করলে সার্কাস শুরুই হয় না। আর লগ-ইন নিয়ে দ্বিধা নেই: অ্যাকাউন্ট-টাইপ যাই হোক, প্রথমবারই ব্রাউজার-অনুমোদন, তারপর আর চাই না — /login দিয়ে বদলাও যখন দরকার।</p>`
+  }
+});
+
+// ── DOOR 43 · নকশা-টেবিলের আলো — The Drafting Table: From Idea to Plan ──
+doors.push({
+  num: 43,
   icon: "📐",
   color: "#38bdf8",
   name: "নকশা-টেবিলের আলো",
@@ -114,9 +234,9 @@ claude --permission-mode plan     # বা সেশনে Shift+Tab → ⏸ pla
   }
 });
 
-// ── DOOR 33 · কারখানা-ছন্দের মালিক — The Factory Rhythm: The Build Loop ──
+// ── DOOR 44 · কারখানা-ছন্দের মালিক — The Factory Rhythm: The Build Loop ──
 doors.push({
-  num: 33,
+  num: 44,
   icon: "🏭",
   color: "#f59e0b",
   name: "কারখানা-ছন্দের মালিক",
@@ -239,9 +359,9 @@ $ claude -c
   }
 });
 
-// ── DOOR 34 · নদী-পারাপারের মাঝি — The River Crossing: Ship It ──
+// ── DOOR 45 · নদী-পারাপারের মাঝি — The River Crossing: Ship It ──
 doors.push({
-  num: 34,
+  num: 45,
   icon: "🚢",
   color: "#a855f7",
   name: "নদী-পারাপারের মাঝি",
@@ -366,9 +486,108 @@ $ claude --from-pr 1
   }
 });
 
-// ── DOOR 26 · স্থপতির সিংহাসন — The Architect's Throne ──
+// ── DOOR 46 · বারো লাইনের ইঞ্জিন — The Twelve-Line Engine (final) ──
 doors.push({
-  num: 35,
+  num: 46,
+  icon: "⚙️",
+  color: "#6366f1",
+  name: "বারো লাইনের ইঞ্জিন",
+  subtitle: "The Twelve-Line Engine",
+  tech: "The whole machine as one loop — trace it, then build your own agent",
+  spirit: "কাররাতাইন — দৃষ্টি ফেরাও, আবার, আবার",
+  secret: "Claude Code = system prompt + tools + একটা loop — বাকি সবই এই বারো লাইনের অলংকার।",
+  recall: {
+    q: "স্মৃতি থেকে agent loop-এর কাঠামোটা লেখো — কোন তিনটা জিনিস নিয়ে model call হয়, কখন loop থামে, আর ফলাফল কোথায় যায়? তারপর বলো: দেয়াল (দরজা ১৭) কোন লাইনে বসে?",
+    qen: "From memory, write the shape of the agent loop — which three things go into the model call, when does the loop stop, and where do results go? Then: on which line does the wall (Door 17) sit?",
+    a: "messages = [user prompt] → loop: model call (system + tools + messages) → assistant-এর উত্তর messages-এ যোগ → stop_reason tool_use না হলে ফেরত দাও → প্রতিটা tool_use চালাও run_tool দিয়ে → tool_result-গুলো একটা user message-এ যোগ করো → আবার। দেয়াল বসে run_tool-এর প্রথম লাইনে: if not allowed(...)।",
+    aen: "messages = [user prompt] → loop: call the model with system + tools + messages → append the assistant reply → if stop_reason is not tool_use, return → run each tool_use through run_tool → append the tool_results in one user message → repeat. The wall sits on run_tool's first line: if not allowed(...)."
+  },
+  story: `<p class="scene-setting">মিরপুরের এক ছাদ, রাত সাড়ে বারোটা। সন্ধ্যার বৃষ্টির পর ভেজা কংক্রিটের গন্ধ, নিচে আইপিএস-এর মৃদু গুঞ্জন, দূরে মেট্রোর শেষ ট্রেনের শব্দ। প্লাস্টিকের চেয়ারে মীরা, কোলে একটা পুরনো ল্যাপটপ — E, A আর S কী-র অক্ষর ঘষে ঘষে উঠে গেছে, শুধু চকচকে ফাঁকা কালো। পাশে ফ্লাস্কে আদা-চা। আটাশ দরজার পথ তোমাকে এখানে এনেছে।</p>
+<p class="scene-setting en">A rooftop in Mirpur at half past midnight. The smell of wet concrete after the evening rain, the low hum of the IPS below, the last metro train far away. On a plastic chair sits Mira, an old laptop on her knees — the E, A and S keys worn to blank shiny black. Ginger tea in a flask beside her. Twenty-eight doors of road have brought you here.</p>
+
+<div class="dialogue">মীরা বললেন — সাতাশজন ওস্তাদের কাছে গেছ। একটা করে যন্ত্রাংশ এনেছ। এবার বলো তো, Claude Code আসলে কী? তুমি থমকে যাও — এত কিছু: token, তাঁত, টেবিল, ফাইল, পাত, চিরকুট, দেয়াল, দালাল… মীরা হাসলেন। বললেন — আমিও একসময় এভাবে ভাবতাম। প্রতি মাসে নতুন tool, নতুন shortcut, নতুন flag — মুখস্থ করতাম আর হারিয়ে যেতাম। তারপর এক রাতে বসে নিজের একটা agent লিখলাম। বারো লাইন। সেই রাতের পর আর কোনো tool আমাকে হারাতে পারেনি।</div>
+<div class="dialogue en">Mira says: You have visited twenty-seven masters and brought back one part from each. Now tell me — what is Claude Code, really? You hesitate — so much: tokens, the loom, the desk, the file, the plate, the chit, the wall, the runner… Mira laughs. I used to think like that. Every month a new tool, a new shortcut, a new flag — I memorised and got lost. Then one night I sat down and wrote my own agent. Twelve lines. After that night, no tool could lose me again.</div>
+
+<p>তারপর তাঁর ভুলটাও বললেন, লুকালেন না। সেই প্রথম রাতের agent-এ কোনো দেয়াল ছিল না। Model একটা পরিষ্কার-করার command লিখল — ভুল folder-এ। সারা দিনের পরীক্ষার ফাইল উধাও। মীরা বললেন — সেদিন জরিনার কাঁটার (দরজা ১৭) মানে বুঝেছিলাম, শরীর দিয়ে। বারো লাইনের দুটো লাইন আমি সেই রাতের পর যোগ করেছি।</p>
+<p class="en">She tells her mistake too, hiding nothing. That first-night agent had no wall. The model wrote a cleanup command — in the wrong folder. A day's experiment files gone. That day I understood Jorina's scale (Door 17) with my body. Two of the twelve lines I added after that night.</p>
+
+<p>তিনি ল্যাপটপটা তোমার দিকে ঘোরালেন। পর্দায় বারোটা লাইন:</p>
+<p class="en">She turns the laptop toward you. Twelve lines on the screen:</p>
+
+<div class="code-block">def agent(prompt):
+    messages = [{"role": "user", "content": prompt}]
+    while True:
+        r = client.messages.create(model=M, max_tokens=4096, system=SYSTEM, tools=TOOLS, messages=messages)
+        messages.append({"role": "assistant", "content": r.content})
+        if r.stop_reason != "tool_use":
+            return r
+        results = [{"type": "tool_result", "tool_use_id": b.id, "content": run_tool(b.name, b.input)} for b in r.content if b.type == "tool_use"]
+        messages.append({"role": "user", "content": results})
+def run_tool(name, args):
+    if not allowed(name, args): return "ERROR: denied by policy. Choose another way."
+    return IMPL[name](**args)</div>
+
+<p>তুমি পড়ো, একবার, দুবার। তারপর হঠাৎ দেখতে পাও — প্রতিটা লাইনের পেছনে একজন ওস্তাদ দাঁড়িয়ে আছেন।</p>
+<p class="en">You read it once, twice. Then suddenly you see — behind every line stands one of the masters.</p>
+
+<table class="kv-table"><tr><th>লাইন · Line</th><th>ওস্তাদ · Master</th><th>যা শিখিয়েছেন</th></tr><tr><td class="hl">Glob · Grep · Read first</td><td>আমিন জহুরুল · ১</td><td>লেখার আগে পড়া — প্রথম tool call-গুলো হাঁটা</td></tr><tr><td class="hl">while True … until verified</td><td>মনির · ২</td><td>পানিতে না নামিয়ে loop থামে না</td></tr><tr><td class="hl">SYSTEM ← CLAUDE.md</td><td>আজিজ · ৩</td><td>রুট-খাতা প্রতি শিফটে system prompt-এ</td></tr><tr><td class="hl">allowed() + checkpoints</td><td>রোকসানা · ৪</td><td>কাটার আগে সম্মতি, পরে গণনা</td></tr><tr><td class="hl">prompt templates · skills</td><td>গোপাল · ৫</td><td>message আর SYSTEM-এ বসানো রেসিপি</td></tr><tr><td class="hl">TOOLS += MCP servers</td><td>জামাল · ৬</td><td>মানসম্মত সকেটে লাগানো বাড়তি tool</td></tr><tr><td class="hl">agent() without a keyboard</td><td>আলমগীর · ৭</td><td>একই loop, -p দিয়ে, অনেক হাঁড়িতে</td></tr><tr><td class="hl">the loop, shared as files</td><td>নিজাম স্যার · ৮</td><td>plugin-এ বাঁধা পুরো কারখানা</td></tr><tr><td class="hl">client.messages.create(...)</td><td>মুনশি আবদুল করিম · ৯</td><td>Model শুধু লেখে; এই call-ই তার একমাত্র কাজ</td></tr><tr><td class="hl">max_tokens, the bill</td><td>হারাধন বসাক · ১০</td><td>সবকিছু গোনা হয় টুকরোয়</td></tr><tr><td class="hl">r.content</td><td>রহমত আলী · ১১</td><td>উত্তর বোনা হয় এক সুতো করে, একটু অনিশ্চিত</td></tr><tr><td class="hl">why it writes tool_use well</td><td>মেহের আলী খান · ১২</td><td>চতুর্থ সবক — আসল কাজে RL</td></tr><tr><td class="hl">messages=messages</td><td>নুরুন্নাহার · ১৩</td><td>Model শুধু টেবিল দেখে</td></tr><tr><td class="hl">messages.append(...)</td><td>মতিন · ১৪</td><td>প্রতিবার পুরো ফাইল — কেউ মনে রাখে না</td></tr><tr><td class="hl">system=SYSTEM (cached)</td><td>ইউসুফ · ১৫</td><td>স্থির অংশ একবার ঢালো</td></tr><tr><td class="hl">tool_use → tool_result</td><td>শফিক · ১৬</td><td>চিরকুট যায়, থালা ফেরে user message হয়ে</td></tr><tr><td class="hl">if not allowed(...)</td><td>জরিনা · ১৭</td><td>দেয়াল এখানে, prompt-এ নয়</td></tr><tr><td class="hl">IMPL["agent"] → agent(task)</td><td>সিরাজ মিয়া · ১৮</td><td>Subagent = এই function নিজেকেই নতুন খাতায় ডাকে</td></tr><tr><td class="hl">client = your provider</td><td>ফাতেমা · ১৯</td><td>একই loop, কিনারায় adapter</td></tr><tr><td class="hl">base_url of client</td><td>হাবিবুর · ২০</td><td>ঠিকানা বদলায়, ইঞ্জিন নয়</td></tr><tr><td class="hl">"content": run_tool(...)</td><td>শিরিন · ২১</td><td>ফলাফল খবর, আদেশ নয়</td></tr><tr><td class="hl">around agent()</td><td>রেহানা · ২২</td><td>পুরো loop-কে ঘিরে eval শিট</td></tr><tr><td class="hl">every tool on earth</td><td>বাবুল · ২৩</td><td>সব ব্র্যান্ডের ভেতরে এই বারো লাইন</td></tr><tr><td class="hl">from claude_agent_sdk import query</td><td>আক্কাস আলী · ২৪</td><td>এই বারো লাইন, তৈরি অবস্থায়, তোমার গাড়িতে বসানো</td></tr><tr><td class="hl">thinking={...} in create()</td><td>নূর হোসেন · ২৫</td><td>কাটার আগে কতটা চক</td></tr><tr><td class="hl">SYSTEM and tool descriptions</td><td>সালেহা · ২৬</td><td>যা লেখা আছে, শুধু সেটাই আছে</td></tr><tr><td class="hl">model=M</td><td>মোস্তফা · ২৭</td><td>যার কাজ তার হাতে — আর দরকার হলে তবেই loop</td></tr></table>
+
+<div class="diagram"><div class="diag-title">One prompt through the engine · এক prompt-এর পুরো সফর</div><svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg"><defs><marker id="d16a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#a5b4fc"/></marker><marker id="d16b" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#ff6b35"/></marker></defs><rect class="node-moon" x="15" y="10" width="110" height="32" rx="8"/><text class="lbl-sm" x="70" y="30">YOU</text><rect class="node" x="175" y="10" width="140" height="32" rx="8"/><text class="lbl-sm" x="245" y="30">CLAUDE CODE</text><rect class="node-purple" x="360" y="10" width="120" height="32" rx="8"/><text class="lbl-sm" x="420" y="30">CLAUDE API</text><rect class="node-cyan" x="515" y="10" width="115" height="32" rx="8"/><text class="lbl-sm" x="572" y="30">YOUR MACHINE</text><line x1="70" y1="42" x2="70" y2="370" stroke="#5e5c74" stroke-dasharray="4 4"/><line x1="245" y1="42" x2="245" y2="370" stroke="#5e5c74" stroke-dasharray="4 4"/><line x1="420" y1="42" x2="420" y2="370" stroke="#5e5c74" stroke-dasharray="4 4"/><line x1="572" y1="42" x2="572" y2="370" stroke="#5e5c74" stroke-dasharray="4 4"/><line x1="72" y1="62" x2="241" y2="62" stroke="#a5b4fc" stroke-width="1.8" marker-end="url(#d16a)"/><text class="lbl-sm" x="158" y="56">"fix the failing test"</text><rect class="node" x="140" y="72" width="210" height="22" rx="5"/><text class="lbl-sm" x="245" y="87">hooks · CLAUDE.md → system</text><line x1="247" y1="112" x2="416" y2="112" stroke="#a5b4fc" stroke-width="1.8" marker-end="url(#d16a)"/><text class="lbl-sm" x="332" y="106">POST (cached prefix)</text><line x1="418" y1="140" x2="249" y2="140" stroke="#ff6b35" stroke-width="1.8" marker-end="url(#d16b)"/><text class="lbl-hot" x="332" y="134">tool_use: Bash pytest</text><rect class="node-hot" x="140" y="150" width="210" height="22" rx="5"/><text class="lbl-sm" x="245" y="165">allowed? · PreToolUse hook</text><line x1="247" y1="190" x2="568" y2="190" stroke="#a5b4fc" stroke-width="1.8" marker-end="url(#d16a)"/><text class="lbl-sm" x="408" y="184">run pytest</text><line x1="570" y1="214" x2="249" y2="214" stroke="#3dd6c4" stroke-width="1.8" marker-end="url(#d16a)"/><text class="lbl-cyan" x="408" y="208">1 failed: Decimal vs float</text><line x1="247" y1="240" x2="416" y2="240" stroke="#a5b4fc" stroke-width="1.8" marker-end="url(#d16a)"/><text class="lbl-sm" x="332" y="234">tool_result</text><line x1="418" y1="266" x2="249" y2="266" stroke="#ff6b35" stroke-width="1.8" marker-end="url(#d16b)"/><text class="lbl-hot" x="332" y="260">tool_use: Read, then Edit</text><rect class="node" x="140" y="276" width="210" height="22" rx="5"/><text class="lbl-sm" x="245" y="291">checkpoint · edit · format hook</text><line x1="247" y1="316" x2="568" y2="316" stroke="#a5b4fc" stroke-width="1.8" marker-end="url(#d16a)"/><text class="lbl-sm" x="408" y="310">pytest → 142 passed</text><line x1="418" y1="342" x2="249" y2="342" stroke="#ff6b35" stroke-width="1.8" marker-end="url(#d16b)"/><text class="lbl-hot" x="332" y="336">end_turn: summary</text><line x1="243" y1="364" x2="74" y2="364" stroke="#a5b4fc" stroke-width="1.8" marker-end="url(#d16a)"/><text class="lbl-sm" x="158" y="358">the fix, explained</text></svg><div class="diag-cap">চিত্র: তোমার এক prompt — harness সাজায়, model চায়, harness যাচাই করে চালায়, ফল ফেরে, আবার… end_turn পর্যন্ত। · One prompt: assemble, ask, gate, run, return, repeat until end_turn.</div></div>
+
+<p>এবার Book 59-এর সব বৈশিষ্ট্য এই যন্ত্রের গায়ে বসিয়ে দেখো। CLAUDE.md — system prompt-এর লেখা। Skills — system prompt-এ বর্ণনা, দরকারে tool দিয়ে পড়া বাকিটা। Slash command — তোমার message-এ বসানো prompt template। Permission আর hook — run_tool-এর আগে-পরে। Subagent — agent() নিজেকেই নতুন messages দিয়ে ডাকে। MCP — TOOLS তালিকায় বাইরের server-এর tool যোগ। /clear আর /compact — messages খালি বা সারাংশ। Checkpoint — edit-এর আগে file-এর কপি। Plan mode — edit tool সরিয়ে "শুধু plan দাও"। Headless -p — একই loop, UI ছাড়া। আর কিছু নেই।</p>
+<p class="en">Now hang every Book 59 feature on this machine. CLAUDE.md — text in the system prompt. Skills — descriptions in the system prompt, bodies read via tools when needed. Slash commands — prompt templates in your message. Permissions and hooks — before and after run_tool. Subagents — agent() calling itself with fresh messages. MCP — outside servers' tools added to TOOLS. /clear and /compact — empty or summarise messages. Checkpoints — a copy of the file before an edit. Plan mode — edit tools removed, "plan only". Headless -p — the same loop without a UI. Nothing else.</p>
+
+<p>আর কিছু ভুল হলে? মীরা বললেন — এখন তোমার আর অনুমান করতে হবে না। লক্ষণ দেখে জিজ্ঞেস করো: কোন লাইনটা ভাঙছে, কোন ওস্তাদের কাছে ফিরতে হবে।</p>
+<p class="en">And when something goes wrong? Mira says: you no longer need to guess. From the symptom, ask which line is breaking and which master to go back to.</p>
+
+<table class="kv-table"><tr><th>লক্ষণ · Symptom</th><th>কোন লাইন · Line</th><th>সমাধান · Fix (দরজা)</th></tr><tr><td>Session-এর মাঝে নিয়ম ভুলে যায়</td><td class="hl">messages= (ভরা টেবিল)</td><td>/clear, ছোট CLAUDE.md, নিয়ম hook-এ (১৩, ১৭)</td></tr><tr><td>আত্মবিশ্বাসের সঙ্গে ভুল API ব্যবহার করে</td><td class="hl">model-এর পুরনো জ্ঞান</td><td>docs দাও MCP/WebFetch/skill দিয়ে; version বেঁধে দাও (১২, ১৪)</td></tr><tr><td>একই fix-এ ঘুরপাক খায়</td><td class="hl">loop-এ নতুন তথ্য ঢুকছে না</td><td>থামাও, log/repro দাও, বা নতুন prompt-সহ /clear (১১, ২৬)</td></tr><tr><td>"Test pass" কিন্তু feature ভুল</td><td class="hl">run_tool-এর যাচাই দুর্বল</td><td>শক্ত test, আসল জিনিস চালাও, স্বাধীন reviewer subagent (১৮, ২২)</td></tr><tr><td>অতিরিক্ত জটিল বানায়</td><td class="hl">SYSTEM অস্পষ্ট</td><td>কী করবে না বলো, সরল উদাহরণ দেখাও (২৬)</td></tr><tr><td>ভুল file বা জায়গায় edit</td><td class="hl">tool_use-এর input দ্ব্যর্থক</td><td>@file, সঠিক path, অনন্য context (১৬)</td></tr><tr><td>Claude-এ ভালো, অন্য provider-এ খারাপ</td><td class="hl">client = অন্য model</td><td>provider অনুযায়ী prompt, কম আর সরল tool, eval (১৯, ২২)</td></tr><tr><td>খরচ হঠাৎ বেড়ে যায়</td><td class="hl">messages + TOOLS + model</td><td>output কাটো, MCP ছাঁটো, caching, সস্তা subagent, effort কমাও (১৫, ২৫, ২৭)</td></tr><tr><td>বাইরের লেখা পড়ে অদ্ভুত কাজ চায়</td><td class="hl">tool_result = আদেশ ভাবা</td><td>দেয়াল, তিন পায়ের একটা কাটো (১৭, ২১)</td></tr></table>
+
+<div class="callout tip"><span class="co-icon">🛠️</span><div><strong>এখন নিজে বানাও:</strong> এই বইয়ের folder-এ আছে <a href="minicc.py" download style="color:var(--teal)">minicc.py</a> — ~২৫০ লাইনের একটা provider-নিরপেক্ষ coding agent: ছয়টা tool (read, write, edit, bash, glob, grep), permission-এর দেয়াল, CLAUDE.md/AGENTS.md memory, compaction, headless -p, Anthropic আর OpenAI-compatible adapter। একটা নকল model দিয়ে পরীক্ষা করা। চালাও একটা sandbox repo-তে:<br><code>pip install anthropic openai · python minicc.py · python minicc.py --provider openai --base-url http://localhost:11434/v1 --model qwen2.5-coder</code><br>তারপর তিনটা বাড়াও: সিরাজ মিয়ার delegate() subagent, জরিনার hook, আর plan mode।<br><em>Build it: minicc.py is in this folder — six tools, a permission wall, memory, compaction, headless mode, two provider adapters. Then add a subagent, a hook, and plan mode.</em></div></div>
+
+<div class="dialogue">মীরা চায়ের কাপ তুলে একে একে সবার নাম বললেন। প্রথম আটজন তোমাকে চালাতে শিখিয়েছিলেন — জহুরুলের হাঁটা হলো প্রথম কয়েকটা Read, মনিরের পানি-পরীক্ষা হলো loop-এর থামার শর্ত, আজিজের খাতা বসে SYSTEM-এ, রোকসানার গণনা run_tool-এর দরজায়, গোপালের কার্ড তোমার message-এ, জামালের সকেট TOOLS তালিকায়, আলমগীরের হাঁড়ি এই loop-ই কিবোর্ড ছাড়া, আর নিজাম স্যারের সিলেবাস এই সবকিছু file হিসেবে টিমের হাতে। তারপর মুনশি বলেছিলেন model শুধু লেখে — কিন্তু আমি বলি, সেই লেখাটাই একটা function call। হারাধন বলেছিলেন টুকরো গোনো — আমি বলি, সেই গোনাই max_tokens আর বিল। রহমত আলী বলেছিলেন এক সুতো করে — আমি বলি, সেই সুতোর শেষে stop_reason। মেহের আলী খান চার সবক দিয়েছিলেন — আমি বলি, চতুর্থ সবকের জন্যই এই loop কাজ করে। নুরুন্নাহারের টেবিল, মতিনের ফাইল, ইউসুফের পাত — তিনজন মিলে একটা messages তালিকা। শফিকের চিরকুট তার ভেতরের সবচেয়ে প্রাণবন্ত পাতা। জরিনা আর শিরিন পাহারা দেন run_tool-এর দরজা। সিরাজ মিয়ার দালাল এই function-ই, নতুন খাতায়। ফাতেমা আর হাবিবুর ঠিক করেন খাম কোন ভাষায়, কোন বস্তায়। রেহানা পুরো যন্ত্রকে ঘিরে চেখে দেখেন। আক্কাস আলী বলেছিলেন ইঞ্জিন কিনে বসাও — আমি বলি, কেনার আগে একবার নিজে বানাও, তাহলেই বুঝবে কী কিনছ। নূর হোসেন ঠিক করেন কতটা চক, সালেহা লেখেন কী প্রশ্ন, মোস্তফা বাছেন কোন শ্রমিক — তিনজনই বসেন এই create() call-এর parameter-এ। আর বাবুল জানেন — পৃথিবীর প্রতিটা agent-এর পেটে এই বারোটা লাইন।</div>
+<div class="dialogue en">Raising her tea, Mira names them one by one. The first eight taught you to drive — Zahurul's walk is the first few Reads, Monir's water test is the loop's stopping condition, Aziz's book sits in SYSTEM, Roksana's count at run_tool's door, Gopal's cards in your message, Jamal's socket in the TOOLS list, Alamgir's pots are this loop without a keyboard, and Nizam Sir's syllabus puts all of it in the team's hands as files. Then the munshi said the model only writes — and I say that writing is a function call. Haradhan said count the pieces — I say that counting is max_tokens and the bill. Rahmat Ali said one thread at a time — I say at the end of the thread is stop_reason. Meher Ali Khan gave four lessons — I say this loop works because of the fourth. Nurunnahar's desk, Matin's file, Yusuf's plate — together, one messages list. Shafiq's chit is its liveliest page. Jorina and Shirin guard run_tool's door. Siraj Mia's runner is this very function, with a fresh ledger. Fatema and Habibur decide which language the envelope speaks and which bag it goes in. Rehana tastes the whole machine from outside. Akkas Ali said buy the engine and fit it — I say build it once yourself, and you will know what you are buying. Nur Hossain decides how much chalk, Saleha writes the question, Mostafa picks the worker — all three live in the parameters of this create() call. And Babul knows — in the belly of every agent on earth are these twelve lines.</div>
+
+<p class="verse">রাত গভীর হলে মীরা বললেন — আমার মা প্রতি রাতে ঘুমানোর আগে সূরা মুলক পড়তেন। একটা আয়াতে এসে আমি সবসময় থামতাম: "তুমি আবার দৃষ্টি ফেরাও, কোনো ফাটল দেখতে পাও কি? তারপর আবার দৃষ্টি ফেরাও, বারবার — দৃষ্টি তোমার কাছে ফিরে আসবে ক্লান্ত ও ব্যর্থ হয়ে" (৬৭:৩–৪, ভাবানুবাদ)। আল্লাহর সৃষ্টিতে ফাটল খুঁজে পাওয়া যায় না — সেটাই আয়াতের কথা। আমাদের নিজের হাতের কাজে ঠিক উল্টো: ফাটল থাকে, তাই দেখো, পরীক্ষা করো, আবার দেখো। Agent-এর loop সেই বিনয়ের যন্ত্র — একবার দেখে থামে না।</p>
+<p class="en">Deep in the night Mira says: My mother recited Surah al-Mulk every night before sleep. I always paused at one verse: "So return your vision to the sky; do you see any breaks? Then return your vision twice again. Your vision will return to you humbled while it is fatigued" (67:3–4, Sahih International). In Allah's creation no flaw can be found — that is the verse's point. In the work of our own hands it is the reverse: flaws are there, so look, test, look again. The agent loop is a machine of that humility — it does not stop after one look.</p>
+
+<div class="secret-box"><div class="label">শেষ দরজা — তালিসমান</div><div class="text">⚙️ Claude Code = system prompt + tools + একটা loop — বাকি সবই এই বারো লাইনের অলংকার।<br><small>Model লেখে, harness করে, context-ই সব। Tool আগামী মাসে বদলাবে; loop বদলাবে না — আর তুমি loop শিখেছ।</small></div></div>  <div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 46</span><pre class="code-block"># ── প্রম্পট ১ · কঙ্কাল হাতে-ধরা ──
+&gt; minicc.py ফাইলটা পড়ে বলো: বারো লাইনের লুপটা ঠিক কোথায়,
+&gt; কোন লাইনে বসে আছে
+# ← while চলাকালীন লুপ: পাঠাও → টুল-কল পাও → চালাও → জোড়ো
+
+# ── প্রম্পট ২ · নিজ-টুল জোড়া ──
+&gt; minicc.py-তে সপ্তম টুল যোগ করার নকশা দাও: check_stock নামে,
+&gt; সংখ্যা ফেরত দেয় — কোন তিন জায়গায় লাগবে
+# ← টুল-তালিকা, JSON-স্কিমা, রানার — তিন স্পর্শে টুল বাঁধা
+
+# ── প্রম্পট ৩ · অন্য-পথে নিজ-ইঞ্জিন ──
+&gt; অ্যাডাপ্টার-ধারণা ব্যাখ্যা করো: একই লুপ কীভাবে ভিন্ন প্রদানকারীর
+&gt; তারে-বার্তায় অনুবাদ হয় — minicc.py-র কোন অংশ এই কাজ করে
+# ← নিরপেক্ষ বার্তা → প্রদানকারীর ভাষা — দালাল-স্তর
+
+# ── প্রম্পট ৪ · অনুমতি-ফালি নিজ-হাতে ──
+&gt; minicc.py-র permission-gate কীভাবে ঠেকায়? নিজের ইঞ্জিনে আমি
+&gt; কোন কাজে 'না' বলাব — নিয়ম-তালিকা লেখো
+# ← নিজের কাঁটায় নিজের লোহার-প্রাচীর — নিরাপত্তার শেষ-দরজা
+
+# ── প্রম্পট ৫ · প্রথম চালানো ──
+$ python3 minicc.py
+&gt; চালিয়ে দেখো: কোন টুলটা সবার আগে ডাকা পড়ল, কেন?
+# ← তোমার নিজের এজেন্টের প্রথম নিঃশ্বাস — লুপ ঘুরেছে মাত্র</pre></div></div>`,
+
+senior: {
+    title: "Your next 30 days",
+    body: `<p><strong>Week 1:</strong> run minicc.py on a sandbox repo with Claude; read every tool call it prints.</p>
+<p><strong>Week 2:</strong> add delegate() (subagent), a pre-tool hook, and plan mode; run it on a local model through the OpenAI-compatible adapter.</p>
+<p><strong>Week 3:</strong> build the Door 22 eval sheet from ten real tasks; compare Claude Code, minicc-on-Claude and minicc-on-local.</p>
+<p><strong>Week 4:</strong> pick one real workflow at work (for example a LedgerPilot integration check) and ship it — with the Claude Agent SDK if you want Claude Code's harness as a library, or minicc if you need provider neutrality.</p>
+<p>তারপর যেকোনো নতুন tool এলে: আটটা প্রশ্ন, একদিনের drill, eval শিট।</p>`
+  }
+});
+
+// ── DOOR 34 · স্থপতির সিংহাসন — The Architect's Throne ──
+doors.push({
+  num: 47,
   icon: "🏛️",
   color: "#fbbf24",
   name: "স্থপতির সিংহাসন",
@@ -483,7 +702,7 @@ options = ClaudeAgentOptions(
 <p class="verse">স্থাপত্যের শেষ কথা আমানতের — "নিশ্চয়ই আল্লাহ তোমাদের আদেশ দেন আমানত তার হকদারকে ফিরিয়ে দিতে" (কুরআন ৪:৫৮)। প্রতিটা টুল, প্রতিটা সংযোগ, প্রতিটা প্রাচীর একটা আমানত: কার হাতে কতটুকু শক্তি, সেটা স্থপতির টেবিলে লেখা থাকে। কলম তোমার, শহর কারিগরদের — হিসাব কারও সামনে খোলা।</p>
 
 <div class="secret-box"><div class="label">শেষ তালিসমান — The Final Talisman</div><div class="text">🏛️ মাস্টারির তিন তলা: চালাও (১-১০) → বানাও (১১-১৪) → বাড়াও (১৫-১৬) → আইন লেখো (১৭) — SDK-তে ইঞ্জিন, sandbox-এ প্রাচীর, precedence-এ শৃঙ্খলা।<br>কারণ: যে শুধু চালায় সে চাকর, যে বানায় সে কারিগর, যে আইন লেখে সে স্থপতি।</div></div>
-<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 35 — সিংহাসন-সংশ্লেষ</span><pre class="code-block"># ── প্রম্পট ১ · তিন-স্তম্ভের নিজ-পরীক্ষা ──
+<div class="callout info"><span class="co-icon">🎙️</span><div><b>আসল প্রম্পট-খাতা</b> — <span class="en">Real prompts for Door 47 — সিংহাসন-সংশ্লেষ</span><pre class="code-block"># ── প্রম্পট ১ · তিন-স্তম্ভের নিজ-পরীক্ষা ──
 &gt; আমার কারখানা মাপো তিন স্তম্ভে: প্রসঙ্গ (CLAUDE.md কত লাইন,
 &gt; কতটা rules-ঘর, /context-ভার কত), আস্থা (allow/deny কয়টা,
 &gt; কোন মোড ডিফল্ট), যাচাই (কয়টা হুক, CI আছে?) — এক টেবিলে দাও,
@@ -523,6 +742,6 @@ options = ClaudeAgentOptions(
 <li>প্রথম আসল কাজ: নিজের কারখানায় একটা ছোট স্কিল → একটা প্লাগইন → নিজের মার্কেটপ্লেস — মোস্তফার সিঁড়ি নিজে ভাঙো।</li>
 <li>মাসে একবার অফিসিয়াল ডক + changelog — শহরের আইন বদলায়, স্থপতিকেও খবর রাখতে হয়।</li>
 </ul>
-<p class="en">Book 62's Twelve-Line Engine (Door 28) fits this whole throne into one twelve-line loop — and teaches you to build it yourself.</p><p><strong>পাশের বই:</strong> Book 62-এর বারো লাইনের ইঞ্জিন (দরজা ২৮) তোমার এই সিংহাসনের সব যন্ত্র বারো লাইনের loop-এ মেলে — আর সেটা নিজে বানানো শেখায়। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
+<p class="en">Book 62's Twelve-Line Engine (Door 36) fits this whole throne into one twelve-line loop — and teaches you to build it yourself.</p><p><strong>পাশের বই:</strong> Book 62-এর বারো লাইনের ইঞ্জিন (দরজা ৩৬) তোমার এই সিংহাসনের সব যন্ত্র বারো লাইনের loop-এ মেলে — আর সেটা নিজে বানানো শেখায়। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });

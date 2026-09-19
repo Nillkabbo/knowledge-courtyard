@@ -3,8 +3,8 @@
 // ════════════════════════════════════════
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
-const SAVE_KEY = 'claudeCodeMastery_v6';
-const MAX_XP = 3500;
+const SAVE_KEY = 'claudeCodeMastery_v7';
+const MAX_XP = 4700;
 const RANKS = [
   {min:0,    name:'নতুন শাগরেদ',        icon:'🔨'},
   {min:100,  name:'প্রথম হাতুড়ি',       icon:'🪝'},
@@ -25,7 +25,10 @@ const RANKS = [
   {min:2800, name:'রীতি-স্রষ্টা', icon:'📜'},
   {min:3100, name:'নিজ-রাজ্যের স্থপতি', icon:'🏛️'},
   {min:3300, name:'রীতি-স্রষ্টা-উস্তাদ', icon:'🥇'},
-  {min:3500, name:'টার্মিনালের সম্রাট', icon:'🏆'}
+  {min:3500, name:'টার্মিনালের সম্রাট', icon:'🏆'},
+  {min:3800, name:'বারো-লাইনের কারিগর', icon:'⚙️'},
+  {min:4200, name:'নিজের ইঞ্জিনের মালিক', icon:'🔧'},
+  {min:4700, name:'একীভৃত স্থপতি', icon:'👑'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}
 function loadState(){try{const r=localStorage.getItem(SAVE_KEY);if(!r)return;const s=JSON.parse(r);state.xp=s.xp||0;state.completedDoors=s.completedDoors||[];state.prologueSeen=s.prologueSeen||false}catch(e){}}

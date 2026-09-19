@@ -385,7 +385,7 @@ claude --model opus
 <tr><td>সবচেয়ে কঠিন, দীর্ঘ চলা কাজ</td><td class="hl">Fable</td><td>দীর্ঘ কাজে সর্বোচ্চ সক্ষমতা</td></tr>
 </table>
 <p>সেশনের মাঝে কাজের ধরন বদলালে লজ্জা পেয়ো না — /model এক সেকেন্ডের কাজ। আর গভীর সমস্যায় /effort xhigh দিয়ে চিন্তার ঘণ্টা বাড়াও।</p>
-<p class="en">Book 62's Tailor's Chalk (Door 25) explains sizing effort to the job — where deep thinking pays and where it wastes.</p><p><strong>পাশের বই:</strong> Book 62-এর দর্জির চক-দাগ (দরজা ২৫) ব্যাখ্যা করে effort-এর কাজে-কাজে মাপ — কোথায় গভীর ভাবনা, কোথায় অপচয়। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
+<p class="en">Book 62's Tailor's Chalk (Door 39) explains sizing effort to the job — where deep thinking pays and where it wastes.</p><p><strong>পাশের বই:</strong> Book 62-এর দর্জির চক-দাগ (দরজা ৩৯) ব্যাখ্যা করে effort-এর কাজে-কাজে মাপ — কোথায় গভীর ভাবনা, কোথায় অপচয়। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 
@@ -769,7 +769,7 @@ claude --permission-mode bypassPermissions
 # ── প্রম্পট ৫ · প্ল্যান-মোড দিয়ে নিরীক্ষণ-নিরাপত্তা ──
 &gt; claude --permission-mode plan
 &gt; এই লগ-ফাইলটা পড়ে বলো ইনজেকশন-চেষ্টা আছে কি না
-# ← শুধু পড়া — অবিশ্বস্ত লেখার সামনে হাত বাঁধা (দরজা ২৫-এর রীতি)</pre></div></div>
+# ← শুধু পড়া — অবিশ্বস্ত লেখার সামনে হাত বাঁধা (দরজা ৩৯-এর রীতি)</pre></div></div>
 `,
   senior: {
     title: "চাবির খাতা সাজানো — Organizing the Keyring",

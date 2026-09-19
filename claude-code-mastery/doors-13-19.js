@@ -585,7 +585,7 @@ my-marketplace/
 <line x1="280" y1="83" x2="306" y2="83" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d14)"/>
 <line x1="430" y1="83" x2="456" y2="83" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#ar59d14)"/>
 <rect class="cell" x="10" y="12" width="540" height="28" rx="8"/><text class="lbl-sm" x="280" y="30">বাজার যোগ → প্লাগইন বসাও → হালনাগাদ টানো → প্রয়োজনে বন্ধ — সবই /plugin দিয়ে</text>
-<rect class="cell" x="10" y="124" width="540" height="30" rx="8"/><text class="lbl-sm" x="280" y="143">নীতি: অচেনা পাইকারের পণ্যে হাত দেওয়ার আগে দরজা ২৫-এর বিশ্বাস-প্রশ্ন — উৎস কে?</text>
+<rect class="cell" x="10" y="124" width="540" height="30" rx="8"/><text class="lbl-sm" x="280" y="143">নীতি: অচেনা পাইকারের পণ্যে হাত দেওয়ার আগে দরজা ৩৯-এর বিশ্বাস-প্রশ্ন — উৎস কে?</text>
 </svg>
 <div class="diag-cap">এক আদেশের জীবনচক্র: বাজার → ঘর → হালনাগাদ → ব্যবহার; বিশ্বাস প্রতিবার নবায়ন করতে হয়।</div>
 </div>
@@ -1125,7 +1125,7 @@ claude --permission-mode plan     # বা সেশনে Shift+Tab → "⏸ pl
 <li>প্রতিটা দাবির পর <strong>যাচাই-আদেশ</strong>; শেষে <strong>/verify</strong> — অ্যাপ চালিয়ে প্রমাণ।</li>
 <li>ছোট ফিক্সে নকশা-টেবিল বাদ — সরাসরি হাত; নিয়মের বোঝা কাজের সমানুপাতিক।</li>
 </ul>
-<p class="en">Book 62's Tailor's Chalk (Door 25) reveals the thinking budget behind plan mode.</p><p><strong>পাশের বই:</strong> Book 62-এর দর্জির চক-দাগ (দরজা ২৫) জানায় plan mode-এর পেছনে thinking-বাজেট কী করে। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
+<p class="en">Book 62's Tailor's Chalk (Door 39) reveals the thinking budget behind plan mode.</p><p><strong>পাশের বই:</strong> Book 62-এর দর্জির চক-দাগ (দরজা ৩৯) জানায় plan mode-এর পেছনে thinking-বাজেট কী করে। <em>(Book 62 · বারো লাইনের ইঞ্জিন)</em></p>`
   }
 });
 
