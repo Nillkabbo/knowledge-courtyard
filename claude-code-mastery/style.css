@@ -182,6 +182,9 @@ body{background:var(--bg-deep);color:var(--ink);font-family:'Noto Sans Bengali',
 .story-text .diagram svg .edge-cyan{stroke:var(--teal);stroke-width:2;fill:none;marker-end:url(#arrowTeal)}
 .story-text .diagram svg .edge-amber{stroke:var(--amber);stroke-width:2;fill:none;marker-end:url(#arrowAmber)}
 .story-text .diagram svg .lbl{fill:var(--ink);font-size:12px;font-weight:700;text-anchor:middle;dominant-baseline:central}
+.story-text .diagram svg text{fill:var(--ink)}
+.story-text .diagram svg text.sc-label{fill:var(--ink);font-size:11px;font-weight:700;text-anchor:middle}
+.story-text .diagram svg text.sc-num{fill:var(--ink-dim);font-size:10px;text-anchor:middle}
 .story-text .diagram svg .lbl-sm{fill:var(--ink-dim);font-size:10px;text-anchor:middle}
 .story-text .diagram svg .lbl-hot{fill:var(--fire);font-size:11px;font-weight:700;text-anchor:middle}
 .story-text .diagram svg .lbl-cyan{fill:var(--teal);font-size:11px;font-weight:700;text-anchor:middle}
