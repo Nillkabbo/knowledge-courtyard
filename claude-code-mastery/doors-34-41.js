@@ -503,27 +503,24 @@ doors.push({
 <tr><td class="hl">agent</td><td>টুল-সহ যাচাই</td><td>সত্য-অনুসন্ধান (পরীক্ষামূলক)</td></tr>
 </table>
 
-<div class="diagram">
-<div class="diag-title">নিরাপত্তা-কেন্দ্রের মানচিত্র — The Security-Hub Map</div>
-<svg viewBox="0 0 560 190" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<marker id="ar59d29" viewBox="0 0 10 10" refX="9" refX2="9" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L0,6 L9,3 z" fill="#f97316"/></marker>
-</defs>
-<rect class="node" x="15" y="75" width="130" height="44" rx="10"/><text class="lbl" x="80" y="93">জীবনচক্র</text><text class="lbl-sm" x="80" y="109">ইভেন্ট-ঘণ্টা বাজল</text>
-<rect class="node-cyan" x="185" y="75" width="110" height="44" rx="10"/><text class="lbl-cyan" x="240" y="93">ইভেন্ট-JSON</text><text class="lbl-sm" x="240" y="109">এক খামে সবাই পায়</text>
-<rect class="node-hot" x="335" y="18" width="90" height="32" rx="8"/><text class="lbl-sm" x="380" y="38">command</text>
-<rect class="node-hot" x="335" y="56" width="90" height="32" rx="8"/><text class="lbl-sm" x="380" y="76">http</text>
-<rect class="node-hot" x="335" y="94" width="90" height="32" rx="8"/><text class="lbl-sm" x="380" y="114">mcp_tool</text>
-<rect class="node-hot" x="335" y="132" width="90" height="32" rx="8"/><text class="lbl-sm" x="380" y="152">prompt/agent</text>
-<rect class="node-leaf" x="465" y="75" width="85" height="44" rx="10"/><text class="lbl-leaf" x="507" y="93">রায়</text><text class="lbl-sm" x="507" y="109">allow/deny+কারণ</text>
-<line x1="145" y1="97" x2="181" y2="97" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d29)"/>
-<line x1="295" y1="90" x2="331" y2="36" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d29)"/>
-<line x1="295" y1="94" x2="331" y2="72" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d29)"/>
-<line x1="295" y1="99" x2="331" y2="110" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d29)"/>
-<line x1="295" y1="104" x2="331" y2="146" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d29)"/>
-<line x1="425" y1="97" x2="461" y2="97" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d29)"/>
-<rect class="cell" x="15" y="168" width="530" height="18" rx="7"/><text class="lbl-sm" x="280" y="181">সবাই সমান্তরাল ছোটে · exit 2 = stderr মূল-প্রসঙ্গে · JSON-রায়ে কারণসহ deny কারিগরকে পথ শেখায়</text>
-</svg>
+<div class="diagram"><svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar59d37" markerWidth="10" markerHeight="8" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3" fill="#f97316"></path></marker></defs>
+<rect class="node" x="20" y="88" width="140" height="44" rx="10"></rect><text class="lbl" x="90" y="106">জীবনচক্র</text><text class="lbl-sm" x="90" y="122">ঘণ্টা বাজল</text>
+<rect class="node-hot" x="240" y="20" width="120" height="30" rx="8"></rect><text class="lbl-sm" x="300" y="39">command</text>
+<rect class="node-hot" x="240" y="58" width="120" height="30" rx="8"></rect><text class="lbl-sm" x="300" y="77">http</text>
+<rect class="node-hot" x="240" y="96" width="120" height="30" rx="8"></rect><text class="lbl-sm" x="300" y="115">mcp_tool</text>
+<rect class="node-hot" x="240" y="134" width="120" height="30" rx="8"></rect><text class="lbl-sm" x="300" y="153">prompt/agent</text>
+<rect class="node-leaf" x="470" y="88" width="150" height="44" rx="10"></rect><text class="lbl-leaf" x="545" y="106">রায়</text><text class="lbl-sm" x="545" y="122">allow / deny + কারণ</text>
+<line x1="160" y1="110" x2="236" y2="35" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d37)"></line>
+<line x1="160" y1="110" x2="236" y2="73" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d37)"></line>
+<line x1="160" y1="110" x2="236" y2="111" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d37)"></line>
+<line x1="160" y1="110" x2="236" y2="149" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d37)"></line>
+<line x1="360" y1="35" x2="466" y2="106" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d37)"></line>
+<line x1="360" y1="73" x2="466" y2="108" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d37)"></line>
+<line x1="360" y1="111" x2="466" y2="112" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d37)"></line>
+<line x1="360" y1="149" x2="466" y2="116" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d37)"></line>
+<rect class="cell" x="20" y="184" width="600" height="24" rx="8"></rect><text class="lbl-sm" x="320" y="200">সবাই সমান্তরাল ছোটে · exit 2 = stderr মূল-প্রসঙ্গে · deny-র কারণ কারিগরকে পথ শেখায়</text>
+</svg></div>
 <div class="diag-cap">ঘণ্টা → JSON-খাম → পাঁচ ব্যাটালিয়ন → রায় — প্রতিটা ঘটনায় তোমার হাত, কারণসহ।</div>
 </div>
 
@@ -768,16 +765,15 @@ doors.push({
 <p class="verse">আমানতের দ্বিতীয় নাম সতর্কতা — "নিশ্চয়ই আল্লাহ তোমাদের আদেশ দেন আমানত তার হকদারকে ফিরিয়ে দিতে" (কুরআন ৪:৫৮)। কোষাগারের সোনা যার, নির্দেশের কলমও তার — বাইরের কাগজে যা-ই লেখা থাকুক। এজন্যই রুবিনার পরীক্ষা-ঘর আগে, ভল্ট পরে।</p>
 
 
-<div class="diagram">
-<div class="diag-title">রুবিনার ভল্ট-প্রাচীর — The Trust Boundary</div>
-<svg viewBox="0 0 560 190" xmlns="http://www.w3.org/2000/svg">
-<rect class="node-hot" x="15" y="20" width="245" height="56" rx="10"/><text class="lbl-hot" x="137" y="42">ভেতরের ঘর (বিশ্বাস)</text><text class="lbl-sm" x="137" y="60">নিজের কোড · CLAUDE.md · নিজের skill/plugin</text>
-<rect class="node" x="300" y="20" width="245" height="56" rx="10"/><text class="lbl" x="422" y="42">বাইরের জগৎ (সন্দেহ)</text><text class="lbl-sm" x="422" y="60">ওয়েব-পেজ · issue-টেক্সট · অচেনা প্লাগইন · লগ-ফাইল</text>
-<rect class="node-cyan" x="185" y="110" width="190" height="40" rx="10"/><text class="lbl-cyan" x="280" y="128">প্রাচীর = অনুমতি + sandbox</text><text class="lbl-sm" x="280" y="144">prompt-injection সেখানেই থামে</text>
-<line x1="137" y1="76" x2="230" y2="108" stroke="#f97316" stroke-width="1.6" fill="none"/>
-<line x1="422" y1="76" x2="330" y2="108" stroke="#f97316" stroke-width="1.6" fill="none"/>
-<rect class="cell" x="15" y="158" width="530" height="24" rx="8"/><text class="lbl-sm" x="280" y="174">নিয়ম: বাইরের লেখা কখনো নির্দেশ নয় — শুধু উপাত্ত; sandbox.credentials বন্ধ রেখে রাতের কাজ চালাও</text>
-</svg>
+<div class="diagram"><svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar59d39" markerWidth="10" markerHeight="8" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3" fill="#f97316"></path></marker></defs>
+<rect class="node-hot" x="20" y="20" width="280" height="56" rx="10"></rect><text class="lbl-hot" x="160" y="42">ভেতরের ঘর (বিশ্বাস)</text><text class="lbl-sm" x="160" y="60">নিজের কোড · CLAUDE.md · skill</text>
+<rect class="node" x="340" y="20" width="280" height="56" rx="10"></rect><text class="lbl" x="480" y="42">বাইরের জগৎ (সন্দেহ)</text><text class="lbl-sm" x="480" y="60">ওয়েব-পেজ · issue · প্লাগইন · লগ</text>
+<rect class="node-cyan" x="170" y="122" width="300" height="44" rx="10"></rect><text class="lbl-cyan" x="320" y="140">প্রাচীর = অনুমতি + sandbox</text><text class="lbl-sm" x="320" y="156">prompt-injection সেখানেই থামে</text>
+<line x1="160" y1="76" x2="248" y2="118" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d39)"></line>
+<line x1="480" y1="76" x2="392" y2="118" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#ar59d39)"></line>
+<rect class="cell" x="20" y="176" width="600" height="18" rx="7"></rect><text class="lbl-sm" x="320" y="189">নিয়ম: বাইরের লেখা কখনো নির্দেশ নয় — শুধু উপাত্ত</text>
+</svg></div>
 <div class="diag-cap">ভেতরে বিশ্বাস, বাইরে সন্দেহ, মাঝে প্রাচীর — তিন কথায় রুবিনার নীতি।</div>
 </div>
 
@@ -869,7 +865,39 @@ doors.push({
 <p>তারপর তাঁর ক্ষতির হিসাব। নতুন চাকরিতে, এক সকালে একটা লটের একটা কাপ অসাধারণ লাগল; তিনি "চমৎকার" লিখে দিলেন। ক্রেতারা বড় দামে পুরো লট কিনল। পরে দেখা গেল ওই লটের বেশিরভাগ বস্তা পানসে — ভালো কাপটা ছিল একটা ভাগ্যের বস্তা থেকে। কোম্পানি ক্রেতা হারাল। সেদিন থেকে রেহানার নিয়ম: প্রতিটা লট থেকে কয়েক কাপ; একই মাপের পাতা, একই পানি, একই সময়; নম্বর লেখা ছাপানো শিটে; আর যে লট আগে ধোঁকা দিয়েছে, সেটার নমুনা প্রতি মৌসুমে আবার চেখে দেখা।</p>
 <p class="en">Then the cost. New on the job, one morning one cup from a lot tasted superb; she wrote "excellent". Buyers bought the whole lot at a high price. Most of its chests turned out flat — the good cup had come from one lucky chest. The company lost buyers. Since then Rehana's rules: several cups from every lot; the same weight of leaf, the same water, the same brewing time; scores on a printed sheet; and every lot that once fooled her gets tasted again each season.</p>
 
-<div class="diagram"><div class="diag-title">Same lot, many cups · একই লট, অনেক কাপ</div><svg viewBox="0 0 640 250" xmlns="http://www.w3.org/2000/svg"><text class="lbl-sm" x="100" y="30">task</text><text class="lbl-sm" x="250" y="30">run 1</text><text class="lbl-sm" x="320" y="30">run 2</text><text class="lbl-sm" x="390" y="30">run 3</text><text class="lbl-sm" x="460" y="30">run 4</text><text class="lbl-sm" x="560" y="30">pass rate</text><text class="lbl-sm" x="100" y="62">fix-decimal-bug</text><circle cx="250" cy="58" r="11" fill="rgba(82,196,26,.5)"/><circle cx="320" cy="58" r="11" fill="rgba(82,196,26,.5)"/><circle cx="390" cy="58" r="11" fill="rgba(82,196,26,.5)"/><circle cx="460" cy="58" r="11" fill="rgba(82,196,26,.5)"/><text class="lbl-leaf" x="560" y="62">4 / 4</text><text class="lbl-sm" x="100" y="102">add-endpoint</text><circle cx="250" cy="98" r="11" fill="rgba(82,196,26,.5)"/><circle cx="320" cy="98" r="11" fill="rgba(255,107,53,.5)"/><circle cx="390" cy="98" r="11" fill="rgba(82,196,26,.5)"/><circle cx="460" cy="98" r="11" fill="rgba(255,107,53,.5)"/><text class="lbl-amber" x="560" y="102">2 / 4</text><text class="lbl-sm" x="100" y="142">migrate-view</text><circle cx="250" cy="138" r="11" fill="rgba(82,196,26,.5)"/><circle cx="320" cy="138" r="11" fill="rgba(82,196,26,.5)"/><circle cx="390" cy="138" r="11" fill="rgba(82,196,26,.5)"/><circle cx="460" cy="138" r="11" fill="rgba(255,107,53,.5)"/><text class="lbl-amber" x="560" y="142">3 / 4</text><text class="lbl-sm" x="100" y="182">regression #7</text><circle cx="250" cy="178" r="11" fill="rgba(255,107,53,.5)"/><circle cx="320" cy="178" r="11" fill="rgba(255,107,53,.5)"/><circle cx="390" cy="178" r="11" fill="rgba(82,196,26,.5)"/><circle cx="460" cy="178" r="11" fill="rgba(255,107,53,.5)"/><text class="lbl-hot" x="560" y="182">1 / 4</text><text class="lbl-hot" x="320" y="226">one lucky run proves nothing — the sheet is the proof</text></svg><div class="diag-cap">চিত্র: প্রতিটা task কয়েকবার, স্বয়ংক্রিয় যাচাই দিয়ে; হার আর ধারাবাহিকতা দুটোই দেখা যায়। · Several runs per task show rate and consistency.</div></div>
+<div class="diagram"><svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg">
+<rect class="node-purple" x="20" y="16" width="170" height="24" rx="6"></rect><text class="lbl-sm" x="105" y="32">task</text>
+<rect class="node-purple" x="210" y="16" width="50" height="24" rx="6"></rect><text class="lbl-sm" x="235" y="32">run 1</text>
+<rect class="node-purple" x="280" y="16" width="50" height="24" rx="6"></rect><text class="lbl-sm" x="305" y="32">run 2</text>
+<rect class="node-purple" x="350" y="16" width="50" height="24" rx="6"></rect><text class="lbl-sm" x="375" y="32">run 3</text>
+<rect class="node-purple" x="420" y="16" width="50" height="24" rx="6"></rect><text class="lbl-sm" x="445" y="32">run 4</text>
+<rect class="node-purple" x="490" y="16" width="130" height="24" rx="6"></rect><text class="lbl-sm" x="555" y="32">pass rate</text>
+<rect class="node" x="20" y="52" width="170" height="30" rx="6"></rect><text class="lbl-sm" x="105" y="71">fix-decimal-bug</text>
+<rect class="node-leaf" x="210" y="52" width="50" height="30" rx="6"></rect><text class="lbl-leaf" x="235" y="71">pass</text>
+<rect class="node-leaf" x="280" y="52" width="50" height="30" rx="6"></rect><text class="lbl-leaf" x="305" y="71">pass</text>
+<rect class="node-leaf" x="350" y="52" width="50" height="30" rx="6"></rect><text class="lbl-leaf" x="375" y="71">pass</text>
+<rect class="node-leaf" x="420" y="52" width="50" height="30" rx="6"></rect><text class="lbl-leaf" x="445" y="71">pass</text>
+<rect class="cell" x="490" y="52" width="130" height="30" rx="6"></rect><text class="lbl-leaf" x="555" y="71">4 / 4</text>
+<rect class="node" x="20" y="92" width="170" height="30" rx="6"></rect><text class="lbl-sm" x="105" y="111">add-endpoint</text>
+<rect class="node-leaf" x="210" y="92" width="50" height="30" rx="6"></rect><text class="lbl-leaf" x="235" y="111">pass</text>
+<rect class="node-hot" x="280" y="92" width="50" height="30" rx="6"></rect><text class="lbl-hot" x="305" y="111">fail</text>
+<rect class="node-leaf" x="350" y="92" width="50" height="30" rx="6"></rect><text class="lbl-leaf" x="375" y="111">pass</text>
+<rect class="node-hot" x="420" y="92" width="50" height="30" rx="6"></rect><text class="lbl-hot" x="445" y="111">fail</text>
+<rect class="cell" x="490" y="92" width="130" height="30" rx="6"></rect><text class="lbl-amber" x="555" y="111">2 / 4</text>
+<rect class="node" x="20" y="132" width="170" height="30" rx="6"></rect><text class="lbl-sm" x="105" y="151">migrate-view</text>
+<rect class="node-leaf" x="210" y="132" width="50" height="30" rx="6"></rect><text class="lbl-leaf" x="235" y="151">pass</text>
+<rect class="node-leaf" x="280" y="132" width="50" height="30" rx="6"></rect><text class="lbl-leaf" x="305" y="151">pass</text>
+<rect class="node-leaf" x="350" y="132" width="50" height="30" rx="6"></rect><text class="lbl-leaf" x="375" y="151">pass</text>
+<rect class="node-hot" x="420" y="132" width="50" height="30" rx="6"></rect><text class="lbl-hot" x="445" y="151">fail</text>
+<rect class="cell" x="490" y="132" width="130" height="30" rx="6"></rect><text class="lbl-amber" x="555" y="151">3 / 4</text>
+<rect class="node" x="20" y="172" width="170" height="30" rx="6"></rect><text class="lbl-sm" x="105" y="191">regression #7</text>
+<rect class="node-hot" x="210" y="172" width="50" height="30" rx="6"></rect><text class="lbl-hot" x="235" y="191">fail</text>
+<rect class="node-hot" x="280" y="172" width="50" height="30" rx="6"></rect><text class="lbl-hot" x="305" y="191">fail</text>
+<rect class="node-leaf" x="350" y="172" width="50" height="30" rx="6"></rect><text class="lbl-leaf" x="375" y="191">pass</text>
+<rect class="node-hot" x="420" y="172" width="50" height="30" rx="6"></rect><text class="lbl-hot" x="445" y="191">fail</text>
+<rect class="cell" x="490" y="172" width="130" height="30" rx="6"></rect><text class="lbl-hot" x="555" y="191">1 / 4</text>
+<rect class="cell" x="20" y="220" width="600" height="24" rx="8"></rect><text class="lbl-amber" x="320" y="236">এক ভাগ্যলব্ধ রান প্রমাণ নয় — পাশ-কাগজটাই প্রমাণ</text>
+</svg></div>
 
 <p>একেই বলে <strong>eval</strong>: নির্দিষ্ট কাজের একটা তালিকা, প্রতিটার সঙ্গে স্বয়ংক্রিয় যাচাই। রেহানার নিয়মগুলো সরাসরি খাটে: <strong>একই লট</strong> — নিজের আসল কাজ থেকে ১০–২০টা task, যেকোনো পাবলিক benchmark-এর চেয়ে তোমার প্রেক্ষাপটে বেশি অর্থবহ। <strong>একই পানি</strong> — প্রতিবার repo-র নতুন কপি। <strong>অনেক কাপ</strong> — প্রতিটা task N বার, কারণ agent সম্ভাবনাভিত্তিক; কিছু গবেষণা শুধু "অন্তত একবার পাস" নয়, "k বারের সবগুলোতে পাস" (pass^k) দিয়ে ধারাবাহিকতাও মাপে (Yao ও সহকর্মী, τ-bench, ২০২৪)। <strong>ছাপানো শিট</strong> — test-এর মতো programmatic যাচাই, মতামত নয়; LLM-as-judge ব্যবহার করলে rubric দাও আর হাতে কিছু নম্বর যাচাই করো। <strong>পুরনো ধোঁকা</strong> — বাস্তবে agent-এর প্রতিটা ব্যর্থতা একটা নতুন regression task।</p>
 <p class="en">This is an <strong>eval</strong>: a fixed list of tasks, each with an automatic check. Rehana's rules transfer directly: <strong>the same lot</strong> — 10–20 tasks from your own real work, more meaningful for you than any public benchmark. <strong>The same water</strong> — a fresh copy of the repo each time. <strong>Many cups</strong> — each task N times, because agents are stochastic; some research measures not just "passed at least once" but "passed all k times" (pass^k) to capture consistency (Yao et al., τ-bench, 2024). <strong>A printed sheet</strong> — programmatic checks like tests, not opinions; if you use an LLM judge, give it a rubric and spot-check its grades. <strong>Old tricksters</strong> — every real agent failure becomes a new regression task.</p>

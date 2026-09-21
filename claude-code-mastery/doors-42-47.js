@@ -63,18 +63,16 @@ git init
 <tr><td class="hl">৫ ইতিহাস</td><td>git init + commit-প্রম্পট</td><td>প্রথম commit-হ্যাশ</td></tr>
 </table>
 
-<div class="diagram">
-<div class="diag-title">প্রথম-দিনের শৃঙ্খল</div>
-<svg viewBox="0 0 640 130" role="img" aria-label="Day one chain: install, first session, init, first commit">
-<defs><marker id="ar59d31" markerWidth="10" markerHeight="8" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3" fill="#22c55e"/></marker></defs>
-<rect x="20" y="45" width="120" height="44" rx="8" class="node node-leaf"/><text x="80" y="64" text-anchor="middle" class="sc-label">ইনস্টল</text><text x="80" y="80" text-anchor="middle" class="sc-num">install.sh</text>
-<rect x="180" y="45" width="120" height="44" rx="8" class="node node-cyan"/><text x="240" y="64" text-anchor="middle" class="sc-label">প্রথম সেশন</text><text x="240" y="80" text-anchor="middle" class="sc-num">claude → লগ-ইন</text>
-<rect x="340" y="45" width="120" height="44" rx="8" class="node node-hot"/><text x="400" y="64" text-anchor="middle" class="sc-label">বিধি-দেওয়াল</text><text x="400" y="80" text-anchor="middle" class="sc-num">/init → CLAUDE.md</text>
-<rect x="500" y="45" width="120" height="44" rx="8" class="node"/><text x="560" y="64" text-anchor="middle" class="sc-label">প্রথম ইতিহাস</text><text x="560" y="80" text-anchor="middle" class="sc-num">git commit</text>
-<line x1="140" y1="67" x2="180" y2="67" stroke="#22c55e" stroke-width="3" marker-end="url(#ar59d31)"/>
-<line x1="300" y1="67" x2="340" y2="67" stroke="#22c55e" stroke-width="3" marker-end="url(#ar59d31)"/>
-<line x1="460" y1="67" x2="500" y2="67" stroke="#22c55e" stroke-width="3" marker-end="url(#ar59d31)"/>
-</svg>
+<div class="diagram"><svg viewBox="0 0 640 130" role="img" aria-label="Day one chain: install, first session, init, first commit" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar59d42" markerWidth="10" markerHeight="8" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3" fill="#22c55e"></path></marker></defs>
+<rect class="node node-leaf" x="20" y="45" width="120" height="44" rx="8"></rect><text class="lbl-leaf" x="80" y="64">ইনস্টল</text><text class="lbl-sm" x="80" y="80">install.sh</text>
+<rect class="node node-cyan" x="180" y="45" width="120" height="44" rx="8"></rect><text class="lbl-cyan" x="240" y="64">প্রথম সেশন</text><text class="lbl-sm" x="240" y="80">claude → লগ-ইন</text>
+<rect class="node node-hot" x="340" y="45" width="120" height="44" rx="8"></rect><text class="lbl-hot" x="400" y="64">বিধি-দেওয়াল</text><text class="lbl-sm" x="400" y="80">/init → CLAUDE.md</text>
+<rect class="node" x="500" y="45" width="120" height="44" rx="8"></rect><text class="lbl" x="560" y="64">প্রথম ইতিহাস</text><text class="lbl-sm" x="560" y="80">git commit</text>
+<line x1="140" y1="67" x2="180" y2="67" stroke="#22c55e" stroke-width="3" marker-end="url(#ar59d42)"></line>
+<line x1="300" y1="67" x2="340" y2="67" stroke="#22c55e" stroke-width="3" marker-end="url(#ar59d42)"></line>
+<line x1="460" y1="67" x2="500" y2="67" stroke="#22c55e" stroke-width="3" marker-end="url(#ar59d42)"></line>
+</svg></div>
 <div class="diag-cap">কোডের আগে ঘর-গোছানো — প্রতিটা তীর ডক-যাচাইকৃত কমান্ড</div>
 </div>
 <div class="callout info"><span class="co-icon">🧪</span><div><b>বাস্তব উদাহরণ — BazarBiti (বাজারবই), ধাপ ১-৫ হাতে-কলমে</b> — <span class="en">A real worked example, start to finish</span><pre class="code-block"># আইডিয়া: রোজকার বাজার-খরচের খাতা, টার্মিনালে — খরচ যোগ করো, সপ্তাহের হিসাব দেখো
