@@ -716,6 +716,17 @@
       "color": "game-64",
       "tag": "Book 64 · Cloud X Berry — AI, LLMs & AI Agents",
       "status": "live"
+    },
+    {
+      "n": 65,
+      "folder": "cxb-linux-os",
+      "title_en": "The Linux Terminal Path",
+      "title_bn": "লিনাক্স টার্মিনালের পথ",
+      "icon": "🐧",
+      "category": "cloud-x-berry",
+      "color": "game-65",
+      "tag": "Book 65 · Cloud X Berry — Linux & Operating Systems",
+      "status": "live"
     }
   ],
   "roadmap": [

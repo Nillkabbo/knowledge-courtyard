@@ -3,20 +3,15 @@
 // ════════════════════════════════════════
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
-const SAVE_KEY = 'cxbAiAgents_v1';
-const MAX_XP = 1500;
+const SAVE_KEY = 'cxbLinuxOs_v1';
+const MAX_XP = 600;
 const RANKS = [
-  {min:0,    name:'এআই কৌতূহলী',      icon:'🛖'},
-  {min:100,  name:'প্রম্পট শিক্ষার্থী',  icon:'📖'},
-  {min:200,  name:'টুল ব্যবহারকারী',    icon:'🔧'},
-  {min:300,  name:'MCP চর্চাকারী',      icon:'🔌'},
-  {min:400,  name:'এজেন্ট নির্মাতা',    icon:'🤖'},
-  {min:500,  name:'ওয়ার্কফ্লো ডিজাইনার', icon:'🔀'},
-  {min:600,  name:'লোকাল-মডেল কারিগর',  icon:'🏠'},
-  {min:700,  name:'RAG স্থপতি',        icon:'📚'},
-  {min:900,  name:'মডেল বিচারক',       icon:'⚖️'},
-  {min:1100, name:'LLM গভীর-পাঠক',     icon:'🧠'},
-  {min:1300, name:'এআই ইঞ্জিনিয়ার',    icon:'🌟'}
+  {min:0,    name:'উইন্ডোজ-নির্ভর',      icon:'🛖'},
+  {min:100,  name:'টার্মিনাল-প্রব্রজ্য',  icon:'📖'},
+  {min:200,  name:'শেল-চর্চাকারী',       icon:'⌨️'},
+  {min:300,  name:'সিস্টেম-জানা ইউজার',  icon:'🔧'},
+  {min:400,  name:'পাইপলাইন কারিগর',     icon:'🔗'},
+  {min:500,  name:'লিনাক্স-স্থপতি',      icon:'🐧'}
 ];
 function saveState(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({xp:state.xp,completedDoors:state.completedDoors,prologueSeen:state.prologueSeen}))}catch(e){}}
 function loadState(){try{const r=localStorage.getItem(SAVE_KEY);if(!r)return;const s=JSON.parse(r);state.xp=s.xp||0;state.completedDoors=s.completedDoors||[];state.prologueSeen=s.prologueSeen||false}catch(e){}}
@@ -28,7 +23,7 @@ let W,H,particles=[];
 function resizeCanvas(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
 resizeCanvas();window.addEventListener('resize',resizeCanvas);
 const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-class Particle{constructor(){this.reset();this.y=Math.random()*H}reset(){this.x=Math.random()*W;this.y=H+10;this.size=Math.random()*2+.5;this.speedY=Math.random()*.35+.12;this.speedX=(Math.random()-.5)*.15;this.opacity=Math.random()*.45+.12;this.hue=270+Math.random()*30;this.twinkle=Math.random()*6.28}update(){this.y-=this.speedY;this.x+=this.speedX;this.twinkle+=.025;if(this.y<-10)this.reset()}draw(){const f=Math.sin(this.twinkle)*.3+.7;ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,6.28);ctx.fillStyle=`hsla(${this.hue},65%,58%,${this.opacity*f})`;ctx.shadowBlur=5;ctx.shadowColor=`hsla(${this.hue},65%,58%,${this.opacity*.4})`;ctx.fill()}}
+class Particle{constructor(){this.reset();this.y=Math.random()*H}reset(){this.x=Math.random()*W;this.y=H+10;this.size=Math.random()*2+.5;this.speedY=Math.random()*.35+.12;this.speedX=(Math.random()-.5)*.15;this.opacity=Math.random()*.45+.12;this.hue=140+Math.random()*30;this.twinkle=Math.random()*6.28}update(){this.y-=this.speedY;this.x+=this.speedX;this.twinkle+=.025;if(this.y<-10)this.reset()}draw(){const f=Math.sin(this.twinkle)*.3+.7;ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,6.28);ctx.fillStyle=`hsla(${this.hue},65%,58%,${this.opacity*f})`;ctx.shadowBlur=5;ctx.shadowColor=`hsla(${this.hue},65%,58%,${this.opacity*.4})`;ctx.fill()}}
 for(let i=0;i<55;i++)particles.push(new Particle());
 (function animateParticles(){ctx.clearRect(0,0,W,H);if(!prefersReducedMotion)particles.forEach(p=>{p.update();p.draw()});else particles.forEach(p=>p.draw());requestAnimationFrame(animateParticles)})();
 // Sound
@@ -48,7 +43,7 @@ function startGame(){sndStart();loadState();if(!state.prologueSeen){showScreen('
 function startMap(){state.prologueSeen=true;saveState();renderMap();showScreen('map-screen')}
 // Map
 function renderMap(){const grid=document.getElementById('doors-grid');grid.innerHTML='';let nextIdx=-1;doors.forEach((door,idx)=>{const prevDone=state.completedDoors.includes(idx-1);const selfDone=state.completedDoors.includes(idx);const unlocked=idx===0||prevDone||selfDone;if(unlocked&&!selfDone&&nextIdx===-1)nextIdx=idx;const card=document.createElement('div');card.className=`door-card ${selfDone?'completed':''} ${!unlocked?'locked':''}`;if(unlocked){card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label',`${door.name} — ${door.subtitle}`);card.onclick=()=>openDoor(idx);card.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openDoor(idx)}}}else{card.setAttribute('aria-label',`${door.name} — locked`)}card.innerHTML=`<div class="door-num">স্থান ${door.num}</div><div class="door-icon">${door.icon}</div><div class="door-title">${door.name}</div><div class="door-subtitle">${door.subtitle}</div><div class="door-tech">${door.tech}</div>${!unlocked?'<div class="door-lock-hint">🔒 আগের স্থান সম্পন্ন করো</div>':''}`;grid.appendChild(card)});if(nextIdx>=0){const cards=grid.querySelectorAll('.door-card');if(cards[nextIdx])cards[nextIdx].classList.add('next-door')}updateHUD()}
-function updateHUD(){const pct=Math.min(100,(state.xp/MAX_XP)*100);document.getElementById('hud-xp-fill').style.width=pct+'%';document.getElementById('hud-xp-text').textContent=`${state.xp} / ${MAX_XP} XP`;let rank=RANKS[0];for(let i=RANKS.length-1;i>=0;i--){if(state.xp>=RANKS[i].min){rank=RANKS[i];break}}document.getElementById('hud-rank-icon').textContent=rank.icon;document.getElementById('hud-rank-name').textContent=rank.name;document.getElementById('hud-level').textContent=`স্তর ${Math.min(15,Math.floor(state.xp/100)+1)}`}
+function updateHUD(){const pct=Math.min(100,(state.xp/MAX_XP)*100);document.getElementById('hud-xp-fill').style.width=pct+'%';document.getElementById('hud-xp-text').textContent=`${state.xp} / ${MAX_XP} XP`;let rank=RANKS[0];for(let i=RANKS.length-1;i>=0;i--){if(state.xp>=RANKS[i].min){rank=RANKS[i];break}}document.getElementById('hud-rank-icon').textContent=rank.icon;document.getElementById('hud-rank-name').textContent=rank.name;document.getElementById('hud-level').textContent=`স্তর ${Math.min(6,Math.floor(state.xp/100)+1)}`}
 // Cheat Modal
 function openCheatModal(){const completed=doors.filter((_,i)=>state.completedDoors.includes(i));const grid=document.getElementById('cheat-modal-grid');const empty=document.getElementById('cheat-modal-empty');if(completed.length===0){grid.innerHTML='';empty.textContent='এখনো কোনো স্থান সম্পন্ন হয়নি।'}else{empty.textContent='';grid.innerHTML=completed.map(d=>`<div class="cheat-card"><div class="icon">${d.icon}</div><div class="name">${d.name}</div><div class="tech">${d.tech}</div><div class="secret">${d.secret}</div></div>`).join('')}document.getElementById('cheat-modal').style.display='block'}
 // Door/Story

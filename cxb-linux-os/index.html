@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Linux Terminal Path — Cloud X Berry Series · Book 3</title>
+<meta name="description" content="লিনাক্স ও অপারেটিং সিস্টেমের ৬টি দরজা — Cloud X Berry চ্যানেলের Linux &amp; Operating Systems প্লেলিস্ট থেকে। Unix-এর জন্মকথা, OS-জগৎ, ফাইল-সিস্টেম, কোর কনসেপ্ট, Windows বনাম Linux কমান্ড, ১০টি প্রোডাক্টিভিটি টুল।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles" aria-hidden="true"></canvas>
+
+<!-- Title Screen -->
+<div class="screen active" id="title-screen">
+  <div class="title-glow"></div>
+  <div class="game-badge">Cloud X Berry Series · Book ৩</div>
+  <h1 class="game-title">The Linux Terminal Path</h1>
+  <div class="game-title-bn">লিনাক্স টার্মিনালের পথ</div>
+  <p class="game-tagline">Unix-এর জন্মকথা থেকে আজকের টার্মিনাল-অস্ত্রাগার — ছয়টি পাঠে অপারেটিং সিস্টেমের পুরো মানচিত্র। Cloud X Berry-এর ব্যাখ্যা ও ভিজ্যুয়ালে।</p>
+  <div class="xp-badge">৬টি দরজা · ৬০০ XP · ৬টি ভিডিওর সারমর্ম</div>
+  <button class="btn-primary" onclick="startPrologue()">যাত্রা শুরু করো</button>
+  <div class="back-link"><a href="../index.html">← লাইব্রেরিতে ফিরে যাও</a></div>
+</div>
+
+<!-- Prologue -->
+<div class="screen" id="prologue-screen">
+  <div class="prologue-card">
+    <div class="prologue-label">প্রস্তর-লিপি · Prologue</div>
+    <h2>কেন এই বই?</h2>
+    <p>Linux খুব কঠিন মনে হয় যারা C-ড্রাইভে বড় হয়েছে — কিন্তু একবার গোড়ার ধারণাগুলো (এক রুট, সবকিছু-ফাইল, ছোট টুলের জোড়া) বুঝলে পুরো জগৎ সহজ হয়ে যায়। সার্ভার, ক্লাউড, ডেভ-মেশিন — আধুনিক তথ্য-প্রযুক্তির পেছনের বেশিরভাগ জগৎ চলে এই কার্নেলের উপরে।</p>
+    <p>এই বইটি Cloud X Berry চ্যানেলের <strong>Linux &amp; Operating Systems</strong> প্লেলিস্টের ৬টি ভিডিওর বিশ্বস্ত রূপান্তর — শিক্ষক যেভাবে ব্যাখ্যা করেছেন, যে ভিজ্যুয়াল ব্যবহার করেছেন, ঠিক সেভাবেই।</p>
+    <p>৬টি দরজা পেরোলে তুমি পাবে: Unix-এর জন্ম ও দর্শন, চার OS-জগতের ভূগোল, লিনাক্স ফাইল-সিস্টেমের গাছ, ১০টি কোর কনসেপ্ট, Windows বনাম Linux কমান্ড-ম্যাপ, আর দৈনন্দিন কাজ বদলে দেওয়া ১০টি আধুনিক টুল।</p>
+    <button class="btn-primary" onclick="startMap()">মানচিত্রে প্রবেশ করো</button>
+  </div>
+</div>
+
+<!-- Map -->
+<div class="screen" id="map-screen">
+  <header class="hud">
+    <button class="hud-menu" onclick="goHome()" aria-label="Home">⌂</button>
+    <div class="hud-rank"><span id="hud-rank-icon">🛖</span> <span id="hud-rank-name">উইন্ডোজ-নির্ভর</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp"><div class="hud-xp-track"><div class="hud-xp-fill" id="hud-xp-fill"></div></div><span id="hud-xp-text">0 / 600 XP</span></div>
+    <button class="hud-cheat" onclick="openCheatModal()" aria-label="Secrets">🗝️</button>
+  </header>
+  <div class="map-header">
+    <h2>লিনাক্স যাত্রার মানচিত্র</h2>
+    <p>দরজাগুলো ক্রমানুসারে খোলে। প্রতিটি দরজা = ১০০ XP।</p>
+  </div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<!-- Door Reader -->
+<div class="screen" id="door-screen">
+  <header class="hud">
+    <button class="hud-menu" onclick="renderMap();showScreen('map-screen')" aria-label="Back">←</button>
+    <div class="hud-rank"><span id="hud-rank-icon">🛖</span> <span id="hud-rank-name">উইন্ডোজ-নির্ভর</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp"><div class="hud-xp-track"><div class="hud-xp-fill" id="hud-xp-fill"></div></div><span id="hud-xp-text">0 / 600 XP</span></div>
+    <button class="hud-cheat" onclick="openCheatModal()" aria-label="Secrets">🗝️</button>
+  </header>
+  <div class="reader">
+    <div class="story-text" id="story-content"></div>
+    <div class="door-actions">
+      <button class="btn-reveal" id="reveal-btn" onclick="revealSecret()">নির্বাণ দেখো</button>
+      <button class="btn-primary hidden" id="recall-btn" onclick="showRecall()">চ্যালেঞ্জ নাও</button>
+      <button class="btn-primary hidden" id="complete-btn" onclick="completeDoor()">দরজা সম্পন্ন করো (+১০০ XP)</button>
+    </div>
+    <div class="recall-box hidden" id="recall-box"></div>
+    <div class="nav-arrows" id="nav-arrows"></div>
+  </div>
+</div>
+
+<!-- Cheat Modal -->
+<div class="modal" id="cheat-modal">
+  <div class="modal-content">
+    <div class="modal-header"><h3>🗝️ অর্জিত নির্বাণসমূহ</h3><button class="modal-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div>
+    <div id="cheat-modal-grid" class="cheat-grid"></div>
+    <div id="cheat-modal-empty" class="cheat-empty"></div>
+  </div>
+</div>
+
+<!-- Complete Screen -->
+<div class="screen" id="complete-screen">
+  <div class="title-glow"></div>
+  <div class="game-badge">যাত্রা সম্পন্ন</div>
+  <h1 class="game-title">টার্মিনাল এখন তোমার হাতের মুঠোয়</h1>
+  <p class="game-tagline">৬টি দরজা, ৬০০ XP, ৬টি পদমর্যাদা পেরিয়ে তুমি এখন লিনাক্স-স্থপতির চোখে দেখো।</p>
+  <div class="complete-links">
+    <a class="btn-primary" href="../index.html">লাইব্রেরিতে ফিরে যাও</a>
+  </div>
+</div>
+
+<script src="doors.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
