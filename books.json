@@ -738,6 +738,17 @@
       "color": "game-66",
       "tag": "Book 66 · Cloud X Berry — Networking & Security",
       "status": "live"
+    },
+    {
+      "n": 67,
+      "folder": "cxb-system-design",
+      "title_en": "The System Blueprint",
+      "title_bn": "সিস্টেমের নীলনকশা",
+      "icon": "📐",
+      "category": "cloud-x-berry",
+      "color": "game-67",
+      "tag": "Book 67 · Cloud X Berry — System Design",
+      "status": "live"
     }
   ],
   "roadmap": [
