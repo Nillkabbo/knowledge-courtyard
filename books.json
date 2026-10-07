@@ -749,6 +749,17 @@
       "color": "game-67",
       "tag": "Book 67 · Cloud X Berry — System Design",
       "status": "live"
+    },
+    {
+      "n": 68,
+      "folder": "cxb-databases",
+      "title_en": "The Data Vault",
+      "title_bn": "ডেটার ভাণ্ডার",
+      "icon": "🗄️",
+      "category": "cloud-x-berry",
+      "color": "game-68",
+      "tag": "Book 68 · Cloud X Berry — Databases",
+      "status": "live"
     }
   ],
   "roadmap": [
