@@ -727,6 +727,17 @@
       "color": "game-65",
       "tag": "Book 65 · Cloud X Berry — Linux & Operating Systems",
       "status": "live"
+    },
+    {
+      "n": 66,
+      "folder": "cxb-network-security",
+      "title_en": "The Network Fortress",
+      "title_bn": "নেটওয়ার্কের দুর্গ",
+      "icon": "🌐",
+      "category": "cloud-x-berry",
+      "color": "game-66",
+      "tag": "Book 66 · Cloud X Berry — Networking & Security",
+      "status": "live"
     }
   ],
   "roadmap": [

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Network Fortress — Cloud X Berry Series · Book 4</title>
+<meta name="description" content="নেটওয়ার্কিং ও সাইবার-নিরাপত্তার ৮টি দরজা — Cloud X Berry চ্যানেলের Networking &amp; Security প্লেলিস্ট থেকে। নেটওয়ার্কের ধরন, OSI মডেল, Ethernet, ১২টি প্রোটোকল, HTTPS/TLS, SSH, Hashing/Encryption/Encoding, VPN, পাসওয়ার্ড-আক্রমণ, সাইবার-আক্রমণ, ডার্ক ওয়েব।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles" aria-hidden="true"></canvas>
+
+<!-- Title Screen -->
+<div class="screen active" id="title-screen">
+  <div class="title-glow"></div>
+  <div class="game-badge">Cloud X Berry Series · Book ৪</div>
+  <h1 class="game-title">The Network Fortress</h1>
+  <div class="game-title-bn">নেটওয়ার্কের দুর্গ</div>
+  <p class="game-tagline">প্যাকেটের যাত্রা থেকে দুর্গের প্রাচীর — আটটি পাঠে নেটওয়ার্কিং ও নিরাপত্তার পুরো মানচিত্র। Cloud X Berry-এর ব্যাখ্যা ও ভিজ্যুয়ালে।</p>
+  <div class="xp-badge">৮টি দরজা · ৮০০ XP · ১২টি ভিডিওর সারমর্ম</div>
+  <button class="btn-primary" onclick="startPrologue()">যাত্রা শুরু করো</button>
+  <div class="back-link"><a href="../index.html">← লাইব্রেরিতে ফিরে যাও</a></div>
+</div>
+
+<!-- Prologue -->
+<div class="screen" id="prologue-screen">
+  <div class="prologue-card">
+    <div class="prologue-label">প্রস্তর-লিপি · Prologue</div>
+    <h2>কেন এই বই?</h2>
+    <p>তুমি প্রতিদিন যে youtube.com টাইপ করো, পেছনে চলে DNS-এর ঠিকানা-খোঁজা, OSI-এর সাত স্তরের যাত্রা, TCP-র নির্ভরযোগ্য বিতরণ, TLS-এর এনক্রিপ্টেড বাহন — একটাও তুমি দেখো না। আর যে দেখো না, সেখানেই আক্রমণকারীরা কাজ করে।</p>
+    <p>এই বইটি Cloud X Berry চ্যানেলের <strong>Networking &amp; Security</strong> প্লেলিস্টের ১২টি ভিডিওর বিশ্বস্ত রূপান্তর — শিক্ষক যেভাবে ব্যাখ্যা করেছেন, যে ভিজ্যুয়াল ব্যবহার করেছেন, ঠিক সেভাবেই।</p>
+    <p>৮টি দরজা পেরোলে তুমি পাবে: নেটওয়ার্কের ধরন ও মৌলিক ধারণা, OSI-এর সাত স্তর, Ethernet-এর নিয়ম, ১২টি প্রোটোকল, নিরাপদ সংযোগ (HTTPS/TLS/SSH), ক্রিপ্টোর তিন ভাই ও VPN, আক্রমণের মুখোমুখি (পাসওয়ার্ড + সাইবার-আক্রমণ), আর ইন্টারনেটের লুকানো স্তর — ডার্ক ওয়েব।</p>
+    <button class="btn-primary" onclick="startMap()">মানচিত্রে প্রবেশ করো</button>
+  </div>
+</div>
+
+<!-- Map -->
+<div class="screen" id="map-screen">
+  <header class="hud">
+    <button class="hud-menu" onclick="goHome()" aria-label="Home">⌂</button>
+    <div class="hud-rank"><span id="hud-rank-icon">🛖</span> <span id="hud-rank-name">অফলাইন ব্যবহারকারী</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp"><div class="hud-xp-track"><div class="hud-xp-fill" id="hud-xp-fill"></div></div><span id="hud-xp-text">0 / 800 XP</span></div>
+    <button class="hud-cheat" onclick="openCheatModal()" aria-label="Secrets">🗝️</button>
+  </header>
+  <div class="map-header">
+    <h2>দুর্গের মানচিত্র</h2>
+    <p>দরজাগুলো ক্রমানুসারে খোলে। প্রতিটি দরজা = ১০০ XP।</p>
+  </div>
+  <div class="doors-grid" id="doors-grid"></div>
+</div>
+
+<!-- Door Reader -->
+<div class="screen" id="door-screen">
+  <header class="hud">
+    <button class="hud-menu" onclick="renderMap();showScreen('map-screen')" aria-label="Back">←</button>
+    <div class="hud-rank"><span id="hud-rank-icon">🛖</span> <span id="hud-rank-name">অফলাইন ব্যবহারকারী</span></div>
+    <div class="hud-level" id="hud-level">স্তর ১</div>
+    <div class="hud-xp"><div class="hud-xp-track"><div class="hud-xp-fill" id="hud-xp-fill"></div></div><span id="hud-xp-text">0 / 800 XP</span></div>
+    <button class="hud-cheat" onclick="openCheatModal()" aria-label="Secrets">🗝️</button>
+  </header>
+  <div class="reader">
+    <div class="story-text" id="story-content"></div>
+    <div class="door-actions">
+      <button class="btn-reveal" id="reveal-btn" onclick="revealSecret()">নির্বাণ দেখো</button>
+      <button class="btn-primary hidden" id="recall-btn" onclick="showRecall()">চ্যালেঞ্জ নাও</button>
+      <button class="btn-primary hidden" id="complete-btn" onclick="completeDoor()">দরজা সম্পন্ন করো (+১০০ XP)</button>
+    </div>
+    <div class="recall-box hidden" id="recall-box"></div>
+    <div class="nav-arrows" id="nav-arrows"></div>
+  </div>
+</div>
+
+<!-- Cheat Modal -->
+<div class="modal" id="cheat-modal">
+  <div class="modal-content">
+    <div class="modal-header"><h3>🗝️ অর্জিত নির্বাণসমূহ</h3><button class="modal-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div>
+    <div id="cheat-modal-grid" class="cheat-grid"></div>
+    <div id="cheat-modal-empty" class="cheat-empty"></div>
+  </div>
+</div>
+
+<!-- Complete Screen -->
+<div class="screen" id="complete-screen">
+  <div class="title-glow"></div>
+  <div class="game-badge">যাত্রা সম্পন্ন</div>
+  <h1 class="game-title">দুর্গ এখন তোমার চেনা</h1>
+  <p class="game-tagline">৮টি দরজা, ৮০০ XP, ৮টি পদমর্যাদা পেরিয়ে তুমি এখন নেটওয়ার্ক-রক্ষকের চোখে দেখো।</p>
+  <div class="complete-links">
+    <a class="btn-primary" href="../index.html">লাইব্রেরিতে ফিরে যাও</a>
+  </div>
+</div>
+
+<script src="doors-1-4.js"></script>
+<script src="doors-5-8.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
