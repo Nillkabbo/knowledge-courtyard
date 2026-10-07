@@ -705,6 +705,17 @@
       "color": "game-63",
       "tag": "Book 63 · Cloud X Berry — Senior Developer Tips",
       "status": "live"
+    },
+    {
+      "n": 64,
+      "folder": "cxb-ai-llm-agents",
+      "title_en": "The AI Agents Atlas",
+      "title_bn": "এআই এজেন্টের মানচিত্র",
+      "icon": "🤖",
+      "category": "cloud-x-berry",
+      "color": "game-64",
+      "tag": "Book 64 · Cloud X Berry — AI, LLMs & AI Agents",
+      "status": "live"
     }
   ],
   "roadmap": [
