@@ -760,6 +760,17 @@
       "color": "game-68",
       "tag": "Book 68 · Cloud X Berry — Databases",
       "status": "live"
+    },
+    {
+      "n": 69,
+      "folder": "cxb-cloud-devops",
+      "title_en": "The Sky Forge",
+      "title_bn": "মেঘের কারখানা",
+      "icon": "☁️",
+      "category": "cloud-x-berry",
+      "color": "game-69",
+      "tag": "Book 69 · Cloud X Berry — Cloud & DevOps",
+      "status": "live"
     }
   ],
   "roadmap": [
