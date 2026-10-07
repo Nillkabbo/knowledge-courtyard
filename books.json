@@ -771,6 +771,17 @@
       "color": "game-69",
       "tag": "Book 69 · Cloud X Berry — Cloud & DevOps",
       "status": "live"
+    },
+    {
+      "n": 70,
+      "folder": "cxb-programming",
+      "title_en": "The Code Cathedral",
+      "title_bn": "কোডের ক্যাথেড্রাল",
+      "icon": "⌨️",
+      "category": "cloud-x-berry",
+      "color": "game-70",
+      "tag": "Book 70 · Cloud X Berry — Programming",
+      "status": "live"
     }
   ],
   "roadmap": [
