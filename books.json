@@ -782,6 +782,17 @@
       "color": "game-70",
       "tag": "Book 70 · Cloud X Berry — Programming",
       "status": "live"
+    },
+    {
+      "n": 71,
+      "folder": "cxb-cs-fundamentals",
+      "title_en": "The Silicon Sutra",
+      "title_bn": "সিলিকনের সূত্র",
+      "icon": "🎓",
+      "category": "cloud-x-berry",
+      "color": "game-71",
+      "tag": "Book 71 · Cloud X Berry — CS Fundamentals (Series Finale)",
+      "status": "live"
     }
   ],
   "roadmap": [
