@@ -3,7 +3,7 @@
 // ════════════════════════════════════════
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
-const SAVE_KEY = 'cxbLinuxOs_v1';
+const SAVE_KEY = 'cxbLinuxOs_v2';
 const MAX_XP = 600;
 const RANKS = [
   {min:0,    name:'উইন্ডোজ-নির্ভর',      icon:'🛖'},
