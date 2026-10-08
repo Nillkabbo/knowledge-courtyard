@@ -3,99 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Silicon Sutra — Cloud X Berry Series · Book 9 (Finale)</title>
-<meta name="description" content="কম্পিউটার-মৌলিকের ৬টি দরজা — Cloud X Berry চ্যানেলের CS Fundamentals প্লেলিস্ট থেকে। Hexadecimal, CPU/GPU/TPU/NPU/DPU/QPU, ডেটাবেস-মৌলিক, কোয়ান্টাম কম্পিউটিং, অপারেটিং সিস্টেম, OpenCV।">
+<title>সিলিকনের সূত্র · The Silicon Sutra</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Amiri:wght@400;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
 </head>
 <body>
-<canvas id="particles" aria-hidden="true"></canvas>
+<canvas id="particles"></canvas>
 
-<!-- Title Screen -->
-<div class="screen active" id="title-screen">
-  <div class="title-glow"></div>
-  <div class="game-badge">Cloud X Berry Series · Book ৯ · সমাপ্তি</div>
-  <h1 class="game-title">The Silicon Sutra</h1>
-  <div class="game-title-bn">সিলিকনের সূত্র</div>
-  <p class="game-tagline">যে ছয়টি মৌলিকের ওপর দাঁড়িয়ে আছে পুরো ডিজিটাল-জগৎ — হেক্সার গোপন ভাষা, প্রসেসরের পারিবারিক, ডেটার সাজানো ঘর, কোয়ান্টামের ঘূর্ণন, OS-র রাজত্ব, আর মেশিনের চোখ। সিরিজের শেষ দরজা। Cloud X Berry-এর ব্যাখ্যা ও ভিজ্যুয়ালে।</p>
-  <div class="xp-badge">৬টি দরজা · ৬০০ XP · ৬টি ভিডিওর সারমর্ম</div>
-  <button class="btn-primary" onclick="startPrologue()">যাত্রা শুরু করো</button>
-  <div class="back-link"><a href="../index.html">← লাইব্রেরিতে ফিরে যাও</a></div>
+<div id="title-screen" class="screen active">
+  <div class="title-arabic">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
+  <h1 class="title-main">সিলিকনের সূত্র</h1>
+  <div class="title-sub">The Silicon Sutra</div>
+  <div class="title-desc">
+    যে ছয়টি মৌলিকের ওপর দাঁড়িয়ে আছে পুরো ডিজিটাল-জগৎ — হেক্সার গোপন ভাষা, প্রসেসরের পারিবারিক, ডেটার সাজানো ঘর, কোয়ান্টামের ঘূর্ণন, OS-র রাজত্ব, আর মেশিনের চোখ। সিরিজের শেষ দরজা। Cloud X Berry-এর ব্যাখ্যা ও ভিজ্যুয়ালে।<br><br>
+    <em>৬টি দরজা · ৬০০ XP · Book ৯ · সমাপ্তি</em>
+  </div>
+  <button class="start-btn" onclick="startGame()">🎓 যাত্রা শুরু করো · Begin</button>
 </div>
 
-<!-- Prologue -->
-<div class="screen" id="prologue-screen">
-  <div class="prologue-card">
-    <div class="prologue-label">প্রস্তর-লিপি · Prologue</div>
-    <h2>কেন এই বই?</h2>
+<div id="prologue-screen" class="screen">
+  <div class="prologue-body">
+    <div class="prologue-title">📜 প্রস্তর-লিপি · Prologue</div>
     <p>টুল শেখা যায় মাসে, কিন্তু যে-ভিত্তির ওপর সব টুল দাঁড়িয়ে — সংখ্যার ভাষা, প্রসেসরের প্রকৃতি, ডেটার শৃঙ্খলা, গণনার সীমা — তা বোঝা বছরের পর বছর কাজে দেয়। এই সিরিজের শেষ বই সেই ভিত্তিই বসায়, আর সামনের সব প্রযুক্তি-যুগ সেই ভিত্তিরই নতুন প্রাঙ্গণ।</p>
     <p>এই বইটি Cloud X Berry চ্যানেলের <strong>CS Fundamentals</strong> প্লেলিস্টের ৬টি ভিডিওর বিশ্বস্ত রূপান্তর — শিক্ষক যেভাবে ব্যাখ্যা করেছেন, যে ভিজ্যুয়াল ব্যবহার করেছেন, ঠিক সেভাবেই।</p>
     <p>৬টি দরজা পেরোলে তুমি পাবে: হেক্সাডেসিমাল-রহস্য, ছয় প্রসেসরের পরিচয় (CPU থেকে QPU), ডেটাবেসের আদি-পাঠ (bookstore-উদাহরণে), কোয়ান্টাম-কম্পিউটিংয়ের মূল ভাবনা, অপারেটিং-সিস্টেমগুলোর রাজ্য, আর OpenCV-র কম্পিউটার-ভিশন।</p>
-    <button class="btn-primary" onclick="startMap()">মানচিত্রে প্রবেশ করো</button>
+    <div style="text-align:center;margin-top:1.8rem"><button class="start-btn" onclick="startMap()">🚪 মানচিত্রে প্রবেশ করো · Enter the Map</button></div>
   </div>
 </div>
 
-<!-- Map -->
-<div class="screen" id="map-screen">
-  <header class="hud">
-    <button class="hud-menu" onclick="goHome()" aria-label="Home">⌂</button>
-    <div class="hud-rank"><span id="hud-rank-icon">👤</span> <span id="hud-rank-name">ব্যবহারকারী</span></div>
+<div id="map-screen" class="screen">
+  <div id="hud">
+    <div class="hud-rank"><span id="hud-rank-icon">🛖</span><span id="hud-rank-name">পথিক</span></div>
     <div class="hud-level" id="hud-level">স্তর ১</div>
-    <div class="hud-xp"><div class="hud-xp-track"><div class="hud-xp-fill" id="hud-xp-fill"></div></div><span id="hud-xp-text">0 / 600 XP</span></div>
-    <button class="hud-cheat" onclick="openCheatModal()" aria-label="Secrets">🗝️</button>
-  </header>
-  <div class="map-header">
-    <h2>সিলিকন-সূত্রের মানচিত্র</h2>
-    <p>দরজাগুলো ক্রমানুসারে খোলে। প্রতিটি দরজা = ১০০ XP।</p>
+    <div class="hud-xp-wrap"><div class="hud-xp-bar"><div class="hud-xp-fill" id="hud-xp-fill" style="width:0%"></div></div><div class="hud-xp-text" id="hud-xp-text">0 / 600 XP</div></div>
+    <button class="hud-btn" id="mute-btn" onclick="toggleMute()">🔊</button>
+    <button class="hud-btn" onclick="openCheatModal()">📋</button>
+    <button class="hud-btn" onclick="confirmReset()">↺ রিসেট</button>
   </div>
+  <div class="map-header"><h2>🎓 সিলিকন-সূত্রের মানচিত্র</h2><p>দরজাগুলো ক্রমানুসারে খোলে। প্রতিটি দরজা = ১০০ XP।</p></div>
   <div class="doors-grid" id="doors-grid"></div>
 </div>
 
-<!-- Door Reader -->
-<div class="screen" id="door-screen">
-  <header class="hud">
-    <button class="hud-menu" onclick="renderMap();showScreen('map-screen')" aria-label="Back">←</button>
-    <div class="hud-rank"><span id="hud-rank-icon">👤</span> <span id="hud-rank-name">ব্যবহারকারী</span></div>
-    <div class="hud-level" id="hud-level">স্তর ১</div>
-    <div class="hud-xp"><div class="hud-xp-track"><div class="hud-xp-fill" id="hud-xp-fill"></div></div><span id="hud-xp-text">0 / 600 XP</span></div>
-    <button class="hud-cheat" onclick="openCheatModal()" aria-label="Secrets">🗝️</button>
-  </header>
-  <div class="reader">
-    <div class="story-text" id="story-content"></div>
-    <div class="door-actions">
-      <button class="btn-reveal" id="reveal-btn" onclick="revealSecret()">নির্বাণ দেখো</button>
-      <button class="btn-primary hidden" id="recall-btn" onclick="showRecall()">চ্যালেঞ্জ নাও</button>
-      <button class="btn-primary hidden" id="complete-btn" onclick="completeDoor()">দরজা সম্পন্ন করো (+১০০ XP)</button>
-    </div>
-    <div class="recall-box hidden" id="recall-box"></div>
-    <div class="nav-arrows" id="nav-arrows"></div>
-  </div>
+<div id="story-screen" class="screen">
+  <div class="story-back"><button class="back-btn" onclick="goToMap()">← মানচিত্র</button> <a href="../index.html" style="font-size:.72rem;color:var(--ink-mute);text-decoration:none;margin-left:1rem;opacity:.6">🏠 প্রাঙ্গণ</a></div>
+  <div class="story-container" id="story-container"></div>
 </div>
 
-<!-- Cheat Modal -->
-<div class="modal" id="cheat-modal">
-  <div class="modal-content">
-    <div class="modal-header"><h3>🗝️ অর্জিত নির্বাণসমূহ</h3><button class="modal-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div>
-    <div id="cheat-modal-grid" class="cheat-grid"></div>
-    <div id="cheat-modal-empty" class="cheat-empty"></div>
-  </div>
+<div id="complete-screen" class="screen">
+  <div class="complete-crown">🎓</div>
+  <h1 class="complete-title">সিলিকনের সূত্র এখন তোমার জ্ঞান</h1>
+  <p class="complete-text">Cloud X Berry-র নয়টি বই, ৬৩টি দরজা, ৬,৩০০ XP-এর যাত্রা এখানে পূর্ণ — সিলিকন-পণ্ডিতের চোখে দেখো।</p>
+  <button class="start-btn" onclick="resetGame()">↻ আবার যাত্রা শুরু করো</button>
+  <div class="cheat-section-end"><h3>📋 সম্পূর্ণ সারাংশ — Cheat Sheet</h3><div class="cheat-grid" id="cheat-grid-end"></div></div>
 </div>
 
-<!-- Complete Screen -->
-<div class="screen" id="complete-screen">
-  <div class="title-glow"></div>
-  <div class="game-badge">সিরিজ সম্পন্ন · ৯/৯</div>
-  <h1 class="game-title">সিলিকনের সূত্র এখন তোমার জ্ঞান</h1>
-  <p class="game-tagline">Cloud X Berry-র নয়টি বই, ৬৩টি দরজা, ৬,৩০০ XP-এর যাত্রা এখানে পূর্ণ — সিলিকন-পণ্ডিতের চোখে দেখো।</p>
-  <div class="complete-links">
-    <a class="btn-primary" href="../index.html">লাইব্রেরিতে ফিরে যাও</a>
-  </div>
+<div class="xp-popup" id="xp-popup"><span class="xp-amount" id="xp-amount">+100 XP</span><span class="xp-label">দরজা সম্পন্ন!</span></div>
+
+<div id="cheat-modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="cheat-modal-inner"><div class="cheat-modal-head"><h3>📋 চিট শিট — Cheat Sheet</h3><button class="cheat-close" onclick="document.getElementById('cheat-modal').style.display='none'">✕</button></div><div class="cheat-grid" id="cheat-modal-grid"></div><p style="text-align:center;color:var(--ink-mute);font-size:.85rem;padding:.8rem 0" id="cheat-modal-empty"></p></div>
 </div>
 
 <script src="doors-1-3.js"></script>
 <script src="doors-4-6.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
 <script src="engine.js"></script>
 </body>
 </html>
