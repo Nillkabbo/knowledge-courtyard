@@ -364,10 +364,27 @@ doors.push({
 ৬. BTOP — top-এর এক্সপ্লেইনার: মেশিন ধীর?
    CPU/মেমরি/নেটওয়ার্ক/ডিস্ক এক নজরে —
    দোষী প্রসেস সঙ্গে সঙ্গে ধরা।</div>
-<div class="code-block">(চলমান) ৭-১০: আরও সার্চ-নেভিগেশন-মনিটরিং
-   টুল আর রিমোট-অ্যাক্সেস উন্নতি — শেষ পর্যন্ত
-   এমন এক টুল যে কয়েকটা Docker কমান্ডকে
-   একটা সহজ ইন্টারফেসে গুছিয়ে দেয়।
+<div class="code-block">৭. RIPGREP (rg) — grep-এর দ্রুততর রূপ: কোডবেসে
+   সার্চ করে, .gitignore মানে, node_modules-এর
+   মতো বাদ-দেওয়া ফোল্ডার স্বয়ংক্রিয়ভাবে এড়ায়।
+   বড় প্রজেক্টে isAdmin-এর সব রেফারেন্স চাই?
+   লম্বা grep-কমান্ড নয় — শুধু rg isAdmin।
+
+৮. FD — find-এর সহজ উত্তরাধিকারী: find শক্তিশালী
+   কিন্তু সিনট্যাক্স মনে রাখা কঠিন; fd util লিখলেই
+   নামে util-থাকা ফাইল খুঁজে দেয় — দ্রুত, পাঠযোগ্য,
+   hidden/git-ignored ফাইল ডিফল্টে এড়ায়।
+
+৯. DELTA — git-diff পাঠক: বিশাল diff পড়া কষ্টের;
+   delta দেয় syntax highlighting, লাইন-নম্বর,
+   side-by-side ভিউ, অক্ষর-স্তরের হাইলাইট।
+   Git বদলায় না — Git-কে পড়া-সহজ করে।
+
+১০. LAZYDOCKER — Docker-এর এক-দফতর: docker ps,
+    docker logs, docker stats, docker inspect —
+    দিনে বারবার চালানো কমান্ডগুলো এক টার্মিনাল
+    ইন্টারফেসে: কন্টেইনার দেখো, লগ স্ট্রিম করো,
+    রিসোর্স মনিটর করো, ইমেজ-ভলিউম সামলাও।
 
 শিক্ষকের মূল্যায়ন-নিয়ম:
   ক্লাসিক কমান্ড সর্বত্র পাবে — ভিত্তি ওরাই।
@@ -377,8 +394,8 @@ doors.push({
 <div class="dialogue">জাহেনা বেগম: আমি দোকান বেছে দিই, কিন্তু কেনা তোমাকেই — মনে আছে? টুলও তাই: তালিকা আমাদের, বাছাই তোমার কাজের।</div>
 <div class="dialogue">রফিক চাচা: fzf দেখেছো? আমার তালিকার মতোই — নাম মনে না থাকলেও অর্ধেক অক্ষরে খুঁজে দেয়। গাছ বড় হলে ডালে ডালে পাখি আসে।</div>
 <div class="dialogue">কর্নেল সালাহউদ্দিন: আর সাবধান — এগুলো সব অলংকার, নিয়ম নয়। নিয়ম ভাঙলে fzf-ও বাঁচাতে পারবে না।</div>
-<div class="dialogue">মাহমুদা আপা: bat কী করে? পড়ানো। zoxide? চলা। fzf? খোঁজা। — দেখো, কাজই থাকে, শব্দ বদলায়।</div>
-<div class="dialogue en">Jahena: I choose the shop; the buying is yours. Tools too — the list is ours, the choosing is your work's. Rafiq: fzf is my list — half a word finds the whole. Salahuddin: these are ornaments, not law — break the law and no tool saves you. Mahmuda: bat reads, zoxide walks, fzf seeks — the task stays, only the word changes.</div>
+<div class="dialogue">মাহমুদা আপা: bat কী করে? পড়ানো। zoxide? চলা। fzf? খোঁজা। rg? খোঁজা-ই, দ্রুত। fd? খোঁজা-ই, সহজ। — দেখো, কাজই থাকে, শব্দ বদলায়।</div>
+<div class="dialogue en">Jahena: I choose the shop; the buying is yours. Tools too — the list is ours, the choosing is your work's. Rafiq: fzf is my list — half a word finds the whole. Salahuddin: these are ornaments, not law — break the law and no tool saves you. Mahmuda: bat reads, zoxide walks, fzf seeks, rg seeks faster, fd seeks simpler — the task stays, only the word changes.</div>
 <p class="scene-setting">চাঁদ উঠেছে। তুমি চারদিকে তাকাও — মুচি, ক্রেতা-নির্দেশিকা, গ্রন্থাগারিক, দারোগা, দোভাষী — পাঁচজন মানুষ, পাঁচটা পেশা, কিন্তু সবাই একটাই কথা বলছেন নিজের ভাষায়: <strong>কাজ চেনো, নিয়ম মানো, হাতিয়ারকে নিজের করে নাও।</strong> আর ছয় নম্বর চেয়ারটা — সেটা তোমার; এই পথের পরবর্তী মাস্টার যিনি আজ থেকে অন্য কাউকে দেখাবেন। তখনই তোমার মনে পড়ে যায় প্রথম রাতের সেই এক-লাইন: cat app.log | grep error | sort — যে-লাইন দিয়ে শুরু, সেই লাইনেই শেষ: ছোট টুল, এক কাজ, জোড়া দাও। সব দরজার নিচে একই সূত্র ছিল — আজ চোখ খুলে গেলো।</p>
 <p class="scene-setting en">Moonrise. Cobbler, guide, librarian, officer, interpreter — five trades, one sentence in five tongues: know the task, honor the rule, make the tool yours. And you remember the first night's line — cat app.log | grep error | sort — the journey ends where it began: small tools, one job, chained. One principle under every door; tonight it clicked.</p>
 <div class="verse">কুরআনে বলা হয়েছে: <em>মানুষের জন্য তা-ই আছে, সে যার চেষ্টা করে</em> (নাজম ৫৩:৩৯) — আর চেষ্টার সবচেয়ে সূক্ষ্ম রূপ ইহসান: কাজটা এমনভাবে করো যেন দেখছে। টার্মিনাল-কারিগরের ইহসান — দিনের শত ছোট কাজে প্রতিটা অক্ষর যত্নে বাছা। হারুন মিয়ার শাবলের হাতল যেমন বছরে বছরে হাতের ছাঁচ হয়, তোমার টুল-বাছাইও তেমনি তোমার কাজের ছাঁচ ধরবে — উভয়েই একই ইবাদত: কাজকে ভালোবেসে নিখুঁত করা।</div>
@@ -386,6 +403,6 @@ doors.push({
 <div class="secret-box">🛠️ পুরনো বন্ধু ছাড়বে না, নতুন বন্ধু বাছবে কাজ-ঘনত্ব দেখে — দিনে শতবারের কাজেই ছোট উন্নতি সবচেয়ে বড়।</div>`,
   senior: {
     title: "১০ প্রোডাক্টিভিটি টুল — দ্রুত গাইড",
-    body: "<p><strong>জোড়া-ম্যাপ:</strong> fzf (ফাজি-সার্চ: ফাইল/ব্রাঞ্চ/হিস্ট্রি; Ctrl+R-র রূপান্তর), tmux (disconnect-proof সেশন + পেন-ব্যবস্থাপনা), mosh (অস্থির নেটে টিকে থাকা SSH-বিকল্প), zoxide (শেখা-পথের cd), bat (পোশাকি cat), btop (এক্সপ্লেইনার মনিটর) + আরও ৪টা, শেষে Docker-এক-ইন্টারফেস। <strong>নিয়ম:</strong> ক্লাসিক = ভিত্তি (সর্বত্র পাওয়া যায়); আধুনিক = ঘন-কাজের বিনিয়োগ। tmux+mosh মিলে রিমোট-ডেভের সোনার জোড়া।</p>"
+    body: "<p><strong>জোড়া-ম্যাপ:</strong> fzf (ফাজি-সার্চ: ফাইল/ব্র্যাঞ্চ/হিস্ট্রি; Ctrl+R-র রূপান্তর), tmux (disconnect-proof সেশন + পেন-ব্যবস্থাপনা), mosh (অস্থির নেটে টিকে থাকা SSH-বিকল্প), zoxide (শেখা-পথের cd), bat (পোশাকি cat), btop (এক্সপ্লেইনার মনিটর), ripgrep (দ্রুত কোড-সার্চ, .gitignore-সচেতন), fd (সহজ find), delta (পাঠযোগ্য git-diff), lazydocker (Docker-এর এক-ইন্টারফেস)। <strong>নিয়ম:</strong> ক্লাসিক = ভিত্তি (সর্বত্র পাওয়া যায়); আধুনিক = ঘন-কাজের বিনিয়োগ। tmux+mosh মিলে রিমোট-ডেভের সোনার জোড়া।</p>"
   }
 });
