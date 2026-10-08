@@ -17,10 +17,11 @@ doors.push({
     a: "প্রতিটি শর্ত আগেই যাচাই করে ভুল হলে সাথে সাথে return করেন (guard clauses) — মূল কাজটা তিন স্তর গভীরে চাপা পড়ে না।",
     aen: "They check each condition up front and return immediately when wrong (guard clauses) — the main operation stays visible."
   },
-  story: `<p class="scene-setting">কল্পনা করো, তুমি একটা পুরনো কোডবেসে ঢুকেছ। একটা ফাংশন দেখছ — ইউজার আছে কিনা, অ্যাক্টিভ কিনা, পারমিশন আছে কিনা যাচাই করে। শর্তের ভেতরে শর্ত, তার ভেতরে আরেক শর্ত — আসল কাজটা তিন স্তর নিচে চাপা। কোড কাজ করে, কিন্তু পড়া যায় না।</p>
-<p class="scene-setting en">You are inside an old codebase. A function checks: does the user exist, is the user active, do they have permission? Condition inside condition inside condition — the actual operation is buried three levels deep. The code works, but you cannot read it.</p>
-<div class="dialogue">শিক্ষক বলেন — সিনিয়র হওয়ার প্রথম স্বীকৃতি এখানেই: আরেকটা ভাষা শেখা নয়, কোডকে <strong>বোঝা সহজ, বদলানো সহজ, ভাঙা কঠিন</strong> করা। অভিজ্ঞ ইঞ্জিনিয়াররা আরও জটিল কোড লেখেন না — অনেক ক্ষেত্রে উল্টোটা করেন।</div>
-<div class="dialogue en">The teacher opens — the first admission of seniority is not another language: make code <strong>easier to understand, easier to change, harder to break</strong>. Experienced engineers do not write more complicated code. Often they do the opposite.</div>
+  story: `<p class="scene-setting">প্রথম চাকরি, প্রথম সপ্তাহ। পুরনো কোডবেসে তোমার প্রথম পুল-রিকোয়েস্ট — আর মিটিং-রুমে সবার সামনে রিভিউ চলছে: ইউজার আছে কিনা, অ্যাক্টিভ কিনা, পারমিশন আছে কিনা — শর্তের ভেতরে শর্ত, তার ভেতরে আরেক শর্ত, আসল কাজটা তিন স্তর নিচে চাপা। কোড চলে। কিন্তু রুমের নীরবতায় তোমার কান জ্বলছে। সিনিয়র ইঞ্জিনিয়ার <strong>কামরুল ভাই</strong> স্ক্রিন থেকে চোখ তুললেন — হাতে চায়ের দাগে ছাপানো পুরনো মগ, কীবোর্ডের অতি-ব্যবহৃত Ctrl-বোতামের অক্ষর আর নেই।</p>
+<p class="scene-setting en">First job, first week, first pull request — reviewed in front of the room: user exists, is active, has permission — condition inside condition inside condition, the real work buried three levels deep. The code runs. In the silence your ears burn. Senior engineer Kamrul looks up — a mug stained tea-brown, the lettering worn off his over-used Ctrl key.</p>
+<p class="scene-setting">সবাই ভাবছিল তোমার আজ বিচার হবে। কামরুল ভাই তোমার হাত ধরে নিয়ে গেলেন চা-টেবিলে — গরম চায়ের ভাপ মুখে লাগছে, পুরনো কার্পেটের ভ্যাপসা গন্ধ। তারপর হেসে বললেন: <em>আমার প্রথম পিআর-ও এমনই ছিল — রিভিউয়ার সাত পাতা কমেন্ট লিখেছিলেন, আমি রাতে ঘুমাইনি।</em> তোমার বুক থেকে একটা পাথর নেমে গেলো।</p>
+<div class="dialogue">কামরুল ভাই: সিনিয়র হওয়ার প্রথম স্বীকৃতি এখানেই, ভাই: আরেকটা ভাষা শেখা নয় — কোডকে <strong>বোঝা সহজ, বদলানো সহজ, ভাঙা কঠিন</strong> করা। আমরা বেশি জটিল কোড লিখি না। অনেক সময় উল্টোটা করি।</div>
+<div class="dialogue en">Kamrul: seniority's first admission is right here — not another language, but making code easier to understand, easier to change, harder to break. We don't write more complicated code. Often we do the opposite.</div>
 <div class="code-block">BILL ১ — মূল পথ সহজ রাখো (Keep the main path easy to follow)
 
 ❌ পুরনো পথ — প্রতিটি শর্ত আগেরটার ভেতরে:
@@ -50,7 +51,8 @@ perform action          ← এখন দেখা যায়
 অ্যাপ পেমেন্ট প্রোভাইডার, ইমেইল সার্ভিস, থার্ড-পার্টি API নিয়ে কথা বলে।
 সিনিয়র ইঞ্জিনিয়ার এই যোগাযোগগুলো একটা সীমানার (boundary) আড়ালে রাখেন —
 বাকি কোড জানে না কার সাথে কথা হচ্ছে, শুধু জানে কী চাইছে।</div>
-<div class="callout tip"><span class="co-icon">🎬</span><div><strong>শিক্ষকের ভিজ্যুয়াল:</strong> প্রথম উদাহরণে শর্তগুলো একটার ভেতরে একটা গুঁজানো — আসল অপারেশন পর্দার তিন স্তর নিচে। দ্বিতীয় উদাহরণে প্রতিটি চেক উপরে উঠে আসে, ভুল হলে সাথে সাথে return — মূল কাজ সবার সামনে।</div></div>
+<div class="callout tip"><span class="co-icon">🎬</span><div><strong>কামরুল ভাইয়ের ভিজ্যুয়াল:</strong> প্রথম উদাহরণে শর্তগুলো একটার ভেতরে একটা গুঁজানো — আসল অপারেশন পর্দার তিন স্তর নিচে। দ্বিতীয় উদাহরণে প্রতিটি চেক উপরে উঠে আসে, ভুল হলে সাথে সাথে return — মূল কাজ সবার সামনে।</div></div>
+<div class="verse">কামরুল ভাই চায়ের শেষ ঢোক শেষে বললেন: <em>আমার উস্তাদ বলতেন — কাজ সেটাই যেটা তোমার না-থাকলেও চলে।</em> রাসূল (সা.)-এর সুন্নাহতেও এই ইহসান: কাজ এমনভাবে করো যেন দেখছে — কারণ দেখছেন। কোডের ইহসান: পরের পাঠকের মুখ দেখে না লিখে, এমন লেখো যেন পরের পাঠক তোমাকে খুঁজতেই না পারে।</div>
 <div class="secret-box">⚖️ মূল পথ সহজ রাখো — কারণ পড়ুয়া কোডই বদলানো যায়, ভাঙা কঠিন।</div>`,
   senior: {
     title: "সিনিয়র কোডিং আইন ১-৩ — দ্রুত গাইড",
@@ -73,8 +75,11 @@ doors.push({
     a: "URL শনাক্ত করে resource-কে (users, orders), HTTP মেথড বর্ণনা করে operation (GET retrieve, POST create, PUT replace, DELETE remove)।",
     aen: "URL identifies the resource (users, orders); the HTTP method describes the operation (GET retrieve, POST create, PUT replace, DELETE remove)."
   },
-  story: `<p class="scene-setting">ব্যাকএন্ড টিমের মিটিং। একজন বলছে — API-তে এন্ডপয়েন্ট দাঁড় করাইছি: get_users, create_order, delete_product। কাজ করে। কিন্তু সিনিয়র ইঞ্জিনিয়ার মাথা নাড়েন — URL যদি অ্যাকশন বর্ণনা করে, তাহলে HTTP মেথডের কাজ কী? HTTP নিজেই তো অ্যাকশন বর্ণনা করার জন্য বানানো।</p>
-<p class="scene-setting en">Backend team meeting. Someone says — we built the endpoints: get_users, create_order, delete_product. It works. But the senior engineer shakes his head — if the URL describes the action, what is the HTTP method for? HTTP itself is already designed to describe actions.</p>
+  story: `<p class="scene-setting">তিন মাস পর। তোমার প্রথম বড় দায়িত্ব: কোম্পানির নতুন API-র নকশা। তুমি এন্ডপয়েন্ট দাঁড় করালে — get_users, create_order, delete_product — কাজ করে, ডেমো দিলে, সবাই খুশি। এরপর ক্লায়েন্ট-টিমের মিটিংয়ে প্রথম ধাক্কা: অন্য টিমের ডেভেলপাররা বারবার ডকুমেন্ট খুলছে, ভুল এন্ডপয়েন্টে ঢুকছে, স্ট্যাটাস-কোড নিয়ে অনুমান করছে। তোমার API কাজ করছে, কিন্তু কেউ <em>অনুমান</em> করতে পারছে না। তখনই হেড অফ আর্কিটেকচার <strong>রুকসানা ম্যাডাম</strong> নেমে এলেন — শাড়ির আঁচলে খাতার কলম গোঁজা, চোখে ছিমছাম ফ্রেমের চশমা, হাতে বহু-বছর-ধরে-খাতায়-আঁকা URL-নকশার সংগ্রহ।</p>
+<p class="scene-setting en">Three months later: your first big assignment — designing the company's new API. You shipped get_users, create_order, delete_product; it works, demo passed, everyone happy. Then the client-team meeting: developers keep opening docs, hitting wrong endpoints, guessing status codes. Your API works — but nobody can predict it. Down comes the head of architecture, Ruksana — a pen tucked in her sari's anchal, neat glasses, years of URL sketches in her notebook.</p>
+<p class="scene-setting">তিনি তোমার এন্ডপয়েন্ট-তালিকা দেখে চুপ করে রইলেন, তারপর আস্তে করে বললেন — <em>তুমি দরজায় নাম লিখেছ, দরজার ওপরে নয়।</em> তুমি হতভম্ব। উনি বোর্ডের সামনে গিয়ে দুটো কলাম আঁকলেন: এক পাশে তোমার get_users, অন্য পাশে শুধু /users — আর নিচে GET POST PUT DELETE।</p>
+<div class="dialogue">রুকসানা ম্যাডাম: বাবা, তোমার ভুল এন্ডপয়েন্টে নয় — চিন্তায়। তুমি ভাবো URL অ্যাকশন বর্ণনা করে। কিন্তু HTTP নিজেই তো অ্যাকশনের ভাষা — GET, POST, PUT, DELETE। URL যদি কাজ বলে, মেথড কী বলবে? <strong>URL চিনাবে কাকে, মেথড বলবে কী করতে।</strong></div>
+<div class="dialogue en">Your mistake is not in endpoints — it is in thinking. You believe the URL describes the action. But HTTP itself is the language of actions. If the URL does the verb's job, what is the verb for? The URL identifies; the method operates.</div>
 <div class="code-block">BILL ১ — Resource ঘিরে ডিজাইন করো, অ্যাকশন ঘিরে নয়
 
 ❌ get_users, create_order, delete_product (URL = অ্যাকশন)
@@ -125,7 +130,8 @@ BILL ৮ — ফরম্যাট consistent রাখো
 created_at vs createdAt vs CreatedAt — তিনটাই "ঠিক",
 কিন্তু প্রতিটা ক্লায়েন্টকে মনে রাখতে হয় কোনটা কোথায়।
 এক JSON স্টাইল, এক এরর-স্ট্রাকচার, এক pagination-নিয়ম।</div>
-<div class="callout tip"><span class="co-icon">🎯</span><div><strong>শিক্ষকের মূল কথা:</strong> API ভালো হয় GET/POST/PUT/DELETE মানার জন্যে নয় — ক্লায়েন্ট যখন <strong>ডকুমেন্টেশন বারবার না দেখেও</strong> বুঝে যায় কীভাবে কাজ করে। এন্ডপয়েন্ট দাঁড় করানো দিয়ে শুরু কোরো না — <strong>প্যাটার্ন ডিফাইন করা দিয়ে শুরু করো।</strong></div></div>
+<div class="callout tip"><span class="co-icon">🎯</span><div><strong>রুকসানা ম্যাডামের মূল কথা:</strong> API ভালো হয় GET/POST/PUT/DELETE মানার জন্যে নয় — ক্লায়েন্ট যখন <strong>ডকুমেন্টেশন বারবার না দেখেও</strong> বুঝে যায় কীভাবে কাজ করে। এন্ডপয়েন্ট দাঁড় করানো দিয়ে শুরু কোরো না — <strong>প্যাটার্ন ডিফাইন করা দিয়ে শুরু করো।</strong></div></div>
+<div class="verse">রুকসানা ম্যাডাম বোর্ড মুছতে মুছতে বললেন: <em>নকশা মানে নিজের বুদ্ধি দেখানো নয় — পরের মানুষের অনুমানকে সম্মান করা।</em> এ তো সেই পুরনো মীযান-নীতি: ওজনে প্রতারণা কোরো না — কারণ ন্যায্য মাপই মানুষের আস্থা বাঁচায়। API-ও তেমনি: predictable আচরণই তার আস্থা; ক্লায়েন্ট যখন অনুমান করে আর অনুমানটা ঠিক পায় — সেটাই নকশার ন্যায়।</div>
 <div class="secret-box">🏛️ URL চিনায় কী, মেথড বলে কী করতে — এই ভাগ ভাঙলে API নিজেই নিজের ডকুমেন্টেশন।</div>`,
   senior: {
     title: "৮ API আইন — দ্রুত গাইড",
@@ -148,11 +154,15 @@ doors.push({
     a: "URL = অবস্থান + প্রোটোকল (কোথায়, কীভাবে পাবে); URN = শাশ্বত নাম (ISBN-এর মতো, অবস্থান বলে না)। দুটোই URI — শিকারির দুই রকম উপায়।",
     aen: "URL = location + protocol (where, how to get it); URN = persistent name (like ISBN, no location). Both are URIs — two ways of identifying."
   },
-  story: `<p class="scene-setting">API নিয়ে কাজ করলে দুটো শব্দ শোনো প্রায় একই অর্থে — URL আর URI। এক ডেভেলপার একে বলছে URL, আরেকজন সেই একই জিনিসকে বলছে URI। দ্বিধা এখানেই শুরু।</p>
-<p class="scene-setting en">Working with APIs you hear two terms almost interchangeably — URL and URI. One developer calls it a URL, another calls the same thing a URI. The confusion starts here.</p>
-<div class="dialogue">শিক্ষক সবচেয়ে সহজ করে দেন: <strong>URI হলো বৃহত্তর ধারণা, URL তার একটা নির্দিষ্ট প্রকার।</strong> URI = Uniform Resource Identifier — কাজ শুধু শিনানো: এই রিসোর্সটা এটা। ওয়েবপেজ, ছবি, API এন্ডপয়েন্ট, ফাইল — যাই হোক। URL = Uniform Resource Locator — এক ধাপ এগিয়ে: কোথায় অবস্থিত আর কীভাবে পাবে, দুটোই বলে।</div>
+  story: `<p class="scene-setting">রুকসানা ম্যাডামের নকশা-পাঠের পর তুমি ডকুমেন্টেশন লিখতে বসেছ। আর প্রথম লাইনেই আটকে গেছ: এক জায়গায় লিখেছ URL, অন্য জায়গায় URI — দুটোই কি এক? স্ট্যাক-ওভারফ্লোতে পড়লে তিন রকম উত্তর, তিনটাই আত্মবিশ্বাসী। হতাশ হয়ে তুমি ল্যাপটপ গুটিয়ে চায়ের দোকানে — আর সেখানেই পাশের টেবিলে বসা মানুষটা যেন তোমার মুখ দেখেই বুঝে গেলো।</p>
+<p class="scene-setting en">Writing docs after Ruksana's lesson, you freeze at line one: URL in one place, URI in another — same thing? Stack Overflow gives three confident, contradictory answers. You fold the laptop and walk to the tea shop — where the man at the next table reads your face instantly.</p>
+<p class="scene-setting"><strong>মাস্টার ইদ্রিস</strong> — শহরের পুরনো ডাকঘরের সর্দার; চল্লিশ বছর ধরে হাজারো চিঠি বাছাই করেছেন, বাঁ হাতের কনুইয়ের নিচে কালির স্থায়ী ছাপ, আঙুলে সবসময় একটা পুরনো রাবার-ব্যান্ড ঘোরানো। তিনি ডাকঘরেই থাকেন যেখানে প্রতিটা চিঠির দুটো পরিচয়: নাম, আর ঠিকানা। তোমার প্রশ্ন শুনে চায়ের কাপ নামিয়ে রেখে হাসলেন: <em>বাবা, এই প্রশ্নটা আমি চল্লিশ বছর ধরে হাতে-হাতে সমাধান করছি।</em></p>
+<p class="scene-setting en">Master Idris — the old post office's head sorter; forty years of letters, an ink stain permanent under his left elbow, an old rubber band always rolling on his finger. In his post office every letter carries two identities: a name, and an address. Hearing your question he sets down his cup and smiles: this one I have been solving by hand for forty years.</p>
+<div class="dialogue">ইদ্রিস চাচা: ভেবে দেখো — আমার কাছে প্রতিদিন দুই রকম চিঠি আসে। এক রকমে ঠিকানা লেখা: এই বাড়ি, এই রাস্তা, এই শহর — চিঠি ওখানেই পৌঁছাবে। আরেক রকমে শুধু নাম-নম্বর: ISBN ধরনের — বইটা চেনা যায়, কিন্তু সে কোথায় আছে নাম-নম্বর বলে না। প্রথমটা ঠিকানা, দ্বিতীয়টা শুধু নাম। দুটোই কিন্তু এক কাজ করে — <strong>শিনায়</strong>।</div>
+<div class="dialogue en">Think — two kinds of letters reach me daily. One carries an address: this house, this street, this city — the letter will arrive there. The other carries only a name-number, ISBN-like — the book is identified, but where it lives, the number does not say. The first is an address; the second, only a name. Both do one job: they identify.</div>
+<p class="scene-setting">তোমার চোখের সামনে যেন ঝকঝক করে ওঠে পুরো ডাক-বিভাগ: শিনানোর ছাতা এক, তার নিচে দুই প্রকার — ঠিকানাওয়ালা, আর নামওয়ালা। তুমি ন্যাপকিনে ছবিটা এঁকে ফেললে।</p>
 <div class="diagram">
-<div class="diag-title">URI-র জগৎ — শিক্ষকের চিত্র</div>
+<div class="diag-title">URI-র জগৎ — ইদ্রিস চাচার ডাক-বিভাগ</div>
 <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
   <rect class="cell" x="15" y="20" width="530" height="200" rx="14"/>
   <text class="lbl" x="280" y="48" text-anchor="middle">URI — যা কিছু শিনায় (Identifier)</text>
@@ -178,7 +188,8 @@ URN  = ছাতার ভেতরের আরেক প্রকার — �
 একটা বইয়ের ISBN বইটাকে শিনায় — কিন্তু কম্পিউটারকে
 কোথায় আছে বলে না, নেটওয়ার্কে কীভাবে আনবে তাও না।
 শিনায় নাম দিয়ে, অবস্থান দিয়ে না → এটা URN-এর কাছাকাছি।</div>
-<div class="callout tip"><span class="co-icon">🛠️</span><div><strong>সফটওয়্যারে কোথায় দেখবে:</strong> API এন্ডপয়েন্ট + query parameter — পুরো স্ট্রিংটাই URI। যেমন <code>https://api.site.com/customers?active=true</code> — এটা একটা URI (আর যেহেতু অবস্থান বলে দিচ্ছে, URL-ও)। এই কারণেই দুই ডেভেলপার দুই নামে ডেকেও দুজনেই ঠিক ছিল।</div></div>
+<div class="verse">ইদ্রিস চাচা উঠতে উঠতে বললেন: <em>চল্লিশ বছরে শিখেছি — চিঠি হারায় না ঠিকানায়, হারায় পরিচয়ে। নাম ঠিক রাখো, ঠিকানা বদলাবে — চিঠি এতদিনও পৌঁছাবে।</em> আর এ তো সেই চিরন্তন সত্য: আসমানের নিচে সব বদলায়, চেনার সূত্রটা অটল থাকে। URN সেই অটল নাম — বাজারে বইটা কোন তাকে গেলো জানা নেই, কিন্তু ISBN ধরলেই সে এক।</div>
+<div class="callout tip"><span class="co-icon">🛠️</span><div><strong>সফটওয়্যারে কোথায় দেখবে:</strong> API এন্ডপয়েন্ট + query parameter — পুরো স্ট্রিংটাই URI। যেমন <code>https://api.site.com/customers?active=true</code> — এটা একটা URI (আর যেহেতু অবস্থান বলে দিচ্ছে, URL-ও)। এই কারণেই দুই ডেভেলপার দুই নামে ডেকেও দুজনেই ঠিক ছিল — ইদ্রিস চাচার ভাষায়: একজন ঠিকানা বলছিল, একজন শিনানো।</div></div>
 <div class="secret-box">🔗 URI শিনায়; URL বলে কোথায় — তাই সব URL হলো URI, সব URI URL নয়।</div>`,
   senior: {
     title: "URL vs URI — দ্রুত গাইড",
@@ -201,8 +212,12 @@ doors.push({
     a: "প্রায় ১৭ কোটি (170M) নতুন চাকরি তৈরি হতে পারে, প্রায় ৯ কোটি (92M) সরে যেতে পারে — নিট বৃদ্ধি ~৭৮ মিলিয়ন। এগুলো অনুমান, নিশ্চয়তা নয়।",
     aen: "~170M new jobs could be created, ~92M displaced — net +78M. These are projections, not guarantees."
   },
-  story: `<p class="scene-setting">রাত পোহাচ্ছে। একজন ডেভেলপার ভাবছে — AI-র যুগে আমার চাকরি কতটা নিরাপদ? কোড শিখব? AI ইঞ্জিনিয়ার হব? পাঁচ বছর পর কোন ক্যারিয়ার টিকবে? শিক্ষক ছয়টি সূত্রে উত্তর দেন।</p>
-<p class="scene-setting en">Night is breaking. A developer wonders — how safe is my job in the AI era? Should I learn to code, become an AI engineer? Which careers survive five years from now? The teacher answers in six rules.</p>
+  story: `<p class="scene-setting">রাত পোহাচ্ছে। ল্যাপটপে WEF-র রিপোর্টের ট্যাব খোলা, LinkedIn-এ ছুটছে "AI সব চাকরি খাচ্ছে" পোস্টের ভিড়। তুমি বিছানায় শুয়ে সিলিংয়ের দিকে তাকিয়ে ভাবছ — পাঁচ বছর পর কোথায় থাকবো? আমার ক্যারিয়ার কি টিকবে? ঘুম আসছে না, বুকের ভেতর ছ্যাঁত করে উঠছে। সকালে হাঁটতে বেরিয়ে গ্রামের পথে দাঁড়িয়ে রইলে এক বিবির সামনে — যিনি প্রতিদিন ভোরের আলোয় জমির খুঁটিনাটি দেখেন।</p>
+<p class="scene-setting en">Night breaking, the WEF report open in a tab, LinkedIn flooding with AI-will-eat-all-jobs posts. Lying in bed you stare at the ceiling — where will I be in five years? Will my career survive? No sleep, a sting in the chest. On the morning walk you stop before a woman who inspects her land at dawn every day.</p>
+<p class="scene-setting"><strong>বিবি শিরিন</strong> — পারিবারিক খামারের চালক; উরুর কাছে গামছা বেঁধে ক্ষেতে নামেন, হাতের তালু মাটির সাথে স্থায়ীভাবে লেগে যাওয়া কাদার দাগ, শীত-গ্রীষ্ম নির্বিশেষে ভোরের আজানের পর জমিনে। তুমি তোমার ভয় ঢাললে উনি হেসে ফেললেন: <em>ভাই, তোমার ওই ভয়টা আমার বাবারও ছিল — ট্রাক্টর এলে চাষির দিন শেষ বলে।</em></p>
+<p class="scene-setting en">Bibi Shirin — steward of the family farm; a gamchha tied at her thigh, mud stains permanently mapped on her palms, on the land after dawn prayer in every season. You pour out your fear; she laughs: your fear was my father's too — that the tractor would end the farmer's days.</p>
+<div class="dialogue">বিবি শিরিন: ট্রাক্টর এলো। হাল-বলদ গেলো, ঠিকই। কিন্তু চাষি গেলো না — চাষি হাল বদলালো। যে ট্রাক্টর চালাতে শিখলো সে-ই আজ দুই একর থেকে পঞ্চাশ একরে। আর যে হালের খামচায় জড়িয়ে রইলো? ইতিহাস। যন্ত্র কাজ বদলায়, কর্মীকে নয় — কর্মী বদলাতে না-চাইলে তবেই যন্ত্র তাকে টেকে দেয়।</div>
+<div class="dialogue en">The tractor came. The plough and oxen went — true. But the farmer did not go; the farmer changed ploughs. Whoever learned to drive farms fifty acres today from two. Whoever clutched the old plough is history. Machines change work, not workers — only a worker who refuses to change is ended by the machine.</div>
 <div class="code-block">RULE ১ — AI বদলাচ্ছে কাজ (task), কেবল চাকরি নয়
 AI/রোবট/ডিজিটাল টুল রুটিন কাজ স্বয়ংক্রিয় করছে —
 সাথে নতুন সুযোগ তৈরি করছে: AI, সফটওয়্যার, ডেটা, সাইবার সিকিউরিটি।
@@ -234,7 +249,8 @@ RULE ৬ — সবচেয়ে নিরাপদ কৌশল
 বরং এমন ক্যারিয়ার গড়া যেখানে তুমি বদলে যেতে পারো:
 টেকনোলজি শেখো + মানবিক দক্ষতা + একটা ইন্ডাস্ট্রিতে গভীরতা +
 শেখা চালিয়ে যাও।</div>
-<div class="callout info"><span class="co-icon">💡</span><div><strong>শিক্ষকের শেষ কথা:</strong> ভবিষ্যৎ সম্ভবত "মানুষ বনাম AI" নয় — <strong>কারা AI কত ভালোভাবে ব্যবহার করতে পারে, সাথে AI-র পক্ষে সহজে প্রতিস্থাপন-যোগ্য নয় এমন দক্ষতা আনতে পারে</strong> — সেই যুদ্ধ। বদলে যাওয়ার এই ক্ষমতাই সবচেয়ে দামি ক্যারিয়ার-স্কিল।</div></div>
+<div class="verse">বিবি শিরিন জমির দিকে তাকিয়ে বললেন: <em>আমরা তো বীজ বুনি, ফসলের নিশ্চয়তা দিই না — ঝড় আসবে, কীট আসবে; তবু প্রতি মৌসুমে বুনি। তাকওয়া মানে ভয় নয়, প্রস্তুতি।</em> আর কুরআনেও তাই বলা: <em>মানুষের জন্য তা-ই আছে সে যার চেষ্টা করে</em> (নাজম ৫৩:৩৯) — ফসল আল্লাহর, বুনন তোমার। ক্যারিয়ারও সেই খেত: ঝড়ের (AI-র) ভবিষ্যদ্বাণী থামানো যায় না, কিন্তু বীজ-বদল আর মাটি-জ্ঞান তোমার হাতে।</div>
+<div class="callout info"><span class="co-icon">💡</span><div><strong>বিবি শিরিনের শেষ কথা:</strong> ভবিষ্যৎ সম্ভবত \"মানুষ বনাম AI\" নয় — <strong>কারা AI কত ভালোভাবে ব্যবহার করতে পারে, সাথে AI-র পক্ষে সহজে প্রতিস্থাপন-যোগ্য নয় এমন দক্ষতা আনতে পারে</strong> — সেই যুদ্ধ। বদলে যাওয়ার এই ক্ষমতাই সবচেয়ে দামি ক্যারিয়ার-স্কিল।</div></div>
 <div class="secret-box">🧭 AI-নিরাপদ চাকরি খোঁজো না — বদল-সক্ষম ক্যারিয়ার গড়ো।</div>`,
   senior: {
     title: "২০৩০ ক্যারিয়ার নিয়ম — দ্রুত গাইড",
@@ -257,8 +273,12 @@ doors.push({
     a: "শুরুতে fundamentals + mindset (Code Complete, Pragmatic Programmer) → বাড়তে থাকলে design + refactoring (Clean Code, Refactoring) → সিনিয়র লক্ষ্যে architecture + distributed systems (DDIA)।",
     aen: "Start: fundamentals + mindset → growth: design + refactoring → senior target: architecture + distributed systems."
   },
-  story: `<p class="scene-setting">"best programming books" সার্চ করলে ৫০টা রিকমেন্ডেশন — মাথা ঘুরে যায়। শিক্ষক ১০টা বই বেছে দিয়েছেন: ডেভেলপাররা বারবার রেকমেন্ড করে, আজও প্রাসঙ্গিক, আর ক্যারিয়ারের বিভিন্ন ধাপে কাজে লাগে।</p>
-<p class="scene-setting en">Search "best programming books" and you get 50 recommendations — overwhelming. The teacher picked 10: consistently recommended, still relevant, useful at different career stages.</p>
+  story: `<p class="scene-setting">বিবি শিরিনের কথা মনে পড়ার কয়েকদিন পরেই তুমি অনলাইন বুকস্টোরে ঢুকলে "best programming books" সার্চ করতে — আর পেলে ৫০টা রিকমেন্ডেশনের জঙ্গল। কোনটা আগে? কোনটা এখন দরকার নেই? কার্টে সাতটা বই, ইনডিসিশনে রাত। পরদিন অফিসের কাছে পুরনো বইয়ের দোকানে গিয়ে দাঁড়ালে — ভেজা পুরনো কাগজের গন্ধ, উপরে-নিচে কাঠের তাক। কাউন্টারে বসা মানুষটি বইয়ের পাতা ঝেড়ে কাগজ কাটছেন।</p>
+<p class="scene-setting en">Days after Shirin's words you search best programming books — and get a jungle of fifty recommendations. Which first? Which not yet? Seven books in the cart, a night of indecision. Next day, at the old bookshop near the office — the smell of aged paper, wooden shelves floor to ceiling — a man at the counter trims a book's pages with a paper knife.</p>
+<p class="scene-setting"><strong>অধ্যাপক নাজির</strong> — অবসরপ্রাপ্ত কম্পিউটার-সায়েন্স শিক্ষক, এখন ছোট্ট দোকানে বই আর পাঠক মিলিয়ে দেন; ডান কানের ওপর চশমা চড়িয়ে, কোটের পকেটে সবসময় একটা লাল কারি কলম, আঙুলের ডগায় কাগজের খোঁচা-দাগ। তোমার কার্টের তালিকা দেখে উনি মৃদু হাসলেন: <em>সাতটা একসাথে? বাবা, বই ওজন নয় যে একসাথে বইলে মাংসপেশি হবে — বই ওষুধ, সময়মতো নির্দিষ্ট ডোজ।</em></p>
+<p class="scene-setting en">Professor Nazir — a retired computer-science teacher who now matches books to readers in a small shop; glasses pushed up over his right ear, a red fountain pen always in his coat pocket, paper-cut marks on his fingertips. Seeing your cart he smiles gently: seven at once? Books are not weights that become muscle when carried together — books are medicine, timed and specific in dose.</p>
+<div class="dialogue">অধ্যাপক নাজির: আমি ত্রিশ বছর পড়িয়েছি, বিশ বছর বই বেচছি — একই ভুল দেখেছি সবার: সবাই তাকের সবচেয়ে ভারী বইটা প্রথমে তোলে। ভারী বই তোলা কসরত নয়, বাবা — সময়মতো না-পড়া ভারী বই মানুষকে পড়াই ছাড়িয়ে দেয়। আমি তোমাকে তাক দেখাবো, ক্রম তুমি বেছো।</div>
+<div class="dialogue en">Thirty years teaching, twenty selling books — the same mistake everywhere: everyone lifts the heaviest book first. Lifting heavy books is not exercise; a heavy book read at the wrong time makes people quit reading. I will show you the shelf; you choose the order.</div>
 <div class="code-block">১০ → ৬ (foundations ও design):
 ১০. Code Complete — Steve McConnell
     সফটওয়্যার কনস্ট্রাকশন: debugging, organization, naming —
@@ -285,7 +305,8 @@ doors.push({
  ১. Designing Data-Intensive Applications — Martin Kleppmann
     আধুনিক ইঞ্জিনিয়ারিং-এর সবচেয়ে গুরুত্বপূর্ণ বইগুলোর একটা:
     স্কেল, ফেইলিওর, কম্পোনেন্ট-ইন্টারঅ্যাকশন — সিস্টেমের ভেতরটা।</div>
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>শিক্ষকের সতর্কতা:</strong> সবগুলো একসাথে পড়তে গিয়ে ডুবে যেও না। <strong>যেখানে আছো সেখান থেকে বেছে নাও</strong> — শুরু? fundamentals + mindset। বাড়ছো? design + refactoring। সিনিয়র লক্ষ্যে? architecture + distributed systems।</div></div>
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>অধ্যাপক নাজিরের সতর্কতা:</strong> সবগুলো একসাথে পড়তে গিয়ে ডুবে যেও না। <strong>যেখানে আছো সেখান থেকে বেছে নাও</strong> — শুরু? fundamentals + mindset। বাড়ছো? design + refactoring। সিনিয়র লক্ষ্যে? architecture + distributed systems।</div></div>
+<div class="verse">অধ্যাপক নাজির মুড়ি দিতে দিতে বললেন: <em>আমার দোকানে হাজার বই, কিন্তু প্রতিটা পাঠকের জন্য ঠিক একটাই আছে আজকের জন্য।</em> আর এ তো সাহাবাদের সোহবতেরই নিয়ম — আল্লাহর রাসূল (সা.) প্রত্যেক সাথীকে তার অবস্থা বুঝে দাওয়া করতেন, সবাইকে এক পাঠ্য নয়। বই-ও সোহবত: লেখক তোমার সাথে বসে আছেন — শুধু ক্রমটা তোমার নিজের হালে নাও।</div>
 <div class="secret-box">📚 বই বদলায় না কী পড়ছো — বদলায় কীভাবে ভাবছো; ভাবনা বদলালে প্রোগ্রামিংয়ের বাকি সব পরিষ্কার হয়।</div>`,
   senior: {
     title: "১০ বই — স্টেজ-ভিত্তিক মানচিত্র",

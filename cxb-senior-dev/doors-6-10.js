@@ -16,8 +16,12 @@ doors.push({
     a: "শুধু effort যথেষ্ট নয় — বেড়ে উঠতে লাগে direction (দিকনির্দেশ), feedback (প্রতিক্রিয়া), আর reflection (প্রতিফলন)।",
     aen: "Effort alone is not enough — growth needs direction, feedback, and reflection."
   },
-  story: `<p class="scene-setting">ছয় মিনিটে এগারো বছর। শিক্ষক জিজ্ঞেস করেন — তুমি এই ইন্ডাস্ট্রিতে বছরের পর বছর থাকবে, তাহলে আসল কথাগুলো কী? যেগুলো কেউ যথেষ্ট বলে না।</p>
-<p class="scene-setting en">Eleven years in six minutes. The teacher asks — you will stay in this industry for years; what are the real truths? The ones nobody says enough.</p>
+  story: `<p class="scene-setting">পাঁচ দরজা পেরোনোর পথে তুমি এখন কোম্পানির বিশ্বস্ত নাম — কিন্তু আজকের রাতে নিজের সামনেই স্বীকার করছ: দুই বছর ধরে প্রতিদিন ঘণ্টার কোডিং, তবু কোথায় যেন আটকে আছো। প্রমোশন আসছে না, নতুন শেখায় আগ্রহ কমছে, বিছানায় শুয়ে ফোন ঘুরছে — কাল আবার সেই একই টিকিট। এই অচল রাতে ছাদে উঠলে — আর সেখানে জানালার কাছে ধূপ না, এক টুকরো আলোর নিচে চায়ে ভেজা চোখে বসা মানুষটা তোমাকে চিনলেন।</p>
+<p class="scene-setting en">Five doors deep, you are the company's trusted name — yet tonight you admit it to yourself: two years of daily coding hours and something has stalled. No promotion coming, curiosity thinning, the phone scrolling in bed — tomorrow the same tickets. On this stalled night you climb to the rooftop — where a man sits wet-eyed over tea in a sliver of light, and recognizes you.</p>
+<p class="scene-setting"><strong>দার্শনিক তানজিল</strong> — কোম্পানির সবচেয়ে পুরনো ইঞ্জিনিয়ার, এগারো বছরের বিস্তার; চুলের দুই পাশে পাকা দাগ, আঙুলে কফির স্থায়ী হলুদে দাগ, ডেস্কে সবসময় একটা আধ-পড়া বই উল্টো করে রাখা। লোকে বলে তানজিল ভাই কোড কম লেখেন, কিন্তু উনি যে মিটিংয়ে ঢোকেন, সেই মিটিং ঘণ্টার কাজ দশ মিনিটে শেষ হয়। তোমার অচল-অবস্থার কথা শুনে উনি চায়ের কাপে চুমুক দিয়ে বললেন: <em>তুমি ব্যস্ত, কিন্তু ব্যস্ততা আর গতি এক নয়। বলো তো — কাল কী শিখলে? না, আজকের কাজ না — কাল শিখলে কী?</em></p>
+<p class="scene-setting en">Tanjil the philosopher — the company's oldest engineer, eleven years in; grey streaks on both sides, coffee's permanent yellow on his fingers, a half-read book always face-down on his desk. People say Tanjil writes less code — but meetings he enters end in ten minutes what took an hour. Hearing your stall, he sips and asks: you are busy — but busy and moving are not the same. Tell me: what did you LEARN yesterday? Not the work — the learning.</p>
+<div class="dialogue">তানজিল ভাই: তুমি যা বললে — ঘণ্টার কোডিং করেও না-এগোনো — এর নাম আমি দিই "প্যাডেল-মারা নৌকা": প্যাডেল ঘুরছে, ফেনা উঠছে, নৌকা এক জায়ায়। কারণ তিনটা জিনিসের একটাও নেই: দিক, প্রতিক্রিয়া, প্রতিফলন। শুধু পরিশ্রম — যতটা ইচ্ছে ঘোরাও প্যাডেল।</div>
+<div class="dialogue en">What you describe — hours of coding, no movement — I call the pedal-boat: pedals spinning, foam rising, boat parked. Because one of three things is missing: direction, feedback, reflection. Effort alone — spin the pedal as long as you like.</div>
 <div class="code-block">পাঠ ১ — অচল অবস্থায়ও ডেলিভার করা
 অনির্দিষ্ট চাহিদা, টাইট ডেডলাইন — অভিজ্ঞরা তবু পথ বানায়।
 
@@ -54,7 +58,8 @@ communication টেকনিক্যাল স্কিলের সমান 
 পাঠ ৯ — সব ন্যায্য হবে না
 অন্যে স্বীকৃতি পাবে, তুমি ভালো করেও প্রত্যাখ্যাত হবে।
 যা নিয়ন্ত্রণে নেই তাতে আটকে থাকবে না।</div>
-<div class="callout tip"><span class="co-icon">🎓</span><div><strong>শিক্ষকের উপসংহার:</strong> ডেভেলপার হওয়া মানে সব জানা নয়, নিখুঁত কোড নয়, প্রতিটা ট্রেন্ড তাড়া করা নয় — <strong>কোনটা গুরুত্বপূর্ণ তা বোঝা, প্রস্তুত মনে হওয়ার আগেই শুরু করা, ধারাবাহিক বিল্ড করা, আসল সমস্যা সমাধান করা।</strong> বেশিরভাগ মানুষ ব্যর্থ হয় বুদ্ধি কম থাকায় নয় — overthink, দেরি, বা খুব আগে হাল ছাড়ায়।</div></div>
+<div class="callout tip"><span class="co-icon">🎓</span><div><strong>তানজিল ভাইয়ের উপসংহার:</strong> ডেভেলপার হওয়া মানে সব জানা নয়, নিখুঁত কোড নয়, প্রতিটা ট্রেন্ড তাড়া করা নয় — <strong>কোনটা গুরুত্বপূর্ণ তা বোঝা, প্রস্তুত মনে হওয়ার আগেই শুরু করা, ধারাবাহিক বিল্ড করা, আসল সমস্যা সমাধান করা।</strong> বেশিরভাগ মানুষ ব্যর্থ হয় বুদ্ধি কম থাকায় নয় — overthink, দেরি, বা খুব আগে হাল ছাড়ায়।</div></div>
+<div class="verse">তানজিল ভাই রাত শেষে বললেন: <em>এগারো বছরে আমি যা পেয়েছি তার সবচেয়ে বড়টা সবর — গাছ রোজ এক হাত বাড়ে, কেউ দেখে না; কুয়াশার পর ফল দেখে সবাই।</em> আর কুরআনে জোর দিয়ে বলা হয়েছে: <em>ধৈর্যশীলদের সাথে আল্লাহ আছেন</em> (বাকারা ২:১৫৩) — সবর অপেক্ষা নয়, অপেক্ষার মধ্যে কাজ: ফ্রেমে ফ্রেমে হাঁটা, প্রতিদিন সামান্য গতিতে দিক-ঠিক রেখে। ক্যারিয়ার সেই দীর্ঘ সফর — তার ব্যবস্থাপনাই এগারো বছরের পাঠ।</div>
 <div class="secret-box">⏳ ব্যস্ততা নয়, দিক+প্রতিক্রিয়া+প্রতিফলন — এই তিন সঙ্গীতে পরিশ্রম সার্থক।</div>`,
   senior: {
     title: "১০+ বছরের সংক্ষিপ্ত পাঠ — দ্রুত গাইড",
@@ -77,8 +82,11 @@ doors.push({
     a: "bare except সবকিছু ধরে — KeyboardInterrupt, SystemExit-ও চাপা পড়ে, production-এ bug লুকায়। পরিবর্তে যে exception আশা করো ঠিক সেটাই ধরো (যেমন KeyError) এবং try block যত ছোট সম্ভব রাখো।",
     aen: "Bare except catches everything — even KeyboardInterrupt/SystemExit — hiding bugs in production. Catch the specific exception you expect (e.g. KeyError) and keep the try block small."
   },
-  story: `<p class="scene-setting">তুমি Python ভালোই জানো — তবু খারাপ Python লিখছো। টেস্ট পাস, কোড চলে — কিন্তু পরের ডেভেলপারের জন্য বোঝা কঠিন, বদলানো কঠিন। শিক্ষক বলেন — ভালো Python ডেভেলপার হওয়া আরও syntax জানা নয়; এমন কোড লেখা যা পড়তে সহজ, ডিবাগ করতে সহজ, রক্ষণাবেক্ষণ করতে সহজ।</p>
-<p class="scene-setting en">You know Python well — yet write bad Python. Tests pass, code runs — but the next developer struggles. The teacher says — better Python is not more syntax; it is code that is easy to read, debug, and maintain.</p>
+  story: `<p class="scene-setting">তানজিল ভাইয়ের ছাদ-রাতের কয়েক মাস পর। তুমি তখন ইন্টারভিউ-মর্মার মধ্যে — সব রাউন্ড পেরিয়ে শেষ পর্যন্ত ক্যাম্পাসের সামনের চায়ের দোকানে বসে ফিডব্যাক-ইমেইলের অপেক্ষায়: আর সেখানেই পাশের টেবিলে খাতায় সাবধানে নোট নেওয়া এক মহিলা। তুমি কাঁপা গলায় প্রশ্ন করলে — আপা, আপনি কি ইন্টারভিউ নেন? উনি হেসে মাথা নাড়লেন। <strong>ফারহানা ম্যাডাম</strong> — দশ বছরের ইন্টারভিউয়ার; ডান হাতের কবজিতে কলমের কালির স্থায়ী দাগ, খাতার কোণা সবসময় ভাঁজ করা, চোখে সরু ফ্রেমের চশমা। শত শত জুনিয়রের ভুল দেখেছেন — কারণ নিজেও প্রতিটা ভুল নিজে করেছিলেন।</p>
+<p class="scene-setting en">Months after Tanjil's rooftop night, mid-interview-storm — all rounds passed, waiting on the feedback email at the tea shop in front of campus. At the next table a woman takes careful notes on paper. You ask: do you take interviews? She smiles and nods. Farhana — ten years an interviewer; permanent ink marks on her right wrist, always folded page-corners, narrow glasses. She has watched hundreds of juniors' mistakes — because she made each one herself.</p>
+<p class="scene-setting">তোমার ইনবক্সের গল্প শুনে উনি খাতা বন্ধ করে বললেন: <em>তুমি অস্বীকারপত্র গুনছ, আমি প্যাটার্ন গুনছি। দেখি তোমার তিনটা রিজেকশনে এক প্যাটার্ন আছে কিনা।</em> তুমি তিনটা টেক-অ্যাসাইনমেন্টের কোড দেখালে — টেস্ট পাস, আউটপুট ঠিক। উনি মিনিট দুয়েক পড়ে চোখ তুললেন: <em>প্যাটার্ন পেয়েছি। তোমার কোড চলে — কিন্তু পড়া যায় না।</em></p>
+<div class="dialogue">ফারহানা ম্যাডাম: আমি দশ বছরে শত শত অ্যাসাইনমেন্ট পড়েছি — বাদ পড়ে যারা, তাদের বেশিরভাগের কোড চলতো, ভুল উত্তর দিতো না। ফেলে দেওয়া হয় অন্য কারণে: পরের ডেভেলপারের জন্য বোঝা কঠিন, বদলানো কঠিন। ভালো Python ডেভেলপার হওয়া আরও syntax জানা নয় — এমন কোড লেখা যা পড়তে সহজ, ডিবাগ করতে সহজ, রক্ষণাবেক্ষণ করতে সহজ। সিনিয়রদের সাত আইন আছে — খাতা খোলো।</div>
+<div class="dialogue en">Ten years, hundreds of assignments — most who failed had working code, correct outputs. They failed for another reason: hard for the next developer to read, hard to change. Better Python is not more syntax — it is code easy to read, debug, maintain. Seven laws; open the notebook.</div>
 <div class="code-block">আইন ১ — যে এরর বোঝো না, ধরো না
 ❌ bare except — সবকিছু চাপা দেয়, bug production-এ লুকায়
 ✅ try:
@@ -117,8 +125,9 @@ dependency স্পষ্ট করো; standard / third-party / local —
 বাসি মন্তব্য (কোড বদলায়, মন্তব্য বদলায় না)
 কোডকে আরও কঠিন করে ফেলে।</div>
 <div class="callout tip"><span class="co-icon">🔑</span><div><strong>সাত আইনের এক সূত্র:</strong> যা এরর বোঝো তাই ধরো · বিল্ট-ইন প্যাটার্ন নাও · intent স্পষ্ট করো · নামে অর্থ থাকুক · প্রতিটার স্পষ্ট দায়িত্ব · dependency দৃশ্যমান · মন্তব্যে 'কেন'। <strong>PEP 8 মুখস্থ করায় নয় — নিয়মের কারণ বুঝলে</strong> ভালো Python ডেভেলপার হওয়া যায়।</div></div>
-<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>শিক্ষকের পরীক্ষা:</strong> ৬ মাস পরে যখন পরের ডেভেলপার তোমার কোড খোলে — তোমাকে পাশে বসিয়ে ব্যাখ্যা করাতে হয় না। ক্লিন কোড সুন্দর দেখানো নয় — <strong>বোঝার জন্য দরকারি চিন্তার পরিমাণ কমানো।</strong></div></div>
-<div class="secret-box">🐍 ভালো Python মানে PEP 8 মুখস্থ নয় — ৬ মাস পরের পাঠককে ভাবতে না দেওয়া।</div>`,
+<div class="callout warn"><span class="co-icon">⚠️</span><div><strong>ফারহানা ম্যাডামের পরীক্ষা:</strong> ৬ মাস পরে যখন পরের ডেভেলপার তোমার কোড খোলে — তোমাকে পাশে বসিয়ে ব্যাখ্যা করাতে হয় না। ক্লিন কোড সুন্দর দেখানো নয় — <strong>বোঝার জন্য দরকারি চিন্তার পরিমাণ কমানো।</strong></div></div>
+<div class="verse">ফারহানা ম্যাডাম খাতার ভাঁজ-করা কোণাটা সোজা করে বললেন: <em>তোমার তিন রিজেকশনে যে-প্যাটার্ন — কোড চলে, পড়া যায় না — এর ওষুধ একটাই: কোড লেখার আগে পাঠককে ভাবো, লেখার পরে নিজে অন্যের হয়ে পড়ো।</em> আর এ তো সেই সুন্নাহর নীতি — তার জন্যই বলা হয়েছে, যে বিশ্বাস করে আর সৎকাজ করে... প্রত্যেকে নিজের প্রতিফলন দেখবে। কোডও ইবাদতের মতো: নিজের চোখে নয়, পরের পাঠকের চোখে যাকে বিচার করতে হয়।</div>
+<div class="secret-box">🐍 ভালো Python মানে PEP 8 মুখস্ত নয় — ৬ মাস পরের পাঠককে ভাবতে না দেওয়া।</div>`,
   senior: {
     title: "৭ Python আইন — দ্রুত গাইড",
     body: "<p>১. Specific exception, ছোট try block। ২. Built-in patterns (startswith, enumerate, any, dict.get)। ৩. অর্থবহ নাম (calculate_order_total)। ৪. এক ফাংশন = এক দায়িত্ব; উঁচুটা গল্প বলে, নিচুরা কাজ করে। ৫. স্পষ্ট import, grouping (stdlib/3rd-party/local)। ৬. মন্তব্যে WHY, WHAT নয়; stale মন্তব্য মুছে ফেলো। <strong>মূলকথা:</strong> চিন্তা-হ্রাসই ক্লিন কোডের মাপ।</p>"
@@ -140,10 +149,14 @@ doors.push({
     a: "Compile time = চালানোর আগে কম্পাইলার কোড পরীক্ষা করে ভুল ধরে (বন্ধু, তাড়াতাড়ি ধরে)। Run time = প্রোগ্রাম প্রকৃত চলার সময় — এখনকার ভুলগুলো জিনিস ভেঙে ফেলতে পারে।",
     aen: "Compile time = compiler checks code before running (your friend, catches mistakes early). Runtime = the program actually running — errors here can break real things."
   },
-  story: `<p class="scene-setting">বিগিনারদের সবচেয়ে বড় বিভ্রান্তি: C# আর .NET একই জিনিস? না — ভিন্ন। C# হলো ভাষা। .NET হলো প্ল্যাটফর্ম, যেটা ভাষাটাকে কার্যকর করে। শিক্ষক স্ক্রিনে এক লাইন কোড দেখান — ভাবো, এই এক লাইনের নিচে কী চলছে: তুমি console নিজে হাতে ওয়্যার করো নাই, ডিসপ্লেতে বাইট পাঠাই নাই, OS-এর সাথে সরাসরি কথা বলো নাই — .NET সব সামলেছে।</p>
-<p class="scene-setting en">The biggest beginner confusion: are C# and .NET the same? No — different. C# is the language. .NET is the platform that makes it useful. The teacher shows one line of code — think about what is happening behind it: you did not wire the console, send bytes to the display, or talk to the OS directly — .NET handled all of it.</p>
+  story: `<p class="scene-setting">ফারহানা ম্যাডামের সাত আইন হাতে নিয়ে তুমি নতুন চাকরিতে ঢুকলে — প্রথম সপ্তাহেই মেইল: টিমের পুরনো প্রজেক্ট C#/.NET-এ লেখা, আগামী সপ্তাহে তোমার ওপর দুইটা মডিউল। তুমি এক রাতে ওপেন করে দেখলে — C# আর .NET শব্দদুটো পাশাপাশি ঘুরছে, কোনটা কী? কে কাকে চালায়? ক্লোন করে রাত দুপুরে বসে আছো। পরদিন সকালে অফিসের পেছনের গ্যারেজ-ল্যাবে — মোবাইল-ফোন খোলা এক মানুষ, হাতে রোগানো ইলেকট্রিক-পাম্প, কানে সবসময় একটা ছোট টর্চলাইট ঝুলছে।</p>
+<p class="scene-setting en">With Farhana's seven laws you join the new job — week one, an email: the legacy project is C#/.NET, two modules land on you next week. You open it at midnight — C# and .NET orbiting each other: which is what? Who drives whom? Next morning at the garage-lab behind the office — a man with an open mobile phone, a soldering pump in hand, a small torchlight always hanging from his ear.</p>
+<p class="scene-setting"><strong>মেকানিক সজীব</strong> — অফিস-বিল্ডিংয়ের পেছনের ছোট্ট গ্যারেজের মালিক; দিনে গাড়ি সারান, সন্ধ্যায় বসে বসে অ্যান্ড্রয়েড ফোন খোলেন; আঙুলের ডগায় স্থায়ী গ্রিসের কালো দাগ, কানে ঝোলানো টর্চলাইট। তোমার প্রশ্ন শুনে হাসলেন: <em>বাবা, এই প্রশ্নটা আমি রোজ শুনি — স্কুটার আর রাস্তা কি এক?</em></p>
+<p class="scene-setting en">Sajib the mechanic — owner of the little garage behind the office; cars by day, Android phones by evening; permanent black grease on his fingertips, a torchlight hanging from his ear. Your question makes him laugh: I hear this one every day — are the scooter and the road one thing?</p>
+<div class="dialogue">সজীব ভাই: ভাষা হলো বাহন — C# তোমার স্কুটার। প্ল্যাটফর্ম হলো রাস্তা — .NET। স্কুটার ছাড়া রাস্তা চলে না, রাস্তা ছাড়া স্কুটার। তুমি ফোনে একটা অ্যাপ খোলো — এই একটা কাজের নিচে গোটা এক শহর কাজ করছে: তুমি স্ক্রিন নিজে হাতে ওয়্যার করো নাই, OS-কে সরাসরি বলো নাই — রাস্তাটা সব সামলেছে।</div>
+<div class="dialogue en">The language is the vehicle — C#, your scooter. The platform is the road — .NET. I hear it daily: are scooter and road one? You open an app — under that one tap an entire city works: you did not wire the screen or talk to the OS — the road handled it all.</div>
 <div class="diagram">
-<div class="diag-title">তোমার কোড থেকে মেশিন পর্যন্ত — শিক্ষকের মডেল</div>
+<div class="diag-title">তোমার কোড থেকে মেশিন পর্যন্ত — সজীব ভাইয়ের ওয়ার্কশপ</div>
 <svg viewBox="0 0 560 190" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <marker id="arrowFire" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L0,10 L10,5 z" fill="#f97316"/></marker>
@@ -216,9 +229,11 @@ doors.push({
     a: "তুমি কোড লেখো → compiler/interpreter মানুষ-বান্ধব কোড অনুবাদ করে → অ্যাপ OS-এর সাথে কথা বলে → OS হার্ডওয়্যার চালায় → ফল ফিরে আসে। কম্পিউটার শুধু 0/1 বোঝে।",
     aen: "You write code → compiler/interpreter translates it → the app talks to the OS → the OS drives hardware → the result returns. Computers only understand 0s and 1s."
   },
-  story: `<p class="scene-setting">বেশিরভাগ মানুষ প্রোগ্রামিং শেখে syntax মুখস্থ করে — ভেরিয়েবল, ফাংশন, লুপ — আর আশা করে একদিন ঠিক হয়ে যাবে। কিন্তু সত্যি: বিগিনাররা কখনোই বোঝে না কোড লিখলে পর্দার আড়ালে কী ঘটে। কীভাবে টাইপ করা জানে, কিন্তু কম্পিউটার সেটার সাথে কী করছে — কোনো ধারণা নেই। এজন্যই কোডিং অনেকের কাছে এলোমেলো জাদুর মতো লাগে।</p>
-<p class="scene-setting en">Most people learn programming by memorizing syntax — variables, functions, loops — hoping it clicks someday. Truth: beginners never understand what happens when they write code. They know how to type it, but not what the computer does with it. That is why coding feels like random magic.</p>
-<div class="callout warn"><span class="co-icon">🚫</span><div><strong>সবচেয়ে বড় ভুল ধারণা:</strong> তুমি Python/JavaScript/Java লিখলে কম্পিউটার <strong>সরাসরি বোঝে না</strong>। কম্পিউটার বোঝে শুধু মেশিন কোড — শূন্য আর এক, বিদ্যুৎ চলছে না চলছে না। একমাত্র ভাষা হার্ডওয়্যার বোঝে।</div></div>
+  story: `<p class="scene-setting">নতুন কাজের তৃতীয় মাস। বস তোমাকে একটা অদ্ভুত কাজ দিলেন — পুরনো এক ক্লায়েন্টের স্ক্রিপ্ট ভেঙে গেছে, কেউ বুঝতে পারছে না কেন; ওটা "magic" বলে পরিচিত, যে লিখেছিল সে কোম্পানি ছেড়েছে। তুমি স্ক্রিনে চেয়ে আছো — কোড ঠিকই, সেম-কমান্ড চালালে ফল আলাদা। রাত গড়িয়ে যায়, সকালে কম্পিউটার-ল্যাবের সামনে দাঁড়াও — আর ভেতরে ঢুকে দেখো, সার্ভার-র‍্যাকের পাশে নিচু টেবিলে বসে মানুষটা হেডফোন খুলে তোমার দিকে তাকালেন।</p>
+<p class="scene-setting en">Month three at the new job. The boss hands you an odd one — an old client script is broken, nobody knows why; it is known as "magic," its author long gone. You stare — code unchanged, same command, different result. Night passes; at dawn you walk into the computer lab — by the server rack, at a low table, a man pulls off his headphones and looks up.</p>
+<p class="scene-setting"><strong>অনুবাদক রুমকি ভাবি</strong> — এক সময়ের বিখ্যাত localizers-দের শেষ প্রহরা; বড় কোম্পানিগুলোর সফটওয়্যার বাংলা করতেন, এখন ল্যাবে কম্পিউটার মেরামত করেন; কানের পেছনে সবসময় একটা পেন্সিল, বাঁ হাতের কড়ে আঙুলে স্থায়ী কালি-কালো দাগ, টেবিলে সবসময় তিনটা খাতা — একটা বাংলায়, একটা ইংরেজিতে, একটা শুধু শব্দ-তালিকা। তোমার ভাঙা স্ক্রিপ্টের গল্প শুনে পেন্সিলটা কানের পেছনে গুঁজে বললেন: <em>বাবা, তোমার স্ক্রিপ্ট ভাঙেনি — তোমার অনুবাদ ভেঙেছে। আমি তোমাকে সেই দিনের কথা বলি, যেদিন আমি বুঝলাম কম্পিউটার কারা।</em></p>
+<p class="scene-setting en">Rumki Bhavi the translator — last of the famed localizers; the big companies' software into Bangla once, now computers repaired in the lab; a pencil always behind an ear, permanent ink-black on his left ring finger, always three notebooks on the table — one Bangla, one English, one only word-lists. Hearing your broken script he tucks the pencil back: your script did not break — your translation did. Let me tell you of the day I understood who computers are.</p>
+<div class="callout warn"><span class="co-icon">🚫</span><div><strong>রুমকি ভাবির প্রথম সতর্কতা:</strong> তুমি Python/JavaScript/Java লিখলে কম্পিউটার <strong>সরাসরি বোঝে না</strong>। কম্পিউটার বোঝে শুধু মেশিন কোড — শূন্য আর এক, বিদ্যুৎ চলছে না চলছে না। একমাত্র ভাষা হার্ডওয়্যার বোঝে।</div></div>
 <div class="code-block">আসল ফ্লো (মুখস্থ কোরো না — দেখো):
 ১. তুমি কোড লেখো (print hello world)
 ২. compiler / interpreter অনুবাদ করে —
@@ -235,6 +250,7 @@ INPUT → PROCESSING → OUTPUT
 লগইন = output।</div>
 <div class="callout info"><span class="co-icon">🌐</span><div><strong>ভাষা এতগুলো কেন?</strong> বিভিন্ন কাজের জন্য বিভিন্ন টুল: HTML ওয়েবসাইটের কাঠামো, CSS সাজায়, JavaScript ইন্টার‌্যাকশন দেয়, Python ব্যাকএন্ড/AI/অটোমেশনে জনপ্রিয়, C# গেম ও অ্যাপে। কিন্তু সবার নিচে একই ঘটনা — <strong>সবাই শেষে মেশিন-নির্দেশে অনুবাদিত হয়।</strong></div></div>
 <div class="callout tip"><span class="co-icon">🧠</span><div><strong>শেষ মাইন্ডসেট-শিফট (সবচেয়ে দামি):</strong> কম্পিউটার বুদ্ধিমান নয় — <strong>অতি দ্রুত, কিন্তু হুবহু আক্ষরিক।</strong> তুমি যা বলবে ঠিক তাই করবে — বেশি নয়, কম নয়। আউটপুট ভুল মানে নির্দেশ ভুল ছিল — কম্পিউটার ব্যর্থ হয়নি, সে তোমার নির্দেশ নিখুঁতভাবে পালন করেছে। এটা বুঝলে syntax অন্ধভাবে মুখস্থ করা বন্ধ হয় — <strong>ইঞ্জিনিয়ারের মতো ভাবা শুরু হয়।</strong></div></div>
+<div class="verse">রুমকি ভাবি তিন খাতা জড়ো করতে করতে বললেন: <em>ত্রিশ বছর অনুবাদ করে শিখেছি — অনুবাদকের সবচেয়ে বড় গুণ বাকপটুতা নয়, আন্তরিকতা: উৎসটাকে হুবহু বলে দেওয়া, নিজের যোগ না করে।</em> আর এ তো সেই আয়াতেরই স্বাদ — <em>আমরা কিতাব পাঠাই সত্য সহকারে, যেন মানুষ তাতে ন্যায় স্থাপন করে</em> — অনুবাদ যখন সত্যের সাথে করো, ফল বিশ্বস্ত; নিজের বুদ্ধি মেশালে ফল "magic" হয়ে যায়। কোডও তাই: হুবহু নির্দেশ, হুবহু পালন।</div>
 <div class="secret-box">🌱 কম্পিউটার জাদু করে না — সে শুনে; ভুল আউটপুট মানে ভুল নির্দেশ, ভুল কম্পিউটার নয়।</div>`,
   senior: {
     title: "কোডিং আসলে কী — দ্রুত গাইড",
@@ -257,8 +273,10 @@ doors.push({
     a: "চার স্তর: ভেরিয়েবল সমস্যা → scope/hoisting; ফাংশন সমস্যা → this/closure; অবজেক্ট সমস্যা → prototype chain; ক্রম-গোলমাল → async। এলোমেলো debug নয়, স্তর-ধরে ভাবা।",
     aen: "Four layers: variable issues → scope/hoisting; function issues → this/closures; object behavior → prototype chain; out-of-order → async timing."
   },
-  story: `<p class="scene-setting">শেষ দরজা। বারোটা তালা পেরিয়ে এসেছ — এখন JavaScript-এর দশটা ধারণা, আর তার নিচে লুকানো সেই একটা সূত্র যা পুরো যাত্রাকে যোগ করে। শিক্ষক বলেন — বেশিরভাগ JS ডেভেলপার ভাবে সে বোঝে, যতক্ষণ না production-এ কিছু ভাঙে: ভেরিয়েবল অদ্ভুত আচরণ করে, async কোড এলোমেলো চলে। সমস্যা কোডিং স্কিলে নয় — ভেতরটা না বোঝায়।</p>
-<p class="scene-setting en">The final door. Ten JavaScript concepts — and beneath them, the one principle that ties the whole journey together. The teacher says — most JS developers think they understand, until something breaks in production: variables behave weirdly, async runs out of order. The problem is not skill — it is never understanding the internals.</p>
+  story: `<p class="scene-setting">শেষ দরজা। তুমি এখন প্রমোশন-পাওয়া সিনিয়র — আর আজ কোম্পানির ছাদে তোমার নিজের ডাকা এক সমাবেশ: কামরুল ভাই (চায়ের দাগে ছাপানো মগ), রুকসানা ম্যাডাম (শাড়ির আঁচলে কলম), ইদ্রিস চাচা (আঙুলে রাবার-ব্যান্ড), ফারহানা ম্যাডাম (কবজির কালি-দাগ), সজীব ভাই (আঙুলের গ্রিস), রুমকি ভাবি (কানের পেন্সিল) — সবাই এক টেবিলে, মাঝখানে একটা খালি চেয়ার। কেউ জিজ্ঞেস করেনি কার; সবাই জানে কার।</p>
+<p class="scene-setting en">The final door. You are the promoted senior now — and on the office rooftop, your own convened gathering: Kamrul (tea-stained mug), Ruksana (pen in her anchal), Idris chacha (rubber band on his finger), Farhana (ink on her wrist), Sajib (grease on his fingers), Rumki bhavi (pencil behind ear) — one table, and in the middle one empty chair. Nobody asked whose; everybody knows whose.</p>
+<p class="scene-setting">তুমি দাঁড়িয়ে বললে — এই প্রথম মাস হলো আমার সিনিয়র হিসেবে, এবং আমার হাতে এখন একটা পুরনো JavaScript কোডবেস — production-এ যেটা রোজ ভাঙে না, কিন্তু ভাঙলে রাত কাটে না। ভেরিয়েবল অদ্ভুত আচরণ করে, async এলোমেলো চলে। কামরুল ভাই চায়ে চুমুক দিয়ে হাসলেন: <em>শুনেছি, তোমার টিমে একটা খালি চেয়ার আছে। আজ থেকে সেটা পূরণ করবে যে নিজে ছিল না — তুমি, নতুন মাস্টার। কিন্তু আগে শেষ পাঠ।</em></p>
+<p class="scene-setting en">You stand: this is my first month as senior, and in my hands an old JavaScript codebase — it does not break daily in production, but when it does, nights vanish. Variables behave oddly, async runs out of order. Kamrul sips and smiles: I hear your team has an empty chair. From today it is filled by someone who was not there — you, the new master. But first, the final lesson.</p>
 <div class="code-block">১. FUNCTIONS — input → logic → output। add(2,3)=5।
    সব আসল সিস্টেম এমনই ফাংশনের মেলবন্ধন।
 ২. VARIABLES — const পুনঃ-assigned হয় না (error),
@@ -279,7 +297,7 @@ doors.push({
 ১০. ASYNC — অপেক্ষা করে না: start → end →
     (১ সেকেন্ড পরে) hello। JS execution block করে না।</div>
 <div class="diagram">
-<div class="diag-title">দশ ধারণার চার স্তর — শিক্ষকের সংশ্লেষণ</div>
+<div class="diag-title">দশ ধারণার চার স্তর — সমাবেশের সংশ্লেষণ</div>
 <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
   <rect class="cell" x="15" y="15" width="530" height="44" rx="9"/>
   <text class="lbl" x="280" y="42" text-anchor="middle">ভেরিয়েবল অদ্ভুত? → SCOPE + HOISTING (৫, ৬)</text>
@@ -292,7 +310,8 @@ doors.push({
 </svg>
 <div class="diag-cap">ভাঙলে এলোমেলো debug নয় — স্তর জিজ্ঞেস করো: scope? this? prototype? async?</div>
 </div>
-<div class="callout tip"><span class="co-icon">🏆</span><div><strong>দশ দরজার এক চাবি (সিরিজের মূলনীতি):</strong> দরজা ১-এ শিক্ষক বলেছিলেন — সিনিয়ররা জটিলতা <strong>সরায়</strong>। দরজা ৭-এ Python-এর আইন: চিন্তা-হ্রাস। দরজা ৮-এ .NET-এর মডেল: পর্দার আড়ালটা বোঝা। দরজা ৯-এ: কম্পিউটার আক্ষরিক। আর আজ: <strong>স্তর ধরে ভাবা।</strong> সব দরজার নিচে এক সত্য — <strong>সিনিয়রিটি মানে আরও জানা নয়; কম ভেবে বেশি বোঝা।</strong> Syntax লেখক আর ইঞ্জিনিয়ারের পার্থক্য এখানেই।</div></div>
+<div class="callout tip"><span class="co-icon">🏆</span><div><strong>দশ দরজার এক চাবি (সমাবেশের মূলনীতি):</strong> দরজা ১-এ কামরুল ভাই বলেছিলেন — সিনিয়ররা জটিলতা <strong>সরায়</strong>। দরজা ৭-এ ফারহানা ম্যাডামের Python-আইন: চিন্তা-হ্রাস। দরজা ৮-এ সজীব ভাইয়ের .NET-মডেল: পর্দার আড়ালটা বোঝা। দরজা ৯-এ রুমকি ভাবি: কম্পিউটার আক্ষরিক। আর আজ: <strong>স্তর ধরে ভাবা।</strong> সব দরজার নিচে এক সত্য — <strong>সিনিয়রিটি মানে আরও জানা নয়; কম ভেবে বেশি বোঝা।</strong> Syntax লেখক আর ইঞ্জিনিয়ারের পার্থক্য এখানেই।</div></div>
+<div class="verse">রাত শেষে ছয় মাস্টার উঠে দাঁড়ালেন। ইদ্রিস চাচা বললেন: <em>চিঠি বহন করেছি চল্লিশ বছর — আজ বুঝলাম, তুমিই ছিলে সেই চিঠি: নাম আর ঠিকানা সব পেয়ে গেছো, এখন নিজেই ঠিকানা হও।</em> আর এ তো সেই প্রতিশ্রুতিরই পূর্ণতা — <em>যারা আমাদের মধ্যে সবচেয়ে সম্মানিত, সে তোমাদের মধ্যে সবচেয়ে জ্ঞানী</em> — জ্ঞানের সম্মান জমা ব্যালেন্সে নয়, চালনায়: যতটা জানো ততটা দাও, খালি চেয়ারটা ভরাট করো পরের যাত্রীর জন্য। তুমি খালি চেয়ারে বসলে — শেষ দরজাটা তোমার পিছনে বন্ধ হলো, আর প্রথম দরজাটা কারও জন্য খুলে গেলো।</div>
 <div class="secret-box">🗝️ দশ তালা, চার স্তর, এক চাবি — কম ভেবে বেশি বোঝাই সিনিয়রিটি।</div>`,
   senior: {
     title: "JS ১০ ধারণা + সিরিজ-সংশ্লেষণ — দ্রুত গাইড",

@@ -3,7 +3,7 @@
 // ════════════════════════════════════════
 let state = { xp:0, currentDoor:null, completedDoors:[], prologueSeen:false };
 const XP_PER_DOOR = 100;
-const SAVE_KEY = 'cxbSeniorDev_v1';
+const SAVE_KEY = 'cxbSeniorDev_v2';
 const MAX_XP = 1000;
 const RANKS = [
   {min:0,   name:'জুনিয়র কোডার',     icon:'🛖'},
